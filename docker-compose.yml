@@ -6,6 +6,6 @@ services:
     container_name: buoy-site
     restart: unless-stopped
     ports:
-      - "3001:80"
+      - "3248:80"
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
