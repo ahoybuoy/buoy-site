@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro'
 import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
 import Button from '../components/Button.astro'
+import { siteConfig } from '../config'
 
 const values = [
   {
@@ -175,7 +176,7 @@ const timeline = [
         <Button href="/demo" size="lg">
           Get started
         </Button>
-        <Button href="https://github.com/buoy-dev/buoy" variant="secondary" size="lg" external>
+        <Button href={siteConfig.githubUrl} variant="secondary" size="lg" external>
           View on GitHub
         </Button>
       </div>

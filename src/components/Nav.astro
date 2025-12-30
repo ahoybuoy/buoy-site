@@ -1,4 +1,6 @@
 ---
+import { siteConfig } from '../config'
+
 const featureItems = [
   { label: 'Drift Detection', href: '/features/drift-detection', description: 'Find design inconsistencies' },
   { label: 'Hardcoded Values', href: '/features/hardcoded-values', description: 'Colors & spacing not using tokens' },
@@ -153,7 +155,7 @@ const compareItems = [
       <!-- CTA Buttons -->
       <div class="hidden md:flex items-center gap-4">
         <a
-          href="https://github.com/buoy-dev/buoy"
+          href={siteConfig.githubUrl}
           target="_blank"
           rel="noopener noreferrer"
           class="text-sm text-slate hover:text-light transition-colors flex items-center gap-2"

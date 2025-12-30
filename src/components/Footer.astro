@@ -1,4 +1,6 @@
 ---
+import { siteConfig } from '../config'
+
 const footerLinks = {
   product: [
     { label: 'Features', href: '/features/drift-detection' },
@@ -18,9 +20,9 @@ const footerLinks = {
     { label: 'Careers', href: '/careers' },
   ],
   connect: [
-    { label: 'GitHub', href: 'https://github.com/buoy-dev/buoy', external: true },
-    { label: 'Twitter', href: 'https://twitter.com/buoy_dev', external: true },
-    { label: 'Discord', href: 'https://discord.gg/buoy', external: true },
+    { label: 'GitHub', href: siteConfig.githubUrl, external: true },
+    { label: 'Twitter', href: siteConfig.twitterUrl, external: true },
+    { label: 'Discord', href: siteConfig.discordUrl, external: true },
   ],
 }
 ---

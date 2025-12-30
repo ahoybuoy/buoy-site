@@ -3,20 +3,21 @@ import Layout from '../layouts/Layout.astro'
 import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
 import Button from '../components/Button.astro'
+import { siteConfig } from '../config'
 
 const contactOptions = [
   {
     title: 'GitHub Issues',
     description: 'Report bugs, request features, or ask questions',
     action: 'Open an issue',
-    href: 'https://github.com/buoy-dev/buoy/issues',
+    href: `${siteConfig.githubUrl}/issues`,
     icon: '🐙'
   },
   {
     title: 'GitHub Discussions',
     description: 'Join the community for general discussion and help',
     action: 'Start a discussion',
-    href: 'https://github.com/buoy-dev/buoy/discussions',
+    href: `${siteConfig.githubUrl}/discussions`,
     icon: '💬'
   },
   {
@@ -121,7 +122,7 @@ const contactOptions = [
             We love hearing what features would help your team.
           </p>
           <Button
-            href="https://github.com/buoy-dev/buoy/issues/new?template=feature_request.md"
+            href={`${siteConfig.githubUrl}/issues/new?template=feature_request.md`}
             variant="secondary"
             class="w-full justify-center"
             external
@@ -136,7 +137,7 @@ const contactOptions = [
             Help us fix it! Include your config and error output.
           </p>
           <Button
-            href="https://github.com/buoy-dev/buoy/issues/new?template=bug_report.md"
+            href={`${siteConfig.githubUrl}/issues/new?template=bug_report.md`}
             variant="secondary"
             class="w-full justify-center"
             external
