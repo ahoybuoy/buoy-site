@@ -177,7 +177,7 @@ import { siteConfig } from '../config'
           Every violation. Caught automatically.
         </h2>
         <p class="text-xl text-slate max-w-2xl mx-auto">
-          Buoy scans every PR and blocks violations before they merge.
+          Buoy scans every PR and flags violations before they merge. You set the threshold.
         </p>
       </div>
 
@@ -224,14 +224,14 @@ import { siteConfig } from '../config'
             <!-- Violations detail -->
             <div class="ml-8 p-4 bg-navy-dark rounded-lg border border-critical/20 space-y-3">
               <div class="flex items-start gap-2 text-sm">
-                <span class="text-critical font-mono text-xs bg-critical/20 px-2 py-0.5 rounded">BLOCKED</span>
+                <span class="text-critical font-mono text-xs bg-critical/20 px-2 py-0.5 rounded">CRITICAL</span>
                 <div>
                   <span class="text-light">checkout/PaymentForm.tsx:24</span>
                   <span class="text-slate-dark ml-2">Hardcoded color #3B82F6 → use var(--color-primary)</span>
                 </div>
               </div>
               <div class="flex items-start gap-2 text-sm">
-                <span class="text-critical font-mono text-xs bg-critical/20 px-2 py-0.5 rounded">BLOCKED</span>
+                <span class="text-critical font-mono text-xs bg-critical/20 px-2 py-0.5 rounded">CRITICAL</span>
                 <div>
                   <span class="text-light">checkout/CartItem.tsx:15</span>
                   <span class="text-slate-dark ml-2">Magic number 14px → use var(--spacing-sm)</span>
@@ -370,7 +370,7 @@ import { siteConfig } from '../config'
             <ul class="space-y-4">
               <li class="flex items-start gap-3">
                 <span class="text-success mt-1">✓</span>
-                <span class="text-light">"It can't merge without passing"</span>
+                <span class="text-light">"I see exactly what needs attention before review"</span>
               </li>
               <li class="flex items-start gap-3">
                 <span class="text-success mt-1">✓</span>
@@ -378,7 +378,7 @@ import { siteConfig } from '../config'
               </li>
               <li class="flex items-start gap-3">
                 <span class="text-success mt-1">✓</span>
-                <span class="text-light">"Violations are blocked immediately"</span>
+                <span class="text-light">"Critical issues are flagged immediately"</span>
               </li>
               <li class="flex items-start gap-3">
                 <span class="text-success mt-1">✓</span>
@@ -446,8 +446,8 @@ import { siteConfig } from '../config'
           <br />Your rules deserve to be followed.
         </p>
 
-        <div class="inline-flex flex-col sm:flex-row items-center gap-4 p-6 bg-navy/80 border border-navy-light/30 rounded-xl backdrop-blur-sm mb-8 copy-command" data-command="npx buoy-design scan">
-          <code class="text-lg font-mono text-light">npx buoy-design scan</code>
+        <div class="inline-flex flex-col sm:flex-row items-center gap-4 p-6 bg-navy/80 border border-navy-light/30 rounded-xl backdrop-blur-sm mb-8 copy-command" data-command="npx @buoy-design/cli status">
+          <code class="text-lg font-mono text-light">npx @buoy-design/cli status</code>
           <div class="flex items-center gap-3">
             <button class="copy-btn px-4 py-2 bg-navy-light/30 hover:bg-navy-light/50 text-slate hover:text-light rounded-lg transition-colors text-sm flex items-center gap-2">
               <span class="copy-text">Copy</span>

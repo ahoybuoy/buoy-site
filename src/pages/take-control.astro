@@ -23,8 +23,7 @@ import { siteConfig } from '../config'
 
     <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 text-center">
       <!-- Badge -->
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-lavender/10 border border-lavender/30 mb-8 animate-fade-in-up">
-        <span class="w-2 h-2 rounded-full bg-lavender animate-pulse"></span>
+      <div class="inline-flex items-center px-4 py-2 rounded-full bg-lavender/10 border border-lavender/30 mb-8 animate-fade-in-up">
         <span class="text-sm text-lavender font-medium">The Code Control Layer</span>
       </div>
 
@@ -184,7 +183,7 @@ import { siteConfig } from '../config'
           <span class="text-buoy font-semibold">The Power Shift</span>
         </div>
         <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
-          Insert yourself into the pipeline.
+          Insert design into the pipeline.
         </h2>
         <p class="text-xl text-slate max-w-2xl mx-auto">
           Every pull request. Every commit. Every line of AI-generated code.
@@ -215,11 +214,11 @@ import { siteConfig } from '../config'
           <div class="scroll-reveal pipeline-node" style="--delay: 0.3s;">
             <div class="bg-buoy/10 border-2 border-buoy rounded-xl p-4 text-center relative control-point-glow">
               <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-buoy text-navy-dark text-xs font-bold rounded-full">
-                YOU ARE HERE
+                DESIGN IS HERE
               </div>
               <div class="text-3xl mb-2">🛟</div>
               <div class="text-sm text-buoy font-semibold">Buoy</div>
-              <div class="text-xs text-slate">Your Control Layer</div>
+              <div class="text-xs text-slate">Design's Control Layer</div>
             </div>
           </div>
 
@@ -267,10 +266,10 @@ import { siteConfig } from '../config'
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16 scroll-reveal">
         <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
-          Three commands. Total control.
+          Zero config. Instant visibility.
         </h2>
         <p class="text-xl text-slate max-w-2xl mx-auto">
-          No complex setup. No configuration files. Just run and see.
+          No setup required. Run it, see results. Enforce when you're ready.
         </p>
       </div>
 
@@ -282,12 +281,12 @@ import { siteConfig } from '../config'
             <div class="w-12 h-12 rounded-full bg-buoy/20 border-2 border-buoy text-buoy font-bold flex items-center justify-center mb-4 text-xl">
               1
             </div>
-            <h3 class="text-xl font-semibold text-light mb-2">Scan</h3>
+            <h3 class="text-xl font-semibold text-light mb-2">Check Status</h3>
             <div class="bg-navy rounded-lg p-3 font-mono text-sm mb-4">
-              <span class="text-slate">$</span> <span class="text-buoy">npx buoy-design scan</span>
+              <span class="text-slate">$</span> <span class="text-buoy">npx @buoy-design/cli status</span>
             </div>
             <p class="text-slate text-sm">
-              Point Buoy at your codebase. In seconds, see every place your design system is being bypassed.
+              Run it in your codebase. In seconds, see every place your design system is being bypassed. Zero config needed.
             </p>
           </div>
         </div>
@@ -300,7 +299,7 @@ import { siteConfig } from '../config'
             </div>
             <h3 class="text-xl font-semibold text-light mb-2">Review</h3>
             <div class="bg-navy rounded-lg p-3 font-mono text-sm mb-4">
-              <span class="text-slate">$</span> <span class="text-buoy">buoy report --detailed</span>
+              <span class="text-slate">$</span> <span class="text-buoy">buoy drift check</span>
             </div>
             <p class="text-slate text-sm">
               Get a clear report: what's wrong, where it is, and exactly how to fix it. No guesswork.
@@ -316,10 +315,10 @@ import { siteConfig } from '../config'
             </div>
             <h3 class="text-xl font-semibold text-light mb-2">Enforce</h3>
             <div class="bg-navy rounded-lg p-3 font-mono text-sm mb-4">
-              <span class="text-slate">$</span> <span class="text-buoy">buoy ci --block</span>
+              <span class="text-slate">$</span> <span class="text-buoy">buoy ci --fail-on critical</span>
             </div>
             <p class="text-slate text-sm">
-              Add to CI/CD. Now nothing ships without your approval. Rogue code? Blocked. Rogue AI? Blocked.
+              Add to CI/CD. See what's drifting before it ships. Critical issues get flagged. You decide the threshold.
             </p>
           </div>
         </div>
@@ -332,10 +331,10 @@ import { siteConfig } from '../config'
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16 scroll-reveal">
         <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
-          Your rules. Automatically enforced.
+          Your rules. Automatically detected.
         </h2>
         <p class="text-xl text-slate max-w-2xl mx-auto">
-          Every decision you made in your design system? Now it's law.
+          Every decision you made in your design system? Now it's visible and measurable.
         </p>
       </div>
 
@@ -548,6 +547,82 @@ import { siteConfig } from '../config'
     </div>
   </section>
 
+  <!-- Section 8: Progressive Enforcement -->
+  <section class="py-32 bg-navy relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
+          Start where you are.
+        </h2>
+        <p class="text-xl text-slate max-w-2xl mx-auto">
+          Don't have a design system yet? Buoy can extract tokens from your existing code.
+          Already have one? Start with visibility, add enforcement when ready.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <!-- Token Extraction -->
+        <div class="scroll-reveal" style="--delay: 0.1s;">
+          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 h-full hover:border-buoy/30 transition-all">
+            <div class="text-3xl mb-4">🎯</div>
+            <h3 class="text-xl font-semibold text-light mb-2">Extract tokens from code</h3>
+            <div class="bg-navy rounded-lg p-3 font-mono text-sm mb-4">
+              <span class="text-slate">$</span> <span class="text-buoy">buoy tokens</span>
+            </div>
+            <p class="text-slate text-sm">
+              No design tokens yet? Buoy scans your existing code and extracts colors, spacing, and typography into a starting token file.
+            </p>
+          </div>
+        </div>
+
+        <!-- Visual Status -->
+        <div class="scroll-reveal" style="--delay: 0.15s;">
+          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 h-full hover:border-buoy/30 transition-all">
+            <div class="text-3xl mb-4">📊</div>
+            <h3 class="text-xl font-semibold text-light mb-2">Visual coverage grid</h3>
+            <div class="bg-navy rounded-lg p-3 font-mono text-sm mb-4">
+              <span class="text-slate">$</span> <span class="text-buoy">buoy status</span>
+            </div>
+            <p class="text-slate text-sm">
+              See a visual grid of your design system coverage across files. Track improvements over time.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progressive ladder -->
+      <div class="mt-16 max-w-3xl mx-auto scroll-reveal" style="--delay: 0.2s;">
+        <div class="text-center mb-8">
+          <h3 class="text-xl font-semibold text-light">Progressive enforcement ladder</h3>
+          <p class="text-sm text-slate mt-2">Start informing, enforce when you're ready</p>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div class="flex-1 bg-navy-dark border border-navy-light/20 rounded-xl p-4 text-center">
+            <div class="text-warning text-2xl mb-2">👁️</div>
+            <div class="text-light font-medium">Detect</div>
+            <div class="text-xs text-slate mt-1">See what's drifting</div>
+          </div>
+          <svg class="w-6 h-6 text-slate-dark shrink-0 rotate-90 sm:rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+          <div class="flex-1 bg-navy-dark border border-warning/30 rounded-xl p-4 text-center">
+            <div class="text-warning text-2xl mb-2">⚠️</div>
+            <div class="text-light font-medium">Warn</div>
+            <div class="text-xs text-slate mt-1">Flag in PRs</div>
+          </div>
+          <svg class="w-6 h-6 text-slate-dark shrink-0 rotate-90 sm:rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+          <div class="flex-1 bg-navy-dark border border-success/30 rounded-xl p-4 text-center">
+            <div class="text-success text-2xl mb-2">✓</div>
+            <div class="text-light font-medium">Enforce</div>
+            <div class="text-xs text-slate mt-1">Fail on critical</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Final CTA Section -->
   <section class="py-32 bg-gradient-to-b from-navy to-navy-dark relative overflow-hidden">
     <!-- Decorative elements -->
@@ -564,8 +639,8 @@ import { siteConfig } from '../config'
           <br />Just run the command and see what you've been missing.
         </p>
 
-        <div class="inline-flex flex-col sm:flex-row items-center gap-4 p-6 bg-navy/80 border border-navy-light/30 rounded-xl backdrop-blur-sm mb-8 copy-command" data-command="npx buoy-design scan">
-          <code class="text-lg font-mono text-light">npx buoy-design scan</code>
+        <div class="inline-flex flex-col sm:flex-row items-center gap-4 p-6 bg-navy/80 border border-navy-light/30 rounded-xl backdrop-blur-sm mb-8 copy-command" data-command="npx @buoy-design/cli status">
+          <code class="text-lg font-mono text-light">npx @buoy-design/cli status</code>
           <div class="flex items-center gap-3">
             <button class="copy-btn px-4 py-2 bg-navy-light/30 hover:bg-navy-light/50 text-slate hover:text-light rounded-lg transition-colors text-sm flex items-center gap-2">
               <span class="copy-text">Copy</span>

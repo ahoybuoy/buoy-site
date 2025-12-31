@@ -1,83 +1,68 @@
 ---
-// Animated digital wave background with nautical/sonar aesthetic
+// Paper cutout wave background - handmade aesthetic
 ---
 
 <div class="wave-background">
-  <!-- SVG Wave Layers -->
-  <svg class="wave-svg" viewBox="0 0 1440 800" preserveAspectRatio="none">
-    <defs>
-      <!-- Gradient for waves -->
-      <linearGradient id="waveGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="rgba(0, 102, 255, 0.15)" />
-        <stop offset="50%" stop-color="rgba(139, 92, 246, 0.1)" />
-        <stop offset="100%" stop-color="rgba(0, 102, 255, 0.15)" />
-      </linearGradient>
-      <linearGradient id="waveGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="rgba(139, 92, 246, 0.1)" />
-        <stop offset="50%" stop-color="rgba(0, 102, 255, 0.15)" />
-        <stop offset="100%" stop-color="rgba(139, 92, 246, 0.1)" />
-      </linearGradient>
-      <linearGradient id="waveGradient3" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stop-color="rgba(249, 115, 22, 0.08)" />
-        <stop offset="50%" stop-color="rgba(0, 102, 255, 0.12)" />
-        <stop offset="100%" stop-color="rgba(249, 115, 22, 0.08)" />
-      </linearGradient>
+  <!-- Paper Wave Layers - stacked like cardboard cutouts -->
+  <div class="paper-waves">
+    <!-- Back wave - deepest layer -->
+    <div class="paper-wave wave-back">
+      <svg viewBox="0 0 1440 400" preserveAspectRatio="none" class="wave-svg">
+        <defs>
+          <filter id="paper-texture-1">
+            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="5" result="noise"/>
+            <feDiffuseLighting in="noise" lighting-color="#0066FF" surfaceScale="1.5" result="light">
+              <feDistantLight azimuth="45" elevation="60"/>
+            </feDiffuseLighting>
+            <feComposite in="SourceGraphic" in2="light" operator="arithmetic" k1="1" k2="0" k3="0" k4="0"/>
+          </filter>
+        </defs>
+        <!-- Jagged paper-cut wave shape -->
+        <path
+          class="wave-path"
+          d="M0,120
+             L80,100 L120,130 L180,95 L240,125 L300,90 L360,120
+             L420,85 L480,115 L540,80 L600,110 L660,75 L720,105
+             L780,70 L840,100 L900,65 L960,95 L1020,60 L1080,90
+             L1140,55 L1200,85 L1260,50 L1320,80 L1380,45 L1440,75
+             L1440,400 L0,400 Z"
+        />
+      </svg>
+    </div>
 
-      <!-- Glow filter -->
-      <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-        <feMerge>
-          <feMergeNode in="coloredBlur"/>
-          <feMergeNode in="SourceGraphic"/>
-        </feMerge>
-      </filter>
+    <!-- Middle wave -->
+    <div class="paper-wave wave-middle">
+      <svg viewBox="0 0 1440 400" preserveAspectRatio="none" class="wave-svg">
+        <path
+          class="wave-path"
+          d="M0,140
+             L60,160 L100,135 L160,165 L220,130 L280,160 L340,125
+             L400,155 L460,120 L520,150 L580,115 L640,145 L700,110
+             L760,140 L820,105 L880,135 L940,100 L1000,130 L1060,95
+             L1120,125 L1180,90 L1240,120 L1300,85 L1360,115 L1440,95
+             L1440,400 L0,400 Z"
+        />
+      </svg>
+    </div>
 
-      <!-- Noise texture -->
-      <filter id="noise">
-        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
-        <feColorMatrix type="saturate" values="0"/>
-      </filter>
-    </defs>
-
-    <!-- Deep background waves -->
-    <path class="wave wave-1" fill="url(#waveGradient1)" d="M0,400 C150,350 350,450 500,400 C650,350 850,450 1000,400 C1150,350 1350,450 1440,400 L1440,800 L0,800 Z"/>
-    <path class="wave wave-2" fill="url(#waveGradient2)" d="M0,450 C200,400 400,500 600,450 C800,400 1000,500 1200,450 C1350,410 1400,470 1440,450 L1440,800 L0,800 Z"/>
-    <path class="wave wave-3" fill="url(#waveGradient3)" d="M0,500 C180,460 380,540 580,500 C780,460 980,540 1180,500 C1330,470 1400,520 1440,500 L1440,800 L0,800 Z"/>
-
-    <!-- Digital grid lines -->
-    <g class="grid-lines" opacity="0.15">
-      <line x1="0" y1="200" x2="1440" y2="200" stroke="url(#waveGradient1)" stroke-width="1"/>
-      <line x1="0" y1="300" x2="1440" y2="300" stroke="url(#waveGradient1)" stroke-width="1"/>
-      <line x1="0" y1="400" x2="1440" y2="400" stroke="url(#waveGradient1)" stroke-width="1"/>
-      <line x1="0" y1="500" x2="1440" y2="500" stroke="url(#waveGradient1)" stroke-width="1"/>
-      <line x1="0" y1="600" x2="1440" y2="600" stroke="url(#waveGradient1)" stroke-width="1"/>
-    </g>
-  </svg>
-
-  <!-- Sonar rings with centered buoy -->
-  <div class="sonar-container">
-    <div class="sonar-ring sonar-1"></div>
-    <div class="sonar-ring sonar-2"></div>
-    <div class="sonar-ring sonar-3"></div>
-    <div class="sonar-center"></div>
-    <div class="hover-burst"></div>
-    <div class="buoy-icon" id="buoy-icon">🛟</div>
+    <!-- Front wave - closest layer -->
+    <div class="paper-wave wave-front">
+      <svg viewBox="0 0 1440 400" preserveAspectRatio="none" class="wave-svg">
+        <path
+          class="wave-path"
+          d="M0,180
+             L70,200 L130,170 L190,205 L250,165 L310,195 L370,160
+             L430,190 L490,155 L550,185 L610,150 L670,180 L730,145
+             L790,175 L850,140 L910,170 L970,135 L1030,165 L1090,130
+             L1150,160 L1210,125 L1270,155 L1330,120 L1390,150 L1440,130
+             L1440,400 L0,400 Z"
+        />
+      </svg>
+    </div>
   </div>
 
-  <!-- Floating particles -->
-  <div class="particles">
-    <div class="particle p1"></div>
-    <div class="particle p2"></div>
-    <div class="particle p3"></div>
-    <div class="particle p4"></div>
-    <div class="particle p5"></div>
-    <div class="particle p6"></div>
-    <div class="particle p7"></div>
-    <div class="particle p8"></div>
-  </div>
-
-  <!-- Mesh gradient overlay -->
-  <div class="mesh-overlay"></div>
+  <!-- Subtle paper grain overlay -->
+  <div class="paper-grain"></div>
 </div>
 
 <style>
@@ -89,10 +74,25 @@
     background: linear-gradient(
       180deg,
       #0a1628 0%,
-      #0d1f35 30%,
-      #0a1628 70%,
-      #061018 100%
+      #0d1f35 40%,
+      #0a1628 100%
     );
+  }
+
+  .paper-waves {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+  }
+
+  .paper-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
   }
 
   .wave-svg {
@@ -103,324 +103,95 @@
     height: 100%;
   }
 
-  /* Animated waves */
-  .wave {
-    animation: waveMove 12s ease-in-out infinite;
-    transform-origin: center bottom;
+  /* Back wave - blue/purple tones */
+  .wave-back {
+    z-index: 1;
+    filter: drop-shadow(0 -8px 16px rgba(0, 0, 0, 0.3));
+    animation: paperSway 8s ease-in-out infinite;
   }
 
-  .wave-1 {
-    animation-delay: 0s;
-    animation-duration: 15s;
+  .wave-back .wave-path {
+    fill: rgba(30, 58, 95, 0.9);
   }
 
-  .wave-2 {
-    animation-delay: -3s;
-    animation-duration: 12s;
+  /* Middle wave - purple tones */
+  .wave-middle {
+    z-index: 2;
+    filter: drop-shadow(0 -6px 12px rgba(0, 0, 0, 0.25));
+    animation: paperSway 7s ease-in-out infinite;
+    animation-delay: -2s;
   }
 
-  .wave-3 {
-    animation-delay: -6s;
-    animation-duration: 10s;
+  .wave-middle .wave-path {
+    fill: rgba(45, 55, 85, 0.92);
   }
 
-  @keyframes waveMove {
+  /* Front wave - warmest, most visible */
+  .wave-front {
+    z-index: 3;
+    filter: drop-shadow(0 -4px 8px rgba(0, 0, 0, 0.2));
+    animation: paperSway 6s ease-in-out infinite;
+    animation-delay: -4s;
+  }
+
+  .wave-front .wave-path {
+    fill: rgba(20, 40, 70, 0.95);
+  }
+
+  /* Subtle paper sway - like cardboard gently moving */
+  @keyframes paperSway {
     0%, 100% {
-      d: path("M0,400 C150,350 350,450 500,400 C650,350 850,450 1000,400 C1150,350 1350,450 1440,400 L1440,800 L0,800 Z");
+      transform: translateY(0) rotate(0deg);
     }
     50% {
-      d: path("M0,420 C150,470 350,370 500,420 C650,470 850,370 1000,420 C1150,470 1350,370 1440,420 L1440,800 L0,800 Z");
+      transform: translateY(-3px) rotate(0.1deg);
     }
   }
 
-  .wave-2 {
-    animation-name: waveMove2;
-  }
-
-  @keyframes waveMove2 {
-    0%, 100% {
-      d: path("M0,450 C200,400 400,500 600,450 C800,400 1000,500 1200,450 C1350,410 1400,470 1440,450 L1440,800 L0,800 Z");
-    }
-    50% {
-      d: path("M0,470 C200,520 400,420 600,470 C800,520 1000,420 1200,470 C1350,510 1400,430 1440,470 L1440,800 L0,800 Z");
-    }
-  }
-
-  .wave-3 {
-    animation-name: waveMove3;
-  }
-
-  @keyframes waveMove3 {
-    0%, 100% {
-      d: path("M0,500 C180,460 380,540 580,500 C780,460 980,540 1180,500 C1330,470 1400,520 1440,500 L1440,800 L0,800 Z");
-    }
-    50% {
-      d: path("M0,520 C180,560 380,480 580,520 C780,560 980,480 1180,520 C1330,550 1400,490 1440,520 L1440,800 L0,800 Z");
-    }
-  }
-
-  /* Grid animation */
-  .grid-lines line {
-    animation: gridPulse 4s ease-in-out infinite;
-  }
-
-  .grid-lines line:nth-child(2) { animation-delay: 0.5s; }
-  .grid-lines line:nth-child(3) { animation-delay: 1s; }
-  .grid-lines line:nth-child(4) { animation-delay: 1.5s; }
-  .grid-lines line:nth-child(5) { animation-delay: 2s; }
-
-  @keyframes gridPulse {
-    0%, 100% { opacity: 0.1; }
-    50% { opacity: 0.25; }
-  }
-
-  /* Sonar rings */
-  .sonar-container {
-    position: absolute;
-    bottom: 15%;
-    left: 8%;
-    width: 250px;
-    height: 250px;
-    display: none;
-  }
-
-  @media (min-width: 1024px) {
-    .sonar-container {
-      display: block;
-    }
-  }
-
-  .sonar-ring {
+  /* Paper grain texture overlay */
+  .paper-grain {
     position: absolute;
     inset: 0;
-    border: 1px solid rgba(0, 102, 255, 0.3);
-    border-radius: 50%;
-    animation: sonarPulse 4s ease-out infinite;
-  }
-
-  .sonar-1 { animation-delay: 0s; }
-  .sonar-2 { animation-delay: 1.3s; }
-  .sonar-3 { animation-delay: 2.6s; }
-
-  @keyframes sonarPulse {
-    0% {
-      transform: scale(0.3);
-      opacity: 0.8;
-      border-color: rgba(0, 102, 255, 0.6);
-    }
-    100% {
-      transform: scale(2);
-      opacity: 0;
-      border-color: rgba(139, 92, 246, 0);
-    }
-  }
-
-  .sonar-center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 8px;
-    height: 8px;
-    background: #0066FF;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0 20px rgba(0, 102, 255, 0.8), 0 0 40px rgba(0, 102, 255, 0.4);
-    animation: centerPulse 2s ease-in-out infinite;
-  }
-
-  @keyframes centerPulse {
-    0%, 100% {
-      box-shadow: 0 0 20px rgba(0, 102, 255, 0.8), 0 0 40px rgba(0, 102, 255, 0.4);
-    }
-    50% {
-      box-shadow: 0 0 30px rgba(0, 102, 255, 1), 0 0 60px rgba(0, 102, 255, 0.6);
-    }
-  }
-
-  .buoy-icon {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 4rem;
-    filter: drop-shadow(0 0 20px rgba(0, 102, 255, 0.6)) drop-shadow(0 0 40px rgba(0, 102, 255, 0.3));
-    z-index: 10;
-    cursor: pointer;
-    transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.2s ease;
-    will-change: transform, filter;
-  }
-
-  .buoy-icon:hover {
-    transform: translate(-50%, -50%) scale(1.15);
-    filter: drop-shadow(0 0 30px rgba(249, 168, 37, 0.8)) drop-shadow(0 0 60px rgba(249, 168, 37, 0.5));
-  }
-
-  .buoy-icon:active {
-    transform: translate(-50%, -50%) scale(0.95);
-    transition: transform 0.05s ease;
-  }
-
-  .buoy-icon.bouncing {
-    animation: buoyBounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-
-  @keyframes buoyBounce {
-    0% {
-      transform: translate(-50%, -50%) scale(1.15);
-    }
-    25% {
-      transform: translate(-50%, -55%) scale(1.2) rotate(-8deg);
-    }
-    50% {
-      transform: translate(-50%, -45%) scale(1.1) rotate(5deg);
-    }
-    75% {
-      transform: translate(-50%, -52%) scale(1.12) rotate(-3deg);
-    }
-    100% {
-      transform: translate(-50%, -50%) scale(1);
-    }
-  }
-
-  /* Burst effect on hover */
-  .hover-burst {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    transform: translate(-50%, -50%) scale(0);
     pointer-events: none;
-    opacity: 0;
-    border: 2px solid rgba(249, 168, 37, 0.6);
-    box-shadow: 0 0 20px rgba(249, 168, 37, 0.4);
-    transition: none;
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)'/%3E%3C/svg%3E");
   }
 
-  .hover-burst.active {
-    animation: hoverBurst 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-  }
-
-  @keyframes hoverBurst {
-    0% {
-      transform: translate(-50%, -50%) scale(0.5);
-      opacity: 0.8;
-      border-color: rgba(249, 168, 37, 0.8);
-    }
-    100% {
-      transform: translate(-50%, -50%) scale(2);
-      opacity: 0;
-      border-color: rgba(249, 168, 37, 0);
-    }
-  }
-
-  /* Center dot reacts to hover too */
-  .sonar-container:hover .sonar-center {
-    background: #F9A825;
-    box-shadow: 0 0 30px rgba(249, 168, 37, 0.9), 0 0 60px rgba(249, 168, 37, 0.5);
-    transition: all 0.2s ease;
-  }
-
-  /* Floating particles */
-  .particles {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-  }
-
-  .particle {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: rgba(0, 102, 255, 0.6);
-    border-radius: 50%;
-    animation: float 20s linear infinite;
-  }
-
-  .p1 { left: 10%; top: 20%; animation-delay: 0s; animation-duration: 25s; }
-  .p2 { left: 20%; top: 60%; animation-delay: -5s; animation-duration: 20s; background: rgba(139, 92, 246, 0.5); }
-  .p3 { left: 35%; top: 30%; animation-delay: -10s; animation-duration: 22s; }
-  .p4 { left: 50%; top: 70%; animation-delay: -3s; animation-duration: 18s; background: rgba(249, 115, 22, 0.4); }
-  .p5 { left: 65%; top: 25%; animation-delay: -8s; animation-duration: 24s; background: rgba(139, 92, 246, 0.5); }
-  .p6 { left: 75%; top: 55%; animation-delay: -12s; animation-duration: 21s; }
-  .p7 { left: 85%; top: 35%; animation-delay: -2s; animation-duration: 19s; background: rgba(249, 115, 22, 0.4); }
-  .p8 { left: 95%; top: 75%; animation-delay: -7s; animation-duration: 23s; }
-
-  @keyframes float {
-    0% {
-      transform: translateY(100vh) scale(0);
-      opacity: 0;
-    }
-    10% {
-      opacity: 1;
-      transform: translateY(80vh) scale(1);
-    }
-    90% {
-      opacity: 1;
-      transform: translateY(-10vh) scale(1);
-    }
-    100% {
-      transform: translateY(-20vh) scale(0);
-      opacity: 0;
-    }
-  }
-
-  /* Mesh gradient overlay */
-  .mesh-overlay {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse at 20% 20%, rgba(0, 102, 255, 0.1) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 30%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
-      radial-gradient(ellipse at 40% 80%, rgba(249, 115, 22, 0.06) 0%, transparent 40%),
-      radial-gradient(ellipse at 90% 80%, rgba(0, 102, 255, 0.08) 0%, transparent 50%);
-    pointer-events: none;
-  }
-
-  /* Noise texture overlay */
-  .wave-background::after {
+  /* Add subtle "torn edge" effect to waves */
+  .wave-back::after,
+  .wave-middle::after,
+  .wave-front::after {
     content: '';
     position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    opacity: 0.03;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
     pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='rough'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='3'/%3E%3CfeDisplacementMap in='SourceGraphic' scale='2'/%3E%3C/filter%3E%3C/svg%3E");
+    opacity: 0.02;
   }
 
-  /* Responsive adjustments */
+  /* Color accents on wave edges */
+  .wave-back .wave-path {
+    stroke: rgba(0, 102, 255, 0.3);
+    stroke-width: 2;
+  }
+
+  .wave-middle .wave-path {
+    stroke: rgba(139, 92, 246, 0.25);
+    stroke-width: 2;
+  }
+
+  .wave-front .wave-path {
+    stroke: rgba(249, 115, 22, 0.2);
+    stroke-width: 2;
+  }
+
+  /* Responsive */
   @media (max-width: 768px) {
-    .particle {
-      width: 3px;
-      height: 3px;
+    .paper-waves {
+      height: 50%;
     }
   }
 </style>
-
-<script>
-  const buoy = document.getElementById('buoy-icon');
-  const burst = document.querySelector('.hover-burst');
-
-  if (buoy && burst) {
-    // Trigger burst and bounce on hover
-    buoy.addEventListener('mouseenter', () => {
-      // Trigger burst animation
-      burst.classList.remove('active');
-      void burst.offsetWidth; // Force reflow
-      burst.classList.add('active');
-
-      // Add bounce class
-      buoy.classList.add('bouncing');
-    });
-
-    // Remove bounce class when animation ends
-    buoy.addEventListener('animationend', () => {
-      buoy.classList.remove('bouncing');
-    });
-
-    // Clean up burst animation
-    burst.addEventListener('animationend', () => {
-      burst.classList.remove('active');
-    });
-  }
-</script>
