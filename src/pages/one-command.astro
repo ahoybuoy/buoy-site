@@ -1,0 +1,484 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+import Button from '../components/Button.astro'
+import { siteConfig } from '../config'
+---
+
+<Layout title="One Command - Understand Your Codebase Instantly | Buoy">
+  <Nav />
+
+  <!-- Hero -->
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-navy-dark">
+    <!-- Animated gradient orbs -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-buoy/20 rounded-full blur-[120px] animate-float"></div>
+      <div class="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-lavender/15 rounded-full blur-[100px] animate-float" style="animation-delay: -2s;"></div>
+    </div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 text-center">
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-buoy/10 border border-buoy/30 mb-8 animate-fade-in-up">
+        <span class="text-buoy font-mono text-sm">npx @buoy-design/cli status</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold mb-8 leading-tight animate-fade-in-up" style="animation-delay: 0.1s;">
+        <span class="text-light">One command.</span>
+        <br />
+        <span class="text-gradient-sunrise">Total clarity.</span>
+      </h1>
+
+      <p class="text-xl sm:text-2xl text-slate max-w-3xl mx-auto mb-12 leading-relaxed animate-fade-in-up" style="animation-delay: 0.2s;">
+        You don't need to read code to understand it.
+        <br class="hidden sm:block" />
+        <span class="text-light">Run one command. See everything.</span>
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style="animation-delay: 0.3s;">
+        <Button href={siteConfig.githubUrl} size="lg" external>
+          Try it now
+        </Button>
+        <Button href="#the-output" variant="secondary" size="lg">
+          See the output
+        </Button>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <svg class="w-6 h-6 text-slate" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Section 2: The Output -->
+  <section id="the-output" class="py-32 bg-navy relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
+          This is what you see.
+        </h2>
+        <p class="text-xl text-slate max-w-2xl mx-auto">
+          No code. No jargon. Just a clear picture of your design system's health.
+        </p>
+      </div>
+
+      <!-- Terminal visualization -->
+      <div class="max-w-4xl mx-auto scroll-reveal" style="--delay: 0.1s;">
+        <div class="bg-navy-dark border border-navy-light/30 rounded-xl overflow-hidden shadow-2xl">
+          <!-- Terminal header -->
+          <div class="px-4 py-3 bg-navy-light/10 border-b border-navy-light/20 flex items-center gap-2">
+            <div class="flex gap-1.5">
+              <div class="w-3 h-3 rounded-full bg-critical/60"></div>
+              <div class="w-3 h-3 rounded-full bg-warning/60"></div>
+              <div class="w-3 h-3 rounded-full bg-success/60"></div>
+            </div>
+            <span class="text-xs text-slate-dark ml-2 font-mono">Terminal</span>
+          </div>
+
+          <!-- Terminal content -->
+          <div class="p-6 font-mono text-sm overflow-x-auto">
+            <div class="text-slate-dark mb-4">$ npx @buoy-design/cli status</div>
+
+            <div class="text-light font-semibold mb-4">Component Alignment</div>
+
+            <!-- Visual grid -->
+            <div class="grid-visualization mb-6">
+              <div class="flex flex-wrap gap-1 mb-4 max-w-[280px]">
+                {Array(46).fill(0).map((_, i) => (
+                  <span class="text-success text-lg grid-icon" style={`--delay: ${i * 0.02}s`}>⛁</span>
+                ))}
+              </div>
+
+              <div class="space-y-1 text-sm">
+                <div><span class="text-success">46/46 components</span> <span class="text-slate">·</span> <span class="text-success font-semibold">100% aligned</span></div>
+                <div class="mt-3 space-y-0.5">
+                  <div><span class="text-success">⛁</span> <span class="text-slate">Aligned:</span> <span class="text-success">46 (100%)</span></div>
+                  <div><span class="text-warning">⛀</span> <span class="text-slate">Drifting:</span> <span class="text-slate-dark">0 (0%)</span></div>
+                  <div><span class="text-slate-dark">⛶</span> <span class="text-slate">Untracked:</span> <span class="text-slate-dark">0 (0%)</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="text-success mt-6">✓ Perfect alignment! No drift detected.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- What it tells you -->
+      <div class="mt-16 grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <div class="scroll-reveal text-center" style="--delay: 0.2s;">
+          <div class="text-4xl mb-3">⛁</div>
+          <div class="text-light font-semibold mb-1">Aligned</div>
+          <div class="text-sm text-slate">Components following your design system</div>
+        </div>
+        <div class="scroll-reveal text-center" style="--delay: 0.25s;">
+          <div class="text-4xl mb-3">⛀</div>
+          <div class="text-warning font-semibold mb-1">Drifting</div>
+          <div class="text-sm text-slate">Components with hardcoded values</div>
+        </div>
+        <div class="scroll-reveal text-center" style="--delay: 0.3s;">
+          <div class="text-4xl mb-3">⛶</div>
+          <div class="text-slate-dark font-semibold mb-1">Untracked</div>
+          <div class="text-sm text-slate">New components not yet mapped</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Before Buoy -->
+  <section class="py-32 bg-navy-dark relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
+          Before, you had to ask.
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <!-- Before -->
+        <div class="scroll-reveal" style="--delay: 0.1s;">
+          <div class="bg-navy border border-navy-light/30 rounded-xl p-6 h-full">
+            <div class="text-critical text-sm font-semibold uppercase tracking-wide mb-6">Before Buoy</div>
+            <div class="space-y-4 text-sm">
+              <div class="flex items-start gap-3">
+                <span class="text-critical mt-1">💬</span>
+                <div class="bg-navy-dark rounded-lg p-3 flex-1">
+                  <span class="text-slate">"Hey, are we using our design tokens everywhere?"</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-slate-dark mt-1">⏳</span>
+                <div class="text-slate-dark italic">...waits 2 days for response...</div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-critical mt-1">💬</span>
+                <div class="bg-navy-dark rounded-lg p-3 flex-1">
+                  <span class="text-slate">"I think so? Maybe check with the frontend team?"</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-critical mt-1">😤</span>
+                <div class="text-slate-dark italic">No clear answer. Ever.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- After -->
+        <div class="scroll-reveal" style="--delay: 0.2s;">
+          <div class="bg-navy border border-success/30 rounded-xl p-6 h-full">
+            <div class="text-success text-sm font-semibold uppercase tracking-wide mb-6">With Buoy</div>
+            <div class="space-y-4 text-sm">
+              <div class="flex items-start gap-3">
+                <span class="text-success mt-1">$</span>
+                <div class="bg-navy-dark rounded-lg p-3 flex-1 font-mono">
+                  <span class="text-buoy">npx @buoy-design/cli status</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-success mt-1">⚡</span>
+                <div class="text-slate-dark italic">...2 seconds later...</div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-success mt-1">✓</span>
+                <div class="bg-navy-dark rounded-lg p-3 flex-1">
+                  <span class="text-success">46/46 components · 100% aligned</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-success mt-1">😌</span>
+                <div class="text-light italic">You know. Instantly.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: What You Can Ask -->
+  <section class="py-32 bg-navy relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
+          Questions you can answer yourself.
+        </h2>
+        <p class="text-xl text-slate max-w-2xl mx-auto">
+          No Slack messages. No meetings. No waiting.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div class="scroll-reveal" style="--delay: 0.1s;">
+          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 h-full hover:border-buoy/30 transition-colors">
+            <div class="text-2xl mb-3">📊</div>
+            <div class="text-light font-semibold mb-2">"What's our design system coverage?"</div>
+            <div class="text-sm text-slate">See the percentage instantly. Track it over time.</div>
+          </div>
+        </div>
+
+        <div class="scroll-reveal" style="--delay: 0.15s;">
+          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 h-full hover:border-buoy/30 transition-colors">
+            <div class="text-2xl mb-3">🔍</div>
+            <div class="text-light font-semibold mb-2">"Which components are drifting?"</div>
+            <div class="text-sm text-slate">Get the exact list. Every file, every line.</div>
+          </div>
+        </div>
+
+        <div class="scroll-reveal" style="--delay: 0.2s;">
+          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 h-full hover:border-buoy/30 transition-colors">
+            <div class="text-2xl mb-3">📦</div>
+            <div class="text-light font-semibold mb-2">"How many components do we have?"</div>
+            <div class="text-sm text-slate">Count them all. See how they're categorized.</div>
+          </div>
+        </div>
+
+        <div class="scroll-reveal" style="--delay: 0.25s;">
+          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 h-full hover:border-buoy/30 transition-colors">
+            <div class="text-2xl mb-3">🎨</div>
+            <div class="text-light font-semibold mb-2">"Are our tokens being used?"</div>
+            <div class="text-sm text-slate">Find hardcoded colors. Find hardcoded spacing.</div>
+          </div>
+        </div>
+
+        <div class="scroll-reveal" style="--delay: 0.3s;">
+          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 h-full hover:border-buoy/30 transition-colors">
+            <div class="text-2xl mb-3">📈</div>
+            <div class="text-light font-semibold mb-2">"Is the codebase getting better?"</div>
+            <div class="text-sm text-slate">Compare runs. See the trend. Prove improvement.</div>
+          </div>
+        </div>
+
+        <div class="scroll-reveal" style="--delay: 0.35s;">
+          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 h-full hover:border-buoy/30 transition-colors">
+            <div class="text-2xl mb-3">🏷️</div>
+            <div class="text-light font-semibold mb-2">"What's not following conventions?"</div>
+            <div class="text-sm text-slate">Naming drift. Prop mismatches. Pattern violations.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: For Designers AND Engineers -->
+  <section class="py-32 bg-navy-dark relative overflow-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 scroll-reveal">
+        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
+          One language. Two audiences.
+        </h2>
+        <p class="text-xl text-slate max-w-2xl mx-auto">
+          Whether you're a designer or a frontend engineer, the output speaks to you.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <!-- For Designers -->
+        <div class="scroll-reveal" style="--delay: 0.1s;">
+          <div class="bg-navy border border-lavender/30 rounded-xl p-6 h-full">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-12 h-12 rounded-xl bg-lavender/20 flex items-center justify-center">
+                <span class="text-2xl">🎨</span>
+              </div>
+              <div>
+                <div class="text-lavender font-semibold">For Designers</div>
+                <div class="text-sm text-slate">Design System Leads</div>
+              </div>
+            </div>
+            <ul class="space-y-3 text-sm">
+              <li class="flex items-start gap-2">
+                <span class="text-lavender mt-1">✓</span>
+                <span class="text-slate">See if your design system is actually being used</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-lavender mt-1">✓</span>
+                <span class="text-slate">Prove adoption with real numbers</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-lavender mt-1">✓</span>
+                <span class="text-slate">Find where tokens are being bypassed</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-lavender mt-1">✓</span>
+                <span class="text-slate">No code knowledge required</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- For Engineers -->
+        <div class="scroll-reveal" style="--delay: 0.2s;">
+          <div class="bg-navy border border-buoy/30 rounded-xl p-6 h-full">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-12 h-12 rounded-xl bg-buoy/20 flex items-center justify-center">
+                <span class="text-2xl">⚡</span>
+              </div>
+              <div>
+                <div class="text-buoy font-semibold">For Engineers</div>
+                <div class="text-sm text-slate">Frontend Developers</div>
+              </div>
+            </div>
+            <ul class="space-y-3 text-sm">
+              <li class="flex items-start gap-2">
+                <span class="text-buoy mt-1">✓</span>
+                <span class="text-slate">Quick codebase health check before PRs</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-buoy mt-1">✓</span>
+                <span class="text-slate">Find and fix drift during development</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-buoy mt-1">✓</span>
+                <span class="text-slate">Exact file paths and line numbers</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-buoy mt-1">✓</span>
+                <span class="text-slate">Integrates with CI/CD pipelines</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Just One Line -->
+  <section class="py-32 bg-navy relative overflow-hidden">
+    <div class="absolute bottom-0 left-0 right-0 h-64 opacity-20">
+      <svg class="w-full h-full" viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path fill="#00D4AA" fill-opacity="0.3" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,138.7C672,128,768,160,864,181.3C960,203,1056,213,1152,197.3C1248,181,1344,139,1392,117.3L1440,96L1440,320L0,320Z"/>
+      </svg>
+    </div>
+
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="scroll-reveal">
+        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
+          Just one line.
+        </h2>
+        <p class="text-xl text-slate max-w-2xl mx-auto mb-12">
+          No install. No config. No learning curve.
+          <br /><span class="text-light">Copy, paste, understand.</span>
+        </p>
+      </div>
+
+      <!-- The command -->
+      <div class="scroll-reveal" style="--delay: 0.1s;">
+        <div class="inline-flex flex-col sm:flex-row items-center gap-4 p-6 bg-navy-dark/80 border border-navy-light/30 rounded-xl backdrop-blur-sm mb-8 copy-command" data-command="npx @buoy-design/cli status">
+          <code class="text-lg sm:text-xl font-mono text-light">npx @buoy-design/cli status</code>
+          <div class="flex items-center gap-3">
+            <button class="copy-btn px-4 py-2 bg-navy-light/30 hover:bg-navy-light/50 text-slate hover:text-light rounded-lg transition-colors text-sm flex items-center gap-2">
+              <span class="copy-text">Copy</span>
+              <svg class="copy-icon w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+              </svg>
+              <svg class="check-icon w-4 h-4 hidden text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+            </button>
+            <Button href={siteConfig.githubUrl} external>
+              View on GitHub
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-slate text-sm scroll-reveal" style="--delay: 0.2s;">
+        Works with React, Vue, Svelte, Angular, and more.
+      </p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-20px) scale(1.05); }
+  }
+
+  @keyframes gridAppear {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
+  .animate-float { animation: float 6s ease-in-out infinite; }
+
+  .grid-icon {
+    opacity: 0;
+    animation: gridAppear 0.3s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+  }
+
+  .grid-visualization.animated .grid-icon {
+    opacity: 1;
+  }
+
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transition-delay: var(--delay, 0s);
+  }
+
+  .scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+
+        // Animate grid if present
+        const grid = entry.target.querySelector('.grid-visualization');
+        if (grid) {
+          grid.classList.add('animated');
+        }
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
+
+  // Copy command functionality
+  document.querySelectorAll('.copy-command').forEach(container => {
+    const btn = container.querySelector('.copy-btn');
+    const command = container.getAttribute('data-command');
+
+    btn?.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(command || '');
+        const copyIcon = btn.querySelector('.copy-icon');
+        const checkIcon = btn.querySelector('.check-icon');
+        const copyText = btn.querySelector('.copy-text');
+
+        copyIcon?.classList.add('hidden');
+        checkIcon?.classList.remove('hidden');
+        if (copyText) copyText.textContent = 'Copied!';
+
+        setTimeout(() => {
+          copyIcon?.classList.remove('hidden');
+          checkIcon?.classList.add('hidden');
+          if (copyText) copyText.textContent = 'Copy';
+        }, 2000);
+      } catch (err) {
+        console.error('Failed to copy:', err);
+      }
+    });
+  });
+</script>
