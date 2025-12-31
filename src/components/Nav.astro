@@ -1,48 +1,5 @@
 ---
 import { siteConfig } from '../config'
-
-const featureItems = [
-  { label: 'Drift Detection', href: '/features/drift-detection', description: 'Find design inconsistencies' },
-  { label: 'Hardcoded Values', href: '/features/hardcoded-values', description: 'Colors & spacing not using tokens' },
-  { label: 'Coverage Metrics', href: '/features/coverage', description: 'Measure adoption' },
-  { label: 'Duplicate Detection', href: '/features/duplicate-detection', description: 'Find component clones' },
-  { label: 'Naming Consistency', href: '/features/naming-consistency', description: 'Enforce conventions' },
-  { label: 'Prop Consistency', href: '/features/prop-consistency', description: 'Consistent component APIs' },
-  { label: 'Accessibility Checks', href: '/features/accessibility-checks', description: 'A11y at build time' },
-  { label: 'Framework Sprawl', href: '/features/framework-sprawl', description: 'Multiple UI libraries' },
-  { label: 'Bootstrap', href: '/features/bootstrap', description: 'Extract tokens from code' },
-  { label: 'Build', href: '/features/build', description: 'Generate token files' },
-  { label: 'GitHub Action', href: '/features/github-action', description: 'PR drift reports' },
-  { label: 'CI Integration', href: '/features/ci', description: 'Any CI pipeline' },
-]
-
-const integrationItems = [
-  { label: 'React', href: '/integrations/react' },
-  { label: 'Vue', href: '/integrations/vue' },
-  { label: 'Svelte', href: '/integrations/svelte' },
-  { label: 'Angular', href: '/integrations/angular' },
-  { label: 'Next.js', href: '/integrations/nextjs' },
-  { label: 'Figma', href: '/integrations/figma' },
-  { label: 'Storybook', href: '/integrations/storybook' },
-  { label: 'Tailwind', href: '/integrations/tailwind' },
-  { label: 'GitHub', href: '/integrations/github' },
-]
-
-const useCaseItems = [
-  { label: 'Design System Teams', href: '/use-cases/design-system-teams', description: 'Enforce adoption' },
-  { label: 'Frontend Teams', href: '/use-cases/frontend-teams', description: 'Maintain consistency' },
-  { label: 'Modernization', href: '/use-cases/modernization', description: 'Track migration progress' },
-  { label: 'Enterprise', href: '/use-cases/enterprise', description: 'Multi-repo at scale' },
-  { label: 'Agencies', href: '/use-cases/agencies', description: 'Client deliverables' },
-]
-
-const compareItems = [
-  { label: 'vs Manual Audits', href: '/compare/manual-audits' },
-  { label: 'vs ESLint', href: '/compare/eslint' },
-  { label: 'vs Chromatic', href: '/compare/chromatic' },
-  { label: 'vs Figma Plugins', href: '/compare/figma-plugins' },
-  { label: 'vs Style Dictionary', href: '/compare/style-dictionary' },
-]
 ---
 
 <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-navy-dark/80 border-b border-navy-light/20">
@@ -56,117 +13,26 @@ const compareItems = [
 
       <!-- Desktop Navigation -->
       <div class="hidden md:flex items-center gap-6">
-        <!-- Features Dropdown -->
-        <div class="relative group">
-          <button class="text-sm text-slate hover:text-light transition-colors duration-200 flex items-center gap-1 py-4">
-            Features
-            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-          <div class="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-            <div class="bg-navy-dark border border-navy-light/30 rounded-xl shadow-xl p-4 w-[480px] grid grid-cols-2 gap-1">
-              {featureItems.map((item) => (
-                <a
-                  href={item.href}
-                  class="flex flex-col px-3 py-2 rounded-lg hover:bg-navy-light/20 transition-colors"
-                >
-                  <span class="text-sm text-light">{item.label}</span>
-                  <span class="text-xs text-slate-dark">{item.description}</span>
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <!-- Integrations Dropdown -->
-        <div class="relative group">
-          <button class="text-sm text-slate hover:text-light transition-colors duration-200 flex items-center gap-1 py-4">
-            Integrations
-            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-          <div class="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-            <div class="bg-navy-dark border border-navy-light/30 rounded-xl shadow-xl p-3 w-48">
-              {integrationItems.map((item) => (
-                <a
-                  href={item.href}
-                  class="block px-3 py-2 text-sm text-slate hover:text-light hover:bg-navy-light/20 rounded-lg transition-colors"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <!-- Use Cases Dropdown -->
-        <div class="relative group">
-          <button class="text-sm text-slate hover:text-light transition-colors duration-200 flex items-center gap-1 py-4">
-            Use Cases
-            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-          <div class="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-            <div class="bg-navy-dark border border-navy-light/30 rounded-xl shadow-xl p-3 w-64">
-              {useCaseItems.map((item) => (
-                <a
-                  href={item.href}
-                  class="flex flex-col px-3 py-2 rounded-lg hover:bg-navy-light/20 transition-colors"
-                >
-                  <span class="text-sm text-light">{item.label}</span>
-                  <span class="text-xs text-slate-dark">{item.description}</span>
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <!-- Compare Dropdown -->
-        <div class="relative group">
-          <button class="text-sm text-slate hover:text-light transition-colors duration-200 flex items-center gap-1 py-4">
-            Compare
-            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-          <div class="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-            <div class="bg-navy-dark border border-navy-light/30 rounded-xl shadow-xl p-3 w-48">
-              {compareItems.map((item) => (
-                <a
-                  href={item.href}
-                  class="block px-3 py-2 text-sm text-slate hover:text-light hover:bg-navy-light/20 rounded-lg transition-colors"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <!-- Pricing (no dropdown) -->
-        <a href="/pricing" class="text-sm text-slate hover:text-light transition-colors duration-200 py-4">
-          Pricing
+        <a href="/#features" class="text-sm text-slate hover:text-light transition-colors duration-200 py-4">
+          Features
         </a>
-      </div>
-
-      <!-- CTA Buttons -->
-      <div class="hidden md:flex items-center gap-4">
-        <a
-          href={siteConfig.githubUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-sm text-slate hover:text-light transition-colors flex items-center gap-2"
-        >
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer" class="text-sm text-slate hover:text-light transition-colors duration-200 py-4">
+          Docs
+        </a>
+        <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer" class="text-sm text-slate hover:text-light transition-colors duration-200 py-4 flex items-center gap-1">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
           </svg>
           GitHub
         </a>
+      </div>
+
+      <!-- CTA Button -->
+      <div class="hidden md:flex items-center">
         <a
-          href="/demo"
+          href={siteConfig.githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           class="px-4 py-2 text-sm font-medium bg-buoy text-navy-dark rounded-lg hover:bg-buoy-light transition-all duration-200 glow-buoy hover:scale-105"
         >
           Get Started
@@ -188,64 +54,23 @@ const compareItems = [
 
   <!-- Mobile Menu -->
   <div class="hidden md:hidden" id="mobile-menu">
-    <div class="px-4 py-4 bg-navy border-t border-navy-light/20 max-h-[80vh] overflow-y-auto">
-      <!-- Features -->
-      <div class="mb-4">
-        <div class="px-4 py-2 text-xs font-semibold text-slate uppercase tracking-wide">Features</div>
-        <div class="space-y-1">
-          {featureItems.map((item) => (
-            <a href={item.href} class="block px-4 py-2 text-sm text-slate hover:text-light hover:bg-navy-light/20 rounded-lg transition-colors">
-              {item.label}
-            </a>
-          ))}
-        </div>
-      </div>
-
-      <!-- Integrations -->
-      <div class="mb-4">
-        <div class="px-4 py-2 text-xs font-semibold text-slate uppercase tracking-wide">Integrations</div>
-        <div class="grid grid-cols-2 gap-1">
-          {integrationItems.map((item) => (
-            <a href={item.href} class="block px-4 py-2 text-sm text-slate hover:text-light hover:bg-navy-light/20 rounded-lg transition-colors">
-              {item.label}
-            </a>
-          ))}
-        </div>
-      </div>
-
-      <!-- Use Cases -->
-      <div class="mb-4">
-        <div class="px-4 py-2 text-xs font-semibold text-slate uppercase tracking-wide">Use Cases</div>
-        <div class="space-y-1">
-          {useCaseItems.map((item) => (
-            <a href={item.href} class="block px-4 py-2 text-sm text-slate hover:text-light hover:bg-navy-light/20 rounded-lg transition-colors">
-              {item.label}
-            </a>
-          ))}
-        </div>
-      </div>
-
-      <!-- Compare -->
-      <div class="mb-4">
-        <div class="px-4 py-2 text-xs font-semibold text-slate uppercase tracking-wide">Compare</div>
-        <div class="space-y-1">
-          {compareItems.map((item) => (
-            <a href={item.href} class="block px-4 py-2 text-sm text-slate hover:text-light hover:bg-navy-light/20 rounded-lg transition-colors">
-              {item.label}
-            </a>
-          ))}
-        </div>
-      </div>
-
-      <!-- Pricing -->
-      <a href="/pricing" class="block px-4 py-2 text-sm text-slate hover:text-light hover:bg-navy-light/20 rounded-lg transition-colors">
-        Pricing
+    <div class="px-4 py-4 bg-navy border-t border-navy-light/20">
+      <a href="/#features" class="block px-4 py-2 text-sm text-slate hover:text-light hover:bg-navy-light/20 rounded-lg transition-colors">
+        Features
+      </a>
+      <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer" class="block px-4 py-2 text-sm text-slate hover:text-light hover:bg-navy-light/20 rounded-lg transition-colors">
+        Docs
+      </a>
+      <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer" class="block px-4 py-2 text-sm text-slate hover:text-light hover:bg-navy-light/20 rounded-lg transition-colors">
+        GitHub
       </a>
 
       <!-- CTA -->
       <div class="pt-4 mt-4 border-t border-navy-light/20">
         <a
-          href="/demo"
+          href={siteConfig.githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
           class="block w-full px-4 py-2 text-center font-medium bg-buoy text-navy-dark rounded-lg"
         >
           Get Started

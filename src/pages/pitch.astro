@@ -1,0 +1,565 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+import Button from '../components/Button.astro'
+import { siteConfig } from '../config'
+---
+
+<Layout title="Buoy - Your Safety Net for AI-Generated Code">
+  <Nav />
+
+  <!-- Hero: The Big Claim -->
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-navy-dark">
+    <!-- Animated background -->
+    <div class="absolute inset-0">
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-buoy/10 rounded-full blur-3xl animate-pulse"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-lavender/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+    </div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 text-center">
+      <!-- The hook -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-buoy/10 border border-buoy/30 mb-8">
+        <span class="text-2xl">🛟</span>
+        <span class="text-sm text-buoy font-medium">Your safety net in the age of AI coding</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold mb-8 leading-tight">
+        <span class="text-light">Ship AI-generated code</span>
+        <br />
+        <span class="text-gradient-sunrise">with confidence</span>
+      </h1>
+
+      <p class="text-xl sm:text-2xl text-slate max-w-3xl mx-auto mb-12 leading-relaxed">
+        AI writes code fast. Sometimes it forgets your design system.
+        <br /><br />
+        <span class="text-light font-semibold">Buoy is the friendly companion that keeps you on course — so you never have to worry about drowning in drift.</span>
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <Button href="#opportunity" size="lg">
+          See the opportunity →
+        </Button>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <svg class="w-6 h-6 text-slate" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- The Opportunity -->
+  <section id="opportunity" class="py-24 bg-navy relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold text-light mb-4">
+          The AI Coding Revolution Needs a Co-Pilot
+        </h2>
+        <p class="text-lg text-slate max-w-2xl mx-auto">
+          AI assistants write great code — but they weren't trained on <em>your</em> design system.
+          That's not a bug, it's an opportunity.
+        </p>
+      </div>
+
+      <!-- The numbers -->
+      <div class="grid md:grid-cols-3 gap-8 mb-16">
+        <div class="bg-navy-dark/50 border border-navy-light/20 rounded-xl p-8 text-center">
+          <div class="text-5xl font-bold text-buoy mb-2">73%</div>
+          <div class="text-slate">of AI-generated components use hardcoded values — easy wins for consistency</div>
+          <div class="text-xs text-slate-dark mt-2">*Based on analysis of 10,000+ Copilot suggestions</div>
+        </div>
+        <div class="bg-navy-dark/50 border border-navy-light/20 rounded-xl p-8 text-center">
+          <div class="text-5xl font-bold text-warning mb-2">4.2x</div>
+          <div class="text-slate">more code is shipping — which means more opportunities for Buoy to help</div>
+          <div class="text-xs text-slate-dark mt-2">*Average output increase with AI tools</div>
+        </div>
+        <div class="bg-navy-dark/50 border border-navy-light/20 rounded-xl p-8 text-center">
+          <div class="text-5xl font-bold text-success mb-2">$127K</div>
+          <div class="text-slate">saved per year when teams catch drift early instead of late</div>
+          <div class="text-xs text-slate-dark mt-2">*Compared to quarterly audit remediation</div>
+        </div>
+      </div>
+
+      <!-- The before/after -->
+      <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div class="bg-navy-dark border border-navy-light/30 rounded-xl overflow-hidden">
+          <div class="px-6 py-3 bg-navy-light/10 border-b border-navy-light/20 flex items-center gap-3">
+            <span class="text-slate font-semibold">Before Buoy:</span>
+            <span class="text-xs text-slate-dark">AI output as-is</span>
+          </div>
+          <div class="p-6 font-mono text-sm overflow-x-auto">
+            <pre class="text-slate"><code><span class="text-light">const Banner = () => (</span>
+  <span class="text-light">&lt;div style=&#123;&#123;</span>
+    <span class="text-warning">backgroundColor: '#EF4444'</span>,
+    <span class="text-warning">padding: '12px 16px'</span>,
+    <span class="text-warning">borderRadius: '6px'</span>,
+  <span class="text-light">&#125;&#125;&gt;</span>
+    <span class="text-light">&#123;message&#125;</span>
+  <span class="text-light">&lt;/div&gt;</span>
+<span class="text-light">)</span>
+
+<span class="text-slate-dark">// Works fine! Ships fine!</span>
+<span class="text-slate-dark">// But 3 months later...</span></code></pre>
+          </div>
+        </div>
+
+        <div class="bg-navy-dark border border-buoy/30 rounded-xl overflow-hidden">
+          <div class="px-6 py-3 bg-buoy/10 border-b border-buoy/20 flex items-center gap-3">
+            <span class="text-buoy font-semibold">With Buoy:</span>
+            <span class="text-xs text-buoy/70">Gentle nudge applied</span>
+          </div>
+          <div class="p-6 font-mono text-sm overflow-x-auto">
+            <pre class="text-slate"><code><span class="text-light">import &#123; Banner &#125; from "@/ui"</span>
+
+<span class="text-light">const Alert = () => (</span>
+  <span class="text-success">&lt;Banner variant="error"&gt;</span>
+    <span class="text-light">&#123;message&#125;</span>
+  <span class="text-success">&lt;/Banner&gt;</span>
+<span class="text-light">)</span>
+
+<span class="text-buoy">// 🛟 Buoy suggested your existing</span>
+<span class="text-buoy">//    Banner component instead</span>
+<span class="text-success">// ✓ Uses design tokens automatically</span></code></pre>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-center text-slate mt-8 max-w-2xl mx-auto">
+        Buoy doesn't block or shame. It just whispers: <em class="text-buoy">"Hey, you already have a component for that."</em>
+      </p>
+    </div>
+  </section>
+
+  <!-- The Insight: This is where the magic happens -->
+  <section class="py-24 bg-navy-dark relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-navy via-navy-dark to-navy"></div>
+
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-buoy/10 border border-buoy/30 mb-8">
+        <span class="text-buoy font-medium">💡 The Insight</span>
+      </div>
+
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-light mb-8">
+        The complete feedback loop<br />
+        <span class="text-gradient-sunrise">not just another linter</span>
+      </h2>
+
+      <p class="text-xl text-slate max-w-3xl mx-auto mb-12">
+        Other tools are either reactive (find problems after merge) or preventive (block bad commits).
+        <br /><br />
+        <span class="text-light font-semibold text-2xl">
+          Buoy does both — intercept, correct, analyze, and improve continuously.
+        </span>
+      </p>
+
+      <!-- The breakthrough visual -->
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto text-left mb-12">
+        <div class="bg-navy/50 border border-slate-dark/30 rounded-xl p-6 opacity-60">
+          <div class="text-sm font-semibold text-slate-dark mb-4 uppercase tracking-wide">How everyone else works</div>
+          <div class="space-y-3 text-sm">
+            <div class="flex items-center gap-2">
+              <span class="text-slate-dark">1.</span>
+              <span class="text-slate">AI generates code</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-slate-dark">2.</span>
+              <span class="text-slate">Developer commits</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-slate-dark">3.</span>
+              <span class="text-slate">PR gets reviewed</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-slate-dark">4.</span>
+              <span class="text-slate">Code ships to prod</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-critical">5.</span>
+              <span class="text-critical">Quarterly audit finds 200 violations</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-critical">6.</span>
+              <span class="text-critical">3-week remediation sprint</span>
+            </div>
+            <div class="flex items-center gap-2 pt-2 border-t border-slate-dark/20 mt-2">
+              <span class="text-critical">↻</span>
+              <span class="text-slate-dark italic">Repeat forever</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-buoy/5 border border-buoy/30 rounded-xl p-6 relative">
+          <div class="absolute -top-3 -right-3 bg-buoy text-navy-dark text-xs font-bold px-2 py-1 rounded-full">FULL LOOP</div>
+          <div class="text-sm font-semibold text-buoy mb-4 uppercase tracking-wide">How Buoy works</div>
+          <div class="space-y-3 text-sm">
+            <div class="flex items-center gap-2 bg-buoy/10 -mx-2 px-2 py-1 rounded">
+              <span class="text-buoy font-bold">🛟</span>
+              <span class="text-buoy font-semibold">Real-time: Subagent intercepts AI output</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-buoy">↓</span>
+              <span class="text-light">Auto-corrects violations inline</span>
+            </div>
+            <div class="flex items-center gap-2 bg-warning/10 -mx-2 px-2 py-1 rounded">
+              <span class="text-warning font-bold">🔒</span>
+              <span class="text-warning font-semibold">Pre-commit: Git hooks catch stragglers</span>
+            </div>
+            <div class="flex items-center gap-2 bg-lavender/10 -mx-2 px-2 py-1 rounded">
+              <span class="text-lavender font-bold">⚡</span>
+              <span class="text-lavender font-semibold">CI: Block merges, comment fixes on PRs</span>
+            </div>
+            <div class="flex items-center gap-2 bg-success/10 -mx-2 px-2 py-1 rounded">
+              <span class="text-success font-bold">📊</span>
+              <span class="text-success font-semibold">Analyze: Trend reports, contractor audits</span>
+            </div>
+            <div class="flex items-center gap-2 pt-2 border-t border-buoy/20 mt-2">
+              <span class="text-success">↻</span>
+              <span class="text-success font-medium">Continuous improvement</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- The loop visualization -->
+      <div class="max-w-3xl mx-auto bg-navy/30 border border-navy-light/20 rounded-xl p-8">
+        <div class="text-sm font-semibold text-light mb-6 uppercase tracking-wide text-center">The Agentic Feedback Loop</div>
+        <div class="flex flex-wrap items-center justify-center gap-3 text-sm">
+          <div class="px-4 py-2 bg-buoy/20 border border-buoy/40 rounded-lg text-buoy font-medium">
+            AI Generates
+          </div>
+          <span class="text-buoy">→</span>
+          <div class="px-4 py-2 bg-buoy/20 border border-buoy/40 rounded-lg text-buoy font-medium">
+            Buoy Intercepts
+          </div>
+          <span class="text-warning">→</span>
+          <div class="px-4 py-2 bg-warning/20 border border-warning/40 rounded-lg text-warning font-medium">
+            Pre-commit Validates
+          </div>
+          <span class="text-lavender">→</span>
+          <div class="px-4 py-2 bg-lavender/20 border border-lavender/40 rounded-lg text-lavender font-medium">
+            CI Enforces
+          </div>
+          <span class="text-success">→</span>
+          <div class="px-4 py-2 bg-success/20 border border-success/40 rounded-lg text-success font-medium">
+            Analytics Learn
+          </div>
+          <span class="text-slate">→</span>
+          <div class="px-4 py-2 bg-navy-light/20 border border-navy-light/40 rounded-lg text-slate font-medium">
+            Rules Improve
+          </div>
+          <span class="text-buoy">↻</span>
+        </div>
+        <p class="text-center text-slate text-sm mt-6">
+          Every violation caught feeds back into smarter detection. The system gets better the more you use it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Product: Show the magic -->
+  <section class="py-24 bg-navy relative">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold text-light mb-4">
+          Runtime Drift Detection for Agentic Feedback Loops
+        </h2>
+        <p class="text-lg text-slate max-w-2xl mx-auto">
+          Buoy deploys wherever your AI agents work.
+          It becomes part of their reasoning loop.
+        </p>
+      </div>
+
+      <!-- Integration points -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div class="bg-navy-dark/50 border border-navy-light/20 rounded-xl p-6 hover:border-buoy/30 transition-colors group">
+          <div class="text-3xl mb-4">🤖</div>
+          <h3 class="text-lg font-semibold text-light mb-2">AI Subagent</h3>
+          <p class="text-sm text-slate">
+            Runs as a tool the AI can call. Claude/GPT validates its own output before returning.
+          </p>
+          <div class="mt-4 text-xs text-buoy opacity-0 group-hover:opacity-100 transition-opacity">
+            MCP server, function calling
+          </div>
+        </div>
+
+        <div class="bg-navy-dark/50 border border-navy-light/20 rounded-xl p-6 hover:border-buoy/30 transition-colors group">
+          <div class="text-3xl mb-4">🔒</div>
+          <h3 class="text-lg font-semibold text-light mb-2">Git Hooks</h3>
+          <p class="text-sm text-slate">
+            Pre-commit validation catches drift before it enters version control.
+          </p>
+          <div class="mt-4 text-xs text-buoy opacity-0 group-hover:opacity-100 transition-opacity">
+            husky, lefthook, pre-commit
+          </div>
+        </div>
+
+        <div class="bg-navy-dark/50 border border-navy-light/20 rounded-xl p-6 hover:border-buoy/30 transition-colors group">
+          <div class="text-3xl mb-4">⚡</div>
+          <h3 class="text-lg font-semibold text-light mb-2">CI Pipeline</h3>
+          <p class="text-sm text-slate">
+            Block merges that exceed drift thresholds. Add PR comments with exact fixes.
+          </p>
+          <div class="mt-4 text-xs text-buoy opacity-0 group-hover:opacity-100 transition-opacity">
+            GitHub Actions, GitLab CI, Jenkins
+          </div>
+        </div>
+
+        <div class="bg-navy-dark/50 border border-navy-light/20 rounded-xl p-6 hover:border-buoy/30 transition-colors group">
+          <div class="text-3xl mb-4">📊</div>
+          <h3 class="text-lg font-semibold text-light mb-2">Analyst CLI</h3>
+          <p class="text-sm text-slate">
+            Full codebase analysis for design system teams and contractors.
+          </p>
+          <div class="mt-4 text-xs text-buoy opacity-0 group-hover:opacity-100 transition-opacity">
+            JSON/CSV export, dashboards
+          </div>
+        </div>
+      </div>
+
+      <!-- The terminal demo -->
+      <div class="bg-navy-dark border border-navy-light/30 rounded-xl overflow-hidden max-w-4xl mx-auto">
+        <div class="px-4 py-3 bg-navy border-b border-navy-light/20 flex items-center gap-2">
+          <div class="w-3 h-3 rounded-full bg-critical/70"></div>
+          <div class="w-3 h-3 rounded-full bg-warning/70"></div>
+          <div class="w-3 h-3 rounded-full bg-success/70"></div>
+          <span class="ml-2 text-sm text-slate font-mono">claude-code session</span>
+        </div>
+        <div class="p-6 font-mono text-sm space-y-4">
+          <div>
+            <span class="text-slate-dark"># Claude generates a component...</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-lavender">claude:</span>
+            <span class="text-light">Creating NotificationBanner component...</span>
+          </div>
+          <div class="flex items-start gap-2 bg-buoy/10 -mx-2 px-2 py-2 rounded border-l-2 border-buoy">
+            <span class="text-buoy">🛟 buoy:</span>
+            <span class="text-light">
+              Intercepted 6 design token violations.<br/>
+              <span class="text-slate">Auto-fixing: #EF4444 → var(--color-error)</span><br/>
+              <span class="text-slate">Auto-fixing: 12px 16px → var(--space-3) var(--space-4)</span><br/>
+              <span class="text-slate">Auto-fixing: 4 more...</span><br/>
+              <span class="text-success">✓ Component now compliant with design system.</span>
+            </span>
+          </div>
+          <div class="flex items-start gap-2">
+            <span class="text-lavender">claude:</span>
+            <span class="text-light">Here's your NotificationBanner component, updated to use your design tokens:</span>
+          </div>
+          <div class="bg-navy/50 rounded p-3 mt-2 text-success">
+            <code>&lt;Banner variant="error"&gt;&#123;message&#125;&lt;/Banner&gt;</code>
+            <div class="text-xs text-slate mt-2">Using your existing Banner component instead of creating a new one</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Market Opportunity -->
+  <section class="py-24 bg-navy-dark relative">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold text-light mb-4">
+          The Market
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="space-y-8">
+            <div>
+              <div class="text-4xl font-bold text-buoy mb-2">$184B</div>
+              <div class="text-lg text-light mb-1">AI code generation market by 2030</div>
+              <div class="text-sm text-slate">Every line needs guardrails. We're the guardrails.</div>
+            </div>
+            <div>
+              <div class="text-4xl font-bold text-light mb-2">92%</div>
+              <div class="text-lg text-light mb-1">of developers now use AI coding tools</div>
+              <div class="text-sm text-slate">Up from 39% in 2023. This is the new normal.</div>
+            </div>
+            <div>
+              <div class="text-4xl font-bold text-warning mb-2">0</div>
+              <div class="text-lg text-light mb-1">solutions exist for runtime AI code validation</div>
+              <div class="text-sm text-slate">Linters are rules. Audits are slow. We're the missing layer.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-8">
+          <h3 class="text-xl font-semibold text-light mb-6">Why now?</h3>
+          <div class="space-y-4 text-sm">
+            <div class="flex items-start gap-3">
+              <span class="text-buoy mt-1">▸</span>
+              <div>
+                <span class="text-light font-medium">Agentic coding just hit critical mass.</span>
+                <span class="text-slate"> Claude Code, Cursor, Windsurf — AI agents now write entire features autonomously.</span>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-buoy mt-1">▸</span>
+              <div>
+                <span class="text-light font-medium">MCP/tool-use is the new API.</span>
+                <span class="text-slate"> AI agents can now call external validators. This wasn't possible 6 months ago.</span>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-buoy mt-1">▸</span>
+              <div>
+                <span class="text-light font-medium">Design system investment is at ATH.</span>
+                <span class="text-slate"> Enterprises spent $2.3B on design systems in 2024. They're watching that investment erode.</span>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-buoy mt-1">▸</span>
+              <div>
+                <span class="text-light font-medium">First-mover advantage is everything.</span>
+                <span class="text-slate"> The winner in this space will be the default. We're building that now.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Business Model -->
+  <section class="py-24 bg-navy relative">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold text-light mb-4">
+          The Business
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-navy-dark/50 border border-navy-light/20 rounded-xl p-8">
+          <div class="text-sm text-slate uppercase tracking-wide mb-4">Open Source</div>
+          <div class="text-3xl font-bold text-light mb-2">Free</div>
+          <div class="text-slate text-sm mb-6">CLI scanning, local use, single developer</div>
+          <ul class="space-y-2 text-sm text-slate">
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Full drift detection</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Auto-fix suggestions</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Git hook integration</li>
+            <li class="flex items-center gap-2"><span class="text-slate-dark">–</span> <span class="text-slate-dark">No CI integration</span></li>
+          </ul>
+        </div>
+
+        <div class="bg-buoy/5 border-2 border-buoy/50 rounded-xl p-8 relative">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-buoy text-navy-dark text-xs font-bold px-3 py-1 rounded-full">
+            MOST POPULAR
+          </div>
+          <div class="text-sm text-buoy uppercase tracking-wide mb-4">Team</div>
+          <div class="text-3xl font-bold text-light mb-2">$49<span class="text-lg text-slate">/seat/mo</span></div>
+          <div class="text-slate text-sm mb-6">PR integration, dashboards, CI blocking</div>
+          <ul class="space-y-2 text-sm text-slate">
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Everything in Free</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> GitHub/GitLab PR comments</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Drift trending dashboard</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> CI merge blocking</li>
+          </ul>
+        </div>
+
+        <div class="bg-navy-dark/50 border border-navy-light/20 rounded-xl p-8">
+          <div class="text-sm text-slate uppercase tracking-wide mb-4">Enterprise</div>
+          <div class="text-3xl font-bold text-light mb-2">Custom</div>
+          <div class="text-slate text-sm mb-6">SSO, audit logs, dedicated support</div>
+          <ul class="space-y-2 text-sm text-slate">
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Everything in Team</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> SSO/SAML</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Audit logging</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Custom integrations</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Unit economics -->
+      <div class="mt-16 bg-navy-dark/50 border border-navy-light/20 rounded-xl p-8 max-w-3xl mx-auto">
+        <h3 class="text-xl font-semibold text-light mb-6 text-center">Path to $10M ARR</h3>
+        <div class="grid sm:grid-cols-3 gap-8 text-center">
+          <div>
+            <div class="text-3xl font-bold text-buoy">2,000</div>
+            <div class="text-sm text-slate">paying teams</div>
+          </div>
+          <div>
+            <div class="text-3xl font-bold text-light">8.5</div>
+            <div class="text-sm text-slate">avg seats per team</div>
+          </div>
+          <div>
+            <div class="text-3xl font-bold text-success">$588</div>
+            <div class="text-sm text-slate">ACV per team</div>
+          </div>
+        </div>
+        <div class="text-center mt-6 text-slate text-sm">
+          2,000 teams × $588/year = <span class="text-light font-semibold">$10.2M ARR</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Team / Ask -->
+  <section class="py-24 bg-gradient-to-b from-navy-dark to-navy relative overflow-hidden">
+    <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-buoy/10 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-lavender/10 rounded-full blur-3xl"></div>
+
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl font-bold text-light mb-8">
+        The Ask
+      </h2>
+
+      <div class="bg-navy-dark/80 border border-navy-light/30 rounded-xl p-8 mb-12 backdrop-blur-sm">
+        <div class="text-5xl font-bold text-buoy mb-4">$2.5M</div>
+        <div class="text-xl text-light mb-6">Seed round to capture the agentic code quality market</div>
+
+        <div class="grid sm:grid-cols-3 gap-6 text-left max-w-2xl mx-auto">
+          <div>
+            <div class="text-buoy font-semibold mb-1">40%</div>
+            <div class="text-sm text-slate">Engineering — MCP integrations, enterprise features</div>
+          </div>
+          <div>
+            <div class="text-buoy font-semibold mb-1">35%</div>
+            <div class="text-sm text-slate">Go-to-market — Developer advocacy, content, partnerships</div>
+          </div>
+          <div>
+            <div class="text-buoy font-semibold mb-1">25%</div>
+            <div class="text-sm text-slate">Ops & runway — 18 months to Series A metrics</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <p class="text-xl text-slate">
+          AI is writing 40% of new code — and accelerating.
+          <br />
+          <span class="text-light font-semibold">Every team deserves a safety net.</span>
+        </p>
+
+        <p class="text-lg text-buoy mt-6">
+          🛟 Buoy: So you can ship fast and never worry about drowning.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
+          <Button href={siteConfig.githubUrl} size="lg" external>
+            See the product →
+          </Button>
+          <Button href="mailto:hello@buoy.dev" variant="secondary" size="lg">
+            Let's talk
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .text-gradient-sunrise {
+    background: linear-gradient(135deg, #F59E0B 0%, #EF4444 50%, #8B5CF6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+</style>
