@@ -45,15 +45,15 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
 
   <h2>Configuration</h2>
 
-  <pre><code set:text={`// buoy.config.mjs
-export default {
-  tokens: {
-    figma: {
+  <pre><code>// buoy.config.mjs
+export default &#123;
+  tokens: &#123;
+    figma: &#123;
       fileId: 'your-figma-file-id',
       accessToken: process.env.FIGMA_TOKEN,
-    },
-  },
-}`} /></pre>
+    &#125;,
+  &#125;,
+&#125;</code></pre>
 
   <h3>Finding Your File ID</h3>
 
@@ -113,17 +113,17 @@ env:
 
   <p>If you use Tokens Studio, Buoy supports its JSON format directly:</p>
 
-  <pre><code set:text={`{
-  "colors": {
-    "primary": {
-      "500": { "value": "#3b82f6", "type": "color" }
-    }
-  },
-  "spacing": {
-    "sm": { "value": "8px", "type": "spacing" },
-    "md": { "value": "16px", "type": "spacing" }
-  }
-}`} /></pre>
+  <pre><code>&#123;
+  "colors": &#123;
+    "primary": &#123;
+      "500": &#123; "value": "#3b82f6", "type": "color" &#125;
+    &#125;
+  &#125;,
+  "spacing": &#123;
+    "sm": &#123; "value": "8px", "type": "spacing" &#125;,
+    "md": &#123; "value": "16px", "type": "spacing" &#125;
+  &#125;
+&#125;</code></pre>
 
   <h2>Comparison Output</h2>
 
@@ -153,13 +153,13 @@ Coverage: 82%</code></pre>
 
   <p>Only extract tokens from specific pages:</p>
 
-  <pre><code set:text={`tokens: {
-  figma: {
+  <pre><code>tokens: &#123;
+  figma: &#123;
     fileId: 'abc123xyz',
     accessToken: process.env.FIGMA_TOKEN,
     pages: ['Design Tokens', 'Colors'],  // Only these pages
-  },
-}`} /></pre>
+  &#125;,
+&#125;</code></pre>
 
   <h2>CI Integration</h2>
 

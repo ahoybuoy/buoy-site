@@ -23,47 +23,47 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
 
   <h3>W3C Design Tokens (JSON)</h3>
 
-  <pre><code set:text={`{
-  "color": {
-    "primary": {
+  <pre><code>&#123;
+  "color": &#123;
+    "primary": &#123;
       "$value": "#3b82f6",
       "$type": "color"
-    },
-    "secondary": {
+    &#125;,
+    "secondary": &#123;
       "$value": "#64748b",
       "$type": "color"
-    }
-  },
-  "spacing": {
-    "sm": { "$value": "8px" },
-    "md": { "$value": "16px" },
-    "lg": { "$value": "24px" }
-  }
-}`} /></pre>
+    &#125;
+  &#125;,
+  "spacing": &#123;
+    "sm": &#123; "$value": "8px" &#125;,
+    "md": &#123; "$value": "16px" &#125;,
+    "lg": &#123; "$value": "24px" &#125;
+  &#125;
+&#125;</code></pre>
 
   <h3>Tokens Studio Format</h3>
 
-  <pre><code set:text={`{
-  "colors": {
-    "blue": {
+  <pre><code>&#123;
+  "colors": &#123;
+    "blue": &#123;
       "500": "#3b82f6",
       "600": "#2563eb"
-    }
-  },
-  "spacing": {
+    &#125;
+  &#125;,
+  "spacing": &#123;
     "4": "16px",
     "8": "32px"
-  }
-}`} /></pre>
+  &#125;
+&#125;</code></pre>
 
   <h3>CSS Custom Properties</h3>
 
-  <pre><code>:root {
+  <pre><code>:root &#123;
   --color-primary: #3b82f6;
   --color-secondary: #64748b;
   --spacing-sm: 8px;
   --spacing-md: 16px;
-}</code></pre>
+&#125;</code></pre>
 
   <h3>SCSS Variables</h3>
 

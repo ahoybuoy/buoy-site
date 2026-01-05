@@ -56,14 +56,14 @@ Done! Run `buoy audit` to see your design system health.</code></pre>
 
   <p>The generated <code>buoy.config.mjs</code> looks like:</p>
 
-  <pre><code set:text={`export default {
-  sources: {
-    react: { enabled: true },
-    tailwind: { enabled: true },
-  },
-  include: ['src/**/*.{tsx,jsx,css}'],
+  <pre><code>export default &#123;
+  sources: &#123;
+    react: &#123; enabled: true &#125;,
+    tailwind: &#123; enabled: true &#125;,
+  &#125;,
+  include: ['src/**/*.&#123;tsx,jsx,css&#125;'],
   exclude: ['node_modules', 'dist', 'build'],
-}`} /></pre>
+&#125;</code></pre>
 
   <h2>Manual Configuration</h2>
 

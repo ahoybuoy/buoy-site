@@ -56,32 +56,32 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
 
   <h3>Design Tokens JSON (W3C format)</h3>
 
-  <pre><code set:text={`{
-  "color": {
-    "primary": { "$value": "#3b82f6" },
-    "secondary": { "$value": "#64748b" }
-  },
-  "spacing": {
-    "sm": { "$value": "8px" },
-    "md": { "$value": "16px" }
-  }
-}`} /></pre>
+  <pre><code>&#123;
+  "color": &#123;
+    "primary": &#123; "$value": "#3b82f6" &#125;,
+    "secondary": &#123; "$value": "#64748b" &#125;
+  &#125;,
+  "spacing": &#123;
+    "sm": &#123; "$value": "8px" &#125;,
+    "md": &#123; "$value": "16px" &#125;
+  &#125;
+&#125;</code></pre>
 
   <h3>Tokens Studio / Figma Export</h3>
 
-  <pre><code set:text={`{
-  "colors": {
+  <pre><code>&#123;
+  "colors": &#123;
     "blue-500": "#3b82f6",
     "gray-500": "#64748b"
-  }
-}`} /></pre>
+  &#125;
+&#125;</code></pre>
 
   <h3>CSS Custom Properties</h3>
 
-  <pre><code>:root {
+  <pre><code>:root &#123;
   --color-primary: #3b82f6;
   --spacing-md: 16px;
-}</code></pre>
+&#125;</code></pre>
 
   <h2>Example Output</h2>
 
@@ -128,20 +128,20 @@ buoy compare --figma</code></pre>
 
   <pre><code>buoy compare tokens.json --json</code></pre>
 
-  <pre><code set:text={`{
+  <pre><code>&#123;
   "coverage": 87,
   "matched": 30,
   "unmatched": 7,
-  "categories": {
-    "color": {
+  "categories": &#123;
+    "color": &#123;
       "matched": 18,
       "unmatched": [
-        { "value": "#f9fafb", "count": 3 },
-        { "value": "#3b83f6", "count": 1, "closeTo": "#3b82f6" }
+        &#123; "value": "#f9fafb", "count": 3 &#125;,
+        &#123; "value": "#3b83f6", "count": 1, "closeTo": "#3b82f6" &#125;
       ]
-    }
-  }
-}`} /></pre>
+    &#125;
+  &#125;
+&#125;</code></pre>
 
   <h2>Related Commands</h2>
 

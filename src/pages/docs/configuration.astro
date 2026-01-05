@@ -18,114 +18,114 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
 
   <h2>Config File</h2>
 
-  <pre><code set:text={`// buoy.config.mjs
-export default {
+  <pre><code>// buoy.config.mjs
+export default &#123;
   // Source scanning
-  sources: {
-    react: { enabled: true },
-    vue: { enabled: false },
-    svelte: { enabled: false },
-    angular: { enabled: false },
-    tailwind: { enabled: true },
-  },
+  sources: &#123;
+    react: &#123; enabled: true &#125;,
+    vue: &#123; enabled: false &#125;,
+    svelte: &#123; enabled: false &#125;,
+    angular: &#123; enabled: false &#125;,
+    tailwind: &#123; enabled: true &#125;,
+  &#125;,
 
   // File patterns
-  include: ['src/**/*.{tsx,jsx,vue,svelte,css,scss}'],
+  include: ['src/**/*.&#123;tsx,jsx,vue,svelte,css,scss&#125;'],
   exclude: ['node_modules', 'dist', 'build', '**/*.test.*'],
 
   // Design tokens reference
-  tokens: {
+  tokens: &#123;
     file: 'design-tokens.json',  // Local file
     // OR
-    figma: {
+    figma: &#123;
       fileId: 'your-figma-file-id',
       accessToken: process.env.FIGMA_TOKEN,
-    },
-  },
+    &#125;,
+  &#125;,
 
   // Health thresholds
-  thresholds: {
+  thresholds: &#123;
     minScore: 70,           // Minimum passing score
     maxHardcoded: 10,       // Max allowed hardcoded values
-  },
+  &#125;,
 
   // Output settings
-  output: {
+  output: &#123;
     format: 'table',        // 'table' | 'json' | 'markdown'
-  },
-}`} /></pre>
+  &#125;,
+&#125;</code></pre>
 
   <h2>Source Options</h2>
 
   <h3>React</h3>
 
-  <pre><code set:text={`sources: {
-  react: {
+  <pre><code>sources: &#123;
+  react: &#123;
     enabled: true,
     include: ['src/**/*.tsx', 'src/**/*.jsx'],
     extractInlineStyles: true,
     extractStyledComponents: true,
-  },
-}`} /></pre>
+  &#125;,
+&#125;</code></pre>
 
   <h3>Tailwind</h3>
 
-  <pre><code set:text={`sources: {
-  tailwind: {
+  <pre><code>sources: &#123;
+  tailwind: &#123;
     enabled: true,
     config: 'tailwind.config.js',     // Path to config
     detectArbitrary: true,            // Flag arbitrary values like [#fff]
-  },
-}`} /></pre>
+  &#125;,
+&#125;</code></pre>
 
   <h3>Vue / Svelte / Angular</h3>
 
-  <pre><code set:text={`sources: {
-  vue: {
+  <pre><code>sources: &#123;
+  vue: &#123;
     enabled: true,
     include: ['src/**/*.vue'],
     extractScopedStyles: true,
-  },
-  svelte: {
+  &#125;,
+  svelte: &#123;
     enabled: true,
     include: ['src/**/*.svelte'],
-  },
-  angular: {
+  &#125;,
+  angular: &#123;
     enabled: true,
     include: ['src/**/*.component.ts'],
-  },
-}`} /></pre>
+  &#125;,
+&#125;</code></pre>
 
   <h2>Token Configuration</h2>
 
   <h3>Local Token File</h3>
 
-  <pre><code set:text={`tokens: {
+  <pre><code>tokens: &#123;
   file: 'design-tokens.json',
-}`} /></pre>
+&#125;</code></pre>
 
   <p>Supports JSON (W3C format), CSS, and SCSS files.</p>
 
   <h3>Figma Integration</h3>
 
-  <pre><code set:text={`tokens: {
-  figma: {
+  <pre><code>tokens: &#123;
+  figma: &#123;
     fileId: 'abc123xyz',
     accessToken: process.env.FIGMA_TOKEN,
     // Optional: specific pages/frames
     pages: ['Design Tokens'],
-  },
-}`} /></pre>
+  &#125;,
+&#125;</code></pre>
 
   <p>See <a href="/docs/integrations/figma">Figma Integration</a> for setup.</p>
 
   <h2>Threshold Configuration</h2>
 
-  <pre><code set:text={`thresholds: {
+  <pre><code>thresholds: &#123;
   minScore: 70,            // CI fails below this score
   maxHardcoded: 10,        // Max hardcoded values allowed
   maxCloseMatches: 0,      // Zero tolerance for typos
-}`} /></pre>
+&#125;</code></pre>
 
   <h2>Environment Variables</h2>
 
@@ -173,10 +173,10 @@ export default {
 const specialColor = '#custom123';
 
 /* buoy-ignore */
-const legacyStyles = {
+const legacyStyles = &#123;
   padding: '13px',
   color: '#abc123',
-};</code></pre>
+&#125;;</code></pre>
 
   <h2>Related</h2>
 
