@@ -1,14 +1,17 @@
 /** @type {import('@buoy-design/cli').BuoyConfig} */
 export default {
   project: {
-    name: 'subsequent-saturn',
+    name: 'buoy-site',
   },
   sources: {
-    react: {
+    astro: {
       enabled: true,
-      include: ['src/**/*.tsx', 'src/**/*.jsx'],
-      exclude: ['**/*.test.*', '**/*.spec.*', '**/*.stories.*'],
-      designSystemPackage: 'tailwindcss',
+      include: ['src/**/*.astro'],
+      exclude: ['**/*.test.*', '**/*.spec.*'],
+    },
+    tailwind: {
+      enabled: true,
+      include: ['src/**/*.astro', 'src/**/*.tsx', 'src/**/*.ts'],
     },
     figma: {
       enabled: false,

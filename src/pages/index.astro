@@ -11,7 +11,7 @@ import { siteConfig } from '../config'
 
 const terminalLines = [
   { text: '', type: 'output', delay: 600 },
-  { text: '<span class="text-buoy">⚓</span> Scanning for design drift...', type: 'output', delay: 800 },
+  { text: '<span class="text-buoy">🛟</span> Scanning for design drift...', type: 'output', delay: 800 },
   { text: '', type: 'output', delay: 1200 },
   { text: 'Found <span class="text-warning">23</span> issues — <span class="text-success">18 auto-fixable</span>', type: 'output', delay: 1400 },
   { text: '', type: 'output', delay: 1600 },
@@ -29,7 +29,7 @@ const terminalLines = [
 
 const fixTerminalLines = [
   { text: '', type: 'output', delay: 600 },
-  { text: '<span class="text-buoy">⚓</span> Applying 18 auto-fixes...', type: 'output', delay: 800 },
+  { text: '<span class="text-buoy">🛟</span> Applying 18 auto-fixes...', type: 'output', delay: 800 },
   { text: '', type: 'output', delay: 1200 },
   { text: '<span class="text-success">✓</span> Button.tsx: Added aria-label', type: 'success', delay: 1400 },
   { text: '<span class="text-success">✓</span> Modal.tsx: Using FocusTrap component', type: 'success', delay: 1600 },
@@ -404,8 +404,34 @@ const steps = [
     </div>
   </section>
 
-  <!-- AI-Free Section -->
+  <!-- AI Setup Section -->
   <section class="py-24 bg-navy">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-bold text-light mb-4">
+          Using Cursor or Claude Code?
+        </h2>
+        <p class="text-lg text-slate max-w-2xl mx-auto">
+          Just ask your AI to set it up.
+        </p>
+      </div>
+
+      <div class="max-w-2xl mx-auto">
+        <div class="bg-navy-dark border border-lavender/30 rounded-xl p-6">
+          <div class="text-sm text-lavender mb-4">Tell your AI:</div>
+          <div class="bg-navy/80 rounded-lg p-4 font-mono text-light">
+            "Run npx @buoy-design/cli begin and set up Buoy for this project"
+          </div>
+          <p class="text-slate text-sm mt-4">
+            It'll scan your code, show you what's drifting, and help you set up guardrails so it follows your design system going forward.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI-Free Section -->
+  <section class="py-24 bg-navy-dark">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-success/10 border border-success/30 mb-6">
