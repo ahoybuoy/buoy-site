@@ -163,18 +163,21 @@ const steps = [
         </div>
 
         <!-- Quick install command -->
-        <div class="inline-flex items-center gap-3 px-4 py-3 bg-navy/80 border border-navy-light/30 rounded-lg font-mono text-sm backdrop-blur-sm copy-command" data-command="npx @buoy-design/cli status">
+        <div class="inline-flex items-center gap-3 px-4 py-3 bg-navy/80 border border-navy-light/30 rounded-lg font-mono text-sm backdrop-blur-sm copy-command" data-command="npx @buoy-design/cli begin">
           <span class="text-slate">$</span>
-          <code class="text-light">npx @buoy-design/cli status</code>
+          <code class="text-light">npx @buoy-design/cli begin</code>
           <button class="copy-btn text-slate hover:text-buoy transition-colors" aria-label="Copy command">
             <svg class="copy-icon w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
             </svg>
             <svg class="check-icon w-4 h-4 hidden text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
             </svg>
           </button>
         </div>
+        <p class="text-slate text-sm mt-4">
+          Or ask your AI to run it
+        </p>
       </div>
     </div>
 
@@ -405,26 +408,17 @@ const steps = [
   </section>
 
   <!-- AI Setup Section -->
-  <section class="py-24 bg-navy">
+  <section class="py-16 bg-navy">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl sm:text-4xl font-bold text-light mb-4">
-          Using Cursor or Claude Code?
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-2xl sm:text-3xl font-bold text-light mb-6">
+          Using an AI coding assistant?
         </h2>
-        <p class="text-lg text-slate max-w-2xl mx-auto">
-          Just ask your AI to set it up.
-        </p>
-      </div>
-
-      <div class="max-w-2xl mx-auto">
-        <div class="bg-navy-dark border border-lavender/30 rounded-xl p-6">
-          <div class="text-sm text-lavender mb-4">Tell your AI:</div>
-          <div class="bg-navy/80 rounded-lg p-4 font-mono text-light">
-            "Run npx @buoy-design/cli begin and set up Buoy for this project"
+        <div class="bg-navy-dark border border-lavender/30 rounded-xl p-5">
+          <div class="text-sm text-lavender mb-3">Ask your AI to run:</div>
+          <div class="bg-navy/80 rounded-lg p-4 font-mono text-light text-sm sm:text-base">
+            npx @buoy-design/cli begin
           </div>
-          <p class="text-slate text-sm mt-4">
-            It'll scan your code, show you what's drifting, and help you set up guardrails so it follows your design system going forward.
-          </p>
         </div>
       </div>
     </div>

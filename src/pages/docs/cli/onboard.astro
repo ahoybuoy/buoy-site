@@ -1,0 +1,142 @@
+---
+import DocsLayout from '../../../layouts/DocsLayout.astro'
+---
+
+<DocsLayout title="buoy onboard" description="Onboard AI to your design system">
+  <h1>buoy onboard</h1>
+
+  <p>
+    Set up AI guardrails so tools like Claude, Copilot, and Cursor understand and follow
+    your design system. Creates skill files and updates CLAUDE.md in one command.
+  </p>
+
+  <h2>Usage</h2>
+
+  <pre><code>buoy onboard [options]</code></pre>
+
+  <h2>What It Does</h2>
+
+  <ol>
+    <li><strong>Scans</strong> your codebase for components and tokens</li>
+    <li><strong>Identifies</strong> patterns and anti-patterns</li>
+    <li><strong>Creates</strong> skill files at <code>.claude/skills/design-system/</code></li>
+    <li><strong>Updates</strong> CLAUDE.md with design system context</li>
+  </ol>
+
+  <h2>Options</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Option</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--skill-only</code></td>
+        <td>Only create skill files, skip CLAUDE.md</td>
+      </tr>
+      <tr>
+        <td><code>--context-only</code></td>
+        <td>Only update CLAUDE.md, skip skill files</td>
+      </tr>
+      <tr>
+        <td><code>--dry-run</code></td>
+        <td>Show what would be created without writing files</td>
+      </tr>
+      <tr>
+        <td><code>--json</code></td>
+        <td>Output result as JSON</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Example Output</h2>
+
+  <pre><code>$ buoy onboard
+
+🛟 Onboarding AI to your design system...
+
+Analyzing your codebase...
+Scanning components and tokens...
+Identifying patterns and anti-patterns...
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  🎉 AI is now part of the crew!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ✓ Created skill files
+      .claude/skills/design-system/
+
+  ✓ Updated CLAUDE.md
+
+  Your AI assistant now knows:
+    • 23 design tokens
+    • 47 component patterns
+    • 5 approved patterns
+
+  Try asking:
+    "Build a button following our design system"</code></pre>
+
+  <h2>Generated Files</h2>
+
+  <h3>Skill Files</h3>
+
+  <p>Created at <code>.claude/skills/design-system/</code>:</p>
+
+  <ul>
+    <li><code>SKILL.md</code> — Main skill definition</li>
+    <li><code>tokens/</code> — Color, spacing, typography tokens</li>
+    <li><code>components/</code> — Component patterns and props</li>
+    <li><code>patterns/</code> — Approved implementation patterns</li>
+    <li><code>anti-patterns/</code> — Things to avoid</li>
+  </ul>
+
+  <h3>CLAUDE.md Section</h3>
+
+  <p>Adds a <code>## Design System</code> section with:</p>
+
+  <ul>
+    <li>Available tokens and when to use them</li>
+    <li>Component inventory with props</li>
+    <li>Patterns to follow</li>
+    <li>Anti-patterns to avoid</li>
+  </ul>
+
+  <h2>When to Run</h2>
+
+  <p>Run <code>buoy onboard</code> when:</p>
+
+  <ul>
+    <li>Setting up a new project with AI tools</li>
+    <li>Your design tokens change significantly</li>
+    <li>You add new component patterns</li>
+    <li>After running <code>buoy anchor</code> to create tokens</li>
+  </ul>
+
+  <h2>How AI Uses This</h2>
+
+  <p>
+    AI coding tools read these files to understand your design system. When you ask
+    "Build a card component", the AI will:
+  </p>
+
+  <ol>
+    <li>Check your existing Card component (if any)</li>
+    <li>Use your color tokens instead of hardcoding <code>#3b82f6</code></li>
+    <li>Follow your spacing scale instead of arbitrary values</li>
+    <li>Match your naming conventions</li>
+  </ol>
+
+  <h2>Related Commands</h2>
+
+  <ul>
+    <li><a href="/docs/cli/begin">buoy begin</a> — Interactive setup wizard</li>
+    <li><a href="/docs/cli/sweep">buoy sweep</a> — Scan components and tokens</li>
+    <li><a href="/docs/cli/lighthouse">buoy lighthouse</a> — CI/CD integration</li>
+    <li><a href="/docs/features/ai-guardrails">AI Guardrails</a> — Full guide</li>
+  </ul>
+</DocsLayout>

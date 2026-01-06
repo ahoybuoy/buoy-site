@@ -1,42 +1,47 @@
 ---
-name: subsequent-saturn-design-system
-description: Use when writing UI code for Subsequent Saturn. Provides tokens, components, and patterns to maintain design consistency.
+name: design-system
+description: Use when building UI components, styling, or layouts for buoy-site
+triggers:
+  - building UI
+  - styling components
+  - adding colors
+  - creating layouts
+  - form design
+  - component creation
 ---
 
-# Subsequent Saturn Design System
+# buoy-site Design System
 
-## Quick Reference
+This skill provides design system context for AI code generation.
 
-### Colors
-- No color tokens detected
+## Quick Start
 
-### Spacing
-- No spacing tokens detected
 
-## Components (0)
 
+3. **For patterns**, see `patterns/_common.md`
 
 ## Rules
 
-1. **NEVER hardcode colors** - Always use design tokens
-2. **NEVER hardcode spacing** - Use the spacing scale
-3. **USE existing components** - Check the list above before creating new ones
-4. **RUN validation** - Execute `buoy check` before committing
+No specific rules defined yet.
+
+## Progressive Loading
+
+- Start with `_index.md` files for quick reference
+- Load specific files when you need details
+- The `anti-patterns/_avoid.md` file lists what NEVER to do
+
+## Feedback Loop
+
+If you create something not in the design system:
+1. Check if a similar component exists
+2. If truly new, flag for design system team review
+3. Use closest existing pattern as base
 
 ## Validation
 
-Before committing any UI code:
+Run `buoy check` before committing to validate compliance.
+
 ```bash
-buoy check
+buoy check           # Quick validation
+buoy drift check     # Detailed drift analysis
 ```
-
-For detailed drift report:
-```bash
-buoy drift check
-```
-
-## More Details
-
-See the token files in this directory for complete reference:
-- `tokens/colors.md` - All color tokens
-- `tokens/spacing.md` - Spacing scale

@@ -123,10 +123,10 @@ Final score: 34/100 (Poor)</code></pre>
   <p>Use the score to gate PRs:</p>
 
   <pre><code># Fail if score drops below 70
-buoy ci --threshold 70
+buoy lighthouse --threshold 70
 
 # Fail on any drift
-buoy ci --strict</code></pre>
+buoy lighthouse --strict</code></pre>
 
   <h2>Viewing Score Details</h2>
 
@@ -150,7 +150,7 @@ Score Breakdown:
 
   <ul>
     <li><a href="/docs/cli/audit">buoy audit</a> — Generate health report</li>
-    <li><a href="/docs/cli/ci">buoy ci</a> — Use score in CI</li>
+    <li><a href="/docs/cli/lighthouse">buoy ci</a> — Use score in CI</li>
     <li><a href="/docs/features/drift-detection">Drift Detection</a> — Types of drift</li>
   </ul>
 </DocsLayout>

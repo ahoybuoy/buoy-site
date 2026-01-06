@@ -2,17 +2,21 @@
 import DocsLayout from '../../../layouts/DocsLayout.astro'
 ---
 
-<DocsLayout title="buoy ci" description="CI-optimized output with exit codes">
-  <h1>buoy ci</h1>
+<DocsLayout title="buoy lighthouse" description="CI-optimized output with exit codes">
+  <h1>buoy lighthouse</h1>
 
   <p>
-    Run Buoy in CI mode with exit codes and optional GitHub PR comments. Designed for
-    continuous integration pipelines.
+    Run Buoy in CI mode with exit codes and GitHub PR comments. Designed for
+    continuous integration pipelines. Works cooperatively with existing AI review tools.
+  </p>
+
+  <p class="text-sm text-gray-600">
+    Alias: <code>buoy ci</code>
   </p>
 
   <h2>Usage</h2>
 
-  <pre><code>buoy ci [options]</code></pre>
+  <pre><code>buoy lighthouse [options]</code></pre>
 
   <h2>Options</h2>
 
@@ -66,7 +70,7 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
 
   <h2>Example Output</h2>
 
-  <pre><code>$ buoy ci --threshold 70
+  <pre><code>$ buoy lighthouse --threshold 70
 
 Design System CI Check
 ──────────────────────
@@ -115,7 +119,7 @@ jobs:
 
   <p>With <code>--github-comment</code>, Buoy posts a summary to your PR:</p>
 
-  <pre><code>buoy ci --github-comment</code></pre>
+  <pre><code>buoy lighthouse --github-comment</code></pre>
 
   <p>The comment includes:</p>
   <ul>
@@ -132,17 +136,17 @@ jobs:
   <h2>Threshold Examples</h2>
 
   <pre><code># Must score at least 80 to pass
-buoy ci --threshold 80
+buoy lighthouse --threshold 80
 
 # Fail on any drift (zero tolerance)
-buoy ci --strict
+buoy lighthouse --strict
 
 # Just report, never fail
-buoy ci --threshold 0</code></pre>
+buoy lighthouse --threshold 0</code></pre>
 
   <h2>JSON Output</h2>
 
-  <pre><code>buoy ci --json</code></pre>
+  <pre><code>buoy lighthouse --json</code></pre>
 
   <pre><code>&#123;
   "score": 67,
@@ -158,11 +162,42 @@ buoy ci --threshold 0</code></pre>
   ]
 &#125;</code></pre>
 
+  <h2>Cooperative Mode</h2>
+
+  <p>
+    Buoy automatically detects existing AI code review tools and works <em>with</em> them
+    instead of competing. When CodeRabbit, Greptile, or similar tools are detected,
+    Buoy focuses on design system data and lets them handle AI review.
+  </p>
+
+  <pre><code># See what AI tools are detected
+buoy lighthouse --detect-tools
+
+# Export design system rules for CodeRabbit
+buoy lighthouse --export-coderabbit
+
+# Export context for Greptile
+buoy lighthouse --export-greptile</code></pre>
+
+  <h3>Supported Tools</h3>
+
+  <ul>
+    <li><strong>CodeRabbit</strong> — Export AST-based design system rules</li>
+    <li><strong>Greptile</strong> — Export custom context for codebase understanding</li>
+    <li><strong>Sourcery, Codacy, DeepSource</strong> — Detected, complementary (no export needed)</li>
+  </ul>
+
+  <p>
+    Philosophy: Buoy provides design system expertise, AI tools provide code review.
+    Together they're better than either alone.
+  </p>
+
   <h2>Related Commands</h2>
 
   <ul>
     <li><a href="/docs/cli/audit">buoy audit</a> — Interactive health report</li>
     <li><a href="/docs/cli/drift">buoy drift</a> — Detailed drift analysis</li>
+    <li><a href="/docs/cli/onboard">buoy onboard</a> — Set up AI guardrails</li>
     <li><a href="/docs/integrations/github-actions">GitHub Actions</a> — Full CI setup guide</li>
   </ul>
 </DocsLayout>

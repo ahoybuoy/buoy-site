@@ -133,7 +133,7 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
     Now when AI generates <code>padding: 15px</code>, Buoy catches it:
   </p>
 
-  <pre><code>$ buoy ci
+  <pre><code>$ buoy lighthouse
 
 Design System Check Failed
 
@@ -165,7 +165,7 @@ Exit code: 1</code></pre>
 
   <h3>1. Set a Health Threshold</h3>
 
-  <pre><code>buoy ci --threshold 70</code></pre>
+  <pre><code>buoy lighthouse --threshold 70</code></pre>
 
   <p>
     PRs must maintain at least 70% design system health to merge.
@@ -173,7 +173,7 @@ Exit code: 1</code></pre>
 
   <h3>2. Block on New Drift</h3>
 
-  <pre><code>buoy ci --strict</code></pre>
+  <pre><code>buoy lighthouse --strict</code></pre>
 
   <p>
     Zero tolerance: any new hardcoded value fails the build.
@@ -181,7 +181,7 @@ Exit code: 1</code></pre>
 
   <h3>3. Get PR Comments</h3>
 
-  <pre><code>buoy ci --github-comment</code></pre>
+  <pre><code>buoy lighthouse --github-comment</code></pre>
 
   <p>
     Buoy comments on PRs showing exactly what drifted and how to fix it.
@@ -245,7 +245,7 @@ Agent fixes drift
   </p>
 
   <pre><code># .husky/pre-commit
-buoy ci --strict</code></pre>
+buoy lighthouse --strict</code></pre>
 
   <p>
     Now when an agent runs <code>git commit</code>, Buoy blocks the commit if there's
@@ -262,7 +262,7 @@ buoy ci --strict</code></pre>
 
 ## Design System
 
-Before committing UI changes, run `buoy ci` to check for design drift.
+Before committing UI changes, run `buoy lighthouse` to check for design drift.
 If Buoy reports issues, fix them before committing.
 
 Our design tokens:
@@ -299,7 +299,7 @@ Our design tokens:
   <h2>Related</h2>
 
   <ul>
-    <li><a href="/docs/cli/ci">buoy ci</a> — Add to your CI pipeline</li>
+    <li><a href="/docs/cli/lighthouse">buoy ci</a> — Add to your CI pipeline</li>
     <li><a href="/docs/integrations/github-actions">GitHub Actions</a> — Full CI setup</li>
     <li><a href="/docs/features/health-scoring">Health Scoring</a> — How scores work</li>
   </ul>
