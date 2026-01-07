@@ -34,7 +34,7 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
       </tr>
       <tr>
         <td><code>-c, --confidence &lt;level&gt;</code></td>
-        <td>Minimum confidence level: high, medium, low (default: "high")</td>
+        <td>Minimum confidence level: exact, high, medium, low (default: "high")</td>
       </tr>
       <tr>
         <td><code>-t, --type &lt;types&gt;</code></td>
@@ -104,11 +104,41 @@ Applying 18 fixes...
 
   <h2>Confidence Levels</h2>
 
-  <ul>
-    <li><strong>high</strong> (default) - Only apply fixes with exact token matches</li>
-    <li><strong>medium</strong> - Include close matches (within 5% variance)</li>
-    <li><strong>low</strong> - Include all suggested fixes</li>
-  </ul>
+  <p>Each fix suggestion includes a confidence score indicating how safe it is to apply:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Level</th>
+        <th>Score</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>exact</code></td>
+        <td>100%</td>
+        <td>Value exactly matches a design token — safest to auto-apply</td>
+      </tr>
+      <tr>
+        <td><code>high</code></td>
+        <td>95-99%</td>
+        <td>Very close match, safe to auto-apply</td>
+      </tr>
+      <tr>
+        <td><code>medium</code></td>
+        <td>70-94%</td>
+        <td>Close match, review recommended</td>
+      </tr>
+      <tr>
+        <td><code>low</code></td>
+        <td>&lt;70%</td>
+        <td>Ambiguous, manual review required</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>By default, <code>--apply</code> only applies <code>high</code> and <code>exact</code> confidence fixes.</p>
 
   <h2>Related</h2>
 
