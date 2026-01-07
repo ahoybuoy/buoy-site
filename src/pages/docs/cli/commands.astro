@@ -1,0 +1,127 @@
+---
+import DocsLayout from '../../../layouts/DocsLayout.astro'
+---
+
+<DocsLayout title="buoy commands" description="Manage Claude Code slash commands">
+  <h1>buoy commands</h1>
+
+  <p>
+    Install Buoy's slash commands to Claude Code. These commands give you quick access
+    to design system workflows directly from Claude Code's command palette.
+  </p>
+
+  <h2>Usage</h2>
+
+  <pre><code>buoy commands list              # List available commands
+buoy commands install           # Install commands to ~/.claude/commands/</code></pre>
+
+  <h2>Subcommands</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Subcommand</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>list</code></td>
+        <td>List available Buoy slash commands and installation status</td>
+      </tr>
+      <tr>
+        <td><code>install</code></td>
+        <td>Install commands to <code>~/.claude/commands/</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Options</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Option</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--dry-run</code></td>
+        <td>Show what would be installed without writing files</td>
+      </tr>
+      <tr>
+        <td><code>--json</code></td>
+        <td>Output result as JSON</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Available Commands</h2>
+
+  <h3>/contribution-loop</h3>
+
+  <p>
+    Autonomous workflow for finding repos with design drift and generating PRs to fix them.
+    Runs through discovery, scanning, analysis, and PR generation phases.
+  </p>
+
+  <p>Phases:</p>
+
+  <ol>
+    <li><strong>Discovery</strong> — Find repos using design systems on GitHub</li>
+    <li><strong>Scanning</strong> — Run Buoy to detect drift</li>
+    <li><strong>Analysis</strong> — Use agents to assess fixability</li>
+    <li><strong>Triage</strong> — Classify as slam-dunk, review, or skip</li>
+    <li><strong>Generation</strong> — Create PR with full context</li>
+    <li><strong>Review</strong> — Human approval before submission</li>
+  </ol>
+
+  <h2>Example Output</h2>
+
+  <pre><code>$ buoy commands list
+
+  Available Buoy Commands
+
+  /contribution-loop  not installed
+
+  Run `buoy commands install` to install all commands
+
+$ buoy commands install
+
+  ✓ Installed slash commands:
+
+    /contribution-loop
+
+  Commands installed to: ~/.claude/commands/
+  Restart Claude Code to use them</code></pre>
+
+  <h2>Where Commands Are Installed</h2>
+
+  <p>
+    Commands are installed to <code>~/.claude/commands/</code>. This is Claude Code's
+    global commands directory. After installation, restart Claude Code to see the new
+    commands in the slash command palette.
+  </p>
+
+  <h2>Commands vs Skills</h2>
+
+  <p>
+    <strong>Commands</strong> are user-invocable — you type <code>/contribution-loop</code>
+    in Claude Code to trigger them. <strong>Skills</strong> are AI-invocable — Claude
+    automatically loads them when relevant.
+  </p>
+
+  <p>
+    Use <code>buoy onboard</code> to create skills, and <code>buoy commands install</code>
+    to install slash commands.
+  </p>
+
+  <h2>Related Commands</h2>
+
+  <ul>
+    <li><a href="/docs/cli/onboard">buoy onboard</a> — Set up AI guardrails (also installs commands)</li>
+    <li><a href="/docs/cli/skill">buoy skill</a> — Generate design system skills</li>
+    <li><a href="/docs/cli/context">buoy context</a> — Generate CLAUDE.md context</li>
+  </ul>
+</DocsLayout>

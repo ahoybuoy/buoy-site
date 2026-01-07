@@ -9,33 +9,35 @@ const plans = [
     name: 'Free',
     price: '$0',
     period: 'forever',
-    description: 'Open source CLI for individuals and small teams getting started.',
+    description: 'Open source CLI with full drift detection. No limits.',
     features: [
-      'Up to 3 users',
-      'All drift detections',
-      'CLI scans',
-      'JSON output',
+      'Auto-detects design system',
+      'All drift detection commands',
+      'Import tokens (JSON, CSS, Tokens Studio)',
+      'AI guardrails (skills, MCP, context)',
+      'Local scan history',
       'Community support',
     ],
     cta: 'Install Now',
-    ctaHref: '/demo',
+    ctaHref: '/docs/quickstart',
     variant: 'secondary',
   },
   {
-    name: 'Pro',
-    price: '$299',
-    period: '/month',
-    description: 'Unlimited users, one price. Everything you need to enforce your design system.',
+    name: 'Team',
+    price: '$25',
+    period: '/dev/month',
+    description: 'Cloud features for teams. $20/dev billed annually.',
     features: [
-      'Unlimited users',
-      'Historical trends',
-      'Figma sync',
-      'GitHub App & PR comments',
-      'Web dashboard',
-      'Priority support',
+      'Everything in Free',
+      'Unlimited repos',
+      'GitHub PR comments',
+      'Slack & Teams alerts',
+      'Cloud history & trends',
+      'Figma Monitor plugin',
+      'No minimum seats',
     ],
     cta: 'Start Free Trial',
-    ctaHref: '/demo',
+    ctaHref: '/signup',
     variant: 'primary',
     popular: true,
   },
@@ -43,13 +45,14 @@ const plans = [
     name: 'Enterprise',
     price: 'Custom',
     period: '',
-    description: 'For organizations with advanced security and scale requirements.',
+    description: 'For organizations needing security, compliance, and hands-on support.',
     features: [
-      'Everything in Pro',
+      'Everything in Team',
       'SSO / SAML',
-      'Multi-repo dashboard',
-      'Dedicated support',
+      'Audit logs',
       'SLA guarantees',
+      'Design system implementation consulting',
+      'Dedicated Slack channel',
       'Custom integrations',
     ],
     cta: 'Contact Sales',
@@ -61,27 +64,35 @@ const plans = [
 const faqs = [
   {
     question: 'Is the free tier really free forever?',
-    answer: 'Yes. The open source CLI will always be free under the MIT license. Teams up to 3 users can use all drift detection features at no cost.'
+    answer: 'Yes. The open source CLI will always be free under the MIT license. Full drift detection, AI guardrails, token import — all free with no user limits.'
   },
   {
-    question: 'Why flat pricing instead of per-seat?',
-    answer: 'Most tools charge $20-30 per developer. We think that\'s backwards. Buoy lives in your codebase, not on individual machines. Add 5 developers or 50 — same $299/month. Your team grows, your bill doesn\'t.'
+    question: 'What\'s included in the free CLI?',
+    answer: 'Everything you need to detect and fix design drift: auto-detection of your design system, all scanning commands, AI guardrails (skills, MCP server, CLAUDE.md context), and local scan history. The CLI is the full product, not a teaser.'
   },
   {
-    question: 'What does historical tracking include?',
-    answer: 'Track your drift metrics over time. See trends, set goals, and prove ROI to stakeholders with real data showing adoption improvements week over week.'
+    question: 'Why per-seat pricing?',
+    answer: 'We align with industry standards like CodeRabbit and Greptile. At $25/dev ($20 annual), you get cloud features that scale with your team. Solo devs pay $25/mo, not $299/mo.'
   },
   {
-    question: 'What counts as a "codebase"?',
-    answer: 'One codebase = one git repository. Monorepos count as one codebase. Multi-repo setups need the Enterprise plan or multiple Pro subscriptions.'
+    question: 'Is there a minimum number of seats?',
+    answer: 'No minimum. A solo developer can use the Team plan for $25/month. Pay for exactly what you need.'
   },
   {
-    question: 'Can I try Pro features before paying?',
-    answer: 'Yes! Start a 14-day free trial with full access to all Pro features. No credit card required to start.'
+    question: 'Do you offer discounts for annual billing?',
+    answer: 'Yes — 20% off. Annual billing is $20/dev/month ($240/dev/year) instead of $25/dev/month.'
   },
   {
-    question: 'How does this compare to per-seat pricing?',
-    answer: 'At 10 users, competitors charge $200-300/month. At 25 users, they charge $500-750/month. Buoy is $299/month regardless of team size. You break even at ~12 users and save more as you grow.'
+    question: 'What about open source projects?',
+    answer: 'Verified open source projects get full Team plan features for free. Apply through our OSS program.'
+  },
+  {
+    question: 'What\'s the Figma Monitor plugin?',
+    answer: 'A Figma plugin that shows live design system health inside your Figma files. See which components are drifting, which tokens are being used correctly — all without leaving Figma.'
+  },
+  {
+    question: 'What does Enterprise consulting include?',
+    answer: 'Hands-on help establishing your design system: defining tokens, documenting patterns, setting up governance, training your team. We help you build it, not just detect drift in it.'
   },
 ]
 ---
@@ -99,24 +110,24 @@ const faqs = [
 
     <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6">
-        Free for everyone. Pro for serious teams.
+        Free CLI. Simple per-seat pricing.
       </h1>
       <p class="text-lg text-slate max-w-2xl mx-auto">
-        No per-seat pricing. Buoy lives in your codebase — your whole team uses it for free.
-        Pay only for advanced features when you need them.
+        Full drift detection is free forever. Cloud features start at $25/dev/month.
+        Open source projects get everything free.
       </p>
     </div>
   </section>
 
-  <!-- No Per-Seat Callout -->
+  <!-- OSS Callout -->
   <section class="py-8 bg-navy">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="bg-navy-dark border border-buoy/30 rounded-xl p-6 flex items-center gap-4">
-        <div class="text-4xl">🎉</div>
+        <div class="text-4xl">💚</div>
         <div>
-          <h3 class="font-semibold text-light mb-1">No per-developer pricing</h3>
+          <h3 class="font-semibold text-light mb-1">Free for open source</h3>
           <p class="text-sm text-slate">
-            Add 5 developers or 500 — same price. Buoy is a codebase tool, not a per-seat subscription.
+            Verified open source projects get full Team plan features at no cost. Building in public? We've got you.
           </p>
         </div>
       </div>
@@ -177,23 +188,25 @@ const faqs = [
         <div class="grid grid-cols-4 bg-navy border-b border-navy-light/20 text-sm">
           <div class="p-4 font-semibold text-slate">Feature</div>
           <div class="p-4 font-semibold text-slate text-center border-l border-navy-light/20">Free</div>
-          <div class="p-4 font-semibold text-buoy text-center border-l border-navy-light/20">Pro</div>
+          <div class="p-4 font-semibold text-buoy text-center border-l border-navy-light/20">Team</div>
           <div class="p-4 font-semibold text-slate text-center border-l border-navy-light/20">Enterprise</div>
         </div>
 
         {[
-          { feature: 'Drift Detection', free: true, pro: true, ent: true },
-          { feature: 'CLI Scans', free: true, pro: true, ent: true },
-          { feature: 'JSON Output', free: true, pro: true, ent: true },
-          { feature: 'Users', free: 'Up to 3', pro: 'Unlimited', ent: 'Unlimited' },
-          { feature: 'Historical Trends', free: false, pro: true, ent: true },
-          { feature: 'Web Dashboard', free: false, pro: true, ent: true },
-          { feature: 'GitHub App', free: false, pro: true, ent: true },
-          { feature: 'Figma Sync', free: false, pro: true, ent: true },
-          { feature: 'PR Comments', free: false, pro: true, ent: true },
-          { feature: 'Multi-Repo Dashboard', free: false, pro: false, ent: true },
-          { feature: 'SSO / SAML', free: false, pro: false, ent: true },
-          { feature: 'SLA', free: false, pro: false, ent: true },
+          { feature: 'Auto-detect design system', free: true, team: true, ent: true },
+          { feature: 'All drift detection', free: true, team: true, ent: true },
+          { feature: 'Token import (JSON, CSS)', free: true, team: true, ent: true },
+          { feature: 'AI guardrails (MCP, skills)', free: true, team: true, ent: true },
+          { feature: 'Local scan history', free: true, team: true, ent: true },
+          { feature: 'Unlimited repos', free: false, team: true, ent: true },
+          { feature: 'GitHub PR comments', free: false, team: true, ent: true },
+          { feature: 'Slack & Teams alerts', free: false, team: true, ent: true },
+          { feature: 'Cloud history & trends', free: false, team: true, ent: true },
+          { feature: 'Figma Monitor plugin', free: false, team: true, ent: true },
+          { feature: 'SSO / SAML', free: false, team: false, ent: true },
+          { feature: 'Audit logs', free: false, team: false, ent: true },
+          { feature: 'SLA guarantees', free: false, team: false, ent: true },
+          { feature: 'Implementation consulting', free: false, team: false, ent: true },
         ].map((row, index) => (
           <div class={`grid grid-cols-4 text-sm ${index % 2 === 0 ? 'bg-navy/30' : ''}`}>
             <div class="p-4 text-light">{row.feature}</div>
@@ -201,7 +214,7 @@ const faqs = [
               {typeof row.free === 'string' ? <span class="text-slate">{row.free}</span> : row.free ? <span class="text-success">✓</span> : <span class="text-slate-dark">—</span>}
             </div>
             <div class="p-4 text-center border-l border-navy-light/20">
-              {typeof row.pro === 'string' ? <span class="text-success">{row.pro}</span> : row.pro ? <span class="text-success">✓</span> : <span class="text-slate-dark">—</span>}
+              {typeof row.team === 'string' ? <span class="text-success">{row.team}</span> : row.team ? <span class="text-success">✓</span> : <span class="text-slate-dark">—</span>}
             </div>
             <div class="p-4 text-center border-l border-navy-light/20">
               {typeof row.ent === 'string' ? <span class="text-success">{row.ent}</span> : row.ent ? <span class="text-success">✓</span> : <span class="text-slate-dark">—</span>}
