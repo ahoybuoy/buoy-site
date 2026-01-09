@@ -1,0 +1,225 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+
+const services = [
+  {
+    name: 'API',
+    endpoint: 'https://api.buoy.design/health',
+    description: 'Core API for GitHub App integrations'
+  },
+  {
+    name: 'Website',
+    endpoint: null,
+    description: 'Marketing site and documentation'
+  }
+]
+---
+
+<Layout
+  title="System Status | Buoy"
+  description="Check the operational status of Buoy services"
+>
+  <Nav />
+
+  <section class="relative pt-32 pb-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <h1 class="text-3xl sm:text-4xl font-bold text-light mb-4">
+          System Status
+        </h1>
+        <div id="overall-status" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-navy border border-navy-light/20">
+          <span class="status-dot w-3 h-3 rounded-full bg-slate animate-pulse"></span>
+          <span class="status-text text-slate">Checking...</span>
+        </div>
+      </div>
+
+      <!-- Services -->
+      <div class="space-y-4 mb-12">
+        {services.map((service) => (
+          <div
+            class="service-card bg-navy border border-navy-light/20 rounded-xl p-6"
+            data-endpoint={service.endpoint}
+            data-name={service.name}
+          >
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="font-semibold text-light">{service.name}</h3>
+                <p class="text-sm text-slate">{service.description}</p>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="service-status text-sm text-slate">Checking...</span>
+                <span class="service-dot w-3 h-3 rounded-full bg-slate animate-pulse"></span>
+              </div>
+            </div>
+            <div class="service-details mt-4 pt-4 border-t border-navy-light/20 hidden">
+              <div class="grid grid-cols-2 gap-4 text-sm">
+                <div>
+                  <span class="text-slate">Response time</span>
+                  <p class="response-time text-light font-mono">—</p>
+                </div>
+                <div>
+                  <span class="text-slate">Last checked</span>
+                  <p class="last-checked text-light font-mono">—</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Info -->
+      <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6">
+        <h2 class="font-semibold text-light mb-4">About this page</h2>
+        <div class="space-y-3 text-sm text-slate">
+          <p>
+            This page checks Buoy service health in real-time from your browser.
+            Status updates every 30 seconds.
+          </p>
+          <p>
+            For incident reports or to report an issue, contact us at{' '}
+            <a href="mailto:support@buoy.design" class="text-buoy hover:underline">
+              support@buoy.design
+            </a>
+          </p>
+        </div>
+      </div>
+
+      <!-- History placeholder -->
+      <div class="mt-8 text-center">
+        <p class="text-sm text-slate">
+          Uptime history coming soon
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+
+<script>
+  interface ServiceStatus {
+    name: string;
+    status: 'operational' | 'degraded' | 'down';
+    responseTime?: number;
+    lastChecked: Date;
+  }
+
+  const statuses: ServiceStatus[] = [];
+
+  async function checkService(card: HTMLElement): Promise<ServiceStatus> {
+    const endpoint = card.dataset.endpoint;
+    const name = card.dataset.name || 'Unknown';
+
+    const statusEl = card.querySelector('.service-status');
+    const dotEl = card.querySelector('.service-dot');
+    const detailsEl = card.querySelector('.service-details');
+    const responseTimeEl = card.querySelector('.response-time');
+    const lastCheckedEl = card.querySelector('.last-checked');
+
+    // Website is always operational if you can see this page
+    if (!endpoint) {
+      if (statusEl) statusEl.textContent = 'Operational';
+      if (dotEl) {
+        dotEl.classList.remove('bg-slate', 'animate-pulse');
+        dotEl.classList.add('bg-success');
+      }
+      return { name, status: 'operational', lastChecked: new Date() };
+    }
+
+    try {
+      const start = performance.now();
+      const response = await fetch(endpoint, {
+        method: 'GET',
+        cache: 'no-store'
+      });
+      const elapsed = Math.round(performance.now() - start);
+      const data = await response.json();
+
+      if (response.ok && data.status === 'ok') {
+        if (statusEl) statusEl.textContent = 'Operational';
+        if (dotEl) {
+          dotEl.classList.remove('bg-slate', 'bg-warning', 'bg-critical', 'animate-pulse');
+          dotEl.classList.add('bg-success');
+        }
+        if (detailsEl) detailsEl.classList.remove('hidden');
+        if (responseTimeEl) responseTimeEl.textContent = `${elapsed}ms`;
+        if (lastCheckedEl) lastCheckedEl.textContent = new Date().toLocaleTimeString();
+
+        return { name, status: 'operational', responseTime: elapsed, lastChecked: new Date() };
+      } else {
+        throw new Error('Unhealthy response');
+      }
+    } catch (error) {
+      if (statusEl) statusEl.textContent = 'Down';
+      if (dotEl) {
+        dotEl.classList.remove('bg-slate', 'bg-success', 'bg-warning', 'animate-pulse');
+        dotEl.classList.add('bg-critical');
+      }
+      if (detailsEl) detailsEl.classList.remove('hidden');
+      if (lastCheckedEl) lastCheckedEl.textContent = new Date().toLocaleTimeString();
+
+      return { name, status: 'down', lastChecked: new Date() };
+    }
+  }
+
+  function updateOverallStatus(results: ServiceStatus[]) {
+    const overallEl = document.getElementById('overall-status');
+    if (!overallEl) return;
+
+    const dotEl = overallEl.querySelector('.status-dot');
+    const textEl = overallEl.querySelector('.status-text');
+
+    const hasDown = results.some(r => r.status === 'down');
+    const hasDegraded = results.some(r => r.status === 'degraded');
+
+    if (hasDown) {
+      if (dotEl) {
+        dotEl.classList.remove('bg-slate', 'bg-success', 'bg-warning', 'animate-pulse');
+        dotEl.classList.add('bg-critical');
+      }
+      if (textEl) textEl.textContent = 'Partial Outage';
+      if (textEl) textEl.classList.remove('text-slate');
+      if (textEl) textEl.classList.add('text-critical');
+    } else if (hasDegraded) {
+      if (dotEl) {
+        dotEl.classList.remove('bg-slate', 'bg-success', 'bg-critical', 'animate-pulse');
+        dotEl.classList.add('bg-warning');
+      }
+      if (textEl) textEl.textContent = 'Degraded Performance';
+      if (textEl) textEl.classList.remove('text-slate');
+      if (textEl) textEl.classList.add('text-warning');
+    } else {
+      if (dotEl) {
+        dotEl.classList.remove('bg-slate', 'bg-warning', 'bg-critical', 'animate-pulse');
+        dotEl.classList.add('bg-success');
+      }
+      if (textEl) textEl.textContent = 'All Systems Operational';
+      if (textEl) textEl.classList.remove('text-slate');
+      if (textEl) textEl.classList.add('text-success');
+    }
+  }
+
+  async function checkAllServices() {
+    const cards = document.querySelectorAll('.service-card');
+    const results: ServiceStatus[] = [];
+
+    for (const card of cards) {
+      const result = await checkService(card as HTMLElement);
+      results.push(result);
+    }
+
+    updateOverallStatus(results);
+  }
+
+  // Initial check
+  checkAllServices();
+
+  // Check every 30 seconds
+  setInterval(checkAllServices, 30000);
+</script>

@@ -1,0 +1,235 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+
+const supportOptions = [
+  {
+    icon: '📚',
+    title: 'Documentation',
+    description: 'Guides, CLI reference, and integration docs',
+    href: '/docs',
+    cta: 'Browse Docs'
+  },
+  {
+    icon: '💬',
+    title: 'GitHub Discussions',
+    description: 'Ask questions, share ideas, get community help',
+    href: 'https://github.com/buoy-design/buoy/discussions',
+    cta: 'Join Discussion'
+  },
+  {
+    icon: '🐛',
+    title: 'Report a Bug',
+    description: 'Found an issue? Let us know on GitHub',
+    href: 'https://github.com/buoy-design/buoy/issues/new',
+    cta: 'Open Issue'
+  },
+]
+---
+
+<Layout
+  title="Support | Buoy - Design Drift Detection"
+  description="Get help with Buoy. Browse documentation, join community discussions, or contact our team directly."
+  keywords="buoy support, buoy help, design drift tool support"
+>
+  <Nav />
+
+  <!-- Hero -->
+  <section class="relative pt-32 pb-16 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
+
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6">
+        How can we help?
+      </h1>
+      <p class="text-lg text-slate max-w-2xl mx-auto">
+        Find answers in our docs, connect with the community, or reach out directly.
+      </p>
+    </div>
+  </section>
+
+  <!-- Support Options -->
+  <section class="py-16 bg-navy">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-6">
+        {supportOptions.map((option) => (
+          <a
+            href={option.href}
+            class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 hover:border-buoy/50 transition-colors group"
+          >
+            <div class="text-3xl mb-4">{option.icon}</div>
+            <h3 class="font-semibold text-light mb-2 group-hover:text-buoy transition-colors">
+              {option.title}
+            </h3>
+            <p class="text-sm text-slate mb-4">{option.description}</p>
+            <span class="text-buoy text-sm font-medium">
+              {option.cta} →
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="py-16 bg-navy-dark">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-2xl font-bold text-light mb-4">Contact Us</h2>
+        <p class="text-slate">
+          Have a question that isn't covered in the docs? Send us a message and we'll get back to you.
+        </p>
+      </div>
+
+      <form id="support-form" class="space-y-6">
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div>
+            <label for="name" class="block text-sm font-medium text-light mb-2">
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              class="w-full px-4 py-3 bg-navy border border-navy-light/30 rounded-lg text-light placeholder-slate-dark focus:outline-none focus:border-buoy transition-colors"
+              placeholder="Your name"
+            />
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-light mb-2">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              class="w-full px-4 py-3 bg-navy border border-navy-light/30 rounded-lg text-light placeholder-slate-dark focus:outline-none focus:border-buoy transition-colors"
+              placeholder="you@company.com"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="subject" class="block text-sm font-medium text-light mb-2">
+            Subject
+          </label>
+          <select
+            id="subject"
+            name="subject"
+            required
+            class="w-full px-4 py-3 bg-navy border border-navy-light/30 rounded-lg text-light focus:outline-none focus:border-buoy transition-colors"
+          >
+            <option value="">Select a topic</option>
+            <option value="general">General Question</option>
+            <option value="bug">Bug Report</option>
+            <option value="feature">Feature Request</option>
+            <option value="enterprise">Enterprise Inquiry</option>
+            <option value="billing">Billing Question</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="message" class="block text-sm font-medium text-light mb-2">
+            Message
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            rows="5"
+            required
+            class="w-full px-4 py-3 bg-navy border border-navy-light/30 rounded-lg text-light placeholder-slate-dark focus:outline-none focus:border-buoy transition-colors resize-none"
+            placeholder="How can we help?"
+          ></textarea>
+        </div>
+
+        <div id="form-status" class="hidden">
+          <div class="p-4 rounded-lg text-sm"></div>
+        </div>
+
+        <button
+          type="submit"
+          class="w-full px-6 py-3 bg-buoy text-navy-dark font-semibold rounded-lg hover:bg-buoy/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          Send Message
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Enterprise CTA -->
+  <section class="py-16 bg-navy">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-navy-dark border border-buoy/30 rounded-xl p-8 text-center">
+        <h2 class="text-2xl font-bold text-light mb-4">Need Enterprise Support?</h2>
+        <p class="text-slate mb-6 max-w-xl mx-auto">
+          Get dedicated support, SLA guarantees, and hands-on implementation help with our Enterprise plan.
+        </p>
+        <a
+          href="/pricing"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-buoy text-navy-dark font-semibold rounded-lg hover:bg-buoy/90 transition-colors"
+        >
+          View Enterprise Options
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<script>
+  const form = document.getElementById('support-form') as HTMLFormElement;
+  const statusDiv = document.getElementById('form-status') as HTMLDivElement;
+  const statusContent = statusDiv?.querySelector('div');
+
+  function showStatus(type: 'success' | 'error', message: string) {
+    if (!statusDiv || !statusContent) return;
+
+    statusDiv.classList.remove('hidden');
+    statusContent.className = `p-4 rounded-lg text-sm ${
+      type === 'success'
+        ? 'bg-success/20 text-success border border-success/30'
+        : 'bg-critical/20 text-critical border border-critical/30'
+    }`;
+    statusContent.textContent = message;
+  }
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const originalText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch('/api/support', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        showStatus('success', 'Message sent! We\'ll get back to you soon.');
+        form.reset();
+      } else {
+        const error = await response.json();
+        showStatus('error', error.message || 'Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      showStatus('error', 'Failed to send message. Please try again or email us directly.');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    }
+  });
+</script>
