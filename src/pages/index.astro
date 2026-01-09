@@ -178,7 +178,7 @@ const steps = [
           </button>
         </div>
         <p class="text-slate text-sm mt-4">
-          Or ask your AI to run it
+          Paste in your terminal or AI
         </p>
       </div>
     </div>
@@ -408,16 +408,19 @@ const steps = [
         </div>
       </div>
 
-      <!-- Outcome callout -->
-      <div class="mt-12 max-w-2xl mx-auto">
-        <div class="bg-navy/50 border border-buoy/30 rounded-xl p-6 text-center">
-          <div class="text-sm text-buoy font-semibold mb-2">THE OUTCOME</div>
-          <div class="text-2xl font-bold text-light mb-2">
-            Drift caught before it ships
-          </div>
-          <p class="text-slate text-sm">
-            Every PR checked. Every violation flagged. Your design system stays consistent.
-          </p>
+      <!-- Free tier badge + CTA -->
+      <div class="mt-10 max-w-2xl mx-auto text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-success/10 border border-success/30 mb-6">
+          <span class="text-success">✓</span>
+          <span class="text-sm text-success font-medium">Free for public repositories</span>
+        </div>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Button href="/docs/integrations/github-actions" size="lg">
+            Set up GitHub Action
+          </Button>
+          <Button href="/pricing" variant="secondary" size="lg">
+            See pricing for private repos
+          </Button>
         </div>
       </div>
     </div>
@@ -498,16 +501,122 @@ const steps = [
     </div>
   </section>
 
+  <!-- Journey Section: Start Free → PR Comments → Dashboard -->
+  <section class="py-24 bg-navy">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl sm:text-4xl font-bold text-light mb-4">
+          Start free, scale when ready
+        </h2>
+        <p class="text-lg text-slate">
+          Your journey from first scan to team-wide enforcement
+        </p>
+      </div>
+
+      <div class="max-w-5xl mx-auto">
+        <div class="grid md:grid-cols-3 gap-6">
+          <!-- Step 1: Start Free -->
+          <div class="relative bg-navy-dark border border-navy-light/30 rounded-xl p-6 hover:border-buoy/30 transition-colors">
+            <div class="absolute -top-3 left-6">
+              <span class="inline-flex items-center px-3 py-1 rounded-full bg-success/20 border border-success/30 text-xs font-semibold text-success">
+                FREE
+              </span>
+            </div>
+            <div class="pt-4">
+              <div class="text-4xl mb-4">🔍</div>
+              <h3 class="text-xl font-semibold text-light mb-2">Detect Locally</h3>
+              <p class="text-slate text-sm mb-4">
+                Run <code class="text-buoy">buoy check</code> in any project. See every hardcoded value, naming issue, and token violation.
+              </p>
+              <ul class="space-y-2 text-sm text-slate-dark">
+                <li class="flex items-center gap-2">
+                  <span class="text-success">✓</span> Unlimited scans
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-success">✓</span> All detection rules
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-success">✓</span> Fix suggestions
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Step 2: PR Comments -->
+          <div class="relative bg-navy-dark border border-navy-light/30 rounded-xl p-6 hover:border-buoy/30 transition-colors">
+            <div class="absolute -top-3 left-6">
+              <span class="inline-flex items-center px-3 py-1 rounded-full bg-buoy/20 border border-buoy/30 text-xs font-semibold text-buoy">
+                FREE FOR PUBLIC
+              </span>
+            </div>
+            <div class="pt-4">
+              <div class="text-4xl mb-4">🚦</div>
+              <h3 class="text-xl font-semibold text-light mb-2">Block at PR</h3>
+              <p class="text-slate text-sm mb-4">
+                Add GitHub Action. Every PR gets checked. Drift blocked before merge.
+              </p>
+              <ul class="space-y-2 text-sm text-slate-dark">
+                <li class="flex items-center gap-2">
+                  <span class="text-success">✓</span> Inline PR comments
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-success">✓</span> Check status integration
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-success">✓</span> Auto-fix suggestions
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Step 3: Team Dashboard -->
+          <div class="relative bg-navy-dark border border-navy-light/30 rounded-xl p-6 hover:border-lavender/30 transition-colors">
+            <div class="absolute -top-3 left-6">
+              <span class="inline-flex items-center px-3 py-1 rounded-full bg-lavender/20 border border-lavender/30 text-xs font-semibold text-lavender">
+                TEAM
+              </span>
+            </div>
+            <div class="pt-4">
+              <div class="text-4xl mb-4">📊</div>
+              <h3 class="text-xl font-semibold text-light mb-2">Track Progress</h3>
+              <p class="text-slate text-sm mb-4">
+                Health scores, trend charts, team leaderboards. Prove ROI to stakeholders.
+              </p>
+              <ul class="space-y-2 text-sm text-slate-dark">
+                <li class="flex items-center gap-2">
+                  <span class="text-lavender">+</span> Private repo support
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-lavender">+</span> Team dashboard
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-lavender">+</span> Historical trends
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Journey arrows (mobile: vertical, desktop: horizontal) -->
+        <div class="flex justify-center mt-8 gap-4">
+          <div class="text-slate-dark text-sm">
+            <span class="text-success">Free</span> → <span class="text-buoy">Public repos</span> → <span class="text-lavender">Team plan</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- AI Setup Section -->
-  <section class="py-16 bg-navy">
+  <section class="py-16 bg-navy-dark">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-2xl mx-auto text-center">
         <h2 class="text-2xl sm:text-3xl font-bold text-light mb-6">
           Using an AI coding assistant?
         </h2>
-        <div class="bg-navy-dark border border-lavender/30 rounded-xl p-5">
+        <div class="bg-navy border border-lavender/30 rounded-xl p-5">
           <div class="text-sm text-lavender mb-3">Ask your AI to run:</div>
-          <div class="bg-navy/80 rounded-lg p-4 font-mono text-light text-sm sm:text-base">
+          <div class="bg-navy-dark/80 rounded-lg p-4 font-mono text-light text-sm sm:text-base">
             npx @buoy-design/cli begin
           </div>
         </div>

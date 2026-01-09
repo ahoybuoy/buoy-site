@@ -6,7 +6,7 @@ import Button from '../components/Button.astro'
 import { siteConfig } from '../config'
 ---
 
-<Layout title="Enforce Your Rules - Design System Enforcement | Buoy">
+<Layout title="CI Enforcement - Block Drift at the PR | Buoy">
   <Nav />
 
   <!-- Hero -->
@@ -498,7 +498,7 @@ import { siteConfig } from '../config'
   .animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
   .animate-float { animation: float 6s ease-in-out infinite; }
   .gap-pulse { animation: gap-pulse 2s ease-in-out infinite; }
-  .wave-path { animation: wave 10s linear infinite; }
+  /* Wave animation removed - was causing overflow issues */
 
   .scroll-reveal {
     opacity: 0;
