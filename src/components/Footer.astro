@@ -34,10 +34,15 @@ import { siteConfig } from '../config'
     </div>
 
     <!-- Bottom Bar -->
-    <div class="mt-8 pt-6 border-t border-navy-light/20 text-center">
+    <div class="mt-8 pt-6 border-t border-navy-light/20 flex flex-col sm:flex-row justify-between items-center gap-4">
       <p class="text-sm text-slate">
         &copy; {new Date().getFullYear()} Buoy. Open source under MIT License.
       </p>
+      <div class="flex items-center gap-4 text-sm">
+        <a href="/privacy" class="text-slate hover:text-light transition-colors">Privacy</a>
+        <a href="/terms" class="text-slate hover:text-light transition-colors">Terms</a>
+        <a href="/support" class="text-slate hover:text-light transition-colors">Support</a>
+      </div>
     </div>
   </div>
 </footer>
