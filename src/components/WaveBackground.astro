@@ -3,10 +3,10 @@
 ---
 
 <div class="wave-background">
-  <!-- SVG Wave Layers -->
-  <svg class="wave-svg" viewBox="0 0 1440 800" preserveAspectRatio="none">
+  <!-- SVG Wave Layers - static elements -->
+  <svg class="wave-svg-static" viewBox="0 0 1440 800" preserveAspectRatio="none">
     <defs>
-      <!-- Wave gradients - tiled horizontally to prevent seam on loop -->
+      <!-- Wave gradients -->
       <linearGradient id="waveGradient1" x1="0" y1="0" x2="1440" y2="0" gradientUnits="userSpaceOnUse" spreadMethod="repeat">
         <stop offset="0%" stop-color="rgba(30, 100, 200, 0.13)" />
         <stop offset="50%" stop-color="rgba(60, 120, 220, 0.17)" />
@@ -22,11 +22,7 @@
         <stop offset="50%" stop-color="rgba(65, 130, 215, 0.15)" />
         <stop offset="100%" stop-color="rgba(40, 110, 195, 0.11)" />
       </linearGradient>
-      <!-- Clip path matching wave-1 for particles -->
-      <clipPath id="waveClip">
-        <path d="M0,400 C150,350 350,450 500,400 C650,350 850,450 1000,400 C1150,350 1350,450 1440,400 L1440,800 L0,800 Z"/>
-      </clipPath>
-      <!-- Drop shadow filters for wave depth -->
+      <!-- Drop shadow filters -->
       <filter id="waveShadow0" x="-20%" y="-20%" width="140%" height="140%">
         <feDropShadow dx="0" dy="-14" stdDeviation="10" flood-color="rgba(0,0,0,0.4)"/>
       </filter>
@@ -42,9 +38,8 @@
       </symbol>
     </defs>
 
-    <!-- Stars in the sky - scattered randomly -->
+    <!-- Stars in the sky -->
     <g class="stars" fill="rgba(255,255,255,0.7)">
-      <!-- Scattered stars with natural random placement -->
       <use href="#star4" x="23" y="18" width="4" height="8" class="star"/>
       <use href="#star4" x="147" y="67" width="3" height="6" class="star"/>
       <use href="#star4" x="89" y="142" width="5" height="10" class="star"/>
@@ -132,12 +127,7 @@
       <use href="#star4" x="745" y="167" width="4" height="8" class="star"/>
     </g>
 
-    <!-- Deep background waves - doubled width for seamless horizontal scroll -->
-    <path class="wave wave-1" fill="url(#waveGradient1)" filter="url(#waveShadow0)" d="M0,400 Q180,370 360,400 T720,400 T1080,400 T1440,400 T1800,400 T2160,400 T2520,400 T2880,400 L2880,800 L0,800 Z"/>
-    <path class="wave wave-2" fill="url(#waveGradient2)" filter="url(#waveShadow1)" d="M0,450 Q200,420 400,450 T800,450 T1200,450 T1600,450 T2000,450 T2400,450 T2800,450 L2880,800 L0,800 Z"/>
-    <path class="wave wave-3" fill="url(#waveGradient3)" filter="url(#waveShadow2)" d="M0,500 Q160,475 320,500 T640,500 T960,500 T1280,500 T1600,500 T1920,500 T2240,500 T2560,500 T2880,500 L2880,800 L0,800 Z"/>
-
-    <!-- Digital grid lines -->
+    <!-- Grid lines -->
     <g class="grid-lines" opacity="0.15">
       <line x1="0" y1="200" x2="1440" y2="200" stroke="url(#waveGradient1)" stroke-width="1"/>
       <line x1="0" y1="300" x2="1440" y2="300" stroke="url(#waveGradient1)" stroke-width="1"/>
@@ -146,6 +136,34 @@
       <line x1="0" y1="600" x2="1440" y2="600" stroke="url(#waveGradient1)" stroke-width="1"/>
     </g>
   </svg>
+
+  <!-- Wave containers - two identical SVGs side by side for seamless loop -->
+  <div class="wave-container wave-container-1">
+    <svg class="wave-svg" viewBox="0 0 1440 800" preserveAspectRatio="none">
+      <path fill="url(#waveGradient1)" filter="url(#waveShadow0)" d="M0,400 Q180,370 360,400 T720,400 T1080,400 T1440,400 L1440,800 L0,800 Z"/>
+    </svg>
+    <svg class="wave-svg" viewBox="0 0 1440 800" preserveAspectRatio="none">
+      <path fill="url(#waveGradient1)" filter="url(#waveShadow0)" d="M0,400 Q180,370 360,400 T720,400 T1080,400 T1440,400 L1440,800 L0,800 Z"/>
+    </svg>
+  </div>
+
+  <div class="wave-container wave-container-2">
+    <svg class="wave-svg" viewBox="0 0 1440 800" preserveAspectRatio="none">
+      <path fill="url(#waveGradient2)" filter="url(#waveShadow1)" d="M0,450 Q200,420 400,450 T800,450 T1200,450 T1440,450 L1440,800 L0,800 Z"/>
+    </svg>
+    <svg class="wave-svg" viewBox="0 0 1440 800" preserveAspectRatio="none">
+      <path fill="url(#waveGradient2)" filter="url(#waveShadow1)" d="M0,450 Q200,420 400,450 T800,450 T1200,450 T1440,450 L1440,800 L0,800 Z"/>
+    </svg>
+  </div>
+
+  <div class="wave-container wave-container-3">
+    <svg class="wave-svg" viewBox="0 0 1440 800" preserveAspectRatio="none">
+      <path fill="url(#waveGradient3)" filter="url(#waveShadow2)" d="M0,500 Q160,475 320,500 T640,500 T960,500 T1280,500 T1440,500 L1440,800 L0,800 Z"/>
+    </svg>
+    <svg class="wave-svg" viewBox="0 0 1440 800" preserveAspectRatio="none">
+      <path fill="url(#waveGradient3)" filter="url(#waveShadow2)" d="M0,500 Q160,475 320,500 T640,500 T960,500 T1280,500 T1440,500 L1440,800 L0,800 Z"/>
+    </svg>
+  </div>
 
   <!-- Little boat riding the waves -->
   <div class="boat">⛵</div>
@@ -181,30 +199,44 @@
     );
   }
 
-  .wave-svg {
+  /* Static SVG layer for stars, grid, and defs */
+  .wave-svg-static {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  /* Wave containers - each contains two identical SVGs side by side */
+  .wave-container {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 200%;
     height: 100%;
+    display: flex;
+    flex-direction: row;
   }
 
-  /* Animated waves - horizontal scrolling for realistic water motion */
-  .wave {
-    animation: waveScroll 20s linear infinite;
+  .wave-container .wave-svg {
+    flex: 0 0 50%;
+    width: 50%;
+    height: 100%;
   }
 
-  .wave-1 {
-    animation-duration: 25s;
+  /* Animate each wave container */
+  .wave-container-1 {
+    animation: waveScroll 25s linear infinite;
   }
 
-  .wave-2 {
-    animation-duration: 20s;
-    animation-direction: reverse;
+  .wave-container-2 {
+    animation: waveScroll 20s linear infinite reverse;
   }
 
-  .wave-3 {
-    animation-duration: 15s;
+  .wave-container-3 {
+    animation: waveScroll 15s linear infinite;
   }
 
   @keyframes waveScroll {
@@ -231,7 +263,7 @@
     50% { opacity: 0.25; }
   }
 
-  /* Floating particles - clipped to bottom half (wave area) */
+  /* Floating particles */
   .particles {
     position: absolute;
     top: 50%;
