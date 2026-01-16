@@ -1,0 +1,156 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+import LeadMagnetForm from '../components/LeadMagnetForm.astro'
+---
+
+<Layout
+  title="Why Developers Bypass Your Design System | Free Guide | Buoy"
+  description="7 reasons developers go off-system—and what to do about it. Hint: it's not their fault."
+>
+  <Nav />
+
+  <!-- Hero -->
+  <section class="relative pt-32 pb-16 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
+
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Left: Copy -->
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-lavender/10 border border-lavender/30 rounded-full text-lavender text-sm mb-6">
+            Free Ebook
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6 leading-tight">
+            Why Developers Bypass Your Design System
+          </h1>
+
+          <p class="text-lg text-slate mb-8">
+            You built the system. You documented it. Six months later, your codebase is full of hardcoded values. Here's why—and what to do about it.
+          </p>
+
+          <LeadMagnetForm
+            leadMagnet="why-developers-bypass"
+            buttonText="Get the Guide"
+            successMessage="Check your email for the download!"
+          />
+
+          <p class="text-sm text-slate/70 mt-4">
+            No spam. Unsubscribe anytime.
+          </p>
+        </div>
+
+        <!-- Right: Preview -->
+        <div class="hidden lg:block">
+          <div class="bg-navy border border-lavender/30 rounded-xl p-6 shadow-2xl">
+            <div class="text-sm font-medium text-light mb-4">The 7 Reasons</div>
+            <div class="space-y-3">
+              {[
+                "They can't find what they need",
+                "The system doesn't cover their case",
+                "Using the system is harder than not",
+                "The system slows them down",
+                "They don't know it exists",
+                "It doesn't match how they work",
+                "Nobody enforces it",
+              ].map((reason, i) => (
+                <div class="flex items-center gap-3 text-sm">
+                  <span class="w-6 h-6 rounded-full bg-lavender/20 text-lavender flex items-center justify-center text-xs font-medium">{i + 1}</span>
+                  <span class="text-slate">{reason}</span>
+                </div>
+              ))}
+            </div>
+            <div class="mt-4 pt-4 border-t border-navy-light/20 text-xs text-slate/70">
+              + Solutions for each problem
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Insight -->
+  <section class="py-16 bg-navy">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="text-5xl mb-6">💡</div>
+      <blockquote class="text-2xl font-medium text-light mb-4">
+        "Developers bypass design systems because of friction, gaps, and invisibility. These are system problems, not people problems."
+      </blockquote>
+      <p class="text-slate">The goal isn't compliance. It's making compliance effortless.</p>
+    </div>
+  </section>
+
+  <!-- What You'll Learn -->
+  <section class="py-16 bg-navy-dark">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light mb-8 text-center">What You'll Learn</h2>
+
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="bg-navy border border-navy-light/20 rounded-lg p-6">
+          <div class="text-2xl mb-3">🔍</div>
+          <h3 class="font-medium text-light mb-2">Root Cause Analysis</h3>
+          <p class="text-sm text-slate">Why bypass happens—with real examples from production codebases</p>
+        </div>
+        <div class="bg-navy border border-navy-light/20 rounded-lg p-6">
+          <div class="text-2xl mb-3">🛠️</div>
+          <h3 class="font-medium text-light mb-2">Practical Fixes</h3>
+          <p class="text-sm text-slate">Specific solutions for each of the 7 reasons</p>
+        </div>
+        <div class="bg-navy border border-navy-light/20 rounded-lg p-6">
+          <div class="text-2xl mb-3">📊</div>
+          <h3 class="font-medium text-light mb-2">The Adoption Equation</h3>
+          <p class="text-sm text-slate">A framework for measuring and improving adoption</p>
+        </div>
+        <div class="bg-navy border border-navy-light/20 rounded-lg p-6">
+          <div class="text-2xl mb-3">🔄</div>
+          <h3 class="font-medium text-light mb-2">Improvement Framework</h3>
+          <p class="text-sm text-slate">5-step process for continuous improvement</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who It's For -->
+  <section class="py-16 bg-navy">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light mb-8 text-center">Who This Is For</h2>
+
+      <div class="grid sm:grid-cols-3 gap-6">
+        <div class="text-center">
+          <div class="text-4xl mb-4">🎨</div>
+          <h3 class="font-medium text-light mb-2">Design System Teams</h3>
+          <p class="text-sm text-slate">Understand why adoption stalls and how to fix it</p>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl mb-4">👨‍💼</div>
+          <h3 class="font-medium text-light mb-2">Engineering Leads</h3>
+          <p class="text-sm text-slate">Build a culture of consistency without being the bad guy</p>
+        </div>
+        <div class="text-center">
+          <div class="text-4xl mb-4">👩‍💻</div>
+          <h3 class="font-medium text-light mb-2">Frontend Developers</h3>
+          <p class="text-sm text-slate">Advocate for changes that make the system easier to use</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-16 bg-navy-dark">
+    <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-bold text-light mb-4">Get the Guide</h2>
+      <p class="text-slate mb-8">2,000 words. 7 problems. 7 solutions. Free.</p>
+
+      <LeadMagnetForm
+        leadMagnet="why-developers-bypass"
+        buttonText="Send It to Me"
+        successMessage="Done! Check your inbox."
+        class="max-w-md mx-auto"
+      />
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

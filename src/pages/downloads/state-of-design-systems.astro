@@ -1,0 +1,400 @@
+---
+// Print-ready PDF version
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>State of Design Systems 2026 | Buoy</title>
+    <meta name="robots" content="noindex" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        font-size: 10px;
+        line-height: 1.5;
+        color: #1a1a1a;
+        background: white;
+        padding: 0.4in;
+        max-width: 8.5in;
+        margin: 0 auto;
+      }
+
+      @media print {
+        body { padding: 0.3in; }
+        .no-print { display: none !important; }
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid #0ea5e9;
+      }
+
+      .logo { font-size: 18px; font-weight: 700; color: #F97316; }
+      h1 { font-size: 18px; font-weight: 700; text-align: right; }
+      .subtitle { font-size: 10px; color: #666; text-align: right; }
+
+      .summary-box {
+        background: #f0f9ff;
+        border: 1px solid #0ea5e9;
+        border-radius: 8px;
+        padding: 12px;
+        margin-bottom: 16px;
+      }
+
+      .summary-box h2 {
+        font-size: 11px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .stats-row {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+      }
+
+      .stat {
+        text-align: center;
+        padding: 8px;
+        background: white;
+        border-radius: 6px;
+      }
+
+      .stat-value {
+        font-size: 18px;
+        font-weight: 700;
+        color: #0ea5e9;
+      }
+
+      .stat-label {
+        font-size: 8px;
+        color: #666;
+        margin-top: 2px;
+      }
+
+      h2 {
+        font-size: 12px;
+        font-weight: 700;
+        margin-top: 14px;
+        margin-bottom: 8px;
+        padding: 4px 8px;
+        background: #f0f9ff;
+        border-left: 3px solid #0ea5e9;
+      }
+
+      .finding {
+        margin-bottom: 12px;
+        break-inside: avoid;
+      }
+
+      .finding-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 4px;
+      }
+
+      .finding-num {
+        background: #0ea5e9;
+        color: white;
+        font-size: 10px;
+        font-weight: 700;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .finding-title { font-size: 11px; font-weight: 600; }
+
+      .finding-stat {
+        font-size: 10px;
+        color: #0ea5e9;
+        font-weight: 600;
+        margin-bottom: 2px;
+      }
+
+      .finding-desc {
+        font-size: 9px;
+        color: #666;
+      }
+
+      .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 9px;
+        margin: 8px 0;
+      }
+
+      .data-table th {
+        background: #f8f9fa;
+        padding: 6px 8px;
+        text-align: left;
+        font-weight: 600;
+        border: 1px solid #e5e5e5;
+      }
+
+      .data-table td {
+        padding: 6px 8px;
+        border: 1px solid #e5e5e5;
+      }
+
+      .benchmark-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+        margin: 10px 0;
+      }
+
+      .benchmark {
+        text-align: center;
+        padding: 8px;
+        border-radius: 6px;
+      }
+
+      .benchmark.poor { background: #fef2f2; border: 1px solid #fecaca; }
+      .benchmark.avg { background: #fffbeb; border: 1px solid #fde68a; }
+      .benchmark.good { background: #f0fdf4; border: 1px solid #bbf7d0; }
+      .benchmark.excellent { background: #f0f9ff; border: 1px solid #7dd3fc; }
+
+      .benchmark-label {
+        font-size: 10px;
+        font-weight: 600;
+      }
+
+      .benchmark.poor .benchmark-label { color: #dc2626; }
+      .benchmark.avg .benchmark-label { color: #d97706; }
+      .benchmark.good .benchmark-label { color: #16a34a; }
+      .benchmark.excellent .benchmark-label { color: #0284c7; }
+
+      .benchmark-value {
+        font-size: 8px;
+        color: #666;
+        margin-top: 2px;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .rec-box {
+        background: #f8f9fa;
+        border: 1px solid #e5e5e5;
+        border-radius: 6px;
+        padding: 10px;
+      }
+
+      .rec-num {
+        font-size: 14px;
+        font-weight: 700;
+        color: #0ea5e9;
+        margin-bottom: 4px;
+      }
+
+      .rec-title {
+        font-size: 10px;
+        font-weight: 600;
+        margin-bottom: 2px;
+      }
+
+      .rec-desc {
+        font-size: 8px;
+        color: #666;
+      }
+
+      .cta {
+        margin-top: 14px;
+        padding: 12px;
+        background: #f8f9fa;
+        border: 1px solid #F97316;
+        border-radius: 8px;
+        text-align: center;
+      }
+
+      .cta h3 { font-size: 11px; margin-bottom: 4px; }
+      .cta p { font-size: 9px; color: #666; margin-bottom: 6px; }
+      .cta-link {
+        display: inline-block;
+        padding: 6px 16px;
+        background: #F97316;
+        color: white;
+        font-size: 9px;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      .footer {
+        margin-top: 12px;
+        padding-top: 8px;
+        border-top: 1px solid #e5e5e5;
+        display: flex;
+        justify-content: space-between;
+        font-size: 8px;
+        color: #999;
+      }
+
+      .print-button {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 12px 24px;
+        background: #F97316;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="print-button no-print" onclick="window.print()">Save as PDF</button>
+
+    <header class="header">
+      <div class="logo">Buoy</div>
+      <div>
+        <h1>The State of Design Systems 2026</h1>
+        <p class="subtitle">Based on analysis of 500+ repositories</p>
+      </div>
+    </header>
+
+    <div class="summary-box">
+      <h2>Executive Summary</h2>
+      <div class="stats-row">
+        <div class="stat">
+          <div class="stat-value">73%</div>
+          <div class="stat-label">have significant drift</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">847</div>
+          <div class="stat-label">avg hardcoded colors</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">2.4x</div>
+          <div class="stat-label">more drift after 3 years</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">23%</div>
+          <div class="stat-label">token adoption rate</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">68%</div>
+          <div class="stat-label">less drift with automation</div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Key Findings</h2>
+
+    <div class="finding">
+      <div class="finding-header">
+        <span class="finding-num">1</span>
+        <span class="finding-title">Design Drift Is Universal</span>
+      </div>
+      <div class="finding-stat">Only 8% of codebases have minimal drift</div>
+      <div class="finding-desc">Even teams with dedicated design systems, Storybook documentation, and Figma libraries show significant drift when we scan the actual code.</div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-header">
+        <span class="finding-num">2</span>
+        <span class="finding-title">The 847 Problem</span>
+      </div>
+      <div class="finding-stat">Average: 847 hardcoded colors | Top 10%: Nearly 3,000</div>
+      <div class="finding-desc">In repos with hardcoded colors, we found an average of 47 unique variations of the primary brand color.</div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-header">
+        <span class="finding-num">3</span>
+        <span class="finding-title">Drift Compounds Over Time</span>
+      </div>
+      <table class="data-table">
+        <tr><th>Repo Age</th><th>0-1 yr</th><th>1-2 yr</th><th>2-3 yr</th><th>3-4 yr</th><th>4+ yr</th></tr>
+        <tr><td>Avg Drift Score</td><td>312</td><td>489</td><td>634</td><td>758</td><td>847</td></tr>
+      </table>
+    </div>
+
+    <div class="finding">
+      <div class="finding-header">
+        <span class="finding-num">4</span>
+        <span class="finding-title">Token Adoption Is Low</span>
+      </div>
+      <div class="finding-stat">67% hardcoded | 23% CSS variables | 8% theme objects</div>
+      <div class="finding-desc">Tailwind teams show highest adoption (41%) when using custom theme colors—but arbitrary values bypass everything.</div>
+    </div>
+
+    <div class="finding">
+      <div class="finding-header">
+        <span class="finding-num">5</span>
+        <span class="finding-title">Enforcement Changes Everything</span>
+      </div>
+      <table class="data-table">
+        <tr><th>Enforcement</th><th>None</th><th>Code Review</th><th>Linting</th><th>Blocking CI</th><th>Auto PR Scan</th></tr>
+        <tr><td>Avg Drift</td><td>891</td><td>672</td><td>423</td><td>287</td><td>201</td></tr>
+      </table>
+    </div>
+
+    <h2>Benchmarks: How Do You Compare?</h2>
+
+    <table class="data-table">
+      <tr><th>Metric</th><th>Poor</th><th>Average</th><th>Good</th><th>Excellent</th></tr>
+      <tr><td>Hardcoded colors</td><td>>500</td><td>200-500</td><td>50-200</td><td><50</td></tr>
+      <tr><td>Token usage</td><td><15%</td><td>15-30%</td><td>30-50%</td><td>>50%</td></tr>
+      <tr><td>Arbitrary values</td><td>>100</td><td>50-100</td><td>10-50</td><td><10</td></tr>
+      <tr><td>Color variations</td><td>>30</td><td>15-30</td><td>5-15</td><td><5</td></tr>
+    </table>
+
+    <h2>Recommendations</h2>
+
+    <div class="grid-2">
+      <div class="rec-box">
+        <div class="rec-num">1</div>
+        <div class="rec-title">Automate Enforcement</div>
+        <div class="rec-desc">Don't rely on code review. Use automated scanning in CI/CD. Impact: 68% less drift.</div>
+      </div>
+      <div class="rec-box">
+        <div class="rec-num">2</div>
+        <div class="rec-title">Use Semantic Tokens</div>
+        <div class="rec-desc">Flat palettes encourage hardcoding. Semantic tokens encourage adoption. Impact: 34% higher usage.</div>
+      </div>
+      <div class="rec-box">
+        <div class="rec-num">3</div>
+        <div class="rec-title">Address Framework Defaults</div>
+        <div class="rec-desc">Customize the entire palette. Remove unused defaults. Impact: 43% fewer mixed colors.</div>
+      </div>
+      <div class="rec-box">
+        <div class="rec-num">4</div>
+        <div class="rec-title">Measure Continuously</div>
+        <div class="rec-desc">What gets measured gets managed. Track drift over time. Prevents compounding.</div>
+      </div>
+    </div>
+
+    <div class="cta">
+      <h3>Get Your Drift Score</h3>
+      <p>Buoy scans your repository and shows exactly how you compare to industry benchmarks.</p>
+      <a href="https://buoy.design" class="cta-link">Scan Free at buoy.design →</a>
+    </div>
+
+    <footer class="footer">
+      <span>© 2026 Buoy. The design system drift detector.</span>
+      <span>buoy.design</span>
+    </footer>
+  </body>
+</html>

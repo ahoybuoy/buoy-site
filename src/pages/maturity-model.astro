@@ -1,0 +1,151 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+import LeadMagnetForm from '../components/LeadMagnetForm.astro'
+---
+
+<Layout
+  title="Design System Maturity Model | Free Guide | Buoy"
+  description="5 levels from ad hoc to automated governance. Self-assessment checklists and roadmap for each level."
+>
+  <Nav />
+
+  <!-- Hero -->
+  <section class="relative pt-32 pb-16 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
+
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Left: Copy -->
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-lavender/10 border border-lavender/30 rounded-full text-lavender text-sm mb-6">
+            Free Framework
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6 leading-tight">
+            The Design System Maturity Model
+          </h1>
+
+          <p class="text-lg text-slate mb-8">
+            Understand where you are, where you're going, and what to focus on next. 5 levels from ad hoc to automated governance.
+          </p>
+
+          <LeadMagnetForm
+            leadMagnet="maturity-model"
+            buttonText="Get the Guide"
+            successMessage="Check your email for the download!"
+          />
+
+          <p class="text-sm text-slate/70 mt-4">
+            No spam. Unsubscribe anytime.
+          </p>
+        </div>
+
+        <!-- Right: Levels -->
+        <div class="hidden lg:block">
+          <div class="space-y-3">
+            {[
+              { level: '5', title: 'Automated Governance', desc: 'System enforces itself' },
+              { level: '4', title: 'Measured Adoption', desc: 'You know what\'s used' },
+              { level: '3', title: 'Documented Standards', desc: 'Anyone can find answers' },
+              { level: '2', title: 'Shared Components', desc: 'Code exists, adoption varies' },
+              { level: '1', title: 'Ad Hoc', desc: 'Every dev for themselves' },
+            ].map((l) => (
+              <div class="bg-navy border border-lavender/20 rounded-lg p-4 flex items-center gap-4">
+                <div class="w-10 h-10 rounded-lg bg-lavender/20 text-lavender flex items-center justify-center font-bold">{l.level}</div>
+                <div>
+                  <div class="font-medium text-light text-sm">{l.title}</div>
+                  <div class="text-xs text-slate">{l.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Inside -->
+  <section class="py-16 bg-navy">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light mb-8 text-center">What's Inside</h2>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-navy-dark border border-navy-light/20 rounded-lg p-6 text-center">
+          <div class="text-3xl mb-3">📊</div>
+          <h3 class="font-medium text-light mb-2">5 Levels Defined</h3>
+          <p class="text-xs text-slate">Clear characteristics for each maturity stage</p>
+        </div>
+        <div class="bg-navy-dark border border-navy-light/20 rounded-lg p-6 text-center">
+          <div class="text-3xl mb-3">✅</div>
+          <h3 class="font-medium text-light mb-2">Self-Assessment</h3>
+          <p class="text-xs text-slate">Checklists to identify your current level</p>
+        </div>
+        <div class="bg-navy-dark border border-navy-light/20 rounded-lg p-6 text-center">
+          <div class="text-3xl mb-3">🎯</div>
+          <h3 class="font-medium text-light mb-2">Focus Areas</h3>
+          <p class="text-xs text-slate">What to prioritize at each level</p>
+        </div>
+        <div class="bg-navy-dark border border-navy-light/20 rounded-lg p-6 text-center">
+          <div class="text-3xl mb-3">🚧</div>
+          <h3 class="font-medium text-light mb-2">Common Mistakes</h3>
+          <p class="text-xs text-slate">Pitfalls to avoid at each stage</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why It Matters -->
+  <section class="py-16 bg-navy-dark">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="text-5xl mb-6">💡</div>
+      <blockquote class="text-2xl font-medium text-light mb-4">
+        "Design systems fail not because they're poorly designed, but because organizations try to solve Level 4 problems with Level 1 infrastructure."
+      </blockquote>
+      <p class="text-slate">Know your level. Focus on the right things.</p>
+    </div>
+  </section>
+
+  <!-- Benchmarks -->
+  <section class="py-16 bg-navy">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light mb-8 text-center">Industry Benchmarks</h2>
+
+      <div class="grid grid-cols-5 gap-4 text-center">
+        {[
+          { level: '1', pct: '35%', size: '1-10' },
+          { level: '2', pct: '30%', size: '5-30' },
+          { level: '3', pct: '20%', size: '20-100' },
+          { level: '4', pct: '10%', size: '50-500' },
+          { level: '5', pct: '5%', size: '100+' },
+        ].map((b) => (
+          <div class="bg-navy-dark border border-navy-light/20 rounded-lg p-4">
+            <div class="text-2xl font-bold text-lavender mb-1">L{b.level}</div>
+            <div class="text-lg font-medium text-light">{b.pct}</div>
+            <div class="text-xs text-slate mt-1">{b.size} devs</div>
+          </div>
+        ))}
+      </div>
+
+      <p class="text-center text-sm text-slate mt-6">% of teams at each level, typical team size</p>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-16 bg-navy-dark">
+    <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-bold text-light mb-4">Find Your Level</h2>
+      <p class="text-slate mb-8">Self-assessment checklists. Level-up roadmaps. Free.</p>
+
+      <LeadMagnetForm
+        leadMagnet="maturity-model"
+        buttonText="Send It to Me"
+        successMessage="Done! Check your inbox."
+        class="max-w-md mx-auto"
+      />
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

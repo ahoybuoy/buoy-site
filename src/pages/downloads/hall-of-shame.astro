@@ -1,0 +1,420 @@
+---
+// Print-ready PDF version
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hardcoded Color Hall of Shame | Buoy</title>
+    <meta name="robots" content="noindex" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        font-size: 10px;
+        line-height: 1.5;
+        color: #1a1a1a;
+        background: white;
+        padding: 0.4in;
+        max-width: 8.5in;
+        margin: 0 auto;
+      }
+
+      @media print {
+        body { padding: 0; }
+        .no-print { display: none !important; }
+        .page-break { page-break-before: always; }
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid #EF4444;
+      }
+
+      .logo { font-size: 20px; font-weight: 700; color: #F97316; }
+      h1 { font-size: 18px; font-weight: 700; text-align: right; }
+      .subtitle { font-size: 10px; color: #666; text-align: right; }
+
+      .intro {
+        background: #fef2f2;
+        border-left: 3px solid #EF4444;
+        padding: 10px 14px;
+        margin-bottom: 16px;
+        font-size: 10px;
+      }
+
+      .pattern {
+        margin-bottom: 14px;
+        break-inside: avoid;
+      }
+
+      .pattern-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 6px;
+      }
+
+      .pattern-num {
+        background: #EF4444;
+        color: white;
+        font-size: 9px;
+        font-weight: 700;
+        padding: 2px 6px;
+        border-radius: 4px;
+      }
+
+      .pattern-title {
+        font-size: 11px;
+        font-weight: 600;
+      }
+
+      .pattern-desc {
+        font-size: 9px;
+        color: #666;
+        margin-bottom: 6px;
+      }
+
+      .code-block {
+        background: #1a2744;
+        color: #e5e7eb;
+        padding: 8px 10px;
+        border-radius: 6px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 8px;
+        line-height: 1.6;
+        overflow-x: auto;
+      }
+
+      .code-comment { color: #6b7280; }
+      .code-value { color: #F97316; }
+      .code-error { color: #f87171; }
+      .code-prop { color: #a78bfa; }
+
+      .problem {
+        background: #fef3c7;
+        padding: 6px 10px;
+        border-radius: 4px;
+        font-size: 8px;
+        margin-top: 6px;
+      }
+
+      .problem strong { color: #92400e; }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      .scoring {
+        background: #f8f9fa;
+        border: 2px solid #F97316;
+        border-radius: 8px;
+        padding: 12px;
+        margin-top: 16px;
+      }
+
+      .scoring h2 {
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      .score-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+      }
+
+      .score-item {
+        text-align: center;
+        padding: 8px;
+        background: white;
+        border: 1px solid #e5e5e5;
+        border-radius: 6px;
+      }
+
+      .score-range { font-size: 14px; font-weight: 700; color: #F97316; }
+      .score-label { font-size: 8px; color: #666; }
+
+      .cta {
+        margin-top: 16px;
+        padding: 12px;
+        background: #f8f9fa;
+        border: 1px solid #F97316;
+        border-radius: 8px;
+        text-align: center;
+      }
+
+      .cta h2 { font-size: 12px; font-weight: 600; margin-bottom: 4px; }
+      .cta p { font-size: 9px; color: #666; margin-bottom: 6px; }
+      .cta-link {
+        display: inline-block;
+        padding: 6px 16px;
+        background: #F97316;
+        color: white;
+        font-size: 10px;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      .footer {
+        margin-top: 16px;
+        padding-top: 10px;
+        border-top: 1px solid #e5e5e5;
+        display: flex;
+        justify-content: space-between;
+        font-size: 8px;
+        color: #999;
+      }
+
+      .print-button {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 12px 24px;
+        background: #F97316;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="print-button no-print" onclick="window.print()">Save as PDF</button>
+
+    <header class="header">
+      <div class="logo">Buoy</div>
+      <div>
+        <h1>Hardcoded Color Hall of Shame</h1>
+        <p class="subtitle">10 patterns of design drift from real codebases</p>
+      </div>
+    </header>
+
+    <div class="intro">
+      These patterns were found in production codebases. How many are hiding in yours?
+    </div>
+
+    <div class="grid-2">
+      <!-- Pattern 1 -->
+      <div class="pattern">
+        <div class="pattern-header">
+          <span class="pattern-num">01</span>
+          <span class="pattern-title">The Slight Variation</span>
+        </div>
+        <div class="pattern-desc">Close enough to look intentional. Different enough to cause problems.</div>
+        <div class="code-block">
+          <div><span class="code-comment">/* Design system */</span></div>
+          <div><span class="code-prop">--color-primary</span>: <span class="code-value">#3B82F6</span>;</div>
+          <div class="code-comment">/* Found in code */</div>
+          <div>.btn { background: <span class="code-value">#3B82F6</span>; }</div>
+          <div>.cta { background: <span class="code-error">#3A81F5</span>; } <span class="code-comment">// off by 1</span></div>
+          <div>.hero { background: <span class="code-error">#3C83F7</span>; } <span class="code-comment">// "close"</span></div>
+        </div>
+        <div class="problem"><strong>Problem:</strong> 4 buttons, 4 blues. Brand refresh misses 3.</div>
+      </div>
+
+      <!-- Pattern 2 -->
+      <div class="pattern">
+        <div class="pattern-header">
+          <span class="pattern-num">02</span>
+          <span class="pattern-title">The Opacity Hack</span>
+        </div>
+        <div class="pattern-desc">Need a lighter shade? Just add opacity!</div>
+        <div class="code-block">
+          <div><span class="code-comment">/* Has color scale */</span></div>
+          <div><span class="code-prop">--color-primary-100</span>: <span class="code-value">#DBEAFE</span>;</div>
+          <div class="code-comment">/* Developer does this */</div>
+          <div>.hover { background: <span class="code-error">rgba(59,130,246,0.1)</span>; }</div>
+          <div>.tip { background: <span class="code-error">#3B82F680</span>; }</div>
+        </div>
+        <div class="problem"><strong>Problem:</strong> Won't update. Inconsistent tints. Unsearchable.</div>
+      </div>
+
+      <!-- Pattern 3 -->
+      <div class="pattern">
+        <div class="pattern-header">
+          <span class="pattern-num">03</span>
+          <span class="pattern-title">The Eyedropper</span>
+        </div>
+        <div class="pattern-desc">Figma has a color. Dev samples it directly.</div>
+        <div class="code-block">
+          <div><span class="code-comment">/* Eyedropped from Figma */</span></div>
+          <div>.gradient {</div>
+          <div>  background: linear-gradient(</div>
+          <div>    <span class="code-error">#6366F1</span>, <span class="code-comment">// not in system</span></div>
+          <div>    <span class="code-error">#8B5CF6</span>, <span class="code-comment">// not in system</span></div>
+          <div>    <span class="code-error">#A855F7</span>  <span class="code-comment">// not in system</span></div>
+          <div>  );</div>
+          <div>}</div>
+        </div>
+        <div class="problem"><strong>Problem:</strong> No source of truth. Manual updates forever.</div>
+      </div>
+
+      <!-- Pattern 4 -->
+      <div class="pattern">
+        <div class="pattern-header">
+          <span class="pattern-num">04</span>
+          <span class="pattern-title">Framework Default</span>
+        </div>
+        <div class="pattern-desc">Using Tailwind/Bootstrap defaults instead of your brand.</div>
+        <div class="code-block">
+          <div><span class="code-comment">/* Tailwind defaults, not your colors */</span></div>
+          <div>&lt;div class="<span class="code-error">bg-blue-500</span>"&gt;</div>
+          <div>&lt;div class="<span class="code-error">text-gray-600</span>"&gt;</div>
+          <div>&lt;div class="<span class="code-error">border-red-400</span>"&gt;</div>
+        </div>
+        <div class="problem"><strong>Problem:</strong> Shipping someone else's design system.</div>
+      </div>
+
+      <!-- Pattern 5 -->
+      <div class="pattern">
+        <div class="pattern-header">
+          <span class="pattern-num">05</span>
+          <span class="pattern-title">The Magic Number</span>
+        </div>
+        <div class="pattern-desc">Hex values with no context or explanation.</div>
+        <div class="code-block">
+          <div>.status { background: <span class="code-error">#22C55E</span>; }</div>
+          <div>.warning { background: <span class="code-error">#F59E0B</span>; }</div>
+          <div>.promo { background: <span class="code-error">#7C3AED</span>; }</div>
+          <div><span class="code-comment">// What do these mean? Who approved?</span></div>
+        </div>
+        <div class="problem"><strong>Problem:</strong> Can't audit. Can't update systematically.</div>
+      </div>
+
+      <!-- Pattern 6 -->
+      <div class="pattern">
+        <div class="pattern-header">
+          <span class="pattern-num">06</span>
+          <span class="pattern-title">Inline Emergency</span>
+        </div>
+        <div class="pattern-desc">"Just this once" becomes everywhere.</div>
+        <div class="code-block">
+          <div>&lt;button style=&#123;&#123;</div>
+          <div>  backgroundColor: '<span class="code-error">#3B82F6</span>'</div>
+          <div>&#125;&#125;&gt;</div>
+          <div>&lt;div style=&#123;&#123;</div>
+          <div>  color: '<span class="code-error">#EF4444</span>'</div>
+          <div>&#125;&#125;&gt;</div>
+        </div>
+        <div class="problem"><strong>Problem:</strong> Unsearchable. Unreviewable. Unmaintainable.</div>
+      </div>
+
+      <!-- Pattern 7 -->
+      <div class="pattern">
+        <div class="pattern-header">
+          <span class="pattern-num">07</span>
+          <span class="pattern-title">Copy-Paste Chain</span>
+        </div>
+        <div class="pattern-desc">One hardcoded value spreads through the codebase.</div>
+        <div class="code-block">
+          <div><span class="code-comment">// Button.tsx (2019)</span></div>
+          <div>background: '<span class="code-error">#3B82F6</span>'</div>
+          <div><span class="code-comment">// Link.tsx (2020) - "copied from Button"</span></div>
+          <div>color: '<span class="code-error">#3B82F6</span>'</div>
+          <div><span class="code-comment">// Card.tsx (2021) - "same blue"</span></div>
+          <div>border: '<span class="code-error">#3B82F6</span>'</div>
+        </div>
+        <div class="problem"><strong>Problem:</strong> 5 files, 5 years, never questioned.</div>
+      </div>
+
+      <!-- Pattern 8 -->
+      <div class="pattern">
+        <div class="pattern-header">
+          <span class="pattern-num">08</span>
+          <span class="pattern-title">Dark Mode Disaster</span>
+        </div>
+        <div class="pattern-desc">Manual color inversions instead of semantic tokens.</div>
+        <div class="code-block">
+          <div>.card { background: <span class="code-error">#FFFFFF</span>; }</div>
+          <div>.dark .card { background: <span class="code-error">#1F2937</span>; }</div>
+          <div><span class="code-comment">// Except this one...</span></div>
+          <div>.dark .special { background: <span class="code-error">#111827</span>; }</div>
+        </div>
+        <div class="problem"><strong>Problem:</strong> Maintained separately. Inconsistency guaranteed.</div>
+      </div>
+
+      <!-- Pattern 9 -->
+      <div class="pattern">
+        <div class="pattern-header">
+          <span class="pattern-num">09</span>
+          <span class="pattern-title">Multiple Sources</span>
+        </div>
+        <div class="pattern-desc">Colors defined in 5 places with subtle differences.</div>
+        <div class="code-block">
+          <div><span class="code-comment">// variables.css</span> --brand: <span class="code-value">#3B82F6</span>;</div>
+          <div><span class="code-comment">// colors.js</span> brandBlue = '<span class="code-value">#3B82F6</span>';</div>
+          <div><span class="code-comment">// tailwind.config</span> blue: '<span class="code-error">#3B81F6</span>' <span class="code-comment">// typo!</span></div>
+          <div><span class="code-comment">// constants.ts</span> BRAND = '<span class="code-value">#3b82f6</span>';</div>
+        </div>
+        <div class="problem"><strong>Problem:</strong> 5 sources. 1 typo. Which is used?</div>
+      </div>
+
+      <!-- Pattern 10 -->
+      <div class="pattern">
+        <div class="pattern-header">
+          <span class="pattern-num">10</span>
+          <span class="pattern-title">Abandoned Variable</span>
+        </div>
+        <div class="pattern-desc">Tokens exist. Nobody uses them.</div>
+        <div class="code-block">
+          <div><span class="code-comment">/* Defined in :root */</span></div>
+          <div><span class="code-prop">--color-success</span>: <span class="code-value">#22C55E</span>;</div>
+          <div><span class="code-comment">/* Meanwhile in code */</span></div>
+          <div>.success { color: <span class="code-error">#16A34A</span>; } <span class="code-comment">// different!</span></div>
+        </div>
+        <div class="problem"><strong>Problem:</strong> System exists. Nobody knows or cares.</div>
+      </div>
+    </div>
+
+    <!-- Scoring -->
+    <div class="scoring">
+      <h2>How Many Did You Find?</h2>
+      <div class="score-grid">
+        <div class="score-item">
+          <div class="score-range">0</div>
+          <div class="score-label">Lying or great tooling</div>
+        </div>
+        <div class="score-item">
+          <div class="score-range">1-3</div>
+          <div class="score-label">Normal drift</div>
+        </div>
+        <div class="score-item">
+          <div class="score-range">4-6</div>
+          <div class="score-label">Time for an audit</div>
+        </div>
+        <div class="score-item">
+          <div class="score-range">7+</div>
+          <div class="score-label">System in Figma only</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta">
+      <h2>Find Your Hall of Shame</h2>
+      <p>Buoy scans your repo and finds every hardcoded value automatically.</p>
+      <a href="https://buoy.design" class="cta-link">Scan Your Repo Free →</a>
+    </div>
+
+    <footer class="footer">
+      <span>© 2026 Buoy. The design system drift detector.</span>
+      <span>buoy.design</span>
+    </footer>
+  </body>
+</html>

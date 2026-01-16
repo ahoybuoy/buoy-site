@@ -1,0 +1,160 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+import LeadMagnetForm from '../components/LeadMagnetForm.astro'
+---
+
+<Layout
+  title="Hardcoded Color Hall of Shame | Free PDF | Buoy"
+  description="Real examples of design drift disasters. See the patterns hiding in codebases everywhere—and probably in yours too."
+>
+  <Nav />
+
+  <!-- Hero -->
+  <section class="relative pt-32 pb-16 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
+
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Left: Copy -->
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-red-500/10 border border-red-500/30 rounded-full text-red-400 text-sm mb-6">
+            Free PDF Download
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6 leading-tight">
+            The Hardcoded Color Hall of Shame
+          </h1>
+
+          <p class="text-lg text-slate mb-8">
+            Real examples of design drift disasters from production codebases. 10 patterns that cause chaos—and are probably hiding in your repo right now.
+          </p>
+
+          <LeadMagnetForm
+            leadMagnet="hall-of-shame"
+            buttonText="Get the Hall of Shame"
+            successMessage="Check your email for the download!"
+          />
+
+          <p class="text-sm text-slate/70 mt-4">
+            No spam. Unsubscribe anytime.
+          </p>
+        </div>
+
+        <!-- Right: Preview -->
+        <div class="hidden lg:block">
+          <div class="bg-navy border border-red-500/30 rounded-xl p-6 shadow-2xl">
+            <div class="text-sm font-mono space-y-3">
+              <div class="text-slate">/* The design system says */</div>
+              <div><span class="text-lavender">--color-primary</span>: <span class="text-buoy">#3B82F6</span>;</div>
+              <div class="text-slate mt-4">/* What we found */</div>
+              <div class="flex items-center gap-2">
+                <span class="text-green-400">✓</span>
+                <span class="text-slate">background:</span>
+                <span class="text-buoy">#3B82F6</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-red-400">✗</span>
+                <span class="text-slate">background:</span>
+                <span class="text-red-300">#3A81F5</span>
+                <span class="text-slate/50 text-xs">off by one</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-red-400">✗</span>
+                <span class="text-slate">background:</span>
+                <span class="text-red-300">#3C83F7</span>
+                <span class="text-slate/50 text-xs">"close enough"</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-red-400">✗</span>
+                <span class="text-slate">background:</span>
+                <span class="text-red-300">#3b82f6</span>
+                <span class="text-slate/50 text-xs">hardcoded</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Inside -->
+  <section class="py-16 bg-navy">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light mb-8 text-center">10 Patterns of Shame</h2>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        {[
+          { num: '01', title: 'Slight Variation' },
+          { num: '02', title: 'Opacity Hack' },
+          { num: '03', title: 'Eyedropper' },
+          { num: '04', title: 'Framework Default' },
+          { num: '05', title: 'Magic Number' },
+          { num: '06', title: 'Inline Emergency' },
+          { num: '07', title: 'Copy-Paste Chain' },
+          { num: '08', title: 'Dark Mode Disaster' },
+          { num: '09', title: 'Multiple Sources' },
+          { num: '10', title: 'Abandoned Variable' },
+        ].map((item) => (
+          <div class="bg-navy-dark border border-navy-light/20 rounded-lg p-4 text-center">
+            <div class="text-2xl font-bold text-red-400 mb-1">{item.num}</div>
+            <div class="text-sm text-slate">{item.title}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Example -->
+  <section class="py-16 bg-navy-dark">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light mb-8 text-center">Sneak Peek: The Copy-Paste Chain</h2>
+
+      <div class="bg-navy border border-navy-light/30 rounded-xl p-6 font-mono text-sm">
+        <div class="space-y-4">
+          <div>
+            <span class="text-slate/50">// components/Button.tsx (2019)</span>
+            <div class="text-slate">backgroundColor: <span class="text-buoy">'#3B82F6'</span></div>
+          </div>
+          <div>
+            <span class="text-slate/50">// components/Link.tsx (2020)</span>
+            <div class="text-slate">color: <span class="text-buoy">'#3B82F6'</span> <span class="text-slate/50">// "copied from Button"</span></div>
+          </div>
+          <div>
+            <span class="text-slate/50">// features/dashboard/Card.tsx (2021)</span>
+            <div class="text-slate">borderColor: <span class="text-buoy">'#3B82F6'</span> <span class="text-slate/50">// "same blue as buttons"</span></div>
+          </div>
+          <div>
+            <span class="text-slate/50">// pages/marketing/Hero.tsx (2022)</span>
+            <div class="text-slate">background: <span class="text-buoy">'#3B82F6'</span> <span class="text-slate/50">// "our brand blue"</span></div>
+          </div>
+          <div>
+            <span class="text-slate/50">// mobile/components/Tab.tsx (2023)</span>
+            <div class="text-slate">tintColor: <span class="text-buoy">'#3B82F6'</span> <span class="text-slate/50">// "matches web"</span></div>
+          </div>
+        </div>
+        <div class="mt-6 pt-4 border-t border-navy-light/20 text-slate/70 text-xs">
+          5 files. 5 years. One hardcoded value copied forward.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-16 bg-navy">
+    <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-bold text-light mb-4">See All 10 Patterns</h2>
+      <p class="text-slate mb-8">Real code. Real disasters. Real lessons.</p>
+
+      <LeadMagnetForm
+        leadMagnet="hall-of-shame"
+        buttonText="Send It to Me"
+        successMessage="Done! Check your inbox."
+        class="max-w-md mx-auto"
+      />
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

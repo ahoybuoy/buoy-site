@@ -1,0 +1,329 @@
+---
+// Print-ready PDF version
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PR Review Cheat Sheet | Buoy</title>
+    <meta name="robots" content="noindex" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap');
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        font-size: 9px;
+        line-height: 1.4;
+        color: #1a1a1a;
+        background: white;
+        padding: 0.35in;
+        max-width: 8.5in;
+        margin: 0 auto;
+      }
+
+      @media print {
+        body { padding: 0.25in; }
+        .no-print { display: none !important; }
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #F97316;
+      }
+
+      .logo { font-size: 16px; font-weight: 700; color: #F97316; }
+      h1 { font-size: 14px; font-weight: 700; text-align: right; }
+      .subtitle { font-size: 9px; color: #666; text-align: right; }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .section {
+        break-inside: avoid;
+        margin-bottom: 10px;
+      }
+
+      .section-header {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 6px;
+        padding-bottom: 4px;
+        border-bottom: 1px solid #e5e5e5;
+      }
+
+      .section-icon { font-size: 12px; }
+      .section-title { font-size: 10px; font-weight: 600; }
+
+      .pattern {
+        margin-bottom: 8px;
+      }
+
+      .pattern-title {
+        font-size: 9px;
+        font-weight: 600;
+        margin-bottom: 3px;
+      }
+
+      .comment-box {
+        background: #f8f9fa;
+        border: 1px solid #e5e5e5;
+        border-radius: 4px;
+        padding: 6px 8px;
+        font-size: 8px;
+        color: #333;
+        font-style: italic;
+      }
+
+      .quick-ref {
+        margin-top: 10px;
+        break-inside: avoid;
+      }
+
+      .quick-ref h2 {
+        font-size: 10px;
+        font-weight: 600;
+        margin-bottom: 6px;
+        padding: 3px 6px;
+        background: #fff7ed;
+        border-left: 3px solid #F97316;
+      }
+
+      .ref-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 8px;
+      }
+
+      .ref-table th {
+        background: #f8f9fa;
+        padding: 4px 6px;
+        text-align: left;
+        font-weight: 600;
+        border: 1px solid #e5e5e5;
+      }
+
+      .ref-table td {
+        padding: 4px 6px;
+        border: 1px solid #e5e5e5;
+      }
+
+      .ref-table td:last-child {
+        color: #F97316;
+        font-style: italic;
+      }
+
+      .tips-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .tip-box {
+        background: #f8f9fa;
+        border: 1px solid #e5e5e5;
+        border-radius: 6px;
+        padding: 8px;
+      }
+
+      .tip-title {
+        font-size: 9px;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+
+      .tip-content {
+        font-size: 8px;
+        color: #666;
+      }
+
+      .cta {
+        margin-top: 10px;
+        padding: 10px;
+        background: #f8f9fa;
+        border: 1px solid #F97316;
+        border-radius: 6px;
+        text-align: center;
+      }
+
+      .cta h3 { font-size: 10px; margin-bottom: 3px; }
+      .cta p { font-size: 8px; color: #666; margin-bottom: 4px; }
+      .cta-link {
+        display: inline-block;
+        padding: 4px 12px;
+        background: #F97316;
+        color: white;
+        font-size: 8px;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 4px;
+      }
+
+      .footer {
+        margin-top: 8px;
+        padding-top: 6px;
+        border-top: 1px solid #e5e5e5;
+        display: flex;
+        justify-content: space-between;
+        font-size: 7px;
+        color: #999;
+      }
+
+      .print-button {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 12px 24px;
+        background: #F97316;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="print-button no-print" onclick="window.print()">Save as PDF</button>
+
+    <header class="header">
+      <div class="logo">Buoy</div>
+      <div>
+        <h1>PR Review Cheat Sheet</h1>
+        <p class="subtitle">Copy-paste comments for design consistency</p>
+      </div>
+    </header>
+
+    <div class="grid-2">
+      <!-- Colors -->
+      <div class="section">
+        <div class="section-header">
+          <span class="section-icon">🎨</span>
+          <span class="section-title">Colors</span>
+        </div>
+        <div class="pattern">
+          <div class="pattern-title">Hardcoded hex value</div>
+          <div class="comment-box">"This looks like a hardcoded color. Can we use a design token instead?"</div>
+        </div>
+        <div class="pattern">
+          <div class="pattern-title">Close but not exact</div>
+          <div class="comment-box">"This color (#3A81F5) is close to our primary (#3B82F6). Intentional, or should we use the token?"</div>
+        </div>
+        <div class="pattern">
+          <div class="pattern-title">Arbitrary Tailwind</div>
+          <div class="comment-box">"Can we use a theme color instead of bg-[#3B82F6]?"</div>
+        </div>
+      </div>
+
+      <!-- Spacing -->
+      <div class="section">
+        <div class="section-header">
+          <span class="section-icon">📏</span>
+          <span class="section-title">Spacing</span>
+        </div>
+        <div class="pattern">
+          <div class="pattern-title">Off-scale value</div>
+          <div class="comment-box">"This spacing (13px) isn't in our scale. Closest: 12px or 16px. Which fits?"</div>
+        </div>
+        <div class="pattern">
+          <div class="pattern-title">Magic number</div>
+          <div class="comment-box">"What's the reasoning behind 37px? If intentional, can we add a comment?"</div>
+        </div>
+        <div class="pattern">
+          <div class="pattern-title">Inconsistent spacing</div>
+          <div class="comment-box">"This spacing differs from similar components. Should we align for consistency?"</div>
+        </div>
+      </div>
+
+      <!-- Typography -->
+      <div class="section">
+        <div class="section-header">
+          <span class="section-icon">🔤</span>
+          <span class="section-title">Typography</span>
+        </div>
+        <div class="pattern">
+          <div class="pattern-title">Hardcoded font size</div>
+          <div class="comment-box">"Can we use a typography token here instead of the hardcoded size?"</div>
+        </div>
+        <div class="pattern">
+          <div class="pattern-title">Custom font-family</div>
+          <div class="comment-box">"This declares font-family directly. Can we use our typography system?"</div>
+        </div>
+        <div class="pattern">
+          <div class="pattern-title">Non-standard weight</div>
+          <div class="comment-box">"We use 400, 500, 700 for weights. Reason for 600 here?"</div>
+        </div>
+      </div>
+
+      <!-- Components -->
+      <div class="section">
+        <div class="section-header">
+          <span class="section-icon">🧩</span>
+          <span class="section-title">Components</span>
+        </div>
+        <div class="pattern">
+          <div class="pattern-title">Inline style override</div>
+          <div class="comment-box">"This inline style overrides the component. Can we use a prop, or add a variant?"</div>
+        </div>
+        <div class="pattern">
+          <div class="pattern-title">!important flag</div>
+          <div class="comment-box">"I see !important here. Can we solve the specificity issue differently?"</div>
+        </div>
+        <div class="pattern">
+          <div class="pattern-title">Duplicated pattern</div>
+          <div class="comment-box">"This looks like our existing ComponentName. Can we use that instead?"</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="quick-ref">
+      <h2>Quick Reference</h2>
+      <table class="ref-table">
+        <tr><th>Issue</th><th>Question to Ask</th></tr>
+        <tr><td>Hardcoded color</td><td>"Can we use a token?"</td></tr>
+        <tr><td>Arbitrary spacing</td><td>"What's the closest scale value?"</td></tr>
+        <tr><td>Custom font size</td><td>"Do we have a type style for this?"</td></tr>
+        <tr><td>Inline styles</td><td>"Can a prop or variant handle this?"</td></tr>
+        <tr><td>!important</td><td>"What's causing the specificity issue?"</td></tr>
+        <tr><td>New CSS file</td><td>"Can existing utilities cover this?"</td></tr>
+        <tr><td>Similar to existing</td><td>"Why not use the existing component?"</td></tr>
+        <tr><td>Magic number</td><td>"What's the reasoning? Can we document it?"</td></tr>
+      </table>
+    </div>
+
+    <div class="tips-row">
+      <div class="tip-box">
+        <div class="tip-title">Polite Version</div>
+        <div class="tip-content">"I noticed this uses a hardcoded value. Would you mind checking if there's a token? Happy to help find it!"</div>
+      </div>
+      <div class="tip-box">
+        <div class="tip-title">Direct Version</div>
+        <div class="tip-content">"Hardcoded color — use --color-primary-500 instead."</div>
+      </div>
+    </div>
+
+    <div class="cta">
+      <h3>Tired of Manual Review?</h3>
+      <p>Buoy does this automatically on every PR.</p>
+      <a href="https://buoy.design" class="cta-link">Try Free at buoy.design →</a>
+    </div>
+
+    <footer class="footer">
+      <span>© 2026 Buoy. The design system drift detector.</span>
+      <span>buoy.design</span>
+    </footer>
+  </body>
+</html>

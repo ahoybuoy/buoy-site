@@ -1,0 +1,459 @@
+---
+// Print-ready PDF version
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design System Maturity Model | Buoy</title>
+    <meta name="robots" content="noindex" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        font-size: 9px;
+        line-height: 1.4;
+        color: #1a1a1a;
+        background: white;
+        padding: 0.35in;
+        max-width: 8.5in;
+        margin: 0 auto;
+      }
+
+      @media print {
+        body { padding: 0.25in; }
+        .no-print { display: none !important; }
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #a78bfa;
+      }
+
+      .logo { font-size: 16px; font-weight: 700; color: #F97316; }
+      h1 { font-size: 14px; font-weight: 700; text-align: right; }
+      .subtitle { font-size: 9px; color: #666; text-align: right; }
+
+      .levels-overview {
+        display: flex;
+        gap: 6px;
+        margin-bottom: 14px;
+      }
+
+      .level-pill {
+        flex: 1;
+        text-align: center;
+        padding: 8px 4px;
+        background: #f5f3ff;
+        border: 1px solid #a78bfa;
+        border-radius: 6px;
+      }
+
+      .level-num {
+        font-size: 14px;
+        font-weight: 700;
+        color: #a78bfa;
+      }
+
+      .level-name {
+        font-size: 7px;
+        color: #666;
+        margin-top: 2px;
+      }
+
+      .level-section {
+        margin-bottom: 12px;
+        break-inside: avoid;
+        border: 1px solid #e5e5e5;
+        border-radius: 6px;
+        padding: 10px;
+      }
+
+      .level-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 6px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid #e5e5e5;
+      }
+
+      .level-badge {
+        background: #a78bfa;
+        color: white;
+        font-size: 11px;
+        font-weight: 700;
+        width: 24px;
+        height: 24px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .level-title {
+        font-size: 11px;
+        font-weight: 600;
+      }
+
+      .level-tagline {
+        font-size: 8px;
+        color: #666;
+        font-style: italic;
+      }
+
+      .level-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 8px;
+      }
+
+      .level-box {
+        background: #f8f9fa;
+        border-radius: 4px;
+        padding: 6px;
+      }
+
+      .level-box-title {
+        font-size: 8px;
+        font-weight: 600;
+        margin-bottom: 3px;
+      }
+
+      .checklist {
+        list-style: none;
+        padding: 0;
+      }
+
+      .checklist li {
+        display: flex;
+        align-items: flex-start;
+        gap: 4px;
+        font-size: 7px;
+        margin-bottom: 2px;
+      }
+
+      .checkbox {
+        width: 8px;
+        height: 8px;
+        border: 1px solid #999;
+        border-radius: 2px;
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+
+      .focus-text, .mistake-text {
+        font-size: 7px;
+        color: #666;
+      }
+
+      .focus-text { color: #16a34a; }
+      .mistake-text { color: #dc2626; }
+
+      .transitions {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+        margin: 12px 0;
+      }
+
+      .transition {
+        background: #f8f9fa;
+        border: 1px solid #e5e5e5;
+        border-radius: 6px;
+        padding: 8px;
+        text-align: center;
+      }
+
+      .transition-arrow {
+        font-size: 10px;
+        color: #a78bfa;
+        font-weight: 700;
+      }
+
+      .transition-title {
+        font-size: 8px;
+        font-weight: 600;
+        margin: 4px 0 2px;
+      }
+
+      .transition-desc {
+        font-size: 7px;
+        color: #666;
+      }
+
+      .benchmarks {
+        margin: 12px 0;
+      }
+
+      .benchmarks h2 {
+        font-size: 10px;
+        font-weight: 600;
+        margin-bottom: 6px;
+        padding: 3px 6px;
+        background: #f5f3ff;
+        border-left: 3px solid #a78bfa;
+      }
+
+      .benchmark-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 8px;
+      }
+
+      .benchmark-table th {
+        background: #f8f9fa;
+        padding: 4px 6px;
+        text-align: center;
+        font-weight: 600;
+        border: 1px solid #e5e5e5;
+      }
+
+      .benchmark-table td {
+        padding: 4px 6px;
+        text-align: center;
+        border: 1px solid #e5e5e5;
+      }
+
+      .cta {
+        margin-top: 10px;
+        padding: 10px;
+        background: #f8f9fa;
+        border: 1px solid #F97316;
+        border-radius: 6px;
+        text-align: center;
+      }
+
+      .cta h3 { font-size: 10px; margin-bottom: 3px; }
+      .cta p { font-size: 8px; color: #666; margin-bottom: 4px; }
+      .cta-link {
+        display: inline-block;
+        padding: 4px 12px;
+        background: #F97316;
+        color: white;
+        font-size: 8px;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 4px;
+      }
+
+      .footer {
+        margin-top: 8px;
+        padding-top: 6px;
+        border-top: 1px solid #e5e5e5;
+        display: flex;
+        justify-content: space-between;
+        font-size: 7px;
+        color: #999;
+      }
+
+      .print-button {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 12px 24px;
+        background: #F97316;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="print-button no-print" onclick="window.print()">Save as PDF</button>
+
+    <header class="header">
+      <div class="logo">Buoy</div>
+      <div>
+        <h1>Design System Maturity Model</h1>
+        <p class="subtitle">Where are you? Where should you go next?</p>
+      </div>
+    </header>
+
+    <div class="levels-overview">
+      <div class="level-pill"><div class="level-num">1</div><div class="level-name">Ad Hoc</div></div>
+      <div class="level-pill"><div class="level-num">2</div><div class="level-name">Shared</div></div>
+      <div class="level-pill"><div class="level-num">3</div><div class="level-name">Documented</div></div>
+      <div class="level-pill"><div class="level-num">4</div><div class="level-name">Measured</div></div>
+      <div class="level-pill"><div class="level-num">5</div><div class="level-name">Automated</div></div>
+    </div>
+
+    <!-- Level 1 -->
+    <div class="level-section">
+      <div class="level-header">
+        <span class="level-badge">1</span>
+        <div>
+          <div class="level-title">Ad Hoc</div>
+          <div class="level-tagline">"Every developer for themselves"</div>
+        </div>
+      </div>
+      <div class="level-content">
+        <div class="level-box">
+          <div class="level-box-title">Self-Assessment</div>
+          <ul class="checklist">
+            <li><div class="checkbox"></div> No shared component library</li>
+            <li><div class="checkbox"></div> Designers hand off, devs interpret</li>
+            <li><div class="checkbox"></div> "Close enough" is acceptable</li>
+          </ul>
+        </div>
+        <div class="level-box">
+          <div class="level-box-title">Focus On</div>
+          <div class="focus-text">Audit top components. Pick 5-10 to standardize. Build them once, in code.</div>
+        </div>
+        <div class="level-box">
+          <div class="level-box-title">Avoid</div>
+          <div class="mistake-text">Trying to systematize everything at once. Buying tools before having components.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Level 2 -->
+    <div class="level-section">
+      <div class="level-header">
+        <span class="level-badge">2</span>
+        <div>
+          <div class="level-title">Shared Components</div>
+          <div class="level-tagline">"We have a library. Some teams use it."</div>
+        </div>
+      </div>
+      <div class="level-content">
+        <div class="level-box">
+          <div class="level-box-title">Self-Assessment</div>
+          <ul class="checklist">
+            <li><div class="checkbox"></div> Component library with 20+ items</li>
+            <li><div class="checkbox"></div> Half of teams use it regularly</li>
+            <li><div class="checkbox"></div> Someone "owns" the system</li>
+          </ul>
+        </div>
+        <div class="level-box">
+          <div class="level-box-title">Focus On</div>
+          <div class="focus-text">Adoption, not expansion. Fix the top 3 friction points. Make the right path easy.</div>
+        </div>
+        <div class="level-box">
+          <div class="level-box-title">Avoid</div>
+          <div class="mistake-text">Adding more components instead of improving existing. Blaming developers.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Level 3 -->
+    <div class="level-section">
+      <div class="level-header">
+        <span class="level-badge">3</span>
+        <div>
+          <div class="level-title">Documented Standards</div>
+          <div class="level-tagline">"Anyone can find answers without asking"</div>
+        </div>
+      </div>
+      <div class="level-content">
+        <div class="level-box">
+          <div class="level-box-title">Self-Assessment</div>
+          <ul class="checklist">
+            <li><div class="checkbox"></div> New devs can self-serve answers</li>
+            <li><div class="checkbox"></div> Written guidelines, not just code</li>
+            <li><div class="checkbox"></div> Clear process for new patterns</li>
+          </ul>
+        </div>
+        <div class="level-box">
+          <div class="level-box-title">Focus On</div>
+          <div class="focus-text">Start measuring. Track what's used. Identify drift. Create feedback channels.</div>
+        </div>
+        <div class="level-box">
+          <div class="level-box-title">Avoid</div>
+          <div class="mistake-text">Assuming docs = adoption. No metrics. Letting docs become stale.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Level 4 -->
+    <div class="level-section">
+      <div class="level-header">
+        <span class="level-badge">4</span>
+        <div>
+          <div class="level-title">Measured Adoption</div>
+          <div class="level-tagline">"We know what's used (and misused)"</div>
+        </div>
+      </div>
+      <div class="level-content">
+        <div class="level-box">
+          <div class="level-box-title">Self-Assessment</div>
+          <ul class="checklist">
+            <li><div class="checkbox"></div> Can report on component usage</li>
+            <li><div class="checkbox"></div> Know which teams have drift</li>
+            <li><div class="checkbox"></div> Data-informed decisions</li>
+          </ul>
+        </div>
+        <div class="level-box">
+          <div class="level-box-title">Focus On</div>
+          <div class="focus-text">Automation. Move from periodic audits to continuous scanning. Integrate into CI/CD.</div>
+        </div>
+        <div class="level-box">
+          <div class="level-box-title">Avoid</div>
+          <div class="mistake-text">Measuring for measurement's sake. Data without action. Manual processes.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Level 5 -->
+    <div class="level-section">
+      <div class="level-header">
+        <span class="level-badge">5</span>
+        <div>
+          <div class="level-title">Automated Governance</div>
+          <div class="level-tagline">"The system enforces itself"</div>
+        </div>
+      </div>
+      <div class="level-content">
+        <div class="level-box">
+          <div class="level-box-title">Self-Assessment</div>
+          <ul class="checklist">
+            <li><div class="checkbox"></div> PRs scanned automatically</li>
+            <li><div class="checkbox"></div> One-click fixes for violations</li>
+            <li><div class="checkbox"></div> Dashboards show drift trends</li>
+          </ul>
+        </div>
+        <div class="level-box">
+          <div class="level-box-title">Focus On</div>
+          <div class="focus-text">Optimization. Reduce false positives. Use data to improve the system itself.</div>
+        </div>
+        <div class="level-box">
+          <div class="level-box-title">The Goal</div>
+          <div class="focus-text">Self-sustaining. Team shifts from policing to enabling.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="benchmarks">
+      <h2>Industry Benchmarks</h2>
+      <table class="benchmark-table">
+        <tr><th>Level</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
+        <tr><td>% of Teams</td><td>35%</td><td>30%</td><td>20%</td><td>10%</td><td>5%</td></tr>
+        <tr><td>Typical Size</td><td>1-10</td><td>5-30</td><td>20-100</td><td>50-500</td><td>100+</td></tr>
+        <tr><td>Typical Drift</td><td>Unknown</td><td>40-60%</td><td>25-40%</td><td>15-25%</td><td><10%</td></tr>
+      </table>
+    </div>
+
+    <div class="cta">
+      <h3>Ready to Level Up?</h3>
+      <p>Buoy helps teams move from Level 3-4 to Level 5 with automated PR scanning.</p>
+      <a href="https://buoy.design" class="cta-link">Try Free at buoy.design →</a>
+    </div>
+
+    <footer class="footer">
+      <span>© 2026 Buoy. The design system drift detector.</span>
+      <span>buoy.design</span>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,148 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+import LeadMagnetForm from '../components/LeadMagnetForm.astro'
+---
+
+<Layout
+  title="Design Token Migration Playbook | Free Guide | Buoy"
+  description="Step-by-step guide to replacing hardcoded values with design tokens. Audit scripts, naming conventions, and timeline included."
+>
+  <Nav />
+
+  <!-- Hero -->
+  <section class="relative pt-32 pb-16 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
+
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Left: Copy -->
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-green-500/10 border border-green-500/30 rounded-full text-green-400 text-sm mb-6">
+            Free Playbook
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6 leading-tight">
+            Design Token Migration Playbook
+          </h1>
+
+          <p class="text-lg text-slate mb-8">
+            Your codebase is full of hardcoded values. You want to migrate to tokens. This playbook tells you how—without breaking production.
+          </p>
+
+          <LeadMagnetForm
+            leadMagnet="token-migration"
+            buttonText="Get the Playbook"
+            successMessage="Check your email for the download!"
+          />
+
+          <p class="text-sm text-slate/70 mt-4">
+            No spam. Unsubscribe anytime.
+          </p>
+        </div>
+
+        <!-- Right: Preview -->
+        <div class="hidden lg:block">
+          <div class="bg-navy border border-green-500/30 rounded-xl p-6 shadow-2xl">
+            <div class="text-sm font-medium text-light mb-4">5-Phase Process</div>
+            <div class="space-y-3">
+              {[
+                { phase: '1', title: 'Audit', desc: 'Find all hardcoded values' },
+                { phase: '2', title: 'Design', desc: 'Structure your tokens' },
+                { phase: '3', title: 'Plan', desc: 'Choose your strategy' },
+                { phase: '4', title: 'Execute', desc: 'Migrate incrementally' },
+                { phase: '5', title: 'Prevent', desc: 'Stop regression' },
+              ].map((step) => (
+                <div class="flex items-center gap-3">
+                  <span class="w-8 h-8 rounded-lg bg-green-500/20 text-green-400 flex items-center justify-center text-sm font-bold">{step.phase}</span>
+                  <div>
+                    <div class="text-sm font-medium text-light">{step.title}</div>
+                    <div class="text-xs text-slate">{step.desc}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Inside -->
+  <section class="py-16 bg-navy">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light mb-8 text-center">What's Inside</h2>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-navy-dark border border-navy-light/20 rounded-lg p-6 text-center">
+          <div class="text-3xl mb-3">🔍</div>
+          <h3 class="font-medium text-light mb-2">Audit Scripts</h3>
+          <p class="text-xs text-slate">Ready-to-run commands to find every hardcoded value</p>
+        </div>
+        <div class="bg-navy-dark border border-navy-light/20 rounded-lg p-6 text-center">
+          <div class="text-3xl mb-3">📐</div>
+          <h3 class="font-medium text-light mb-2">Token Architecture</h3>
+          <p class="text-xs text-slate">Flat vs semantic vs component tokens—which to use</p>
+        </div>
+        <div class="bg-navy-dark border border-navy-light/20 rounded-lg p-6 text-center">
+          <div class="text-3xl mb-3">📝</div>
+          <h3 class="font-medium text-light mb-2">Naming Conventions</h3>
+          <p class="text-xs text-slate">Patterns for colors, spacing, and typography</p>
+        </div>
+        <div class="bg-navy-dark border border-navy-light/20 rounded-lg p-6 text-center">
+          <div class="text-3xl mb-3">📅</div>
+          <h3 class="font-medium text-light mb-2">Timeline Template</h3>
+          <p class="text-xs text-slate">Week-by-week plan from audit to enforcement</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Code Preview -->
+  <section class="py-16 bg-navy-dark">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light mb-8 text-center">Before & After</h2>
+
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div>
+          <div class="text-sm font-medium text-red-400 mb-3">Before: Hardcoded</div>
+          <div class="bg-navy border border-red-500/30 rounded-lg p-4 font-mono text-sm">
+            <div class="text-slate">.button &#123;</div>
+            <div class="text-slate pl-4">background: <span class="text-red-300">#3B82F6</span>;</div>
+            <div class="text-slate pl-4">padding: <span class="text-red-300">12px 24px</span>;</div>
+            <div class="text-slate pl-4">font-size: <span class="text-red-300">14px</span>;</div>
+            <div class="text-slate">&#125;</div>
+          </div>
+        </div>
+        <div>
+          <div class="text-sm font-medium text-green-400 mb-3">After: Tokenized</div>
+          <div class="bg-navy border border-green-500/30 rounded-lg p-4 font-mono text-sm">
+            <div class="text-slate">.button &#123;</div>
+            <div class="text-slate pl-4">background: <span class="text-green-300">var(--color-primary)</span>;</div>
+            <div class="text-slate pl-4">padding: <span class="text-green-300">var(--space-3) var(--space-6)</span>;</div>
+            <div class="text-slate pl-4">font-size: <span class="text-green-300">var(--font-size-sm)</span>;</div>
+            <div class="text-slate">&#125;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-16 bg-navy">
+    <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-bold text-light mb-4">Start Your Migration</h2>
+      <p class="text-slate mb-8">Audit scripts. Naming conventions. Timeline. Everything you need.</p>
+
+      <LeadMagnetForm
+        leadMagnet="token-migration"
+        buttonText="Send It to Me"
+        successMessage="Done! Check your inbox."
+        class="max-w-md mx-auto"
+      />
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

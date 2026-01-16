@@ -1,0 +1,412 @@
+---
+// Print-ready PDF version
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design Token Migration Playbook | Buoy</title>
+    <meta name="robots" content="noindex" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap');
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        font-size: 10px;
+        line-height: 1.5;
+        color: #1a1a1a;
+        background: white;
+        padding: 0.4in;
+        max-width: 8.5in;
+        margin: 0 auto;
+      }
+
+      @media print {
+        body { padding: 0.3in; }
+        .no-print { display: none !important; }
+        .page-break { page-break-before: always; }
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid #22c55e;
+      }
+
+      .logo { font-size: 18px; font-weight: 700; color: #F97316; }
+      h1 { font-size: 18px; font-weight: 700; text-align: right; }
+      .subtitle { font-size: 10px; color: #666; text-align: right; }
+
+      h2 {
+        font-size: 13px;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-top: 16px;
+        margin-bottom: 8px;
+        padding: 4px 8px;
+        background: #dcfce7;
+        border-radius: 4px;
+      }
+
+      h3 {
+        font-size: 11px;
+        font-weight: 600;
+        margin-top: 10px;
+        margin-bottom: 6px;
+      }
+
+      .phase-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 6px;
+        margin-bottom: 16px;
+      }
+
+      .phase {
+        background: #f8f9fa;
+        border: 1px solid #e5e5e5;
+        border-radius: 6px;
+        padding: 8px;
+        text-align: center;
+      }
+
+      .phase-num {
+        font-size: 16px;
+        font-weight: 700;
+        color: #22c55e;
+      }
+
+      .phase-title {
+        font-size: 9px;
+        font-weight: 600;
+        margin-top: 2px;
+      }
+
+      .code-block {
+        background: #1a2744;
+        color: #e5e7eb;
+        padding: 8px 10px;
+        border-radius: 6px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 8px;
+        line-height: 1.5;
+        margin: 8px 0;
+        overflow-x: auto;
+      }
+
+      .code-comment { color: #6b7280; }
+      .code-value { color: #F97316; }
+      .code-prop { color: #a78bfa; }
+      .code-good { color: #4ade80; }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .option-box {
+        background: #f8f9fa;
+        border: 1px solid #e5e5e5;
+        border-radius: 6px;
+        padding: 10px;
+      }
+
+      .option-title {
+        font-weight: 600;
+        font-size: 10px;
+        margin-bottom: 4px;
+      }
+
+      .option-desc {
+        font-size: 8px;
+        color: #666;
+      }
+
+      .pros { color: #16a34a; font-size: 8px; }
+      .cons { color: #dc2626; font-size: 8px; }
+
+      .naming-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 9px;
+        margin: 8px 0;
+      }
+
+      .naming-table th {
+        background: #f8f9fa;
+        padding: 6px 8px;
+        text-align: left;
+        font-weight: 600;
+        border: 1px solid #e5e5e5;
+      }
+
+      .naming-table td {
+        padding: 6px 8px;
+        border: 1px solid #e5e5e5;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 8px;
+      }
+
+      .timeline {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 6px;
+        margin: 10px 0;
+      }
+
+      .week {
+        background: #f8f9fa;
+        border: 1px solid #e5e5e5;
+        border-radius: 6px;
+        padding: 8px;
+      }
+
+      .week-label {
+        font-size: 8px;
+        font-weight: 600;
+        color: #22c55e;
+        margin-bottom: 4px;
+      }
+
+      .week-tasks {
+        font-size: 7px;
+        color: #666;
+      }
+
+      .checklist {
+        list-style: none;
+        padding: 0;
+      }
+
+      .checklist li {
+        display: flex;
+        align-items: flex-start;
+        gap: 6px;
+        margin-bottom: 4px;
+        font-size: 9px;
+      }
+
+      .checkbox {
+        width: 10px;
+        height: 10px;
+        border: 1px solid #999;
+        border-radius: 2px;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+
+      .mistakes {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 6px;
+        margin: 8px 0;
+      }
+
+      .mistake {
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+        border-radius: 4px;
+        padding: 6px;
+        font-size: 8px;
+        text-align: center;
+      }
+
+      .cta {
+        margin-top: 12px;
+        padding: 12px;
+        background: #f8f9fa;
+        border: 1px solid #F97316;
+        border-radius: 8px;
+        text-align: center;
+      }
+
+      .cta h3 { font-size: 11px; margin-bottom: 4px; margin-top: 0; }
+      .cta p { font-size: 9px; color: #666; margin-bottom: 6px; }
+      .cta-link {
+        display: inline-block;
+        padding: 6px 16px;
+        background: #F97316;
+        color: white;
+        font-size: 9px;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      .footer {
+        margin-top: 12px;
+        padding-top: 8px;
+        border-top: 1px solid #e5e5e5;
+        display: flex;
+        justify-content: space-between;
+        font-size: 8px;
+        color: #999;
+      }
+
+      .print-button {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 12px 24px;
+        background: #F97316;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="print-button no-print" onclick="window.print()">Save as PDF</button>
+
+    <header class="header">
+      <div class="logo">Buoy</div>
+      <div>
+        <h1>Design Token Migration Playbook</h1>
+        <p class="subtitle">From hardcoded values to design tokens</p>
+      </div>
+    </header>
+
+    <div class="phase-grid">
+      <div class="phase"><div class="phase-num">1</div><div class="phase-title">Audit</div></div>
+      <div class="phase"><div class="phase-num">2</div><div class="phase-title">Design</div></div>
+      <div class="phase"><div class="phase-num">3</div><div class="phase-title">Plan</div></div>
+      <div class="phase"><div class="phase-num">4</div><div class="phase-title">Execute</div></div>
+      <div class="phase"><div class="phase-num">5</div><div class="phase-title">Prevent</div></div>
+    </div>
+
+    <h2>Phase 1: Audit</h2>
+    <p>Find all hardcoded values in your codebase.</p>
+
+    <div class="code-block">
+      <div><span class="code-comment"># Find hex colors</span></div>
+      <div>grep -rE "<span class="code-value">#[0-9A-Fa-f]{3,8}</span>" src/ --include="*.css" --include="*.tsx"</div>
+      <div><span class="code-comment"># Find pixel values</span></div>
+      <div>grep -rE "<span class="code-value">[0-9]+px</span>" src/ --include="*.css"</div>
+      <div><span class="code-comment"># Find rgb/rgba</span></div>
+      <div>grep -rE "<span class="code-value">rgba?\\([0-9]</span>" src/</div>
+    </div>
+
+    <h2>Phase 2: Design Token Structure</h2>
+
+    <div class="grid-2">
+      <div class="option-box">
+        <div class="option-title">Option A: Flat Tokens</div>
+        <div class="code-block" style="margin: 4px 0;">
+          <div><span class="code-prop">--color-blue-500</span>: #3B82F6;</div>
+          <div><span class="code-prop">--space-4</span>: 16px;</div>
+        </div>
+        <div class="pros">+ Simple, direct</div>
+        <div class="cons">- Coupled to implementation</div>
+      </div>
+      <div class="option-box">
+        <div class="option-title">Option B: Semantic Tokens (Recommended)</div>
+        <div class="code-block" style="margin: 4px 0;">
+          <div><span class="code-prop">--color-primary</span>: var(--blue-500);</div>
+          <div><span class="code-prop">--color-text</span>: var(--gray-900);</div>
+        </div>
+        <div class="pros">+ Supports theming</div>
+        <div class="cons">- More tokens to manage</div>
+      </div>
+    </div>
+
+    <h2>Naming Conventions</h2>
+
+    <table class="naming-table">
+      <tr><th>Category</th><th>Pattern</th><th>Examples</th></tr>
+      <tr><td>Colors</td><td>--color-{purpose}[-{variant}]</td><td>--color-primary, --color-text-secondary</td></tr>
+      <tr><td>Spacing</td><td>--space-{n}</td><td>--space-1, --space-2, --space-4, --space-8</td></tr>
+      <tr><td>Typography</td><td>--font-{property}-{scale}</td><td>--font-size-sm, --font-weight-bold</td></tr>
+    </table>
+
+    <h2>Phase 3: Plan Strategy</h2>
+
+    <div class="grid-2">
+      <div class="option-box">
+        <div class="option-title">Incremental by Category</div>
+        <div class="option-desc">Migrate colors first, then spacing, then typography. Lower risk per change.</div>
+      </div>
+      <div class="option-box">
+        <div class="option-title">Incremental by Area</div>
+        <div class="option-desc">Migrate one feature at a time. Lowest risk. Visible progress.</div>
+      </div>
+    </div>
+
+    <h2>Phase 4: Execute</h2>
+
+    <h3>Migration Checklist Per Value</h3>
+    <ul class="checklist">
+      <li><div class="checkbox"></div> Identify correct token (or create one)</li>
+      <li><div class="checkbox"></div> Find all occurrences</li>
+      <li><div class="checkbox"></div> Replace with token reference</li>
+      <li><div class="checkbox"></div> Visual regression test</li>
+      <li><div class="checkbox"></div> Code review & deploy</li>
+    </ul>
+
+    <h2>Phase 5: Prevent Regression</h2>
+
+    <div class="code-block">
+      <div><span class="code-comment">/* Stylelint config to block hardcoded colors */</span></div>
+      <div>{</div>
+      <div>  "rules": {</div>
+      <div>    "<span class="code-prop">color-no-hex</span>": <span class="code-good">true</span></div>
+      <div>  }</div>
+      <div>}</div>
+    </div>
+
+    <h2>Timeline Template</h2>
+
+    <div class="timeline">
+      <div class="week">
+        <div class="week-label">Week 1-2</div>
+        <div class="week-tasks">Audit & Design tokens</div>
+      </div>
+      <div class="week">
+        <div class="week-label">Week 3-4</div>
+        <div class="week-tasks">Setup & Pilot component</div>
+      </div>
+      <div class="week">
+        <div class="week-label">Week 5-8</div>
+        <div class="week-tasks">Core migration</div>
+      </div>
+      <div class="week">
+        <div class="week-label">Week 9-10</div>
+        <div class="week-tasks">Cleanup & Enforce</div>
+      </div>
+      <div class="week">
+        <div class="week-label">Ongoing</div>
+        <div class="week-tasks">Monitor drift</div>
+      </div>
+    </div>
+
+    <h2>Common Mistakes</h2>
+
+    <div class="mistakes">
+      <div class="mistake">Migrating everything at once</div>
+      <div class="mistake">Too many tokens</div>
+      <div class="mistake">Inconsistent naming</div>
+      <div class="mistake">No enforcement</div>
+    </div>
+
+    <div class="cta">
+      <h3>Automate Your Migration</h3>
+      <p>Buoy scans your codebase to find hardcoded values and tracks migration progress over time.</p>
+      <a href="https://buoy.design" class="cta-link">Start at buoy.design →</a>
+    </div>
+
+    <footer class="footer">
+      <span>© 2026 Buoy. The design system drift detector.</span>
+      <span>buoy.design</span>
+    </footer>
+  </body>
+</html>

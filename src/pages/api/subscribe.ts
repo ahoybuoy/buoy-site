@@ -45,8 +45,12 @@ export const POST: APIRoute = async ({ request, locals }) => {
     // Lead magnet to PDF URL mapping
     const pdfUrls: Record<string, string> = {
       'drift-checklist': '/downloads/drift-checklist.pdf',
-      'maturity-model': '/downloads/maturity-model.pdf',
+      'hall-of-shame': '/downloads/hall-of-shame.pdf',
       'pr-review-cheatsheet': '/downloads/pr-review-cheatsheet.pdf',
+      'maturity-model': '/downloads/maturity-model.pdf',
+      'why-developers-bypass': '/downloads/why-developers-bypass.pdf',
+      'token-migration': '/downloads/token-migration.pdf',
+      'state-of-design-systems': '/downloads/state-of-design-systems.pdf',
     };
 
     const downloadUrl = pdfUrls[data.leadMagnet] || pdfUrls['drift-checklist'];

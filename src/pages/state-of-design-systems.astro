@@ -1,0 +1,139 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+import LeadMagnetForm from '../components/LeadMagnetForm.astro'
+---
+
+<Layout
+  title="State of Design Systems 2026 | Free Report | Buoy"
+  description="Data from 500+ repositories reveals the truth about design system adoption, drift, and what separates high-performing teams."
+>
+  <Nav />
+
+  <!-- Hero -->
+  <section class="relative pt-32 pb-16 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
+
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Left: Copy -->
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-sky-500/10 border border-sky-500/30 rounded-full text-sky-400 text-sm mb-6">
+            2026 Report
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6 leading-tight">
+            The State of Design Systems 2026
+          </h1>
+
+          <p class="text-lg text-slate mb-8">
+            We analyzed 500+ repositories to understand how teams really build, adopt, and enforce design systems. The data might surprise you.
+          </p>
+
+          <LeadMagnetForm
+            leadMagnet="state-of-design-systems"
+            buttonText="Get the Report"
+            successMessage="Check your email for the download!"
+          />
+
+          <p class="text-sm text-slate/70 mt-4">
+            No spam. Unsubscribe anytime.
+          </p>
+        </div>
+
+        <!-- Right: Stats -->
+        <div class="hidden lg:block">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="bg-navy border border-sky-500/30 rounded-xl p-6 text-center">
+              <div class="text-4xl font-bold text-sky-400">73%</div>
+              <div class="text-sm text-slate mt-2">have significant drift</div>
+            </div>
+            <div class="bg-navy border border-sky-500/30 rounded-xl p-6 text-center">
+              <div class="text-4xl font-bold text-sky-400">847</div>
+              <div class="text-sm text-slate mt-2">avg hardcoded colors</div>
+            </div>
+            <div class="bg-navy border border-sky-500/30 rounded-xl p-6 text-center">
+              <div class="text-4xl font-bold text-sky-400">23%</div>
+              <div class="text-sm text-slate mt-2">token adoption rate</div>
+            </div>
+            <div class="bg-navy border border-sky-500/30 rounded-xl p-6 text-center">
+              <div class="text-4xl font-bold text-sky-400">68%</div>
+              <div class="text-sm text-slate mt-2">less drift with automation</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Findings -->
+  <section class="py-16 bg-navy">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light mb-8 text-center">Key Findings</h2>
+
+      <div class="space-y-6">
+        {[
+          { num: '1', title: 'Design Drift Is Universal', stat: '73% of codebases have significant drift', desc: 'Even teams with documented design systems show major drift when we scan the actual code.' },
+          { num: '2', title: 'The 847 Problem', stat: 'Average repo has 847 hardcoded colors', desc: 'The top 10% of repos have nearly 3,000 hardcoded color values.' },
+          { num: '3', title: 'Drift Compounds Over Time', stat: '2.4x more drift in repos over 3 years old', desc: 'Without intervention, drift only increases. We found zero repos where drift decreased organically.' },
+          { num: '4', title: 'Token Adoption Is Low', stat: 'Only 23% of color declarations use tokens', desc: 'The other 77% are hardcoded values that bypass the design system.' },
+          { num: '5', title: 'Enforcement Changes Everything', stat: '68% less drift with automated scanning', desc: 'Teams with automated enforcement dramatically outperform those without.' },
+        ].map((finding) => (
+          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 flex gap-6">
+            <div class="text-3xl font-bold text-sky-400 flex-shrink-0">{finding.num}</div>
+            <div>
+              <h3 class="font-medium text-light mb-1">{finding.title}</h3>
+              <div class="text-sm text-sky-400 mb-2">{finding.stat}</div>
+              <p class="text-sm text-slate">{finding.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Benchmark -->
+  <section class="py-16 bg-navy-dark">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-bold text-light mb-4">How Do You Compare?</h2>
+      <p class="text-slate mb-8">The report includes benchmarks so you can see where your codebase stands.</p>
+
+      <div class="grid grid-cols-4 gap-4 text-sm">
+        <div class="bg-navy border border-red-500/30 rounded-lg p-4">
+          <div class="font-medium text-red-400">Poor</div>
+          <div class="text-xs text-slate mt-1">>500 hardcoded</div>
+        </div>
+        <div class="bg-navy border border-yellow-500/30 rounded-lg p-4">
+          <div class="font-medium text-yellow-400">Average</div>
+          <div class="text-xs text-slate mt-1">200-500</div>
+        </div>
+        <div class="bg-navy border border-green-500/30 rounded-lg p-4">
+          <div class="font-medium text-green-400">Good</div>
+          <div class="text-xs text-slate mt-1">50-200</div>
+        </div>
+        <div class="bg-navy border border-sky-500/30 rounded-lg p-4">
+          <div class="font-medium text-sky-400">Excellent</div>
+          <div class="text-xs text-slate mt-1"><50</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-16 bg-navy">
+    <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-bold text-light mb-4">Get the Full Report</h2>
+      <p class="text-slate mb-8">7 findings. Industry benchmarks. Actionable recommendations.</p>
+
+      <LeadMagnetForm
+        leadMagnet="state-of-design-systems"
+        buttonText="Send It to Me"
+        successMessage="Done! Check your inbox."
+        class="max-w-md mx-auto"
+      />
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

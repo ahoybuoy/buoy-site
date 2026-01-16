@@ -1,0 +1,141 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+import LeadMagnetForm from '../components/LeadMagnetForm.astro'
+---
+
+<Layout
+  title="PR Review Cheat Sheet for Design Consistency | Free PDF | Buoy"
+  description="Copy-paste comments to catch design drift in code reviews. What to look for and exactly what to say."
+>
+  <Nav />
+
+  <!-- Hero -->
+  <section class="relative pt-32 pb-16 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
+
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Left: Copy -->
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-buoy/10 border border-buoy/30 rounded-full text-buoy text-sm mb-6">
+            Free Cheat Sheet
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6 leading-tight">
+            PR Review Cheat Sheet for Design Consistency
+          </h1>
+
+          <p class="text-lg text-slate mb-8">
+            What to look for in every PR. Exactly what to say when you find it. Copy-paste comments that catch drift before it ships.
+          </p>
+
+          <LeadMagnetForm
+            leadMagnet="pr-review-cheatsheet"
+            buttonText="Get the Cheat Sheet"
+            successMessage="Check your email for the download!"
+          />
+
+          <p class="text-sm text-slate/70 mt-4">
+            No spam. Unsubscribe anytime.
+          </p>
+        </div>
+
+        <!-- Right: Preview -->
+        <div class="hidden lg:block">
+          <div class="bg-navy border border-buoy/30 rounded-xl p-6 shadow-2xl">
+            <div class="text-sm font-medium text-light mb-4">Sample Comment</div>
+            <div class="bg-navy-dark rounded-lg p-4 text-sm">
+              <div class="text-slate mb-3">💬 <span class="text-light">Review comment:</span></div>
+              <div class="text-slate/80 italic">
+                "This looks like a hardcoded color. Can we use a design token instead?
+                <br /><br />
+                If this matches an existing token, please use that. If it's a new color we need, let's add it to the system first."
+              </div>
+            </div>
+            <div class="mt-4 text-xs text-slate/70">
+              + 20 more ready-to-use comments
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="py-16 bg-navy">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light mb-8 text-center">What's Covered</h2>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        {[
+          { icon: '🎨', title: 'Colors', count: '5 patterns' },
+          { icon: '📏', title: 'Spacing', count: '4 patterns' },
+          { icon: '🔤', title: 'Typography', count: '4 patterns' },
+          { icon: '🧩', title: 'Components', count: '5 patterns' },
+          { icon: '🚨', title: 'CSS Smells', count: '4 patterns' },
+        ].map((cat) => (
+          <div class="bg-navy-dark border border-navy-light/20 rounded-lg p-4 text-center">
+            <div class="text-2xl mb-2">{cat.icon}</div>
+            <div class="font-medium text-light text-sm">{cat.title}</div>
+            <div class="text-xs text-slate mt-1">{cat.count}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Example -->
+  <section class="py-16 bg-navy-dark">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light mb-8 text-center">Quick Reference Table</h2>
+
+      <div class="bg-navy border border-navy-light/30 rounded-xl overflow-hidden">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-navy-light/30">
+              <th class="text-left p-4 text-slate font-medium">Issue</th>
+              <th class="text-left p-4 text-slate font-medium">Question to Ask</th>
+            </tr>
+          </thead>
+          <tbody class="text-slate/80">
+            <tr class="border-b border-navy-light/20">
+              <td class="p-4">Hardcoded color</td>
+              <td class="p-4 text-buoy">"Can we use a token?"</td>
+            </tr>
+            <tr class="border-b border-navy-light/20">
+              <td class="p-4">Arbitrary spacing</td>
+              <td class="p-4 text-buoy">"What's the closest scale value?"</td>
+            </tr>
+            <tr class="border-b border-navy-light/20">
+              <td class="p-4">Inline styles</td>
+              <td class="p-4 text-buoy">"Can a prop or variant handle this?"</td>
+            </tr>
+            <tr>
+              <td class="p-4">!important</td>
+              <td class="p-4 text-buoy">"What's causing the specificity issue?"</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-16 bg-navy">
+    <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-bold text-light mb-4">Get the Cheat Sheet</h2>
+      <p class="text-slate mb-8">Print it. Pin it. Use it.</p>
+
+      <LeadMagnetForm
+        leadMagnet="pr-review-cheatsheet"
+        buttonText="Send It to Me"
+        successMessage="Done! Check your inbox."
+        class="max-w-md mx-auto"
+      />
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

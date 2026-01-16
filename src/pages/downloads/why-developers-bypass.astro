@@ -1,0 +1,389 @@
+---
+// Print-ready PDF version - Multi-page ebook
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Why Developers Bypass Your Design System | Buoy</title>
+    <meta name="robots" content="noindex" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        font-size: 11px;
+        line-height: 1.6;
+        color: #1a1a1a;
+        background: white;
+        padding: 0.5in;
+        max-width: 8.5in;
+        margin: 0 auto;
+      }
+
+      @media print {
+        body { padding: 0.4in; }
+        .no-print { display: none !important; }
+        .page-break { page-break-before: always; }
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 24px;
+        padding-bottom: 16px;
+        border-bottom: 2px solid #a78bfa;
+      }
+
+      .logo { font-size: 20px; font-weight: 700; color: #F97316; }
+      h1 { font-size: 22px; font-weight: 700; text-align: right; }
+      .subtitle { font-size: 11px; color: #666; text-align: right; margin-top: 4px; }
+
+      .intro-box {
+        background: #f5f3ff;
+        border-left: 4px solid #a78bfa;
+        padding: 16px;
+        margin-bottom: 24px;
+      }
+
+      .intro-box p { margin-bottom: 8px; }
+      .intro-box p:last-child { margin-bottom: 0; }
+
+      h2 {
+        font-size: 16px;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-top: 24px;
+        margin-bottom: 12px;
+        padding-bottom: 6px;
+        border-bottom: 2px solid #a78bfa;
+      }
+
+      h3 {
+        font-size: 13px;
+        font-weight: 600;
+        color: #1a1a1a;
+        margin-top: 16px;
+        margin-bottom: 8px;
+      }
+
+      .reason {
+        margin-bottom: 20px;
+        break-inside: avoid;
+      }
+
+      .reason-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 8px;
+      }
+
+      .reason-num {
+        background: #a78bfa;
+        color: white;
+        font-size: 12px;
+        font-weight: 700;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .reason-title { font-size: 14px; font-weight: 600; }
+
+      .symptom {
+        background: #fef3c7;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 10px;
+        margin-bottom: 8px;
+      }
+
+      .symptom strong { color: #92400e; }
+
+      .fix {
+        background: #dcfce7;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 10px;
+      }
+
+      .fix strong { color: #166534; }
+
+      .equation-box {
+        background: #1a2744;
+        color: white;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        margin: 24px 0;
+      }
+
+      .equation {
+        font-size: 14px;
+        font-weight: 600;
+        font-family: monospace;
+      }
+
+      .equation-note {
+        font-size: 10px;
+        color: #94a3b8;
+        margin-top: 8px;
+      }
+
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+        margin: 16px 0;
+      }
+
+      .step {
+        background: #f8f9fa;
+        border: 1px solid #e5e5e5;
+        border-radius: 6px;
+        padding: 10px 8px;
+        text-align: center;
+      }
+
+      .step-num {
+        font-size: 16px;
+        font-weight: 700;
+        color: #a78bfa;
+      }
+
+      .step-title {
+        font-size: 9px;
+        font-weight: 600;
+        margin-top: 4px;
+      }
+
+      .step-desc {
+        font-size: 8px;
+        color: #666;
+        margin-top: 2px;
+      }
+
+      .callout {
+        background: #f8f9fa;
+        border: 1px solid #a78bfa;
+        border-radius: 8px;
+        padding: 16px;
+        margin: 20px 0;
+        text-align: center;
+      }
+
+      .callout-quote {
+        font-size: 14px;
+        font-style: italic;
+        color: #1a1a1a;
+        margin-bottom: 8px;
+      }
+
+      .callout-attr {
+        font-size: 10px;
+        color: #666;
+      }
+
+      .cta {
+        margin-top: 24px;
+        padding: 16px;
+        background: #f8f9fa;
+        border: 2px solid #F97316;
+        border-radius: 8px;
+        text-align: center;
+      }
+
+      .cta h3 { font-size: 14px; margin-bottom: 6px; margin-top: 0; }
+      .cta p { font-size: 10px; color: #666; margin-bottom: 8px; }
+      .cta-link {
+        display: inline-block;
+        padding: 8px 20px;
+        background: #F97316;
+        color: white;
+        font-size: 11px;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      .footer {
+        margin-top: 24px;
+        padding-top: 12px;
+        border-top: 1px solid #e5e5e5;
+        display: flex;
+        justify-content: space-between;
+        font-size: 9px;
+        color: #999;
+      }
+
+      .print-button {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 12px 24px;
+        background: #F97316;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      ul { padding-left: 20px; margin: 8px 0; }
+      li { margin-bottom: 4px; }
+    </style>
+  </head>
+  <body>
+    <button class="print-button no-print" onclick="window.print()">Save as PDF</button>
+
+    <header class="header">
+      <div class="logo">Buoy</div>
+      <div>
+        <h1>Why Developers Bypass Your Design System</h1>
+        <p class="subtitle">And what to do about it (hint: it's not their fault)</p>
+      </div>
+    </header>
+
+    <div class="intro-box">
+      <p>You built a design system. You documented it. You announced it in Slack. Six months later, your codebase is full of hardcoded colors and rogue components.</p>
+      <p><strong>What happened?</strong> Developers are pragmatic. If they're bypassing your design system, there's a reason. This guide explores those reasons—not to assign blame, but to fix the root causes.</p>
+    </div>
+
+    <h2>The Seven Reasons</h2>
+
+    <div class="reason">
+      <div class="reason-header">
+        <span class="reason-num">1</span>
+        <span class="reason-title">They Can't Find What They Need</span>
+      </div>
+      <div class="symptom"><strong>Symptom:</strong> Developers build custom components that already exist in the system.</div>
+      <p>Documentation is scattered. Search doesn't work. Component names don't match what developers call them. The system is organized by design taxonomy, not developer use cases.</p>
+      <div class="fix"><strong>Fix:</strong> Organize by use case. Add synonyms to search. Show "what devs call it" alongside official names.</div>
+    </div>
+
+    <div class="reason">
+      <div class="reason-header">
+        <span class="reason-num">2</span>
+        <span class="reason-title">The System Doesn't Cover Their Case</span>
+      </div>
+      <div class="symptom"><strong>Symptom:</strong> Developers extend components with inline styles or wrapper divs.</div>
+      <p>The system was built for marketing pages, but the team is building admin tools. Edge cases aren't documented. New features require patterns that don't exist yet.</p>
+      <div class="fix"><strong>Fix:</strong> Regular audits of what exists in code but not the system. Fast path for requesting additions.</div>
+    </div>
+
+    <div class="reason">
+      <div class="reason-header">
+        <span class="reason-num">3</span>
+        <span class="reason-title">Using the System Is Harder Than Not Using It</span>
+      </div>
+      <div class="symptom"><strong>Symptom:</strong> Developers know about the system but choose not to use it.</div>
+      <p>Import paths are long. The API is complex. Setup requires configuration. Breaking changes happen too often.</p>
+      <div class="fix"><strong>Fix:</strong> Short imports. Sensible defaults. Minimal breaking changes. Measure developer experience.</div>
+    </div>
+
+    <div class="reason">
+      <div class="reason-header">
+        <span class="reason-num">4</span>
+        <span class="reason-title">The System Slows Them Down</span>
+      </div>
+      <div class="symptom"><strong>Symptom:</strong> Adoption is lower on teams with tight deadlines.</div>
+      <p>Learning takes time. Components are inflexible. The system requires design reviews that add calendar days.</p>
+      <div class="fix"><strong>Fix:</strong> Provide escape hatches. Document the "fast path" for emergencies. Build flexibility via composition.</div>
+    </div>
+
+    <div class="reason">
+      <div class="reason-header">
+        <span class="reason-num">5</span>
+        <span class="reason-title">They Don't Know the System Exists</span>
+      </div>
+      <div class="symptom"><strong>Symptom:</strong> New hires and contractors consistently build off-system.</div>
+      <p>Onboarding doesn't cover the design system. Existing code doesn't use the system, so new code copies old patterns.</p>
+      <div class="fix"><strong>Fix:</strong> Add to engineering onboarding. Include in PR templates. Make the system visible in the codebase.</div>
+    </div>
+
+    <div class="reason">
+      <div class="reason-header">
+        <span class="reason-num">6</span>
+        <span class="reason-title">The System Doesn't Match How They Work</span>
+      </div>
+      <div class="symptom"><strong>Symptom:</strong> Adoption varies wildly by team or technology.</div>
+      <p>The system is React, but some teams use Vue. The system uses CSS-in-JS, but the team uses Tailwind. Mobile can't use web components.</p>
+      <div class="fix"><strong>Fix:</strong> Provide tokens, not just components. Support multiple output formats. Document "how to use in X."</div>
+    </div>
+
+    <div class="reason">
+      <div class="reason-header">
+        <span class="reason-num">7</span>
+        <span class="reason-title">Nobody Enforces It</span>
+      </div>
+      <div class="symptom"><strong>Symptom:</strong> Drift increases steadily over time.</div>
+      <p>Code reviews don't check for design consistency. Linting doesn't catch off-system patterns. There's no visibility into health.</p>
+      <div class="fix"><strong>Fix:</strong> Add checks to CI/CD. Make metrics visible. Track drift over time.</div>
+    </div>
+
+    <div class="callout">
+      <div class="callout-quote">"Developers bypass design systems because of friction, gaps, and invisibility. These are system problems, not people problems."</div>
+    </div>
+
+    <h2>The Adoption Equation</h2>
+
+    <div class="equation-box">
+      <div class="equation">Adoption = Value of Using System > Effort Required</div>
+      <div class="equation-note">Every bypass is evidence this equation is broken somewhere. Find where.</div>
+    </div>
+
+    <p><strong>Increase value:</strong> Cover more use cases. Improve documentation. Enable faster development.</p>
+    <p><strong>Reduce effort:</strong> Simplify APIs. Improve discoverability. Remove bureaucratic obstacles.</p>
+
+    <h2>Framework for Improvement</h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-title">Measure</div>
+        <div class="step-desc">Current adoption by team</div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-title">Talk</div>
+        <div class="step-desc">Why did you bypass?</div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-title">Fix</div>
+        <div class="step-desc">Top 3 friction points</div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-title">Automate</div>
+        <div class="step-desc">Lint and scan PRs</div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-title">Repeat</div>
+        <div class="step-desc">Continuous improvement</div>
+      </div>
+    </div>
+
+    <div class="cta">
+      <h3>From Compliance to Enablement</h3>
+      <p>The best design systems don't feel like constraints. They feel like superpowers. Buoy helps you automate enforcement so you can focus on enablement.</p>
+      <a href="https://buoy.design" class="cta-link">Learn More at buoy.design →</a>
+    </div>
+
+    <footer class="footer">
+      <span>© 2026 Buoy. The design system drift detector.</span>
+      <span>buoy.design</span>
+    </footer>
+  </body>
+</html>
