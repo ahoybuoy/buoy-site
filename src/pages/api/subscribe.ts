@@ -42,18 +42,47 @@ export const POST: APIRoute = async ({ request, locals }) => {
       );
     }
 
-    // Lead magnet to PDF URL mapping
-    const pdfUrls: Record<string, string> = {
-      'drift-checklist': '/downloads/drift-checklist.pdf',
-      'hall-of-shame': '/downloads/hall-of-shame.pdf',
-      'pr-review-cheatsheet': '/downloads/pr-review-cheatsheet.pdf',
-      'maturity-model': '/downloads/maturity-model.pdf',
-      'why-developers-bypass': '/downloads/why-developers-bypass.pdf',
-      'token-migration': '/downloads/token-migration.pdf',
-      'state-of-design-systems': '/downloads/state-of-design-systems.pdf',
+    // Lead magnet metadata
+    const leadMagnets: Record<string, { url: string; name: string; type: 'quick' | 'nurture' }> = {
+      'drift-checklist': {
+        url: '/downloads/drift-checklist.pdf',
+        name: 'Design System Drift Checklist',
+        type: 'quick',
+      },
+      'hall-of-shame': {
+        url: '/downloads/hall-of-shame.pdf',
+        name: 'Hardcoded Color Hall of Shame',
+        type: 'quick',
+      },
+      'pr-review-cheatsheet': {
+        url: '/downloads/pr-review-cheatsheet.pdf',
+        name: 'PR Review Cheat Sheet',
+        type: 'quick',
+      },
+      'maturity-model': {
+        url: '/downloads/maturity-model.pdf',
+        name: 'Design System Maturity Model',
+        type: 'nurture',
+      },
+      'why-developers-bypass': {
+        url: '/downloads/why-developers-bypass.pdf',
+        name: 'Why Developers Bypass Your Design System',
+        type: 'nurture',
+      },
+      'token-migration': {
+        url: '/downloads/token-migration.pdf',
+        name: 'Design Token Migration Playbook',
+        type: 'nurture',
+      },
+      'state-of-design-systems': {
+        url: '/downloads/state-of-design-systems.pdf',
+        name: 'State of Design Systems 2026',
+        type: 'nurture',
+      },
     };
 
-    const downloadUrl = pdfUrls[data.leadMagnet] || pdfUrls['drift-checklist'];
+    const magnet = leadMagnets[data.leadMagnet] || leadMagnets['drift-checklist'];
+    const downloadUrl = magnet.url;
 
     // Create or update contact in Loops
     const loopsResponse = await fetch('https://app.loops.so/api/v1/contacts/create', {
@@ -67,7 +96,8 @@ export const POST: APIRoute = async ({ request, locals }) => {
         firstName: data.firstName || '',
         source: 'lead-magnet',
         leadMagnet: data.leadMagnet,
-        downloadUrl: downloadUrl,
+        leadMagnetName: magnet.name,
+        leadMagnetType: magnet.type,
         userGroup: 'leads',
       }),
     });
@@ -76,8 +106,22 @@ export const POST: APIRoute = async ({ request, locals }) => {
       const error = await loopsResponse.text();
       console.error('Loops API error:', error);
 
-      // If contact already exists, that's fine - trigger the event anyway
-      if (!error.includes('already exists')) {
+      // If contact already exists, update them instead
+      if (error.includes('already exists')) {
+        await fetch('https://app.loops.so/api/v1/contacts/update', {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${LOOPS_API_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: data.email,
+            leadMagnet: data.leadMagnet,
+            leadMagnetName: magnet.name,
+            leadMagnetType: magnet.type,
+          }),
+        });
+      } else {
         return new Response(
           JSON.stringify({ message: 'Failed to subscribe' }),
           { status: 500, headers: { 'Content-Type': 'application/json' } }
@@ -85,7 +129,32 @@ export const POST: APIRoute = async ({ request, locals }) => {
       }
     }
 
-    // Trigger the lead magnet event to send the email
+    // Send transactional email with PDF immediately
+    // You need to create a transactional email in Loops with ID: lead-magnet-delivery
+    const transactionalResponse = await fetch('https://app.loops.so/api/v1/transactional', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${LOOPS_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        transactionalId: 'lead-magnet-delivery',
+        email: data.email,
+        dataVariables: {
+          firstName: data.firstName || '',
+          leadMagnetName: magnet.name,
+          downloadUrl: `https://buoy.design${downloadUrl}`,
+        },
+      }),
+    });
+
+    if (!transactionalResponse.ok) {
+      const error = await transactionalResponse.text();
+      console.error('Loops transactional error:', error);
+      // Don't fail - contact was still created, they can download from success page
+    }
+
+    // Trigger event for nurture sequence (starts after transactional)
     const eventResponse = await fetch('https://app.loops.so/api/v1/events/send', {
       method: 'POST',
       headers: {
@@ -97,6 +166,8 @@ export const POST: APIRoute = async ({ request, locals }) => {
         eventName: 'leadMagnetDownload',
         eventProperties: {
           leadMagnet: data.leadMagnet,
+          leadMagnetName: magnet.name,
+          leadMagnetType: magnet.type,
           downloadUrl: downloadUrl,
         },
       }),
@@ -105,7 +176,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
     if (!eventResponse.ok) {
       const error = await eventResponse.text();
       console.error('Loops event error:', error);
-      // Don't fail the request if event fails - contact was still created
+      // Don't fail - transactional already sent
     }
 
     return new Response(
