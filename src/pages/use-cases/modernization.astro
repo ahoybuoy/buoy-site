@@ -1,6 +1,7 @@
 ---
 import UseCaseLayout from '../../layouts/UseCaseLayout.astro'
 import Terminal from '../../components/Terminal.astro'
+import LeadMagnetCallout from '../../components/LeadMagnetCallout.astro'
 
 const phases = [
   {
@@ -156,6 +157,17 @@ const terminalLines = [
           <p class="text-sm text-slate">Block PRs that add new legacy code to migrated areas</p>
         </div>
       </div>
+    </div>
+  </section>
+  <!-- Lead Magnet: Token Migration Playbook -->
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <LeadMagnetCallout
+        leadMagnet="token-migration"
+        headline="Planning a token migration?"
+        subhead="Step-by-step playbook for migrating from hardcoded values to design tokens. Avoid the common pitfalls."
+        buttonText="Get the Playbook"
+      />
     </div>
   </section>
 </UseCaseLayout>

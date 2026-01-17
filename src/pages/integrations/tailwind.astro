@@ -1,6 +1,7 @@
 ---
 import IntegrationLayout from '../../layouts/IntegrationLayout.astro'
 import Terminal from '../../components/Terminal.astro'
+import LeadMagnetCallout from '../../components/LeadMagnetCallout.astro'
 
 const features = [
   {
@@ -141,6 +142,17 @@ export default {
           </div>
         </div>
       </div>
+    </div>
+  </section>
+  <!-- Lead Magnet: Token Migration -->
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <LeadMagnetCallout
+        leadMagnet="token-migration"
+        headline="Migrating from arbitrary values to theme tokens?"
+        subhead="Step-by-step playbook for cleaning up your Tailwind codebase. Includes regex patterns and automation tips."
+        buttonText="Get the Playbook"
+      />
     </div>
   </section>
 </IntegrationLayout>

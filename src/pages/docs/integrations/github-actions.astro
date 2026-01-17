@@ -1,5 +1,6 @@
 ---
 import DocsLayout from '../../../layouts/DocsLayout.astro'
+import LeadMagnetCallout from '../../../components/LeadMagnetCallout.astro'
 ---
 
 <DocsLayout title="GitHub Actions" description="Add Buoy to your CI pipeline">
@@ -180,4 +181,13 @@ npx @buoy-design/cli ci --strict</code></pre>
     <li><a href="/docs/configuration">Configuration</a> — buoy.config.mjs options</li>
     <li><a href="/docs/features/health-scoring">Health Scoring</a> — How scores work</li>
   </ul>
+
+  <div class="mt-12">
+    <LeadMagnetCallout
+      leadMagnet="pr-review-cheatsheet"
+      headline="Want a quick reference for PR reviews?"
+      subhead="What to look for in design system PRs. Print it, share it with your team."
+      buttonText="Get the Cheat Sheet"
+    />
+  </div>
 </DocsLayout>

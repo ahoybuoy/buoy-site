@@ -1,6 +1,7 @@
 ---
 import FeatureLayout from '../../layouts/FeatureLayout.astro'
 import FeatureCard from '../../components/FeatureCard.astro'
+import LeadMagnetCallout from '../../components/LeadMagnetCallout.astro'
 
 const ciProviders = [
   { name: 'GitHub Actions', example: 'npx @buoy-design/cli drift check --ci' },
@@ -184,6 +185,18 @@ jobs:
         with:
           sarif_file: buoy-results.sarif`}</code></pre>
       </div>
+    </div>
+  </section>
+
+  <!-- Lead Magnet: PR Review Cheatsheet -->
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <LeadMagnetCallout
+        leadMagnet="pr-review-cheatsheet"
+        headline="Setting up CI? Get the PR review cheat sheet."
+        subhead="What to look for in design system PRs. A quick reference for your team's code reviews."
+        buttonText="Get the Cheat Sheet"
+      />
     </div>
   </section>
 

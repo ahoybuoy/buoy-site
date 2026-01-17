@@ -3,6 +3,7 @@ import FeatureLayout from '../../layouts/FeatureLayout.astro'
 import Terminal from '../../components/Terminal.astro'
 import FeatureCard from '../../components/FeatureCard.astro'
 import CodeBlock from '../../components/CodeBlock.astro'
+import LeadMagnetCallout from '../../components/LeadMagnetCallout.astro'
 
 const terminalLines = [
   { text: '', delay: 600 },
@@ -147,6 +148,18 @@ const faqs = [
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Lead Magnet: Hall of Shame -->
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <LeadMagnetCallout
+        leadMagnet="hall-of-shame"
+        headline="See the worst hardcoded colors in the wild"
+        subhead="Real examples from real codebases. Get the Hall of Shame PDF and see if your codebase makes the list."
+        buttonText="Get the Hall of Shame"
+      />
     </div>
   </section>
 

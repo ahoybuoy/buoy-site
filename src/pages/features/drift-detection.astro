@@ -2,6 +2,7 @@
 import FeatureLayout from '../../layouts/FeatureLayout.astro'
 import Terminal from '../../components/Terminal.astro'
 import FeatureCard from '../../components/FeatureCard.astro'
+import LeadMagnetCallout from '../../components/LeadMagnetCallout.astro'
 
 const terminalLines = [
   { text: '', delay: 600 },
@@ -330,6 +331,18 @@ const relatedFeatures = [
           </ul>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Lead Magnet: Drift Checklist -->
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <LeadMagnetCallout
+        leadMagnet="drift-checklist"
+        headline="Not ready to install? Start with a manual audit."
+        subhead="20 warning signs to look for in your next code review. Spot drift before it spreads."
+        buttonText="Get the Checklist"
+      />
     </div>
   </section>
 

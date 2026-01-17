@@ -1,0 +1,53 @@
+---
+import LeadMagnetForm from './LeadMagnetForm.astro'
+
+interface Props {
+  leadMagnet: 'drift-checklist' | 'hall-of-shame' | 'pr-review-cheatsheet' | 'maturity-model' | 'why-developers-bypass' | 'token-migration' | 'state-of-design-systems'
+  headline: string
+  subhead: string
+  buttonText?: string
+  class?: string
+}
+
+const {
+  leadMagnet,
+  headline,
+  subhead,
+  buttonText = 'Get the PDF',
+  class: className = ''
+} = Astro.props
+
+const successMessages: Record<string, string> = {
+  'drift-checklist': 'Check your email for the checklist!',
+  'hall-of-shame': 'Check your email for the Hall of Shame!',
+  'pr-review-cheatsheet': 'Check your email for the cheat sheet!',
+  'maturity-model': 'Check your email for the maturity model!',
+  'why-developers-bypass': 'Check your email for the report!',
+  'token-migration': 'Check your email for the playbook!',
+  'state-of-design-systems': 'Check your email for the report!',
+}
+---
+
+<div class={`bg-gradient-to-r from-buoy/10 to-lavender/10 border border-buoy/20 rounded-xl p-6 sm:p-8 ${className}`}>
+  <div class="flex flex-col lg:flex-row lg:items-center gap-6">
+    <div class="flex-1">
+      <div class="inline-flex items-center gap-2 px-2 py-1 bg-buoy/20 rounded text-buoy text-xs font-medium mb-3">
+        Free PDF
+      </div>
+      <h3 class="text-xl font-bold text-light mb-2">
+        {headline}
+      </h3>
+      <p class="text-slate text-sm">
+        {subhead}
+      </p>
+    </div>
+    <div class="lg:w-80">
+      <LeadMagnetForm
+        leadMagnet={leadMagnet}
+        buttonText={buttonText}
+        successMessage={successMessages[leadMagnet]}
+      />
+      <p class="text-xs text-slate/60 mt-2">No spam. Unsubscribe anytime.</p>
+    </div>
+  </div>
+</div>

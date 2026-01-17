@@ -1,0 +1,54 @@
+---
+import LeadMagnetForm from './LeadMagnetForm.astro'
+
+interface Props {
+  leadMagnet: 'drift-checklist' | 'hall-of-shame' | 'pr-review-cheatsheet' | 'maturity-model' | 'why-developers-bypass' | 'token-migration' | 'state-of-design-systems'
+  headline: string
+  subhead: string
+  buttonText?: string
+  class?: string
+}
+
+const {
+  leadMagnet,
+  headline,
+  subhead,
+  buttonText = 'Get the PDF',
+  class: className = ''
+} = Astro.props
+
+const successMessages: Record<string, string> = {
+  'drift-checklist': 'Check your email for the checklist!',
+  'hall-of-shame': 'Check your email for the Hall of Shame!',
+  'pr-review-cheatsheet': 'Check your email for the cheat sheet!',
+  'maturity-model': 'Check your email for the maturity model!',
+  'why-developers-bypass': 'Check your email for the report!',
+  'token-migration': 'Check your email for the playbook!',
+  'state-of-design-systems': 'Check your email for the report!',
+}
+---
+
+<section class={`py-16 bg-navy ${className}`}>
+  <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="inline-flex items-center gap-2 px-3 py-1 bg-buoy/10 border border-buoy/30 rounded-full text-buoy text-sm mb-6">
+      Free PDF Download
+    </div>
+
+    <h2 class="text-2xl sm:text-3xl font-bold text-light mb-4">
+      {headline}
+    </h2>
+
+    <p class="text-lg text-slate mb-8">
+      {subhead}
+    </p>
+
+    <div class="max-w-md mx-auto">
+      <LeadMagnetForm
+        leadMagnet={leadMagnet}
+        buttonText={buttonText}
+        successMessage={successMessages[leadMagnet]}
+      />
+      <p class="text-sm text-slate/60 mt-4">No spam. Unsubscribe anytime.</p>
+    </div>
+  </div>
+</section>

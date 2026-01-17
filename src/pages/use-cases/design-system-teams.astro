@@ -1,6 +1,7 @@
 ---
 import UseCaseLayout from '../../layouts/UseCaseLayout.astro'
 import Terminal from '../../components/Terminal.astro'
+import LeadMagnetCallout from '../../components/LeadMagnetCallout.astro'
 
 const painPoints = [
   {
@@ -152,4 +153,15 @@ const terminalLines = [
     </div>
   </section>
 
+  <!-- Lead Magnet: Why Developers Bypass -->
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <LeadMagnetCallout
+        leadMagnet="why-developers-bypass"
+        headline="Why do developers bypass your design system?"
+        subhead="It's not laziness. Get the research on the real friction points and what high-adoption teams do differently."
+        buttonText="Get the Report"
+      />
+    </div>
+  </section>
 </UseCaseLayout>

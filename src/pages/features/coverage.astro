@@ -2,6 +2,7 @@
 import FeatureLayout from '../../layouts/FeatureLayout.astro'
 import Terminal from '../../components/Terminal.astro'
 import FeatureCard from '../../components/FeatureCard.astro'
+import LeadMagnetCallout from '../../components/LeadMagnetCallout.astro'
 
 const terminalLines = [
   { text: '', delay: 600 },
@@ -150,6 +151,18 @@ const relatedFeatures = [
           </ul>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Lead Magnet: Maturity Model -->
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <LeadMagnetCallout
+        leadMagnet="maturity-model"
+        headline="Where does your design system stand?"
+        subhead="Assess your maturity level across 5 dimensions. Get a roadmap for what to improve next."
+        buttonText="Get the Assessment"
+      />
     </div>
   </section>
 

@@ -1,0 +1,191 @@
+---
+import LeadMagnetForm from './LeadMagnetForm.astro'
+
+interface Props {
+  class?: string
+}
+
+const { class: className = '' } = Astro.props
+
+// Lead magnet variants for A/B testing
+const variants = [
+  {
+    id: 'drift-checklist',
+    headline: 'Think your codebase might have drift?',
+    subhead: 'Get the checklist. 20 warning signs to spot in your next code review.',
+    buttonText: 'Get the Checklist',
+    successMessage: 'Check your email! The checklist is on its way.',
+    preview: {
+      title: 'drift-checklist.pdf',
+      items: [
+        'Hardcoded hex values instead of tokens',
+        'Arbitrary pixel values outside your scale',
+        'Inline styles overriding components',
+        '!important used to force changes',
+      ],
+      moreCount: 16,
+    },
+  },
+  {
+    id: 'why-developers-bypass',
+    headline: 'Why do developers bypass your design system?',
+    subhead: "It's not laziness. Get the research on what actually drives drift.",
+    buttonText: 'Get the Report',
+    successMessage: 'Check your email for the report!',
+    preview: {
+      title: 'why-developers-bypass.pdf',
+      items: [
+        'The 3 friction points that cause workarounds',
+        'Why "just use the component" doesn\'t work',
+        'What high-adoption teams do differently',
+        'The documentation gap nobody talks about',
+      ],
+      moreCount: 8,
+    },
+  },
+  {
+    id: 'maturity-model',
+    headline: 'Where does your design system stand?',
+    subhead: 'Assess your maturity level. Get a roadmap for what to improve next.',
+    buttonText: 'Get the Assessment',
+    successMessage: 'Check your email for the maturity model!',
+    preview: {
+      title: 'maturity-model.pdf',
+      items: [
+        'Level 1: Ad-hoc (no system)',
+        'Level 2: Documented (guidelines exist)',
+        'Level 3: Managed (components in code)',
+        'Level 4: Measured (adoption tracked)',
+      ],
+      moreCount: 2,
+    },
+  },
+]
+---
+
+<section class={`py-16 bg-navy relative ${className}`}>
+  <div class="absolute inset-0 bg-gradient-to-b from-navy-dark/50 via-transparent to-navy-dark/50"></div>
+
+  <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    {variants.map((variant, index) => (
+      <div
+        class={`lead-capture-variant grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${index > 0 ? 'hidden' : ''}`}
+        data-variant={variant.id}
+      >
+        <!-- Left: Copy -->
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-buoy/10 border border-buoy/30 rounded-full text-buoy text-sm mb-6">
+            Free PDF
+          </div>
+
+          <h2 class="text-2xl sm:text-3xl font-bold text-light mb-4 leading-tight">
+            {variant.headline}
+          </h2>
+
+          <p class="text-lg text-slate mb-6">
+            {variant.subhead}
+          </p>
+
+          <LeadMagnetForm
+            leadMagnet={variant.id}
+            buttonText={variant.buttonText}
+            successMessage={variant.successMessage}
+          />
+
+          <p class="text-sm text-slate/70 mt-4">
+            No spam. Unsubscribe anytime.
+          </p>
+        </div>
+
+        <!-- Right: Preview -->
+        <div class="hidden lg:block">
+          <div class="bg-navy-dark border border-navy-light/30 rounded-xl p-6 shadow-2xl transform rotate-1 hover:rotate-0 transition-transform">
+            <div class="flex items-center gap-2 mb-4 pb-4 border-b border-navy-light/20">
+              <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
+              <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+              <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
+              <span class="text-xs text-slate ml-2">{variant.preview.title}</span>
+            </div>
+
+            <div class="space-y-3 text-sm">
+              {variant.preview.items.map((item) => (
+                <div class="flex items-start gap-3">
+                  <div class="w-4 h-4 border border-slate/50 rounded mt-0.5 flex-shrink-0"></div>
+                  <span class="text-slate">{item}</span>
+                </div>
+              ))}
+              {variant.preview.moreCount > 0 && (
+                <div class="flex items-start gap-3 opacity-50">
+                  <div class="w-4 h-4 border border-slate/50 rounded mt-0.5 flex-shrink-0"></div>
+                  <span class="text-slate">+{variant.preview.moreCount} more...</span>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  // A/B Testing with PostHog
+  declare global {
+    interface Window {
+      posthog?: {
+        getFeatureFlag: (flag: string) => string | boolean | undefined;
+        capture: (event: string, properties?: Record<string, unknown>) => void;
+        onFeatureFlags?: (callback: () => void) => void;
+      };
+    }
+  }
+
+  function initLeadCaptureABTest() {
+    if (typeof window.posthog !== 'undefined') {
+      const variant = window.posthog.getFeatureFlag('homepage-lead-magnet-variant');
+
+      if (variant && typeof variant === 'string') {
+        // Hide all variants
+        document.querySelectorAll('.lead-capture-variant').forEach(el => {
+          el.classList.add('hidden');
+        });
+
+        // Show the selected variant
+        const selectedVariant = document.querySelector(`.lead-capture-variant[data-variant="${variant}"]`);
+        if (selectedVariant) {
+          selectedVariant.classList.remove('hidden');
+        } else {
+          // Fallback to first variant if flag value doesn't match
+          const firstVariant = document.querySelector('.lead-capture-variant');
+          firstVariant?.classList.remove('hidden');
+        }
+
+        // Track which variant was shown
+        window.posthog.capture('lead_capture_section_shown', {
+          variant,
+          page: 'homepage'
+        });
+      }
+    }
+  }
+
+  // Try to init A/B test when PostHog loads feature flags
+  function waitForPostHog() {
+    if (typeof window.posthog !== 'undefined' && window.posthog.onFeatureFlags) {
+      window.posthog.onFeatureFlags(initLeadCaptureABTest);
+    } else {
+      // Fallback: try again after a delay
+      setTimeout(() => {
+        if (typeof window.posthog !== 'undefined') {
+          initLeadCaptureABTest();
+        }
+      }, 1500);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', waitForPostHog);
+  } else {
+    waitForPostHog();
+  }
+</script>

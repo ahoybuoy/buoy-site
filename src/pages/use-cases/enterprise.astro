@@ -1,5 +1,6 @@
 ---
 import UseCaseLayout from '../../layouts/UseCaseLayout.astro'
+import LeadMagnetCallout from '../../components/LeadMagnetCallout.astro'
 
 const features = [
   {
@@ -130,6 +131,18 @@ const features = [
           <p class="text-sm text-slate">For regulated environments</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- Lead Magnet: State of Design Systems -->
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <LeadMagnetCallout
+        leadMagnet="state-of-design-systems"
+        headline="How does your design system compare?"
+        subhead="State of Design Systems 2026: Benchmarks, trends, and insights from 500+ teams."
+        buttonText="Get the Report"
+      />
     </div>
   </section>
 
