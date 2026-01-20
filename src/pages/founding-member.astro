@@ -2,12 +2,11 @@
 import Layout from '../layouts/Layout.astro'
 import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
-import Button from '../components/Button.astro'
 ---
 
 <Layout
-  title="Founding Member | Buoy - Lock in $15/dev forever"
-  description="Become a Buoy Founding Member. Lock in $15/dev/month forever - 40% off regular pricing. Your card won't be charged until we launch."
+  title="Join the Waitlist | Buoy - Design Drift Detection"
+  description="Be first to know when Buoy's GitHub integration launches. Join the waitlist for early access and founding member pricing."
 >
   <Nav />
 
@@ -17,14 +16,13 @@ import Button from '../components/Button.astro'
 
     <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <div class="inline-flex items-center gap-2 px-3 py-1 bg-buoy/20 border border-buoy/30 rounded-full text-buoy text-sm mb-6">
-        Limited Availability
+        Coming Soon
       </div>
       <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6">
-        Become a Founding Member
+        Join the Waitlist
       </h1>
       <p class="text-xl text-slate max-w-2xl mx-auto">
-        Lock in <span class="text-buoy font-semibold">$15/dev/month</span> forever.
-        <span class="line-through text-slate/50">$25</span>
+        Be first to know when our GitHub integration launches.
       </p>
     </div>
   </section>
@@ -36,7 +34,7 @@ import Button from '../components/Button.astro'
 
         <!-- Left: Benefits -->
         <div>
-          <h2 class="text-2xl font-bold text-light mb-6">What you get</h2>
+          <h2 class="text-2xl font-bold text-light mb-6">What's coming</h2>
 
           <div class="space-y-4 mb-8">
             <div class="flex items-start gap-3">
@@ -44,8 +42,8 @@ import Button from '../components/Button.astro'
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
               </svg>
               <div>
-                <h3 class="font-semibold text-light">40% off forever</h3>
-                <p class="text-sm text-slate">$15/dev/month instead of $25. Locked in for life.</p>
+                <h3 class="font-semibold text-light">Smart GitHub PR comments</h3>
+                <p class="text-sm text-slate">Automatic drift detection on every pull request.</p>
               </div>
             </div>
 
@@ -54,8 +52,18 @@ import Button from '../components/Button.astro'
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
               </svg>
               <div>
-                <h3 class="font-semibold text-light">Full Team plan access</h3>
-                <p class="text-sm text-slate">GitHub PR comments, Slack alerts, cloud history, Figma plugin.</p>
+                <h3 class="font-semibold text-light">Cloud history & trends</h3>
+                <p class="text-sm text-slate">Track your design system health over time.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+              <div>
+                <h3 class="font-semibold text-light">Slack & Teams alerts</h3>
+                <p class="text-sm text-slate">Get notified when drift is detected.</p>
               </div>
             </div>
 
@@ -65,39 +73,26 @@ import Button from '../components/Button.astro'
               </svg>
               <div>
                 <h3 class="font-semibold text-light">Early access</h3>
-                <p class="text-sm text-slate">First to try new features as they ship.</p>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-              <div>
-                <h3 class="font-semibold text-light">Founding Member badge</h3>
-                <p class="text-sm text-slate">Recognition in our community and changelog.</p>
+                <p class="text-sm text-slate">Waitlist members get first access when we launch.</p>
               </div>
             </div>
           </div>
 
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-4">
+          <div class="bg-navy-dark border border-buoy/30 rounded-xl p-4">
             <h3 class="font-semibold text-light mb-2 flex items-center gap-2">
-              <span class="text-buoy">?</span> How it works
+              <span class="text-buoy">*</span> Free for first 100 users
             </h3>
-            <ol class="text-sm text-slate space-y-2 list-decimal list-inside">
-              <li>Enter your email and team size</li>
-              <li>Add your payment method (you won't be charged yet)</li>
-              <li>We'll email you when our GitHub integration launches</li>
-              <li>Your subscription starts at $15/dev/month - forever</li>
-            </ol>
+            <p class="text-sm text-slate">
+              The first 100 teams to install from GitHub Marketplace get the full Team plan free forever.
+            </p>
           </div>
         </div>
 
         <!-- Right: Form -->
         <div class="bg-navy-dark border border-buoy/30 rounded-2xl p-8">
-          <h2 class="text-xl font-bold text-light mb-6 text-center">Reserve your spot</h2>
+          <h2 class="text-xl font-bold text-light mb-6 text-center">Get early access</h2>
 
-          <form id="founding-member-form" class="space-y-6">
+          <form id="waitlist-form" class="space-y-6">
             <div>
               <label for="email" class="block text-sm font-medium text-light mb-2">
                 Work email
@@ -112,48 +107,22 @@ import Button from '../components/Button.astro'
               />
             </div>
 
-            <div>
-              <label for="seats" class="block text-sm font-medium text-light mb-2">
-                Number of developers
-              </label>
-              <select
-                id="seats"
-                name="seats"
-                class="w-full px-4 py-3 bg-navy border border-navy-light/30 rounded-lg text-light focus:outline-none focus:border-buoy"
-              >
-                <option value="1">1 developer - $15/mo</option>
-                <option value="2">2 developers - $30/mo</option>
-                <option value="3">3 developers - $45/mo</option>
-                <option value="5">5 developers - $75/mo</option>
-                <option value="10">10 developers - $150/mo</option>
-                <option value="20">20+ developers - Contact us</option>
-              </select>
-            </div>
-
-            <div class="bg-navy/50 border border-navy-light/20 rounded-lg p-4">
-              <div class="flex justify-between items-center">
-                <span class="text-slate">Your locked-in price</span>
-                <span class="text-2xl font-bold text-buoy" id="price-display">$15/mo</span>
-              </div>
-              <p class="text-xs text-slate/70 mt-2">
-                Card saved but not charged until launch
-              </p>
-            </div>
-
             <button
               type="submit"
               id="submit-btn"
               class="w-full py-3 px-6 bg-buoy text-navy-dark font-semibold rounded-lg hover:bg-buoy/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Reserve Your Spot
+              Join Waitlist
             </button>
 
             <p class="text-xs text-slate/70 text-center">
-              By continuing, you agree to our Terms of Service.
-              <br />
-              Cancel anytime before launch for a full refund.
+              No spam. We'll only email you when we launch.
             </p>
           </form>
+
+          <div id="success-message" class="hidden mt-4 p-4 bg-success/10 border border-success/30 rounded-lg text-success text-sm text-center">
+            You're on the list! We'll email you when we launch.
+          </div>
 
           <div id="error-message" class="hidden mt-4 p-4 bg-error/10 border border-error/30 rounded-lg text-error text-sm">
           </div>
@@ -163,60 +132,22 @@ import Button from '../components/Button.astro'
     </div>
   </section>
 
-  <!-- FAQ -->
+  <!-- In the meantime -->
   <section class="py-16 bg-navy-dark">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Questions</h2>
-
-      <div class="space-y-4">
-        <details class="group bg-navy/50 border border-navy-light/20 rounded-xl">
-          <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
-            <span class="font-medium text-light">When will I be charged?</span>
-            <svg class="w-5 h-5 text-slate group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </summary>
-          <div class="px-4 pb-4 text-slate">
-            Your card will only be charged when our GitHub integration launches (estimated 2-6 weeks). We'll email you before any charge.
-          </div>
-        </details>
-
-        <details class="group bg-navy/50 border border-navy-light/20 rounded-xl">
-          <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
-            <span class="font-medium text-light">Can I cancel?</span>
-            <svg class="w-5 h-5 text-slate group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </summary>
-          <div class="px-4 pb-4 text-slate">
-            Yes, anytime before launch for a full refund. After launch, you can cancel your subscription anytime (no refund for partial months).
-          </div>
-        </details>
-
-        <details class="group bg-navy/50 border border-navy-light/20 rounded-xl">
-          <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
-            <span class="font-medium text-light">Is the $15 price really forever?</span>
-            <svg class="w-5 h-5 text-slate group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </summary>
-          <div class="px-4 pb-4 text-slate">
-            Yes. As long as you maintain an active subscription, you'll always pay $15/dev/month. Even if we raise prices to $50 someday.
-          </div>
-        </details>
-
-        <details class="group bg-navy/50 border border-navy-light/20 rounded-xl">
-          <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
-            <span class="font-medium text-light">What if I need more seats later?</span>
-            <svg class="w-5 h-5 text-slate group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </summary>
-          <div class="px-4 pb-4 text-slate">
-            Additional seats added later will be at the founding member rate ($15/dev) as long as you're a founding member.
-          </div>
-        </details>
-      </div>
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-bold text-light mb-4">Try the free CLI now</h2>
+      <p class="text-slate mb-8">
+        Don't wait for the GitHub integration. The open source CLI has full drift detection today.
+      </p>
+      <a
+        href="https://github.com/buoy-design/buoy"
+        class="inline-flex items-center gap-2 px-6 py-3 bg-navy border border-navy-light/30 text-light rounded-lg hover:border-buoy/50 transition-colors"
+      >
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        </svg>
+        View on GitHub
+      </a>
     </div>
   </section>
 
@@ -224,59 +155,46 @@ import Button from '../components/Button.astro'
 </Layout>
 
 <script>
-  const form = document.getElementById('founding-member-form') as HTMLFormElement;
-  const seatsSelect = document.getElementById('seats') as HTMLSelectElement;
-  const priceDisplay = document.getElementById('price-display') as HTMLElement;
+  const form = document.getElementById('waitlist-form') as HTMLFormElement;
   const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const successMessage = document.getElementById('success-message') as HTMLElement;
   const errorMessage = document.getElementById('error-message') as HTMLElement;
 
-  // Update price display when seats change
-  seatsSelect.addEventListener('change', () => {
-    const seats = parseInt(seatsSelect.value);
-    if (seats >= 20) {
-      priceDisplay.textContent = 'Contact us';
-    } else {
-      priceDisplay.textContent = `$${seats * 15}/mo`;
-    }
-  });
-
-  // Handle form submission
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-
-    const seats = parseInt(seatsSelect.value);
-    if (seats >= 20) {
-      window.location.href = 'https://cal.com/tarre';
-      return;
-    }
 
     const email = (document.getElementById('email') as HTMLInputElement).value;
 
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Creating checkout...';
+    submitBtn.textContent = 'Joining...';
     errorMessage.classList.add('hidden');
+    successMessage.classList.add('hidden');
 
     try {
-      const response = await fetch('/api/create-checkout', {
+      const response = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, seats }),
+        body: JSON.stringify({
+          email,
+          leadMagnet: 'waitlist'
+        }),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || 'Failed to create checkout');
+        throw new Error(data.message || 'Failed to join waitlist');
       }
 
-      // Redirect to Stripe Checkout
-      window.location.href = data.url;
+      // Show success
+      form.classList.add('hidden');
+      successMessage.classList.remove('hidden');
 
     } catch (error) {
       errorMessage.textContent = error instanceof Error ? error.message : 'Something went wrong';
       errorMessage.classList.remove('hidden');
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Reserve Your Spot';
+      submitBtn.textContent = 'Join Waitlist';
     }
   });
 </script>
