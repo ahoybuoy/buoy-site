@@ -1,0 +1,164 @@
+---
+import DocsLayout from '../../../layouts/DocsLayout.astro'
+---
+
+<DocsLayout title="Claude Code Hooks" description="Self-validating AI agents with Buoy">
+  <h1>Claude Code Hooks</h1>
+
+  <p>
+    Turn Claude Code into a self-validating agent. When Claude edits a UI component,
+    Buoy automatically checks for design drift and feeds corrections back—creating
+    a closed loop where the AI catches and fixes its own mistakes.
+  </p>
+
+  <h2>How It Works</h2>
+
+  <p>
+    Claude Code supports <a href="https://docs.anthropic.com/en/docs/claude-code/hooks">hooks</a>—shell
+    commands that run at specific points in the AI's workflow. Buoy uses the <code>PostToolUse</code>
+    hook to validate files after Claude writes them:
+  </p>
+
+  <ol>
+    <li>Claude generates or edits a component file</li>
+    <li>The hook runs <code>buoy check</code> on the modified file</li>
+    <li>If drift is detected, feedback returns to Claude</li>
+    <li>Claude self-corrects without you asking</li>
+  </ol>
+
+  <h2>Quick Setup</h2>
+
+  <pre><code>buoy dock hooks --claude</code></pre>
+
+  <p>This creates two files:</p>
+
+  <ul>
+    <li><code>.claude/hooks/buoy-validate.js</code> — The validation script</li>
+    <li><code>.claude/settings.local.json</code> — Hook configuration</li>
+  </ul>
+
+  <h2>What Gets Checked</h2>
+
+  <p>The hook validates these file types:</p>
+
+  <ul>
+    <li><code>.tsx</code>, <code>.jsx</code> — React components</li>
+    <li><code>.vue</code> — Vue components</li>
+    <li><code>.svelte</code> — Svelte components</li>
+    <li><code>.component.ts</code>, <code>.component.html</code> — Angular components</li>
+  </ul>
+
+  <p>It skips test files, stories, config files, and type definitions.</p>
+
+  <h2>Example Feedback</h2>
+
+  <p>When Claude writes a component with hardcoded values, it sees:</p>
+
+  <pre><code>⚠️ Design drift detected in Button.tsx:
+
+• hardcoded-value: Component "Button" has 3 hardcoded colors: #3b82f6, #ffffff, #1e40af
+
+• hardcoded-value: Component "Button" has 2 hardcoded size values: 8px, 16px
+
+Run `buoy show drift` for full details.</code></pre>
+
+  <p>Claude then fixes the issues automatically in its next edit.</p>
+
+  <h2>Manual Setup</h2>
+
+  <p>If you prefer to set up manually, create <code>.claude/settings.local.json</code>:</p>
+
+  <pre><code>&#123;
+  "hooks": &#123;
+    "PostToolUse": [
+      &#123;
+        "matcher": "Edit",
+        "hooks": [
+          &#123;
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/buoy-validate.js\""
+          &#125;
+        ]
+      &#125;,
+      &#123;
+        "matcher": "Write",
+        "hooks": [
+          &#123;
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/buoy-validate.js\""
+          &#125;
+        ]
+      &#125;
+    ]
+  &#125;
+&#125;</code></pre>
+
+  <p>Then copy the validation script from the <a href="https://github.com/buoy-design/buoy/blob/main/apps/cli/assets/hooks/buoy-validate.js">Buoy repository</a>.</p>
+
+  <h2>Configuration</h2>
+
+  <h3>Adjusting Severity</h3>
+
+  <p>By default, all drift types trigger feedback. To only report critical issues, modify the hook script's <code>buoy check</code> call:</p>
+
+  <pre><code>npx buoy check --format json --fail-on critical</code></pre>
+
+  <h3>Quiet Mode</h3>
+
+  <p>To reduce noise, use the <code>--quiet</code> flag:</p>
+
+  <pre><code>npx buoy check --format json --quiet</code></pre>
+
+  <h2>Combining with Other Hooks</h2>
+
+  <p>The Buoy hook works alongside other Claude Code hooks. For example, you might have:</p>
+
+  <ul>
+    <li><code>SessionStart</code> — Load design system context</li>
+    <li><code>PostToolUse</code> — Buoy validation (this hook)</li>
+    <li><code>PreToolUse</code> — Custom approval workflows</li>
+  </ul>
+
+  <h2>Troubleshooting</h2>
+
+  <h3>Hook Not Running</h3>
+
+  <p>Verify the hook is configured:</p>
+
+  <pre><code>cat .claude/settings.local.json | jq '.hooks'</code></pre>
+
+  <h3>No Feedback Appearing</h3>
+
+  <p>Test the hook manually:</p>
+
+  <pre><code>echo '&#123;"tool_name":"Write","tool_input":&#123;"file_path":"src/Button.tsx"&#125;,"cwd":"'$(pwd)'"&#125;' | node .claude/hooks/buoy-validate.js</code></pre>
+
+  <h3>Permission Errors</h3>
+
+  <p>Ensure the script is executable:</p>
+
+  <pre><code>chmod +x .claude/hooks/buoy-validate.js</code></pre>
+
+  <h2>How the Script Works</h2>
+
+  <p>The validation script:</p>
+
+  <ol>
+    <li>Receives JSON from Claude Code via stdin with the modified file path</li>
+    <li>Checks if it's a UI component file (by extension)</li>
+    <li>Runs <code>buoy check --format json</code></li>
+    <li>Filters results to only the modified file</li>
+    <li>Returns structured feedback via <code>hookSpecificOutput.additionalContext</code></li>
+  </ol>
+
+  <p>The script always exits with code 0—it provides feedback without blocking Claude's workflow.</p>
+
+  <h2>Related</h2>
+
+  <ul>
+    <li><a href="/docs/cli/check">buoy check</a> — The command that powers the hook</li>
+    <li><a href="/docs/cli/dock">buoy dock</a> — Project setup including hooks</li>
+    <li><a href="/docs/features/ai-guardrails">AI Guardrails</a> — Broader AI integration strategy</li>
+    <li><a href="/docs/integrations/github-actions">GitHub Actions</a> — CI/CD integration</li>
+  </ul>
+</DocsLayout>

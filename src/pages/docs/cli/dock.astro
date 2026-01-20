@@ -48,6 +48,10 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
         <td><code>--hooks</code></td>
         <td>Setup pre-commit hook for drift checking</td>
       </tr>
+      <tr>
+        <td><code>--claude</code></td>
+        <td>Setup Claude Code hooks for self-validating AI</td>
+      </tr>
     </tbody>
   </table>
 
@@ -69,7 +73,7 @@ Creating buoy.config.mjs...
 
 Buoy is now docked! Run 'buoy check' to scan your codebase.</code></pre>
 
-  <h2>With Hooks</h2>
+  <h2>With Git Hooks</h2>
 
   <pre><code>$ buoy dock --hooks
 
@@ -77,6 +81,20 @@ Buoy is now docked! Run 'buoy check' to scan your codebase.</code></pre>
 ✓ Created .git/hooks/pre-commit
 
 Pre-commit hook installed. Drift will be checked before each commit.</code></pre>
+
+  <h2>With Claude Code</h2>
+
+  <p>Set up self-validating AI hooks for Claude Code:</p>
+
+  <pre><code>$ buoy dock --claude
+
+...
+✓ Created .claude/hooks/buoy-validate.js
+✓ Updated .claude/settings.local.json
+
+Claude Code hooks installed. AI will self-correct design drift.</code></pre>
+
+  <p>See <a href="/docs/integrations/claude-code">Claude Code integration</a> for details.</p>
 
   <h2>Generated Files</h2>
 
@@ -88,8 +106,9 @@ Pre-commit hook installed. Drift will be checked before each commit.</code></pre
   <h2>Related</h2>
 
   <ul>
-    <li><a href="/docs/cli/begin">buoy begin</a> - Interactive setup wizard</li>
-    <li><a href="/docs/cli/check">buoy check</a> - Scan your codebase</li>
-    <li><a href="/docs/cli/onboard">buoy onboard</a> - Set up AI guardrails</li>
+    <li><a href="/docs/cli/begin">buoy begin</a> — Interactive setup wizard</li>
+    <li><a href="/docs/cli/check">buoy check</a> — Scan your codebase</li>
+    <li><a href="/docs/cli/onboard">buoy onboard</a> — Set up AI guardrails</li>
+    <li><a href="/docs/integrations/claude-code">Claude Code</a> — Self-validating AI hooks</li>
   </ul>
 </DocsLayout>
