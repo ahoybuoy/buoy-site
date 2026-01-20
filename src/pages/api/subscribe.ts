@@ -80,6 +80,77 @@ export const POST: APIRoute = async ({ request, locals }) => {
       },
     };
 
+    // Handle waitlist signups separately
+    const isWaitlist = data.leadMagnet === 'waitlist';
+
+    if (isWaitlist) {
+      // Waitlist signup - just add to contacts, no transactional email
+      let isExistingContact = false;
+      const loopsResponse = await fetch('https://app.loops.so/api/v1/contacts/create', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${LOOPS_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: data.email,
+          source: 'waitlist',
+          userGroup: 'waitlist',
+        }),
+      });
+
+      if (!loopsResponse.ok) {
+        const error = await loopsResponse.text();
+        console.error('Loops API error:', error);
+
+        if (error.includes('already') || error.includes('already exists')) {
+          isExistingContact = true;
+          // Update contact to mark as waitlist
+          await fetch('https://app.loops.so/api/v1/contacts/update', {
+            method: 'PUT',
+            headers: {
+              'Authorization': `Bearer ${LOOPS_API_KEY}`,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              email: data.email,
+              source: 'waitlist',
+              userGroup: 'waitlist',
+            }),
+          });
+        } else {
+          return new Response(
+            JSON.stringify({ message: 'Failed to join waitlist' }),
+            { status: 500, headers: { 'Content-Type': 'application/json' } }
+          );
+        }
+      }
+
+      // Trigger waitlist event
+      await fetch('https://app.loops.so/api/v1/events/send', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${LOOPS_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: data.email,
+          eventName: 'waitlistSignup',
+        }),
+      });
+
+      return new Response(
+        JSON.stringify({
+          message: isExistingContact
+            ? "You're already on the waitlist! We'll email you when we launch."
+            : "You're on the list! We'll email you when we launch.",
+          isExistingContact,
+        }),
+        { status: 200, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
+    // Lead magnet signup
     const magnet = leadMagnets[data.leadMagnet] || leadMagnets['drift-checklist'];
     const downloadUrl = magnet.url;
 
