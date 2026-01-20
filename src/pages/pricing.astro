@@ -44,20 +44,20 @@ const plans = [
   },
   {
     name: 'Enterprise',
-    price: 'Custom',
-    period: '',
-    description: 'For organizations needing security, compliance, and hands-on support.',
+    price: 'From $5k',
+    period: '/engagement',
+    description: 'Hands-on help establishing your design system. We build it with you.',
     features: [
       'Everything in Team',
-      'SSO / SAML',
-      'Audit logs',
-      'SLA guarantees',
-      'Design system implementation consulting',
+      'Design system implementation',
+      'Token architecture & migration',
+      'Team training & workshops',
+      'Governance & adoption strategy',
       'Dedicated Slack channel',
-      'Custom integrations',
+      'SSO / SAML / Audit logs',
     ],
-    cta: 'Contact Sales',
-    ctaHref: '/contact',
+    cta: 'Book a Call',
+    ctaHref: 'https://cal.com/tarre',
     variant: 'secondary',
   },
 ]
@@ -131,6 +131,28 @@ const faqs = [
             Verified open source projects get full Team plan features at no cost. Building in public? We've got you.
           </p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Founding Member Banner -->
+  <section class="py-8 bg-navy">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-r from-buoy/20 to-success/20 border border-buoy/50 rounded-xl p-6 text-center">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-buoy/20 border border-buoy/30 rounded-full text-buoy text-sm mb-4">
+          🚀 Founding Member Pricing
+        </div>
+        <h3 class="text-xl font-bold text-light mb-2">
+          Lock in <span class="text-buoy">$15/dev/month</span> forever
+          <span class="text-slate line-through text-base ml-2">$25</span>
+        </h3>
+        <p class="text-slate mb-4 max-w-xl mx-auto">
+          Reserve your spot now. Your card won't be charged until our GitHub integration launches.
+          Limited spots available.
+        </p>
+        <Button href="/founding-member" variant="primary">
+          Reserve Your Spot
+        </Button>
       </div>
     </div>
   </section>
