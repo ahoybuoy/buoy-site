@@ -1,0 +1,68 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import Nav from '../../components/Nav.astro'
+import Footer from '../../components/Footer.astro'
+---
+
+<Layout
+  title="You're In | Buoy Founding Member"
+  description="Welcome to the Buoy Founding Member program. Your $15/dev/month rate is locked in forever."
+>
+  <Nav />
+
+  <section class="relative pt-32 pb-16 overflow-hidden min-h-[60vh] flex items-center">
+    <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
+
+    <div class="relative max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center justify-center w-16 h-16 bg-success/20 border border-success/30 rounded-full mb-6">
+        <svg class="w-8 h-8 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+        </svg>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl font-bold text-light mb-4">
+        You're a Founding Member
+      </h1>
+
+      <p class="text-lg text-slate mb-8 max-w-lg mx-auto">
+        Your <span class="text-buoy font-semibold">$15/dev/month</span> rate is locked in forever.
+        We'll email you when our GitHub integration launches.
+      </p>
+
+      <div class="bg-navy-dark border border-navy-light/30 rounded-xl p-6 text-left mb-8">
+        <h2 class="font-semibold text-light mb-4">What happens next?</h2>
+        <ol class="space-y-3 text-slate">
+          <li class="flex items-start gap-3">
+            <span class="flex-shrink-0 w-6 h-6 bg-buoy/20 text-buoy rounded-full flex items-center justify-center text-sm font-semibold">1</span>
+            <span>We're finishing up our GitHub app approval (2-6 weeks)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="flex-shrink-0 w-6 h-6 bg-buoy/20 text-buoy rounded-full flex items-center justify-center text-sm font-semibold">2</span>
+            <span>You'll get an email when it's ready to install</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="flex-shrink-0 w-6 h-6 bg-buoy/20 text-buoy rounded-full flex items-center justify-center text-sm font-semibold">3</span>
+            <span>Your subscription starts at $15/dev/month - forever</span>
+          </li>
+        </ol>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/"
+          class="px-6 py-3 bg-navy-dark border border-navy-light/30 text-light rounded-lg hover:border-buoy/50 transition-colors"
+        >
+          Back to Home
+        </a>
+        <a
+          href="https://github.com/buoy-design/buoy"
+          class="px-6 py-3 bg-buoy text-navy-dark font-semibold rounded-lg hover:bg-buoy/90 transition-colors"
+        >
+          Try the Free CLI
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
