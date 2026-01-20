@@ -84,6 +84,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
     const downloadUrl = magnet.url;
 
     // Create or update contact in Loops
+    let isExistingContact = false;
     const loopsResponse = await fetch('https://app.loops.so/api/v1/contacts/create', {
       method: 'POST',
       headers: {
@@ -105,7 +106,8 @@ export const POST: APIRoute = async ({ request, locals }) => {
       console.error('Loops API error:', error);
 
       // If contact already exists, update them instead
-      if (error.includes('already exists')) {
+      if (error.includes('already') || error.includes('already exists')) {
+        isExistingContact = true;
         await fetch('https://app.loops.so/api/v1/contacts/update', {
           method: 'PUT',
           headers: {
@@ -177,8 +179,11 @@ export const POST: APIRoute = async ({ request, locals }) => {
 
     return new Response(
       JSON.stringify({
-        message: 'Subscribed successfully',
+        message: isExistingContact
+          ? 'Welcome back! Check your email for the download link.'
+          : 'Subscribed successfully',
         downloadUrl: downloadUrl,
+        isExistingContact,
       }),
       { status: 200, headers: { 'Content-Type': 'application/json' } }
     );
