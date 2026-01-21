@@ -45,8 +45,8 @@ export const POST: APIRoute = async ({ request, locals }) => {
       body: new URLSearchParams({
         'mode': 'setup',
         'customer_email': data.email,
-        'success_url': 'https://buoy.design/founding-member/success?session_id={CHECKOUT_SESSION_ID}',
-        'cancel_url': 'https://buoy.design/founding-member',
+        'success_url': 'https://buoy.design/pricing?checkout=success',
+        'cancel_url': 'https://buoy.design/pricing',
         'metadata[plan]': 'founding-member',
         'metadata[seats]': seats.toString(),
         'metadata[price_per_seat]': '15',
