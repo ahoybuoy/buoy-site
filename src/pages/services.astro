@@ -6,8 +6,8 @@ import Button from '../components/Button.astro'
 ---
 
 <Layout
-  title="Design System Rescue | Buoy"
-  description="Got 6-18 months of design drift? We'll fix it in one week. Done-for-you service with a 100% money-back guarantee."
+  title="Design System Services | Buoy"
+  description="Fix design drift in one week or build a design system from scratch. Done-for-you services starting at $5k with a 100% money-back guarantee."
 >
   <Nav />
 
@@ -412,14 +412,14 @@ import Button from '../components/Button.astro'
             </svg>
           </summary>
           <div class="px-4 pb-4 text-slate">
-            Yes! This service is for fixing existing drift. For greenfield design system work, <a href="mailto:hello@buoy.design?subject=Design%20System%20Build" class="text-buoy hover:underline">email us</a> about our implementation packages.
+            Yes! This service is for fixing existing drift. For greenfield design system work, <a href="#greenfield" class="text-buoy hover:underline">see our build packages below</a> — starting at $25k.
           </div>
         </details>
       </div>
     </div>
   </section>
 
-  <!-- Scarcity / Final CTA -->
+  <!-- Scarcity / Final CTA for Rescue -->
   <section class="py-16 bg-navy">
     <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-warning/10 border border-warning/30 mb-6">
@@ -436,6 +436,161 @@ import Button from '../components/Button.astro'
       </Button>
       <p class="text-slate-dark text-sm mt-4">
         No commitment. No credit card. Just a conversation.
+      </p>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="bg-navy-dark py-8">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="border-t border-navy-light/30"></div>
+    </div>
+  </div>
+
+  <!-- Greenfield Design System Build -->
+  <section class="relative py-20 overflow-hidden bg-navy-dark" id="greenfield">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-buoy/10 rounded-full blur-3xl"></div>
+
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-buoy/10 border border-buoy/30 mb-6">
+          <span class="text-buoy font-medium text-sm">New Service</span>
+        </div>
+        <h2 class="text-4xl font-bold text-light mb-4">
+          Build a Design System<br />
+          <span class="text-buoy">From Scratch</span>
+        </h2>
+        <p class="text-xl text-slate max-w-2xl mx-auto">
+          No design system yet? We'll build one that your team will actually use.
+          Tokens, components, documentation, Figma — the whole stack.
+        </p>
+      </div>
+
+      <!-- What's Included -->
+      <div class="bg-navy/50 border border-navy-light/30 rounded-xl p-8 mb-8">
+        <h3 class="text-xl font-bold text-light mb-6 text-center">What You Get</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="flex items-start gap-3">
+            <span class="text-buoy text-lg">◆</span>
+            <div>
+              <h4 class="text-light font-medium">Token Architecture</h4>
+              <p class="text-slate text-sm">Colors, spacing, typography, shadows, radii — all systematized</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-buoy text-lg">◆</span>
+            <div>
+              <h4 class="text-light font-medium">Component Library</h4>
+              <p class="text-slate text-sm">Production-ready React/Vue/Svelte components</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-buoy text-lg">◆</span>
+            <div>
+              <h4 class="text-light font-medium">Figma Component Library</h4>
+              <p class="text-slate text-sm">1:1 parity with code, auto-layout, variants</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-buoy text-lg">◆</span>
+            <div>
+              <h4 class="text-light font-medium">Documentation Site</h4>
+              <p class="text-slate text-sm">Usage guidelines, code examples, do's and don'ts</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-buoy text-lg">◆</span>
+            <div>
+              <h4 class="text-light font-medium">CI/CD Integration</h4>
+              <p class="text-slate text-sm">Buoy in your pipeline from day one</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-buoy text-lg">◆</span>
+            <div>
+              <h4 class="text-light font-medium">Team Training & Governance</h4>
+              <p class="text-slate text-sm">Your team knows how to use and extend it</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROI Box -->
+      <div class="bg-success/10 border border-success/30 rounded-xl p-6 mb-8">
+        <h3 class="text-lg font-semibold text-success mb-3 text-center">The ROI Math</h3>
+        <div class="grid md:grid-cols-3 gap-4 text-center">
+          <div>
+            <p class="text-3xl font-bold text-light">20-30%</p>
+            <p class="text-slate text-sm">Dev time saved</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold text-light">$300k+</p>
+            <p class="text-slate text-sm">Annual savings (10-dev team)</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold text-light">2-3 mo</p>
+            <p class="text-slate text-sm">Payback period</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pricing Tiers -->
+      <h3 class="text-xl font-bold text-light mb-6 text-center">Packages</h3>
+      <div class="grid md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-navy border border-navy-light/30 rounded-xl p-6">
+          <h4 class="text-xl font-bold text-light mb-2">Starter</h4>
+          <p class="text-slate-dark text-sm mb-4">MVP design system</p>
+          <p class="text-4xl font-bold text-light mb-4">$25k</p>
+          <ul class="space-y-2 text-sm text-slate mb-6">
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Token architecture</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> 15 core components</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Basic documentation</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Figma foundations</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Buoy CI setup</li>
+          </ul>
+          <Button href="https://cal.com/tarre/design-system" variant="secondary" class="w-full justify-center" external>
+            Book Discovery Call
+          </Button>
+        </div>
+
+        <div class="bg-navy border-2 border-buoy rounded-xl p-6 relative">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-buoy text-navy-dark text-xs font-semibold rounded-full">
+            Most Popular
+          </div>
+          <h4 class="text-xl font-bold text-light mb-2">Growth</h4>
+          <p class="text-slate-dark text-sm mb-4">Full design system</p>
+          <p class="text-4xl font-bold text-light mb-4">$50k</p>
+          <ul class="space-y-2 text-sm text-slate mb-6">
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Everything in Starter</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> 30-40 components</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Full Figma library</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Documentation site</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Team training</li>
+          </ul>
+          <Button href="https://cal.com/tarre/design-system" class="w-full justify-center" external>
+            Book Discovery Call
+          </Button>
+        </div>
+
+        <div class="bg-navy border border-navy-light/30 rounded-xl p-6">
+          <h4 class="text-xl font-bold text-light mb-2">Enterprise</h4>
+          <p class="text-slate-dark text-sm mb-4">Multi-brand system</p>
+          <p class="text-4xl font-bold text-light mb-4">$100k+</p>
+          <ul class="space-y-2 text-sm text-slate mb-6">
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Everything in Growth</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> 50+ components</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Multi-brand/theme</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Governance framework</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Ongoing support</li>
+          </ul>
+          <Button href="https://cal.com/tarre/design-system" variant="secondary" class="w-full justify-center" external>
+            Book Discovery Call
+          </Button>
+        </div>
+      </div>
+
+      <p class="text-center text-slate-dark text-sm">
+        Agencies charge $100k-$500k for this. We deliver the same quality at a fraction of the cost.
       </p>
     </div>
   </section>
