@@ -25,9 +25,9 @@ const plans = [
   },
   {
     name: 'Team',
-    price: '$25',
-    period: '/dev/month',
-    description: 'Cloud features for teams.\n$20/dev billed annually.',
+    price: '$0',
+    period: 'for first 100 users',
+    description: 'Free for early adopters.\nThen $25/dev/month.',
     features: [
       'Everything in Free',
       'Unlimited repos',
@@ -37,10 +37,11 @@ const plans = [
       'Figma Monitor plugin',
       'No minimum seats',
     ],
-    cta: 'Install Free',
+    cta: 'Claim Free Spot',
     ctaHref: 'https://github.com/marketplace/buoy-design',
     variant: 'primary',
     popular: true,
+    earlyBird: true,
   },
   {
     name: 'Done For You',
@@ -110,12 +111,15 @@ const faqs = [
     <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
 
     <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sunrise/10 border border-sunrise/30 mb-6">
+        <span class="text-sunrise font-medium text-sm">🎉 Team plan free for first 100 users</span>
+      </div>
       <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6">
         Free CLI. Simple per-seat pricing.
       </h1>
       <p class="text-lg text-slate max-w-2xl mx-auto">
-        Full drift detection is free forever. Cloud features start at $25/dev/month.
-        Open source projects get everything free.
+        Full drift detection is free forever. Cloud features free for early adopters,
+        then $25/dev/month. Open source projects always free.
       </p>
     </div>
   </section>
@@ -126,7 +130,11 @@ const faqs = [
       <div class="grid md:grid-cols-3 gap-8">
         {plans.map((plan) => (
           <div class={`relative bg-navy/50 border rounded-2xl p-8 ${plan.popular ? 'border-buoy' : 'border-navy-light/20'}`}>
-            {plan.popular && (
+            {plan.earlyBird ? (
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-sunrise text-navy-dark text-xs font-semibold rounded-full">
+                🎉 Free for First 100
+              </div>
+            ) : plan.popular && (
               <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-buoy text-navy-dark text-xs font-semibold rounded-full">
                 Most Popular
               </div>
