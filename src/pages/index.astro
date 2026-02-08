@@ -159,7 +159,7 @@ const steps = [
 
         <!-- Subheadline -->
         <p class="text-lg sm:text-xl text-slate max-w-2xl mx-auto mb-10">
-          Design systems drift over time.
+          AI writes code that works but ignores your design system.
           Buoy finds hardcoded colors, duplicate components, and token violations.
         </p>
 
@@ -177,9 +177,9 @@ const steps = [
         </div>
 
         <!-- Quick install command -->
-        <div class="inline-flex items-center gap-3 px-4 py-3 bg-navy/80 border border-navy-light/30 rounded-lg font-mono text-sm backdrop-blur-sm copy-command" data-command="npx ahoybuoy begin">
+        <div class="inline-flex items-center gap-3 px-4 py-3 bg-navy/80 border border-navy-light/30 rounded-lg font-mono text-sm backdrop-blur-sm copy-command" data-command="npx @buoy-design/cli begin">
           <span class="text-slate">$</span>
-          <code class="text-light">npx ahoybuoy begin</code>
+          <code class="text-light">npx @buoy-design/cli begin</code>
           <button class="copy-btn text-slate hover:text-buoy transition-colors" aria-label="Copy command">
             <svg class="copy-icon w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
@@ -193,6 +193,14 @@ const steps = [
           Paste in your terminal or AI
         </p>
 
+        <!-- Service callout -->
+        <div class="mt-6 pt-6 border-t border-navy-light/20 max-w-md mx-auto">
+          <p class="text-slate-dark text-xs mb-2">Already buried in drift?</p>
+          <a href="#rescue" class="text-sunrise hover:text-sunrise-light text-sm font-medium transition-colors flex items-center justify-center gap-2">
+            Let us fix it for you →
+            <span class="text-xs bg-sunrise/20 px-2 py-0.5 rounded-full">$3-8k</span>
+          </a>
+        </div>
       </div>
     </div>
 
@@ -672,6 +680,127 @@ const steps = [
     </div>
   </section>
 
+  <!-- Service Tier Section: Design System Rescue -->
+  <section id="rescue" class="py-24 bg-gradient-to-b from-navy to-navy-dark relative overflow-hidden">
+    <!-- Decorative gradient -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-sunrise/10 rounded-full blur-3xl"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sunrise/10 border border-sunrise/30 mb-6">
+          <span class="text-sunrise">🚀</span>
+          <span class="text-sm text-sunrise font-medium">Done-for-you service</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold text-light mb-4">
+          Got 6-18 months of design drift?
+        </h2>
+        <p class="text-lg text-slate max-w-2xl mx-auto">
+          Our CLI finds the issues. But fixing a massive backlog takes time you don't have.
+          <br />
+          <span class="text-light font-semibold">Let us clean it up for you.</span>
+        </p>
+      </div>
+
+      <!-- Service Package -->
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-navy-dark border border-sunrise/30 rounded-2xl overflow-hidden">
+          <div class="px-6 py-4 bg-sunrise/10 border-b border-sunrise/20">
+            <h3 class="text-2xl font-bold text-light">Design System Rescue</h3>
+            <p class="text-slate text-sm mt-1">Fix your critical drift in one week. Start clean, stay clean.</p>
+          </div>
+
+          <div class="p-8">
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+              <!-- What's Included -->
+              <div>
+                <h4 class="text-sm font-semibold text-sunrise uppercase tracking-wide mb-4">What's Included</h4>
+                <ul class="space-y-3 text-sm">
+                  <li class="flex items-start gap-3">
+                    <span class="text-success mt-0.5">✓</span>
+                    <span class="text-slate"><strong class="text-light">Discovery call</strong> - Understand your design system & biggest pain points</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-success mt-0.5">✓</span>
+                    <span class="text-slate"><strong class="text-light">Comprehensive scan</strong> - Document all drift across your codebase</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-success mt-0.5">✓</span>
+                    <span class="text-slate"><strong class="text-light">Triage report</strong> - Prioritize critical → nice-to-have fixes</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-success mt-0.5">✓</span>
+                    <span class="text-slate"><strong class="text-light">Fix sprint</strong> - We personally fix your top 20-30 critical issues</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="text-success mt-0.5">✓</span>
+                    <span class="text-slate"><strong class="text-light">Team handoff</strong> - Train your team on Buoy + preventative workflow</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Pricing -->
+              <div>
+                <h4 class="text-sm font-semibold text-sunrise uppercase tracking-wide mb-4">Investment</h4>
+                <div class="space-y-3">
+                  <div class="bg-navy/50 border border-navy-light/20 rounded-lg p-4">
+                    <div class="flex items-center justify-between mb-1">
+                      <span class="text-light font-semibold">Startup</span>
+                      <span class="text-2xl font-bold text-light">$3k</span>
+                    </div>
+                    <p class="text-xs text-slate-dark">{"<"}50k lines of code</p>
+                  </div>
+                  <div class="bg-navy/50 border border-navy-light/20 rounded-lg p-4">
+                    <div class="flex items-center justify-between mb-1">
+                      <span class="text-light font-semibold">Mid-Market</span>
+                      <span class="text-2xl font-bold text-light">$5k</span>
+                    </div>
+                    <p class="text-xs text-slate-dark">50k-200k lines of code</p>
+                  </div>
+                  <div class="bg-navy/50 border border-navy-light/20 rounded-lg p-4">
+                    <div class="flex items-center justify-between mb-1">
+                      <span class="text-light font-semibold">Enterprise</span>
+                      <span class="text-2xl font-bold text-light">$8k</span>
+                    </div>
+                    <p class="text-xs text-slate-dark">200k+ lines of code</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Guarantee -->
+            <div class="bg-success/10 border border-success/20 rounded-lg p-4 mb-6">
+              <div class="flex items-start gap-3">
+                <span class="text-success text-xl">🛡️</span>
+                <div>
+                  <h5 class="text-light font-semibold text-sm mb-1">7-Day Guarantee</h5>
+                  <p class="text-slate text-sm">If we don't find and fix at least 50 critical drift issues, you get a full refund. No questions asked.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center">
+              <Button href="mailto:hello@buoy.design?subject=Design%20System%20Rescue%20Inquiry" size="lg" external>
+                Book Your Rescue →
+              </Button>
+              <p class="text-slate-dark text-xs mt-3">
+                Typical turnaround: 5-7 business days
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Proof Placeholder -->
+        <div class="mt-8 text-center">
+          <p class="text-slate text-sm italic">
+            "The free tool found 200+ issues. We didn't have time to fix them all. The Rescue service got us to 90% health in a week."
+          </p>
+          <p class="text-slate-dark text-xs mt-2">— Engineering team ready for your testimonial</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- AI Setup Section -->
   <section class="py-16 bg-navy-dark">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -682,7 +811,7 @@ const steps = [
         <div class="bg-navy border border-lavender/30 rounded-xl p-5">
           <div class="text-sm text-lavender mb-3">Ask your AI to run:</div>
           <div class="bg-navy-dark/80 rounded-lg p-4 font-mono text-light text-sm sm:text-base">
-            npx ahoybuoy begin
+            npx @buoy-design/cli begin
           </div>
         </div>
       </div>
