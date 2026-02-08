@@ -1,0 +1,599 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+import Button from '../components/Button.astro'
+---
+
+<Layout
+  title="Design System Services | Buoy"
+  description="Fix design drift in one week or build a design system from scratch. Done-for-you services starting at $5k with a 100% money-back guarantee."
+>
+  <Nav />
+
+  <!-- Hero -->
+  <section class="relative pt-32 pb-16 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-sunrise/10 rounded-full blur-3xl"></div>
+
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sunrise/10 border border-sunrise/30 mb-6">
+        <span class="text-sunrise font-medium text-sm">Only 3 spots available this month</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6">
+        We'll Fix Your Design Drift<br />
+        <span class="text-sunrise">In One Week</span>
+      </h1>
+      <p class="text-xl text-slate max-w-2xl mx-auto">
+        You've got 6-18 months of accumulated drift. Hardcoded colors everywhere.
+        Duplicate components. Inconsistent spacing.
+        <br /><strong class="text-light">Let us clean it up while you ship features.</strong>
+      </p>
+    </div>
+  </section>
+
+  <!-- The Problem / Cost Anchor -->
+  <section class="py-16 bg-navy">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light mb-8 text-center">What Design Drift Is Costing You</h2>
+
+      <div class="grid md:grid-cols-2 gap-8 mb-12">
+        <div class="bg-critical/10 border border-critical/30 rounded-xl p-6">
+          <h3 class="text-lg font-semibold text-critical mb-4">The Hidden Costs</h3>
+          <ul class="space-y-3 text-sm">
+            <li class="flex items-start gap-3">
+              <span class="text-critical">✗</span>
+              <span class="text-slate">Senior dev fixing drift: <strong class="text-light">40+ hours × $150/hr = $6,000+</strong></span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-critical">✗</span>
+              <span class="text-slate">Features delayed while cleaning up: <strong class="text-light">$10,000+ opportunity cost</strong></span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-critical">✗</span>
+              <span class="text-slate">Ongoing drift without prevention: <strong class="text-light">$5,000/quarter</strong></span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-critical">✗</span>
+              <span class="text-slate">Designer/dev friction from inconsistency: <strong class="text-light">Priceless frustration</strong></span>
+            </li>
+          </ul>
+          <div class="mt-6 pt-4 border-t border-critical/30">
+            <div class="flex justify-between items-center">
+              <span class="text-slate">First-year cost doing it yourself:</span>
+              <span class="text-2xl font-bold text-critical">$25,000+</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-success/10 border border-success/30 rounded-xl p-6">
+          <h3 class="text-lg font-semibold text-success mb-4">What You Get With Us</h3>
+          <ul class="space-y-3 text-sm">
+            <li class="flex items-start gap-3">
+              <span class="text-success">✓</span>
+              <span class="text-slate">Complete codebase scan & audit</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-success">✓</span>
+              <span class="text-slate">Prioritized triage report</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-success">✓</span>
+              <span class="text-slate">20-30 critical fixes done for you</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-success">✓</span>
+              <span class="text-slate">Team training & Buoy setup</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-success">✓</span>
+              <span class="text-slate">Prevention workflow so it doesn't come back</span>
+            </li>
+          </ul>
+          <div class="mt-6 pt-4 border-t border-success/30">
+            <div class="flex justify-between items-center">
+              <span class="text-slate">Done in one week, starting at:</span>
+              <span class="text-2xl font-bold text-success">$5,000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Value Stack -->
+  <section class="py-16 bg-navy-dark">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light mb-4 text-center">Everything You Get</h2>
+      <p class="text-slate text-center mb-12 max-w-2xl mx-auto">
+        We stack the value so high that saying "no" would be leaving money on the table.
+      </p>
+
+      <div class="space-y-4 mb-8">
+        <!-- Core Deliverables -->
+        <div class="bg-navy/50 border border-navy-light/30 rounded-xl p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-semibold text-light">Core Deliverables</h3>
+            <span class="text-slate text-sm">Included in all packages</span>
+          </div>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 bg-buoy/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <span class="text-buoy text-sm">1</span>
+              </div>
+              <div>
+                <h4 class="text-light font-medium">Discovery Call</h4>
+                <p class="text-slate text-sm">30-min deep dive into your design system and pain points</p>
+                <p class="text-buoy text-xs mt-1">Value: $500</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 bg-buoy/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <span class="text-buoy text-sm">2</span>
+              </div>
+              <div>
+                <h4 class="text-light font-medium">Complete Codebase Scan</h4>
+                <p class="text-slate text-sm">Every file analyzed for drift, duplicates, and violations</p>
+                <p class="text-buoy text-xs mt-1"><span class="line-through text-slate-dark">Value: $2,000</span> — Free with <code class="text-slate-dark">npx ahoybuoy scan</code></p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 bg-buoy/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <span class="text-buoy text-sm">3</span>
+              </div>
+              <div>
+                <h4 class="text-light font-medium">Prioritized Triage Report</h4>
+                <p class="text-slate text-sm">Critical → Nice-to-have, with effort estimates</p>
+                <p class="text-buoy text-xs mt-1">Value: $1,500</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 bg-buoy/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <span class="text-buoy text-sm">4</span>
+              </div>
+              <div>
+                <h4 class="text-light font-medium">Fix Sprint (20-30 Issues)</h4>
+                <p class="text-slate text-sm">We personally fix your most critical drift issues</p>
+                <p class="text-buoy text-xs mt-1">Value: $6,000</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 bg-buoy/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <span class="text-buoy text-sm">5</span>
+              </div>
+              <div>
+                <h4 class="text-light font-medium">Team Training Session</h4>
+                <p class="text-slate text-sm">60-min workshop on using Buoy + prevention workflow</p>
+                <p class="text-buoy text-xs mt-1">Value: $1,500</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 bg-buoy/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                <span class="text-buoy text-sm">6</span>
+              </div>
+              <div>
+                <h4 class="text-light font-medium">CI/CD Integration</h4>
+                <p class="text-slate text-sm">Buoy set up in your pipeline to block future drift</p>
+                <p class="text-buoy text-xs mt-1">Value: $1,000</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bonuses -->
+        <div class="bg-gradient-to-r from-sunrise/10 to-buoy/10 border border-sunrise/30 rounded-xl p-6">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xl">🎁</span>
+            <h3 class="text-lg font-semibold text-light">Bonuses (Included FREE)</h3>
+          </div>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="flex items-start gap-3">
+              <span class="text-sunrise">★</span>
+              <div>
+                <h4 class="text-light font-medium">30 Days of Slack Support</h4>
+                <p class="text-slate text-sm">Direct access to our team for questions</p>
+                <p class="text-sunrise text-xs mt-1">Value: $1,500</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-sunrise">★</span>
+              <div>
+                <h4 class="text-light font-medium">3 Monthly Health Checks</h4>
+                <p class="text-slate text-sm">We run Buoy and send you a progress report</p>
+                <p class="text-sunrise text-xs mt-1">Value: $1,500</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-sunrise">★</span>
+              <div>
+                <h4 class="text-light font-medium">Design System Playbook</h4>
+                <p class="text-slate text-sm">Our internal doc on governance & adoption</p>
+                <p class="text-sunrise text-xs mt-1">Value: $500</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-sunrise">★</span>
+              <div>
+                <h4 class="text-light font-medium">Priority Feature Requests</h4>
+                <p class="text-slate text-sm">Your Buoy feature ideas get fast-tracked</p>
+                <p class="text-sunrise text-xs mt-1">Value: Priceless</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Total Value -->
+        <div class="bg-navy border border-buoy/50 rounded-xl p-6 text-center">
+          <p class="text-slate mb-2">Total Value of Everything You Get:</p>
+          <p class="text-4xl font-bold text-light mb-2"><span class="line-through text-slate-dark">$16,000</span></p>
+          <p class="text-slate mb-4">Your Investment Today:</p>
+          <p class="text-5xl font-bold text-buoy">Starting at $5,000</p>
+          <p class="text-slate-dark text-sm mt-2">(That's 69% off — and we do all the work)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Tiers -->
+  <section class="py-16 bg-navy">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light mb-8 text-center">Choose Your Package</h2>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-navy-dark border border-navy-light/30 rounded-xl p-6">
+          <h3 class="text-xl font-bold text-light mb-2">Startup</h3>
+          <p class="text-slate-dark text-sm mb-4">&lt;50k lines of code</p>
+          <p class="text-4xl font-bold text-light mb-4">$5k</p>
+          <ul class="space-y-2 text-sm text-slate mb-6">
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Everything above</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> 20 critical fixes</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> 5-day turnaround</li>
+          </ul>
+          <Button href="https://cal.com/tarre/rescue" class="w-full justify-center" external>
+            Book Discovery Call
+          </Button>
+        </div>
+
+        <div class="bg-navy-dark border-2 border-buoy rounded-xl p-6 relative">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-buoy text-navy-dark text-xs font-semibold rounded-full">
+            Most Popular
+          </div>
+          <h3 class="text-xl font-bold text-light mb-2">Mid-Market</h3>
+          <p class="text-slate-dark text-sm mb-4">50k-200k lines of code</p>
+          <p class="text-4xl font-bold text-light mb-4">$8k</p>
+          <ul class="space-y-2 text-sm text-slate mb-6">
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Everything above</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> 30 critical fixes</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> 7-day turnaround</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Multi-repo support</li>
+          </ul>
+          <Button href="https://cal.com/tarre/rescue" class="w-full justify-center" external>
+            Book Discovery Call
+          </Button>
+        </div>
+
+        <div class="bg-navy-dark border border-navy-light/30 rounded-xl p-6">
+          <h3 class="text-xl font-bold text-light mb-2">Enterprise</h3>
+          <p class="text-slate-dark text-sm mb-4">200k+ lines of code</p>
+          <p class="text-4xl font-bold text-light mb-4">$12k</p>
+          <ul class="space-y-2 text-sm text-slate mb-6">
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Everything above</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> 50 critical fixes</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> 10-day turnaround</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Executive summary</li>
+          </ul>
+          <Button href="https://cal.com/tarre/rescue" class="w-full justify-center" external>
+            Book Discovery Call
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guarantee -->
+  <section class="py-16 bg-navy-dark">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-success/10 border-2 border-success/50 rounded-2xl p-8 text-center">
+        <div class="w-16 h-16 bg-success/20 rounded-full flex items-center justify-center mx-auto mb-6">
+          <span class="text-3xl">🛡️</span>
+        </div>
+        <h2 class="text-2xl font-bold text-light mb-4">100% Money-Back Guarantee</h2>
+        <p class="text-slate text-lg mb-6 max-w-xl mx-auto">
+          If we don't find and fix <strong class="text-light">at least 50 drift issues</strong> in your codebase,
+          you get a <strong class="text-light">full refund</strong>. No questions asked. No hoops to jump through.
+        </p>
+        <p class="text-slate-dark text-sm">
+          We've never had to issue a refund. Most codebases have 200+ issues.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-16 bg-navy">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light mb-8 text-center">How It Works</h2>
+
+      <div class="grid md:grid-cols-4 gap-6">
+        <div class="text-center">
+          <div class="w-12 h-12 bg-buoy/20 border border-buoy/30 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-buoy font-bold">1</span>
+          </div>
+          <h3 class="text-light font-semibold mb-2">Book a Call</h3>
+          <p class="text-slate text-sm">30-min discovery to understand your setup</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-12 h-12 bg-buoy/20 border border-buoy/30 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-buoy font-bold">2</span>
+          </div>
+          <h3 class="text-light font-semibold mb-2">We Scan</h3>
+          <p class="text-slate text-sm">Full audit with prioritized triage report</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-12 h-12 bg-buoy/20 border border-buoy/30 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-buoy font-bold">3</span>
+          </div>
+          <h3 class="text-light font-semibold mb-2">We Fix</h3>
+          <p class="text-slate text-sm">PRs for your top critical issues</p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-12 h-12 bg-buoy/20 border border-buoy/30 rounded-full flex items-center justify-center mx-auto mb-4">
+            <span class="text-buoy font-bold">4</span>
+          </div>
+          <h3 class="text-light font-semibold mb-2">We Train</h3>
+          <p class="text-slate text-sm">Your team learns to prevent future drift</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 bg-navy-dark">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light mb-8 text-center">Questions</h2>
+
+      <div class="space-y-4">
+        <details class="group bg-navy/50 border border-navy-light/20 rounded-xl">
+          <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
+            <span class="font-medium text-light">How do you access our codebase?</span>
+            <svg class="w-5 h-5 text-slate group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <div class="px-4 pb-4 text-slate">
+            Temporary GitHub collaborator invite or VS Code Live Share. Your code never leaves your infrastructure. We sign NDAs before any access.
+          </div>
+        </details>
+
+        <details class="group bg-navy/50 border border-navy-light/20 rounded-xl">
+          <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
+            <span class="font-medium text-light">What if we have more issues than you can fix?</span>
+            <svg class="w-5 h-5 text-slate group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <div class="px-4 pb-4 text-slate">
+            We prioritize by impact. The top fixes typically address 80% of visual inconsistencies. You get a prioritized backlog + Buoy CLI to tackle the rest incrementally.
+          </div>
+        </details>
+
+        <details class="group bg-navy/50 border border-navy-light/20 rounded-xl">
+          <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
+            <span class="font-medium text-light">What frameworks do you support?</span>
+            <svg class="w-5 h-5 text-slate group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <div class="px-4 pb-4 text-slate">
+            React, Vue, Svelte, Angular, and any Tailwind-based project. If you use CSS-in-JS, vanilla CSS, or SCSS, we've got you covered.
+          </div>
+        </details>
+
+        <details class="group bg-navy/50 border border-navy-light/20 rounded-xl">
+          <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
+            <span class="font-medium text-light">What's the 100% guarantee exactly?</span>
+            <svg class="w-5 h-5 text-slate group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <div class="px-4 pb-4 text-slate">
+            If we don't find and fix at least 50 drift issues, you get 100% of your money back. No forms. No waiting. Just email us and we refund you within 48 hours.
+          </div>
+        </details>
+
+        <details class="group bg-navy/50 border border-navy-light/20 rounded-xl">
+          <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
+            <span class="font-medium text-light">Can you help us build a design system from scratch?</span>
+            <svg class="w-5 h-5 text-slate group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <div class="px-4 pb-4 text-slate">
+            Yes! This service is for fixing existing drift. For greenfield design system work, <a href="#greenfield" class="text-buoy hover:underline">see our build packages below</a> — starting at $25k.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scarcity / Final CTA for Rescue -->
+  <section class="py-16 bg-navy">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-warning/10 border border-warning/30 mb-6">
+        <span class="text-warning font-medium text-sm">Only 3 spots available this month</span>
+      </div>
+      <h2 class="text-3xl font-bold text-light mb-4">
+        Stop Letting Drift Slow You Down
+      </h2>
+      <p class="text-slate mb-8 text-lg">
+        Book a free discovery call. If we're not a fit, we'll tell you — and give you the scan results anyway.
+      </p>
+      <Button href="https://cal.com/tarre/rescue" size="lg" external>
+        Book Your Free Discovery Call →
+      </Button>
+      <p class="text-slate-dark text-sm mt-4">
+        No commitment. No credit card. Just a conversation.
+      </p>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="bg-navy-dark py-8">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="border-t border-navy-light/30"></div>
+    </div>
+  </div>
+
+  <!-- Greenfield Design System Build -->
+  <section class="relative py-20 overflow-hidden bg-navy-dark" id="greenfield">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-buoy/10 rounded-full blur-3xl"></div>
+
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-buoy/10 border border-buoy/30 mb-6">
+          <span class="text-buoy font-medium text-sm">New Service</span>
+        </div>
+        <h2 class="text-4xl font-bold text-light mb-4">
+          Build a Design System<br />
+          <span class="text-buoy">From Scratch</span>
+        </h2>
+        <p class="text-xl text-slate max-w-2xl mx-auto">
+          No design system yet? We'll build one that your team will actually use.
+          Tokens, components, documentation, Figma — the whole stack.
+        </p>
+      </div>
+
+      <!-- What's Included -->
+      <div class="bg-navy/50 border border-navy-light/30 rounded-xl p-8 mb-8">
+        <h3 class="text-xl font-bold text-light mb-6 text-center">What You Get</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="flex items-start gap-3">
+            <span class="text-buoy text-lg">◆</span>
+            <div>
+              <h4 class="text-light font-medium">Token Architecture</h4>
+              <p class="text-slate text-sm">Colors, spacing, typography, shadows, radii — all systematized</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-buoy text-lg">◆</span>
+            <div>
+              <h4 class="text-light font-medium">Component Library</h4>
+              <p class="text-slate text-sm">Production-ready React/Vue/Svelte components</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-buoy text-lg">◆</span>
+            <div>
+              <h4 class="text-light font-medium">Figma Component Library</h4>
+              <p class="text-slate text-sm">1:1 parity with code, auto-layout, variants</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-buoy text-lg">◆</span>
+            <div>
+              <h4 class="text-light font-medium">Documentation Site</h4>
+              <p class="text-slate text-sm">Usage guidelines, code examples, do's and don'ts</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-buoy text-lg">◆</span>
+            <div>
+              <h4 class="text-light font-medium">CI/CD Integration</h4>
+              <p class="text-slate text-sm">Buoy in your pipeline from day one</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="text-buoy text-lg">◆</span>
+            <div>
+              <h4 class="text-light font-medium">Team Training & Governance</h4>
+              <p class="text-slate text-sm">Your team knows how to use and extend it</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ROI Box -->
+      <div class="bg-success/10 border border-success/30 rounded-xl p-6 mb-8">
+        <h3 class="text-lg font-semibold text-success mb-3 text-center">The ROI Math</h3>
+        <div class="grid md:grid-cols-3 gap-4 text-center">
+          <div>
+            <p class="text-3xl font-bold text-light">20-30%</p>
+            <p class="text-slate text-sm">Dev time saved</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold text-light">$300k+</p>
+            <p class="text-slate text-sm">Annual savings (10-dev team)</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold text-light">2-3 mo</p>
+            <p class="text-slate text-sm">Payback period</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pricing Tiers -->
+      <h3 class="text-xl font-bold text-light mb-6 text-center">Packages</h3>
+      <div class="grid md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-navy border border-navy-light/30 rounded-xl p-6">
+          <h4 class="text-xl font-bold text-light mb-2">Starter</h4>
+          <p class="text-slate-dark text-sm mb-4">MVP design system</p>
+          <p class="text-4xl font-bold text-light mb-4">$25k</p>
+          <ul class="space-y-2 text-sm text-slate mb-6">
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Token architecture</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> 15 core components</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Basic documentation</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Figma foundations</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Buoy CI setup</li>
+          </ul>
+          <Button href="https://cal.com/tarre/design-system" variant="secondary" class="w-full justify-center" external>
+            Book Discovery Call
+          </Button>
+        </div>
+
+        <div class="bg-navy border-2 border-buoy rounded-xl p-6 relative">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-buoy text-navy-dark text-xs font-semibold rounded-full">
+            Most Popular
+          </div>
+          <h4 class="text-xl font-bold text-light mb-2">Growth</h4>
+          <p class="text-slate-dark text-sm mb-4">Full design system</p>
+          <p class="text-4xl font-bold text-light mb-4">$50k</p>
+          <ul class="space-y-2 text-sm text-slate mb-6">
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Everything in Starter</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> 30-40 components</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Full Figma library</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Documentation site</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Team training</li>
+          </ul>
+          <Button href="https://cal.com/tarre/design-system" class="w-full justify-center" external>
+            Book Discovery Call
+          </Button>
+        </div>
+
+        <div class="bg-navy border border-navy-light/30 rounded-xl p-6">
+          <h4 class="text-xl font-bold text-light mb-2">Enterprise</h4>
+          <p class="text-slate-dark text-sm mb-4">Multi-brand system</p>
+          <p class="text-4xl font-bold text-light mb-4">$100k+</p>
+          <ul class="space-y-2 text-sm text-slate mb-6">
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Everything in Growth</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> 50+ components</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Multi-brand/theme</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Governance framework</li>
+            <li class="flex items-center gap-2"><span class="text-success">✓</span> Ongoing support</li>
+          </ul>
+          <Button href="https://cal.com/tarre/design-system" variant="secondary" class="w-full justify-center" external>
+            Book Discovery Call
+          </Button>
+        </div>
+      </div>
+
+      <p class="text-center text-slate-dark text-sm">
+        Agencies charge $100k-$500k for this. We deliver the same quality at a fraction of the cost.
+      </p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

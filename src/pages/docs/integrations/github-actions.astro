@@ -35,7 +35,7 @@ jobs:
         run: npm ci
 
       - name: Run Buoy
-        run: npx @buoy-design/cli ci --threshold 60</code></pre>
+        run: npx ahoybuoy ci --threshold 60</code></pre>
 
   <h2>With PR Comments</h2>
 
@@ -64,7 +64,7 @@ jobs:
         run: npm ci
 
       - name: Run Buoy
-        run: npx @buoy-design/cli ci --threshold 60 --github-comment
+        run: npx ahoybuoy ci --threshold 60 --github-comment
         env:
           GITHUB_TOKEN: $&#123;&#123; secrets.GITHUB_TOKEN &#125;&#125;</code></pre>
 
@@ -101,24 +101,24 @@ jobs:
   <p>Set a minimum passing score:</p>
 
   <pre><code># Fail if score below 70
-npx @buoy-design/cli ci --threshold 70
+npx ahoybuoy ci --threshold 70
 
 # Zero tolerance - fail on any drift
-npx @buoy-design/cli ci --strict</code></pre>
+npx ahoybuoy ci --strict</code></pre>
 
   <h3>Compare Against Base Branch</h3>
 
   <p>Only report new issues introduced in the PR:</p>
 
   <pre><code>- name: Run Buoy
-  run: npx @buoy-design/cli ci --compare-base origin/main</code></pre>
+  run: npx ahoybuoy ci --compare-base origin/main</code></pre>
 
   <h2>Monorepo Setup</h2>
 
   <p>For monorepos, specify the path:</p>
 
   <pre><code>- name: Run Buoy
-  run: npx @buoy-design/cli ci --threshold 60
+  run: npx ahoybuoy ci --threshold 60
   working-directory: ./packages/web</code></pre>
 
   <h2>Caching</h2>
@@ -134,7 +134,7 @@ npx @buoy-design/cli ci --strict</code></pre>
   run: npm ci
 
 - name: Run Buoy
-  run: npx @buoy-design/cli ci --threshold 60</code></pre>
+  run: npx ahoybuoy ci --threshold 60</code></pre>
 
   <h2>Multiple Frameworks</h2>
 
@@ -156,7 +156,7 @@ npx @buoy-design/cli ci --strict</code></pre>
       - run: npm ci
         working-directory: ./apps/$&#123;&#123; matrix.app &#125;&#125;
 
-      - run: npx @buoy-design/cli ci --threshold 60
+      - run: npx ahoybuoy ci --threshold 60
         working-directory: ./apps/$&#123;&#123; matrix.app &#125;&#125;</code></pre>
 
   <h2>Troubleshooting</h2>
@@ -172,7 +172,7 @@ npx @buoy-design/cli ci --strict</code></pre>
 
   <p>Verify Buoy can find your files:</p>
 
-  <pre><code>npx @buoy-design/cli scan --json</code></pre>
+  <pre><code>npx ahoybuoy scan --json</code></pre>
 
   <h2>Related</h2>
 

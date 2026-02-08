@@ -4,12 +4,12 @@ import FeatureCard from '../../components/FeatureCard.astro'
 import LeadMagnetCallout from '../../components/LeadMagnetCallout.astro'
 
 const ciProviders = [
-  { name: 'GitHub Actions', example: 'npx @buoy-design/cli drift check --ci' },
-  { name: 'GitLab CI', example: 'npx @buoy-design/cli drift check --ci --format json' },
-  { name: 'CircleCI', example: 'npx @buoy-design/cli drift check --ci --fail-on warning' },
-  { name: 'Jenkins', example: 'npx @buoy-design/cli drift check --ci' },
-  { name: 'Azure Pipelines', example: 'npx @buoy-design/cli drift check --ci' },
-  { name: 'Bitbucket Pipelines', example: 'npx @buoy-design/cli drift check --ci' },
+  { name: 'GitHub Actions', example: 'npx ahoybuoy drift check --ci' },
+  { name: 'GitLab CI', example: 'npx ahoybuoy drift check --ci --format json' },
+  { name: 'CircleCI', example: 'npx ahoybuoy drift check --ci --fail-on warning' },
+  { name: 'Jenkins', example: 'npx ahoybuoy drift check --ci' },
+  { name: 'Azure Pipelines', example: 'npx ahoybuoy drift check --ci' },
+  { name: 'Bitbucket Pipelines', example: 'npx ahoybuoy drift check --ci' },
 ]
 
 const outputFormats = [
@@ -83,7 +83,7 @@ const relatedFeatures = [
           <span class="text-sm text-slate font-mono">Basic CI command</span>
         </div>
         <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{`# Run drift check in CI mode
-npx @buoy-design/cli drift check --ci
+npx ahoybuoy drift check --ci
 
 # Exit codes:
 # 0 = No critical drift
@@ -131,16 +131,16 @@ npx @buoy-design/cli drift check --ci
           <span class="text-sm text-slate font-mono">Configure when to fail</span>
         </div>
         <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{`# Fail on any critical issues (recommended)
-npx @buoy-design/cli drift check --ci --fail-on critical
+npx ahoybuoy drift check --ci --fail-on critical
 
 # Fail on warnings too (stricter)
-npx @buoy-design/cli drift check --ci --fail-on warning
+npx ahoybuoy drift check --ci --fail-on warning
 
 # Never fail, just report (audit mode)
-npx @buoy-design/cli drift check --ci --fail-on none
+npx ahoybuoy drift check --ci --fail-on none
 
 # Custom thresholds
-npx @buoy-design/cli drift check --ci \\
+npx ahoybuoy drift check --ci \\
   --max-critical 0 \\
   --max-warning 10 \\
   --max-info 50`}</code></pre>
@@ -177,7 +177,7 @@ jobs:
         run: npm ci
 
       - name: Run Buoy drift check
-        run: npx @buoy-design/cli drift check --ci --fail-on critical
+        run: npx ahoybuoy drift check --ci --fail-on critical
 
       - name: Upload SARIF (optional)
         if: always()

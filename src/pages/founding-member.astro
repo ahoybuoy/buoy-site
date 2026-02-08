@@ -5,8 +5,8 @@ import Footer from '../components/Footer.astro'
 ---
 
 <Layout
-  title="Join the Waitlist | Buoy - Design Drift Detection"
-  description="Be first to know when Buoy's GitHub integration launches. Join the waitlist for early access and founding member pricing."
+  title="Founding Member | Buoy - Design Drift Detection"
+  description="Claim your founding member spot. First 100 teams get the full Team plan free forever."
 >
   <Nav />
 
@@ -15,14 +15,14 @@ import Footer from '../components/Footer.astro'
     <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
 
     <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="inline-flex items-center gap-2 px-3 py-1 bg-buoy/20 border border-buoy/30 rounded-full text-buoy text-sm mb-6">
-        Coming Soon
+      <div class="inline-flex items-center gap-2 px-3 py-1 bg-success/20 border border-success/30 rounded-full text-success text-sm mb-6">
+        Now Available
       </div>
       <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6">
-        Join the Waitlist
+        Claim Your Founding Member Spot
       </h1>
       <p class="text-xl text-slate max-w-2xl mx-auto">
-        Be first to know when our GitHub integration launches.
+        First 100 teams get the full Team plan free forever. Install now from GitHub Marketplace.
       </p>
     </div>
   </section>
@@ -34,7 +34,7 @@ import Footer from '../components/Footer.astro'
 
         <!-- Left: Benefits -->
         <div>
-          <h2 class="text-2xl font-bold text-light mb-6">What's coming</h2>
+          <h2 class="text-2xl font-bold text-light mb-6">What you get</h2>
 
           <div class="space-y-4 mb-8">
             <div class="flex items-start gap-3">
@@ -72,129 +72,66 @@ import Footer from '../components/Footer.astro'
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
               </svg>
               <div>
-                <h3 class="font-semibold text-light">Early access</h3>
-                <p class="text-sm text-slate">Waitlist members get first access when we launch.</p>
+                <h3 class="font-semibold text-light">Founding member status</h3>
+                <p class="text-sm text-slate">Lock in free Team plan pricing forever.</p>
               </div>
             </div>
           </div>
 
           <div class="bg-navy-dark border border-buoy/30 rounded-xl p-4">
             <h3 class="font-semibold text-light mb-2 flex items-center gap-2">
-              <span class="text-buoy">*</span> Free for first 100 users
+              <span class="text-buoy">*</span> Limited availability
             </h3>
             <p class="text-sm text-slate">
-              The first 100 teams to install from GitHub Marketplace get the full Team plan free forever.
+              Only 100 founding member spots available. Once they're gone, Team plan pricing applies.
             </p>
           </div>
         </div>
 
-        <!-- Right: Form -->
-        <div class="bg-navy-dark border border-buoy/30 rounded-2xl p-8">
-          <h2 class="text-xl font-bold text-light mb-6 text-center">Get early access</h2>
+        <!-- Right: CTA -->
+        <div class="bg-navy-dark border border-buoy/30 rounded-2xl p-8 text-center">
+          <h2 class="text-xl font-bold text-light mb-4">Install from GitHub Marketplace</h2>
+          <p class="text-slate mb-6">
+            One click to install. Founding member status is automatically applied to early adopters.
+          </p>
 
-          <form id="waitlist-form" class="space-y-6">
-            <div>
-              <label for="email" class="block text-sm font-medium text-light mb-2">
-                Work email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                placeholder="you@company.com"
-                class="w-full px-4 py-3 bg-navy border border-navy-light/30 rounded-lg text-light placeholder-slate/50 focus:outline-none focus:border-buoy"
-              />
-            </div>
+          <a
+            href="https://github.com/marketplace/buoy-design"
+            class="inline-flex items-center justify-center gap-2 w-full py-3 px-6 bg-buoy text-navy-dark font-semibold rounded-lg hover:bg-buoy/90 transition-colors"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            Install Free
+          </a>
 
-            <button
-              type="submit"
-              id="submit-btn"
-              class="w-full py-3 px-6 bg-buoy text-navy-dark font-semibold rounded-lg hover:bg-buoy/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              Join Waitlist
-            </button>
-
-            <p class="text-xs text-slate/70 text-center">
-              No spam. We'll only email you when we launch.
-            </p>
-          </form>
-
-          <div id="success-message" class="hidden mt-4 p-4 bg-success/10 border border-success/30 rounded-lg text-success text-sm text-center">
-            You're on the list! We'll email you when we launch.
-          </div>
-
-          <div id="error-message" class="hidden mt-4 p-4 bg-error/10 border border-error/30 rounded-lg text-error text-sm">
-          </div>
+          <p class="text-xs text-slate/70 mt-4">
+            Free for public and private repos during early access.
+          </p>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- In the meantime -->
+  <!-- CLI Section -->
   <section class="py-16 bg-navy-dark">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-2xl font-bold text-light mb-4">Try the free CLI now</h2>
+      <h2 class="text-2xl font-bold text-light mb-4">Prefer the CLI?</h2>
       <p class="text-slate mb-8">
-        Don't wait for the GitHub integration. The open source CLI has full drift detection today.
+        The open source CLI has full drift detection and works standalone, no GitHub integration required.
       </p>
       <a
-        href="https://github.com/buoy-design/buoy"
+        href="https://github.com/ahoybuoy/buoy"
         class="inline-flex items-center gap-2 px-6 py-3 bg-navy border border-navy-light/30 text-light rounded-lg hover:border-buoy/50 transition-colors"
       >
         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
           <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
         </svg>
-        View on GitHub
+        View CLI on GitHub
       </a>
     </div>
   </section>
 
   <Footer />
 </Layout>
-
-<script>
-  const form = document.getElementById('waitlist-form') as HTMLFormElement;
-  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
-  const successMessage = document.getElementById('success-message') as HTMLElement;
-  const errorMessage = document.getElementById('error-message') as HTMLElement;
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const email = (document.getElementById('email') as HTMLInputElement).value;
-
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Joining...';
-    errorMessage.classList.add('hidden');
-    successMessage.classList.add('hidden');
-
-    try {
-      const response = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email,
-          leadMagnet: 'waitlist'
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || 'Failed to join waitlist');
-      }
-
-      // Show success
-      form.classList.add('hidden');
-      successMessage.classList.remove('hidden');
-
-    } catch (error) {
-      errorMessage.textContent = error instanceof Error ? error.message : 'Something went wrong';
-      errorMessage.classList.remove('hidden');
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Join Waitlist';
-    }
-  });
-</script>

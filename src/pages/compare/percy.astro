@@ -1,0 +1,231 @@
+---
+import CompareLayout from '../../layouts/CompareLayout.astro'
+
+const comparison = [
+  { aspect: 'What it detects', percy: 'Visual changes in screenshots', buoy: 'Structural drift in code' },
+  { aspect: 'Detection method', percy: 'Pixel-level comparison', buoy: 'AST code analysis' },
+  { aspect: 'Scope', percy: 'Rendered pages/components', buoy: 'Entire codebase' },
+  { aspect: 'Hardcoded values', percy: 'Not detected', buoy: 'Detected + suggestions' },
+  { aspect: 'Duplicate components', percy: 'Not detected', buoy: 'Semantic detection' },
+  { aspect: 'Token coverage', percy: 'Not tracked', buoy: 'Full metrics' },
+  { aspect: 'Requires rendering', percy: 'Yes (browser/CI)', buoy: 'No (static analysis)' },
+  { aspect: 'Speed', percy: 'Minutes (rendering + upload)', buoy: 'Seconds (local scan)' },
+  { aspect: 'Free tier', percy: '5,000 snapshots/mo', buoy: 'Unlimited (CLI)' },
+]
+---
+
+<CompareLayout
+  title="Buoy vs Percy | Structural vs Visual Drift Detection"
+  description="Percy catches visual regressions via screenshots. Buoy scans your codebase for structural design drift. Different problems, different solutions."
+  keywords="percy alternative, visual regression alternative, design system testing, browserstack percy"
+  heroTitle="Visual Regression vs Structural Drift"
+  heroDescription="Percy catches pixel-level visual changes. Buoy catches structural drift in your code. They solve different problems."
+  competitor="Percy"
+>
+  <!-- Key Difference -->
+  <section class="py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
+          <h3 class="font-semibold text-light mb-4">Percy Answers:</h3>
+          <p class="text-lg text-slate italic">
+            "Did the visual appearance of my UI change?"
+          </p>
+          <ul class="mt-4 space-y-2 text-sm text-slate">
+            <li>• Pixel-level screenshot comparison</li>
+            <li>• Requires rendering in a browser</li>
+            <li>• Great for catching visual regressions</li>
+          </ul>
+        </div>
+
+        <div class="bg-navy/50 border border-buoy/30 rounded-xl p-6">
+          <h3 class="font-semibold text-buoy mb-4">Buoy Answers:</h3>
+          <p class="text-lg text-slate italic">
+            "Is my codebase following the design system?"
+          </p>
+          <ul class="mt-4 space-y-2 text-sm text-slate">
+            <li>• Static code analysis</li>
+            <li>• No rendering required</li>
+            <li>• Great for catching design drift</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="py-16 bg-navy">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light mb-8 text-center">Feature Comparison</h2>
+
+      <div class="bg-navy-dark border border-navy-light/30 rounded-xl overflow-hidden">
+        <div class="grid grid-cols-3 bg-navy border-b border-navy-light/20">
+          <div class="p-4 font-semibold text-slate">Feature</div>
+          <div class="p-4 font-semibold text-slate border-l border-navy-light/20">Percy</div>
+          <div class="p-4 font-semibold text-buoy border-l border-navy-light/20">Buoy</div>
+        </div>
+
+        {comparison.map((row, index) => (
+          <div class={`grid grid-cols-3 ${index % 2 === 0 ? 'bg-navy/30' : ''}`}>
+            <div class="p-4 text-light">{row.aspect}</div>
+            <div class="p-4 text-slate border-l border-navy-light/20">{row.percy}</div>
+            <div class="p-4 text-success border-l border-navy-light/20">{row.buoy}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What Percy Misses -->
+  <section class="py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light mb-8 text-center">What Percy Misses</h2>
+
+      <div class="space-y-4">
+        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-4">
+          <h3 class="font-semibold text-light mb-2">Hardcoded Values That Render Correctly</h3>
+          <p class="text-sm text-slate">
+            <code class="text-warning">#3b82f6</code> and <code class="text-success">var(--primary)</code> render as the same blue pixel.
+            Percy sees identical screenshots. Buoy knows one bypasses your design system.
+          </p>
+        </div>
+
+        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-4">
+          <h3 class="font-semibold text-light mb-2">Code That's Never Rendered</h3>
+          <p class="text-sm text-slate">
+            Conditional components, error states, and edge cases might not get screenshot coverage.
+            Buoy scans all code paths, rendered or not.
+          </p>
+        </div>
+
+        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-4">
+          <h3 class="font-semibold text-light mb-2">Duplicate Component Implementations</h3>
+          <p class="text-sm text-slate">
+            Two components that look identical in screenshots might be completely separate implementations.
+            Percy can't tell. Buoy identifies them as candidates for consolidation.
+          </p>
+        </div>
+
+        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-4">
+          <h3 class="font-semibold text-light mb-2">Token Usage Patterns</h3>
+          <p class="text-sm text-slate">
+            Percy can't tell if you're using <code class="text-slate-dark">spacing-4</code> or <code class="text-warning">16px</code>.
+            Buoy tracks token adoption across your entire codebase.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Speed Comparison -->
+  <section class="py-16 bg-navy">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light mb-8 text-center">Speed Comparison</h2>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 text-center">
+          <div class="text-4xl mb-4">🐢</div>
+          <h3 class="font-semibold text-light mb-2">Percy</h3>
+          <p class="text-slate text-sm mb-4">
+            Render pages → Take screenshots → Upload to cloud → Compare → Return results
+          </p>
+          <div class="text-2xl font-bold text-slate">2-10 minutes</div>
+          <p class="text-xs text-slate-dark mt-1">Per CI run</p>
+        </div>
+
+        <div class="bg-navy-dark border border-buoy/30 rounded-xl p-6 text-center">
+          <div class="text-4xl mb-4">⚡</div>
+          <h3 class="font-semibold text-buoy mb-2">Buoy</h3>
+          <p class="text-slate text-sm mb-4">
+            Scan code → Analyze AST → Report issues
+          </p>
+          <div class="text-2xl font-bold text-success">5-30 seconds</div>
+          <p class="text-xs text-slate-dark mt-1">Local or CI</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Together -->
+  <section class="py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-bold text-light mb-4">Better Together</h2>
+      <p class="text-slate mb-8 max-w-2xl mx-auto">
+        Percy and Buoy solve different problems. Use Percy to catch unintended visual changes.
+        Use Buoy to ensure your code follows design system patterns.
+      </p>
+
+      <div class="inline-flex flex-col sm:flex-row gap-4">
+        <div class="bg-navy-dark border border-navy-light/20 rounded-lg p-4 text-center">
+          <div class="text-2xl mb-2">📸</div>
+          <div class="text-sm text-slate">Percy</div>
+          <div class="text-xs text-slate-dark">Visual regression</div>
+        </div>
+        <div class="text-2xl text-slate self-center">+</div>
+        <div class="bg-navy-dark border border-buoy/30 rounded-lg p-4 text-center">
+          <div class="text-2xl mb-2">🛟</div>
+          <div class="text-sm text-light">Buoy</div>
+          <div class="text-xs text-slate-dark">Structural drift</div>
+        </div>
+        <div class="text-2xl text-slate self-center">=</div>
+        <div class="bg-navy-dark border border-success/30 rounded-lg p-4 text-center">
+          <div class="text-2xl mb-2">✨</div>
+          <div class="text-sm text-success">Complete coverage</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- When to Use Which -->
+  <section class="py-16 bg-navy">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light mb-8 text-center">When to Use Which</h2>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6">
+          <h3 class="font-semibold text-light mb-4">Use Percy when...</h3>
+          <ul class="space-y-2 text-sm text-slate">
+            <li class="flex items-start gap-2">
+              <span class="text-slate">•</span>
+              <span>You need to catch unintended visual changes</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-slate">•</span>
+              <span>You're doing cross-browser testing</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-slate">•</span>
+              <span>You want screenshot documentation</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-slate">•</span>
+              <span>You're testing responsive layouts</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-navy-dark border border-buoy/30 rounded-xl p-6">
+          <h3 class="font-semibold text-buoy mb-4">Use Buoy when...</h3>
+          <ul class="space-y-2 text-sm text-slate">
+            <li class="flex items-start gap-2">
+              <span class="text-success">•</span>
+              <span>You need to enforce design system usage</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-success">•</span>
+              <span>You want to find hardcoded values</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-success">•</span>
+              <span>You're measuring token adoption</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-success">•</span>
+              <span>You want fast feedback in development</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</CompareLayout>

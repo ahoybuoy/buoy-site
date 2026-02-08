@@ -94,7 +94,7 @@ No slowdown. No friction. Just guardrails.
 
 ```bash
 # Install buoy
-npm install -g @buoy-design/cli
+npm install -g ahoybuoy
 
 # Onboard your AI assistants
 buoy onboard
@@ -136,7 +136,7 @@ Session-start context injection, not per-keystroke linting. Your AI stays fast w
 **Ready to onboard your AI?**
 
 ```bash
-npx @buoy-design/cli begin
+npx ahoybuoy begin
 ```
 
 Free. Open source. No signup required.

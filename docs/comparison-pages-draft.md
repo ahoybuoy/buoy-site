@@ -70,7 +70,7 @@ This generates `.coderabbit.yaml` rules that teach CodeRabbit your design tokens
 Already using CodeRabbit? Add Buoy in 2 minutes:
 
 ```bash
-npx @buoy-design/cli begin
+npx ahoybuoy begin
 buoy lighthouse --export-coderabbit
 ```
 
@@ -154,7 +154,7 @@ Run `buoy onboard` to add design system context to `CLAUDE.md` - Greptile picks 
 Already using Greptile? Add Buoy context:
 
 ```bash
-npx @buoy-design/cli begin
+npx ahoybuoy begin
 buoy onboard  # Updates CLAUDE.md - Greptile reads this!
 ```
 
