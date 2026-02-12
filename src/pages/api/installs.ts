@@ -5,51 +5,69 @@ export const prerender = false;
 const MAX_SPOTS = 100;
 const CACHE_TTL = 3600; // Cache for 1 hour
 const MARKETPLACE_URL = 'https://github.com/marketplace/buoy-design';
+const KNOWN_INSTALLS = 5; // Fallback: last known count as of 2026-02-12
 
 async function fetchMarketplaceInstalls(kv: any): Promise<number> {
   // Check KV cache first
   if (kv) {
-    const cached = await kv.get('marketplace_installs_cached', { type: 'json' });
-    if (cached && Date.now() - cached.fetchedAt < CACHE_TTL * 1000) {
-      return cached.count;
-    }
+    try {
+      const cached = await kv.get('marketplace_installs_cached', { type: 'json' });
+      if (cached && Date.now() - cached.fetchedAt < CACHE_TTL * 1000) {
+        return cached.count;
+      }
+    } catch {}
   }
 
-  // Fetch the marketplace page and parse install count
+  // Fetch the marketplace page and parse install count from embedded JSON
   try {
     const res = await fetch(MARKETPLACE_URL, {
-      headers: { 'User-Agent': 'Buoy-Site/1.0' }
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (compatible; Buoy-Site/1.0)',
+        'Accept': 'text/html',
+      }
     });
+
+    if (!res.ok) {
+      throw new Error(`GitHub returned ${res.status}`);
+    }
+
     const html = await res.text();
 
-    // GitHub renders marketplace as a React app with embedded JSON data
-    const jsonMatch = html.match(/data-target="react-app\.embeddedData">(.*?)<\/script>/s);
-    let count = 0;
+    // GitHub embeds marketplace data as JSON in a script tag
+    const jsonMatch = html.match(/data-target="react-app\.embeddedData">(\{[\s\S]*?\})<\/script>/);
     if (jsonMatch) {
       const data = JSON.parse(jsonMatch[1]);
-      count = data?.payload?.listing?.installationCount ?? 0;
+      const count = data?.payload?.listing?.installationCount;
+      if (typeof count === 'number' && count >= 0) {
+        // Cache the result
+        if (kv) {
+          try {
+            await kv.put('marketplace_installs_cached', JSON.stringify({
+              count,
+              fetchedAt: Date.now()
+            }));
+          } catch {}
+        }
+        return count;
+      }
     }
 
-    // Cache the result in KV
-    if (kv) {
-      await kv.put('marketplace_installs_cached', JSON.stringify({
-        count,
-        fetchedAt: Date.now()
-      }));
-    }
-
-    return count;
+    // If parsing failed, fall through to fallbacks
+    throw new Error('Could not parse installationCount from page');
   } catch (e) {
-    console.error('Failed to fetch marketplace page:', e);
+    console.error('Marketplace fetch failed:', e);
+  }
 
-    // Fall back to stale cache if available
-    if (kv) {
+  // Fall back to stale cache
+  if (kv) {
+    try {
       const stale = await kv.get('marketplace_installs_cached', { type: 'json' });
       if (stale) return stale.count;
-    }
-
-    return 0;
+    } catch {}
   }
+
+  // Last resort: known count
+  return KNOWN_INSTALLS;
 }
 
 export const GET: APIRoute = async ({ locals }) => {
@@ -78,8 +96,8 @@ export const GET: APIRoute = async ({ locals }) => {
     console.error('Error fetching install count:', error);
     return new Response(
       JSON.stringify({
-        installs: 0,
-        remaining: MAX_SPOTS,
+        installs: KNOWN_INSTALLS,
+        remaining: MAX_SPOTS - KNOWN_INSTALLS,
         maxSpots: MAX_SPOTS
       }),
       {
