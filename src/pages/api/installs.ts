@@ -22,9 +22,13 @@ async function fetchMarketplaceInstalls(kv: any): Promise<number> {
     });
     const html = await res.text();
 
-    // GitHub marketplace shows installs like "5 installs" or "1,234 installs"
-    const match = html.match(/([\d,]+)\s+install/i);
-    const count = match ? parseInt(match[1].replace(/,/g, ''), 10) : 0;
+    // GitHub renders marketplace as a React app with embedded JSON data
+    const jsonMatch = html.match(/data-target="react-app\.embeddedData">(.*?)<\/script>/s);
+    let count = 0;
+    if (jsonMatch) {
+      const data = JSON.parse(jsonMatch[1]);
+      count = data?.payload?.listing?.installationCount ?? 0;
+    }
 
     // Cache the result in KV
     if (kv) {
