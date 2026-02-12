@@ -26,7 +26,7 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
     <tbody>
       <tr>
         <td><code>build</code></td>
-        <td>Build the knowledge graph from the codebase</td>
+        <td>Build the knowledge graph from the codebase (persists to <code>.buoy/graph.json</code>)</td>
       </tr>
       <tr>
         <td><code>query &lt;question&gt;</code></td>
@@ -39,6 +39,27 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
       <tr>
         <td><code>stats</code></td>
         <td>Show graph statistics</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Options</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Option</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--incremental</code></td>
+        <td>Only rebuild nodes for changed files (faster rebuilds)</td>
+      </tr>
+      <tr>
+        <td><code>--json</code></td>
+        <td>Output as JSON</td>
       </tr>
     </tbody>
   </table>
@@ -60,6 +81,20 @@ Edges: 312 relationships
 
 Graph saved to .buoy/graph.json</code></pre>
 
+  <h3>Incremental rebuild</h3>
+
+  <pre><code>$ buoy graph build --incremental
+
+Rebuilding knowledge graph (incremental)...
+
+Changed files: 3
+  Updated: Button.tsx, Card.tsx, Badge.tsx
+
+Nodes: 156 (3 updated)
+Edges: 314 relationships (+2)
+
+Graph saved to .buoy/graph.json</code></pre>
+
   <h3>Query the graph</h3>
 
   <pre><code>$ buoy graph query "What components use the primary color?"
@@ -69,6 +104,32 @@ Components using --color-primary:
   - Link (2 usages)
   - Badge (1 usage)
   - Tab (1 usage)</code></pre>
+
+  <h3>Most used tokens</h3>
+
+  <pre><code>$ buoy graph query "most used"
+
+Most Used Tokens
+────────────────
+Token                    Usages   Components
+--spacing-md             23       12
+--font-size-base         18       9
+--color-primary          14       4
+--border-radius-md       11       7
+--color-secondary        9        3</code></pre>
+
+  <h3>What uses a specific token</h3>
+
+  <pre><code>$ buoy graph query "what uses --spacing-md"
+
+Token: --spacing-md (23 usages)
+───────────────────────────────
+Component        File                       Line
+Button           src/components/Button.tsx   8, 14
+Card             src/components/Card.tsx     5, 12, 19
+Modal            src/components/Modal.tsx    11
+Layout           src/Layout.tsx              3, 7, 22
+...8 more components</code></pre>
 
   <h3>Export for visualization</h3>
 

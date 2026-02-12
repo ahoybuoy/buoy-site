@@ -2,17 +2,55 @@
 import DocsLayout from '../../../layouts/DocsLayout.astro'
 ---
 
-<DocsLayout title="buoy dock" description="Dock Buoy into your project">
+<DocsLayout title="buoy dock" description="Dock Buoy into your project with config, agents, skills, and hooks">
   <h1>buoy dock</h1>
 
   <p>
-    Dock Buoy into your project by creating configuration files and setting up
-    integrations. Auto-detects your framework and suggests optimal settings.
+    Dock Buoy into your project. With no arguments, runs an interactive
+    walkthrough that configures your project, sets up agents, and installs hooks.
+    Use subcommands to set up individual pieces.
   </p>
 
   <h2>Usage</h2>
 
-  <pre><code>buoy dock [options]</code></pre>
+  <pre><code>buoy dock [command] [options]</code></pre>
+
+  <h2>Commands</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Command</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>(default)</td>
+        <td>Run interactive walkthrough (config → agents → hooks)</td>
+      </tr>
+      <tr>
+        <td><code>config</code></td>
+        <td>Create or update <code>.buoy.yaml</code> configuration</td>
+      </tr>
+      <tr>
+        <td><code>agents</code></td>
+        <td>Set up AI agent files (<code>.claude/agents/</code>)</td>
+      </tr>
+      <tr>
+        <td><code>skills</code></td>
+        <td>Install Buoy skills (<code>.claude/skills/</code>)</td>
+      </tr>
+      <tr>
+        <td><code>context</code></td>
+        <td>Generate <code>CLAUDE.md</code> with design system context</td>
+      </tr>
+      <tr>
+        <td><code>hooks</code></td>
+        <td>Set up pre-commit and CI hooks</td>
+      </tr>
+    </tbody>
+  </table>
 
   <h2>Options</h2>
 
@@ -25,37 +63,23 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
     </thead>
     <tbody>
       <tr>
-        <td><code>-f, --force</code></td>
-        <td>Overwrite existing configuration</td>
-      </tr>
-      <tr>
-        <td><code>-n, --name &lt;name&gt;</code></td>
-        <td>Project name</td>
-      </tr>
-      <tr>
-        <td><code>--skip-detect</code></td>
-        <td>Skip auto-detection and create minimal config</td>
-      </tr>
-      <tr>
         <td><code>-y, --yes</code></td>
-        <td>Auto-install recommended plugins without prompting</td>
+        <td>Accept all defaults without prompting</td>
       </tr>
       <tr>
-        <td><code>--no-install</code></td>
-        <td>Skip plugin installation prompts</td>
+        <td><code>--json</code></td>
+        <td>Output results as JSON</td>
       </tr>
       <tr>
-        <td><code>--hooks</code></td>
-        <td>Setup pre-commit hook for drift checking</td>
-      </tr>
-      <tr>
-        <td><code>--claude</code></td>
-        <td>Setup Claude Code hooks for self-validating AI</td>
+        <td><code>-f, --force</code></td>
+        <td>Overwrite existing files</td>
       </tr>
     </tbody>
   </table>
 
-  <h2>Example</h2>
+  <h2>Examples</h2>
+
+  <h3>Interactive walkthrough</h3>
 
   <pre><code>$ buoy dock
 
@@ -66,49 +90,108 @@ Detected:
   Styling: Tailwind CSS
   Components: src/components/
 
-Creating .buoy.yaml...
-
+Step 1/3: Configuration
 ✓ Created .buoy.yaml
-✓ Added .buoy/ to .gitignore
 
-Buoy is now docked! Run 'buoy check' to scan your codebase.</code></pre>
+Step 2/3: AI Agents
+✓ Created .claude/agents/design-reviewer.md
+✓ Created .claude/agents/drift-fixer.md
 
-  <h2>With Git Hooks</h2>
-
-  <pre><code>$ buoy dock --hooks
-
-...
-✓ Created .git/hooks/pre-commit
-
-Pre-commit hook installed. Drift will be checked before each commit.</code></pre>
-
-  <h2>With Claude Code</h2>
-
-  <p>Set up self-validating AI hooks for Claude Code:</p>
-
-  <pre><code>$ buoy dock --claude
-
-...
-✓ Created .claude/hooks/buoy-validate.js
+Step 3/3: Hooks
+✓ Created .claude/commands/buoy-check.md
 ✓ Updated .claude/settings.local.json
 
-Claude Code hooks installed. AI will self-correct design drift.</code></pre>
+Buoy is docked! Run 'buoy check' to scan your codebase.</code></pre>
 
-  <p>See <a href="/docs/integrations/claude-code">Claude Code integration</a> for details.</p>
+  <h3>Config only</h3>
+
+  <pre><code>$ buoy dock config
+
+Detecting project configuration...
+
+Detected:
+  Framework: React
+  Styling: Tailwind CSS
+  Components: src/components/
+
+✓ Created .buoy.yaml</code></pre>
+
+  <h3>Set up agents</h3>
+
+  <pre><code>$ buoy dock agents
+
+✓ Created .claude/agents/design-reviewer.md
+✓ Created .claude/agents/drift-fixer.md
+
+Agents are ready. Use them in Claude Code with /agent.</code></pre>
+
+  <h3>Install skills</h3>
+
+  <pre><code>$ buoy dock skills
+
+✓ Created .claude/skills/design-system.md
+✓ Created .claude/skills/drift-check.md
+
+Skills installed. Claude Code will use them automatically.</code></pre>
+
+  <h3>Generate context</h3>
+
+  <pre><code>$ buoy dock context
+
+Analyzing design system...
+
+✓ Generated CLAUDE.md with design system rules
+  - 67 tokens documented
+  - 42 components listed
+  - Anti-patterns defined</code></pre>
+
+  <h3>Set up hooks</h3>
+
+  <pre><code>$ buoy dock hooks
+
+✓ Created .claude/commands/buoy-check.md
+✓ Updated .claude/settings.local.json
+✓ Created .git/hooks/pre-commit
+
+Hooks installed:
+  Pre-commit: drift check before each commit
+  Claude Code: self-validating AI hooks</code></pre>
+
+  <h3>Non-interactive setup</h3>
+
+  <pre><code>$ buoy dock -y
+
+✓ Created .buoy.yaml
+✓ Created .claude/agents/design-reviewer.md
+✓ Created .claude/agents/drift-fixer.md
+✓ Created .claude/commands/buoy-check.md
+✓ Updated .claude/settings.local.json
+
+Buoy is docked!</code></pre>
+
+  <h3>Force overwrite</h3>
+
+  <pre><code>$ buoy dock config -f
+
+Overwriting existing .buoy.yaml...
+✓ Updated .buoy.yaml</code></pre>
 
   <h2>Generated Files</h2>
 
   <ul>
-    <li><strong>.buoy.yaml</strong> - Main configuration file</li>
-    <li><strong>.buoy/</strong> - Local data directory (added to .gitignore)</li>
+    <li><strong>.buoy.yaml</strong> — Main configuration file</li>
+    <li><strong>.claude/skills/</strong> — Buoy skills for Claude Code</li>
+    <li><strong>.claude/agents/</strong> — AI agent definitions</li>
+    <li><strong>.claude/commands/</strong> — Slash commands for Claude Code</li>
+    <li><strong>CLAUDE.md</strong> — Design system context for AI tools</li>
   </ul>
 
   <h2>Related</h2>
 
   <ul>
     <li><a href="/docs/cli/begin">buoy begin</a> — Interactive setup wizard</li>
-    <li><a href="/docs/cli/check">buoy check</a> — Scan your codebase</li>
-    <li><a href="/docs/cli/onboard">buoy onboard</a> — Set up AI guardrails</li>
-    <li><a href="/docs/integrations/claude-code">Claude Code</a> — Self-validating AI hooks</li>
+    <li><a href="/docs/cli/plugins">buoy plugins</a> — Manage scanner plugins</li>
+    <li><a href="/docs/cli/check">buoy check</a> — Run drift checks</li>
+    <li><a href="/docs/integrations/claude-code">Claude Code</a> — AI integration details</li>
   </ul>
 </DocsLayout>

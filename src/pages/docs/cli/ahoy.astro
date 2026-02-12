@@ -1,0 +1,191 @@
+---
+import DocsLayout from '../../../layouts/DocsLayout.astro'
+---
+
+<DocsLayout title="buoy ahoy" description="Manage your Buoy Cloud account and integrations">
+  <h1>buoy ahoy</h1>
+
+  <p>
+    Manage your Buoy Cloud account, Git integrations, and billing.
+    Also available as <code>buoy ship</code>.
+  </p>
+
+  <h2>Usage</h2>
+
+  <pre><code>buoy ahoy &lt;command&gt; [options]</code></pre>
+
+  <h2>Commands</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Command</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>login</code></td>
+        <td>Authenticate with Buoy Cloud</td>
+      </tr>
+      <tr>
+        <td><code>logout</code></td>
+        <td>Sign out and clear credentials</td>
+      </tr>
+      <tr>
+        <td><code>status</code></td>
+        <td>Show current authentication and account status</td>
+      </tr>
+      <tr>
+        <td><code>github</code></td>
+        <td>Connect or manage GitHub integration</td>
+      </tr>
+      <tr>
+        <td><code>gitlab</code></td>
+        <td>Connect or manage GitLab integration (coming soon)</td>
+      </tr>
+      <tr>
+        <td><code>billing</code></td>
+        <td>Open billing portal in your browser</td>
+      </tr>
+      <tr>
+        <td><code>plans</code></td>
+        <td>View available plans and current usage</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Options</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Command</th>
+        <th>Option</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>status</code></td>
+        <td><code>--json</code></td>
+        <td>Output status as JSON</td>
+      </tr>
+      <tr>
+        <td><code>github</code></td>
+        <td><code>--json</code></td>
+        <td>Output GitHub connection info as JSON</td>
+      </tr>
+      <tr>
+        <td><code>github</code></td>
+        <td><code>--disconnect</code></td>
+        <td>Disconnect GitHub integration</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Examples</h2>
+
+  <h3>Login</h3>
+
+  <pre><code>$ buoy ahoy login
+
+Opening browser for authentication...
+
+✓ Authenticated as dylan@example.com
+  Plan: Founding Member
+  Org: Acme Inc</code></pre>
+
+  <h3>Check status</h3>
+
+  <pre><code>$ buoy ahoy status
+
+Account Status
+──────────────
+User: dylan@example.com
+Plan: Founding Member
+Org: Acme Inc
+GitHub: connected (acme-org)
+GitLab: not connected</code></pre>
+
+  <h3>Connect GitHub</h3>
+
+  <pre><code>$ buoy ahoy github
+
+Opening browser to install Buoy GitHub App...
+
+✓ GitHub connected
+  Organization: acme-org
+  Repositories: 12 accessible</code></pre>
+
+  <h3>Disconnect GitHub</h3>
+
+  <pre><code>$ buoy ahoy github --disconnect
+
+Disconnect GitHub integration? (y/N) y
+
+✓ GitHub disconnected</code></pre>
+
+  <h3>View plans</h3>
+
+  <pre><code>$ buoy ahoy plans
+
+Current Plan: Founding Member
+─────────────────────────────
+Repos: unlimited
+Scans: unlimited
+PR checks: ✓
+Priority support: ✓
+
+Available Plans
+───────────────
+Free        $0/mo     3 repos, basic scanning
+Pro         $29/mo    unlimited repos, PR checks
+Enterprise  custom    SSO, dedicated support</code></pre>
+
+  <h3>Manage billing</h3>
+
+  <pre><code>$ buoy ahoy billing
+
+Opening billing portal in browser...</code></pre>
+
+  <h3>Logout</h3>
+
+  <pre><code>$ buoy ahoy logout
+
+✓ Signed out. Credentials cleared.</code></pre>
+
+  <h3>JSON output</h3>
+
+  <pre><code>$ buoy ahoy status --json
+
+&#123;
+  "user": "dylan@example.com",
+  "plan": "founding-member",
+  "org": "Acme Inc",
+  "github": &#123;
+    "connected": true,
+    "org": "acme-org",
+    "repos": 12
+  &#125;,
+  "gitlab": &#123;
+    "connected": false
+  &#125;
+&#125;</code></pre>
+
+  <h2>Alias</h2>
+
+  <p>
+    <code>buoy ship</code> is an alias for <code>buoy ahoy</code>. Both commands are identical.
+  </p>
+
+  <pre><code>$ buoy ship status
+# same as: buoy ahoy status</code></pre>
+
+  <h2>Related</h2>
+
+  <ul>
+    <li><a href="/docs/cli/dock">buoy dock</a> — Project setup</li>
+    <li><a href="/docs/integrations/github-actions">GitHub App</a> — PR checks and automation</li>
+  </ul>
+</DocsLayout>

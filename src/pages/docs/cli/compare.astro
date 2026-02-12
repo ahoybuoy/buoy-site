@@ -46,6 +46,10 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
         <td>Output as JSON for scripting</td>
       </tr>
       <tr>
+        <td><code>-v, --verbose</code></td>
+        <td>Show per-file breakdown and usage frequency details</td>
+      </tr>
+      <tr>
         <td><code>--strict</code></td>
         <td>Fail if any unmatched values found</td>
       </tr>
@@ -89,27 +93,31 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
 
 Comparing against design-tokens.json...
 
-Token Coverage
-──────────────
+Token Coverage: 87%
+───────────────────
 
-Colors
+Colors (78% coverage)
   ✓ 18 values match tokens
   ✗ 5 values not in tokens:
-      #f9fafb (used 3 times)
-      #374151 (used 2 times)
-      #3b83f6 (used 1 time) ← close to #3b82f6
+      #f9fafb (used 3 times in 2 files)
+      #374151 (used 2 times in 1 file)
+      #3b83f6 (used 1 time) ← typo? close to #3b82f6
 
-Spacing
+Spacing (86% coverage)
   ✓ 12 values match tokens
   ✗ 2 values not in tokens:
-      15px (used 4 times) ← close to 16px
+      15px (used 4 times in 3 files) ← close to 16px
       13px (used 1 time)
+
+Typography (100% coverage)
+  ✓ 8 values match tokens
 
 Summary
 ───────
 Token coverage: 87%
 Unmatched values: 7
-Close matches (possible typos): 2</code></pre>
+Close matches (possible typos): 2
+Most frequent unmatched: #f9fafb (3 uses)</code></pre>
 
   <h2>JSON Output</h2>
 

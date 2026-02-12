@@ -1,0 +1,217 @@
+---
+import DocsLayout from '../../../layouts/DocsLayout.astro'
+---
+
+<DocsLayout title="buoy show" description="Display design system status and drift details">
+  <h1>buoy show</h1>
+
+  <p>
+    Display design system status at a glance. Shows components, tokens, drift
+    signals, health score, and scan history — or everything at once.
+  </p>
+
+  <h2>Usage</h2>
+
+  <pre><code>buoy show &lt;command&gt; [options]</code></pre>
+
+  <h2>Commands</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Command</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>components</code></td>
+        <td>List detected components and their token usage</td>
+      </tr>
+      <tr>
+        <td><code>tokens</code></td>
+        <td>Show resolved design tokens and where they're used</td>
+      </tr>
+      <tr>
+        <td><code>drift</code></td>
+        <td>Show current drift signals with severity and type filters</td>
+      </tr>
+      <tr>
+        <td><code>health</code></td>
+        <td>Show design system health score breakdown</td>
+      </tr>
+      <tr>
+        <td><code>history</code></td>
+        <td>Show recent scan history summary</td>
+      </tr>
+      <tr>
+        <td><code>all</code></td>
+        <td>Show full status report (components, tokens, drift, health)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Options</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Option</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--json</code></td>
+        <td>Output as JSON for scripting</td>
+      </tr>
+      <tr>
+        <td><code>--no-cache</code></td>
+        <td>Bypass cache and re-scan the codebase</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Drift-specific options</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Option</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>--raw</code></td>
+        <td>Show raw drift data without formatting</td>
+      </tr>
+      <tr>
+        <td><code>-S, --severity &lt;level&gt;</code></td>
+        <td>Filter by severity: <code>low</code>, <code>medium</code>, <code>high</code></td>
+      </tr>
+      <tr>
+        <td><code>-t, --type &lt;type&gt;</code></td>
+        <td>Filter by drift type (e.g. <code>hardcoded-color</code>, <code>naming</code>)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Examples</h2>
+
+  <h3>Show components</h3>
+
+  <pre><code>$ buoy show components
+
+Components (42 detected)
+────────────────────────
+Component        Tokens   Drift   File
+Button           8        0       src/components/Button.tsx
+Card             6        2       src/components/Card.tsx
+Badge            4        1       src/components/Badge.tsx
+Modal            5        0       src/components/Modal.tsx
+...38 more</code></pre>
+
+  <h3>Show tokens</h3>
+
+  <pre><code>$ buoy show tokens
+
+Design Tokens (67 resolved)
+────────────────────────────
+Token                    Value       Usages
+--color-primary          #3b82f6     14
+--color-secondary        #64748b     9
+--spacing-md             16px        23
+--spacing-lg             24px        11
+--font-size-base         1rem        18
+...62 more</code></pre>
+
+  <h3>Show drift</h3>
+
+  <pre><code>$ buoy show drift
+
+Drift Signals (23 total)
+────────────────────────
+Severity   Type               File                  Line
+high       hardcoded-color    src/Card.tsx           12
+high       hardcoded-color    src/Badge.tsx          8
+medium     hardcoded-spacing  src/Modal.tsx          34
+medium     naming             src/Header.tsx         5
+low        hardcoded-color    src/Footer.tsx         22
+...18 more</code></pre>
+
+  <h3>Filter drift by severity</h3>
+
+  <pre><code>$ buoy show drift -S high
+
+Drift Signals (5 high severity)
+───────────────────────────────
+Severity   Type               File                  Line
+high       hardcoded-color    src/Card.tsx           12
+high       hardcoded-color    src/Badge.tsx          8
+high       hardcoded-spacing  src/Layout.tsx         19
+high       naming             src/Nav.tsx            3
+high       hardcoded-color    src/Alert.tsx          7</code></pre>
+
+  <h3>Show health</h3>
+
+  <pre><code>$ buoy show health
+
+Design System Health
+────────────────────
+Overall Score: 72/100
+
+  Token coverage:    85%  ██████████████░░░
+  Naming consistency: 91%  ██████████████████░
+  Drift signals:     23   (target: 0)
+  Component coverage: 78%  ███████████████░░░</code></pre>
+
+  <h3>Show history</h3>
+
+  <pre><code>$ buoy show history
+
+Recent Scans (last 5)
+─────────────────────
+Date           Score   Drift   Coverage
+2024-01-15     72      23      85%
+2024-01-14     70      25      83%
+2024-01-13     68      28      81%
+2024-01-12     65      31      79%
+2024-01-11     62      35      77%</code></pre>
+
+  <h3>Show everything</h3>
+
+  <pre><code>$ buoy show all
+
+# Full status report combining all sections above</code></pre>
+
+  <h3>JSON output</h3>
+
+  <pre><code>$ buoy show health --json
+
+&#123;
+  "score": 72,
+  "tokenCoverage": 85,
+  "namingConsistency": 91,
+  "driftSignals": 23,
+  "componentCoverage": 78
+&#125;</code></pre>
+
+  <h2>Workflow</h2>
+
+  <ol>
+    <li>Run <code>buoy show all</code> to get a full snapshot</li>
+    <li>Use <code>buoy show drift -S high</code> to focus on critical issues</li>
+    <li>Fix drift with <code>buoy fix</code>, then re-run to verify</li>
+    <li>Track progress with <code>buoy show history</code></li>
+  </ol>
+
+  <h2>Related</h2>
+
+  <ul>
+    <li><a href="/docs/cli/drift">buoy drift</a> — Detailed drift detection</li>
+    <li><a href="/docs/cli/audit">buoy audit</a> — Full health audit</li>
+    <li><a href="/docs/cli/history">buoy history</a> — Scan history and comparisons</li>
+    <li><a href="/docs/cli/scan">buoy scan</a> — Run a scan</li>
+  </ul>
+</DocsLayout>
