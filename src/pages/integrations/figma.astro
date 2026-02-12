@@ -1,131 +1,90 @@
 ---
 import IntegrationLayout from '../../layouts/IntegrationLayout.astro'
 import Button from '../../components/Button.astro'
-import LeadMagnetCTA from '../../components/LeadMagnetCTA.astro'
-
-const features = [
-  {
-    title: 'Design Token Sync',
-    description: 'Import design tokens directly from Figma Variables and compare against your codebase.'
-  },
-  {
-    title: 'Component Mapping',
-    description: 'Map Figma components to code components and track coverage.'
-  },
-  {
-    title: 'Style Comparison',
-    description: 'Compare Figma styles (colors, typography, spacing) with implemented values.'
-  },
-  {
-    title: 'Orphan Detection',
-    description: 'Find components in code that don\'t exist in Figma, and vice versa.'
-  },
-  {
-    title: 'Version Tracking',
-    description: 'Track changes when Figma designs update and flag code that needs updating.'
-  },
-  {
-    title: 'Export Tokens',
-    description: 'Generate CSS variables, JSON, or TypeScript from Figma Variables.'
-  },
-]
-
-const workflow = [
-  { step: '1', title: 'Connect Figma', description: 'Link your Figma file using an access token' },
-  { step: '2', title: 'Map Components', description: 'Buoy auto-maps Figma components to code' },
-  { step: '3', title: 'Detect Drift', description: 'See where code has drifted from design' },
-  { step: '4', title: 'Stay Synced', description: 'Get alerts when Figma updates' },
-]
 ---
 
 <IntegrationLayout
-  title="Figma to Code Comparison | Buoy"
-  description="Compare your Figma designs to your code implementation. Find components in Figma that aren't in code, and code that's drifted from design."
-  keywords="figma to code, figma code comparison, design to code sync"
-  heroTitle="Figma to Code Comparison"
-  heroDescription="Keep your code in sync with Figma. Import design tokens, compare component implementations, and catch drift before it ships."
+  title="Design Token Import | Buoy"
+  description="Import and compare design tokens from CSS custom properties, JSON files, and theme objects. Auto-detect tokens from your codebase."
+  keywords="design tokens import, css custom properties, design system tokens"
+  heroTitle="Design Token Detection"
+  heroDescription="Buoy auto-detects design tokens from your codebase — CSS custom properties, JS theme objects, Tailwind config — and matches hardcoded values against them."
   icon="🎨"
   iconBg="bg-purple-500/20"
 >
-  <!-- Features Grid -->
+  <!-- What Buoy Does -->
   <section class="py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Figma Integration Features</h2>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light mb-8 text-center">How Token Detection Works</h2>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {features.map((feature) => (
-          <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
-            <h3 class="font-semibold text-light mb-2">{feature.title}</h3>
-            <p class="text-sm text-slate">{feature.description}</p>
-          </div>
-        ))}
+        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
+          <h3 class="font-semibold text-light mb-2">Auto-Detection</h3>
+          <p class="text-sm text-slate">Buoy scans your codebase for CSS custom properties, JS/TS theme objects, and Tailwind config to build a token map automatically.</p>
+        </div>
+        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
+          <h3 class="font-semibold text-light mb-2">Token Import</h3>
+          <p class="text-sm text-slate">Import tokens from JSON files, CSS custom properties, or Tokens Studio format using <code class="text-buoy">buoy import</code>.</p>
+        </div>
+        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
+          <h3 class="font-semibold text-light mb-2">Value Matching</h3>
+          <p class="text-sm text-slate">When Buoy finds a hardcoded value like <code class="text-critical">#3b82f6</code>, it suggests the matching token: <code class="text-success">var(--color-primary)</code>.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Workflow -->
+  <!-- Supported Formats -->
   <section class="py-16 bg-navy">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-12 text-center">How It Works</h2>
+      <h2 class="text-2xl font-bold text-light mb-8 text-center">Supported Token Formats</h2>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {workflow.map((item) => (
-          <div class="text-center">
-            <div class="w-12 h-12 rounded-full bg-buoy/20 border-2 border-buoy flex items-center justify-center mx-auto mb-4 text-buoy font-bold">
-              {item.step}
-            </div>
-            <h3 class="font-semibold text-light mb-2">{item.title}</h3>
-            <p class="text-sm text-slate">{item.description}</p>
+      <div class="space-y-4">
+        <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-4 flex items-center justify-between">
+          <div>
+            <h3 class="font-semibold text-light">CSS Custom Properties</h3>
+            <p class="text-sm text-slate">Variables defined in :root or theme files</p>
           </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Configuration -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Configuration Example</h2>
-
-      <div class="bg-navy border border-navy-light/30 rounded-xl overflow-hidden">
-        <div class="px-4 py-3 bg-navy-dark border-b border-navy-light/20">
-          <span class="text-sm text-slate font-mono">buoy.config.mjs</span>
+          <code class="text-sm text-buoy">--color-primary</code>
         </div>
-        <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{`// buoy.config.mjs
-export default {
-  figma: {
-    // Your Figma file URL or key
-    file: 'https://figma.com/file/xxx',
-
-    // Access token (use env var in production)
-    token: process.env.FIGMA_TOKEN,
-
-    // Map Figma pages to code directories
-    mapping: {
-      'Components': 'src/components',
-      'Primitives': 'src/ui',
-    },
-  },
-
-  // Compare Figma variables to these tokens
-  tokens: './src/tokens',
-}`}</code></pre>
-      </div>
-
-      <div class="mt-8 p-4 bg-navy/50 border border-lavender/30 rounded-xl">
-        <p class="text-sm text-slate">
-          <span class="text-lavender font-semibold">Pro Feature:</span> Figma sync requires Buoy Pro.
-          <a href="/pricing" class="text-buoy hover:underline">See pricing →</a>
-        </p>
+        <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-4 flex items-center justify-between">
+          <div>
+            <h3 class="font-semibold text-light">JSON Token Files</h3>
+            <p class="text-sm text-slate">Standard token JSON format</p>
+          </div>
+          <code class="text-sm text-buoy">tokens.json</code>
+        </div>
+        <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-4 flex items-center justify-between">
+          <div>
+            <h3 class="font-semibold text-light">JavaScript Theme Objects</h3>
+            <p class="text-sm text-slate">Exported theme configs (styled-components, etc.)</p>
+          </div>
+          <code class="text-sm text-buoy">theme.ts</code>
+        </div>
+        <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-4 flex items-center justify-between">
+          <div>
+            <h3 class="font-semibold text-light">Tailwind Config</h3>
+            <p class="text-sm text-slate">Token values from your Tailwind configuration</p>
+          </div>
+          <code class="text-sm text-buoy">tailwind.config.*</code>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Lead Magnet: State of Design Systems -->
-  <LeadMagnetCTA
-    leadMagnet="state-of-design-systems"
-    headline="The State of Design Systems 2026"
-    subhead="Industry trends, Figma adoption rates, and what's working. The definitive annual report."
-    buttonText="Get the Report"
-  />
+  <!-- CTA -->
+  <section class="py-16">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl font-bold text-light mb-4">Get started</h2>
+      <p class="text-slate mb-6">Run the CLI to auto-detect your tokens and start catching drift.</p>
+      <div class="inline-flex items-center gap-3 px-4 py-3 bg-navy/80 border border-navy-light/30 rounded-lg font-mono text-sm mb-6">
+        <span class="text-slate">$</span>
+        <code class="text-light">npx ahoybuoy begin</code>
+      </div>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <Button href="/docs/cli/tokens">Token docs</Button>
+        <Button href="/docs/cli/import" variant="secondary">Import command</Button>
+      </div>
+    </div>
+  </section>
 </IntegrationLayout>

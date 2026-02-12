@@ -102,33 +102,35 @@ const terminalLines = [
 
       <div class="bg-navy-dark border border-navy-light/30 rounded-xl overflow-hidden">
         <div class="px-4 py-3 bg-navy border-b border-navy-light/20">
-          <span class="text-sm text-slate font-mono">buoy.config.mjs</span>
+          <span class="text-sm text-slate font-mono">.buoy.yaml</span>
         </div>
-        <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{`export default {
-  // Define what "legacy" means
-  legacy: {
-    // Legacy directories to track
-    directories: ['src/legacy/', 'src/old-components/'],
+        <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{`# .buoy.yaml
 
-    // Legacy patterns to detect
-    patterns: [
-      'className="legacy-*"',
-      'import.*from.*@old-design-system',
-    ],
+# Define what "legacy" means
+legacy:
+  # Legacy directories to track
+  directories:
+    - "src/legacy/"
+    - "src/old-components/"
 
-    // Mark files with this comment as legacy
-    markers: ['@legacy', '@deprecated'],
-  },
+  # Legacy patterns to detect
+  patterns:
+    - 'className="legacy-*"'
+    - "import.*from.*@old-design-system"
 
-  // Modern design system reference
-  tokens: './src/tokens',
+  # Mark files with this comment as legacy
+  markers:
+    - "@legacy"
+    - "@deprecated"
 
-  // Track migration progress
-  migration: {
-    enabled: true,
-    trackBy: 'directory', // or 'file' or 'component'
-  },
-}`}</code></pre>
+# Modern design system reference
+tokens:
+  source: "./src/tokens"
+
+# Track migration progress
+migration:
+  enabled: true
+  trackBy: directory  # or file or component`}</code></pre>
       </div>
     </div>
   </section>

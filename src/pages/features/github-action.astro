@@ -3,133 +3,159 @@ import FeatureLayout from '../../layouts/FeatureLayout.astro'
 import FeatureCard from '../../components/FeatureCard.astro'
 import LeadMagnetCallout from '../../components/LeadMagnetCallout.astro'
 
-const workflowYaml = `# .github/workflows/buoy.yml
-name: Design Drift Check
-on: [pull_request]
-
-jobs:
-  drift:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: buoy-dev/buoy-action@v1
-        with:
-          fail-on: critical  # or 'warning', 'info', 'none'`
-
-const prCommentExample = `## Buoy Drift Report
-
-| Severity | Count |
-|----------|-------|
-| 🔴 Critical | 0 |
-| 🟡 Warning | 3 |
-| 🟢 Info | 7 |
-
-### Warnings
-- \`Card.tsx:12\` Hardcoded color #ffffff
-- \`Badge.tsx:8\` Hardcoded spacing 8px
-- \`Header.tsx:3\` Using deprecated NavHeader
-
----
-📊 [View full report](#) | ⚓ Powered by Buoy`
-
 const features = [
   {
-    title: 'One-File Setup',
-    description: 'Add one YAML file to your repo. That\'s it. No server, no dashboard, no signup.'
+    title: 'One-Click Install',
+    description: 'Install from the GitHub Marketplace. No workflow files, no configuration, no API keys.'
   },
   {
-    title: 'PR Comments',
-    description: 'Automatic drift reports posted as comments on every pull request.'
+    title: 'PR Reviews',
+    description: 'Automatic drift reviews posted on every pull request with a deterministic issues table.'
   },
   {
-    title: 'Check Status',
+    title: 'Inline Suggestions',
+    description: 'Committable inline fix suggestions you can apply with one click in the GitHub UI (Pro).'
+  },
+  {
+    title: 'Check Runs',
     description: 'Pass or fail based on drift severity. Block merges on critical drift.'
   },
   {
-    title: 'Diff-Aware',
-    description: 'Only reports drift in changed files, not the entire codebase.'
+    title: 'Builder Mode',
+    description: 'Coaching tone for early-stage design systems. Helps teams build tokens from repeated patterns.'
   },
   {
-    title: 'Fast Execution',
-    description: 'Typically completes in under 30 seconds, even on large codebases.'
-  },
-  {
-    title: 'Free Forever',
-    description: 'Open source action. No usage limits, no API keys needed.'
+    title: 'Same Scanner',
+    description: 'Runs the same open-source scanner engine as the CLI. Same detection, same accuracy.'
   },
 ]
 
 const relatedFeatures = [
   {
     title: 'CI Integration',
-    description: 'More CI options beyond GitHub',
+    description: 'CLI-based CI for any pipeline',
     href: '/features/ci'
   },
   {
-    title: 'Coverage Metrics',
-    description: 'Track adoption over time',
-    href: '/features/coverage'
+    title: 'Drift Detection',
+    description: 'What the scanner catches',
+    href: '/features/drift-detection'
   },
   {
     title: 'GitHub Integration',
-    description: 'Full GitHub integration options',
+    description: 'Full GitHub integration overview',
     href: '/integrations/github'
   },
 ]
 ---
 
 <FeatureLayout
-  title="Buoy GitHub Action - Design Drift PR Comments | Buoy"
-  description="Add one workflow file. Get design drift reports on every pull request. Block merges on critical drift. Free forever."
-  keywords="github action design system, design system pr checks, component library github action"
+  title="Buoy GitHub App - Design Drift on Every PR | Buoy"
+  description="Install the Buoy GitHub App for automatic design drift reviews on every pull request. Committable inline fix suggestions. No configuration needed."
+  keywords="github app design system, design system pr checks, design drift github"
   heroTitle="Catch design drift in every PR"
-  heroDescription="Add one workflow file. Get drift reports on every pull request. No server required."
+  heroDescription="Install the GitHub App. Get drift reviews on every pull request. No workflow files, no API keys."
 >
-  <!-- AI-Free Badge -->
+  <!-- One Scanner Badge -->
   <div slot="hero-extra" class="flex justify-center mt-8">
-    <div class="inline-flex items-center gap-3 px-5 py-3 bg-navy border border-success/30 rounded-xl">
+    <div class="inline-flex items-center gap-3 px-5 py-3 bg-navy border border-buoy/30 rounded-xl">
       <div class="flex items-center gap-2">
-        <span class="text-success text-lg">🔒</span>
-        <span class="text-success font-semibold">100% Deterministic</span>
+        <span class="text-buoy text-lg">🛟</span>
+        <span class="text-buoy font-semibold">Same scanner as the CLI</span>
       </div>
       <span class="text-slate-dark">|</span>
-      <span class="text-slate text-sm">No AI. No API keys. No data sent externally.</span>
+      <span class="text-slate text-sm">Deterministic scanning + AI summaries &amp; coaching</span>
     </div>
   </div>
+
   <!-- Quick Setup -->
   <section class="py-16">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-2xl font-bold text-light mb-8 text-center">Setup in 30 Seconds</h2>
 
-      <div class="bg-navy border border-navy-light/30 rounded-xl overflow-hidden">
-        <div class="px-4 py-3 bg-navy-dark border-b border-navy-light/20 flex items-center justify-between">
-          <span class="text-sm text-slate font-mono">.github/workflows/buoy.yml</span>
-          <span class="text-xs px-2 py-1 bg-success/20 text-success rounded">Copy this file</span>
+      <div class="max-w-2xl mx-auto">
+        <div class="space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-buoy/20 border-2 border-buoy flex items-center justify-center text-buoy font-bold shrink-0">1</div>
+            <div>
+              <h3 class="font-semibold text-light">Install from GitHub Marketplace</h3>
+              <p class="text-sm text-slate mt-1">Visit <a href="https://github.com/marketplace/buoy-design" class="text-buoy hover:underline">github.com/marketplace/buoy-design</a> and install the app.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-buoy/20 border-2 border-buoy flex items-center justify-center text-buoy font-bold shrink-0">2</div>
+            <div>
+              <h3 class="font-semibold text-light">Select your repositories</h3>
+              <p class="text-sm text-slate mt-1">Choose which repos Buoy should monitor.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-buoy/20 border-2 border-buoy flex items-center justify-center text-buoy font-bold shrink-0">3</div>
+            <div>
+              <h3 class="font-semibold text-light">Open a PR</h3>
+              <p class="text-sm text-slate mt-1">Buoy scans automatically and posts a design review.</p>
+            </div>
+          </div>
         </div>
-        <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{workflowYaml}</code></pre>
       </div>
 
-      <p class="text-center text-slate mt-4">
-        That's it. Open a PR and watch the magic happen.
+      <p class="text-center text-slate mt-8">
+        That's it. No workflow files. No API keys. No configuration needed.
       </p>
     </div>
   </section>
 
-  <!-- PR Comment Preview -->
+  <!-- PR Review Preview -->
   <section class="py-16 bg-navy">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-2xl font-bold text-light mb-8 text-center">What You'll See</h2>
 
-      <div class="bg-navy-dark border border-navy-light/30 rounded-xl overflow-hidden">
-        <div class="px-4 py-3 bg-navy border-b border-navy-light/20 flex items-center gap-2">
-          <div class="w-8 h-8 rounded-full bg-buoy/20 flex items-center justify-center text-sm">🤖</div>
+      <div class="bg-[#0d1117] border border-[#30363d] rounded-lg overflow-hidden shadow-xl">
+        <div class="px-4 py-3 border-b border-[#30363d] flex items-center gap-2">
+          <div class="w-8 h-8 rounded-full bg-buoy/20 flex items-center justify-center text-sm">🛟</div>
           <div>
-            <span class="text-sm text-light font-medium">buoy-bot</span>
-            <span class="text-xs text-slate ml-2">commented just now</span>
+            <span class="text-sm text-[#c9d1d9] font-medium">buoy-design[bot]</span>
+            <span class="text-xs text-[#8b949e] ml-2">reviewed just now</span>
           </div>
         </div>
         <div class="p-4">
-          <pre class="text-sm text-slate whitespace-pre-wrap">{prCommentExample}</pre>
+          <h3 class="text-[#c9d1d9] font-semibold mb-3">🛟 Buoy Design Review</h3>
+          <p class="text-[#8b949e] text-sm mb-4">3 design drift issues found in this PR.</p>
+          <details class="mb-4" open>
+            <summary class="text-[#58a6ff] text-sm cursor-pointer mb-2">Issues Table</summary>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="text-[#8b949e] border-b border-[#30363d]">
+                    <th class="text-left py-2 px-3">File</th>
+                    <th class="text-left py-2 px-3">Line</th>
+                    <th class="text-left py-2 px-3">Issue</th>
+                    <th class="text-left py-2 px-3">Fix</th>
+                  </tr>
+                </thead>
+                <tbody class="text-[#c9d1d9]">
+                  <tr class="border-b border-[#30363d]">
+                    <td class="py-2 px-3 text-[#58a6ff]">Card.tsx</td>
+                    <td class="py-2 px-3">12</td>
+                    <td class="py-2 px-3">Hardcoded color <code class="text-[#f85149]">#3b82f6</code></td>
+                    <td class="py-2 px-3"><code class="text-[#7ee787]">var(--color-primary)</code></td>
+                  </tr>
+                  <tr class="border-b border-[#30363d]">
+                    <td class="py-2 px-3 text-[#58a6ff]">Card.tsx</td>
+                    <td class="py-2 px-3">31</td>
+                    <td class="py-2 px-3">Hardcoded spacing <code class="text-[#f85149]">24px</code></td>
+                    <td class="py-2 px-3"><code class="text-[#7ee787]">var(--spacing-lg)</code></td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 px-3 text-[#58a6ff]">Modal.tsx</td>
+                    <td class="py-2 px-3">8</td>
+                    <td class="py-2 px-3">Hardcoded radius <code class="text-[#d29922]">8px</code></td>
+                    <td class="py-2 px-3"><code class="text-[#7ee787]">var(--radius-md)</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </details>
         </div>
       </div>
     </div>
@@ -151,7 +177,7 @@ const relatedFeatures = [
     </div>
   </section>
 
-  <!-- Lead Magnet: PR Review Cheatsheet -->
+  <!-- Lead Magnet -->
   <section class="py-12">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <LeadMagnetCallout
@@ -160,35 +186,6 @@ const relatedFeatures = [
         subhead="A quick-reference cheat sheet for catching design system issues in PRs. Print it, pin it, use it."
         buttonText="Get the Cheat Sheet"
       />
-    </div>
-  </section>
-
-  <!-- Configuration Options -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Configuration Options</h2>
-
-      <div class="bg-navy-dark border border-navy-light/30 rounded-xl overflow-hidden">
-        <div class="px-4 py-3 bg-navy border-b border-navy-light/20">
-          <span class="text-sm text-slate font-mono">Full configuration example</span>
-        </div>
-        <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{`- uses: buoy-dev/buoy-action@v1
-  with:
-    # When to fail the check
-    fail-on: critical  # critical | warning | info | none
-
-    # Post a PR comment with results
-    comment: true
-
-    # Compare against this branch
-    base: main
-
-    # Path to buoy config
-    config: ./buoy.config.mjs
-
-    # Only check changed files (faster)
-    diff-only: true`}</code></pre>
-      </div>
     </div>
   </section>
 

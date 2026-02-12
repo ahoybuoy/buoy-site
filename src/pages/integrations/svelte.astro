@@ -40,23 +40,21 @@ const terminalLines = [
   { text: '<span class="text-info">INFO</span> 4 style directive inconsistencies', type: 'info', delay: 2200 },
 ]
 
-const configExample = `// buoy.config.mjs
-export default {
-  framework: 'svelte',
+const configExample = `# .buoy.yaml
+sources:
+  svelte:
+    enabled: true
+    include:
+      - "src/lib/components/**/*.svelte"
+      - "src/routes/**/*.svelte"
 
-  include: [
-    'src/lib/components/**/*.svelte',
-    'src/routes/**/*.svelte',
-  ],
+# Svelte-specific options
+svelte:
+  version: 5
+  kit: true
 
-  // Svelte-specific options
-  svelte: {
-    version: 5,
-    kit: true,
-  },
-
-  tokens: './src/lib/tokens.css',
-}`
+tokens:
+  source: "./src/lib/tokens.css"`
 ---
 
 <IntegrationLayout
@@ -99,7 +97,7 @@ export default {
 
       <div class="bg-navy border border-navy-light/30 rounded-xl overflow-hidden">
         <div class="px-4 py-3 bg-navy-dark border-b border-navy-light/20">
-          <span class="text-sm text-slate font-mono">buoy.config.mjs</span>
+          <span class="text-sm text-slate font-mono">.buoy.yaml</span>
         </div>
         <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{configExample}</code></pre>
       </div>

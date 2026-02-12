@@ -6,7 +6,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
   <h1>Introduction to Buoy</h1>
 
   <p>
-    Buoy is a design drift detection tool for AI-generated code. It scans your codebase to catch when developers
+    Buoy is an open-source design drift scanner (CLI) and a GitHub App that catches drift on every PR. It scans your codebase to catch when developers
     (especially AI tools like Copilot and Claude) diverge from design system patterns before code ships.
   </p>
 
@@ -48,36 +48,32 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
 
   <h2>Quick Example</h2>
 
-  <pre><code>$ npx ahoybuoy audit
+  <pre><code>$ npx ahoybuoy drift
 
-Design System Health Report
-───────────────────────────
+🛟 Scanning for design drift...
 
-Overall Score: 34/100 (Poor)
+Found 23 issues in 142 files
 
-Colors
-  Found: 47 unique values
-  Expected: ~12
-  Drift: +35 extra colors
+HARDCODED VALUES (8)
+├─ Card.tsx:8 #ffffff → use var(--bg-surface)
+├─ Badge.tsx:3 8px → use var(--spacing-sm)
+└─ ... and 6 more
 
-Spacing
-  Found: 31 unique values
-  Expected: ~8
-  Drift: +23 extra values
-
-Worst Files
-  src/pages/Dashboard.tsx     47 issues
-  src/components/Card.tsx     38 issues
+ACCESSIBILITY (2)
+├─ Button.tsx:12 Missing aria-label
+└─ Modal.tsx:45 Focus trap not implemented
 </code></pre>
 
   <h2>Key Features</h2>
 
   <ul>
-    <li><strong>Zero Config</strong> — Auto-detects React, Vue, Svelte, Angular, Tailwind</li>
-    <li><strong>Health Scoring</strong> — 0-100 score showing your design system health</li>
-    <li><strong>Token Comparison</strong> — Compare against Figma/Tokens Studio exports</li>
-    <li><strong>CI Integration</strong> — Catch drift in pull requests before merge</li>
-    <li><strong>Typo Detection</strong> — Finds values that are "close" to tokens (likely mistakes)</li>
+    <li><strong>Zero Config</strong> — Auto-detects React, Vue, Svelte, Angular, Next.js, Tailwind, and 50+ frameworks</li>
+    <li><strong>Drift Detection</strong> — Finds hardcoded colors, spacing, typography, arbitrary Tailwind, inline styles</li>
+    <li><strong>Auto-Fix</strong> — Suggests and applies token replacements with <code>buoy fix --apply</code></li>
+    <li><strong>Health Scoring</strong> — 0-100 score showing your design system health via <code>buoy audit</code></li>
+    <li><strong>Token Detection</strong> — Auto-detects tokens from CSS custom properties, JS theme objects, and Tailwind config</li>
+    <li><strong>AI Integration</strong> — Generate skills and context for Claude Code, Cursor, and other AI tools</li>
+    <li><strong>Baseline Management</strong> — Baseline existing drift so you only see new issues</li>
   </ul>
 
   <h2>Next Steps</h2>

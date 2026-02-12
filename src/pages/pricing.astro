@@ -15,7 +15,6 @@ const plans = [
       'Auto-detects design system',
       'All drift detection commands',
       'Import tokens (JSON, CSS, Tokens Studio)',
-      'AI guardrails (skills, MCP, context)',
       'Local scan history',
       'Community support',
     ],
@@ -32,9 +31,10 @@ const plans = [
       'Everything in Free',
       'Unlimited repos',
       'Smart GitHub PR comments',
-      'Slack & Teams alerts',
+      'Committable inline fix suggestions',
+      'AI-powered summaries & coaching',
       'Cloud history & trends',
-      'Figma Monitor plugin',
+      'Dashboard with health scores',
       'No minimum seats',
     ],
     cta: 'Claim Free Spot',
@@ -45,7 +45,7 @@ const plans = [
   },
   {
     name: 'Done For You',
-    price: 'From $5k',
+    price: '$3-8k',
     period: '/engagement',
     description: 'We fix your design drift in one week.\nYou ship features.',
     features: [
@@ -54,7 +54,7 @@ const plans = [
       'Prioritized backlog for the rest',
       'Team training & Buoy setup',
       'CI/CD integration',
-      '30 days Slack support',
+      '30 days priority support',
       '100% money-back guarantee',
     ],
     cta: 'Learn More',
@@ -66,11 +66,11 @@ const plans = [
 const faqs = [
   {
     question: 'Is the free tier really free forever?',
-    answer: 'Yes. The open source CLI will always be free under the MIT license. Full drift detection, AI guardrails, token import — all free with no user limits.'
+    answer: 'Yes. The open source CLI will always be free under the MIT license. Full drift detection, token import, fix suggestions — all free with no user limits.'
   },
   {
     question: 'What\'s included in the free CLI?',
-    answer: 'Everything you need to detect and fix design drift: auto-detection of your design system, all scanning commands, AI guardrails (skills, MCP server, CLAUDE.md context), and local scan history. The CLI is the full product, not a teaser.'
+    answer: 'Everything you need to detect and fix design drift: auto-detection of your design system, all scanning commands, fix suggestions with exact token replacements, and local scan history. The CLI is the full product, not a teaser.'
   },
   {
     question: 'Why per-seat pricing?',
@@ -89,8 +89,8 @@ const faqs = [
     answer: 'Verified open source projects get full Team plan features for free. Apply through our OSS program.'
   },
   {
-    question: 'What\'s the Figma Monitor plugin?',
-    answer: 'A Figma plugin that shows live design system health inside your Figma files. See which components are drifting, which tokens are being used correctly — all without leaving Figma.'
+    question: 'How does the GitHub App work?',
+    answer: 'The Buoy GitHub App runs the same open-source scanner on every PR automatically. It posts a review with a deterministic issues table, and on Pro tier adds AI-powered summaries and committable inline fix suggestions you can apply with one click.'
   },
   {
     question: 'What does "Done For You" include?',
@@ -208,13 +208,13 @@ const faqs = [
           { feature: 'Auto-detect design system', free: true, team: true, ent: true },
           { feature: 'All drift detection', free: true, team: true, ent: true },
           { feature: 'Token import (JSON, CSS)', free: true, team: true, ent: true },
-          { feature: 'AI guardrails (MCP, skills)', free: true, team: true, ent: true },
           { feature: 'Local scan history', free: true, team: true, ent: true },
           { feature: 'Unlimited repos', free: false, team: true, ent: true },
           { feature: 'Smart GitHub PR comments', free: false, team: true, ent: true },
-          { feature: 'Slack & Teams alerts', free: false, team: true, ent: true },
+          { feature: 'Committable inline suggestions', free: false, team: true, ent: true },
+          { feature: 'AI summaries & coaching', free: false, team: true, ent: true },
           { feature: 'Cloud history & trends', free: false, team: true, ent: true },
-          { feature: 'Figma Monitor plugin', free: false, team: true, ent: true },
+          { feature: 'Dashboard & health scores', free: false, team: true, ent: true },
           { feature: 'We fix your drift for you', free: false, team: false, ent: true },
           { feature: 'Team training session', free: false, team: false, ent: true },
           { feature: 'CI/CD setup included', free: false, team: false, ent: true },

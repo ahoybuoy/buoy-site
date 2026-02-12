@@ -127,11 +127,10 @@ const comparison = [
       </div>
 
       <div class="mt-8 bg-navy-dark border border-navy-light/30 rounded-xl p-4 inline-block">
-        <pre class="text-sm font-mono text-left"><code class="text-slate">{`# buoy.config.mjs
-export default {
-  // Point Buoy at your Style Dictionary output
-  tokens: './build/tokens.json',
-}`}</code></pre>
+        <pre class="text-sm font-mono text-left"><code class="text-slate">{`# .buoy.yaml
+# Point Buoy at your Style Dictionary output
+tokens:
+  source: "./build/tokens.json"`}</code></pre>
       </div>
     </div>
   </section>

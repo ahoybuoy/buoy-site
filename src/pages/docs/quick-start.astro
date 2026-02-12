@@ -20,72 +20,54 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
     <a href="/docs/cli/begin">Learn more about buoy begin</a>.
   </p>
 
-  <h2>Step 1: Run the Audit</h2>
+  <h2>Step 1: Run a Drift Scan</h2>
 
   <p>From your project root, run:</p>
 
+  <pre><code>npx ahoybuoy drift</code></pre>
+
+  <p>Buoy will scan your codebase and show drift issues:</p>
+
+  <pre><code>🛟 Scanning for design drift...
+
+Found 23 issues in 142 files
+
+HARDCODED VALUES (8)
+├─ Card.tsx:8 #ffffff → use var(--bg-surface)
+├─ Badge.tsx:3 8px → use var(--spacing-sm)
+└─ ... and 6 more
+
+INLINE STYLES (5)
+├─ Modal.tsx:12 inline padding → use spacing token
+└─ ... and 4 more</code></pre>
+
+  <h2>Step 2: Get a Health Report</h2>
+
+  <p>For a broader view, run the audit:</p>
+
   <pre><code>npx ahoybuoy audit</code></pre>
 
-  <p>Buoy will scan your codebase and show a health report:</p>
+  <p>This shows your overall design system health score and worst offenders.</p>
 
-  <pre><code>Design System Health Report
-───────────────────────────
+  <h2>Step 3: Fix Drift Automatically</h2>
 
-Overall Score: 67/100 (Fair)
+  <p>See what Buoy can fix for you:</p>
 
-Colors
-  Found: 23 unique values
-  Expected: ~12
-  Drift: +11 extra colors
-  Most common:
-    #3b82f6  (15 usages)
-    #ef4444  (8 usages)
-    #10b981  (6 usages)
+  <pre><code># Preview fixes (dry run)
+buoy fix --dry-run
 
-Spacing
-  Found: 14 unique values
-  Expected: ~8
-  Drift: +6 extra values
+# Apply fixes to files
+buoy fix --apply</code></pre>
 
-Worst Offenders
-   47 issues  src/pages/Dashboard.tsx
-   23 issues  src/components/Card.tsx
-   18 issues  src/components/Button.tsx</code></pre>
+  <p>Buoy replaces hardcoded values with matching design tokens, with configurable confidence levels.</p>
 
-  <h2>Step 2: Check Specific Drift</h2>
+  <h2>Step 4: Set Up Config (Optional)</h2>
 
-  <p>Get detailed information about each issue:</p>
+  <p>For ongoing use, dock Buoy into your project:</p>
 
-  <pre><code>npx ahoybuoy drift check</code></pre>
+  <pre><code>buoy dock config</code></pre>
 
-  <p>This shows exactly where hardcoded values appear:</p>
-
-  <pre><code>Drift Analysis
-──────────────
-
-~ Hardcoded Value
-  Component: Card
-  Location:  src/components/Card.tsx:14
-  Issue:     backgroundColor: #f9fafb (not a design token)
-
-  Actions:
-    1. Replace with design token
-    2. Example: var(--color-gray-50) or theme.colors.gray[50]</code></pre>
-
-  <h2>Step 3: Initialize Config (Optional)</h2>
-
-  <p>For ongoing use, generate a config file:</p>
-
-  <pre><code>npx ahoybuoy init</code></pre>
-
-  <p>This creates <code>buoy.config.mjs</code> with auto-detected settings:</p>
-
-  <pre><code>export default &#123;
-  sources: &#123;
-    react: &#123; enabled: true &#125;,
-    tailwind: &#123; enabled: true &#125;,
-  &#125;
-&#125;</code></pre>
+  <p>This creates a <code>.buoy.yaml</code> config file with auto-detected settings for your project.</p>
 
   <h2>Common Commands</h2>
 
@@ -102,24 +84,32 @@ Worst Offenders
         <td>Interactive setup wizard</td>
       </tr>
       <tr>
+        <td><code>buoy drift</code></td>
+        <td>Detect design drift issues</td>
+      </tr>
+      <tr>
+        <td><code>buoy check</code></td>
+        <td>Fast check for CI / pre-commit hooks</td>
+      </tr>
+      <tr>
+        <td><code>buoy fix</code></td>
+        <td>Suggest and apply token replacements</td>
+      </tr>
+      <tr>
         <td><code>buoy audit</code></td>
         <td>Health report with score</td>
       </tr>
       <tr>
-        <td><code>buoy drift check</code></td>
-        <td>Detailed drift signals</td>
+        <td><code>buoy show all</code></td>
+        <td>Show components, tokens, drift, health</td>
       </tr>
       <tr>
-        <td><code>buoy audit</code></td>
-        <td>Visual coverage grid</td>
+        <td><code>buoy tokens</code></td>
+        <td>Extract and search design tokens</td>
       </tr>
       <tr>
         <td><code>buoy compare tokens.json</code></td>
-        <td>Compare against design file</td>
-      </tr>
-      <tr>
-        <td><code>buoy ci</code></td>
-        <td>CI output with exit codes</td>
+        <td>Compare codebase against token file</td>
       </tr>
     </tbody>
   </table>
@@ -127,8 +117,10 @@ Worst Offenders
   <h2>Next Steps</h2>
 
   <ul>
-    <li><a href="/docs/cli/audit">buoy audit</a> — Full audit command reference</li>
-    <li><a href="/docs/cli/compare">buoy compare</a> — Compare against Figma tokens</li>
-    <li><a href="/docs/integrations/github-actions">GitHub Actions</a> — Add to CI</li>
+    <li><a href="/docs/cli/drift">buoy drift</a> — Full drift detection reference</li>
+    <li><a href="/docs/cli/fix">buoy fix</a> — Auto-fix command reference</li>
+    <li><a href="/docs/cli/check">buoy check</a> — CI / pre-commit integration</li>
+    <li><a href="/docs/configuration">Configuration</a> — .buoy.yaml options</li>
+    <li><a href="/docs/integrations/github-actions">GitHub App</a> — Automatic PR reviews</li>
   </ul>
 </DocsLayout>

@@ -4,7 +4,7 @@ import UseCaseLayout from '../../layouts/UseCaseLayout.astro'
 const benefits = [
   {
     title: 'Per-Project Configs',
-    description: 'Each client project can have its own buoy.config.mjs with their specific design tokens and conventions.',
+    description: 'Each client project can have its own .buoy.yaml with their specific design tokens and conventions.',
     icon: '📁'
   },
   {
@@ -35,7 +35,7 @@ const benefits = [
 ]
 
 const workflow = [
-  { step: 'Kickoff', description: 'Set up buoy.config.mjs with client\'s design tokens' },
+  { step: 'Kickoff', description: 'Set up .buoy.yaml with client\'s design tokens' },
   { step: 'Development', description: 'Run drift checks in CI on every PR' },
   { step: 'Review', description: 'Generate reports before client reviews' },
   { step: 'Handoff', description: 'Include comprehensive drift report in deliverables' },

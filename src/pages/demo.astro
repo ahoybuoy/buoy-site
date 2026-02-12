@@ -118,25 +118,28 @@ const demoTerminalLines = [
 
       <div class="bg-navy border border-navy-light/30 rounded-xl overflow-hidden">
         <div class="px-4 py-3 bg-navy-dark border-b border-navy-light/20 flex items-center justify-between">
-          <span class="text-sm text-slate font-mono">buoy.config.mjs</span>
+          <span class="text-sm text-slate font-mono">.buoy.yaml</span>
           <span class="text-xs text-slate">Optional configuration</span>
         </div>
-        <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{`export default {
-  // Your design system source
-  tokens: './src/tokens',
+        <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{`# .buoy.yaml
 
-  // Components to scan
-  include: ['src/components/**/*.tsx'],
+# Your design system source
+tokens:
+  source: "./src/tokens"
 
-  // Patterns to ignore
-  ignore: ['**/*.test.tsx', '**/stories/**'],
+# Components to scan
+include:
+  - "src/components/**/*.tsx"
 
-  // Severity thresholds for CI
-  thresholds: {
-    critical: 0,  // Fail on any critical
-    warning: 10,  // Allow up to 10 warnings
-  }
-}`}</code></pre>
+# Patterns to ignore
+ignore:
+  - "**/*.test.tsx"
+  - "**/stories/**"
+
+# Severity thresholds for CI
+thresholds:
+  critical: 0   # Fail on any critical
+  warning: 10   # Allow up to 10 warnings`}</code></pre>
       </div>
     </div>
   </section>

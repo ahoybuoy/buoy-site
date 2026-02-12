@@ -128,34 +128,32 @@ const relatedFeatures = [
 
       <div class="bg-navy-dark border border-navy-light/30 rounded-xl overflow-hidden">
         <div class="px-4 py-3 bg-navy border-b border-navy-light/20">
-          <span class="text-sm text-slate font-mono">buoy.config.mjs</span>
+          <span class="text-sm text-slate font-mono">.buoy.yaml</span>
         </div>
-        <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{`export default {
-  build: {
-    // Token source
-    source: {
-      type: 'figma',
-      fileKey: 'your-figma-file-key',
-      // Or use Style Dictionary
-      // type: 'style-dictionary',
-      // path: './tokens.json'
-    },
+        <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{`# .buoy.yaml
+build:
+  # Token source
+  source:
+    type: figma
+    fileKey: your-figma-file-key
+    # Or use Style Dictionary
+    # type: style-dictionary
+    # path: "./tokens.json"
 
-    // Output formats
-    outputs: [
-      { format: 'css', path: './src/tokens.css' },
-      { format: 'tailwind', path: './tailwind.tokens.js' },
-      { format: 'json', path: './tokens.json' },
-    ],
+  # Output formats
+  outputs:
+    - format: css
+      path: "./src/tokens.css"
+    - format: tailwind
+      path: "./tailwind.tokens.js"
+    - format: json
+      path: "./tokens.json"
 
-    // Transform options
-    transforms: {
-      colorFormat: 'hsl',  // rgb, hsl, hex
-      spacingUnit: 'rem',  // px, rem, em
-      prefix: '--ds-',     // CSS variable prefix
-    }
-  }
-}`}</code></pre>
+  # Transform options
+  transforms:
+    colorFormat: hsl    # rgb, hsl, hex
+    spacingUnit: rem    # px, rem, em
+    prefix: "--ds-"     # CSS variable prefix`}</code></pre>
       </div>
     </div>
   </section>

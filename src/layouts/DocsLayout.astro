@@ -32,7 +32,6 @@ const docsSections: { title: string; items: DocItem[] }[] = [
     items: [
       { label: 'buoy begin', href: '/docs/cli/begin' },
       { label: 'buoy dock', href: '/docs/cli/dock' },
-      { label: 'buoy onboard', href: '/docs/cli/onboard' },
       { label: 'buoy commands', href: '/docs/cli/commands' },
     ]
   },
@@ -49,14 +48,14 @@ const docsSections: { title: string; items: DocItem[] }[] = [
     title: 'Design Tokens',
     items: [
       { label: 'buoy tokens', href: '/docs/cli/tokens' },
-      { label: 'buoy anchor', href: '/docs/cli/anchor' },
       { label: 'buoy compare', href: '/docs/cli/compare' },
       { label: 'buoy import', href: '/docs/cli/import' },
     ]
   },
   {
-    title: 'Analysis',
+    title: 'Analysis & Reporting',
     items: [
+      { label: 'buoy show', href: '/docs/cli/anchor' },
       { label: 'buoy audit', href: '/docs/cli/audit' },
       { label: 'buoy graph', href: '/docs/cli/graph' },
       { label: 'buoy history', href: '/docs/cli/history' },
@@ -64,20 +63,24 @@ const docsSections: { title: string; items: DocItem[] }[] = [
     ]
   },
   {
-    title: 'Features',
+    title: 'AI Integration',
     items: [
       { label: 'AI Guardrails', href: '/docs/features/ai-guardrails' },
+      { label: 'Claude Code', href: '/docs/integrations/claude-code' },
+    ]
+  },
+  {
+    title: 'Concepts',
+    items: [
       { label: 'Drift Detection', href: '/docs/features/drift-detection' },
       { label: 'Token Comparison', href: '/docs/features/token-comparison' },
       { label: 'Health Scoring', href: '/docs/features/health-scoring' },
     ]
   },
   {
-    title: 'Integrations',
+    title: 'GitHub App',
     items: [
-      { label: 'Claude Code', href: '/docs/integrations/claude-code' },
-      { label: 'GitHub Actions', href: '/docs/integrations/github-actions' },
-      { label: 'Figma / Tokens Studio', href: '/docs/integrations/figma' },
+      { label: 'Overview', href: '/docs/integrations/github-actions' },
     ]
   },
 ]

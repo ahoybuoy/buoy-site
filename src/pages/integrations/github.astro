@@ -1,87 +1,74 @@
 ---
 import IntegrationLayout from '../../layouts/IntegrationLayout.astro'
+import Button from '../../components/Button.astro'
 
 const features = [
   {
-    title: 'PR Comments',
-    description: 'Automatic drift reports posted as comments on every pull request.'
+    title: 'PR Reviews',
+    description: 'Automatic design drift reviews posted on every pull request with issues table.'
   },
   {
     title: 'Check Runs',
     description: 'GitHub Check that passes or fails based on drift severity thresholds.'
   },
   {
-    title: 'Status Badges',
-    description: 'Add drift status badges to your README showing current health.'
+    title: 'Inline Suggestions',
+    description: 'Committable inline fix suggestions — apply with one click in the GitHub UI (Pro).'
   },
   {
     title: 'Multi-Repo',
-    description: 'Track drift across multiple repositories from a single dashboard.'
+    description: 'Track drift across multiple repositories from the Buoy dashboard.'
   },
   {
     title: 'Branch Protection',
     description: 'Block merges when critical drift is detected in the PR.'
   },
   {
-    title: 'Trend Tracking',
-    description: 'See drift trends over time across branches and releases.'
+    title: 'Builder Mode',
+    description: 'Coaching tone for early-stage teams. Identifies repeated patterns and helps build tokens.'
   },
 ]
-
-const workflowYaml = `# .github/workflows/buoy.yml
-name: Design Drift Check
-on: [pull_request]
-
-jobs:
-  drift:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: buoy-dev/buoy-action@v1
-        with:
-          # Fail on critical drift
-          fail-on: critical
-
-          # Post PR comment
-          comment: true
-
-          # Compare against main
-          base: main`
-
-const prCommentExample = `## Buoy Drift Report
-
-| Severity | Count |
-|----------|-------|
-| 🔴 Critical | 0 |
-| 🟡 Warning | 3 |
-| 🟢 Info | 7 |
-
-### Warnings
-- \`Card.tsx:12\` Hardcoded color #ffffff
-- \`Badge.tsx:8\` Hardcoded spacing 8px
-- \`Header.tsx:3\` Using deprecated NavHeader
-
----
-📊 View trends over time → (requires Buoy Cloud)`
 ---
 
 <IntegrationLayout
-  title="GitHub Integration for Design Drift | Buoy"
-  description="Post drift reports to GitHub PRs. Block merges on critical drift. Track design system health across repositories."
-  keywords="github design system, github pr design checks, github action design"
-  heroTitle="GitHub Integration"
-  heroDescription="Catch drift in every pull request. Automatic comments, check runs, and branch protection for design system health."
+  title="GitHub App for Design Drift | Buoy"
+  description="Install the Buoy GitHub App for automatic design drift reviews on every PR. Committable inline suggestions, check runs, and branch protection."
+  keywords="github design system, github pr design checks, github app design drift"
+  heroTitle="Buoy GitHub App"
+  heroDescription="Install once. Every PR gets a design drift review. Committable inline suggestions. No workflow files, no API keys."
   icon="🐙"
   iconBg="bg-gray-500/20"
 >
-  <!-- Features Grid -->
+  <!-- One Scanner Story -->
   <section class="py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-navy/50 border border-buoy/20 rounded-xl p-8 text-center">
+        <h2 class="text-2xl font-bold text-light mb-4">One scanner, two ways to use it</h2>
+        <p class="text-slate max-w-2xl mx-auto mb-6">
+          The Buoy GitHub App runs the same open-source scanner (<code class="text-buoy">@buoy-design/cli</code>) internally.
+          Same detection rules, same accuracy. The App adds AI-powered summaries, committable inline suggestions,
+          and a dashboard on top.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Button href="https://github.com/marketplace/buoy-design" size="lg" external>
+            Install GitHub App
+          </Button>
+          <Button href="/docs/integrations/github-actions" variant="secondary" size="lg">
+            Read the docs
+          </Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section class="py-16 bg-navy">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">GitHub Integration Features</h2>
+      <h2 class="text-2xl font-bold text-light mb-8 text-center">What You Get</h2>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {features.map((feature) => (
-          <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
+          <div class="bg-navy-dark/50 border border-navy-light/20 rounded-xl p-6">
             <h3 class="font-semibold text-light mb-2">{feature.title}</h3>
             <p class="text-sm text-slate">{feature.description}</p>
           </div>
@@ -90,88 +77,89 @@ const prCommentExample = `## Buoy Drift Report
     </div>
   </section>
 
-  <!-- Quick Setup -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Quick Setup</h2>
-
-      <div class="bg-navy-dark border border-navy-light/30 rounded-xl overflow-hidden">
-        <div class="px-4 py-3 bg-navy border-b border-navy-light/20 flex items-center justify-between">
-          <span class="text-sm text-slate font-mono">.github/workflows/buoy.yml</span>
-          <span class="text-xs text-buoy">Copy this file</span>
-        </div>
-        <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{workflowYaml}</code></pre>
-      </div>
-    </div>
-  </section>
-
-  <!-- PR Comment Preview -->
+  <!-- PR Review Preview -->
   <section class="py-16">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">PR Comment Preview</h2>
+      <h2 class="text-2xl font-bold text-light mb-8 text-center">PR Review Preview</h2>
 
-      <div class="bg-navy border border-navy-light/30 rounded-xl overflow-hidden">
-        <div class="px-4 py-3 bg-navy-dark border-b border-navy-light/20 flex items-center gap-2">
-          <div class="w-8 h-8 rounded-full bg-buoy/20 flex items-center justify-center text-sm">🤖</div>
+      <div class="bg-[#0d1117] border border-[#30363d] rounded-lg overflow-hidden shadow-xl">
+        <div class="px-4 py-3 border-b border-[#30363d] flex items-center gap-2">
+          <div class="w-8 h-8 rounded-full bg-buoy/20 flex items-center justify-center text-sm">🛟</div>
           <div>
-            <span class="text-sm text-light font-medium">buoy-bot</span>
-            <span class="text-xs text-slate ml-2">commented 2 minutes ago</span>
+            <span class="text-sm text-[#c9d1d9] font-medium">buoy-design[bot]</span>
+            <span class="text-xs text-[#8b949e] ml-2">reviewed 2 minutes ago</span>
           </div>
         </div>
         <div class="p-4">
-          <pre class="text-sm text-slate whitespace-pre-wrap">{prCommentExample}</pre>
+          <h3 class="text-[#c9d1d9] font-semibold mb-3">🛟 Buoy Design Review</h3>
+          <p class="text-[#8b949e] text-sm mb-4">3 design drift issues found in this PR.</p>
+          <details open>
+            <summary class="text-[#58a6ff] text-sm cursor-pointer mb-2">Issues Table</summary>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm">
+                <thead>
+                  <tr class="text-[#8b949e] border-b border-[#30363d]">
+                    <th class="text-left py-2 px-3">File</th>
+                    <th class="text-left py-2 px-3">Line</th>
+                    <th class="text-left py-2 px-3">Issue</th>
+                    <th class="text-left py-2 px-3">Fix</th>
+                  </tr>
+                </thead>
+                <tbody class="text-[#c9d1d9]">
+                  <tr class="border-b border-[#30363d]">
+                    <td class="py-2 px-3 text-[#58a6ff]">Card.tsx</td>
+                    <td class="py-2 px-3">12</td>
+                    <td class="py-2 px-3">Hardcoded color <code class="text-[#f85149]">#3b82f6</code></td>
+                    <td class="py-2 px-3"><code class="text-[#7ee787]">var(--color-primary)</code></td>
+                  </tr>
+                  <tr class="border-b border-[#30363d]">
+                    <td class="py-2 px-3 text-[#58a6ff]">Card.tsx</td>
+                    <td class="py-2 px-3">31</td>
+                    <td class="py-2 px-3">Hardcoded spacing <code class="text-[#f85149]">24px</code></td>
+                    <td class="py-2 px-3"><code class="text-[#7ee787]">var(--spacing-lg)</code></td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 px-3 text-[#58a6ff]">Modal.tsx</td>
+                    <td class="py-2 px-3">8</td>
+                    <td class="py-2 px-3">Hardcoded radius <code class="text-[#d29922]">8px</code></td>
+                    <td class="py-2 px-3"><code class="text-[#7ee787]">var(--radius-md)</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </details>
+        </div>
+        <div class="px-4 py-3 bg-[#161b22] border-t border-[#30363d] flex items-center justify-between">
+          <span class="text-[#8b949e] text-sm">Fix these issues to merge</span>
+          <span class="text-[#c9d1d9] text-sm font-semibold">🛟 Buoy</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Configuration Options -->
+  <!-- Free vs Pro -->
   <section class="py-16 bg-navy">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Action Configuration</h2>
+      <h2 class="text-2xl font-bold text-light mb-8 text-center">Free vs Pro</h2>
 
-      <div class="grid sm:grid-cols-2 gap-6">
-        <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-4">Inputs</h3>
-          <ul class="space-y-2 text-sm">
-            <li class="flex justify-between">
-              <code class="text-buoy">fail-on</code>
-              <span class="text-slate">critical | warning | info | none</span>
-            </li>
-            <li class="flex justify-between">
-              <code class="text-buoy">comment</code>
-              <span class="text-slate">true | false</span>
-            </li>
-            <li class="flex justify-between">
-              <code class="text-buoy">base</code>
-              <span class="text-slate">Branch to compare against</span>
-            </li>
-            <li class="flex justify-between">
-              <code class="text-buoy">config</code>
-              <span class="text-slate">Path to buoy.config.mjs</span>
-            </li>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-navy-dark border border-success/30 rounded-xl p-6">
+          <h3 class="font-semibold text-light mb-1">Free Tier</h3>
+          <p class="text-xs text-success mb-4">For all repositories</p>
+          <ul class="space-y-2 text-sm text-slate">
+            <li class="flex items-start gap-2"><span class="text-success">✓</span> Deterministic issues table</li>
+            <li class="flex items-start gap-2"><span class="text-success">✓</span> GitHub check run (pass/fail)</li>
+            <li class="flex items-start gap-2"><span class="text-success">✓</span> Dashboard with scan history</li>
           </ul>
         </div>
-
-        <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-4">Outputs</h3>
-          <ul class="space-y-2 text-sm">
-            <li class="flex justify-between">
-              <code class="text-buoy">critical-count</code>
-              <span class="text-slate">Number of critical issues</span>
-            </li>
-            <li class="flex justify-between">
-              <code class="text-buoy">warning-count</code>
-              <span class="text-slate">Number of warnings</span>
-            </li>
-            <li class="flex justify-between">
-              <code class="text-buoy">info-count</code>
-              <span class="text-slate">Number of info items</span>
-            </li>
-            <li class="flex justify-between">
-              <code class="text-buoy">report-url</code>
-              <span class="text-slate">Link to full report</span>
-            </li>
+        <div class="bg-navy-dark border border-lavender/30 rounded-xl p-6">
+          <h3 class="font-semibold text-light mb-1">Pro Tier</h3>
+          <p class="text-xs text-lavender mb-4">Everything in Free, plus:</p>
+          <ul class="space-y-2 text-sm text-slate">
+            <li class="flex items-start gap-2"><span class="text-lavender">+</span> AI-powered PR summaries & coaching</li>
+            <li class="flex items-start gap-2"><span class="text-lavender">+</span> Committable inline fix suggestions</li>
+            <li class="flex items-start gap-2"><span class="text-lavender">+</span> Builder mode coaching</li>
+            <li class="flex items-start gap-2"><span class="text-lavender">+</span> Custom review instructions</li>
           </ul>
         </div>
       </div>

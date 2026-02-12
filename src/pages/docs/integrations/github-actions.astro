@@ -3,183 +3,114 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
 import LeadMagnetCallout from '../../../components/LeadMagnetCallout.astro'
 ---
 
-<DocsLayout title="GitHub Actions" description="Add Buoy to your CI pipeline">
-  <h1>GitHub Actions</h1>
+<DocsLayout title="GitHub App" description="Automatic design drift detection on every PR">
+  <h1>Buoy GitHub App</h1>
 
   <p>
-    Add Buoy to your CI pipeline to catch design drift before it's merged. Get PR comments
-    with health scores and specific issues.
+    The Buoy GitHub App runs the same open-source scanner on every pull request automatically.
+    It posts a review with a deterministic issues table, and on Pro tier adds AI-powered summaries
+    and committable inline fix suggestions.
   </p>
 
   <h2>Quick Setup</h2>
 
-  <p>Create <code>.github/workflows/buoy.yml</code>:</p>
+  <ol>
+    <li>Install the <a href="https://github.com/marketplace/buoy-design">Buoy GitHub App</a> from the GitHub Marketplace</li>
+    <li>Select the repositories you want to monitor</li>
+    <li>Open a PR &mdash; Buoy scans automatically and posts a review</li>
+  </ol>
 
-  <pre><code>name: Design System Check
+  <p>That's it. No workflow files, no configuration, no API keys needed.</p>
 
-on:
-  pull_request:
-    branches: [main, master]
+  <h2>How It Works</h2>
 
-jobs:
-  buoy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+  <p>
+    The GitHub App runs the same <code>@buoy-design/scanners</code> and <code>@buoy-design/core</code>
+    engine that powers the CLI. When a PR is opened or updated:
+  </p>
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+  <ol>
+    <li>Buoy scans the changed files for design drift</li>
+    <li>Posts a GitHub PR review with a summary and issues table</li>
+    <li>On Pro tier, adds AI-powered summaries and committable inline fix suggestions</li>
+    <li>Creates a check run (pass/fail) based on configured thresholds</li>
+  </ol>
 
-      - name: Install dependencies
-        run: npm ci
+  <h2>PR Review Format</h2>
 
-      - name: Run Buoy
-        run: npx ahoybuoy ci --threshold 60</code></pre>
+  <p>The PR review includes:</p>
 
-  <h2>With PR Comments</h2>
-
-  <p>Add a comment to each PR with the health report:</p>
-
-  <pre><code>name: Design System Check
-
-on:
-  pull_request:
-    branches: [main, master]
-
-permissions:
-  pull-requests: write
-
-jobs:
-  buoy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Run Buoy
-        run: npx ahoybuoy ci --threshold 60 --github-comment
-        env:
-          GITHUB_TOKEN: $&#123;&#123; secrets.GITHUB_TOKEN &#125;&#125;</code></pre>
-
-  <h2>PR Comment Example</h2>
-
-  <p>The PR comment looks like:</p>
-
-  <pre><code>## 🚢 Buoy Design System Check
-
-**Health Score: 67/100** (Fair)
+  <pre><code>## 🛟 Buoy Design Review
 
 ### Summary
-- 23 hardcoded color values
-- 14 non-standard spacing values
-- 3 possible typos detected
+3 design drift issues found in this PR.
 
-### Files Changed in This PR
-| File | Issues |
-|------|--------|
-| src/pages/Dashboard.tsx | 12 new issues |
-| src/components/Card.tsx | 5 new issues |
+&lt;details&gt;
+&lt;summary&gt;Issues Table&lt;/summary&gt;
 
-### Suggested Fixes
-- `#3b83f6` → `#3b82f6` (typo in Dashboard.tsx:14)
-- `15px` → `16px` (use spacing token in Card.tsx:28)
+| File | Line | Issue | Fix |
+|------|------|-------|-----|
+| Card.tsx | 12 | Hardcoded color #3b82f6 | var(--color-primary) |
+| Card.tsx | 31 | Hardcoded spacing 24px | var(--spacing-lg) |
+| Modal.tsx | 8 | Hardcoded radius 8px | var(--radius-md) |
 
----
-*Run `buoy audit` locally for full report*</code></pre>
+&lt;/details&gt;</code></pre>
 
-  <h2>Configuration Options</h2>
+  <p>On Pro tier, you also get committable inline suggestions that you can apply with one click in the GitHub UI.</p>
 
-  <h3>Threshold</h3>
+  <h2>Two Modes</h2>
 
-  <p>Set a minimum passing score:</p>
+  <h3>Established Mode (Maturity &ge;50)</h3>
+  <p>For teams with mature design systems. Enforcement tone with a summary and detailed issues table.</p>
 
-  <pre><code># Fail if score below 70
-npx ahoybuoy ci --threshold 70
+  <h3>Builder Mode (Maturity &lt;50)</h3>
+  <p>For teams early in their design system journey. Coaching tone that identifies repeated patterns
+  and helps you build tokens. "You're using this blue in 4 places &mdash; that's your primary."</p>
 
-# Zero tolerance - fail on any drift
-npx ahoybuoy ci --strict</code></pre>
+  <h2>Free vs Pro Tier</h2>
 
-  <h3>Compare Against Base Branch</h3>
+  <ul>
+    <li><strong>Free:</strong> Deterministic issues table (file, line, issue, fix token). GitHub check run (pass/fail).</li>
+    <li><strong>Pro:</strong> Everything in Free, plus AI-powered summaries, committable inline fix suggestions, coaching in builder mode, and custom review instructions.</li>
+  </ul>
 
-  <p>Only report new issues introduced in the PR:</p>
+  <h2>Dashboard</h2>
 
-  <pre><code>- name: Run Buoy
-  run: npx ahoybuoy ci --compare-base origin/main</code></pre>
+  <p>
+    The GitHub App includes access to the <a href="https://app.buoy.design">Buoy Dashboard</a> at app.buoy.design:
+  </p>
 
-  <h2>Monorepo Setup</h2>
+  <ul>
+    <li>Repository list with health scores (0-100%, color-coded)</li>
+    <li>Per-repo view: issues, design graph (tokens + components)</li>
+    <li>Settings: enable/disable checks, set severity, configure ignored paths</li>
+    <li>Scan history and drift trends over time</li>
+  </ul>
 
-  <p>For monorepos, specify the path:</p>
+  <h2>Configuration</h2>
 
-  <pre><code>- name: Run Buoy
-  run: npx ahoybuoy ci --threshold 60
-  working-directory: ./packages/web</code></pre>
+  <p>
+    You can configure Buoy's behavior via the dashboard or a <code>.buoy.yaml</code> file in your repo:
+  </p>
 
-  <h2>Caching</h2>
+  <pre><code># .buoy.yaml
+checks:
+  hardcoded-color: error
+  hardcoded-spacing: warning
+  arbitrary-tailwind: error
+  inline-style: warning
 
-  <p>Speed up runs with caching:</p>
-
-  <pre><code>- uses: actions/cache@v4
-  with:
-    path: ~/.npm
-    key: $&#123;&#123; runner.os &#125;&#125;-node-$&#123;&#123; hashFiles('**/package-lock.json') &#125;&#125;
-
-- name: Install dependencies
-  run: npm ci
-
-- name: Run Buoy
-  run: npx ahoybuoy ci --threshold 60</code></pre>
-
-  <h2>Multiple Frameworks</h2>
-
-  <p>If you have multiple apps in a monorepo:</p>
-
-  <pre><code>jobs:
-  buoy:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        app: [web, admin, mobile]
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - run: npm ci
-        working-directory: ./apps/$&#123;&#123; matrix.app &#125;&#125;
-
-      - run: npx ahoybuoy ci --threshold 60
-        working-directory: ./apps/$&#123;&#123; matrix.app &#125;&#125;</code></pre>
-
-  <h2>Troubleshooting</h2>
-
-  <h3>Token Not Found</h3>
-
-  <p>If you get permission errors, ensure:</p>
-
-  <pre><code>permissions:
-  pull-requests: write</code></pre>
-
-  <h3>No Issues Detected</h3>
-
-  <p>Verify Buoy can find your files:</p>
-
-  <pre><code>npx ahoybuoy scan --json</code></pre>
+ignore:
+  - "**/*.test.tsx"
+  - "src/legacy/**"</code></pre>
 
   <h2>Related</h2>
 
   <ul>
-    <li><a href="/docs/cli/lighthouse">buoy ci</a> — CI command reference</li>
-    <li><a href="/docs/configuration">Configuration</a> — buoy.config.mjs options</li>
-    <li><a href="/docs/features/health-scoring">Health Scoring</a> — How scores work</li>
+    <li><a href="/docs/cli/drift">buoy drift</a> &mdash; CLI drift detection commands</li>
+    <li><a href="/docs/configuration">Configuration</a> &mdash; .buoy.yaml options</li>
+    <li><a href="/docs/features/health-scoring">Health Scoring</a> &mdash; How scores work</li>
+    <li><a href="/integrations/github">GitHub Integration</a> &mdash; Full integration overview</li>
   </ul>
 
   <div class="mt-12">

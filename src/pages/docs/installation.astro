@@ -6,36 +6,40 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
   <h1>Installation</h1>
 
   <p>
-    Buoy can be installed as a dev dependency in your project or run directly with npx.
+    Buoy can be run directly with npx or installed as a dev dependency.
   </p>
 
-  <h2>Using npx (Recommended for trying out)</h2>
+  <h2>Using npx (Recommended)</h2>
 
   <p>Run Buoy without installing:</p>
 
-  <pre><code>npx ahoybuoy audit</code></pre>
+  <pre><code>npx ahoybuoy begin</code></pre>
 
-  <p>This is the fastest way to see what Buoy finds in your codebase.</p>
+  <p>This launches the interactive setup wizard that scans your project and guides you through setup.</p>
+
+  <p>To run a quick drift scan:</p>
+
+  <pre><code>npx ahoybuoy drift</code></pre>
 
   <h2>Installing as a Dev Dependency</h2>
 
   <p>For ongoing use, install Buoy in your project:</p>
 
   <pre><code># npm
-npm install --save-dev ahoybuoy
+npm install --save-dev @buoy-design/cli
 
 # pnpm
-pnpm add -D ahoybuoy
+pnpm add -D @buoy-design/cli
 
 # yarn
-yarn add -D ahoybuoy</code></pre>
+yarn add -D @buoy-design/cli</code></pre>
 
   <p>Then run with npx or add to your package.json scripts:</p>
 
   <pre><code>&#123;
   "scripts": &#123;
-    "lint:design": "buoy audit",
-    "ci:design": "buoy lighthouse --strict"
+    "lint:design": "buoy drift",
+    "check:design": "buoy check --fail-on critical"
   &#125;
 &#125;</code></pre>
 
@@ -43,13 +47,13 @@ yarn add -D ahoybuoy</code></pre>
 
   <p>Install globally to use <code>buoy</code> anywhere:</p>
 
-  <pre><code>npm install -g ahoybuoy</code></pre>
+  <pre><code>npm install -g @buoy-design/cli</code></pre>
 
   <h2>Requirements</h2>
 
   <ul>
     <li>Node.js 18 or higher</li>
-    <li>A frontend codebase (React, Vue, Svelte, Angular, or plain CSS)</li>
+    <li>A frontend codebase (React, Vue, Svelte, Angular, Next.js, Tailwind, or plain CSS/HTML)</li>
   </ul>
 
   <h2>Verify Installation</h2>
@@ -61,19 +65,22 @@ $ buoy --help
 Usage: buoy [command] [options]
 
 Commands:
-  init        Initialize Buoy configuration
-  scan        Scan for components and tokens
-  status      Show design system coverage
-  audit       Generate health report
-  drift       Detect design drift
-  compare     Compare against design tokens
-  ci          CI-optimized output
+  begin       Interactive setup wizard
+  dock        Dock Buoy into your project
+  drift       Detect design system drift
+  check       Fast drift check for CI/hooks
+  fix         Suggest and apply fixes
+  tokens      Generate and search tokens
+  audit       Health audit of codebase
+  show        Show design system information
+  scan        Full codebase scan
   ...</code></pre>
 
   <h2>Next Steps</h2>
 
   <ul>
     <li><a href="/docs/quick-start">Quick Start</a> — Run your first scan</li>
+    <li><a href="/docs/cli/begin">buoy begin</a> — Interactive setup wizard</li>
     <li><a href="/docs/configuration">Configuration</a> — Customize Buoy for your project</li>
   </ul>
 </DocsLayout>

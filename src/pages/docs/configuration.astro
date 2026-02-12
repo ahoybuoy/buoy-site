@@ -6,126 +6,124 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
   <h1>Configuration</h1>
 
   <p>
-    Buoy uses a <code>buoy.config.mjs</code> file in your project root. Most settings are
+    Buoy uses a <code>.buoy.yaml</code> file in your project root. Most settings are
     auto-detected, but you can customize everything.
   </p>
 
   <h2>Quick Start</h2>
 
-  <pre><code>npx ahoybuoy init</code></pre>
+  <pre><code>npx ahoybuoy dock config</code></pre>
 
   <p>This generates a config based on your detected frameworks.</p>
 
   <h2>Config File</h2>
 
-  <pre><code>// buoy.config.mjs
-export default &#123;
-  // Source scanning
-  sources: &#123;
-    react: &#123; enabled: true &#125;,
-    vue: &#123; enabled: false &#125;,
-    svelte: &#123; enabled: false &#125;,
-    angular: &#123; enabled: false &#125;,
-    tailwind: &#123; enabled: true &#125;,
-  &#125;,
+  <pre><code># .buoy.yaml
 
-  // File patterns
-  include: ['src/**/*.&#123;tsx,jsx,vue,svelte,css,scss&#125;'],
-  exclude: ['node_modules', 'dist', 'build', '**/*.test.*'],
+# Source scanning
+sources:
+  react:
+    enabled: true
+  vue:
+    enabled: false
+  svelte:
+    enabled: false
+  angular:
+    enabled: false
+  tailwind:
+    enabled: true
 
-  // Design tokens reference
-  tokens: &#123;
-    file: 'design-tokens.json',  // Local file
-    // OR
-    figma: &#123;
-      fileId: 'your-figma-file-id',
-      accessToken: process.env.FIGMA_TOKEN,
-    &#125;,
-  &#125;,
+# File patterns
+include:
+  - "src/**/*.&#123;tsx,jsx,vue,svelte,css,scss&#125;"
+exclude:
+  - "node_modules"
+  - "dist"
+  - "build"
+  - "**/*.test.*"
 
-  // Health thresholds
-  thresholds: &#123;
-    minScore: 70,           // Minimum passing score
-    maxHardcoded: 10,       // Max allowed hardcoded values
-  &#125;,
+# Design tokens reference
+tokens:
+  file: "design-tokens.json"   # Local file
+  # OR
+  figma:
+    fileId: "your-figma-file-id"
+    accessToken: $FIGMA_TOKEN
 
-  // Output settings
-  output: &#123;
-    format: 'table',        // 'table' | 'json' | 'markdown'
-  &#125;,
-&#125;</code></pre>
+# Health thresholds
+thresholds:
+  minScore: 70                  # Minimum passing score
+  maxHardcoded: 10              # Max allowed hardcoded values
+
+# Output settings
+output:
+  format: table                 # table | json | markdown</code></pre>
 
   <h2>Source Options</h2>
 
   <h3>React</h3>
 
-  <pre><code>sources: &#123;
-  react: &#123;
-    enabled: true,
-    include: ['src/**/*.tsx', 'src/**/*.jsx'],
-    extractInlineStyles: true,
-    extractStyledComponents: true,
-  &#125;,
-&#125;</code></pre>
+  <pre><code>sources:
+  react:
+    enabled: true
+    include:
+      - "src/**/*.tsx"
+      - "src/**/*.jsx"
+    extractInlineStyles: true
+    extractStyledComponents: true</code></pre>
 
   <h3>Tailwind</h3>
 
-  <pre><code>sources: &#123;
-  tailwind: &#123;
-    enabled: true,
-    config: 'tailwind.config.js',     // Path to config
-    detectArbitrary: true,            // Flag arbitrary values like [#fff]
-  &#125;,
-&#125;</code></pre>
+  <pre><code>sources:
+  tailwind:
+    enabled: true
+    config: "tailwind.config.js"      # Path to config
+    detectArbitrary: true             # Flag arbitrary values like [#fff]</code></pre>
 
   <h3>Vue / Svelte / Angular</h3>
 
-  <pre><code>sources: &#123;
-  vue: &#123;
-    enabled: true,
-    include: ['src/**/*.vue'],
-    extractScopedStyles: true,
-  &#125;,
-  svelte: &#123;
-    enabled: true,
-    include: ['src/**/*.svelte'],
-  &#125;,
-  angular: &#123;
-    enabled: true,
-    include: ['src/**/*.component.ts'],
-  &#125;,
-&#125;</code></pre>
+  <pre><code>sources:
+  vue:
+    enabled: true
+    include:
+      - "src/**/*.vue"
+    extractScopedStyles: true
+  svelte:
+    enabled: true
+    include:
+      - "src/**/*.svelte"
+  angular:
+    enabled: true
+    include:
+      - "src/**/*.component.ts"</code></pre>
 
   <h2>Token Configuration</h2>
 
   <h3>Local Token File</h3>
 
-  <pre><code>tokens: &#123;
-  file: 'design-tokens.json',
-&#125;</code></pre>
+  <pre><code>tokens:
+  file: "design-tokens.json"</code></pre>
 
   <p>Supports JSON (W3C format), CSS, and SCSS files.</p>
 
   <h3>Figma Integration</h3>
 
-  <pre><code>tokens: &#123;
-  figma: &#123;
-    fileId: 'abc123xyz',
-    accessToken: process.env.FIGMA_TOKEN,
-    // Optional: specific pages/frames
-    pages: ['Design Tokens'],
-  &#125;,
-&#125;</code></pre>
+  <pre><code>tokens:
+  figma:
+    fileId: "abc123xyz"
+    accessToken: $FIGMA_TOKEN
+    # Optional: specific pages/frames
+    pages:
+      - "Design Tokens"</code></pre>
 
-  <p>See <a href="/docs/integrations/figma">Figma Integration</a> for setup.</p>
+  <p>See <a href="/docs/cli/tokens">Token Configuration</a> for setup.</p>
 
   <h2>Threshold Configuration</h2>
 
-  <pre><code>thresholds: &#123;
-  minScore: 70,            // CI fails below this score
-  maxHardcoded: 10,        // Max hardcoded values allowed
-  maxCloseMatches: 0,      // Zero tolerance for typos
-&#125;</code></pre>
+  <pre><code>thresholds:
+  minScore: 70               # CI fails below this score
+  maxHardcoded: 10           # Max hardcoded values allowed
+  maxCloseMatches: 0         # Zero tolerance for typos</code></pre>
 
   <h2>Environment Variables</h2>
 
@@ -156,14 +154,13 @@ export default &#123;
 
   <p>Add patterns to <code>exclude</code>:</p>
 
-  <pre><code>exclude: [
-  'node_modules',
-  'dist',
-  'build',
-  '**/*.test.*',
-  '**/*.stories.*',
-  'src/legacy/**',      // Ignore legacy code
-]</code></pre>
+  <pre><code>exclude:
+  - "node_modules"
+  - "dist"
+  - "build"
+  - "**/*.test.*"
+  - "**/*.stories.*"
+  - "src/legacy/**"          # Ignore legacy code</code></pre>
 
   <h2>Inline Ignores</h2>
 
@@ -181,8 +178,8 @@ const legacyStyles = &#123;
   <h2>Related</h2>
 
   <ul>
-    <li><a href="/docs/cli/init">buoy init</a> — Generate config automatically</li>
-    <li><a href="/docs/integrations/figma">Figma Integration</a> — Connect to Figma</li>
-    <li><a href="/docs/integrations/github-actions">GitHub Actions</a> — CI configuration</li>
+    <li><a href="/docs/cli/dock">buoy dock config</a> — Generate config automatically</li>
+    <li><a href="/docs/cli/import">buoy import</a> — Import design tokens</li>
+    <li><a href="/docs/integrations/github-actions">GitHub App</a> — CI configuration</li>
   </ul>
 </DocsLayout>

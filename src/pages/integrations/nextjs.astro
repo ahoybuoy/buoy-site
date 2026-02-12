@@ -42,26 +42,24 @@ const terminalLines = [
   { text: '<span class="text-info">INFO</span> 9 Tailwind arbitrary values', type: 'info', delay: 2600 },
 ]
 
-const configExample = `// buoy.config.mjs
-export default {
-  framework: 'nextjs',
+const configExample = `# .buoy.yaml
+sources:
+  nextjs:
+    enabled: true
+    include:
+      - "app/**/*.tsx"
+      - "components/**/*.tsx"
 
-  include: [
-    'app/**/*.tsx',
-    'components/**/*.tsx',
-  ],
+# Next.js-specific options
+nextjs:
+  appRouter: true
+  serverComponents: true
 
-  // Next.js-specific options
-  nextjs: {
-    appRouter: true,
-    serverComponents: true,
-  },
+# Tailwind config path
+tailwind: "./tailwind.config.ts"
 
-  // Tailwind config path
-  tailwind: './tailwind.config.ts',
-
-  tokens: './src/tokens',
-}`
+tokens:
+  source: auto`
 ---
 
 <IntegrationLayout
@@ -104,7 +102,7 @@ export default {
 
       <div class="bg-navy border border-navy-light/30 rounded-xl overflow-hidden">
         <div class="px-4 py-3 bg-navy-dark border-b border-navy-light/20">
-          <span class="text-sm text-slate font-mono">buoy.config.mjs</span>
+          <span class="text-sm text-slate font-mono">.buoy.yaml</span>
         </div>
         <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{configExample}</code></pre>
       </div>

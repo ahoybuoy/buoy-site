@@ -42,23 +42,21 @@ const terminalLines = [
   { text: '<span class="text-info">INFO</span> 8 naming inconsistencies', type: 'info', delay: 2600 },
 ]
 
-const configExample = `// buoy.config.mjs
-export default {
-  // React-specific settings
-  framework: 'react',
+const configExample = `# .buoy.yaml
+sources:
+  react:
+    enabled: true
+    include:
+      - "src/components/**/*.tsx"
+      - "src/features/**/*.tsx"
 
-  // Include patterns
-  include: [
-    'src/components/**/*.tsx',
-    'src/features/**/*.tsx',
-  ],
+# CSS-in-JS libraries to scan
+cssInJs:
+  - styled-components
+  - emotion
 
-  // CSS-in-JS libraries to scan
-  cssInJs: ['styled-components', 'emotion'],
-
-  // Your design tokens
-  tokens: './src/tokens/index.ts',
-}`
+tokens:
+  source: auto`
 ---
 
 <IntegrationLayout
@@ -101,7 +99,7 @@ export default {
 
       <div class="bg-navy border border-navy-light/30 rounded-xl overflow-hidden">
         <div class="px-4 py-3 bg-navy-dark border-b border-navy-light/20">
-          <span class="text-sm text-slate font-mono">buoy.config.mjs</span>
+          <span class="text-sm text-slate font-mono">.buoy.yaml</span>
         </div>
         <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{configExample}</code></pre>
       </div>
