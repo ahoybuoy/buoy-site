@@ -24,7 +24,7 @@ import Button from '../../components/Button.astro'
         </div>
         <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
           <h3 class="font-semibold text-light mb-2">Token Import</h3>
-          <p class="text-sm text-slate">Import tokens from JSON files, CSS custom properties, or Tokens Studio format using <code class="text-buoy">buoy build tokens import</code>.</p>
+          <p class="text-sm text-slate">Import tokens from JSON files, CSS custom properties, or Tokens Studio format using <code class="text-buoy">buoy dock tokens import</code>.</p>
         </div>
         <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
           <h3 class="font-semibold text-light mb-2">Value Matching</h3>
@@ -79,11 +79,11 @@ import Button from '../../components/Button.astro'
       <p class="text-slate mb-6">Run the CLI to auto-detect your tokens and start catching drift.</p>
       <div class="inline-flex items-center gap-3 px-4 py-3 bg-navy/80 border border-navy-light/30 rounded-lg font-mono text-sm mb-6">
         <span class="text-slate">$</span>
-        <code class="text-light">npx ahoybuoy begin</code>
+        <code class="text-light">npx ahoybuoy dock</code>
       </div>
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <Button href="/docs/cli/build">Token docs</Button>
-        <Button href="/docs/cli/build" variant="secondary">Import command</Button>
+        <Button href="/docs/cli/dock#tokens">Token docs</Button>
+        <Button href="/docs/cli/dock#tokens" variant="secondary">Import command</Button>
       </div>
     </div>
   </section>
