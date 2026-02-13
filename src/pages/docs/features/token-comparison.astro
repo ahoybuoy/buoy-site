@@ -74,7 +74,7 @@ $spacing-md: 16px;</code></pre>
 
   <h2>Comparison Output</h2>
 
-  <pre><code>$ buoy compare design-tokens.json
+  <pre><code>$ buoy build tokens compare design-tokens.json
 
 Token Coverage Report
 ─────────────────────
@@ -140,19 +140,19 @@ Coverage: 84%</code></pre>
   <h2>Usage</h2>
 
   <pre><code># Compare against local token file
-buoy compare design-tokens.json
+buoy build tokens compare design-tokens.json
 
 # With strict mode (fail on any unmatched)
-buoy compare tokens.json --strict
+buoy build tokens compare tokens.json --strict
 
 # With verbose output
-buoy compare tokens.json --verbose</code></pre>
+buoy build tokens compare tokens.json --verbose</code></pre>
 
   <h2>Related</h2>
 
   <ul>
-    <li><a href="/docs/cli/compare">buoy compare</a> — Command reference</li>
-    <li><a href="/docs/cli/import">buoy import</a> — Import design tokens</li>
+    <li><a href="/docs/cli/build">buoy build tokens compare</a> — Command reference</li>
+    <li><a href="/docs/cli/build">buoy build tokens import</a> — Import design tokens</li>
     <li><a href="/docs/features/drift-detection">Drift Detection</a> — Understanding drift</li>
   </ul>
 </DocsLayout>

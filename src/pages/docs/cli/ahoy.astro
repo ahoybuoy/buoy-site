@@ -1,5 +1,8 @@
 ---
 import DocsLayout from '../../../layouts/DocsLayout.astro'
+import DocTerminal from '../../../components/DocTerminal.astro'
+import Flags from '../../../components/Flags.astro'
+import CodeBlock from '../../../components/CodeBlock.astro'
 ---
 
 <DocsLayout title="buoy ahoy" description="Manage your Buoy Cloud account and integrations">
@@ -12,166 +15,123 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
 
   <h2>Usage</h2>
 
-  <pre><code>buoy ahoy &lt;command&gt; [options]</code></pre>
+  <DocTerminal command="buoy ahoy <command> [options]" />
 
   <h2>Commands</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Command</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>login</code></td>
-        <td>Authenticate with Buoy Cloud</td>
-      </tr>
-      <tr>
-        <td><code>logout</code></td>
-        <td>Sign out and clear credentials</td>
-      </tr>
-      <tr>
-        <td><code>status</code></td>
-        <td>Show current authentication and account status</td>
-      </tr>
-      <tr>
-        <td><code>github</code></td>
-        <td>Connect or manage GitHub integration</td>
-      </tr>
-      <tr>
-        <td><code>gitlab</code></td>
-        <td>Connect or manage GitLab integration (coming soon)</td>
-      </tr>
-      <tr>
-        <td><code>billing</code></td>
-        <td>Open billing portal in your browser</td>
-      </tr>
-      <tr>
-        <td><code>plans</code></td>
-        <td>View available plans and current usage</td>
-      </tr>
-    </tbody>
-  </table>
+  <Flags items={[
+    { name: "login", description: "Authenticate with Buoy Cloud" },
+    { name: "logout", description: "Sign out and clear credentials" },
+    { name: "status", description: "Show current authentication and account status" },
+    { name: "github", description: "Connect or manage GitHub integration" },
+    { name: "gitlab", description: "Connect or manage GitLab integration (coming soon)" },
+    { name: "billing", description: "Open billing portal in your browser" },
+    { name: "plans", description: "View available plans and current usage" },
+  ]} />
 
   <h2>Options</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Command</th>
-        <th>Option</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>status</code></td>
-        <td><code>--json</code></td>
-        <td>Output status as JSON</td>
-      </tr>
-      <tr>
-        <td><code>github</code></td>
-        <td><code>--json</code></td>
-        <td>Output GitHub connection info as JSON</td>
-      </tr>
-      <tr>
-        <td><code>github</code></td>
-        <td><code>--disconnect</code></td>
-        <td>Disconnect GitHub integration</td>
-      </tr>
-    </tbody>
-  </table>
+  <Flags items={[
+    { name: "status --json", description: "Output status as JSON" },
+    { name: "github --json", description: "Output GitHub connection info as JSON" },
+    { name: "github --disconnect", description: "Disconnect GitHub integration" },
+  ]} />
 
   <h2>Examples</h2>
 
   <h3>Login</h3>
 
-  <pre><code>$ buoy ahoy login
-
-Opening browser for authentication...
-
-✓ Authenticated as dylan@example.com
-  Plan: Founding Member
-  Org: Acme Inc</code></pre>
+  <DocTerminal command="buoy ahoy login" lines={[
+    { text: "" },
+    { text: "Opening browser for authentication..." },
+    { text: "" },
+    { text: "✓ Authenticated as dylan@example.com", type: "success" },
+    { text: "  Plan: Founding Member" },
+    { text: "  Org: Acme Inc" },
+  ]} />
 
   <h3>Check status</h3>
 
-  <pre><code>$ buoy ahoy status
-
-Account Status
-──────────────
-User: dylan@example.com
-Plan: Founding Member
-Org: Acme Inc
-GitHub: connected (acme-org)
-GitLab: not connected</code></pre>
+  <DocTerminal command="buoy ahoy status" lines={[
+    { text: "" },
+    { text: "Account Status" },
+    { text: "──────────────" },
+    { text: "User: dylan@example.com" },
+    { text: "Plan: Founding Member" },
+    { text: "Org: Acme Inc" },
+    { text: "GitHub: connected (acme-org)", type: "success" },
+    { text: "GitLab: not connected", type: "muted" },
+  ]} />
 
   <h3>Connect GitHub</h3>
 
-  <pre><code>$ buoy ahoy github
-
-Opening browser to install Buoy GitHub App...
-
-✓ GitHub connected
-  Organization: acme-org
-  Repositories: 12 accessible</code></pre>
+  <DocTerminal command="buoy ahoy github" lines={[
+    { text: "" },
+    { text: "Opening browser to install Buoy GitHub App..." },
+    { text: "" },
+    { text: "✓ GitHub connected", type: "success" },
+    { text: "  Organization: acme-org" },
+    { text: "  Repositories: 12 accessible" },
+  ]} />
 
   <h3>Disconnect GitHub</h3>
 
-  <pre><code>$ buoy ahoy github --disconnect
-
-Disconnect GitHub integration? (y/N) y
-
-✓ GitHub disconnected</code></pre>
+  <DocTerminal command="buoy ahoy github --disconnect" lines={[
+    { text: "" },
+    { text: "Disconnect GitHub integration? (y/N) y" },
+    { text: "" },
+    { text: "✓ GitHub disconnected", type: "success" },
+  ]} />
 
   <h3>View plans</h3>
 
-  <pre><code>$ buoy ahoy plans
-
-Current Plan: Founding Member
-─────────────────────────────
-Repos: unlimited
-Scans: unlimited
-PR checks: ✓
-Priority support: ✓
-
-Available Plans
-───────────────
-Free        $0/mo     3 repos, basic scanning
-Pro         $29/mo    unlimited repos, PR checks
-Enterprise  custom    SSO, dedicated support</code></pre>
+  <DocTerminal command="buoy ahoy plans" lines={[
+    { text: "" },
+    { text: "Current Plan: Founding Member" },
+    { text: "─────────────────────────────" },
+    { text: "Repos: unlimited" },
+    { text: "Scans: unlimited" },
+    { text: "PR checks: ✓", type: "success" },
+    { text: "Priority support: ✓", type: "success" },
+    { text: "" },
+    { text: "Available Plans" },
+    { text: "───────────────" },
+    { text: "Free        $0/mo     3 repos, basic scanning", type: "muted" },
+    { text: "Pro         $29/mo    unlimited repos, PR checks" },
+    { text: "Enterprise  custom    SSO, dedicated support" },
+  ]} />
 
   <h3>Manage billing</h3>
 
-  <pre><code>$ buoy ahoy billing
-
-Opening billing portal in browser...</code></pre>
+  <DocTerminal command="buoy ahoy billing" lines={[
+    { text: "" },
+    { text: "Opening billing portal in browser..." },
+  ]} />
 
   <h3>Logout</h3>
 
-  <pre><code>$ buoy ahoy logout
-
-✓ Signed out. Credentials cleared.</code></pre>
+  <DocTerminal command="buoy ahoy logout" lines={[
+    { text: "" },
+    { text: "✓ Signed out. Credentials cleared.", type: "success" },
+  ]} />
 
   <h3>JSON output</h3>
 
-  <pre><code>$ buoy ahoy status --json
+  <DocTerminal command="buoy ahoy status --json" lines={[]} />
 
-&#123;
+  <CodeBlock code={`{
   "user": "dylan@example.com",
   "plan": "founding-member",
   "org": "Acme Inc",
-  "github": &#123;
+  "github": {
     "connected": true,
     "org": "acme-org",
     "repos": 12
-  &#125;,
-  "gitlab": &#123;
+  },
+  "gitlab": {
     "connected": false
-  &#125;
-&#125;</code></pre>
+  }
+}`} language="json" />
 
   <h2>Alias</h2>
 
@@ -179,8 +139,8 @@ Opening billing portal in browser...</code></pre>
     <code>buoy ship</code> is an alias for <code>buoy ahoy</code>. Both commands are identical.
   </p>
 
-  <pre><code>$ buoy ship status
-# same as: buoy ahoy status</code></pre>
+  <CodeBlock code={`$ buoy ship status
+# same as: buoy ahoy status`} language="bash" />
 
   <h2>Related</h2>
 

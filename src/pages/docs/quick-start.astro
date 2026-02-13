@@ -13,11 +13,11 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
 
   <p>The easiest way to get started is with the interactive wizard:</p>
 
-  <pre><code>npx ahoybuoy begin</code></pre>
+  <pre><code>npx ahoybuoy dock</code></pre>
 
   <p>
     This runs a scan, shows your results, and guides you through configuration.
-    <a href="/docs/cli/begin">Learn more about buoy begin</a>.
+    <a href="/docs/cli/dock">Learn more about buoy dock</a>.
   </p>
 
   <h2>Step 1: Run a Drift Scan</h2>
@@ -43,9 +43,9 @@ INLINE STYLES (5)
 
   <h2>Step 2: Get a Health Report</h2>
 
-  <p>For a broader view, run the audit:</p>
+  <p>For a broader view, run the health report:</p>
 
-  <pre><code>npx ahoybuoy audit</code></pre>
+  <pre><code>npx ahoybuoy show health</code></pre>
 
   <p>This shows your overall design system health score and worst offenders.</p>
 
@@ -54,10 +54,10 @@ INLINE STYLES (5)
   <p>See what Buoy can fix for you:</p>
 
   <pre><code># Preview fixes (dry run)
-buoy fix --dry-run
+buoy drift fix --dry-run
 
 # Apply fixes to files
-buoy fix --apply</code></pre>
+buoy drift fix --apply</code></pre>
 
   <p>Buoy replaces hardcoded values with matching design tokens, with configurable confidence levels.</p>
 
@@ -80,7 +80,7 @@ buoy fix --apply</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><code>buoy begin</code></td>
+        <td><code>buoy dock</code></td>
         <td>Interactive setup wizard</td>
       </tr>
       <tr>
@@ -88,15 +88,15 @@ buoy fix --apply</code></pre>
         <td>Detect design drift issues</td>
       </tr>
       <tr>
-        <td><code>buoy check</code></td>
+        <td><code>buoy drift check</code></td>
         <td>Fast check for CI / pre-commit hooks</td>
       </tr>
       <tr>
-        <td><code>buoy fix</code></td>
+        <td><code>buoy drift fix</code></td>
         <td>Suggest and apply token replacements</td>
       </tr>
       <tr>
-        <td><code>buoy audit</code></td>
+        <td><code>buoy show health</code></td>
         <td>Health report with score</td>
       </tr>
       <tr>
@@ -104,11 +104,11 @@ buoy fix --apply</code></pre>
         <td>Show components, tokens, drift, health</td>
       </tr>
       <tr>
-        <td><code>buoy tokens</code></td>
-        <td>Extract and search design tokens</td>
+        <td><code>buoy build tokens</code></td>
+        <td>Extract and generate design tokens</td>
       </tr>
       <tr>
-        <td><code>buoy compare tokens.json</code></td>
+        <td><code>buoy build tokens compare tokens.json</code></td>
         <td>Compare codebase against token file</td>
       </tr>
     </tbody>
@@ -118,8 +118,8 @@ buoy fix --apply</code></pre>
 
   <ul>
     <li><a href="/docs/cli/drift">buoy drift</a> — Full drift detection reference</li>
-    <li><a href="/docs/cli/fix">buoy fix</a> — Auto-fix command reference</li>
-    <li><a href="/docs/cli/check">buoy check</a> — CI / pre-commit integration</li>
+    <li><a href="/docs/cli/drift">buoy drift fix</a> — Auto-fix command reference</li>
+    <li><a href="/docs/cli/drift">buoy drift check</a> — CI / pre-commit integration</li>
     <li><a href="/docs/configuration">Configuration</a> — .buoy.yaml options</li>
     <li><a href="/docs/integrations/github-actions">GitHub App</a> — Automatic PR reviews</li>
   </ul>

@@ -123,14 +123,14 @@ Final score: 34/100 (Poor)</code></pre>
   <p>Use the score to gate PRs:</p>
 
   <pre><code># Fail if critical drift detected (default)
-buoy check
+buoy drift check
 
 # Fail on any drift (warning or above)
-buoy check --fail-on warning</code></pre>
+buoy drift check --fail-on warning</code></pre>
 
   <h2>Viewing Score Details</h2>
 
-  <pre><code>$ buoy audit
+  <pre><code>$ buoy show health
 
 Design System Health Report
 ───────────────────────────
@@ -149,8 +149,8 @@ Score Breakdown:
   <h2>Related</h2>
 
   <ul>
-    <li><a href="/docs/cli/audit">buoy audit</a> — Generate health report</li>
-    <li><a href="/docs/cli/check">buoy check</a> — Use in CI pipelines</li>
+    <li><a href="/docs/cli/show">buoy show health</a> — Generate health report</li>
+    <li><a href="/docs/cli/drift">buoy drift check</a> — Use in CI pipelines</li>
     <li><a href="/docs/features/drift-detection">Drift Detection</a> — Types of drift</li>
   </ul>
 </DocsLayout>

@@ -1,217 +1,462 @@
 ---
 import DocsLayout from '../../../layouts/DocsLayout.astro'
+import DocTerminal from '../../../components/DocTerminal.astro'
+import Flags from '../../../components/Flags.astro'
+import CodeBlock from '../../../components/CodeBlock.astro'
 ---
 
-<DocsLayout title="buoy show" description="Display design system status and drift details">
+<DocsLayout title="buoy show" description="Display design system status — components, tokens, drift, config, and setup state">
   <h1>buoy show</h1>
 
   <p>
-    Display design system status at a glance. Shows components, tokens, drift
-    signals, health score, and scan history — or everything at once.
+    Read-only views of your design system. Shows what's configured,
+    what's drifting, and what still needs setup. If something isn't configured,
+    <code>show</code> tells you which <code>dock</code> command to run.
   </p>
 
   <h2>Usage</h2>
 
-  <pre><code>buoy show &lt;command&gt; [options]</code></pre>
+  <DocTerminal command="buoy show <command> [options]" />
 
   <h2>Commands</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Command</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>components</code></td>
-        <td>List detected components and their token usage</td>
-      </tr>
-      <tr>
-        <td><code>tokens</code></td>
-        <td>Show resolved design tokens and where they're used</td>
-      </tr>
-      <tr>
-        <td><code>drift</code></td>
-        <td>Show current drift signals with severity and type filters</td>
-      </tr>
-      <tr>
-        <td><code>health</code></td>
-        <td>Show design system health score breakdown</td>
-      </tr>
-      <tr>
-        <td><code>history</code></td>
-        <td>Show recent scan history summary</td>
-      </tr>
-      <tr>
-        <td><code>all</code></td>
-        <td>Show full status report (components, tokens, drift, health)</td>
-      </tr>
-    </tbody>
-  </table>
+  <Flags items={[
+    { name: "components", description: "List detected components and their token usage" },
+    { name: "tokens", description: "Show resolved design tokens" },
+    { name: "drift", description: "Show current drift signals with severity and type filters" },
+    { name: "health", description: "Show design system health score and audit" },
+    { name: "history", description: "Show scan history and compare scans" },
+    { name: "config", description: "Show current .buoy.yaml configuration" },
+    { name: "skills", description: "Show AI agent skill files" },
+    { name: "agents", description: "Show configured AI agents and commands" },
+    { name: "context", description: "Show design system context in CLAUDE.md" },
+    { name: "hooks", description: "Show configured hooks for drift checking" },
+    { name: "commands", description: "Show installed slash commands" },
+    { name: "graph", description: "Show knowledge graph statistics" },
+    { name: "plugins", description: "Show available scanners and plugins" },
+    { name: "all", description: "Show everything including setup status" },
+  ]} />
 
-  <h2>Options</h2>
+  <h2>Global Options</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Option</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>--json</code></td>
-        <td>Output as JSON for scripting</td>
-      </tr>
-      <tr>
-        <td><code>--no-cache</code></td>
-        <td>Bypass cache and re-scan the codebase</td>
-      </tr>
-    </tbody>
-  </table>
+  <Flags items={[
+    { name: "--json", description: "Output as JSON for scripting" },
+    { name: "--no-cache", description: "Bypass cache and re-scan the codebase" },
+  ]} />
 
-  <h3>Drift-specific options</h3>
+  <!-- ─────────────────────────────────────────── -->
+  <h2 id="components">buoy show components</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Option</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>--raw</code></td>
-        <td>Show raw drift data without formatting</td>
-      </tr>
-      <tr>
-        <td><code>-S, --severity &lt;level&gt;</code></td>
-        <td>Filter by severity: <code>low</code>, <code>medium</code>, <code>high</code></td>
-      </tr>
-      <tr>
-        <td><code>-t, --type &lt;type&gt;</code></td>
-        <td>Filter by drift type (e.g. <code>hardcoded-color</code>, <code>naming</code>)</td>
-      </tr>
-    </tbody>
-  </table>
+  <p>
+    List components found in your codebase with optional search. Supports
+    fuzzy name search, prop search, and pattern matching.
+  </p>
 
-  <h2>Examples</h2>
+  <Flags items={[
+    { name: "[query]", description: "Search by component name (fuzzy match)" },
+    { name: "--prop <name>", description: "Search by prop name" },
+    { name: "--pattern <pattern>", description: "Search by pattern (name, props, variants)" },
+    { name: "-n, --limit <number>", description: "Maximum results", default: "10" },
+  ]} />
 
-  <h3>Show components</h3>
+  <DocTerminal command="buoy show components" lines={[
+    { text: "" },
+    { text: "Components (42 detected)" },
+    { text: "────────────────────────" },
+    { text: "Component        Tokens   Drift   File" },
+    { text: "Button           8        0       src/components/Button.tsx", type: "success" },
+    { text: "Card             6        2       src/components/Card.tsx", type: "warning" },
+    { text: "Badge            4        1       src/components/Badge.tsx", type: "warning" },
+    { text: "Modal            5        0       src/components/Modal.tsx", type: "success" },
+    { text: "...38 more", type: "muted" },
+  ]} />
 
-  <pre><code>$ buoy show components
+  <DocTerminal command='buoy show components Button' lines={[
+    { text: "" },
+    { text: "Found 1 component" },
+    { text: "" },
+    { text: "  Button  exact" },
+    { text: "    Path: src/components/Button.tsx" },
+    { text: '    Props: variant*, size*, children*, onClick: () => void' },
+    { text: "    Variants: primary, secondary, ghost, danger" },
+  ]} />
 
-Components (42 detected)
-────────────────────────
-Component        Tokens   Drift   File
-Button           8        0       src/components/Button.tsx
-Card             6        2       src/components/Card.tsx
-Badge            4        1       src/components/Badge.tsx
-Modal            5        0       src/components/Modal.tsx
-...38 more</code></pre>
+  <!-- ─────────────────────────────────────────── -->
+  <h2 id="tokens">buoy show tokens</h2>
 
-  <h3>Show tokens</h3>
+  <p>Show resolved design tokens from your codebase.</p>
 
-  <pre><code>$ buoy show tokens
+  <DocTerminal command="buoy show tokens" lines={[
+    { text: "" },
+    { text: "Design Tokens (67 resolved)" },
+    { text: "────────────────────────────" },
+    { text: "Token                    Value       Usages" },
+    { text: "--color-primary          #3b82f6     14" },
+    { text: "--color-secondary        #64748b     9" },
+    { text: "--spacing-md             16px        23" },
+    { text: "--spacing-lg             24px        11" },
+    { text: "--font-size-base         1rem        18" },
+    { text: "...62 more", type: "muted" },
+  ]} />
 
-Design Tokens (67 resolved)
-────────────────────────────
-Token                    Value       Usages
---color-primary          #3b82f6     14
---color-secondary        #64748b     9
---spacing-md             16px        23
---spacing-lg             24px        11
---font-size-base         1rem        18
-...62 more</code></pre>
+  <!-- ─────────────────────────────────────────── -->
+  <h2 id="drift">buoy show drift</h2>
 
-  <h3>Show drift</h3>
+  <p>
+    Show current drift signals. Supports severity filters, type filters,
+    and multiple output formats (tree, table, markdown, HTML, agent).
+  </p>
 
-  <pre><code>$ buoy show drift
+  <Flags items={[
+    { name: "--raw", description: "Raw signals without grouping" },
+    { name: "-f, --format <type>", description: "Output format: json, markdown, html, table, tree, agent" },
+    { name: "-S, --severity <level>", description: "Filter by minimum severity (info, warning, critical)" },
+    { name: "-t, --type <type>", description: "Filter by drift type" },
+    { name: "-v, --verbose", description: "Verbose output with full details" },
+    { name: "--include-baseline", description: "Include baselined drifts" },
+  ]} />
 
-Drift Signals (23 total)
-────────────────────────
-Severity   Type               File                  Line
-high       hardcoded-color    src/Card.tsx           12
-high       hardcoded-color    src/Badge.tsx          8
-medium     hardcoded-spacing  src/Modal.tsx          34
-medium     naming             src/Header.tsx         5
-low        hardcoded-color    src/Footer.tsx         22
-...18 more</code></pre>
+  <DocTerminal command="buoy show drift" lines={[
+    { text: "" },
+    { text: "Drift Signals (23 total)" },
+    { text: "────────────────────────" },
+    { text: "Severity   Type               File                  Line" },
+    { text: "critical   hardcoded-color    src/Card.tsx           12", type: "warning" },
+    { text: "critical   hardcoded-color    src/Badge.tsx          8", type: "warning" },
+    { text: "warning    hardcoded-spacing  src/Modal.tsx          34" },
+    { text: "warning    naming             src/Header.tsx         5" },
+    { text: "info       hardcoded-color    src/Footer.tsx         22", type: "muted" },
+    { text: "...18 more", type: "muted" },
+  ]} />
 
-  <h3>Filter drift by severity</h3>
+  <!-- ─────────────────────────────────────────── -->
+  <h2 id="health">buoy show health</h2>
 
-  <pre><code>$ buoy show drift -S high
+  <p>
+    Generate a health report for your design system. Shows unique values found,
+    compares against expected counts, identifies worst offender files, and calculates a 0-100 score.
+  </p>
 
-Drift Signals (5 high severity)
-───────────────────────────────
-Severity   Type               File                  Line
-high       hardcoded-color    src/Card.tsx           12
-high       hardcoded-color    src/Badge.tsx          8
-high       hardcoded-spacing  src/Layout.tsx         19
-high       naming             src/Nav.tsx            3
-high       hardcoded-color    src/Alert.tsx          7</code></pre>
+  <Flags items={[
+    { name: "--tokens <path>", description: "Path to design tokens file for typo detection" },
+  ]} />
 
-  <h3>Show health</h3>
+  <DocTerminal command="buoy show health" lines={[
+    { text: "" },
+    { text: "Design System Health Report" },
+    { text: "───────────────────────────" },
+    { text: "" },
+    { text: "Overall Score: 34/100 (Poor)", type: "warning" },
+    { text: "" },
+    { text: "Colors" },
+    { text: "  Found: 47 unique values" },
+    { text: "  Expected: ~12" },
+    { text: "  Drift: +35 extra colors", type: "warning" },
+    { text: "" },
+    { text: "Spacing" },
+    { text: "  Found: 31 unique values" },
+    { text: "  Expected: ~8" },
+    { text: "  Drift: +23 extra values", type: "warning" },
+    { text: "" },
+    { text: "Possible Typos" },
+    { text: "  ⚠ #3b83f6 → close to #3b82f6", type: "warning" },
+    { text: "  ⚠ #ef4445 → close to #ef4444", type: "warning" },
+    { text: "" },
+    { text: "Worst Offenders" },
+    { text: "   47 issues  src/pages/Dashboard.tsx" },
+    { text: "   38 issues  src/components/Card.tsx" },
+    { text: "   29 issues  src/components/Table.tsx" },
+  ]} />
 
-  <pre><code>$ buoy show health
+  <h3>Score Ranges</h3>
 
-Design System Health
-────────────────────
-Overall Score: 72/100
+  <Flags items={[
+    { name: "80-100", description: "Good — Design system is well adopted" },
+    { name: "50-79", description: "Fair — Some drift, worth addressing" },
+    { name: "30-49", description: "Needs Work — Significant drift detected" },
+    { name: "0-29", description: "Poor — Major drift, prioritize fixes" },
+  ]} />
 
-  Token coverage:    85%  ██████████████░░░
-  Naming consistency: 91%  ██████████████████░
-  Drift signals:     23   (target: 0)
-  Component coverage: 78%  ███████████████░░░</code></pre>
+  <!-- ─────────────────────────────────────────── -->
+  <h2 id="history">buoy show history</h2>
 
-  <h3>Show history</h3>
+  <p>
+    View scan history and track design system health over time. Compare
+    scans to see progress and regressions.
+  </p>
 
-  <pre><code>$ buoy show history
+  <Flags items={[
+    { name: "[scan-id]", description: "Show details of a specific scan" },
+    { name: "-n, --limit <number>", description: "Number of scans to show", default: "10" },
+    { name: "-v, --verbose", description: "Show detailed information" },
+  ]} />
 
-Recent Scans (last 5)
-─────────────────────
-Date           Score   Drift   Coverage
-2024-01-15     72      23      85%
-2024-01-14     70      25      83%
-2024-01-13     68      28      81%
-2024-01-12     65      31      79%
-2024-01-11     62      35      77%</code></pre>
+  <h3>Subcommands</h3>
 
-  <h3>Show everything</h3>
+  <Flags items={[
+    { name: "compare <scan1> <scan2>", description: "Compare two scans" },
+  ]} />
 
-  <pre><code>$ buoy show all
+  <DocTerminal command="buoy show history" lines={[
+    { text: "" },
+    { text: "Recent Scans" },
+    { text: "────────────────────────────────────────" },
+    { text: "ID       Date         Drift   Coverage" },
+    { text: "abc123   2024-01-15   23      72%" },
+    { text: "def456   2024-01-14   25      71%" },
+    { text: "ghi789   2024-01-13   28      69%" },
+  ]} />
 
-# Full status report combining all sections above</code></pre>
+  <DocTerminal command="buoy show history compare abc123 def456" lines={[
+    { text: "" },
+    { text: "Comparing abc123 → def456" },
+    { text: "" },
+    { text: "Coverage: 71% → 72% (+1%)", type: "success" },
+    { text: "Drift: 25 → 23 (-2)", type: "success" },
+    { text: "" },
+    { text: "Fixed:" },
+    { text: "  - Card.tsx:8 hardcoded-color", type: "success" },
+    { text: "  - Badge.tsx:3 hardcoded-spacing", type: "success" },
+  ]} />
 
-  <h3>JSON output</h3>
+  <!-- ─────────────────────────────────────────── -->
+  <h2 id="config">buoy show config</h2>
 
-  <pre><code>$ buoy show health --json
+  <p>
+    Show the current <code>.buoy.yaml</code> configuration — project name, enabled sources,
+    patterns, and output settings.
+  </p>
 
-&#123;
-  "score": 72,
-  "tokenCoverage": 85,
-  "namingConsistency": 91,
-  "driftSignals": 23,
-  "componentCoverage": 78
-&#125;</code></pre>
+  <DocTerminal command="buoy show config" lines={[
+    { text: "" },
+    { text: "Configuration" },
+    { text: "" },
+    { text: "Path: .buoy.yaml" },
+    { text: "Project: my-app" },
+    { text: "" },
+    { text: "Sources" },
+    { text: "  code:       enabled", type: "success" },
+    { text: "  tokens:     enabled", type: "success" },
+    { text: "  figma:      disabled", type: "muted" },
+    { text: "  storybook:  disabled", type: "muted" },
+  ]} />
 
-  <h2>Workflow</h2>
+  <p>If no config exists:</p>
 
-  <ol>
-    <li>Run <code>buoy show all</code> to get a full snapshot</li>
-    <li>Use <code>buoy show drift -S high</code> to focus on critical issues</li>
-    <li>Fix drift with <code>buoy fix</code>, then re-run to verify</li>
-    <li>Track progress with <code>buoy show history</code></li>
-  </ol>
+  <DocTerminal command="buoy show config" lines={[
+    { text: "No config found. Run buoy dock config to create .buoy.yaml.", type: "info" },
+  ]} />
 
+  <!-- ─────────────────────────────────────────── -->
+  <h2 id="skills">buoy show skills</h2>
+
+  <p>
+    Show AI agent skill files installed in <code>.claude/skills/design-system/</code>.
+  </p>
+
+  <DocTerminal command="buoy show skills" lines={[
+    { text: "" },
+    { text: "Design System Skills" },
+    { text: "" },
+    { text: "Path: .claude/skills/design-system" },
+    { text: "Files: 4" },
+    { text: "" },
+    { text: "  • .claude/skills/design-system/SKILL.md", type: "success" },
+    { text: "  • .claude/skills/design-system/tokens/colors.md", type: "success" },
+    { text: "  • .claude/skills/design-system/tokens/spacing.md", type: "success" },
+    { text: "  • .claude/skills/design-system/tokens/typography.md", type: "success" },
+  ]} />
+
+  <p>If no skills exist:</p>
+
+  <DocTerminal command="buoy show skills" lines={[
+    { text: "No skills found. Run buoy dock skills to create AI agent skills.", type: "info" },
+  ]} />
+
+  <!-- ─────────────────────────────────────────── -->
+  <h2 id="agents">buoy show agents</h2>
+
+  <p>
+    Show configured AI agents and slash commands in <code>.claude/agents/</code>
+    and <code>.claude/commands/</code>.
+  </p>
+
+  <DocTerminal command="buoy show agents" lines={[
+    { text: "" },
+    { text: "Agents" },
+    { text: "" },
+    { text: "  • design-reviewer  .claude/agents/design-reviewer.md", type: "success" },
+    { text: "  • drift-fixer      .claude/agents/drift-fixer.md", type: "success" },
+    { text: "" },
+    { text: "Commands" },
+    { text: "" },
+    { text: "  • /buoy-check      .claude/commands/buoy-check.md", type: "success" },
+  ]} />
+
+  <p>If no agents exist:</p>
+
+  <DocTerminal command="buoy show agents" lines={[
+    { text: "No agents configured. Run buoy dock agents to set up AI agents.", type: "info" },
+  ]} />
+
+  <!-- ─────────────────────────────────────────── -->
+  <h2 id="context">buoy show context</h2>
+
+  <p>
+    Show the design system section from <code>CLAUDE.md</code>. Displays line count,
+    word count, and a preview.
+  </p>
+
+  <DocTerminal command="buoy show context" lines={[
+    { text: "" },
+    { text: "Design System Context" },
+    { text: "" },
+    { text: "Path: CLAUDE.md" },
+    { text: "Lines: 42" },
+    { text: "Words: 318" },
+    { text: "" },
+    { text: "  ## Design System Rules", type: "muted" },
+    { text: "  ", type: "muted" },
+    { text: "  This project uses the Acme Design System...", type: "muted" },
+    { text: "  ... 39 more lines", type: "muted" },
+  ]} />
+
+  <p>If no context exists:</p>
+
+  <DocTerminal command="buoy show context" lines={[
+    { text: "No design system context in CLAUDE.md. Run buoy dock context to generate it.", type: "info" },
+  ]} />
+
+  <!-- ─────────────────────────────────────────── -->
+  <h2 id="hooks">buoy show hooks</h2>
+
+  <p>
+    Show configured hooks — both git pre-commit hooks and Claude Code hooks.
+  </p>
+
+  <DocTerminal command="buoy show hooks" lines={[
+    { text: "" },
+    { text: "Hooks" },
+    { text: "" },
+    { text: "  ✓ Git pre-commit hook (husky)", type: "success" },
+    { text: "    Path: .husky/pre-commit" },
+    { text: "  ✓ Claude Code hooks", type: "success" },
+    { text: "    Events: SessionStart, PostToolUse" },
+  ]} />
+
+  <p>If no hooks exist:</p>
+
+  <DocTerminal command="buoy show hooks" lines={[
+    { text: "No hooks configured. Run buoy dock hooks to set up drift checking.", type: "info" },
+  ]} />
+
+  <!-- ─────────────────────────────────────────── -->
+  <h2 id="commands">buoy show commands</h2>
+
+  <p>
+    Show installed Buoy slash commands in <code>~/.claude/commands/</code>.
+  </p>
+
+  <DocTerminal command="buoy show commands" lines={[
+    { text: "" },
+    { text: "Slash Commands" },
+    { text: "" },
+    { text: "  ✓ /contribution-loop", type: "success" },
+    { text: "  ✓ /buoy-check", type: "success" },
+  ]} />
+
+  <p>If no commands exist:</p>
+
+  <DocTerminal command="buoy show commands" lines={[
+    { text: "No slash commands installed. Run buoy dock commands install to set them up.", type: "info" },
+  ]} />
+
+  <!-- ─────────────────────────────────────────── -->
+  <h2 id="graph">buoy show graph</h2>
+
+  <p>
+    Show knowledge graph statistics — node and edge counts by type.
+  </p>
+
+  <DocTerminal command="buoy show graph" lines={[
+    { text: "" },
+    { text: "Knowledge Graph" },
+    { text: "" },
+    { text: "Path: .buoy/graph.json" },
+    { text: "Nodes: 156" },
+    { text: "Edges: 312" },
+    { text: "" },
+    { text: "Nodes by Type" },
+    { text: "  component:  42" },
+    { text: "  token:      67" },
+    { text: "  pattern:    47" },
+  ]} />
+
+  <p>If no graph exists:</p>
+
+  <DocTerminal command="buoy show graph" lines={[
+    { text: "No knowledge graph built. Run buoy dock graph to build it.", type: "info" },
+  ]} />
+
+  <!-- ─────────────────────────────────────────── -->
+  <h2 id="plugins">buoy show plugins</h2>
+
+  <p>
+    Show built-in scanners, detected frameworks, and optional plugins.
+    This always shows data — plugins are built-in and don't require setup.
+  </p>
+
+  <DocTerminal command="buoy show plugins" lines={[
+    { text: "" },
+    { text: "Built-in Scanners" },
+    { text: "" },
+    { text: "  ✓ Color — Detect hardcoded color values", type: "success" },
+    { text: "  ✓ Spacing — Detect hardcoded spacing values", type: "success" },
+    { text: "  ✓ Typography — Detect hardcoded font sizes", type: "success" },
+    { text: "" },
+    { text: "Detected Frameworks" },
+    { text: "" },
+    { text: "  • React (high)" },
+    { text: "  • Tailwind CSS (high)" },
+    { text: "" },
+    { text: "Optional Plugins" },
+    { text: "" },
+    { text: "  ○ @buoy/storybook", type: "muted" },
+    { text: "    Validate stories against tokens", type: "muted" },
+  ]} />
+
+  <!-- ─────────────────────────────────────────── -->
+  <h2 id="all">buoy show all</h2>
+
+  <p>
+    Show everything — components, tokens, drift, health, and setup status.
+    Outputs JSON with a <code>setup</code> section showing which tools are configured.
+  </p>
+
+  <DocTerminal command="buoy show all" />
+
+  <CodeBlock code={`{
+  "components": [...],
+  "tokens": [...],
+  "drift": { "groups": [...], "summary": { ... } },
+  "health": { "score": 72, "categories": { ... } },
+  "setup": {
+    "config": true,
+    "skills": true,
+    "agents": true,
+    "context": true,
+    "hooks": { "git": true, "claude": true },
+    "commands": true,
+    "graph": false
+  }
+}`} language="json" />
+
+  <!-- ─────────────────────────────────────────── -->
   <h2>Related</h2>
 
   <ul>
-    <li><a href="/docs/cli/drift">buoy drift</a> — Detailed drift detection</li>
-    <li><a href="/docs/cli/audit">buoy audit</a> — Full health audit</li>
-    <li><a href="/docs/cli/history">buoy history</a> — Scan history and comparisons</li>
-    <li><a href="/docs/cli/scan">buoy scan</a> — Run a scan</li>
+    <li><a href="/docs/cli/drift">buoy drift</a> — Scan, check, fix, and baseline drift</li>
+    <li><a href="/docs/cli/build">buoy build</a> — Generate tokens and knowledge graph</li>
+    <li><a href="/docs/cli/dock">buoy dock</a> — Set up everything that <code>show</code> displays</li>
   </ul>
 </DocsLayout>

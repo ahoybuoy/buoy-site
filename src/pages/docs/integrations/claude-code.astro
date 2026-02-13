@@ -21,7 +21,7 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
 
   <ol>
     <li>Claude generates or edits a component file</li>
-    <li>The hook runs <code>buoy check</code> on the modified file</li>
+    <li>The hook runs <code>buoy drift check</code> on the modified file</li>
     <li>If drift is detected, feedback returns to Claude</li>
     <li>Claude self-corrects without you asking</li>
   </ol>
@@ -99,15 +99,15 @@ Run `buoy show drift` for full details.</code></pre>
 
   <h3>Adjusting Severity</h3>
 
-  <p>By default, all drift types trigger feedback. To only report critical issues, modify the hook script's <code>buoy check</code> call:</p>
+  <p>By default, all drift types trigger feedback. To only report critical issues, modify the hook script's <code>buoy drift check</code> call:</p>
 
-  <pre><code>npx ahoybuoy check --format json --fail-on critical</code></pre>
+  <pre><code>npx ahoybuoy drift check --format json --fail-on critical</code></pre>
 
   <h3>Quiet Mode</h3>
 
   <p>To reduce noise, use the <code>--quiet</code> flag:</p>
 
-  <pre><code>npx ahoybuoy check --format json --quiet</code></pre>
+  <pre><code>npx ahoybuoy drift check --format json --quiet</code></pre>
 
   <h2>Combining with Other Hooks</h2>
 
@@ -146,7 +146,7 @@ Run `buoy show drift` for full details.</code></pre>
   <ol>
     <li>Receives JSON from Claude Code via stdin with the modified file path</li>
     <li>Checks if it's a UI component file (by extension)</li>
-    <li>Runs <code>buoy check --format json</code></li>
+    <li>Runs <code>buoy drift check --format json</code></li>
     <li>Filters results to only the modified file</li>
     <li>Returns structured feedback via <code>hookSpecificOutput.additionalContext</code></li>
   </ol>
@@ -156,7 +156,7 @@ Run `buoy show drift` for full details.</code></pre>
   <h2>Related</h2>
 
   <ul>
-    <li><a href="/docs/cli/check">buoy check</a> — The command that powers the hook</li>
+    <li><a href="/docs/cli/drift">buoy drift check</a> — The command that powers the hook</li>
     <li><a href="/docs/cli/dock">buoy dock</a> — Project setup including hooks</li>
     <li><a href="/docs/features/ai-guardrails">AI Guardrails</a> — Broader AI integration strategy</li>
     <li><a href="/docs/integrations/github-actions">GitHub App</a> — CI/CD integration</li>

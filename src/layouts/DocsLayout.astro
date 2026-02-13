@@ -28,51 +28,60 @@ const docsSections: { title: string; items: DocItem[] }[] = [
     ]
   },
   {
-    title: 'Setup',
+    title: 'buoy show',
     items: [
-      { label: 'buoy begin', href: '/docs/cli/begin' },
-      { label: 'buoy dock', href: '/docs/cli/dock' },
-      { label: 'buoy commands', href: '/docs/cli/commands' },
+      { label: 'Overview', href: '/docs/cli/show' },
+      { label: 'components', href: '/docs/cli/show#components', indent: true },
+      { label: 'tokens', href: '/docs/cli/show#tokens', indent: true },
+      { label: 'drift', href: '/docs/cli/show#drift', indent: true },
+      { label: 'health', href: '/docs/cli/show#health', indent: true },
+      { label: 'history', href: '/docs/cli/show#history', indent: true },
+      { label: 'config', href: '/docs/cli/show#config', indent: true },
+      { label: 'skills', href: '/docs/cli/show#skills', indent: true },
+      { label: 'agents', href: '/docs/cli/show#agents', indent: true },
+      { label: 'context', href: '/docs/cli/show#context', indent: true },
+      { label: 'hooks', href: '/docs/cli/show#hooks', indent: true },
+      { label: 'commands', href: '/docs/cli/show#commands', indent: true },
+      { label: 'graph', href: '/docs/cli/show#graph', indent: true },
+      { label: 'plugins', href: '/docs/cli/show#plugins', indent: true },
+      { label: 'all', href: '/docs/cli/show#all', indent: true },
     ]
   },
   {
-    title: 'Drift Detection',
+    title: 'buoy drift',
     items: [
-      { label: 'buoy drift', href: '/docs/cli/drift' },
-      { label: 'buoy check', href: '/docs/cli/check' },
-      { label: 'buoy fix', href: '/docs/cli/fix' },
-      { label: 'buoy baseline', href: '/docs/cli/baseline' },
+      { label: 'Overview', href: '/docs/cli/drift' },
+      { label: 'scan', href: '/docs/cli/drift#scan', indent: true },
+      { label: 'check', href: '/docs/cli/drift#check', indent: true },
+      { label: 'fix', href: '/docs/cli/drift#fix', indent: true },
+      { label: 'baseline', href: '/docs/cli/drift#baseline', indent: true },
     ]
   },
   {
-    title: 'Design Tokens',
+    title: 'buoy build',
     items: [
-      { label: 'buoy tokens', href: '/docs/cli/tokens' },
-      { label: 'buoy compare', href: '/docs/cli/compare' },
-      { label: 'buoy import', href: '/docs/cli/import' },
+      { label: 'Overview', href: '/docs/cli/build' },
+      { label: 'tokens', href: '/docs/cli/build#tokens', indent: true },
+      { label: 'graph', href: '/docs/cli/build#graph', indent: true },
     ]
   },
   {
-    title: 'Analysis',
+    title: 'buoy dock',
     items: [
-      { label: 'buoy show', href: '/docs/cli/show' },
-      { label: 'buoy scan', href: '/docs/cli/scan' },
-      { label: 'buoy audit', href: '/docs/cli/audit' },
-      { label: 'buoy graph', href: '/docs/cli/graph' },
-      { label: 'buoy history', href: '/docs/cli/history' },
-      { label: 'buoy learn', href: '/docs/cli/learn' },
+      { label: 'Overview', href: '/docs/cli/dock' },
+      { label: 'config', href: '/docs/cli/dock#config', indent: true },
+      { label: 'agents', href: '/docs/cli/dock#agents', indent: true },
+      { label: 'skills', href: '/docs/cli/dock#skills', indent: true },
+      { label: 'context', href: '/docs/cli/dock#context', indent: true },
+      { label: 'hooks', href: '/docs/cli/dock#hooks', indent: true },
+      { label: 'commands', href: '/docs/cli/dock#commands', indent: true },
+      { label: 'plugins', href: '/docs/cli/dock#plugins', indent: true },
     ]
   },
   {
-    title: 'Plugins',
+    title: 'buoy ahoy',
     items: [
-      { label: 'buoy plugins', href: '/docs/cli/plugins' },
-    ]
-  },
-  {
-    title: 'Cloud',
-    items: [
-      { label: 'buoy ahoy', href: '/docs/cli/ahoy' },
+      { label: 'Overview', href: '/docs/cli/ahoy' },
     ]
   },
   {
@@ -117,16 +126,20 @@ const currentPath = Astro.url.pathname
                 </h3>
                 <ul class="space-y-1">
                   {section.items.map((item) => {
-                    const isActive = currentPath === item.href || currentPath === item.href + '/'
+                    const basePath = item.href.split('#')[0]
+                    const isActive = currentPath === basePath || currentPath === basePath + '/'
                     return (
                       <li>
                         <a
                           href={item.href}
                           class:list={[
-                            'block px-3 py-1.5 text-sm rounded-lg transition-colors',
-                            isActive
+                            'block py-1 text-sm rounded-lg transition-colors',
+                            item.indent ? 'pl-6 pr-3 text-xs' : 'px-3 py-1.5',
+                            isActive && !item.indent
                               ? 'bg-buoy/20 text-buoy font-medium'
-                              : 'text-slate hover:text-light hover:bg-navy-light/20'
+                              : item.indent
+                                ? 'text-slate/70 hover:text-light hover:bg-navy-light/10'
+                                : 'text-slate hover:text-light hover:bg-navy-light/20'
                           ]}
                         >
                           {item.label}
@@ -163,16 +176,20 @@ const currentPath = Astro.url.pathname
                   </h3>
                   <ul class="space-y-1">
                     {section.items.map((item) => {
-                      const isActive = currentPath === item.href || currentPath === item.href + '/'
+                      const basePath = item.href.split('#')[0]
+                      const isActive = currentPath === basePath || currentPath === basePath + '/'
                       return (
                         <li>
                           <a
                             href={item.href}
                             class:list={[
-                              'block px-3 py-1.5 text-sm rounded-lg transition-colors',
-                              isActive
+                              'block py-1 text-sm rounded-lg transition-colors',
+                              item.indent ? 'pl-6 pr-3 text-xs' : 'px-3 py-1.5',
+                              isActive && !item.indent
                                 ? 'bg-buoy/20 text-buoy font-medium'
-                                : 'text-slate hover:text-light hover:bg-navy-light/20'
+                                : item.indent
+                                  ? 'text-slate/70 hover:text-light hover:bg-navy-light/10'
+                                  : 'text-slate hover:text-light hover:bg-navy-light/20'
                             ]}
                           >
                             {item.label}

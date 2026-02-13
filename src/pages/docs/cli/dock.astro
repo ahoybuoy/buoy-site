@@ -1,8 +1,10 @@
 ---
 import DocsLayout from '../../../layouts/DocsLayout.astro'
+import DocTerminal from '../../../components/DocTerminal.astro'
+import Flags from '../../../components/Flags.astro'
 ---
 
-<DocsLayout title="buoy dock" description="Dock Buoy into your project with config, agents, skills, and hooks">
+<DocsLayout title="buoy dock" description="Dock Buoy into your project with config, agents, skills, hooks, commands, and plugins">
   <h1>buoy dock</h1>
 
   <p>
@@ -13,169 +15,292 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
 
   <h2>Usage</h2>
 
-  <pre><code>buoy dock [command] [options]</code></pre>
+  <DocTerminal command="buoy dock [command] [options]" />
 
   <h2>Commands</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Command</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>(default)</td>
-        <td>Run interactive walkthrough (config → agents → hooks)</td>
-      </tr>
-      <tr>
-        <td><code>config</code></td>
-        <td>Create or update <code>.buoy.yaml</code> configuration</td>
-      </tr>
-      <tr>
-        <td><code>agents</code></td>
-        <td>Set up AI agent files (<code>.claude/agents/</code>)</td>
-      </tr>
-      <tr>
-        <td><code>skills</code></td>
-        <td>Install Buoy skills (<code>.claude/skills/</code>)</td>
-      </tr>
-      <tr>
-        <td><code>context</code></td>
-        <td>Generate <code>CLAUDE.md</code> with design system context</td>
-      </tr>
-      <tr>
-        <td><code>hooks</code></td>
-        <td>Set up pre-commit and CI hooks</td>
-      </tr>
-    </tbody>
-  </table>
+  <Flags items={[
+    { name: "(default)", description: "Run interactive walkthrough (config → agents → hooks)" },
+    { name: "config", description: "Create or update .buoy.yaml configuration" },
+    { name: "agents", description: "Set up AI agent files (.claude/agents/)" },
+    { name: "skills", description: "Install Buoy skills (.claude/skills/)" },
+    { name: "context", description: "Generate CLAUDE.md with design system context" },
+    { name: "hooks", description: "Set up pre-commit and CI hooks" },
+    { name: "commands", description: "Manage Claude Code slash commands" },
+    { name: "plugins", description: "Manage scanners and framework plugins" },
+  ]} />
 
   <h2>Options</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Option</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>-y, --yes</code></td>
-        <td>Accept all defaults without prompting</td>
-      </tr>
-      <tr>
-        <td><code>--json</code></td>
-        <td>Output results as JSON</td>
-      </tr>
-      <tr>
-        <td><code>-f, --force</code></td>
-        <td>Overwrite existing files</td>
-      </tr>
-    </tbody>
-  </table>
+  <Flags items={[
+    { name: "-y, --yes", description: "Accept all defaults without prompting" },
+    { name: "--json", description: "Output results as JSON" },
+    { name: "-f, --force", description: "Overwrite existing files" },
+  ]} />
 
   <h2>Examples</h2>
 
   <h3>Interactive walkthrough</h3>
 
-  <pre><code>$ buoy dock
+  <DocTerminal command="buoy dock" lines={[
+    { text: "" },
+    { text: "Detecting project configuration..." },
+    { text: "" },
+    { text: "Detected:", type: "info" },
+    { text: "  Framework: React" },
+    { text: "  Styling: Tailwind CSS" },
+    { text: "  Components: src/components/" },
+    { text: "" },
+    { text: "Step 1/3: Configuration" },
+    { text: "✓ Created .buoy.yaml", type: "success" },
+    { text: "" },
+    { text: "Step 2/3: AI Agents" },
+    { text: "✓ Created .claude/agents/design-reviewer.md", type: "success" },
+    { text: "✓ Created .claude/agents/drift-fixer.md", type: "success" },
+    { text: "" },
+    { text: "Step 3/3: Hooks" },
+    { text: "✓ Created .claude/commands/buoy-check.md", type: "success" },
+    { text: "✓ Updated .claude/settings.local.json", type: "success" },
+    { text: "" },
+    { text: "Buoy is docked! Run 'buoy drift check' to scan your codebase.", type: "success" },
+  ]} />
 
-Detecting project configuration...
+  <h2 id="config">buoy dock config</h2>
 
-Detected:
-  Framework: React
-  Styling: Tailwind CSS
-  Components: src/components/
+  <DocTerminal command="buoy dock config" lines={[
+    { text: "" },
+    { text: "Detecting project configuration..." },
+    { text: "" },
+    { text: "Detected:", type: "info" },
+    { text: "  Framework: React" },
+    { text: "  Styling: Tailwind CSS" },
+    { text: "  Components: src/components/" },
+    { text: "" },
+    { text: "✓ Created .buoy.yaml", type: "success" },
+  ]} />
 
-Step 1/3: Configuration
-✓ Created .buoy.yaml
+  <h2 id="agents">buoy dock agents</h2>
 
-Step 2/3: AI Agents
-✓ Created .claude/agents/design-reviewer.md
-✓ Created .claude/agents/drift-fixer.md
+  <DocTerminal command="buoy dock agents" lines={[
+    { text: "" },
+    { text: "✓ Created .claude/agents/design-reviewer.md", type: "success" },
+    { text: "✓ Created .claude/agents/drift-fixer.md", type: "success" },
+    { text: "" },
+    { text: "Agents are ready. Use them in Claude Code with /agent." },
+  ]} />
 
-Step 3/3: Hooks
-✓ Created .claude/commands/buoy-check.md
-✓ Updated .claude/settings.local.json
+  <h2 id="skills">buoy dock skills</h2>
 
-Buoy is docked! Run 'buoy check' to scan your codebase.</code></pre>
+  <DocTerminal command="buoy dock skills" lines={[
+    { text: "" },
+    { text: "✓ Created .claude/skills/design-system.md", type: "success" },
+    { text: "✓ Created .claude/skills/drift-check.md", type: "success" },
+    { text: "" },
+    { text: "Skills installed. Claude Code will use them automatically." },
+  ]} />
 
-  <h3>Config only</h3>
+  <h2 id="context">buoy dock context</h2>
 
-  <pre><code>$ buoy dock config
+  <p>
+    Scans your codebase for components and tokens, then generates CLAUDE.md with
+    design system context so AI tools understand and follow your design system.
+  </p>
 
-Detecting project configuration...
+  <DocTerminal command="buoy dock context" lines={[
+    { text: "" },
+    { text: "Analyzing design system..." },
+    { text: "" },
+    { text: "✓ Generated CLAUDE.md with design system rules", type: "success" },
+    { text: "  - 67 tokens documented" },
+    { text: "  - 42 components listed" },
+    { text: "  - Anti-patterns defined" },
+  ]} />
 
-Detected:
-  Framework: React
-  Styling: Tailwind CSS
-  Components: src/components/
+  <p>
+    AI coding tools read these files to understand your design system. When you ask
+    "Build a card component", the AI will:
+  </p>
 
-✓ Created .buoy.yaml</code></pre>
+  <ol>
+    <li>Check your existing Card component (if any)</li>
+    <li>Use your color tokens instead of hardcoding <code>#3b82f6</code></li>
+    <li>Follow your spacing scale instead of arbitrary values</li>
+    <li>Match your naming conventions</li>
+  </ol>
 
-  <h3>Set up agents</h3>
+  <h2 id="hooks">buoy dock hooks</h2>
 
-  <pre><code>$ buoy dock agents
-
-✓ Created .claude/agents/design-reviewer.md
-✓ Created .claude/agents/drift-fixer.md
-
-Agents are ready. Use them in Claude Code with /agent.</code></pre>
-
-  <h3>Install skills</h3>
-
-  <pre><code>$ buoy dock skills
-
-✓ Created .claude/skills/design-system.md
-✓ Created .claude/skills/drift-check.md
-
-Skills installed. Claude Code will use them automatically.</code></pre>
-
-  <h3>Generate context</h3>
-
-  <pre><code>$ buoy dock context
-
-Analyzing design system...
-
-✓ Generated CLAUDE.md with design system rules
-  - 67 tokens documented
-  - 42 components listed
-  - Anti-patterns defined</code></pre>
-
-  <h3>Set up hooks</h3>
-
-  <pre><code>$ buoy dock hooks
-
-✓ Created .claude/commands/buoy-check.md
-✓ Updated .claude/settings.local.json
-✓ Created .git/hooks/pre-commit
-
-Hooks installed:
-  Pre-commit: drift check before each commit
-  Claude Code: self-validating AI hooks</code></pre>
+  <DocTerminal command="buoy dock hooks" lines={[
+    { text: "" },
+    { text: "✓ Created .claude/commands/buoy-check.md", type: "success" },
+    { text: "✓ Updated .claude/settings.local.json", type: "success" },
+    { text: "✓ Created .git/hooks/pre-commit", type: "success" },
+    { text: "" },
+    { text: "Hooks installed:" },
+    { text: "  Pre-commit: drift check before each commit" },
+    { text: "  Claude Code: self-validating AI hooks" },
+  ]} />
 
   <h3>Non-interactive setup</h3>
 
-  <pre><code>$ buoy dock -y
-
-✓ Created .buoy.yaml
-✓ Created .claude/agents/design-reviewer.md
-✓ Created .claude/agents/drift-fixer.md
-✓ Created .claude/commands/buoy-check.md
-✓ Updated .claude/settings.local.json
-
-Buoy is docked!</code></pre>
+  <DocTerminal command="buoy dock -y" lines={[
+    { text: "" },
+    { text: "✓ Created .buoy.yaml", type: "success" },
+    { text: "✓ Created .claude/agents/design-reviewer.md", type: "success" },
+    { text: "✓ Created .claude/agents/drift-fixer.md", type: "success" },
+    { text: "✓ Created .claude/commands/buoy-check.md", type: "success" },
+    { text: "✓ Updated .claude/settings.local.json", type: "success" },
+    { text: "" },
+    { text: "Buoy is docked!", type: "success" },
+  ]} />
 
   <h3>Force overwrite</h3>
 
-  <pre><code>$ buoy dock config -f
+  <DocTerminal command="buoy dock config -f" lines={[
+    { text: "" },
+    { text: "Overwriting existing .buoy.yaml...", type: "warning" },
+    { text: "✓ Updated .buoy.yaml", type: "success" },
+  ]} />
 
-Overwriting existing .buoy.yaml...
-✓ Updated .buoy.yaml</code></pre>
+  <!-- ─────────────────────────────────────────── -->
+  <h2 id="commands">buoy dock commands</h2>
 
+  <p>
+    Install Buoy's slash commands to Claude Code. These commands give you quick access
+    to design system workflows directly from Claude Code's command palette.
+  </p>
+
+  <DocTerminal command="buoy dock commands list" />
+  <DocTerminal command="buoy dock commands install" />
+
+  <h3>Subcommands</h3>
+
+  <Flags items={[
+    { name: "list", description: "List available Buoy slash commands and installation status" },
+    { name: "install", description: "Install commands to ~/.claude/commands/" },
+  ]} />
+
+  <h3>Options</h3>
+
+  <Flags items={[
+    { name: "--dry-run", description: "Show what would be installed without writing files" },
+    { name: "--json", description: "Output result as JSON" },
+  ]} />
+
+  <h3>Available Commands</h3>
+
+  <h4>/contribution-loop</h4>
+
+  <p>
+    Autonomous workflow for finding repos with design drift and generating PRs to fix them.
+    Runs through discovery, scanning, analysis, and PR generation phases.
+  </p>
+
+  <p>Phases:</p>
+
+  <ol>
+    <li><strong>Discovery</strong> — Find repos using design systems on GitHub</li>
+    <li><strong>Scanning</strong> — Run Buoy to detect drift</li>
+    <li><strong>Analysis</strong> — Use agents to assess fixability</li>
+    <li><strong>Triage</strong> — Classify as slam-dunk, review, or skip</li>
+    <li><strong>Generation</strong> — Create PR with full context</li>
+    <li><strong>Review</strong> — Human approval before submission</li>
+  </ol>
+
+  <h3>Example Output</h3>
+
+  <DocTerminal command="buoy dock commands list" lines={[
+    { text: "" },
+    { text: "  Available Buoy Commands" },
+    { text: "" },
+    { text: "  /contribution-loop  not installed", type: "muted" },
+    { text: "" },
+    { text: "  Run `buoy dock commands install` to install all commands" },
+  ]} />
+
+  <DocTerminal command="buoy dock commands install" lines={[
+    { text: "" },
+    { text: "  ✓ Installed slash commands:", type: "success" },
+    { text: "" },
+    { text: "    /contribution-loop" },
+    { text: "" },
+    { text: "  Commands installed to: ~/.claude/commands/" },
+    { text: "  Restart Claude Code to use them" },
+  ]} />
+
+  <h3>Commands vs Skills</h3>
+
+  <p>
+    <strong>Commands</strong> are user-invocable — you type <code>/contribution-loop</code>
+    in Claude Code to trigger them. <strong>Skills</strong> are AI-invocable — Claude
+    automatically loads them when relevant.
+  </p>
+
+  <p>
+    Use <code>buoy dock context</code> to create skills, and <code>buoy dock commands install</code>
+    to install slash commands.
+  </p>
+
+  <!-- ─────────────────────────────────────────── -->
+  <h2 id="plugins">buoy dock plugins</h2>
+
+  <p>
+    Manage scanners and framework plugins. List built-in and installed plugins,
+    or get suggestions based on your project's detected frameworks.
+  </p>
+
+  <DocTerminal command="buoy dock plugins <command>" />
+
+  <h3>Subcommands</h3>
+
+  <Flags items={[
+    { name: "list", description: "List built-in scanners and installed plugins" },
+    { name: "suggest", description: "Detect frameworks and recommend plugins" },
+  ]} />
+
+  <h3>List plugins</h3>
+
+  <DocTerminal command="buoy dock plugins list" lines={[
+    { text: "" },
+    { text: "Built-in Scanners" },
+    { text: "─────────────────" },
+    { text: "Scanner              Status     Description" },
+    { text: "color                active     Detect hardcoded color values", type: "success" },
+    { text: "spacing              active     Detect hardcoded spacing values", type: "success" },
+    { text: "typography           active     Detect hardcoded font sizes and weights", type: "success" },
+    { text: "naming               active     Check naming conventions", type: "success" },
+    { text: "z-index              active     Detect arbitrary z-index values", type: "success" },
+    { text: "" },
+    { text: "Installed Plugins" },
+    { text: "─────────────────" },
+    { text: "Plugin               Version    Description" },
+    { text: "@buoy/tailwind       0.3.6      Tailwind CSS utilities and class scanning" },
+    { text: "@buoy/react          0.3.6      React component detection and JSX parsing" },
+  ]} />
+
+  <h3>Suggest plugins</h3>
+
+  <DocTerminal command="buoy dock plugins suggest" lines={[
+    { text: "" },
+    { text: "Detecting project frameworks..." },
+    { text: "" },
+    { text: "Detected:", type: "info" },
+    { text: "  React 18.2.0" },
+    { text: "  Tailwind CSS 3.4.1" },
+    { text: "  Storybook 7.6.0" },
+    { text: "" },
+    { text: "Recommended Plugins" },
+    { text: "───────────────────" },
+    { text: "Plugin               Why" },
+    { text: "@buoy/tailwind       Tailwind detected — scan utility classes for drift" },
+    { text: "@buoy/react          React detected — parse JSX for component patterns" },
+    { text: "@buoy/storybook      Storybook detected — validate stories against tokens" },
+    { text: "" },
+    { text: "Install all recommended plugins?" },
+    { text: "  buoy dock -y", type: "info" },
+  ]} />
+
+  <!-- ─────────────────────────────────────────── -->
   <h2>Generated Files</h2>
 
   <ul>
@@ -189,9 +314,9 @@ Overwriting existing .buoy.yaml...
   <h2>Related</h2>
 
   <ul>
-    <li><a href="/docs/cli/begin">buoy begin</a> — Interactive setup wizard</li>
-    <li><a href="/docs/cli/plugins">buoy plugins</a> — Manage scanner plugins</li>
-    <li><a href="/docs/cli/check">buoy check</a> — Run drift checks</li>
+    <li><a href="/docs/cli/show">buoy show</a> — View what's configured</li>
+    <li><a href="/docs/cli/drift">buoy drift</a> — Detect and fix drift</li>
     <li><a href="/docs/integrations/claude-code">Claude Code</a> — AI integration details</li>
+    <li><a href="/docs/features/ai-guardrails">AI Guardrails</a> — Full guide</li>
   </ul>
 </DocsLayout>

@@ -1,0 +1,84 @@
+---
+interface Props {
+  command: string
+  lines?: Array<{
+    text: string
+    type?: 'output' | 'success' | 'warning' | 'info' | 'muted'
+  }>
+  class?: string
+}
+
+const { command, lines = [], class: className = '' } = Astro.props
+
+const copyText = command
+---
+
+<div class={`doc-terminal relative group ${className}`}>
+  <div class="relative bg-navy-dark border border-navy-light/30 rounded-xl overflow-hidden">
+    <!-- Title bar -->
+    <div class="flex items-center gap-2 px-4 py-2.5 bg-navy border-b border-navy-light/20">
+      <div class="flex items-center gap-1.5">
+        <div class="w-2.5 h-2.5 rounded-full bg-critical/80"></div>
+        <div class="w-2.5 h-2.5 rounded-full bg-warning/80"></div>
+        <div class="w-2.5 h-2.5 rounded-full bg-success/80"></div>
+      </div>
+      <div class="flex-1 text-center">
+        <span class="text-xs text-slate-dark font-mono">terminal</span>
+      </div>
+      <button
+        class="doc-terminal-copy text-slate-dark hover:text-buoy transition-colors p-0.5"
+        data-copy={copyText}
+        aria-label="Copy command"
+      >
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Terminal content -->
+    <div class="px-4 py-3 font-mono text-sm leading-relaxed overflow-x-auto">
+      <div class="flex items-start gap-2">
+        <span class="text-buoy select-none shrink-0">$</span>
+        <span class="text-light">{command}</span>
+      </div>
+
+      {lines.length > 0 && (
+        <div class="mt-2 space-y-0.5">
+          {lines.map((line) => {
+            const colorClass = {
+              output: 'text-slate',
+              success: 'text-success',
+              warning: 'text-warning',
+              info: 'text-info',
+              muted: 'text-slate-dark',
+            }[line.type || 'output']
+
+            return (
+              <div class={colorClass} set:html={line.text} />
+            )
+          })}
+        </div>
+      )}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.doc-terminal-copy').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const text = btn.getAttribute('data-copy')
+      if (text) {
+        await navigator.clipboard.writeText(text)
+        const svg = btn.querySelector('svg')
+        if (svg) {
+          const original = svg.outerHTML
+          svg.outerHTML = `<svg class="w-3.5 h-3.5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>`
+          setTimeout(() => {
+            btn.querySelector('svg')!.outerHTML = original
+          }, 2000)
+        }
+      }
+    })
+  })
+</script>

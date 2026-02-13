@@ -133,7 +133,7 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
     Now when AI generates <code>padding: 15px</code>, Buoy catches it:
   </p>
 
-  <pre><code>$ buoy check
+  <pre><code>$ buoy drift check
 
 x Drift detected
 
@@ -169,7 +169,7 @@ Run `buoy show drift` for details</code></pre>
 
   <h3>1. Block on Critical Drift</h3>
 
-  <pre><code>buoy check</code></pre>
+  <pre><code>buoy drift check</code></pre>
 
   <p>
     PRs fail if critical design system issues are found (default behavior).
@@ -177,7 +177,7 @@ Run `buoy show drift` for details</code></pre>
 
   <h3>2. Stricter Enforcement</h3>
 
-  <pre><code>buoy check --fail-on warning</code></pre>
+  <pre><code>buoy drift check --fail-on warning</code></pre>
 
   <p>
     Fail on warnings too, not just critical issues.
@@ -185,7 +185,7 @@ Run `buoy show drift` for details</code></pre>
 
   <h3>3. Get PR Comments</h3>
 
-  <pre><code>buoy check --preview-comment</code></pre>
+  <pre><code>buoy drift check --preview-comment</code></pre>
 
   <p>
     Preview what a PR comment would look like with your drift results.
@@ -249,7 +249,7 @@ Agent fixes drift
   </p>
 
   <pre><code># .husky/pre-commit
-buoy check --staged</code></pre>
+buoy drift check --staged</code></pre>
 
   <p>
     Now when an agent runs <code>git commit</code>, Buoy blocks the commit if there's
@@ -266,7 +266,7 @@ buoy check --staged</code></pre>
 
 ## Design System
 
-Before committing UI changes, run `buoy check` to check for design drift.
+Before committing UI changes, run `buoy drift check` to check for design drift.
 If Buoy reports issues, fix them before committing.
 
 Our design tokens:
@@ -303,7 +303,7 @@ Our design tokens:
   <h2>Related</h2>
 
   <ul>
-    <li><a href="/docs/cli/check">buoy check</a> — Add to your CI pipeline</li>
+    <li><a href="/docs/cli/drift">buoy drift check</a> — Add to your CI pipeline</li>
     <li><a href="/docs/integrations/github-actions">GitHub App</a> — Full CI setup</li>
     <li><a href="/docs/features/health-scoring">Health Scoring</a> — How scores work</li>
   </ul>

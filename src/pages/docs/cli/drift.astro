@@ -1,119 +1,184 @@
 ---
 import DocsLayout from '../../../layouts/DocsLayout.astro'
+import DocTerminal from '../../../components/DocTerminal.astro'
+import Flags from '../../../components/Flags.astro'
+import CodeBlock from '../../../components/CodeBlock.astro'
 ---
 
-<DocsLayout title="buoy drift" description="Detect and analyze design drift">
+<DocsLayout title="buoy drift" description="Detect, analyze, and fix design drift">
   <h1>buoy drift</h1>
 
   <p>
-    Detect design drift in your codebase. Shows detailed information about each instance where
-    code diverges from your design system.
+    Detect design drift in your codebase. Scan for issues, inspect each drift signal,
+    apply fixes, and manage baselines for existing projects.
   </p>
 
   <h2>Usage</h2>
 
-  <pre><code>buoy drift check [options]</code></pre>
+  <DocTerminal command="buoy drift <command> [options]" />
 
-  <h2>Options</h2>
+  <h2>Commands</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Option</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>--type &lt;type&gt;</code></td>
-        <td>Filter by drift type (color, spacing, typography)</td>
-      </tr>
-      <tr>
-        <td><code>--severity &lt;level&gt;</code></td>
-        <td>Filter by severity (high, medium, low)</td>
-      </tr>
-      <tr>
-        <td><code>--file &lt;path&gt;</code></td>
-        <td>Check specific file only</td>
-      </tr>
-      <tr>
-        <td><code>--json</code></td>
-        <td>Output as JSON for scripting</td>
-      </tr>
-    </tbody>
-  </table>
+  <Flags items={[
+    { name: "scan", description: "Scan your codebase for design system usage and drift signals" },
+    { name: "check", description: "Show detailed drift signals with severity and type" },
+    { name: "fix", description: "Suggest and apply fixes for drift issues" },
+    { name: "baseline", description: "Manage drift baseline to hide existing issues" },
+  ]} />
 
-  <h2>Drift Types</h2>
+  <!-- ─────────────────────────────────────────── -->
+  <h2 id="scan">buoy drift scan</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code>hardcoded-value</code></td>
-        <td>Raw values instead of design tokens</td>
-      </tr>
-      <tr>
-        <td><code>close-match</code></td>
-        <td>Values near tokens (likely typos)</td>
-      </tr>
-      <tr>
-        <td><code>naming-inconsistency</code></td>
-        <td>Component names that don't follow conventions</td>
-      </tr>
-      <tr>
-        <td><code>deprecated-pattern</code></td>
-        <td>Usage of deprecated design patterns</td>
-      </tr>
-    </tbody>
-  </table>
+  <p>
+    Scan your codebase for design system usage. Zero-config auto-detection finds
+    components, tokens, and patterns. Results are cached for fast repeat runs.
+  </p>
 
-  <h2>Example Output</h2>
+  <DocTerminal command="buoy drift scan [options]" />
 
-  <pre><code>$ buoy drift check
+  <h3>Options</h3>
 
-Drift Analysis
-──────────────
+  <Flags items={[
+    { name: "-s, --source <path>", description: "Source directory to scan (default: auto-detected)" },
+    { name: "--json", description: "Output as JSON for scripting" },
+    { name: "-v, --verbose", description: "Show detailed scan progress and per-file results" },
+    { name: "--no-persist", description: "Don't save results to scan history" },
+    { name: "--no-cache", description: "Bypass cache and force a full re-scan" },
+    { name: "--clear-cache", description: "Clear the scan cache before running" },
+  ]} />
 
-~ Hardcoded Value
-  Component: Card
-  Location:  src/components/Card.tsx:14
-  Issue:     backgroundColor: #f9fafb (not a design token)
+  <h3>Examples</h3>
 
-  Actions:
-    1. Replace with design token
-    2. Example: var(--color-gray-50) or theme.colors.gray[50]
+  <h4>Basic scan</h4>
 
-~ Close Match (Possible Typo)
-  Component: Button
-  Location:  src/components/Button.tsx:28
-  Issue:     color: #3b83f6 (close to #3b82f6)
+  <DocTerminal command="buoy drift scan" lines={[
+    { text: "" },
+    { text: "Scanning project..." },
+    { text: "" },
+    { text: "Auto-detected:", type: "info" },
+    { text: "  Framework: React" },
+    { text: "  Styling: Tailwind CSS" },
+    { text: "  Source: src/" },
+    { text: "" },
+    { text: "Scanned 84 files in 1.2s" },
+    { text: "" },
+    { text: "Results" },
+    { text: "───────" },
+    { text: "Components: 42 detected" },
+    { text: "Tokens: 67 resolved" },
+    { text: "Drift signals: 23", type: "warning" },
+    { text: "Health score: 72/100", type: "success" },
+    { text: "" },
+    { text: "Cache: saved to .buoy/cache.json (next scan will be faster)", type: "muted" },
+  ]} />
 
-  Actions:
-    1. Verify if this is intentional
-    2. If typo, replace with #3b82f6
+  <h4>Scan a specific directory</h4>
 
-~ Hardcoded Value
-  Component: Modal
-  Location:  src/components/Modal.tsx:45
-  Issue:     padding: 15px (not a spacing token)
+  <DocTerminal command="buoy drift scan -s packages/ui/src" lines={[
+    { text: "" },
+    { text: "Scanning packages/ui/src..." },
+    { text: "" },
+    { text: "Scanned 28 files in 0.6s" },
+    { text: "" },
+    { text: "Results" },
+    { text: "───────" },
+    { text: "Components: 15 detected" },
+    { text: "Tokens: 34 resolved" },
+    { text: "Drift signals: 8", type: "warning" },
+    { text: "Health score: 81/100", type: "success" },
+  ]} />
 
-  Actions:
-    1. Use spacing token: 16px (--spacing-4)
+  <h4>Verbose output</h4>
 
-──────────────────────────────────────
-Total: 47 drift signals found
-  High severity: 12
-  Medium severity: 23
-  Low severity: 12</code></pre>
+  <DocTerminal command="buoy drift scan -v" lines={[
+    { text: "" },
+    { text: "Scanning project..." },
+    { text: "" },
+    { text: "Auto-detected:", type: "info" },
+    { text: "  Framework: React" },
+    { text: "  Styling: Tailwind CSS" },
+    { text: "  Source: src/" },
+    { text: "" },
+    { text: "  ✓ src/components/Button.tsx      8 tokens, 0 drift", type: "success" },
+    { text: "  ✓ src/components/Card.tsx        6 tokens, 2 drift", type: "warning" },
+    { text: "  ✓ src/components/Badge.tsx       4 tokens, 1 drift", type: "warning" },
+    { text: "  ✓ src/components/Modal.tsx       5 tokens, 0 drift", type: "success" },
+    { text: "  ...80 more files", type: "muted" },
+    { text: "" },
+    { text: "Scanned 84 files in 1.4s" },
+    { text: "" },
+    { text: "Results" },
+    { text: "───────" },
+    { text: "Components: 42 detected" },
+    { text: "Tokens: 67 resolved" },
+    { text: "Drift signals: 23", type: "warning" },
+    { text: "Health score: 72/100", type: "success" },
+  ]} />
 
-  <h2>Filtering Examples</h2>
+  <h3>Auto-detection</h3>
 
-  <pre><code># Only color issues
+  <p>
+    <code>buoy drift scan</code> works with zero configuration. It auto-detects your framework,
+    styling approach, and source directory. Supported frameworks include React, Vue,
+    Svelte, Angular, and vanilla HTML/CSS.
+  </p>
+
+  <!-- ─────────────────────────────────────────── -->
+  <h2 id="check">buoy drift check</h2>
+
+  <p>
+    Show detailed information about each instance where code diverges from your design system.
+    Use in CI pipelines for automated drift detection.
+  </p>
+
+  <DocTerminal command="buoy drift check [options]" />
+
+  <h3>Options</h3>
+
+  <Flags items={[
+    { name: "--type <type>", description: "Filter by drift type (color, spacing, typography)" },
+    { name: "--severity <level>", description: "Filter by severity (high, medium, low)" },
+    { name: "--file <path>", description: "Check specific file only" },
+    { name: "--json", description: "Output as JSON for scripting" },
+    { name: "--include <glob>", description: "Include additional file patterns" },
+    { name: "--exclude <glob>", description: "Exclude file patterns" },
+  ]} />
+
+  <h3>Example Output</h3>
+
+  <DocTerminal command="buoy drift check" lines={[
+    { text: "" },
+    { text: "Drift Analysis" },
+    { text: "──────────────" },
+    { text: "" },
+    { text: "~ Hardcoded Value", type: "warning" },
+    { text: "  Component: Card" },
+    { text: "  Location:  src/components/Card.tsx:14" },
+    { text: "  Issue:     backgroundColor: #f9fafb (not a design token)" },
+    { text: "" },
+    { text: "  Actions:" },
+    { text: "    1. Replace with design token" },
+    { text: "    2. Example: var(--color-gray-50) or theme.colors.gray[50]", type: "info" },
+    { text: "" },
+    { text: "~ Close Match (Possible Typo)", type: "warning" },
+    { text: "  Component: Button" },
+    { text: "  Location:  src/components/Button.tsx:28" },
+    { text: "  Issue:     color: #3b83f6 (close to #3b82f6)" },
+    { text: "" },
+    { text: "  Actions:" },
+    { text: "    1. Verify if this is intentional" },
+    { text: "    2. If typo, replace with #3b82f6", type: "info" },
+    { text: "" },
+    { text: "──────────────────────────────────────" },
+    { text: "Total: 47 drift signals found" },
+    { text: "  High severity: 12" },
+    { text: "  Medium severity: 23" },
+    { text: "  Low severity: 12" },
+  ]} />
+
+  <h3>Filtering Examples</h3>
+
+  <CodeBlock code={`# Only color issues
 buoy drift check --type color
 
 # Only high severity
@@ -123,37 +188,178 @@ buoy drift check --severity high
 buoy drift check --file src/components/Card.tsx
 
 # Combine filters
-buoy drift check --type spacing --severity high</code></pre>
+buoy drift check --type spacing --severity high`} language="bash" />
 
-  <h2>JSON Output</h2>
+  <h3>What It Scans</h3>
 
-  <pre><code>buoy drift check --json</code></pre>
+  <Flags items={[
+    { name: "React", description: "Components, props, inline styles" },
+    { name: "Vue", description: "Components, scoped styles" },
+    { name: "Svelte", description: "Components, style blocks" },
+    { name: "Angular", description: "Components, stylesheets" },
+    { name: "Tailwind", description: "Config tokens, arbitrary values" },
+    { name: "CSS/SCSS", description: "Custom properties, values" },
+  ]} />
 
-  <pre><code>&#123;
-  "signals": [
-    &#123;
-      "type": "hardcoded-value",
-      "severity": "medium",
-      "file": "src/components/Card.tsx",
-      "line": 14,
-      "category": "color",
-      "value": "#f9fafb",
-      "suggestion": "var(--color-gray-50)"
-    &#125;
-  ],
-  "summary": &#123;
-    "total": 47,
-    "high": 12,
-    "medium": 23,
-    "low": 12
-  &#125;
-&#125;</code></pre>
+  <!-- ─────────────────────────────────────────── -->
+  <h2 id="fix">buoy drift fix</h2>
 
-  <h2>Related Commands</h2>
+  <p>
+    Automatically fix design drift issues in your codebase. Replaces hardcoded
+    values with design tokens and applies other safe transformations.
+  </p>
+
+  <DocTerminal command="buoy drift fix [options]" />
+
+  <h3>Options</h3>
+
+  <Flags items={[
+    { name: "--apply", description: "Apply fixes to source files" },
+    { name: "--dry-run", description: "Show detailed diff without applying changes" },
+    { name: "-c, --confidence <level>", description: 'Minimum confidence level: exact, high, medium, low', default: "high" },
+    { name: "-t, --type <types>", description: "Fix types to include (comma-separated: hardcoded-color, hardcoded-spacing)" },
+    { name: "-f, --file <patterns>", description: "File glob patterns to include (comma-separated)" },
+    { name: "--exclude <patterns>", description: "File glob patterns to exclude (comma-separated)" },
+    { name: "--backup", description: "Create .bak backup files before modifying" },
+    { name: "--json", description: "Output as JSON" },
+    { name: "--force", description: "Skip safety checks" },
+  ]} />
+
+  <h3>Examples</h3>
+
+  <h4>Preview fixes (dry run)</h4>
+
+  <DocTerminal command="buoy drift fix --dry-run" lines={[
+    { text: "" },
+    { text: "Found 18 auto-fixable issues", type: "info" },
+    { text: "" },
+    { text: "Button.tsx:12" },
+    { text: "- color: '#3b82f6'", type: "warning" },
+    { text: "+ color: 'var(--color-primary)'", type: "success" },
+    { text: "" },
+    { text: "Card.tsx:8" },
+    { text: "- padding: '16px'", type: "warning" },
+    { text: "+ padding: 'var(--spacing-md)'", type: "success" },
+    { text: "" },
+    { text: "Run with --apply to apply these changes." },
+  ]} />
+
+  <h4>Apply fixes</h4>
+
+  <DocTerminal command="buoy drift fix --apply" lines={[
+    { text: "" },
+    { text: "Applying 18 fixes..." },
+    { text: "" },
+    { text: "✓ Button.tsx: 3 fixes applied", type: "success" },
+    { text: "✓ Card.tsx: 2 fixes applied", type: "success" },
+    { text: "✓ Modal.tsx: 5 fixes applied", type: "success" },
+    { text: "... and 8 more files" },
+    { text: "" },
+    { text: "18 issues fixed. 5 need manual review.", type: "success" },
+  ]} />
+
+  <h4>Fix only color issues</h4>
+
+  <DocTerminal command="buoy drift fix --apply --type hardcoded-color" />
+
+  <h4>Fix specific files</h4>
+
+  <DocTerminal command='buoy drift fix --apply --file "src/components/**/*.tsx"' />
+
+  <h3>Confidence Levels</h3>
+
+  <p>Each fix suggestion includes a confidence score indicating how safe it is to apply:</p>
+
+  <Flags items={[
+    { name: "exact", description: "100% — Value exactly matches a design token — safest to auto-apply" },
+    { name: "high", description: "95-99% — Very close match, safe to auto-apply" },
+    { name: "medium", description: "70-94% — Close match, review recommended" },
+    { name: "low", description: "<70% — Ambiguous, manual review required" },
+  ]} />
+
+  <p>By default, <code>--apply</code> only applies <code>high</code> and <code>exact</code> confidence fixes.</p>
+
+  <!-- ─────────────────────────────────────────── -->
+  <h2 id="baseline">buoy drift baseline</h2>
+
+  <p>
+    Manage drift baseline to hide existing issues and only track new drift.
+    Perfect for adopting Buoy in projects with existing design debt.
+  </p>
+
+  <DocTerminal command="buoy drift baseline <command> [options]" />
+
+  <h3>Commands</h3>
+
+  <Flags items={[
+    { name: "create", description: "Create baseline from current drift signals (hides existing issues)" },
+    { name: "show", description: "Show current baseline status" },
+    { name: "update", description: "Update baseline to include current drift signals" },
+    { name: "clear", description: "Remove baseline (show all drift signals again)" },
+  ]} />
+
+  <h3>Examples</h3>
+
+  <h4>Create a baseline</h4>
+
+  <DocTerminal command="buoy drift baseline create" lines={[
+    { text: "" },
+    { text: "Found 47 existing drift signals", type: "info" },
+    { text: "Creating baseline..." },
+    { text: "" },
+    { text: "Baseline created: .buoy/baseline.json", type: "success" },
+    { text: "Future scans will only show new drift." },
+  ]} />
+
+  <h4>Show baseline status</h4>
+
+  <DocTerminal command="buoy drift baseline show" lines={[
+    { text: "" },
+    { text: "Baseline: .buoy/baseline.json" },
+    { text: "Created: 2024-01-15" },
+    { text: "Signals: 47 baselined" },
+    { text: "New since baseline: 3", type: "info" },
+  ]} />
+
+  <h4>Update baseline</h4>
+
+  <DocTerminal command="buoy drift baseline update" lines={[
+    { text: "" },
+    { text: "Adding 3 new signals to baseline..." },
+    { text: "Baseline updated: 50 total signals", type: "success" },
+  ]} />
+
+  <h4>Clear baseline</h4>
+
+  <DocTerminal command="buoy drift baseline clear" lines={[
+    { text: "" },
+    { text: "Baseline removed. All drift signals will be shown.", type: "success" },
+  ]} />
+
+  <h3>Workflow</h3>
+
+  <ol>
+    <li>Run <code>buoy drift check</code> to see all issues</li>
+    <li>Run <code>buoy drift baseline create</code> to accept existing debt</li>
+    <li>New drift will be caught, old drift is hidden</li>
+    <li>Fix issues over time, update baseline as needed</li>
+  </ol>
+
+  <!-- ─────────────────────────────────────────── -->
+  <h2>Drift Types</h2>
+
+  <Flags items={[
+    { name: "hardcoded-value", description: "Raw values instead of design tokens" },
+    { name: "close-match", description: "Values near tokens (likely typos)" },
+    { name: "naming-inconsistency", description: "Component names that don't follow conventions" },
+    { name: "deprecated-pattern", description: "Usage of deprecated design patterns" },
+  ]} />
+
+  <!-- ─────────────────────────────────────────── -->
+  <h2>Related</h2>
 
   <ul>
-    <li><a href="/docs/cli/audit">buoy audit</a> — Health report with overall score</li>
-    <li><a href="/docs/cli/compare">buoy compare</a> — Compare against design tokens file</li>
-    <li><a href="/docs/cli/check">buoy check</a> — CI-optimized output</li>
+    <li><a href="/docs/cli/show">buoy show</a> — View drift signals, health, and history</li>
+    <li><a href="/docs/cli/build">buoy build</a> — Generate tokens and knowledge graph</li>
   </ul>
 </DocsLayout>
