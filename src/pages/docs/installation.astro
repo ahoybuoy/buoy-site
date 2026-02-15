@@ -5,11 +5,30 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
 <DocsLayout title="Installation" description="Install Buoy in your project">
   <h1>Installation</h1>
 
+  <h2>GitHub App (Easiest)</h2>
+
   <p>
-    Buoy can be run directly with npx or installed as a dev dependency.
+    The fastest way to start catching design drift is to install the
+    <a href="https://github.com/marketplace/buoy-design">Buoy GitHub App</a>
+    from the GitHub Marketplace. It scans every PR automatically — no CLI, no config, no CI setup.
   </p>
 
-  <h2>Using npx (Recommended)</h2>
+  <ol>
+    <li>Install from the <a href="https://github.com/marketplace/buoy-design">GitHub Marketplace</a></li>
+    <li>Select your repositories</li>
+    <li>Open a PR — Buoy posts a review with drift issues</li>
+  </ol>
+
+  <p>See <a href="/docs/integrations/github-actions">GitHub App docs</a> for details.</p>
+
+  <h2>CLI Installation</h2>
+
+  <p>
+    For local scanning, auto-fixing, and project setup, install the Buoy CLI.
+    It can be run directly with npx or installed as a dependency.
+  </p>
+
+  <h3>Using npx (Recommended)</h3>
 
   <p>Run Buoy without installing:</p>
 
@@ -21,7 +40,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
 
   <pre><code>npx ahoybuoy drift</code></pre>
 
-  <h2>Installing as a Dev Dependency</h2>
+  <h3>Installing as a Dev Dependency</h3>
 
   <p>For ongoing use, install Buoy in your project:</p>
 
@@ -43,23 +62,23 @@ yarn add -D @buoy-design/cli</code></pre>
   &#125;
 &#125;</code></pre>
 
-  <h2>Global Installation</h2>
+  <h3>Global Installation</h3>
 
   <p>Install globally to use <code>buoy</code> anywhere:</p>
 
   <pre><code>npm install -g @buoy-design/cli</code></pre>
 
-  <h2>Requirements</h2>
+  <h3>Requirements</h3>
 
   <ul>
     <li>Node.js 18 or higher</li>
     <li>A frontend codebase (React, Vue, Svelte, Angular, Next.js, Tailwind, or plain CSS/HTML)</li>
   </ul>
 
-  <h2>Verify Installation</h2>
+  <h3>Verify Installation</h3>
 
   <pre><code>$ buoy --version
-0.3.6
+0.3.17
 
 $ buoy --help
 Usage: buoy [command] [options]
