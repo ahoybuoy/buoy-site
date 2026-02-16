@@ -18,6 +18,13 @@ pnpm-debug.log*
 .env.production
 .dev.vars
 
+# test artifacts
+playwright-report/
+test-results/
+
+# syncthing conflicts
+*.sync-conflict-*
+
 # macOS-specific files
 .DS_Store
 
