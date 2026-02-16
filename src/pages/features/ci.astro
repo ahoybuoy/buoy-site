@@ -4,12 +4,12 @@ import FeatureCard from '../../components/FeatureCard.astro'
 import LeadMagnetCallout from '../../components/LeadMagnetCallout.astro'
 
 const ciProviders = [
-  { name: 'GitHub Actions', example: 'npx ahoybuoy check' },
-  { name: 'GitLab CI', example: 'npx ahoybuoy check --format json' },
-  { name: 'CircleCI', example: 'npx ahoybuoy check --fail-on warning' },
-  { name: 'Jenkins', example: 'npx ahoybuoy check' },
-  { name: 'Azure Pipelines', example: 'npx ahoybuoy check' },
-  { name: 'Bitbucket Pipelines', example: 'npx ahoybuoy check' },
+  { name: 'GitHub Actions', example: 'npx ahoybuoy drift check' },
+  { name: 'GitLab CI', example: 'npx ahoybuoy drift check --format json' },
+  { name: 'CircleCI', example: 'npx ahoybuoy drift check --fail-on warning' },
+  { name: 'Jenkins', example: 'npx ahoybuoy drift check' },
+  { name: 'Azure Pipelines', example: 'npx ahoybuoy drift check' },
+  { name: 'Bitbucket Pipelines', example: 'npx ahoybuoy drift check' },
 ]
 
 const outputFormats = [
@@ -78,7 +78,7 @@ const relatedFeatures = [
           <span class="text-sm text-slate font-mono">Basic CI command</span>
         </div>
         <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{`# Run drift check in CI mode
-npx ahoybuoy check
+npx ahoybuoy drift check
 
 # Exit codes:
 # 0 = No critical drift
@@ -126,16 +126,16 @@ npx ahoybuoy check
           <span class="text-sm text-slate font-mono">Configure when to fail</span>
         </div>
         <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{`# Fail on any critical issues (recommended)
-npx ahoybuoy check --fail-on critical
+npx ahoybuoy drift check --fail-on critical
 
 # Fail on warnings too (stricter)
-npx ahoybuoy check --fail-on warning
+npx ahoybuoy drift check --fail-on warning
 
 # Never fail, just report (audit mode)
-npx ahoybuoy check --fail-on none
+npx ahoybuoy drift check --fail-on none
 
 # Custom thresholds
-npx ahoybuoy check \\
+npx ahoybuoy drift check \\
   --max-critical 0 \\
   --max-warning 10 \\
   --max-info 50`}</code></pre>
@@ -172,7 +172,7 @@ jobs:
         run: npm ci
 
       - name: Run Buoy drift check
-        run: npx ahoybuoy check --fail-on critical
+        run: npx ahoybuoy drift check --fail-on critical
 
       - name: Upload SARIF (optional)
         if: always()

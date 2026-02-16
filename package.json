@@ -6,7 +6,10 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "npx playwright test",
+    "test:ui": "npx playwright test --ui",
+    "test:smoke": "npx playwright test tests/smoke.spec.ts"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.12",
@@ -18,7 +21,7 @@
     "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
-    "playwright": "^1.57.0",
+    "@playwright/test": "^1.57.0",
     "sharp": "^0.34.5"
   }
 }

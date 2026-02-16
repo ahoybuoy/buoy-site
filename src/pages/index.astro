@@ -120,13 +120,13 @@ const steps = [
   {
     step: '2',
     title: 'Enforce',
-    command: 'buoy check',
+    command: 'buoy drift check',
     description: 'Catch drift at PR. Nothing bad reaches main.'
   },
   {
     step: '3',
     title: 'Measure',
-    command: 'buoy audit',
+    command: 'buoy show health',
     description: 'Track design system health over time.'
   },
 ]
@@ -175,9 +175,9 @@ const steps = [
         </div>
 
         <!-- Quick install command -->
-        <div class="inline-flex items-center gap-3 px-4 py-3 bg-navy/80 border border-navy-light/30 rounded-lg font-mono text-sm backdrop-blur-sm copy-command" data-command="npx ahoybuoy begin">
+        <div class="inline-flex items-center gap-3 px-4 py-3 bg-navy/80 border border-navy-light/30 rounded-lg font-mono text-sm backdrop-blur-sm copy-command" data-command="npx ahoybuoy dock">
           <span class="text-slate">$</span>
-          <code class="text-light">npx ahoybuoy begin</code>
+          <code class="text-light">npx ahoybuoy dock</code>
           <button class="copy-btn text-slate hover:text-buoy transition-colors" aria-label="Copy command">
             <svg class="copy-icon w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
@@ -588,7 +588,7 @@ const steps = [
               <div class="text-4xl mb-4">🔍</div>
               <h3 class="text-xl font-semibold text-light mb-2">Detect Locally</h3>
               <p class="text-slate text-sm mb-4">
-                Run <code class="text-buoy">buoy check</code> in any project. See every hardcoded value, naming issue, and token violation.
+                Run <code class="text-buoy">buoy drift check</code> in any project. See every hardcoded value, naming issue, and token violation.
               </p>
               <ul class="space-y-2 text-sm text-slate-dark">
                 <li class="flex items-center gap-2">
@@ -679,7 +679,7 @@ const steps = [
         <div class="bg-navy border border-lavender/30 rounded-xl p-5">
           <div class="text-sm text-lavender mb-3">Ask your AI to run:</div>
           <div class="bg-navy-dark/80 rounded-lg p-4 font-mono text-light text-sm sm:text-base">
-            npx ahoybuoy begin
+            npx ahoybuoy dock
           </div>
         </div>
       </div>
