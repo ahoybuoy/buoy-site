@@ -1,0 +1,255 @@
+---
+import FeatureLayout from '../../layouts/FeatureLayout.astro'
+import Terminal from '../../components/Terminal.astro'
+import FeatureCard from '../../components/FeatureCard.astro'
+import CodeBlock from '../../components/CodeBlock.astro'
+
+const addTerminalLines = [
+  { text: '', delay: 600 },
+  { text: '<span class="text-buoy">⚓</span> Adding ignore rule...', type: 'output', delay: 800 },
+  { text: '', delay: 1200 },
+  { text: 'Added ignore rule: files matching <span class="text-lavender">"src/legacy/**"</span>', type: 'success', delay: 1600 },
+  { text: '<span class="text-slate-dark">14 drift signals will be hidden.</span>', type: 'output', delay: 2000 },
+]
+
+const showTerminalLines = [
+  { text: '', delay: 600 },
+  { text: 'Ignore Rules', type: 'output', delay: 800 },
+  { text: '────────────', type: 'output', delay: 1000 },
+  { text: '', delay: 1200 },
+  { text: '1. files matching <span class="text-lavender">"src/legacy/**"</span>          <span class="text-slate-dark">(14 signals)</span>', type: 'output', delay: 1400 },
+  { text: '2. type: <span class="text-warning">hardcoded-color</span>                   <span class="text-slate-dark">(9 signals)</span>', type: 'output', delay: 1600 },
+  { text: '3. component: <span class="text-lavender">"LegacyCard"</span>                 <span class="text-slate-dark">(3 signals)</span>', type: 'output', delay: 1800 },
+  { text: '', delay: 2000 },
+  { text: '<span class="text-slate-dark">Total: 26 signals ignored</span>', type: 'muted', delay: 2200 },
+]
+
+const filterTypes = [
+  {
+    title: '--file',
+    description: 'Ignore drift in matching files or directories. Perfect for legacy code you won\'t be touching.',
+    icon: '📁',
+    examples: ['src/legacy/**', 'vendor/**'],
+  },
+  {
+    title: '--type',
+    description: 'Ignore an entire drift type. Useful when a category doesn\'t apply to your project.',
+    icon: '🏷️',
+    examples: ['hardcoded-color', 'hardcoded-spacing'],
+  },
+  {
+    title: '--component',
+    description: 'Ignore drift from a specific component. For intentional one-offs or third-party wrappers.',
+    icon: '📦',
+    examples: ['LegacyCard', 'OldButton'],
+  },
+  {
+    title: '--value',
+    description: 'Ignore a specific hardcoded value. When a particular value is intentional and shouldn\'t be a token.',
+    icon: '🎯',
+    examples: ['#ff0000', '16px'],
+  },
+]
+
+const relatedFeatures = [
+  {
+    title: 'Drift Detection',
+    description: 'Find every inconsistency across your codebase',
+    href: '/features/drift-detection'
+  },
+  {
+    title: 'CI Integration',
+    description: 'Add drift checks to your CI pipeline',
+    href: '/features/ci'
+  },
+  {
+    title: 'GitHub App',
+    description: 'Catch drift in every PR automatically',
+    href: '/features/github-action'
+  },
+]
+---
+
+<FeatureLayout
+  title="Ignore Rules — Intentional Exceptions for Design Drift | Buoy"
+  description="Tell Buoy what drift is intentional. Ignore by file, type, component, or value so your team focuses on real issues, not noise."
+  keywords="design drift ignore, drift exceptions, design system noise, buoy ignore rules"
+  heroTitle="Not all drift is a bug."
+  heroDescription="Legacy code, intentional deviations, third-party wrappers — some drift is fine. Ignore rules let you tell Buoy what's intentional so your team focuses on what matters."
+>
+
+  <!-- Why Ignore? -->
+  <section class="py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light mb-4 text-center">The Problem with No Exceptions</h2>
+      <p class="text-slate text-center mb-8 max-w-2xl mx-auto">
+        A drift tool that can't be told "I know" becomes a noise machine. Teams stop trusting the output.
+        Real issues hide behind a wall of known exceptions. Ignore rules fix that.
+      </p>
+
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="bg-navy/50 border border-critical/30 rounded-xl p-6">
+          <h3 class="font-semibold text-light mb-3">Without Ignore Rules</h3>
+          <ul class="space-y-2 text-sm text-slate">
+            <li class="flex items-start gap-2">
+              <span class="text-critical">✗</span>
+              <span>47 drift signals — but 30 are in legacy code</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-critical">✗</span>
+              <span>CI fails on code nobody plans to change</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-critical">✗</span>
+              <span>Team ignores the report entirely</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-critical">✗</span>
+              <span>Real drift slips through the noise</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-navy/50 border border-success/30 rounded-xl p-6">
+          <h3 class="font-semibold text-light mb-3">With Ignore Rules</h3>
+          <ul class="space-y-2 text-sm text-slate">
+            <li class="flex items-start gap-2">
+              <span class="text-success">✓</span>
+              <span>17 drift signals — all actionable</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-success">✓</span>
+              <span>CI passes on known exceptions</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-success">✓</span>
+              <span>Team trusts the output</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-success">✓</span>
+              <span>Real drift gets caught immediately</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Terminal Demo: Add -->
+  <section class="py-16 bg-navy">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light mb-4 text-center">Add an Ignore Rule</h2>
+      <p class="text-slate text-center mb-8 max-w-2xl mx-auto">
+        One command. Targeted filters. The noise disappears.
+      </p>
+
+      <Terminal
+        command='buoy drift ignore add --file "src/legacy/**"'
+        lines={addTerminalLines}
+      />
+    </div>
+  </section>
+
+  <!-- 4 Filter Types -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light mb-4 text-center">Four Ways to Filter</h2>
+      <p class="text-slate text-center mb-12 max-w-2xl mx-auto">
+        Target exactly what you want to ignore. Combine flags for precision.
+      </p>
+
+      <div class="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        {filterTypes.map((filter) => (
+          <FeatureCard {...filter} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-16 bg-navy">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light mb-8 text-center">How It Works</h2>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-12 h-12 rounded-full bg-buoy/20 border-2 border-buoy flex items-center justify-center mx-auto mb-4 text-buoy font-bold">
+            1
+          </div>
+          <h3 class="font-semibold text-light mb-2">Detect</h3>
+          <p class="text-sm text-slate">
+            Run <code class="text-xs text-lavender bg-navy-dark/50 px-1.5 py-0.5 rounded">buoy drift check</code> to see all drift signals in your codebase.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-12 h-12 rounded-full bg-buoy/20 border-2 border-buoy flex items-center justify-center mx-auto mb-4 text-buoy font-bold">
+            2
+          </div>
+          <h3 class="font-semibold text-light mb-2">Ignore Intentional</h3>
+          <p class="text-sm text-slate">
+            Add ignore rules for legacy code, known exceptions, and intentional deviations.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-12 h-12 rounded-full bg-buoy/20 border-2 border-buoy flex items-center justify-center mx-auto mb-4 text-buoy font-bold">
+            3
+          </div>
+          <h3 class="font-semibold text-light mb-2">Focus on Real Drift</h3>
+          <p class="text-sm text-slate">
+            Future checks only surface actionable issues. CI stays green for known exceptions.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Terminal Demo: Show -->
+  <section class="py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light mb-4 text-center">See What's Ignored</h2>
+      <p class="text-slate text-center mb-8 max-w-2xl mx-auto">
+        Full visibility into every rule. Nothing is hidden from you.
+      </p>
+
+      <Terminal
+        command="buoy drift ignore show"
+        lines={showTerminalLines}
+      />
+    </div>
+  </section>
+
+  <!-- Combine Filters -->
+  <section class="py-16 bg-navy">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light mb-4 text-center">Combine Filters for Precision</h2>
+      <p class="text-slate text-center mb-8 max-w-2xl mx-auto">
+        Stack flags to create targeted rules that match exactly what you need.
+      </p>
+
+      <CodeBlock code={`# Ignore hardcoded colors in legacy files
+buoy drift ignore add --file "src/legacy/**" --type hardcoded-color
+
+# Ignore a specific value in a specific component
+buoy drift ignore add --component "OldButton" --value "#333"
+
+# Ignore all drift in vendor code
+buoy drift ignore add --file "vendor/**"
+
+# View your rules anytime
+buoy drift ignore show`} language="bash" />
+    </div>
+  </section>
+
+  <!-- Related Features Slot -->
+  <div slot="related" class="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+    {relatedFeatures.map((feature) => (
+      <FeatureCard
+        title={feature.title}
+        description={feature.description}
+        href={feature.href}
+      />
+    ))}
+  </div>
+</FeatureLayout>

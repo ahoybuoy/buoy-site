@@ -28,6 +28,12 @@ const docsSections: { title: string; items: DocItem[] }[] = [
     ]
   },
   {
+    title: 'GitHub App',
+    items: [
+      { label: 'Overview', href: '/docs/integrations/github-actions' },
+    ]
+  },
+  {
     title: 'buoy dock',
     items: [
       { label: 'Overview', href: '/docs/cli/dock' },
@@ -47,7 +53,7 @@ const docsSections: { title: string; items: DocItem[] }[] = [
       { label: 'scan', href: '/docs/cli/drift#scan', indent: true },
       { label: 'check', href: '/docs/cli/drift#check', indent: true },
       { label: 'fix', href: '/docs/cli/drift#fix', indent: true },
-      { label: 'baseline', href: '/docs/cli/drift#baseline', indent: true },
+      { label: 'ignore', href: '/docs/cli/drift#ignore', indent: true },
     ]
   },
   {
@@ -58,12 +64,6 @@ const docsSections: { title: string; items: DocItem[] }[] = [
       { label: 'drift & health', href: '/docs/cli/show#drift', indent: true },
       { label: 'setup status', href: '/docs/cli/show#config', indent: true },
       { label: 'all', href: '/docs/cli/show#all', indent: true },
-    ]
-  },
-  {
-    title: 'buoy ahoy',
-    items: [
-      { label: 'Overview', href: '/docs/cli/ahoy' },
     ]
   },
   {
@@ -79,12 +79,6 @@ const docsSections: { title: string; items: DocItem[] }[] = [
       { label: 'Drift Detection', href: '/docs/features/drift-detection' },
       { label: 'Token Comparison', href: '/docs/features/token-comparison' },
       { label: 'Health Scoring', href: '/docs/features/health-scoring' },
-    ]
-  },
-  {
-    title: 'GitHub App',
-    items: [
-      { label: 'Overview', href: '/docs/integrations/github-actions' },
     ]
   },
 ]

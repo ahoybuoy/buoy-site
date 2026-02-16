@@ -113,7 +113,7 @@ import CodeBlock from '../../../components/CodeBlock.astro'
     { name: "-S, --severity <level>", description: "Filter by minimum severity (info, warning, critical)" },
     { name: "-t, --type <type>", description: "Filter by drift type" },
     { name: "-v, --verbose", description: "Verbose output with full details" },
-    { name: "--include-baseline", description: "Include baselined drifts" },
+    { name: "--include-ignored", description: "Include ignored drifts" },
   ]} />
 
   <DocTerminal command="buoy show drift" lines={[
@@ -455,7 +455,7 @@ import CodeBlock from '../../../components/CodeBlock.astro'
   <h2>Related</h2>
 
   <ul>
-    <li><a href="/docs/cli/drift">buoy drift</a> — Scan, check, fix, and baseline drift</li>
+    <li><a href="/docs/cli/drift">buoy drift</a> — Scan, check, fix, and manage ignore rules</li>
     <li><a href="/docs/cli/dock">buoy dock</a> — Setup tokens, graph, and project config</li>
     <li><a href="/docs/cli/dock">buoy dock</a> — Set up everything that <code>show</code> displays</li>
   </ul>

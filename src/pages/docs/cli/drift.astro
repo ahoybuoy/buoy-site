@@ -10,7 +10,7 @@ import CodeBlock from '../../../components/CodeBlock.astro'
 
   <p>
     Detect design drift in your codebase. Scan for issues, inspect each drift signal,
-    apply fixes, and manage baselines for existing projects.
+    apply fixes, and manage ignore rules for intentional exceptions.
   </p>
 
   <h2>Usage</h2>
@@ -23,7 +23,7 @@ import CodeBlock from '../../../components/CodeBlock.astro'
     { name: "scan", description: "Scan your codebase for design system usage and drift signals" },
     { name: "check", description: "Show detailed drift signals with severity and type" },
     { name: "fix", description: "Suggest and apply fixes for drift issues" },
-    { name: "baseline", description: "Manage drift baseline to hide existing issues" },
+    { name: "ignore", description: "Ignore specific drift signals by file, type, component, or value" },
   ]} />
 
   <!-- ─────────────────────────────────────────── -->
@@ -280,70 +280,97 @@ buoy drift check --type spacing --severity high`} language="bash" />
   <p>By default, <code>--apply</code> only applies <code>high</code> and <code>exact</code> confidence fixes.</p>
 
   <!-- ─────────────────────────────────────────── -->
-  <h2 id="baseline">buoy drift baseline</h2>
+  <h2 id="ignore">buoy drift ignore</h2>
 
   <p>
-    Manage drift baseline to hide existing issues and only track new drift.
-    Perfect for adopting Buoy in projects with existing design debt.
+    Ignore specific drift signals so they don't appear in checks or affect your health score.
+    More targeted than baselines — filter by file path, drift type, component name, or specific value.
   </p>
 
-  <DocTerminal command="buoy drift baseline <command> [options]" />
+  <DocTerminal command="buoy drift ignore <command> [options]" />
 
   <h3>Commands</h3>
 
   <Flags items={[
-    { name: "create", description: "Create baseline from current drift signals (hides existing issues)" },
-    { name: "show", description: "Show current baseline status" },
-    { name: "update", description: "Update baseline to include current drift signals" },
-    { name: "clear", description: "Remove baseline (show all drift signals again)" },
+    { name: "all", description: "Ignore all current drift signals" },
+    { name: "add", description: "Add current drift signals to the ignore list" },
+    { name: "show", description: "View all ignored signals and their filters" },
+    { name: "clear", description: "Remove the ignore list entirely" },
+  ]} />
+
+  <h3>Options</h3>
+
+  <p>These flags work with <code>all</code> and <code>add</code> to target specific signals:</p>
+
+  <Flags items={[
+    { name: '--file <glob>', description: 'Ignore drift in matching files or folders (e.g. "src/legacy/**")' },
+    { name: '--type <type>', description: 'Ignore a specific drift type (e.g. hardcoded-color)' },
+    { name: '--component <name>', description: 'Ignore drift from a specific component (e.g. "LegacyCard")' },
+    { name: '--value <value>', description: 'Ignore a specific hardcoded value (e.g. "#ff0000")' },
   ]} />
 
   <h3>Examples</h3>
 
-  <h4>Create a baseline</h4>
+  <h4>Ignore all drift in legacy code</h4>
 
-  <DocTerminal command="buoy drift baseline create" lines={[
+  <DocTerminal command='buoy drift ignore add --file "src/legacy/**"' lines={[
     { text: "" },
-    { text: "Found 47 existing drift signals", type: "info" },
-    { text: "Creating baseline..." },
-    { text: "" },
-    { text: "Baseline created: .buoy/baseline.json", type: "success" },
-    { text: "Future scans will only show new drift." },
+    { text: 'Added ignore rule: files matching "src/legacy/**"', type: "success" },
+    { text: "14 drift signals will be hidden." },
   ]} />
 
-  <h4>Show baseline status</h4>
+  <h4>Ignore a specific drift type</h4>
 
-  <DocTerminal command="buoy drift baseline show" lines={[
+  <DocTerminal command="buoy drift ignore add --type hardcoded-color" lines={[
     { text: "" },
-    { text: "Baseline: .buoy/baseline.json" },
-    { text: "Created: 2024-01-15" },
-    { text: "Signals: 47 baselined" },
-    { text: "New since baseline: 3", type: "info" },
+    { text: "Added ignore rule: type hardcoded-color", type: "success" },
+    { text: "9 drift signals will be hidden." },
   ]} />
 
-  <h4>Update baseline</h4>
+  <h4>Ignore drift from a single component</h4>
 
-  <DocTerminal command="buoy drift baseline update" lines={[
+  <DocTerminal command='buoy drift ignore add --component "LegacyCard"' lines={[
     { text: "" },
-    { text: "Adding 3 new signals to baseline..." },
-    { text: "Baseline updated: 50 total signals", type: "success" },
+    { text: 'Added ignore rule: component "LegacyCard"', type: "success" },
+    { text: "3 drift signals will be hidden." },
   ]} />
 
-  <h4>Clear baseline</h4>
+  <h4>Ignore a specific value</h4>
 
-  <DocTerminal command="buoy drift baseline clear" lines={[
+  <DocTerminal command='buoy drift ignore add --value "#ff0000"' lines={[
     { text: "" },
-    { text: "Baseline removed. All drift signals will be shown.", type: "success" },
+    { text: 'Added ignore rule: value "#ff0000"', type: "success" },
+    { text: "2 drift signals will be hidden." },
   ]} />
 
-  <h3>Workflow</h3>
+  <h4>Combine filters</h4>
 
-  <ol>
-    <li>Run <code>buoy drift check</code> to see all issues</li>
-    <li>Run <code>buoy drift baseline create</code> to accept existing debt</li>
-    <li>New drift will be caught, old drift is hidden</li>
-    <li>Fix issues over time, update baseline as needed</li>
-  </ol>
+  <CodeBlock code={`# Ignore hardcoded colors in legacy files
+buoy drift ignore add --file "src/legacy/**" --type hardcoded-color
+
+# Ignore a specific value in a specific component
+buoy drift ignore add --component "OldButton" --value "#333"`} language="bash" />
+
+  <h4>View ignored signals</h4>
+
+  <DocTerminal command="buoy drift ignore show" lines={[
+    { text: "" },
+    { text: "Ignore Rules" },
+    { text: "────────────" },
+    { text: "" },
+    { text: '1. files matching "src/legacy/**"          (14 signals)' },
+    { text: "2. type: hardcoded-color                   (9 signals)" },
+    { text: '3. component: "LegacyCard"                 (3 signals)' },
+    { text: "" },
+    { text: "Total: 26 signals ignored", type: "muted" },
+  ]} />
+
+  <h4>Clear all ignore rules</h4>
+
+  <DocTerminal command="buoy drift ignore clear" lines={[
+    { text: "" },
+    { text: "Ignore list removed. All drift signals will be shown.", type: "success" },
+  ]} />
 
   <!-- ─────────────────────────────────────────── -->
   <h2>Drift Types</h2>
