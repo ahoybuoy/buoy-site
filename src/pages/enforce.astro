@@ -246,6 +246,23 @@ import { siteConfig } from '../config'
               </div>
             </div>
           </div>
+
+          <!-- Config snippet -->
+          <div class="mt-6 bg-navy-dark border border-navy-light/20 rounded-lg overflow-hidden">
+            <div class="px-4 py-2 bg-navy border-b border-navy-light/20">
+              <span class="text-xs text-slate font-mono">.buoy.yaml</span>
+            </div>
+            <pre class="p-4 text-xs font-mono overflow-x-auto"><code class="text-slate">{`drift:
+  enforce:
+    - type: close-match
+      reason: "Typos must be fixed"
+    - file: "src/checkout/**"
+      type: hardcoded-color
+      reason: "Checkout uses tokens only"`}</code></pre>
+          </div>
+          <p class="text-xs text-slate-dark mt-3 text-center">
+            Enforcement rules are configurable in <a href="/docs/configuration" class="text-buoy hover:text-buoy-light">.buoy.yaml</a>
+          </p>
         </div>
       </div>
     </div>

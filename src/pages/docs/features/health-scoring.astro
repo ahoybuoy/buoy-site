@@ -120,13 +120,35 @@ Final score: 34/100 (Poor)</code></pre>
 
   <h2>Score in CI</h2>
 
-  <p>Use the score to gate PRs:</p>
+  <p>Gate PRs on health score using <code>health.failBelow</code> in your config:</p>
 
-  <pre><code># Fail if critical drift detected (default)
-buoy drift check
+  <pre><code># .buoy.yaml
+health:
+  failBelow: 70    # Exit code 1 if health score &lt; 70</code></pre>
 
-# Fail on any drift (warning or above)
-buoy drift check --fail-on warning</code></pre>
+  <p>Then run the check in CI — no extra flags needed:</p>
+
+  <pre><code>buoy drift check</code></pre>
+
+  <p>
+    When <code>health.failBelow</code> is configured, <code>buoy drift check</code> exits with code 1
+    if the score drops below the threshold. Combine with <code>--fail-on</code> for layered gating:
+  </p>
+
+  <pre><code># Fail on critical drift AND if health score drops below 70
+buoy drift check --fail-on critical</code></pre>
+
+  <p>The <code>--json</code> output includes a health object when configured:</p>
+
+  <pre><code>$ buoy drift check --json
+&#123;
+  "drifts": [...],
+  "health": &#123;
+    "score": 68,
+    "threshold": 70,
+    "passed": false
+  &#125;
+&#125;</code></pre>
 
   <h2>Viewing Score Details</h2>
 

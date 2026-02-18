@@ -373,6 +373,41 @@ buoy drift ignore add --component "OldButton" --value "#333"`} language="bash" /
   ]} />
 
   <!-- ─────────────────────────────────────────── -->
+  <h2 id="severity-pipeline">Severity Pipeline</h2>
+
+  <p>
+    When <code>buoy drift check</code> runs, severity rules from <code>.buoy.yaml</code> are applied
+    in a fixed order before results are displayed:
+  </p>
+
+  <Flags items={[
+    { name: "1. Promote", description: "Conditional severity upgrades. Matches drift by type, file, component, token, or value and elevates severity (e.g. warning → critical)." },
+    { name: "2. Enforce", description: "Unconditional critical. Overrides any promote result. If enforce matches, the drift is critical — no negotiation." },
+    { name: "3. Ignore", description: "The escape hatch. Ignored drift is excluded entirely, even if promoted or enforced." },
+  ]} />
+
+  <p>
+    Configure these in your <code>.buoy.yaml</code> under <code>drift.promote</code>, <code>drift.enforce</code>,
+    and <code>drift.ignore</code>. See <a href="/docs/configuration">Configuration</a> for full details.
+  </p>
+
+  <h3>Health gate</h3>
+
+  <p>
+    When <code>health.failBelow</code> is configured, <code>buoy drift check</code> also exits with code 1
+    if the health score drops below the threshold. The <code>--json</code> output includes a health object:
+  </p>
+
+  <CodeBlock code={`{
+  "drifts": [...],
+  "health": {
+    "score": 68,
+    "threshold": 70,
+    "passed": false
+  }
+}`} language="json" />
+
+  <!-- ─────────────────────────────────────────── -->
   <h2>Drift Types</h2>
 
   <Flags items={[

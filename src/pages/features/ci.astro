@@ -143,8 +143,42 @@ npx ahoybuoy drift check \\
     </div>
   </section>
 
-  <!-- GitHub Actions Example -->
+  <!-- Health Score Gate -->
   <section class="py-16 bg-navy">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light mb-8 text-center">Health Score Gate</h2>
+
+      <p class="text-slate text-center mb-8 max-w-2xl mx-auto">
+        Set a minimum health score in your config. No CLI flags needed — <code class="text-xs text-lavender bg-navy-dark/50 px-1.5 py-0.5 rounded">buoy drift check</code> exits with code 1 when the score drops below your threshold.
+      </p>
+
+      <div class="bg-navy-dark border border-navy-light/30 rounded-xl overflow-hidden mb-8">
+        <div class="px-4 py-3 bg-navy border-b border-navy-light/20">
+          <span class="text-sm text-slate font-mono">.buoy.yaml</span>
+        </div>
+        <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{`# Config-based gate — no flags required
+health:
+  failBelow: 70    # Exit code 1 if health score < 70`}</code></pre>
+      </div>
+
+      <div class="bg-navy-dark/50 border border-navy-light/20 rounded-xl p-6">
+        <h3 class="font-semibold text-light mb-3">Config gate vs CLI flags</h3>
+        <div class="grid sm:grid-cols-2 gap-4 text-sm">
+          <div>
+            <div class="text-buoy font-medium mb-1">health.failBelow (config)</div>
+            <p class="text-slate">Lives in <code class="text-xs text-lavender">.buoy.yaml</code>. Enforced automatically. Same threshold everywhere — local, CI, every developer.</p>
+          </div>
+          <div>
+            <div class="text-buoy font-medium mb-1">--fail-on (CLI flag)</div>
+            <p class="text-slate">Per-invocation. Threshold based on severity counts. Use alongside the health gate for layered CI gating.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GitHub Actions Example -->
+  <section class="py-16">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-2xl font-bold text-light mb-8 text-center">Full GitHub Actions Example</h2>
 
@@ -173,6 +207,7 @@ jobs:
 
       - name: Run Buoy drift check
         run: npx ahoybuoy drift check --fail-on critical
+        # Also respects health.failBelow from .buoy.yaml
 
       - name: Upload SARIF (optional)
         if: always()

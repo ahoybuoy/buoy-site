@@ -55,6 +55,22 @@ thresholds:
   minScore: 70                  # Minimum passing score
   maxHardcoded: 10              # Max allowed hardcoded values
 
+# Severity rules
+drift:
+  promote:
+    - type: hardcoded-color
+      file: "src/checkout/**"
+      severity: warning
+      to: critical
+      reason: "Checkout must use tokens"
+  enforce:
+    - type: close-match
+      reason: "Typos are always critical"
+
+# Health gate
+health:
+  failBelow: 70                   # Exit code 1 below this score
+
 # Output settings
 output:
   format: table                 # table | json | markdown</code></pre>
@@ -124,6 +140,118 @@ output:
   minScore: 70               # CI fails below this score
   maxHardcoded: 10           # Max hardcoded values allowed
   maxCloseMatches: 0         # Zero tolerance for typos</code></pre>
+
+  <h2>Severity Rules: promote</h2>
+
+  <p>
+    Promote drift severity conditionally based on filters. When a drift signal matches a promote rule,
+    its severity is elevated from one level to another.
+  </p>
+
+  <pre><code>drift:
+  promote:
+    - type: hardcoded-color
+      file: "src/checkout/**"
+      severity: warning
+      to: critical
+      reason: "Checkout UI must use design tokens"
+
+    - file: "src/components/shared/**"
+      severity: warning
+      to: critical
+      reason: "Shared components set the standard"</code></pre>
+
+  <h3>Filter Fields</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Field</th>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>type</code></td>
+        <td>string</td>
+        <td>Drift type (e.g. <code>hardcoded-color</code>, <code>close-match</code>)</td>
+      </tr>
+      <tr>
+        <td><code>severity</code></td>
+        <td>string</td>
+        <td>Current severity to match (<code>warning</code>, <code>info</code>)</td>
+      </tr>
+      <tr>
+        <td><code>file</code></td>
+        <td>glob</td>
+        <td>File path pattern (e.g. <code>src/checkout/**</code>)</td>
+      </tr>
+      <tr>
+        <td><code>component</code></td>
+        <td>regex</td>
+        <td>Component name pattern (e.g. <code>Legacy.*</code>)</td>
+      </tr>
+      <tr>
+        <td><code>token</code></td>
+        <td>regex</td>
+        <td>Token name pattern (e.g. <code>color-primary</code>)</td>
+      </tr>
+      <tr>
+        <td><code>value</code></td>
+        <td>regex</td>
+        <td>Hardcoded value pattern (e.g. <code>#3b82f6</code>)</td>
+      </tr>
+      <tr>
+        <td><code>to</code></td>
+        <td>string</td>
+        <td>Target severity (<code>critical</code>, <code>warning</code>)</td>
+      </tr>
+      <tr>
+        <td><code>reason</code></td>
+        <td>string</td>
+        <td>Explanation shown in output</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Multiple fields in one rule combine with AND logic. Multiple rules use first-match-wins.</p>
+
+  <h2>Severity Rules: enforce</h2>
+
+  <p>
+    Enforce rules set matching drift to critical unconditionally. Unlike promote, enforce rules have
+    no <code>severity</code> filter and no <code>to</code> field — the result is always critical.
+  </p>
+
+  <pre><code>drift:
+  enforce:
+    - type: close-match
+      reason: "Typos must be fixed before merge"
+
+    - file: "packages/design-system/**"
+      reason: "The design system must be clean"</code></pre>
+
+  <p>
+    Enforce uses the same filter fields as promote except <code>severity</code> and <code>to</code>.
+    In the severity pipeline, enforce runs after promote and overrides it.
+  </p>
+
+  <h2>Health Gate</h2>
+
+  <p>
+    Set a minimum health score threshold. When <code>buoy drift check</code> runs, it exits with
+    code 1 if the score drops below the configured value.
+  </p>
+
+  <pre><code>health:
+  failBelow: 70    # Exit code 1 if health score &lt; 70</code></pre>
+
+  <p>
+    This is config-based — no CLI flags required. Pairs well with <code>--fail-on</code> for
+    layered CI gating. The <code>--json</code> output includes a <code>health</code> object with
+    <code>score</code>, <code>threshold</code>, and <code>passed</code> fields when configured.
+  </p>
 
   <h2>Environment Variables</h2>
 

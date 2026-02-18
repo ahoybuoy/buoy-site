@@ -58,6 +58,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
     <!-- Generator -->
     <meta name="generator" content={Astro.generator} />
 
+    <!-- Theme: prevent FOUC -->
+    <script is:inline>
+      (function() {
+        var theme = localStorage.getItem('theme');
+        if (theme === 'light' || (!theme && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+          document.documentElement.classList.add('light');
+        }
+      })();
+    </script>
+
     <!-- Analytics -->
     <PostHog />
   </head>
