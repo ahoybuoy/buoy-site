@@ -187,32 +187,32 @@ code, pre {
    ======================================== */
 
 html.light {
-  /* Backgrounds: warm whites */
+  /* Backgrounds: cool blue-tinted whites */
   --color-navy-dark: #FFFFFF;
-  --color-navy: #FFF7ED;
-  --color-navy-light: #D4A574;
+  --color-navy: #F0F4F8;
+  --color-navy-light: #CBD5E1;
 
-  /* Orange: slightly darker for white bg contrast */
-  --color-buoy: #EA580C;
-  --color-buoy-light: #F97316;
-  --color-buoy-dark: #C2410C;
+  /* Orange: bright buoy orange */
+  --color-buoy: #F97316;
+  --color-buoy-light: #FB923C;
+  --color-buoy-dark: #EA580C;
 
-  /* Sunrise: darker amber */
-  --color-sunrise: #D97706;
-  --color-sunrise-light: #F59E0B;
+  /* Sunrise: warm amber */
+  --color-sunrise: #F59E0B;
+  --color-sunrise-light: #FBBF24;
 
-  /* Purple: deeper for contrast */
-  --color-lavender: #7C3AED;
-  --color-lavender-light: #8B5CF6;
+  /* Purple: indigo-shifted */
+  --color-lavender: #6366F1;
+  --color-lavender-light: #818CF8;
   --color-sky-purple: #4F46E5;
 
-  /* Text: flipped to dark */
-  --color-light: #1E293B;
-  --color-light-muted: #334155;
+  /* Text: navy-based for brand consistency */
+  --color-light: #1A2744;
+  --color-light-muted: #243352;
   --color-slate: #475569;
-  --color-slate-dark: #64748B;
+  --color-slate-dark: #94A3B8;
 
-  /* Semantic: darker for contrast */
+  /* Semantic */
   --color-success: #059669;
   --color-warning: #D97706;
   --color-critical: #DC2626;
@@ -221,15 +221,15 @@ html.light {
 
 /* Light mode: scrollbar */
 html.light ::-webkit-scrollbar-track {
-  background: #F8FAFC;
+  background: #F0F4F8;
 }
 
 html.light ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
+  background: #94A3B8;
 }
 
 html.light ::-webkit-scrollbar-thumb:hover {
-  background: #94A3B8;
+  background: #64748B;
 }
 
 /* Light mode: selection */
@@ -238,38 +238,38 @@ html.light ::selection {
   color: #FFFFFF;
 }
 
-/* Light mode: reduced glow intensity */
+/* Light mode: glows — subtle but warm */
 html.light .glow-buoy {
-  box-shadow: 0 0 30px color-mix(in srgb, var(--color-buoy) 20%, transparent);
+  box-shadow: 0 0 40px color-mix(in srgb, var(--color-buoy) 20%, transparent);
 }
 
 html.light .glow-lavender {
-  box-shadow: 0 0 30px color-mix(in srgb, var(--color-lavender) 15%, transparent);
+  box-shadow: 0 0 40px color-mix(in srgb, var(--color-lavender) 15%, transparent);
 }
 
-/* Light mode: text gradient with darker stops */
+/* Light mode: text gradient — orange to indigo */
 html.light .text-gradient-sunrise {
-  background: linear-gradient(135deg, #EA580C, #D97706, #7C3AED);
+  background: linear-gradient(135deg, #F97316, #F59E0B, #6366F1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Light mode: sunrise gradient background */
+/* Light mode: page gradient background */
 html.light .bg-sunrise-gradient {
   background: linear-gradient(
     180deg,
     #FFFFFF 0%,
-    #FFF7ED 30%,
-    color-mix(in srgb, #4F46E5 10%, #FFF7ED) 60%,
-    color-mix(in srgb, #7C3AED 8%, #FFF7ED) 75%,
-    color-mix(in srgb, #D97706 6%, #FFF7ED) 100%
+    #F0F4F8 25%,
+    color-mix(in srgb, #6366F1 6%, #F0F4F8) 55%,
+    color-mix(in srgb, #F97316 4%, #F0F4F8) 80%,
+    #F0F4F8 100%
   );
 }
 
 /* Light mode: cursor blink */
 html.light .cursor-blink::after {
-  color: #C2410C;
+  color: #EA580C;
 }
 
 /* ----------------------------------------
@@ -277,28 +277,29 @@ html.light .cursor-blink::after {
    ---------------------------------------- */
 
 html.light .prose-buoy h2 {
-  border-bottom: 1px solid rgb(212 165 116 / 0.3);
+  border-bottom: 1px solid rgb(203 213 225 / 0.6);
 }
 
 html.light .prose-buoy code:not(pre code) {
-  background: rgb(234 88 12 / 0.08);
+  background: rgb(99 102 241 / 0.08);
+  color: #4F46E5;
 }
 
 html.light .prose-buoy pre {
-  background: #FEFEFE;
-  border: 1px solid rgb(212 165 116 / 0.25);
+  background: #FFFFFF;
+  border: 1px solid rgb(203 213 225 / 0.5);
 }
 
 html.light .prose-buoy th {
-  background: rgb(234 88 12 / 0.06);
+  background: rgb(240 244 248 / 0.8);
 }
 
 html.light .prose-buoy td {
-  border-bottom: 1px solid rgb(212 165 116 / 0.2);
+  border-bottom: 1px solid rgb(203 213 225 / 0.4);
 }
 
 html.light .prose-buoy blockquote {
-  border-left: 4px solid rgb(234 88 12 / 0.4);
+  border-left: 4px solid var(--color-buoy);
 }
 
 /* ----------------------------------------
@@ -307,21 +308,21 @@ html.light .prose-buoy blockquote {
    ---------------------------------------- */
 
 html.light .prose-invert {
-  --tw-prose-body: #334155;
-  --tw-prose-headings: #1E293B;
-  --tw-prose-links: #EA580C;
-  --tw-prose-bold: #1E293B;
+  --tw-prose-body: #1A2744;
+  --tw-prose-headings: #1A2744;
+  --tw-prose-links: #F97316;
+  --tw-prose-bold: #1A2744;
   --tw-prose-counters: #475569;
   --tw-prose-bullets: #475569;
-  --tw-prose-hr: rgb(212 165 116 / 0.3);
+  --tw-prose-hr: rgb(203 213 225 / 0.6);
   --tw-prose-quotes: #475569;
-  --tw-prose-quote-borders: rgb(234 88 12 / 0.4);
-  --tw-prose-code: #7C3AED;
+  --tw-prose-quote-borders: var(--color-buoy);
+  --tw-prose-code: #4F46E5;
   --tw-prose-pre-code: #475569;
-  --tw-prose-pre-bg: #FEFEFE;
-  --tw-prose-th-borders: rgb(212 165 116 / 0.3);
-  --tw-prose-td-borders: rgb(212 165 116 / 0.2);
-  color: #334155;
+  --tw-prose-pre-bg: #FFFFFF;
+  --tw-prose-th-borders: rgb(203 213 225 / 0.5);
+  --tw-prose-td-borders: rgb(203 213 225 / 0.4);
+  color: #1A2744;
 }
 
 /* ----------------------------------------
@@ -331,9 +332,10 @@ html.light .prose-invert {
 html.light .wave-background {
   background: linear-gradient(
     180deg,
-    #FFF7ED 0%,
-    #FFEDD5 30%,
-    #FFF7ED 70%,
+    #FFFFFF 0%,
+    #F0F4F8 30%,
+    #E8EFF6 50%,
+    #F0F4F8 70%,
     #FFFFFF 100%
   );
 }
@@ -342,24 +344,48 @@ html.light .wave-background .stars {
   display: none;
 }
 
+/* Override SVG wave fills — replace dark gradients with soft translucent navy */
+html.light .wave-container path {
+  fill: rgba(26, 39, 68, 0.05);
+  filter: none;
+}
+
+html.light .wave-container-2 path {
+  fill: rgba(99, 102, 241, 0.04);
+}
+
+html.light .wave-container-3 path {
+  fill: rgba(26, 39, 68, 0.06);
+}
+
+/* Grid lines: softer for light mode */
+html.light .grid-lines line {
+  stroke: rgba(99, 102, 241, 0.12);
+}
+
+/* Hide the noise texture in light mode — it causes banding on light backgrounds */
+html.light .wave-background::after {
+  display: none;
+}
+
 html.light .wave-background .particle {
-  background: rgba(234, 88, 12, 0.3);
+  background: rgba(249, 115, 22, 0.5);
 }
 
 html.light .wave-background .p2,
 html.light .wave-background .p5 {
-  background: rgba(124, 58, 237, 0.25);
+  background: rgba(99, 102, 241, 0.45);
 }
 
 html.light .wave-background .p4,
 html.light .wave-background .p7 {
-  background: rgba(217, 119, 6, 0.3);
+  background: rgba(245, 158, 11, 0.45);
 }
 
 html.light .wave-background .mesh-overlay {
   background:
-    radial-gradient(ellipse at 20% 20%, rgba(234, 88, 12, 0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 30%, rgba(124, 58, 237, 0.05) 0%, transparent 50%),
-    radial-gradient(ellipse at 40% 80%, rgba(217, 119, 6, 0.04) 0%, transparent 40%),
-    radial-gradient(ellipse at 90% 80%, rgba(234, 88, 12, 0.05) 0%, transparent 50%);
+    radial-gradient(ellipse at 20% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 30%, rgba(249, 115, 22, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 40% 80%, rgba(99, 102, 241, 0.06) 0%, transparent 40%),
+    radial-gradient(ellipse at 90% 80%, rgba(249, 115, 22, 0.05) 0%, transparent 50%);
 }

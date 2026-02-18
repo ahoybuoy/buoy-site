@@ -7,17 +7,17 @@
   <svg class="wave-svg-static" viewBox="0 0 1440 800" preserveAspectRatio="none">
     <defs>
       <!-- Wave gradients -->
-      <linearGradient id="waveGradient1" x1="0" y1="0" x2="1440" y2="0" gradientUnits="userSpaceOnUse" spreadMethod="repeat">
+      <linearGradient id="waveGradient1" x1="0%" y1="0%" x2="100%" y2="0%" gradientUnits="objectBoundingBox">
         <stop offset="0%" stop-color="rgba(30, 100, 200, 0.13)" />
         <stop offset="50%" stop-color="rgba(60, 120, 220, 0.17)" />
         <stop offset="100%" stop-color="rgba(30, 100, 200, 0.13)" />
       </linearGradient>
-      <linearGradient id="waveGradient2" x1="0" y1="0" x2="1440" y2="0" gradientUnits="userSpaceOnUse" spreadMethod="repeat">
+      <linearGradient id="waveGradient2" x1="0%" y1="0%" x2="100%" y2="0%" gradientUnits="objectBoundingBox">
         <stop offset="0%" stop-color="rgba(50, 90, 210, 0.12)" />
         <stop offset="50%" stop-color="rgba(70, 110, 230, 0.16)" />
         <stop offset="100%" stop-color="rgba(50, 90, 210, 0.12)" />
       </linearGradient>
-      <linearGradient id="waveGradient3" x1="0" y1="0" x2="1440" y2="0" gradientUnits="userSpaceOnUse" spreadMethod="repeat">
+      <linearGradient id="waveGradient3" x1="0%" y1="0%" x2="100%" y2="0%" gradientUnits="objectBoundingBox">
         <stop offset="0%" stop-color="rgba(40, 110, 195, 0.11)" />
         <stop offset="50%" stop-color="rgba(65, 130, 215, 0.15)" />
         <stop offset="100%" stop-color="rgba(40, 110, 195, 0.11)" />
@@ -222,9 +222,10 @@
   }
 
   .wave-container .wave-svg {
-    flex: 0 0 50%;
-    width: 50%;
+    flex: 0 0 calc(50% + 1px);
+    width: calc(50% + 1px);
     height: 100%;
+    margin-right: -1px;
   }
 
   /* Animate each wave container */
@@ -361,12 +362,13 @@
     pointer-events: none;
   }
 
-  /* Noise texture overlay */
+  /* Noise texture overlay — use large tile to avoid visible repeat seams */
   .wave-background::after {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 1024px 1024px;
     opacity: 0.03;
     pointer-events: none;
   }
