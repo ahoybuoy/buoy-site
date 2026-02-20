@@ -7,30 +7,27 @@
   <svg class="wave-svg-static" viewBox="0 0 1440 800" preserveAspectRatio="none">
     <defs>
       <!-- Wave gradients -->
-      <linearGradient id="waveGradient1" x1="0%" y1="0%" x2="100%" y2="0%" gradientUnits="objectBoundingBox">
-        <stop offset="0%" stop-color="rgba(30, 100, 200, 0.13)" />
-        <stop offset="50%" stop-color="rgba(60, 120, 220, 0.17)" />
-        <stop offset="100%" stop-color="rgba(30, 100, 200, 0.13)" />
-      </linearGradient>
-      <linearGradient id="waveGradient2" x1="0%" y1="0%" x2="100%" y2="0%" gradientUnits="objectBoundingBox">
-        <stop offset="0%" stop-color="rgba(50, 90, 210, 0.12)" />
-        <stop offset="50%" stop-color="rgba(70, 110, 230, 0.16)" />
-        <stop offset="100%" stop-color="rgba(50, 90, 210, 0.12)" />
-      </linearGradient>
-      <linearGradient id="waveGradient3" x1="0%" y1="0%" x2="100%" y2="0%" gradientUnits="objectBoundingBox">
-        <stop offset="0%" stop-color="rgba(40, 110, 195, 0.11)" />
-        <stop offset="50%" stop-color="rgba(65, 130, 215, 0.15)" />
-        <stop offset="100%" stop-color="rgba(40, 110, 195, 0.11)" />
-      </linearGradient>
-      <!-- Drop shadow filters -->
+      <!-- Drop shadow filters — soft glow, no hard edges -->
       <filter id="waveShadow0" x="-20%" y="-20%" width="140%" height="140%">
-        <feDropShadow dx="0" dy="-14" stdDeviation="10" flood-color="rgba(0,0,0,0.4)"/>
+        <feGaussianBlur in="SourceAlpha" stdDeviation="12" result="blur"/>
+        <feOffset dy="-8" result="offset"/>
+        <feFlood flood-color="rgba(30, 100, 200, 0.15)"/>
+        <feComposite in2="offset" operator="in"/>
+        <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
       </filter>
       <filter id="waveShadow1" x="-20%" y="-20%" width="140%" height="140%">
-        <feDropShadow dx="0" dy="-12" stdDeviation="8" flood-color="rgba(0,0,0,0.5)"/>
+        <feGaussianBlur in="SourceAlpha" stdDeviation="10" result="blur"/>
+        <feOffset dy="-6" result="offset"/>
+        <feFlood flood-color="rgba(50, 90, 210, 0.12)"/>
+        <feComposite in2="offset" operator="in"/>
+        <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
       </filter>
       <filter id="waveShadow2" x="-20%" y="-20%" width="140%" height="140%">
-        <feDropShadow dx="0" dy="-10" stdDeviation="7" flood-color="rgba(0,0,0,0.45)"/>
+        <feGaussianBlur in="SourceAlpha" stdDeviation="8" result="blur"/>
+        <feOffset dy="-5" result="offset"/>
+        <feFlood flood-color="rgba(40, 110, 195, 0.10)"/>
+        <feComposite in2="offset" operator="in"/>
+        <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
       </filter>
       <!-- 4-pointed star symbol -->
       <symbol id="star4" viewBox="-10 -10 20 20">
@@ -129,40 +126,31 @@
 
     <!-- Grid lines -->
     <g class="grid-lines" opacity="0.15">
-      <line x1="0" y1="200" x2="1440" y2="200" stroke="url(#waveGradient1)" stroke-width="1"/>
-      <line x1="0" y1="300" x2="1440" y2="300" stroke="url(#waveGradient1)" stroke-width="1"/>
-      <line x1="0" y1="400" x2="1440" y2="400" stroke="url(#waveGradient1)" stroke-width="1"/>
-      <line x1="0" y1="500" x2="1440" y2="500" stroke="url(#waveGradient1)" stroke-width="1"/>
-      <line x1="0" y1="600" x2="1440" y2="600" stroke="url(#waveGradient1)" stroke-width="1"/>
+      <line x1="0" y1="200" x2="1440" y2="200" stroke="rgba(30, 100, 200, 0.5)" stroke-width="1"/>
+      <line x1="0" y1="300" x2="1440" y2="300" stroke="rgba(30, 100, 200, 0.5)" stroke-width="1"/>
+      <line x1="0" y1="400" x2="1440" y2="400" stroke="rgba(30, 100, 200, 0.5)" stroke-width="1"/>
+      <line x1="0" y1="500" x2="1440" y2="500" stroke="rgba(30, 100, 200, 0.5)" stroke-width="1"/>
+      <line x1="0" y1="600" x2="1440" y2="600" stroke="rgba(30, 100, 200, 0.5)" stroke-width="1"/>
     </g>
   </svg>
 
   <!-- Wave containers - two identical SVGs side by side for seamless loop -->
   <!-- Wave paths are designed to be perfectly tileable: same curve shape at x=0 and x=1440 -->
   <div class="wave-container wave-container-1">
-    <svg class="wave-svg" viewBox="0 0 1440 800" preserveAspectRatio="none">
-      <path fill="url(#waveGradient1)" filter="url(#waveShadow0)" d="M0,400 Q180,370 360,400 Q540,430 720,400 Q900,370 1080,400 Q1260,430 1440,400 L1440,800 L0,800 Z"/>
-    </svg>
-    <svg class="wave-svg" viewBox="0 0 1440 800" preserveAspectRatio="none">
-      <path fill="url(#waveGradient1)" filter="url(#waveShadow0)" d="M0,400 Q180,370 360,400 Q540,430 720,400 Q900,370 1080,400 Q1260,430 1440,400 L1440,800 L0,800 Z"/>
+    <svg class="wave-svg-wide" viewBox="0 0 2880 800" preserveAspectRatio="none">
+      <path fill="rgba(30, 100, 200, 0.15)" filter="url(#waveShadow0)" d="M0,400 Q180,370 360,400 Q540,430 720,400 Q900,370 1080,400 Q1260,430 1440,400 Q1620,370 1800,400 Q1980,430 2160,400 Q2340,370 2520,400 Q2700,430 2880,400 L2880,800 L0,800 Z"/>
     </svg>
   </div>
 
   <div class="wave-container wave-container-2">
-    <svg class="wave-svg" viewBox="0 0 1440 800" preserveAspectRatio="none">
-      <path fill="url(#waveGradient2)" filter="url(#waveShadow1)" d="M0,450 Q180,420 360,450 Q540,480 720,450 Q900,420 1080,450 Q1260,480 1440,450 L1440,800 L0,800 Z"/>
-    </svg>
-    <svg class="wave-svg" viewBox="0 0 1440 800" preserveAspectRatio="none">
-      <path fill="url(#waveGradient2)" filter="url(#waveShadow1)" d="M0,450 Q180,420 360,450 Q540,480 720,450 Q900,420 1080,450 Q1260,480 1440,450 L1440,800 L0,800 Z"/>
+    <svg class="wave-svg-wide" viewBox="0 0 2880 800" preserveAspectRatio="none">
+      <path fill="rgba(50, 90, 210, 0.14)" filter="url(#waveShadow1)" d="M0,450 Q180,420 360,450 Q540,480 720,450 Q900,420 1080,450 Q1260,480 1440,450 Q1620,420 1800,450 Q1980,480 2160,450 Q2340,420 2520,450 Q2700,480 2880,450 L2880,800 L0,800 Z"/>
     </svg>
   </div>
 
   <div class="wave-container wave-container-3">
-    <svg class="wave-svg" viewBox="0 0 1440 800" preserveAspectRatio="none">
-      <path fill="url(#waveGradient3)" filter="url(#waveShadow2)" d="M0,500 Q180,470 360,500 Q540,530 720,500 Q900,470 1080,500 Q1260,530 1440,500 L1440,800 L0,800 Z"/>
-    </svg>
-    <svg class="wave-svg" viewBox="0 0 1440 800" preserveAspectRatio="none">
-      <path fill="url(#waveGradient3)" filter="url(#waveShadow2)" d="M0,500 Q180,470 360,500 Q540,530 720,500 Q900,470 1080,500 Q1260,530 1440,500 L1440,800 L0,800 Z"/>
+    <svg class="wave-svg-wide" viewBox="0 0 2880 800" preserveAspectRatio="none">
+      <path fill="rgba(40, 110, 195, 0.13)" filter="url(#waveShadow2)" d="M0,500 Q180,470 360,500 Q540,530 720,500 Q900,470 1080,500 Q1260,530 1440,500 Q1620,470 1800,500 Q1980,530 2160,500 Q2340,470 2520,500 Q2700,530 2880,500 L2880,800 L0,800 Z"/>
     </svg>
   </div>
 
@@ -210,22 +198,19 @@
     pointer-events: none;
   }
 
-  /* Wave containers - each contains two identical SVGs side by side */
+  /* Wave containers - single wide SVG, no seams */
   .wave-container {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 200%;
     height: 100%;
-    display: flex;
-    flex-direction: row;
   }
 
-  .wave-container .wave-svg {
-    flex: 0 0 calc(50% + 1px);
-    width: calc(50% + 1px);
+  .wave-svg-wide {
+    width: 100%;
     height: 100%;
-    margin-right: -1px;
+    display: block;
   }
 
   /* Animate each wave container */

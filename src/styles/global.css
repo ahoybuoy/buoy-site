@@ -34,7 +34,7 @@
   --color-info: #3B82F6;
 
   /* Typography Scale */
-  --font-display: 'Satoshi', system-ui, sans-serif;
+  --font-display: 'Quicksand', 'Satoshi', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
@@ -180,6 +180,45 @@ code, pre {
   content: '▋';
   animation: blink 1s step-end infinite;
   color: var(--color-buoy);
+}
+
+/* Hero word reveal */
+@keyframes hero-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.hero-reveal {
+  display: inline-block;
+  opacity: 0;
+  animation: hero-reveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Hero "design drift" highlight */
+.hero-drift-highlight {
+  color: var(--color-buoy);
+  position: relative;
+  white-space: nowrap;
+}
+
+.hero-drift-highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 0.05em;
+  left: -0.05em;
+  right: -0.05em;
+  height: 0.3em;
+  background: color-mix(in srgb, var(--color-buoy) 20%, transparent);
+  border-radius: 0.15em;
+  z-index: -1;
 }
 
 /* ========================================
