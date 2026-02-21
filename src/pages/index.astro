@@ -1195,9 +1195,15 @@ const steps = [
     }
 
     boat.addEventListener('pointerup', handleRelease);
-    // pointercancel fires instead of pointerup when pointer moves over selectable text,
-    // which breaks capture and leaves the boat stuck — treat it the same as release
     boat.addEventListener('pointercancel', handleRelease);
+    // Catch releases at window level
+    window.addEventListener('pointerup', () => { if (dragging) handleRelease(); });
+    window.addEventListener('pointercancel', () => { if (dragging) handleRelease(); });
+    // Catch the case where pointer exits window and button is released outside —
+    // browser won't fire pointerup in that scenario, but pointermove fires when
+    // pointer re-enters with e.buttons === 0 (no button held)
+    window.addEventListener('pointermove', (e) => { if (dragging && e.buttons === 0) handleRelease(); });
+    window.addEventListener('blur', () => { if (dragging) handleRelease(); });
 
     function bobberPop(startX, startY) {
       const bgRect = waveBg.getBoundingClientRect();
@@ -1232,9 +1238,13 @@ const steps = [
     function runFall() {
       let x = parseFloat(boat.style.left);
       let y = parseFloat(boat.style.top);
+      const bgRectInit = waveBg.getBoundingClientRect();
+
+      // Wrap x into bounds before any path (bobberPop or step loop)
+      if (x > bgRectInit.width) x = ((x % bgRectInit.width) + bgRectInit.width) % bgRectInit.width;
+      else if (x < -boat.offsetWidth) x = bgRectInit.width - (Math.abs(x) % bgRectInit.width);
 
       // Released below the wave — pop up like a bobber instead of falling
-      const bgRectInit = waveBg.getBoundingClientRect();
       if (y + boat.offsetHeight > getWaveY() + 8) {
         physicsActive = false;
         bobberPop(x, y);
@@ -1302,6 +1312,8 @@ const steps = [
     function resumeDrift(currentX) {
       const bgRect = waveBg.getBoundingClientRect();
       const waveY = getWaveY();
+      // Ensure x is within bounds before converting to %
+      currentX = ((currentX % bgRect.width) + bgRect.width) % bgRect.width;
       const landedLeftPct = (currentX / bgRect.width) * 100;
 
       // Position at landing spot

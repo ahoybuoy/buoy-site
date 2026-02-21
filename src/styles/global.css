@@ -305,6 +305,15 @@ html.light .cursor-blink::after {
   color: #EA580C;
 }
 
+/* Light mode: darken "design drift" highlight */
+html.light .hero-drift-highlight {
+  color: #F05514;
+}
+
+html.light .hero-drift-highlight::after {
+  background: color-mix(in srgb, #F05514 18%, transparent);
+}
+
 /* ----------------------------------------
    Light mode: DocsLayout prose overrides
    ---------------------------------------- */
