@@ -193,12 +193,23 @@ const compareItems = [
   <!-- Mobile Menu -->
   <div class="hidden md:hidden" id="mobile-menu">
     <div class="px-4 py-4 bg-navy border-t border-navy-light/20 max-h-[80vh] overflow-y-auto">
+
+      <!-- Primary links -->
+      <div class="mb-4 pb-4 border-b border-navy-light/20 space-y-1">
+        <a href="/docs" class="block px-3 py-2.5 text-base font-medium text-light hover:bg-navy-light/20 rounded-lg transition-colors">
+          Docs
+        </a>
+        <a href="/pricing" class="block px-3 py-2.5 text-base font-medium text-light hover:bg-navy-light/20 rounded-lg transition-colors">
+          Pricing
+        </a>
+      </div>
+
       <!-- Features -->
-      <div class="mb-4">
-        <div class="px-4 py-2 text-xs font-semibold text-slate uppercase tracking-wide">Features</div>
-        <div class="space-y-1">
+      <div class="mb-5">
+        <div class="px-3 mb-2 text-[10px] font-bold text-slate-dark uppercase tracking-widest">Features</div>
+        <div class="space-y-0.5">
           {featureItems.map((item) => (
-            <a href={item.href} class="block px-4 py-2 text-sm text-slate hover:text-light hover:bg-navy-light/20 rounded-lg transition-colors">
+            <a href={item.href} class="block px-3 py-2 text-sm text-slate hover:text-light hover:bg-navy-light/20 rounded-lg transition-colors">
               {item.label}
             </a>
           ))}
@@ -206,11 +217,11 @@ const compareItems = [
       </div>
 
       <!-- Use Cases -->
-      <div class="mb-4">
-        <div class="px-4 py-2 text-xs font-semibold text-slate uppercase tracking-wide">Use Cases</div>
-        <div class="space-y-1">
+      <div class="mb-5">
+        <div class="px-3 mb-2 text-[10px] font-bold text-slate-dark uppercase tracking-widest">Use Cases</div>
+        <div class="space-y-0.5">
           {useCaseItems.map((item) => (
-            <a href={item.href} class="block px-4 py-2 text-sm text-slate hover:text-light hover:bg-navy-light/20 rounded-lg transition-colors">
+            <a href={item.href} class="block px-3 py-2 text-sm text-slate hover:text-light hover:bg-navy-light/20 rounded-lg transition-colors">
               {item.label}
             </a>
           ))}
@@ -218,44 +229,32 @@ const compareItems = [
       </div>
 
       <!-- Compare -->
-      <div class="mb-4">
-        <div class="px-4 py-2 text-xs font-semibold text-slate uppercase tracking-wide">Compare</div>
-        <div class="space-y-1">
+      <div class="mb-4 pb-4 border-b border-navy-light/20">
+        <div class="px-3 mb-2 text-[10px] font-bold text-slate-dark uppercase tracking-widest">Compare</div>
+        <div class="space-y-0.5">
           {compareItems.map((item) => (
-            <a href={item.href} class="block px-4 py-2 text-sm text-slate hover:text-light hover:bg-navy-light/20 rounded-lg transition-colors">
+            <a href={item.href} class="block px-3 py-2 text-sm text-slate hover:text-light hover:bg-navy-light/20 rounded-lg transition-colors">
               {item.label}
             </a>
           ))}
         </div>
       </div>
 
-      <!-- Docs -->
-      <a href="/docs" class="block px-4 py-2 text-sm text-slate hover:text-light hover:bg-navy-light/20 rounded-lg transition-colors">
-        Docs
-      </a>
-
-      <!-- Pricing -->
-      <a href="/pricing" class="block px-4 py-2 text-sm text-slate hover:text-light hover:bg-navy-light/20 rounded-lg transition-colors">
-        Pricing
-      </a>
-
       <!-- Theme Toggle (mobile) -->
       <button
         id="mobile-theme-toggle"
-        class="block w-full px-4 py-2 text-sm text-slate hover:text-light hover:bg-navy-light/20 rounded-lg transition-colors text-left"
+        class="block w-full px-3 py-2.5 text-sm text-slate hover:text-light hover:bg-navy-light/20 rounded-lg transition-colors text-left mb-4"
       >
         <span class="mobile-theme-label">Switch to light mode</span>
       </button>
 
       <!-- CTA -->
-      <div class="pt-4 mt-4 border-t border-navy-light/20">
-        <a
-          href="/demo"
-          class="block w-full px-4 py-2 text-center font-medium bg-buoy text-navy-dark rounded-lg"
-        >
-          Get Started
-        </a>
-      </div>
+      <a
+        href="/demo"
+        class="block w-full px-4 py-3 text-center font-medium bg-buoy text-navy-dark rounded-lg"
+      >
+        Get Started
+      </a>
     </div>
   </div>
 </nav>
