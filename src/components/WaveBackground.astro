@@ -375,25 +375,27 @@
   :global(html.light) .wave-background {
     background: linear-gradient(
       180deg,
-      #87CEEB 0%,    /* sky blue at top */
-      #5BB8F5 25%,   /* deeper sky */
-      #3AA0E8 50%,   /* horizon blue */
-      #1E88D8 70%,   /* water upper */
-      #1565C0 100%   /* deep water */
+      #2E6DB4 0%,    /* deep rich sky at zenith */
+      #4A90D4 15%,   /* mid sky */
+      #7AB8E8 35%,   /* lighter sky */
+      #AEDAF5 52%,   /* hazy near horizon — sky lightens toward horizon */
+      #1A7EC8 60%,   /* ocean surface */
+      #0E5FA0 78%,   /* mid ocean */
+      #0A3D7A 100%   /* deep ocean */
     );
   }
 
-  /* Brighter, more saturated waves in light mode */
+  /* Natural ocean wave fills */
   :global(html.light) .wave-container-1 svg path {
-    fill: rgba(255, 255, 255, 0.35) !important;
+    fill: rgba(255, 255, 255, 0.22) !important; /* distant whitecaps */
     filter: none;
   }
   :global(html.light) .wave-container-2 svg path {
-    fill: rgba(30, 136, 229, 0.5) !important;
+    fill: rgba(12, 105, 185, 0.45) !important; /* mid ocean blue */
     filter: none;
   }
   :global(html.light) .wave-container-3 svg path {
-    fill: rgba(21, 101, 192, 0.65) !important;
+    fill: rgba(8, 65, 140, 0.62) !important;   /* deep front wave */
     filter: none;
   }
 
@@ -405,20 +407,20 @@
     display: none;
   }
 
-  /* Warm sun-glint particles */
+  /* White water sparkle particles */
   :global(html.light) .particle {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.65);
   }
 
-  /* Brighter mesh overlay — sun reflection on water */
+  /* Sun high right, warm shimmer on water */
   :global(html.light) .mesh-overlay {
     background:
-      radial-gradient(ellipse at 70% 10%, rgba(255, 255, 255, 0.4) 0%, transparent 40%),
-      radial-gradient(ellipse at 30% 60%, rgba(30, 136, 229, 0.2) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 70%, rgba(255, 255, 255, 0.15) 0%, transparent 40%);
+      radial-gradient(ellipse at 75% 8%, rgba(255, 245, 200, 0.45) 0%, transparent 35%),
+      radial-gradient(ellipse at 50% 62%, rgba(255, 255, 255, 0.18) 0%, transparent 40%),
+      radial-gradient(ellipse at 20% 70%, rgba(14, 120, 200, 0.15) 0%, transparent 45%);
   }
 
-  /* Reduce noise opacity in light mode */
+  /* Reduce noise in light mode */
   :global(html.light) .wave-background::after {
     opacity: 0.015;
   }
