@@ -50,15 +50,15 @@ const compareItems = [
 
 <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-navy-dark/80 border-b border-navy-light/20">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="relative flex items-center justify-between h-16">
+    <div class="flex items-center h-16">
       <!-- Logo -->
-      <a href="/" class="flex items-center gap-1.5">
+      <a href="/" class="flex items-center gap-1.5 flex-1">
         <span style="font-size: 1.5rem; line-height: 1; flex-shrink: 0">🛟</span>
         <span class="font-bold font-display text-light" style="font-size: 1.75rem; line-height: 1">Buoy</span>
       </a>
 
       <!-- Desktop Navigation -->
-      <div class="hidden md:flex items-center gap-6 absolute left-1/2 -translate-x-1/2">
+      <div class="hidden md:flex items-center gap-6">
         <!-- Features Dropdown -->
         <div class="relative group">
           <button class="text-sm text-slate hover:text-light transition-colors duration-200 flex items-center gap-1 py-4">
@@ -140,7 +140,7 @@ const compareItems = [
       </div>
 
       <!-- CTA Buttons -->
-      <div class="hidden md:flex items-center gap-4">
+      <div class="hidden md:flex items-center gap-4 flex-1 justify-end">
         <!-- Theme Toggle -->
         <button
           id="theme-toggle"
