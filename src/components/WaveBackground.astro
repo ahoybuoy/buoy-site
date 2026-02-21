@@ -154,9 +154,6 @@
     </svg>
   </div>
 
-  <!-- Little boat riding the waves (hidden until hero boat drops in) -->
-  <div class="boat" id="waveBoat">⛵</div>
-
   <!-- Floating particles -->
   <div class="particles">
     <div class="particle p1"></div>
@@ -317,39 +314,6 @@
     50% { opacity: 0.8; }
   }
 
-  /* Little boat — hidden until hero animation hands off */
-  .boat {
-    position: absolute;
-    bottom: 42%;
-    left: 15%;
-    font-size: 1.4rem;
-    opacity: 0;
-    z-index: 5;
-    pointer-events: none;
-  }
-
-  /* Launch phase: boat eases into motion (slow → fast) before cruising */
-  .boat.launching {
-    opacity: 1;
-    animation: boatBob 4s ease-in-out infinite;
-  }
-
-  .boat.visible {
-    opacity: 1;
-    animation: boatBob 4s ease-in-out infinite, boatDrift 25s linear infinite;
-  }
-
-
-  @keyframes boatBob {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-15px) rotate(3deg); }
-  }
-
-  @keyframes boatDrift {
-    0% { left: -5%; }
-    100% { left: 105%; }
-  }
-
   /* Mesh gradient overlay */
   .mesh-overlay {
     position: absolute;
@@ -378,6 +342,13 @@
     .particle {
       width: 3px;
       height: 3px;
+    }
+
+    /* Push waves up on mobile by increasing container height */
+    /* Wider wave cycles on mobile — less squished, smoother appearance */
+    .wave-container {
+      height: 105%;
+      width: 400%;
     }
   }
 </style>
