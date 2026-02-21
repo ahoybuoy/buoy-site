@@ -924,65 +924,6 @@ const steps = [
       return;
     }
 
-    // "Design drift" click — vacuum boat back to inline starting position
-    const driftText = document.querySelector('.hero-drift-highlight');
-    if (driftText && !driftText._pullBound) {
-      driftText._pullBound = true;
-      driftText.style.pointerEvents = 'auto';
-      driftText.style.cursor = 'pointer';
-
-      driftText.addEventListener('click', () => {
-        if (!waveBoat || !waveBoat.classList.contains('visible')) return;
-        const waveBg = document.querySelector('.wave-background');
-        if (!waveBg) return;
-
-        // Capture current rendered position of wave boat
-        const currentRect = waveBoat.getBoundingClientRect();
-        const bgRect = waveBg.getBoundingClientRect();
-        const currentX = currentRect.left - bgRect.left;
-        const currentY = currentRect.top - bgRect.top;
-
-        // Target: where the inline emoji lives in the text
-        boatInline.style.visibility = 'visible';
-        const emojiRect = boatEmoji.getBoundingClientRect();
-        boatInline.style.visibility = 'hidden';
-        const targetX = emojiRect.left - bgRect.left + (emojiRect.width - waveBoat.offsetWidth) / 2;
-        const targetY = emojiRect.top - bgRect.top + (emojiRect.height - waveBoat.offsetHeight) / 2;
-
-        // Stop CSS drift/bob
-        waveBoat.classList.remove('visible', 'launching');
-        waveBoat.getAnimations().forEach(a => a.cancel());
-        waveBoat.style.left = currentX + 'px';
-        waveBoat.style.top = currentY + 'px';
-        waveBoat.style.bottom = 'auto';
-        waveBoat.style.transform = '';
-        waveBoat.style.opacity = '1';
-
-        // Very slow ease-in vacuum — barely moves then snaps
-        const dx = targetX - currentX;
-        const dy = targetY - currentY;
-        const pullAnim = waveBoat.animate([
-          { offset: 0,    left: currentX + 'px',               top: currentY + 'px' },
-          { offset: 0.55, left: (currentX + dx * 0.02) + 'px', top: (currentY + dy * 0.02) + 'px' },
-          { offset: 0.75, left: (currentX + dx * 0.08) + 'px', top: (currentY + dy * 0.08) + 'px' },
-          { offset: 0.90, left: (currentX + dx * 0.35) + 'px', top: (currentY + dy * 0.35) + 'px' },
-          { offset: 1,    left: targetX + 'px',                top: targetY + 'px' }
-        ], { duration: 2800, easing: 'linear', fill: 'forwards' });
-
-        pullAnim.finished.then(() => {
-          // Swap: show inline, hide wave boat
-          waveBoat.style.opacity = '0';
-          waveBoat.style.left = '';
-          waveBoat.style.top = '';
-          waveBoat.style.bottom = '';
-          boatInline.style.visibility = 'visible';
-          boatEmoji.style.transform = '';
-          // Restart escape sequence after a beat
-          setTimeout(() => initHeroBoatAnimation(), 1000);
-        });
-      });
-    }
-
     // Phase 1: Wiggle (anticipation — building tension before the break)
     setTimeout(() => {
       const wiggle = boatEmoji.animate([
