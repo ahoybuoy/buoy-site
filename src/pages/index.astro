@@ -970,6 +970,8 @@ const steps = [
             // Match position — compensate for inline vs wave boat size difference
             const bottomPx = parentRect.bottom - emojiRect.bottom - 4;
             waveBoat.style.bottom = bottomPx + 'px';
+            // Store so toss landing can match drop landing on all screen sizes
+            window._buoyBoatBottom = bottomPx;
 
             const landedLeftPct = ((emojiRect.left + 4) / window.innerWidth) * 100;
 
@@ -1194,7 +1196,8 @@ const steps = [
     function bobberPop(startX, startY) {
       const bgRect = waveBg.getBoundingClientRect();
       const waveY = getWaveY();
-      const surfaceY = waveY - boat.offsetHeight + 8;
+      const targetBottom = window._buoyBoatBottom ?? (bgRect.height - waveY - 8);
+      const surfaceY = bgRect.height - targetBottom - boat.offsetHeight;
 
       // Straight-up spring — pops directly to surface with single overshoot bounce
       const popAnim = boat.animate([
@@ -1300,7 +1303,7 @@ const steps = [
       boat.style.transform = '';
       boat.style.animationDelay = '';
       boat.style.opacity = '1';
-      boat.style.bottom = (bgRect.height - waveY - 8) + 'px';
+      boat.style.bottom = (window._buoyBoatBottom ?? (bgRect.height - waveY - 8)) + 'px';
 
       // Bob only (no drift) while easing in
       boat.classList.add('launching');
