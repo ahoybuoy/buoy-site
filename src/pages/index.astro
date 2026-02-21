@@ -143,7 +143,7 @@ const steps = [
     <!-- Wave boat — lives outside wave-background so z-index can exceed the z-10 content div -->
     <div class="boat" id="waveBoat">⛵</div>
 
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+    <div class="relative z-10 hero-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
       <div class="text-center max-w-4xl mx-auto">
         <!-- Tagline badge -->
         <div class="inline-flex items-center px-4 py-2 rounded-full bg-navy/60 border border-navy-light/30 mb-8 backdrop-blur-sm">
@@ -823,12 +823,14 @@ const steps = [
     opacity: 0;
     z-index: 5;
     pointer-events: none;
+    touch-action: none;
   }
 
   .boat::before {
     content: '';
     position: absolute;
     inset: -14px;
+    touch-action: none;
   }
 
   .boat.launching {
@@ -849,6 +851,17 @@ const steps = [
   @keyframes boatDrift {
     0% { left: -5%; }
     100% { left: 105%; }
+  }
+
+  /* Hero content passes pointer events through to boat underneath,
+     but restores them on interactive elements */
+  .hero-content {
+    pointer-events: none;
+  }
+  .hero-content a,
+  .hero-content button,
+  .hero-content [role="button"] {
+    pointer-events: auto;
   }
 
   /* Hero boat inline at end of text */
@@ -1119,6 +1132,7 @@ const steps = [
     boat.addEventListener('pointerdown', (e) => {
       if (!boat.classList.contains('visible') && !boat.classList.contains('launching')) return;
       e.preventDefault();
+      document.body.style.userSelect = 'none'; // prevent text selection triggering pointercancel
       if (physicsActive) { cancelAnimationFrame(physicsRaf); physicsActive = false; }
       lockPosition();
       dragging = true;
@@ -1146,9 +1160,10 @@ const steps = [
       }
     });
 
-    boat.addEventListener('pointerup', () => {
+    function handleRelease() {
       if (!dragging) return;
       dragging = false;
+      document.body.style.userSelect = '';
       boat.style.cursor = 'grab';
 
       const velScale = window.innerWidth < 768 ? 1.25 : 0.5;
@@ -1164,11 +1179,53 @@ const steps = [
 
       physicsActive = true;
       runFall();
-    });
+    }
+
+    boat.addEventListener('pointerup', handleRelease);
+    // pointercancel fires instead of pointerup when pointer moves over selectable text,
+    // which breaks capture and leaves the boat stuck — treat it the same as release
+    boat.addEventListener('pointercancel', handleRelease);
+
+    function bobberPop(startX, startY) {
+      const bgRect = waveBg.getBoundingClientRect();
+      const waveY = getWaveY();
+      const surfaceY = waveY - boat.offsetHeight + 8;
+
+      // Straight-up spring — pops directly to surface with single overshoot bounce
+      const popAnim = boat.animate([
+        { top: startY + 'px' },
+        { top: surfaceY + 'px' }
+      ], {
+        duration: 650,
+        easing: 'cubic-bezier(0.175, 0.885, 0.32, 1.55)',
+        fill: 'forwards'
+      });
+
+      // Splash when boat first breaks the surface (~45% through)
+      setTimeout(() => {
+        if (window._buoySplash) {
+          window._buoySplash(bgRect.left + startX + boat.offsetWidth / 2, bgRect.top + waveY);
+        }
+      }, 295);
+
+      popAnim.finished.then(() => {
+        boat.style.top = surfaceY + 'px';
+        popAnim.cancel();
+        setTimeout(() => resumeDrift(startX), 100);
+      });
+    }
 
     function runFall() {
       let x = parseFloat(boat.style.left);
       let y = parseFloat(boat.style.top);
+
+      // Released below the wave — pop up like a bobber instead of falling
+      const bgRectInit = waveBg.getBoundingClientRect();
+      if (y + boat.offsetHeight > getWaveY() + 8) {
+        physicsActive = false;
+        bobberPop(x, y);
+        return;
+      }
 
       function step() {
         if (!physicsActive) return;
@@ -1215,8 +1272,9 @@ const steps = [
           return;
         }
 
-        // Clamp horizontal
-        x = Math.max(-boat.offsetWidth * 0.5, Math.min(bgRect.width - boat.offsetWidth * 0.5, x));
+        // Wrap horizontal — sail off one side, appear on the other
+        if (x > bgRect.width) x = -boat.offsetWidth;
+        else if (x < -boat.offsetWidth) x = bgRect.width;
         boat.style.left = x + 'px';
         boat.style.top = y + 'px';
 
@@ -1229,24 +1287,44 @@ const steps = [
     function resumeDrift(currentX) {
       const bgRect = waveBg.getBoundingClientRect();
       const waveY = getWaveY();
+      const landedLeftPct = (currentX / bgRect.width) * 100;
 
-      const leftPct = (currentX / bgRect.width) * 100;
-      const driftProgress = Math.max(0, Math.min(1, (leftPct + 5) / 110));
-      const driftTimeMs = driftProgress * 25000;
-
-      // Clear inline overrides
-      boat.style.left = '';
+      // Position at landing spot
+      boat.style.left = landedLeftPct + '%';
       boat.style.top = '';
       boat.style.transform = '';
       boat.style.animationDelay = '';
-      boat.style.opacity = '';
-      // +8 offset keeps CSS position in sync with physics landing (boat sits at visual water line)
+      boat.style.opacity = '1';
       boat.style.bottom = (bgRect.height - waveY - 8) + 'px';
 
-      // Start animation via class, then seek drift synchronously (no rAF gap → no 1-frame warp)
-      boat.classList.add('visible');
-      const driftAnim = boat.getAnimations().find(a => a.animationName === 'boatDrift');
-      if (driftAnim) driftAnim.currentTime = driftTimeMs;
+      // Bob only (no drift) while easing in
+      boat.classList.add('launching');
+
+      // Ease-in to cruise speed — mirrors the initial hero handoff animation
+      const launchDistance = 13;
+      const endLeftPct = landedLeftPct + launchDistance;
+
+      const launchAnim = boat.animate([
+        { left: landedLeftPct + '%' },
+        { left: endLeftPct + '%' }
+      ], {
+        duration: 3000,
+        easing: 'cubic-bezier(0.3, 0, 0.8, 0.8)',
+        fill: 'forwards'
+      });
+
+      launchAnim.finished.then(() => {
+        launchAnim.cancel();
+        boat.style.left = '';
+        boat.classList.remove('launching');
+        boat.classList.add('visible');
+
+        // Seek drift to exact position — no rAF gap
+        const driftProgress = Math.max(0, Math.min(1, (endLeftPct + 5) / 110));
+        const driftTimeMs = driftProgress * 25000;
+        const driftAnim = boat.getAnimations().find(a => a.animationName === 'boatDrift');
+        if (driftAnim) driftAnim.currentTime = driftTimeMs;
+      });
     }
   }
 
