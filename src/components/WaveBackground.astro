@@ -3,6 +3,9 @@
 ---
 
 <div class="wave-background">
+  <!-- Ocean depth overlay — light mode only -->
+  <div class="ocean-depth"></div>
+
   <!-- SVG Wave Layers - static elements -->
   <svg class="wave-svg-static" viewBox="0 0 1440 800" preserveAspectRatio="none">
     <defs>
@@ -375,10 +378,10 @@
   :global(html.light) .wave-background {
     background: linear-gradient(
       180deg,
-      #2E6DB4 0%,    /* deep rich sky at zenith */
-      #4A90D4 15%,   /* mid sky */
+      #4A8FCC 0%,    /* lighter sky at zenith */
+      #5FA3DC 15%,   /* mid sky */
       #7AB8E8 35%,   /* lighter sky */
-      #AEDAF5 52%,   /* hazy near horizon — sky lightens toward horizon */
+      #AEDAF5 52%,   /* hazy near horizon */
       #1A7EC8 60%,   /* ocean surface */
       #0E5FA0 78%,   /* mid ocean */
       #0A3D7A 100%   /* deep ocean */
@@ -412,12 +415,29 @@
     background: rgba(255, 255, 255, 0.65);
   }
 
-  /* Sun high right, warm shimmer on water */
   :global(html.light) .mesh-overlay {
-    background:
-      radial-gradient(ellipse at 75% 8%, rgba(255, 245, 200, 0.45) 0%, transparent 35%),
-      radial-gradient(ellipse at 50% 62%, rgba(255, 255, 255, 0.18) 0%, transparent 40%),
-      radial-gradient(ellipse at 20% 70%, rgba(14, 120, 200, 0.15) 0%, transparent 45%);
+    background: none;
+  }
+
+  /* Ocean depth gradient — light mode bottom darkening */
+  .ocean-depth {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 45%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  :global(html.light) .ocean-depth {
+    display: block;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(6, 38, 90, 0.40) 100%
+    );
   }
 
   /* Reduce noise in light mode */
