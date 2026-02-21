@@ -1035,6 +1035,7 @@ const steps = [
     });
 
     // Water droplets shooting upward in a fan
+    const isLight = document.documentElement.classList.contains('light');
     for (let i = 0; i < 10; i++) {
       const drop = document.createElement('div');
       const angle = (-150 + (120 * i / 9)) * (Math.PI / 180);
@@ -1042,13 +1043,17 @@ const steps = [
       const dx = Math.cos(angle) * speed;
       const dy = Math.sin(angle) * speed;
       const size = 3 + Math.random() * 4;
+      const alpha = (0.65 + Math.random() * 0.3).toFixed(2);
+      const dropColor = isLight
+        ? `rgba(255, 255, 255, ${alpha})`
+        : `rgba(${60 + Math.random() * 60 | 0}, ${140 + Math.random() * 60 | 0}, 255, ${(0.5 + Math.random() * 0.3).toFixed(2)})`;
 
       Object.assign(drop.style, {
         position: 'absolute',
         width: size + 'px',
         height: size + 'px',
         borderRadius: '50%',
-        background: `rgba(${60 + Math.random() * 60 | 0}, ${140 + Math.random() * 60 | 0}, 255, ${(0.5 + Math.random() * 0.3).toFixed(2)})`,
+        background: dropColor,
         left: '-2px',
         top: '-2px',
       });
@@ -1059,12 +1064,13 @@ const steps = [
     }
 
     // Ripple ring on the water surface
+    const isLight2 = document.documentElement.classList.contains('light');
     const ring = document.createElement('div');
     Object.assign(ring.style, {
       position: 'absolute',
       width: '20px',
       height: '8px',
-      border: '2px solid rgba(100, 180, 255, 0.5)',
+      border: isLight2 ? '2px solid rgba(255, 255, 255, 0.75)' : '2px solid rgba(100, 180, 255, 0.5)',
       borderRadius: '50%',
       left: '0',
       top: '0',
@@ -1212,7 +1218,7 @@ const steps = [
       // Splash when boat first breaks the surface (~45% through)
       setTimeout(() => {
         if (window._buoySplash) {
-          window._buoySplash(bgRect.left + startX + boat.offsetWidth / 2, bgRect.top + bgRect.height - targetBottom);
+          window._buoySplash(bgRect.left + startX + boat.offsetWidth / 2, bgRect.top + bgRect.height - targetBottom - Math.round(boat.offsetHeight * 0.25) + 2);
         }
       }, 295);
 
@@ -1257,6 +1263,10 @@ const steps = [
           vy = Math.min(vy, 8); // cap reentry speed
         }
 
+        // Wrap horizontal first so landing always happens at an on-screen x
+        if (x > bgRect.width) x = -boat.offsetWidth;
+        else if (x < -boat.offsetWidth) x = bgRect.width;
+
         // Hit the wave surface (only when falling downward)
         const landingBottom = window._buoyBoatBottom ?? (bgRect.height - waveY - 8);
         const landingY = bgRect.height - landingBottom - boat.offsetHeight;
@@ -1271,8 +1281,8 @@ const steps = [
           // Splash at impact
           if (window._buoySplash) {
             window._buoySplash(
-              bgRect.left + x + boat.offsetWidth / 2 + 5,
-              bgRect.top + bgRect.height - landingBottom
+              bgRect.left + x + boat.offsetWidth / 2,
+              bgRect.top + bgRect.height - landingBottom - Math.round(boat.offsetHeight * 0.25) + 2
             );
           }
 
@@ -1280,10 +1290,6 @@ const steps = [
           setTimeout(() => resumeDrift(x), 150);
           return;
         }
-
-        // Wrap horizontal — sail off one side, appear on the other
-        if (x > bgRect.width) x = -boat.offsetWidth;
-        else if (x < -boat.offsetWidth) x = bgRect.width;
         boat.style.left = x + 'px';
         boat.style.top = y + 'px';
 
