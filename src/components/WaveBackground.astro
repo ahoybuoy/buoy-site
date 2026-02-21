@@ -3,48 +3,49 @@
 ---
 
 <div class="wave-background">
-  <!-- Clouds — light mode only -->
+  <!-- Clouds — light mode only, cirrus style -->
   <div class="clouds">
-    <!-- Large cloud, drifts slowly -->
+    <!-- Long cirrus streak -->
     <div class="cloud cloud-1">
-      <svg viewBox="0 0 220 70" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 340 28" xmlns="http://www.w3.org/2000/svg">
         <g fill="white">
-          <ellipse cx="110" cy="52" rx="100" ry="20"/>
-          <ellipse cx="72"  cy="40" rx="38"  ry="30"/>
-          <ellipse cx="112" cy="30" rx="44"  ry="34"/>
-          <ellipse cx="155" cy="42" rx="34"  ry="26"/>
+          <ellipse cx="170" cy="22" rx="168" ry="5"/>
+          <ellipse cx="120" cy="16" rx="90"  ry="5"/>
+          <ellipse cx="185" cy="10" rx="115" ry="6"/>
+          <ellipse cx="275" cy="17" rx="60"  ry="4"/>
+          <ellipse cx="70"  cy="19" rx="50"  ry="4"/>
         </g>
       </svg>
     </div>
-    <!-- Medium cloud -->
+    <!-- Shorter cirrus band -->
     <div class="cloud cloud-2">
-      <svg viewBox="0 0 160 55" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 240 22" xmlns="http://www.w3.org/2000/svg">
         <g fill="white">
-          <ellipse cx="80"  cy="42" rx="72"  ry="16"/>
-          <ellipse cx="55"  cy="32" rx="30"  ry="24"/>
-          <ellipse cx="88"  cy="24" rx="36"  ry="28"/>
-          <ellipse cx="120" cy="34" rx="26"  ry="20"/>
+          <ellipse cx="120" cy="17" rx="118" ry="4"/>
+          <ellipse cx="85"  cy="12" rx="65"  ry="5"/>
+          <ellipse cx="135" cy="8"  rx="80"  ry="5"/>
+          <ellipse cx="196" cy="13" rx="44"  ry="4"/>
         </g>
       </svg>
     </div>
-    <!-- Small wispy cloud -->
+    <!-- Thin wispy streak -->
     <div class="cloud cloud-3">
-      <svg viewBox="0 0 120 42" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 200 18" xmlns="http://www.w3.org/2000/svg">
         <g fill="white">
-          <ellipse cx="60"  cy="32" rx="54"  ry="12"/>
-          <ellipse cx="44"  cy="24" rx="24"  ry="20"/>
-          <ellipse cx="72"  cy="18" rx="28"  ry="22"/>
-          <ellipse cx="96"  cy="26" rx="20"  ry="16"/>
+          <ellipse cx="100" cy="14" rx="98"  ry="3"/>
+          <ellipse cx="70"  cy="10" rx="55"  ry="4"/>
+          <ellipse cx="115" cy="6"  rx="70"  ry="5"/>
+          <ellipse cx="165" cy="11" rx="35"  ry="3"/>
         </g>
       </svg>
     </div>
-    <!-- Extra small puff -->
+    <!-- Feathery wisp -->
     <div class="cloud cloud-4">
-      <svg viewBox="0 0 90 34" xmlns="http://www.w3.org/2000/svg">
+      <svg viewBox="0 0 150 16" xmlns="http://www.w3.org/2000/svg">
         <g fill="white">
-          <ellipse cx="45"  cy="26" rx="40"  ry="10"/>
-          <ellipse cx="32"  cy="19" rx="20"  ry="16"/>
-          <ellipse cx="56"  cy="14" rx="22"  ry="18"/>
+          <ellipse cx="75"  cy="12" rx="73"  ry="3"/>
+          <ellipse cx="50"  cy="8"  rx="42"  ry="4"/>
+          <ellipse cx="90"  cy="5"  rx="52"  ry="4"/>
         </g>
       </svg>
     </div>
@@ -488,39 +489,39 @@
   .cloud {
     position: absolute;
     will-change: transform;
-    filter: blur(3px);
+    filter: blur(4px);
   }
 
   .cloud-1 {
-    top: 12%;
-    left: -18%;
-    width: 300px;
-    opacity: 0.45;
-    animation: cloudDrift 110s linear infinite;
+    top: 13%;
+    left: -25%;
+    width: 380px;
+    opacity: 0.55;
+    animation: cloudDrift 120s linear infinite;
   }
   .cloud-2 {
     top: 22%;
-    left: -10%;
-    width: 210px;
-    opacity: 0.35;
-    animation: cloudDrift 145s linear infinite;
-    animation-delay: -55s;
+    left: -15%;
+    width: 270px;
+    opacity: 0.45;
+    animation: cloudDrift 155s linear infinite;
+    animation-delay: -60s;
   }
   .cloud-3 {
-    top: 14%;
-    left: -8%;
-    width: 160px;
-    opacity: 0.30;
-    animation: cloudDrift 90s linear infinite;
-    animation-delay: -30s;
+    top: 16%;
+    left: -12%;
+    width: 220px;
+    opacity: 0.40;
+    animation: cloudDrift 95s linear infinite;
+    animation-delay: -35s;
   }
   .cloud-4 {
     top: 28%;
-    left: -5%;
-    width: 115px;
-    opacity: 0.28;
-    animation: cloudDrift 125s linear infinite;
-    animation-delay: -80s;
+    left: -8%;
+    width: 165px;
+    opacity: 0.35;
+    animation: cloudDrift 130s linear infinite;
+    animation-delay: -85s;
   }
 
   @keyframes cloudDrift {
