@@ -367,4 +367,59 @@
       width: 200%;
     }
   }
+
+  /* =============================================
+     Light mode — daytime ocean scene
+     ============================================= */
+
+  :global(html.light) .wave-background {
+    background: linear-gradient(
+      180deg,
+      #87CEEB 0%,    /* sky blue at top */
+      #5BB8F5 25%,   /* deeper sky */
+      #3AA0E8 50%,   /* horizon blue */
+      #1E88D8 70%,   /* water upper */
+      #1565C0 100%   /* deep water */
+    );
+  }
+
+  /* Brighter, more saturated waves in light mode */
+  :global(html.light) .wave-container-1 svg path {
+    fill: rgba(255, 255, 255, 0.35) !important;
+    filter: none;
+  }
+  :global(html.light) .wave-container-2 svg path {
+    fill: rgba(30, 136, 229, 0.5) !important;
+    filter: none;
+  }
+  :global(html.light) .wave-container-3 svg path {
+    fill: rgba(21, 101, 192, 0.65) !important;
+    filter: none;
+  }
+
+  /* Hide stars and dark grid in daylight */
+  :global(html.light) .stars {
+    display: none;
+  }
+  :global(html.light) .grid-lines {
+    display: none;
+  }
+
+  /* Warm sun-glint particles */
+  :global(html.light) .particle {
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  /* Brighter mesh overlay — sun reflection on water */
+  :global(html.light) .mesh-overlay {
+    background:
+      radial-gradient(ellipse at 70% 10%, rgba(255, 255, 255, 0.4) 0%, transparent 40%),
+      radial-gradient(ellipse at 30% 60%, rgba(30, 136, 229, 0.2) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 70%, rgba(255, 255, 255, 0.15) 0%, transparent 40%);
+  }
+
+  /* Reduce noise opacity in light mode */
+  :global(html.light) .wave-background::after {
+    opacity: 0.015;
+  }
 </style>
