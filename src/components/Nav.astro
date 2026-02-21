@@ -82,28 +82,6 @@ const compareItems = [
           </div>
         </div>
 
-        <!-- Integrations Dropdown -->
-        <div class="relative group">
-          <button class="text-sm text-slate hover:text-light transition-colors duration-200 flex items-center gap-1 py-4">
-            Integrations
-            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-          <div class="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-            <div class="bg-navy-dark border border-navy-light/30 rounded-xl shadow-xl p-3 w-48">
-              {integrationItems.map((item) => (
-                <a
-                  href={item.href}
-                  class="block px-3 py-2 text-sm text-slate hover:text-light hover:bg-navy-light/20 rounded-lg transition-colors"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-
         <!-- Use Cases Dropdown -->
         <div class="relative group">
           <button class="text-sm text-slate hover:text-light transition-colors duration-200 flex items-center gap-1 py-4">
@@ -220,18 +198,6 @@ const compareItems = [
         <div class="px-4 py-2 text-xs font-semibold text-slate uppercase tracking-wide">Features</div>
         <div class="space-y-1">
           {featureItems.map((item) => (
-            <a href={item.href} class="block px-4 py-2 text-sm text-slate hover:text-light hover:bg-navy-light/20 rounded-lg transition-colors">
-              {item.label}
-            </a>
-          ))}
-        </div>
-      </div>
-
-      <!-- Integrations -->
-      <div class="mb-4">
-        <div class="px-4 py-2 text-xs font-semibold text-slate uppercase tracking-wide">Integrations</div>
-        <div class="grid grid-cols-2 gap-1">
-          {integrationItems.map((item) => (
             <a href={item.href} class="block px-4 py-2 text-sm text-slate hover:text-light hover:bg-navy-light/20 rounded-lg transition-colors">
               {item.label}
             </a>
