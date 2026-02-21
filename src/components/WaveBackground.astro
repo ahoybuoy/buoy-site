@@ -154,8 +154,8 @@
     </svg>
   </div>
 
-  <!-- Little boat riding the waves -->
-  <div class="boat">⛵</div>
+  <!-- Little boat riding the waves (hidden until hero boat drops in) -->
+  <div class="boat" id="waveBoat">⛵</div>
 
   <!-- Floating particles -->
   <div class="particles">
@@ -216,14 +216,17 @@
   /* Animate each wave container */
   .wave-container-1 {
     animation: waveScroll 25s linear infinite;
+    z-index: 2;
   }
 
   .wave-container-2 {
     animation: waveScroll 20s linear infinite reverse;
+    z-index: 3;
   }
 
   .wave-container-3 {
     animation: waveScroll 15s linear infinite;
+    z-index: 4;
   }
 
   @keyframes waveScroll {
@@ -314,19 +317,31 @@
     50% { opacity: 0.8; }
   }
 
-  /* Little boat */
+  /* Little boat — hidden until hero animation hands off */
   .boat {
     position: absolute;
     bottom: 42%;
     left: 15%;
-    font-size: 1.5rem;
-    animation: boatBob 4s ease-in-out infinite, boatDrift 25s linear infinite;
-    opacity: 0.7;
-    z-index: 1;
+    font-size: 1.4rem;
+    opacity: 0;
+    z-index: 5;
+    pointer-events: none;
   }
 
+  /* Launch phase: boat eases into motion (slow → fast) before cruising */
+  .boat.launching {
+    opacity: 1;
+    animation: boatBob 4s ease-in-out infinite;
+  }
+
+  .boat.visible {
+    opacity: 1;
+    animation: boatBob 4s ease-in-out infinite, boatDrift 25s linear infinite;
+  }
+
+
   @keyframes boatBob {
-    0%, 100% { transform: translateY(0) rotate(-3deg); }
+    0%, 100% { transform: translateY(0) rotate(0deg); }
     50% { transform: translateY(-15px) rotate(3deg); }
   }
 

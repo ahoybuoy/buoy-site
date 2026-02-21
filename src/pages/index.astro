@@ -148,7 +148,7 @@ const steps = [
         </div>
 
         <!-- Main headline -->
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight font-[Satoshi]">
           <span class="hero-reveal text-light" style="animation-delay: 0s">Catch</span>
           <span class="hero-reveal hero-drift-highlight" style="animation-delay: 0.15s">design drift</span>
           <br />
@@ -158,8 +158,8 @@ const steps = [
         </h1>
 
         <!-- Subheadline -->
-        <p class="text-lg sm:text-xl text-slate max-w-2xl mx-auto mb-10">
-          Design systems drift over time. Buoy finds hardcoded colors, duplicate components, and token violations.
+        <p class="text-lg sm:text-xl text-slate max-w-2xl mx-auto mb-10" style="text-shadow: 0 1px 3px rgba(0,0,0,0.2)">
+          Design systems drift over time. Buoy finds hardcoded colors, duplicate components, and token violations.<span class="hero-boat-inline" id="heroBoatInline">&nbsp;<span class="hero-boat-emoji" id="heroBoatEmoji">⛵</span></span>
         </p>
 
         <!-- CTAs -->
@@ -809,6 +809,220 @@ const steps = [
     </div>
   </footer>
 </Layout>
+
+<style>
+  /* Hero boat inline at end of text */
+  .hero-boat-inline {
+    display: inline-block;
+    position: relative;
+    z-index: 20;
+    white-space: nowrap;
+  }
+
+  .hero-boat-emoji {
+    display: inline-block;
+    font-size: 1.1em;
+    cursor: default;
+  }
+
+  /* Splash droplet + ripple styles (created dynamically by JS) */
+  @keyframes splashDroplet {
+    0% {
+      transform: translate(0, 0) scale(1);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translate(var(--dx), var(--dy)) scale(0.2);
+      opacity: 0;
+    }
+  }
+
+  @keyframes splashRing {
+    0% {
+      transform: translate(-50%, -50%) scale(0.5);
+      opacity: 0.6;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(4, 2);
+      opacity: 0;
+    }
+  }
+
+  /* Reduced motion: skip animation, show wave boat directly */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-boat-inline {
+      display: none !important;
+    }
+  }
+</style>
+
+<script>
+  // Hero boat escape animation — boat wiggles free from text, drops into the waves
+  function initHeroBoatAnimation() {
+    const boatInline = document.getElementById('heroBoatInline');
+    const boatEmoji = document.getElementById('heroBoatEmoji');
+    const waveBoat = document.getElementById('waveBoat');
+
+    if (!boatInline || !boatEmoji) return;
+
+    // Reduced motion: just show the wave boat
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      if (waveBoat) waveBoat.classList.add('visible');
+      return;
+    }
+
+    // Phase 1: Wiggle (anticipation — building tension before the break)
+    setTimeout(() => {
+      const wiggle = boatEmoji.animate([
+        { transform: 'rotate(0deg)', offset: 0 },
+        { transform: 'rotate(8deg) translateX(1px)', offset: 0.15 },
+        { transform: 'rotate(-7deg) translateX(-1px)', offset: 0.30 },
+        { transform: 'rotate(12deg) translateX(2px) translateY(-2px)', offset: 0.50 },
+        { transform: 'rotate(-10deg) translateX(-2px)', offset: 0.65 },
+        { transform: 'rotate(5deg) translateX(1px)', offset: 0.80 },
+        { transform: 'rotate(-2deg)', offset: 0.92 },
+        { transform: 'rotate(0deg)', offset: 1 },
+      ], { duration: 600, easing: 'ease-in-out' });
+
+      wiggle.finished.then(() => {
+        // Phase 2a: Anticipation — slight lift before the drop
+        boatInline.style.transition = 'transform 120ms ease-out';
+        requestAnimationFrame(() => {
+          boatInline.style.transform = 'translateY(-6px)';
+        });
+
+        // Phase 2b: Drop with gravity + soft bounce
+        setTimeout(() => {
+          boatInline.style.transition = 'transform 500ms cubic-bezier(0.4, 0, 0.68, 1.4)';
+          boatInline.style.transform = 'translateY(37px)';
+        }, 130);
+
+        // Splash at impact (~60% of 500ms drop = 300ms after drop starts)
+        setTimeout(() => {
+          const landedRect = boatEmoji.getBoundingClientRect();
+          createSplash(
+            landedRect.left + landedRect.width / 2,
+            landedRect.top + landedRect.height * 0.7 + 6
+          );
+        }, 500);
+
+        // Handoff: overlap swap — show wave boat first, hide inline next frame
+        setTimeout(() => {
+          if (waveBoat) {
+            const emojiRect = boatEmoji.getBoundingClientRect();
+            const waveParent = waveBoat.offsetParent || waveBoat.parentElement;
+            const parentRect = waveParent.getBoundingClientRect();
+
+            // Match position — compensate for inline vs wave boat size difference
+            const bottomPx = parentRect.bottom - emojiRect.bottom - 4;
+            waveBoat.style.bottom = bottomPx + 'px';
+
+            const landedLeftPct = ((emojiRect.left + 4) / window.innerWidth) * 100;
+
+            // Phase: Launch with ease-in (slow → fast) before steady cruise
+            waveBoat.style.left = landedLeftPct + '%';
+            waveBoat.classList.add('launching');
+
+            // Hide inline boat on next frame — zero gap
+            requestAnimationFrame(() => {
+              boatInline.style.visibility = 'hidden';
+            });
+
+            // Ease-in launch: boat gently accelerates from rest to cruise speed
+            // Cruise speed = 110% / 25s = 4.4%/s
+            // Launch: 13% over 3s = 4.33%/s average, ending at ~4.4%/s
+            const launchDuration = 3000;
+            const launchDistance = 13;
+            const endLeftPct = landedLeftPct + launchDistance;
+
+            const launchAnim = waveBoat.animate([
+              { left: landedLeftPct + '%' },
+              { left: endLeftPct + '%' }
+            ], {
+              duration: launchDuration,
+              easing: 'cubic-bezier(0.3, 0, 0.8, 0.8)', // starts at rest, ends at cruise speed
+              fill: 'forwards'
+            });
+
+            launchAnim.finished.then(() => {
+              launchAnim.cancel();
+
+              // Switch to steady drift — sync position
+              waveBoat.style.left = '';
+              waveBoat.classList.remove('launching');
+              waveBoat.classList.add('visible');
+
+              const driftProgress = (endLeftPct + 5) / 110;
+              const driftDelay = -(driftProgress * 25);
+              waveBoat.style.animationDelay = `0s, ${driftDelay}s`;
+            });
+          } else {
+            boatInline.style.visibility = 'hidden';
+          }
+        }, 750);
+      });
+    }, 800);
+  }
+
+  function createSplash(x, y) {
+    const waveBg = document.querySelector('.wave-background');
+    if (!waveBg) return;
+    const bgRect = waveBg.getBoundingClientRect();
+
+    const container = document.createElement('div');
+    Object.assign(container.style, {
+      position: 'absolute',
+      left: (x - bgRect.left) + 'px',
+      top: (y - bgRect.top) + 'px',
+      zIndex: '1',
+      pointerEvents: 'none',
+    });
+
+    // Water droplets shooting upward in a fan
+    for (let i = 0; i < 10; i++) {
+      const drop = document.createElement('div');
+      const angle = (-150 + (120 * i / 9)) * (Math.PI / 180);
+      const speed = 18 + Math.random() * 28;
+      const dx = Math.cos(angle) * speed;
+      const dy = Math.sin(angle) * speed;
+      const size = 3 + Math.random() * 4;
+
+      Object.assign(drop.style, {
+        position: 'absolute',
+        width: size + 'px',
+        height: size + 'px',
+        borderRadius: '50%',
+        background: `rgba(${60 + Math.random() * 60 | 0}, ${140 + Math.random() * 60 | 0}, 255, ${(0.5 + Math.random() * 0.3).toFixed(2)})`,
+        left: '-2px',
+        top: '-2px',
+      });
+      drop.style.setProperty('--dx', dx + 'px');
+      drop.style.setProperty('--dy', dy + 'px');
+      drop.style.animation = `splashDroplet ${(0.4 + Math.random() * 0.3).toFixed(2)}s ease-out ${(Math.random() * 0.08).toFixed(3)}s forwards`;
+      container.appendChild(drop);
+    }
+
+    // Ripple ring on the water surface
+    const ring = document.createElement('div');
+    Object.assign(ring.style, {
+      position: 'absolute',
+      width: '20px',
+      height: '8px',
+      border: '2px solid rgba(100, 180, 255, 0.5)',
+      borderRadius: '50%',
+      left: '0',
+      top: '0',
+      animation: 'splashRing 0.7s ease-out forwards',
+    });
+    container.appendChild(ring);
+
+
+    waveBg.appendChild(container);
+    setTimeout(() => container.remove(), 1200);
+  }
+
+  initHeroBoatAnimation();
+</script>
 
 <script>
   // Copy command functionality
