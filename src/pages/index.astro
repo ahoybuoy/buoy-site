@@ -894,7 +894,8 @@ const steps = [
         // Phase 2b: Drop with gravity + soft bounce
         setTimeout(() => {
           boatInline.style.transition = 'transform 500ms cubic-bezier(0.4, 0, 0.68, 1.4)';
-          boatInline.style.transform = 'translateY(37px)';
+          const isMobile = window.innerWidth < 768;
+          boatInline.style.transform = `translateY(${isMobile ? 30 : 37}px)`;
         }, 130);
 
         // Splash at impact (~60% of 500ms drop = 300ms after drop starts)
