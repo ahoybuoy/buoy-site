@@ -1212,7 +1212,7 @@ const steps = [
       // Splash when boat first breaks the surface (~45% through)
       setTimeout(() => {
         if (window._buoySplash) {
-          window._buoySplash(bgRect.left + startX + boat.offsetWidth / 2, bgRect.top + waveY);
+          window._buoySplash(bgRect.left + startX + boat.offsetWidth / 2, bgRect.top + bgRect.height - targetBottom);
         }
       }, 295);
 
@@ -1258,11 +1258,12 @@ const steps = [
         }
 
         // Hit the wave surface (only when falling downward)
-        // +10 offset sinks boat into wave so it sits at the visual water line
+        const landingBottom = window._buoyBoatBottom ?? (bgRect.height - waveY - 8);
+        const landingY = bgRect.height - landingBottom - boat.offsetHeight;
         const boatBottom = y + boat.offsetHeight;
-        if (boatBottom >= waveY + 8 && vy > 0) {
+        if (boatBottom >= bgRect.height - landingBottom && vy > 0) {
           physicsActive = false;
-          y = waveY - boat.offsetHeight + 8;
+          y = landingY;
           boat.style.left = x + 'px';
           boat.style.top = y + 'px';
           boat.style.transform = '';
@@ -1271,7 +1272,7 @@ const steps = [
           if (window._buoySplash) {
             window._buoySplash(
               bgRect.left + x + boat.offsetWidth / 2 + 5,
-              bgRect.top + waveY
+              bgRect.top + bgRect.height - landingBottom
             );
           }
 
