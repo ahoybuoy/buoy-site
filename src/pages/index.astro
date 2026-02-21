@@ -1103,12 +1103,17 @@ const steps = [
     });
     observer.observe(boat, { attributes: true, attributeFilter: ['class'] });
 
+    let _cachedWaveY = null;
+    window.addEventListener('resize', () => { _cachedWaveY = null; }, { passive: true });
+
     function getWaveY() {
+      if (_cachedWaveY !== null) return _cachedWaveY;
       const wave3 = document.querySelector('.wave-container-3');
       if (!wave3) return waveBg.getBoundingClientRect().height * 0.62;
       const r = wave3.getBoundingClientRect();
       const bg = waveBg.getBoundingClientRect();
-      return (r.top + (470 / 800) * r.height) - bg.top;
+      _cachedWaveY = (r.top + (470 / 800) * r.height) - bg.top;
+      return _cachedWaveY;
     }
 
     function lockPosition() {
