@@ -854,13 +854,16 @@ const steps = [
   }
 
   /* Hero content passes pointer events through to boat underneath,
-     but restores them on interactive elements */
+     but restores them on interactive elements.
+     Use :global() on descendant selectors so Astro's CSS scoping doesn't
+     add its own data-astro-cid attribute requirement to child component elements
+     (e.g. Button.astro's <a> tags have a different scope hash than index.astro). */
   .hero-content {
     pointer-events: none;
   }
-  .hero-content a,
-  .hero-content button,
-  .hero-content [role="button"],
+  .hero-content :global(a),
+  .hero-content :global(button),
+  .hero-content :global([role="button"]),
   .hero-content h1,
   .hero-content p {
     pointer-events: auto;
