@@ -324,10 +324,12 @@ const flagItems = [
       <!-- splashDroplet -->
       <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl">
         <div class="h-20 flex items-center justify-center mb-4">
-          <div class="relative">
-            <span class="text-2xl">💧</span>
-            <span class="text-lg ds-demo-droplet absolute -top-2 -left-3">💧</span>
-            <span class="text-sm ds-demo-droplet2 absolute -top-1 left-4">💧</span>
+          <div class="relative w-0 h-0">
+            <div class="ds-splash-dot ds-drop-a"></div>
+            <div class="ds-splash-dot ds-drop-b"></div>
+            <div class="ds-splash-dot ds-drop-c"></div>
+            <div class="ds-splash-dot ds-drop-d"></div>
+            <div class="ds-splash-dot ds-drop-e"></div>
           </div>
         </div>
         <div class="font-mono text-sm text-buoy mb-1">splashDroplet</div>
@@ -338,7 +340,9 @@ const flagItems = [
       <!-- splashRing -->
       <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl">
         <div class="h-20 flex items-center justify-center mb-4">
-          <div class="ds-demo-ring w-8 h-3 border-2 border-info/60 rounded-full"></div>
+          <div class="relative w-0 h-0">
+            <div class="ds-demo-ring"></div>
+          </div>
         </div>
         <div class="font-mono text-sm text-buoy mb-1">splashRing</div>
         <div class="font-mono text-xs text-slate-dark mb-3">0.7s ease-out, elliptical expand</div>
@@ -1038,16 +1042,12 @@ const flagItems = [
     100% { transform: rotate(0deg); }
   }
   @keyframes ds-ring {
-    0% { transform: scale(0.5); opacity: 0.6; }
-    100% { transform: scale(4, 2); opacity: 0; }
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0.6; }
+    100% { transform: translate(-50%, -50%) scale(4, 2); opacity: 0; }
   }
-  @keyframes ds-droplet {
+  @keyframes ds-splash-drop {
     0% { transform: translate(0, 0) scale(1); opacity: 0.8; }
-    100% { transform: translate(-12px, -18px) scale(0.2); opacity: 0; }
-  }
-  @keyframes ds-droplet2 {
-    0% { transform: translate(0, 0) scale(1); opacity: 0.8; }
-    100% { transform: translate(10px, -16px) scale(0.2); opacity: 0; }
+    100% { transform: translate(var(--dx), var(--dy)) scale(0.2); opacity: 0; }
   }
 
   .ds-demo-bob {
@@ -1073,14 +1073,34 @@ const flagItems = [
     animation: ds-wiggle 1.5s ease-in-out infinite;
   }
   .ds-demo-ring {
+    position: absolute;
+    width: 20px;
+    height: 8px;
+    border-radius: 50%;
+    border: 2px solid rgba(100, 180, 255, 0.5);
+    left: 0;
+    top: 0;
     animation: ds-ring 1.2s ease-out infinite;
   }
-  .ds-demo-droplet {
-    display: inline-block;
-    animation: ds-droplet 0.6s ease-out infinite;
+  :global(html.light) .ds-demo-ring {
+    border-color: rgba(255, 255, 255, 0.75);
   }
-  .ds-demo-droplet2 {
-    display: inline-block;
-    animation: ds-droplet2 0.5s ease-out 0.08s infinite;
+  .ds-splash-dot {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(100, 180, 255, 0.65);
+    left: 0;
+    top: 0;
   }
+  :global(html.light) .ds-splash-dot {
+    background: rgba(255, 255, 255, 0.65);
+  }
+  /* Fan spread: -150° to -30°, speed ~22-25px */
+  .ds-drop-a { --dx: -19px; --dy: -11px; animation: ds-splash-drop 0.55s ease-out 0.02s infinite; }
+  .ds-drop-b { --dx: -11px; --dy: -19px; animation: ds-splash-drop 0.48s ease-out 0.06s infinite; }
+  .ds-drop-c { --dx:   0px; --dy: -25px; animation: ds-splash-drop 0.60s ease-out    0s infinite; }
+  .ds-drop-d { --dx:  11px; --dy: -19px; animation: ds-splash-drop 0.52s ease-out 0.04s infinite; }
+  .ds-drop-e { --dx:  19px; --dy: -11px; animation: ds-splash-drop 0.45s ease-out 0.07s infinite; }
 </style>
