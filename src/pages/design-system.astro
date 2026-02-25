@@ -100,7 +100,7 @@ const colorGroups = [
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
               {group.tokens.map(token => (
                 <div class="rounded-xl overflow-hidden border border-navy-light/20 bg-navy/40">
-                  <div class={`h-20 ${token.tw}`}></div>
+                  <div class={`h-20 ${token.tw}`} role="img" aria-label={`${token.label} color swatch`}></div>
                   <div class="p-3 space-y-1">
                     <div class="font-mono text-xs text-buoy">{token.name}</div>
                     <div class="font-mono text-xs text-slate">tw: {token.label}</div>
