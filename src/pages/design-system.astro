@@ -113,14 +113,6 @@ const flagItems = [
         </div>
 
         <div class="ds-nav-group">
-          <div class="ds-nav-group-label">Conversion</div>
-          <a href="#comp-lead-form"     class="ds-nav-link" data-target="comp-lead-form">LeadMagnetForm</a>
-          <a href="#comp-lead-callout"  class="ds-nav-link" data-target="comp-lead-callout">LeadMagnetCallout</a>
-          <a href="#comp-lead-cta"      class="ds-nav-link" data-target="comp-lead-cta">LeadMagnetCTA</a>
-          <a href="#comp-lead-capture"  class="ds-nav-link" data-target="comp-lead-capture">LeadCaptureSection</a>
-        </div>
-
-        <div class="ds-nav-group">
           <div class="ds-nav-group-label">Patterns</div>
           <a href="#pat-section-header" class="ds-nav-link" data-target="pat-section-header">Section Header</a>
           <a href="#pat-inline-code"    class="ds-nav-link" data-target="pat-inline-code">Inline Code</a>
@@ -130,6 +122,14 @@ const flagItems = [
           <a href="#pat-pdf-badge"      class="ds-nav-link" data-target="pat-pdf-badge">PDF Badges</a>
           <a href="#pat-availability"   class="ds-nav-link" data-target="pat-availability">Availability Notice</a>
           <a href="#pat-pricing-card"   class="ds-nav-link" data-target="pat-pricing-card">Pricing Card</a>
+        </div>
+
+        <div class="ds-nav-group">
+          <div class="ds-nav-group-label">Conversion</div>
+          <a href="#comp-lead-form"     class="ds-nav-link" data-target="comp-lead-form">LeadMagnetForm</a>
+          <a href="#comp-lead-callout"  class="ds-nav-link" data-target="comp-lead-callout">LeadMagnetCallout</a>
+          <a href="#comp-lead-cta"      class="ds-nav-link" data-target="comp-lead-cta">LeadMagnetCTA</a>
+          <a href="#comp-lead-capture"  class="ds-nav-link" data-target="comp-lead-capture">LeadCaptureSection</a>
         </div>
       </nav>
 
@@ -933,113 +933,11 @@ const flagItems = [
       </div><!-- /components group -->
 
       <!-- ════════════════════════════════════════════
-           CONVERSION
-           ════════════════════════════════════════════ -->
-      <div class="ds-group-block">
-        <div class="ds-group-header">
-          <span class="ds-group-eyebrow">03</span>
-          <h2 class="ds-group-title">Conversion</h2>
-          <p class="ds-group-desc">Lead capture components. Each wraps <code class="ds-code">LeadMagnetForm</code> in a different layout context.</p>
-        </div>
-
-        <!-- LeadMagnetForm -->
-        <div id="comp-lead-form" class="ds-comp" data-ds-section>
-          <div class="ds-comp-header">
-            <div>
-              <h3 class="ds-comp-name">LeadMagnetForm</h3>
-              <code class="ds-comp-path">src/components/LeadMagnetForm.astro</code>
-            </div>
-            <span class="ds-badge ds-badge-conversion">Conversion</span>
-          </div>
-          <p class="text-sm text-slate mb-4">Email capture form primitive. Used inside all lead magnet variants. Handles submit, loading, success, and error states.</p>
-          <div class="max-w-lg">
-            <LeadMagnetForm leadMagnet="pr-review-cheatsheet" buttonText="Get the Cheat Sheet" />
-          </div>
-          <div class="ds-spec">
-            <div class="text-slate mb-1">Props: <span class="text-buoy">leadMagnet*</span> · <span class="text-buoy">buttonText</span>='Get the PDF' · <span class="text-buoy">successMessage</span></div>
-            <div class="text-slate-dark">Input: bg-navy-light/50 focus:border-buoy · Button: bg-buoy glow-buoy hover:scale-105 · Success: bg-green-500/20</div>
-          </div>
-        </div>
-
-        <hr class="ds-divider" />
-
-        <!-- LeadMagnetCallout -->
-        <div id="comp-lead-callout" class="ds-comp" data-ds-section>
-          <div class="ds-comp-header">
-            <div>
-              <h3 class="ds-comp-name">LeadMagnetCallout</h3>
-              <code class="ds-comp-path">src/components/LeadMagnetCallout.astro</code>
-            </div>
-            <span class="ds-badge ds-badge-conversion">Conversion</span>
-          </div>
-          <p class="text-sm text-slate mb-4">Inline callout card for embedding lead capture in article or docs context. Switches to horizontal layout on large screens.</p>
-          <LeadMagnetCallout
-            leadMagnet="drift-checklist"
-            headline="20 warning signs of design system drift"
-            subhead="A checklist for your next code review. Spot drift before it compounds."
-            buttonText="Get the Checklist"
-          />
-          <div class="ds-spec">
-            <div class="text-slate mb-1">Props: <span class="text-buoy">leadMagnet*</span> · <span class="text-buoy">headline*</span> · <span class="text-buoy">subhead*</span> · <span class="text-buoy">buttonText</span>='Get the PDF'</div>
-            <div class="text-slate-dark">bg-gradient buoy/10→lavender/10 border-buoy/20 · lg:flex-row · "Free PDF" square badge</div>
-          </div>
-        </div>
-
-        <hr class="ds-divider" />
-
-        <!-- LeadMagnetCTA -->
-        <div id="comp-lead-cta" class="ds-comp" data-ds-section>
-          <div class="ds-comp-header">
-            <div>
-              <h3 class="ds-comp-name">LeadMagnetCTA</h3>
-              <code class="ds-comp-path">src/components/LeadMagnetCTA.astro</code>
-            </div>
-            <span class="ds-badge ds-badge-conversion">Conversion</span>
-          </div>
-          <p class="text-sm text-slate mb-4">Full-width centered section CTA. Used at the bottom of content pages to offer a related PDF download.</p>
-          <div class="rounded-xl overflow-hidden border border-navy-light/20">
-            <LeadMagnetCTA
-              leadMagnet="maturity-model"
-              headline="Where does your design system stand?"
-              subhead="Assess your maturity level and get a roadmap for what to fix next."
-              buttonText="Get the Assessment"
-            />
-          </div>
-          <div class="ds-spec">
-            <div class="text-slate mb-1">Props: <span class="text-buoy">leadMagnet*</span> · <span class="text-buoy">headline*</span> · <span class="text-buoy">subhead*</span> · <span class="text-buoy">buttonText</span>='Get the PDF'</div>
-            <div class="text-slate-dark">py-16 bg-navy centered text · "Free PDF Download" pill badge · max-w-md form</div>
-          </div>
-        </div>
-
-        <hr class="ds-divider" />
-
-        <!-- LeadCaptureSection -->
-        <div id="comp-lead-capture" class="ds-comp" data-ds-section>
-          <div class="ds-comp-header">
-            <div>
-              <h3 class="ds-comp-name">LeadCaptureSection</h3>
-              <code class="ds-comp-path">src/components/LeadCaptureSection.astro</code>
-            </div>
-            <span class="ds-badge ds-badge-conversion">Conversion</span>
-          </div>
-          <p class="text-sm text-slate mb-4">A/B-tested two-column lead capture with PDF preview mockup. PostHog feature flag <code class="ds-code">homepage-lead-magnet-variant</code> selects the active variant; defaults to <code class="ds-code">drift-checklist</code>.</p>
-          <div class="rounded-xl overflow-hidden border border-navy-light/20">
-            <LeadCaptureSection />
-          </div>
-          <div class="ds-spec">
-            <div class="text-slate mb-1">No props. 3 variants: <span class="text-buoy">drift-checklist</span> · <span class="text-buoy">why-developers-bypass</span> · <span class="text-buoy">maturity-model</span></div>
-            <div class="text-slate-dark">A/B via PostHog · PDF preview: rotate-1 hover:rotate-0 · grid lg:grid-cols-2</div>
-          </div>
-        </div>
-
-      </div><!-- /conversion group -->
-
-      <!-- ════════════════════════════════════════════
            PATTERNS
            ════════════════════════════════════════════ -->
       <div class="ds-group-block">
         <div class="ds-group-header">
-          <span class="ds-group-eyebrow">04</span>
+          <span class="ds-group-eyebrow">03</span>
           <h2 class="ds-group-title">Patterns</h2>
           <p class="ds-group-desc">Recurring compositions built from the token primitives above.</p>
         </div>
@@ -1247,6 +1145,108 @@ const flagItems = [
         </div>
 
       </div><!-- /patterns group -->
+
+      <!-- ════════════════════════════════════════════
+           CONVERSION
+           ════════════════════════════════════════════ -->
+      <div class="ds-group-block">
+        <div class="ds-group-header">
+          <span class="ds-group-eyebrow">04</span>
+          <h2 class="ds-group-title">Conversion</h2>
+          <p class="ds-group-desc">Lead capture components. Each wraps <code class="ds-code">LeadMagnetForm</code> in a different layout context.</p>
+        </div>
+
+        <!-- LeadMagnetForm -->
+        <div id="comp-lead-form" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">LeadMagnetForm</h3>
+              <code class="ds-comp-path">src/components/LeadMagnetForm.astro</code>
+            </div>
+            <span class="ds-badge ds-badge-conversion">Conversion</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Email capture form primitive. Used inside all lead magnet variants. Handles submit, loading, success, and error states.</p>
+          <div class="max-w-lg">
+            <LeadMagnetForm leadMagnet="pr-review-cheatsheet" buttonText="Get the Cheat Sheet" />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">leadMagnet*</span> · <span class="text-buoy">buttonText</span>='Get the PDF' · <span class="text-buoy">successMessage</span></div>
+            <div class="text-slate-dark">Input: bg-navy-light/50 focus:border-buoy · Button: bg-buoy glow-buoy hover:scale-105 · Success: bg-green-500/20</div>
+          </div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- LeadMagnetCallout -->
+        <div id="comp-lead-callout" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">LeadMagnetCallout</h3>
+              <code class="ds-comp-path">src/components/LeadMagnetCallout.astro</code>
+            </div>
+            <span class="ds-badge ds-badge-conversion">Conversion</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Inline callout card for embedding lead capture in article or docs context. Switches to horizontal layout on large screens.</p>
+          <LeadMagnetCallout
+            leadMagnet="drift-checklist"
+            headline="20 warning signs of design system drift"
+            subhead="A checklist for your next code review. Spot drift before it compounds."
+            buttonText="Get the Checklist"
+          />
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">leadMagnet*</span> · <span class="text-buoy">headline*</span> · <span class="text-buoy">subhead*</span> · <span class="text-buoy">buttonText</span>='Get the PDF'</div>
+            <div class="text-slate-dark">bg-gradient buoy/10→lavender/10 border-buoy/20 · lg:flex-row · "Free PDF" square badge</div>
+          </div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- LeadMagnetCTA -->
+        <div id="comp-lead-cta" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">LeadMagnetCTA</h3>
+              <code class="ds-comp-path">src/components/LeadMagnetCTA.astro</code>
+            </div>
+            <span class="ds-badge ds-badge-conversion">Conversion</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Full-width centered section CTA. Used at the bottom of content pages to offer a related PDF download.</p>
+          <div class="rounded-xl overflow-hidden border border-navy-light/20">
+            <LeadMagnetCTA
+              leadMagnet="maturity-model"
+              headline="Where does your design system stand?"
+              subhead="Assess your maturity level and get a roadmap for what to fix next."
+              buttonText="Get the Assessment"
+            />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">leadMagnet*</span> · <span class="text-buoy">headline*</span> · <span class="text-buoy">subhead*</span> · <span class="text-buoy">buttonText</span>='Get the PDF'</div>
+            <div class="text-slate-dark">py-16 bg-navy centered text · "Free PDF Download" pill badge · max-w-md form</div>
+          </div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- LeadCaptureSection -->
+        <div id="comp-lead-capture" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">LeadCaptureSection</h3>
+              <code class="ds-comp-path">src/components/LeadCaptureSection.astro</code>
+            </div>
+            <span class="ds-badge ds-badge-conversion">Conversion</span>
+          </div>
+          <p class="text-sm text-slate mb-4">A/B-tested two-column lead capture with PDF preview mockup. PostHog feature flag <code class="ds-code">homepage-lead-magnet-variant</code> selects the active variant; defaults to <code class="ds-code">drift-checklist</code>.</p>
+          <div class="rounded-xl overflow-hidden border border-navy-light/20">
+            <LeadCaptureSection />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">No props. 3 variants: <span class="text-buoy">drift-checklist</span> · <span class="text-buoy">why-developers-bypass</span> · <span class="text-buoy">maturity-model</span></div>
+            <div class="text-slate-dark">A/B via PostHog · PDF preview: rotate-1 hover:rotate-0 · grid lg:grid-cols-2</div>
+          </div>
+        </div>
+
+      </div><!-- /conversion group -->
 
       <!-- Footer CTA -->
       <section class="text-center py-16 border-t border-navy-light/20 mt-8">
