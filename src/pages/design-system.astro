@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+---
+
+<Layout title="Design System — Subsequent Saturn | Buoy">
+  <Nav />
+
+  <!-- Sticky section jump nav -->
+  <div class="sticky top-0 z-40 bg-navy-dark/90 backdrop-blur-sm border-b border-navy-light/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav class="flex items-center gap-6 overflow-x-auto py-3 text-sm font-medium">
+        <a href="#colors" class="text-slate hover:text-light whitespace-nowrap transition-colors">Colors</a>
+        <a href="#typography" class="text-slate hover:text-light whitespace-nowrap transition-colors">Typography</a>
+        <a href="#spacing" class="text-slate hover:text-light whitespace-nowrap transition-colors">Spacing</a>
+        <a href="#effects" class="text-slate hover:text-light whitespace-nowrap transition-colors">Effects</a>
+        <a href="#components" class="text-slate hover:text-light whitespace-nowrap transition-colors">Components</a>
+        <a href="#patterns" class="text-slate hover:text-light whitespace-nowrap transition-colors">Patterns</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
+
+    <!-- Hero header -->
+    <section class="text-center max-w-3xl mx-auto">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-success/10 border border-success/30 text-success text-sm font-mono mb-6">
+        <span class="w-2 h-2 rounded-full bg-success animate-pulse"></span>
+        0 drift issues detected
+      </div>
+      <h1 class="text-5xl font-extrabold text-light mb-4" style="font-family: var(--font-display)">
+        Subsequent Saturn<br /><span class="text-buoy">Design System</span>
+      </h1>
+      <p class="text-slate text-lg">
+        Every token, component, and pattern used in buoy-site — documented, live, and continuously checked for drift.
+      </p>
+    </section>
+
+    <!-- Sections will be added in subsequent tasks -->
+
+  </main>
+</Layout>
