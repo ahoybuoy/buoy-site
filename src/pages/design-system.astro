@@ -7,9 +7,9 @@ import Nav from '../components/Nav.astro'
   <Nav />
 
   <!-- Sticky section jump nav -->
-  <div class="sticky top-0 z-40 bg-navy-dark/90 backdrop-blur-sm border-b border-navy-light/20">
+  <header class="sticky top-0 z-40 bg-navy-dark/90 backdrop-blur-sm border-b border-navy-light/20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <nav class="flex items-center gap-6 overflow-x-auto py-3 text-sm font-medium">
+      <nav aria-label="Page sections" class="flex items-center gap-6 overflow-x-auto py-3 text-sm font-medium">
         <a href="#colors" class="text-slate hover:text-light whitespace-nowrap transition-colors">Colors</a>
         <a href="#typography" class="text-slate hover:text-light whitespace-nowrap transition-colors">Typography</a>
         <a href="#spacing" class="text-slate hover:text-light whitespace-nowrap transition-colors">Spacing</a>
@@ -18,7 +18,7 @@ import Nav from '../components/Nav.astro'
         <a href="#patterns" class="text-slate hover:text-light whitespace-nowrap transition-colors">Patterns</a>
       </nav>
     </div>
-  </div>
+  </header>
 
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
 
@@ -28,7 +28,7 @@ import Nav from '../components/Nav.astro'
         <span class="w-2 h-2 rounded-full bg-success animate-pulse"></span>
         0 drift issues detected
       </div>
-      <h1 class="text-5xl font-extrabold text-light mb-4" style="font-family: var(--font-display)">
+      <h1 class="text-5xl font-extrabold text-light mb-4 font-[Quicksand]">
         Subsequent Saturn<br /><span class="text-buoy">Design System</span>
       </h1>
       <p class="text-slate text-lg">
