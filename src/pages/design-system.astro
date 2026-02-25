@@ -58,7 +58,7 @@ const colorGroups = [
 ]
 ---
 
-<Layout title="Design System — Subsequent Saturn | Buoy">
+<Layout title="Design System — Plumb | Buoy">
   <Nav />
 
   <!-- Sticky section jump nav -->
@@ -69,6 +69,7 @@ const colorGroups = [
         <a href="#typography" class="text-slate hover:text-light whitespace-nowrap transition-colors">Typography</a>
         <a href="#spacing" class="text-slate hover:text-light whitespace-nowrap transition-colors">Spacing</a>
         <a href="#effects" class="text-slate hover:text-light whitespace-nowrap transition-colors">Effects</a>
+        <a href="#motion" class="text-slate hover:text-light whitespace-nowrap transition-colors">Motion</a>
         <a href="#components" class="text-slate hover:text-light whitespace-nowrap transition-colors">Components</a>
         <a href="#patterns" class="text-slate hover:text-light whitespace-nowrap transition-colors">Patterns</a>
       </nav>
@@ -84,7 +85,7 @@ const colorGroups = [
         0 drift issues detected
       </div>
       <h1 class="text-5xl font-extrabold text-light mb-4 font-[Quicksand]">
-        Subsequent Saturn<br /><span class="text-buoy">Design System</span>
+        Plumb<br /><span class="text-buoy">Design System</span>
       </h1>
       <p class="text-slate text-lg">
         Every token, component, and pattern used in buoy-site — documented, live, and continuously checked for drift.
@@ -128,7 +129,7 @@ const colorGroups = [
     <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
       <div class="text-xs font-mono text-slate-dark mb-2 uppercase tracking-widest">Display — --font-display</div>
       <div class="text-4xl font-bold text-light font-[Quicksand]">Quicksand</div>
-      <div class="text-sm text-slate mt-2 font-mono">Quicksand, Satoshi, system-ui</div>
+      <div class="text-sm text-slate mt-2 font-mono">Quicksand, system-ui</div>
       <div class="mt-3 text-slate text-sm">Headings, hero text, brand moments</div>
     </div>
     <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
@@ -266,6 +267,236 @@ const colorGroups = [
       </div>
     </div>
   </div>
+</section>
+
+<!-- Motion section -->
+<section id="motion" class="scroll-mt-16">
+  <h2 class="ds-section-heading">Motion</h2>
+  <p class="ds-section-sub">All animation in Plumb follows a nautical physics model. The ⛵ boat is the system mascot — its motion vocabulary defines how every transition feels.</p>
+
+  <!-- CSS Keyframe Animations -->
+  <div class="mb-16 mt-8">
+    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">CSS Keyframe Animations</h3>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+
+      <!-- boatBob -->
+      <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl">
+        <div class="h-20 flex items-center justify-center mb-4">
+          <span class="text-4xl ds-demo-bob">⛵</span>
+        </div>
+        <div class="font-mono text-sm text-buoy mb-1">boatBob</div>
+        <div class="font-mono text-xs text-slate-dark mb-3">4s ease-in-out infinite</div>
+        <pre class="text-xs text-slate font-mono bg-navy-dark/60 rounded-lg p-3 overflow-x-auto"><code set:html={`@keyframes boatBob {\n  0%, 100% {\n    transform:\n      translateY(0)\n      rotate(0deg);\n  }\n  50% {\n    transform:\n      translateY(-15px)\n      rotate(3deg);\n  }\n}`}></code></pre>
+      </div>
+
+      <!-- boatDrift -->
+      <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl">
+        <div class="h-20 flex items-center justify-center mb-4 overflow-hidden rounded-lg bg-navy-dark/40 relative">
+          <span class="text-3xl ds-demo-drift absolute">⛵</span>
+        </div>
+        <div class="font-mono text-sm text-buoy mb-1">boatDrift</div>
+        <div class="font-mono text-xs text-slate-dark mb-3">25s linear infinite</div>
+        <pre class="text-xs text-slate font-mono bg-navy-dark/60 rounded-lg p-3 overflow-x-auto"><code set:html={`@keyframes boatDrift {\n  0%   { left: -5%; }\n  100% { left: 105%; }\n}`}></code></pre>
+      </div>
+
+      <!-- splashDroplet -->
+      <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl">
+        <div class="h-20 flex items-center justify-center mb-4">
+          <div class="relative">
+            <span class="text-2xl">💧</span>
+            <span class="text-lg ds-demo-droplet absolute -top-2 -left-3">💧</span>
+            <span class="text-sm ds-demo-droplet2 absolute -top-1 left-4">💧</span>
+          </div>
+        </div>
+        <div class="font-mono text-sm text-buoy mb-1">splashDroplet</div>
+        <div class="font-mono text-xs text-slate-dark mb-3">0.4–0.7s ease-out, fan spread</div>
+        <pre class="text-xs text-slate font-mono bg-navy-dark/60 rounded-lg p-3 overflow-x-auto"><code set:html={`@keyframes splashDroplet {\n  0% {\n    transform:\n      translate(0,0) scale(1);\n    opacity: 0.8;\n  }\n  100% {\n    transform:\n      translate(var(--dx),var(--dy))\n      scale(0.2);\n    opacity: 0;\n  }\n}`}></code></pre>
+      </div>
+
+      <!-- splashRing -->
+      <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl">
+        <div class="h-20 flex items-center justify-center mb-4">
+          <div class="ds-demo-ring w-8 h-3 border-2 border-info/60 rounded-full"></div>
+        </div>
+        <div class="font-mono text-sm text-buoy mb-1">splashRing</div>
+        <div class="font-mono text-xs text-slate-dark mb-3">0.7s ease-out, elliptical expand</div>
+        <pre class="text-xs text-slate font-mono bg-navy-dark/60 rounded-lg p-3 overflow-x-auto"><code set:html={`@keyframes splashRing {\n  0% {\n    transform:\n      translate(-50%,-50%)\n      scale(0.5);\n    opacity: 0.6;\n  }\n  100% {\n    transform:\n      translate(-50%,-50%)\n      scale(4, 2);\n    opacity: 0;\n  }\n}`}></code></pre>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Motion Choreography -->
+  <div class="mb-16">
+    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">Motion Choreography — The Boat Escape</h3>
+    <p class="text-slate text-sm mb-6 max-w-2xl">Five phases play out in sequence when the page loads. Each uses a different easing curve chosen for its physical feel. Hover each card to replay the curve animation.</p>
+
+    <div class="space-y-4">
+
+      <!-- Phase 1: Wiggle -->
+      <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl flex flex-col sm:flex-row gap-5">
+        <div class="shrink-0 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-buoy/20 border border-buoy/40 flex items-center justify-center font-mono text-xs text-buoy font-bold">1</div>
+          <span class="text-3xl ds-demo-wiggle">⛵</span>
+        </div>
+        <div class="flex-1">
+          <div class="font-mono text-sm text-light mb-1">Wiggle <span class="text-slate-dark">— anticipation</span></div>
+          <div class="font-mono text-xs text-slate-dark mb-2">600ms · ease-in-out · 8 keyframes</div>
+          <div class="text-xs text-slate">Builds tension before the break. Rotates ±12° in a stuttering rattle — the boat is trying to escape. Disney's "anticipation" principle.</div>
+        </div>
+        <div class="shrink-0">
+          <svg viewBox="-5 -5 110 110" class="w-20 h-20" aria-label="ease-in-out bezier curve">
+            <line x1="0" y1="100" x2="100" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
+            <line x1="0" y1="0" x2="0" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
+            <line x1="0" y1="100" x2="42" y2="100" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
+            <line x1="100" y1="0" x2="58" y2="0" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
+            <path d="M 0,100 C 42,100 58,0 100,0" fill="none" stroke="currentColor" class="text-buoy" stroke-width="2"/>
+            <circle cx="42" cy="100" r="3.5" fill="currentColor" class="text-lavender"/>
+            <circle cx="58" cy="0" r="3.5" fill="currentColor" class="text-lavender"/>
+            <circle cx="0" cy="100" r="3" fill="currentColor" class="text-light"/>
+            <circle cx="100" cy="0" r="3" fill="currentColor" class="text-light"/>
+          </svg>
+          <div class="font-mono text-xs text-slate-dark text-center mt-1">ease-in-out</div>
+        </div>
+      </div>
+
+      <!-- Phase 2: Lift -->
+      <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl flex flex-col sm:flex-row gap-5">
+        <div class="shrink-0 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-buoy/20 border border-buoy/40 flex items-center justify-center font-mono text-xs text-buoy font-bold">2</div>
+          <span class="text-3xl ds-demo-lift">⛵</span>
+        </div>
+        <div class="flex-1">
+          <div class="font-mono text-sm text-light mb-1">Anticipation Lift <span class="text-slate-dark">— secondary action</span></div>
+          <div class="font-mono text-xs text-slate-dark mb-2">120ms · ease-out · translateY(-6px)</div>
+          <div class="text-xs text-slate">A small upward feint before the drop. Creates the illusion of stored energy — like a diver crouching before the leap.</div>
+        </div>
+        <div class="shrink-0">
+          <svg viewBox="-5 -5 110 110" class="w-20 h-20" aria-label="ease-out bezier curve">
+            <line x1="0" y1="100" x2="100" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
+            <line x1="0" y1="0" x2="0" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
+            <line x1="0" y1="100" x2="0" y2="100" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
+            <line x1="100" y1="0" x2="58" y2="0" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
+            <path d="M 0,100 C 0,100 58,0 100,0" fill="none" stroke="currentColor" class="text-buoy" stroke-width="2"/>
+            <circle cx="0" cy="100" r="3.5" fill="currentColor" class="text-lavender"/>
+            <circle cx="58" cy="0" r="3.5" fill="currentColor" class="text-lavender"/>
+            <circle cx="0" cy="100" r="3" fill="currentColor" class="text-light"/>
+            <circle cx="100" cy="0" r="3" fill="currentColor" class="text-light"/>
+          </svg>
+          <div class="font-mono text-xs text-slate-dark text-center mt-1">ease-out</div>
+        </div>
+      </div>
+
+      <!-- Phase 3: Drop (gravity + bounce) -->
+      <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl flex flex-col sm:flex-row gap-5">
+        <div class="shrink-0 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-buoy/20 border border-buoy/40 flex items-center justify-center font-mono text-xs text-buoy font-bold">3</div>
+          <span class="text-3xl ds-demo-drop">⛵</span>
+        </div>
+        <div class="flex-1">
+          <div class="font-mono text-sm text-light mb-1">Drop <span class="text-slate-dark">— gravity + soft bounce</span></div>
+          <div class="font-mono text-xs text-slate-dark mb-2">500ms · cubic-bezier(0.4, 0, 0.68, 1.4)</div>
+          <div class="text-xs text-slate mb-2">The y2 value of 1.4 overshoots the target — the boat dips slightly below the waterline before springing back. Paired with the splash at impact.</div>
+          <div class="font-mono text-xs text-buoy">cubic-bezier(0.4, 0, 0.68, 1.4)</div>
+        </div>
+        <div class="shrink-0">
+          <svg viewBox="-5 -50 110 165" class="w-20 h-28" aria-label="cubic-bezier(0.4, 0, 0.68, 1.4) — drop with overshoot">
+            <line x1="0" y1="100" x2="100" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
+            <line x1="0" y1="0" x2="0" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
+            <line x1="0" y1="0" x2="0" y2="-40" stroke="currentColor" class="text-navy-light/20" stroke-width="0.5" stroke-dasharray="2 2"/>
+            <line x1="0" y1="100" x2="40" y2="100" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
+            <line x1="100" y1="0" x2="68" y2="-40" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
+            <path d="M 0,100 C 40,100 68,-40 100,0" fill="none" stroke="currentColor" class="text-buoy" stroke-width="2"/>
+            <circle cx="40" cy="100" r="3.5" fill="currentColor" class="text-lavender"/>
+            <circle cx="68" cy="-40" r="3.5" fill="currentColor" class="text-lavender"/>
+            <circle cx="0" cy="100" r="3" fill="currentColor" class="text-light"/>
+            <circle cx="100" cy="0" r="3" fill="currentColor" class="text-light"/>
+            <text x="72" y="-43" font-size="7" fill="currentColor" class="text-slate-dark" font-family="monospace">y2=1.4</text>
+          </svg>
+          <div class="font-mono text-xs text-slate-dark text-center mt-1">overshoot</div>
+        </div>
+      </div>
+
+      <!-- Phase 4: Launch ease-in -->
+      <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl flex flex-col sm:flex-row gap-5">
+        <div class="shrink-0 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-buoy/20 border border-buoy/40 flex items-center justify-center font-mono text-xs text-buoy font-bold">4</div>
+          <div class="w-24 h-10 bg-navy-dark/40 rounded overflow-hidden relative flex items-center">
+            <span class="text-xl ds-demo-launch absolute">⛵</span>
+          </div>
+        </div>
+        <div class="flex-1">
+          <div class="font-mono text-sm text-light mb-1">Launch Ease-In <span class="text-slate-dark">— follow through</span></div>
+          <div class="font-mono text-xs text-slate-dark mb-2">3000ms · cubic-bezier(0.3, 0, 0.8, 0.8)</div>
+          <div class="text-xs text-slate mb-2">After landing, the boat accelerates from rest to cruise speed over 3 seconds. The curve starts nearly flat (stationary) then steepens to match the 25s drift animation speed, so the handoff is seamless.</div>
+          <div class="font-mono text-xs text-buoy">cubic-bezier(0.3, 0, 0.8, 0.8)</div>
+        </div>
+        <div class="shrink-0">
+          <svg viewBox="-5 -5 110 110" class="w-20 h-20" aria-label="cubic-bezier(0.3, 0, 0.8, 0.8) — ease in to cruise speed">
+            <line x1="0" y1="100" x2="100" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
+            <line x1="0" y1="0" x2="0" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
+            <line x1="0" y1="100" x2="30" y2="100" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
+            <line x1="100" y1="0" x2="80" y2="20" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
+            <path d="M 0,100 C 30,100 80,20 100,0" fill="none" stroke="currentColor" class="text-buoy" stroke-width="2"/>
+            <circle cx="30" cy="100" r="3.5" fill="currentColor" class="text-lavender"/>
+            <circle cx="80" cy="20" r="3.5" fill="currentColor" class="text-lavender"/>
+            <circle cx="0" cy="100" r="3" fill="currentColor" class="text-light"/>
+            <circle cx="100" cy="0" r="3" fill="currentColor" class="text-light"/>
+          </svg>
+          <div class="font-mono text-xs text-slate-dark text-center mt-1">ease-in</div>
+        </div>
+      </div>
+
+      <!-- Phase 5: Bobber pop (underwater → surface) -->
+      <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl flex flex-col sm:flex-row gap-5">
+        <div class="shrink-0 flex items-center gap-3">
+          <div class="w-8 h-8 rounded-full bg-buoy/20 border border-buoy/40 flex items-center justify-center font-mono text-xs text-buoy font-bold">5</div>
+          <span class="text-3xl ds-demo-pop">⛵</span>
+        </div>
+        <div class="flex-1">
+          <div class="font-mono text-sm text-light mb-1">Bobber Pop <span class="text-slate-dark">— spring overshoot</span></div>
+          <div class="font-mono text-xs text-slate-dark mb-2">650ms · cubic-bezier(0.175, 0.885, 0.32, 1.55)</div>
+          <div class="text-xs text-slate mb-2">When the boat is released underwater, it shoots straight up and overshoots the surface before settling. The y2=1.55 creates a strong elastic spring — the buoy physics.</div>
+          <div class="font-mono text-xs text-buoy">cubic-bezier(0.175, 0.885, 0.32, 1.55)</div>
+        </div>
+        <div class="shrink-0">
+          <svg viewBox="-5 -65 110 175" class="w-20 h-32" aria-label="cubic-bezier(0.175, 0.885, 0.32, 1.55) — spring overshoot">
+            <line x1="0" y1="100" x2="100" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
+            <line x1="0" y1="0" x2="0" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
+            <line x1="0" y1="0" x2="0" y2="-55" stroke="currentColor" class="text-navy-light/20" stroke-width="0.5" stroke-dasharray="2 2"/>
+            <line x1="0" y1="100" x2="17.5" y2="11.5" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
+            <line x1="100" y1="0" x2="32" y2="-55" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
+            <path d="M 0,100 C 17.5,11.5 32,-55 100,0" fill="none" stroke="currentColor" class="text-buoy" stroke-width="2"/>
+            <circle cx="17.5" cy="11.5" r="3.5" fill="currentColor" class="text-lavender"/>
+            <circle cx="32" cy="-55" r="3.5" fill="currentColor" class="text-lavender"/>
+            <circle cx="0" cy="100" r="3" fill="currentColor" class="text-light"/>
+            <circle cx="100" cy="0" r="3" fill="currentColor" class="text-light"/>
+            <text x="34" y="-57" font-size="7" fill="currentColor" class="text-slate-dark" font-family="monospace">y2=1.55</text>
+          </svg>
+          <div class="font-mono text-xs text-slate-dark text-center mt-1">spring</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Easing token reference -->
+  <div class="mb-4">
+    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">Easing Tokens</h3>
+    <div class="space-y-3">
+      <div class="flex items-center gap-4 p-4 bg-navy/40 border border-navy-light/20 rounded-xl font-mono text-sm">
+        <div class="w-40 text-buoy shrink-0">--ease-out-expo</div>
+        <div class="text-slate">cubic-bezier(0.16, 1, 0.3, 1)</div>
+        <div class="text-slate-dark text-xs">Fast out — UI transitions, reveals</div>
+      </div>
+      <div class="flex items-center gap-4 p-4 bg-navy/40 border border-navy-light/20 rounded-xl font-mono text-sm">
+        <div class="w-40 text-buoy shrink-0">--ease-in-out-expo</div>
+        <div class="text-slate">cubic-bezier(0.87, 0, 0.13, 1)</div>
+        <div class="text-slate-dark text-xs">Symmetric expo — modals, drawers</div>
+      </div>
+    </div>
+  </div>
+
 </section>
 
     <!-- Components section -->
@@ -464,5 +695,84 @@ const colorGroups = [
   }
   .scroll-mt-16 {
     scroll-margin-top: 4rem;
+  }
+
+  /* Motion demo animations */
+  @keyframes ds-bob {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(3deg); }
+  }
+  @keyframes ds-drift {
+    0% { left: -10%; }
+    100% { left: 110%; }
+  }
+  @keyframes ds-drop {
+    0% { transform: translateY(0); }
+    10% { transform: translateY(-6px); }
+    100% { transform: translateY(36px); }
+  }
+  @keyframes ds-pop {
+    0% { transform: translateY(28px); }
+    100% { transform: translateY(0); }
+  }
+  @keyframes ds-launch {
+    0% { left: 2%; }
+    100% { left: 85%; }
+  }
+  @keyframes ds-wiggle {
+    0% { transform: rotate(0deg); }
+    15% { transform: rotate(8deg) translateX(1px); }
+    30% { transform: rotate(-7deg) translateX(-1px); }
+    50% { transform: rotate(12deg) translateX(2px) translateY(-2px); }
+    65% { transform: rotate(-10deg) translateX(-2px); }
+    80% { transform: rotate(5deg) translateX(1px); }
+    92% { transform: rotate(-2deg); }
+    100% { transform: rotate(0deg); }
+  }
+  @keyframes ds-ring {
+    0% { transform: scale(0.5); opacity: 0.6; }
+    100% { transform: scale(4, 2); opacity: 0; }
+  }
+  @keyframes ds-droplet {
+    0% { transform: translate(0, 0) scale(1); opacity: 0.8; }
+    100% { transform: translate(-12px, -18px) scale(0.2); opacity: 0; }
+  }
+  @keyframes ds-droplet2 {
+    0% { transform: translate(0, 0) scale(1); opacity: 0.8; }
+    100% { transform: translate(10px, -16px) scale(0.2); opacity: 0; }
+  }
+
+  .ds-demo-bob {
+    display: inline-block;
+    animation: ds-bob 2s ease-in-out infinite;
+  }
+  .ds-demo-drift {
+    animation: ds-drift 4s linear infinite, ds-bob 2s ease-in-out infinite;
+  }
+  .ds-demo-drop {
+    display: inline-block;
+    animation: ds-drop 500ms cubic-bezier(0.4, 0, 0.68, 1.4) infinite alternate;
+  }
+  .ds-demo-pop {
+    display: inline-block;
+    animation: ds-pop 650ms cubic-bezier(0.175, 0.885, 0.32, 1.55) infinite alternate;
+  }
+  .ds-demo-launch {
+    animation: ds-launch 3s cubic-bezier(0.3, 0, 0.8, 0.8) infinite alternate;
+  }
+  .ds-demo-wiggle {
+    display: inline-block;
+    animation: ds-wiggle 1.5s ease-in-out infinite;
+  }
+  .ds-demo-ring {
+    animation: ds-ring 1.2s ease-out infinite;
+  }
+  .ds-demo-droplet {
+    display: inline-block;
+    animation: ds-droplet 0.6s ease-out infinite;
+  }
+  .ds-demo-droplet2 {
+    display: inline-block;
+    animation: ds-droplet2 0.5s ease-out 0.08s infinite;
   }
 </style>
