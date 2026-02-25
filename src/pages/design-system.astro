@@ -83,920 +83,1439 @@ const flagItems = [
 <Layout title="Design System — Plumb | Buoy">
   <Nav />
 
-  <!-- Sticky section jump nav -->
-  <header class="sticky top-0 z-40 bg-navy-dark/90 backdrop-blur-sm border-b border-navy-light/20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <nav aria-label="Page sections" class="flex items-center gap-6 overflow-x-auto py-3 text-sm font-medium">
-        <a href="#colors" class="text-slate hover:text-light whitespace-nowrap transition-colors">Colors</a>
-        <a href="#typography" class="text-slate hover:text-light whitespace-nowrap transition-colors">Typography</a>
-        <a href="#spacing" class="text-slate hover:text-light whitespace-nowrap transition-colors">Spacing</a>
-        <a href="#effects" class="text-slate hover:text-light whitespace-nowrap transition-colors">Effects</a>
-        <a href="#motion" class="text-slate hover:text-light whitespace-nowrap transition-colors">Motion</a>
-        <a href="#components" class="text-slate hover:text-light whitespace-nowrap transition-colors">Components</a>
-        <a href="#patterns" class="text-slate hover:text-light whitespace-nowrap transition-colors">Patterns</a>
+  <!-- Two-column DS layout -->
+  <div class="ds-layout">
+
+    <!-- ── Sidebar ────────────────────────────────── -->
+    <aside class="ds-sidebar" id="ds-sidebar">
+      <nav class="ds-sidebar-nav" aria-label="Design system sections">
+
+        <div class="ds-nav-group">
+          <div class="ds-nav-group-label">Foundations</div>
+          <a href="#colors"     class="ds-nav-link" data-target="colors">Colors</a>
+          <a href="#typography" class="ds-nav-link" data-target="typography">Typography</a>
+          <a href="#spacing"    class="ds-nav-link" data-target="spacing">Spacing</a>
+          <a href="#effects"    class="ds-nav-link" data-target="effects">Effects</a>
+          <a href="#motion"     class="ds-nav-link" data-target="motion">Motion</a>
+        </div>
+
+        <div class="ds-nav-group">
+          <div class="ds-nav-group-label">Components</div>
+          <a href="#comp-button"        class="ds-nav-link" data-target="comp-button">Button</a>
+          <a href="#comp-feature-card"  class="ds-nav-link" data-target="comp-feature-card">FeatureCard</a>
+          <a href="#comp-terminal"      class="ds-nav-link" data-target="comp-terminal">Terminal</a>
+          <a href="#comp-doc-terminal"  class="ds-nav-link" data-target="comp-doc-terminal">DocTerminal</a>
+          <a href="#comp-code-block"    class="ds-nav-link" data-target="comp-code-block">CodeBlock</a>
+          <a href="#comp-flags"         class="ds-nav-link" data-target="comp-flags">Flags</a>
+          <a href="#comp-wave-bg"       class="ds-nav-link" data-target="comp-wave-bg">WaveBackground</a>
+          <a href="#comp-nav"           class="ds-nav-link" data-target="comp-nav">Nav</a>
+          <a href="#comp-footer"        class="ds-nav-link" data-target="comp-footer">Footer</a>
+        </div>
+
+        <div class="ds-nav-group">
+          <div class="ds-nav-group-label">Conversion</div>
+          <a href="#comp-lead-form"     class="ds-nav-link" data-target="comp-lead-form">LeadMagnetForm</a>
+          <a href="#comp-lead-callout"  class="ds-nav-link" data-target="comp-lead-callout">LeadMagnetCallout</a>
+          <a href="#comp-lead-cta"      class="ds-nav-link" data-target="comp-lead-cta">LeadMagnetCTA</a>
+          <a href="#comp-lead-capture"  class="ds-nav-link" data-target="comp-lead-capture">LeadCaptureSection</a>
+        </div>
+
+        <div class="ds-nav-group">
+          <div class="ds-nav-group-label">Patterns</div>
+          <a href="#pat-section-header" class="ds-nav-link" data-target="pat-section-header">Section Header</a>
+          <a href="#pat-inline-code"    class="ds-nav-link" data-target="pat-inline-code">Inline Code</a>
+          <a href="#pat-cta-row"        class="ds-nav-link" data-target="pat-cta-row">CTA Row</a>
+          <a href="#pat-checkmark-list" class="ds-nav-link" data-target="pat-checkmark-list">Checkmark List</a>
+          <a href="#pat-faq"            class="ds-nav-link" data-target="pat-faq">FAQ Accordion</a>
+          <a href="#pat-pdf-badge"      class="ds-nav-link" data-target="pat-pdf-badge">PDF Badges</a>
+          <a href="#pat-availability"   class="ds-nav-link" data-target="pat-availability">Availability Notice</a>
+          <a href="#pat-pricing-card"   class="ds-nav-link" data-target="pat-pricing-card">Pricing Card</a>
+        </div>
       </nav>
-    </div>
-  </header>
 
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
-
-    <!-- Hero header -->
-    <section class="text-center max-w-3xl mx-auto">
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-success/10 border border-success/30 text-success text-sm font-mono mb-6">
-        <span class="w-2 h-2 rounded-full bg-success animate-pulse"></span>
-        0 drift issues detected
+      <div class="ds-sidebar-footer">
+        <div class="ds-drift-status">
+          <span class="ds-drift-dot"></span>
+          <span class="font-mono text-xs text-success">0 drift issues</span>
+        </div>
       </div>
-      <h1 class="text-5xl font-extrabold text-light mb-4 font-[Quicksand]">
-        Plumb<br /><span class="text-buoy">Design System</span>
-      </h1>
-      <p class="text-slate text-lg">
-        Every token, component, and pattern used in buoy-site — documented, live, and continuously checked for drift.
-      </p>
-    </section>
+    </aside>
 
-    <!-- Colors section -->
-    <section id="colors" class="scroll-mt-16">
-      <h2 class="ds-section-heading">Color Tokens</h2>
-      <p class="ds-section-sub">All colors are CSS custom properties under <code class="ds-code">@theme</code> in <code class="ds-code">src/styles/global.css</code>. They respond to light mode automatically.</p>
+    <!-- ── Main content ───────────────────────────── -->
+    <main class="ds-content">
 
-      <div class="space-y-10 mt-8">
-        {colorGroups.map(group => (
-          <div>
-            <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-3">{group.label}</h3>
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-              {group.tokens.map(token => (
-                <div class="rounded-xl overflow-hidden border border-navy-light/20 bg-navy/40">
-                  <div class={`h-20 ${token.tw}`} role="img" aria-label={`${token.label} color swatch`}></div>
-                  <div class="p-3 space-y-1">
-                    <div class="font-mono text-xs text-buoy">{token.name}</div>
-                    <div class="font-mono text-xs text-slate">tw: {token.label}</div>
-                    <div class="text-xs text-slate-dark font-mono">◐ {token.dark}</div>
-                    <div class="text-xs text-slate-dark font-mono">☀ {token.light}</div>
-                  </div>
+      <!-- Page hero -->
+      <div class="ds-hero">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-success/10 border border-success/30 text-success text-sm font-mono mb-5">
+          <span class="w-2 h-2 rounded-full bg-success animate-pulse"></span>
+          0 drift issues detected
+        </div>
+        <h1 class="text-4xl xl:text-5xl font-extrabold text-light mb-3 font-[Quicksand]">
+          Plumb <span class="text-buoy">Design System</span>
+        </h1>
+        <p class="text-slate text-lg max-w-2xl">
+          Every token, component, and pattern used in buoy-site — documented, live, and continuously checked for drift.
+        </p>
+      </div>
+
+      <!-- ════════════════════════════════════════════
+           FOUNDATIONS
+           ════════════════════════════════════════════ -->
+      <div class="ds-group-block">
+        <div class="ds-group-header">
+          <span class="ds-group-eyebrow">01</span>
+          <h2 class="ds-group-title">Foundations</h2>
+          <p class="ds-group-desc">Tokens, scale, and motion primitives. Every component is built from these.</p>
+        </div>
+
+        <!-- ── Colors ── -->
+        <section id="colors" class="ds-section" data-ds-section>
+          <div class="ds-section-header">
+            <h3 class="ds-section-title">Color Tokens</h3>
+            <p class="ds-section-desc">All colors are CSS custom properties under <code class="ds-code">@theme</code> in <code class="ds-code">src/styles/global.css</code>. They respond to light mode automatically.</p>
+          </div>
+          <div class="space-y-10 mt-8">
+            {colorGroups.map(group => (
+              <div>
+                <h4 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-3">{group.label}</h4>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+                  {group.tokens.map(token => (
+                    <div class="rounded-xl overflow-hidden border border-navy-light/20 bg-navy/40">
+                      <div class={`h-16 ${token.tw}`} role="img" aria-label={`${token.label} color swatch`}></div>
+                      <div class="p-3 space-y-1">
+                        <div class="font-mono text-xs text-buoy">{token.name}</div>
+                        <div class="font-mono text-xs text-slate">tw: {token.label}</div>
+                        <div class="text-xs text-slate-dark font-mono">◐ {token.dark}</div>
+                        <div class="text-xs text-slate-dark font-mono">☀ {token.light}</div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <hr class="ds-divider" />
+
+        <!-- ── Typography ── -->
+        <section id="typography" class="ds-section" data-ds-section>
+          <div class="ds-section-header">
+            <h3 class="ds-section-title">Typography</h3>
+            <p class="ds-section-desc">Three font families, each with a specific role. Set via CSS variables in <code class="ds-code">global.css</code>.</p>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-6 mb-12 mt-8">
+            <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+              <div class="text-xs font-mono text-slate-dark mb-2 uppercase tracking-widest">Display — --font-display</div>
+              <div class="text-4xl font-bold text-light font-[Quicksand]">Quicksand</div>
+              <div class="text-sm text-slate mt-2 font-mono">Quicksand, system-ui</div>
+              <div class="mt-3 text-slate text-sm">Headings, hero text, brand moments</div>
+            </div>
+            <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+              <div class="text-xs font-mono text-slate-dark mb-2 uppercase tracking-widest">Body — --font-body</div>
+              <div class="text-4xl font-bold text-light">Inter</div>
+              <div class="text-sm text-slate mt-2 font-mono">Inter, system-ui</div>
+              <div class="mt-3 text-slate text-sm">Paragraphs, UI labels, descriptions</div>
+            </div>
+            <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+              <div class="text-xs font-mono text-slate-dark mb-2 uppercase tracking-widest">Mono — --font-mono</div>
+              <div class="text-4xl font-bold text-light font-mono">JetBrains</div>
+              <div class="text-sm text-slate mt-2 font-mono">JetBrains Mono, Fira Code</div>
+              <div class="mt-3 text-slate text-sm">Code, terminal output, token names</div>
             </div>
           </div>
-        ))}
-      </div>
-    </section>
 
-    <!-- Typography section -->
-<section id="typography" class="scroll-mt-16">
-  <h2 class="ds-section-heading">Typography</h2>
-  <p class="ds-section-sub">Three font families, each with a specific role. Set via CSS variables and applied in <code class="ds-code">global.css</code>.</p>
+          <h4 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-4">Type Scale</h4>
+          <div class="space-y-1 p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <div class="flex items-baseline gap-6 py-3 border-b border-navy-light/10">
+              <div class="w-12 text-xs font-mono text-slate-dark shrink-0">h1</div>
+              <div class="w-24 text-xs font-mono text-slate shrink-0">text-5xl</div>
+              <span class="text-5xl font-extrabold text-light font-[Quicksand] leading-tight">Design Systems</span>
+            </div>
+            <div class="flex items-baseline gap-6 py-3 border-b border-navy-light/10">
+              <div class="w-12 text-xs font-mono text-slate-dark shrink-0">h2</div>
+              <div class="w-24 text-xs font-mono text-slate shrink-0">text-4xl</div>
+              <span class="text-4xl font-bold text-light font-[Quicksand]">Token-Driven</span>
+            </div>
+            <div class="flex items-baseline gap-6 py-3 border-b border-navy-light/10">
+              <div class="w-12 text-xs font-mono text-slate-dark shrink-0">h3</div>
+              <div class="w-24 text-xs font-mono text-slate shrink-0">text-2xl</div>
+              <span class="text-2xl font-semibold text-light font-[Quicksand]">Consistent by Default</span>
+            </div>
+            <div class="flex items-baseline gap-6 py-3 border-b border-navy-light/10">
+              <div class="w-12 text-xs font-mono text-slate-dark shrink-0">h4</div>
+              <div class="w-24 text-xs font-mono text-slate shrink-0">text-xl</div>
+              <span class="text-xl font-semibold text-light font-[Quicksand]">No Hardcoded Values</span>
+            </div>
+            <div class="flex items-baseline gap-6 py-3 border-b border-navy-light/10">
+              <div class="w-12 text-xs font-mono text-slate-dark shrink-0">p</div>
+              <div class="w-24 text-xs font-mono text-slate shrink-0">text-base</div>
+              <span class="text-base text-light">Body text reads cleanly at this size. Designed for long-form content and UI descriptions.</span>
+            </div>
+            <div class="flex items-baseline gap-6 py-3 border-b border-navy-light/10">
+              <div class="w-12 text-xs font-mono text-slate-dark shrink-0">small</div>
+              <div class="w-24 text-xs font-mono text-slate shrink-0">text-sm</div>
+              <span class="text-sm text-slate">Supporting text, captions, helper copy</span>
+            </div>
+            <div class="flex items-baseline gap-6 py-3">
+              <div class="w-12 text-xs font-mono text-slate-dark shrink-0">code</div>
+              <div class="w-24 text-xs font-mono text-slate shrink-0">text-sm</div>
+              <code class="text-sm text-buoy font-mono">npx ahoybuoy drift check</code>
+            </div>
+          </div>
+        </section>
 
-  <!-- Font Families -->
-  <div class="grid md:grid-cols-3 gap-6 mb-12 mt-8">
-    <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
-      <div class="text-xs font-mono text-slate-dark mb-2 uppercase tracking-widest">Display — --font-display</div>
-      <div class="text-4xl font-bold text-light font-[Quicksand]">Quicksand</div>
-      <div class="text-sm text-slate mt-2 font-mono">Quicksand, system-ui</div>
-      <div class="mt-3 text-slate text-sm">Headings, hero text, brand moments</div>
-    </div>
-    <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
-      <div class="text-xs font-mono text-slate-dark mb-2 uppercase tracking-widest">Body — --font-body</div>
-      <div class="text-4xl font-bold text-light">Inter</div>
-      <div class="text-sm text-slate mt-2 font-mono">Inter, system-ui</div>
-      <div class="mt-3 text-slate text-sm">Paragraphs, UI labels, descriptions</div>
-    </div>
-    <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
-      <div class="text-xs font-mono text-slate-dark mb-2 uppercase tracking-widest">Mono — --font-mono</div>
-      <div class="text-4xl font-bold text-light font-mono">JetBrains</div>
-      <div class="text-sm text-slate mt-2 font-mono">JetBrains Mono, Fira Code</div>
-      <div class="mt-3 text-slate text-sm">Code, terminal output, token names</div>
-    </div>
-  </div>
+        <hr class="ds-divider" />
 
-  <!-- Type Scale -->
-  <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-4">Type Scale</h3>
-  <div class="space-y-1 p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
-    <div class="flex items-baseline gap-6 py-3 border-b border-navy-light/10">
-      <div class="w-12 text-xs font-mono text-slate-dark shrink-0">h1</div>
-      <div class="w-24 text-xs font-mono text-slate shrink-0">text-5xl</div>
-      <span class="text-5xl font-extrabold text-light font-[Quicksand] leading-tight">Design Systems</span>
-    </div>
-    <div class="flex items-baseline gap-6 py-3 border-b border-navy-light/10">
-      <div class="w-12 text-xs font-mono text-slate-dark shrink-0">h2</div>
-      <div class="w-24 text-xs font-mono text-slate shrink-0">text-4xl</div>
-      <span class="text-4xl font-bold text-light font-[Quicksand]">Token-Driven</span>
-    </div>
-    <div class="flex items-baseline gap-6 py-3 border-b border-navy-light/10">
-      <div class="w-12 text-xs font-mono text-slate-dark shrink-0">h3</div>
-      <div class="w-24 text-xs font-mono text-slate shrink-0">text-2xl</div>
-      <span class="text-2xl font-semibold text-light font-[Quicksand]">Consistent by Default</span>
-    </div>
-    <div class="flex items-baseline gap-6 py-3 border-b border-navy-light/10">
-      <div class="w-12 text-xs font-mono text-slate-dark shrink-0">h4</div>
-      <div class="w-24 text-xs font-mono text-slate shrink-0">text-xl</div>
-      <span class="text-xl font-semibold text-light font-[Quicksand]">No Hardcoded Values</span>
-    </div>
-    <div class="flex items-baseline gap-6 py-3 border-b border-navy-light/10">
-      <div class="w-12 text-xs font-mono text-slate-dark shrink-0">p</div>
-      <div class="w-24 text-xs font-mono text-slate shrink-0">text-base</div>
-      <span class="text-base text-light">Body text reads cleanly at this size. Designed for long-form content and UI descriptions.</span>
-    </div>
-    <div class="flex items-baseline gap-6 py-3 border-b border-navy-light/10">
-      <div class="w-12 text-xs font-mono text-slate-dark shrink-0">small</div>
-      <div class="w-24 text-xs font-mono text-slate shrink-0">text-sm</div>
-      <span class="text-sm text-slate">Supporting text, captions, helper copy</span>
-    </div>
-    <div class="flex items-baseline gap-6 py-3">
-      <div class="w-12 text-xs font-mono text-slate-dark shrink-0">code</div>
-      <div class="w-24 text-xs font-mono text-slate shrink-0">text-sm</div>
-      <code class="text-sm text-buoy font-mono">npx ahoybuoy drift check</code>
-    </div>
-  </div>
-</section>
+        <!-- ── Spacing ── -->
+        <section id="spacing" class="ds-section" data-ds-section>
+          <div class="ds-section-header">
+            <h3 class="ds-section-title">Spacing</h3>
+            <p class="ds-section-desc">Section spacing tokens. Element-level spacing uses Tailwind's default scale.</p>
+          </div>
+          <div class="space-y-4 mt-8">
+            <div class="flex items-center gap-6 p-4 bg-navy/40 border border-navy-light/20 rounded-xl">
+              <div class="shrink-0 h-8 bg-buoy/20 border border-buoy/30 rounded" style="width: 6rem"></div>
+              <div>
+                <div class="font-mono text-sm text-buoy">--spacing-section</div>
+                <div class="font-mono text-xs text-slate-dark mt-0.5">6rem — Section padding desktop</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-6 p-4 bg-navy/40 border border-navy-light/20 rounded-xl">
+              <div class="shrink-0 h-8 bg-buoy/20 border border-buoy/30 rounded" style="width: 4rem"></div>
+              <div>
+                <div class="font-mono text-sm text-buoy">--spacing-section-sm</div>
+                <div class="font-mono text-xs text-slate-dark mt-0.5">4rem — Section padding mobile</div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-    <!-- Spacing section -->
-<section id="spacing" class="scroll-mt-16">
-  <h2 class="ds-section-heading">Spacing</h2>
-  <p class="ds-section-sub">Section spacing tokens. Element-level spacing uses Tailwind's default scale.</p>
+        <hr class="ds-divider" />
 
-  <div class="space-y-4 mt-8">
-    <div class="flex items-center gap-6 p-4 bg-navy/40 border border-navy-light/20 rounded-xl">
-      <div class="shrink-0 h-8 bg-buoy/20 border border-buoy/30 rounded" style="width: 6rem"></div>
-      <div>
-        <div class="font-mono text-sm text-buoy">--spacing-section</div>
-        <div class="font-mono text-xs text-slate-dark mt-0.5">6rem — Section padding desktop</div>
-      </div>
-    </div>
-    <div class="flex items-center gap-6 p-4 bg-navy/40 border border-navy-light/20 rounded-xl">
-      <div class="shrink-0 h-8 bg-buoy/20 border border-buoy/30 rounded" style="width: 4rem"></div>
-      <div>
-        <div class="font-mono text-sm text-buoy">--spacing-section-sm</div>
-        <div class="font-mono text-xs text-slate-dark mt-0.5">4rem — Section padding mobile</div>
-      </div>
-    </div>
-  </div>
-</section>
+        <!-- ── Effects ── -->
+        <section id="effects" class="ds-section" data-ds-section>
+          <div class="ds-section-header">
+            <h3 class="ds-section-title">Effects</h3>
+            <p class="ds-section-desc">Glow utilities, text gradients, and animation classes defined in <code class="ds-code">global.css</code>.</p>
+          </div>
 
-<!-- Effects section -->
-<section id="effects" class="scroll-mt-16">
-  <h2 class="ds-section-heading">Effects</h2>
-  <p class="ds-section-sub">Glow utilities, text gradients, and animation classes defined in <code class="ds-code">global.css</code>.</p>
+          <div class="grid md:grid-cols-2 gap-6 mt-8">
+            <!-- Glows -->
+            <div class="space-y-4">
+              <h4 class="text-xs font-semibold text-slate-dark uppercase tracking-widest">Glows</h4>
+              <div class="p-4 bg-navy/40 border border-navy-light/20 rounded-xl flex items-center gap-4">
+                <div class="w-12 h-12 rounded-lg bg-buoy glow-buoy shrink-0"></div>
+                <div>
+                  <div class="font-mono text-sm text-light">.glow-buoy</div>
+                  <div class="font-mono text-xs text-slate-dark">box-shadow: 0 0 30px buoy/40%</div>
+                </div>
+              </div>
+              <div class="p-4 bg-navy/40 border border-navy-light/20 rounded-xl flex items-center gap-4">
+                <div class="w-12 h-12 rounded-lg bg-lavender glow-lavender shrink-0"></div>
+                <div>
+                  <div class="font-mono text-sm text-light">.glow-lavender</div>
+                  <div class="font-mono text-xs text-slate-dark">box-shadow: 0 0 30px lavender/30%</div>
+                </div>
+              </div>
+            </div>
 
-  <div class="grid md:grid-cols-2 gap-6 mt-8">
-    <!-- Glows -->
-    <div class="space-y-4">
-      <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest">Glows</h3>
-      <div class="p-4 bg-navy/40 border border-navy-light/20 rounded-xl flex items-center gap-4">
-        <div class="w-12 h-12 rounded-lg bg-buoy glow-buoy shrink-0"></div>
-        <div>
-          <div class="font-mono text-sm text-light">.glow-buoy</div>
-          <div class="font-mono text-xs text-slate-dark">box-shadow: 0 0 30px buoy/40%</div>
+            <!-- Text Gradients -->
+            <div class="space-y-4">
+              <h4 class="text-xs font-semibold text-slate-dark uppercase tracking-widest">Text Gradients</h4>
+              <div class="p-4 bg-navy/40 border border-navy-light/20 rounded-xl">
+                <div class="text-3xl font-extrabold text-gradient-sunrise font-[Quicksand] mb-2">Catch Design Drift</div>
+                <div class="font-mono text-xs text-slate-dark">.text-gradient-sunrise</div>
+                <div class="font-mono text-xs text-slate-dark mt-1">buoy → sunrise → lavender at 135°</div>
+              </div>
+            </div>
+
+            <!-- Animation utilities -->
+            <div class="space-y-4 md:col-span-2">
+              <h4 class="text-xs font-semibold text-slate-dark uppercase tracking-widest">Animation Utilities</h4>
+              <div class="grid sm:grid-cols-3 gap-4">
+
+                <!-- .animate-float — gentle bob (UI utility) -->
+                <div class="p-4 bg-navy/40 border border-navy-light/20 rounded-xl text-center">
+                  <div class="text-4xl mb-3 ds-demo-gentle-float">⛵</div>
+                  <div class="font-mono text-sm text-light">.animate-float</div>
+                  <div class="font-mono text-xs text-slate-dark mt-1">6s ease-in-out — ±10px bob</div>
+                  <div class="text-xs text-slate mt-2">UI element bob. <span class="text-warning">Note:</span> this page uses a scoped demo keyframe — WaveBackground redefines <code class="ds-code text-xs">float</code> globally for particle rise (see below).</div>
+                </div>
+
+                <!-- WaveBackground particle float — rises from bottom -->
+                <div class="p-4 bg-navy/40 border border-navy-light/20 rounded-xl text-center relative overflow-hidden" style="height: 160px;">
+                  <div class="ds-particle-demo ds-pA"></div>
+                  <div class="ds-particle-demo ds-pB"></div>
+                  <div class="ds-particle-demo ds-pC"></div>
+                  <div class="absolute bottom-3 inset-x-0 text-center">
+                    <div class="font-mono text-sm text-light">WaveBackground float</div>
+                    <div class="font-mono text-xs text-slate-dark mt-0.5">20–25s — particle rise to top</div>
+                    <div class="text-xs text-slate mt-1">Overrides global <code class="ds-code text-xs">float</code> keyframe. Used only inside <code class="ds-code text-xs">WaveBackground.astro</code>.</div>
+                  </div>
+                </div>
+
+                <!-- .animate-pulse-glow -->
+                <div class="p-4 bg-navy/40 border border-navy-light/20 rounded-xl text-center">
+                  <div class="text-4xl mb-3 animate-pulse-glow">⛵</div>
+                  <div class="font-mono text-sm text-light">.animate-pulse-glow</div>
+                  <div class="font-mono text-xs text-slate-dark mt-1">3s ease-in-out — opacity pulse</div>
+                </div>
+
+                <!-- .animate-wave -->
+                <div class="p-4 bg-navy/40 border border-navy-light/20 rounded-xl text-center sm:col-start-2">
+                  <div class="text-4xl mb-3 animate-wave">⛵</div>
+                  <div class="font-mono text-sm text-light">.animate-wave</div>
+                  <div class="font-mono text-xs text-slate-dark mt-1">8s ease-in-out — lateral sway</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr class="ds-divider" />
+
+        <!-- ── Motion ── -->
+        <section id="motion" class="ds-section" data-ds-section>
+          <div class="ds-section-header">
+            <h3 class="ds-section-title">Motion</h3>
+            <p class="ds-section-desc">All animation in Plumb follows a nautical physics model. The ⛵ boat is the system mascot — its motion vocabulary defines how every transition feels.</p>
+          </div>
+
+          <!-- CSS Keyframe Animations -->
+          <div class="mb-16 mt-8">
+            <h4 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">CSS Keyframe Animations</h4>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+
+              <!-- boatBob -->
+              <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl">
+                <div class="h-20 flex items-center justify-center mb-4">
+                  <span class="text-4xl ds-demo-bob">⛵</span>
+                </div>
+                <div class="font-mono text-sm text-buoy mb-1">boatBob</div>
+                <div class="font-mono text-xs text-slate-dark mb-3">4s ease-in-out infinite</div>
+                <pre class="text-xs text-slate font-mono bg-navy-dark/60 rounded-lg p-3 overflow-x-auto"><code set:html={`@keyframes boatBob {\n  0%, 100% {\n    transform:\n      translateY(0)\n      rotate(0deg);\n  }\n  50% {\n    transform:\n      translateY(-15px)\n      rotate(3deg);\n  }\n}`}></code></pre>
+              </div>
+
+              <!-- boatDrift -->
+              <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl">
+                <div class="h-20 flex items-center justify-center mb-4 overflow-hidden rounded-lg bg-navy-dark/40 relative">
+                  <span class="text-3xl ds-demo-drift absolute">⛵</span>
+                </div>
+                <div class="font-mono text-sm text-buoy mb-1">boatDrift</div>
+                <div class="font-mono text-xs text-slate-dark mb-3">25s linear infinite</div>
+                <pre class="text-xs text-slate font-mono bg-navy-dark/60 rounded-lg p-3 overflow-x-auto"><code set:html={`@keyframes boatDrift {\n  0%   { left: -5%; }\n  100% { left: 105%; }\n}`}></code></pre>
+              </div>
+
+              <!-- splashDroplet -->
+              <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl">
+                <div class="h-20 flex items-center justify-center mb-4">
+                  <div class="relative w-0 h-0">
+                    <div class="ds-splash-dot ds-drop-a"></div>
+                    <div class="ds-splash-dot ds-drop-b"></div>
+                    <div class="ds-splash-dot ds-drop-c"></div>
+                    <div class="ds-splash-dot ds-drop-d"></div>
+                    <div class="ds-splash-dot ds-drop-e"></div>
+                  </div>
+                </div>
+                <div class="font-mono text-sm text-buoy mb-1">splashDroplet</div>
+                <div class="font-mono text-xs text-slate-dark mb-3">0.4–0.7s ease-out, fan spread</div>
+                <pre class="text-xs text-slate font-mono bg-navy-dark/60 rounded-lg p-3 overflow-x-auto"><code set:html={`@keyframes splashDroplet {\n  0% {\n    transform:\n      translate(0,0) scale(1);\n    opacity: 0.8;\n  }\n  100% {\n    transform:\n      translate(var(--dx),var(--dy))\n      scale(0.2);\n    opacity: 0;\n  }\n}`}></code></pre>
+              </div>
+
+              <!-- splashRing -->
+              <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl">
+                <div class="h-20 flex items-center justify-center mb-4">
+                  <div class="relative w-0 h-0">
+                    <div class="ds-demo-ring"></div>
+                  </div>
+                </div>
+                <div class="font-mono text-sm text-buoy mb-1">splashRing</div>
+                <div class="font-mono text-xs text-slate-dark mb-3">0.7s ease-out, elliptical expand</div>
+                <pre class="text-xs text-slate font-mono bg-navy-dark/60 rounded-lg p-3 overflow-x-auto"><code set:html={`@keyframes splashRing {\n  0% {\n    transform:\n      translate(-50%,-50%)\n      scale(0.5);\n    opacity: 0.6;\n  }\n  100% {\n    transform:\n      translate(-50%,-50%)\n      scale(4, 2);\n    opacity: 0;\n  }\n}`}></code></pre>
+              </div>
+
+              <!-- twinkle -->
+              <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl">
+                <div class="h-20 flex items-center justify-center mb-4 gap-3">
+                  <svg class="ds-demo-twinkle" viewBox="-10 -10 20 20" width="20" height="20" aria-hidden="true">
+                    <path d="M0,-8 L1,-1 L8,0 L1,1 L0,8 L-1,1 L-8,0 L-1,-1 Z" fill="rgba(255,255,255,0.7)"/>
+                  </svg>
+                  <svg class="ds-demo-twinkle" style="animation-delay: -1.2s; animation-duration: 3.5s;" viewBox="-10 -10 20 20" width="14" height="14" aria-hidden="true">
+                    <path d="M0,-8 L1,-1 L8,0 L1,1 L0,8 L-1,1 L-8,0 L-1,-1 Z" fill="rgba(255,255,255,0.7)"/>
+                  </svg>
+                  <svg class="ds-demo-twinkle" style="animation-delay: -2.5s; animation-duration: 4.5s;" viewBox="-10 -10 20 20" width="10" height="10" aria-hidden="true">
+                    <path d="M0,-8 L1,-1 L8,0 L1,1 L0,8 L-1,1 L-8,0 L-1,-1 Z" fill="rgba(255,255,255,0.7)"/>
+                  </svg>
+                </div>
+                <div class="font-mono text-sm text-buoy mb-1">twinkle</div>
+                <div class="font-mono text-xs text-slate-dark mb-3">3–5s ease-in-out, staggered · WaveBackground stars</div>
+                <pre class="text-xs text-slate font-mono bg-navy-dark/60 rounded-lg p-3 overflow-x-auto"><code set:html={`@keyframes twinkle {\n  0%, 100% {\n    opacity: 0.3;\n  }\n  50% {\n    opacity: 0.8;\n  }\n}`}></code></pre>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Motion Choreography -->
+          <div class="mb-16">
+            <h4 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">Motion Choreography — The Boat Escape</h4>
+            <p class="text-slate text-sm mb-6 max-w-2xl">Five phases play out in sequence when the page loads. Each uses a different easing curve chosen for its physical feel.</p>
+
+            <div class="space-y-4">
+
+              <!-- Phase 1: Wiggle -->
+              <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl flex flex-col sm:flex-row gap-5">
+                <div class="shrink-0 flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-full bg-buoy/20 border border-buoy/40 flex items-center justify-center font-mono text-xs text-buoy font-bold">1</div>
+                  <span class="text-3xl ds-demo-wiggle">⛵</span>
+                </div>
+                <div class="flex-1">
+                  <div class="font-mono text-sm text-light mb-1">Wiggle <span class="text-slate-dark">— anticipation</span></div>
+                  <div class="font-mono text-xs text-slate-dark mb-2">600ms · ease-in-out · 8 keyframes</div>
+                  <div class="text-xs text-slate">Builds tension before the break. Rotates ±12° in a stuttering rattle — the boat is trying to escape. Disney's "anticipation" principle.</div>
+                </div>
+                <div class="shrink-0">
+                  <svg viewBox="-5 -5 110 110" class="w-20 h-20" aria-label="ease-in-out bezier curve">
+                    <line x1="0" y1="100" x2="100" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
+                    <line x1="0" y1="0" x2="0" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
+                    <line x1="0" y1="100" x2="42" y2="100" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
+                    <line x1="100" y1="0" x2="58" y2="0" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
+                    <path d="M 0,100 C 42,100 58,0 100,0" fill="none" stroke="currentColor" class="text-buoy" stroke-width="2"/>
+                    <circle cx="42" cy="100" r="3.5" fill="currentColor" class="text-lavender"/>
+                    <circle cx="58" cy="0" r="3.5" fill="currentColor" class="text-lavender"/>
+                    <circle cx="0" cy="100" r="3" fill="currentColor" class="text-light"/>
+                    <circle cx="100" cy="0" r="3" fill="currentColor" class="text-light"/>
+                  </svg>
+                  <div class="font-mono text-xs text-slate-dark text-center mt-1">ease-in-out</div>
+                </div>
+              </div>
+
+              <!-- Phase 2: Lift -->
+              <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl flex flex-col sm:flex-row gap-5">
+                <div class="shrink-0 flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-full bg-buoy/20 border border-buoy/40 flex items-center justify-center font-mono text-xs text-buoy font-bold">2</div>
+                  <span class="text-3xl ds-demo-lift">⛵</span>
+                </div>
+                <div class="flex-1">
+                  <div class="font-mono text-sm text-light mb-1">Anticipation Lift <span class="text-slate-dark">— secondary action</span></div>
+                  <div class="font-mono text-xs text-slate-dark mb-2">120ms · ease-out · translateY(-6px)</div>
+                  <div class="text-xs text-slate">A small upward feint before the drop. Creates the illusion of stored energy — like a diver crouching before the leap.</div>
+                </div>
+                <div class="shrink-0">
+                  <svg viewBox="-5 -5 110 110" class="w-20 h-20" aria-label="ease-out bezier curve">
+                    <line x1="0" y1="100" x2="100" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
+                    <line x1="0" y1="0" x2="0" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
+                    <line x1="0" y1="100" x2="0" y2="100" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
+                    <line x1="100" y1="0" x2="58" y2="0" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
+                    <path d="M 0,100 C 0,100 58,0 100,0" fill="none" stroke="currentColor" class="text-buoy" stroke-width="2"/>
+                    <circle cx="0" cy="100" r="3.5" fill="currentColor" class="text-lavender"/>
+                    <circle cx="58" cy="0" r="3.5" fill="currentColor" class="text-lavender"/>
+                    <circle cx="0" cy="100" r="3" fill="currentColor" class="text-light"/>
+                    <circle cx="100" cy="0" r="3" fill="currentColor" class="text-light"/>
+                  </svg>
+                  <div class="font-mono text-xs text-slate-dark text-center mt-1">ease-out</div>
+                </div>
+              </div>
+
+              <!-- Phase 3: Drop -->
+              <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl flex flex-col sm:flex-row gap-5">
+                <div class="shrink-0 flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-full bg-buoy/20 border border-buoy/40 flex items-center justify-center font-mono text-xs text-buoy font-bold">3</div>
+                  <span class="text-3xl ds-demo-drop">⛵</span>
+                </div>
+                <div class="flex-1">
+                  <div class="font-mono text-sm text-light mb-1">Gravity Drop <span class="text-slate-dark">— overshoot</span></div>
+                  <div class="font-mono text-xs text-slate-dark mb-2">500ms · cubic-bezier(0.4, 0, 0.68, 1.4)</div>
+                  <div class="text-xs text-slate">The y2 value of 1.4 overshoots the target — the boat dips slightly below the waterline before springing back. Paired with the splash at impact.</div>
+                </div>
+                <div class="shrink-0">
+                  <svg viewBox="-5 -50 110 165" class="w-20 h-28" aria-label="cubic-bezier(0.4, 0, 0.68, 1.4) — drop with overshoot">
+                    <line x1="0" y1="100" x2="100" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
+                    <line x1="0" y1="0" x2="0" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
+                    <line x1="0" y1="0" x2="0" y2="-40" stroke="currentColor" class="text-navy-light/20" stroke-width="0.5" stroke-dasharray="2 2"/>
+                    <line x1="0" y1="100" x2="40" y2="100" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
+                    <line x1="100" y1="0" x2="68" y2="-40" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
+                    <path d="M 0,100 C 40,100 68,-40 100,0" fill="none" stroke="currentColor" class="text-buoy" stroke-width="2"/>
+                    <circle cx="40" cy="100" r="3.5" fill="currentColor" class="text-lavender"/>
+                    <circle cx="68" cy="-40" r="3.5" fill="currentColor" class="text-lavender"/>
+                    <circle cx="0" cy="100" r="3" fill="currentColor" class="text-light"/>
+                    <circle cx="100" cy="0" r="3" fill="currentColor" class="text-light"/>
+                    <text x="72" y="-43" font-size="7" fill="currentColor" class="text-slate-dark" font-family="monospace">y2=1.4</text>
+                  </svg>
+                  <div class="font-mono text-xs text-slate-dark text-center mt-1">overshoot</div>
+                </div>
+              </div>
+
+              <!-- Phase 4: Launch -->
+              <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl flex flex-col sm:flex-row gap-5">
+                <div class="shrink-0 flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-full bg-buoy/20 border border-buoy/40 flex items-center justify-center font-mono text-xs text-buoy font-bold">4</div>
+                  <div class="w-24 h-10 bg-navy-dark/40 rounded overflow-hidden relative flex items-center">
+                    <span class="text-xl ds-demo-launch absolute">⛵</span>
+                  </div>
+                </div>
+                <div class="flex-1">
+                  <div class="font-mono text-sm text-light mb-1">Launch Ease-In <span class="text-slate-dark">— follow through</span></div>
+                  <div class="font-mono text-xs text-slate-dark mb-2">3000ms · cubic-bezier(0.3, 0, 0.8, 0.8)</div>
+                  <div class="text-xs text-slate">After landing, the boat accelerates from rest to cruise speed over 3 seconds. The curve starts nearly flat (stationary) then steepens to match the 25s drift animation speed, so the handoff is seamless.</div>
+                  <div class="font-mono text-xs text-buoy">cubic-bezier(0.3, 0, 0.8, 0.8)</div>
+                </div>
+                <div class="shrink-0">
+                  <svg viewBox="-5 -5 110 110" class="w-20 h-20" aria-label="cubic-bezier(0.3, 0, 0.8, 0.8) — ease in to cruise speed">
+                    <line x1="0" y1="100" x2="100" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
+                    <line x1="0" y1="0" x2="0" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
+                    <line x1="0" y1="100" x2="30" y2="100" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
+                    <line x1="100" y1="0" x2="80" y2="20" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
+                    <path d="M 0,100 C 30,100 80,20 100,0" fill="none" stroke="currentColor" class="text-buoy" stroke-width="2"/>
+                    <circle cx="30" cy="100" r="3.5" fill="currentColor" class="text-lavender"/>
+                    <circle cx="80" cy="20" r="3.5" fill="currentColor" class="text-lavender"/>
+                    <circle cx="0" cy="100" r="3" fill="currentColor" class="text-light"/>
+                    <circle cx="100" cy="0" r="3" fill="currentColor" class="text-light"/>
+                  </svg>
+                  <div class="font-mono text-xs text-slate-dark text-center mt-1">ease-in</div>
+                </div>
+              </div>
+
+              <!-- Phase 5: Bobber Pop -->
+              <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl flex flex-col sm:flex-row gap-5">
+                <div class="shrink-0 flex items-center gap-3">
+                  <div class="w-8 h-8 rounded-full bg-buoy/20 border border-buoy/40 flex items-center justify-center font-mono text-xs text-buoy font-bold">5</div>
+                  <span class="text-3xl ds-demo-pop">⛵</span>
+                </div>
+                <div class="flex-1">
+                  <div class="font-mono text-sm text-light mb-1">Bobber Pop <span class="text-slate-dark">— spring overshoot</span></div>
+                  <div class="font-mono text-xs text-slate-dark mb-2">650ms · cubic-bezier(0.175, 0.885, 0.32, 1.55)</div>
+                  <div class="text-xs text-slate">When the boat is released underwater, it shoots straight up and overshoots the surface before settling. The y2=1.55 creates a strong elastic spring — the buoy physics.</div>
+                  <div class="font-mono text-xs text-buoy">cubic-bezier(0.175, 0.885, 0.32, 1.55)</div>
+                </div>
+                <div class="shrink-0">
+                  <svg viewBox="-5 -65 110 175" class="w-20 h-32" aria-label="cubic-bezier(0.175, 0.885, 0.32, 1.55) — spring overshoot">
+                    <line x1="0" y1="100" x2="100" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
+                    <line x1="0" y1="0" x2="0" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
+                    <line x1="0" y1="0" x2="0" y2="-55" stroke="currentColor" class="text-navy-light/20" stroke-width="0.5" stroke-dasharray="2 2"/>
+                    <line x1="0" y1="100" x2="17.5" y2="11.5" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
+                    <line x1="100" y1="0" x2="32" y2="-55" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
+                    <path d="M 0,100 C 17.5,11.5 32,-55 100,0" fill="none" stroke="currentColor" class="text-buoy" stroke-width="2"/>
+                    <circle cx="17.5" cy="11.5" r="3.5" fill="currentColor" class="text-lavender"/>
+                    <circle cx="32" cy="-55" r="3.5" fill="currentColor" class="text-lavender"/>
+                    <circle cx="0" cy="100" r="3" fill="currentColor" class="text-light"/>
+                    <circle cx="100" cy="0" r="3" fill="currentColor" class="text-light"/>
+                    <text x="34" y="-57" font-size="7" fill="currentColor" class="text-slate-dark" font-family="monospace">y2=1.55</text>
+                  </svg>
+                  <div class="font-mono text-xs text-slate-dark text-center mt-1">spring</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Easing Tokens -->
+          <div class="mb-4">
+            <h4 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">Easing Tokens</h4>
+            <div class="space-y-3">
+              <div class="flex items-center gap-4 p-4 bg-navy/40 border border-navy-light/20 rounded-xl font-mono text-sm">
+                <div class="w-40 text-buoy shrink-0">--ease-out-expo</div>
+                <div class="text-slate">cubic-bezier(0.16, 1, 0.3, 1)</div>
+                <div class="text-slate-dark text-xs">Fast out — UI transitions, reveals</div>
+              </div>
+              <div class="flex items-center gap-4 p-4 bg-navy/40 border border-navy-light/20 rounded-xl font-mono text-sm">
+                <div class="w-40 text-buoy shrink-0">--ease-in-out-expo</div>
+                <div class="text-slate">cubic-bezier(0.87, 0, 0.13, 1)</div>
+                <div class="text-slate-dark text-xs">Symmetric expo — modals, drawers</div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+      </div><!-- /foundations group -->
+
+      <!-- ════════════════════════════════════════════
+           COMPONENTS
+           ════════════════════════════════════════════ -->
+      <div class="ds-group-block">
+        <div class="ds-group-header">
+          <span class="ds-group-eyebrow">02</span>
+          <h2 class="ds-group-title">Components</h2>
+          <p class="ds-group-desc">Live instances of every component, every variant. No mocks — what you see is what ships.</p>
         </div>
-      </div>
-      <div class="p-4 bg-navy/40 border border-navy-light/20 rounded-xl flex items-center gap-4">
-        <div class="w-12 h-12 rounded-lg bg-lavender glow-lavender shrink-0"></div>
-        <div>
-          <div class="font-mono text-sm text-light">.glow-lavender</div>
-          <div class="font-mono text-xs text-slate-dark">box-shadow: 0 0 30px lavender/30%</div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Text Gradients -->
-    <div class="space-y-4">
-      <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest">Text Gradients</h3>
-      <div class="p-4 bg-navy/40 border border-navy-light/20 rounded-xl">
-        <div class="text-3xl font-extrabold text-gradient-sunrise font-[Quicksand] mb-2">Catch Design Drift</div>
-        <div class="font-mono text-xs text-slate-dark">.text-gradient-sunrise</div>
-        <div class="font-mono text-xs text-slate-dark mt-1">buoy → sunrise → lavender at 135°</div>
-      </div>
-    </div>
-
-    <!-- Animations -->
-    <div class="space-y-4 md:col-span-2">
-      <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest">Animations</h3>
-      <div class="grid sm:grid-cols-3 gap-4">
-        <div class="p-4 bg-navy/40 border border-navy-light/20 rounded-xl text-center">
-          <div class="text-4xl mb-3 animate-float">⛵</div>
-          <div class="font-mono text-sm text-light">.animate-float</div>
-          <div class="font-mono text-xs text-slate-dark mt-1">6s ease-in-out infinite — vertical bob</div>
-        </div>
-        <div class="p-4 bg-navy/40 border border-navy-light/20 rounded-xl text-center">
-          <div class="text-4xl mb-3 animate-pulse-glow">⛵</div>
-          <div class="font-mono text-sm text-light">.animate-pulse-glow</div>
-          <div class="font-mono text-xs text-slate-dark mt-1">3s ease-in-out infinite — opacity pulse</div>
-        </div>
-        <div class="p-4 bg-navy/40 border border-navy-light/20 rounded-xl text-center">
-          <div class="text-4xl mb-3 animate-wave">⛵</div>
-          <div class="font-mono text-sm text-light">.animate-wave</div>
-          <div class="font-mono text-xs text-slate-dark mt-1">8s ease-in-out infinite — lateral sway</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Motion section -->
-<section id="motion" class="scroll-mt-16">
-  <h2 class="ds-section-heading">Motion</h2>
-  <p class="ds-section-sub">All animation in Plumb follows a nautical physics model. The ⛵ boat is the system mascot — its motion vocabulary defines how every transition feels.</p>
-
-  <!-- CSS Keyframe Animations -->
-  <div class="mb-16 mt-8">
-    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">CSS Keyframe Animations</h3>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-
-      <!-- boatBob -->
-      <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl">
-        <div class="h-20 flex items-center justify-center mb-4">
-          <span class="text-4xl ds-demo-bob">⛵</span>
-        </div>
-        <div class="font-mono text-sm text-buoy mb-1">boatBob</div>
-        <div class="font-mono text-xs text-slate-dark mb-3">4s ease-in-out infinite</div>
-        <pre class="text-xs text-slate font-mono bg-navy-dark/60 rounded-lg p-3 overflow-x-auto"><code set:html={`@keyframes boatBob {\n  0%, 100% {\n    transform:\n      translateY(0)\n      rotate(0deg);\n  }\n  50% {\n    transform:\n      translateY(-15px)\n      rotate(3deg);\n  }\n}`}></code></pre>
-      </div>
-
-      <!-- boatDrift -->
-      <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl">
-        <div class="h-20 flex items-center justify-center mb-4 overflow-hidden rounded-lg bg-navy-dark/40 relative">
-          <span class="text-3xl ds-demo-drift absolute">⛵</span>
-        </div>
-        <div class="font-mono text-sm text-buoy mb-1">boatDrift</div>
-        <div class="font-mono text-xs text-slate-dark mb-3">25s linear infinite</div>
-        <pre class="text-xs text-slate font-mono bg-navy-dark/60 rounded-lg p-3 overflow-x-auto"><code set:html={`@keyframes boatDrift {\n  0%   { left: -5%; }\n  100% { left: 105%; }\n}`}></code></pre>
-      </div>
-
-      <!-- splashDroplet -->
-      <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl">
-        <div class="h-20 flex items-center justify-center mb-4">
-          <div class="relative w-0 h-0">
-            <div class="ds-splash-dot ds-drop-a"></div>
-            <div class="ds-splash-dot ds-drop-b"></div>
-            <div class="ds-splash-dot ds-drop-c"></div>
-            <div class="ds-splash-dot ds-drop-d"></div>
-            <div class="ds-splash-dot ds-drop-e"></div>
+        <!-- Button -->
+        <div id="comp-button" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">Button</h3>
+              <code class="ds-comp-path">src/components/Button.astro</code>
+            </div>
+            <span class="ds-badge ds-badge-stable">Stable</span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="text-left border-b border-navy-light/20">
+                  <th class="pb-3 pr-8 font-mono text-xs text-slate-dark font-normal">variant / size</th>
+                  <th class="pb-3 pr-8 font-mono text-xs text-slate-dark font-normal">sm</th>
+                  <th class="pb-3 pr-8 font-mono text-xs text-slate-dark font-normal">md (default)</th>
+                  <th class="pb-3 font-mono text-xs text-slate-dark font-normal">lg</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-navy-light/10">
+                <tr>
+                  <td class="py-4 pr-8 font-mono text-xs text-slate">primary</td>
+                  <td class="py-4 pr-8"><Button size="sm">Label</Button></td>
+                  <td class="py-4 pr-8"><Button size="md">Label</Button></td>
+                  <td class="py-4"><Button size="lg">Label</Button></td>
+                </tr>
+                <tr>
+                  <td class="py-4 pr-8 font-mono text-xs text-slate">secondary</td>
+                  <td class="py-4 pr-8"><Button variant="secondary" size="sm">Label</Button></td>
+                  <td class="py-4 pr-8"><Button variant="secondary" size="md">Label</Button></td>
+                  <td class="py-4"><Button variant="secondary" size="lg">Label</Button></td>
+                </tr>
+                <tr>
+                  <td class="py-4 pr-8 font-mono text-xs text-slate">ghost</td>
+                  <td class="py-4 pr-8"><Button variant="ghost" size="sm">Label</Button></td>
+                  <td class="py-4 pr-8"><Button variant="ghost" size="md">Label</Button></td>
+                  <td class="py-4"><Button variant="ghost" size="lg">Label</Button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-2">Token usage inside Button.astro:</div>
+            <div class="text-slate-dark">primary: <span class="text-buoy">bg-buoy</span> text-navy-dark hover:bg-buoy-light glow-buoy</div>
+            <div class="text-slate-dark">secondary: <span class="text-lavender">bg-navy-light/50</span> text-light border-navy-light/50</div>
+            <div class="text-slate-dark">ghost: text-slate hover:text-light hover:bg-navy-light/30</div>
           </div>
         </div>
-        <div class="font-mono text-sm text-buoy mb-1">splashDroplet</div>
-        <div class="font-mono text-xs text-slate-dark mb-3">0.4–0.7s ease-out, fan spread</div>
-        <pre class="text-xs text-slate font-mono bg-navy-dark/60 rounded-lg p-3 overflow-x-auto"><code set:html={`@keyframes splashDroplet {\n  0% {\n    transform:\n      translate(0,0) scale(1);\n    opacity: 0.8;\n  }\n  100% {\n    transform:\n      translate(var(--dx),var(--dy))\n      scale(0.2);\n    opacity: 0;\n  }\n}`}></code></pre>
-      </div>
 
-      <!-- splashRing -->
-      <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl">
-        <div class="h-20 flex items-center justify-center mb-4">
-          <div class="relative w-0 h-0">
-            <div class="ds-demo-ring"></div>
+        <hr class="ds-divider" />
+
+        <!-- FeatureCard -->
+        <div id="comp-feature-card" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">FeatureCard</h3>
+              <code class="ds-comp-path">src/components/FeatureCard.astro</code>
+            </div>
+            <span class="ds-badge ds-badge-stable">Stable</span>
+          </div>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <FeatureCard
+              title="With Link"
+              description="Cards with href get a hover glow, clickable title, and a Learn more CTA at the bottom."
+              icon="🛟"
+              href="/features/drift-detection"
+              examples={['token.violation', 'hardcoded.value']}
+            />
+            <FeatureCard
+              title="Without Link"
+              description="Static cards omit the link affordance entirely. Same token usage throughout."
+              icon="⚓"
+              examples={['pattern.match', 'rule.enforced']}
+            />
+            <FeatureCard
+              title="Minimal"
+              description="No icon, no examples, no link. Just a title and description using the same border and bg tokens."
+            />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">title*</span> · <span class="text-buoy">description*</span> · <span class="text-buoy">icon</span> · <span class="text-buoy">href</span> · <span class="text-buoy">examples</span></div>
+            <div class="text-slate-dark">With href: hover glow-buoy scale-105 · Examples: font-mono text-xs text-slate-dark</div>
           </div>
         </div>
-        <div class="font-mono text-sm text-buoy mb-1">splashRing</div>
-        <div class="font-mono text-xs text-slate-dark mb-3">0.7s ease-out, elliptical expand</div>
-        <pre class="text-xs text-slate font-mono bg-navy-dark/60 rounded-lg p-3 overflow-x-auto"><code set:html={`@keyframes splashRing {\n  0% {\n    transform:\n      translate(-50%,-50%)\n      scale(0.5);\n    opacity: 0.6;\n  }\n  100% {\n    transform:\n      translate(-50%,-50%)\n      scale(4, 2);\n    opacity: 0;\n  }\n}`}></code></pre>
-      </div>
 
-    </div>
-  </div>
+        <hr class="ds-divider" />
 
-  <!-- Motion Choreography -->
-  <div class="mb-16">
-    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">Motion Choreography — The Boat Escape</h3>
-    <p class="text-slate text-sm mb-6 max-w-2xl">Five phases play out in sequence when the page loads. Each uses a different easing curve chosen for its physical feel. Hover each card to replay the curve animation.</p>
-
-    <div class="space-y-4">
-
-      <!-- Phase 1: Wiggle -->
-      <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl flex flex-col sm:flex-row gap-5">
-        <div class="shrink-0 flex items-center gap-3">
-          <div class="w-8 h-8 rounded-full bg-buoy/20 border border-buoy/40 flex items-center justify-center font-mono text-xs text-buoy font-bold">1</div>
-          <span class="text-3xl ds-demo-wiggle">⛵</span>
-        </div>
-        <div class="flex-1">
-          <div class="font-mono text-sm text-light mb-1">Wiggle <span class="text-slate-dark">— anticipation</span></div>
-          <div class="font-mono text-xs text-slate-dark mb-2">600ms · ease-in-out · 8 keyframes</div>
-          <div class="text-xs text-slate">Builds tension before the break. Rotates ±12° in a stuttering rattle — the boat is trying to escape. Disney's "anticipation" principle.</div>
-        </div>
-        <div class="shrink-0">
-          <svg viewBox="-5 -5 110 110" class="w-20 h-20" aria-label="ease-in-out bezier curve">
-            <line x1="0" y1="100" x2="100" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
-            <line x1="0" y1="0" x2="0" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
-            <line x1="0" y1="100" x2="42" y2="100" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
-            <line x1="100" y1="0" x2="58" y2="0" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
-            <path d="M 0,100 C 42,100 58,0 100,0" fill="none" stroke="currentColor" class="text-buoy" stroke-width="2"/>
-            <circle cx="42" cy="100" r="3.5" fill="currentColor" class="text-lavender"/>
-            <circle cx="58" cy="0" r="3.5" fill="currentColor" class="text-lavender"/>
-            <circle cx="0" cy="100" r="3" fill="currentColor" class="text-light"/>
-            <circle cx="100" cy="0" r="3" fill="currentColor" class="text-light"/>
-          </svg>
-          <div class="font-mono text-xs text-slate-dark text-center mt-1">ease-in-out</div>
-        </div>
-      </div>
-
-      <!-- Phase 2: Lift -->
-      <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl flex flex-col sm:flex-row gap-5">
-        <div class="shrink-0 flex items-center gap-3">
-          <div class="w-8 h-8 rounded-full bg-buoy/20 border border-buoy/40 flex items-center justify-center font-mono text-xs text-buoy font-bold">2</div>
-          <span class="text-3xl ds-demo-lift">⛵</span>
-        </div>
-        <div class="flex-1">
-          <div class="font-mono text-sm text-light mb-1">Anticipation Lift <span class="text-slate-dark">— secondary action</span></div>
-          <div class="font-mono text-xs text-slate-dark mb-2">120ms · ease-out · translateY(-6px)</div>
-          <div class="text-xs text-slate">A small upward feint before the drop. Creates the illusion of stored energy — like a diver crouching before the leap.</div>
-        </div>
-        <div class="shrink-0">
-          <svg viewBox="-5 -5 110 110" class="w-20 h-20" aria-label="ease-out bezier curve">
-            <line x1="0" y1="100" x2="100" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
-            <line x1="0" y1="0" x2="0" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
-            <line x1="0" y1="100" x2="0" y2="100" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
-            <line x1="100" y1="0" x2="58" y2="0" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
-            <path d="M 0,100 C 0,100 58,0 100,0" fill="none" stroke="currentColor" class="text-buoy" stroke-width="2"/>
-            <circle cx="0" cy="100" r="3.5" fill="currentColor" class="text-lavender"/>
-            <circle cx="58" cy="0" r="3.5" fill="currentColor" class="text-lavender"/>
-            <circle cx="0" cy="100" r="3" fill="currentColor" class="text-light"/>
-            <circle cx="100" cy="0" r="3" fill="currentColor" class="text-light"/>
-          </svg>
-          <div class="font-mono text-xs text-slate-dark text-center mt-1">ease-out</div>
-        </div>
-      </div>
-
-      <!-- Phase 3: Drop (gravity + bounce) -->
-      <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl flex flex-col sm:flex-row gap-5">
-        <div class="shrink-0 flex items-center gap-3">
-          <div class="w-8 h-8 rounded-full bg-buoy/20 border border-buoy/40 flex items-center justify-center font-mono text-xs text-buoy font-bold">3</div>
-          <span class="text-3xl ds-demo-drop">⛵</span>
-        </div>
-        <div class="flex-1">
-          <div class="font-mono text-sm text-light mb-1">Drop <span class="text-slate-dark">— gravity + soft bounce</span></div>
-          <div class="font-mono text-xs text-slate-dark mb-2">500ms · cubic-bezier(0.4, 0, 0.68, 1.4)</div>
-          <div class="text-xs text-slate mb-2">The y2 value of 1.4 overshoots the target — the boat dips slightly below the waterline before springing back. Paired with the splash at impact.</div>
-          <div class="font-mono text-xs text-buoy">cubic-bezier(0.4, 0, 0.68, 1.4)</div>
-        </div>
-        <div class="shrink-0">
-          <svg viewBox="-5 -50 110 165" class="w-20 h-28" aria-label="cubic-bezier(0.4, 0, 0.68, 1.4) — drop with overshoot">
-            <line x1="0" y1="100" x2="100" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
-            <line x1="0" y1="0" x2="0" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
-            <line x1="0" y1="0" x2="0" y2="-40" stroke="currentColor" class="text-navy-light/20" stroke-width="0.5" stroke-dasharray="2 2"/>
-            <line x1="0" y1="100" x2="40" y2="100" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
-            <line x1="100" y1="0" x2="68" y2="-40" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
-            <path d="M 0,100 C 40,100 68,-40 100,0" fill="none" stroke="currentColor" class="text-buoy" stroke-width="2"/>
-            <circle cx="40" cy="100" r="3.5" fill="currentColor" class="text-lavender"/>
-            <circle cx="68" cy="-40" r="3.5" fill="currentColor" class="text-lavender"/>
-            <circle cx="0" cy="100" r="3" fill="currentColor" class="text-light"/>
-            <circle cx="100" cy="0" r="3" fill="currentColor" class="text-light"/>
-            <text x="72" y="-43" font-size="7" fill="currentColor" class="text-slate-dark" font-family="monospace">y2=1.4</text>
-          </svg>
-          <div class="font-mono text-xs text-slate-dark text-center mt-1">overshoot</div>
-        </div>
-      </div>
-
-      <!-- Phase 4: Launch ease-in -->
-      <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl flex flex-col sm:flex-row gap-5">
-        <div class="shrink-0 flex items-center gap-3">
-          <div class="w-8 h-8 rounded-full bg-buoy/20 border border-buoy/40 flex items-center justify-center font-mono text-xs text-buoy font-bold">4</div>
-          <div class="w-24 h-10 bg-navy-dark/40 rounded overflow-hidden relative flex items-center">
-            <span class="text-xl ds-demo-launch absolute">⛵</span>
+        <!-- Terminal -->
+        <div id="comp-terminal" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">Terminal</h3>
+              <code class="ds-comp-path">src/components/Terminal.astro</code>
+            </div>
+            <span class="ds-badge ds-badge-stable">Stable</span>
+          </div>
+          <div class="max-w-2xl">
+            <Terminal
+              command="npx ahoybuoy drift check"
+              lines={[
+                { text: '', type: 'output', delay: 400 },
+                { text: '🛟 Scanning <span class="text-buoy">design-system.astro</span>...', type: 'output', delay: 600 },
+                { text: '', type: 'output', delay: 800 },
+                { text: '<span class="text-success font-semibold">✓ 0 issues found</span>', type: 'success', delay: 1000 },
+                { text: '', type: 'output', delay: 1200 },
+                { text: 'All tokens resolve to design system values.', type: 'muted', delay: 1400 },
+                { text: 'No hardcoded colors, spacing, or typography.', type: 'muted', delay: 1600 },
+              ]}
+            />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-2">Line type → color token mapping:</div>
+            <div class="flex gap-4 py-0.5"><span class="w-16 text-slate-dark">output</span><span class="w-32 text-slate">text-slate</span><span class="text-slate-dark">--color-slate</span></div>
+            <div class="flex gap-4 py-0.5"><span class="w-16 text-slate-dark">success</span><span class="w-32 text-success">text-success</span><span class="text-slate-dark">--color-success</span></div>
+            <div class="flex gap-4 py-0.5"><span class="w-16 text-slate-dark">warning</span><span class="w-32 text-warning">text-warning</span><span class="text-slate-dark">--color-warning</span></div>
+            <div class="flex gap-4 py-0.5"><span class="w-16 text-slate-dark">critical</span><span class="w-32 text-critical">text-critical</span><span class="text-slate-dark">--color-critical</span></div>
+            <div class="flex gap-4 py-0.5"><span class="w-16 text-slate-dark">info</span><span class="w-32 text-info">text-info</span><span class="text-slate-dark">--color-info</span></div>
+            <div class="flex gap-4 py-0.5"><span class="w-16 text-slate-dark">muted</span><span class="w-32 text-slate-dark">text-slate-dark</span><span class="text-slate-dark">--color-slate-dark</span></div>
+          </div>
+          <div class="mt-4 p-4 bg-navy-dark/60 border border-navy-light/10 rounded-lg font-mono text-xs">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">command*</span> · <span class="text-buoy">lines</span> — each with <span class="text-buoy">text</span>, <span class="text-buoy">type</span>, <span class="text-buoy">delay</span> (ms)</div>
+            <div class="text-slate-dark">Animated typing · bg-navy-dark border-navy-light/30 rounded-xl · Title bar with traffic lights</div>
           </div>
         </div>
-        <div class="flex-1">
-          <div class="font-mono text-sm text-light mb-1">Launch Ease-In <span class="text-slate-dark">— follow through</span></div>
-          <div class="font-mono text-xs text-slate-dark mb-2">3000ms · cubic-bezier(0.3, 0, 0.8, 0.8)</div>
-          <div class="text-xs text-slate mb-2">After landing, the boat accelerates from rest to cruise speed over 3 seconds. The curve starts nearly flat (stationary) then steepens to match the 25s drift animation speed, so the handoff is seamless.</div>
-          <div class="font-mono text-xs text-buoy">cubic-bezier(0.3, 0, 0.8, 0.8)</div>
-        </div>
-        <div class="shrink-0">
-          <svg viewBox="-5 -5 110 110" class="w-20 h-20" aria-label="cubic-bezier(0.3, 0, 0.8, 0.8) — ease in to cruise speed">
-            <line x1="0" y1="100" x2="100" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
-            <line x1="0" y1="0" x2="0" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
-            <line x1="0" y1="100" x2="30" y2="100" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
-            <line x1="100" y1="0" x2="80" y2="20" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
-            <path d="M 0,100 C 30,100 80,20 100,0" fill="none" stroke="currentColor" class="text-buoy" stroke-width="2"/>
-            <circle cx="30" cy="100" r="3.5" fill="currentColor" class="text-lavender"/>
-            <circle cx="80" cy="20" r="3.5" fill="currentColor" class="text-lavender"/>
-            <circle cx="0" cy="100" r="3" fill="currentColor" class="text-light"/>
-            <circle cx="100" cy="0" r="3" fill="currentColor" class="text-light"/>
-          </svg>
-          <div class="font-mono text-xs text-slate-dark text-center mt-1">ease-in</div>
-        </div>
-      </div>
 
-      <!-- Phase 5: Bobber pop (underwater → surface) -->
-      <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl flex flex-col sm:flex-row gap-5">
-        <div class="shrink-0 flex items-center gap-3">
-          <div class="w-8 h-8 rounded-full bg-buoy/20 border border-buoy/40 flex items-center justify-center font-mono text-xs text-buoy font-bold">5</div>
-          <span class="text-3xl ds-demo-pop">⛵</span>
-        </div>
-        <div class="flex-1">
-          <div class="font-mono text-sm text-light mb-1">Bobber Pop <span class="text-slate-dark">— spring overshoot</span></div>
-          <div class="font-mono text-xs text-slate-dark mb-2">650ms · cubic-bezier(0.175, 0.885, 0.32, 1.55)</div>
-          <div class="text-xs text-slate mb-2">When the boat is released underwater, it shoots straight up and overshoots the surface before settling. The y2=1.55 creates a strong elastic spring — the buoy physics.</div>
-          <div class="font-mono text-xs text-buoy">cubic-bezier(0.175, 0.885, 0.32, 1.55)</div>
-        </div>
-        <div class="shrink-0">
-          <svg viewBox="-5 -65 110 175" class="w-20 h-32" aria-label="cubic-bezier(0.175, 0.885, 0.32, 1.55) — spring overshoot">
-            <line x1="0" y1="100" x2="100" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
-            <line x1="0" y1="0" x2="0" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
-            <line x1="0" y1="0" x2="0" y2="-55" stroke="currentColor" class="text-navy-light/20" stroke-width="0.5" stroke-dasharray="2 2"/>
-            <line x1="0" y1="100" x2="17.5" y2="11.5" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
-            <line x1="100" y1="0" x2="32" y2="-55" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
-            <path d="M 0,100 C 17.5,11.5 32,-55 100,0" fill="none" stroke="currentColor" class="text-buoy" stroke-width="2"/>
-            <circle cx="17.5" cy="11.5" r="3.5" fill="currentColor" class="text-lavender"/>
-            <circle cx="32" cy="-55" r="3.5" fill="currentColor" class="text-lavender"/>
-            <circle cx="0" cy="100" r="3" fill="currentColor" class="text-light"/>
-            <circle cx="100" cy="0" r="3" fill="currentColor" class="text-light"/>
-            <text x="34" y="-57" font-size="7" fill="currentColor" class="text-slate-dark" font-family="monospace">y2=1.55</text>
-          </svg>
-          <div class="font-mono text-xs text-slate-dark text-center mt-1">spring</div>
-        </div>
-      </div>
+        <hr class="ds-divider" />
 
-    </div>
-  </div>
-
-  <!-- Easing token reference -->
-  <div class="mb-4">
-    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">Easing Tokens</h3>
-    <div class="space-y-3">
-      <div class="flex items-center gap-4 p-4 bg-navy/40 border border-navy-light/20 rounded-xl font-mono text-sm">
-        <div class="w-40 text-buoy shrink-0">--ease-out-expo</div>
-        <div class="text-slate">cubic-bezier(0.16, 1, 0.3, 1)</div>
-        <div class="text-slate-dark text-xs">Fast out — UI transitions, reveals</div>
-      </div>
-      <div class="flex items-center gap-4 p-4 bg-navy/40 border border-navy-light/20 rounded-xl font-mono text-sm">
-        <div class="w-40 text-buoy shrink-0">--ease-in-out-expo</div>
-        <div class="text-slate">cubic-bezier(0.87, 0, 0.13, 1)</div>
-        <div class="text-slate-dark text-xs">Symmetric expo — modals, drawers</div>
-      </div>
-    </div>
-  </div>
-
-</section>
-
-    <!-- Components section -->
-<section id="components" class="scroll-mt-16">
-  <h2 class="ds-section-heading">Components</h2>
-  <p class="ds-section-sub">Live instances of every component, every variant. No mocks — what you see is what ships.</p>
-
-  <!-- Button -->
-  <div class="mb-16 mt-8">
-    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">Button — <code class="ds-code">src/components/Button.astro</code></h3>
-    <div class="overflow-x-auto">
-      <table class="w-full text-sm">
-        <thead>
-          <tr class="text-left border-b border-navy-light/20">
-            <th class="pb-3 pr-8 font-mono text-xs text-slate-dark font-normal">variant / size</th>
-            <th class="pb-3 pr-8 font-mono text-xs text-slate-dark font-normal">sm</th>
-            <th class="pb-3 pr-8 font-mono text-xs text-slate-dark font-normal">md (default)</th>
-            <th class="pb-3 font-mono text-xs text-slate-dark font-normal">lg</th>
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-navy-light/10">
-          <tr>
-            <td class="py-4 pr-8 font-mono text-xs text-slate">primary</td>
-            <td class="py-4 pr-8"><Button size="sm">Label</Button></td>
-            <td class="py-4 pr-8"><Button size="md">Label</Button></td>
-            <td class="py-4"><Button size="lg">Label</Button></td>
-          </tr>
-          <tr>
-            <td class="py-4 pr-8 font-mono text-xs text-slate">secondary</td>
-            <td class="py-4 pr-8"><Button variant="secondary" size="sm">Label</Button></td>
-            <td class="py-4 pr-8"><Button variant="secondary" size="md">Label</Button></td>
-            <td class="py-4"><Button variant="secondary" size="lg">Label</Button></td>
-          </tr>
-          <tr>
-            <td class="py-4 pr-8 font-mono text-xs text-slate">ghost</td>
-            <td class="py-4 pr-8"><Button variant="ghost" size="sm">Label</Button></td>
-            <td class="py-4 pr-8"><Button variant="ghost" size="md">Label</Button></td>
-            <td class="py-4"><Button variant="ghost" size="lg">Label</Button></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="mt-4 p-4 bg-navy-dark/60 border border-navy-light/10 rounded-lg font-mono text-xs">
-      <div class="text-slate mb-2">Token usage inside Button.astro:</div>
-      <div class="text-slate-dark">primary: <span class="text-buoy">bg-buoy</span> text-navy-dark hover:bg-buoy-light glow-buoy</div>
-      <div class="text-slate-dark">secondary: <span class="text-lavender">bg-navy-light/50</span> text-light border-navy-light/50</div>
-      <div class="text-slate-dark">ghost: text-slate hover:text-light hover:bg-navy-light/30</div>
-    </div>
-  </div>
-
-  <!-- FeatureCard -->
-  <div class="mb-16">
-    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">FeatureCard — <code class="ds-code">src/components/FeatureCard.astro</code></h3>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <FeatureCard
-        title="With Link"
-        description="Cards with href get a hover glow, clickable title, and a Learn more CTA at the bottom."
-        icon="🛟"
-        href="/features/drift-detection"
-        examples={['token.violation', 'hardcoded.value']}
-      />
-      <FeatureCard
-        title="Without Link"
-        description="Static cards omit the link affordance entirely. Same token usage throughout."
-        icon="⚓"
-        examples={['pattern.match', 'rule.enforced']}
-      />
-      <FeatureCard
-        title="Minimal"
-        description="No icon, no examples, no link. Just a title and description using the same border and bg tokens."
-      />
-    </div>
-  </div>
-
-  <!-- Terminal -->
-  <div class="mb-16">
-    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">Terminal — <code class="ds-code">src/components/Terminal.astro</code></h3>
-    <div class="max-w-2xl">
-      <Terminal
-        command="npx ahoybuoy drift check"
-        lines={[
-          { text: '', type: 'output', delay: 400 },
-          { text: '🛟 Scanning <span class="text-buoy">design-system.astro</span>...', type: 'output', delay: 600 },
-          { text: '', type: 'output', delay: 800 },
-          { text: '<span class="text-success font-semibold">✓ 0 issues found</span>', type: 'success', delay: 1000 },
-          { text: '', type: 'output', delay: 1200 },
-          { text: 'All tokens resolve to design system values.', type: 'muted', delay: 1400 },
-          { text: 'No hardcoded colors, spacing, or typography.', type: 'muted', delay: 1600 },
-        ]}
-      />
-    </div>
-    <div class="mt-4 p-4 bg-navy-dark/60 border border-navy-light/10 rounded-lg font-mono text-xs">
-      <div class="text-slate mb-2">Line type → color token mapping:</div>
-      <div class="flex gap-4 py-0.5"><span class="w-16 text-slate-dark">output</span><span class="w-32 text-slate">text-slate</span><span class="text-slate-dark">--color-slate</span></div>
-      <div class="flex gap-4 py-0.5"><span class="w-16 text-slate-dark">success</span><span class="w-32 text-success">text-success</span><span class="text-slate-dark">--color-success</span></div>
-      <div class="flex gap-4 py-0.5"><span class="w-16 text-slate-dark">warning</span><span class="w-32 text-warning">text-warning</span><span class="text-slate-dark">--color-warning</span></div>
-      <div class="flex gap-4 py-0.5"><span class="w-16 text-slate-dark">critical</span><span class="w-32 text-critical">text-critical</span><span class="text-slate-dark">--color-critical</span></div>
-      <div class="flex gap-4 py-0.5"><span class="w-16 text-slate-dark">info</span><span class="w-32 text-info">text-info</span><span class="text-slate-dark">--color-info</span></div>
-      <div class="flex gap-4 py-0.5"><span class="w-16 text-slate-dark">muted</span><span class="w-32 text-slate-dark">text-slate-dark</span><span class="text-slate-dark">--color-slate-dark</span></div>
-    </div>
-  </div>
-
-  <!-- Status Badges -->
-  <div class="mb-4">
-    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">Status Badges</h3>
-    <div class="flex flex-wrap gap-3">
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-success/10 border border-success/30 text-success text-sm font-medium">
-        <span class="w-2 h-2 rounded-full bg-success"></span>
-        success
-      </div>
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-warning/10 border border-warning/30 text-warning text-sm font-medium">
-        <span class="w-2 h-2 rounded-full bg-warning"></span>
-        warning
-      </div>
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-critical/10 border border-critical/30 text-critical text-sm font-medium">
-        <span class="w-2 h-2 rounded-full bg-critical"></span>
-        critical
-      </div>
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-info/10 border border-info/30 text-info text-sm font-medium">
-        <span class="w-2 h-2 rounded-full bg-info"></span>
-        info
-      </div>
-    </div>
-  </div>
-
-  <!-- CodeBlock -->
-  <div class="mb-16">
-    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">CodeBlock — <code class="ds-code">src/components/CodeBlock.astro</code></h3>
-    <div class="space-y-4">
-      <div>
-        <div class="text-xs text-slate-dark font-mono mb-2">language="bash" (default)</div>
-        <CodeBlock code={codeSnippets.bash} language="bash" />
-      </div>
-      <div>
-        <div class="text-xs text-slate-dark font-mono mb-2">With filename + copy button</div>
-        <CodeBlock code={codeSnippets.config} language="js" filename="buoy.config.mjs" />
-      </div>
-      <div>
-        <div class="text-xs text-slate-dark font-mono mb-2">showLineNumbers + highlighted lines</div>
-        <CodeBlock code={codeSnippets.withHighlight} language="js" filename="example.js" showLineNumbers={true} highlights={[3]} />
-      </div>
-    </div>
-    <div class="mt-4 p-4 bg-navy-dark/60 border border-navy-light/10 rounded-lg font-mono text-xs">
-      <div class="text-slate mb-1">Props: <span class="text-buoy">code*</span> · <span class="text-buoy">language</span>='bash' · <span class="text-buoy">filename</span> · <span class="text-buoy">highlights</span> · <span class="text-buoy">showLineNumbers</span></div>
-      <div class="text-slate-dark">Hover: lavender/10→buoy/5 blur · Copy button: slate→buoy · Check icon 2s then reset</div>
-    </div>
-  </div>
-
-  <!-- DocTerminal -->
-  <div class="mb-16">
-    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">DocTerminal — <code class="ds-code">src/components/DocTerminal.astro</code></h3>
-    <p class="text-sm text-slate mb-4">Static terminal for docs. Unlike <code class="ds-code">Terminal.astro</code>, renders all lines immediately with no animation delays. Has a copy button in the title bar.</p>
-    <div class="max-w-2xl">
-      <DocTerminal
-        command="npx ahoybuoy show tokens --format table"
-        lines={[
-          { text: '' },
-          { text: 'TOKEN                   VALUE', type: 'muted' },
-          { text: '--color-buoy            #F97316', type: 'output' },
-          { text: '--color-navy            #1a2744', type: 'output' },
-          { text: '--color-lavender        #8B5CF6', type: 'output' },
-          { text: '' },
-          { text: '3 tokens found', type: 'success' },
-        ]}
-      />
-    </div>
-    <div class="mt-4 p-4 bg-navy-dark/60 border border-navy-light/10 rounded-lg font-mono text-xs">
-      <div class="text-slate mb-1">Props: <span class="text-buoy">command*</span> · <span class="text-buoy">lines</span> (same type tokens as Terminal)</div>
-      <div class="text-slate-dark">bg-navy-dark border-navy-light/30 · Copy in title bar · No delays or JS typing animation</div>
-    </div>
-  </div>
-
-  <!-- Flags -->
-  <div class="mb-16">
-    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">Flags — <code class="ds-code">src/components/Flags.astro</code></h3>
-    <p class="text-sm text-slate mb-4">CLI flag reference list for docs pages. Renders a scannable list of flag names, descriptions, required badges, and defaults.</p>
-    <Flags items={flagItems} />
-    <div class="mt-4 p-4 bg-navy-dark/60 border border-navy-light/10 rounded-lg font-mono text-xs">
-      <div class="text-slate mb-1">Props: <span class="text-buoy">items*</span> — Array of <span class="text-buoy">{'{ name, description, required?, default? }'}</span></div>
-      <div class="text-slate-dark">Flag: text-lavender bg-navy-light/20 · required: bg-critical/20 text-critical · default: text-slate-dark</div>
-    </div>
-  </div>
-
-  <!-- WaveBackground -->
-  <div class="mb-16">
-    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">WaveBackground — <code class="ds-code">src/components/WaveBackground.astro</code></h3>
-    <p class="text-sm text-slate mb-4">Animated hero background. Always <code class="ds-code">position: absolute; inset: 0</code> — wrap in a <code class="ds-code">relative overflow-hidden</code> container with a defined height.</p>
-    <div class="relative rounded-xl overflow-hidden h-48">
-      <WaveBackground />
-      <div class="relative z-10 flex items-center justify-center h-full gap-3">
-        <span class="text-2xl">🛟</span>
-        <span class="text-light font-semibold font-[Quicksand]">Content renders above via z-index</span>
-      </div>
-    </div>
-    <div class="mt-4 p-4 bg-navy-dark/60 border border-navy-light/10 rounded-lg font-mono text-xs">
-      <div class="text-slate mb-1">No props. 3 wave layers + SVG stars + 8 floating particles + mesh gradient overlay.</div>
-      <div class="text-slate-dark">Light mode: daytime ocean scene · Mobile: blur filters, particles, and star animations disabled</div>
-    </div>
-  </div>
-
-  <!-- Nav -->
-  <div class="mb-16">
-    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">Nav — <code class="ds-code">src/components/Nav.astro</code></h3>
-    <p class="text-sm text-slate mb-4">Fixed full-width navigation. Renders as <code class="ds-code">position: fixed; top: 0; z-50</code> — already active at the top of this page. Not safe to embed inline.</p>
-    <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl space-y-3">
-      <div class="font-mono text-xs text-slate-dark uppercase tracking-widest mb-3">Anatomy</div>
-      <div class="flex items-start gap-3 text-sm">
-        <span class="w-2 h-2 rounded-full bg-buoy flex-shrink-0 mt-1.5"></span>
-        <span class="text-slate">Bar: <code class="ds-code">backdrop-blur-md bg-navy-dark/80 border-b border-navy-light/20</code></span>
-      </div>
-      <div class="flex items-start gap-3 text-sm">
-        <span class="w-2 h-2 rounded-full bg-lavender flex-shrink-0 mt-1.5"></span>
-        <span class="text-slate">Dropdowns: CSS-only <code class="ds-code">opacity/visibility</code> on <code class="ds-code">group-hover</code>, no JS needed</span>
-      </div>
-      <div class="flex items-start gap-3 text-sm">
-        <span class="w-2 h-2 rounded-full bg-success flex-shrink-0 mt-1.5"></span>
-        <span class="text-slate">Mobile menu: JS toggles <code class="ds-code">hidden</code> class on <code class="ds-code">#mobile-menu</code></span>
-      </div>
-      <div class="flex items-start gap-3 text-sm">
-        <span class="w-2 h-2 rounded-full bg-info flex-shrink-0 mt-1.5"></span>
-        <span class="text-slate">Theme toggle: <code class="ds-code">localStorage</code> + <code class="ds-code">html.light</code> class, responds to <code class="ds-code">prefers-color-scheme</code></span>
-      </div>
-    </div>
-    <div class="mt-4 p-4 bg-navy-dark/60 border border-navy-light/10 rounded-lg font-mono text-xs">
-      <div class="text-slate mb-1">No props. Dropdown data arrays defined in component frontmatter.</div>
-      <div class="text-slate-dark">CTA: bg-buoy glow-buoy hover:scale-105 · Nav links: text-slate → text-light</div>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <div class="mb-16">
-    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">Footer — <code class="ds-code">src/components/Footer.astro</code></h3>
-    <p class="text-sm text-slate mb-4">Global page footer. No props — social and legal links come from <code class="ds-code">siteConfig</code> in <code class="ds-code">src/config.ts</code>.</p>
-    <div class="rounded-xl overflow-hidden border border-navy-light/20">
-      <Footer />
-    </div>
-    <div class="mt-4 p-4 bg-navy-dark/60 border border-navy-light/10 rounded-lg font-mono text-xs">
-      <div class="text-slate mb-1">No props. Social: <span class="text-buoy">siteConfig.githubUrl</span> · <span class="text-buoy">twitterUrl</span> · <span class="text-buoy">discordUrl</span></div>
-      <div class="text-slate-dark">bg-navy-dark border-t border-navy-light/20 · flex col→row at md · links: text-slate→text-light</div>
-    </div>
-  </div>
-
-  <!-- LeadMagnetForm -->
-  <div class="mb-16">
-    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">LeadMagnetForm — <code class="ds-code">src/components/LeadMagnetForm.astro</code></h3>
-    <p class="text-sm text-slate mb-4">Email capture form primitive. Used inside all lead magnet variants. Handles submit, loading, success, and error states.</p>
-    <div class="max-w-lg">
-      <LeadMagnetForm leadMagnet="pr-review-cheatsheet" buttonText="Get the Cheat Sheet" />
-    </div>
-    <div class="mt-4 p-4 bg-navy-dark/60 border border-navy-light/10 rounded-lg font-mono text-xs">
-      <div class="text-slate mb-1">Props: <span class="text-buoy">leadMagnet*</span> · <span class="text-buoy">buttonText</span>='Get the PDF' · <span class="text-buoy">successMessage</span></div>
-      <div class="text-slate-dark">Input: bg-navy-light/50 focus:border-buoy · Button: bg-buoy glow-buoy hover:scale-105 · Success: bg-green-500/20</div>
-    </div>
-  </div>
-
-  <!-- LeadMagnetCallout -->
-  <div class="mb-16">
-    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">LeadMagnetCallout — <code class="ds-code">src/components/LeadMagnetCallout.astro</code></h3>
-    <p class="text-sm text-slate mb-4">Inline callout card for embedding lead capture in article or docs context. Switches to horizontal layout on large screens.</p>
-    <LeadMagnetCallout
-      leadMagnet="drift-checklist"
-      headline="20 warning signs of design system drift"
-      subhead="A checklist for your next code review. Spot drift before it compounds."
-      buttonText="Get the Checklist"
-    />
-    <div class="mt-4 p-4 bg-navy-dark/60 border border-navy-light/10 rounded-lg font-mono text-xs">
-      <div class="text-slate mb-1">Props: <span class="text-buoy">leadMagnet*</span> · <span class="text-buoy">headline*</span> · <span class="text-buoy">subhead*</span> · <span class="text-buoy">buttonText</span>='Get the PDF'</div>
-      <div class="text-slate-dark">bg-gradient buoy/10→lavender/10 border-buoy/20 · lg:flex-row · "Free PDF" square badge</div>
-    </div>
-  </div>
-
-  <!-- LeadMagnetCTA -->
-  <div class="mb-16">
-    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">LeadMagnetCTA — <code class="ds-code">src/components/LeadMagnetCTA.astro</code></h3>
-    <p class="text-sm text-slate mb-4">Full-width centered section CTA. Used at the bottom of content pages to offer a related PDF download.</p>
-    <div class="rounded-xl overflow-hidden border border-navy-light/20">
-      <LeadMagnetCTA
-        leadMagnet="maturity-model"
-        headline="Where does your design system stand?"
-        subhead="Assess your maturity level and get a roadmap for what to fix next."
-        buttonText="Get the Assessment"
-      />
-    </div>
-    <div class="mt-4 p-4 bg-navy-dark/60 border border-navy-light/10 rounded-lg font-mono text-xs">
-      <div class="text-slate mb-1">Props: <span class="text-buoy">leadMagnet*</span> · <span class="text-buoy">headline*</span> · <span class="text-buoy">subhead*</span> · <span class="text-buoy">buttonText</span>='Get the PDF'</div>
-      <div class="text-slate-dark">py-16 bg-navy centered text · "Free PDF Download" pill badge · max-w-md form</div>
-    </div>
-  </div>
-
-  <!-- LeadCaptureSection -->
-  <div class="mb-0">
-    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">LeadCaptureSection — <code class="ds-code">src/components/LeadCaptureSection.astro</code></h3>
-    <p class="text-sm text-slate mb-4">A/B-tested two-column lead capture with PDF preview mockup. PostHog feature flag <code class="ds-code">homepage-lead-magnet-variant</code> selects the active variant; defaults to <code class="ds-code">drift-checklist</code>.</p>
-    <div class="rounded-xl overflow-hidden border border-navy-light/20">
-      <LeadCaptureSection />
-    </div>
-    <div class="mt-4 p-4 bg-navy-dark/60 border border-navy-light/10 rounded-lg font-mono text-xs">
-      <div class="text-slate mb-1">No props. 3 variants: <span class="text-buoy">drift-checklist</span> · <span class="text-buoy">why-developers-bypass</span> · <span class="text-buoy">maturity-model</span></div>
-      <div class="text-slate-dark">A/B via PostHog · PDF preview: rotate-1 hover:rotate-0 · grid lg:grid-cols-2</div>
-    </div>
-  </div>
-
-</section>
-
-    <!-- Patterns section -->
-<section id="patterns" class="scroll-mt-16">
-  <h2 class="ds-section-heading">Patterns</h2>
-  <p class="ds-section-sub">Recurring compositions built from the token primitives above.</p>
-
-  <div class="space-y-8 mt-8">
-    <!-- Section header pattern -->
-    <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
-      <div class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-4">Section Header</div>
-      <div class="border-l-2 border-buoy pl-4">
-        <h2 class="text-2xl font-bold text-light font-[Quicksand]">Section Title</h2>
-        <p class="text-slate mt-1">Supporting description in text-slate. Always below the heading, never above.</p>
-      </div>
-      <div class="mt-4 font-mono text-xs text-slate-dark">border-buoy / text-light (display) / text-slate (body)</div>
-    </div>
-
-    <!-- Inline code pattern -->
-    <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
-      <div class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-4">Inline Code</div>
-      <p class="text-slate">Run <code class="ds-code">npx ahoybuoy drift check</code> in your repo root. It reads <code class="ds-code">buoy.config.mjs</code> automatically.</p>
-      <div class="mt-4 font-mono text-xs text-slate-dark">font-mono / text-buoy / bg-buoy/10 / border-radius: 4px</div>
-    </div>
-
-    <!-- CTA row pattern -->
-    <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
-      <div class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-4">CTA Row</div>
-      <div class="flex flex-wrap gap-3">
-        <Button href="#" size="lg">Primary Action</Button>
-        <Button href="#" variant="secondary" size="lg">Secondary Action</Button>
-        <Button href="#" variant="ghost" size="lg">Ghost Action</Button>
-      </div>
-      <div class="mt-4 font-mono text-xs text-slate-dark">Primary first, secondary second, ghost third. gap-3 between.</div>
-    </div>
-
-    <!-- Checkmark Benefit List -->
-    <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
-      <div class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-4">Checkmark Benefit List</div>
-      <div class="space-y-4">
-        <div class="flex items-start gap-3">
-          <svg class="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-          </svg>
-          <div>
-            <h3 class="font-semibold text-light text-sm">Primary benefit title</h3>
-            <p class="text-xs text-slate mt-0.5">Supporting description. One or two lines, parallel structure across all items.</p>
+        <!-- DocTerminal -->
+        <div id="comp-doc-terminal" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">DocTerminal</h3>
+              <code class="ds-comp-path">src/components/DocTerminal.astro</code>
+            </div>
+            <span class="ds-badge ds-badge-stable">Stable</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Static terminal for docs. Unlike <code class="ds-code">Terminal.astro</code>, renders all lines immediately — no animation delays. Has a copy button in the title bar.</p>
+          <div class="max-w-2xl">
+            <DocTerminal
+              command="npx ahoybuoy show tokens --format table"
+              lines={[
+                { text: '' },
+                { text: 'TOKEN                   VALUE', type: 'muted' },
+                { text: '--color-buoy            #F97316', type: 'output' },
+                { text: '--color-navy            #1a2744', type: 'output' },
+                { text: '--color-lavender        #8B5CF6', type: 'output' },
+                { text: '' },
+                { text: '3 tokens found', type: 'success' },
+              ]}
+            />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">command*</span> · <span class="text-buoy">lines</span> (same type tokens as Terminal)</div>
+            <div class="text-slate-dark">bg-navy-dark border-navy-light/30 · Copy in title bar · No delays or JS typing animation</div>
           </div>
         </div>
-        <div class="flex items-start gap-3">
-          <svg class="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-          </svg>
-          <div>
-            <h3 class="font-semibold text-light text-sm">Secondary benefit</h3>
-            <p class="text-xs text-slate mt-0.5">Keep descriptions parallel in structure and length to the item above.</p>
+
+        <hr class="ds-divider" />
+
+        <!-- CodeBlock -->
+        <div id="comp-code-block" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">CodeBlock</h3>
+              <code class="ds-comp-path">src/components/CodeBlock.astro</code>
+            </div>
+            <span class="ds-badge ds-badge-stable">Stable</span>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <div class="text-xs text-slate-dark font-mono mb-2">language="bash" (default)</div>
+              <CodeBlock code={codeSnippets.bash} language="bash" />
+            </div>
+            <div>
+              <div class="text-xs text-slate-dark font-mono mb-2">With filename + copy button</div>
+              <CodeBlock code={codeSnippets.config} language="js" filename="buoy.config.mjs" />
+            </div>
+            <div>
+              <div class="text-xs text-slate-dark font-mono mb-2">showLineNumbers + highlighted lines</div>
+              <CodeBlock code={codeSnippets.withHighlight} language="js" filename="example.js" showLineNumbers={true} highlights={[3]} />
+            </div>
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">code*</span> · <span class="text-buoy">language</span>='bash' · <span class="text-buoy">filename</span> · <span class="text-buoy">highlights</span> · <span class="text-buoy">showLineNumbers</span></div>
+            <div class="text-slate-dark">Hover: lavender/10→buoy/5 blur · Copy: slate→buoy · Check icon 2s then reset</div>
           </div>
         </div>
-      </div>
-      <div class="mt-4 font-mono text-xs text-slate-dark">svg.text-success w-5 h-5 mt-0.5 shrink-0 / font-semibold text-light text-sm / text-xs text-slate</div>
-    </div>
 
-    <!-- FAQ Accordion -->
-    <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
-      <div class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-4">FAQ Accordion</div>
-      <div class="space-y-3">
-        <details class="group bg-navy/50 border border-navy-light/20 rounded-xl">
-          <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
-            <span class="font-medium text-light text-sm">Is the free tier really free forever?</span>
-            <svg class="w-5 h-5 text-slate group-open:rotate-180 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </summary>
-          <div class="px-4 pb-4 text-slate text-sm">Yes. The CLI scanner is MIT-licensed and has no expiry.</div>
-        </details>
-        <details class="group bg-navy/50 border border-navy-light/20 rounded-xl">
-          <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
-            <span class="font-medium text-light text-sm">How does the GitHub App work?</span>
-            <svg class="w-5 h-5 text-slate group-open:rotate-180 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </summary>
-          <div class="px-4 pb-4 text-slate text-sm">Install from GitHub Marketplace. It runs drift checks on every PR and posts inline fix suggestions.</div>
-        </details>
-      </div>
-      <div class="mt-4 font-mono text-xs text-slate-dark">details.group bg-navy/50 border-navy-light/20 rounded-xl / group-open:rotate-180 transition-transform</div>
-    </div>
+        <hr class="ds-divider" />
 
-    <!-- PDF / Conversion Badges -->
-    <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
-      <div class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-4">PDF / Conversion Badges</div>
-      <div class="flex flex-wrap items-center gap-4 mb-4">
-        <div class="inline-flex items-center gap-2 px-3 py-1 bg-buoy/10 border border-buoy/30 rounded-full text-buoy text-sm">
-          Free PDF Download
-        </div>
-        <div class="inline-flex items-center gap-2 px-2 py-1 bg-buoy/20 rounded text-buoy text-xs font-medium">
-          Free PDF
-        </div>
-      </div>
-      <div class="font-mono text-xs text-slate-dark">Pill: rounded-full px-3 bg-buoy/10 border-buoy/30 text-buoy · Badge: rounded px-2 bg-buoy/20 text-xs font-medium</div>
-    </div>
-
-    <!-- Limited Availability Notice -->
-    <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
-      <div class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-4">Limited Availability Notice</div>
-      <div class="bg-navy-dark border border-buoy/30 rounded-xl p-4 max-w-sm">
-        <h3 class="font-semibold text-light mb-2 flex items-center gap-2 text-sm">
-          <span class="text-buoy">*</span> Limited availability
-        </h3>
-        <p class="text-sm text-slate">Only 100 founding member spots. Once they're gone, standard pricing applies.</p>
-      </div>
-      <div class="mt-4 font-mono text-xs text-slate-dark">bg-navy-dark border-buoy/30 rounded-xl · text-buoy asterisk accent / font-semibold text-light + text-sm text-slate</div>
-    </div>
-
-    <!-- Pricing Tier Card -->
-    <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
-      <div class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-4">Pricing Tier Card</div>
-      <div class="max-w-xs bg-navy-dark border border-navy-light/30 rounded-2xl p-6">
-        <div class="flex items-baseline gap-2 mb-2">
-          <span class="text-3xl font-bold text-light">$0</span>
-          <span class="text-slate text-sm">/month</span>
-        </div>
-        <div class="inline-flex items-center px-3 py-1 bg-success/10 border border-success/30 rounded-full text-success text-xs font-medium mb-4">
-          Free forever
-        </div>
-        <div class="space-y-2">
-          <div class="flex items-center gap-2 text-sm text-slate">
-            <svg class="w-4 h-4 text-success shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            Full CLI scanner — unlimited scans
+        <!-- Flags -->
+        <div id="comp-flags" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">Flags</h3>
+              <code class="ds-comp-path">src/components/Flags.astro</code>
+            </div>
+            <span class="ds-badge ds-badge-stable">Stable</span>
           </div>
-          <div class="flex items-center gap-2 text-sm text-slate">
-            <svg class="w-4 h-4 text-success shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-            buoy.config.mjs rules engine
-          </div>
-          <div class="flex items-center gap-2 text-sm text-slate-dark">
-            <svg class="w-4 h-4 text-navy-light shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-            GitHub App PR comments
+          <p class="text-sm text-slate mb-4">CLI flag reference list for docs pages. Renders a scannable list of flag names, descriptions, required badges, and defaults.</p>
+          <Flags items={flagItems} />
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">items*</span> — Array of <span class="text-buoy">{'{ name, description, required?, default? }'}</span></div>
+            <div class="text-slate-dark">Flag: text-lavender bg-navy-light/20 · required: bg-critical/20 text-critical · default: text-slate-dark</div>
           </div>
         </div>
-      </div>
-      <div class="mt-4 font-mono text-xs text-slate-dark">bg-navy-dark border-navy-light/30 rounded-2xl · text-3xl font-bold · success ring · w-4 check/cross icons</div>
-    </div>
 
-  </div>
-</section>
+        <hr class="ds-divider" />
 
-<!-- Footer CTA -->
-<section class="text-center py-16 border-t border-navy-light/20">
-  <div class="text-4xl mb-4">🛟</div>
-  <h2 class="text-2xl font-bold text-light font-[Quicksand] mb-2">This page is the test</h2>
-  <p class="text-slate mb-6 max-w-lg mx-auto">Every element above uses only design system tokens. Run buoy check against it anytime to confirm zero drift.</p>
-  <div class="inline-flex items-center gap-3 px-4 py-3 bg-navy/80 border border-navy-light/30 rounded-lg font-mono text-sm">
-    <span class="text-slate">$</span>
-    <code class="text-light">npx ahoybuoy drift check src/pages/design-system.astro</code>
-  </div>
-</section>
+        <!-- WaveBackground -->
+        <div id="comp-wave-bg" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">WaveBackground</h3>
+              <code class="ds-comp-path">src/components/WaveBackground.astro</code>
+            </div>
+            <span class="ds-badge ds-badge-stable">Stable</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Animated hero background. Always <code class="ds-code">position: absolute; inset: 0</code> — wrap in a <code class="ds-code">relative overflow-hidden</code> container with a defined height.</p>
+          <div class="relative rounded-xl overflow-hidden h-48">
+            <WaveBackground />
+            <div class="relative z-10 flex items-center justify-center h-full gap-3">
+              <span class="text-2xl">🛟</span>
+              <span class="text-light font-semibold font-[Quicksand]">Content renders above via z-index</span>
+            </div>
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">No props. 3 wave layers + SVG stars + 8 floating particles + mesh gradient overlay.</div>
+            <div class="text-slate-dark">Light mode: daytime ocean scene · Mobile: blur filters, particles, and star animations disabled</div>
+          </div>
+        </div>
 
-  </main>
+        <hr class="ds-divider" />
+
+        <!-- Nav -->
+        <div id="comp-nav" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">Nav</h3>
+              <code class="ds-comp-path">src/components/Nav.astro</code>
+            </div>
+            <span class="ds-badge ds-badge-layout">Layout</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Fixed full-width navigation. Renders as <code class="ds-code">position: fixed; top: 0; z-50</code> — already active at the top of this page. Not safe to embed inline.</p>
+          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl space-y-3">
+            <div class="font-mono text-xs text-slate-dark uppercase tracking-widest mb-3">Anatomy</div>
+            <div class="flex items-start gap-3 text-sm">
+              <span class="w-2 h-2 rounded-full bg-buoy flex-shrink-0 mt-1.5"></span>
+              <span class="text-slate">Bar: <code class="ds-code">backdrop-blur-md bg-navy-dark/80 border-b border-navy-light/20</code></span>
+            </div>
+            <div class="flex items-start gap-3 text-sm">
+              <span class="w-2 h-2 rounded-full bg-lavender flex-shrink-0 mt-1.5"></span>
+              <span class="text-slate">Dropdowns: CSS-only <code class="ds-code">opacity/visibility</code> on <code class="ds-code">group-hover</code>, no JS needed</span>
+            </div>
+            <div class="flex items-start gap-3 text-sm">
+              <span class="w-2 h-2 rounded-full bg-success flex-shrink-0 mt-1.5"></span>
+              <span class="text-slate">Mobile menu: JS toggles <code class="ds-code">hidden</code> class on <code class="ds-code">#mobile-menu</code></span>
+            </div>
+            <div class="flex items-start gap-3 text-sm">
+              <span class="w-2 h-2 rounded-full bg-info flex-shrink-0 mt-1.5"></span>
+              <span class="text-slate">Theme toggle: <code class="ds-code">localStorage</code> + <code class="ds-code">html.light</code> class, responds to <code class="ds-code">prefers-color-scheme</code></span>
+            </div>
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">No props. Dropdown data arrays defined in component frontmatter.</div>
+            <div class="text-slate-dark">CTA: bg-buoy glow-buoy hover:scale-105 · Nav links: text-slate → text-light</div>
+          </div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- Footer -->
+        <div id="comp-footer" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">Footer</h3>
+              <code class="ds-comp-path">src/components/Footer.astro</code>
+            </div>
+            <span class="ds-badge ds-badge-layout">Layout</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Global page footer. No props — social and legal links come from <code class="ds-code">siteConfig</code> in <code class="ds-code">src/config.ts</code>.</p>
+          <div class="rounded-xl overflow-hidden border border-navy-light/20">
+            <Footer />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">No props. Social: <span class="text-buoy">siteConfig.githubUrl</span> · <span class="text-buoy">twitterUrl</span> · <span class="text-buoy">discordUrl</span></div>
+            <div class="text-slate-dark">bg-navy-dark border-t border-navy-light/20 · flex col→row at md · links: text-slate→text-light</div>
+          </div>
+        </div>
+
+      </div><!-- /components group -->
+
+      <!-- ════════════════════════════════════════════
+           CONVERSION
+           ════════════════════════════════════════════ -->
+      <div class="ds-group-block">
+        <div class="ds-group-header">
+          <span class="ds-group-eyebrow">03</span>
+          <h2 class="ds-group-title">Conversion</h2>
+          <p class="ds-group-desc">Lead capture components. Each wraps <code class="ds-code">LeadMagnetForm</code> in a different layout context.</p>
+        </div>
+
+        <!-- LeadMagnetForm -->
+        <div id="comp-lead-form" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">LeadMagnetForm</h3>
+              <code class="ds-comp-path">src/components/LeadMagnetForm.astro</code>
+            </div>
+            <span class="ds-badge ds-badge-conversion">Conversion</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Email capture form primitive. Used inside all lead magnet variants. Handles submit, loading, success, and error states.</p>
+          <div class="max-w-lg">
+            <LeadMagnetForm leadMagnet="pr-review-cheatsheet" buttonText="Get the Cheat Sheet" />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">leadMagnet*</span> · <span class="text-buoy">buttonText</span>='Get the PDF' · <span class="text-buoy">successMessage</span></div>
+            <div class="text-slate-dark">Input: bg-navy-light/50 focus:border-buoy · Button: bg-buoy glow-buoy hover:scale-105 · Success: bg-green-500/20</div>
+          </div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- LeadMagnetCallout -->
+        <div id="comp-lead-callout" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">LeadMagnetCallout</h3>
+              <code class="ds-comp-path">src/components/LeadMagnetCallout.astro</code>
+            </div>
+            <span class="ds-badge ds-badge-conversion">Conversion</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Inline callout card for embedding lead capture in article or docs context. Switches to horizontal layout on large screens.</p>
+          <LeadMagnetCallout
+            leadMagnet="drift-checklist"
+            headline="20 warning signs of design system drift"
+            subhead="A checklist for your next code review. Spot drift before it compounds."
+            buttonText="Get the Checklist"
+          />
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">leadMagnet*</span> · <span class="text-buoy">headline*</span> · <span class="text-buoy">subhead*</span> · <span class="text-buoy">buttonText</span>='Get the PDF'</div>
+            <div class="text-slate-dark">bg-gradient buoy/10→lavender/10 border-buoy/20 · lg:flex-row · "Free PDF" square badge</div>
+          </div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- LeadMagnetCTA -->
+        <div id="comp-lead-cta" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">LeadMagnetCTA</h3>
+              <code class="ds-comp-path">src/components/LeadMagnetCTA.astro</code>
+            </div>
+            <span class="ds-badge ds-badge-conversion">Conversion</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Full-width centered section CTA. Used at the bottom of content pages to offer a related PDF download.</p>
+          <div class="rounded-xl overflow-hidden border border-navy-light/20">
+            <LeadMagnetCTA
+              leadMagnet="maturity-model"
+              headline="Where does your design system stand?"
+              subhead="Assess your maturity level and get a roadmap for what to fix next."
+              buttonText="Get the Assessment"
+            />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">leadMagnet*</span> · <span class="text-buoy">headline*</span> · <span class="text-buoy">subhead*</span> · <span class="text-buoy">buttonText</span>='Get the PDF'</div>
+            <div class="text-slate-dark">py-16 bg-navy centered text · "Free PDF Download" pill badge · max-w-md form</div>
+          </div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- LeadCaptureSection -->
+        <div id="comp-lead-capture" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">LeadCaptureSection</h3>
+              <code class="ds-comp-path">src/components/LeadCaptureSection.astro</code>
+            </div>
+            <span class="ds-badge ds-badge-conversion">Conversion</span>
+          </div>
+          <p class="text-sm text-slate mb-4">A/B-tested two-column lead capture with PDF preview mockup. PostHog feature flag <code class="ds-code">homepage-lead-magnet-variant</code> selects the active variant; defaults to <code class="ds-code">drift-checklist</code>.</p>
+          <div class="rounded-xl overflow-hidden border border-navy-light/20">
+            <LeadCaptureSection />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">No props. 3 variants: <span class="text-buoy">drift-checklist</span> · <span class="text-buoy">why-developers-bypass</span> · <span class="text-buoy">maturity-model</span></div>
+            <div class="text-slate-dark">A/B via PostHog · PDF preview: rotate-1 hover:rotate-0 · grid lg:grid-cols-2</div>
+          </div>
+        </div>
+
+      </div><!-- /conversion group -->
+
+      <!-- ════════════════════════════════════════════
+           PATTERNS
+           ════════════════════════════════════════════ -->
+      <div class="ds-group-block">
+        <div class="ds-group-header">
+          <span class="ds-group-eyebrow">04</span>
+          <h2 class="ds-group-title">Patterns</h2>
+          <p class="ds-group-desc">Recurring compositions built from the token primitives above.</p>
+        </div>
+
+        <!-- Section Header -->
+        <div id="pat-section-header" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <h3 class="ds-comp-name">Section Header</h3>
+          </div>
+          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <div class="border-l-2 border-buoy pl-4">
+              <h2 class="text-2xl font-bold text-light font-[Quicksand]">Section Title</h2>
+              <p class="text-slate mt-1">Supporting description in text-slate. Always below the heading, never above.</p>
+            </div>
+          </div>
+          <div class="ds-spec">border-buoy / text-light (display) / text-slate (body)</div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- Inline Code -->
+        <div id="pat-inline-code" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <h3 class="ds-comp-name">Inline Code</h3>
+          </div>
+          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <p class="text-slate">Run <code class="ds-code">npx ahoybuoy drift check</code> in your repo root. It reads <code class="ds-code">buoy.config.mjs</code> automatically.</p>
+          </div>
+          <div class="ds-spec">font-mono / text-buoy / bg-buoy/10 / border-radius: 4px</div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- CTA Row -->
+        <div id="pat-cta-row" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <h3 class="ds-comp-name">CTA Row</h3>
+          </div>
+          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <div class="flex flex-wrap gap-3">
+              <Button href="#" size="lg">Primary Action</Button>
+              <Button href="#" variant="secondary" size="lg">Secondary Action</Button>
+              <Button href="#" variant="ghost" size="lg">Ghost Action</Button>
+            </div>
+          </div>
+          <div class="ds-spec">Primary first, secondary second, ghost third. gap-3 between.</div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- Checkmark Benefit List -->
+        <div id="pat-checkmark-list" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <h3 class="ds-comp-name">Checkmark Benefit List</h3>
+          </div>
+          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl max-w-md">
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <div>
+                  <h4 class="font-semibold text-light text-sm">Primary benefit title</h4>
+                  <p class="text-xs text-slate mt-0.5">Supporting description. One or two lines, parallel structure across all items.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                <div>
+                  <h4 class="font-semibold text-light text-sm">Secondary benefit</h4>
+                  <p class="text-xs text-slate mt-0.5">Keep descriptions parallel in structure and length to the item above.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="ds-spec">svg.text-success w-5 h-5 mt-0.5 shrink-0 / font-semibold text-light text-sm / text-xs text-slate</div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- FAQ Accordion -->
+        <div id="pat-faq" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <h3 class="ds-comp-name">FAQ Accordion</h3>
+          </div>
+          <div class="space-y-3 max-w-2xl">
+            <details class="group bg-navy/50 border border-navy-light/20 rounded-xl">
+              <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
+                <span class="font-medium text-light text-sm">Is the free tier really free forever?</span>
+                <svg class="w-5 h-5 text-slate group-open:rotate-180 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </summary>
+              <div class="px-4 pb-4 text-slate text-sm">Yes. The CLI scanner is MIT-licensed and has no expiry.</div>
+            </details>
+            <details class="group bg-navy/50 border border-navy-light/20 rounded-xl">
+              <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
+                <span class="font-medium text-light text-sm">How does the GitHub App work?</span>
+                <svg class="w-5 h-5 text-slate group-open:rotate-180 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </summary>
+              <div class="px-4 pb-4 text-slate text-sm">Install from GitHub Marketplace. It runs drift checks on every PR and posts inline fix suggestions.</div>
+            </details>
+          </div>
+          <div class="ds-spec">details.group bg-navy/50 border-navy-light/20 rounded-xl / group-open:rotate-180 transition-transform</div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- PDF Badges -->
+        <div id="pat-pdf-badge" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <h3 class="ds-comp-name">PDF / Conversion Badges</h3>
+          </div>
+          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <div class="flex flex-wrap items-center gap-4">
+              <div class="inline-flex items-center gap-2 px-3 py-1 bg-buoy/10 border border-buoy/30 rounded-full text-buoy text-sm">
+                Free PDF Download
+              </div>
+              <div class="inline-flex items-center gap-2 px-2 py-1 bg-buoy/20 rounded text-buoy text-xs font-medium">
+                Free PDF
+              </div>
+            </div>
+          </div>
+          <div class="ds-spec">Pill: rounded-full px-3 bg-buoy/10 border-buoy/30 text-buoy · Badge: rounded px-2 bg-buoy/20 text-xs font-medium</div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- Availability Notice -->
+        <div id="pat-availability" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <h3 class="ds-comp-name">Limited Availability Notice</h3>
+          </div>
+          <div class="bg-navy-dark border border-buoy/30 rounded-xl p-4 max-w-sm">
+            <h4 class="font-semibold text-light mb-2 flex items-center gap-2 text-sm">
+              <span class="text-buoy">*</span> Limited availability
+            </h4>
+            <p class="text-sm text-slate">Only 100 founding member spots. Once they're gone, standard pricing applies.</p>
+          </div>
+          <div class="ds-spec">bg-navy-dark border-buoy/30 rounded-xl · text-buoy asterisk accent / font-semibold text-light + text-sm text-slate</div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- Pricing Card -->
+        <div id="pat-pricing-card" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <h3 class="ds-comp-name">Pricing Tier Card</h3>
+          </div>
+          <div class="max-w-xs bg-navy-dark border border-navy-light/30 rounded-2xl p-6">
+            <div class="flex items-baseline gap-2 mb-2">
+              <span class="text-3xl font-bold text-light">$0</span>
+              <span class="text-slate text-sm">/month</span>
+            </div>
+            <div class="inline-flex items-center px-3 py-1 bg-success/10 border border-success/30 rounded-full text-success text-xs font-medium mb-4">
+              Free forever
+            </div>
+            <div class="space-y-2">
+              <div class="flex items-center gap-2 text-sm text-slate">
+                <svg class="w-4 h-4 text-success shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                Full CLI scanner — unlimited scans
+              </div>
+              <div class="flex items-center gap-2 text-sm text-slate">
+                <svg class="w-4 h-4 text-success shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                buoy.config.mjs rules engine
+              </div>
+              <div class="flex items-center gap-2 text-sm text-slate-dark">
+                <svg class="w-4 h-4 text-navy-light shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                GitHub App PR comments
+              </div>
+            </div>
+          </div>
+          <div class="ds-spec">bg-navy-dark border-navy-light/30 rounded-2xl · text-3xl font-bold · success ring · w-4 check/cross icons</div>
+        </div>
+
+        <!-- Status Badges (inline) -->
+        <hr class="ds-divider" />
+        <div id="pat-status-badges" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <h3 class="ds-comp-name">Status Badges</h3>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-success/10 border border-success/30 text-success text-sm font-medium">
+              <span class="w-2 h-2 rounded-full bg-success"></span>
+              success
+            </div>
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-warning/10 border border-warning/30 text-warning text-sm font-medium">
+              <span class="w-2 h-2 rounded-full bg-warning"></span>
+              warning
+            </div>
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-critical/10 border border-critical/30 text-critical text-sm font-medium">
+              <span class="w-2 h-2 rounded-full bg-critical"></span>
+              critical
+            </div>
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-info/10 border border-info/30 text-info text-sm font-medium">
+              <span class="w-2 h-2 rounded-full bg-info"></span>
+              info
+            </div>
+          </div>
+          <div class="ds-spec">inline-flex items-center gap-2 px-3 py-1.5 rounded-full · dot: w-2 h-2 rounded-full bg-{semantic}</div>
+        </div>
+
+      </div><!-- /patterns group -->
+
+      <!-- Footer CTA -->
+      <section class="text-center py-16 border-t border-navy-light/20 mt-8">
+        <div class="text-4xl mb-4">🛟</div>
+        <h2 class="text-2xl font-bold text-light font-[Quicksand] mb-2">This page is the test</h2>
+        <p class="text-slate mb-6 max-w-lg mx-auto">Every element above uses only design system tokens. Run buoy check against it anytime to confirm zero drift.</p>
+        <div class="inline-flex items-center gap-3 px-4 py-3 bg-navy/80 border border-navy-light/30 rounded-lg font-mono text-sm">
+          <span class="text-slate">$</span>
+          <code class="text-light">npx ahoybuoy drift check src/pages/design-system.astro</code>
+        </div>
+      </section>
+
+    </main>
+  </div><!-- /ds-layout -->
+
 </Layout>
 
 <style>
-  .ds-section-heading {
-    font-size: 1.875rem;
+  /* ── Layout ─────────────────────────────────── */
+  .ds-layout {
+    display: flex;
+    margin-top: 4rem; /* clear fixed Nav */
+    min-height: calc(100vh - 4rem);
+  }
+
+  /* ── Sidebar ─────────────────────────────────── */
+  .ds-sidebar {
+    display: none;
+    flex-direction: column;
+    width: 14rem;
+    flex-shrink: 0;
+    position: sticky;
+    top: 4rem;
+    height: calc(100vh - 4rem);
+    overflow-y: auto;
+    border-right: 1px solid color-mix(in srgb, var(--color-navy-light) 30%, transparent);
+    background: color-mix(in srgb, var(--color-navy-dark) 70%, transparent);
+  }
+  @media (min-width: 1024px) {
+    .ds-sidebar { display: flex; }
+  }
+  @media (min-width: 1280px) {
+    .ds-sidebar { width: 15rem; }
+  }
+
+  .ds-sidebar-nav {
+    padding: 1.5rem 0.75rem;
+    flex: 1;
+  }
+
+  .ds-nav-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .ds-nav-group-label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--color-slate-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0 0.5rem;
+    margin-bottom: 0.375rem;
+  }
+
+  .ds-nav-link {
+    display: block;
+    padding: 0.3125rem 0.5rem;
+    font-size: 0.8125rem;
+    color: var(--color-slate);
+    border-radius: 0.375rem;
+    transition: color 0.15s, background-color 0.15s;
+    text-decoration: none;
+    line-height: 1.4;
+  }
+  .ds-nav-link:hover {
+    color: var(--color-light);
+    background: color-mix(in srgb, var(--color-navy-light) 25%, transparent);
+  }
+  .ds-nav-link.active {
+    color: var(--color-light);
+    background: color-mix(in srgb, var(--color-navy-light) 35%, transparent);
+  }
+
+  .ds-sidebar-footer {
+    padding: 0.75rem 1rem;
+    border-top: 1px solid color-mix(in srgb, var(--color-navy-light) 20%, transparent);
+  }
+
+  .ds-drift-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .ds-drift-dot {
+    display: inline-block;
+    width: 0.375rem;
+    height: 0.375rem;
+    border-radius: 50%;
+    background: var(--color-success);
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  /* ── Main content ───────────────────────────── */
+  .ds-content {
+    flex: 1;
+    min-width: 0;
+    overflow-x: hidden;
+  }
+
+  .ds-hero {
+    padding: 3rem 1.5rem 2.5rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-navy-light) 20%, transparent);
+  }
+  @media (min-width: 1024px) {
+    .ds-hero { padding: 3rem 2.5rem 2.5rem; }
+  }
+  @media (min-width: 1280px) {
+    .ds-hero { padding: 3.5rem 3.5rem 3rem; }
+  }
+
+  /* ── Group blocks ───────────────────────────── */
+  .ds-group-block {
+    border-bottom: 1px solid color-mix(in srgb, var(--color-navy-light) 15%, transparent);
+    padding: 0 1.5rem 3rem;
+  }
+  @media (min-width: 1024px) {
+    .ds-group-block { padding: 0 2.5rem 3rem; }
+  }
+  @media (min-width: 1280px) {
+    .ds-group-block { padding: 0 3.5rem 3rem; }
+  }
+
+  .ds-group-header {
+    padding: 2.5rem 0 1.5rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-navy-light) 15%, transparent);
+    margin-bottom: 2.5rem;
+  }
+
+  .ds-group-eyebrow {
+    display: inline-block;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    color: var(--color-buoy);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+  }
+
+  .ds-group-title {
+    font-size: 1.5rem;
     font-weight: 800;
     color: var(--color-light);
     font-family: var(--font-display);
-    margin-bottom: 0.5rem;
+    line-height: 1.2;
   }
-  .ds-section-sub {
+
+  .ds-group-desc {
     color: var(--color-slate);
-    max-width: 48rem;
+    font-size: 0.9375rem;
+    margin-top: 0.375rem;
+    max-width: 42rem;
   }
+
+  /* ── Foundation sections ────────────────────── */
+  .ds-section {
+    scroll-margin-top: 5rem;
+  }
+
+  .ds-section-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .ds-section-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-light);
+    font-family: var(--font-display);
+    margin-bottom: 0.375rem;
+  }
+
+  .ds-section-desc {
+    color: var(--color-slate);
+    font-size: 0.875rem;
+    max-width: 42rem;
+  }
+
+  /* ── Component sections ─────────────────────── */
+  .ds-comp {
+    scroll-margin-top: 5rem;
+  }
+
+  .ds-comp-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-navy-light) 20%, transparent);
+  }
+
+  .ds-comp-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-light);
+    font-family: var(--font-display);
+  }
+
+  .ds-comp-path {
+    display: block;
+    font-size: 0.6875rem;
+    color: var(--color-slate-dark);
+    font-family: var(--font-mono);
+    margin-top: 0.2rem;
+  }
+
+  /* ── Badges ─────────────────────────────────── */
+  .ds-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.125rem 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+  }
+
+  .ds-badge-stable {
+    color: var(--color-success);
+    background: color-mix(in srgb, var(--color-success) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-success) 30%, transparent);
+  }
+
+  .ds-badge-layout {
+    color: var(--color-lavender);
+    background: color-mix(in srgb, var(--color-lavender) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-lavender) 30%, transparent);
+  }
+
+  .ds-badge-conversion {
+    color: var(--color-buoy);
+    background: color-mix(in srgb, var(--color-buoy) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-buoy) 30%, transparent);
+  }
+
+  /* ── Spec / token callout ───────────────────── */
+  .ds-spec {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    background: color-mix(in srgb, var(--color-navy-dark) 60%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-navy-light) 15%, transparent);
+    border-radius: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    color: var(--color-slate-dark);
+  }
+
+  /* ── Dividers ───────────────────────────────── */
+  .ds-divider {
+    border: none;
+    border-top: 1px solid color-mix(in srgb, var(--color-navy-light) 15%, transparent);
+    margin: 2.5rem 0;
+  }
+
+  /* ── Inline code ────────────────────────────── */
   .ds-code {
     font-family: var(--font-mono);
     font-size: 0.875em;
@@ -1005,73 +1524,77 @@ const flagItems = [
     padding: 0.1em 0.4em;
     border-radius: 4px;
   }
-  .scroll-mt-16 {
-    scroll-margin-top: 4rem;
-  }
 
-  /* Motion demo animations */
+  /* ── Motion demo animations ─────────────────── */
+  @keyframes ds-gentle-float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-10px); }
+  }
   @keyframes ds-bob {
     0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-12px) rotate(3deg); }
+    50%       { transform: translateY(-12px) rotate(3deg); }
   }
   @keyframes ds-drift {
-    0% { left: -10%; }
+    0%   { left: -10%; }
     100% { left: 110%; }
   }
   @keyframes ds-drop {
-    0% { transform: translateY(0); }
-    10% { transform: translateY(-6px); }
+    0%   { transform: translateY(0); }
+    10%  { transform: translateY(-6px); }
     100% { transform: translateY(36px); }
   }
   @keyframes ds-pop {
-    0% { transform: translateY(28px); }
+    0%   { transform: translateY(28px); }
     100% { transform: translateY(0); }
   }
   @keyframes ds-launch {
-    0% { left: 2%; }
+    0%   { left: 2%; }
     100% { left: 85%; }
   }
   @keyframes ds-wiggle {
-    0% { transform: rotate(0deg); }
-    15% { transform: rotate(8deg) translateX(1px); }
-    30% { transform: rotate(-7deg) translateX(-1px); }
-    50% { transform: rotate(12deg) translateX(2px) translateY(-2px); }
-    65% { transform: rotate(-10deg) translateX(-2px); }
-    80% { transform: rotate(5deg) translateX(1px); }
-    92% { transform: rotate(-2deg); }
+    0%   { transform: rotate(0deg); }
+    15%  { transform: rotate(8deg) translateX(1px); }
+    30%  { transform: rotate(-7deg) translateX(-1px); }
+    50%  { transform: rotate(12deg) translateX(2px) translateY(-2px); }
+    65%  { transform: rotate(-10deg) translateX(-2px); }
+    80%  { transform: rotate(5deg) translateX(1px); }
+    92%  { transform: rotate(-2deg); }
     100% { transform: rotate(0deg); }
   }
   @keyframes ds-ring {
-    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0.6; }
+    0%   { transform: translate(-50%, -50%) scale(0.5); opacity: 0.6; }
     100% { transform: translate(-50%, -50%) scale(4, 2); opacity: 0; }
   }
   @keyframes ds-splash-drop {
-    0% { transform: translate(0, 0) scale(1); opacity: 0.8; }
+    0%   { transform: translate(0, 0) scale(1); opacity: 0.8; }
     100% { transform: translate(var(--dx), var(--dy)) scale(0.2); opacity: 0; }
   }
+  @keyframes ds-twinkle {
+    0%, 100% { opacity: 0.3; }
+    50%       { opacity: 0.8; }
+  }
+  @keyframes ds-particle-rise {
+    0%   { transform: translateY(0) scale(0); opacity: 0; }
+    5%   { opacity: 0.75; transform: translateY(-6px) scale(1); }
+    95%  { opacity: 0.75; transform: translateY(-100px) scale(1); }
+    100% { transform: translateY(-108px) scale(0); opacity: 0; }
+  }
+  @keyframes ds-lift {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-6px); }
+  }
 
-  .ds-demo-bob {
-    display: inline-block;
-    animation: ds-bob 2s ease-in-out infinite;
-  }
-  .ds-demo-drift {
-    animation: ds-drift 4s linear infinite, ds-bob 2s ease-in-out infinite;
-  }
-  .ds-demo-drop {
-    display: inline-block;
-    animation: ds-drop 500ms cubic-bezier(0.4, 0, 0.68, 1.4) infinite alternate;
-  }
-  .ds-demo-pop {
-    display: inline-block;
-    animation: ds-pop 650ms cubic-bezier(0.175, 0.885, 0.32, 1.55) infinite alternate;
-  }
-  .ds-demo-launch {
-    animation: ds-launch 3s cubic-bezier(0.3, 0, 0.8, 0.8) infinite alternate;
-  }
-  .ds-demo-wiggle {
-    display: inline-block;
-    animation: ds-wiggle 1.5s ease-in-out infinite;
-  }
+  /* Demo classes */
+  .ds-demo-gentle-float { display: inline-block; animation: ds-gentle-float 6s ease-in-out infinite; }
+  .ds-demo-bob     { display: inline-block; animation: ds-bob 2s ease-in-out infinite; }
+  .ds-demo-drift   { animation: ds-drift 4s linear infinite, ds-bob 2s ease-in-out infinite; }
+  .ds-demo-drop    { display: inline-block; animation: ds-drop 500ms cubic-bezier(0.4, 0, 0.68, 1.4) infinite alternate; }
+  .ds-demo-pop     { display: inline-block; animation: ds-pop 650ms cubic-bezier(0.175, 0.885, 0.32, 1.55) infinite alternate; }
+  .ds-demo-launch  { animation: ds-launch 3s cubic-bezier(0.3, 0, 0.8, 0.8) infinite alternate; }
+  .ds-demo-wiggle  { display: inline-block; animation: ds-wiggle 1.5s ease-in-out infinite; }
+  .ds-demo-lift    { display: inline-block; animation: ds-lift 1s ease-out infinite alternate; }
+  .ds-demo-twinkle { animation: ds-twinkle 4s ease-in-out infinite; }
+
   .ds-demo-ring {
     position: absolute;
     width: 20px;
@@ -1085,6 +1608,7 @@ const flagItems = [
   :global(html.light) .ds-demo-ring {
     border-color: rgba(255, 255, 255, 0.75);
   }
+
   .ds-splash-dot {
     position: absolute;
     width: 5px;
@@ -1097,10 +1621,46 @@ const flagItems = [
   :global(html.light) .ds-splash-dot {
     background: rgba(255, 255, 255, 0.65);
   }
-  /* Fan spread: -150° to -30°, speed ~22-25px */
+  /* Fan spread: -150° to -30° at ~22-25px */
   .ds-drop-a { --dx: -19px; --dy: -11px; animation: ds-splash-drop 0.55s ease-out 0.02s infinite; }
   .ds-drop-b { --dx: -11px; --dy: -19px; animation: ds-splash-drop 0.48s ease-out 0.06s infinite; }
   .ds-drop-c { --dx:   0px; --dy: -25px; animation: ds-splash-drop 0.60s ease-out    0s infinite; }
   .ds-drop-d { --dx:  11px; --dy: -19px; animation: ds-splash-drop 0.52s ease-out 0.04s infinite; }
   .ds-drop-e { --dx:  19px; --dy: -11px; animation: ds-splash-drop 0.45s ease-out 0.07s infinite; }
+
+  /* WaveBackground particle rise demo */
+  .ds-particle-demo {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(100, 180, 255, 0.65);
+  }
+  .ds-pA { bottom: 0; left: 28%; animation: ds-particle-rise 3s linear 0s infinite; }
+  .ds-pB { bottom: 0; left: 50%; animation: ds-particle-rise 3s linear -1s infinite; background: rgba(139, 92, 246, 0.55); }
+  .ds-pC { bottom: 0; left: 72%; animation: ds-particle-rise 3s linear -2s infinite; background: rgba(249, 115, 22, 0.45); }
+  :global(html.light) .ds-particle-demo { background: rgba(255, 255, 255, 0.65); }
 </style>
+
+<script>
+  // Sidebar: highlight the active section as user scrolls
+  const sections = document.querySelectorAll('[data-ds-section]');
+  const navLinks = document.querySelectorAll('.ds-nav-link[data-target]');
+
+  if (sections.length && navLinks.length) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('data-target') === id);
+          });
+        }
+      });
+    }, {
+      rootMargin: '-10% 0px -80% 0px',
+      threshold: 0,
+    });
+    sections.forEach(s => observer.observe(s));
+  }
+</script>
