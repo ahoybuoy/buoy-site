@@ -4,6 +4,15 @@ import Nav from '../components/Nav.astro'
 import Button from '../components/Button.astro'
 import FeatureCard from '../components/FeatureCard.astro'
 import Terminal from '../components/Terminal.astro'
+import CodeBlock from '../components/CodeBlock.astro'
+import DocTerminal from '../components/DocTerminal.astro'
+import Flags from '../components/Flags.astro'
+import Footer from '../components/Footer.astro'
+import WaveBackground from '../components/WaveBackground.astro'
+import LeadMagnetForm from '../components/LeadMagnetForm.astro'
+import LeadMagnetCallout from '../components/LeadMagnetCallout.astro'
+import LeadMagnetCTA from '../components/LeadMagnetCTA.astro'
+import LeadCaptureSection from '../components/LeadCaptureSection.astro'
 
 const colorGroups = [
   {
@@ -55,6 +64,19 @@ const colorGroups = [
       { name: '--color-info',     tw: 'bg-info',     label: 'info',     dark: '#3B82F6', light: '#2563EB' },
     ]
   },
+]
+
+const codeSnippets = {
+  bash: `npx ahoybuoy drift check\nnpx ahoybuoy show tokens`,
+  config: `export default {\n  extends: 'buoy:recommended',\n  rules: {\n    'no-hardcoded-colors': 'error',\n    'no-arbitrary-spacing': 'warn',\n  },\n}`,
+  withHighlight: `import { tokens } from './tokens'\n\nconst color = '#ff0000'  // ← drift!\nconst bg = tokens.navy   // ✓ token`,
+}
+
+const flagItems = [
+  { name: '--config', description: 'Path to buoy config file', default: 'buoy.config.mjs' },
+  { name: '--format', description: 'Output format: pretty | json | table', default: 'pretty' },
+  { name: '--fix', description: 'Auto-apply suggested token fixes' },
+  { name: '--token', description: 'API token for cloud features', required: true },
 ]
 ---
 
@@ -621,6 +643,184 @@ const colorGroups = [
       </div>
     </div>
   </div>
+
+  <!-- CodeBlock -->
+  <div class="mb-16">
+    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">CodeBlock — <code class="ds-code">src/components/CodeBlock.astro</code></h3>
+    <div class="space-y-4">
+      <div>
+        <div class="text-xs text-slate-dark font-mono mb-2">language="bash" (default)</div>
+        <CodeBlock code={codeSnippets.bash} language="bash" />
+      </div>
+      <div>
+        <div class="text-xs text-slate-dark font-mono mb-2">With filename + copy button</div>
+        <CodeBlock code={codeSnippets.config} language="js" filename="buoy.config.mjs" />
+      </div>
+      <div>
+        <div class="text-xs text-slate-dark font-mono mb-2">showLineNumbers + highlighted lines</div>
+        <CodeBlock code={codeSnippets.withHighlight} language="js" filename="example.js" showLineNumbers={true} highlights={[3]} />
+      </div>
+    </div>
+    <div class="mt-4 p-4 bg-navy-dark/60 border border-navy-light/10 rounded-lg font-mono text-xs">
+      <div class="text-slate mb-1">Props: <span class="text-buoy">code*</span> · <span class="text-buoy">language</span>='bash' · <span class="text-buoy">filename</span> · <span class="text-buoy">highlights</span> · <span class="text-buoy">showLineNumbers</span></div>
+      <div class="text-slate-dark">Hover: lavender/10→buoy/5 blur · Copy button: slate→buoy · Check icon 2s then reset</div>
+    </div>
+  </div>
+
+  <!-- DocTerminal -->
+  <div class="mb-16">
+    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">DocTerminal — <code class="ds-code">src/components/DocTerminal.astro</code></h3>
+    <p class="text-sm text-slate mb-4">Static terminal for docs. Unlike <code class="ds-code">Terminal.astro</code>, renders all lines immediately with no animation delays. Has a copy button in the title bar.</p>
+    <div class="max-w-2xl">
+      <DocTerminal
+        command="npx ahoybuoy show tokens --format table"
+        lines={[
+          { text: '' },
+          { text: 'TOKEN                   VALUE', type: 'muted' },
+          { text: '--color-buoy            #F97316', type: 'output' },
+          { text: '--color-navy            #1a2744', type: 'output' },
+          { text: '--color-lavender        #8B5CF6', type: 'output' },
+          { text: '' },
+          { text: '3 tokens found', type: 'success' },
+        ]}
+      />
+    </div>
+    <div class="mt-4 p-4 bg-navy-dark/60 border border-navy-light/10 rounded-lg font-mono text-xs">
+      <div class="text-slate mb-1">Props: <span class="text-buoy">command*</span> · <span class="text-buoy">lines</span> (same type tokens as Terminal)</div>
+      <div class="text-slate-dark">bg-navy-dark border-navy-light/30 · Copy in title bar · No delays or JS typing animation</div>
+    </div>
+  </div>
+
+  <!-- Flags -->
+  <div class="mb-16">
+    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">Flags — <code class="ds-code">src/components/Flags.astro</code></h3>
+    <p class="text-sm text-slate mb-4">CLI flag reference list for docs pages. Renders a scannable list of flag names, descriptions, required badges, and defaults.</p>
+    <Flags items={flagItems} />
+    <div class="mt-4 p-4 bg-navy-dark/60 border border-navy-light/10 rounded-lg font-mono text-xs">
+      <div class="text-slate mb-1">Props: <span class="text-buoy">items*</span> — Array of <span class="text-buoy">{'{ name, description, required?, default? }'}</span></div>
+      <div class="text-slate-dark">Flag: text-lavender bg-navy-light/20 · required: bg-critical/20 text-critical · default: text-slate-dark</div>
+    </div>
+  </div>
+
+  <!-- WaveBackground -->
+  <div class="mb-16">
+    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">WaveBackground — <code class="ds-code">src/components/WaveBackground.astro</code></h3>
+    <p class="text-sm text-slate mb-4">Animated hero background. Always <code class="ds-code">position: absolute; inset: 0</code> — wrap in a <code class="ds-code">relative overflow-hidden</code> container with a defined height.</p>
+    <div class="relative rounded-xl overflow-hidden h-48">
+      <WaveBackground />
+      <div class="relative z-10 flex items-center justify-center h-full gap-3">
+        <span class="text-2xl">🛟</span>
+        <span class="text-light font-semibold font-[Quicksand]">Content renders above via z-index</span>
+      </div>
+    </div>
+    <div class="mt-4 p-4 bg-navy-dark/60 border border-navy-light/10 rounded-lg font-mono text-xs">
+      <div class="text-slate mb-1">No props. 3 wave layers + SVG stars + 8 floating particles + mesh gradient overlay.</div>
+      <div class="text-slate-dark">Light mode: daytime ocean scene · Mobile: blur filters, particles, and star animations disabled</div>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <div class="mb-16">
+    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">Nav — <code class="ds-code">src/components/Nav.astro</code></h3>
+    <p class="text-sm text-slate mb-4">Fixed full-width navigation. Renders as <code class="ds-code">position: fixed; top: 0; z-50</code> — already active at the top of this page. Not safe to embed inline.</p>
+    <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl space-y-3">
+      <div class="font-mono text-xs text-slate-dark uppercase tracking-widest mb-3">Anatomy</div>
+      <div class="flex items-start gap-3 text-sm">
+        <span class="w-2 h-2 rounded-full bg-buoy flex-shrink-0 mt-1.5"></span>
+        <span class="text-slate">Bar: <code class="ds-code">backdrop-blur-md bg-navy-dark/80 border-b border-navy-light/20</code></span>
+      </div>
+      <div class="flex items-start gap-3 text-sm">
+        <span class="w-2 h-2 rounded-full bg-lavender flex-shrink-0 mt-1.5"></span>
+        <span class="text-slate">Dropdowns: CSS-only <code class="ds-code">opacity/visibility</code> on <code class="ds-code">group-hover</code>, no JS needed</span>
+      </div>
+      <div class="flex items-start gap-3 text-sm">
+        <span class="w-2 h-2 rounded-full bg-success flex-shrink-0 mt-1.5"></span>
+        <span class="text-slate">Mobile menu: JS toggles <code class="ds-code">hidden</code> class on <code class="ds-code">#mobile-menu</code></span>
+      </div>
+      <div class="flex items-start gap-3 text-sm">
+        <span class="w-2 h-2 rounded-full bg-info flex-shrink-0 mt-1.5"></span>
+        <span class="text-slate">Theme toggle: <code class="ds-code">localStorage</code> + <code class="ds-code">html.light</code> class, responds to <code class="ds-code">prefers-color-scheme</code></span>
+      </div>
+    </div>
+    <div class="mt-4 p-4 bg-navy-dark/60 border border-navy-light/10 rounded-lg font-mono text-xs">
+      <div class="text-slate mb-1">No props. Dropdown data arrays defined in component frontmatter.</div>
+      <div class="text-slate-dark">CTA: bg-buoy glow-buoy hover:scale-105 · Nav links: text-slate → text-light</div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="mb-16">
+    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">Footer — <code class="ds-code">src/components/Footer.astro</code></h3>
+    <p class="text-sm text-slate mb-4">Global page footer. No props — social and legal links come from <code class="ds-code">siteConfig</code> in <code class="ds-code">src/config.ts</code>.</p>
+    <div class="rounded-xl overflow-hidden border border-navy-light/20">
+      <Footer />
+    </div>
+    <div class="mt-4 p-4 bg-navy-dark/60 border border-navy-light/10 rounded-lg font-mono text-xs">
+      <div class="text-slate mb-1">No props. Social: <span class="text-buoy">siteConfig.githubUrl</span> · <span class="text-buoy">twitterUrl</span> · <span class="text-buoy">discordUrl</span></div>
+      <div class="text-slate-dark">bg-navy-dark border-t border-navy-light/20 · flex col→row at md · links: text-slate→text-light</div>
+    </div>
+  </div>
+
+  <!-- LeadMagnetForm -->
+  <div class="mb-16">
+    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">LeadMagnetForm — <code class="ds-code">src/components/LeadMagnetForm.astro</code></h3>
+    <p class="text-sm text-slate mb-4">Email capture form primitive. Used inside all lead magnet variants. Handles submit, loading, success, and error states.</p>
+    <div class="max-w-lg">
+      <LeadMagnetForm leadMagnet="pr-review-cheatsheet" buttonText="Get the Cheat Sheet" />
+    </div>
+    <div class="mt-4 p-4 bg-navy-dark/60 border border-navy-light/10 rounded-lg font-mono text-xs">
+      <div class="text-slate mb-1">Props: <span class="text-buoy">leadMagnet*</span> · <span class="text-buoy">buttonText</span>='Get the PDF' · <span class="text-buoy">successMessage</span></div>
+      <div class="text-slate-dark">Input: bg-navy-light/50 focus:border-buoy · Button: bg-buoy glow-buoy hover:scale-105 · Success: bg-green-500/20</div>
+    </div>
+  </div>
+
+  <!-- LeadMagnetCallout -->
+  <div class="mb-16">
+    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">LeadMagnetCallout — <code class="ds-code">src/components/LeadMagnetCallout.astro</code></h3>
+    <p class="text-sm text-slate mb-4">Inline callout card for embedding lead capture in article or docs context. Switches to horizontal layout on large screens.</p>
+    <LeadMagnetCallout
+      leadMagnet="drift-checklist"
+      headline="20 warning signs of design system drift"
+      subhead="A checklist for your next code review. Spot drift before it compounds."
+      buttonText="Get the Checklist"
+    />
+    <div class="mt-4 p-4 bg-navy-dark/60 border border-navy-light/10 rounded-lg font-mono text-xs">
+      <div class="text-slate mb-1">Props: <span class="text-buoy">leadMagnet*</span> · <span class="text-buoy">headline*</span> · <span class="text-buoy">subhead*</span> · <span class="text-buoy">buttonText</span>='Get the PDF'</div>
+      <div class="text-slate-dark">bg-gradient buoy/10→lavender/10 border-buoy/20 · lg:flex-row · "Free PDF" square badge</div>
+    </div>
+  </div>
+
+  <!-- LeadMagnetCTA -->
+  <div class="mb-16">
+    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">LeadMagnetCTA — <code class="ds-code">src/components/LeadMagnetCTA.astro</code></h3>
+    <p class="text-sm text-slate mb-4">Full-width centered section CTA. Used at the bottom of content pages to offer a related PDF download.</p>
+    <div class="rounded-xl overflow-hidden border border-navy-light/20">
+      <LeadMagnetCTA
+        leadMagnet="maturity-model"
+        headline="Where does your design system stand?"
+        subhead="Assess your maturity level and get a roadmap for what to fix next."
+        buttonText="Get the Assessment"
+      />
+    </div>
+    <div class="mt-4 p-4 bg-navy-dark/60 border border-navy-light/10 rounded-lg font-mono text-xs">
+      <div class="text-slate mb-1">Props: <span class="text-buoy">leadMagnet*</span> · <span class="text-buoy">headline*</span> · <span class="text-buoy">subhead*</span> · <span class="text-buoy">buttonText</span>='Get the PDF'</div>
+      <div class="text-slate-dark">py-16 bg-navy centered text · "Free PDF Download" pill badge · max-w-md form</div>
+    </div>
+  </div>
+
+  <!-- LeadCaptureSection -->
+  <div class="mb-0">
+    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">LeadCaptureSection — <code class="ds-code">src/components/LeadCaptureSection.astro</code></h3>
+    <p class="text-sm text-slate mb-4">A/B-tested two-column lead capture with PDF preview mockup. PostHog feature flag <code class="ds-code">homepage-lead-magnet-variant</code> selects the active variant; defaults to <code class="ds-code">drift-checklist</code>.</p>
+    <div class="rounded-xl overflow-hidden border border-navy-light/20">
+      <LeadCaptureSection />
+    </div>
+    <div class="mt-4 p-4 bg-navy-dark/60 border border-navy-light/10 rounded-lg font-mono text-xs">
+      <div class="text-slate mb-1">No props. 3 variants: <span class="text-buoy">drift-checklist</span> · <span class="text-buoy">why-developers-bypass</span> · <span class="text-buoy">maturity-model</span></div>
+      <div class="text-slate-dark">A/B via PostHog · PDF preview: rotate-1 hover:rotate-0 · grid lg:grid-cols-2</div>
+    </div>
+  </div>
+
 </section>
 
     <!-- Patterns section -->
@@ -656,6 +856,114 @@ const colorGroups = [
       </div>
       <div class="mt-4 font-mono text-xs text-slate-dark">Primary first, secondary second, ghost third. gap-3 between.</div>
     </div>
+
+    <!-- Checkmark Benefit List -->
+    <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+      <div class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-4">Checkmark Benefit List</div>
+      <div class="space-y-4">
+        <div class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+          </svg>
+          <div>
+            <h3 class="font-semibold text-light text-sm">Primary benefit title</h3>
+            <p class="text-xs text-slate mt-0.5">Supporting description. One or two lines, parallel structure across all items.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <svg class="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+          </svg>
+          <div>
+            <h3 class="font-semibold text-light text-sm">Secondary benefit</h3>
+            <p class="text-xs text-slate mt-0.5">Keep descriptions parallel in structure and length to the item above.</p>
+          </div>
+        </div>
+      </div>
+      <div class="mt-4 font-mono text-xs text-slate-dark">svg.text-success w-5 h-5 mt-0.5 shrink-0 / font-semibold text-light text-sm / text-xs text-slate</div>
+    </div>
+
+    <!-- FAQ Accordion -->
+    <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+      <div class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-4">FAQ Accordion</div>
+      <div class="space-y-3">
+        <details class="group bg-navy/50 border border-navy-light/20 rounded-xl">
+          <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
+            <span class="font-medium text-light text-sm">Is the free tier really free forever?</span>
+            <svg class="w-5 h-5 text-slate group-open:rotate-180 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <div class="px-4 pb-4 text-slate text-sm">Yes. The CLI scanner is MIT-licensed and has no expiry.</div>
+        </details>
+        <details class="group bg-navy/50 border border-navy-light/20 rounded-xl">
+          <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
+            <span class="font-medium text-light text-sm">How does the GitHub App work?</span>
+            <svg class="w-5 h-5 text-slate group-open:rotate-180 transition-transform shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </summary>
+          <div class="px-4 pb-4 text-slate text-sm">Install from GitHub Marketplace. It runs drift checks on every PR and posts inline fix suggestions.</div>
+        </details>
+      </div>
+      <div class="mt-4 font-mono text-xs text-slate-dark">details.group bg-navy/50 border-navy-light/20 rounded-xl / group-open:rotate-180 transition-transform</div>
+    </div>
+
+    <!-- PDF / Conversion Badges -->
+    <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+      <div class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-4">PDF / Conversion Badges</div>
+      <div class="flex flex-wrap items-center gap-4 mb-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-buoy/10 border border-buoy/30 rounded-full text-buoy text-sm">
+          Free PDF Download
+        </div>
+        <div class="inline-flex items-center gap-2 px-2 py-1 bg-buoy/20 rounded text-buoy text-xs font-medium">
+          Free PDF
+        </div>
+      </div>
+      <div class="font-mono text-xs text-slate-dark">Pill: rounded-full px-3 bg-buoy/10 border-buoy/30 text-buoy · Badge: rounded px-2 bg-buoy/20 text-xs font-medium</div>
+    </div>
+
+    <!-- Limited Availability Notice -->
+    <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+      <div class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-4">Limited Availability Notice</div>
+      <div class="bg-navy-dark border border-buoy/30 rounded-xl p-4 max-w-sm">
+        <h3 class="font-semibold text-light mb-2 flex items-center gap-2 text-sm">
+          <span class="text-buoy">*</span> Limited availability
+        </h3>
+        <p class="text-sm text-slate">Only 100 founding member spots. Once they're gone, standard pricing applies.</p>
+      </div>
+      <div class="mt-4 font-mono text-xs text-slate-dark">bg-navy-dark border-buoy/30 rounded-xl · text-buoy asterisk accent / font-semibold text-light + text-sm text-slate</div>
+    </div>
+
+    <!-- Pricing Tier Card -->
+    <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+      <div class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-4">Pricing Tier Card</div>
+      <div class="max-w-xs bg-navy-dark border border-navy-light/30 rounded-2xl p-6">
+        <div class="flex items-baseline gap-2 mb-2">
+          <span class="text-3xl font-bold text-light">$0</span>
+          <span class="text-slate text-sm">/month</span>
+        </div>
+        <div class="inline-flex items-center px-3 py-1 bg-success/10 border border-success/30 rounded-full text-success text-xs font-medium mb-4">
+          Free forever
+        </div>
+        <div class="space-y-2">
+          <div class="flex items-center gap-2 text-sm text-slate">
+            <svg class="w-4 h-4 text-success shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            Full CLI scanner — unlimited scans
+          </div>
+          <div class="flex items-center gap-2 text-sm text-slate">
+            <svg class="w-4 h-4 text-success shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            buoy.config.mjs rules engine
+          </div>
+          <div class="flex items-center gap-2 text-sm text-slate-dark">
+            <svg class="w-4 h-4 text-navy-light shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            GitHub App PR comments
+          </div>
+        </div>
+      </div>
+      <div class="mt-4 font-mono text-xs text-slate-dark">bg-navy-dark border-navy-light/30 rounded-2xl · text-3xl font-bold · success ring · w-4 check/cross icons</div>
+    </div>
+
   </div>
 </section>
 
