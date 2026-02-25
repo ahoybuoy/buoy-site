@@ -183,6 +183,88 @@ const colorGroups = [
   </div>
 </section>
 
+    <!-- Spacing section -->
+<section id="spacing" class="scroll-mt-16">
+  <h2 class="ds-section-heading">Spacing</h2>
+  <p class="ds-section-sub">Section spacing tokens. Element-level spacing uses Tailwind's default scale.</p>
+
+  <div class="space-y-4 mt-8">
+    <div class="flex items-center gap-6 p-4 bg-navy/40 border border-navy-light/20 rounded-xl">
+      <div class="shrink-0 h-8 bg-buoy/20 border border-buoy/30 rounded" style="width: 6rem"></div>
+      <div>
+        <div class="font-mono text-sm text-buoy">--spacing-section</div>
+        <div class="font-mono text-xs text-slate-dark mt-0.5">6rem — Section padding desktop</div>
+      </div>
+    </div>
+    <div class="flex items-center gap-6 p-4 bg-navy/40 border border-navy-light/20 rounded-xl">
+      <div class="shrink-0 h-8 bg-buoy/20 border border-buoy/30 rounded" style="width: 4rem"></div>
+      <div>
+        <div class="font-mono text-sm text-buoy">--spacing-section-sm</div>
+        <div class="font-mono text-xs text-slate-dark mt-0.5">4rem — Section padding mobile</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Effects section -->
+<section id="effects" class="scroll-mt-16">
+  <h2 class="ds-section-heading">Effects</h2>
+  <p class="ds-section-sub">Glow utilities, text gradients, and animation classes defined in <code class="ds-code">global.css</code>.</p>
+
+  <div class="grid md:grid-cols-2 gap-6 mt-8">
+    <!-- Glows -->
+    <div class="space-y-4">
+      <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest">Glows</h3>
+      <div class="p-4 bg-navy/40 border border-navy-light/20 rounded-xl flex items-center gap-4">
+        <div class="w-12 h-12 rounded-lg bg-buoy glow-buoy shrink-0"></div>
+        <div>
+          <div class="font-mono text-sm text-light">.glow-buoy</div>
+          <div class="font-mono text-xs text-slate-dark">box-shadow: 0 0 30px buoy/40%</div>
+        </div>
+      </div>
+      <div class="p-4 bg-navy/40 border border-navy-light/20 rounded-xl flex items-center gap-4">
+        <div class="w-12 h-12 rounded-lg bg-lavender glow-lavender shrink-0"></div>
+        <div>
+          <div class="font-mono text-sm text-light">.glow-lavender</div>
+          <div class="font-mono text-xs text-slate-dark">box-shadow: 0 0 30px lavender/30%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Text Gradients -->
+    <div class="space-y-4">
+      <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest">Text Gradients</h3>
+      <div class="p-4 bg-navy/40 border border-navy-light/20 rounded-xl">
+        <div class="text-3xl font-extrabold text-gradient-sunrise font-[Quicksand] mb-2">Catch Design Drift</div>
+        <div class="font-mono text-xs text-slate-dark">.text-gradient-sunrise</div>
+        <div class="font-mono text-xs text-slate-dark mt-1">buoy → sunrise → lavender at 135°</div>
+      </div>
+    </div>
+
+    <!-- Animations -->
+    <div class="space-y-4 md:col-span-2">
+      <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest">Animations</h3>
+      <div class="grid sm:grid-cols-3 gap-4">
+        <div class="p-4 bg-navy/40 border border-navy-light/20 rounded-xl text-center">
+          <div class="text-4xl mb-3 animate-float">⛵</div>
+          <div class="font-mono text-sm text-light">.animate-float</div>
+          <div class="font-mono text-xs text-slate-dark mt-1">6s ease-in-out infinite — vertical bob</div>
+        </div>
+        <div class="p-4 bg-navy/40 border border-navy-light/20 rounded-xl text-center">
+          <div class="text-4xl mb-3 animate-pulse-glow">⛵</div>
+          <div class="font-mono text-sm text-light">.animate-pulse-glow</div>
+          <div class="font-mono text-xs text-slate-dark mt-1">3s ease-in-out infinite — opacity pulse</div>
+        </div>
+        <div class="p-4 bg-navy/40 border border-navy-light/20 rounded-xl text-center">
+          <div class="text-4xl mb-3 animate-wave">⛵</div>
+          <div class="font-mono text-sm text-light">.animate-wave</div>
+          <div class="font-mono text-xs text-slate-dark mt-1">8s ease-in-out infinite — lateral sway</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
     <!-- More sections added in subsequent tasks -->
 
   </main>
