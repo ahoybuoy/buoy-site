@@ -115,6 +115,74 @@ const colorGroups = [
       </div>
     </section>
 
+    <!-- Typography section -->
+<section id="typography" class="scroll-mt-16">
+  <h2 class="ds-section-heading">Typography</h2>
+  <p class="ds-section-sub">Three font families, each with a specific role. Set via CSS variables and applied in <code class="ds-code">global.css</code>.</p>
+
+  <!-- Font Families -->
+  <div class="grid md:grid-cols-3 gap-6 mb-12 mt-8">
+    <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+      <div class="text-xs font-mono text-slate-dark mb-2 uppercase tracking-widest">Display — --font-display</div>
+      <div class="text-4xl font-bold text-light font-[Quicksand]">Quicksand</div>
+      <div class="text-sm text-slate mt-2 font-mono">Quicksand, Satoshi, system-ui</div>
+      <div class="mt-3 text-slate text-sm">Headings, hero text, brand moments</div>
+    </div>
+    <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+      <div class="text-xs font-mono text-slate-dark mb-2 uppercase tracking-widest">Body — --font-body</div>
+      <div class="text-4xl font-bold text-light">Inter</div>
+      <div class="text-sm text-slate mt-2 font-mono">Inter, system-ui</div>
+      <div class="mt-3 text-slate text-sm">Paragraphs, UI labels, descriptions</div>
+    </div>
+    <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+      <div class="text-xs font-mono text-slate-dark mb-2 uppercase tracking-widest">Mono — --font-mono</div>
+      <div class="text-4xl font-bold text-light font-mono">JetBrains</div>
+      <div class="text-sm text-slate mt-2 font-mono">JetBrains Mono, Fira Code</div>
+      <div class="mt-3 text-slate text-sm">Code, terminal output, token names</div>
+    </div>
+  </div>
+
+  <!-- Type Scale -->
+  <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-4">Type Scale</h3>
+  <div class="space-y-1 p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+    <div class="flex items-baseline gap-6 py-3 border-b border-navy-light/10">
+      <div class="w-12 text-xs font-mono text-slate-dark shrink-0">h1</div>
+      <div class="w-24 text-xs font-mono text-slate shrink-0">text-5xl</div>
+      <span class="text-5xl font-extrabold text-light font-[Quicksand] leading-tight">Design Systems</span>
+    </div>
+    <div class="flex items-baseline gap-6 py-3 border-b border-navy-light/10">
+      <div class="w-12 text-xs font-mono text-slate-dark shrink-0">h2</div>
+      <div class="w-24 text-xs font-mono text-slate shrink-0">text-4xl</div>
+      <span class="text-4xl font-bold text-light font-[Quicksand]">Token-Driven</span>
+    </div>
+    <div class="flex items-baseline gap-6 py-3 border-b border-navy-light/10">
+      <div class="w-12 text-xs font-mono text-slate-dark shrink-0">h3</div>
+      <div class="w-24 text-xs font-mono text-slate shrink-0">text-2xl</div>
+      <span class="text-2xl font-semibold text-light font-[Quicksand]">Consistent by Default</span>
+    </div>
+    <div class="flex items-baseline gap-6 py-3 border-b border-navy-light/10">
+      <div class="w-12 text-xs font-mono text-slate-dark shrink-0">h4</div>
+      <div class="w-24 text-xs font-mono text-slate shrink-0">text-xl</div>
+      <span class="text-xl font-semibold text-light font-[Quicksand]">No Hardcoded Values</span>
+    </div>
+    <div class="flex items-baseline gap-6 py-3 border-b border-navy-light/10">
+      <div class="w-12 text-xs font-mono text-slate-dark shrink-0">p</div>
+      <div class="w-24 text-xs font-mono text-slate shrink-0">text-base</div>
+      <span class="text-base text-light">Body text reads cleanly at this size. Designed for long-form content and UI descriptions.</span>
+    </div>
+    <div class="flex items-baseline gap-6 py-3 border-b border-navy-light/10">
+      <div class="w-12 text-xs font-mono text-slate-dark shrink-0">small</div>
+      <div class="w-24 text-xs font-mono text-slate shrink-0">text-sm</div>
+      <span class="text-sm text-slate">Supporting text, captions, helper copy</span>
+    </div>
+    <div class="flex items-baseline gap-6 py-3">
+      <div class="w-12 text-xs font-mono text-slate-dark shrink-0">code</div>
+      <div class="w-24 text-xs font-mono text-slate shrink-0">text-sm</div>
+      <code class="text-sm text-buoy font-mono">npx ahoybuoy drift check</code>
+    </div>
+  </div>
+</section>
+
     <!-- More sections added in subsequent tasks -->
 
   </main>
