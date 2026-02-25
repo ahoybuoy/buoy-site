@@ -405,18 +405,6 @@ const flagItems = [
                 <path d="M0,5 Q50,0 100,5 Q150,10 200,5 Q250,0 300,5 Q350,10 400,5 Q450,0 500,5 Q550,10 600,5 Q650,0 700,5 Q750,10 800,5" fill="none" stroke="rgba(100,180,255,0.18)" stroke-width="1.5"/>
               </svg>
 
-              <!-- Splash (always looping, left 18%) -->
-              <div class="absolute" style="left:18%;bottom:47px;">
-                <div class="relative w-0 h-0">
-                  <div class="ds-splash-dot ds-drop-a"></div>
-                  <div class="ds-splash-dot ds-drop-b"></div>
-                  <div class="ds-splash-dot ds-drop-c"></div>
-                  <div class="ds-splash-dot ds-drop-d"></div>
-                  <div class="ds-splash-dot ds-drop-e"></div>
-                  <div class="ds-demo-ring" style="animation-delay:0.08s;"></div>
-                </div>
-              </div>
-
               <!-- Boat: drift + bob -->
               <span class="ds-demo-drift text-4xl absolute" style="bottom:44px;animation-duration:13s,3.2s;">⛵</span>
             </div>
@@ -2018,6 +2006,15 @@ const flagItems = [
 
       physicsRaf = requestAnimationFrame(step);
     }
+
+    // On first load: seek drift to center so boat is visible and grabbable immediately.
+    // ds-drift starts at left:-10% (off-screen); double-rAF ensures animations have committed.
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const d = boat.getAnimations().find(a => a.animationName === 'ds-drift');
+        if (d) d.currentTime = 6500; // 50% of 13000ms = center of arena (~50% left)
+      });
+    });
 
     function resumeDrift(currentX) {
       const W = arena.offsetWidth;
