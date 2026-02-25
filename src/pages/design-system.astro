@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro'
 import Nav from '../components/Nav.astro'
 import Button from '../components/Button.astro'
 import FeatureCard from '../components/FeatureCard.astro'
+import Terminal from '../components/Terminal.astro'
 
 const colorGroups = [
   {
@@ -339,7 +340,56 @@ const colorGroups = [
     </div>
   </div>
 
-  <!-- Terminal and badges added in next task -->
+  <!-- Terminal -->
+  <div class="mb-16">
+    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">Terminal — <code class="ds-code">src/components/Terminal.astro</code></h3>
+    <div class="max-w-2xl">
+      <Terminal
+        command="npx ahoybuoy drift check"
+        lines={[
+          { text: '', type: 'output', delay: 400 },
+          { text: '🛟 Scanning <span class="text-buoy">design-system.astro</span>...', type: 'output', delay: 600 },
+          { text: '', type: 'output', delay: 800 },
+          { text: '<span class="text-success font-semibold">✓ 0 issues found</span>', type: 'success', delay: 1000 },
+          { text: '', type: 'output', delay: 1200 },
+          { text: 'All tokens resolve to design system values.', type: 'muted', delay: 1400 },
+          { text: 'No hardcoded colors, spacing, or typography.', type: 'muted', delay: 1600 },
+        ]}
+      />
+    </div>
+    <div class="mt-4 p-4 bg-navy-dark/60 border border-navy-light/10 rounded-lg font-mono text-xs">
+      <div class="text-slate mb-2">Line type → color token mapping:</div>
+      <div class="flex gap-4 py-0.5"><span class="w-16 text-slate-dark">output</span><span class="w-32 text-slate">text-slate</span><span class="text-slate-dark">--color-slate</span></div>
+      <div class="flex gap-4 py-0.5"><span class="w-16 text-slate-dark">success</span><span class="w-32 text-success">text-success</span><span class="text-slate-dark">--color-success</span></div>
+      <div class="flex gap-4 py-0.5"><span class="w-16 text-slate-dark">warning</span><span class="w-32 text-warning">text-warning</span><span class="text-slate-dark">--color-warning</span></div>
+      <div class="flex gap-4 py-0.5"><span class="w-16 text-slate-dark">critical</span><span class="w-32 text-critical">text-critical</span><span class="text-slate-dark">--color-critical</span></div>
+      <div class="flex gap-4 py-0.5"><span class="w-16 text-slate-dark">info</span><span class="w-32 text-info">text-info</span><span class="text-slate-dark">--color-info</span></div>
+      <div class="flex gap-4 py-0.5"><span class="w-16 text-slate-dark">muted</span><span class="w-32 text-slate-dark">text-slate-dark</span><span class="text-slate-dark">--color-slate-dark</span></div>
+    </div>
+  </div>
+
+  <!-- Status Badges -->
+  <div class="mb-4">
+    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">Status Badges</h3>
+    <div class="flex flex-wrap gap-3">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-success/10 border border-success/30 text-success text-sm font-medium">
+        <span class="w-2 h-2 rounded-full bg-success"></span>
+        success
+      </div>
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-warning/10 border border-warning/30 text-warning text-sm font-medium">
+        <span class="w-2 h-2 rounded-full bg-warning"></span>
+        warning
+      </div>
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-critical/10 border border-critical/30 text-critical text-sm font-medium">
+        <span class="w-2 h-2 rounded-full bg-critical"></span>
+        critical
+      </div>
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-info/10 border border-info/30 text-info text-sm font-medium">
+        <span class="w-2 h-2 rounded-full bg-info"></span>
+        info
+      </div>
+    </div>
+  </div>
 </section>
 
     <!-- More sections added in subsequent tasks -->
