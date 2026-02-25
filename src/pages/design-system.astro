@@ -1,6 +1,58 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import Nav from '../components/Nav.astro'
+
+const colorGroups = [
+  {
+    label: 'Navy',
+    tokens: [
+      { name: '--color-navy-dark',  tw: 'bg-navy-dark',  label: 'navy-dark',  dark: '#0f1829', light: '#FFFFFF' },
+      { name: '--color-navy',       tw: 'bg-navy',       label: 'navy',       dark: '#1a2744', light: '#F0F4F8' },
+      { name: '--color-navy-light', tw: 'bg-navy-light', label: 'navy-light', dark: '#243352', light: '#CBD5E1' },
+    ]
+  },
+  {
+    label: 'Brand — Buoy Orange',
+    tokens: [
+      { name: '--color-buoy',       tw: 'bg-buoy',       label: 'buoy',       dark: '#F97316', light: '#F97316' },
+      { name: '--color-buoy-light', tw: 'bg-buoy-light', label: 'buoy-light', dark: '#FB923C', light: '#FB923C' },
+      { name: '--color-buoy-dark',  tw: 'bg-buoy-dark',  label: 'buoy-dark',  dark: '#EA580C', light: '#EA580C' },
+    ]
+  },
+  {
+    label: 'Accent — Lavender',
+    tokens: [
+      { name: '--color-lavender',       tw: 'bg-lavender',       label: 'lavender',       dark: '#8B5CF6', light: '#6366F1' },
+      { name: '--color-lavender-light', tw: 'bg-lavender-light', label: 'lavender-light', dark: '#A78BFA', light: '#818CF8' },
+      { name: '--color-sky-purple',     tw: 'bg-sky-purple',     label: 'sky-purple',     dark: '#6366F1', light: '#4F46E5' },
+    ]
+  },
+  {
+    label: 'Sunrise',
+    tokens: [
+      { name: '--color-sunrise',       tw: 'bg-sunrise',       label: 'sunrise',       dark: '#F59E0B', light: '#F59E0B' },
+      { name: '--color-sunrise-light', tw: 'bg-sunrise-light', label: 'sunrise-light', dark: '#FBBF24', light: '#FBBF24' },
+    ]
+  },
+  {
+    label: 'Text',
+    tokens: [
+      { name: '--color-light',       tw: 'bg-light',       label: 'light',       dark: '#F8FAFC', light: '#1A2744' },
+      { name: '--color-light-muted', tw: 'bg-light-muted', label: 'light-muted', dark: '#E2E8F0', light: '#243352' },
+      { name: '--color-slate',       tw: 'bg-slate',       label: 'slate',       dark: '#94A3B8', light: '#475569' },
+      { name: '--color-slate-dark',  tw: 'bg-slate-dark',  label: 'slate-dark',  dark: '#64748B', light: '#94A3B8' },
+    ]
+  },
+  {
+    label: 'Semantic',
+    tokens: [
+      { name: '--color-success',  tw: 'bg-success',  label: 'success',  dark: '#10B981', light: '#059669' },
+      { name: '--color-warning',  tw: 'bg-warning',  label: 'warning',  dark: '#F59E0B', light: '#D97706' },
+      { name: '--color-critical', tw: 'bg-critical', label: 'critical', dark: '#EF4444', light: '#DC2626' },
+      { name: '--color-info',     tw: 'bg-info',     label: 'info',     dark: '#3B82F6', light: '#2563EB' },
+    ]
+  },
+]
 ---
 
 <Layout title="Design System — Subsequent Saturn | Buoy">
@@ -36,7 +88,59 @@ import Nav from '../components/Nav.astro'
       </p>
     </section>
 
-    <!-- Sections will be added in subsequent tasks -->
+    <!-- Colors section -->
+    <section id="colors" class="scroll-mt-16">
+      <h2 class="ds-section-heading">Color Tokens</h2>
+      <p class="ds-section-sub">All colors are CSS custom properties under <code class="ds-code">@theme</code> in <code class="ds-code">src/styles/global.css</code>. They respond to light mode automatically.</p>
+
+      <div class="space-y-10 mt-8">
+        {colorGroups.map(group => (
+          <div>
+            <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-3">{group.label}</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+              {group.tokens.map(token => (
+                <div class="rounded-xl overflow-hidden border border-navy-light/20 bg-navy/40">
+                  <div class={`h-20 ${token.tw}`}></div>
+                  <div class="p-3 space-y-1">
+                    <div class="font-mono text-xs text-buoy">{token.name}</div>
+                    <div class="font-mono text-xs text-slate">tw: {token.label}</div>
+                    <div class="text-xs text-slate-dark font-mono">◐ {token.dark}</div>
+                    <div class="text-xs text-slate-dark font-mono">☀ {token.light}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- More sections added in subsequent tasks -->
 
   </main>
 </Layout>
+
+<style>
+  .ds-section-heading {
+    font-size: 1.875rem;
+    font-weight: 800;
+    color: var(--color-light);
+    font-family: var(--font-display);
+    margin-bottom: 0.5rem;
+  }
+  .ds-section-sub {
+    color: var(--color-slate);
+    max-width: 48rem;
+  }
+  .ds-code {
+    font-family: var(--font-mono);
+    font-size: 0.875em;
+    color: var(--color-buoy);
+    background: color-mix(in srgb, var(--color-buoy) 10%, transparent);
+    padding: 0.1em 0.4em;
+    border-radius: 4px;
+  }
+  .scroll-mt-16 {
+    scroll-margin-top: 4rem;
+  }
+</style>
