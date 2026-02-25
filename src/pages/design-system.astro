@@ -392,7 +392,52 @@ const colorGroups = [
   </div>
 </section>
 
-    <!-- More sections added in subsequent tasks -->
+    <!-- Patterns section -->
+<section id="patterns" class="scroll-mt-16">
+  <h2 class="ds-section-heading">Patterns</h2>
+  <p class="ds-section-sub">Recurring compositions built from the token primitives above.</p>
+
+  <div class="space-y-8 mt-8">
+    <!-- Section header pattern -->
+    <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+      <div class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-4">Section Header</div>
+      <div class="border-l-2 border-buoy pl-4">
+        <h2 class="text-2xl font-bold text-light font-[Quicksand]">Section Title</h2>
+        <p class="text-slate mt-1">Supporting description in text-slate. Always below the heading, never above.</p>
+      </div>
+      <div class="mt-4 font-mono text-xs text-slate-dark">border-buoy / text-light (display) / text-slate (body)</div>
+    </div>
+
+    <!-- Inline code pattern -->
+    <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+      <div class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-4">Inline Code</div>
+      <p class="text-slate">Run <code class="ds-code">npx ahoybuoy drift check</code> in your repo root. It reads <code class="ds-code">buoy.config.mjs</code> automatically.</p>
+      <div class="mt-4 font-mono text-xs text-slate-dark">font-mono / text-buoy / bg-buoy/10 / border-radius: 4px</div>
+    </div>
+
+    <!-- CTA row pattern -->
+    <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+      <div class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-4">CTA Row</div>
+      <div class="flex flex-wrap gap-3">
+        <Button href="#" size="lg">Primary Action</Button>
+        <Button href="#" variant="secondary" size="lg">Secondary Action</Button>
+        <Button href="#" variant="ghost" size="lg">Ghost Action</Button>
+      </div>
+      <div class="mt-4 font-mono text-xs text-slate-dark">Primary first, secondary second, ghost third. gap-3 between.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer CTA -->
+<section class="text-center py-16 border-t border-navy-light/20">
+  <div class="text-4xl mb-4">🛟</div>
+  <h2 class="text-2xl font-bold text-light font-[Quicksand] mb-2">This page is the test</h2>
+  <p class="text-slate mb-6 max-w-lg mx-auto">Every element above uses only design system tokens. Run buoy check against it anytime to confirm zero drift.</p>
+  <div class="inline-flex items-center gap-3 px-4 py-3 bg-navy/80 border border-navy-light/30 rounded-lg font-mono text-sm">
+    <span class="text-slate">$</span>
+    <code class="text-light">npx ahoybuoy drift check src/pages/design-system.astro</code>
+  </div>
+</section>
 
   </main>
 </Layout>
