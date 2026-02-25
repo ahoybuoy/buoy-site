@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import Nav from '../components/Nav.astro'
+import Button from '../components/Button.astro'
+import FeatureCard from '../components/FeatureCard.astro'
 
 const colorGroups = [
   {
@@ -263,6 +265,81 @@ const colorGroups = [
       </div>
     </div>
   </div>
+</section>
+
+    <!-- Components section -->
+<section id="components" class="scroll-mt-16">
+  <h2 class="ds-section-heading">Components</h2>
+  <p class="ds-section-sub">Live instances of every component, every variant. No mocks — what you see is what ships.</p>
+
+  <!-- Button -->
+  <div class="mb-16 mt-8">
+    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">Button — <code class="ds-code">src/components/Button.astro</code></h3>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="text-left border-b border-navy-light/20">
+            <th class="pb-3 pr-8 font-mono text-xs text-slate-dark font-normal">variant / size</th>
+            <th class="pb-3 pr-8 font-mono text-xs text-slate-dark font-normal">sm</th>
+            <th class="pb-3 pr-8 font-mono text-xs text-slate-dark font-normal">md (default)</th>
+            <th class="pb-3 font-mono text-xs text-slate-dark font-normal">lg</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-navy-light/10">
+          <tr>
+            <td class="py-4 pr-8 font-mono text-xs text-slate">primary</td>
+            <td class="py-4 pr-8"><Button size="sm">Label</Button></td>
+            <td class="py-4 pr-8"><Button size="md">Label</Button></td>
+            <td class="py-4"><Button size="lg">Label</Button></td>
+          </tr>
+          <tr>
+            <td class="py-4 pr-8 font-mono text-xs text-slate">secondary</td>
+            <td class="py-4 pr-8"><Button variant="secondary" size="sm">Label</Button></td>
+            <td class="py-4 pr-8"><Button variant="secondary" size="md">Label</Button></td>
+            <td class="py-4"><Button variant="secondary" size="lg">Label</Button></td>
+          </tr>
+          <tr>
+            <td class="py-4 pr-8 font-mono text-xs text-slate">ghost</td>
+            <td class="py-4 pr-8"><Button variant="ghost" size="sm">Label</Button></td>
+            <td class="py-4 pr-8"><Button variant="ghost" size="md">Label</Button></td>
+            <td class="py-4"><Button variant="ghost" size="lg">Label</Button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="mt-4 p-4 bg-navy-dark/60 border border-navy-light/10 rounded-lg font-mono text-xs">
+      <div class="text-slate mb-2">Token usage inside Button.astro:</div>
+      <div class="text-slate-dark">primary: <span class="text-buoy">bg-buoy</span> text-navy-dark hover:bg-buoy-light glow-buoy</div>
+      <div class="text-slate-dark">secondary: <span class="text-lavender">bg-navy-light/50</span> text-light border-navy-light/50</div>
+      <div class="text-slate-dark">ghost: text-slate hover:text-light hover:bg-navy-light/30</div>
+    </div>
+  </div>
+
+  <!-- FeatureCard -->
+  <div class="mb-16">
+    <h3 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">FeatureCard — <code class="ds-code">src/components/FeatureCard.astro</code></h3>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <FeatureCard
+        title="With Link"
+        description="Cards with href get a hover glow, clickable title, and a Learn more CTA at the bottom."
+        icon="🛟"
+        href="/features/drift-detection"
+        examples={['token.violation', 'hardcoded.value']}
+      />
+      <FeatureCard
+        title="Without Link"
+        description="Static cards omit the link affordance entirely. Same token usage throughout."
+        icon="⚓"
+        examples={['pattern.match', 'rule.enforced']}
+      />
+      <FeatureCard
+        title="Minimal"
+        description="No icon, no examples, no link. Just a title and description using the same border and bg tokens."
+      />
+    </div>
+  </div>
+
+  <!-- Terminal and badges added in next task -->
 </section>
 
     <!-- More sections added in subsequent tasks -->
