@@ -1,122 +1,414 @@
 ---
 import DocsLayout from '../../../layouts/DocsLayout.astro'
+import DocTerminal from '../../../components/DocTerminal.astro'
 ---
 
-<DocsLayout title="Health Scoring" description="How Buoy calculates your design system health score">
-  <h1>Health Scoring</h1>
+<DocsLayout title="Health Scoring" description="How Buoy calculates design system health with a 4-pillar scoring model">
+  <section class="hs-hero not-prose">
+    <div class="hs-hero-grid">
+      <div>
+        <p class="hs-kicker">Feature</p>
+        <h1>Health Scoring</h1>
+        <p class="hs-lede">
+          Buoy summarizes design-system health with a <strong>0-100 score</strong> based on four weighted pillars:
+          value discipline, token health, consistency, and critical issues.
+        </p>
+        <div class="hs-chip-row" role="list" aria-label="Health score highlights">
+          <span class="hs-chip" role="listitem">4 pillars</span>
+          <span class="hs-chip" role="listitem">CI gateable</span>
+          <span class="hs-chip" role="listitem">Actionable suggestions</span>
+          <span class="hs-chip" role="listitem">Framework-aware</span>
+        </div>
+      </div>
+      <aside class="hs-score-panel" aria-label="Example score breakdown">
+        <div class="hs-score-top">
+          <div>
+            <p class="hs-score-label">Example Health Score</p>
+            <p class="hs-score-value">88<span>/100</span></p>
+          </div>
+          <span class="hs-tier hs-tier-great">Great</span>
+        </div>
+        <ul class="hs-mini-pillars">
+          <li><span>Value Discipline</span><strong>60/60</strong></li>
+          <li><span>Token Health</span><strong>8/20</strong></li>
+          <li><span>Consistency</span><strong>10/10</strong></li>
+          <li><span>Critical Issues</span><strong>10/10</strong></li>
+        </ul>
+        <p class="hs-panel-note">Strong code hygiene, but token usage/coverage is still the bottleneck.</p>
+      </aside>
+    </div>
+  </section>
 
   <p>
-    Buoy calculates a 0-100 health score that represents how well your codebase adheres to
-    your design system. Higher scores mean less drift.
+    The score is designed to be <strong>fast to scan</strong> and <strong>hard to game</strong>. It blends direct drift signals
+    (like hardcoded values, unused tokens, semantic mismatches, and critical accessibility issues) with density-based penalties
+    so larger codebases are evaluated proportionally.
   </p>
+
+  <h2>CLI Presentation (Proposed)</h2>
+
+  <p>
+    This is a design target for the human-readable <code>buoy show health</code> output. It uses the real score model fields
+    (<code>score</code>, <code>tier</code>, <code>pillars</code>, <code>suggestions</code>, <code>metrics</code>) in a more scan-friendly format.
+  </p>
+
+  <DocTerminal command="buoy show health" lines={[
+    { text: "" },
+    { text: "Buoy Health Score" },
+    { text: "────────────────" },
+    { text: "" },
+    { text: "Score        88/100   Great", type: "success" },
+    { text: "Threshold    PASS (failBelow: 70)", type: "success" },
+    { text: "Trend        +4 since last scan", type: "info" },
+    { text: "" },
+    { text: "Meter        [██████████████████░░] 88" },
+    { text: "" },
+    { text: "Pillars (weighted)" },
+    { text: "  valueDiscipline  60/60  ████████████████████", type: "success" },
+    { text: "  tokenHealth       8/20  ████████░░░░░░░░░░░░", type: "warning" },
+    { text: "  consistency      10/10  ████████████████████", type: "success" },
+    { text: "  criticalIssues   10/10  ████████████████████", type: "success" },
+    { text: "" },
+    { text: "Signals" },
+    { text: "  totalDriftCount:           0", type: "muted" },
+    { text: "  tokenCount:                0", type: "muted" },
+    { text: "  componentCount:          105", type: "muted" },
+    { text: "  highDensityFileCount:      0", type: "muted" },
+    { text: "" },
+    { text: "Suggestion", type: "info" },
+    { text: "  Tailwind detected but token coverage is low", type: "info" },
+    { text: "  - extend your theme config with custom values", type: "info" },
+  ]} />
 
   <h2>Score Ranges</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Score</th>
-        <th>Rating</th>
-        <th>What It Means</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>80-100</strong></td>
-        <td>Good</td>
-        <td>Design system is well adopted. Minor issues only.</td>
-      </tr>
-      <tr>
-        <td><strong>50-79</strong></td>
-        <td>Fair</td>
-        <td>Some drift detected. Worth addressing before it grows.</td>
-      </tr>
-      <tr>
-        <td><strong>30-49</strong></td>
-        <td>Needs Work</td>
-        <td>Significant drift. Prioritize cleanup.</td>
-      </tr>
-      <tr>
-        <td><strong>0-29</strong></td>
-        <td>Poor</td>
-        <td>Major drift. Design system adoption is low.</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="hs-range-grid not-prose">
+    <article class="hs-range hs-range-great">
+      <p class="hs-range-score">80-100</p>
+      <h3>Great</h3>
+      <p>Design system adoption is strong. Most drift is minor cleanup work.</p>
+    </article>
+    <article class="hs-range hs-range-good">
+      <p class="hs-range-score">60-79</p>
+      <h3>Good</h3>
+      <p>Healthy baseline with visible drift. Prioritize trend control and token adoption.</p>
+    </article>
+    <article class="hs-range hs-range-ok">
+      <p class="hs-range-score">40-59</p>
+      <h3>OK</h3>
+      <p>Drift is material. You should plan cleanup and CI guardrails before it compounds.</p>
+    </article>
+    <article class="hs-range hs-range-bad">
+      <p class="hs-range-score">0-39</p>
+      <h3>Needs Work</h3>
+      <p>High drift density or critical issues. Focus on stabilization before feature velocity suffers.</p>
+    </article>
+  </div>
 
   <h2>How Scores Are Calculated</h2>
 
-  <p>The score is based on three factors:</p>
-
-  <h3>1. Unique Value Count</h3>
-
   <p>
-    Penalty for having more unique values than expected. A design system with 8 spacing
-    tokens shouldn't have 31 different spacing values in code.
+    Buoy uses a weighted 4-pillar model. Each pillar draws from one or more drift types and supporting metrics.
+    The weights intentionally favor day-to-day maintainability (value discipline) while still surfacing systemic issues.
   </p>
 
-  <pre><code>Expected: 8 spacing values
-Found: 31 spacing values
-Penalty: proportional to excess (23 extra = significant penalty)</code></pre>
+  <div class="hs-pillar-grid not-prose">
+    <article class="hs-pillar-card">
+      <div class="hs-pillar-head">
+        <span class="hs-pillar-weight">60 pts</span>
+        <h3>Value Discipline</h3>
+      </div>
+      <p>Hardcoded value density is the primary factor, with dead code and total drift density as backstops.</p>
+      <ul>
+        <li><code>hardcoded-value</code></li>
+        <li><code>unused-component</code></li>
+        <li><code>orphaned-component</code></li>
+        <li><code>repeated-pattern</code></li>
+      </ul>
+    </article>
 
-  <h3>2. Close Matches (Typos)</h3>
+    <article class="hs-pillar-card">
+      <div class="hs-pillar-head">
+        <span class="hs-pillar-weight">20 pts</span>
+        <h3>Token Health</h3>
+      </div>
+      <p>Measures token system presence, coverage, and usage, with penalties for token drift and mismatches.</p>
+      <ul>
+        <li><code>unused-token</code></li>
+        <li><code>orphaned-token</code></li>
+        <li><code>value-divergence</code></li>
+        <li>framework/library detection + token counts</li>
+      </ul>
+    </article>
+
+    <article class="hs-pillar-card">
+      <div class="hs-pillar-head">
+        <span class="hs-pillar-weight">10 pts</span>
+        <h3>Consistency</h3>
+      </div>
+      <p>Captures naming and semantic consistency, plus framework sprawl signals that increase entropy.</p>
+      <ul>
+        <li><code>naming-inconsistency</code></li>
+        <li><code>semantic-mismatch</code></li>
+        <li><code>framework-sprawl</code></li>
+      </ul>
+    </article>
+
+    <article class="hs-pillar-card">
+      <div class="hs-pillar-head">
+        <span class="hs-pillar-weight">10 pts</span>
+        <h3>Critical Issues</h3>
+      </div>
+      <p>Prioritizes urgent failures and technical debt, with small penalties for documentation gaps.</p>
+      <ul>
+        <li><code>accessibility-conflict</code></li>
+        <li><code>color-contrast</code></li>
+        <li><code>deprecated-pattern</code></li>
+        <li><code>missing-documentation</code></li>
+        <li>high hardcoded-density files</li>
+      </ul>
+    </article>
+  </div>
+
+
+  <h2>Pillar Deep Dives</h2>
 
   <p>
-    High penalty for values that are "almost" correct. These are likely mistakes:
+    Use these sections when you need to explain <em>why</em> a score moved. Each pillar has different inputs,
+    thresholds, and improvement levers.
   </p>
 
-  <pre><code>#3b83f6 close to #3b82f6 → high penalty
-15px close to 16px → high penalty</code></pre>
+  <section class="hs-pillar-deep not-prose" aria-labelledby="pillar-value-discipline">
+    <div class="hs-pillar-deep-head">
+      <h3 id="pillar-value-discipline">Value Discipline (60 points)</h3>
+      <span class="hs-pillar-weight">Primary pillar</span>
+    </div>
+    <p>
+      This is the largest pillar because hardcoded values and drift density are the strongest signals of maintenance cost.
+      Buoy scores this primarily from <strong>hardcoded value density per component</strong>, then adds dead-code pressure and a total-drift backstop.
+    </p>
+    <div class="hs-detail-grid">
+      <div class="hs-detail-card">
+        <h4>Direct Inputs</h4>
+        <ul class="hs-compact-list">
+          <li><code>hardcoded-value</code> (primary density input)</li>
+          <li><code>unused-component</code></li>
+          <li><code>orphaned-component</code></li>
+          <li><code>repeated-pattern</code></li>
+          <li><code>totalDriftCount</code> (density backstop)</li>
+        </ul>
+      </div>
+      <div class="hs-detail-card">
+        <h4>What Lowers It Fast</h4>
+        <ul class="hs-compact-list">
+          <li>Many arbitrary values in a small number of components</li>
+          <li>High-concentration drift in a few files</li>
+          <li>Dead UI components that inflate code surface area</li>
+        </ul>
+      </div>
+    </div>
+    <div class="hs-tip-bar">
+      <strong>Best fix order:</strong> clean high-density files first, then extract repeated values into tokens/components.
+    </div>
+  </section>
 
-  <h3>3. File Concentration</h3>
+  <section class="hs-pillar-deep not-prose" aria-labelledby="pillar-token-health">
+    <div class="hs-pillar-deep-head">
+      <h3 id="pillar-token-health">Token Health (20 points)</h3>
+      <span class="hs-pillar-weight">Adoption + correctness</span>
+    </div>
+    <p>
+      Token Health measures whether you have a usable token system and whether components actually consume it. It now also
+      penalizes token drift directly, not just unused tokens.
+    </p>
+    <div class="hs-detail-grid">
+      <div class="hs-detail-card">
+        <h4>Direct Inputs</h4>
+        <ul class="hs-compact-list">
+          <li><code>tokenCount</code></li>
+          <li><code>unused-token</code></li>
+          <li><code>orphaned-token</code></li>
+          <li><code>value-divergence</code> (small penalty)</li>
+          <li>Framework/library presence (<code>tailwind</code>, DS libs)</li>
+        </ul>
+      </div>
+      <div class="hs-detail-card">
+        <h4>How It Works</h4>
+        <ul class="hs-compact-list">
+          <li>Credits token coverage (do tokens exist at all?)</li>
+          <li>Credits token usage ratio (how many are actually used)</li>
+          <li>Adds framework-aware partial credit when tokens are implicit</li>
+          <li>Subtracts for token drift / mismatched canonical values</li>
+        </ul>
+      </div>
+    </div>
+    <div class="hs-tip-bar hs-tip-bar-accent">
+      <strong>Watch for false confidence:</strong> many tokens defined but unused usually means stale tokens or missing wiring in components.
+    </div>
+  </section>
+
+  <section class="hs-pillar-deep not-prose" aria-labelledby="pillar-consistency">
+    <div class="hs-pillar-deep-head">
+      <h3 id="pillar-consistency">Consistency (10 points)</h3>
+      <span class="hs-pillar-weight">Naming + semantics</span>
+    </div>
+    <p>
+      Consistency is intentionally small but sensitive. It catches entropy that slows teams down even when visual drift is not severe yet.
+      Framework sprawl now counts here because mixed stacks often create naming and usage inconsistency.
+    </p>
+    <div class="hs-detail-grid">
+      <div class="hs-detail-card">
+        <h4>Direct Inputs</h4>
+        <ul class="hs-compact-list">
+          <li><code>naming-inconsistency</code></li>
+          <li><code>semantic-mismatch</code></li>
+          <li><code>framework-sprawl</code> (weighted as entropy)</li>
+        </ul>
+      </div>
+      <div class="hs-detail-card">
+        <h4>Typical Symptoms</h4>
+        <ul class="hs-compact-list">
+          <li><code>isDisabled</code> vs <code>disabled</code> vs <code>inactive</code></li>
+          <li>Semantic tokens/components used inconsistently</li>
+          <li>Multiple styling systems competing in the same UI surface</li>
+        </ul>
+      </div>
+    </div>
+    <div class="hs-tip-bar">
+      <strong>Best fix order:</strong> standardize naming conventions first, then reduce framework overlap in new code paths.
+    </div>
+  </section>
+
+  <section class="hs-pillar-deep not-prose" aria-labelledby="pillar-critical-issues">
+    <div class="hs-pillar-deep-head">
+      <h3 id="pillar-critical-issues">Critical Issues (10 points)</h3>
+      <span class="hs-pillar-weight">Urgency + safety</span>
+    </div>
+    <p>
+      This pillar protects against severe regressions. It combines critical-severity drift with technical debt signals and a
+      small documentation penalty so teams don’t ignore usability and onboarding gaps.
+    </p>
+    <div class="hs-detail-grid">
+      <div class="hs-detail-card">
+        <h4>Direct Inputs</h4>
+        <ul class="hs-compact-list">
+          <li><code>criticalCount</code> (severity-driven, e.g. contrast/accessibility)</li>
+          <li><code>deprecated-pattern</code></li>
+          <li><code>missing-documentation</code> (small scaled penalty)</li>
+          <li><code>highDensityFileCount</code> (amplifies maintenance risk)</li>
+        </ul>
+      </div>
+      <div class="hs-detail-card">
+        <h4>How To Use It</h4>
+        <ul class="hs-compact-list">
+          <li>CI should fail fast on critical issues regardless of total score</li>
+          <li>Use deprecated-pattern counts to prioritize migrations</li>
+          <li>Treat missing docs as a product-team productivity issue</li>
+        </ul>
+      </div>
+    </div>
+    <div class="hs-tip-bar hs-tip-bar-warn">
+      <strong>CI recommendation:</strong> combine <code>--fail-on critical</code> with <code>health.failBelow</code> for layered enforcement.
+    </div>
+  </section>
+
+  <h2>Drift Type Coverage Matrix</h2>
 
   <p>
-    Penalty for files with many issues. A file with 47 drift signals suggests systemic
-    problems in that area.
+    Health scoring now has <strong>explicit direct coverage for every drift type</strong>. The table below shows which pillar each
+    drift type feeds. Some pillars also use non-drift metrics (token counts, framework detection, density heuristics).
   </p>
 
-  <pre><code>Dashboard.tsx: 47 issues → penalty
-Card.tsx: 38 issues → penalty</code></pre>
+  <div class="hs-coverage-wrap not-prose">
+    <table class="hs-coverage-table">
+      <thead>
+        <tr><th>Drift Type</th><th>Pillar</th><th>Coverage</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>hardcoded-value</code></td><td>Value Discipline</td><td>Direct</td></tr>
+        <tr><td><code>unused-component</code></td><td>Value Discipline</td><td>Direct</td></tr>
+        <tr><td><code>orphaned-component</code></td><td>Value Discipline</td><td>Direct</td></tr>
+        <tr><td><code>repeated-pattern</code></td><td>Value Discipline</td><td>Direct</td></tr>
+        <tr><td><code>unused-token</code></td><td>Token Health</td><td>Direct</td></tr>
+        <tr><td><code>orphaned-token</code></td><td>Token Health</td><td>Direct</td></tr>
+        <tr><td><code>value-divergence</code></td><td>Token Health</td><td>Direct</td></tr>
+        <tr><td><code>naming-inconsistency</code></td><td>Consistency</td><td>Direct</td></tr>
+        <tr><td><code>semantic-mismatch</code></td><td>Consistency</td><td>Direct</td></tr>
+        <tr><td><code>framework-sprawl</code></td><td>Consistency</td><td>Direct</td></tr>
+        <tr><td><code>accessibility-conflict</code></td><td>Critical Issues</td><td>Direct</td></tr>
+        <tr><td><code>color-contrast</code></td><td>Critical Issues</td><td>Direct</td></tr>
+        <tr><td><code>deprecated-pattern</code></td><td>Critical Issues</td><td>Direct</td></tr>
+        <tr><td><code>missing-documentation</code></td><td>Critical Issues</td><td>Direct</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Scoring Flow</h2>
+
+  <div class="hs-flow not-prose" aria-label="Health score calculation flow">
+    <div class="hs-flow-step">
+      <p class="hs-flow-label">1</p>
+      <h3>Scan + Analyze Drift</h3>
+      <p>Buoy scans components/tokens, then generates drift signals across all enabled analyzers.</p>
+    </div>
+    <div class="hs-flow-arrow" aria-hidden="true">→</div>
+    <div class="hs-flow-step">
+      <p class="hs-flow-label">2</p>
+      <h3>Build Health Metrics</h3>
+      <p>Counts drift types, framework context, token/component totals, and density heuristics.</p>
+    </div>
+    <div class="hs-flow-arrow" aria-hidden="true">→</div>
+    <div class="hs-flow-step">
+      <p class="hs-flow-label">3</p>
+      <h3>Score 4 Pillars</h3>
+      <p>Each pillar gets a bounded score and contributes to the final 0-100 total.</p>
+    </div>
+  </div>
 
   <h2>Example Calculation</h2>
 
-  <pre><code>Starting score: 100
-
-Colors:
-  Expected: ~12, Found: 47
-  Penalty: -25
-
-Spacing:
-  Expected: ~8, Found: 31
-  Penalty: -20
-
-Close matches:
-  2 found
-  Penalty: -12
-
-Worst files:
-  3 files with 20+ issues
-  Penalty: -9
-
-Final score: 34/100 (Poor)</code></pre>
+  <div class="hs-example-grid not-prose">
+    <div class="hs-example-panel">
+      <h3>Inputs</h3>
+      <ul>
+        <li>50 components</li>
+        <li>30 hardcoded values</li>
+        <li>40 tokens (6 unused)</li>
+        <li>2 semantic mismatches</li>
+        <li>1 deprecated pattern</li>
+      </ul>
+    </div>
+    <div class="hs-example-panel hs-example-mono">
+      <h3>Pillar Scores</h3>
+      <pre><code>valueDiscipline  = 42 / 60
+ tokenHealth     = 15 / 20
+ consistency     =  9 / 10
+ criticalIssues  =  8 / 10
+─────────────────────────
+ total           = 74 / 100 (Good)</code></pre>
+    </div>
+  </div>
 
   <h2>Improving Your Score</h2>
 
-  <h3>Quick Wins</h3>
-
-  <ul>
-    <li><strong>Fix typos first</strong> — Close matches are high-value fixes</li>
-    <li><strong>Target worst files</strong> — Cleaning up one bad file can boost score significantly</li>
-    <li><strong>Consolidate colors</strong> — Often many "blues" should be one token</li>
-  </ul>
-
-  <h3>Long-term Strategies</h3>
-
-  <ul>
-    <li><strong>Add to CI</strong> — Prevent new drift from being introduced</li>
-    <li><strong>Set thresholds</strong> — Require minimum scores for merge</li>
-    <li><strong>Track over time</strong> — Monitor score trends</li>
-  </ul>
+  <div class="hs-improve-grid not-prose">
+    <section class="hs-improve-card">
+      <h3>Quick Wins</h3>
+      <ul>
+        <li><strong>Fix high-density files first</strong> to improve value discipline quickly.</li>
+        <li><strong>Wire unused tokens into real components</strong> or delete stale tokens.</li>
+        <li><strong>Resolve semantic mismatches</strong> (naming and meaning) before they spread.</li>
+      </ul>
+    </section>
+    <section class="hs-improve-card">
+      <h3>Long-Term Strategy</h3>
+      <ul>
+        <li><strong>Gate CI with <code>health.failBelow</code></strong> to prevent regressions.</li>
+        <li><strong>Track score trends</strong> after major UI migrations/refactors.</li>
+        <li><strong>Reduce framework sprawl</strong> to improve consistency and onboarding.</li>
+      </ul>
+    </section>
+  </div>
 
   <h2>Score in CI</h2>
 
@@ -126,13 +418,12 @@ Final score: 34/100 (Poor)</code></pre>
 health:
   failBelow: 70    # Exit code 1 if health score &lt; 70</code></pre>
 
-  <p>Then run the check in CI — no extra flags needed:</p>
+  <p>Then run the check in CI:</p>
 
   <pre><code>buoy drift check</code></pre>
 
   <p>
-    When <code>health.failBelow</code> is configured, <code>buoy drift check</code> exits with code 1
-    if the score drops below the threshold. Combine with <code>--fail-on</code> for layered gating:
+    Combine score gating with drift severity gating for layered protection:
   </p>
 
   <pre><code># Fail on critical drift AND if health score drops below 70
@@ -154,25 +445,519 @@ buoy drift check --fail-on critical</code></pre>
 
   <pre><code>$ buoy show health
 
-Design System Health Report
-───────────────────────────
+Health Score: 74/100 (Good)
 
-Overall Score: 34/100 (Poor)
+Value Discipline  42/60
+Token Health      15/20
+Consistency        9/10
+Critical Issues    8/10
 
-Score Breakdown:
-  Base score:        100
-  Unique values:     -25
-  Close matches:     -12
-  File concentration: -9
-  Other penalties:   -20
-  ─────────────────────
-  Final:              34</code></pre>
+Top suggestion:
+  6 tokens defined but unused — wire them into components or remove stale definitions</code></pre>
 
   <h2>Related</h2>
 
   <ul>
-    <li><a href="/docs/cli/show">buoy show health</a> — Generate health report</li>
+    <li><a href="/docs/cli/show">buoy show health</a> — Generate a health report</li>
     <li><a href="/docs/cli/drift">buoy drift check</a> — Use in CI pipelines</li>
-    <li><a href="/docs/features/drift-detection">Drift Detection</a> — Types of drift</li>
+    <li><a href="/docs/features/drift-detection">Drift Detection</a> — Drift types Buoy tracks</li>
   </ul>
 </DocsLayout>
+
+<style>
+  .hs-hero {
+    margin: 0 0 1.5rem;
+  }
+
+  .hs-hero-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.95fr;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid rgb(36 51 82 / 0.35);
+    background:
+      radial-gradient(circle at 15% 0%, rgb(249 115 22 / 0.14), transparent 45%),
+      radial-gradient(circle at 100% 0%, rgb(56 189 248 / 0.1), transparent 42%),
+      linear-gradient(180deg, rgb(14 20 41 / 0.95), rgb(8 15 34 / 0.95));
+    border-radius: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hs-hero-grid::after {
+    content: "";
+    position: absolute;
+    inset: auto -10% -40% auto;
+    width: 18rem;
+    height: 18rem;
+    border-radius: 999px;
+    background: rgb(14 165 233 / 0.08);
+    filter: blur(10px);
+    pointer-events: none;
+  }
+
+  .hs-kicker {
+    margin: 0 0 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    color: rgb(148 163 184 / 0.9);
+  }
+
+  .hs-hero :global(h1) {
+    margin: 0 0 0.65rem;
+    font-size: clamp(1.9rem, 4vw, 2.4rem);
+    line-height: 1.05;
+  }
+
+  .hs-lede {
+    margin: 0;
+    color: rgb(203 213 225 / 0.9);
+    line-height: 1.55;
+    max-width: 52ch;
+  }
+
+  .hs-chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.9rem;
+  }
+
+  .hs-chip {
+    border: 1px solid rgb(36 51 82 / 0.45);
+    background: rgb(12 22 46 / 0.75);
+    color: rgb(226 232 240 / 0.92);
+    border-radius: 999px;
+    padding: 0.28rem 0.6rem;
+    font-size: 0.8rem;
+    line-height: 1;
+  }
+
+  .hs-score-panel {
+    border: 1px solid rgb(36 51 82 / 0.4);
+    background: linear-gradient(180deg, rgb(11 23 47 / 0.95), rgb(8 18 38 / 0.9));
+    border-radius: 0.9rem;
+    padding: 0.95rem;
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.03);
+  }
+
+  .hs-score-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .hs-score-label {
+    margin: 0;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgb(148 163 184 / 0.8);
+  }
+
+  .hs-score-value {
+    margin: 0.15rem 0 0;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1.7rem;
+    color: rgb(248 250 252);
+  }
+
+  .hs-score-value span {
+    color: rgb(148 163 184);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-left: 0.1rem;
+  }
+
+  .hs-tier {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 0.25rem 0.55rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border: 1px solid transparent;
+  }
+
+  .hs-tier-great {
+    color: rgb(16 185 129);
+    background: rgb(16 185 129 / 0.12);
+    border-color: rgb(16 185 129 / 0.25);
+  }
+
+  .hs-mini-pillars {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.42rem;
+  }
+
+  .hs-mini-pillars li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 0.45rem 0.55rem;
+    border-radius: 0.55rem;
+    background: rgb(15 27 53 / 0.7);
+    border: 1px solid rgb(36 51 82 / 0.25);
+    margin: 0;
+    font-size: 0.86rem;
+  }
+
+  .hs-mini-pillars span {
+    color: rgb(203 213 225);
+  }
+
+  .hs-mini-pillars strong {
+    font-family: var(--font-mono);
+    color: rgb(248 250 252);
+    font-size: 0.82rem;
+  }
+
+  .hs-panel-note {
+    margin: 0.75rem 0 0;
+    font-size: 0.82rem;
+    color: rgb(148 163 184 / 0.95);
+    line-height: 1.45;
+  }
+
+  .hs-range-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.8rem;
+    margin: 1rem 0 1.25rem;
+  }
+
+  .hs-range {
+    border-radius: 0.85rem;
+    padding: 0.95rem;
+    border: 1px solid rgb(36 51 82 / 0.35);
+    background: linear-gradient(180deg, rgb(11 20 42 / 0.82), rgb(8 16 33 / 0.9));
+  }
+
+  .hs-range h3 {
+    margin: 0.15rem 0 0.35rem;
+    font-size: 1rem;
+  }
+
+  .hs-range p {
+    margin: 0;
+    color: rgb(148 163 184 / 0.92);
+    line-height: 1.45;
+    font-size: 0.9rem;
+  }
+
+  .hs-range-score {
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    margin: 0;
+    color: rgb(226 232 240);
+  }
+
+  .hs-range-great { box-shadow: inset 0 0 0 1px rgb(16 185 129 / 0.09); }
+  .hs-range-good { box-shadow: inset 0 0 0 1px rgb(59 130 246 / 0.08); }
+  .hs-range-ok { box-shadow: inset 0 0 0 1px rgb(234 179 8 / 0.08); }
+  .hs-range-bad { box-shadow: inset 0 0 0 1px rgb(248 113 113 / 0.08); }
+
+  .hs-pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .hs-pillar-card {
+    border-radius: 0.95rem;
+    border: 1px solid rgb(36 51 82 / 0.35);
+    background: linear-gradient(180deg, rgb(11 20 42 / 0.86), rgb(7 16 33 / 0.92));
+    padding: 1rem;
+  }
+
+  .hs-pillar-card p {
+    margin: 0.55rem 0 0.8rem;
+    color: rgb(148 163 184 / 0.95);
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  .hs-pillar-card ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.38rem;
+  }
+
+  .hs-pillar-card li {
+    margin: 0;
+    padding: 0.35rem 0.5rem;
+    border-radius: 0.55rem;
+    background: rgb(15 27 53 / 0.58);
+    border: 1px solid rgb(36 51 82 / 0.2);
+    font-size: 0.86rem;
+    color: rgb(203 213 225);
+  }
+
+  .hs-pillar-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.7rem;
+  }
+
+  .hs-pillar-head h3 {
+    margin: 0;
+    font-size: 1.05rem;
+  }
+
+  .hs-pillar-weight {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    color: rgb(14 165 233 / 0.95);
+    border: 1px solid rgb(14 165 233 / 0.22);
+    background: rgb(14 165 233 / 0.08);
+    border-radius: 999px;
+    padding: 0.2rem 0.5rem;
+    white-space: nowrap;
+  }
+
+
+  .hs-pillar-deep {
+    margin: 1rem 0 1.25rem;
+    border-radius: 0.95rem;
+    border: 1px solid rgb(36 51 82 / 0.34);
+    background: linear-gradient(180deg, rgb(11 20 42 / 0.84), rgb(7 15 31 / 0.92));
+    padding: 1rem;
+  }
+
+  .hs-pillar-deep-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .hs-pillar-deep-head h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    color: rgb(248 250 252);
+  }
+
+  .hs-pillar-deep > p {
+    margin: 0 0 0.8rem;
+    color: rgb(148 163 184 / 0.95);
+    line-height: 1.55;
+    font-size: 0.92rem;
+  }
+
+  .hs-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .hs-detail-card {
+    border-radius: 0.75rem;
+    border: 1px solid rgb(36 51 82 / 0.28);
+    background: rgb(12 23 47 / 0.72);
+    padding: 0.8rem;
+  }
+
+  .hs-detail-card h4 {
+    margin: 0 0 0.45rem;
+    color: rgb(226 232 240);
+    font-size: 0.88rem;
+    letter-spacing: 0.01em;
+  }
+
+  .hs-compact-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.36rem;
+  }
+
+  .hs-compact-list li {
+    margin: 0;
+    color: rgb(203 213 225 / 0.95);
+    font-size: 0.84rem;
+    line-height: 1.4;
+    padding: 0.32rem 0.45rem;
+    border-radius: 0.45rem;
+    background: rgb(15 27 53 / 0.52);
+    border: 1px solid rgb(36 51 82 / 0.18);
+  }
+
+  .hs-tip-bar {
+    border-radius: 0.65rem;
+    border: 1px solid rgb(14 165 233 / 0.18);
+    background: rgb(14 165 233 / 0.07);
+    color: rgb(226 232 240);
+    padding: 0.6rem 0.7rem;
+    font-size: 0.84rem;
+    line-height: 1.45;
+  }
+
+  .hs-tip-bar strong {
+    color: rgb(248 250 252);
+  }
+
+  .hs-tip-bar-accent {
+    border-color: rgb(99 102 241 / 0.2);
+    background: rgb(99 102 241 / 0.07);
+  }
+
+  .hs-tip-bar-warn {
+    border-color: rgb(249 115 22 / 0.22);
+    background: rgb(249 115 22 / 0.07);
+  }
+
+  .hs-coverage-wrap {
+    margin: 1rem 0 1.4rem;
+    border: 1px solid rgb(36 51 82 / 0.3);
+    border-radius: 0.85rem;
+    overflow: hidden;
+    background: rgb(9 18 37 / 0.9);
+  }
+
+  .hs-coverage-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+
+  .hs-coverage-table th,
+  .hs-coverage-table td {
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid rgb(36 51 82 / 0.22);
+    text-align: left;
+    color: rgb(203 213 225);
+  }
+
+  .hs-coverage-table th {
+    background: rgb(14 25 50 / 0.95);
+    color: rgb(248 250 252);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .hs-coverage-table tbody tr:nth-child(2n) td {
+    background: rgb(12 22 45 / 0.42);
+  }
+
+  .hs-flow {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    gap: 0.6rem;
+    align-items: stretch;
+    margin: 1rem 0 1.5rem;
+  }
+
+  .hs-flow-step {
+    border-radius: 0.8rem;
+    border: 1px solid rgb(36 51 82 / 0.32);
+    background: rgb(10 20 41 / 0.82);
+    padding: 0.85rem;
+  }
+
+  .hs-flow-step h3 {
+    margin: 0.1rem 0 0.35rem;
+    font-size: 0.98rem;
+  }
+
+  .hs-flow-step p {
+    margin: 0;
+    color: rgb(148 163 184 / 0.9);
+    font-size: 0.86rem;
+    line-height: 1.45;
+  }
+
+  .hs-flow-label {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: rgb(14 165 233 / 0.95);
+  }
+
+  .hs-flow-arrow {
+    display: grid;
+    place-items: center;
+    color: rgb(71 85 105);
+    font-size: 1.15rem;
+  }
+
+  .hs-example-grid,
+  .hs-improve-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+    margin: 1rem 0 1.25rem;
+  }
+
+  .hs-example-panel,
+  .hs-improve-card {
+    border-radius: 0.85rem;
+    border: 1px solid rgb(36 51 82 / 0.32);
+    background: rgb(10 19 39 / 0.84);
+    padding: 0.95rem;
+  }
+
+  .hs-example-panel h3,
+  .hs-improve-card h3 {
+    margin: 0 0 0.55rem;
+    font-size: 1rem;
+  }
+
+  .hs-example-panel ul,
+  .hs-improve-card ul {
+    margin: 0;
+    padding-left: 1.1rem;
+  }
+
+  .hs-example-panel li,
+  .hs-improve-card li {
+    margin-bottom: 0.45rem;
+  }
+
+  .hs-example-mono pre {
+    margin: 0;
+  }
+
+  @media (max-width: 960px) {
+    .hs-hero-grid,
+    .hs-range-grid,
+    .hs-pillar-grid,
+    .hs-detail-grid,
+    .hs-example-grid,
+    .hs-improve-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hs-flow {
+      grid-template-columns: 1fr;
+    }
+
+    .hs-flow-arrow {
+      transform: rotate(90deg);
+      min-height: 1.25rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hs-hero-grid::after {
+      filter: none;
+    }
+  }
+</style>
