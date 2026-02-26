@@ -91,12 +91,16 @@ const flagItems = [
       <nav class="ds-sidebar-nav" aria-label="Design system sections">
 
         <div class="ds-nav-group">
-          <div class="ds-nav-group-label">Foundations</div>
+          <div class="ds-nav-group-label">Tokens</div>
           <a href="#colors"     class="ds-nav-link" data-target="colors">Colors</a>
           <a href="#typography" class="ds-nav-link" data-target="typography">Typography</a>
           <a href="#spacing"    class="ds-nav-link" data-target="spacing">Spacing</a>
           <a href="#effects"    class="ds-nav-link" data-target="effects">Effects</a>
-          <a href="#motion"     class="ds-nav-link" data-target="motion">Motion</a>
+        </div>
+
+        <div class="ds-nav-group">
+          <div class="ds-nav-group-label">Motion</div>
+          <a href="#motion" class="ds-nav-link" data-target="motion">Motion</a>
         </div>
 
         <div class="ds-nav-group">
@@ -150,8 +154,12 @@ const flagItems = [
           <span class="w-2 h-2 rounded-full bg-success animate-pulse"></span>
           0 drift issues detected
         </div>
-        <h1 class="text-4xl xl:text-5xl font-extrabold text-light mb-3 font-[Quicksand]">
-          <span class="text-buoy">Plumb</span> Design System
+        <h1 class="ds-hero-title text-4xl xl:text-5xl text-light mb-3 flex items-center">
+          <span class="ds-hero-title-brand">
+            <span aria-hidden="true" class="ds-plumb-icon text-buoy"></span>
+            <span class="text-buoy">Plumb</span>
+          </span>
+          <span>Design System</span>
         </h1>
         <p class="text-slate text-lg max-w-2xl">
           Every token, component, and pattern used in buoy-site — documented, live, and continuously checked for drift.
@@ -164,8 +172,8 @@ const flagItems = [
       <div class="ds-group-block">
         <div class="ds-group-header">
           <span class="ds-group-eyebrow">01</span>
-          <h2 class="ds-group-title">Foundations</h2>
-          <p class="ds-group-desc">Tokens, scale, and motion primitives. Every component is built from these.</p>
+          <h2 class="ds-group-title">Tokens</h2>
+          <p class="ds-group-desc">Colors, typography, spacing, and effects. The raw values every component is built from.</p>
         </div>
 
         <!-- ── Colors ── -->
@@ -178,11 +186,11 @@ const flagItems = [
             {colorGroups.map(group => (
               <div>
                 <h4 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-3">{group.label}</h4>
-                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
                   {group.tokens.map(token => (
                     <div class="rounded-xl overflow-hidden border border-navy-light/20 bg-navy/40">
-                      <div class={`h-16 ${token.tw}`} role="img" aria-label={`${token.label} color swatch`}></div>
-                      <div class="p-3 space-y-1">
+                      <div class={`h-12 ${token.tw}`} role="img" aria-label={`${token.label} color swatch`}></div>
+                      <div class="p-2 space-y-0.5">
                         <div class="font-mono text-xs text-buoy">{token.name}</div>
                         <div class="font-mono text-xs text-slate">tw: {token.label}</div>
                         <div class="text-xs text-slate-dark font-mono">◐ {token.dark}</div>
@@ -331,91 +339,24 @@ const flagItems = [
               </div>
             </div>
 
-            <!-- Animation utilities -->
-            <div class="space-y-4 md:col-span-2">
-              <h4 class="text-xs font-semibold text-slate-dark uppercase tracking-widest">Animation Utilities</h4>
-              <div class="grid sm:grid-cols-3 gap-4">
-
-                <!-- .animate-float — gentle bob (UI utility) -->
-                <div class="p-4 bg-navy/40 border border-navy-light/20 rounded-xl text-center">
-                  <div class="text-4xl mb-3 ds-demo-gentle-float">⛵</div>
-                  <div class="font-mono text-sm text-light">.animate-float</div>
-                  <div class="font-mono text-xs text-slate-dark mt-1">6s ease-in-out — ±10px bob</div>
-                  <div class="text-xs text-slate mt-2">UI element bob. <span class="text-warning">Note:</span> this page uses a scoped demo keyframe — WaveBackground redefines <code class="ds-code text-xs">float</code> globally for particle rise (see below).</div>
-                </div>
-
-                <!-- WaveBackground particle float — rises from bottom -->
-                <div class="p-4 bg-navy/40 border border-navy-light/20 rounded-xl text-center relative overflow-hidden" style="height: 160px;">
-                  <div class="ds-particle-demo ds-pA"></div>
-                  <div class="ds-particle-demo ds-pB"></div>
-                  <div class="ds-particle-demo ds-pC"></div>
-                  <div class="absolute bottom-3 inset-x-0 text-center">
-                    <div class="font-mono text-sm text-light">WaveBackground float</div>
-                    <div class="font-mono text-xs text-slate-dark mt-0.5">20–25s — particle rise to top</div>
-                    <div class="text-xs text-slate mt-1">Overrides global <code class="ds-code text-xs">float</code> keyframe. Used only inside <code class="ds-code text-xs">WaveBackground.astro</code>.</div>
-                  </div>
-                </div>
-
-                <!-- .animate-pulse-glow -->
-                <div class="p-4 bg-navy/40 border border-navy-light/20 rounded-xl text-center">
-                  <div class="text-4xl mb-3 animate-pulse-glow">⛵</div>
-                  <div class="font-mono text-sm text-light">.animate-pulse-glow</div>
-                  <div class="font-mono text-xs text-slate-dark mt-1">3s ease-in-out — opacity pulse</div>
-                </div>
-
-                <!-- .animate-wave -->
-                <div class="p-4 bg-navy/40 border border-navy-light/20 rounded-xl text-center sm:col-start-2">
-                  <div class="text-4xl mb-3 animate-wave">⛵</div>
-                  <div class="font-mono text-sm text-light">.animate-wave</div>
-                  <div class="font-mono text-xs text-slate-dark mt-1">8s ease-in-out — lateral sway</div>
-                </div>
-              </div>
-            </div>
           </div>
         </section>
+      </div><!-- /tokens group -->
 
-        <hr class="ds-divider" />
+      <!-- ════════════════════════════════════════════
+           MOTION
+           ════════════════════════════════════════════ -->
+      <div class="ds-group-block">
+        <div class="ds-group-header">
+          <span class="ds-group-eyebrow">02</span>
+          <h2 class="ds-group-title">Motion</h2>
+          <p class="ds-group-desc">The nautical physics model. Every transition, animation, and interaction follows these principles.</p>
+        </div>
 
-        <!-- ── Motion ── -->
         <section id="motion" class="ds-section" data-ds-section>
           <div class="ds-section-header">
             <h3 class="ds-section-title">Motion</h3>
             <p class="ds-section-desc">All animation in Plumb follows a nautical physics model. The ⛵ boat is the system mascot — its motion vocabulary defines how every transition feels.</p>
-          </div>
-
-          <!-- The Scene: all animations together -->
-          <div class="mt-8 mb-10">
-            <p class="text-sm text-slate mb-5 max-w-2xl">Every Plumb animation runs in this scene. Stars twinkle, the boat bobs and drifts, a splash loops in its wake. Scroll to Phase 6 to toss the boat.</p>
-
-            <!-- Live mini-scene -->
-            <div class="relative h-52 overflow-hidden rounded-2xl border border-navy-light/20 ds-scene-card">
-
-              <!-- Stars (twinkle) -->
-              <svg class="ds-demo-twinkle absolute" style="top:13%;left:7%;" viewBox="-8 -8 16 16" width="13" height="13" aria-hidden="true"><path d="M0,-6 L.7,-.7 L6,0 L.7,.7 L0,6 L-.7,.7 L-6,0 L-.7,-.7 Z" fill="rgba(255,255,255,0.62)"/></svg>
-              <svg class="ds-demo-twinkle absolute" style="top:8%;left:26%;animation-delay:-1.4s;animation-duration:3.8s;" viewBox="-8 -8 16 16" width="9" height="9" aria-hidden="true"><path d="M0,-6 L.7,-.7 L6,0 L.7,.7 L0,6 L-.7,.7 L-6,0 L-.7,-.7 Z" fill="rgba(255,255,255,0.62)"/></svg>
-              <svg class="ds-demo-twinkle absolute" style="top:19%;left:51%;animation-delay:-2.7s;animation-duration:4.6s;" viewBox="-8 -8 16 16" width="7" height="7" aria-hidden="true"><path d="M0,-6 L.7,-.7 L6,0 L.7,.7 L0,6 L-.7,.7 L-6,0 L-.7,-.7 Z" fill="rgba(255,255,255,0.62)"/></svg>
-              <svg class="ds-demo-twinkle absolute" style="top:10%;left:73%;animation-delay:-0.8s;animation-duration:5.1s;" viewBox="-8 -8 16 16" width="11" height="11" aria-hidden="true"><path d="M0,-6 L.7,-.7 L6,0 L.7,.7 L0,6 L-.7,.7 L-6,0 L-.7,-.7 Z" fill="rgba(255,255,255,0.62)"/></svg>
-              <svg class="ds-demo-twinkle absolute" style="top:6%;left:90%;animation-delay:-3.1s;animation-duration:3.4s;" viewBox="-8 -8 16 16" width="8" height="8" aria-hidden="true"><path d="M0,-6 L.7,-.7 L6,0 L.7,.7 L0,6 L-.7,.7 L-6,0 L-.7,-.7 Z" fill="rgba(255,255,255,0.62)"/></svg>
-
-              <!-- Water depth gradient -->
-              <div class="absolute bottom-0 inset-x-0 h-16 ds-scene-water"></div>
-
-              <!-- Wave surface line -->
-              <svg class="absolute inset-x-0" style="bottom:52px;width:100%;height:10px;" viewBox="0 0 800 10" preserveAspectRatio="none" aria-hidden="true">
-                <path d="M0,5 Q50,0 100,5 Q150,10 200,5 Q250,0 300,5 Q350,10 400,5 Q450,0 500,5 Q550,10 600,5 Q650,0 700,5 Q750,10 800,5" fill="none" stroke="rgba(100,180,255,0.18)" stroke-width="1.5"/>
-              </svg>
-
-              <!-- Boat: drift + bob -->
-              <span class="ds-demo-drift text-4xl absolute" style="bottom:44px;animation-duration:13s,3.2s;">⛵</span>
-            </div>
-
-            <!-- Legend -->
-            <div class="flex flex-wrap gap-x-5 gap-y-1 mt-3">
-              <span class="font-mono text-xs text-slate-dark">⛵ boatBob · boatDrift</span>
-              <span class="font-mono text-xs text-slate-dark">💧 splashDroplet · splashRing</span>
-              <span class="font-mono text-xs text-slate-dark">✦ twinkle</span>
-              <span class="font-mono text-xs text-lavender/70">+ tossBall (grab)</span>
-            </div>
           </div>
 
           <!-- Keyframe Reference: compact -->
@@ -481,6 +422,30 @@ const flagItems = [
                 <div>
                   <div class="font-mono text-xs text-lavender">tossBall</div>
                   <div class="font-mono text-xs text-slate-dark mt-0.5">JS rAF · GRAVITY 0.4 · vx×0.99 · wraps at edge → see Phase 6</div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3 p-3 bg-navy/40 border border-navy-light/20 rounded-xl">
+                <span class="text-2xl ds-demo-gentle-float shrink-0 w-10 text-center">⛵</span>
+                <div>
+                  <div class="font-mono text-xs text-buoy">.animate-float</div>
+                  <div class="font-mono text-xs text-slate-dark mt-0.5">6s ease-in-out · ±10px bob · used for decorative blobs</div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3 p-3 bg-navy/40 border border-navy-light/20 rounded-xl">
+                <span class="text-2xl animate-pulse-glow shrink-0 w-10 text-center">⛵</span>
+                <div>
+                  <div class="font-mono text-xs text-buoy">.animate-pulse-glow</div>
+                  <div class="font-mono text-xs text-slate-dark mt-0.5">3s ease-in-out · opacity 0.6 ↔ 1</div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3 p-3 bg-navy/40 border border-navy-light/20 rounded-xl">
+                <span class="text-2xl animate-wave shrink-0 w-10 text-center">⛵</span>
+                <div>
+                  <div class="font-mono text-xs text-buoy">.animate-wave</div>
+                  <div class="font-mono text-xs text-slate-dark mt-0.5">8s ease-in-out · lateral sway ±25px</div>
                 </div>
               </div>
 
@@ -677,23 +642,13 @@ const flagItems = [
                   </div>
                 </div>
 
-                <!-- Interactive physics arena -->
-                <div id="dsPhysicsArena" class="relative w-full h-44 overflow-hidden rounded-xl border border-lavender/15 ds-arena-bg">
-                  <!-- Stars -->
-                  <svg class="ds-demo-twinkle absolute" style="top:12%;left:8%;" viewBox="-8 -8 16 16" width="10" height="10" aria-hidden="true"><path d="M0,-6 L.7,-.7 L6,0 L.7,.7 L0,6 L-.7,.7 L-6,0 L-.7,-.7 Z" fill="rgba(255,255,255,0.5)"/></svg>
-                  <svg class="ds-demo-twinkle absolute" style="top:20%;left:38%;animation-delay:-1.8s;animation-duration:4.2s;" viewBox="-8 -8 16 16" width="7" height="7" aria-hidden="true"><path d="M0,-6 L.7,-.7 L6,0 L.7,.7 L0,6 L-.7,.7 L-6,0 L-.7,-.7 Z" fill="rgba(255,255,255,0.5)"/></svg>
-                  <svg class="ds-demo-twinkle absolute" style="top:8%;left:62%;animation-delay:-0.6s;animation-duration:3.6s;" viewBox="-8 -8 16 16" width="9" height="9" aria-hidden="true"><path d="M0,-6 L.7,-.7 L6,0 L.7,.7 L0,6 L-.7,.7 L-6,0 L-.7,-.7 Z" fill="rgba(255,255,255,0.5)"/></svg>
-                  <svg class="ds-demo-twinkle absolute" style="top:16%;left:85%;animation-delay:-3.0s;animation-duration:4.8s;" viewBox="-8 -8 16 16" width="6" height="6" aria-hidden="true"><path d="M0,-6 L.7,-.7 L6,0 L.7,.7 L0,6 L-.7,.7 L-6,0 L-.7,-.7 Z" fill="rgba(255,255,255,0.5)"/></svg>
-                  <!-- Water depth -->
-                  <div class="absolute bottom-0 inset-x-0 h-14 ds-arena-water"></div>
-                  <!-- Wave surface line (bottom: 48px) -->
-                  <svg class="absolute inset-x-0" style="bottom:46px;width:100%;height:10px;" viewBox="0 0 800 10" preserveAspectRatio="none" aria-hidden="true">
-                    <path d="M0,5 Q50,0 100,5 Q150,10 200,5 Q250,0 300,5 Q350,10 400,5 Q450,0 500,5 Q550,10 600,5 Q650,0 700,5 Q750,10 800,5" fill="none" stroke="rgba(100,180,255,0.2)" stroke-width="1.5"/>
-                  </svg>
+                <!-- Interactive physics arena — real WaveBackground -->
+                <div id="dsPhysicsArena" class="relative w-full h-52 overflow-hidden rounded-xl border border-lavender/15">
+                  <WaveBackground />
                   <!-- Boat: starts drifting, grab to toss -->
-                  <span id="dsPhysicsBoat" class="ds-physics-boat ds-physics-drifting text-2xl" style="bottom:50px;animation-duration:13s,3.2s;">⛵</span>
+                  <span id="dsPhysicsBoat" class="ds-physics-boat ds-physics-drifting ds-physics-bobbing text-2xl" style="bottom:68px;z-index:5;">⛵</span>
                   <!-- Hint -->
-                  <div class="absolute bottom-2 right-3 font-mono text-xs text-slate-dark/40 pointer-events-none select-none">grab &amp; toss</div>
+                  <div class="absolute bottom-2 right-3 font-mono text-xs text-white/30 pointer-events-none select-none" style="z-index:10">grab &amp; toss</div>
                 </div>
               </div>
 
@@ -718,14 +673,14 @@ const flagItems = [
           </div>
 
         </section>
-      </div><!-- /foundations group -->
+      </div><!-- /motion group -->
 
       <!-- ════════════════════════════════════════════
            COMPONENTS
            ════════════════════════════════════════════ -->
       <div class="ds-group-block">
         <div class="ds-group-header">
-          <span class="ds-group-eyebrow">02</span>
+          <span class="ds-group-eyebrow">03</span>
           <h2 class="ds-group-title">Components</h2>
           <p class="ds-group-desc">Live instances of every component, every variant. No mocks — what you see is what ships.</p>
         </div>
@@ -1027,7 +982,7 @@ const flagItems = [
            ════════════════════════════════════════════ -->
       <div class="ds-group-block">
         <div class="ds-group-header">
-          <span class="ds-group-eyebrow">03</span>
+          <span class="ds-group-eyebrow">04</span>
           <h2 class="ds-group-title">Patterns</h2>
           <p class="ds-group-desc">Recurring compositions built from the token primitives above.</p>
         </div>
@@ -1241,7 +1196,7 @@ const flagItems = [
            ════════════════════════════════════════════ -->
       <div class="ds-group-block">
         <div class="ds-group-header">
-          <span class="ds-group-eyebrow">04</span>
+          <span class="ds-group-eyebrow">05</span>
           <h2 class="ds-group-title">Conversion</h2>
           <p class="ds-group-desc">Lead capture components. Each wraps <code class="ds-code">LeadMagnetForm</code> in a different layout context.</p>
         </div>
@@ -1451,6 +1406,24 @@ const flagItems = [
     padding: 3rem 1.5rem 2.5rem;
     border-bottom: 1px solid color-mix(in srgb, var(--color-navy-light) 20%, transparent);
   }
+  .ds-hero-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 0.98;
+    column-gap: 0.32em;
+    /* Quicksand tops out at 700; this preserves the font while adding perceived weight. */
+    text-shadow:
+      0.2px 0 currentColor,
+      -0.2px 0 currentColor,
+      0 0.2px currentColor,
+      0 -0.2px currentColor;
+  }
+  .ds-hero-title-brand {
+    display: inline-flex;
+    align-items: center;
+    column-gap: 0.2rem;
+  }
   @media (min-width: 1024px) {
     .ds-hero { padding: 3rem 2.5rem 2.5rem; }
   }
@@ -1478,27 +1451,27 @@ const flagItems = [
 
   .ds-group-eyebrow {
     display: inline-block;
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     font-weight: 700;
     font-family: var(--font-mono);
     color: var(--color-buoy);
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.375rem;
   }
 
   .ds-group-title {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     font-weight: 800;
     color: var(--color-light);
     font-family: var(--font-display);
-    line-height: 1.2;
+    line-height: 1.1;
   }
 
   .ds-group-desc {
     color: var(--color-slate);
-    font-size: 0.9375rem;
-    margin-top: 0.375rem;
+    font-size: 1rem;
+    margin-top: 0.5rem;
     max-width: 42rem;
   }
 
@@ -1507,12 +1480,23 @@ const flagItems = [
     scroll-margin-top: 5rem;
   }
 
+  .ds-plumb-icon {
+    display: inline-block;
+    width: calc(1.95rem - 1px);
+    height: calc(1.95rem + 3px);
+    background-color: currentColor;
+    -webkit-mask: url('/images/noun-plumb-bob-7949060.svg') center / contain no-repeat;
+    mask: url('/images/noun-plumb-bob-7949060.svg') center / contain no-repeat;
+    flex-shrink: 0;
+    transform: translateY(1px);
+  }
+
   .ds-section-header {
     margin-bottom: 1.5rem;
   }
 
   .ds-section-title {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     font-weight: 700;
     color: var(--color-light);
     font-family: var(--font-display);
@@ -1711,14 +1695,23 @@ const flagItems = [
     touch-action: none;
     line-height: 1;
   }
+  .ds-physics-boat::before {
+    content: '';
+    position: absolute;
+    inset: -14px;
+    touch-action: none;
+  }
   .ds-physics-boat:active {
     cursor: grabbing;
   }
+  .ds-physics-bobbing {
+    animation: ds-bob 3.2s ease-in-out infinite;
+  }
   .ds-physics-drifting {
-    animation: ds-drift 13s linear infinite, ds-bob 3.2s ease-in-out infinite;
+    animation: ds-drift 13s linear infinite;
   }
   .ds-physics-launching {
-    animation: ds-bob 3.2s ease-in-out infinite;
+    /* launch motion is driven via WAAPI (left); bob stays on ds-physics-bobbing */
   }
 
   .ds-demo-gentle-float { display: inline-block; animation: ds-gentle-float 6s ease-in-out infinite; }
@@ -1779,278 +1772,91 @@ const flagItems = [
 </style>
 
 <script>
+  import { initBoatDragPhysics } from '../scripts/boatDragPhysics.js';
+
   // Sidebar: highlight the active section as user scrolls
   const sections = document.querySelectorAll('[data-ds-section]');
   const navLinks = document.querySelectorAll('.ds-nav-link[data-target]');
 
-  // Physics demo: faithful port of homepage initBoatDrag()
-  (function initDSPhysics() {
-    const boat = document.getElementById('dsPhysicsBoat');
-    const arena = document.getElementById('dsPhysicsArena');
-    if (!boat || !arena) return;
+  const dsArena = document.getElementById('dsPhysicsArena');
 
-    const GRAVITY = 0.4;
-    // Water surface is 48px from bottom of arena (wave line at bottom:46px)
-    const DS_WATER_BTM = 48;
-
-    let dragging = false;
-    let physicsActive = false;
-    let physicsRaf = null;
-    let vx = 0, vy = 0;
-    let posHistory = [];
-
-    function getWaveY() {
-      return arena.offsetHeight - DS_WATER_BTM;
-    }
-
-    function lockPosition() {
-      const rect = boat.getBoundingClientRect();
-      const parentRect = arena.getBoundingClientRect();
-      const x = rect.left - parentRect.left;
-      const y = rect.top - parentRect.top;
-      // Cancel all CSS animations cleanly — no inline animation:none hack
-      boat.getAnimations().forEach(a => a.cancel());
-      boat.classList.remove('ds-physics-drifting', 'ds-physics-launching');
-      boat.style.opacity = '1';
-      boat.style.left = x + 'px';
-      boat.style.top = y + 'px';
-      boat.style.bottom = 'auto';
-      boat.style.transform = '';
-      return { x, y };
-    }
-
-    boat.addEventListener('pointerdown', (e) => {
-      e.preventDefault();
-      document.body.style.userSelect = 'none';
-      if (physicsActive) { cancelAnimationFrame(physicsRaf); physicsActive = false; }
-      lockPosition();
-      dragging = true;
-      vx = 0; vy = 0;
-      posHistory = [];
-      boat.style.cursor = 'grabbing';
-      try { boat.setPointerCapture(e.pointerId); } catch(err) {}
+  function createDSSplash(clientX, clientY) {
+    if (!dsArena) return;
+    const bgRect = dsArena.getBoundingClientRect();
+    const container = document.createElement('div');
+    Object.assign(container.style, {
+      position: 'absolute',
+      left: (clientX - bgRect.left) + 'px',
+      top: (clientY - bgRect.top) + 'px',
+      zIndex: '6',
+      pointerEvents: 'none',
     });
-
-    boat.addEventListener('pointermove', (e) => {
-      if (!dragging) return;
-      const bg = arena.getBoundingClientRect();
-      const x = e.clientX - bg.left - boat.offsetWidth / 2;
-      const y = e.clientY - bg.top - boat.offsetHeight / 2;
-      boat.style.left = x + 'px';
-      boat.style.top = y + 'px';
-      posHistory.push({ x: e.clientX, y: e.clientY, t: Date.now() });
-      if (posHistory.length > 6) posHistory.shift();
-      if (posHistory.length >= 2) {
-        const a = posHistory[posHistory.length - 2];
-        const b = posHistory[posHistory.length - 1];
-        boat.style.transform = `rotate(${Math.max(-25, Math.min(25, (b.x - a.x) * 2))}deg)`;
-      }
-    });
-
-    function handleRelease() {
-      if (!dragging) return;
-      dragging = false;
-      document.body.style.userSelect = '';
-      boat.style.cursor = 'grab';
-      const velScale = window.innerWidth < 768 ? 1.25 : 0.5;
-      if (posHistory.length >= 2) {
-        const newest = posHistory[posHistory.length - 1];
-        const oldest = posHistory[0];
-        const dt = Math.max(16, newest.t - oldest.t) / 1000;
-        vx = (newest.x - oldest.x) / dt * 0.016 * velScale;
-        vy = (newest.y - oldest.y) / dt * 0.016 * velScale;
-      } else {
-        vx = 0; vy = 0;
-      }
-      physicsActive = true;
-      runFall();
-    }
-
-    boat.addEventListener('pointerup', handleRelease);
-    boat.addEventListener('pointercancel', handleRelease);
-    window.addEventListener('pointerup', () => { if (dragging) handleRelease(); });
-    window.addEventListener('pointercancel', () => { if (dragging) handleRelease(); });
-    window.addEventListener('pointermove', (e) => { if (dragging && e.buttons === 0) handleRelease(); });
-    window.addEventListener('blur', () => { if (dragging) handleRelease(); });
-
-    function createSplash(clientX, clientY) {
-      const bgRect = arena.getBoundingClientRect();
-      const container = document.createElement('div');
-      Object.assign(container.style, {
+    const isLight = document.documentElement.classList.contains('light');
+    for (let i = 0; i < 10; i++) {
+      const drop = document.createElement('div');
+      const angle = (-150 + (120 * i / 9)) * (Math.PI / 180);
+      const speed = 18 + Math.random() * 28;
+      const dx = Math.cos(angle) * speed;
+      const dy = Math.sin(angle) * speed;
+      const size = 3 + Math.random() * 4;
+      const alpha = (0.65 + Math.random() * 0.3).toFixed(2);
+      const dropColor = isLight
+        ? `rgba(255,255,255,${alpha})`
+        : `rgba(${60 + (Math.random() * 60 | 0)},${140 + (Math.random() * 60 | 0)},255,${(0.5 + Math.random() * 0.3).toFixed(2)})`;
+      Object.assign(drop.style, {
         position: 'absolute',
-        left: (clientX - bgRect.left) + 'px',
-        top: (clientY - bgRect.top) + 'px',
-        zIndex: '2',
-        pointerEvents: 'none',
-      });
-      const isLight = document.documentElement.classList.contains('light');
-      for (let i = 0; i < 10; i++) {
-        const drop = document.createElement('div');
-        const angle = (-150 + (120 * i / 9)) * (Math.PI / 180);
-        const speed = 18 + Math.random() * 28;
-        const dx = Math.cos(angle) * speed;
-        const dy = Math.sin(angle) * speed;
-        const size = 3 + Math.random() * 4;
-        const alpha = (0.65 + Math.random() * 0.3).toFixed(2);
-        const dropColor = isLight
-          ? `rgba(255,255,255,${alpha})`
-          : `rgba(${60 + (Math.random() * 60 | 0)},${140 + (Math.random() * 60 | 0)},255,${(0.5 + Math.random() * 0.3).toFixed(2)})`;
-        Object.assign(drop.style, {
-          position: 'absolute',
-          width: size + 'px',
-          height: size + 'px',
-          borderRadius: '50%',
-          background: dropColor,
-          left: '-2px',
-          top: '-2px',
-        });
-        drop.style.setProperty('--dx', dx + 'px');
-        drop.style.setProperty('--dy', dy + 'px');
-        drop.style.animation = `ds-splash-drop ${(0.4 + Math.random() * 0.3).toFixed(2)}s ease-out ${(Math.random() * 0.08).toFixed(3)}s forwards`;
-        container.appendChild(drop);
-      }
-      const ring = document.createElement('div');
-      Object.assign(ring.style, {
-        position: 'absolute',
-        width: '20px',
-        height: '8px',
-        border: isLight ? '2px solid rgba(255,255,255,0.75)' : '2px solid rgba(100,180,255,0.5)',
+        width: size + 'px',
+        height: size + 'px',
         borderRadius: '50%',
-        left: '0',
-        top: '0',
-        animation: 'ds-ring 0.7s ease-out forwards',
+        background: dropColor,
+        left: '-2px',
+        top: '-2px',
       });
-      container.appendChild(ring);
-      arena.appendChild(container);
-      setTimeout(() => container.remove(), 1200);
+      drop.style.setProperty('--dx', dx + 'px');
+      drop.style.setProperty('--dy', dy + 'px');
+      drop.style.animation = `ds-splash-drop ${(0.4 + Math.random() * 0.3).toFixed(2)}s ease-out ${(Math.random() * 0.08).toFixed(3)}s forwards`;
+      container.appendChild(drop);
     }
+    const ring = document.createElement('div');
+    Object.assign(ring.style, {
+      position: 'absolute',
+      width: '20px',
+      height: '8px',
+      border: isLight ? '2px solid rgba(255,255,255,0.75)' : '2px solid rgba(100,180,255,0.5)',
+      borderRadius: '50%',
+      left: '0',
+      top: '0',
+      animation: 'ds-ring 0.7s ease-out forwards',
+    });
+    container.appendChild(ring);
+    dsArena.appendChild(container);
+    setTimeout(() => container.remove(), 1200);
+  }
 
-    function bobberPop(startX, startY) {
-      const H = arena.offsetHeight;
-      const surfaceY = H - DS_WATER_BTM - boat.offsetHeight;
-      const popAnim = boat.animate([
-        { top: startY + 'px' },
-        { top: surfaceY + 'px' }
-      ], {
-        duration: 650,
-        easing: 'cubic-bezier(0.175, 0.885, 0.32, 1.55)',
-        fill: 'forwards'
-      });
-      // Splash when boat first breaks surface (~45% through)
-      setTimeout(() => {
-        const bgRect = arena.getBoundingClientRect();
-        createSplash(
-          bgRect.left + startX + boat.offsetWidth / 2,
-          bgRect.top + H - DS_WATER_BTM - Math.round(boat.offsetHeight * 0.25) + 2
-        );
-      }, 295);
-      popAnim.finished.then(() => {
-        boat.style.top = surfaceY + 'px';
-        popAnim.cancel();
-        setTimeout(() => resumeDrift(startX), 100);
-      });
-    }
+  const dsPhysics = initBoatDragPhysics({
+    boatSelector: '#dsPhysicsBoat',
+    containerSelector: '#dsPhysicsArena',
+    waveFallbackRatio: 0.625,
+    driftClass: 'ds-physics-drifting',
+    launchClass: 'ds-physics-launching',
+    steadyClasses: ['ds-physics-bobbing'],
+    driftDurationMs: 13000,
+    driftAnimationName: 'ds-drift',
+    getBoatBottomPx: ({ bgRect, waveY }) => bgRect.height - waveY,
+    createSplash: createDSSplash,
+  });
 
-    function runFall() {
-      let x = parseFloat(boat.style.left);
-      let y = parseFloat(boat.style.top);
-      const H = arena.offsetHeight;
-      const W = arena.offsetWidth;
-      // Wrap x into bounds before choosing path
-      if (x > W) x = ((x % W) + W) % W;
-      else if (x < -boat.offsetWidth) x = W - (Math.abs(x) % W);
-      // Released below the wave → pop up like a bobber
-      if (y + boat.offsetHeight > getWaveY() + 8) {
-        physicsActive = false;
-        bobberPop(x, y);
-        return;
-      }
-
-      function step() {
-        if (!physicsActive) return;
-        vy += GRAVITY;
-        vx *= 0.99;
-        x += vx;
-        y += vy;
-        // Tilt based on horizontal movement
-        boat.style.transform = `rotate(${Math.max(-20, Math.min(20, vx * 1.5))}deg)`;
-        // Loop off bottom → reappear at top
-        if (y > H + boat.offsetHeight) {
-          y = -boat.offsetHeight;
-          vy = Math.min(vy, 8);
-        }
-        // Horizontal wrap
-        if (x > W) x = -boat.offsetWidth;
-        else if (x < -boat.offsetWidth) x = W;
-        // Hit the wave surface (only falling downward)
-        const landingY = H - DS_WATER_BTM - boat.offsetHeight;
-        if (y + boat.offsetHeight >= H - DS_WATER_BTM && vy > 0) {
-          physicsActive = false;
-          y = landingY;
-          boat.style.left = x + 'px';
-          boat.style.top = y + 'px';
-          boat.style.transform = '';
-          // Splash at impact
-          const bgRect = arena.getBoundingClientRect();
-          createSplash(
-            bgRect.left + x + boat.offsetWidth / 2,
-            bgRect.top + H - DS_WATER_BTM - Math.round(boat.offsetHeight * 0.25) + 2
-          );
-          setTimeout(() => resumeDrift(x), 150);
-          return;
-        }
-        boat.style.left = x + 'px';
-        boat.style.top = y + 'px';
-        physicsRaf = requestAnimationFrame(step);
-      }
-
-      physicsRaf = requestAnimationFrame(step);
-    }
-
-    // On first load: seek drift to center so boat is visible and grabbable immediately.
-    // ds-drift starts at left:-10% (off-screen); double-rAF ensures animations have committed.
+  // On first load: seek drift to center so boat is visible and grabbable immediately.
+  // ds-drift starts at left:-10% (off-screen); double-rAF ensures animations have committed.
+  if (dsPhysics?.boat && dsPhysics?.container) {
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        const d = boat.getAnimations().find(a => a.animationName === 'ds-drift');
-        if (d) d.currentTime = 6500; // 50% of 13000ms = center of arena (~50% left)
+        const d = dsPhysics.boat.getAnimations().find(a => a.animationName === 'ds-drift');
+        if (d) d.currentTime = 6500;
+        dsPhysics.boat.style.bottom = (dsPhysics.container.offsetHeight - dsPhysics.getWaveY()) + 'px';
       });
     });
-
-    function resumeDrift(currentX) {
-      const W = arena.offsetWidth;
-      currentX = ((currentX % W) + W) % W;
-      const landedLeftPct = (currentX / W) * 100;
-      // Place boat at landing spot using bottom (matching drift CSS)
-      boat.style.left = landedLeftPct + '%';
-      boat.style.top = '';
-      boat.style.transform = '';
-      boat.style.bottom = (DS_WATER_BTM + 2) + 'px';
-      boat.style.opacity = '1';
-      // Bob only (no drift) while easing in
-      boat.classList.add('ds-physics-launching');
-      const launchDistance = 13;
-      const endLeftPct = landedLeftPct + launchDistance;
-      const launchAnim = boat.animate([
-        { left: landedLeftPct + '%' },
-        { left: endLeftPct + '%' }
-      ], {
-        duration: 3000,
-        easing: 'cubic-bezier(0.3, 0, 0.8, 0.8)',
-        fill: 'forwards'
-      });
-      launchAnim.finished.then(() => {
-        launchAnim.cancel();
-        boat.style.left = '';
-        boat.classList.remove('ds-physics-launching');
-        boat.classList.add('ds-physics-drifting');
-        // Seek drift animation to correct position — no jump to left:-10%
-        const driftProgress = Math.max(0, Math.min(1, (endLeftPct + 5) / 110));
-        const driftTimeMs = driftProgress * 13000; // matches animation-duration:13s
-        const driftAnim = boat.getAnimations().find(a => a.animationName === 'ds-drift');
-        if (driftAnim) driftAnim.currentTime = driftTimeMs;
-      });
-    }
-  })();
+  }
 
   if (sections.length && navLinks.length) {
     const observer = new IntersectionObserver((entries) => {
