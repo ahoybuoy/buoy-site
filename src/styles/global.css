@@ -90,6 +90,15 @@ code, pre {
   outline-offset: 2px;
 }
 
+/* Button cursors */
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

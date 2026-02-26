@@ -25,7 +25,7 @@ const colorGroups = [
     ]
   },
   {
-    label: 'Brand — Buoy Orange',
+    label: 'Brand - Buoy Orange',
     tokens: [
       { name: '--color-buoy',       tw: 'bg-buoy',       label: 'buoy',       dark: '#F97316', light: '#F97316' },
       { name: '--color-buoy-light', tw: 'bg-buoy-light', label: 'buoy-light', dark: '#FB923C', light: '#FB923C' },
@@ -33,7 +33,7 @@ const colorGroups = [
     ]
   },
   {
-    label: 'Accent — Lavender',
+    label: 'Accent - Lavender',
     tokens: [
       { name: '--color-lavender',       tw: 'bg-lavender',       label: 'lavender',       dark: '#8B5CF6', light: '#6366F1' },
       { name: '--color-lavender-light', tw: 'bg-lavender-light', label: 'lavender-light', dark: '#A78BFA', light: '#818CF8' },
@@ -81,7 +81,7 @@ const flagItems = [
 ]
 ---
 
-<Layout title="Design System — Plumb | Buoy">
+<Layout title="Design System - Plumb | Buoy">
   <Nav layout="full" alignment="left-links" />
 
   <!-- Two-column DS layout -->
@@ -163,7 +163,7 @@ const flagItems = [
           <span>Design System</span>
         </h1>
         <p class="text-slate text-lg max-w-2xl">
-          Every token, component, and pattern used in buoy-site — documented, live, and continuously checked for drift.
+          Every token, component, and pattern used in buoy-site - documented, live, and continuously checked for drift.
         </p>
       </div>
 
@@ -216,19 +216,19 @@ const flagItems = [
 
           <div class="grid md:grid-cols-3 gap-6 mb-12 mt-8">
             <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
-              <div class="text-xs font-mono text-slate-dark mb-2 uppercase tracking-widest">Display — --font-display</div>
+              <div class="text-xs font-mono text-slate-dark mb-2 uppercase tracking-widest">Display - --font-display</div>
               <div class="text-4xl font-bold text-light font-[Quicksand]">Quicksand</div>
               <div class="text-sm text-slate mt-2 font-mono">Quicksand, system-ui</div>
               <div class="mt-3 text-slate text-sm">Headings, hero text, brand moments</div>
             </div>
             <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
-              <div class="text-xs font-mono text-slate-dark mb-2 uppercase tracking-widest">Body — --font-body</div>
+              <div class="text-xs font-mono text-slate-dark mb-2 uppercase tracking-widest">Body - --font-body</div>
               <div class="text-4xl font-bold text-light">Inter</div>
               <div class="text-sm text-slate mt-2 font-mono">Inter, system-ui</div>
               <div class="mt-3 text-slate text-sm">Paragraphs, UI labels, descriptions</div>
             </div>
             <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
-              <div class="text-xs font-mono text-slate-dark mb-2 uppercase tracking-widest">Mono — --font-mono</div>
+              <div class="text-xs font-mono text-slate-dark mb-2 uppercase tracking-widest">Mono - --font-mono</div>
               <div class="text-4xl font-bold text-light font-mono">JetBrains</div>
               <div class="text-sm text-slate mt-2 font-mono">JetBrains Mono, Fira Code</div>
               <div class="mt-3 text-slate text-sm">Code, terminal output, token names</div>
@@ -288,14 +288,14 @@ const flagItems = [
               <div class="shrink-0 h-8 bg-buoy/20 border border-buoy/30 rounded" style="width: 6rem"></div>
               <div>
                 <div class="font-mono text-sm text-buoy">--spacing-section</div>
-                <div class="font-mono text-xs text-slate-dark mt-0.5">6rem — Section padding desktop</div>
+                <div class="font-mono text-xs text-slate-dark mt-0.5">6rem - Section padding desktop</div>
               </div>
             </div>
             <div class="flex items-center gap-6 p-4 bg-navy/40 border border-navy-light/20 rounded-xl">
               <div class="shrink-0 h-8 bg-buoy/20 border border-buoy/30 rounded" style="width: 4rem"></div>
               <div>
                 <div class="font-mono text-sm text-buoy">--spacing-section-sm</div>
-                <div class="font-mono text-xs text-slate-dark mt-0.5">4rem — Section padding mobile</div>
+                <div class="font-mono text-xs text-slate-dark mt-0.5">4rem - Section padding mobile</div>
               </div>
             </div>
           </div>
@@ -357,7 +357,7 @@ const flagItems = [
         <section id="motion" class="ds-section" data-ds-section>
           <div class="ds-section-header">
             <h3 class="ds-section-title">Motion</h3>
-            <p class="ds-section-desc">All animation in Plumb follows a nautical physics model. The ⛵ boat is the system mascot — its motion vocabulary defines how every transition feels.</p>
+            <p class="ds-section-desc">All animation in Plumb follows a nautical physics model. The ⛵ boat is the system mascot - its motion vocabulary defines how every transition feels.</p>
           </div>
 
           <!-- Keyframe Reference: compact -->
@@ -374,7 +374,7 @@ const flagItems = [
               </div>
 
               <div class="flex items-center gap-3 p-3 bg-navy/40 border border-navy-light/20 rounded-xl overflow-hidden relative h-14">
-                <span class="ds-demo-drift text-2xl absolute" style="bottom:12px;animation-duration:6s,2s;">⛵</span>
+                <span class="ds-demo-drift text-2xl absolute" style="bottom:12px;">⛵</span>
                 <div style="margin-left:46px;">
                   <div class="font-mono text-xs text-buoy">boatDrift</div>
                   <div class="font-mono text-xs text-slate-dark mt-0.5">25s linear · left -5% → 105%</div>
@@ -418,14 +418,6 @@ const flagItems = [
                 </div>
               </div>
 
-              <div class="flex items-center gap-3 p-3 bg-navy/40 border border-lavender/20 rounded-xl">
-                <div class="w-10 h-10 shrink-0 flex items-center justify-center text-2xl">⛵</div>
-                <div>
-                  <div class="font-mono text-xs text-lavender">tossBall</div>
-                  <div class="font-mono text-xs text-slate-dark mt-0.5">JS rAF · GRAVITY 0.4 · vx×0.99 · wraps at edge → see Phase 6</div>
-                </div>
-              </div>
-
               <div class="flex items-center gap-3 p-3 bg-navy/40 border border-navy-light/20 rounded-xl">
                 <span class="text-2xl ds-demo-gentle-float shrink-0 w-10 text-center">⛵</span>
                 <div>
@@ -434,29 +426,13 @@ const flagItems = [
                 </div>
               </div>
 
-              <div class="flex items-center gap-3 p-3 bg-navy/40 border border-navy-light/20 rounded-xl">
-                <span class="text-2xl animate-pulse-glow shrink-0 w-10 text-center">⛵</span>
-                <div>
-                  <div class="font-mono text-xs text-buoy">.animate-pulse-glow</div>
-                  <div class="font-mono text-xs text-slate-dark mt-0.5">3s ease-in-out · opacity 0.6 ↔ 1</div>
-                </div>
-              </div>
-
-              <div class="flex items-center gap-3 p-3 bg-navy/40 border border-navy-light/20 rounded-xl">
-                <span class="text-2xl animate-wave shrink-0 w-10 text-center">⛵</span>
-                <div>
-                  <div class="font-mono text-xs text-buoy">.animate-wave</div>
-                  <div class="font-mono text-xs text-slate-dark mt-0.5">8s ease-in-out · lateral sway ±25px</div>
-                </div>
-              </div>
-
             </div>
           </div>
 
           <!-- Motion Choreography -->
           <div class="mb-16">
-            <h4 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">Motion Choreography — The Boat Escape</h4>
-            <p class="text-slate text-sm mb-6 max-w-2xl">Five automated phases play out when the page loads. Phase 6 is user-triggered — an interactive physics system active at any time. Each uses a different easing curve or physical model.</p>
+            <h4 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">Motion Choreography - The Boat Escape</h4>
+            <p class="text-slate text-sm mb-6 max-w-2xl">Five automated phases play out when the page loads. Phase 6 is user-triggered - an interactive physics system active at any time. Each uses a different easing curve or physical model.</p>
 
             <div class="space-y-4">
 
@@ -467,9 +443,9 @@ const flagItems = [
                   <span class="text-3xl ds-demo-wiggle">⛵</span>
                 </div>
                 <div class="flex-1">
-                  <div class="font-mono text-sm text-light mb-1">Wiggle <span class="text-slate-dark">— anticipation</span></div>
+                  <div class="font-mono text-sm text-light mb-1">Wiggle <span class="text-slate-dark">- anticipation</span></div>
                   <div class="font-mono text-xs text-slate-dark mb-2">600ms · ease-in-out · 8 keyframes</div>
-                  <div class="text-xs text-slate">Builds tension before the break. Rotates ±12° in a stuttering rattle — the boat is trying to escape. Disney's "anticipation" principle.</div>
+                  <div class="text-xs text-slate">Builds tension before the break. Rotates ±12° in a stuttering rattle - the boat is trying to escape. Disney's "anticipation" principle.</div>
                 </div>
                 <div class="shrink-0">
                   <svg viewBox="-5 -5 110 110" class="w-20 h-20" aria-label="ease-in-out bezier curve">
@@ -494,9 +470,9 @@ const flagItems = [
                   <span class="text-3xl ds-demo-lift">⛵</span>
                 </div>
                 <div class="flex-1">
-                  <div class="font-mono text-sm text-light mb-1">Anticipation Lift <span class="text-slate-dark">— secondary action</span></div>
+                  <div class="font-mono text-sm text-light mb-1">Anticipation Lift <span class="text-slate-dark">- secondary action</span></div>
                   <div class="font-mono text-xs text-slate-dark mb-2">120ms · ease-out · translateY(-6px)</div>
-                  <div class="text-xs text-slate">A small upward feint before the drop. Creates the illusion of stored energy — like a diver crouching before the leap.</div>
+                  <div class="text-xs text-slate">A small upward feint before the drop. Creates the illusion of stored energy - like a diver crouching before the leap.</div>
                 </div>
                 <div class="shrink-0">
                   <svg viewBox="-5 -5 110 110" class="w-20 h-20" aria-label="ease-out bezier curve">
@@ -526,12 +502,12 @@ const flagItems = [
                   </div>
                 </div>
                 <div class="flex-1">
-                  <div class="font-mono text-sm text-light mb-1">Gravity Drop <span class="text-slate-dark">— overshoot</span></div>
+                  <div class="font-mono text-sm text-light mb-1">Gravity Drop <span class="text-slate-dark">- overshoot</span></div>
                   <div class="font-mono text-xs text-slate-dark mb-2">500ms · cubic-bezier(0.4, 0, 0.68, 1.4)</div>
-                  <div class="text-xs text-slate">The y2 value of 1.4 overshoots the target — the boat dips slightly below the waterline before springing back. Paired with the splash at impact.</div>
+                  <div class="text-xs text-slate">The y2 value of 1.4 overshoots the target - the boat dips slightly below the waterline before springing back. Paired with the splash at impact.</div>
                 </div>
                 <div class="shrink-0">
-                  <svg viewBox="-5 -50 110 165" class="w-20 h-28" aria-label="cubic-bezier(0.4, 0, 0.68, 1.4) — drop with overshoot">
+                  <svg viewBox="-5 -50 110 165" class="w-20 h-28" aria-label="cubic-bezier(0.4, 0, 0.68, 1.4) - drop with overshoot">
                     <line x1="0" y1="100" x2="100" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
                     <line x1="0" y1="0" x2="0" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
                     <line x1="0" y1="0" x2="0" y2="-40" stroke="currentColor" class="text-navy-light/20" stroke-width="0.5" stroke-dasharray="2 2"/>
@@ -557,13 +533,13 @@ const flagItems = [
                   </div>
                 </div>
                 <div class="flex-1">
-                  <div class="font-mono text-sm text-light mb-1">Launch Ease-In <span class="text-slate-dark">— follow through</span></div>
+                  <div class="font-mono text-sm text-light mb-1">Launch Ease-In <span class="text-slate-dark">- follow through</span></div>
                   <div class="font-mono text-xs text-slate-dark mb-2">3000ms · cubic-bezier(0.3, 0, 0.8, 0.8)</div>
                   <div class="text-xs text-slate">After landing, the boat accelerates from rest to cruise speed over 3 seconds. The curve starts nearly flat (stationary) then steepens to match the 25s drift animation speed, so the handoff is seamless.</div>
                   <div class="font-mono text-xs text-buoy">cubic-bezier(0.3, 0, 0.8, 0.8)</div>
                 </div>
                 <div class="shrink-0">
-                  <svg viewBox="-5 -5 110 110" class="w-20 h-20" aria-label="cubic-bezier(0.3, 0, 0.8, 0.8) — ease in to cruise speed">
+                  <svg viewBox="-5 -5 110 110" class="w-20 h-20" aria-label="cubic-bezier(0.3, 0, 0.8, 0.8) - ease in to cruise speed">
                     <line x1="0" y1="100" x2="100" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
                     <line x1="0" y1="0" x2="0" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
                     <line x1="0" y1="100" x2="30" y2="100" stroke="currentColor" class="text-slate-dark/50" stroke-width="0.75" stroke-dasharray="3 2"/>
@@ -590,13 +566,13 @@ const flagItems = [
                   </div>
                 </div>
                 <div class="flex-1">
-                  <div class="font-mono text-sm text-light mb-1">Bobber Pop <span class="text-slate-dark">— spring overshoot</span></div>
+                  <div class="font-mono text-sm text-light mb-1">Bobber Pop <span class="text-slate-dark">- spring overshoot</span></div>
                   <div class="font-mono text-xs text-slate-dark mb-2">650ms · cubic-bezier(0.175, 0.885, 0.32, 1.55)</div>
-                  <div class="text-xs text-slate">When the boat is released underwater, it shoots straight up and overshoots the surface before settling. The y2=1.55 creates a strong elastic spring — the buoy physics.</div>
+                  <div class="text-xs text-slate">When the boat is released underwater, it shoots straight up and overshoots the surface before settling. The y2=1.55 creates a strong elastic spring - the buoy physics.</div>
                   <div class="font-mono text-xs text-buoy">cubic-bezier(0.175, 0.885, 0.32, 1.55)</div>
                 </div>
                 <div class="shrink-0">
-                  <svg viewBox="-5 -65 110 175" class="w-20 h-32" aria-label="cubic-bezier(0.175, 0.885, 0.32, 1.55) — spring overshoot">
+                  <svg viewBox="-5 -65 110 175" class="w-20 h-32" aria-label="cubic-bezier(0.175, 0.885, 0.32, 1.55) - spring overshoot">
                     <line x1="0" y1="100" x2="100" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
                     <line x1="0" y1="0" x2="0" y2="100" stroke="currentColor" class="text-navy-light/30" stroke-width="0.5"/>
                     <line x1="0" y1="0" x2="0" y2="-55" stroke="currentColor" class="text-navy-light/20" stroke-width="0.5" stroke-dasharray="2 2"/>
@@ -620,9 +596,9 @@ const flagItems = [
                     <div class="w-8 h-8 rounded-full bg-lavender/20 border border-lavender/40 flex items-center justify-center font-mono text-xs text-lavender font-bold mt-0.5">6</div>
                   </div>
                   <div class="flex-1">
-                    <div class="font-mono text-sm text-light mb-1">Toss <span class="text-slate-dark">— interactive physics</span></div>
+                    <div class="font-mono text-sm text-light mb-1">Toss <span class="text-slate-dark">- interactive physics</span></div>
                     <div class="font-mono text-xs text-slate-dark mb-2">rAF · GRAVITY 0.4 · vx×0.99 air resistance · velScale 0.5/1.25</div>
-                    <div class="text-xs text-slate">User-triggered at any time. Grab and throw the boat. posHistory samples the last 6 pointer positions to calculate release velocity. Tilt: <code class="font-mono text-lavender">rotate(vx × 1.5deg)</code> capped ±20°. Boat wraps horizontally — exits one edge, re-enters from the other. Release underwater → bobberPop spring (Phase 5). Landing → splash + resumeDrift ease-in (Phase 4) then drift seek.</div>
+                    <div class="text-xs text-slate">User-triggered at any time. Grab and throw the boat. posHistory samples the last 6 pointer positions to calculate release velocity. Tilt: <code class="font-mono text-lavender">rotate(vx × 1.5deg)</code> capped ±20°. Boat wraps horizontally - exits one edge, re-enters from the other. Release underwater → bobberPop spring (Phase 5). Landing → splash + resumeDrift ease-in (Phase 4) then drift seek.</div>
                     <div class="flex flex-wrap gap-2 mt-3 font-mono text-xs">
                       <span class="px-2 py-1 bg-navy-dark/60 rounded text-slate">GRAVITY = 0.4</span>
                       <span class="px-2 py-1 bg-navy-dark/60 rounded text-slate">vx *= 0.99</span>
@@ -647,7 +623,7 @@ const flagItems = [
                   </div>
                 </div>
 
-                <!-- Interactive physics arena — real WaveBackground -->
+                <!-- Interactive physics arena - real WaveBackground -->
                 <div id="dsPhysicsArena" class="relative w-full h-52 overflow-hidden rounded-xl border border-lavender/15">
                   <WaveBackground />
                   <!-- Boat: starts drifting, grab to toss -->
@@ -676,12 +652,12 @@ const flagItems = [
               <div class="flex items-center gap-4 p-4 bg-navy/40 border border-navy-light/20 rounded-xl font-mono text-sm">
                 <div class="w-40 text-buoy shrink-0">--ease-out-expo</div>
                 <div class="text-slate">cubic-bezier(0.16, 1, 0.3, 1)</div>
-                <div class="text-slate-dark text-xs">Fast out — UI transitions, reveals</div>
+                <div class="text-slate-dark text-xs">Fast out - UI transitions, reveals</div>
               </div>
               <div class="flex items-center gap-4 p-4 bg-navy/40 border border-navy-light/20 rounded-xl font-mono text-sm">
                 <div class="w-40 text-buoy shrink-0">--ease-in-out-expo</div>
                 <div class="text-slate">cubic-bezier(0.87, 0, 0.13, 1)</div>
-                <div class="text-slate-dark text-xs">Symmetric expo — modals, drawers</div>
+                <div class="text-slate-dark text-xs">Symmetric expo - modals, drawers</div>
               </div>
             </div>
           </div>
@@ -696,7 +672,7 @@ const flagItems = [
         <div class="ds-group-header">
           <span class="ds-group-eyebrow">03</span>
           <h2 class="ds-group-title">Components</h2>
-          <p class="ds-group-desc">Live instances of every component, every variant. No mocks — what you see is what ships.</p>
+          <p class="ds-group-desc">Live instances of every component, every variant. No mocks - what you see is what ships.</p>
         </div>
 
         <!-- Button -->
@@ -819,7 +795,7 @@ const flagItems = [
             <div class="flex gap-4 py-0.5"><span class="w-16 text-slate-dark">muted</span><span class="w-32 text-slate-dark">text-slate-dark</span><span class="text-slate-dark">--color-slate-dark</span></div>
           </div>
           <div class="mt-4 p-4 bg-navy-dark/60 border border-navy-light/10 rounded-lg font-mono text-xs">
-            <div class="text-slate mb-1">Props: <span class="text-buoy">command*</span> · <span class="text-buoy">lines</span> — each with <span class="text-buoy">text</span>, <span class="text-buoy">type</span>, <span class="text-buoy">delay</span> (ms)</div>
+            <div class="text-slate mb-1">Props: <span class="text-buoy">command*</span> · <span class="text-buoy">lines</span> - each with <span class="text-buoy">text</span>, <span class="text-buoy">type</span>, <span class="text-buoy">delay</span> (ms)</div>
             <div class="text-slate-dark">Animated typing · bg-navy-dark border-navy-light/30 rounded-xl · Title bar with traffic lights</div>
           </div>
         </div>
@@ -835,7 +811,7 @@ const flagItems = [
             </div>
             <span class="ds-badge ds-badge-stable">Stable</span>
           </div>
-          <p class="text-sm text-slate mb-4">Static terminal for docs. Unlike <code class="ds-code">Terminal.astro</code>, renders all lines immediately — no animation delays. Has a copy button in the title bar.</p>
+          <p class="text-sm text-slate mb-4">Static terminal for docs. Unlike <code class="ds-code">Terminal.astro</code>, renders all lines immediately - no animation delays. Has a copy button in the title bar.</p>
           <div class="max-w-2xl">
             <DocTerminal
               command="npx ahoybuoy show tokens --format table"
@@ -901,7 +877,7 @@ const flagItems = [
           <p class="text-sm text-slate mb-4">CLI flag reference list for docs pages. Renders a scannable list of flag names, descriptions, required badges, and defaults.</p>
           <Flags items={flagItems} />
           <div class="ds-spec">
-            <div class="text-slate mb-1">Props: <span class="text-buoy">items*</span> — Array of <span class="text-buoy">{'{ name, description, required?, default? }'}</span></div>
+            <div class="text-slate mb-1">Props: <span class="text-buoy">items*</span> - Array of <span class="text-buoy">{'{ name, description, required?, default? }'}</span></div>
             <div class="text-slate-dark">Flag: text-lavender bg-navy-light/20 · required: bg-critical/20 text-critical · default: text-slate-dark</div>
           </div>
         </div>
@@ -917,7 +893,7 @@ const flagItems = [
             </div>
             <span class="ds-badge ds-badge-stable">Stable</span>
           </div>
-          <p class="text-sm text-slate mb-4">Animated hero background. Always <code class="ds-code">position: absolute; inset: 0</code> — wrap in a <code class="ds-code">relative overflow-hidden</code> container with a defined height.</p>
+          <p class="text-sm text-slate mb-4">Animated hero background. Always <code class="ds-code">position: absolute; inset: 0</code> - wrap in a <code class="ds-code">relative overflow-hidden</code> container with a defined height.</p>
           <div class="relative rounded-xl overflow-hidden h-48">
             <WaveBackground />
             <div class="relative z-10 flex items-center justify-center h-full gap-3">
@@ -942,7 +918,7 @@ const flagItems = [
             </div>
             <span class="ds-badge ds-badge-layout">Layout</span>
           </div>
-          <p class="text-sm text-slate mb-4">Fixed full-width navigation. Renders as <code class="ds-code">position: fixed; top: 0; z-50</code> — already active at the top of this page. Not safe to embed inline.</p>
+          <p class="text-sm text-slate mb-4">Fixed full-width navigation. Renders as <code class="ds-code">position: fixed; top: 0; z-50</code> - already active at the top of this page. Not safe to embed inline.</p>
           <div class="ds-nav-showcase">
             <div class="ds-nav-variant-card">
               <div class="ds-nav-variant-label">Full Width (left/right aligned)</div>
@@ -1030,7 +1006,7 @@ const flagItems = [
             </div>
             <span class="ds-badge ds-badge-layout">Layout</span>
           </div>
-          <p class="text-sm text-slate mb-4">Global page footer. No props — social and legal links come from <code class="ds-code">siteConfig</code> in <code class="ds-code">src/config.ts</code>.</p>
+          <p class="text-sm text-slate mb-4">Global page footer. No props - social and legal links come from <code class="ds-code">siteConfig</code> in <code class="ds-code">src/config.ts</code>.</p>
           <div class="rounded-xl overflow-hidden border border-navy-light/20">
             <Footer />
           </div>
@@ -1212,7 +1188,7 @@ const flagItems = [
             <div class="space-y-2">
               <div class="flex items-center gap-2 text-sm text-slate">
                 <svg class="w-4 h-4 text-success shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                Full CLI scanner — unlimited scans
+                Full CLI scanner - unlimited scans
               </div>
               <div class="flex items-center gap-2 text-sm text-slate">
                 <svg class="w-4 h-4 text-success shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
@@ -1960,7 +1936,7 @@ const flagItems = [
 
   .ds-demo-gentle-float { display: inline-block; animation: ds-gentle-float 6s ease-in-out infinite; }
   .ds-demo-bob     { display: inline-block; animation: ds-bob 2s ease-in-out infinite; }
-  .ds-demo-drift   { animation: ds-drift 4s linear infinite, ds-bob 2s ease-in-out infinite; }
+  .ds-demo-drift   { animation: ds-drift 25s linear infinite, ds-bob 4s ease-in-out infinite; }
   .ds-demo-drop    { display: inline-block; animation: ds-drop 2s linear infinite; }
   .ds-demo-pop     { display: inline-block; animation: ds-pop 2.2s linear infinite; }
   .ds-demo-launch  { animation: ds-launch 3s cubic-bezier(0.3, 0, 0.8, 0.8) infinite alternate; }
