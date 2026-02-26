@@ -9,6 +9,7 @@ import DocTerminal from '../components/DocTerminal.astro'
 import Flags from '../components/Flags.astro'
 import Footer from '../components/Footer.astro'
 import WaveBackground from '../components/WaveBackground.astro'
+import WaveBoat from '../components/WaveBoat.astro'
 import LeadMagnetForm from '../components/LeadMagnetForm.astro'
 import LeadMagnetCallout from '../components/LeadMagnetCallout.astro'
 import LeadMagnetCTA from '../components/LeadMagnetCTA.astro'
@@ -646,7 +647,18 @@ const flagItems = [
                 <div id="dsPhysicsArena" class="relative w-full h-52 overflow-hidden rounded-xl border border-lavender/15">
                   <WaveBackground />
                   <!-- Boat: starts drifting, grab to toss -->
-                  <span id="dsPhysicsBoat" class="ds-physics-boat ds-physics-drifting ds-physics-bobbing text-2xl" style="bottom:68px;z-index:5;">⛵</span>
+                  <WaveBoat
+                    id="dsPhysicsBoat"
+                    containerSelector="#dsPhysicsArena"
+                    mode="ds"
+                    initiallyVisible={true}
+                    seedDriftTimeMs={6500}
+                    driftDurationMs={13000}
+                    bobDurationMs={3200}
+                    bottom="68px"
+                    fontSize="1.5rem"
+                    zIndex={5}
+                  />
                   <!-- Hint -->
                   <div class="absolute bottom-2 right-3 font-mono text-xs text-white/30 pointer-events-none select-none" style="z-index:10">grab &amp; toss</div>
                 </div>
@@ -1772,91 +1784,9 @@ const flagItems = [
 </style>
 
 <script>
-  import { initBoatDragPhysics } from '../scripts/boatDragPhysics.js';
-
   // Sidebar: highlight the active section as user scrolls
   const sections = document.querySelectorAll('[data-ds-section]');
   const navLinks = document.querySelectorAll('.ds-nav-link[data-target]');
-
-  const dsArena = document.getElementById('dsPhysicsArena');
-
-  function createDSSplash(clientX, clientY) {
-    if (!dsArena) return;
-    const bgRect = dsArena.getBoundingClientRect();
-    const container = document.createElement('div');
-    Object.assign(container.style, {
-      position: 'absolute',
-      left: (clientX - bgRect.left) + 'px',
-      top: (clientY - bgRect.top) + 'px',
-      zIndex: '6',
-      pointerEvents: 'none',
-    });
-    const isLight = document.documentElement.classList.contains('light');
-    for (let i = 0; i < 10; i++) {
-      const drop = document.createElement('div');
-      const angle = (-150 + (120 * i / 9)) * (Math.PI / 180);
-      const speed = 18 + Math.random() * 28;
-      const dx = Math.cos(angle) * speed;
-      const dy = Math.sin(angle) * speed;
-      const size = 3 + Math.random() * 4;
-      const alpha = (0.65 + Math.random() * 0.3).toFixed(2);
-      const dropColor = isLight
-        ? `rgba(255,255,255,${alpha})`
-        : `rgba(${60 + (Math.random() * 60 | 0)},${140 + (Math.random() * 60 | 0)},255,${(0.5 + Math.random() * 0.3).toFixed(2)})`;
-      Object.assign(drop.style, {
-        position: 'absolute',
-        width: size + 'px',
-        height: size + 'px',
-        borderRadius: '50%',
-        background: dropColor,
-        left: '-2px',
-        top: '-2px',
-      });
-      drop.style.setProperty('--dx', dx + 'px');
-      drop.style.setProperty('--dy', dy + 'px');
-      drop.style.animation = `ds-splash-drop ${(0.4 + Math.random() * 0.3).toFixed(2)}s ease-out ${(Math.random() * 0.08).toFixed(3)}s forwards`;
-      container.appendChild(drop);
-    }
-    const ring = document.createElement('div');
-    Object.assign(ring.style, {
-      position: 'absolute',
-      width: '20px',
-      height: '8px',
-      border: isLight ? '2px solid rgba(255,255,255,0.75)' : '2px solid rgba(100,180,255,0.5)',
-      borderRadius: '50%',
-      left: '0',
-      top: '0',
-      animation: 'ds-ring 0.7s ease-out forwards',
-    });
-    container.appendChild(ring);
-    dsArena.appendChild(container);
-    setTimeout(() => container.remove(), 1200);
-  }
-
-  const dsPhysics = initBoatDragPhysics({
-    boatSelector: '#dsPhysicsBoat',
-    containerSelector: '#dsPhysicsArena',
-    waveFallbackRatio: 0.625,
-    driftClass: 'ds-physics-drifting',
-    launchClass: 'ds-physics-launching',
-    steadyClasses: ['ds-physics-bobbing'],
-    driftDurationMs: 13000,
-    driftAnimationName: 'ds-drift',
-    getBoatBottomPx: ({ bgRect, waveY }) => bgRect.height - waveY,
-    createSplash: createDSSplash,
-  });
-
-  // On first load: seek drift to center so boat is visible and grabbable immediately.
-  // ds-drift starts at left:-10% (off-screen); double-rAF ensures animations have committed.
-  if (dsPhysics?.boat && dsPhysics?.container) {
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        const d = dsPhysics.boat.getAnimations().find(a => a.animationName === 'ds-drift');
-        if (d) d.currentTime = 6500;
-        dsPhysics.boat.style.bottom = (dsPhysics.container.offsetHeight - dsPhysics.getWaveY()) + 'px';
-      });
-    });
-  }
 
   if (sections.length && navLinks.length) {
     const observer = new IntersectionObserver((entries) => {

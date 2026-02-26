@@ -1,0 +1,193 @@
+---
+interface Props {
+  id?: string;
+  containerSelector: string;
+  mode?: 'hero' | 'ds';
+  initiallyVisible?: boolean;
+  seedDriftTimeMs?: number;
+  driftDurationMs?: number;
+  bobDurationMs?: number;
+  bottom?: string;
+  left?: string;
+  fontSize?: string;
+  zIndex?: number;
+}
+
+const {
+  id = 'waveBoat',
+  containerSelector,
+  mode = 'hero',
+  initiallyVisible = false,
+  seedDriftTimeMs,
+  driftDurationMs = 25000,
+  bobDurationMs = 4000,
+  bottom,
+  left,
+  fontSize,
+  zIndex = 5,
+} = Astro.props;
+
+const initialClasses = ['boat'];
+if (initiallyVisible) initialClasses.push('visible');
+---
+
+<div
+  id={id}
+  class={initialClasses.join(' ')}
+  data-wave-boat
+  data-mode={mode}
+  data-container-selector={containerSelector}
+  data-seed-drift-ms={seedDriftTimeMs ?? ''}
+  data-drift-duration-ms={driftDurationMs}
+  style={[
+    bottom ? `bottom:${bottom}` : '',
+    left ? `left:${left}` : '',
+    fontSize ? `font-size:${fontSize}` : '',
+    `z-index:${zIndex}`,
+    initiallyVisible && (driftDurationMs !== 25000 || bobDurationMs !== 4000)
+      ? `animation-duration:${driftDurationMs}ms,${bobDurationMs}ms`
+      : '',
+  ].filter(Boolean).join(';')}
+>
+  ⛵
+</div>
+
+<style>
+  :global(.boat[data-wave-boat]) {
+    position: absolute;
+    bottom: 42%;
+    left: 15%;
+    font-size: 1.4rem;
+    opacity: 0;
+    z-index: 5;
+    pointer-events: none;
+    touch-action: none;
+    line-height: 1;
+  }
+
+  :global(.boat[data-wave-boat]::before) {
+    content: '';
+    position: absolute;
+    inset: -14px;
+    touch-action: none;
+  }
+
+  :global(.boat[data-wave-boat].launching) {
+    opacity: 1;
+    animation: boatBob 4s ease-in-out infinite;
+  }
+
+  :global(.boat[data-wave-boat].visible) {
+    opacity: 1;
+    animation: boatBob 4s ease-in-out infinite, boatDrift 25s linear infinite;
+  }
+
+  @keyframes boatBob {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(3deg); }
+  }
+
+  @keyframes boatDrift {
+    0% { left: -5%; }
+    100% { left: 105%; }
+  }
+</style>
+
+<script>
+  import { initBoatDragPhysics } from '../scripts/boatDragPhysics.js';
+
+  function createDSSplash(container, clientX, clientY) {
+    if (!container) return;
+    const bgRect = container.getBoundingClientRect();
+    const splash = document.createElement('div');
+    Object.assign(splash.style, {
+      position: 'absolute',
+      left: (clientX - bgRect.left) + 'px',
+      top: (clientY - bgRect.top) + 'px',
+      zIndex: '6',
+      pointerEvents: 'none',
+    });
+    const isLight = document.documentElement.classList.contains('light');
+    for (let i = 0; i < 10; i++) {
+      const drop = document.createElement('div');
+      const angle = (-150 + (120 * i / 9)) * (Math.PI / 180);
+      const speed = 18 + Math.random() * 28;
+      const dx = Math.cos(angle) * speed;
+      const dy = Math.sin(angle) * speed;
+      const size = 3 + Math.random() * 4;
+      const alpha = (0.65 + Math.random() * 0.3).toFixed(2);
+      const dropColor = isLight
+        ? `rgba(255,255,255,${alpha})`
+        : `rgba(${60 + (Math.random() * 60 | 0)},${140 + (Math.random() * 60 | 0)},255,${(0.5 + Math.random() * 0.3).toFixed(2)})`;
+      Object.assign(drop.style, {
+        position: 'absolute',
+        width: size + 'px',
+        height: size + 'px',
+        borderRadius: '50%',
+        background: dropColor,
+        left: '-2px',
+        top: '-2px',
+      });
+      drop.style.setProperty('--dx', dx + 'px');
+      drop.style.setProperty('--dy', dy + 'px');
+      drop.style.animation = `ds-splash-drop ${(0.4 + Math.random() * 0.3).toFixed(2)}s ease-out ${(Math.random() * 0.08).toFixed(3)}s forwards`;
+      splash.appendChild(drop);
+    }
+    const ring = document.createElement('div');
+    Object.assign(ring.style, {
+      position: 'absolute',
+      width: '20px',
+      height: '8px',
+      border: isLight ? '2px solid rgba(255,255,255,0.75)' : '2px solid rgba(100,180,255,0.5)',
+      borderRadius: '50%',
+      left: '0',
+      top: '0',
+      animation: 'ds-ring 0.7s ease-out forwards',
+    });
+    splash.appendChild(ring);
+    container.appendChild(splash);
+    setTimeout(() => splash.remove(), 1200);
+  }
+
+  document.querySelectorAll('.boat[data-wave-boat]').forEach((boat) => {
+    if (boat.dataset.waveBoatInit === '1') return;
+    boat.dataset.waveBoatInit = '1';
+
+    const mode = boat.dataset.mode || 'hero';
+    const containerSelector = boat.dataset.containerSelector;
+    const container = containerSelector ? document.querySelector(containerSelector) : null;
+    if (!container) return;
+
+    const driftDurationMs = Number(boat.dataset.driftDurationMs || 25000);
+    const seedDriftMs = boat.dataset.seedDriftMs ? Number(boat.dataset.seedDriftMs) : null;
+
+    const isHero = mode === 'hero';
+    const physics = initBoatDragPhysics({
+      boatSelector: boat,
+      containerSelector: container,
+      driftClass: 'visible',
+      launchClass: 'launching',
+      activeClasses: isHero ? ['visible', 'launching'] : null,
+      enablePointerOnActive: isHero,
+      clearAnimationDelay: isHero,
+      driftDurationMs,
+      driftAnimationName: 'boatDrift',
+      getBoatBottomPx: ({ bgRect, waveY }) => {
+        if (isHero) return window._buoyBoatBottom ?? (bgRect.height - waveY - 8);
+        return bgRect.height - waveY;
+      },
+      createSplash: isHero
+        ? ((...args) => window._buoySplash?.(...args))
+        : ((...args) => createDSSplash(container, ...args)),
+    });
+
+    if (!physics || seedDriftMs == null) return;
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const drift = physics.boat.getAnimations().find((a) => a.animationName === 'boatDrift');
+        if (drift) drift.currentTime = seedDriftMs;
+        physics.boat.style.bottom = (physics.container.offsetHeight - physics.getWaveY()) + 'px';
+      });
+    });
+  });
+</script>

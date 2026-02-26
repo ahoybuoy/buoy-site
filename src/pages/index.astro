@@ -6,6 +6,7 @@ import Button from '../components/Button.astro'
 import FeatureCard from '../components/FeatureCard.astro'
 import CodeBlock from '../components/CodeBlock.astro'
 import WaveBackground from '../components/WaveBackground.astro'
+import WaveBoat from '../components/WaveBoat.astro'
 import LeadCaptureSection from '../components/LeadCaptureSection.astro'
 import { siteConfig } from '../config'
 
@@ -141,7 +142,7 @@ const steps = [
     <WaveBackground />
 
     <!-- Wave boat — lives outside wave-background so z-index can exceed the z-10 content div -->
-    <div class="boat" id="waveBoat">⛵</div>
+    <WaveBoat id="waveBoat" containerSelector=".wave-background" mode="hero" />
 
     <div class="relative z-10 hero-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
       <div class="text-center max-w-4xl mx-auto">
@@ -814,45 +815,6 @@ const steps = [
 </Layout>
 
 <style>
-  /* Wave boat — positioned in hero section above z-10 content */
-  .boat {
-    position: absolute;
-    bottom: 42%;
-    left: 15%;
-    font-size: 1.4rem;
-    opacity: 0;
-    z-index: 5;
-    pointer-events: none;
-    touch-action: none;
-  }
-
-  .boat::before {
-    content: '';
-    position: absolute;
-    inset: -14px;
-    touch-action: none;
-  }
-
-  .boat.launching {
-    opacity: 1;
-    animation: boatBob 4s ease-in-out infinite;
-  }
-
-  .boat.visible {
-    opacity: 1;
-    animation: boatBob 4s ease-in-out infinite, boatDrift 25s linear infinite;
-  }
-
-  @keyframes boatBob {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-15px) rotate(3deg); }
-  }
-
-  @keyframes boatDrift {
-    0% { left: -5%; }
-    100% { left: 105%; }
-  }
-
   /* Hero content passes pointer events through to boat underneath,
      but restores them on interactive elements.
      Use :global() on descendant selectors so Astro's CSS scoping doesn't
@@ -1091,24 +1053,6 @@ const steps = [
   initHeroBoatAnimation();
   // Expose splash so drag script can call it
   window._buoySplash = createSplash;
-</script>
-
-<script>
-  import { initBoatDragPhysics } from '../scripts/boatDragPhysics.js';
-
-  initBoatDragPhysics({
-    boatSelector: '#waveBoat',
-    containerSelector: '.wave-background',
-    driftClass: 'visible',
-    launchClass: 'launching',
-    activeClasses: ['visible', 'launching'],
-    enablePointerOnActive: true,
-    clearAnimationDelay: true,
-    driftDurationMs: 25000,
-    driftAnimationName: 'boatDrift',
-    getBoatBottomPx: ({ bgRect, waveY }) => window._buoyBoatBottom ?? (bgRect.height - waveY - 8),
-    createSplash: (...args) => window._buoySplash?.(...args),
-  });
 </script>
 
 <script>
