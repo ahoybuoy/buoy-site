@@ -1,5 +1,38 @@
 ---
 import { siteConfig } from '../config'
+const { layout = 'contained', alignment = 'balanced' } = Astro.props
+const containerClass =
+  layout === 'full'
+    ? 'w-full px-4 sm:px-6 lg:px-8'
+    : 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'
+const logoClass =
+  alignment === 'left-right'
+    ? 'flex items-center gap-1.5 flex-1 md:flex-none'
+    : 'flex items-center gap-1.5 flex-1'
+const desktopNavClass =
+  alignment === 'left-right'
+    ? 'hidden md:flex items-center gap-6 ml-auto'
+    : 'hidden md:flex items-center gap-6'
+const desktopActionsClass =
+  alignment === 'left-right'
+    ? 'hidden md:flex items-center gap-4'
+    : 'hidden md:flex items-center gap-4 flex-1 justify-end'
+const desktopRowClass =
+  alignment === 'left-links'
+    ? 'flex items-center h-16 gap-6'
+    : 'flex items-center h-16'
+const logoLeftLinksClass =
+  alignment === 'left-links'
+    ? 'flex items-center gap-1.5 flex-none'
+    : logoClass
+const desktopNavLeftLinksClass =
+  alignment === 'left-links'
+    ? 'hidden md:flex items-center gap-4 flex-1 justify-between min-w-0'
+    : desktopNavClass
+const desktopActionsLeftLinksClass =
+  alignment === 'left-links'
+    ? 'hidden md:flex items-center gap-4 ml-auto'
+    : desktopActionsClass
 
 const featureItems = [
   { label: 'Drift Detection', href: '/features/drift-detection', description: 'Find design inconsistencies' },
@@ -49,16 +82,16 @@ const compareItems = [
 ---
 
 <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-navy-dark/80 border-b border-navy-light/20">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center h-16">
+  <div class={containerClass}>
+    <div class={desktopRowClass}>
       <!-- Logo -->
-      <a href="/" class="flex items-center gap-1.5 flex-1">
+      <a href="/" class={logoLeftLinksClass}>
         <span style="font-size: 1.5rem; line-height: 1; flex-shrink: 0">🛟</span>
         <span class="font-bold font-display text-light" style="font-size: 1.75rem; line-height: 1">Buoy</span>
       </a>
 
       <!-- Desktop Navigation -->
-      <div class="hidden md:flex items-center gap-6">
+      <div class={desktopNavLeftLinksClass}>
         <!-- Features Dropdown -->
         <div class="relative group">
           <button class="text-sm text-slate hover:text-light transition-colors duration-200 flex items-center gap-1 py-4">
@@ -140,7 +173,7 @@ const compareItems = [
       </div>
 
       <!-- CTA Buttons -->
-      <div class="hidden md:flex items-center gap-4 flex-1 justify-end">
+      <div class={desktopActionsLeftLinksClass}>
         <!-- Theme Toggle -->
         <button
           id="theme-toggle"

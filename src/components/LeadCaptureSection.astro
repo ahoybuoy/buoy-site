@@ -3,9 +3,10 @@ import LeadMagnetForm from './LeadMagnetForm.astro'
 
 interface Props {
   class?: string
+  forceVariant?: 'drift-checklist' | 'why-developers-bypass' | 'maturity-model'
 }
 
-const { class: className = '' } = Astro.props
+const { class: className = '', forceVariant } = Astro.props
 
 // Lead magnet variants for A/B testing
 const variants = [
@@ -61,15 +62,19 @@ const variants = [
     },
   },
 ]
+
+const renderedVariants = forceVariant
+  ? variants.filter((variant) => variant.id === forceVariant)
+  : variants
 ---
 
 <section class={`py-16 bg-navy relative ${className}`}>
   <div class="absolute inset-0 bg-gradient-to-b from-navy-dark/50 via-transparent to-navy-dark/50"></div>
 
   <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    {variants.map((variant, index) => (
+    {renderedVariants.map((variant, index) => (
       <div
-        class={`lead-capture-variant grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${index > 0 ? 'hidden' : ''}`}
+        class={`lead-capture-variant grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${!forceVariant && index > 0 ? 'hidden' : ''}`}
         data-variant={variant.id}
       >
         <!-- Left: Copy -->
@@ -128,6 +133,7 @@ const variants = [
   </div>
 </section>
 
+{!forceVariant && (
 <script>
   // A/B Testing with PostHog
   declare global {
@@ -189,3 +195,4 @@ const variants = [
     waitForPostHog();
   }
 </script>
+)}

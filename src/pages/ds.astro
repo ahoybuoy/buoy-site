@@ -82,7 +82,7 @@ const flagItems = [
 ---
 
 <Layout title="Design System — Plumb | Buoy">
-  <Nav />
+  <Nav layout="full" alignment="left-links" />
 
   <!-- Two-column DS layout -->
   <div class="ds-layout">
@@ -462,7 +462,7 @@ const flagItems = [
 
               <!-- Phase 1: Wiggle -->
               <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl flex flex-col sm:flex-row gap-5">
-                <div class="shrink-0 flex items-center gap-3">
+                <div class="ds-motion-phase-lead shrink-0 flex items-center gap-3">
                   <div class="w-8 h-8 rounded-full bg-buoy/20 border border-buoy/40 flex items-center justify-center font-mono text-xs text-buoy font-bold">1</div>
                   <span class="text-3xl ds-demo-wiggle">⛵</span>
                 </div>
@@ -489,7 +489,7 @@ const flagItems = [
 
               <!-- Phase 2: Lift -->
               <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl flex flex-col sm:flex-row gap-5">
-                <div class="shrink-0 flex items-center gap-3">
+                <div class="ds-motion-phase-lead shrink-0 flex items-center gap-3">
                   <div class="w-8 h-8 rounded-full bg-buoy/20 border border-buoy/40 flex items-center justify-center font-mono text-xs text-buoy font-bold">2</div>
                   <span class="text-3xl ds-demo-lift">⛵</span>
                 </div>
@@ -516,11 +516,13 @@ const flagItems = [
 
               <!-- Phase 3: Drop -->
               <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl flex flex-col sm:flex-row gap-5">
-                <div class="shrink-0 flex items-center gap-3">
+                <div class="ds-motion-phase-lead shrink-0 flex items-center gap-3">
                   <div class="w-8 h-8 rounded-full bg-buoy/20 border border-buoy/40 flex items-center justify-center font-mono text-xs text-buoy font-bold">3</div>
                   <div class="relative w-11 h-14 overflow-hidden rounded">
                     <div class="absolute bottom-0 inset-x-0 h-4 bg-sky-950/35 border-t border-sky-500/25 rounded-b"></div>
-                    <span class="ds-demo-drop text-2xl absolute left-0.5" style="top: 6px;">⛵</span>
+                    <div class="absolute inset-x-0 flex justify-center" style="top: 6px;">
+                      <span class="ds-demo-drop text-2xl">⛵</span>
+                    </div>
                   </div>
                 </div>
                 <div class="flex-1">
@@ -548,7 +550,7 @@ const flagItems = [
 
               <!-- Phase 4: Launch -->
               <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl flex flex-col sm:flex-row gap-5">
-                <div class="shrink-0 flex items-center gap-3">
+                <div class="ds-motion-phase-lead shrink-0 flex items-center gap-3">
                   <div class="w-8 h-8 rounded-full bg-buoy/20 border border-buoy/40 flex items-center justify-center font-mono text-xs text-buoy font-bold">4</div>
                   <div class="w-24 h-10 bg-navy-dark/40 rounded overflow-hidden relative flex items-center">
                     <span class="text-xl ds-demo-launch absolute">⛵</span>
@@ -578,11 +580,13 @@ const flagItems = [
 
               <!-- Phase 5: Bobber Pop -->
               <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl flex flex-col sm:flex-row gap-5">
-                <div class="shrink-0 flex items-center gap-3">
+                <div class="ds-motion-phase-lead shrink-0 flex items-center gap-3">
                   <div class="w-8 h-8 rounded-full bg-buoy/20 border border-buoy/40 flex items-center justify-center font-mono text-xs text-buoy font-bold">5</div>
                   <div class="relative w-11 h-14 overflow-hidden rounded">
                     <div class="absolute bottom-0 inset-x-0 h-6 bg-sky-950/35 border-t border-sky-500/25 rounded-b"></div>
-                    <span class="ds-demo-pop text-2xl absolute left-0.5" style="bottom: 24px;">⛵</span>
+                    <div class="absolute inset-x-0 flex justify-center" style="bottom: 24px;">
+                      <span class="ds-demo-pop text-2xl">⛵</span>
+                    </div>
                   </div>
                 </div>
                 <div class="flex-1">
@@ -939,6 +943,57 @@ const flagItems = [
             <span class="ds-badge ds-badge-layout">Layout</span>
           </div>
           <p class="text-sm text-slate mb-4">Fixed full-width navigation. Renders as <code class="ds-code">position: fixed; top: 0; z-50</code> — already active at the top of this page. Not safe to embed inline.</p>
+          <div class="ds-nav-showcase">
+            <div class="ds-nav-variant-card">
+              <div class="ds-nav-variant-label">Full Width (left/right aligned)</div>
+              <div class="ds-nav-preview-frame">
+                <div class="ds-nav-preview-shell">
+                  <div class="ds-nav-preview-inner ds-nav-preview-inner-full">
+                    <div class="ds-nav-preview-logo">
+                      <span aria-hidden="true">🛟</span>
+                      <span>Buoy</span>
+                    </div>
+                    <div class="ds-nav-preview-right-group" aria-hidden="true">
+                      <div class="ds-nav-preview-links">
+                        <span>Features</span>
+                        <span>Use Cases</span>
+                        <span>Docs</span>
+                        <span>Pricing</span>
+                      </div>
+                      <span class="ds-nav-preview-textlink">GitHub</span>
+                      <span class="ds-nav-preview-cta">Get Started</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="text-xs text-slate-dark font-mono mt-2">Container: <code class="ds-code">w-full px-4 sm:px-6 lg:px-8</code> + <code class="ds-code">justify-between</code></div>
+            </div>
+
+            <div class="ds-nav-variant-card">
+              <div class="ds-nav-variant-label">Left / Center / Right</div>
+              <div class="ds-nav-preview-frame">
+                <div class="ds-nav-preview-shell">
+                  <div class="ds-nav-preview-inner ds-nav-preview-inner-lcr">
+                    <div class="ds-nav-preview-logo">
+                      <span aria-hidden="true">🛟</span>
+                      <span>Buoy</span>
+                    </div>
+                    <div class="ds-nav-preview-links ds-nav-preview-links-center" aria-hidden="true">
+                      <span>Features</span>
+                      <span>Use Cases</span>
+                      <span>Docs</span>
+                      <span>Pricing</span>
+                    </div>
+                    <div class="ds-nav-preview-actions ds-nav-preview-actions-right" aria-hidden="true">
+                      <span class="ds-nav-preview-textlink">GitHub</span>
+                      <span class="ds-nav-preview-cta">Get Started</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="text-xs text-slate-dark font-mono mt-2">Container: <code class="ds-code">w-full px-4 sm:px-6 lg:px-8</code> + center nav group</div>
+            </div>
+          </div>
           <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl space-y-3">
             <div class="font-mono text-xs text-slate-dark uppercase tracking-widest mb-3">Anatomy</div>
             <div class="flex items-start gap-3 text-sm">
@@ -1292,11 +1347,26 @@ const flagItems = [
             <span class="ds-badge ds-badge-conversion">Conversion</span>
           </div>
           <p class="text-sm text-slate mb-4">A/B-tested two-column lead capture with PDF preview mockup. PostHog feature flag <code class="ds-code">homepage-lead-magnet-variant</code> selects the active variant; defaults to <code class="ds-code">drift-checklist</code>.</p>
-          <div class="rounded-xl overflow-hidden border border-navy-light/20">
-            <LeadCaptureSection />
+          <div class="rounded-xl overflow-hidden border border-navy-light/20 ds-lead-stage" id="dsLeadCaptureVariantStage">
+            <div data-ds-lead-stage="drift-checklist" class="ds-lead-stage-panel">
+              <LeadCaptureSection forceVariant="drift-checklist" />
+            </div>
+            <div data-ds-lead-stage="why-developers-bypass" class="ds-lead-stage-panel hidden">
+              <LeadCaptureSection forceVariant="why-developers-bypass" />
+            </div>
+            <div data-ds-lead-stage="maturity-model" class="ds-lead-stage-panel hidden">
+              <LeadCaptureSection forceVariant="maturity-model" />
+            </div>
           </div>
           <div class="ds-spec">
-            <div class="text-slate mb-1">No props. 3 variants: <span class="text-buoy">drift-checklist</span> · <span class="text-buoy">why-developers-bypass</span> · <span class="text-buoy">maturity-model</span></div>
+            <div class="text-slate mb-2">
+              No props. 3 variants:
+              <a href="#comp-lead-capture" class="ds-inline-variant active" data-ds-lead-switch="drift-checklist">drift-checklist</a>
+              ·
+              <a href="#comp-lead-capture" class="ds-inline-variant" data-ds-lead-switch="why-developers-bypass">why-developers-bypass</a>
+              ·
+              <a href="#comp-lead-capture" class="ds-inline-variant" data-ds-lead-switch="maturity-model">maturity-model</a>
+            </div>
             <div class="text-slate-dark">A/B via PostHog · PDF preview: rotate-1 hover:rotate-0 · grid lg:grid-cols-2</div>
           </div>
         </div>
@@ -1307,10 +1377,10 @@ const flagItems = [
       <section class="text-center py-16 border-t border-navy-light/20 mt-8">
         <div class="text-4xl mb-4">🛟</div>
         <h2 class="text-2xl font-bold text-light font-[Quicksand] mb-2">This page is the test</h2>
-        <p class="text-slate mb-6 max-w-lg mx-auto">Every element above uses only design system tokens. Run buoy check against it anytime to confirm zero drift.</p>
-        <div class="inline-flex items-center gap-3 px-4 py-3 bg-navy/80 border border-navy-light/30 rounded-lg font-mono text-sm">
+        <p class="text-slate mb-6 max-w-2xl mx-auto">This page is built to be checked with Buoy. From the repo root, run a drift check on <code class="ds-code">src/pages/ds.astro</code> to verify the current drift status against the real source.</p>
+        <div class="inline-flex items-center gap-3 px-4 py-3 bg-navy/80 border border-navy-light/30 rounded-lg font-mono text-sm max-w-full overflow-x-auto">
           <span class="text-slate">$</span>
-          <code class="text-light">npx ahoybuoy drift check src/pages/ds.astro</code>
+          <code class="text-light whitespace-nowrap">npx ahoybuoy@0.3.30 drift check src/pages/ds.astro</code>
         </div>
       </section>
 
@@ -1609,6 +1679,170 @@ const flagItems = [
     border-radius: 4px;
   }
 
+  .ds-inline-variant {
+    color: var(--color-buoy);
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-color: color-mix(in srgb, var(--color-buoy) 40%, transparent);
+  }
+  .ds-inline-variant:hover,
+  .ds-inline-variant.active {
+    color: var(--color-buoy-light);
+  }
+
+  .ds-nav-showcase {
+    display: grid;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  @media (min-width: 1024px) {
+    .ds-nav-showcase {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (min-width: 1280px) {
+    .ds-nav-showcase {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+  .ds-nav-variant-card {
+    border: 1px solid color-mix(in srgb, var(--color-navy-light) 20%, transparent);
+    border-radius: 0.75rem;
+    background: color-mix(in srgb, var(--color-navy) 40%, transparent);
+    padding: 0.75rem;
+  }
+  .ds-nav-variant-label {
+    color: var(--color-light);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .ds-nav-preview-frame {
+    border-radius: 0.6rem;
+    overflow: hidden;
+    border: 1px solid color-mix(in srgb, var(--color-navy-light) 15%, transparent);
+    background: color-mix(in srgb, var(--color-navy-dark) 70%, transparent);
+  }
+  .ds-nav-preview-shell {
+    min-height: 4.25rem;
+    display: flex;
+    align-items: center;
+    background: color-mix(in srgb, var(--color-navy-dark) 80%, transparent);
+    backdrop-filter: blur(10px);
+  }
+  .ds-nav-preview-inner {
+    width: 100%;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .ds-nav-preview-inner-contained {
+    max-width: 56rem;
+    margin: 0 auto;
+    padding: 0 0.9rem;
+  }
+  .ds-nav-preview-inner-full {
+    padding: 0 0.9rem;
+    justify-content: space-between;
+  }
+  .ds-nav-preview-inner-lcr {
+    padding: 0 0.9rem;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .ds-nav-preview-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--color-light);
+    font-weight: 700;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .ds-nav-preview-links {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-slate);
+    font-size: 0.7rem;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .ds-nav-preview-actions {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+  .ds-nav-preview-right-group {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+  .ds-nav-preview-links-center {
+    justify-self: center;
+  }
+  .ds-nav-preview-actions-right {
+    justify-self: end;
+    margin-left: 0;
+  }
+  .ds-nav-preview-textlink {
+    color: var(--color-slate);
+    font-size: 0.7rem;
+  }
+  .ds-nav-preview-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.7rem;
+    padding: 0 0.6rem;
+    border-radius: 0.45rem;
+    background: var(--color-buoy);
+    color: var(--color-navy-dark);
+    font-size: 0.68rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  @media (min-width: 640px) {
+    .ds-motion-phase-lead {
+      width: 9.5rem;
+    }
+  }
+  @media (max-width: 767px) {
+    .ds-nav-preview-links {
+      display: none;
+    }
+    .ds-nav-preview-right-group {
+      margin-left: auto;
+    }
+    .ds-nav-preview-inner-lcr {
+      grid-template-columns: 1fr auto;
+    }
+  }
+
+  .ds-lead-stage {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .ds-lead-stage-panel {
+    width: 100%;
+  }
+
   /* ── Motion demo animations ─────────────────── */
   @keyframes ds-gentle-float {
     0%, 100% { transform: translateY(0); }
@@ -1801,5 +2035,55 @@ const flagItems = [
       threshold: 0,
     });
     sections.forEach(s => observer.observe(s));
+  }
+
+  const leadStage = document.getElementById('dsLeadCaptureVariantStage');
+  const leadSwitches = document.querySelectorAll('[data-ds-lead-switch]');
+  if (leadStage && leadSwitches.length) {
+    const leadPanels = leadStage.querySelectorAll('[data-ds-lead-stage]');
+    const measureLeadStageHeight = () => {
+      let maxHeight = 0;
+      leadPanels.forEach((panel) => {
+        const wasHidden = panel.classList.contains('hidden');
+        if (wasHidden) {
+          panel.classList.remove('hidden');
+          panel.style.position = 'absolute';
+          panel.style.inset = '0';
+          panel.style.visibility = 'hidden';
+          panel.style.pointerEvents = 'none';
+        }
+        maxHeight = Math.max(maxHeight, panel.offsetHeight);
+        if (wasHidden) {
+          panel.classList.add('hidden');
+          panel.style.position = '';
+          panel.style.inset = '';
+          panel.style.visibility = '';
+          panel.style.pointerEvents = '';
+        }
+      });
+      if (maxHeight > 0) {
+        leadStage.style.height = `${maxHeight}px`;
+      }
+    };
+
+    const setLeadVariant = (variant) => {
+      leadPanels.forEach((panel) => {
+        panel.classList.toggle('hidden', panel.getAttribute('data-ds-lead-stage') !== variant);
+      });
+      leadSwitches.forEach((control) => {
+        control.classList.toggle('active', control.getAttribute('data-ds-lead-switch') === variant);
+      });
+    };
+
+    leadSwitches.forEach((control) => {
+      control.addEventListener('click', (event) => {
+        event.preventDefault();
+        const variant = control.getAttribute('data-ds-lead-switch');
+        if (variant) setLeadVariant(variant);
+      });
+    });
+
+    measureLeadStageHeight();
+    window.addEventListener('resize', measureLeadStageHeight, { passive: true });
   }
 </script>
