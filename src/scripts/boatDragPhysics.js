@@ -120,20 +120,31 @@ export function initBoatDragPhysics(options = {}) {
     const waveY = getWaveY();
     currentX = ((currentX % bgRect.width) + bgRect.width) % bgRect.width;
     const landedLeftPct = (currentX / bgRect.width) * 100;
+    const startLeftPx = Number.isFinite(parseFloat(boat.style.left))
+      ? parseFloat(boat.style.left)
+      : currentX;
 
-    boat.style.left = landedLeftPct + '%';
-    boat.style.top = '';
+    boat.style.left = startLeftPx + 'px';
     boat.style.transform = '';
     if (clearAnimationDelay) boat.style.animationDelay = '';
     boat.style.opacity = '1';
-    boat.style.bottom = resolveBottom(bgRect, waveY) + 'px';
+    const currentRect = boat.getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect();
+    const exactBottomPx = containerRect.bottom - currentRect.bottom;
+    if (Number.isFinite(exactBottomPx)) {
+      boat.style.bottom = exactBottomPx + 'px';
+    } else {
+      boat.style.bottom = resolveBottom(bgRect, waveY) + 'px';
+    }
+    boat.style.top = '';
 
     boat.classList.add(launchClass, ...steadyClasses);
 
     const endLeftPct = landedLeftPct + launchDistance;
+    const endLeftPx = startLeftPx + (bgRect.width * launchDistance / 100);
     const launchAnim = boat.animate([
-      { left: landedLeftPct + '%' },
-      { left: endLeftPct + '%' }
+      { left: startLeftPx + 'px' },
+      { left: endLeftPx + 'px' }
     ], {
       duration: launchDurationMs,
       easing: 'cubic-bezier(0.3, 0, 0.8, 0.8)',
@@ -141,15 +152,34 @@ export function initBoatDragPhysics(options = {}) {
     });
 
     launchAnim.finished.then(() => {
+      const priorBob = boat.getAnimations().find((a) => a.animationName === 'boatBob');
+      const bobTime = priorBob?.currentTime ?? null;
+      const beforeRect = boat.getBoundingClientRect();
+      // Commit the launch endpoint before canceling WAAPI so left doesn't snap
+      // back to the pre-launch inline value for a frame.
+      boat.style.left = endLeftPct + '%';
       launchAnim.cancel();
-      boat.style.left = '';
       boat.classList.remove(launchClass);
       boat.classList.add(driftClass, ...steadyClasses);
+      if (bobTime !== null) {
+        const nextBob = boat.getAnimations().find((a) => a.animationName === 'boatBob');
+        if (nextBob) nextBob.currentTime = bobTime;
+      }
 
       const driftProgress = Math.max(0, Math.min(1, (endLeftPct + 5) / 110));
       const driftTimeMs = driftProgress * driftDurationMs;
       const driftAnim = boat.getAnimations().find((a) => a.animationName === driftAnimationName);
       if (driftAnim) driftAnim.currentTime = driftTimeMs;
+
+      // Keep the visual y-position continuous across the class swap.
+      const afterRect = boat.getBoundingClientRect();
+      const deltaY = beforeRect.top - afterRect.top;
+      if (Math.abs(deltaY) > 0.01) {
+        const currentBottom = parseFloat(boat.style.bottom);
+        if (Number.isFinite(currentBottom)) {
+          boat.style.bottom = (currentBottom + deltaY) + 'px';
+        }
+      }
     });
   }
 

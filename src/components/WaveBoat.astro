@@ -7,6 +7,7 @@ interface Props {
   seedDriftTimeMs?: number;
   driftDurationMs?: number;
   bobDurationMs?: number;
+  launchDurationMs?: number;
   bottom?: string;
   left?: string;
   fontSize?: string;
@@ -21,6 +22,7 @@ const {
   seedDriftTimeMs,
   driftDurationMs = 25000,
   bobDurationMs = 4000,
+  launchDurationMs = 3000,
   bottom,
   left,
   fontSize,
@@ -39,6 +41,8 @@ if (initiallyVisible) initialClasses.push('visible');
   data-container-selector={containerSelector}
   data-seed-drift-ms={seedDriftTimeMs ?? ''}
   data-drift-duration-ms={driftDurationMs}
+  data-launch-duration-ms={launchDurationMs}
+  data-fixed-bottom-px={bottom ? parseFloat(bottom) : ''}
   style={[
     bottom ? `bottom:${bottom}` : '',
     left ? `left:${left}` : '',
@@ -63,6 +67,11 @@ if (initiallyVisible) initialClasses.push('visible');
     pointer-events: none;
     touch-action: none;
     line-height: 1;
+  }
+
+  :global(.boat[data-wave-boat][data-mode="ds"]) {
+    pointer-events: auto;
+    cursor: grab;
   }
 
   :global(.boat[data-wave-boat]::before) {
@@ -159,7 +168,9 @@ if (initiallyVisible) initialClasses.push('visible');
     if (!container) return;
 
     const driftDurationMs = Number(boat.dataset.driftDurationMs || 25000);
+    const launchDurationMs = Number(boat.dataset.launchDurationMs || 3000);
     const seedDriftMs = boat.dataset.seedDriftMs ? Number(boat.dataset.seedDriftMs) : null;
+    const fixedBottomPx = boat.dataset.fixedBottomPx ? Number(boat.dataset.fixedBottomPx) : null;
 
     const isHero = mode === 'hero';
     const physics = initBoatDragPhysics({
@@ -171,9 +182,16 @@ if (initiallyVisible) initialClasses.push('visible');
       enablePointerOnActive: isHero,
       clearAnimationDelay: isHero,
       driftDurationMs,
+      launchDurationMs,
       driftAnimationName: 'boatDrift',
-      getBoatBottomPx: ({ bgRect, waveY }) => {
+      getBoatBottomPx: ({ bgRect, waveY, boat }) => {
         if (isHero) return window._buoyBoatBottom ?? (bgRect.height - waveY - 8);
+        // DS demos are visually tuned with a fixed baseline (e.g. 68px).
+        // Preserve that exact baseline through drag/toss because lockPosition()
+        // temporarily clears inline bottom.
+        if (Number.isFinite(fixedBottomPx)) return fixedBottomPx;
+        const inlineBottom = parseFloat(boat.style.bottom);
+        if (Number.isFinite(inlineBottom)) return inlineBottom;
         return bgRect.height - waveY;
       },
       createSplash: isHero
@@ -186,7 +204,9 @@ if (initiallyVisible) initialClasses.push('visible');
       requestAnimationFrame(() => {
         const drift = physics.boat.getAnimations().find((a) => a.animationName === 'boatDrift');
         if (drift) drift.currentTime = seedDriftMs;
-        physics.boat.style.bottom = (physics.container.offsetHeight - physics.getWaveY()) + 'px';
+        if (isHero || !Number.isFinite(parseFloat(physics.boat.style.bottom))) {
+          physics.boat.style.bottom = (physics.container.offsetHeight - physics.getWaveY()) + 'px';
+        }
       });
     });
   });
