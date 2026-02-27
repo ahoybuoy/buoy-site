@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="70" y1="40" x2="1130" y2="590" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0f1829"/>
+      <stop offset="0.55" stop-color="#1a2744"/>
+      <stop offset="1" stop-color="#243352"/>
+    </linearGradient>
+    <radialGradient id="glowA" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(240 500) rotate(8) scale(330 210)">
+      <stop stop-color="#F97316" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#F97316" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowB" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1010 120) rotate(0) scale(260 180)">
+      <stop stop-color="#8B5CF6" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#8B5CF6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="panelStroke" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#94A3B8" stop-opacity=".14"/>
+      <stop offset="1" stop-color="#94A3B8" stop-opacity=".04"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glowA)"/>
+  <rect width="1200" height="630" fill="url(#glowB)"/>
+  <rect x="22" y="22" width="1156" height="586" rx="24" stroke="#94A3B8" stroke-opacity=".10"/>
+
+  <g transform="translate(64 80)">
+    <g transform="translate(0 12)">
+      <g transform="scale(1.08)">
+        <svg x="0" y="12" width="59" height="84" viewBox="22 4 56 92" aria-hidden="true">
+          <path fill="#F97316" d="m46.992 6.6797v20.969h6.0156l-0.003906-20.969c0-0.78906-0.32422-1.5625-0.88672-2.1289-0.5625-0.5625-1.3125-0.87109-2.1133-0.87109-1.6602 0-3.0117 1.3477-3.0117 3z"/>
+          <path fill="#F97316" d="m38.668 33.031v4.2539c3.5117-1.1055 7.3281-1.7344 11.332-1.7344 4 0 7.8164 0.625 11.328 1.7305v-4.25c0-2.1562-1.7539-3.9102-3.9102-3.9102h-14.84c-2.1562 0-3.9102 1.7539-3.9102 3.9102z"/>
+          <path fill="#F97316" d="m79.398 60.047c0-12.695-13.188-23.023-29.398-23.023s-29.398 10.328-29.398 23.023c0 9.9375 18.238 27.781 26.078 34.988 1.8633 1.7109 4.7812 1.7109 6.6445 0 7.8398-7.207 26.074-25.051 26.074-34.988zm-42.621-14.16c-6.4453 3.2109-10.293 8.5078-10.293 14.16 0 0.40625-0.32812 0.73438-0.73438 0.73438s-0.73438-0.32812-0.73438-0.73438c0-6.2266 4.1523-12.012 11.109-15.477 0.36719-0.17969 0.80469-0.03125 0.98438 0.32813 0.17969 0.36719 0.03125 0.80859-0.33203 0.98828zm13.223-2.9805c-2.8711 0-5.6758 0.375-8.3398 1.1172-0.066406 0.019531-0.13281 0.027343-0.19922 0.027343-0.32031 0-0.61719-0.21094-0.70703-0.53906-0.10938-0.39062 0.12109-0.79688 0.51172-0.90625 2.793-0.77734 5.7305-1.1719 8.7344-1.1719 0.40625 0 0.73438 0.32812 0.73438 0.73438 0 0.41016-0.32812 0.73828-0.73438 0.73828z"/>
+        </svg>
+        <text x="82" y="54" fill="#F97316" font-family="Quicksand, Inter, system-ui, sans-serif" font-size="58" font-weight="700">Plumb</text>
+        <text x="82" y="96" fill="#CBD5E1" font-family="Quicksand, Inter, system-ui, sans-serif" font-size="42" font-weight="700">Design System</text>
+      </g>
+      <text x="0" y="156" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="20">Live tokens, components, motion, and patterns from buoy-site.</text>
+      <text x="0" y="184" fill="#94A3B8" font-family="Inter, system-ui, sans-serif" font-size="20">Public source route points to the real DS source of truth.</text>
+    </g>
+
+    <g transform="translate(0 266)">
+      <rect x="0" y="0" width="584" height="42" rx="12" fill="#0f1829" fill-opacity=".68" stroke="#243352"/>
+      <text x="16" y="27" fill="#F97316" font-family="JetBrains Mono, monospace" font-size="15">$</text>
+      <text x="36" y="27" fill="#F8FAFC" font-family="JetBrains Mono, monospace" font-size="15">npx ahoybuoy drift check buoy.design/ds.astro</text>
+    </g>
+
+    <g transform="translate(0 328)">
+      <rect x="0" y="0" width="584" height="132" rx="18" fill="#0f1829" fill-opacity=".34" stroke="url(#panelStroke)"/>
+      <text x="20" y="28" fill="#CBD5E1" font-family="JetBrains Mono, monospace" font-size="13">Design Tokens</text>
+      <g transform="translate(20 44)">
+        <rect x="0" y="0" width="96" height="70" rx="12" fill="#1a2744" stroke="#243352"/>
+        <rect x="10" y="10" width="72" height="14" rx="5" fill="#0f1829"/>
+        <text x="16" y="21" fill="#F97316" font-family="JetBrains Mono, monospace" font-size="8">--color-buoy</text>
+        <rect x="10" y="34" width="22" height="22" rx="6" fill="#F97316"/>
+        <rect x="36" y="34" width="22" height="22" rx="6" fill="#6366F1"/>
+        <rect x="62" y="34" width="20" height="22" rx="6" fill="#243352"/>
+      </g>
+      <g transform="translate(126 44)">
+        <rect x="0" y="0" width="212" height="70" rx="12" fill="#1a2744" stroke="#243352"/>
+        <rect x="12" y="12" width="78" height="24" rx="8" fill="#F97316"/>
+        <text x="51" y="28" text-anchor="middle" fill="#0f1829" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="700">Button</text>
+        <rect x="96" y="12" width="104" height="24" rx="8" fill="#243352" stroke="#94A3B8" stroke-opacity=".28"/>
+        <text x="148" y="28" text-anchor="middle" fill="#F8FAFC" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600">Secondary</text>
+        <rect x="12" y="44" width="188" height="10" rx="5" fill="#94A3B8" fill-opacity=".14"/>
+      </g>
+      <g transform="translate(356 44)">
+        <rect x="0" y="0" width="188" height="70" rx="12" fill="#1a2744" stroke="#243352"/>
+        <text x="12" y="18" fill="#94A3B8" font-family="JetBrains Mono, monospace" font-size="9">boatBob · boatDrift</text>
+        <path d="M12 54 C41 54, 54 28, 80 28 S 124 54, 174 54" stroke="#8B5CF6" stroke-width="2" fill="none"/>
+        <circle cx="108" cy="35" r="5" fill="#F97316"/>
+      </g>
+    </g>
+  </g>
+
+  <g transform="translate(670 92)">
+    <rect x="0" y="0" width="482" height="446" rx="24" fill="#0f1829" fill-opacity=".34" stroke="url(#panelStroke)"/>
+
+    <g transform="translate(28 26)">
+      <rect x="0" y="0" width="426" height="76" rx="14" fill="#0f1829" fill-opacity=".55" stroke="#243352"/>
+      <g transform="translate(12 10)">
+        <rect x="0" y="0" width="402" height="56" rx="12" fill="#1a2744" stroke="#243352"/>
+        <rect x="0" y="0" width="402" height="24" rx="12" fill="#0f1829" fill-opacity=".32"/>
+        <rect x="0" y="33" width="402" height="23" fill="#0f1829" fill-opacity=".16"/>
+        <path d="M0 40 C30 35, 60 35, 90 40 C120 45, 150 45, 180 40 C210 35, 240 35, 270 40 C300 45, 330 45, 360 40 C374 38, 388 38, 402 40 L402 56 L0 56 Z" fill="rgba(30, 100, 200, 0.15)"/>
+        <path d="M0 43 C30 38, 60 38, 90 43 C120 48, 150 48, 180 43 C210 38, 240 38, 270 43 C300 48, 330 48, 360 43 C374 41, 388 41, 402 43 L402 56 L0 56 Z" fill="rgba(50, 90, 210, 0.14)"/>
+        <path d="M0 46 C30 41, 60 41, 90 46 C120 51, 150 51, 180 46 C210 41, 240 41, 270 46 C300 51, 330 51, 360 46 C374 44, 388 44, 402 46 L402 56 L0 56 Z" fill="rgba(40, 110, 195, 0.13)"/>
+        <path d="M0 41 C30 37, 60 37, 90 41 C120 45, 150 45, 180 41 C210 37, 240 37, 270 41 C300 45, 330 45, 360 41 C374 39, 388 39, 402 41" stroke="rgba(147, 197, 253, 0.18)" stroke-width="1" fill="none"/>
+        <text x="190" y="37" fill="#F97316" font-family="Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji, sans-serif" font-size="30">⛵</text>
+      </g>
+    </g>
+
+    <g transform="translate(28 122)">
+      <rect x="0" y="0" width="426" height="290" rx="18" fill="#1a2744" fill-opacity=".74" stroke="#243352"/>
+      <rect x="0" y="0" width="426" height="46" rx="18" fill="#0f1829" fill-opacity=".44"/>
+      <rect x="0" y="30" width="426" height="16" fill="#0f1829" fill-opacity=".44"/>
+      <circle cx="22" cy="23" r="4.5" fill="#EF4444" fill-opacity=".72"/>
+      <circle cx="38" cy="23" r="4.5" fill="#F59E0B" fill-opacity=".72"/>
+      <circle cx="54" cy="23" r="4.5" fill="#10B981" fill-opacity=".72"/>
+      <text x="74" y="28" fill="#94A3B8" font-family="JetBrains Mono, monospace" font-size="12">/ds</text>
+
+      <g transform="translate(18 62)">
+        <g transform="translate(0 14)">
+          <rect x="0" y="0" width="390" height="58" rx="12" fill="#0f1829" fill-opacity=".5" stroke="#243352"/>
+          <rect x="12" y="14" width="64" height="30" rx="8" fill="#F97316"/>
+          <rect x="84" y="14" width="64" height="30" rx="8" fill="#8B5CF6"/>
+          <rect x="156" y="14" width="64" height="30" rx="8" fill="#6366F1"/>
+          <rect x="228" y="14" width="64" height="30" rx="8" fill="#243352" stroke="#94A3B8" stroke-opacity=".2"/>
+          <rect x="300" y="14" width="78" height="30" rx="8" fill="#CBD5E1"/>
+        </g>
+      </g>
+
+      <g transform="translate(18 150)">
+        <g transform="translate(0 14)">
+          <rect x="0" y="0" width="390" height="104" rx="12" fill="#0f1829" fill-opacity=".5" stroke="#243352"/>
+          <rect x="14" y="16" width="114" height="28" rx="9" fill="#243352" stroke="#94A3B8" stroke-opacity=".24"/>
+          <text x="71" y="35" text-anchor="middle" fill="#F8FAFC" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600">Colors</text>
+          <rect x="138" y="16" width="114" height="28" rx="9" fill="#243352" stroke="#94A3B8" stroke-opacity=".24"/>
+          <text x="195" y="35" text-anchor="middle" fill="#F8FAFC" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600">Typography</text>
+          <rect x="262" y="16" width="114" height="28" rx="9" fill="#243352" stroke="#94A3B8" stroke-opacity=".24"/>
+          <text x="319" y="35" text-anchor="middle" fill="#F8FAFC" font-family="Inter, system-ui, sans-serif" font-size="13" font-weight="600">Spacing</text>
+
+          <rect x="14" y="58" width="114" height="28" rx="9" fill="#243352" stroke="#94A3B8" stroke-opacity=".24"/>
+          <text x="71" y="76" text-anchor="middle" fill="#F8FAFC" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600">Motion</text>
+          <rect x="138" y="58" width="114" height="28" rx="9" fill="#243352" stroke="#94A3B8" stroke-opacity=".24"/>
+          <text x="195" y="76" text-anchor="middle" fill="#F8FAFC" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600">Patterns</text>
+          <rect x="262" y="58" width="114" height="28" rx="9" fill="#243352" stroke="#94A3B8" stroke-opacity=".24"/>
+          <text x="319" y="76" text-anchor="middle" fill="#F8FAFC" font-family="Inter, system-ui, sans-serif" font-size="12" font-weight="600">Conversion</text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

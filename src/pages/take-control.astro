@@ -579,6 +579,55 @@ import { siteConfig } from '../config'
         </div>
       </div>
 
+      <!-- Score CLI preview -->
+      <div class="mt-12 max-w-4xl mx-auto scroll-reveal" style="--delay: 0.18s;">
+        <div class="bg-navy-dark border border-navy-light/30 rounded-2xl overflow-hidden">
+          <div class="flex items-center gap-2 px-4 py-2.5 bg-navy border-b border-navy-light/20">
+            <div class="flex items-center gap-1.5">
+              <div class="w-2.5 h-2.5 rounded-full bg-critical/80"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-warning/80"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-success/80"></div>
+            </div>
+            <div class="flex-1 text-center">
+              <span class="text-xs text-slate-dark font-mono">terminal</span>
+            </div>
+            <span class="text-xs text-slate-dark font-mono hidden sm:inline">proposed CLI score format</span>
+          </div>
+
+          <div class="p-4 sm:p-5 font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto">
+            <div class="flex items-start gap-2 mb-2">
+              <span class="text-buoy select-none shrink-0">$</span>
+              <span class="text-light">buoy show health</span>
+            </div>
+
+            <div class="space-y-0.5 min-w-[38rem]">
+              <div class="text-slate"></div>
+              <div class="text-light">Buoy Health Score</div>
+              <div class="text-slate-dark">────────────────</div>
+              <div class="text-slate"></div>
+              <div class="text-success">Score        88/100   Great</div>
+              <div class="text-success">Threshold    PASS (failBelow: 70)</div>
+              <div class="text-info">Trend        +4 since last scan</div>
+              <div class="text-slate"></div>
+              <div class="text-light">Meter        <span class="text-buoy">[██████████████████░░]</span> 88</div>
+              <div class="text-slate"></div>
+              <div class="text-light">Pillars (weighted)</div>
+              <div class="text-success">  valueDiscipline  60/60  ████████████████████</div>
+              <div class="text-warning">  tokenHealth       8/20  ████████░░░░░░░░░░░░</div>
+              <div class="text-success">  consistency      10/10  ████████████████████</div>
+              <div class="text-success">  criticalIssues   10/10  ████████████████████</div>
+              <div class="text-slate"></div>
+              <div class="text-light">Suggestion</div>
+              <div class="text-info">  Tailwind detected but token coverage is low</div>
+              <div class="text-info">  - extend your theme config with custom values</div>
+            </div>
+          </div>
+        </div>
+        <p class="text-sm text-slate text-center mt-4">
+          Human-readable score output that still maps directly to the real <code class="text-xs text-lavender bg-navy-dark/60 px-1.5 py-0.5 rounded">buoy show health --json</code> fields.
+        </p>
+      </div>
+
       <!-- Progressive ladder -->
       <div class="mt-16 max-w-3xl mx-auto scroll-reveal" style="--delay: 0.2s;">
         <div class="text-center mb-8">
