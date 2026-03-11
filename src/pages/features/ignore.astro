@@ -242,6 +242,52 @@ buoy drift ignore show`} language="bash" />
     </div>
   </section>
 
+  <!-- Dashboard Ignore -->
+  <section class="py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light mb-4 text-center">Ignore from the Dashboard</h2>
+      <p class="text-slate text-center mb-8 max-w-2xl mx-auto">
+        Designers and non-CLI users can ignore existing issues directly from the Buoy Cloud dashboard. Batch your decisions, then sync to code with a single PR.
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <div class="w-12 h-12 rounded-full bg-buoy/20 border-2 border-buoy flex items-center justify-center mx-auto mb-4 text-buoy font-bold">
+            1
+          </div>
+          <h3 class="font-semibold text-light mb-2">Mark as Ignored</h3>
+          <p class="text-sm text-slate">
+            Click "Ignore" on any existing issue in the dashboard. Add a reason so your team knows why.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-12 h-12 rounded-full bg-buoy/20 border-2 border-buoy flex items-center justify-center mx-auto mb-4 text-buoy font-bold">
+            2
+          </div>
+          <h3 class="font-semibold text-light mb-2">Batch Decisions</h3>
+          <p class="text-sm text-slate">
+            Pending ignores accumulate. Your whole team sees who proposed what. Undo anytime before syncing.
+          </p>
+        </div>
+
+        <div class="text-center">
+          <div class="w-12 h-12 rounded-full bg-buoy/20 border-2 border-buoy flex items-center justify-center mx-auto mb-4 text-buoy font-bold">
+            3
+          </div>
+          <h3 class="font-semibold text-light mb-2">Sync via PR</h3>
+          <p class="text-sm text-slate">
+            One click creates a PR that adds ignore rules to your <code class="text-xs text-lavender bg-navy-dark/50 px-1.5 py-0.5 rounded">.buoy.yaml</code>. Code stays the source of truth.
+          </p>
+        </div>
+      </div>
+
+      <p class="text-slate text-center mt-8 text-sm">
+        When developers fix the underlying issue, stale pending ignores are cleaned up automatically on the next scan.
+      </p>
+    </div>
+  </section>
+
   <!-- Related Features Slot -->
   <div slot="related" class="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
     {relatedFeatures.map((feature) => (
