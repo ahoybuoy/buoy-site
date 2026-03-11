@@ -42,7 +42,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
 
   <h3>Installing as a Dev Dependency</h3>
 
-  <p>For ongoing use, install Buoy in your project:</p>
+  <p>For ongoing use, install Buoy in your project. Any of these package names work:</p>
 
   <pre><code># npm
 npm install --save-dev @buoy-design/cli
@@ -51,7 +51,11 @@ npm install --save-dev @buoy-design/cli
 pnpm add -D @buoy-design/cli
 
 # yarn
-yarn add -D @buoy-design/cli</code></pre>
+yarn add -D @buoy-design/cli
+
+# Alternative package names (same CLI)
+npm install --save-dev buoy-design
+npm install --save-dev ahoybuoy</code></pre>
 
   <p>Then run with npx or add to your package.json scripts:</p>
 
@@ -66,7 +70,8 @@ yarn add -D @buoy-design/cli</code></pre>
 
   <p>Install globally to use <code>buoy</code> anywhere:</p>
 
-  <pre><code>npm install -g @buoy-design/cli</code></pre>
+  <pre><code>npm install -g @buoy-design/cli
+# or: npm install -g buoy-design</code></pre>
 
   <h3>Requirements</h3>
 
