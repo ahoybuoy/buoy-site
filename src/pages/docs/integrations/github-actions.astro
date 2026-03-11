@@ -38,9 +38,9 @@ import LeadMagnetCallout from '../../../components/LeadMagnetCallout.astro'
 
   <h2>PR Review Format</h2>
 
-  <p>The PR review includes:</p>
+  <p>The PR review includes an issues table with a Fix column that distinguishes between verified token matches and suggested new tokens:</p>
 
-  <pre><code>## 🛟 Buoy Design Review
+  <pre><code>## &#x1F6DF; Buoy Design Review
 
 ### Summary
 3 design drift issues found in this PR.
@@ -48,13 +48,20 @@ import LeadMagnetCallout from '../../../components/LeadMagnetCallout.astro'
 &lt;details&gt;
 &lt;summary&gt;Issues Table&lt;/summary&gt;
 
-| File | Line | Issue | Fix |
-|------|------|-------|-----|
-| Card.tsx | 12 | Hardcoded color #3b82f6 | var(--color-primary) |
-| Card.tsx | 31 | Hardcoded spacing 24px | var(--spacing-lg) |
-| Modal.tsx | 8 | Hardcoded radius 8px | var(--radius-md) |
+| File | Line | Issue | Severity | Fix |
+|------|------|-------|----------|-----|
+| Card.tsx | 12 | Hardcoded color #3b82f6 | warning | &#x1F3AF; var(--color-primary) |
+| Card.tsx | 31 | Hardcoded spacing 24px | warning | &#x1F3AF; var(--spacing-lg) |
+| Modal.tsx | 8 | Hardcoded radius 8px | info | &#x1F4A1; --radius-md |
 
 &lt;/details&gt;</code></pre>
+
+  <h3>Fix Column Indicators</h3>
+
+  <ul>
+    <li><strong>&#x1F3AF; Verified match</strong> — The fix maps to an existing design token in your system. Safe to apply immediately.</li>
+    <li><strong>&#x1F4A1; Suggested token</strong> — Buoy suggests a new token name that doesn't exist yet. Consider extracting this value into a new token.</li>
+  </ul>
 
   <p>On Pro tier, you also get committable inline suggestions that you can apply with one click in the GitHub UI.</p>
 
@@ -70,9 +77,14 @@ import LeadMagnetCallout from '../../../components/LeadMagnetCallout.astro'
   <h2>Free vs Pro Tier</h2>
 
   <ul>
-    <li><strong>Free:</strong> Deterministic issues table (file, line, issue, fix token). GitHub check run (pass/fail).</li>
+    <li><strong>Free:</strong> Deterministic issues table with &#x1F3AF;/&#x1F4A1; Fix column (file, line, issue, severity, fix). GitHub check run (pass/fail).</li>
     <li><strong>Pro:</strong> Everything in Free, plus AI-powered summaries, committable inline fix suggestions, coaching in builder mode, and custom review instructions.</li>
   </ul>
+
+  <p>
+    <strong>Auto-Pro for early adopters:</strong> Teams who install the Buoy GitHub App during early access
+    are automatically upgraded to Pro tier for free. No credit card required.
+  </p>
 
   <h2>Dashboard</h2>
 
@@ -99,6 +111,7 @@ checks:
   hardcoded-spacing: warning
   arbitrary-tailwind: error
   inline-style: warning
+  magic-number: info
 
 ignore:
   - "**/*.test.tsx"

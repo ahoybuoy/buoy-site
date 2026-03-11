@@ -21,7 +21,7 @@ CodeRabbit reviews your code. Buoy teaches it your design system.
 | **Focus** | Code quality, bugs, security | Design system compliance |
 | **Knows** | General best practices | Your specific tokens & patterns |
 | **Catches** | Logic errors, security issues | `#3b82f6` instead of `--color-primary` |
-| **Output** | PR comments | PR comments + token suggestions |
+| **Output** | PR comments | PR comments with Fix column (&#x1F3AF; verified matches, &#x1F4A1; suggested tokens) |
 
 ### Better Together
 
@@ -183,4 +183,4 @@ General AI tools know code. Buoy knows YOUR design system - your tokens, your pa
 ### Key differentiator
 
 Other tools: "This code has issues"
-Buoy: "This code uses #3b82f6 but your design system has --color-primary for that exact shade"
+Buoy: "This code uses #3b82f6 — &#x1F3AF; var(--color-primary) is an exact match from your design system"

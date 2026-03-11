@@ -74,8 +74,42 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
     <li><strong>Normalize</strong> — Values are normalized (e.g., <code>rgb()</code> to hex)</li>
     <li><strong>Compare</strong> — Each value is compared against your design tokens</li>
     <li><strong>Classify</strong> — Mismatches are classified by type and severity</li>
-    <li><strong>Report</strong> — Results show location, context, and suggestions</li>
+    <li><strong>Report</strong> — Results show location, context, and fix suggestions</li>
   </ol>
+
+  <h2>Fix Column: Token Match vs Suggestion</h2>
+
+  <p>
+    When Buoy reports drift in a PR comment, the <strong>Fix</strong> column distinguishes between
+    verified token matches and suggested new tokens:
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Indicator</th>
+        <th>Meaning</th>
+        <th>Example</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>&#x1F3AF; <strong>Verified match</strong></td>
+        <td>The fix maps to an existing design token in your system</td>
+        <td>&#x1F3AF; <code>var(--color-primary)</code></td>
+      </tr>
+      <tr>
+        <td>&#x1F4A1; <strong>Suggested token</strong></td>
+        <td>Buoy suggests a new token name that doesn't exist yet</td>
+        <td>&#x1F4A1; <code>--spacing-card</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>
+    This distinction helps teams prioritize: verified matches (&#x1F3AF;) are safe to apply immediately,
+    while suggestions (&#x1F4A1;) indicate values that should be extracted into new tokens.
+  </p>
 
   <h2>Severity Levels</h2>
 
@@ -89,19 +123,19 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
     </thead>
     <tbody>
       <tr>
-        <td><strong>High</strong></td>
+        <td><strong>Error</strong></td>
         <td>Likely bugs or significant deviation</td>
         <td>Typos (close matches), completely wrong values</td>
       </tr>
       <tr>
-        <td><strong>Medium</strong></td>
+        <td><strong>Warning</strong></td>
         <td>Hardcoded values that should use tokens</td>
-        <td>Inline styles, raw hex colors</td>
+        <td>Inline styles, raw hex colors, arbitrary Tailwind values</td>
       </tr>
       <tr>
-        <td><strong>Low</strong></td>
-        <td>Minor inconsistencies</td>
-        <td>Naming variations, deprecated but functional</td>
+        <td><strong>Info</strong></td>
+        <td>Minor inconsistencies and suggestions</td>
+        <td>Naming variations, deprecated but functional, suggested new tokens</td>
       </tr>
     </tbody>
   </table>

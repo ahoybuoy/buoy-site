@@ -137,14 +137,14 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
 
 x Drift detected
 
-  Critical: 1
+  Error:    1
   Warning:  0
   Info:     0
 
 ~ Hardcoded Value
   File: src/components/Card.tsx:3
   Found: padding: 15px
-  Expected: 16px (--spacing-4)
+  Fix: &#x1F3AF; var(--spacing-4)
 
 Run `buoy show drift` for details</code></pre>
 
@@ -232,9 +232,10 @@ Agent fixes drift
   <pre><code>~ Hardcoded Value
   File: src/components/Card.tsx:3
   Found: padding: 15px
-  Expected: 16px (--spacing-4)
+  Fix: &#x1F3AF; var(--spacing-4)
 
-  Suggestion: Replace with var(--spacing-4) or theme.spacing[4]</code></pre>
+  &#x1F3AF; = verified match against an existing design token
+  &#x1F4A1; = suggested new token name (doesn't exist yet)</code></pre>
 
   <p>
     When an agent sees this output, it knows exactly what to fix. The agent doesn't
