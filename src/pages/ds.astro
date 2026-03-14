@@ -14,6 +14,20 @@ import LeadMagnetForm from '../components/LeadMagnetForm.astro'
 import LeadMagnetCallout from '../components/LeadMagnetCallout.astro'
 import LeadMagnetCTA from '../components/LeadMagnetCTA.astro'
 import LeadCaptureSection from '../components/LeadCaptureSection.astro'
+import {
+  SeverityBadgeDemo,
+  StatCardDemo,
+  TrendSparkDemo,
+  ScoreGaugeDemo,
+  DriftBreakdownDemo,
+  DataTableDemo,
+  ComparisonCardDemo,
+  TimelineDemo,
+  HeatmapDemo,
+  MetricGridDemo,
+  VerificationBadgeDemo,
+} from '../components/PlumbDemos'
+import '@buoy-design/plumb/styles.css'
 
 const colorGroups = [
   {
@@ -130,6 +144,21 @@ const flagItems = [
           <a href="#pat-pdf-badge"      class="ds-nav-link" data-target="pat-pdf-badge">PDF Badges</a>
           <a href="#pat-availability"   class="ds-nav-link" data-target="pat-availability">Availability Notice</a>
           <a href="#pat-pricing-card"   class="ds-nav-link" data-target="pat-pricing-card">Pricing Card</a>
+        </div>
+
+        <div class="ds-nav-group">
+          <div class="ds-nav-group-label">Data Visualization</div>
+          <a href="#plumb-severity-badge"  class="ds-nav-link" data-target="plumb-severity-badge">SeverityBadge</a>
+          <a href="#plumb-stat-card"       class="ds-nav-link" data-target="plumb-stat-card">StatCard</a>
+          <a href="#plumb-trend-spark"     class="ds-nav-link" data-target="plumb-trend-spark">TrendSpark</a>
+          <a href="#plumb-score-gauge"     class="ds-nav-link" data-target="plumb-score-gauge">ScoreGauge</a>
+          <a href="#plumb-drift-breakdown" class="ds-nav-link" data-target="plumb-drift-breakdown">DriftBreakdown</a>
+          <a href="#plumb-data-table"      class="ds-nav-link" data-target="plumb-data-table">DataTable</a>
+          <a href="#plumb-comparison-card" class="ds-nav-link" data-target="plumb-comparison-card">ComparisonCard</a>
+          <a href="#plumb-timeline"        class="ds-nav-link" data-target="plumb-timeline">Timeline</a>
+          <a href="#plumb-heatmap"         class="ds-nav-link" data-target="plumb-heatmap">Heatmap</a>
+          <a href="#plumb-metric-grid"     class="ds-nav-link" data-target="plumb-metric-grid">MetricGrid</a>
+          <a href="#plumb-verification"    class="ds-nav-link" data-target="plumb-verification">VerificationBadge</a>
         </div>
 
         <div class="ds-nav-group">
@@ -1236,11 +1265,252 @@ const flagItems = [
       </div><!-- /patterns group -->
 
       <!-- ════════════════════════════════════════════
-           CONVERSION
+           DATA VISUALIZATION
            ════════════════════════════════════════════ -->
       <div class="ds-group-block">
         <div class="ds-group-header">
           <span class="ds-group-eyebrow">05</span>
+          <h2 class="ds-group-title">Data Visualization</h2>
+          <p class="ds-group-desc">Report widgets from <code class="ds-code">@buoy-design/plumb</code>. Used in the Buoy dashboard, Ask Buoy reports, and PR comments.</p>
+        </div>
+
+        <!-- SeverityBadge -->
+        <div id="plumb-severity-badge" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">SeverityBadge</h3>
+              <code class="ds-comp-path">@buoy-design/plumb</code>
+            </div>
+            <span class="ds-badge ds-badge-stable">Stable</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Colored pill with status dot. Used in table cells, timeline events, and inline mentions.</p>
+          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <SeverityBadgeDemo client:load />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">severity*</span>: error | warning | info | ignore · <span class="text-buoy">count?</span>: number</div>
+            <div class="text-slate-dark">Pill: rounded-full · Dot: 6px · Font: Inter 12px 500</div>
+          </div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- StatCard -->
+        <div id="plumb-stat-card" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">StatCard</h3>
+              <code class="ds-comp-path">@buoy-design/plumb</code>
+            </div>
+            <span class="ds-badge ds-badge-stable">Stable</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Metric card with large value, label, and optional change indicator. Variant adds left border color.</p>
+          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <StatCardDemo client:load />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">value*</span> · <span class="text-buoy">label*</span> · <span class="text-buoy">change?</span> · <span class="text-buoy">changeDirection?</span> · <span class="text-buoy">variant?</span>: success | warning | critical</div>
+            <div class="text-slate-dark">Value: Quicksand 30px 700 · Label: Inter 14px 500 · Card: 16px radius, 24px padding</div>
+          </div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- TrendSpark -->
+        <div id="plumb-trend-spark" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">TrendSpark</h3>
+              <code class="ds-comp-path">@buoy-design/plumb</code>
+            </div>
+            <span class="ds-badge ds-badge-stable">Stable</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Stat card with inline SVG sparkline. Renders a polyline from the data array.</p>
+          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <TrendSparkDemo client:load />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">value*</span> · <span class="text-buoy">label*</span> · <span class="text-buoy">data*</span>: number[] · <span class="text-buoy">change?</span> · <span class="text-buoy">changeDirection?</span></div>
+            <div class="text-slate-dark">Sparkline: 80×32px SVG · Stroke: 2px round · Color: success/error/muted by direction</div>
+          </div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- ScoreGauge -->
+        <div id="plumb-score-gauge" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">ScoreGauge</h3>
+              <code class="ds-comp-path">@buoy-design/plumb</code>
+            </div>
+            <span class="ds-badge ds-badge-stable">Stable</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Semi-circle SVG arc gauge. Auto-colors by percentage: 0-30% critical, 30-60% warning, 60-100% success.</p>
+          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <ScoreGaugeDemo client:load />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">value*</span>: number · <span class="text-buoy">label*</span> · <span class="text-buoy">max?</span>=100</div>
+            <div class="text-slate-dark">Arc: 120×68 viewBox · stroke-width: 10 · linecap: round · Animated dashoffset</div>
+          </div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- DriftBreakdown -->
+        <div id="plumb-drift-breakdown" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">DriftBreakdown</h3>
+              <code class="ds-comp-path">@buoy-design/plumb</code>
+            </div>
+            <span class="ds-badge ds-badge-stable">Stable</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Pure CSS horizontal bar chart for drift type distribution. Colors are hardcoded per drift type.</p>
+          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <DriftBreakdownDemo client:load />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">items*</span>: DriftBreakdownItem[] · <span class="text-buoy">title?</span></div>
+            <div class="text-slate-dark">Bar: 20px height, 4px radius · Label: JetBrains Mono 12px · Count: JetBrains Mono 14px 600</div>
+          </div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- DataTable -->
+        <div id="plumb-data-table" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">DataTable</h3>
+              <code class="ds-comp-path">@buoy-design/plumb</code>
+            </div>
+            <span class="ds-badge ds-badge-stable">Stable</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Data table with typed cell renderers (severity, bar, filePath, number, delta), optional sort, and expand-to-show-all.</p>
+          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <DataTableDemo client:load />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">columns*</span> · <span class="text-buoy">data*</span> · <span class="text-buoy">sortable?</span> · <span class="text-buoy">maxRows?</span>=10</div>
+            <div class="text-slate-dark">Column render: severity | bar | filePath | number | delta · Hover: bg-hover · Expand button: border 8px radius</div>
+          </div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- ComparisonCard -->
+        <div id="plumb-comparison-card" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">ComparisonCard</h3>
+              <code class="ds-comp-path">@buoy-design/plumb</code>
+            </div>
+            <span class="ds-badge ds-badge-stable">Stable</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Before/after comparison. Single-metric mode shows large values with arrow. Multi-metric mode renders a compact table with delta pills.</p>
+          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <ComparisonCardDemo client:load />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Single: <span class="text-buoy">metric</span> · <span class="text-buoy">before</span> · <span class="text-buoy">after</span> · <span class="text-buoy">delta?</span> | Multi: <span class="text-buoy">metrics[]</span></div>
+            <div class="text-slate-dark">DeltaPill: rounded-full 12px · success-muted/error-muted/bg-hover backgrounds</div>
+          </div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- Timeline -->
+        <div id="plumb-timeline" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">Timeline</h3>
+              <code class="ds-comp-path">@buoy-design/plumb</code>
+            </div>
+            <span class="ds-badge ds-badge-stable">Stable</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Vertical timeline with colored dots, PR-aware fields, severity badges, and impact indicators.</p>
+          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <TimelineDemo client:load />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">events*</span>: TimelineEvent[] — each with title, date, prNumber?, issuesCount?, adopted?</div>
+            <div class="text-slate-dark">Dot: 14px border-bg-card · Line: 2px border · PR title: buoy orange 700</div>
+          </div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- Heatmap -->
+        <div id="plumb-heatmap" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">Heatmap</h3>
+              <code class="ds-comp-path">@buoy-design/plumb</code>
+            </div>
+            <span class="ds-badge ds-badge-stable">Stable</span>
+          </div>
+          <p class="text-sm text-slate mb-4">2D grid heatmap. Groups data by xKey (columns) and yKey (rows). Rows sorted by total descending. Buoy orange color scale.</p>
+          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <HeatmapDemo client:load />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">data*</span> · <span class="text-buoy">xKey*</span> · <span class="text-buoy">yKey*</span> · <span class="text-buoy">valueKey*</span> · <span class="text-buoy">colorScale?</span></div>
+            <div class="text-slate-dark">Cell: 3px radius · Label: JetBrains Mono 11px · Default scale: buoy orange 10%-90% opacity</div>
+          </div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- MetricGrid -->
+        <div id="plumb-metric-grid" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">MetricGrid</h3>
+              <code class="ds-comp-path">@buoy-design/plumb</code>
+            </div>
+            <span class="ds-badge ds-badge-stable">Stable</span>
+          </div>
+          <p class="text-sm text-slate mb-4">CSS grid wrapper for StatCards. Configurable column count.</p>
+          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <MetricGridDemo client:load />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">metrics*</span>: StatCardProps[] · <span class="text-buoy">columns?</span>: 2 | 3 | 4</div>
+            <div class="text-slate-dark">Layout: CSS grid · gap: 16px · Default: 3 columns</div>
+          </div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- VerificationBadge -->
+        <div id="plumb-verification" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">VerificationBadge</h3>
+              <code class="ds-comp-path">@buoy-design/plumb</code>
+            </div>
+            <span class="ds-badge ds-badge-stable">Stable</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Shows data verification status. Green badges for confirmed values, amber for unverified. Tooltip explains methodology.</p>
+          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <VerificationBadgeDemo client:load />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">verified*</span>: string[] · <span class="text-buoy">unverified*</span>: string[] · <span class="text-buoy">corrections*</span>: Correction[]</div>
+            <div class="text-slate-dark">Badge: 12px radius · Dot: 6px · Oxford comma list format · Max 5 fields shown</div>
+          </div>
+        </div>
+
+      </div><!-- /data-visualization group -->
+
+      <!-- ════════════════════════════════════════════
+           CONVERSION
+           ════════════════════════════════════════════ -->
+      <div class="ds-group-block">
+        <div class="ds-group-header">
+          <span class="ds-group-eyebrow">06</span>
           <h2 class="ds-group-title">Conversion</h2>
           <p class="ds-group-desc">Lead capture components. Each wraps <code class="ds-code">LeadMagnetForm</code> in a different layout context.</p>
         </div>
@@ -1369,6 +1639,24 @@ const flagItems = [
 </Layout>
 
 <style>
+  /* ── Plumb token bridge ────────────────────── */
+  :root {
+    --color-bg-card: var(--color-navy);
+    --color-border: color-mix(in srgb, var(--color-navy-light) 30%, transparent);
+    --color-border-subtle: color-mix(in srgb, var(--color-navy-light) 15%, transparent);
+    --color-text: var(--color-light);
+    --color-text-secondary: var(--color-light-muted);
+    --color-text-muted: var(--color-slate);
+    --color-primary: var(--color-buoy);
+    --color-error: var(--color-critical);
+    --color-bg-hover: color-mix(in srgb, var(--color-navy-light) 30%, transparent);
+    --color-success-muted: color-mix(in srgb, var(--color-success) 15%, transparent);
+    --color-error-muted: color-mix(in srgb, var(--color-critical) 15%, transparent);
+    --color-warning-muted: color-mix(in srgb, var(--color-warning) 15%, transparent);
+    --color-info-muted: color-mix(in srgb, var(--color-info) 15%, transparent);
+    --font-sans: var(--font-body);
+  }
+
   /* ── Layout ─────────────────────────────────── */
   .ds-layout {
     display: flex;
