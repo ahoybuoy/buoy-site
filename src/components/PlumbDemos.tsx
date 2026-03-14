@@ -130,14 +130,17 @@ export function TimelineDemo() {
 export function HeatmapDemo() {
   return (
     <Heatmap
+      title="Drift by File × Type"
       xKey="type"
       yKey="file"
       valueKey="count"
       data={[
         { file: 'src/components/Header.css', type: 'color', count: 8 },
         { file: 'src/components/Header.css', type: 'spacing', count: 3 },
+        { file: 'src/components/Header.css', type: 'tailwind', count: 1 },
         { file: 'src/components/Card.tsx', type: 'color', count: 5 },
         { file: 'src/components/Card.tsx', type: 'tailwind', count: 7 },
+        { file: 'src/components/Card.tsx', type: 'spacing', count: 2 },
         { file: 'src/components/Button.css', type: 'color', count: 2 },
         { file: 'src/components/Button.css', type: 'spacing', count: 6 },
         { file: 'src/components/Button.css', type: 'tailwind', count: 1 },
