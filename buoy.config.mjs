@@ -6,17 +6,21 @@ export default {
   sources: {
     astro: {
       enabled: true,
-      include: ['src/**/*.astro'],
-      exclude: ['**/*.test.*', '**/*.spec.*'],
+      include: ['src/components/*.astro'],
+      exclude: ['**/*.test.*', '**/*.spec.*', '**/*.sync-conflict*'],
+    },
+    react: {
+      enabled: true,
+      include: ['src/components/**/*.tsx'],
+      exclude: ['**/*.test.*', '**/*.spec.*', '**/PlumbDemos.tsx'],
     },
     tailwind: {
       enabled: true,
       include: ['src/**/*.astro', 'src/**/*.tsx', 'src/**/*.ts'],
+      exclude: ['**/*.sync-conflict*'],
     },
     figma: {
       enabled: false,
-      // accessToken: process.env.FIGMA_ACCESS_TOKEN,
-      // fileKeys: [],
     },
   },
   output: {
