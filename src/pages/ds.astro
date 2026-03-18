@@ -26,6 +26,16 @@ import {
   HeatmapDemo,
   MetricGridDemo,
   VerificationBadgeDemo,
+  LineChartDemo,
+  AreaChartDemo,
+  BarChartDemo,
+  PieChartDemo,
+  SpiderChartDemo,
+  TreemapDemo,
+  FunnelChartDemo,
+  ScatterChartDemo,
+  WaterfallChartDemo,
+  StackedBarChartDemo,
 } from '../components/PlumbDemos'
 import '@buoy-design/plumb/styles.css'
 
@@ -147,6 +157,14 @@ const flagItems = [
         </div>
 
         <div class="ds-nav-group">
+          <div class="ds-nav-group-label">Conversion</div>
+          <a href="#comp-lead-form"     class="ds-nav-link" data-target="comp-lead-form">LeadMagnetForm</a>
+          <a href="#comp-lead-callout"  class="ds-nav-link" data-target="comp-lead-callout">LeadMagnetCallout</a>
+          <a href="#comp-lead-cta"      class="ds-nav-link" data-target="comp-lead-cta">LeadMagnetCTA</a>
+          <a href="#comp-lead-capture"  class="ds-nav-link" data-target="comp-lead-capture">LeadCaptureSection</a>
+        </div>
+
+        <div class="ds-nav-group">
           <div class="ds-nav-group-label">Data Visualization</div>
           <a href="#plumb-severity-badge"  class="ds-nav-link" data-target="plumb-severity-badge">SeverityBadge</a>
           <a href="#plumb-stat-card"       class="ds-nav-link" data-target="plumb-stat-card">StatCard</a>
@@ -158,15 +176,17 @@ const flagItems = [
           <a href="#plumb-timeline"        class="ds-nav-link" data-target="plumb-timeline">Timeline</a>
           <a href="#plumb-heatmap"         class="ds-nav-link" data-target="plumb-heatmap">Heatmap</a>
           <a href="#plumb-metric-grid"     class="ds-nav-link" data-target="plumb-metric-grid">MetricGrid</a>
+          <a href="#plumb-line-chart"      class="ds-nav-link" data-target="plumb-line-chart">LineChart</a>
+          <a href="#plumb-area-chart"      class="ds-nav-link" data-target="plumb-area-chart">AreaChart</a>
+          <a href="#plumb-bar-chart"       class="ds-nav-link" data-target="plumb-bar-chart">BarChart</a>
+          <a href="#plumb-pie-chart"       class="ds-nav-link" data-target="plumb-pie-chart">PieChart</a>
+          <a href="#plumb-spider-chart"    class="ds-nav-link" data-target="plumb-spider-chart">SpiderChart</a>
+          <a href="#plumb-treemap"          class="ds-nav-link" data-target="plumb-treemap">Treemap</a>
+          <a href="#plumb-funnel-chart"     class="ds-nav-link" data-target="plumb-funnel-chart">FunnelChart</a>
+          <a href="#plumb-scatter-chart"    class="ds-nav-link" data-target="plumb-scatter-chart">ScatterChart</a>
+          <a href="#plumb-waterfall-chart"  class="ds-nav-link" data-target="plumb-waterfall-chart">WaterfallChart</a>
+          <a href="#plumb-stacked-bar-chart" class="ds-nav-link" data-target="plumb-stacked-bar-chart">StackedBarChart</a>
           <a href="#plumb-verification"    class="ds-nav-link" data-target="plumb-verification">VerificationBadge</a>
-        </div>
-
-        <div class="ds-nav-group">
-          <div class="ds-nav-group-label">Conversion</div>
-          <a href="#comp-lead-form"     class="ds-nav-link" data-target="comp-lead-form">LeadMagnetForm</a>
-          <a href="#comp-lead-callout"  class="ds-nav-link" data-target="comp-lead-callout">LeadMagnetCallout</a>
-          <a href="#comp-lead-cta"      class="ds-nav-link" data-target="comp-lead-cta">LeadMagnetCTA</a>
-          <a href="#comp-lead-capture"  class="ds-nav-link" data-target="comp-lead-capture">LeadCaptureSection</a>
         </div>
       </nav>
 
@@ -1265,11 +1285,128 @@ const flagItems = [
       </div><!-- /patterns group -->
 
       <!-- ════════════════════════════════════════════
-           DATA VISUALIZATION
+           CONVERSION
            ════════════════════════════════════════════ -->
       <div class="ds-group-block">
         <div class="ds-group-header">
           <span class="ds-group-eyebrow">05</span>
+          <h2 class="ds-group-title">Conversion</h2>
+          <p class="ds-group-desc">Lead capture components. Each wraps <code class="ds-code">LeadMagnetForm</code> in a different layout context.</p>
+        </div>
+
+        <!-- LeadMagnetForm -->
+        <div id="comp-lead-form" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">LeadMagnetForm</h3>
+              <code class="ds-comp-path">src/components/LeadMagnetForm.astro</code>
+            </div>
+            <span class="ds-badge ds-badge-conversion">Conversion</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Email capture form primitive. Used inside all lead magnet variants. Handles submit, loading, success, and error states.</p>
+          <div class="max-w-lg">
+            <LeadMagnetForm leadMagnet="pr-review-cheatsheet" buttonText="Get the Cheat Sheet" />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">leadMagnet*</span> · <span class="text-buoy">buttonText</span>='Get the PDF' · <span class="text-buoy">successMessage</span></div>
+            <div class="text-slate-dark">Input: bg-navy-light/50 focus:border-buoy · Button: bg-buoy glow-buoy hover:scale-105 · Success: bg-green-500/20</div>
+          </div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- LeadMagnetCallout -->
+        <div id="comp-lead-callout" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">LeadMagnetCallout</h3>
+              <code class="ds-comp-path">src/components/LeadMagnetCallout.astro</code>
+            </div>
+            <span class="ds-badge ds-badge-conversion">Conversion</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Inline callout card for embedding lead capture in article or docs context. Switches to horizontal layout on large screens.</p>
+          <LeadMagnetCallout
+            leadMagnet="drift-checklist"
+            headline="20 warning signs of design system drift"
+            subhead="A checklist for your next code review. Spot drift before it compounds."
+            buttonText="Get the Checklist"
+          />
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">leadMagnet*</span> · <span class="text-buoy">headline*</span> · <span class="text-buoy">subhead*</span> · <span class="text-buoy">buttonText</span>='Get the PDF'</div>
+            <div class="text-slate-dark">bg-gradient buoy/10→lavender/10 border-buoy/20 · lg:flex-row · "Free PDF" square badge</div>
+          </div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- LeadMagnetCTA -->
+        <div id="comp-lead-cta" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">LeadMagnetCTA</h3>
+              <code class="ds-comp-path">src/components/LeadMagnetCTA.astro</code>
+            </div>
+            <span class="ds-badge ds-badge-conversion">Conversion</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Full-width centered section CTA. Used at the bottom of content pages to offer a related PDF download.</p>
+          <div class="rounded-xl overflow-hidden border border-navy-light/20">
+            <LeadMagnetCTA
+              leadMagnet="maturity-model"
+              headline="Where does your design system stand?"
+              subhead="Assess your maturity level and get a roadmap for what to fix next."
+              buttonText="Get the Assessment"
+            />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">leadMagnet*</span> · <span class="text-buoy">headline*</span> · <span class="text-buoy">subhead*</span> · <span class="text-buoy">buttonText</span>='Get the PDF'</div>
+            <div class="text-slate-dark">py-16 bg-navy centered text · "Free PDF Download" pill badge · max-w-md form</div>
+          </div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- LeadCaptureSection -->
+        <div id="comp-lead-capture" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">LeadCaptureSection</h3>
+              <code class="ds-comp-path">src/components/LeadCaptureSection.astro</code>
+            </div>
+            <span class="ds-badge ds-badge-conversion">Conversion</span>
+          </div>
+          <p class="text-sm text-slate mb-4">A/B-tested two-column lead capture with PDF preview mockup. PostHog feature flag <code class="ds-code">homepage-lead-magnet-variant</code> selects the active variant; defaults to <code class="ds-code">drift-checklist</code>.</p>
+          <div class="rounded-xl overflow-hidden border border-navy-light/20 ds-lead-stage" id="dsLeadCaptureVariantStage">
+            <div data-ds-lead-stage="drift-checklist" class="ds-lead-stage-panel">
+              <LeadCaptureSection forceVariant="drift-checklist" />
+            </div>
+            <div data-ds-lead-stage="why-developers-bypass" class="ds-lead-stage-panel hidden">
+              <LeadCaptureSection forceVariant="why-developers-bypass" />
+            </div>
+            <div data-ds-lead-stage="maturity-model" class="ds-lead-stage-panel hidden">
+              <LeadCaptureSection forceVariant="maturity-model" />
+            </div>
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-2">
+              No props. 3 variants:
+              <a href="#comp-lead-capture" class="ds-inline-variant active" data-ds-lead-switch="drift-checklist">drift-checklist</a>
+              ·
+              <a href="#comp-lead-capture" class="ds-inline-variant" data-ds-lead-switch="why-developers-bypass">why-developers-bypass</a>
+              ·
+              <a href="#comp-lead-capture" class="ds-inline-variant" data-ds-lead-switch="maturity-model">maturity-model</a>
+            </div>
+            <div class="text-slate-dark">A/B via PostHog · PDF preview: rotate-1 hover:rotate-0 · grid lg:grid-cols-2</div>
+          </div>
+        </div>
+
+      </div><!-- /conversion group -->
+
+      <!-- ════════════════════════════════════════════
+           DATA VISUALIZATION
+           ════════════════════════════════════════════ -->
+      <div class="ds-group-block">
+        <div class="ds-group-header">
+          <span class="ds-group-eyebrow">06</span>
           <h2 class="ds-group-title">Data Visualization</h2>
           <p class="ds-group-desc">Report widgets from <code class="ds-code">@buoy-design/plumb</code>. Used in the Buoy dashboard, Ask Buoy reports, and PR comments.</p>
         </div>
@@ -1503,133 +1640,254 @@ const flagItems = [
           </div>
         </div>
 
+        <hr class="ds-divider" />
+
+        <!-- LineChart -->
+        <div id="plumb-line-chart" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">LineChart</h3>
+              <code class="ds-comp-path">@buoy-design/plumb</code>
+            </div>
+            <span class="ds-badge ds-badge-stable">Stable</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Multi-series line chart built on Recharts. Themed with design tokens, responsive container, and custom tooltip.</p>
+          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <LineChartDemo client:load />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">data*</span>: Record[] · <span class="text-buoy">xKey*</span> · <span class="text-buoy">yKeys*</span>: string[] · <span class="text-buoy">colors?</span> · <span class="text-buoy">height?</span>=280</div>
+            <div class="text-slate-dark">Recharts ResponsiveContainer · Grid: dashed 3px · Stroke: 2.5px monotone · Dot: 4px r, card-fill stroke</div>
+          </div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- AreaChart -->
+        <div id="plumb-area-chart" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">AreaChart</h3>
+              <code class="ds-comp-path">@buoy-design/plumb</code>
+            </div>
+            <span class="ds-badge ds-badge-stable">Stable</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Gradient-filled area chart with optional stacking. Linear gradient fades from 40% opacity to transparent.</p>
+          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <AreaChartDemo client:load />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">data*</span> · <span class="text-buoy">xKey*</span> · <span class="text-buoy">yKeys*</span> · <span class="text-buoy">stacked?</span>=false · <span class="text-buoy">colors?</span> · <span class="text-buoy">height?</span>=280</div>
+            <div class="text-slate-dark">Fill: linearGradient 0%→100% opacity · Stroke: 2px monotone · Legend: circle 8px</div>
+          </div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- BarChart -->
+        <div id="plumb-bar-chart" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">BarChart</h3>
+              <code class="ds-comp-path">@buoy-design/plumb</code>
+            </div>
+            <span class="ds-badge ds-badge-stable">Stable</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Vertical or horizontal bar chart. Top-rounded bars with chart token colors.</p>
+          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <BarChartDemo client:load />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">data*</span> · <span class="text-buoy">xKey*</span> · <span class="text-buoy">yKey*</span> · <span class="text-buoy">horizontal?</span>=false · <span class="text-buoy">colors?</span> · <span class="text-buoy">height?</span>=280</div>
+            <div class="text-slate-dark">Bar: radius [4,4,0,0] · Layout: horizontal or vertical · Grid: dashed 3px</div>
+          </div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- PieChart -->
+        <div id="plumb-pie-chart" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">PieChart</h3>
+              <code class="ds-comp-path">@buoy-design/plumb</code>
+            </div>
+            <span class="ds-badge ds-badge-stable">Stable</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Donut chart with legend. Inner radius creates the donut hole; padding angle separates slices.</p>
+          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <PieChartDemo client:load />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">data*</span> · <span class="text-buoy">nameKey*</span> · <span class="text-buoy">valueKey*</span> · <span class="text-buoy">monotone?</span>=false · <span class="text-buoy">colors?</span> · <span class="text-buoy">height?</span>=280</div>
+            <div class="text-slate-dark">Donut: outerRadius 100, innerRadius 60 · paddingAngle: 2 · Monotone: opacity stepped 95%→12% · Legend: circle 8px</div>
+          </div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- SpiderChart -->
+        <div id="plumb-spider-chart" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">SpiderChart</h3>
+              <code class="ds-comp-path">@buoy-design/plumb</code>
+            </div>
+            <span class="ds-badge ds-badge-stable">Stable</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Radar/spider chart for multi-axis comparison. Shows current vs target across quality dimensions like coverage, consistency, and adoption.</p>
+          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <SpiderChartDemo client:load />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">data*</span>: Record[] · <span class="text-buoy">axisKey*</span> · <span class="text-buoy">dataKeys*</span>: string[] · <span class="text-buoy">colors?</span> · <span class="text-buoy">height?</span>=320 · <span class="text-buoy">max?</span></div>
+            <div class="text-slate-dark">Recharts RadarChart · PolarGrid · Fill: 15% opacity · Stroke: 2px · Legend: circle 8px</div>
+          </div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- Treemap -->
+        <div id="plumb-treemap" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">Treemap</h3>
+              <code class="ds-comp-path">@buoy-design/plumb</code>
+            </div>
+            <span class="ds-badge ds-badge-stable">Stable</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Treemap for hierarchical data sized by value. Shows component distributions, file sizes, or category breakdowns as nested rectangles.</p>
+          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <TreemapDemo client:load />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">data*</span>: &#123;name, value, children?&#125;[] · <span class="text-buoy">colors?</span> · <span class="text-buoy">height?</span>=280</div>
+            <div class="text-slate-dark">Recharts Treemap · Custom content renderer · Name + value labels in cells</div>
+          </div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- FunnelChart -->
+        <div id="plumb-funnel-chart" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">FunnelChart</h3>
+              <code class="ds-comp-path">@buoy-design/plumb</code>
+            </div>
+            <span class="ds-badge ds-badge-stable">Stable</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Funnel chart for progressive narrowing stages. Use for issue resolution pipelines or conversion flows.</p>
+          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <FunnelChartDemo client:load />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">data*</span>: Record[] · <span class="text-buoy">nameKey*</span> · <span class="text-buoy">valueKey*</span> · <span class="text-buoy">colors?</span> · <span class="text-buoy">height?</span>=280</div>
+            <div class="text-slate-dark">Recharts FunnelChart · Cell coloring · White text labels inside segments</div>
+          </div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- ScatterChart -->
+        <div id="plumb-scatter-chart" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">ScatterChart</h3>
+              <code class="ds-comp-path">@buoy-design/plumb</code>
+            </div>
+            <span class="ds-badge ds-badge-stable">Stable</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Scatter plot for showing correlation between two numeric variables. Use for complexity vs drift count, size vs issues.</p>
+          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <ScatterChartDemo client:load />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">data*</span>: Record[] · <span class="text-buoy">xKey*</span> · <span class="text-buoy">yKey*</span> · <span class="text-buoy">nameKey?</span> · <span class="text-buoy">colors?</span> · <span class="text-buoy">height?</span>=280</div>
+            <div class="text-slate-dark">Recharts ScatterChart · CartesianGrid · Tooltip with labels</div>
+          </div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- WaterfallChart -->
+        <div id="plumb-waterfall-chart" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">WaterfallChart</h3>
+              <code class="ds-comp-path">@buoy-design/plumb</code>
+            </div>
+            <span class="ds-badge ds-badge-stable">Stable</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Waterfall chart showing cumulative effect of sequential positive and negative values. Last item treated as the total.</p>
+          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <WaterfallChartDemo client:load />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">data*</span>: &#123;name, value&#125;[] · <span class="text-buoy">positiveColor?</span> · <span class="text-buoy">negativeColor?</span> · <span class="text-buoy">totalColor?</span> · <span class="text-buoy">height?</span>=280</div>
+            <div class="text-slate-dark">Recharts BarChart · Stacked transparent base + colored delta · Green/red/orange defaults</div>
+          </div>
+        </div>
+
+        <hr class="ds-divider" />
+
+        <!-- StackedBarChart -->
+        <div id="plumb-stacked-bar-chart" class="ds-comp" data-ds-section>
+          <div class="ds-comp-header">
+            <div>
+              <h3 class="ds-comp-name">StackedBarChart</h3>
+              <code class="ds-comp-path">@buoy-design/plumb</code>
+            </div>
+            <span class="ds-badge ds-badge-stable">Stable</span>
+          </div>
+          <p class="text-sm text-slate mb-4">Stacked bar chart for comparing category breakdowns across groups. Use for issues by severity per week or drift by type per file.</p>
+          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <StackedBarChartDemo client:load />
+          </div>
+          <div class="ds-spec">
+            <div class="text-slate mb-1">Props: <span class="text-buoy">data*</span>: Record[] · <span class="text-buoy">xKey*</span> · <span class="text-buoy">yKeys*</span>: string[] · <span class="text-buoy">colors?</span> · <span class="text-buoy">height?</span>=280</div>
+            <div class="text-slate-dark">Recharts BarChart · stackId stacking · Top series gets rounded corners</div>
+          </div>
+        </div>
+
       </div><!-- /data-visualization group -->
-
-      <!-- ════════════════════════════════════════════
-           CONVERSION
-           ════════════════════════════════════════════ -->
-      <div class="ds-group-block">
-        <div class="ds-group-header">
-          <span class="ds-group-eyebrow">06</span>
-          <h2 class="ds-group-title">Conversion</h2>
-          <p class="ds-group-desc">Lead capture components. Each wraps <code class="ds-code">LeadMagnetForm</code> in a different layout context.</p>
-        </div>
-
-        <!-- LeadMagnetForm -->
-        <div id="comp-lead-form" class="ds-comp" data-ds-section>
-          <div class="ds-comp-header">
-            <div>
-              <h3 class="ds-comp-name">LeadMagnetForm</h3>
-              <code class="ds-comp-path">src/components/LeadMagnetForm.astro</code>
-            </div>
-            <span class="ds-badge ds-badge-conversion">Conversion</span>
-          </div>
-          <p class="text-sm text-slate mb-4">Email capture form primitive. Used inside all lead magnet variants. Handles submit, loading, success, and error states.</p>
-          <div class="max-w-lg">
-            <LeadMagnetForm leadMagnet="pr-review-cheatsheet" buttonText="Get the Cheat Sheet" />
-          </div>
-          <div class="ds-spec">
-            <div class="text-slate mb-1">Props: <span class="text-buoy">leadMagnet*</span> · <span class="text-buoy">buttonText</span>='Get the PDF' · <span class="text-buoy">successMessage</span></div>
-            <div class="text-slate-dark">Input: bg-navy-light/50 focus:border-buoy · Button: bg-buoy glow-buoy hover:scale-105 · Success: bg-green-500/20</div>
-          </div>
-        </div>
-
-        <hr class="ds-divider" />
-
-        <!-- LeadMagnetCallout -->
-        <div id="comp-lead-callout" class="ds-comp" data-ds-section>
-          <div class="ds-comp-header">
-            <div>
-              <h3 class="ds-comp-name">LeadMagnetCallout</h3>
-              <code class="ds-comp-path">src/components/LeadMagnetCallout.astro</code>
-            </div>
-            <span class="ds-badge ds-badge-conversion">Conversion</span>
-          </div>
-          <p class="text-sm text-slate mb-4">Inline callout card for embedding lead capture in article or docs context. Switches to horizontal layout on large screens.</p>
-          <LeadMagnetCallout
-            leadMagnet="drift-checklist"
-            headline="20 warning signs of design system drift"
-            subhead="A checklist for your next code review. Spot drift before it compounds."
-            buttonText="Get the Checklist"
-          />
-          <div class="ds-spec">
-            <div class="text-slate mb-1">Props: <span class="text-buoy">leadMagnet*</span> · <span class="text-buoy">headline*</span> · <span class="text-buoy">subhead*</span> · <span class="text-buoy">buttonText</span>='Get the PDF'</div>
-            <div class="text-slate-dark">bg-gradient buoy/10→lavender/10 border-buoy/20 · lg:flex-row · "Free PDF" square badge</div>
-          </div>
-        </div>
-
-        <hr class="ds-divider" />
-
-        <!-- LeadMagnetCTA -->
-        <div id="comp-lead-cta" class="ds-comp" data-ds-section>
-          <div class="ds-comp-header">
-            <div>
-              <h3 class="ds-comp-name">LeadMagnetCTA</h3>
-              <code class="ds-comp-path">src/components/LeadMagnetCTA.astro</code>
-            </div>
-            <span class="ds-badge ds-badge-conversion">Conversion</span>
-          </div>
-          <p class="text-sm text-slate mb-4">Full-width centered section CTA. Used at the bottom of content pages to offer a related PDF download.</p>
-          <div class="rounded-xl overflow-hidden border border-navy-light/20">
-            <LeadMagnetCTA
-              leadMagnet="maturity-model"
-              headline="Where does your design system stand?"
-              subhead="Assess your maturity level and get a roadmap for what to fix next."
-              buttonText="Get the Assessment"
-            />
-          </div>
-          <div class="ds-spec">
-            <div class="text-slate mb-1">Props: <span class="text-buoy">leadMagnet*</span> · <span class="text-buoy">headline*</span> · <span class="text-buoy">subhead*</span> · <span class="text-buoy">buttonText</span>='Get the PDF'</div>
-            <div class="text-slate-dark">py-16 bg-navy centered text · "Free PDF Download" pill badge · max-w-md form</div>
-          </div>
-        </div>
-
-        <hr class="ds-divider" />
-
-        <!-- LeadCaptureSection -->
-        <div id="comp-lead-capture" class="ds-comp" data-ds-section>
-          <div class="ds-comp-header">
-            <div>
-              <h3 class="ds-comp-name">LeadCaptureSection</h3>
-              <code class="ds-comp-path">src/components/LeadCaptureSection.astro</code>
-            </div>
-            <span class="ds-badge ds-badge-conversion">Conversion</span>
-          </div>
-          <p class="text-sm text-slate mb-4">A/B-tested two-column lead capture with PDF preview mockup. PostHog feature flag <code class="ds-code">homepage-lead-magnet-variant</code> selects the active variant; defaults to <code class="ds-code">drift-checklist</code>.</p>
-          <div class="rounded-xl overflow-hidden border border-navy-light/20 ds-lead-stage" id="dsLeadCaptureVariantStage">
-            <div data-ds-lead-stage="drift-checklist" class="ds-lead-stage-panel">
-              <LeadCaptureSection forceVariant="drift-checklist" />
-            </div>
-            <div data-ds-lead-stage="why-developers-bypass" class="ds-lead-stage-panel hidden">
-              <LeadCaptureSection forceVariant="why-developers-bypass" />
-            </div>
-            <div data-ds-lead-stage="maturity-model" class="ds-lead-stage-panel hidden">
-              <LeadCaptureSection forceVariant="maturity-model" />
-            </div>
-          </div>
-          <div class="ds-spec">
-            <div class="text-slate mb-2">
-              No props. 3 variants:
-              <a href="#comp-lead-capture" class="ds-inline-variant active" data-ds-lead-switch="drift-checklist">drift-checklist</a>
-              ·
-              <a href="#comp-lead-capture" class="ds-inline-variant" data-ds-lead-switch="why-developers-bypass">why-developers-bypass</a>
-              ·
-              <a href="#comp-lead-capture" class="ds-inline-variant" data-ds-lead-switch="maturity-model">maturity-model</a>
-            </div>
-            <div class="text-slate-dark">A/B via PostHog · PDF preview: rotate-1 hover:rotate-0 · grid lg:grid-cols-2</div>
-          </div>
-        </div>
-
-      </div><!-- /conversion group -->
 
       <!-- Footer CTA -->
       <section class="text-center py-16 border-t border-navy-light/20 mt-8">
         <div class="text-4xl mb-4">🛟</div>
         <h2 class="text-2xl font-bold text-light font-[Quicksand] mb-2">This page is the test</h2>
-        <p class="text-slate mb-6 max-w-2xl mx-auto">This page is built to be checked with Buoy. From the repo root, run a drift check on <code class="ds-code">src/pages/ds.astro</code> to verify the current drift status against the real source.</p>
-        <div class="inline-flex items-center gap-3 px-4 py-3 bg-navy/80 border border-navy-light/30 rounded-lg font-mono text-sm max-w-full overflow-x-auto">
-          <span class="text-slate">$</span>
-          <code class="text-light whitespace-nowrap">npx ahoybuoy@0.3.30 drift check src/pages/ds.astro</code>
+        <p class="text-slate mb-6 max-w-2xl mx-auto">This page is built to be checked with Buoy. Point the CLI at the live URL and see Buoy score a real design system.</p>
+        <div class="inline-flex flex-col items-start gap-3 px-6 py-5 bg-navy/80 border border-navy-light/30 rounded-xl font-mono text-sm max-w-2xl mx-auto text-left">
+          <div class="flex items-center gap-3">
+            <span class="text-slate">$</span>
+            <code class="text-light whitespace-nowrap">npx ahoybuoy@0.3.37 show health buoy.design/ds.astro</code>
+          </div>
+          <div class="text-slate-dark pl-6 leading-relaxed">
+            <div class="text-buoy font-semibold mb-1">Health Score: 95/100 (Great)</div>
+            <div class="text-xs text-success mb-3">▲ +7 from last scan</div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="w-28 text-xs text-slate">Value Discipline</span>
+              <span class="text-success">████████████████████</span>
+              <span class="text-xs text-slate">60/60</span>
+            </div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="w-28 text-xs text-slate">Token Health</span>
+              <span class="text-buoy">███████████████</span><span class="text-navy-light">░░░░░</span>
+              <span class="text-xs text-slate">15/20</span>
+            </div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="w-28 text-xs text-slate">Consistency</span>
+              <span class="text-success">████████████████████</span>
+              <span class="text-xs text-slate">10/10</span>
+            </div>
+            <div class="flex items-center gap-2 mb-3">
+              <span class="w-28 text-xs text-slate">Critical Issues</span>
+              <span class="text-success">████████████████████</span>
+              <span class="text-xs text-slate">10/10</span>
+            </div>
+            <div class="text-xs text-slate">Improve your score:</div>
+            <div class="text-xs text-slate-dark mt-1">  → Score 95 — to reach 100, improve token coverage and usage</div>
+          </div>
         </div>
       </section>
 
