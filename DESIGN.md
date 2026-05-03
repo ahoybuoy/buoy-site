@@ -84,3 +84,4 @@ The site is content-led. Section spacing is generous (`6rem` between major block
 - **Don't** use the `critical` red outside of error states. It reads as "something broke" — preserve that signal.
 
 
+
