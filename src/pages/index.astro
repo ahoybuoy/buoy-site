@@ -458,7 +458,7 @@ const steps = [
       <div class="mt-10 max-w-2xl mx-auto text-center">
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-success/10 border border-success/30 mb-6">
           <span class="text-success">✓</span>
-          <span class="text-sm text-success font-medium">Free for the first 100 teams — 95 spots left</span>
+          <span class="text-sm text-success font-medium" id="home-spots">Free for the first 100 teams</span>
         </div>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button href="https://github.com/marketplace/buoy-design" size="lg" external>
@@ -1098,4 +1098,24 @@ const steps = [
       }
     });
   });
+</script>
+
+<script>
+  // Live free-tier spots counter (falls back to the static text on error)
+  async function updateHomeSpots() {
+    try {
+      const res = await fetch('/api/installs');
+      const data = await res.json();
+      const el = document.getElementById('home-spots');
+      if (!el) return;
+      if (data.remaining > 0) {
+        el.textContent = `Free for the first 100 teams — ${data.remaining} spots left`;
+      } else {
+        el.textContent = 'All 100 free-team spots claimed';
+      }
+    } catch (e) {
+      console.error('Failed to fetch spots:', e);
+    }
+  }
+  updateHomeSpots();
 </script>
