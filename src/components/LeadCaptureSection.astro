@@ -135,64 +135,36 @@ const renderedVariants = forceVariant
 
 {!forceVariant && (
 <script>
-  // A/B Testing with PostHog
-  declare global {
-    interface Window {
-      posthog?: {
-        getFeatureFlag: (flag: string) => string | boolean | undefined;
-        capture: (event: string, properties?: Record<string, unknown>) => void;
-        onFeatureFlags?: (callback: () => void) => void;
-      };
-    }
-  }
+  // A/B test: deterministic per-visitor split stored in localStorage,
+  // exposure recorded through /api/track (Cloudflare Analytics Engine).
+  const STORAGE_KEY = 'buoy_ab_homepage-lead-magnet-variant';
 
   function initLeadCaptureABTest() {
-    if (typeof window.posthog !== 'undefined') {
-      const variant = window.posthog.getFeatureFlag('homepage-lead-magnet-variant');
+    const sections = Array.from(document.querySelectorAll<HTMLElement>('.lead-capture-variant'));
+    if (sections.length === 0) return;
+    const ids = sections.map((el) => el.dataset.variant || '').filter(Boolean);
 
-      if (variant && typeof variant === 'string') {
-        // Hide all variants
-        document.querySelectorAll('.lead-capture-variant').forEach(el => {
-          el.classList.add('hidden');
-        });
-
-        // Show the selected variant
-        const selectedVariant = document.querySelector(`.lead-capture-variant[data-variant="${variant}"]`);
-        if (selectedVariant) {
-          selectedVariant.classList.remove('hidden');
-        } else {
-          // Fallback to first variant if flag value doesn't match
-          const firstVariant = document.querySelector('.lead-capture-variant');
-          firstVariant?.classList.remove('hidden');
-        }
-
-        // Track which variant was shown
-        window.posthog.capture('lead_capture_section_shown', {
-          variant,
-          page: 'homepage'
-        });
-      }
+    let variant: string | null = null;
+    try { variant = localStorage.getItem(STORAGE_KEY); } catch {}
+    if (!variant || !ids.includes(variant)) {
+      variant = ids[Math.floor(Math.random() * ids.length)];
+      try { localStorage.setItem(STORAGE_KEY, variant); } catch {}
     }
-  }
 
-  // Try to init A/B test when PostHog loads feature flags
-  function waitForPostHog() {
-    if (typeof window.posthog !== 'undefined' && window.posthog.onFeatureFlags) {
-      window.posthog.onFeatureFlags(initLeadCaptureABTest);
-    } else {
-      // Fallback: try again after a delay
-      setTimeout(() => {
-        if (typeof window.posthog !== 'undefined') {
-          initLeadCaptureABTest();
-        }
-      }, 1500);
-    }
+    sections.forEach((el) => el.classList.toggle('hidden', el.dataset.variant !== variant));
+
+    fetch('/api/track', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ event: 'lead_capture_section_shown', properties: { variant, page: 'homepage' } }),
+      keepalive: true,
+    }).catch(() => {});
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', waitForPostHog);
+    document.addEventListener('DOMContentLoaded', initLeadCaptureABTest);
   } else {
-    waitForPostHog();
+    initLeadCaptureABTest();
   }
 </script>
 )}

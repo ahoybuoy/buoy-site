@@ -1374,7 +1374,7 @@ const flagItems = [
             </div>
             <span class="ds-badge ds-badge-conversion">Conversion</span>
           </div>
-          <p class="text-sm text-slate mb-4">A/B-tested two-column lead capture with PDF preview mockup. PostHog feature flag <code class="ds-code">homepage-lead-magnet-variant</code> selects the active variant; defaults to <code class="ds-code">drift-checklist</code>.</p>
+          <p class="text-sm text-slate mb-4">A/B-tested two-column lead capture with PDF preview mockup. A per-visitor split stored under <code class="ds-code">buoy_ab_homepage-lead-magnet-variant</code> selects the active variant; exposure is recorded via <code class="ds-code">/api/track</code>.</p>
           <div class="rounded-xl overflow-hidden border border-navy-light/20 ds-lead-stage" id="dsLeadCaptureVariantStage">
             <div data-ds-lead-stage="drift-checklist" class="ds-lead-stage-panel">
               <LeadCaptureSection forceVariant="drift-checklist" />
@@ -1395,7 +1395,7 @@ const flagItems = [
               ·
               <a href="#comp-lead-capture" class="ds-inline-variant" data-ds-lead-switch="maturity-model">maturity-model</a>
             </div>
-            <div class="text-slate-dark">A/B via PostHog · PDF preview: rotate-1 hover:rotate-0 · grid lg:grid-cols-2</div>
+            <div class="text-slate-dark">A/B via localStorage split · PDF preview: rotate-1 hover:rotate-0 · grid lg:grid-cols-2</div>
           </div>
         </div>
 

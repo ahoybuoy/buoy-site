@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css'
-import PostHog from '../components/PostHog.astro'
 
 interface Props {
   title: string
@@ -67,8 +66,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
       })();
     </script>
 
-    <!-- Analytics -->
-    <PostHog />
+    <!-- Analytics: Cloudflare Web Analytics is enabled on the Pages project and injects its own beacon. Custom events go to /api/track. -->
   </head>
   <body class="min-h-screen bg-navy-dark text-light antialiased">
     <slot />

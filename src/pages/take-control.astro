@@ -897,46 +897,4 @@ import { siteConfig } from '../config'
       }
     });
   });
-
-  // A/B Testing with PostHog (when available)
-  declare global {
-    interface Window {
-      posthog?: {
-        getFeatureFlag: (flag: string) => string | boolean | undefined;
-        capture: (event: string, properties?: Record<string, unknown>) => void;
-      };
-    }
-  }
-
-  function initABTest() {
-    if (typeof window.posthog !== 'undefined') {
-      const variant = window.posthog.getFeatureFlag('designer-page-headline');
-
-      if (variant && typeof variant === 'string') {
-        // Hide all variants
-        document.querySelectorAll('.hero-variant').forEach(el => {
-          el.classList.add('hidden');
-        });
-
-        // Show the selected variant
-        const selectedVariant = document.querySelector(`[data-variant="${variant}"]`);
-        if (selectedVariant) {
-          selectedVariant.classList.remove('hidden');
-          selectedVariant.classList.add('animate-fade-in-up');
-        }
-
-        // Track which variant was shown
-        window.posthog.capture('designer_headline_shown', { variant });
-      }
-    }
-  }
-
-  // Try to init A/B test, retry if PostHog not loaded yet
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      setTimeout(initABTest, 1000);
-    });
-  } else {
-    setTimeout(initABTest, 1000);
-  }
 </script>

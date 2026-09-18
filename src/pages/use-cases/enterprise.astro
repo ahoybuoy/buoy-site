@@ -1,163 +1,97 @@
 ---
 import UseCaseLayout from '../../layouts/UseCaseLayout.astro'
-import LeadMagnetCallout from '../../components/LeadMagnetCallout.astro'
 
-const features = [
+const capabilities = [
   {
-    title: 'Multi-Repo Support',
-    description: 'Track design system health across dozens or hundreds of repositories from a single dashboard.',
-    icon: '📁'
+    title: 'Local deterministic scanning',
+    description: 'Run the open-source scanner inside your own development or CI environment without requiring an LLM or uploading source code.',
+    icon: '🔒',
   },
   {
-    title: 'Team-Level Metrics',
-    description: 'See adoption by team, department, or business unit. Identify which teams need support.',
-    icon: '👥'
+    title: 'Repository-owned policy',
+    description: 'Keep design-system paths, severity rules, accepted exceptions, and enforcement thresholds in version-controlled configuration.',
+    icon: '📋',
   },
   {
-    title: 'SSO Integration',
-    description: 'Connect to your identity provider. SAML, OIDC, and Active Directory supported.',
-    icon: '🔐'
+    title: 'Legacy-safe adoption',
+    description: 'Record existing drift as a reviewed baseline, then focus pull-request checks on violations introduced after adoption.',
+    icon: '🧭',
   },
   {
-    title: 'Audit Logging',
-    description: 'Full audit trail of scans, configuration changes, and drift reports for compliance.',
-    icon: '📝'
+    title: 'Pull-request feedback',
+    description: 'Use the GitHub App or CI output to surface file-level findings where developers already review implementation changes.',
+    icon: '🔍',
   },
   {
-    title: 'Custom Thresholds',
-    description: 'Set different severity thresholds per repository or team based on maturity.',
-    icon: '⚙️'
+    title: 'Ownership and impact mapping',
+    description: 'Map canonical and unmanaged components, observed consumers, and configured owners to help teams prioritize migration work.',
+    icon: '🗺️',
   },
   {
-    title: 'API Access',
-    description: 'Integrate Buoy data into your own dashboards and reporting tools via REST API.',
-    icon: '🔌'
+    title: 'Machine-readable output',
+    description: 'Use JSON and agent-oriented output in internal reporting, automation, and review workflows.',
+    icon: '⚙️',
   },
 ]
-
 ---
 
 <UseCaseLayout
-  title="Enterprise Design System Governance | Buoy"
-  description="Design system governance at scale. Cross-team coverage reports, CI/CD enforcement, and exception documentation."
+  title="Design-System Governance for Larger Teams | Buoy"
+  description="Local scanning, repository-owned policy, legacy-safe adoption, and pull-request enforcement for larger frontend organizations."
   keywords="enterprise design system, design system governance, multi-team design system"
-  heroTitle="Enterprise Governance"
-  heroDescription="Design system governance at enterprise scale. Multi-repo, multi-team, with the security and compliance features you need."
+  heroTitle="Govern the code you actually ship"
+  heroDescription="Buoy helps larger teams measure design-system drift locally, document accepted exceptions, and review newly introduced violations in pull requests."
   icon="🏢"
 >
-  <!-- Features -->
   <section class="py-16 bg-navy">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Enterprise Features</h2>
-
+      <div class="max-w-3xl mx-auto text-center mb-10">
+        <h2 class="text-2xl font-bold text-light mb-3">Capabilities available today</h2>
+        <p class="text-slate">These are product capabilities you can evaluate directly in the open-source CLI and GitHub workflow.</p>
+      </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {features.map((feature) => (
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6">
-            <div class="text-3xl mb-3">{feature.icon}</div>
-            <h3 class="text-lg font-semibold text-light mb-2">{feature.title}</h3>
-            <p class="text-sm text-slate">{feature.description}</p>
-          </div>
+        {capabilities.map((capability) => (
+          <article class="bg-navy-dark border border-navy-light/20 rounded-xl p-6">
+            <div class="text-3xl mb-3">{capability.icon}</div>
+            <h3 class="text-lg font-semibold text-light mb-2">{capability.title}</h3>
+            <p class="text-sm text-slate">{capability.description}</p>
+          </article>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Security -->
   <section class="py-16">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Security & Compliance</h2>
-
-      <div class="grid sm:grid-cols-2 gap-6">
-        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-4">Security</h3>
-          <ul class="space-y-2 text-sm text-slate">
-            <li class="flex items-center gap-2">
-              <span class="text-success">✓</span> SOC 2 Type II certified
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-success">✓</span> Data encryption at rest and in transit
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-success">✓</span> No code leaves your network (CLI mode)
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-success">✓</span> Regular penetration testing
-            </li>
+      <div class="grid md:grid-cols-2 gap-6">
+        <article class="bg-navy/50 border border-navy-light/20 rounded-xl p-7">
+          <h2 class="text-xl font-semibold text-light mb-4">Local-mode privacy</h2>
+          <ul class="space-y-3 text-sm text-slate">
+            <li class="flex items-start gap-2"><span class="text-success">✓</span><span>Open-source scanner under the MIT license</span></li>
+            <li class="flex items-start gap-2"><span class="text-success">✓</span><span>Deterministic scanning without an AI provider</span></li>
+            <li class="flex items-start gap-2"><span class="text-success">✓</span><span>Local and offline operation for CLI workflows</span></li>
+            <li class="flex items-start gap-2"><span class="text-success">✓</span><span>Source upload is not required for local reports</span></li>
           </ul>
-        </div>
-
-        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-4">Compliance</h3>
-          <ul class="space-y-2 text-sm text-slate">
-            <li class="flex items-center gap-2">
-              <span class="text-success">✓</span> GDPR compliant
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-success">✓</span> CCPA compliant
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-success">✓</span> Full audit logging
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="text-success">✓</span> Data retention controls
-            </li>
-          </ul>
-        </div>
+        </article>
+        <article class="bg-navy/50 border border-navy-light/20 rounded-xl p-7">
+          <h2 class="text-xl font-semibold text-light mb-4">Procurement and deployment</h2>
+          <p class="text-sm text-slate mb-4">
+            Security reviews, identity requirements, data handling, deployment models, and contractual controls are evaluated against your requirements before we make a commitment.
+          </p>
+          <p class="text-sm text-slate">
+            Contact us for a current capability review. Buoy does not claim certifications or deployment options that have not been independently verified and delivered.
+          </p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- Deployment Options -->
   <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Deployment Options</h2>
-
-      <div class="grid sm:grid-cols-3 gap-6">
-        <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 text-center">
-          <div class="text-3xl mb-3">☁️</div>
-          <h3 class="font-semibold text-light mb-2">Cloud</h3>
-          <p class="text-sm text-slate">Managed SaaS</p>
-        </div>
-
-        <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 text-center">
-          <div class="text-3xl mb-3">🏠</div>
-          <h3 class="font-semibold text-light mb-2">Self-Hosted</h3>
-          <p class="text-sm text-slate">Run in your own infrastructure</p>
-        </div>
-
-        <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 text-center">
-          <div class="text-3xl mb-3">🔒</div>
-          <h3 class="font-semibold text-light mb-2">Air-Gapped</h3>
-          <p class="text-sm text-slate">For regulated environments</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Lead Magnet: State of Design Systems -->
-  <section class="py-12">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <LeadMagnetCallout
-        leadMagnet="state-of-design-systems"
-        headline="How does your design system compare?"
-        subhead="State of Design Systems 2026: Benchmarks, trends, and insights from 500+ teams."
-        buttonText="Get the Report"
-      />
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section class="py-16">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-2xl font-bold text-light mb-4">Ready to discuss enterprise?</h2>
-      <p class="text-slate mb-8">
-        Get custom pricing, dedicated support, and deployment options tailored to your organization.
-      </p>
-      <a
-        href="/contact"
-        class="inline-flex items-center justify-center px-6 py-3 bg-buoy text-navy-dark font-medium rounded-lg hover:bg-buoy-light transition-colors glow-buoy"
-      >
-        Contact Sales
+      <h2 class="text-2xl font-bold text-light mb-4">Evaluate Buoy on one repository</h2>
+      <p class="text-slate mb-8">Start with a local baseline and one representative pull request before discussing a broader rollout.</p>
+      <a href="/contact" class="inline-flex items-center justify-center px-6 py-3 bg-buoy text-navy-dark font-medium rounded-lg hover:bg-buoy-light transition-colors glow-buoy">
+        Contact Buoy
       </a>
     </div>
   </section>

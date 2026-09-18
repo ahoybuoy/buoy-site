@@ -77,12 +77,13 @@ const formId = `lead-form-${leadMagnet}`
         successDiv.classList.remove('hidden');
         form.classList.add('hidden');
 
-        // Track conversion if PostHog is available
-        if (window.posthog) {
-          window.posthog.capture('lead_magnet_download', {
-            lead_magnet: leadMagnet,
-          });
-        }
+        // Track conversion (Cloudflare Analytics Engine via /api/track)
+        fetch('/api/track', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ event: 'lead_magnet_download', properties: { lead_magnet: leadMagnet } }),
+          keepalive: true,
+        }).catch(() => {});
       } else {
         errorDiv.textContent = data.message || 'Something went wrong. Please try again.';
         errorDiv.classList.remove('hidden');

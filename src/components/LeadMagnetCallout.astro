@@ -2,7 +2,7 @@
 import LeadMagnetForm from './LeadMagnetForm.astro'
 
 interface Props {
-  leadMagnet: 'drift-checklist' | 'hall-of-shame' | 'pr-review-cheatsheet' | 'maturity-model' | 'why-developers-bypass' | 'token-migration' | 'state-of-design-systems'
+  leadMagnet: 'drift-checklist' | 'hall-of-shame' | 'pr-review-cheatsheet' | 'maturity-model' | 'why-developers-bypass' | 'token-migration'
   headline: string
   subhead: string
   buttonText?: string
@@ -24,7 +24,6 @@ const successMessages: Record<string, string> = {
   'maturity-model': 'Check your email for the maturity model!',
   'why-developers-bypass': 'Check your email for the report!',
   'token-migration': 'Check your email for the playbook!',
-  'state-of-design-systems': 'Check your email for the report!',
 }
 ---
 

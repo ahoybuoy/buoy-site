@@ -18,3 +18,8 @@ bucket_name = "buoy-downloads"
 [[kv_namespaces]]
 binding = "COUNTERS"
 id = "50982c09944e4efc8182957e708da003"
+
+# Analytics Engine - shared product analytics dataset (same as buoy-cloud)
+[[analytics_engine_datasets]]
+binding = "ANALYTICS"
+dataset = "buoy_events"

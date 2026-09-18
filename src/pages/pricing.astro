@@ -9,7 +9,7 @@ const plans = [
   {
     name: 'Free',
     price: '$0',
-    period: 'forever',
+    period: 'open source',
     description: 'Open source CLI with full drift detection. No limits.',
     features: [
       'Auto-detects design system',
@@ -23,39 +23,39 @@ const plans = [
     variant: 'secondary',
   },
   {
-    name: 'Pro',
-    price: 'FREE',
-    period: 'for life for early adopters',
-    description: 'Then $25/dev/month after we reach 100 teams.',
+    name: 'GitHub App',
+    price: '$0',
+    period: 'during early access',
+    description: 'Free while we validate repeat usefulness with the first 100 teams. No card required.',
     features: [
       'Everything in Free',
       'Unlimited repos',
       'Smart GitHub PR comments',
       'Committable inline fix suggestions',
-      'AI-powered summaries & coaching',
+      'Contextual review summaries',
       'Cloud history & trends',
       'Dashboard with health scores',
-      'No minimum seats',
+      'No credit card',
     ],
-    cta: 'Claim Free Spot',
+    cta: 'Install Early Access',
     ctaHref: 'https://github.com/marketplace/buoy-design',
     variant: 'primary',
     popular: true,
     earlyBird: true,
   },
   {
-    name: 'Done For You',
-    price: '$5-8k',
-    period: '/engagement',
-    description: 'We fix your design drift in one week.\nYou ship features.',
+    name: 'Design Calibration',
+    price: '$5k',
+    period: 'pilot engagement',
+    description: 'Teach AI what belongs in one real product, then install practical guardrails.',
     features: [
-      'Full codebase scan & audit',
-      '20-50 critical fixes done for you',
-      'Prioritized backlog for the rest',
-      'Team training & Buoy setup',
-      'CI/CD integration',
-      '30 days priority support',
-      '100% money-back guarantee',
+      'Product design capture and baseline',
+      'Human-readable Design Contract',
+      'Agent context for your workflow',
+      '20 agreed high-confidence fixes',
+      'GitHub or CI guardrail setup',
+      'Before-and-after report',
+      'Team handoff and 30-day recheck',
     ],
     cta: 'Learn More',
     ctaHref: '/services',
@@ -65,47 +65,39 @@ const plans = [
 
 const faqs = [
   {
-    question: 'Is the free tier really free forever?',
-    answer: 'Yes. The open source CLI will always be free under the MIT license. Full drift detection, token import, fix suggestions — all free with no user limits.'
+    question: 'Is the CLI free?',
+    answer: 'Yes. The current CLI release is open source under the MIT license and includes drift detection, token import, fix suggestions, and local history.'
   },
   {
     question: 'What\'s included in the free CLI?',
     answer: 'Everything you need to detect and fix design drift: auto-detection of your design system, all scanning commands, fix suggestions with exact token replacements, and local scan history. The CLI is the full product, not a teaser.'
   },
   {
-    question: 'Why per-seat pricing?',
-    answer: 'We align with industry standards like CodeRabbit and Greptile. At $25/dev ($20 annual), you get cloud features that scale with your team. Solo devs pay $25/mo, not $299/mo.'
-  },
-  {
-    question: 'Is there a minimum number of seats?',
-    answer: 'No minimum. A solo developer can use the Team plan for $25/month. Pay for exactly what you need.'
-  },
-  {
-    question: 'Do you offer discounts for annual billing?',
-    answer: 'Yes — 20% off. Annual billing is $20/dev/month ($240/dev/year) instead of $25/dev/month.'
+    question: 'Will the GitHub App always be free?',
+    answer: 'It is free during early access, with no card required. We are first measuring whether teams keep Buoy enabled and find its reviews useful. Any future paid plan will be based on that evidence and communicated before it applies.'
   },
   {
     question: 'What about open source projects?',
-    answer: 'Verified open source projects get full Team plan features for free. Apply through our OSS program.'
+    answer: 'The MIT-licensed CLI is free for every open source project. GitHub App access follows the same early-access terms shown above.'
   },
   {
     question: 'How does the GitHub App work?',
-    answer: 'The Buoy GitHub App runs the same open-source scanner on every PR automatically. It posts a review with a deterministic issues table showing verified token matches (\uD83C\uDFAF) and suggested new tokens (\uD83D\uDCA1) in the Fix column. On Pro tier, it adds AI-powered summaries and committable inline fix suggestions you can apply with one click.'
+    answer: 'The Buoy GitHub App runs the open-source scanner on pull requests and posts a deterministic issues table with file-level findings. During early access, it can add contextual summaries and committable suggestions for supported high-confidence fixes.'
   },
   {
-    question: 'What is Auto-Pro?',
-    answer: 'Early adopters who install the Buoy GitHub App are automatically upgraded to Pro tier for free — no credit card, no application. We call this Auto-Pro. It locks in free Pro features for life as long as you remain an active user.'
+    question: 'What does early access mean?',
+    answer: 'You can install the GitHub App for free while we work with the first 100 teams. We use product behavior and contextual feedback to improve review quality; we do not promise a permanent paid tier before that evidence exists.'
   },
   {
-    question: 'What does "Done For You" include?',
-    answer: 'We scan your codebase, fix 20-50 critical drift issues ourselves, set up Buoy in your CI/CD, and train your team. You get a clean codebase in one week with a 100% money-back guarantee.'
+    question: 'What does Design Calibration include?',
+    answer: 'The pilot covers one agreed codebase: product-design capture, a human-readable Design Contract, agent context, 20 agreed high-confidence fixes through reviewable pull requests, GitHub or CI guardrails, a team handoff, and a 30-day recheck.'
   },
 ]
 ---
 
 <Layout
   title="Pricing | Buoy - Design Drift Detection"
-  description="Free forever open source CLI with unlimited developers. Upgrade to Pro for history, MCP server, and advanced tools."
+  description="Free open source CLI, free GitHub App early access, and a fixed-scope Buoy Design Calibration service."
   keywords="buoy pricing, design drift tool pricing, design system tool cost"
 >
   <Nav />
@@ -116,14 +108,14 @@ const faqs = [
 
     <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sunrise/10 border border-sunrise/30 mb-6">
-        <span class="text-sunrise font-medium text-sm" id="hero-spots">🎉 Pro plan free for first 100 Buoy Heroes</span>
+        <span class="text-sunrise font-medium text-sm">GitHub App early access is free</span>
       </div>
       <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6">
-        Free CLI. Simple per-seat pricing.
+        Free CLI. Free GitHub App early access.
       </h1>
       <p class="text-lg text-slate max-w-2xl mx-auto">
-        Full drift detection is free forever. Cloud features free for early adopters,
-        then $25/dev/month. Open source projects always free.
+        Run Buoy locally under the MIT license, or install the GitHub App while we
+        validate repeat usefulness with the first 100 teams. No card required.
       </p>
     </div>
   </section>
@@ -135,8 +127,8 @@ const faqs = [
         {plans.map((plan) => (
           <div class={`relative bg-navy/50 border rounded-2xl p-8 ${plan.popular ? 'border-buoy' : 'border-navy-light/20'}`}>
             {plan.earlyBird ? (
-              <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-sunrise text-navy-dark text-xs font-semibold rounded-full whitespace-nowrap" id="card-spots">
-                💪 Hero Spots Available
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-sunrise text-navy-dark text-xs font-semibold rounded-full whitespace-nowrap">
+                Early Access
               </div>
             ) : plan.popular && (
               <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-buoy text-navy-dark text-xs font-semibold rounded-full">
@@ -205,7 +197,7 @@ const faqs = [
           <div class="p-4 font-semibold text-slate">Feature</div>
           <div class="p-4 font-semibold text-slate text-center border-l border-navy-light/20">Free</div>
           <div class="p-4 font-semibold text-buoy text-center border-l border-navy-light/20">Pro</div>
-          <div class="p-4 font-semibold text-slate text-center border-l border-navy-light/20">Done For You</div>
+          <div class="p-4 font-semibold text-slate text-center border-l border-navy-light/20">Design Calibration</div>
         </div>
 
         {[
@@ -222,7 +214,7 @@ const faqs = [
           { feature: 'We fix your drift for you', free: false, team: false, ent: true },
           { feature: 'Team training session', free: false, team: false, ent: true },
           { feature: 'CI/CD setup included', free: false, team: false, ent: true },
-          { feature: '100% money-back guarantee', free: false, team: false, ent: true },
+          { feature: 'Before-and-after implementation report', free: false, team: false, ent: true },
         ].map((row, index) => (
           <div class={`grid grid-cols-4 text-sm ${index % 2 === 0 ? 'bg-navy/30' : ''}`}>
             <div class="p-4 text-light">{row.feature}</div>
@@ -266,30 +258,3 @@ const faqs = [
 
   <Footer />
 </Layout>
-
-<script>
-  async function updateSpots() {
-    try {
-      const res = await fetch('/api/installs');
-      const data = await res.json();
-
-      const heroSpots = document.getElementById('hero-spots');
-      const cardSpots = document.getElementById('card-spots');
-
-      if (data.remaining > 0) {
-        if (heroSpots) heroSpots.textContent = `💪 Only ${data.remaining} Buoy Hero spots left!`;
-        if (cardSpots) cardSpots.textContent = `💪 ${data.remaining} Hero Spots Left`;
-      } else {
-        // All spots taken
-        if (heroSpots) heroSpots.textContent = '🔥 All Hero spots claimed!';
-        if (cardSpots) cardSpots.textContent = '🔥 All Spots Claimed';
-      }
-    } catch (e) {
-      // Keep default text on error
-      console.error('Failed to fetch spots:', e);
-    }
-  }
-
-  // Update on load
-  updateSpots();
-</script>

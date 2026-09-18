@@ -73,11 +73,6 @@ export const POST: APIRoute = async ({ request, locals }) => {
         name: 'Design Token Migration Playbook',
         type: 'nurture',
       },
-      'state-of-design-systems': {
-        url: '/downloads/state-of-design-systems.pdf',
-        name: 'State of Design Systems 2026',
-        type: 'nurture',
-      },
     };
 
     // Handle waitlist signups separately

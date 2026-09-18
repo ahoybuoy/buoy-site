@@ -32,7 +32,7 @@ import LeadMagnetCallout from '../../../components/LeadMagnetCallout.astro'
   <ol>
     <li>Buoy scans the changed files for design drift</li>
     <li>Posts a GitHub PR review with a summary and issues table</li>
-    <li>On Pro tier, adds AI-powered summaries and committable inline fix suggestions</li>
+    <li>During early access, can add contextual summaries and supported high-confidence suggestions</li>
     <li>Creates a check run (pass/fail) based on configured thresholds</li>
   </ol>
 
@@ -63,7 +63,7 @@ import LeadMagnetCallout from '../../../components/LeadMagnetCallout.astro'
     <li><strong>&#x1F4A1; Suggested token</strong> — Buoy suggests a new token name that doesn't exist yet. Consider extracting this value into a new token.</li>
   </ul>
 
-  <p>On Pro tier, you also get committable inline suggestions that you can apply with one click in the GitHub UI.</p>
+  <p>During early access, the app may also provide committable inline suggestions for high-confidence fixes.</p>
 
   <h2>Two Modes</h2>
 
@@ -74,16 +74,15 @@ import LeadMagnetCallout from '../../../components/LeadMagnetCallout.astro'
   <p>For teams early in their design system journey. Coaching tone that identifies repeated patterns
   and helps you build tokens. "You're using this blue in 4 places &mdash; that's your primary."</p>
 
-  <h2>Free vs Pro Tier</h2>
+  <h2>CLI and GitHub App</h2>
 
   <ul>
-    <li><strong>Free:</strong> Deterministic issues table with &#x1F3AF;/&#x1F4A1; Fix column (file, line, issue, severity, fix). GitHub check run (pass/fail).</li>
-    <li><strong>Pro:</strong> Everything in Free, plus AI-powered summaries, committable inline fix suggestions, coaching in builder mode, and custom review instructions.</li>
+    <li><strong>CLI:</strong> Local deterministic scanning, fix suggestions, and project checks under the MIT license.</li>
+    <li><strong>GitHub App early access:</strong> Pull-request checks, contextual summaries, and high-confidence committable suggestions where supported.</li>
   </ul>
 
   <p>
-    <strong>Auto-Pro for early adopters:</strong> Teams who install the Buoy GitHub App during early access
-    are automatically upgraded to Pro tier for free. No credit card required.
+    <strong>Early access:</strong> The GitHub App is free while Buoy validates repeat usefulness with the first 100 teams. No credit card is required, and future pricing has not been set.
   </p>
 
   <h2>Dashboard</h2>
