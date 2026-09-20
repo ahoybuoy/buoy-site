@@ -1,0 +1,282 @@
+{
+  "repo": "novuhq/novu",
+  "owner": "novuhq",
+  "name": "novu",
+  "description": "The open-source communication infrastructure for agents and products",
+  "stars": 40019,
+  "homepage": "https://go.novu.co/github",
+  "language": "TypeScript",
+  "defaultBranch": "next",
+  "commit": "36c5c0cefa400e8edc6ec8b18ac4574288eabd03",
+  "generatedAt": "2026-09-20T07:49:06.748Z",
+  "cliVersion": "local",
+  "score": 69,
+  "tier": "Good",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 46,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 19,
+      "max": 20
+    },
+    "consistency": {
+      "score": 9,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 0,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 2409,
+    "tokenCount": 462,
+    "hardcodedValueCount": 1041,
+    "unusedTokenCount": 137,
+    "namingInconsistencyCount": 49,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 1730,
+    "unusedComponentCount": 296,
+    "repeatedPatternCount": 207,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 125,
+    "vendoredDriftCount": 41,
+    "topHardcodedColor": {
+      "value": "#E1E4EA",
+      "count": 27
+    },
+    "worstFile": {
+      "path": "apps/dashboard/src/components/ai-elements/prompt-input.tsx",
+      "issueCount": 27
+    },
+    "uniqueSpacingValues": 4,
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "sveltekit",
+      "tailwind",
+      "radix"
+    ]
+  },
+  "suggestions": [
+    "1000 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/dashboard/src/components/ai-elements/prompt-input.tsx (27 issues)",
+    "41 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
+    "296 unused components detected — consider a cleanup sprint to remove dead code",
+    "207 repeated patterns — significant duplication, extract to a shared component library",
+    "137 tokens defined but unused — wire them into components or remove stale definitions",
+    "49 minor naming inconsistencies — consider standardizing conventions"
+  ],
+  "driftSummary": {
+    "total": 1728,
+    "critical": 0,
+    "warning": 449,
+    "info": 1279
+  },
+  "driftByType": {
+    "hardcoded-value": 1041,
+    "naming-inconsistency": 49,
+    "unused-component": 294,
+    "unused-token": 137,
+    "repeated-pattern": 207
+  },
+  "topColors": [
+    {
+      "value": "#E1E4EA",
+      "count": 27
+    },
+    {
+      "value": "#CACFD8",
+      "count": 21
+    },
+    {
+      "value": "#fff",
+      "count": 19
+    },
+    {
+      "value": "#F2F5F8",
+      "count": 18
+    },
+    {
+      "value": "#DD2450",
+      "count": 17
+    },
+    {
+      "value": "#FB3748",
+      "count": 12
+    },
+    {
+      "value": "#7D52F4",
+      "count": 12
+    },
+    {
+      "value": "#525866",
+      "count": 11
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "12px",
+      "count": 2
+    },
+    {
+      "value": "10px",
+      "count": 1
+    },
+    {
+      "value": "8px",
+      "count": 1
+    },
+    {
+      "value": "1px",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "apps/dashboard/src/components/workflow-editor/steps/shared/step-resolver-not-published.tsx",
+      "count": 23
+    },
+    {
+      "file": "apps/dashboard/src/components/onboarding/agent-usecase-preview-illustration.tsx",
+      "count": 18
+    },
+    {
+      "file": "apps/dashboard/src/components/icons/orb.tsx",
+      "count": 16
+    },
+    {
+      "file": "apps/dashboard/src/pages/usecase-select-page.tsx",
+      "count": 15
+    },
+    {
+      "file": "apps/dashboard/src/components/agents/agent-channels-empty-illustration.tsx",
+      "count": 15
+    },
+    {
+      "file": "apps/dashboard/src/components/welcome/home/welcome-banner.tsx",
+      "count": 14
+    },
+    {
+      "file": "apps/dashboard/src/components/environments/environments-free-state.tsx",
+      "count": 11
+    },
+    {
+      "file": "apps/dashboard/src/components/webhooks/webhooks-empty-state-svg.tsx",
+      "count": 10
+    }
+  ],
+  "samples": [
+    {
+      "component": "WorkflowsPage",
+      "location": "apps/dashboard/src/pages/workflows.tsx:83",
+      "entries": [
+        "fill: #525866 (line 341)"
+      ]
+    },
+    {
+      "component": "InboxFeatureList",
+      "location": "apps/dashboard/src/pages/usecase-select-page.tsx:126",
+      "entries": [
+        "color: #335cff (line 133)",
+        "color: #47c2ff (line 136)",
+        "color: #7d52f4 (line 139)"
+      ]
+    },
+    {
+      "component": "WorkflowsIllustration",
+      "location": "apps/dashboard/src/components/workflow-list-empty.tsx:157",
+      "entries": [
+        "stroke: #cacfd8 (line 160)",
+        "fill: #fff (line 161)",
+        "stroke: #f2f5f8 (line 162)"
+      ]
+    },
+    {
+      "component": "TelegramColored",
+      "location": "packages/js/src/ui/icons/TelegramColored.tsx:3",
+      "entries": [
+        "fill: #26A5E4 (line 6)",
+        "fill: #fff (line 8)"
+      ]
+    },
+    {
+      "component": "SlackColored",
+      "location": "packages/js/src/ui/icons/SlackColored.tsx:3",
+      "entries": [
+        "fill: #2EB67D (line 8)",
+        "fill: #E01E5A (line 12)",
+        "fill: #ECB22E (line 16)"
+      ]
+    },
+    {
+      "component": "MsTeamsColored",
+      "location": "packages/js/src/ui/icons/MsTeamsColored.tsx:3",
+      "entries": [
+        "fill: #7B83EB (line 6)",
+        "fill: #000 (line 8)",
+        "fill: #5059C9 (line 18)"
+      ]
+    },
+    {
+      "component": "Key",
+      "location": "packages/js/src/ui/icons/Key.tsx:3",
+      "entries": [
+        "stroke: #525866 (line 9)"
+      ]
+    },
+    {
+      "component": "CheckCircleFill",
+      "location": "packages/js/src/ui/icons/CheckCircleFill.tsx:3",
+      "entries": [
+        "fill: #1FC16B (line 6)"
+      ]
+    },
+    {
+      "component": "EmptyVariablesIllustration",
+      "location": "apps/dashboard/src/components/variables/variable-list-upgrade-cta.tsx:13",
+      "entries": [
+        "stroke: #CACFD8 (line 16)",
+        "stroke: #F2F5F8 (line 18)",
+        "fill: #E1E4EA (line 19)"
+      ]
+    },
+    {
+      "component": "WebhooksEmptyStateSvg",
+      "location": "apps/dashboard/src/components/webhooks/webhooks-empty-state-svg.tsx:3",
+      "entries": [
+        "stroke: #BCC3CE (line 18)",
+        "stroke: #DD2450 (line 39)",
+        "stroke: #FB3748 (line 59)"
+      ]
+    },
+    {
+      "component": "StepButton",
+      "location": "apps/dashboard/src/components/welcome/framework-guides.tsx:334",
+      "entries": [
+        "fontSize: 12px (line 386)"
+      ]
+    },
+    {
+      "component": "EmptyTranslationsIllustration",
+      "location": "apps/dashboard/src/components/translations/empty-translations-illustration.tsx:1",
+      "entries": [
+        "stroke: #E1E4EA (line 4)",
+        "stroke: #F2F5F8 (line 6)",
+        "fill: #FBFBFB (line 9)"
+      ]
+    }
+  ],
+  "scanSeconds": 119
+}

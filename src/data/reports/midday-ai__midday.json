@@ -1,0 +1,286 @@
+{
+  "repo": "midday-ai/midday",
+  "owner": "midday-ai",
+  "name": "midday",
+  "description": "Invoicing, Time tracking, File reconciliation, Storage, Financial Overview & your own Assistant made for Freelancers",
+  "stars": 15022,
+  "homepage": "https://midday.ai",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "51587319f26a0ffaa9dfccab1920373cb65689b7",
+  "generatedAt": "2026-09-20T07:50:20.865Z",
+  "cliVersion": "local",
+  "score": 69,
+  "tier": "Good",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 39,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 0,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 1412,
+    "tokenCount": 167,
+    "hardcodedValueCount": 994,
+    "unusedTokenCount": 14,
+    "namingInconsistencyCount": 4,
+    "criticalCount": 10,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 10,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 1234,
+    "unusedComponentCount": 153,
+    "repeatedPatternCount": 59,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 116,
+    "vendoredDriftCount": 81,
+    "topHardcodedColor": {
+      "value": "rgba(255",
+      "count": 15
+    },
+    "worstFile": {
+      "path": "packages/ui/src/components/animations/chat-demo-animation.tsx",
+      "issueCount": 30
+    },
+    "uniqueSpacingValues": 12,
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "tailwind",
+      "radix"
+    ]
+  },
+  "suggestions": [
+    "913 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on packages/ui/src/components/animations/chat-demo-animation.tsx (30 issues)",
+    "81 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
+    "153 unused components detected — consider a cleanup sprint to remove dead code",
+    "59 repeated patterns — significant duplication, extract to a shared component library",
+    "14 tokens defined but unused — wire them into components or remove stale definitions",
+    "4 minor naming inconsistencies — consider standardizing conventions",
+    "10 color contrast issues — fix immediately"
+  ],
+  "driftSummary": {
+    "total": 1203,
+    "critical": 10,
+    "warning": 420,
+    "info": 773
+  },
+  "driftByType": {
+    "hardcoded-value": 994,
+    "naming-inconsistency": 4,
+    "color-contrast": 10,
+    "unused-component": 122,
+    "unused-token": 14,
+    "repeated-pattern": 59
+  },
+  "topColors": [
+    {
+      "value": "#FFFFFF",
+      "count": 9
+    },
+    {
+      "value": "#000",
+      "count": 5
+    },
+    {
+      "value": "#fff",
+      "count": 5
+    },
+    {
+      "value": "#999999",
+      "count": 3
+    },
+    {
+      "value": "#F5F5F3",
+      "count": 3
+    },
+    {
+      "value": "#007AFF",
+      "count": 2
+    },
+    {
+      "value": "#333333",
+      "count": 2
+    },
+    {
+      "value": "#111827",
+      "count": 2
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "600px",
+      "count": 10
+    },
+    {
+      "value": "0.125rem",
+      "count": 2
+    },
+    {
+      "value": "0.375rem",
+      "count": 2
+    },
+    {
+      "value": "140%",
+      "count": 2
+    },
+    {
+      "value": "1.5rem",
+      "count": 2
+    },
+    {
+      "value": "108px",
+      "count": 1
+    },
+    {
+      "value": "12px",
+      "count": 1
+    },
+    {
+      "value": "0.5px",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "packages/ui/src/components/animations/chat-demo-animation.tsx",
+      "count": 51
+    },
+    {
+      "file": "apps/website/src/components/startpage.tsx",
+      "count": 8
+    },
+    {
+      "file": "apps/website/src/components/computer.tsx",
+      "count": 8
+    },
+    {
+      "file": "packages/app-store/src/outlook/assets/logo.tsx",
+      "count": 7
+    },
+    {
+      "file": "apps/website/src/components/agents.tsx",
+      "count": 7
+    },
+    {
+      "file": "apps/website/src/components/sdks.tsx",
+      "count": 6
+    },
+    {
+      "file": "packages/app-store/src/google-drive/assets/logo.tsx",
+      "count": 6
+    },
+    {
+      "file": "apps/website/src/components/assistant.tsx",
+      "count": 5
+    }
+  ],
+  "samples": [
+    {
+      "component": "SilentBanner",
+      "location": "packages/ui/src/components/iphone-mock.tsx:64",
+      "entries": [
+        "backgroundColor: #000 (line 121)"
+      ]
+    },
+    {
+      "component": "Transactions",
+      "location": "apps/website/src/components/transactions.tsx:15",
+      "entries": [
+        "height: 600px (line 45)"
+      ]
+    },
+    {
+      "component": "TimeTracking",
+      "location": "apps/website/src/components/time-tracking.tsx:14",
+      "entries": [
+        "height: 600px (line 44)"
+      ]
+    },
+    {
+      "component": "StartPage",
+      "location": "apps/website/src/components/startpage.tsx:130",
+      "entries": [
+        "marginTop: 0.125rem (line 773)",
+        "top: 0.375rem (line 790)"
+      ]
+    },
+    {
+      "component": "SDKs",
+      "location": "apps/website/src/components/sdks.tsx:180",
+      "entries": [
+        "height: 600px (line 226)"
+      ]
+    },
+    {
+      "component": "PreAccounting",
+      "location": "apps/website/src/components/pre-accounting.tsx:40",
+      "entries": [
+        "marginTop: 0.125rem (line 271)",
+        "top: 0.375rem (line 295)"
+      ]
+    },
+    {
+      "component": "MCP",
+      "location": "apps/website/src/components/mcp.tsx:186",
+      "entries": [
+        "height: 600px (line 216)"
+      ]
+    },
+    {
+      "component": "Invoicing",
+      "location": "apps/website/src/components/invoicing.tsx:15",
+      "entries": [
+        "height: 600px (line 45)"
+      ]
+    },
+    {
+      "component": "Insights",
+      "location": "apps/website/src/components/insights.tsx:17",
+      "entries": [
+        "height: 600px (line 50)"
+      ]
+    },
+    {
+      "component": "Inbox",
+      "location": "apps/website/src/components/inbox.tsx:15",
+      "entries": [
+        "height: 600px (line 45)"
+      ]
+    },
+    {
+      "component": "Header",
+      "location": "apps/website/src/components/header.tsx:102",
+      "entries": [
+        "top: 108px (line 247)"
+      ]
+    },
+    {
+      "component": "FileStorage",
+      "location": "apps/website/src/components/file-storage.tsx:15",
+      "entries": [
+        "height: 600px (line 48)"
+      ]
+    }
+  ],
+  "scanSeconds": 73
+}
