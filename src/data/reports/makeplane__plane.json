@@ -1,0 +1,285 @@
+{
+  "repo": "makeplane/plane",
+  "owner": "makeplane",
+  "name": "plane",
+  "description": "🔥🔥🔥 Open-source Jira, Linear, Monday, and ClickUp alternative. Plane is a modern project management platform to manage tasks, sprints, docs, and triage.",
+  "stars": 59651,
+  "homepage": "http://plane.so",
+  "language": "TypeScript",
+  "defaultBranch": "preview",
+  "commit": "01064a756221921a1ce3e7941ae4d439f298029a",
+  "generatedAt": "2026-09-20T07:45:02.534Z",
+  "cliVersion": "local",
+  "score": 69,
+  "tier": "Good",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 46,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 16,
+      "max": 20
+    },
+    "consistency": {
+      "score": 8,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 0,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 676,
+    "tokenCount": 82,
+    "hardcodedValueCount": 238,
+    "unusedTokenCount": 73,
+    "namingInconsistencyCount": 38,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 649,
+    "unusedComponentCount": 214,
+    "repeatedPatternCount": 86,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 26,
+    "vendoredDriftCount": 6,
+    "topHardcodedColor": {
+      "value": "#15A34A",
+      "count": 2
+    },
+    "worstFile": {
+      "path": "packages/propel/src/context-menu/context-menu.tsx",
+      "issueCount": 19
+    },
+    "uniqueSpacingValues": 10,
+    "detectedFrameworkNames": [
+      "react",
+      "tailwind",
+      "storybook",
+      "headlessui"
+    ]
+  },
+  "suggestions": [
+    "232 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on packages/propel/src/context-menu/context-menu.tsx (19 issues)",
+    "6 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
+    "214 unused components detected — consider a cleanup sprint to remove dead code",
+    "86 repeated patterns — significant duplication, extract to a shared component library",
+    "73 of 82 tokens unused (89%) — many tokens may be stale, audit your token definitions",
+    "38 naming inconsistencies — standardize prop/component conventions"
+  ],
+  "driftSummary": {
+    "total": 651,
+    "critical": 0,
+    "warning": 230,
+    "info": 421
+  },
+  "driftByType": {
+    "naming-inconsistency": 38,
+    "hardcoded-value": 238,
+    "unused-component": 216,
+    "unused-token": 73,
+    "repeated-pattern": 86
+  },
+  "topColors": [
+    {
+      "value": "#15A34A",
+      "count": 2
+    },
+    {
+      "value": "#B9B9B9",
+      "count": 1
+    },
+    {
+      "value": "#455068",
+      "count": 1
+    },
+    {
+      "value": "#1FAD40",
+      "count": 1
+    },
+    {
+      "value": "#CC0000",
+      "count": 1
+    },
+    {
+      "value": "#3372FF",
+      "count": 1
+    },
+    {
+      "value": "#F5F5FF",
+      "count": 1
+    },
+    {
+      "value": "#F7AE59",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "20px",
+      "count": 3
+    },
+    {
+      "value": "30px",
+      "count": 3
+    },
+    {
+      "value": "60%",
+      "count": 2
+    },
+    {
+      "value": "36px",
+      "count": 1
+    },
+    {
+      "value": "80%",
+      "count": 1
+    },
+    {
+      "value": "22px",
+      "count": 1
+    },
+    {
+      "value": "30%",
+      "count": 1
+    },
+    {
+      "value": "70%",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "packages/editor/src/components/editors/document/loader.tsx",
+      "count": 8
+    },
+    {
+      "file": "packages/propel/src/toast/toast.tsx",
+      "count": 5
+    },
+    {
+      "file": "packages/propel/src/tabs/tabs.tsx",
+      "count": 5
+    },
+    {
+      "file": "apps/web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/issues/(detail)/[archivedIssueId]/page.tsx",
+      "count": 4
+    },
+    {
+      "file": "apps/web/app/(all)/invitations/page.tsx",
+      "count": 4
+    },
+    {
+      "file": "apps/web/app/(all)/create-workspace/page.tsx",
+      "count": 4
+    },
+    {
+      "file": "apps/space/components/issues/issue-layouts/kanban/swimlanes.tsx",
+      "count": 4
+    },
+    {
+      "file": "packages/editor/src/extensions/code-inline/index.tsx",
+      "count": 4
+    }
+  ],
+  "samples": [
+    {
+      "component": "CopyField",
+      "location": "apps/admin/components/common/copy-field.tsx:27",
+      "entries": [
+        "color: #B9B9B9 (line 37)"
+      ]
+    },
+    {
+      "component": "PlannedState",
+      "location": "packages/propel/src/icons/planned-icon.tsx:11",
+      "entries": [
+        "fill: #455068 (line 26)"
+      ]
+    },
+    {
+      "component": "OnTrackIcon",
+      "location": "packages/propel/src/icons/on-track-icon.tsx:11",
+      "entries": [
+        "fill: #1FAD40 (line 19)"
+      ]
+    },
+    {
+      "component": "OffTrackIcon",
+      "location": "packages/propel/src/icons/off-track-icon.tsx:11",
+      "entries": [
+        "fill: #CC0000 (line 19)"
+      ]
+    },
+    {
+      "component": "LeadIcon",
+      "location": "packages/propel/src/icons/lead-icon.tsx:11",
+      "entries": [
+        "fill: #3372FF (line 16)",
+        "fill: #F5F5FF (line 19)"
+      ]
+    },
+    {
+      "component": "DoneState",
+      "location": "packages/propel/src/icons/done-icon.tsx:11",
+      "entries": [
+        "stroke: #15A34A (line 21)",
+        "fill: #15A34A (line 26)"
+      ]
+    },
+    {
+      "component": "BlockerIcon",
+      "location": "packages/propel/src/icons/blocker-icon.tsx:11",
+      "entries": [
+        "fill: #F7AE59 (line 26)"
+      ]
+    },
+    {
+      "component": "BlockedIcon",
+      "location": "packages/propel/src/icons/blocked-icon.tsx:11",
+      "entries": [
+        "fill: #F76659 (line 26)"
+      ]
+    },
+    {
+      "component": "AtRiskIcon",
+      "location": "packages/propel/src/icons/at-risk-icon.tsx:11",
+      "entries": [
+        "fill: #CC7700 (line 19)"
+      ]
+    },
+    {
+      "component": "FilterLabels",
+      "location": "apps/space/components/issues/filters/labels.tsx:27",
+      "entries": [
+        "height: 20px (line 80)"
+      ]
+    },
+    {
+      "component": "AuthUniqueCodeForm",
+      "location": "apps/space/components/account/auth-forms/unique-code.tsx:40",
+      "entries": [
+        "height: 20px (line 157)",
+        "width: 20px (line 157)"
+      ]
+    },
+    {
+      "component": "ModulePlannedIcon",
+      "location": "packages/propel/src/icons/module/planned.tsx:11",
+      "entries": [
+        "fill: #3f76ff (line 23)"
+      ]
+    }
+  ],
+  "scanSeconds": 30
+}

@@ -1,0 +1,289 @@
+{
+  "repo": "documenso/documenso",
+  "owner": "documenso",
+  "name": "documenso",
+  "description": "The Open Source DocuSign Alternative.",
+  "stars": 15106,
+  "homepage": "https://documenso.com",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "e658cc581878f52c03b3e6a8f7ffd613aead4e69",
+  "generatedAt": "2026-09-20T07:43:50.320Z",
+  "cliVersion": "local",
+  "score": 69,
+  "tier": "Good",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 50,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 18,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 6,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 583,
+    "tokenCount": 199,
+    "hardcodedValueCount": 174,
+    "unusedTokenCount": 93,
+    "namingInconsistencyCount": 5,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 334,
+    "unusedComponentCount": 12,
+    "repeatedPatternCount": 50,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 8,
+    "vendoredDriftCount": 0,
+    "topHardcodedColor": {
+      "value": "#6DC947",
+      "count": 1
+    },
+    "worstFile": {
+      "path": "packages/ui/components/signing-card.tsx",
+      "issueCount": 6
+    },
+    "uniqueSpacingValues": 19,
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "tailwind",
+      "radix"
+    ]
+  },
+  "suggestions": [
+    "174 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on packages/ui/components/signing-card.tsx (6 issues)",
+    "12 unused components — review and remove dead code",
+    "50 repeated patterns — significant duplication, extract to a shared component library",
+    "93 tokens defined but unused — wire them into components or remove stale definitions",
+    "5 minor naming inconsistencies — consider standardizing conventions",
+    "19 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
+  ],
+  "driftSummary": {
+    "total": 333,
+    "critical": 0,
+    "warning": 22,
+    "info": 311
+  },
+  "driftByType": {
+    "hardcoded-value": 174,
+    "naming-inconsistency": 5,
+    "unused-component": 11,
+    "unused-token": 93,
+    "repeated-pattern": 50
+  },
+  "topColors": [
+    {
+      "value": "#f9f9f9",
+      "count": 1
+    },
+    {
+      "value": "#999",
+      "count": 1
+    },
+    {
+      "value": "#fff",
+      "count": 1
+    },
+    {
+      "value": "#A2E771",
+      "count": 1
+    },
+    {
+      "value": "#6DC947",
+      "count": 1
+    },
+    {
+      "value": "#D4D4D8",
+      "count": 1
+    },
+    {
+      "value": "#71717A",
+      "count": 1
+    },
+    {
+      "value": "#18181B",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "8px",
+      "count": 6
+    },
+    {
+      "value": "4px",
+      "count": 4
+    },
+    {
+      "value": "16px",
+      "count": 4
+    },
+    {
+      "value": "12px",
+      "count": 2
+    },
+    {
+      "value": "20px",
+      "count": 2
+    },
+    {
+      "value": "13px",
+      "count": 1
+    },
+    {
+      "value": "2px",
+      "count": 1
+    },
+    {
+      "value": "100vh",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "apps/remix/app/routes/embed+/playground.tsx",
+      "count": 27
+    },
+    {
+      "file": "apps/docs/src/app/og/docs/[...slug]/route.tsx",
+      "count": 11
+    },
+    {
+      "file": "apps/remix/app/components/general/app-command-menu.tsx",
+      "count": 6
+    },
+    {
+      "file": "packages/ui/components/signing-card.tsx",
+      "count": 4
+    },
+    {
+      "file": "apps/remix/app/components/general/settings-upsell/sso-portal-upsell.tsx",
+      "count": 3
+    },
+    {
+      "file": "apps/remix/app/routes/_unauthenticated+/_layout.tsx",
+      "count": 3
+    },
+    {
+      "file": "apps/remix/app/components/embed/embed-document-signing-page-v1.tsx",
+      "count": 3
+    },
+    {
+      "file": "apps/remix/app/components/forms/signup.tsx",
+      "count": 3
+    }
+  ],
+  "samples": [
+    {
+      "component": "EmbedPlaygroundPage",
+      "location": "apps/remix/app/routes/embed+/playground.tsx:27",
+      "entries": [
+        "backgroundColor: #f9f9f9 (line 664)",
+        "color: #999 (line 669)"
+      ]
+    },
+    {
+      "component": "EmbedPlaygroundPage",
+      "location": "apps/remix/app/routes/embed+/playground.tsx:27",
+      "entries": [
+        "padding: 8px (line 376)",
+        "marginBottom: 8px (line 376)",
+        "fontSize: 13px (line 377)"
+      ]
+    },
+    {
+      "component": "Background",
+      "location": "apps/remix/app/components/general/background.tsx:5",
+      "entries": [
+        "fill: #fff (line 44)"
+      ]
+    },
+    {
+      "component": "SuccessScene",
+      "location": "apps/remix/app/components/general/settings-upsell/sso-portal-upsell.tsx:194",
+      "entries": [
+        "borderColor: #A2E771 (line 205)"
+      ]
+    },
+    {
+      "component": "EnvelopeEditorFieldsPageRenderer",
+      "location": "apps/remix/app/components/general/envelope-editor/envelope-editor-fields-page-renderer.tsx:44",
+      "entries": [
+        "gap: 8px (line 732)"
+      ]
+    },
+    {
+      "component": "GET",
+      "location": "apps/docs/src/app/og/docs/[...slug]/route.tsx:27",
+      "entries": [
+        "backgroundColor: #6DC947 (line 58)",
+        "color: #D4D4D8 (line 74)",
+        "color: #71717A (line 81)"
+      ]
+    },
+    {
+      "component": "GET",
+      "location": "apps/docs/src/app/og/docs/[...slug]/route.tsx:27",
+      "entries": [
+        "height: 6px (line 57)",
+        "gap: 16px (line 67)",
+        "fontSize: 28px (line 75)"
+      ]
+    },
+    {
+      "component": "packages/ui/components/signing-card.tsx",
+      "location": "packages/ui/components/signing-card.tsx:158",
+      "entries": [
+        "packages/ui/components/signing-card.tsx"
+      ]
+    },
+    {
+      "component": "packages/ui/components/signing-card.tsx",
+      "location": "packages/ui/components/signing-card.tsx:119",
+      "entries": [
+        "packages/ui/components/signing-card.tsx"
+      ]
+    },
+    {
+      "component": "packages/ui/components/signing-card.tsx",
+      "location": "packages/ui/components/signing-card.tsx:146",
+      "entries": [
+        "packages/ui/components/signing-card.tsx"
+      ]
+    },
+    {
+      "component": "packages/ui/components/signing-card.tsx",
+      "location": "packages/ui/components/signing-card.tsx:209",
+      "entries": [
+        "packages/ui/components/signing-card.tsx"
+      ]
+    },
+    {
+      "component": "packages/ui/components/recipient/recipient-role-select.tsx",
+      "location": "packages/ui/components/recipient/recipient-role-select.tsx:24",
+      "entries": [
+        "packages/ui/components/recipient/recipient-role-select.tsx"
+      ]
+    }
+  ],
+  "scanSeconds": 42
+}

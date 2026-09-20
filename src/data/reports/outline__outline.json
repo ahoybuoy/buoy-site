@@ -1,0 +1,217 @@
+{
+  "repo": "outline/outline",
+  "owner": "outline",
+  "name": "outline",
+  "description": "The fastest knowledge base for growing teams. Beautiful, realtime collaborative, feature packed, and markdown compatible.",
+  "stars": 40629,
+  "homepage": "https://www.getoutline.com",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "2f57a36d50f78a34adb77009d7499b8c556838db",
+  "generatedAt": "2026-09-20T07:45:22.990Z",
+  "cliVersion": "local",
+  "score": 82,
+  "tier": "Great",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 57,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 11,
+      "max": 20
+    },
+    "consistency": {
+      "score": 5,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 487,
+    "tokenCount": 0,
+    "hardcodedValueCount": 9,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 2,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 112,
+    "unusedComponentCount": 46,
+    "repeatedPatternCount": 1,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 54,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "topHardcodedColor": {
+      "value": "#fff",
+      "count": 1
+    },
+    "worstFile": {
+      "path": "app/components/primitives/Menu/index.tsx",
+      "issueCount": 12
+    },
+    "uniqueSpacingValues": 5,
+    "detectedFrameworkNames": [
+      "react",
+      "styled-components",
+      "radix"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 9 hardcoded values left to tokenize. app/components/primitives/Menu/index.tsx has the most (12)",
+    "46 unused components — review and remove dead code",
+    "56 naming inconsistencies — standardize prop/component conventions"
+  ],
+  "driftSummary": {
+    "total": 125,
+    "critical": 0,
+    "warning": 116,
+    "info": 9
+  },
+  "driftByType": {
+    "hardcoded-value": 9,
+    "semantic-mismatch": 54,
+    "naming-inconsistency": 2,
+    "unused-component": 59,
+    "repeated-pattern": 1
+  },
+  "topColors": [
+    {
+      "value": "#fff",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "1em",
+      "count": 4
+    },
+    {
+      "value": "1px",
+      "count": 1
+    },
+    {
+      "value": "4px",
+      "count": 1
+    },
+    {
+      "value": "10px",
+      "count": 1
+    },
+    {
+      "value": "8px",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "app/scenes/TeamDelete.tsx",
+      "count": 1
+    },
+    {
+      "file": "app/components/PaginatedList.tsx",
+      "count": 1
+    },
+    {
+      "file": "app/components/InputSelect.tsx",
+      "count": 1
+    },
+    {
+      "file": "app/scenes/Login/OAuthAuthorize.tsx",
+      "count": 1
+    },
+    {
+      "file": "app/components/Reactions/ViewReactionsDialog.tsx",
+      "count": 1
+    },
+    {
+      "file": "app/components/OAuthClient/InputClientType.tsx",
+      "count": 1
+    },
+    {
+      "file": "app/components/EmojiDialog/EmojiCreateDialog.tsx",
+      "count": 1
+    },
+    {
+      "file": "app/scenes/Login/components/SwitchHostDialog.tsx",
+      "count": 1
+    }
+  ],
+  "samples": [
+    {
+      "component": "TeamDelete",
+      "location": "app/scenes/TeamDelete.tsx:23",
+      "entries": [
+        "marginBottom: 1em (line 97)"
+      ]
+    },
+    {
+      "component": "PaginatedList",
+      "location": "app/components/PaginatedList.tsx:108",
+      "entries": [
+        "height: 1px (line 334)"
+      ]
+    },
+    {
+      "component": "Label",
+      "location": "app/components/InputSelect.tsx:339",
+      "entries": [
+        "marginBottom: 4px (line 349)"
+      ]
+    },
+    {
+      "component": "Authorize",
+      "location": "app/scenes/Login/OAuthAuthorize.tsx:78",
+      "entries": [
+        "paddingLeft: 1em (line 231)"
+      ]
+    },
+    {
+      "component": "Placeholder",
+      "location": "app/components/Reactions/ViewReactionsDialog.tsx:96",
+      "entries": [
+        "paddingBottom: 10px (line 99)"
+      ]
+    },
+    {
+      "component": "InputClientType",
+      "location": "app/components/OAuthClient/InputClientType.tsx:8",
+      "entries": [
+        "marginBottom: 1em (line 23)"
+      ]
+    },
+    {
+      "component": "EmojiCreateDialog",
+      "location": "app/components/EmojiDialog/EmojiCreateDialog.tsx:23",
+      "entries": [
+        "marginTop: 8px (line 126)"
+      ]
+    },
+    {
+      "component": "SwitchHostDialog",
+      "location": "app/scenes/Login/components/SwitchHostDialog.tsx:20",
+      "entries": [
+        "marginTop: 1em (line 118)"
+      ]
+    },
+    {
+      "component": "DropToImport",
+      "location": "app/scenes/Settings/components/DropToImport.tsx:37",
+      "entries": [
+        "color: #fff (line 118)"
+      ]
+    }
+  ],
+  "scanSeconds": 19
+}

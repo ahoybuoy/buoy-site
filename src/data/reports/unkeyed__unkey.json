@@ -1,0 +1,83 @@
+{
+  "repo": "unkeyed/unkey",
+  "owner": "unkeyed",
+  "name": "unkey",
+  "description": "The Developer Platform for Modern APIs",
+  "stars": 5440,
+  "homepage": "https://go.unkey.com",
+  "language": "Go",
+  "defaultBranch": "main",
+  "commit": "f48de30bc100ae79dffe1200bf7e42d09b26d46e",
+  "generatedAt": "2026-09-20T07:44:28.059Z",
+  "cliVersion": "local",
+  "score": 14,
+  "tier": "Terrible",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 14,
+      "max": 20
+    },
+    "consistency": {
+      "score": 0,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 0,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 0,
+    "tokenCount": 1307,
+    "hardcodedValueCount": 0,
+    "unusedTokenCount": 179,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 237,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 58,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "worstFile": {
+      "path": "web/apps/dashboard/components/virtual-table/index.tsx",
+      "issueCount": 8
+    },
+    "detectedFrameworkNames": [
+      "tailwind"
+    ]
+  },
+  "suggestions": [
+    "58 repeated patterns — significant duplication, extract to a shared component library",
+    "179 tokens defined but unused — wire them into components or remove stale definitions"
+  ],
+  "driftSummary": {
+    "total": 237,
+    "critical": 0,
+    "warning": 0,
+    "info": 237
+  },
+  "driftByType": {
+    "unused-token": 179,
+    "repeated-pattern": 58
+  },
+  "topColors": [],
+  "topSpacing": [],
+  "worstFiles": [],
+  "samples": [],
+  "scanSeconds": 15
+}

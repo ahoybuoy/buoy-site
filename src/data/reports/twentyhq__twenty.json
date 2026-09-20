@@ -1,0 +1,299 @@
+{
+  "repo": "twentyhq/twenty",
+  "owner": "twentyhq",
+  "name": "twenty",
+  "description": "The open alternative to Salesforce, designed for AI.",
+  "stars": 57116,
+  "homepage": "https://twenty.com",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "75a6b33263233f2c44c4f51f7ccd719b78b508de",
+  "generatedAt": "2026-09-20T07:44:09.234Z",
+  "cliVersion": "local",
+  "score": 69,
+  "tier": "Good",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 60,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 16,
+      "max": 20
+    },
+    "consistency": {
+      "score": 9,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 2,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 3678,
+    "tokenCount": 13,
+    "hardcodedValueCount": 38,
+    "unusedTokenCount": 7,
+    "namingInconsistencyCount": 66,
+    "criticalCount": 4,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 4,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 685,
+    "unusedComponentCount": 568,
+    "repeatedPatternCount": 2,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 1,
+    "vendoredDriftCount": 0,
+    "topHardcodedColor": {
+      "value": "#2563eb",
+      "count": 13
+    },
+    "worstFile": {
+      "path": "packages/twenty-front/src/modules/app/components/SettingsRoutes.tsx",
+      "issueCount": 82
+    },
+    "uniqueSpacingValues": 22,
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "mui",
+      "chakra",
+      "mantine",
+      "styled-components",
+      "emotion"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 38 hardcoded values left to tokenize. packages/twenty-front/src/modules/app/components/SettingsRoutes.tsx has the most (82)",
+    "568 unused components detected — consider a cleanup sprint to remove dead code",
+    "7 of 13 tokens unused (54%) — many tokens may be stale, audit your token definitions",
+    "66 minor naming inconsistencies — consider standardizing conventions",
+    "4 color contrast issues — fix immediately",
+    "22 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
+  ],
+  "driftSummary": {
+    "total": 648,
+    "critical": 1,
+    "warning": 576,
+    "info": 71
+  },
+  "driftByType": {
+    "naming-inconsistency": 54,
+    "hardcoded-value": 34,
+    "color-contrast": 1,
+    "unused-component": 550,
+    "unused-token": 7,
+    "repeated-pattern": 2
+  },
+  "topColors": [
+    {
+      "value": "#2563eb",
+      "count": 13
+    },
+    {
+      "value": "#333",
+      "count": 2
+    },
+    {
+      "value": "#f0f4f8",
+      "count": 1
+    },
+    {
+      "value": "#1a365d",
+      "count": 1
+    },
+    {
+      "value": "#4a5568",
+      "count": 1
+    },
+    {
+      "value": "#48bb78",
+      "count": 1
+    },
+    {
+      "value": "#0369a1",
+      "count": 1
+    },
+    {
+      "value": "#e0f2fe",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "12px",
+      "count": 4
+    },
+    {
+      "value": "16px",
+      "count": 3
+    },
+    {
+      "value": "8px",
+      "count": 3
+    },
+    {
+      "value": "360px",
+      "count": 2
+    },
+    {
+      "value": "13px",
+      "count": 2
+    },
+    {
+      "value": "300px",
+      "count": 1
+    },
+    {
+      "value": "1px",
+      "count": 1
+    },
+    {
+      "value": "14px",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "packages/create-twenty-app/src/constants/template/src/front-components/main-page.tsx",
+      "count": 22
+    },
+    {
+      "file": "packages/twenty-front/src/modules/object-record/record-picker/components/RecordPickerLoadingSkeletonList.tsx",
+      "count": 5
+    },
+    {
+      "file": "packages/twenty-front-component-renderer/src/__stories__/showcase/static.front-component.tsx",
+      "count": 4
+    },
+    {
+      "file": "packages/twenty-front-component-renderer/src/__stories__/showcase/sdk-context-example.front-component.tsx",
+      "count": 4
+    },
+    {
+      "file": "packages/twenty-front-component-renderer/src/__stories__/showcase/lifecycle.front-component.tsx",
+      "count": 4
+    },
+    {
+      "file": "packages/twenty-front-component-renderer/src/__stories__/showcase/interactive.front-component.tsx",
+      "count": 4
+    },
+    {
+      "file": "packages/twenty-website/src/platform/visuals/halftone-studio/studio/controls/ExportTab.tsx",
+      "count": 4
+    },
+    {
+      "file": "packages/twenty-front-component-renderer/src/__stories__/showcase/mui-example.front-component.tsx",
+      "count": 3
+    }
+  ],
+  "samples": [
+    {
+      "component": "StaticComponent",
+      "location": "packages/twenty-front-component-renderer/src/__stories__/showcase/static.front-component.tsx:3",
+      "entries": [
+        "backgroundColor: #f0f4f8 (line 8)",
+        "color: #1a365d (line 13)",
+        "color: #4a5568 (line 16)"
+      ]
+    },
+    {
+      "component": "SdkContextComponent",
+      "location": "packages/twenty-front-component-renderer/src/__stories__/showcase/sdk-context-example.front-component.tsx:35",
+      "entries": [
+        "color: #0369a1 (line 46)",
+        "background: #e0f2fe (line 69)",
+        "backgroundColor: #0284c7 (line 85)"
+      ]
+    },
+    {
+      "component": "RechartsExampleComponent",
+      "location": "packages/twenty-front-component-renderer/src/__stories__/showcase/recharts-example.front-component.tsx:13",
+      "entries": [
+        "stroke: #2563eb (line 25)",
+        "fill: #bfdbfe (line 26)"
+      ]
+    },
+    {
+      "component": "MuiComponent",
+      "location": "packages/twenty-front-component-renderer/src/__stories__/showcase/mui-example.front-component.tsx:6",
+      "entries": [
+        "backgroundColor: #e3f2fd (line 15)",
+        "color: #1565c0 (line 28)",
+        "color: #1976d2 (line 37)"
+      ]
+    },
+    {
+      "component": "LifecycleComponent",
+      "location": "packages/twenty-front-component-renderer/src/__stories__/showcase/lifecycle.front-component.tsx:4",
+      "entries": [
+        "backgroundColor: #fffaf0 (line 21)",
+        "color: #c05621 (line 28)",
+        "backgroundColor: #bee3f8 (line 54)"
+      ]
+    },
+    {
+      "component": "InteractiveComponent",
+      "location": "packages/twenty-front-component-renderer/src/__stories__/showcase/interactive.front-component.tsx:4",
+      "entries": [
+        "backgroundColor: #faf5ff (line 12)",
+        "color: #553c9a (line 19)",
+        "color: #6b46c1 (line 32)"
+      ]
+    },
+    {
+      "component": "GeometryMeasureComponent",
+      "location": "packages/twenty-front-component-renderer/src/__stories__/showcase/geometry-measure.front-component.tsx:7",
+      "entries": [
+        "backgroundColor: #dbeafe (line 50)"
+      ]
+    },
+    {
+      "component": "EmotionComponent",
+      "location": "packages/twenty-front-component-renderer/src/__stories__/showcase/emotion-example.front-component.tsx:72",
+      "entries": [
+        "color: #eab308 (line 82)",
+        "color: #a855f7 (line 83)",
+        "color: #f97316 (line 84)"
+      ]
+    },
+    {
+      "component": "CodeExecutionDisplay",
+      "location": "packages/twenty-front/src/modules/ai/components/CodeExecutionDisplay.tsx:171",
+      "entries": [
+        "height: 300px (line 259)"
+      ]
+    },
+    {
+      "component": "SvgPointerFrontComponent",
+      "location": "packages/twenty-front-component-renderer/src/__stories__/html-tag/svg/svg/svg-pointer.front-component.tsx:10",
+      "entries": [
+        "fill: #2563eb (line 31)"
+      ]
+    },
+    {
+      "component": "SvgFocusBlurFrontComponent",
+      "location": "packages/twenty-front-component-renderer/src/__stories__/html-tag/svg/svg/svg-focus-blur.front-component.tsx:10",
+      "entries": [
+        "fill: #2563eb (line 27)"
+      ]
+    },
+    {
+      "component": "SvgClickFrontComponent",
+      "location": "packages/twenty-front-component-renderer/src/__stories__/html-tag/svg/svg/svg-click.front-component.tsx:10",
+      "entries": [
+        "fill: #2563eb (line 26)"
+      ]
+    }
+  ],
+  "scanSeconds": 191
+}

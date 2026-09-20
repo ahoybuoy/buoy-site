@@ -1,0 +1,291 @@
+{
+  "repo": "dubinc/dub",
+  "owner": "dubinc",
+  "name": "dub",
+  "description": "The modern link attribution platform. Loved by world-class marketing teams like Framer, Perplexity, Superhuman, Twilio, Buffer and more.",
+  "stars": 24781,
+  "homepage": "https://dub.co",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "70350f7664db7076b95bacce0b2199c510836419",
+  "generatedAt": "2026-09-20T07:42:14.454Z",
+  "cliVersion": "local",
+  "score": 62,
+  "tier": "Good",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 44,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 9,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 0,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 1578,
+    "tokenCount": 0,
+    "hardcodedValueCount": 732,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 7,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 1241,
+    "unusedComponentCount": 317,
+    "repeatedPatternCount": 185,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 72,
+    "vendoredDriftCount": 19,
+    "topHardcodedColor": {
+      "value": "#171717",
+      "count": 19
+    },
+    "worstFile": {
+      "path": "apps/web/app/app.dub.co/(auth-marketing)/layout.tsx",
+      "issueCount": 7
+    },
+    "uniqueSpacingValues": 12,
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "tailwind",
+      "radix"
+    ]
+  },
+  "suggestions": [
+    "713 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/web/app/app.dub.co/(auth-marketing)/layout.tsx (7 issues)",
+    "19 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
+    "317 unused components detected — consider a cleanup sprint to remove dead code",
+    "185 repeated patterns — significant duplication, extract to a shared component library",
+    "Tailwind detected but token coverage is low — extend your theme config with custom values",
+    "7 minor naming inconsistencies — consider standardizing conventions"
+  ],
+  "driftSummary": {
+    "total": 1236,
+    "critical": 0,
+    "warning": 394,
+    "info": 842
+  },
+  "driftByType": {
+    "naming-inconsistency": 7,
+    "hardcoded-value": 732,
+    "unused-component": 312,
+    "repeated-pattern": 185
+  },
+  "topColors": [
+    {
+      "value": "#171717",
+      "count": 19
+    },
+    {
+      "value": "#737373",
+      "count": 13
+    },
+    {
+      "value": "#ffffff",
+      "count": 12
+    },
+    {
+      "value": "#fff",
+      "count": 11
+    },
+    {
+      "value": "#FFFFFF",
+      "count": 6
+    },
+    {
+      "value": "#00000026",
+      "count": 2
+    },
+    {
+      "value": "#525252",
+      "count": 2
+    },
+    {
+      "value": "#D9D9D9",
+      "count": 2
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "14px",
+      "count": 15
+    },
+    {
+      "value": "12px",
+      "count": 5
+    },
+    {
+      "value": "4px",
+      "count": 2
+    },
+    {
+      "value": "6px",
+      "count": 2
+    },
+    {
+      "value": "8px",
+      "count": 2
+    },
+    {
+      "value": "5px",
+      "count": 2
+    },
+    {
+      "value": "200px",
+      "count": 1
+    },
+    {
+      "value": "20px",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "apps/web/app/(ee)/partners.dub.co/(apply)/[programSlug]/(default)/apply/success/screenshot.tsx",
+      "count": 20
+    },
+    {
+      "file": "packages/email/src/templates/new-lead-submitted.tsx",
+      "count": 11
+    },
+    {
+      "file": "apps/web/app/(ee)/app.dub.co/embed/referrals/quickstart.tsx",
+      "count": 7
+    },
+    {
+      "file": "apps/web/app/app.dub.co/(dashboard)/[slug]/(ee)/settings/tracking/stack-picker.tsx",
+      "count": 7
+    },
+    {
+      "file": "packages/email/src/templates/broadcasts/stablecoin-payouts-announcement.tsx",
+      "count": 6
+    },
+    {
+      "file": "apps/web/app/app.dub.co/(onboarding)/onboarding/(steps)/plan/plan-selector.tsx",
+      "count": 6
+    },
+    {
+      "file": "packages/email/src/templates/lead-status-updated.tsx",
+      "count": 5
+    },
+    {
+      "file": "packages/ui/src/icons/default-domains/figma.tsx",
+      "count": 5
+    }
+  ],
+  "samples": [
+    {
+      "component": "Input",
+      "location": "packages/ui/src/input.tsx:11",
+      "entries": [
+        "fill: #ef4444 (line 44)"
+      ]
+    },
+    {
+      "component": "PendingApplicationsSummary",
+      "location": "packages/email/src/templates/pending-applications-summary.tsx:20",
+      "entries": [
+        "paddingRight: 12px (line 106)",
+        "width: 200px (line 119)"
+      ]
+    },
+    {
+      "component": "ProgramCard",
+      "location": "packages/email/src/templates/partner-program-summary.tsx:216",
+      "entries": [
+        "paddingRight: 12px (line 292)",
+        "paddingLeft: 12px (line 295)"
+      ]
+    },
+    {
+      "component": "NewLeadSubmitted",
+      "location": "packages/email/src/templates/new-lead-submitted.tsx:17",
+      "entries": [
+        "color: #737373 (line 132)",
+        "backgroundColor: #f2f2f2 (line 179)",
+        "color: #171717 (line 226)"
+      ]
+    },
+    {
+      "component": "NewLeadSubmitted",
+      "location": "packages/email/src/templates/new-lead-submitted.tsx:17",
+      "entries": [
+        "marginTop: 4px (line 110)",
+        "paddingRight: 6px (line 116)",
+        "fontSize: 14px (line 131)"
+      ]
+    },
+    {
+      "component": "LeadStatusUpdated",
+      "location": "packages/email/src/templates/lead-status-updated.tsx:16",
+      "entries": [
+        "color: #737373 (line 119)"
+      ]
+    },
+    {
+      "component": "LeadStatusUpdated",
+      "location": "packages/email/src/templates/lead-status-updated.tsx:16",
+      "entries": [
+        "marginTop: 4px (line 97)",
+        "paddingRight: 6px (line 103)",
+        "fontSize: 14px (line 118)"
+      ]
+    },
+    {
+      "component": "DubPartnerRewind",
+      "location": "packages/email/src/templates/dub-partner-rewind.tsx:17",
+      "entries": [
+        "backgroundColor: #171717 (line 90)",
+        "color: #ffffff (line 91)"
+      ]
+    },
+    {
+      "component": "DubPartnerRewind",
+      "location": "packages/email/src/templates/dub-partner-rewind.tsx:17",
+      "entries": [
+        "fontSize: 14px (line 97)"
+      ]
+    },
+    {
+      "component": "ConnectPlatformsReminder",
+      "location": "packages/email/src/templates/connect-platforms-reminder.tsx:17",
+      "entries": [
+        "backgroundColor: #171717 (line 96)",
+        "color: #ffffff (line 97)"
+      ]
+    },
+    {
+      "component": "ConnectPlatformsReminder",
+      "location": "packages/email/src/templates/connect-platforms-reminder.tsx:17",
+      "entries": [
+        "fontSize: 14px (line 103)"
+      ]
+    },
+    {
+      "component": "CampaignEmail",
+      "location": "packages/email/src/templates/campaign-email.tsx:20",
+      "entries": [
+        "fontSize: 14px (line 84)"
+      ]
+    }
+  ],
+  "scanSeconds": 83
+}

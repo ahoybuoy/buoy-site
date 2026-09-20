@@ -1,0 +1,254 @@
+{
+  "repo": "excalidraw/excalidraw",
+  "owner": "excalidraw",
+  "name": "excalidraw",
+  "description": "Virtual whiteboard for sketching hand-drawn like diagrams",
+  "stars": 132478,
+  "homepage": "https://excalidraw.com",
+  "language": "TypeScript",
+  "defaultBranch": "master",
+  "commit": "97c68dd371e13c017a8dcca49f8b3995ba7890a8",
+  "generatedAt": "2026-09-20T07:47:07.111Z",
+  "cliVersion": "local",
+  "score": 67,
+  "tier": "Good",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 53,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 0,
+      "max": 20
+    },
+    "consistency": {
+      "score": 5,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 422,
+    "tokenCount": 0,
+    "hardcodedValueCount": 29,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 56,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 211,
+    "unusedComponentCount": 123,
+    "repeatedPatternCount": 3,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 2,
+    "vendoredDriftCount": 0,
+    "topHardcodedColor": {
+      "value": "#fff",
+      "count": 13
+    },
+    "worstFile": {
+      "path": "packages/excalidraw/components/icons.tsx",
+      "issueCount": 39
+    },
+    "uniqueSpacingValues": 17,
+    "detectedFrameworkNames": [
+      "react",
+      "next"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 29 hardcoded values left to tokenize. packages/excalidraw/components/icons.tsx has the most (39)",
+    "123 unused components detected — consider a cleanup sprint to remove dead code",
+    "No design token system detected — add CSS custom properties or a utility framework like Tailwind",
+    "56 naming inconsistencies — standardize prop/component conventions",
+    "17 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
+  ],
+  "driftSummary": {
+    "total": 209,
+    "critical": 0,
+    "warning": 135,
+    "info": 74
+  },
+  "driftByType": {
+    "hardcoded-value": 29,
+    "naming-inconsistency": 56,
+    "unused-component": 121,
+    "repeated-pattern": 3
+  },
+  "topColors": [
+    {
+      "value": "#fff",
+      "count": 13
+    },
+    {
+      "value": "#868e96",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "0.25rem",
+      "count": 3
+    },
+    {
+      "value": "0.75rem",
+      "count": 3
+    },
+    {
+      "value": "1rem",
+      "count": 2
+    },
+    {
+      "value": "1px",
+      "count": 2
+    },
+    {
+      "value": "14px",
+      "count": 1
+    },
+    {
+      "value": "80%",
+      "count": 1
+    },
+    {
+      "value": "0.2rem",
+      "count": 1
+    },
+    {
+      "value": "1em",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "packages/excalidraw/components/icons.tsx",
+      "count": 13
+    },
+    {
+      "file": "packages/excalidraw/components/PublishLibrary.tsx",
+      "count": 5
+    },
+    {
+      "file": "packages/excalidraw/components/main-menu/DefaultItems.tsx",
+      "count": 4
+    },
+    {
+      "file": "packages/excalidraw/components/Toolbar.tsx",
+      "count": 2
+    },
+    {
+      "file": "packages/excalidraw/components/LibraryMenuItems.tsx",
+      "count": 2
+    },
+    {
+      "file": "packages/excalidraw/components/ColorPicker/ColorInput.tsx",
+      "count": 2
+    },
+    {
+      "file": "packages/excalidraw/components/LibraryMenu.tsx",
+      "count": 1
+    },
+    {
+      "file": "packages/excalidraw/components/ButtonSeparator.tsx",
+      "count": 1
+    }
+  ],
+  "samples": [
+    {
+      "component": "UnlockedIcon",
+      "location": "packages/excalidraw/components/icons.tsx:163",
+      "entries": [
+        "fill: #fff (line 187)"
+      ]
+    },
+    {
+      "component": "AlignTopIcon",
+      "location": "packages/excalidraw/components/icons.tsx:804",
+      "entries": [
+        "fill: #fff (line 816)"
+      ]
+    },
+    {
+      "component": "AlignBottomIcon",
+      "location": "packages/excalidraw/components/icons.tsx:823",
+      "entries": [
+        "fill: #fff (line 835)"
+      ]
+    },
+    {
+      "component": "AlignLeftIcon",
+      "location": "packages/excalidraw/components/icons.tsx:842",
+      "entries": [
+        "fill: #fff (line 854)"
+      ]
+    },
+    {
+      "component": "AlignRightIcon",
+      "location": "packages/excalidraw/components/icons.tsx:861",
+      "entries": [
+        "fill: #fff (line 873)"
+      ]
+    },
+    {
+      "component": "DistributeHorizontallyIcon",
+      "location": "packages/excalidraw/components/icons.tsx:880",
+      "entries": [
+        "fill: #fff (line 892)"
+      ]
+    },
+    {
+      "component": "DistributeVerticallyIcon",
+      "location": "packages/excalidraw/components/icons.tsx:899",
+      "entries": [
+        "fill: #fff (line 911)"
+      ]
+    },
+    {
+      "component": "CloseIcon",
+      "location": "packages/excalidraw/components/icons.tsx:958",
+      "entries": [
+        "fill: #fff (line 971)"
+      ]
+    },
+    {
+      "component": "FillCrossHatchIcon",
+      "location": "packages/excalidraw/components/icons.tsx:1101",
+      "entries": [
+        "fill: #fff (line 1135)"
+      ]
+    },
+    {
+      "component": "FillSolidIcon",
+      "location": "packages/excalidraw/components/icons.tsx:1142",
+      "entries": [
+        "fill: #fff (line 1153)"
+      ]
+    },
+    {
+      "component": "FontSizeSmallIcon",
+      "location": "packages/excalidraw/components/icons.tsx:1617",
+      "entries": [
+        "fill: #fff (line 1630)"
+      ]
+    },
+    {
+      "component": "FontSizeMediumIcon",
+      "location": "packages/excalidraw/components/icons.tsx:1637",
+      "entries": [
+        "fill: #fff (line 1650)"
+      ]
+    }
+  ],
+  "scanSeconds": 13
+}

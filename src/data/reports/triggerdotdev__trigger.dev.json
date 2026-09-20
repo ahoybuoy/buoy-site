@@ -1,0 +1,273 @@
+{
+  "repo": "triggerdotdev/trigger.dev",
+  "owner": "triggerdotdev",
+  "name": "trigger.dev",
+  "description": "Trigger.dev – build and deploy durable AI agents and workflows",
+  "stars": 16347,
+  "homepage": "https://trigger.dev/changelog",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "6bf731b1aa3d1888bba06f7d6770d5ed2c011f55",
+  "generatedAt": "2026-09-20T07:47:05.640Z",
+  "cliVersion": "local",
+  "score": 69,
+  "tier": "Good",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 53,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 18,
+      "max": 20
+    },
+    "consistency": {
+      "score": 9,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 0,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 1694,
+    "tokenCount": 273,
+    "hardcodedValueCount": 321,
+    "unusedTokenCount": 130,
+    "namingInconsistencyCount": 32,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 701,
+    "unusedComponentCount": 134,
+    "repeatedPatternCount": 84,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 21,
+    "vendoredDriftCount": 0,
+    "topHardcodedColor": {
+      "value": "#3B82F6",
+      "count": 6
+    },
+    "worstFile": {
+      "path": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.concurrency/route.tsx",
+      "issueCount": 10
+    },
+    "uniqueSpacingValues": 4,
+    "detectedFrameworkNames": [
+      "react",
+      "tailwind",
+      "headlessui",
+      "ariakit",
+      "radix"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 321 hardcoded values left to tokenize. apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.concurrency/route.tsx has the most (10)",
+    "134 unused components detected — consider a cleanup sprint to remove dead code",
+    "84 repeated patterns — significant duplication, extract to a shared component library",
+    "130 tokens defined but unused — wire them into components or remove stale definitions",
+    "32 minor naming inconsistencies — consider standardizing conventions"
+  ],
+  "driftSummary": {
+    "total": 701,
+    "critical": 0,
+    "warning": 164,
+    "info": 537
+  },
+  "driftByType": {
+    "hardcoded-value": 321,
+    "naming-inconsistency": 32,
+    "unused-component": 134,
+    "unused-token": 130,
+    "repeated-pattern": 84
+  },
+  "topColors": [
+    {
+      "value": "#3B82F6",
+      "count": 6
+    },
+    {
+      "value": "#878C99",
+      "count": 5
+    },
+    {
+      "value": "#2E52B2",
+      "count": 2
+    },
+    {
+      "value": "#fff",
+      "count": 2
+    },
+    {
+      "value": "#4285F4",
+      "count": 1
+    },
+    {
+      "value": "#34A853",
+      "count": 1
+    },
+    {
+      "value": "#FBBC02",
+      "count": 1
+    },
+    {
+      "value": "#EA4335",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "100vh",
+      "count": 1
+    },
+    {
+      "value": "260px",
+      "count": 1
+    },
+    {
+      "value": "3px",
+      "count": 1
+    },
+    {
+      "value": "320px",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "apps/webapp/app/assets/icons/BunLogoIcon.tsx",
+      "count": 8
+    },
+    {
+      "file": "apps/webapp/app/assets/icons/MachineIcon.tsx",
+      "count": 7
+    },
+    {
+      "file": "apps/webapp/app/assets/icons/ConnectionIcons.tsx",
+      "count": 7
+    },
+    {
+      "file": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.concurrency/route.tsx",
+      "count": 5
+    },
+    {
+      "file": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.apikeys/route.tsx",
+      "count": 5
+    },
+    {
+      "file": "apps/webapp/app/assets/logos/GoogleLogo.tsx",
+      "count": 4
+    },
+    {
+      "file": "apps/webapp/app/assets/icons/RegionIcons.tsx",
+      "count": 4
+    },
+    {
+      "file": "apps/webapp/app/routes/storybook.layout/route.tsx",
+      "count": 4
+    }
+  ],
+  "samples": [
+    {
+      "component": "BackgroundWrapper",
+      "location": "apps/webapp/app/components/BackgroundWrapper.tsx:34",
+      "entries": [
+        "height: 100vh (line 44)",
+        "left: 260px (line 62)"
+      ]
+    },
+    {
+      "component": "GoogleLogo",
+      "location": "apps/webapp/app/assets/logos/GoogleLogo.tsx:1",
+      "entries": [
+        "fill: #4285F4 (line 6)",
+        "fill: #34A853 (line 10)",
+        "fill: #FBBC02 (line 14)"
+      ]
+    },
+    {
+      "component": "FlagUSA",
+      "location": "apps/webapp/app/assets/icons/RegionIcons.tsx:18",
+      "entries": [
+        "fill: #E31D1C (line 27)",
+        "fill: #2E52B2 (line 53)"
+      ]
+    },
+    {
+      "component": "FlagEurope",
+      "location": "apps/webapp/app/assets/icons/RegionIcons.tsx:68",
+      "entries": [
+        "fill: #2E52B2 (line 71)",
+        "fill: #F6CD46 (line 74)"
+      ]
+    },
+    {
+      "component": "PythonLogoIcon",
+      "location": "apps/webapp/app/assets/icons/PythonLogoIcon.tsx:1",
+      "entries": [
+        "fill: #387EB8 (line 7)",
+        "fill: #F4D441 (line 11)"
+      ]
+    },
+    {
+      "component": "NodejsLogoIcon",
+      "location": "apps/webapp/app/assets/icons/NodejsLogoIcon.tsx:1",
+      "entries": [
+        "fill: #5FA04E (line 4)",
+        "fill: #fff (line 10)"
+      ]
+    },
+    {
+      "component": "MachineIconSmall1x",
+      "location": "apps/webapp/app/assets/icons/MachineIcon.tsx:108",
+      "entries": [
+        "fill: #3B82F6 (line 113)"
+      ]
+    },
+    {
+      "component": "MachineIconSmall2x",
+      "location": "apps/webapp/app/assets/icons/MachineIcon.tsx:129",
+      "entries": [
+        "fill: #3B82F6 (line 134)"
+      ]
+    },
+    {
+      "component": "MachineIconMedium1x",
+      "location": "apps/webapp/app/assets/icons/MachineIcon.tsx:150",
+      "entries": [
+        "fill: #3B82F6 (line 155)"
+      ]
+    },
+    {
+      "component": "MachineIconMedium2x",
+      "location": "apps/webapp/app/assets/icons/MachineIcon.tsx:170",
+      "entries": [
+        "fill: #3B82F6 (line 175)"
+      ]
+    },
+    {
+      "component": "MachineIconLarge1x",
+      "location": "apps/webapp/app/assets/icons/MachineIcon.tsx:190",
+      "entries": [
+        "fill: #3B82F6 (line 195)"
+      ]
+    },
+    {
+      "component": "MachineIconLarge2x",
+      "location": "apps/webapp/app/assets/icons/MachineIcon.tsx:209",
+      "entries": [
+        "fill: #3B82F6 (line 214)"
+      ]
+    }
+  ],
+  "scanSeconds": 102
+}
