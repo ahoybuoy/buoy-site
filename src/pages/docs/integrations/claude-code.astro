@@ -28,6 +28,13 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
 
   <h2>Quick Setup</h2>
 
+  <pre><code>npx @buoy-design/cli mcp install claude</code></pre>
+
+  <p>
+    This installs the <a href="/docs/integrations/mcp">MCP server</a> (token lookup and drift checks Claude can call while
+    writing) together with a line-level <code>PostToolUse</code> hook. The older hook-only setup below still works:
+  </p>
+
   <pre><code>buoy dock hooks --claude</code></pre>
 
   <p>This creates two files:</p>
@@ -156,6 +163,7 @@ Run `buoy show drift` for full details.</code></pre>
   <h2>Related</h2>
 
   <ul>
+    <li><a href="/docs/integrations/mcp">MCP Server</a> — Tokens and drift checks inside the agent loop</li>
     <li><a href="/docs/cli/drift">buoy drift check</a> — The command that powers the hook</li>
     <li><a href="/docs/cli/dock">buoy dock</a> — Project setup including hooks</li>
     <li><a href="/docs/features/ai-guardrails">AI Guardrails</a> — Broader AI integration strategy</li>

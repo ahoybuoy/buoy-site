@@ -1,0 +1,86 @@
+---
+import DocsLayout from '../../../layouts/DocsLayout.astro'
+---
+
+<DocsLayout title="MCP Server for Coding Agents" description="Give Claude Code, Cursor and Codex your design tokens so they stop hardcoding values">
+  <h1>MCP Server for Coding Agents</h1>
+
+  <p>
+    Coding agents hardcode values because they never read your token file. <code>buoy mcp</code>
+    gives Claude Code, Cursor, Codex and Windsurf four tools that answer "what tokens does this repo
+    have?" and "did I just drift?" while the agent is writing, so the fix happens before the PR.
+  </p>
+
+  <h2>Setup</h2>
+
+  <pre><code>npx @buoy-design/cli mcp install claude    # or cursor, codex, windsurf, all</code></pre>
+
+  <p>For Claude Code this writes two files into the repo:</p>
+
+  <ul>
+    <li><code>.mcp.json</code> — registers the <code>buoy</code> MCP server (runs <code>buoy mcp serve</code> over stdio)</li>
+    <li><code>.claude/settings.json</code> — a <code>PostToolUse</code> hook that checks every style file Claude edits</li>
+  </ul>
+
+  <p>
+    Other clients get their own <code>mcp.json</code> (<code>.cursor/</code>, <code>.codex/</code>, <code>.windsurf/</code>).
+    Existing servers and hooks in those files are kept. Commit the files so everyone on the team gets the same agent setup.
+  </p>
+
+  <h2>Tools</h2>
+
+  <table>
+    <thead><tr><th>Tool</th><th>What the agent gets</th></tr></thead>
+    <tbody>
+      <tr><td><code>list_design_tokens</code></td><td>Every token in the repo (CSS custom properties, Tailwind theme, tokens.json, SCSS), filterable by category or name. Meant to be called before writing any style.</td></tr>
+      <tr><td><code>find_token_for_value</code></td><td>The token whose value equals a literal the agent is about to write: <code>#1a73e8</code> → <code>--color-primary</code>. Handles hex shorthand, case and units.</td></tr>
+      <tr><td><code>check_design_drift</code></td><td>Line-level drift in the files just edited, each issue with the token to use instead. Without files, the full repository analysis.</td></tr>
+      <tr><td><code>design_system_context</code></td><td>A Markdown overview of the system: token categories, components, and the anti-patterns Buoy flags. One call at the start of a UI task.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>The hook</h2>
+
+  <p>
+    After Claude writes or edits a <code>.tsx</code>, <code>.jsx</code>, <code>.vue</code>, <code>.svelte</code>,
+    <code>.css</code>, <code>.scss</code> or <code>.html</code> file, <code>buoy mcp hook</code> checks that file and,
+    if it drifted, returns feedback Claude acts on immediately:
+  </p>
+
+  <pre><code>Buoy: 2 design drift issues in src/components/Hero.css
+- src/components/Hero.css:2 Hardcoded color #1a2744 has a token: --color-navy -> use var(--color-navy)
+- src/components/Hero.css:3 Hardcoded spacing 8px (no matching token)
+Replace the literal values with the tokens above, then continue.</code></pre>
+
+  <p>
+    Files that are already tokenised produce no output. A hook failure never blocks the agent; it exits 0 with a note.
+  </p>
+
+  <h2>Without an install step</h2>
+
+  <p>Any MCP client can register the server by hand:</p>
+
+  <pre><code>&#123;
+  "mcpServers": &#123;
+    "buoy": &#123; "command": "npx", "args": ["-y", "@buoy-design/cli", "mcp", "serve"] &#125;
+  &#125;
+&#125;</code></pre>
+
+  <p>And any agent runner can call the hook directly: <code>buoy mcp hook --file src/Button.tsx</code> (exit code 2 means drift, with details on stderr).</p>
+
+  <h2>Pairs with the GitHub App</h2>
+
+  <p>
+    The MCP server catches drift while the agent writes; the <a href="/docs/integrations/github-actions">GitHub App</a>
+    catches what slipped through on the PR, and a <a href="/docs/features/ai-guardrails">DESIGN.md</a> gives both the same rules.
+    Repos with no tokens yet can run <code>buoy dock tokens</code> to extract a set from the values already in use.
+  </p>
+
+  <h2>Related</h2>
+
+  <ul>
+    <li><a href="/docs/integrations/claude-code">Claude Code Hooks</a> — hook details and troubleshooting</li>
+    <li><a href="/docs/features/ai-guardrails">AI Guardrails</a> — the broader strategy</li>
+    <li><a href="/docs/cli/drift">buoy drift check</a> — the same analysis from the command line</li>
+  </ul>
+</DocsLayout>
