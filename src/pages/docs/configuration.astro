@@ -122,6 +122,21 @@ output:
 
   <p>Supports JSON (W3C format), CSS, and SCSS files.</p>
 
+  <h3>CSS variables for JSON tokens</h3>
+
+  <p>
+    If your tokens live in JSON (Style Dictionary, Tokens Studio) and are emitted as CSS custom properties
+    at build or run time, tell Buoy the naming convention so its fixes reference the real variable instead
+    of the JSON path:
+  </p>
+
+  <pre><code>tokens:
+  css_variables:
+    prefix: cds        # color.gray.2  ->  var(--cds-color-gray-2)
+    separator: "-"     # optional; what replaces the dots (default "-")</code></pre>
+
+  <p>Leave <code>prefix</code> empty for <code>--color-gray-2</code>. Without this setting Buoy still reports the drift but offers no <code>var()</code> fix for JSON-only tokens.</p>
+
   <h3>Figma Integration</h3>
 
   <pre><code>tokens:
