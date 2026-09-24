@@ -9,252 +9,153 @@ const plans = [
   {
     name: 'Free',
     price: '$0',
-    period: 'open source',
-    description: 'Open source CLI with full drift detection. No limits.',
-    features: [
-      'Auto-detects design system',
-      'All drift detection commands',
-      'Import tokens (JSON, CSS, Tokens Studio)',
-      'Local scan history',
-      'Community support',
-    ],
-    cta: 'Install Now',
-    ctaHref: 'https://github.com/ahoybuoy/buoy',
+    period: 'forever',
+    description: 'The open-source CLI plus hosted reviews for public repositories.',
+    features: ['Unlimited local CLI scans', 'Unlimited public repositories', '100 hosted PR reviews per public repo/month', 'No card required'],
+    cta: 'Install Free',
+    ctaHref: 'https://github.com/marketplace/buoy-design',
     variant: 'secondary',
   },
   {
-    name: 'GitHub App',
-    price: '$0',
-    period: 'during early access',
-    description: 'Free while we validate repeat usefulness with the first 100 teams. No card required.',
-    features: [
-      'Everything in Free',
-      'Unlimited repos',
-      'Smart GitHub PR comments',
-      'Committable inline fix suggestions',
-      'Contextual review summaries',
-      'Cloud history & trends',
-      'Dashboard with health scores',
-      'No credit card',
-    ],
-    cta: 'Install Early Access',
-    ctaHref: 'https://github.com/marketplace/buoy-design',
+    name: 'Starter',
+    price: '$9',
+    period: '/private repo/month',
+    description: 'Automated deterministic scans with a small, useful layer of AI explanation.',
+    features: ['Everything in Free', '100 hosted PR reviews/repo/month', '25 AI explanations/repo/month', 'Automated design-system checks', 'Unlimited team members'],
+    cta: 'Choose Starter',
+    ctaHref: 'https://app.buoy.design/settings?offer=starter_repo&repositories=1',
     variant: 'primary',
     popular: true,
-    earlyBird: true,
+    badge: 'Start here',
   },
   {
-    name: 'Design Calibration',
-    price: '$5k',
-    period: 'pilot engagement',
-    description: 'Teach AI what belongs in one real product, then install practical guardrails.',
-    features: [
-      'Product design capture and baseline',
-      'Human-readable Design Contract',
-      'Agent context for your workflow',
-      '20 agreed high-confidence fixes',
-      'GitHub or CI guardrail setup',
-      'Before-and-after report',
-      'Team handoff and 30-day recheck',
-    ],
-    cta: 'Learn More',
-    ctaHref: '/services',
+    name: 'Pro',
+    price: '$19',
+    period: '/private repo/month',
+    description: 'The complete hosted workflow for teams that want Buoy in every pull request.',
+    features: ['Everything in Starter', '250 hosted PR reviews/repo/month', 'PR comments and AI explanations', 'Committable inline suggestions', 'Cloud history and trends'],
+    cta: 'Choose Pro',
+    ctaHref: 'https://app.buoy.design/settings?offer=pro_repo&repositories=1',
+    variant: 'secondary',
+  },
+  {
+    name: 'Team',
+    price: '$49',
+    period: '/month',
+    description: 'One predictable price for teams managing several private repositories.',
+    features: ['Up to 5 private repositories', '1,250 hosted PR reviews/month, pooled', 'Everything in Pro', 'Unlimited team members', 'No per-seat charge'],
+    cta: 'Choose Team',
+    ctaHref: 'https://app.buoy.design/settings?offer=team&repositories=5',
+    variant: 'secondary',
+  },
+  {
+    name: 'Enterprise',
+    price: 'Custom',
+    period: '',
+    description: 'For more than five private repositories, higher review volume, or procurement requirements.',
+    features: ['Custom repository and review limits', 'SSO / SAML', 'Audit and procurement support', 'Rollout planning', 'Custom support and integrations'],
+    cta: 'Talk to Us',
+    ctaHref: 'mailto:enterprise@buoy.design',
     variant: 'secondary',
   },
 ]
 
 const faqs = [
-  {
-    question: 'Is the CLI free?',
-    answer: 'Yes. The current CLI release is open source under the MIT license and includes drift detection, token import, fix suggestions, and local history.'
-  },
-  {
-    question: 'What\'s included in the free CLI?',
-    answer: 'Everything you need to detect and fix design drift: auto-detection of your design system, all scanning commands, fix suggestions with exact token replacements, and local scan history. The CLI is the full product, not a teaser.'
-  },
-  {
-    question: 'Will the GitHub App always be free?',
-    answer: 'It is free during early access, with no card required. We are first measuring whether teams keep Buoy enabled and find its reviews useful. Any future paid plan will be based on that evidence and communicated before it applies.'
-  },
-  {
-    question: 'What about open source projects?',
-    answer: 'The MIT-licensed CLI is free for every open source project. GitHub App access follows the same early-access terms shown above.'
-  },
-  {
-    question: 'How does the GitHub App work?',
-    answer: 'The Buoy GitHub App runs the open-source scanner on pull requests and posts a deterministic issues table with file-level findings. During early access, it can add contextual summaries and committable suggestions for supported high-confidence fixes.'
-  },
-  {
-    question: 'What does early access mean?',
-    answer: 'You can install the GitHub App for free while we work with the first 100 teams. We use product behavior and contextual feedback to improve review quality; we do not promise a permanent paid tier before that evidence exists.'
-  },
-  {
-    question: 'What does Design Calibration include?',
-    answer: 'The pilot covers one agreed codebase: product-design capture, a human-readable Design Contract, agent context, 20 agreed high-confidence fixes through reviewable pull requests, GitHub or CI guardrails, a team handoff, and a 30-day recheck.'
-  },
+  { question: 'Is the CLI still free?', answer: 'Yes. The MIT-licensed CLI remains free for public and private codebases, with unlimited local scans. Repository pricing applies only to Buoy-hosted review of private repositories.' },
+  { question: 'Are public repositories free?', answer: 'Yes. Public repositories can use hosted Buoy reviews at no charge. Each public repository includes 100 reviewed PR versions per month; local CLI scans remain unlimited.' },
+  { question: 'What counts as a hosted review?', answer: 'One unique pull-request head SHA reviewed by Buoy counts as one hosted review. A new commit that triggers a new review counts again. Retries caused by a Buoy failure do not count twice.' },
+  { question: 'What happens if we reach the review limit?', answer: 'There are no automatic overage fees. High-volume usage goes through a quick review so we can agree on the right capacity. Until then, new hosted reviews pause at the included limit; existing results and the local CLI keep working.' },
+  { question: 'Is pricing per developer?', answer: 'No. Hosted plans are priced by private repository, and paid plans do not add a per-seat charge.' },
+  { question: 'What happens to existing early-access accounts?', answer: 'Existing grants remain on their recorded early-access terms. Buoy will not silently convert a free grant into a paid subscription.' },
+  { question: 'Why do Starter and Pro stop at two repositories?', answer: 'At three repositories, the $49 Team plan is less expensive than three Pro repositories. Team includes up to five private repositories and pools the included review volume.' },
 ]
 ---
 
 <Layout
-  title="Pricing | Buoy - Design Drift Detection"
-  description="Free open source CLI, free GitHub App early access, and a fixed-scope Buoy Design Calibration service."
-  keywords="buoy pricing, design drift tool pricing, design system tool cost"
+  title="Pricing | Buoy - Repository-Based Design Review"
+  description="Free CLI and public-repository reviews, with predictable monthly pricing for private repositories. No per-developer fees or automatic overages."
+  keywords="buoy pricing, repository pricing, design drift tool pricing, design system review"
 >
   <Nav />
 
-  <!-- Hero -->
-  <section class="relative pt-32 pb-16 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
-
-    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sunrise/10 border border-sunrise/30 mb-6">
-        <span class="text-sunrise font-medium text-sm">GitHub App early access is free</span>
-      </div>
-      <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6">
-        Free CLI. Free GitHub App early access.
-      </h1>
-      <p class="text-lg text-slate max-w-2xl mx-auto">
-        Run Buoy locally under the MIT license, or install the GitHub App while we
-        validate repeat usefulness with the first 100 teams. No card required.
-      </p>
-    </div>
-  </section>
-
-  <!-- Pricing Cards -->
-  <section class="py-16 bg-navy-dark">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid md:grid-cols-3 gap-8">
-        {plans.map((plan) => (
-          <div class={`relative bg-navy/50 border rounded-2xl p-8 ${plan.popular ? 'border-buoy' : 'border-navy-light/20'}`}>
-            {plan.earlyBird ? (
-              <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-sunrise text-navy-dark text-xs font-semibold rounded-full whitespace-nowrap">
-                Early Access
-              </div>
-            ) : plan.popular && (
-              <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-buoy text-navy-dark text-xs font-semibold rounded-full">
-                Most Popular
-              </div>
-            )}
-
-            <div class="text-center mb-6">
-              <h3 class="text-xl font-bold text-light mb-2">{plan.name}</h3>
-              <div class="flex items-baseline justify-center gap-1">
-                <span class="text-4xl font-bold text-light">{plan.price}</span>
-                {plan.period && <span class="text-slate text-sm">{plan.period}</span>}
-              </div>
-              <p class="text-sm text-slate mt-2 whitespace-pre-line">{plan.description}</p>
-            </div>
-
-            <ul class="space-y-3 mb-8">
-              {plan.features.map((feature) => (
-                <li class="flex items-start gap-2 text-sm text-slate">
-                  <svg class="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                  </svg>
-                  {feature}
-                </li>
-              ))}
-            </ul>
-
-            {plan.disabled ? (
-              <span class="w-full py-3 px-6 text-slate/50 text-center cursor-default">
-                {plan.cta}
-              </span>
-            ) : (
-              <Button
-                href={plan.ctaHref}
-                variant={plan.variant as 'primary' | 'secondary'}
-                class="w-full justify-center"
-              >
-                {plan.cta}
-              </Button>
-            )}
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Lead Magnet: Maturity Model -->
-  <section class="py-12 bg-navy-dark">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <LeadMagnetCallout
-        leadMagnet="maturity-model"
-        headline="Not sure which tier fits your team?"
-        subhead="Use our Design System Maturity Model to assess where you are and what you need. Free self-assessment PDF."
-        buttonText="Get the Assessment"
-      />
-    </div>
-  </section>
-
-  <!-- Feature Comparison -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Feature Comparison</h2>
-
-      <div class="bg-navy-dark border border-navy-light/30 rounded-xl overflow-hidden">
-        <div class="grid grid-cols-4 bg-navy border-b border-navy-light/20 text-sm">
-          <div class="p-4 font-semibold text-slate">Feature</div>
-          <div class="p-4 font-semibold text-slate text-center border-l border-navy-light/20">Free</div>
-          <div class="p-4 font-semibold text-buoy text-center border-l border-navy-light/20">Pro</div>
-          <div class="p-4 font-semibold text-slate text-center border-l border-navy-light/20">Design Calibration</div>
+  <main>
+    <section class="relative pt-32 pb-16 overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
+      <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sunrise/10 border border-sunrise/30 mb-6">
+          <span class="text-sunrise font-medium text-sm">Priced by private repository, not headcount</span>
         </div>
+        <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6">Start free. Pay when private repos need hosted review.</h1>
+        <p class="text-lg text-slate max-w-2xl mx-auto">The CLI and public repositories stay free. Private-repository plans include explicit monthly review volume, unlimited collaborators, and no surprise overage bill.</p>
+        <p class="text-light font-medium mt-4">Buoy costs less than one hour of a designer's time per month.</p>
+      </div>
+    </section>
 
-        {[
-          { feature: 'Auto-detect design system', free: true, team: true, ent: true },
-          { feature: 'All drift detection', free: true, team: true, ent: true },
-          { feature: 'Token import (JSON, CSS)', free: true, team: true, ent: true },
-          { feature: 'Local scan history', free: true, team: true, ent: true },
-          { feature: 'Unlimited repos', free: false, team: true, ent: true },
-          { feature: 'Smart GitHub PR comments', free: false, team: true, ent: true },
-          { feature: 'Committable inline suggestions', free: false, team: true, ent: true },
-          { feature: 'AI summaries & coaching', free: false, team: true, ent: true },
-          { feature: 'Cloud history & trends', free: false, team: true, ent: true },
-          { feature: 'Dashboard & health scores', free: false, team: true, ent: true },
-          { feature: 'We fix your drift for you', free: false, team: false, ent: true },
-          { feature: 'Team training session', free: false, team: false, ent: true },
-          { feature: 'CI/CD setup included', free: false, team: false, ent: true },
-          { feature: 'Before-and-after implementation report', free: false, team: false, ent: true },
-        ].map((row, index) => (
-          <div class={`grid grid-cols-4 text-sm ${index % 2 === 0 ? 'bg-navy/30' : ''}`}>
-            <div class="p-4 text-light">{row.feature}</div>
-            <div class="p-4 text-center border-l border-navy-light/20">
-              {typeof row.free === 'string' ? <span class="text-slate">{row.free}</span> : row.free ? <span class="text-success">✓</span> : <span class="text-slate-dark">—</span>}
-            </div>
-            <div class="p-4 text-center border-l border-navy-light/20">
-              {typeof row.team === 'string' ? <span class="text-success">{row.team}</span> : row.team ? <span class="text-success">✓</span> : <span class="text-slate-dark">—</span>}
-            </div>
-            <div class="p-4 text-center border-l border-navy-light/20">
-              {typeof row.ent === 'string' ? <span class="text-success">{row.ent}</span> : row.ent ? <span class="text-success">✓</span> : <span class="text-slate-dark">—</span>}
-            </div>
+    <section class="py-16 bg-navy-dark">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-2 xl:grid-cols-5 gap-6">
+          {plans.map((plan) => (
+            <article class={`relative flex flex-col bg-navy/50 border rounded-2xl p-6 ${plan.popular ? 'border-buoy' : 'border-navy-light/20'}`}>
+              {plan.badge && <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-buoy text-navy-dark text-xs font-semibold rounded-full whitespace-nowrap">{plan.badge}</div>}
+              <div class="text-center mb-6">
+                <h2 class="text-lg font-bold text-light mb-2">{plan.name}</h2>
+                <div class="flex flex-wrap items-baseline justify-center gap-1">
+                  <span class="text-3xl font-bold text-light">{plan.price}</span>
+                  {plan.period && <span class="text-slate text-xs">{plan.period}</span>}
+                </div>
+                <p class="text-sm text-slate mt-3">{plan.description}</p>
+              </div>
+              <ul class="space-y-3 mb-8 flex-1">
+                {plan.features.map((feature) => <li class="flex items-start gap-2 text-sm text-slate"><span class="text-success mt-0.5">✓</span><span>{feature}</span></li>)}
+              </ul>
+              <Button href={plan.ctaHref} variant={plan.variant as 'primary' | 'secondary'} class="w-full justify-center">{plan.cta}</Button>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-navy border-y border-navy-light/20">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-[0.8fr_1.2fr] gap-10 items-start">
+          <div>
+            <p class="text-buoy font-medium mb-3">High-volume policy</p>
+            <h2 class="text-3xl font-bold text-light mb-4">A visible limit, never a surprise charge.</h2>
+            <p class="text-slate">Hosted usage is measured in reviewed PR versions, not developers, lines of code, or hidden compute units.</p>
           </div>
-        ))}
+          <div class="bg-navy-dark border border-navy-light/30 rounded-2xl p-7">
+            <ul class="space-y-4 text-slate">
+              <li><strong class="text-light">Usage unit:</strong> one unique pull-request head SHA reviewed.</li>
+              <li><strong class="text-light">Included:</strong> 100/month per public repo, 100/month per Starter repo, 250/month per Pro repo, or 1,250 pooled on Team.</li>
+              <li><strong class="text-light">At 80%:</strong> the billing surface warns the account owner.</li>
+              <li><strong class="text-light">At 100%:</strong> new hosted reviews pause unless a higher custom limit is reviewed and approved. No automatic charge is created.</li>
+              <li><strong class="text-light">Always available:</strong> local CLI scans and existing hosted results.</li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FAQ -->
-  <section class="py-16 bg-navy-dark">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Frequently Asked Questions</h2>
-
-      <div class="space-y-4">
-        {faqs.map((faq) => (
-          <details class="group bg-navy/50 border border-navy-light/20 rounded-xl">
-            <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
-              <span class="font-medium text-light">{faq.question}</span>
-              <svg class="w-5 h-5 text-slate group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-              </svg>
-            </summary>
-            <div class="px-4 pb-4 text-slate">
-              {faq.answer}
-            </div>
-          </details>
-        ))}
+    <section class="py-12 bg-navy-dark">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <LeadMagnetCallout leadMagnet="maturity-model" headline="Not sure which tier fits your team?" subhead="Use our Design System Maturity Model to assess where you are and what you need." buttonText="Get the Assessment" />
       </div>
-    </div>
-  </section>
+    </section>
+
+    <section class="py-16 bg-navy-dark">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-light mb-8 text-center">Frequently asked questions</h2>
+        <div class="space-y-4">
+          {faqs.map((faq) => (
+            <details class="group bg-navy/50 border border-navy-light/20 rounded-xl">
+              <summary class="flex items-center justify-between p-4 cursor-pointer list-none"><span class="font-medium text-light">{faq.question}</span><span class="text-slate group-open:rotate-180 transition-transform">⌄</span></summary>
+              <div class="px-4 pb-4 text-slate">{faq.answer}</div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
 
   <Footer />
 </Layout>
