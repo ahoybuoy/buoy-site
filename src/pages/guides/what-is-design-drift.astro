@@ -1,0 +1,77 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro'
+import { reportStats } from '../../utils/reports'
+
+const s = reportStats()
+const faqs = [
+  {
+    q: 'What is design drift?',
+    a: 'Design drift is the gap that grows between a design system and the code that ships: hardcoded colors and spacing instead of tokens, near-duplicate components, and tokens replaced by their raw values. Each change looks harmless; together they make the product inconsistent and expensive to rebrand.',
+  },
+  {
+    q: 'What causes design drift?',
+    a: 'Deadlines, copy-pasted snippets, missing tokens for values teams need, and increasingly AI coding assistants, which write literal values unless they are given the design system as context.',
+  },
+  {
+    q: 'How do you detect design drift?',
+    a: 'Scan the code for values and components that bypass the design system, ignoring literals that are correct (icons, email templates, tests, layout math). Buoy does this from a GitHub URL at buoy.design/scan or with `npx @buoy-design/cli drift check`.',
+  },
+  {
+    q: 'How do you prevent design drift?',
+    a: 'Check new code where it arrives: pull request reviews that flag only added lines and suggest the existing token, a pre-commit check on staged lines, and giving AI coding assistants the tokens through an MCP server.',
+  },
+]
+---
+
+<GuideLayout
+  title="What is design drift?"
+  seoTitle="What Is Design Drift? Causes, Examples and How to Prevent It | Buoy"
+  description="Design drift is the gap between a design system and the code that ships. What causes it, what it looks like in real codebases, and how to detect and prevent it."
+  keywords="design drift, what is design drift, design system drift, UI inconsistency, design debt, design system governance"
+  slug="what-is-design-drift"
+  updated={s.updated}
+  answer="Design drift is the growing gap between a design system and the code that ships: literal colors and spacing where tokens belong, near-duplicate components, and tokens swapped for their raw values. It is detected by scanning code for values that bypass the system, and prevented by checking new code in pull requests."
+  faqs={faqs}
+>
+  <h2>What it looks like</h2>
+  <ul>
+    <li><strong>Hardcoded values.</strong> <code>color: #2563eb</code> where <code>var(--color-primary)</code> exists, or <code>p-[13px]</code> between <code>p-3</code> and <code>p-4</code>.</li>
+    <li><strong>Token regressions.</strong> A pull request replaces <code>var(--space-4)</code> with <code>16px</code>. It renders identically today and stops following the scale tomorrow.</li>
+    <li><strong>Near-duplicate components.</strong> <code>PrimaryButton</code>, <code>ButtonPrimary</code> and <code>CTAButton</code>, each edited separately.</li>
+    <li><strong>Repeated one-offs.</strong> The same gray in forty files, which is a missing token rather than forty mistakes.</li>
+  </ul>
+  <p>
+    It is common in good codebases. Across {s.scoredCount} well-known open-source projects, Buoy found
+    {s.findings.toLocaleString()} hardcoded-value findings in {s.components.toLocaleString()} components
+    (<a href="/reports">reports</a>).
+  </p>
+
+  <h2>Why it happens</h2>
+  <ul>
+    <li><strong>Deadlines.</strong> A literal is faster than finding the token.</li>
+    <li><strong>Missing tokens.</strong> If the scale has no value between 12px and 16px, someone writes 14px.</li>
+    <li><strong>Copy-paste</strong> from other files, Stack Overflow and design tool exports.</li>
+    <li><strong>AI coding assistants.</strong> They write working code with literal values unless they are given the tokens.</li>
+  </ul>
+
+  <h2>Why it matters</h2>
+  <p>
+    Each instance is small. The cost appears at the next rebrand, dark mode or accessibility fix, when a change that
+    should touch one token touches hundreds of files, and some are missed.
+  </p>
+
+  <h2>What is not drift</h2>
+  <p>
+    Not every literal is a problem. SVG icons, email templates, tests, layout math such as <code>calc()</code>,
+    and deliberate choices a comment explains are correct as they are. Flagging them is how drift tools lose the
+    team's trust.
+  </p>
+
+  <h2>Detect and prevent it</h2>
+  <ol>
+    <li>Measure it: <a href="/scan">scan a repository</a> or run <code>npx @buoy-design/cli show health</code>.</li>
+    <li>Fix the cheap wins: literals that exactly match an existing token.</li>
+    <li>Stop new drift at the pull request, in a pre-commit hook, and in AI assistants via <code>npx @buoy-design/cli mcp install</code>.</li>
+  </ol>
+  <p>More: <a href="/guides/how-to-audit-a-design-system">how to audit a design system</a> and <a href="/guides/design-system-health-score">how design system health is measured</a>.</p>
+</GuideLayout>

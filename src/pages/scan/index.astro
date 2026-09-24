@@ -1,0 +1,139 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import Nav from '../../components/Nav.astro'
+import Footer from '../../components/Footer.astro'
+import ScanForm from '../../components/ScanForm.astro'
+import { reportStats } from '../../utils/reports'
+
+const s = reportStats()
+const faqs = [
+  {
+    q: 'How do I scan a design system?',
+    a: 'Paste a public GitHub repository URL above. Buoy clones it, finds its design tokens and components, and lists the hardcoded colors, spacing and font sizes that bypass them, with a 0–100 design health score and the changes that would raise it. For a private repository, run `npx @buoy-design/cli show health` in a checkout.',
+  },
+  {
+    q: 'What does the scan check?',
+    a: 'Hardcoded design values (colors, spacing, font sizes, radii, shadows) in React, Vue, Svelte, Angular, Tailwind, CSS and Sass; whether a token system exists and its tokens are used; naming conflicts; and color contrast between text and background on the same element.',
+  },
+  {
+    q: 'What does it leave alone?',
+    a: 'Icons and logos, email templates, Open Graph images, tests and stories, example and demo apps, layout math such as calc() and 100dvh, 1px hairlines, and values the code marks as deliberate with a comment or a 2–3px optical nudge.',
+  },
+  {
+    q: 'Is it free, and what happens to my code?',
+    a: 'It is free. Only public GitHub repositories are scanned here: Buoy clones the default branch, runs the open-source CLI, keeps the report and deletes the checkout. Reports are cached for a day.',
+  },
+  {
+    q: 'How long does a scan take?',
+    a: `Usually under a minute. The ${s.scoredCount} codebases on the reports page took about half a minute each at the median; very large monorepos take a few minutes.`,
+  },
+  {
+    q: 'How do I keep drift from coming back?',
+    a: 'Install the Buoy GitHub App to get the same checks on every pull request, limited to lines the PR adds and with a committable fix when a token exists, or run `npx @buoy-design/cli drift check --staged` before each commit.',
+  },
+]
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebApplication',
+    name: 'Buoy design system scanner',
+    url: 'https://buoy.design/scan',
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'Any',
+    description: 'Scan any public GitHub repository for design drift: hardcoded colors, spacing and font sizes that bypass the design system, with a design health score and the path to 100.',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    publisher: { '@type': 'Organization', name: 'Buoy', url: 'https://buoy.design' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'Scan a design system from a GitHub URL',
+    totalTime: 'PT1M',
+    step: [
+      { '@type': 'HowToStep', position: 1, name: 'Paste the repository URL', text: 'Enter a public GitHub repository URL, such as https://github.com/owner/repo.' },
+      { '@type': 'HowToStep', position: 2, name: 'Wait for the scan', text: 'Buoy clones the default branch and runs its open-source CLI, usually in under a minute.' },
+      { '@type': 'HowToStep', position: 3, name: 'Read the report', text: 'See the design health score, the hardcoded values to fix first, and the path to 100.' },
+    ],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  },
+]
+const examples = ['formbricks/formbricks', 'twentyhq/twenty', 'calcom/cal.com', 'shadcn-ui/ui']
+---
+
+<Layout
+  title="Design System Scanner: Check Any GitHub Repo for Design Drift | Buoy"
+  description="Scan a GitHub repository for design drift in under a minute. Find hardcoded colors, spacing and font sizes that bypass your design tokens, get a design health score, and see the path to 100. Free."
+  keywords="design system scanner, scan design system, design system audit tool, design drift checker, find hardcoded colors, design token checker, design system health check"
+  jsonLd={jsonLd}
+>
+  <Nav />
+  <section class="relative pt-32 pb-12 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
+    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl sm:text-5xl font-bold text-light">Scan a design system from a GitHub URL</h1>
+      <p class="text-lg text-slate mt-4">
+        Find the hardcoded colors, spacing and font sizes that bypass the design system, get a design health score,
+        and see exactly what it would take to reach 100. Free, for any public repository.
+      </p>
+      <div class="mt-8 text-left">
+        <ScanForm autofocus />
+      </div>
+      <p class="text-sm text-slate/80 mt-4">
+        Try {examples.map((e, i) => <>{i > 0 && ', '}<a href={`/reports/${e}`} class="text-buoy hover:underline">{e}</a></>)}
+      </p>
+    </div>
+  </section>
+
+  <section class="py-12 bg-navy-dark">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-6">
+      <div class="bg-navy/50 border border-navy-light/20 rounded-2xl p-6">
+        <h2 class="text-lg font-semibold text-light">What it finds</h2>
+        <p class="text-slate mt-2 text-sm">Literal colors, spacing, font sizes, radii and shadows where a token belongs, in React, Vue, Svelte, Angular, Tailwind, CSS and Sass, each with the existing token to use when there is one.</p>
+      </div>
+      <div class="bg-navy/50 border border-navy-light/20 rounded-2xl p-6">
+        <h2 class="text-lg font-semibold text-light">What it leaves alone</h2>
+        <p class="text-slate mt-2 text-sm">Icons, email templates, tests, demo apps, layout math, and values the code marks as deliberate with a comment. A scan that flags correct code gets ignored.</p>
+      </div>
+      <div class="bg-navy/50 border border-navy-light/20 rounded-2xl p-6">
+        <h2 class="text-lg font-semibold text-light">What you get</h2>
+        <p class="text-slate mt-2 text-sm">A 0–100 <a href="/guides/design-system-health-score" class="text-buoy hover:underline">design health score</a>, the most repeated literals, the worst files, and the path to 100: every point missing and the change that earns it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-12 bg-navy-dark">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-light">Scanned so far</h2>
+      <p class="text-slate mt-3">
+        {s.scoredCount} well-known open-source codebases, {s.components.toLocaleString()} components:
+        median design health {s.medianScore}/100, {s.findings.toLocaleString()} hardcoded-value findings, and
+        {s.noted.toLocaleString()} values left alone as deliberate. <a href="/reports" class="text-buoy hover:underline">See every report</a>.
+      </p>
+
+      <h2 class="text-2xl font-bold text-light mt-12">Private repository?</h2>
+      <p class="text-slate mt-3">Run the same scan locally. Nothing leaves your machine.</p>
+      <pre class="mt-4 bg-black/30 border border-navy-light/20 rounded-xl p-4 text-sm text-light overflow-x-auto"><code>npx @buoy-design/cli show health</code></pre>
+
+      <h2 class="text-2xl font-bold text-light mt-12">Frequently asked questions</h2>
+      <dl class="mt-6 space-y-6">
+        {faqs.map((f) => (
+          <div>
+            <dt class="text-light font-semibold">{f.q}</dt>
+            <dd class="text-slate mt-2 leading-relaxed">{f.a}</dd>
+          </div>
+        ))}
+      </dl>
+
+      <p class="text-slate mt-12">
+        Guides: <a href="/guides/how-to-audit-a-design-system" class="text-buoy hover:underline">how to audit a design system</a> ·
+        <a href="/guides/find-hardcoded-colors-and-spacing" class="text-buoy hover:underline">find hardcoded colors and spacing</a> ·
+        <a href="/guides/what-is-design-drift" class="text-buoy hover:underline">what is design drift</a>
+      </p>
+    </div>
+  </section>
+  <Footer />
+</Layout>

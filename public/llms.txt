@@ -1,0 +1,27 @@
+# Buoy
+
+> Buoy detects design drift: code that bypasses a design system, such as hardcoded colors, spacing and font sizes where design tokens exist. It scans React, Vue, Svelte, Angular, Tailwind, CSS and Sass, gives a 0–100 design health score with the path to 100, reviews pull requests with committable fixes, and gives AI coding assistants the design tokens through an MCP server. The CLI is open source (MIT).
+
+Key facts:
+- Scan any public GitHub repository at https://buoy.design/scan (free, about a minute). Private code: `npx @buoy-design/cli show health` in a checkout; nothing leaves the machine.
+- The design health score has four pillars: value discipline (60 points: hardcoded values per component), token health (20: a token system exists and its tokens are used), consistency (10: naming conflicts) and critical issues (10: color contrast on the same element, accessibility conflicts, deprecated patterns).
+- Buoy does not flag literals that are correct: icons and logos, email templates, Open Graph images, tests and stories, example and demo apps, layout math (calc(), 100dvh), 1px hairlines, and values the code marks as deliberate with a comment, a 2–3px optical nudge or its commit message.
+- Pull request reviews (GitHub App) flag only lines a PR adds, suggest the exact existing token as a one-click fix, and remember when a reviewer declines a suggestion.
+
+## Tools
+- [Design system scanner](https://buoy.design/scan): design health report for any public GitHub repository
+- [Public reports](https://buoy.design/reports): design health of well-known open-source codebases, refreshed daily
+- [GitHub App](https://github.com/marketplace/buoy-design): pull request reviews
+- [CLI on npm](https://www.npmjs.com/package/@buoy-design/cli): `npx @buoy-design/cli show health`, `drift check`, `mcp install`
+- [Source](https://github.com/ahoybuoy/buoy)
+
+## Guides
+- [How to audit a design system in code](https://buoy.design/guides/how-to-audit-a-design-system)
+- [How to find hardcoded colors and spacing in React, Vue and Tailwind](https://buoy.design/guides/find-hardcoded-colors-and-spacing)
+- [How to measure design system health](https://buoy.design/guides/design-system-health-score)
+- [What is design drift?](https://buoy.design/guides/what-is-design-drift)
+
+## Docs
+- [Quick start](https://buoy.design/docs/quick-start)
+- [Installation](https://buoy.design/docs/installation)
+- [Configuration](https://buoy.design/docs/configuration)

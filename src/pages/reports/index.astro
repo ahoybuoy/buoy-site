@@ -27,6 +27,7 @@ const totalHardcoded = reports.reduce((n, r) => n + ownHardcoded(r), 0)
         values that a token already covers or should. Same scan you get on <code class="text-buoy">npx @buoy-design/cli show health</code>.
       </p>
       {generated && <p class="text-sm text-slate/70 mt-4">Last scanned {generated}</p>}
+      <p class="mt-6"><a href="/scan" class="inline-block rounded-lg bg-buoy px-5 py-2.5 font-semibold text-navy-dark hover:opacity-90">Scan your own repository</a></p>
     </div>
   </section>
 

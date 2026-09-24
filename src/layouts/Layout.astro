@@ -6,16 +6,26 @@ interface Props {
   description?: string
   keywords?: string
   ogImage?: string
+  /** Keep the page out of search results (on-demand scan results). */
+  noindex?: boolean
+  /** Canonical URL when it differs from this page's own URL. */
+  canonical?: string
+  /** Structured data (schema.org) objects, rendered as JSON-LD. */
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[]
 }
 
 const {
   title,
   description = "Keep AI coding agents on your design system. Buoy runs deterministic design review for AI-generated frontend code, with reproducible findings and exact token fixes.",
   keywords = "AI coding agent guardrails, AI-generated UI review, deterministic AI code review, design system enforcement, design token linting",
-  ogImage = "/og/home.png"
+  ogImage = "/og/home.png",
+  noindex = false,
+  canonical,
+  jsonLd,
 } = Astro.props
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+const canonicalURL = canonical ? new URL(canonical, Astro.site) : new URL(Astro.url.pathname, Astro.site)
+const structuredData = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
 ---
 
 <!DOCTYPE html>
@@ -30,6 +40,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
     <meta name="description" content={description} />
     <meta name="keywords" content={keywords} />
     <link rel="canonical" href={canonicalURL} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    {structuredData.map((data) => <script type="application/ld+json" set:html={JSON.stringify(data)} />)}
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -67,6 +79,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site)
     </script>
 
     <!-- Analytics: Cloudflare Web Analytics is enabled on the Pages project and injects its own beacon. Custom events go to /api/track. -->
+    <slot name="head" />
   </head>
   <body class="min-h-screen bg-navy-dark text-light antialiased">
     <slot />
