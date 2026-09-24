@@ -5,7 +5,7 @@ import Button from '../../components/Button.astro'
 const features = [
   {
     title: 'PR Reviews',
-    description: 'Automatic design drift reviews posted on every pull request with issues table.'
+    description: 'Deterministic design-system reviews on every frontend pull request.'
   },
   {
     title: 'Check Runs',
@@ -31,11 +31,11 @@ const features = [
 ---
 
 <IntegrationLayout
-  title="GitHub App for Design Drift | Buoy"
-  description="Install the Buoy GitHub App for automatic design drift reviews on every PR. Committable inline suggestions, check runs, and branch protection."
-  keywords="github design system, github pr design checks, github app design drift"
-  heroTitle="Buoy GitHub App"
-  heroDescription="Install once. Every PR gets a design drift review. Committable inline suggestions. No workflow files, no API keys."
+  title="GitHub AI Coding Agent Guardrails | Buoy"
+  description="Review AI-generated frontend pull requests against your design system with deterministic checks, exact token fixes, and optional explanations."
+  keywords="GitHub AI coding agent guardrails, AI-generated UI review, deterministic AI code review, design system PR checks"
+  heroTitle="Deterministic design review on every pull request"
+  heroDescription="Install once. Buoy checks agent and human frontend code against the same repository rules, with no workflow files or model API key."
   icon="🐙"
   iconBg="bg-gray-500/20"
 >
@@ -46,7 +46,7 @@ const features = [
         <h2 class="text-2xl font-bold text-light mb-4">One scanner, two ways to use it</h2>
         <p class="text-slate max-w-2xl mx-auto mb-6">
           The Buoy GitHub App runs the same open-source scanner (<code class="text-buoy">@buoy-design/cli</code>) internally.
-          Same detection rules, same accuracy. The App adds AI-powered summaries, committable inline suggestions,
+          Same rules, same findings. The App adds explanations grounded in scanner output, committable inline suggestions,
           and a dashboard on top.
         </p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -156,7 +156,7 @@ const features = [
           <h3 class="font-semibold text-light mb-1">Pro Tier</h3>
           <p class="text-xs text-lavender mb-4">$19/private repo/month</p>
           <ul class="space-y-2 text-sm text-slate">
-            <li class="flex items-start gap-2"><span class="text-lavender">+</span> AI-powered PR summaries & coaching</li>
+            <li class="flex items-start gap-2"><span class="text-lavender">+</span> Explanations grounded in deterministic findings</li>
             <li class="flex items-start gap-2"><span class="text-lavender">+</span> Committable inline fix suggestions</li>
             <li class="flex items-start gap-2"><span class="text-lavender">+</span> Builder mode coaching</li>
             <li class="flex items-start gap-2"><span class="text-lavender">+</span> Custom review instructions</li>

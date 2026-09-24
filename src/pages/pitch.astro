@@ -6,7 +6,11 @@ import Button from '../components/Button.astro'
 import { siteConfig } from '../config'
 ---
 
-<Layout title="Buoy - Your Safety Net for AI-Generated Code">
+<Layout
+  title="Buoy | Deterministic Guardrails for AI-Generated Frontend Code"
+  description="Buoy keeps coding agents on a team's design system with reproducible checks, exact token guidance, and pull-request enforcement."
+  keywords="AI coding agent guardrails, deterministic AI code review, AI-generated UI review, design system enforcement"
+>
   <Nav />
 
   <!-- Hero: The Big Claim -->
@@ -21,19 +25,19 @@ import { siteConfig } from '../config'
       <!-- The hook -->
       <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-buoy/10 border border-buoy/30 mb-8">
         <span class="text-2xl">🛟</span>
-        <span class="text-sm text-buoy font-medium">Your safety net in the age of AI coding</span>
+        <span class="text-sm text-buoy font-medium">The deterministic design reviewer for coding agents</span>
       </div>
 
       <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold mb-8 leading-tight">
-        <span class="text-light">Ship AI-generated code</span>
+        <span class="text-light">Keep AI coding agents</span>
         <br />
-        <span class="text-gradient-sunrise">with confidence</span>
+        <span class="text-gradient-sunrise">on your design system</span>
       </h1>
 
       <p class="text-xl sm:text-2xl text-slate max-w-3xl mx-auto mb-12 leading-relaxed">
-        AI writes code fast. Sometimes it forgets your design system.
+        Agents can ship a working interface while bypassing the components and tokens that make the product yours.
         <br /><br />
-        <span class="text-light font-semibold">Buoy is the friendly companion that keeps you on course — so you never have to worry about drowning in drift.</span>
+        <span class="text-light font-semibold">Buoy gives agents repository-specific rules, then runs reproducible checks on the code they produce.</span>
       </p>
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -56,11 +60,10 @@ import { siteConfig } from '../config'
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-3xl sm:text-4xl font-bold text-light mb-4">
-          The AI Coding Revolution Needs a Co-Pilot
+          Agent-generated UI needs a design reviewer
         </h2>
         <p class="text-lg text-slate max-w-2xl mx-auto">
-          AI assistants write great code — but they weren't trained on <em>your</em> design system.
-          That's not a bug, it's an opportunity.
+          General-purpose coding agents were not trained on the decisions inside <em>your</em> design system. Buoy makes those decisions available at write time and enforceable at review time.
         </p>
       </div>
 

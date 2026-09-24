@@ -10,7 +10,7 @@ const plans = [
     name: 'Free',
     price: '$0',
     period: 'forever',
-    description: 'The open-source CLI plus hosted reviews for public repositories.',
+    description: 'Local deterministic guardrails plus hosted review for public repositories.',
     features: ['Unlimited local CLI scans', 'Unlimited public repositories', '100 hosted PR reviews per public repo/month', 'No card required'],
     cta: 'Install Free',
     ctaHref: 'https://github.com/marketplace/buoy-design',
@@ -20,7 +20,7 @@ const plans = [
     name: 'Starter',
     price: '$9',
     period: '/private repo/month',
-    description: 'Automated deterministic scans with a small, useful layer of AI explanation.',
+    description: 'Automated deterministic review with a small, useful layer of AI explanation.',
     features: ['Everything in Free', '100 hosted PR reviews/repo/month', '25 AI explanations/repo/month', 'Automated design-system checks', 'Unlimited team members'],
     cta: 'Choose Starter',
     ctaHref: 'https://app.buoy.design/settings?offer=starter_repo&repositories=1',
@@ -32,7 +32,7 @@ const plans = [
     name: 'Pro',
     price: '$19',
     period: '/private repo/month',
-    description: 'The complete hosted workflow for teams that want Buoy in every pull request.',
+    description: 'The full guardrail workflow for teams shipping agent-generated frontend code.',
     features: ['Everything in Starter', '250 hosted PR reviews/repo/month', 'PR comments and AI explanations', 'Committable inline suggestions', 'Cloud history and trends'],
     cta: 'Choose Pro',
     ctaHref: 'https://app.buoy.design/settings?offer=pro_repo&repositories=1',
@@ -72,9 +72,9 @@ const faqs = [
 ---
 
 <Layout
-  title="Pricing | Buoy - Repository-Based Design Review"
-  description="Free CLI and public-repository reviews, with predictable monthly pricing for private repositories. No per-developer fees or automatic overages."
-  keywords="buoy pricing, repository pricing, design drift tool pricing, design system review"
+  title="AI Coding Agent Guardrail Pricing | Buoy"
+  description="Deterministic AI-generated UI review from $9 per private repository. Free local CLI, no per-developer fees, and no automatic overages."
+  keywords="AI coding agent guardrail pricing, deterministic AI code review, AI-generated UI review, design system enforcement pricing"
 >
   <Nav />
 
@@ -85,8 +85,8 @@ const faqs = [
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sunrise/10 border border-sunrise/30 mb-6">
           <span class="text-sunrise font-medium text-sm">Priced by private repository, not headcount</span>
         </div>
-        <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6">Start free. Pay when private repos need hosted review.</h1>
-        <p class="text-lg text-slate max-w-2xl mx-auto">The CLI and public repositories stay free. Private-repository plans include explicit monthly review volume, unlimited collaborators, and no surprise overage bill.</p>
+        <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6">Guard the code your agents write.</h1>
+        <p class="text-lg text-slate max-w-2xl mx-auto">Run deterministic checks locally for free. Hosted plans put the same reviewer on private pull requests, with clear limits and no surprise overage bill.</p>
         <p class="text-light font-medium mt-4">Buoy costs less than one hour of a designer's time per month.</p>
       </div>
     </section>

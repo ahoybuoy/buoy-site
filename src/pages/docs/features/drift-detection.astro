@@ -2,12 +2,11 @@
 import DocsLayout from '../../../layouts/DocsLayout.astro'
 ---
 
-<DocsLayout title="Drift Detection" description="How Buoy detects design system drift">
-  <h1>Drift Detection</h1>
+<DocsLayout title="Deterministic Design Review" description="How Buoy reviews AI-generated UI and identifies design drift">
+  <h1>Deterministic Design Review</h1>
 
   <p>
-    Buoy detects when code diverges from your design system. This happens gradually as
-    developers (and AI tools) introduce hardcoded values, typos, and inconsistent patterns.
+    Buoy checks code against the tokens, components, and exceptions recorded in your repository. Design drift is the symptom it reports when agent or human code diverges from those rules.
   </p>
 
   <h2>What is Design Drift?</h2>
