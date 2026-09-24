@@ -13,6 +13,13 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
 
   <h2>Setup</h2>
 
+  <p><strong>Claude Code plugin</strong> (MCP server, post-edit hook and a design-tokens skill in one install):</p>
+
+  <pre><code>/plugin marketplace add ahoybuoy/buoy
+/plugin install buoy@buoy</code></pre>
+
+  <p><strong>Any MCP client</strong>, or Claude Code without the plugin system:</p>
+
   <pre><code>npx @buoy-design/cli mcp install claude    # or cursor, codex, windsurf, all</code></pre>
 
   <p>For Claude Code this writes two files into the repo:</p>
@@ -58,7 +65,7 @@ Replace the literal values with the tokens above, then continue.</code></pre>
 
   <h2>Without an install step</h2>
 
-  <p>Any MCP client can register the server by hand:</p>
+  <p>Buoy is listed in the <a href="https://registry.modelcontextprotocol.io/v0/servers?search=io.github.ahoybuoy/buoy">official MCP Registry</a> as <code>io.github.ahoybuoy/buoy</code>. Any MCP client can also register the server by hand:</p>
 
   <pre><code>&#123;
   "mcpServers": &#123;
