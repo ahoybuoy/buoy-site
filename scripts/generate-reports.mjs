@@ -46,9 +46,11 @@ function topValues(drifts, kind) {
   for (const d of drifts) {
     if (d.type !== "hardcoded-value" || !d.id.endsWith(`:${kind}`)) continue;
     for (const entry of d.details?.affectedFiles ?? []) {
-      const m = /:\s*([^()]+?)\s*\(line/.exec(entry);
+      // Tailwind entries: "hover:bg-[#1B2334] (line 3)"; component styles: "color: #333 (line 3)"
+      const tw = /\[([^\]]+)\]\s*\(line/.exec(entry);
+      const m = tw ?? /:\s*([^()]+?)\s*\(line/.exec(entry);
       if (!m) continue;
-      const v = m[1].trim();
+      const v = (tw ? m[1].replace(/_/g, " ") : m[1]).trim();
       counts.set(v, (counts.get(v) ?? 0) + 1);
     }
   }
