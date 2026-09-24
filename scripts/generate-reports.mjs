@@ -6,6 +6,8 @@
  *
  *   node scripts/generate-reports.mjs [owner/repo ...]   (default: REPOS below)
  *   BUOY_BIN=/path/to/bin.js to use a local CLI build instead of npx.
+ *   REPORT_TIMEOUT_MS caps each CLI call (default 15 min) so one huge repo
+ *   cannot stall a scheduled run; a repo that times out keeps its last report.
  */
 import { execFile } from "node:child_process";
 import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
@@ -14,6 +16,7 @@ import { join } from "node:path";
 import { promisify } from "node:util";
 
 const run = promisify(execFile);
+const TIMEOUT_MS = Number(process.env.REPORT_TIMEOUT_MS || 15 * 60 * 1000);
 const OUT_DIR = new URL("../src/data/reports/", import.meta.url);
 const BUOY = process.env.BUOY_BIN ? ["node", [process.env.BUOY_BIN]] : ["npx", ["-y", "@buoy-design/cli@latest"]];
 
@@ -28,7 +31,7 @@ const REPOS = [
 
 async function buoy(cwd, args) {
   const [cmd, base] = BUOY;
-  const { stdout } = await run(cmd, [...base, ...args], { cwd, maxBuffer: 256 * 1024 * 1024, env: { ...process.env, BUOY_TELEMETRY: "0", CI: "1" } });
+  const { stdout } = await run(cmd, [...base, ...args], { cwd, maxBuffer: 256 * 1024 * 1024, timeout: TIMEOUT_MS, killSignal: "SIGKILL", env: { ...process.env, BUOY_TELEMETRY: "0", CI: "1" } });
   return JSON.parse(stdout);
 }
 
@@ -80,7 +83,7 @@ async function report(fullName) {
   const dir = await mkdtemp(join(tmpdir(), "buoy-report-"));
   const started = Date.now();
   try {
-    await run("git", ["clone", "--depth", "1", "--branch", meta.default_branch, "--single-branch", `https://github.com/${fullName}.git`, dir], { maxBuffer: 64 * 1024 * 1024 });
+    await run("git", ["clone", "--depth", "1", "--branch", meta.default_branch, "--single-branch", `https://github.com/${fullName}.git`, dir], { maxBuffer: 64 * 1024 * 1024, timeout: TIMEOUT_MS });
     const sha = (await run("git", ["rev-parse", "HEAD"], { cwd: dir })).stdout.trim();
     const health = await buoy(dir, ["show", "health", "--json"]);
     let drift = { drifts: [], summary: { total: 0, critical: 0, warning: 0, info: 0 } };
@@ -115,10 +118,16 @@ async function report(fullName) {
 }
 
 const targets = process.argv.slice(2).length ? process.argv.slice(2) : REPOS;
+let failed = 0;
 for (const fullName of targets) {
   try {
     await report(fullName);
   } catch (error) {
-    console.error(`${fullName}: FAILED ${error.message?.split("\n")[0]}`);
+    failed++;
+    const reason = error.killed ? `timed out after ${Math.round(TIMEOUT_MS / 60000)} min` : error.message?.split("\n")[0];
+    console.error(`${fullName}: FAILED ${reason}`);
   }
 }
+console.log(`${targets.length - failed}/${targets.length} reports refreshed`);
+// Only fail the job when nothing worked; a few slow repos are normal.
+if (failed === targets.length) process.exit(1);

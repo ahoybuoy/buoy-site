@@ -1,0 +1,66 @@
+name: Refresh drift reports
+
+# Rescans the /reports repos with the latest published CLI every day and
+# redeploys the site when anything changed. Scans run anonymously: CI=1 and
+# BUOY_TELEMETRY=0 keep them out of the CLI funnel.
+on:
+  schedule:
+    - cron: "30 6 * * *"   # 06:30 UTC, ahead of the 14:00 ops digest
+  workflow_dispatch:
+    inputs:
+      repos:
+        description: "Space-separated owner/repo list (default: all)"
+        required: false
+
+concurrency:
+  group: refresh-reports
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    permissions:
+      contents: write
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Generate reports
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPORT_TIMEOUT_MS: "900000"
+        run: node scripts/generate-reports.mjs ${{ inputs.repos }}
+
+      - name: Commit changed reports
+        id: commit
+        run: |
+          git config user.name "buoy-reports[bot]"
+          git config user.email "reports@buoy.design"
+          git add src/data/reports
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No report changes."
+          else
+            git commit -m "data: refresh drift reports $(date -u +%F)"
+            git pull --rebase origin main
+            git push origin HEAD:main
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  deploy:
+    needs: refresh
+    if: needs.refresh.outputs.changed == 'true'
+    # A called workflow cannot exceed the caller's permissions.
+    permissions:
+      contents: read
+      deployments: write
+    uses: ./.github/workflows/deploy.yml
+    with:
+      ref: main
+    secrets: inherit
