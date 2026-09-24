@@ -191,6 +191,9 @@ const steps = [
             View on GitHub
           </Button>
         </div>
+        <p class="-mt-8 mb-10 text-sm text-slate">
+          Or <a href="/scan" class="text-buoy hover:underline">scan any public GitHub repository</a> for design drift, free, in about a minute.
+        </p>
 
         <!-- Quick install command -->
         <div class="inline-flex items-center gap-3 px-4 py-3 bg-navy/80 border border-navy-light/30 rounded-lg font-mono text-sm backdrop-blur-sm copy-command" data-command="npx ahoybuoy dock">
@@ -814,11 +817,14 @@ const steps = [
       </div>
 
       <!-- Links -->
-      <div class="flex items-center gap-6">
+      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
         <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer" class="text-slate hover:text-light transition-colors">GitHub</a>
         <a href={siteConfig.twitterUrl} target="_blank" rel="noopener noreferrer" class="text-slate hover:text-light transition-colors">Twitter</a>
         <a href={siteConfig.discordUrl} target="_blank" rel="noopener noreferrer" class="text-slate hover:text-light transition-colors">Discord</a>
-        <span class="text-navy-light">|</span>
+        <span class="text-navy-light hidden sm:inline">|</span>
+        <a href="/scan" class="text-slate hover:text-light transition-colors whitespace-nowrap">Scan a repo</a>
+        <a href="/guides" class="text-slate hover:text-light transition-colors">Guides</a>
+        <a href="/reports" class="text-slate hover:text-light transition-colors">Reports</a>
         <a href="/privacy" class="text-slate hover:text-light transition-colors">Privacy</a>
         <a href="/terms" class="text-slate hover:text-light transition-colors">Terms</a>
         <a href="/support" class="text-slate hover:text-light transition-colors">Support</a>
