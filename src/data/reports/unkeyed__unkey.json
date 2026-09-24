@@ -8,17 +8,17 @@
   "language": "Go",
   "defaultBranch": "main",
   "commit": "bd212d1b3bdc481d7a3f11f5d76244f9b6538454",
-  "generatedAt": "2026-09-24T03:43:14.233Z",
+  "generatedAt": "2026-09-24T05:17:11.615Z",
   "cliVersion": "latest",
-  "score": 12,
-  "tier": "Terrible",
+  "score": null,
+  "tier": "N/A",
   "pillars": {
     "valueDiscipline": {
       "score": 0,
       "max": 60
     },
     "tokenHealth": {
-      "score": 12,
+      "score": 0,
       "max": 20
     },
     "consistency": {
@@ -34,16 +34,16 @@
     "componentCount": 0,
     "tokenCount": 351,
     "hardcodedValueCount": 0,
-    "unusedTokenCount": 197,
+    "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
     "accessibilityConflictCount": 0,
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 252,
+    "totalDriftCount": 2,
     "unusedComponentCount": 0,
-    "repeatedPatternCount": 55,
+    "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 0,
@@ -54,30 +54,28 @@
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
     "worstFile": {
-      "path": "web/apps/dashboard/components/virtual-table/index.tsx",
-      "issueCount": 8
+      "path": "web/apps/dashboard/components/ratelimits-overview-table/columns/create-ratelimits-overview-columns.tsx",
+      "issueCount": 1
     },
     "detectedFrameworkNames": [
       "tailwind"
     ]
   },
   "suggestions": [
-    "55 repeated patterns — significant duplication, extract to a shared component library",
-    "197 of 351 tokens unused (56%) — many tokens may be stale, audit your token definitions"
+    "Only 0 UI components detected, too few to score. If this repo has more, Buoy may not recognise its framework yet."
   ],
   "driftSummary": {
-    "total": 252,
+    "total": 2,
     "critical": 0,
     "warning": 0,
-    "info": 252
+    "info": 2
   },
   "driftByType": {
-    "unused-token": 197,
-    "repeated-pattern": 55
+    "repeated-pattern": 2
   },
   "topColors": [],
   "topSpacing": [],
   "worstFiles": [],
   "samples": [],
-  "scanSeconds": 21
+  "scanSeconds": 18
 }

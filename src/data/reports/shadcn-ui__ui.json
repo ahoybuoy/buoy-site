@@ -3,18 +3,18 @@
   "owner": "shadcn-ui",
   "name": "ui",
   "description": "Composable, accessible components with thoughtful defaults. Build your own component library with code you can customize, extend, and make your own.",
-  "stars": 124501,
+  "stars": 124502,
   "homepage": "https://ui.shadcn.com",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "98a1fe67b439324ddc857f47fbdce056600a4329",
-  "generatedAt": "2026-09-24T03:47:04.500Z",
+  "generatedAt": "2026-09-24T05:20:56.661Z",
   "cliVersion": "latest",
-  "score": 69,
-  "tier": "Good",
+  "score": 91,
+  "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 50,
+      "score": 56,
       "max": 60
     },
     "tokenHealth": {
@@ -26,24 +26,24 @@
       "max": 10
     },
     "criticalIssues": {
-      "score": 0,
+      "score": 10,
       "max": 10
     }
   },
   "metrics": {
     "componentCount": 2410,
     "tokenCount": 413,
-    "hardcodedValueCount": 767,
-    "unusedTokenCount": 11,
-    "namingInconsistencyCount": 13,
+    "hardcodedValueCount": 89,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
     "criticalCount": 0,
     "accessibilityConflictCount": 0,
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 1336,
-    "unusedComponentCount": 240,
-    "repeatedPatternCount": 305,
+    "totalDriftCount": 95,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 6,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 0,
@@ -51,11 +51,11 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 53,
-    "vendoredDriftCount": 162,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 41,
     "worstFile": {
-      "path": "apps/v4/registry/bases/radix/ui/questionnaire.tsx",
-      "issueCount": 19
+      "path": "apps/v4/components/chart-toolbar.tsx",
+      "issueCount": 2
     },
     "detectedFrameworkNames": [
       "react",
@@ -64,147 +64,168 @@
     ]
   },
   "suggestions": [
-    "605 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/v4/registry/bases/radix/ui/questionnaire.tsx (19 issues)",
-    "162 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
-    "240 unused components detected — consider a cleanup sprint to remove dead code",
-    "305 repeated patterns — significant duplication, extract to a shared component library",
-    "11 tokens defined but unused — wire them into components or remove stale definitions",
-    "13 minor naming inconsistencies — consider standardizing conventions"
+    "Nearly there — just 48 hardcoded values left to tokenize. apps/v4/components/chart-toolbar.tsx has the most (2)",
+    "41 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
+    "6 repeated patterns — extract to shared components"
   ],
   "driftSummary": {
-    "total": 1336,
+    "total": 95,
     "critical": 0,
-    "warning": 253,
-    "info": 1083
+    "warning": 0,
+    "info": 95
   },
   "driftByType": {
-    "naming-inconsistency": 13,
-    "unused-component": 240,
-    "unused-token": 11,
-    "hardcoded-value": 767,
-    "repeated-pattern": 305
+    "hardcoded-value": 89,
+    "repeated-pattern": 6
   },
   "topColors": [],
-  "topSpacing": [],
+  "topSpacing": [
+    {
+      "value": "ml-[-0.45rem]",
+      "count": 1
+    },
+    {
+      "value": "ml-[-0.35rem]",
+      "count": 1
+    },
+    {
+      "value": "mr-[-0.45rem]",
+      "count": 1
+    },
+    {
+      "value": "mr-[-0.35rem]",
+      "count": 1
+    }
+  ],
   "worstFiles": [
     {
-      "file": "apps/v4/registry/new-york-v4/examples/chart-tooltip-demo.tsx",
-      "count": 6
-    },
-    {
-      "file": "apps/v4/registry/bases/base/ui/toast.tsx",
-      "count": 6
-    },
-    {
-      "file": "apps/v4/registry/bases/base/ui/drawer.tsx",
-      "count": 6
-    },
-    {
-      "file": "apps/v4/registry/bases/aria/ui/drawer.tsx",
-      "count": 6
-    },
-    {
-      "file": "apps/v4/components/block-viewer.tsx",
+      "file": "apps/v4/app/(app)/docs/changelog/page.tsx",
       "count": 5
     },
     {
-      "file": "apps/v4/registry/new-york-v4/ui/navigation-menu.tsx",
+      "file": "apps/v4/app/(app)/(styles)/sera/media-library/components/asset-details.tsx",
       "count": 5
     },
     {
-      "file": "apps/v4/registry/new-york-v4/ui/alert-dialog.tsx",
+      "file": "apps/v4/registry/new-york-v4/ui/input-group.tsx",
       "count": 5
     },
     {
-      "file": "apps/v4/app/(app)/(root)/cards/index.tsx",
+      "file": "apps/v4/registry/new-york-v4/ui/calendar.tsx",
       "count": 4
+    },
+    {
+      "file": "apps/v4/registry/new-york-v4/examples/calendar-hijri.tsx",
+      "count": 4
+    },
+    {
+      "file": "apps/v4/app/(app)/docs/[[...slug]]/page.tsx",
+      "count": 3
+    },
+    {
+      "file": "apps/v4/registry/new-york-v4/ui/chart.tsx",
+      "count": 3
+    },
+    {
+      "file": "apps/v4/registry/bases/base/ui/chart.tsx",
+      "count": 3
     }
   ],
   "samples": [
     {
-      "component": "apps/v4/app/layout.tsx",
-      "location": "apps/v4/app/layout.tsx:82",
+      "component": "apps/v4/app/(app)/docs/changelog/page.tsx",
+      "location": "apps/v4/app/(app)/docs/changelog/page.tsx:45",
       "entries": [
-        "apps/v4/app/layout.tsx"
+        "text-[1.05rem] (line 45)",
+        "sm:text-[15px] (line 45)",
+        "text-[1.05rem] (line 62)"
       ]
     },
     {
-      "component": "apps/v4/app/og/route.tsx",
-      "location": "apps/v4/app/og/route.tsx:51",
+      "component": "apps/v4/app/(app)/docs/[[...slug]]/page.tsx",
+      "location": "apps/v4/app/(app)/docs/[[...slug]]/page.tsx:95",
       "entries": [
-        "apps/v4/app/og/route.tsx"
+        "text-[1.05rem] (line 95)",
+        "sm:text-[15px] (line 95)",
+        "text-[1.05rem] (line 141)"
       ]
     },
     {
-      "component": "apps/v4/app/og/route.tsx",
-      "location": "apps/v4/app/og/route.tsx:89",
+      "component": "apps/v4/app/(app)/(styles)/sera/page.tsx",
+      "location": "apps/v4/app/(app)/(styles)/sera/page.tsx:43",
       "entries": [
-        "apps/v4/app/og/route.tsx"
+        "text-[2.875rem] (line 43)"
       ]
     },
     {
-      "component": "apps/v4/app/(app)/examples/layout.tsx",
-      "location": "apps/v4/app/(app)/examples/layout.tsx:59",
+      "component": "apps/v4/app/(app)/(create)/components/item-explorer.tsx",
+      "location": "apps/v4/app/(app)/(create)/components/item-explorer.tsx:62",
       "entries": [
-        "apps/v4/app/(app)/examples/layout.tsx"
+        "text-[0.8rem] (line 62)",
+        "text-[0.8rem] (line 82)"
       ]
     },
     {
-      "component": "apps/v4/app/(app)/docs/layout.tsx",
-      "location": "apps/v4/app/(app)/docs/layout.tsx:13",
+      "component": "apps/v4/app/(app)/examples/tasks/components/data-table-faceted-filter.tsx",
+      "location": "apps/v4/app/(app)/examples/tasks/components/data-table-faceted-filter.tsx:110",
       "entries": [
-        "apps/v4/app/(app)/docs/layout.tsx"
+        "rounded-[4px] (line 110)"
       ]
     },
     {
-      "component": "apps/v4/app/(app)/docs/layout.tsx",
-      "location": "apps/v4/app/(app)/docs/layout.tsx:13",
+      "component": "apps/v4/app/(app)/(styles)/sera/media-library-table/components/asset-table.tsx",
+      "location": "apps/v4/app/(app)/(styles)/sera/media-library-table/components/asset-table.tsx:135",
       "entries": [
-        "apps/v4/app/(app)/docs/layout.tsx"
+        "text-[0.5rem] (line 135)",
+        "text-[0.625rem] (line 151)"
       ]
     },
     {
-      "component": "apps/v4/app/(app)/colors/layout.tsx",
-      "location": "apps/v4/app/(app)/colors/layout.tsx:54",
+      "component": "apps/v4/app/(app)/(styles)/sera/media-library/components/asset-grid.tsx",
+      "location": "apps/v4/app/(app)/(styles)/sera/media-library/components/asset-grid.tsx:138",
       "entries": [
-        "apps/v4/app/(app)/colors/layout.tsx"
+        "text-[0.625rem] (line 138)",
+        "text-[0.625rem] (line 154)"
       ]
     },
     {
-      "component": "apps/v4/app/(app)/charts/layout.tsx",
-      "location": "apps/v4/app/(app)/charts/layout.tsx:56",
+      "component": "apps/v4/app/(app)/(styles)/sera/media-library/components/asset-details.tsx",
+      "location": "apps/v4/app/(app)/(styles)/sera/media-library/components/asset-details.tsx:49",
       "entries": [
-        "apps/v4/app/(app)/charts/layout.tsx"
+        "text-[0.625rem] (line 49)",
+        "text-[0.625rem] (line 56)",
+        "text-[0.625rem] (line 62)"
       ]
     },
     {
-      "component": "apps/v4/app/(app)/blocks/layout.tsx",
-      "location": "apps/v4/app/(app)/blocks/layout.tsx:55",
+      "component": "apps/v4/components/page-header.tsx",
+      "location": "apps/v4/components/page-header.tsx:26",
       "entries": [
-        "apps/v4/app/(app)/blocks/layout.tsx"
+        "lg:leading-[1.1] (line 26)"
       ]
     },
     {
-      "component": "apps/v4/app/(app)/(root)/page.tsx",
-      "location": "apps/v4/app/(app)/(root)/page.tsx:86",
+      "component": "apps/v4/components/docs-toc.tsx",
+      "location": "apps/v4/components/docs-toc.tsx:117",
       "entries": [
-        "apps/v4/app/(app)/(root)/page.tsx"
+        "text-[0.8rem] (line 117)"
       ]
     },
     {
-      "component": "apps/v4/app/(app)/examples/authentication/page.tsx",
-      "location": "apps/v4/app/(app)/examples/authentication/page.tsx:71",
+      "component": "apps/v4/components/docs-sidebar.tsx",
+      "location": "apps/v4/components/docs-sidebar.tsx:202",
       "entries": [
-        "apps/v4/app/(app)/examples/authentication/page.tsx"
+        "text-[0.8rem] (line 202)",
+        "text-[0.8rem] (line 248)"
       ]
     },
     {
-      "component": "apps/v4/app/(app)/examples/playground/page.tsx",
-      "location": "apps/v4/app/(app)/examples/playground/page.tsx:82",
+      "component": "apps/v4/components/docs-page-links.tsx",
+      "location": "apps/v4/components/docs-page-links.tsx:20",
       "entries": [
-        "apps/v4/app/(app)/examples/playground/page.tsx"
+        "text-[0.8rem] (line 20)"
       ]
     }
   ],
-  "scanSeconds": 93
+  "scanSeconds": 86
 }

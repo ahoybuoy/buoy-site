@@ -8,17 +8,17 @@
   "language": "Elixir",
   "defaultBranch": "master",
   "commit": "b04e601232064aced1b899a71630cba262e9eeee",
-  "generatedAt": "2026-09-24T03:31:12.025Z",
+  "generatedAt": "2026-09-24T05:05:46.417Z",
   "cliVersion": "latest",
-  "score": 10,
-  "tier": "Terrible",
+  "score": null,
+  "tier": "N/A",
   "pillars": {
     "valueDiscipline": {
       "score": 0,
       "max": 60
     },
     "tokenHealth": {
-      "score": 10,
+      "score": 0,
       "max": 20
     },
     "consistency": {
@@ -34,16 +34,16 @@
     "componentCount": 0,
     "tokenCount": 42,
     "hardcodedValueCount": 0,
-    "unusedTokenCount": 39,
+    "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
     "accessibilityConflictCount": 0,
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 47,
+    "totalDriftCount": 0,
     "unusedComponentCount": 0,
-    "repeatedPatternCount": 8,
+    "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 0,
@@ -53,31 +53,23 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "worstFile": {
-      "path": "assets/js/dashboard/nav-menu/dashboard-options-menu.tsx",
-      "issueCount": 2
-    },
     "detectedFrameworkNames": [
       "tailwind"
     ]
   },
   "suggestions": [
-    "8 repeated patterns — extract to shared components",
-    "39 of 42 tokens unused (93%) — many tokens may be stale, audit your token definitions"
+    "Only 0 UI components detected, too few to score. If this repo has more, Buoy may not recognise its framework yet."
   ],
   "driftSummary": {
-    "total": 47,
+    "total": 0,
     "critical": 0,
     "warning": 0,
-    "info": 47
+    "info": 0
   },
-  "driftByType": {
-    "unused-token": 39,
-    "repeated-pattern": 8
-  },
+  "driftByType": {},
   "topColors": [],
   "topSpacing": [],
   "worstFiles": [],
   "samples": [],
-  "scanSeconds": 7
+  "scanSeconds": 8
 }

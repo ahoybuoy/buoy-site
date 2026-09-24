@@ -3,14 +3,14 @@
   "owner": "outline",
   "name": "outline",
   "description": "The fastest knowledge base for growing teams. Beautiful, realtime collaborative, feature packed, and markdown compatible.",
-  "stars": 40681,
+  "stars": 40682,
   "homepage": "https://www.getoutline.com",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "621b00ffc7e7bd09bf56292bfceeba093c6c760b",
-  "generatedAt": "2026-09-24T03:32:01.688Z",
+  "generatedAt": "2026-09-24T05:06:39.240Z",
   "cliVersion": "latest",
-  "score": 82,
+  "score": 88,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
@@ -22,7 +22,7 @@
       "max": 20
     },
     "consistency": {
-      "score": 5,
+      "score": 10,
       "max": 10
     },
     "criticalIssues": {
@@ -33,19 +33,19 @@
   "metrics": {
     "componentCount": 486,
     "tokenCount": 0,
-    "hardcodedValueCount": 9,
+    "hardcodedValueCount": 8,
     "unusedTokenCount": 0,
-    "namingInconsistencyCount": 2,
+    "namingInconsistencyCount": 0,
     "criticalCount": 0,
     "accessibilityConflictCount": 0,
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 111,
-    "unusedComponentCount": 45,
-    "repeatedPatternCount": 1,
+    "totalDriftCount": 8,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
-    "semanticMismatchCount": 54,
+    "semanticMismatchCount": 0,
     "deprecatedPatternCount": 0,
     "orphanedTokenCount": 0,
     "valueDivergenceCount": 0,
@@ -58,10 +58,10 @@
       "count": 1
     },
     "worstFile": {
-      "path": "app/components/primitives/Menu/index.tsx",
-      "issueCount": 12
+      "path": "app/scenes/TeamDelete.tsx",
+      "issueCount": 1
     },
-    "uniqueSpacingValues": 5,
+    "uniqueSpacingValues": 4,
     "detectedFrameworkNames": [
       "react",
       "styled-components",
@@ -69,22 +69,16 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 9 hardcoded values left to tokenize. app/components/primitives/Menu/index.tsx has the most (12)",
-    "45 unused components — review and remove dead code",
-    "56 naming inconsistencies — standardize prop/component conventions"
+    "Nearly there — just 8 hardcoded values left to tokenize"
   ],
   "driftSummary": {
-    "total": 124,
+    "total": 8,
     "critical": 0,
-    "warning": 115,
-    "info": 9
+    "warning": 1,
+    "info": 7
   },
   "driftByType": {
-    "hardcoded-value": 9,
-    "semantic-mismatch": 54,
-    "naming-inconsistency": 2,
-    "unused-component": 58,
-    "repeated-pattern": 1
+    "hardcoded-value": 8
   },
   "topColors": [
     {
@@ -96,10 +90,6 @@
     {
       "value": "1em",
       "count": 4
-    },
-    {
-      "value": "1px",
-      "count": 1
     },
     {
       "value": "4px",
@@ -117,10 +107,6 @@
   "worstFiles": [
     {
       "file": "app/scenes/TeamDelete.tsx",
-      "count": 1
-    },
-    {
-      "file": "app/components/PaginatedList.tsx",
       "count": 1
     },
     {
@@ -146,6 +132,10 @@
     {
       "file": "app/scenes/Settings/components/DropToImport.tsx",
       "count": 1
+    },
+    {
+      "file": "app/scenes/Login/components/SwitchHostDialog.tsx",
+      "count": 1
     }
   ],
   "samples": [
@@ -154,13 +144,6 @@
       "location": "app/scenes/TeamDelete.tsx:23",
       "entries": [
         "marginBottom: 1em (line 97)"
-      ]
-    },
-    {
-      "component": "PaginatedList",
-      "location": "app/components/PaginatedList.tsx:108",
-      "entries": [
-        "height: 1px (line 334)"
       ]
     },
     {
@@ -213,5 +196,5 @@
       ]
     }
   ],
-  "scanSeconds": 21
+  "scanSeconds": 22
 }

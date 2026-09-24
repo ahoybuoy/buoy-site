@@ -7,18 +7,18 @@
   "homepage": "https://supabase.com",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "d067e81a696808240094066d0272e2cc1f295aa1",
-  "generatedAt": "2026-09-24T03:20:58.059Z",
+  "commit": "f815e190be8fdc2d92bc76d12c75adb0f7596cae",
+  "generatedAt": "2026-09-24T04:55:30.669Z",
   "cliVersion": "latest",
-  "score": 62,
-  "tier": "Good",
+  "score": 32,
+  "tier": "Bad",
   "pillars": {
     "valueDiscipline": {
-      "score": 34,
+      "score": 0,
       "max": 60
     },
     "tokenHealth": {
-      "score": 18,
+      "score": 20,
       "max": 20
     },
     "consistency": {
@@ -26,42 +26,42 @@
       "max": 10
     },
     "criticalIssues": {
-      "score": 0,
+      "score": 2,
       "max": 10
     }
   },
   "metrics": {
     "componentCount": 4569,
     "tokenCount": 1158,
-    "hardcodedValueCount": 1378,
-    "unusedTokenCount": 467,
-    "namingInconsistencyCount": 50,
+    "hardcodedValueCount": 294,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
     "criticalCount": 2,
     "accessibilityConflictCount": 0,
     "colorContrastCount": 2,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 7913,
-    "unusedComponentCount": 1171,
-    "repeatedPatternCount": 275,
+    "totalDriftCount": 4866,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 7,
     "orphanedComponentCount": 4561,
-    "semanticMismatchCount": 7,
+    "semanticMismatchCount": 0,
     "deprecatedPatternCount": 2,
     "orphanedTokenCount": 0,
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 78,
-    "vendoredDriftCount": 41,
+    "highDensityFileCount": 4,
+    "vendoredDriftCount": 7,
     "topHardcodedColor": {
-      "value": "#8F8F8F",
-      "count": 16
+      "value": "#404EED",
+      "count": 4
     },
     "worstFile": {
       "path": "apps/www/app/(home)/_components/logos/PublicityLogos.tsx",
-      "issueCount": 73
+      "issueCount": 33
     },
-    "uniqueSpacingValues": 32,
+    "uniqueSpacingValues": 6,
     "detectedFrameworkNames": [
       "react",
       "next",
@@ -72,222 +72,216 @@
     ]
   },
   "suggestions": [
-    "1337 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/www/app/(home)/_components/logos/PublicityLogos.tsx (73 issues)",
-    "41 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
-    "1171 unused components detected — consider a cleanup sprint to remove dead code",
-    "275 repeated patterns — significant duplication, extract to a shared component library",
-    "467 tokens defined but unused — wire them into components or remove stale definitions",
-    "57 minor naming inconsistencies — consider standardizing conventions",
+    "287 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/www/app/(home)/_components/logos/PublicityLogos.tsx (33 issues)",
+    "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
+    "7 repeated patterns — extract to shared components",
     "2 color contrast issues — fix immediately",
-    "2 deprecated patterns — migrate to current API",
-    "32 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
+    "2 deprecated patterns — migrate to current API"
   ],
   "driftSummary": {
-    "total": 7428,
+    "total": 4462,
     "critical": 2,
-    "warning": 5362,
-    "info": 2064
+    "warning": 4214,
+    "info": 246
   },
   "driftByType": {
-    "naming-inconsistency": 50,
-    "hardcoded-value": 1372,
+    "hardcoded-value": 291,
     "deprecated-pattern": 2,
     "color-contrast": 2,
-    "unused-component": 1107,
-    "unused-token": 467,
-    "semantic-mismatch": 1,
-    "orphaned-component": 4152,
-    "repeated-pattern": 275
+    "orphaned-component": 4160,
+    "repeated-pattern": 7
   },
   "topColors": [
     {
-      "value": "#8F8F8F",
-      "count": 16
-    },
-    {
-      "value": "#fff",
-      "count": 10
-    },
-    {
-      "value": "#3ECF8E",
-      "count": 8
+      "value": "text-[#bda4ff]",
+      "count": 5
     },
     {
       "value": "#404EED",
       "count": 4
     },
     {
-      "value": "#000",
-      "count": 1
+      "value": "border-[#111718]",
+      "count": 4
     },
     {
-      "value": "#249361",
-      "count": 1
+      "value": "from-[#4e4e4e90]",
+      "count": 4
     },
     {
-      "value": "#FFFFFF",
-      "count": 1
+      "value": "bg-[#0b0e0d]",
+      "count": 3
     },
     {
-      "value": "#7FC8FF",
-      "count": 1
+      "value": "from-[#1C1C1C]",
+      "count": 2
+    },
+    {
+      "value": "text-[#f8f3ef]",
+      "count": 2
+    },
+    {
+      "value": "to-[#19191990]",
+      "count": 2
     }
   ],
   "topSpacing": [
-    {
-      "value": "1px",
-      "count": 10
-    },
     {
       "value": "0.8125rem",
       "count": 8
     },
     {
-      "value": "0px",
-      "count": 6
+      "value": "14px",
+      "count": 1
     },
     {
-      "value": "10px",
-      "count": 3
+      "value": "32px",
+      "count": 1
     },
     {
-      "value": "35%",
-      "count": 3
+      "value": "1.5rem",
+      "count": 1
     },
     {
       "value": "1rem",
-      "count": 2
+      "count": 1
     },
     {
-      "value": "30px",
-      "count": 2
+      "value": "3px",
+      "count": 1
     },
     {
-      "value": "20px",
-      "count": 2
+      "value": "pb-[100px]",
+      "count": 1
+    },
+    {
+      "value": "ml-[-37px]",
+      "count": 1
     }
   ],
   "worstFiles": [
     {
-      "file": "apps/www/app/api-v2/ticket-og/route.tsx",
-      "count": 22
+      "file": "apps/www/app/(products)/auth/_components/FeaturesSection.tsx",
+      "count": 40
     },
     {
       "file": "apps/www/components/LaunchWeek/8/Releases/components/index.tsx",
-      "count": 14
+      "count": 39
     },
     {
       "file": "apps/www/components/LaunchWeek/7/Releases/components/index.tsx",
-      "count": 11
+      "count": 36
     },
     {
-      "file": "apps/www/app/(home)/_components/logos/PublicityLogos.tsx",
-      "count": 9
+      "file": "apps/www/components/LaunchWeek/8/Releases/index.tsx",
+      "count": 17
     },
     {
-      "file": "apps/www/components/Products/RealtimeVisual.tsx",
-      "count": 6
+      "file": "packages/ui-patterns/src/Banners/Select26Banner.tsx",
+      "count": 16
     },
     {
-      "file": "apps/www/app/(products)/storage/_components/FeaturesSection.tsx",
-      "count": 6
+      "file": "apps/www/app/(products)/database/_components/FeaturesSection.tsx",
+      "count": 15
     },
     {
-      "file": "apps/design-system/registry/default/example/chart-tooltip-demo.tsx",
-      "count": 6
+      "file": "apps/www/components/Pricing/PricingPlans.tsx",
+      "count": 15
     },
     {
-      "file": "apps/design-system/registry/default/example/connect-interstitial-shared.tsx",
-      "count": 5
+      "file": "apps/www/app/state-of-startups/register/RegisterContent.tsx",
+      "count": 10
     }
   ],
   "samples": [
     {
-      "component": "SideNavigation",
-      "location": "apps/ui-library/components/side-navigation.tsx:15",
+      "component": "Chart",
+      "location": "apps/www/components/Charts/PGCharts.tsx:52",
       "entries": [
-        "fill: #3ECF8E (line 40)"
+        "fontSize: 14px (line 76)",
+        "marginBottom: 32px (line 77)"
       ]
     },
     {
-      "component": "SideNavigation",
-      "location": "apps/learn/components/side-navigation.tsx:20",
+      "component": "FrameworksSectionClient",
+      "location": "apps/www/app/(home)/_components/FrameworksSectionClient.tsx:19",
       "entries": [
-        "fill: #3ECF8E (line 84)"
+        "fontSize: 0.8125rem (line 106)"
       ]
     },
     {
-      "component": "Quotes",
-      "location": "apps/www/components/Solutions/Quotes.tsx:11",
+      "component": "HelpPanel",
+      "location": "apps/studio/components/ui/HelpPanel/HelpPanel.tsx:23",
       "entries": [
-        "marginRight: 1px (line 24)"
+        "background: #404EED (line 105)",
+        "color: #404EED (line 128)"
       ]
     },
     {
-      "component": "TwitterSocialProofMobile",
-      "location": "apps/www/components/Sections/TwitterSocialProofMobile.tsx:23",
+      "component": "DiscordCTACard",
+      "location": "apps/studio/components/interfaces/Support/DiscordCTACard.tsx:15",
       "entries": [
-        "marginRight: 1px (line 29)"
+        "background: #404EED (line 36)",
+        "color: #404EED (line 72)"
       ]
     },
     {
-      "component": "TimedTabsSection",
-      "location": "apps/www/components/Sections/TimedTabsSection.tsx:79",
+      "component": "PartnerCatalogDetail",
+      "location": "apps/www/app/partners/catalog/[slug]/PartnerCatalogDetail.tsx:39",
       "entries": [
-        "marginRight: 1px (line 151)"
+        "fontSize: 1.5rem (line 251)",
+        "marginBottom: 1rem (line 251)"
       ]
     },
     {
-      "component": "TimedAccordionSection",
-      "location": "apps/www/components/Sections/TimedAccordionSection.tsx:82",
+      "component": "PermissionsSectionClient",
+      "location": "apps/www/app/(products)/storage/_components/PermissionsSectionClient.tsx:18",
       "entries": [
-        "marginRight: 1px (line 158)"
+        "fontSize: 0.8125rem (line 146)"
       ]
     },
     {
-      "component": "FunctionsUsecases",
-      "location": "apps/www/components/Sections/FunctionsUsecases.tsx:26",
+      "component": "ApiSectionClient",
+      "location": "apps/www/app/(products)/storage/_components/ApiSectionClient.tsx:25",
       "entries": [
-        "marginRight: 1px (line 96)"
+        "fontSize: 0.8125rem (line 148)"
       ]
     },
     {
-      "component": "APISection",
-      "location": "apps/www/components/Sections/APISection.tsx:30",
+      "component": "ApiSectionClient",
+      "location": "apps/www/app/(products)/realtime/_components/ApiSectionClient.tsx:24",
       "entries": [
-        "marginRight: 1px (line 76)"
+        "fontSize: 0.8125rem (line 146)"
       ]
     },
     {
-      "component": "RealtimeVisual",
-      "location": "apps/www/components/Products/RealtimeVisual.tsx:10",
+      "component": "IntegratesSectionClient",
+      "location": "apps/www/app/(products)/edge-functions/_components/IntegratesSectionClient.tsx:24",
       "entries": [
-        "top: 60% (line 97)",
-        "left: 30% (line 98)",
-        "top: 80% (line 129)"
+        "fontSize: 0.8125rem (line 160)"
       ]
     },
     {
-      "component": "Check",
-      "location": "apps/www/components/Pricing/PricingIcons.tsx:1",
+      "component": "ApiSectionClient",
+      "location": "apps/www/app/(products)/database/_components/ApiSectionClient.tsx:25",
       "entries": [
-        "fill: #3ECF8E (line 4)"
+        "fontSize: 0.8125rem (line 147)"
       ]
     },
     {
-      "component": "PricingComparisonTable",
-      "location": "apps/www/components/Pricing/PricingComparisonTable.tsx:115",
+      "component": "RLSSectionClient",
+      "location": "apps/www/app/(products)/auth/_components/RLSSectionClient.tsx:18",
       "entries": [
-        "height: 1px (line 404)"
+        "fontSize: 0.8125rem (line 157)"
       ]
     },
     {
-      "component": "Quotes",
-      "location": "apps/www/components/Supasquad/Quotes.tsx:11",
+      "component": "ApiSectionClient",
+      "location": "apps/www/app/(products)/auth/_components/ApiSectionClient.tsx:25",
       "entries": [
-        "marginRight: 1px (line 24)"
+        "fontSize: 0.8125rem (line 159)"
       ]
     }
   ],
-  "scanSeconds": 243
+  "scanSeconds": 240
 }

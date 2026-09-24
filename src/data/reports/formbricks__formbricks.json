@@ -3,22 +3,22 @@
   "owner": "formbricks",
   "name": "formbricks",
   "description": "Open Source Qualtrics Alternative",
-  "stars": 13011,
+  "stars": 13012,
   "homepage": "https://formbricks.com",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "97a1c69b965691a8d80a89f42e313fd1d7c4ee28",
-  "generatedAt": "2026-09-24T03:28:58.906Z",
+  "generatedAt": "2026-09-24T05:03:39.285Z",
   "cliVersion": "latest",
-  "score": 69,
-  "tier": "Good",
+  "score": 95,
+  "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 50,
+      "score": 55,
       "max": 60
     },
     "tokenHealth": {
-      "score": 16,
+      "score": 20,
       "max": 20
     },
     "consistency": {
@@ -26,24 +26,24 @@
       "max": 10
     },
     "criticalIssues": {
-      "score": 8,
+      "score": 10,
       "max": 10
     }
   },
   "metrics": {
     "componentCount": 353,
     "tokenCount": 73,
-    "hardcodedValueCount": 98,
-    "unusedTokenCount": 55,
-    "namingInconsistencyCount": 1,
+    "hardcodedValueCount": 16,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
     "criticalCount": 0,
     "accessibilityConflictCount": 0,
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 229,
-    "unusedComponentCount": 27,
-    "repeatedPatternCount": 48,
+    "totalDriftCount": 16,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 0,
@@ -51,17 +51,12 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 4,
-    "vendoredDriftCount": 18,
-    "topHardcodedColor": {
-      "value": "rgb(250 204 21)",
-      "count": 3
-    },
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 7,
     "worstFile": {
-      "path": "packages/survey-ui/src/components/elements/single-select.tsx",
-      "issueCount": 5
+      "path": "apps/web/app/(app)/workspaces/[workspaceId]/components/MainNavigation.tsx",
+      "issueCount": 1
     },
-    "uniqueSpacingValues": 18,
     "detectedFrameworkNames": [
       "react",
       "next",
@@ -71,187 +66,140 @@
     ]
   },
   "suggestions": [
-    "80 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on packages/survey-ui/src/components/elements/single-select.tsx (5 issues)",
-    "18 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
-    "27 unused components — review and remove dead code",
-    "48 repeated patterns — significant duplication, extract to a shared component library",
-    "55 of 73 tokens unused (75%) — many tokens may be stale, audit your token definitions",
-    "18 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
+    "Nearly there — just 9 hardcoded values left to tokenize",
+    "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "driftSummary": {
-    "total": 229,
+    "total": 16,
     "critical": 0,
-    "warning": 31,
-    "info": 198
+    "warning": 0,
+    "info": 16
   },
   "driftByType": {
-    "naming-inconsistency": 1,
-    "hardcoded-value": 98,
-    "unused-component": 27,
-    "unused-token": 55,
-    "repeated-pattern": 48
+    "hardcoded-value": 16
   },
-  "topColors": [
-    {
-      "value": "#0f172a",
-      "count": 1
-    }
-  ],
-  "topSpacing": [
-    {
-      "value": "2rem",
-      "count": 4
-    },
-    {
-      "value": "3.25rem",
-      "count": 2
-    },
-    {
-      "value": "3rem",
-      "count": 2
-    },
-    {
-      "value": "80%",
-      "count": 1
-    },
-    {
-      "value": "60%",
-      "count": 1
-    },
-    {
-      "value": "0.75rem",
-      "count": 1
-    },
-    {
-      "value": "84%",
-      "count": 1
-    },
-    {
-      "value": "1.25rem",
-      "count": 1
-    }
-  ],
+  "topColors": [],
+  "topSpacing": [],
   "worstFiles": [
-    {
-      "file": "apps/web/app/api/v1/client/og/route.tsx",
-      "count": 24
-    },
-    {
-      "file": "packages/survey-ui/src/components/general/input.tsx",
-      "count": 4
-    },
     {
       "file": "packages/survey-ui/src/components/general/calendar.tsx",
       "count": 4
     },
     {
-      "file": "packages/survey-ui/src/components/general/textarea.tsx",
-      "count": 3
-    },
-    {
-      "file": "packages/survey-ui/src/components/general/dropdown-menu.tsx",
-      "count": 3
-    },
-    {
-      "file": "apps/web/app/(app)/workspaces/[workspaceId]/unify/taxonomy/loading.tsx",
+      "file": "packages/surveys/src/components/general/headline.tsx",
       "count": 2
+    },
+    {
+      "file": "packages/survey-ui/src/components/general/checkbox.tsx",
+      "count": 2
+    },
+    {
+      "file": "apps/web/app/(app)/workspaces/[workspaceId]/components/MainNavigation.tsx",
+      "count": 1
+    },
+    {
+      "file": "apps/web/app/(app)/workspaces/[workspaceId]/surveys/[surveyId]/(analysis)/summary/components/SummaryDropOffs.tsx",
+      "count": 1
+    },
+    {
+      "file": "apps/web/app/(app)/workspaces/[workspaceId]/surveys/[surveyId]/(analysis)/summary/components/shareEmbedModal/success-view.tsx",
+      "count": 1
     },
     {
       "file": "packages/surveys/src/components/general/ending-card.tsx",
-      "count": 2
+      "count": 1
     },
     {
-      "file": "packages/survey-ui/src/components/general/radio-group.tsx",
-      "count": 2
+      "file": "packages/survey-ui/src/components/elements/rating.tsx",
+      "count": 1
     }
   ],
   "samples": [
     {
-      "component": "GET",
-      "location": "apps/web/app/api/v1/client/og/route.tsx:4",
-      "entries": [
-        "color: #0f172a (line 87)"
-      ]
-    },
-    {
-      "component": "GET",
-      "location": "apps/web/app/api/v1/client/og/route.tsx:4",
-      "entries": [
-        "width: 80% (line 23)",
-        "height: 60% (line 24)",
-        "marginTop: 3.25rem (line 27)"
-      ]
-    },
-    {
-      "component": "RatingSummary",
-      "location": "apps/web/app/(app)/workspaces/[workspaceId]/surveys/[surveyId]/(analysis)/summary/components/RatingSummary.tsx:23",
-      "entries": [
-        "fill: rgb(250 204 21) (line 29)"
-      ]
-    },
-    {
-      "component": "CSATSummary",
-      "location": "apps/web/app/(app)/workspaces/[workspaceId]/surveys/[surveyId]/(analysis)/summary/components/CSATSummary.tsx:25",
-      "entries": [
-        "fill: rgb(250 204 21) (line 31)"
-      ]
-    },
-    {
-      "component": "CESSummary",
-      "location": "apps/web/app/(app)/workspaces/[workspaceId]/surveys/[surveyId]/(analysis)/summary/components/CESSummary.tsx:23",
-      "entries": [
-        "fill: rgb(250 204 21) (line 29)"
-      ]
-    },
-    {
-      "component": "apps/web/app/(app)/workspaces/[workspaceId]/components/SettingsSidebarContent.tsx",
-      "location": "apps/web/app/(app)/workspaces/[workspaceId]/components/SettingsSidebarContent.tsx:253",
-      "entries": [
-        "apps/web/app/(app)/workspaces/[workspaceId]/components/SettingsSidebarContent.tsx"
-      ]
-    },
-    {
       "component": "apps/web/app/(app)/workspaces/[workspaceId]/components/MainNavigation.tsx",
       "location": "apps/web/app/(app)/workspaces/[workspaceId]/components/MainNavigation.tsx:83",
       "entries": [
-        "apps/web/app/(app)/workspaces/[workspaceId]/components/MainNavigation.tsx"
+        "text-[10px] (line 83)"
       ]
     },
     {
-      "component": "apps/web/app/(app)/workspaces/[workspaceId]/unify/taxonomy/loading.tsx",
-      "location": "apps/web/app/(app)/workspaces/[workspaceId]/unify/taxonomy/loading.tsx:7",
+      "component": "apps/web/app/(app)/workspaces/[workspaceId]/surveys/[surveyId]/(analysis)/summary/components/SummaryDropOffs.tsx",
+      "location": "apps/web/app/(app)/workspaces/[workspaceId]/surveys/[surveyId]/(analysis)/summary/components/SummaryDropOffs.tsx:21",
       "entries": [
-        "apps/web/app/(app)/workspaces/[workspaceId]/unify/taxonomy/loading.tsx"
+        "mt-[3px] (line 21)"
       ]
     },
     {
-      "component": "apps/web/app/(app)/workspaces/[workspaceId]/unify/taxonomy/loading.tsx",
-      "location": "apps/web/app/(app)/workspaces/[workspaceId]/unify/taxonomy/loading.tsx:6",
+      "component": "apps/web/app/(app)/workspaces/[workspaceId]/surveys/[surveyId]/(analysis)/summary/components/shareEmbedModal/success-view.tsx",
+      "location": "apps/web/app/(app)/workspaces/[workspaceId]/surveys/[surveyId]/(analysis)/summary/components/shareEmbedModal/success-view.tsx:42",
       "entries": [
-        "apps/web/app/(app)/workspaces/[workspaceId]/unify/taxonomy/loading.tsx"
+        "py-[100px] (line 42)"
       ]
     },
     {
-      "component": "apps/web/app/(app)/workspaces/[workspaceId]/surveys/[surveyId]/components/SurveyStatusDropdown.tsx",
-      "location": "apps/web/app/(app)/workspaces/[workspaceId]/surveys/[surveyId]/components/SurveyStatusDropdown.tsx:55",
+      "component": "packages/surveys/src/components/general/headline.tsx",
+      "location": "packages/surveys/src/components/general/headline.tsx:31",
       "entries": [
-        "apps/web/app/(app)/workspaces/[workspaceId]/surveys/[surveyId]/components/SurveyStatusDropdown.tsx"
+        "mb-[3px] (line 31)",
+        "mb-[3px] (line 34)"
       ]
     },
     {
-      "component": "apps/web/app/(app)/workspaces/[workspaceId]/surveys/[surveyId]/components/ResponseFilter.tsx",
-      "location": "apps/web/app/(app)/workspaces/[workspaceId]/surveys/[surveyId]/components/ResponseFilter.tsx:269",
+      "component": "packages/surveys/src/components/general/ending-card.tsx",
+      "location": "packages/surveys/src/components/general/ending-card.tsx:88",
       "entries": [
-        "apps/web/app/(app)/workspaces/[workspaceId]/surveys/[surveyId]/components/ResponseFilter.tsx"
+        "mb-[10px] (line 88)"
       ]
     },
     {
-      "component": "apps/web/app/(app)/workspaces/[workspaceId]/surveys/[surveyId]/components/ElementsComboBox.tsx",
-      "location": "apps/web/app/(app)/workspaces/[workspaceId]/surveys/[surveyId]/components/ElementsComboBox.tsx:255",
+      "component": "packages/survey-ui/src/components/elements/rating.tsx",
+      "location": "packages/survey-ui/src/components/elements/rating.tsx:406",
       "entries": [
-        "apps/web/app/(app)/workspaces/[workspaceId]/surveys/[surveyId]/components/ElementsComboBox.tsx"
+        "px-[2px] (line 406)"
+      ]
+    },
+    {
+      "component": "packages/survey-ui/src/components/elements/nps.tsx",
+      "location": "packages/survey-ui/src/components/elements/nps.tsx:181",
+      "entries": [
+        "px-[2px] (line 181)"
+      ]
+    },
+    {
+      "component": "packages/survey-ui/src/components/elements/multi-select.tsx",
+      "location": "packages/survey-ui/src/components/elements/multi-select.tsx:112",
+      "entries": [
+        "rounded-[4px] (line 112)"
+      ]
+    },
+    {
+      "component": "packages/survey-ui/src/components/general/textarea.tsx",
+      "location": "packages/survey-ui/src/components/general/textarea.tsx:15",
+      "entries": [
+        "focus-visible:ring-[3px] (line 15)"
+      ]
+    },
+    {
+      "component": "packages/survey-ui/src/components/general/radio-group.tsx",
+      "location": "packages/survey-ui/src/components/general/radio-group.tsx:34",
+      "entries": [
+        "focus-visible:ring-[3px] (line 34)"
+      ]
+    },
+    {
+      "component": "packages/survey-ui/src/components/general/input.tsx",
+      "location": "packages/survey-ui/src/components/general/input.tsx:41",
+      "entries": [
+        "focus-visible:ring-[3px] (line 41)"
+      ]
+    },
+    {
+      "component": "packages/survey-ui/src/components/general/element-header.tsx",
+      "location": "packages/survey-ui/src/components/general/element-header.tsx:64",
+      "entries": [
+        "mb-[3px] (line 64)"
       ]
     }
   ],
-  "scanSeconds": 39
+  "scanSeconds": 38
 }

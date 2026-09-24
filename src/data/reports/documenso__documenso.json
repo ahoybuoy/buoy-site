@@ -8,17 +8,17 @@
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "39ae85483ae0941b7b273bc0270d9687ff42f8fb",
-  "generatedAt": "2026-09-24T03:29:50.938Z",
+  "generatedAt": "2026-09-24T05:04:25.970Z",
   "cliVersion": "latest",
-  "score": 69,
-  "tier": "Good",
+  "score": 94,
+  "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 50,
+      "score": 54,
       "max": 60
     },
     "tokenHealth": {
-      "score": 18,
+      "score": 20,
       "max": 20
     },
     "consistency": {
@@ -26,24 +26,24 @@
       "max": 10
     },
     "criticalIssues": {
-      "score": 6,
+      "score": 10,
       "max": 10
     }
   },
   "metrics": {
     "componentCount": 604,
     "tokenCount": 199,
-    "hardcodedValueCount": 174,
-    "unusedTokenCount": 93,
-    "namingInconsistencyCount": 5,
+    "hardcodedValueCount": 18,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
     "criticalCount": 0,
     "accessibilityConflictCount": 0,
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 336,
-    "unusedComponentCount": 12,
-    "repeatedPatternCount": 52,
+    "totalDriftCount": 19,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 1,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 0,
@@ -51,17 +51,17 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 8,
+    "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
     "topHardcodedColor": {
-      "value": "#6DC947",
+      "value": "#f9f9f9",
       "count": 1
     },
     "worstFile": {
-      "path": "packages/ui/components/signing-card.tsx",
-      "issueCount": 6
+      "path": "apps/remix/app/routes/embed+/playground.tsx",
+      "issueCount": 2
     },
-    "uniqueSpacingValues": 19,
+    "uniqueSpacingValues": 9,
     "detectedFrameworkNames": [
       "react",
       "next",
@@ -70,27 +70,39 @@
     ]
   },
   "suggestions": [
-    "174 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on packages/ui/components/signing-card.tsx (6 issues)",
-    "12 unused components — review and remove dead code",
-    "52 repeated patterns — significant duplication, extract to a shared component library",
-    "93 tokens defined but unused — wire them into components or remove stale definitions",
-    "5 minor naming inconsistencies — consider standardizing conventions",
-    "19 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
+    "Nearly there — just 18 hardcoded values left to tokenize. apps/remix/app/routes/embed+/playground.tsx has the most (2)"
   ],
   "driftSummary": {
-    "total": 336,
+    "total": 19,
     "critical": 0,
-    "warning": 23,
-    "info": 313
+    "warning": 4,
+    "info": 15
   },
   "driftByType": {
-    "hardcoded-value": 174,
-    "naming-inconsistency": 5,
-    "unused-component": 12,
-    "unused-token": 93,
-    "repeated-pattern": 52
+    "hardcoded-value": 18,
+    "repeated-pattern": 1
   },
   "topColors": [
+    {
+      "value": "bg-[#F1FBEA]",
+      "count": 3
+    },
+    {
+      "value": "bg-[#1C2515]",
+      "count": 3
+    },
+    {
+      "value": "text-[#F1FBEA]",
+      "count": 3
+    },
+    {
+      "value": "hover:bg-[#1C2515]",
+      "count": 3
+    },
+    {
+      "value": "hover:text-[#F1FBEA]",
+      "count": 3
+    },
     {
       "value": "#f9f9f9",
       "count": 1
@@ -100,27 +112,7 @@
       "count": 1
     },
     {
-      "value": "#fff",
-      "count": 1
-    },
-    {
       "value": "#A2E771",
-      "count": 1
-    },
-    {
-      "value": "#6DC947",
-      "count": 1
-    },
-    {
-      "value": "#D4D4D8",
-      "count": 1
-    },
-    {
-      "value": "#71717A",
-      "count": 1
-    },
-    {
-      "value": "#18181B",
       "count": 1
     }
   ],
@@ -134,15 +126,11 @@
       "count": 4
     },
     {
-      "value": "16px",
-      "count": 4
-    },
-    {
       "value": "12px",
       "count": 2
     },
     {
-      "value": "20px",
+      "value": "16px",
       "count": 2
     },
     {
@@ -154,42 +142,46 @@
       "count": 1
     },
     {
-      "value": "100vh",
+      "value": "11px",
+      "count": 1
+    },
+    {
+      "value": "14px",
       "count": 1
     }
   ],
   "worstFiles": [
     {
       "file": "apps/remix/app/routes/embed+/playground.tsx",
-      "count": 27
+      "count": 20
     },
     {
-      "file": "apps/docs/src/app/og/docs/[...slug]/route.tsx",
-      "count": 11
+      "file": "apps/remix/app/components/general/unified-settings-sidebar.tsx",
+      "count": 18
     },
     {
       "file": "apps/remix/app/components/general/app-command-menu.tsx",
-      "count": 6
+      "count": 8
     },
     {
-      "file": "packages/ui/components/signing-card.tsx",
+      "file": "apps/remix/app/components/general/settings-upsell/branding-upsell.tsx",
       "count": 4
     },
     {
       "file": "apps/remix/app/components/general/settings-upsell/sso-portal-upsell.tsx",
-      "count": 3
+      "count": 1
     },
     {
-      "file": "apps/remix/app/routes/_unauthenticated+/_layout.tsx",
-      "count": 3
+      "file": "apps/remix/app/components/general/envelope-editor/envelope-editor-fields-page-renderer.tsx",
+      "count": 1
     },
     {
-      "file": "apps/remix/app/components/general/generic-error-layout.tsx",
-      "count": 3
+      "file": "apps/remix/app/components/general/unified-settings-sidebar-mobile.tsx",
+      "count": 1
     },
     {
-      "file": "apps/remix/app/components/forms/signup.tsx",
-      "count": 3
+      "file": "apps/remix/app/components/general/stack-avatars-with-tooltip.tsx",
+      "count": 1
     }
   ],
   "samples": [
@@ -211,13 +203,6 @@
       ]
     },
     {
-      "component": "Background",
-      "location": "apps/remix/app/components/general/background.tsx:5",
-      "entries": [
-        "fill: #fff (line 44)"
-      ]
-    },
-    {
       "component": "SuccessScene",
       "location": "apps/remix/app/components/general/settings-upsell/sso-portal-upsell.tsx:194",
       "entries": [
@@ -232,58 +217,66 @@
       ]
     },
     {
-      "component": "GET",
-      "location": "apps/docs/src/app/og/docs/[...slug]/route.tsx:27",
+      "component": "apps/remix/app/components/general/unified-settings-sidebar.tsx",
+      "location": "apps/remix/app/components/general/unified-settings-sidebar.tsx:28",
       "entries": [
-        "backgroundColor: #6DC947 (line 58)",
-        "color: #D4D4D8 (line 74)",
-        "color: #71717A (line 81)"
+        "bg-[#F1FBEA] (line 28)",
+        "hover:bg-[#F1FBEA] (line 28)",
+        "dark:bg-[#1C2515] (line 28)"
       ]
     },
     {
-      "component": "GET",
-      "location": "apps/docs/src/app/og/docs/[...slug]/route.tsx:27",
+      "component": "apps/remix/app/components/general/unified-settings-sidebar-mobile.tsx",
+      "location": "apps/remix/app/components/general/unified-settings-sidebar-mobile.tsx:142",
       "entries": [
-        "height: 6px (line 57)",
-        "gap: 16px (line 67)",
-        "fontSize: 28px (line 75)"
+        "text-[10px] (line 142)"
       ]
     },
     {
-      "component": "packages/ui/components/signing-card.tsx",
-      "location": "packages/ui/components/signing-card.tsx:158",
+      "component": "apps/remix/app/components/general/stack-avatars-with-tooltip.tsx",
+      "location": "apps/remix/app/components/general/stack-avatars-with-tooltip.tsx:134",
       "entries": [
-        "packages/ui/components/signing-card.tsx"
+        "text-[10px] (line 134)"
       ]
     },
     {
-      "component": "packages/ui/components/signing-card.tsx",
-      "location": "packages/ui/components/signing-card.tsx:119",
+      "component": "apps/remix/app/components/general/app-header.tsx",
+      "location": "apps/remix/app/components/general/app-header.tsx:78",
       "entries": [
-        "packages/ui/components/signing-card.tsx"
+        "text-[10px] (line 78)"
       ]
     },
     {
-      "component": "packages/ui/components/signing-card.tsx",
-      "location": "packages/ui/components/signing-card.tsx:146",
+      "component": "apps/remix/app/components/general/app-command-menu.tsx",
+      "location": "apps/remix/app/components/general/app-command-menu.tsx:440",
       "entries": [
-        "packages/ui/components/signing-card.tsx"
+        "rounded-[10px] (line 440)",
+        "rounded-[3px] (line 676)"
       ]
     },
     {
-      "component": "packages/ui/components/signing-card.tsx",
-      "location": "packages/ui/components/signing-card.tsx:209",
+      "component": "apps/remix/app/components/general/app-command-menu.tsx",
+      "location": "apps/remix/app/components/general/app-command-menu.tsx:64",
       "entries": [
-        "packages/ui/components/signing-card.tsx"
+        "text-[11px] (line 64)",
+        "tracking-[0.07em] (line 64)",
+        "text-[15px] (line 454)"
       ]
     },
     {
-      "component": "packages/ui/components/recipient/recipient-role-select.tsx",
-      "location": "packages/ui/components/recipient/recipient-role-select.tsx:24",
+      "component": "apps/remix/app/components/forms/inheritable-field.tsx",
+      "location": "apps/remix/app/components/forms/inheritable-field.tsx:38",
       "entries": [
-        "packages/ui/components/recipient/recipient-role-select.tsx"
+        "text-[9px] (line 38)"
+      ]
+    },
+    {
+      "component": "apps/remix/app/components/dialogs/template-direct-link-dialog.tsx",
+      "location": "apps/remix/app/components/dialogs/template-direct-link-dialog.tsx:218",
+      "entries": [
+        "border-[3px] (line 218)"
       ]
     }
   ],
-  "scanSeconds": 51
+  "scanSeconds": 46
 }

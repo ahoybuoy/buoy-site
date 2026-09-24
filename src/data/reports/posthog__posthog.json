@@ -7,22 +7,22 @@
   "homepage": "https://posthog.com",
   "language": "Python",
   "defaultBranch": "master",
-  "commit": "754fa69e9d80a13418543ede38875b6f084ab534",
-  "generatedAt": "2026-09-24T03:38:43.683Z",
+  "commit": "edc2adaf0106a154ef4010a0fc9956ccfe0c7ebc",
+  "generatedAt": "2026-09-24T05:12:58.328Z",
   "cliVersion": "latest",
-  "score": 69,
-  "tier": "Good",
+  "score": 85,
+  "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 54,
+      "score": 55,
       "max": 60
     },
     "tokenHealth": {
-      "score": 17,
+      "score": 20,
       "max": 20
     },
     "consistency": {
-      "score": 9,
+      "score": 10,
       "max": 10
     },
     "criticalIssues": {
@@ -33,17 +33,17 @@
   "metrics": {
     "componentCount": 4815,
     "tokenCount": 183,
-    "hardcodedValueCount": 691,
-    "unusedTokenCount": 121,
-    "namingInconsistencyCount": 102,
+    "hardcodedValueCount": 116,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
     "criticalCount": 4,
     "accessibilityConflictCount": 0,
     "colorContrastCount": 4,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 1749,
-    "unusedComponentCount": 671,
-    "repeatedPatternCount": 157,
+    "totalDriftCount": 125,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 3,
@@ -51,17 +51,17 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 34,
-    "vendoredDriftCount": 8,
+    "highDensityFileCount": 2,
+    "vendoredDriftCount": 0,
     "topHardcodedColor": {
       "value": "rgba(0",
-      "count": 10
+      "count": 9
     },
     "worstFile": {
-      "path": "frontend/src/lib/lemon-ui/icons/icons.tsx",
-      "issueCount": 38
+      "path": "frontend/src/lib/KeaDevTools.tsx",
+      "issueCount": 8
     },
-    "uniqueSpacingValues": 21,
+    "uniqueSpacingValues": 6,
     "detectedFrameworkNames": [
       "react",
       "tailwind",
@@ -70,30 +70,21 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 683 hardcoded values left to tokenize. frontend/src/lib/lemon-ui/icons/icons.tsx has the most (38)",
-    "8 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
-    "671 unused components detected — consider a cleanup sprint to remove dead code",
-    "157 repeated patterns — significant duplication, extract to a shared component library",
-    "121 of 183 tokens unused (66%) — many tokens may be stale, audit your token definitions",
-    "102 minor naming inconsistencies — consider standardizing conventions",
+    "Nearly there — just 116 hardcoded values left to tokenize. frontend/src/lib/KeaDevTools.tsx has the most (8)",
     "4 color contrast issues — fix immediately",
-    "3 deprecated patterns — migrate to current API",
-    "21 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
+    "3 deprecated patterns — migrate to current API"
   ],
   "driftSummary": {
-    "total": 1749,
+    "total": 125,
     "critical": 4,
-    "warning": 733,
-    "info": 1012
+    "warning": 33,
+    "info": 88
   },
   "driftByType": {
-    "naming-inconsistency": 102,
-    "hardcoded-value": 691,
+    "hardcoded-value": 116,
     "color-contrast": 4,
     "deprecated-pattern": 3,
-    "unused-component": 671,
-    "unused-token": 121,
-    "repeated-pattern": 157
+    "repeated-pattern": 2
   },
   "topColors": [
     {
@@ -103,14 +94,6 @@
     {
       "value": "#fafafa",
       "count": 3
-    },
-    {
-      "value": "#000",
-      "count": 2
-    },
-    {
-      "value": "#121212",
-      "count": 2
     },
     {
       "value": "#f0f1f5",
@@ -125,29 +108,29 @@
       "count": 1
     },
     {
+      "value": "#1d4aff",
+      "count": 1
+    },
+    {
       "value": "#F7B955",
+      "count": 1
+    },
+    {
+      "value": "#000",
       "count": 1
     }
   ],
   "topSpacing": [
     {
-      "value": "1em",
-      "count": 20
-    },
-    {
-      "value": "40rem",
-      "count": 5
-    },
-    {
-      "value": "0.5rem",
-      "count": 4
+      "value": "pr-[30px]",
+      "count": 3
     },
     {
       "value": "1.5rem",
       "count": 2
     },
     {
-      "value": "90vw",
+      "value": "0.5rem",
       "count": 2
     },
     {
@@ -155,45 +138,49 @@
       "count": 2
     },
     {
-      "value": "80vw",
-      "count": 2
+      "value": "3rem",
+      "count": 1
     },
     {
-      "value": "45%",
+      "value": "0.85em",
+      "count": 1
+    },
+    {
+      "value": "1.2rem",
       "count": 1
     }
   ],
   "worstFiles": [
     {
       "file": "frontend/src/lib/KeaDevTools.tsx",
-      "count": 24
+      "count": 19
     },
     {
-      "file": "frontend/src/lib/lemon-ui/icons/icons.tsx",
-      "count": 22
+      "file": "frontend/src/scenes/onboarding/legacy/data-warehouse/DataWarehouseQueryVariant.tsx",
+      "count": 16
     },
     {
-      "file": "frontend/src/scenes/product-tours/editor/icons.tsx",
-      "count": 12
+      "file": "frontend/src/toolbar/product-tours/StepCard.tsx",
+      "count": 11
     },
     {
-      "file": "frontend/src/scenes/surveys/SurveyEdit.tsx",
-      "count": 5
+      "file": "frontend/src/scenes/audit-logs/AuditLogTable.tsx",
+      "count": 10
     },
     {
-      "file": "frontend/src/layout/scenes/components/SceneTitleSection.tsx",
-      "count": 5
+      "file": "frontend/src/scenes/surveys/components/AbsoluteCornerBadge.tsx",
+      "count": 8
     },
     {
-      "file": "frontend/src/scenes/authentication/shared/authScene/Typewriter.tsx",
-      "count": 5
+      "file": "frontend/src/scenes/product-tours/components/StepSettings.tsx",
+      "count": 7
     },
     {
-      "file": "frontend/src/scenes/authentication/shared/authScene/OrgTile.tsx",
-      "count": 5
+      "file": "packages/quill/packages/components/src/date-time-picker.tsx",
+      "count": 6
     },
     {
-      "file": "frontend/src/scenes/surveys/SurveyAppearanceUtils.tsx",
+      "file": "frontend/src/scenes/product-tours/editor/ProductTourStepsEditor.tsx",
       "count": 4
     }
   ],
@@ -210,8 +197,7 @@
       "location": "frontend/src/lib/KeaDevTools.tsx:535",
       "entries": [
         "background: #fff (line 933)",
-        "color: rgba(0,0,0,0.55) (line 956)",
-        "stroke: rgba(34,197,94,0.95) (line 999)"
+        "color: rgba(0,0,0,0.55) (line 956)"
       ]
     },
     {
@@ -228,14 +214,6 @@
         "background: #fff (line 1698)",
         "color: rgba(0,0,0,0.7) (line 1705)",
         "color: rgba(0,0,0,0.55) (line 1708)"
-      ]
-    },
-    {
-      "component": "MemoryTab",
-      "location": "frontend/src/lib/KeaDevTools.tsx:1595",
-      "entries": [
-        "width: 45% (line 1764)",
-        "width: 10% (line 1774)"
       ]
     },
     {
@@ -257,40 +235,51 @@
       ]
     },
     {
-      "component": "SurveyHeadline",
-      "location": "frontend/src/scenes/surveys/SurveyHeadline.tsx:10",
+      "component": "StepCard",
+      "location": "frontend/src/toolbar/product-tours/StepCard.tsx:26",
       "entries": [
-        "color: #F7B955 (line 33)"
+        "color: #fff (line 96)"
       ]
     },
     {
-      "component": "HighlightedTextArea",
-      "location": "frontend/src/scenes/surveys/SurveyAppearanceUtils.tsx:18",
+      "component": "ProductToursSidebar",
+      "location": "frontend/src/toolbar/product-tours/ProductToursSidebar.tsx:23",
       "entries": [
-        "height: 150px (line 52)"
+        "color: #fff (line 294)",
+        "backgroundColor: #fff (line 309)",
+        "background: rgba(255, 255, 255, 0.2) (line 321)"
       ]
     },
     {
-      "component": "DanglingHedgehog",
-      "location": "frontend/src/scenes/startups/DanglingHedgehog.tsx:31",
+      "component": "ElementHighlight",
+      "location": "frontend/src/toolbar/product-tours/ElementHighlight.tsx:9",
       "entries": [
-        "height: 200% (line 59)"
+        "background: #1d4aff (line 48)"
       ]
     },
     {
-      "component": "FeatureFlagVariantsForm",
-      "location": "frontend/src/scenes/feature-flags/FeatureFlagVariantsForm.tsx:51",
+      "component": "FieldNotesOverlay",
+      "location": "frontend/src/toolbar/field-notes/FieldNotesOverlay.tsx:16",
       "entries": [
-        "marginLeft: 0.5rem (line 134)"
+        "background: rgba(255, 255, 255, 0.2) (line 66)",
+        "color: #fff (line 66)"
       ]
     },
     {
-      "component": "CohortEdit",
-      "location": "frontend/src/scenes/cohorts/CohortEdit.tsx:181",
+      "component": "Elements",
+      "location": "frontend/src/toolbar/elements/Elements.tsx:36",
       "entries": [
-        "fontSize: 3rem (line 716)"
+        "color: hsla(141, 21%, 12%, 1) (line 201)",
+        "background: hsl(147, 100%, 62%) (line 202)"
+      ]
+    },
+    {
+      "component": "LockableMenuIcon",
+      "location": "frontend/src/toolbar/bar/Toolbar.tsx:130",
+      "entries": [
+        "fontSize: 1.5rem (line 138)"
       ]
     }
   ],
-  "scanSeconds": 326
+  "scanSeconds": 300
 }

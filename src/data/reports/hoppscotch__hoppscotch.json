@@ -3,18 +3,18 @@
   "owner": "hoppscotch",
   "name": "hoppscotch",
   "description": "Open-Source API Development Ecosystem • https://hoppscotch.io • Offline, On-Prem & Cloud • Web, Desktop & CLI • Open-Source Alternative to Postman, Insomnia",
-  "stars": 80490,
+  "stars": 80489,
   "homepage": "https://hoppscotch.io",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "a9ffa29ce5036ef5be0768db35a8b6bae32e1160",
-  "generatedAt": "2026-09-24T03:30:47.016Z",
+  "generatedAt": "2026-09-24T05:05:19.381Z",
   "cliVersion": "latest",
-  "score": 69,
-  "tier": "Good",
+  "score": 83,
+  "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 46,
+      "score": 55,
       "max": 60
     },
     "tokenHealth": {
@@ -33,29 +33,29 @@
   "metrics": {
     "componentCount": 405,
     "tokenCount": 0,
-    "hardcodedValueCount": 87,
+    "hardcodedValueCount": 11,
     "unusedTokenCount": 0,
-    "namingInconsistencyCount": 2,
+    "namingInconsistencyCount": 0,
     "criticalCount": 0,
     "accessibilityConflictCount": 0,
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 378,
-    "unusedComponentCount": 287,
+    "totalDriftCount": 11,
+    "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
-    "semanticMismatchCount": 2,
+    "semanticMismatchCount": 0,
     "deprecatedPatternCount": 0,
     "orphanedTokenCount": 0,
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 2,
+    "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
     "worstFile": {
-      "path": "packages/hoppscotch-common/src/components/collections/documentation/CollectionStructure.vue",
-      "issueCount": 4
+      "path": "packages/hoppscotch-common/src/components/TabsNav.vue",
+      "issueCount": 1
     },
     "detectedFrameworkNames": [
       "vue",
@@ -64,144 +64,133 @@
     ]
   },
   "suggestions": [
-    "87 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on packages/hoppscotch-common/src/components/collections/documentation/CollectionStructure.vue (4 issues)",
-    "287 unused components detected — consider a cleanup sprint to remove dead code",
-    "Tailwind detected but token coverage is low — extend your theme config with custom values",
-    "4 minor naming inconsistencies — consider standardizing conventions"
+    "Nearly there — just 11 hardcoded values left to tokenize",
+    "Tailwind detected but token coverage is low — extend your theme config with custom values"
   ],
   "driftSummary": {
-    "total": 375,
+    "total": 11,
     "critical": 0,
-    "warning": 286,
-    "info": 89
+    "warning": 0,
+    "info": 11
   },
   "driftByType": {
-    "naming-inconsistency": 2,
-    "semantic-mismatch": 2,
-    "unused-component": 284,
-    "hardcoded-value": 87
+    "hardcoded-value": 11
   },
   "topColors": [],
   "topSpacing": [],
   "worstFiles": [
     {
+      "file": "packages/hoppscotch-common/src/components/console/Value.vue",
+      "count": 2
+    },
+    {
       "file": "packages/hoppscotch-common/src/components/TabsNav.vue",
-      "count": 3
+      "count": 1
     },
     {
-      "file": "packages/hoppscotch-common/src/components/collections/documentation/CollectionStructure.vue",
-      "count": 3
+      "file": "packages/hoppscotch-sh-admin/src/components/ui/Accordion.vue",
+      "count": 1
     },
     {
-      "file": "packages/hoppscotch-common/src/pages/realtime/socketio.vue",
-      "count": 2
+      "file": "packages/hoppscotch-sh-admin/src/components/onboarding/CompleteScreen.vue",
+      "count": 1
     },
     {
-      "file": "packages/hoppscotch-common/src/components/smart/EnvInput.vue",
-      "count": 2
+      "file": "packages/hoppscotch-sh-admin/src/components/onboarding/AuthProviderCard.vue",
+      "count": 1
     },
     {
-      "file": "packages/hoppscotch-common/src/components/http/Tests.vue",
-      "count": 2
+      "file": "packages/hoppscotch-common/src/components/teams/MemberStack.vue",
+      "count": 1
     },
     {
-      "file": "packages/hoppscotch-common/src/components/http/PreRequestScript.vue",
-      "count": 2
+      "file": "packages/hoppscotch-common/src/components/documentation/Header.vue",
+      "count": 1
     },
     {
-      "file": "packages/hoppscotch-common/src/components/http/Authorization.vue",
-      "count": 2
-    },
-    {
-      "file": "packages/hoppscotch-common/src/components/graphql/Authorization.vue",
-      "count": 2
+      "file": "packages/hoppscotch-common/src/components/collections/Request.vue",
+      "count": 1
     }
   ],
   "samples": [
     {
-      "component": "packages/hoppscotch-common/src/pages/realtime.vue",
-      "location": "packages/hoppscotch-common/src/pages/realtime.vue:5",
-      "entries": [
-        "packages/hoppscotch-common/src/pages/realtime.vue"
-      ]
-    },
-    {
       "component": "packages/hoppscotch-common/src/components/TabsNav.vue",
-      "location": "packages/hoppscotch-common/src/components/TabsNav.vue:93",
+      "location": "packages/hoppscotch-common/src/components/TabsNav.vue:96",
       "entries": [
-        "packages/hoppscotch-common/src/components/TabsNav.vue"
-      ]
-    },
-    {
-      "component": "packages/hoppscotch-common/src/components/TabsNav.vue",
-      "location": "packages/hoppscotch-common/src/components/TabsNav.vue:83",
-      "entries": [
-        "packages/hoppscotch-common/src/components/TabsNav.vue"
-      ]
-    },
-    {
-      "component": "packages/hoppscotch-common/src/components/TabsNav.vue",
-      "location": "packages/hoppscotch-common/src/components/TabsNav.vue:85",
-      "entries": [
-        "packages/hoppscotch-common/src/components/TabsNav.vue"
-      ]
-    },
-    {
-      "component": "packages/hoppscotch-sh-admin/src/pages/teams/index.vue",
-      "location": "packages/hoppscotch-sh-admin/src/pages/teams/index.vue:77",
-      "entries": [
-        "packages/hoppscotch-sh-admin/src/pages/teams/index.vue"
+        "text-[8px] (line 96)"
       ]
     },
     {
       "component": "packages/hoppscotch-sh-admin/src/components/ui/Accordion.vue",
       "location": "packages/hoppscotch-sh-admin/src/components/ui/Accordion.vue:11",
       "entries": [
-        "packages/hoppscotch-sh-admin/src/components/ui/Accordion.vue"
-      ]
-    },
-    {
-      "component": "packages/hoppscotch-sh-admin/src/components/teams/Invite.vue",
-      "location": "packages/hoppscotch-sh-admin/src/components/teams/Invite.vue:157",
-      "entries": [
-        "packages/hoppscotch-sh-admin/src/components/teams/Invite.vue"
+        "text-[0.8rem] (line 11)"
       ]
     },
     {
       "component": "packages/hoppscotch-sh-admin/src/components/onboarding/CompleteScreen.vue",
       "location": "packages/hoppscotch-sh-admin/src/components/onboarding/CompleteScreen.vue:19",
       "entries": [
-        "packages/hoppscotch-sh-admin/src/components/onboarding/CompleteScreen.vue"
-      ]
-    },
-    {
-      "component": "packages/hoppscotch-sh-admin/src/components/onboarding/AuthSetup.vue",
-      "location": "packages/hoppscotch-sh-admin/src/components/onboarding/AuthSetup.vue:31",
-      "entries": [
-        "packages/hoppscotch-sh-admin/src/components/onboarding/AuthSetup.vue"
+        "text-[0.9rem] (line 19)"
       ]
     },
     {
       "component": "packages/hoppscotch-sh-admin/src/components/onboarding/AuthProviderCard.vue",
       "location": "packages/hoppscotch-sh-admin/src/components/onboarding/AuthProviderCard.vue:11",
       "entries": [
-        "packages/hoppscotch-sh-admin/src/components/onboarding/AuthProviderCard.vue"
+        "text-[0.9rem] (line 11)"
       ]
     },
     {
-      "component": "packages/hoppscotch-common/src/pages/realtime/socketio.vue",
-      "location": "packages/hoppscotch-common/src/pages/realtime/socketio.vue:223",
+      "component": "packages/hoppscotch-common/src/components/teams/MemberStack.vue",
+      "location": "packages/hoppscotch-common/src/components/teams/MemberStack.vue:20",
       "entries": [
-        "packages/hoppscotch-common/src/pages/realtime/socketio.vue"
+        "text-[8px] (line 20)"
       ]
     },
     {
-      "component": "packages/hoppscotch-common/src/pages/realtime/socketio.vue",
-      "location": "packages/hoppscotch-common/src/pages/realtime/socketio.vue:223",
+      "component": "packages/hoppscotch-common/src/components/documentation/Header.vue",
+      "location": "packages/hoppscotch-common/src/components/documentation/Header.vue:34",
       "entries": [
-        "packages/hoppscotch-common/src/pages/realtime/socketio.vue"
+        "text-[9px] (line 34)"
+      ]
+    },
+    {
+      "component": "packages/hoppscotch-common/src/components/console/Value.vue",
+      "location": "packages/hoppscotch-common/src/components/console/Value.vue:2",
+      "entries": [
+        "text-[12px] (line 2)",
+        "text-[12px] (line 10)"
+      ]
+    },
+    {
+      "component": "packages/hoppscotch-common/src/components/collections/Request.vue",
+      "location": "packages/hoppscotch-common/src/components/collections/Request.vue:218",
+      "entries": [
+        "ml-[1.35rem] (line 218)"
+      ]
+    },
+    {
+      "component": "packages/hoppscotch-common/src/components/collections/graphql/Folder.vue",
+      "location": "packages/hoppscotch-common/src/components/collections/graphql/Folder.vue:164",
+      "entries": [
+        "ml-[1.375rem] (line 164)"
+      ]
+    },
+    {
+      "component": "packages/hoppscotch-common/src/components/collections/graphql/Collection.vue",
+      "location": "packages/hoppscotch-common/src/components/collections/graphql/Collection.vue:171",
+      "entries": [
+        "ml-[1.375rem] (line 171)"
+      ]
+    },
+    {
+      "component": "packages/hoppscotch-common/src/components/collections/documentation/PublishDocSnapshotPreview.vue",
+      "location": "packages/hoppscotch-common/src/components/collections/documentation/PublishDocSnapshotPreview.vue:67",
+      "entries": [
+        "text-[10px] (line 67)"
       ]
     }
   ],
-  "scanSeconds": 24
+  "scanSeconds": 23
 }

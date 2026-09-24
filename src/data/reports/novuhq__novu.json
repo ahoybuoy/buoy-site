@@ -8,21 +8,21 @@
   "language": "TypeScript",
   "defaultBranch": "next",
   "commit": "eda627cdee8c1e4601109467006f262177b88732",
-  "generatedAt": "2026-09-24T03:24:04.994Z",
+  "generatedAt": "2026-09-24T04:58:33.163Z",
   "cliVersion": "latest",
-  "score": 69,
+  "score": 60,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 46,
+      "score": 30,
       "max": 60
     },
     "tokenHealth": {
-      "score": 19,
+      "score": 20,
       "max": 20
     },
     "consistency": {
-      "score": 9,
+      "score": 10,
       "max": 10
     },
     "criticalIssues": {
@@ -33,17 +33,17 @@
   "metrics": {
     "componentCount": 2414,
     "tokenCount": 462,
-    "hardcodedValueCount": 1044,
-    "unusedTokenCount": 137,
-    "namingInconsistencyCount": 49,
+    "hardcodedValueCount": 372,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
     "criticalCount": 0,
     "accessibilityConflictCount": 0,
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 1731,
-    "unusedComponentCount": 294,
-    "repeatedPatternCount": 207,
+    "totalDriftCount": 377,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 5,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 0,
@@ -51,17 +51,17 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 126,
-    "vendoredDriftCount": 41,
+    "highDensityFileCount": 35,
+    "vendoredDriftCount": 11,
     "topHardcodedColor": {
-      "value": "#E1E4EA",
-      "count": 27
+      "value": "#e9d5ff",
+      "count": 3
     },
     "worstFile": {
-      "path": "apps/dashboard/src/components/ai-elements/prompt-input.tsx",
-      "issueCount": 27
+      "path": "apps/dashboard/src/pages/usecase-select-page.tsx",
+      "issueCount": 8
     },
-    "uniqueSpacingValues": 4,
+    "uniqueSpacingValues": 3,
     "detectedFrameworkNames": [
       "react",
       "next",
@@ -71,58 +71,51 @@
     ]
   },
   "suggestions": [
-    "1003 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/dashboard/src/components/ai-elements/prompt-input.tsx (27 issues)",
-    "41 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
-    "294 unused components detected — consider a cleanup sprint to remove dead code",
-    "207 repeated patterns — significant duplication, extract to a shared component library",
-    "137 tokens defined but unused — wire them into components or remove stale definitions",
-    "49 minor naming inconsistencies — consider standardizing conventions"
+    "Nearly there — just 361 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
+    "11 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "driftSummary": {
-    "total": 1733,
+    "total": 377,
     "critical": 0,
-    "warning": 451,
-    "info": 1282
+    "warning": 81,
+    "info": 296
   },
   "driftByType": {
-    "hardcoded-value": 1044,
-    "naming-inconsistency": 49,
-    "unused-component": 296,
-    "unused-token": 137,
-    "repeated-pattern": 207
+    "hardcoded-value": 372,
+    "repeated-pattern": 5
   },
   "topColors": [
     {
-      "value": "#E1E4EA",
-      "count": 27
+      "value": "#e9d5ff",
+      "count": 3
     },
     {
-      "value": "#CACFD8",
-      "count": 21
+      "value": "text-[#dd2476]",
+      "count": 3
     },
     {
-      "value": "#fff",
-      "count": 19
+      "value": "#99a0ad",
+      "count": 2
     },
     {
-      "value": "#F2F5F8",
-      "count": 18
+      "value": "bg-[#32424a]",
+      "count": 2
     },
     {
-      "value": "#DD2450",
-      "count": 17
+      "value": "#335cff",
+      "count": 1
     },
     {
-      "value": "#FB3748",
-      "count": 12
+      "value": "#47c2ff",
+      "count": 1
     },
     {
-      "value": "#7D52F4",
-      "count": 12
+      "value": "#7d52f4",
+      "count": 1
     },
     {
-      "value": "#525866",
-      "count": 11
+      "value": "#22d3bb",
+      "count": 1
     }
   ],
   "topSpacing": [
@@ -139,52 +132,61 @@
       "count": 1
     },
     {
-      "value": "1px",
+      "value": "ml-[-0.45rem]",
+      "count": 1
+    },
+    {
+      "value": "ml-[-0.35rem]",
+      "count": 1
+    },
+    {
+      "value": "mr-[-0.4rem]",
+      "count": 1
+    },
+    {
+      "value": "mr-[-0.35rem]",
+      "count": 1
+    },
+    {
+      "value": "p-[60px]",
       "count": 1
     }
   ],
   "worstFiles": [
     {
-      "file": "apps/dashboard/src/components/workflow-editor/steps/shared/step-resolver-not-published.tsx",
-      "count": 23
+      "file": "apps/dashboard/src/pages/usecase-select-page.tsx",
+      "count": 61
     },
     {
-      "file": "apps/dashboard/src/components/onboarding/agent-usecase-preview-illustration.tsx",
+      "file": "apps/dashboard/src/components/workflow-editor/steps/http-request/http-request-console-preview.tsx",
+      "count": 40
+    },
+    {
+      "file": "apps/dashboard/src/components/workflow-editor/steps/shared/step-resolver-not-published.tsx",
+      "count": 24
+    },
+    {
+      "file": "apps/dashboard/src/components/workflow-editor/steps/chat/preview/card-renderer.tsx",
+      "count": 24
+    },
+    {
+      "file": "apps/dashboard/src/pages/landing-1-signup.tsx",
+      "count": 19
+    },
+    {
+      "file": "apps/dashboard/src/components/agents/setup-guide-primitives.tsx",
+      "count": 19
+    },
+    {
+      "file": "apps/dashboard/src/components/agents/teams-setup-guide.tsx",
       "count": 18
     },
     {
-      "file": "apps/dashboard/src/components/icons/orb.tsx",
-      "count": 16
-    },
-    {
-      "file": "apps/dashboard/src/pages/usecase-select-page.tsx",
-      "count": 15
-    },
-    {
-      "file": "apps/dashboard/src/components/agents/agent-channels-empty-illustration.tsx",
-      "count": 15
-    },
-    {
-      "file": "apps/dashboard/src/components/welcome/home/welcome-banner.tsx",
-      "count": 14
-    },
-    {
-      "file": "apps/dashboard/src/components/environments/environments-free-state.tsx",
-      "count": 11
-    },
-    {
-      "file": "apps/dashboard/src/components/webhooks/webhooks-empty-state-svg.tsx",
-      "count": 10
+      "file": "apps/dashboard/src/components/workflow-editor/steps/shared/step-resolver-empty-preview.tsx",
+      "count": 18
     }
   ],
   "samples": [
-    {
-      "component": "WorkflowsPage",
-      "location": "apps/dashboard/src/pages/workflows.tsx:83",
-      "entries": [
-        "fill: #525866 (line 341)"
-      ]
-    },
     {
       "component": "InboxFeatureList",
       "location": "apps/dashboard/src/pages/usecase-select-page.tsx:126",
@@ -195,62 +197,6 @@
       ]
     },
     {
-      "component": "WorkflowsIllustration",
-      "location": "apps/dashboard/src/components/workflow-list-empty.tsx:157",
-      "entries": [
-        "stroke: #cacfd8 (line 160)",
-        "fill: #fff (line 161)",
-        "stroke: #f2f5f8 (line 162)"
-      ]
-    },
-    {
-      "component": "TelegramColored",
-      "location": "packages/js/src/ui/icons/TelegramColored.tsx:3",
-      "entries": [
-        "fill: #26A5E4 (line 6)",
-        "fill: #fff (line 8)"
-      ]
-    },
-    {
-      "component": "SlackColored",
-      "location": "packages/js/src/ui/icons/SlackColored.tsx:3",
-      "entries": [
-        "fill: #2EB67D (line 8)",
-        "fill: #E01E5A (line 12)",
-        "fill: #ECB22E (line 16)"
-      ]
-    },
-    {
-      "component": "MsTeamsColored",
-      "location": "packages/js/src/ui/icons/MsTeamsColored.tsx:3",
-      "entries": [
-        "fill: #7B83EB (line 6)",
-        "fill: #000 (line 8)",
-        "fill: #5059C9 (line 18)"
-      ]
-    },
-    {
-      "component": "Key",
-      "location": "packages/js/src/ui/icons/Key.tsx:3",
-      "entries": [
-        "stroke: #525866 (line 9)"
-      ]
-    },
-    {
-      "component": "CheckCircleFill",
-      "location": "packages/js/src/ui/icons/CheckCircleFill.tsx:3",
-      "entries": [
-        "fill: #1FC16B (line 6)"
-      ]
-    },
-    {
-      "component": "NovuLogoBlackBg",
-      "location": "apps/dashboard/src/utils/self-hosted/icons.tsx:1",
-      "entries": [
-        "fill: #0E121B (line 6)"
-      ]
-    },
-    {
       "component": "StepButton",
       "location": "apps/dashboard/src/components/welcome/framework-guides.tsx:334",
       "entries": [
@@ -258,23 +204,77 @@
       ]
     },
     {
-      "component": "WebhooksEmptyStateSvg",
-      "location": "apps/dashboard/src/components/webhooks/webhooks-empty-state-svg.tsx:3",
+      "component": "WorkflowHoverCard",
+      "location": "apps/dashboard/src/components/header-navigation/workflow-hover-card.tsx:19",
       "entries": [
-        "stroke: #BCC3CE (line 18)",
-        "stroke: #DD2450 (line 39)",
-        "stroke: #FB3748 (line 59)"
+        "fontSize: 10px (line 196)"
       ]
     },
     {
-      "component": "EmptyVariablesIllustration",
-      "location": "apps/dashboard/src/components/variables/variable-list-upgrade-cta.tsx:13",
+      "component": "LayoutUsageIndicator",
+      "location": "apps/dashboard/src/components/header-navigation/layout-usage-indicator.tsx:12",
       "entries": [
-        "stroke: #CACFD8 (line 16)",
-        "stroke: #F2F5F8 (line 18)",
-        "fill: #E1E4EA (line 19)"
+        "fontSize: 8px (line 75)"
+      ]
+    },
+    {
+      "component": "InboxPlayground",
+      "location": "apps/dashboard/src/components/auth/inbox-playground.tsx:50",
+      "entries": [
+        "fontSize: 12px (line 193)"
+      ]
+    },
+    {
+      "component": "AuthSideBanner",
+      "location": "apps/dashboard/src/components/auth/auth-side-banner.tsx:25",
+      "entries": [
+        "color: #99a0ad (line 59)"
+      ]
+    },
+    {
+      "component": "AgentsSideBanner",
+      "location": "apps/dashboard/src/components/auth/auth-side-banner.tsx:168",
+      "entries": [
+        "color: #99a0ad (line 182)"
+      ]
+    },
+    {
+      "component": "PreviewGeneratedContent",
+      "location": "packages/novu/src/commands/connect/ui/preview-generated-content.tsx:31",
+      "entries": [
+        "color: #e9d5ff (line 193)"
+      ]
+    },
+    {
+      "component": "PreviewTextEditor",
+      "location": "packages/novu/src/commands/connect/ui/preview-generated-content.tsx:286",
+      "entries": [
+        "color: #e9d5ff (line 311)"
+      ]
+    },
+    {
+      "component": "PreviewMultiEditor",
+      "location": "packages/novu/src/commands/connect/ui/preview-generated-content.tsx:339",
+      "entries": [
+        "color: #e9d5ff (line 372)"
+      ]
+    },
+    {
+      "component": "ActiveSubscribersTrendChart",
+      "location": "apps/dashboard/src/components/analytics/charts/active-subscribers-trend-chart.tsx:58",
+      "entries": [
+        "color: #818cf8 (line 89)"
+      ]
+    },
+    {
+      "component": "UsecaseTag",
+      "location": "apps/dashboard/src/pages/usecase-select-page.tsx:197",
+      "entries": [
+        "backgroundColor: rgba(125,82,244,0.1) (line 202)",
+        "borderColor: rgba(125,82,244,0.05) (line 202)",
+        "backgroundColor: rgba(251,55,72,0.1) (line 213)"
       ]
     }
   ],
-  "scanSeconds": 110
+  "scanSeconds": 108
 }

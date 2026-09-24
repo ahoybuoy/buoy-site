@@ -3,26 +3,26 @@
   "owner": "n8n-io",
   "name": "n8n",
   "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
-  "stars": 205815,
+  "stars": 205819,
   "homepage": "https://n8n.io",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "bd2efe1c9e5a98624cc370b342d853d6fbc04167",
-  "generatedAt": "2026-09-24T03:33:11.453Z",
+  "commit": "adf1eb245e85def123f29cdc8265949d69f86cf4",
+  "generatedAt": "2026-09-24T05:07:52.624Z",
   "cliVersion": "latest",
-  "score": 69,
-  "tier": "Good",
+  "score": 93,
+  "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 55,
+      "score": 60,
       "max": 60
     },
     "tokenHealth": {
-      "score": 14,
+      "score": 15,
       "max": 20
     },
     "consistency": {
-      "score": 9,
+      "score": 10,
       "max": 10
     },
     "criticalIssues": {
@@ -33,19 +33,19 @@
   "metrics": {
     "componentCount": 1302,
     "tokenCount": 637,
-    "hardcodedValueCount": 5,
-    "unusedTokenCount": 171,
-    "namingInconsistencyCount": 21,
+    "hardcodedValueCount": 2,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
     "criticalCount": 0,
     "accessibilityConflictCount": 0,
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 454,
-    "unusedComponentCount": 239,
+    "totalDriftCount": 3,
+    "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
-    "semanticMismatchCount": 17,
+    "semanticMismatchCount": 0,
     "deprecatedPatternCount": 1,
     "orphanedTokenCount": 0,
     "valueDivergenceCount": 0,
@@ -53,15 +53,11 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "topHardcodedColor": {
-      "value": "#262626",
-      "count": 2
-    },
     "worstFile": {
-      "path": "packages/frontend/editor-ui/src/app/components/EnterpriseEdition.ee.vue",
-      "issueCount": 2
+      "path": "packages/frontend/editor-ui/src/features/settings/communityNodes/components/ContactAdministratorToInstall.vue",
+      "issueCount": 1
     },
-    "uniqueSpacingValues": 5,
+    "uniqueSpacingValues": 2,
     "detectedFrameworkNames": [
       "react",
       "vue",
@@ -70,43 +66,24 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 5 hardcoded values left to tokenize. packages/frontend/editor-ui/src/app/components/EnterpriseEdition.ee.vue has the most (2)",
-    "239 unused components detected — consider a cleanup sprint to remove dead code",
-    "171 tokens defined but unused — wire them into components or remove stale definitions",
-    "38 minor naming inconsistencies — consider standardizing conventions",
+    "Nearly there — just 2 hardcoded values left to tokenize",
     "1 deprecated pattern — migrate to current API"
   ],
   "driftSummary": {
-    "total": 454,
+    "total": 3,
     "critical": 0,
-    "warning": 262,
-    "info": 192
+    "warning": 1,
+    "info": 2
   },
   "driftByType": {
-    "semantic-mismatch": 17,
-    "naming-inconsistency": 21,
-    "hardcoded-value": 5,
     "deprecated-pattern": 1,
-    "unused-component": 239,
-    "unused-token": 171
+    "hardcoded-value": 2
   },
   "topColors": [],
   "topSpacing": [],
   "worstFiles": [
     {
-      "file": "packages/frontend/editor-ui/src/features/agents/components/AgentChannelSlackSetupSnapshots.vue",
-      "count": 4
-    },
-    {
-      "file": "packages/frontend/editor-ui/src/features/execution/executions/components/global/GlobalExecutionsList.vue",
-      "count": 2
-    },
-    {
       "file": "packages/frontend/editor-ui/src/features/settings/communityNodes/components/ContactAdministratorToInstall.vue",
-      "count": 1
-    },
-    {
-      "file": "packages/frontend/editor-ui/src/features/integrations/sourceControl.ee/components/SourceControlPushModal.vue",
       "count": 1
     },
     {
@@ -116,26 +93,10 @@
   ],
   "samples": [
     {
-      "component": "AgentChannelSlackSetupSnapshots",
-      "location": "packages/frontend/editor-ui/src/features/agents/components/AgentChannelSlackSetupSnapshots.vue:1",
-      "entries": [
-        "fill: #262626 (template)",
-        "fill: #444 (template)",
-        "stroke: #262626 (template)"
-      ]
-    },
-    {
       "component": "ContactAdministratorToInstall",
       "location": "packages/frontend/editor-ui/src/features/settings/communityNodes/components/ContactAdministratorToInstall.vue:1",
       "entries": [
         "padding-bottom: 8px (template)"
-      ]
-    },
-    {
-      "component": "SourceControlPushModal",
-      "location": "packages/frontend/editor-ui/src/features/integrations/sourceControl.ee/components/SourceControlPushModal.vue:1",
-      "entries": [
-        "width: 234px (template)"
       ]
     },
     {
@@ -144,15 +105,7 @@
       "entries": [
         "margin-right: 5px (template)"
       ]
-    },
-    {
-      "component": "GlobalExecutionsList",
-      "location": "packages/frontend/editor-ui/src/features/execution/executions/components/global/GlobalExecutionsList.vue:1",
-      "entries": [
-        "width: 50px (template)",
-        "width: 69px (template)"
-      ]
     }
   ],
-  "scanSeconds": 69
+  "scanSeconds": 73
 }

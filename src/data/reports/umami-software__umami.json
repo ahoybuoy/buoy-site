@@ -8,17 +8,17 @@
   "language": "TypeScript",
   "defaultBranch": "master",
   "commit": "ec0ff50388c264ed8ce46f00967e92f7e71476ae",
-  "generatedAt": "2026-09-24T03:31:40.362Z",
+  "generatedAt": "2026-09-24T05:06:16.693Z",
   "cliVersion": "latest",
-  "score": 76,
-  "tier": "Good",
+  "score": 81,
+  "tier": "Great",
   "pillars": {
     "valueDiscipline": {
       "score": 53,
       "max": 60
     },
     "tokenHealth": {
-      "score": 3,
+      "score": 8,
       "max": 20
     },
     "consistency": {
@@ -33,16 +33,16 @@
   "metrics": {
     "componentCount": 508,
     "tokenCount": 11,
-    "hardcodedValueCount": 94,
-    "unusedTokenCount": 10,
+    "hardcodedValueCount": 17,
+    "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
     "accessibilityConflictCount": 0,
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 180,
-    "unusedComponentCount": 76,
+    "totalDriftCount": 17,
+    "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
@@ -58,78 +58,64 @@
       "count": 4
     },
     "worstFile": {
-      "path": "src/components/svg/Tag.tsx",
+      "path": "src/components/charts/ChartTooltip.tsx",
       "issueCount": 2
     },
-    "uniqueSpacingValues": 40,
+    "uniqueSpacingValues": 9,
     "detectedFrameworkNames": [
       "react",
       "next"
     ]
   },
   "suggestions": [
-    "Nearly there — just 94 hardcoded values left to tokenize. src/components/svg/Tag.tsx has the most (2)",
-    "76 unused components detected — consider a cleanup sprint to remove dead code",
-    "10 of 11 tokens unused (91%) — many tokens may be stale, audit your token definitions",
-    "No design token system detected — add CSS custom properties or a utility framework like Tailwind",
-    "40 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
+    "Nearly there — just 17 hardcoded values left to tokenize. src/components/charts/ChartTooltip.tsx has the most (2)",
+    "No design token system detected — add CSS custom properties or a utility framework like Tailwind"
   ],
   "driftSummary": {
-    "total": 180,
+    "total": 17,
     "critical": 0,
-    "warning": 81,
-    "info": 99
+    "warning": 4,
+    "info": 13
   },
   "driftByType": {
-    "hardcoded-value": 94,
-    "unused-component": 76,
-    "unused-token": 10
+    "hardcoded-value": 17
   },
-  "topColors": [
-    {
-      "value": "#fff",
-      "count": 2
-    }
-  ],
+  "topColors": [],
   "topSpacing": [
-    {
-      "value": "400px",
-      "count": 19
-    },
-    {
-      "value": "600px",
-      "count": 11
-    },
-    {
-      "value": "100px",
-      "count": 9
-    },
-    {
-      "value": "180px",
-      "count": 6
-    },
-    {
-      "value": "800px",
-      "count": 6
-    },
-    {
-      "value": "160px",
-      "count": 6
-    },
     {
       "value": "32px",
       "count": 5
     },
     {
-      "value": "80px",
-      "count": 5
+      "value": "24px",
+      "count": 3
+    },
+    {
+      "value": "12.25px",
+      "count": 2
+    },
+    {
+      "value": "8px",
+      "count": 2
+    },
+    {
+      "value": "12px",
+      "count": 2
+    },
+    {
+      "value": "16px",
+      "count": 2
+    },
+    {
+      "value": "3px",
+      "count": 1
+    },
+    {
+      "value": "10.5px",
+      "count": 1
     }
   ],
   "worstFiles": [
-    {
-      "file": "src/app/(main)/websites/[websiteId]/(reports)/funnels/Funnel.tsx",
-      "count": 6
-    },
     {
       "file": "src/components/charts/ChartTooltip.tsx",
       "count": 4
@@ -139,93 +125,36 @@
       "count": 4
     },
     {
-      "file": "src/app/(main)/websites/[websiteId]/session-data/SessionDataPivotTable.tsx",
-      "count": 4
+      "file": "src/components/share/SharedSharesTable.tsx",
+      "count": 3
     },
     {
-      "file": "src/app/(main)/websites/[websiteId]/sessions/SessionsTable.tsx",
-      "count": 4
+      "file": "src/app/(main)/websites/[websiteId]/settings/SharesTable.tsx",
+      "count": 2
     },
     {
-      "file": "src/app/(main)/websites/[websiteId]/replays/ReplaysTable.tsx",
-      "count": 4
+      "file": "src/components/property-data/PropertyFilters.tsx",
+      "count": 1
     },
     {
-      "file": "src/app/(main)/websites/[websiteId]/event-data/EventDataPivotTable.tsx",
-      "count": 4
+      "file": "src/components/metrics/WorldMap.tsx",
+      "count": 1
     },
     {
-      "file": "src/app/(main)/websites/[websiteId]/(reports)/retention/Retention.tsx",
-      "count": 4
+      "file": "src/components/metrics/WeeklyTraffic.tsx",
+      "count": 1
+    },
+    {
+      "file": "src/components/input/WebsiteFilterButton.tsx",
+      "count": 1
     }
   ],
   "samples": [
-    {
-      "component": "SimpleShareEditButton",
-      "location": "src/components/share/SimpleShareEditButton.tsx:6",
-      "entries": [
-        "width: 600px (line 10)"
-      ]
-    },
-    {
-      "component": "SharedSharesTable",
-      "location": "src/components/share/SharedSharesTable.tsx:16",
-      "entries": [
-        "gap: 16px (line 44)",
-        "marginTop: 8px (line 69)",
-        "marginTop: 12px (line 72)"
-      ]
-    },
-    {
-      "component": "SvgTag",
-      "location": "src/components/svg/Tag.tsx:3",
-      "entries": [
-        "width: 437pt (line 6)",
-        "height: 437pt (line 7)"
-      ]
-    },
-    {
-      "component": "SvgPushpin",
-      "location": "src/components/svg/Pushpin.tsx:3",
-      "entries": [
-        "width: 1em (line 4)",
-        "height: 1em (line 4)"
-      ]
-    },
-    {
-      "component": "SvgLogoWhite",
-      "location": "src/components/svg/LogoWhite.tsx:3",
-      "entries": [
-        "stroke: #fff (line 16)",
-        "fill: #fff (line 21)"
-      ]
-    },
-    {
-      "component": "PropertyNumericChart",
-      "location": "src/components/property-data/PropertyNumericChart.tsx:23",
-      "entries": [
-        "height: 400px (line 179)"
-      ]
-    },
     {
       "component": "PropertyFilters",
       "location": "src/components/property-data/PropertyFilters.tsx:32",
       "entries": [
         "paddingTop: 24px (line 176)"
-      ]
-    },
-    {
-      "component": "PropertyDateChart",
-      "location": "src/components/property-data/PropertyDateChart.tsx:100",
-      "entries": [
-        "height: 400px (line 338)"
-      ]
-    },
-    {
-      "component": "PropertyChart",
-      "location": "src/components/property-data/PropertyChart.tsx:23",
-      "entries": [
-        "height: 400px (line 172)"
       ]
     },
     {
@@ -243,13 +172,74 @@
       ]
     },
     {
-      "component": "WeeklyTraffic",
-      "location": "src/components/metrics/WeeklyTraffic.tsx:8",
+      "component": "WebsiteFilterButton",
+      "location": "src/components/input/WebsiteFilterButton.tsx:13",
       "entries": [
-        "width: 16px (line 85)",
-        "height: 16px (line 86)"
+        "marginTop: 3px (line 86)"
+      ]
+    },
+    {
+      "component": "SegmentSaveButton",
+      "location": "src/components/input/SegmentSaveButton.tsx:6",
+      "entries": [
+        "padding: 32px (line 26)"
+      ]
+    },
+    {
+      "component": "FilterBar",
+      "location": "src/components/input/FilterBar.tsx:28",
+      "entries": [
+        "padding: 32px (line 190)"
+      ]
+    },
+    {
+      "component": "FieldFilters",
+      "location": "src/components/input/FieldFilters.tsx:34",
+      "entries": [
+        "paddingTop: 24px (line 179)"
+      ]
+    },
+    {
+      "component": "ChartTooltip",
+      "location": "src/components/charts/ChartTooltip.tsx:4",
+      "entries": [
+        "backgroundColor: rgba(0,0,0,0.8) (line 20)"
+      ]
+    },
+    {
+      "component": "ChartTooltip",
+      "location": "src/components/charts/ChartTooltip.tsx:4",
+      "entries": [
+        "gap: 10.5px (line 23)",
+        "padding: 14px (line 24)",
+        "fontSize: 12.25px (line 28)"
+      ]
+    },
+    {
+      "component": "ChartAnnotationMarkers",
+      "location": "src/components/charts/ChartAnnotationMarkers.tsx:33",
+      "entries": [
+        "backgroundColor: rgba(0,0,0,0.8) (line 82)"
+      ]
+    },
+    {
+      "component": "ChartAnnotationMarkers",
+      "location": "src/components/charts/ChartAnnotationMarkers.tsx:33",
+      "entries": [
+        "gap: 8px (line 85)",
+        "padding: 12px (line 86)",
+        "fontSize: 12.25px (line 94)"
+      ]
+    },
+    {
+      "component": "SharedSharesTable",
+      "location": "src/components/share/SharedSharesTable.tsx:16",
+      "entries": [
+        "gap: 16px (line 44)",
+        "marginTop: 8px (line 69)",
+        "marginTop: 12px (line 72)"
       ]
     }
   ],
-  "scanSeconds": 28
+  "scanSeconds": 30
 }

@@ -8,42 +8,42 @@
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "c2b7a72180bbb2dcbc31caa8539e0ca8f8e9e9b8",
-  "generatedAt": "2026-09-24T03:42:52.291Z",
+  "generatedAt": "2026-09-24T05:16:53.361Z",
   "cliVersion": "latest",
-  "score": 69,
-  "tier": "Good",
+  "score": 90,
+  "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 53,
+      "score": 50,
       "max": 60
     },
     "tokenHealth": {
-      "score": 18,
+      "score": 20,
       "max": 20
     },
     "consistency": {
-      "score": 9,
+      "score": 10,
       "max": 10
     },
     "criticalIssues": {
-      "score": 0,
+      "score": 10,
       "max": 10
     }
   },
   "metrics": {
     "componentCount": 1696,
     "tokenCount": 273,
-    "hardcodedValueCount": 321,
-    "unusedTokenCount": 130,
-    "namingInconsistencyCount": 32,
+    "hardcodedValueCount": 84,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
     "criticalCount": 0,
     "accessibilityConflictCount": 0,
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 701,
-    "unusedComponentCount": 134,
-    "repeatedPatternCount": 84,
+    "totalDriftCount": 84,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 0,
@@ -51,17 +51,17 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 21,
+    "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
     "topHardcodedColor": {
-      "value": "#3B82F6",
-      "count": 6
+      "value": "#10B981",
+      "count": 1
     },
     "worstFile": {
-      "path": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.concurrency/route.tsx",
-      "issueCount": 10
+      "path": "apps/webapp/app/components/primitives/Tabs.tsx",
+      "issueCount": 2
     },
-    "uniqueSpacingValues": 4,
+    "uniqueSpacingValues": 1,
     "detectedFrameworkNames": [
       "react",
       "tailwind",
@@ -71,48 +71,20 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 321 hardcoded values left to tokenize. apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.concurrency/route.tsx has the most (10)",
-    "134 unused components detected — consider a cleanup sprint to remove dead code",
-    "84 repeated patterns — significant duplication, extract to a shared component library",
-    "130 tokens defined but unused — wire them into components or remove stale definitions",
-    "32 minor naming inconsistencies — consider standardizing conventions"
+    "Nearly there — just 84 hardcoded values left to tokenize. apps/webapp/app/components/primitives/Tabs.tsx has the most (2)"
   ],
   "driftSummary": {
-    "total": 701,
+    "total": 84,
     "critical": 0,
-    "warning": 164,
-    "info": 537
+    "warning": 8,
+    "info": 76
   },
   "driftByType": {
-    "hardcoded-value": 321,
-    "naming-inconsistency": 32,
-    "unused-component": 134,
-    "unused-token": 130,
-    "repeated-pattern": 84
+    "hardcoded-value": 84
   },
   "topColors": [
     {
-      "value": "#3B82F6",
-      "count": 6
-    },
-    {
-      "value": "#878C99",
-      "count": 5
-    },
-    {
-      "value": "#2E52B2",
-      "count": 2
-    },
-    {
-      "value": "#fff",
-      "count": 2
-    },
-    {
       "value": "#10B981",
-      "count": 1
-    },
-    {
-      "value": "#6366F1",
       "count": 1
     },
     {
@@ -120,23 +92,11 @@
       "count": 1
     },
     {
-      "value": "#4285F4",
+      "value": "bg-[#f4f4f6]",
       "count": 1
     }
   ],
   "topSpacing": [
-    {
-      "value": "100vh",
-      "count": 1
-    },
-    {
-      "value": "260px",
-      "count": 1
-    },
-    {
-      "value": "320px",
-      "count": 1
-    },
     {
       "value": "3px",
       "count": 1
@@ -144,52 +104,44 @@
   ],
   "worstFiles": [
     {
-      "file": "apps/webapp/app/assets/icons/BunLogoIcon.tsx",
-      "count": 8
+      "file": "apps/webapp/app/components/navigation/SideMenu.tsx",
+      "count": 6
     },
     {
-      "file": "apps/webapp/app/assets/icons/MachineIcon.tsx",
-      "count": 7
+      "file": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.playground.$agentParam/route.tsx",
+      "count": 6
     },
     {
-      "file": "apps/webapp/app/assets/icons/ConnectionIcons.tsx",
-      "count": 7
-    },
-    {
-      "file": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.concurrency/route.tsx",
+      "file": "apps/webapp/app/routes/admin.data-stores.tsx",
       "count": 5
     },
     {
-      "file": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.apikeys/route.tsx",
+      "file": "apps/webapp/app/components/dashboard-agent/InvestigationCard.tsx",
       "count": 5
     },
     {
-      "file": "apps/webapp/app/routes/storybook.layout/route.tsx",
+      "file": "apps/webapp/app/components/runs/v3/ai/AIChatMessages.tsx",
+      "count": 5
+    },
+    {
+      "file": "apps/webapp/app/components/navigation/SideMenuItem.tsx",
       "count": 4
     },
     {
-      "file": "apps/webapp/app/assets/logos/GoogleLogo.tsx",
+      "file": "apps/webapp/app/components/navigation/EnvironmentSelector.tsx",
       "count": 4
     },
     {
-      "file": "apps/webapp/app/assets/icons/RegionIcons.tsx",
+      "file": "apps/webapp/app/components/primitives/ShortcutKey.tsx",
       "count": 4
     }
   ],
   "samples": [
     {
-      "component": "BackgroundWrapper",
-      "location": "apps/webapp/app/components/BackgroundWrapper.tsx:34",
+      "component": "ResizableHandle",
+      "location": "apps/webapp/app/components/primitives/Resizable.tsx:39",
       "entries": [
-        "height: 100vh (line 44)",
-        "left: 260px (line 62)"
-      ]
-    },
-    {
-      "component": "SidebarFixedDemo",
-      "location": "apps/webapp/app/routes/storybook.layout/route.tsx:243",
-      "entries": [
-        "width: 320px (line 261)"
+        "size: 3px (line 67)"
       ]
     },
     {
@@ -200,13 +152,6 @@
       ]
     },
     {
-      "component": "ErrorActivityGraph",
-      "location": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.errors._index/route.tsx:713",
-      "entries": [
-        "fill: #6366F1 (line 731)"
-      ]
-    },
-    {
       "component": "Page",
       "location": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.agents.$agentParam/route.tsx:212",
       "entries": [
@@ -214,60 +159,75 @@
       ]
     },
     {
-      "component": "ResizableHandle",
-      "location": "apps/webapp/app/components/primitives/Resizable.tsx:39",
+      "component": "apps/webapp/app/components/ErrorDisplay.tsx",
+      "location": "apps/webapp/app/components/ErrorDisplay.tsx:59",
       "entries": [
-        "size: 3px (line 67)"
+        "bg-[#16181C] (line 59)"
       ]
     },
     {
-      "component": "GoogleLogo",
-      "location": "apps/webapp/app/assets/logos/GoogleLogo.tsx:1",
+      "component": "apps/webapp/app/routes/resources.branches.archive.tsx",
+      "location": "apps/webapp/app/routes/resources.branches.archive.tsx:120",
       "entries": [
-        "fill: #4285F4 (line 6)",
-        "fill: #34A853 (line 10)",
-        "fill: #FBBC02 (line 14)"
+        "py-[0.9rem] (line 120)"
       ]
     },
     {
-      "component": "FlagUSA",
-      "location": "apps/webapp/app/assets/icons/RegionIcons.tsx:18",
+      "component": "apps/webapp/app/routes/admin.notifications.tsx",
+      "location": "apps/webapp/app/routes/admin.notifications.tsx:1686",
       "entries": [
-        "fill: #E31D1C (line 27)",
-        "fill: #2E52B2 (line 53)"
+        "text-[11px] (line 1686)",
+        "text-[11px] (line 1754)"
       ]
     },
     {
-      "component": "FlagEurope",
-      "location": "apps/webapp/app/assets/icons/RegionIcons.tsx:68",
+      "component": "apps/webapp/app/routes/admin.llm-models._index.tsx",
+      "location": "apps/webapp/app/routes/admin.llm-models._index.tsx:316",
       "entries": [
-        "fill: #2E52B2 (line 71)",
-        "fill: #F6CD46 (line 74)"
+        "text-[11px] (line 316)"
       ]
     },
     {
-      "component": "PythonLogoIcon",
-      "location": "apps/webapp/app/assets/icons/PythonLogoIcon.tsx:1",
+      "component": "apps/webapp/app/routes/admin.llm-models.$modelId.tsx",
+      "location": "apps/webapp/app/routes/admin.llm-models.$modelId.tsx:212",
       "entries": [
-        "fill: #387EB8 (line 7)",
-        "fill: #F4D441 (line 11)"
+        "text-[11px] (line 212)"
       ]
     },
     {
-      "component": "NodejsLogoIcon",
-      "location": "apps/webapp/app/assets/icons/NodejsLogoIcon.tsx:1",
+      "component": "apps/webapp/app/routes/admin.data-stores.tsx",
+      "location": "apps/webapp/app/routes/admin.data-stores.tsx:221",
       "entries": [
-        "fill: #5FA04E (line 4)",
-        "fill: #fff (line 10)"
+        "text-[11px] (line 221)",
+        "text-[11px] (line 369)",
+        "text-[11px] (line 436)"
       ]
     },
     {
-      "component": "MachineIconSmall1x",
-      "location": "apps/webapp/app/assets/icons/MachineIcon.tsx:108",
+      "component": "apps/webapp/app/components/schedules/SchedulesUsageBar.tsx",
+      "location": "apps/webapp/app/components/schedules/SchedulesUsageBar.tsx:39",
       "entries": [
-        "fill: #3B82F6 (line 113)"
+        "p-[0.86rem] (line 39)"
+      ]
+    },
+    {
+      "component": "apps/webapp/app/components/navigation/SideMenuItem.tsx",
+      "location": "apps/webapp/app/components/navigation/SideMenuItem.tsx:166",
+      "entries": [
+        "text-[0.90625rem] (line 166)",
+        "tracking-[-0.01em] (line 166)",
+        "text-[0.90625rem] (line 273)"
+      ]
+    },
+    {
+      "component": "apps/webapp/app/components/navigation/SideMenu.tsx",
+      "location": "apps/webapp/app/components/navigation/SideMenu.tsx:1256",
+      "entries": [
+        "text-[0.90625rem] (line 1256)",
+        "tracking-[-0.01em] (line 1256)",
+        "text-[0.90625rem] (line 1480)"
       ]
     }
   ],
-  "scanSeconds": 99
+  "scanSeconds": 94
 }

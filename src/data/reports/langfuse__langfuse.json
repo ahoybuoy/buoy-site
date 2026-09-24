@@ -3,22 +3,22 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source agent evals & observability: Trace, evaluate, and improve LLM applications with one open platform.",
-  "stars": 34989,
+  "stars": 34988,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "ce3ef136762bdfe386153e5c2c0851a4cb72f2b0",
-  "generatedAt": "2026-09-24T03:41:12.387Z",
+  "generatedAt": "2026-09-24T05:15:18.713Z",
   "cliVersion": "latest",
-  "score": 69,
-  "tier": "Good",
+  "score": 92,
+  "tier": "Great",
   "pillars": {
     "valueDiscipline": {
       "score": 52,
       "max": 60
     },
     "tokenHealth": {
-      "score": 19,
+      "score": 20,
       "max": 20
     },
     "consistency": {
@@ -26,24 +26,24 @@
       "max": 10
     },
     "criticalIssues": {
-      "score": 0,
+      "score": 10,
       "max": 10
     }
   },
   "metrics": {
     "componentCount": 1979,
     "tokenCount": 239,
-    "hardcodedValueCount": 469,
-    "unusedTokenCount": 37,
-    "namingInconsistencyCount": 22,
+    "hardcodedValueCount": 79,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
     "criticalCount": 0,
     "accessibilityConflictCount": 0,
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 749,
-    "unusedComponentCount": 167,
-    "repeatedPatternCount": 54,
+    "totalDriftCount": 79,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 0,
@@ -51,64 +51,36 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 26,
-    "vendoredDriftCount": 29,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 3,
     "topHardcodedColor": {
-      "value": "#b3d9ff",
+      "value": "#6b7280",
       "count": 1
     },
     "worstFile": {
-      "path": "web/src/components/design-system/Tabs/Tabs.tsx",
-      "issueCount": 11
+      "path": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx",
+      "issueCount": 2
     },
-    "uniqueSpacingValues": 15,
+    "uniqueSpacingValues": 10,
     "detectedFrameworkNames": [
       "tailwind",
       "shadcn"
     ]
   },
   "suggestions": [
-    "Nearly there — just 440 hardcoded values left to tokenize. web/src/components/design-system/Tabs/Tabs.tsx has the most (11)",
-    "29 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
-    "167 unused components detected — consider a cleanup sprint to remove dead code",
-    "54 repeated patterns — significant duplication, extract to a shared component library",
-    "37 tokens defined but unused — wire them into components or remove stale definitions",
-    "22 minor naming inconsistencies — consider standardizing conventions"
+    "Nearly there — just 76 hardcoded values left to tokenize. web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx has the most (2)",
+    "3 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "driftSummary": {
-    "total": 749,
+    "total": 79,
     "critical": 0,
-    "warning": 182,
-    "info": 567
+    "warning": 1,
+    "info": 78
   },
   "driftByType": {
-    "hardcoded-value": 469,
-    "naming-inconsistency": 22,
-    "unused-component": 167,
-    "unused-token": 37,
-    "repeated-pattern": 54
+    "hardcoded-value": 79
   },
   "topColors": [
-    {
-      "value": "#b3d9ff",
-      "count": 1
-    },
-    {
-      "value": "#4d94ff",
-      "count": 1
-    },
-    {
-      "value": "#1D4AFF",
-      "count": 1
-    },
-    {
-      "value": "#F9BD2B",
-      "count": 1
-    },
-    {
-      "value": "#F54E00",
-      "count": 1
-    },
     {
       "value": "#6b7280",
       "count": 1
@@ -120,20 +92,8 @@
       "count": 5
     },
     {
-      "value": "2px",
-      "count": 4
-    },
-    {
-      "value": "16px",
-      "count": 4
-    },
-    {
       "value": "8px",
       "count": 3
-    },
-    {
-      "value": "1em",
-      "count": 2
     },
     {
       "value": "10px",
@@ -146,68 +106,55 @@
     {
       "value": "0.5rem",
       "count": 2
+    },
+    {
+      "value": "1rem",
+      "count": 2
+    },
+    {
+      "value": "0.75rem",
+      "count": 1
+    },
+    {
+      "value": "0.65rem",
+      "count": 1
     }
   ],
   "worstFiles": [
     {
-      "file": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx",
-      "count": 8
+      "file": "web/src/features/sessions/SessionConversationTimeline/components/SessionConversationTimelineTrace/SessionConversationTimelineTrace.tsx",
+      "count": 9
+    },
+    {
+      "file": "web/src/features/sessions/ModernSessionSidebar.tsx",
+      "count": 7
     },
     {
       "file": "web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx",
-      "count": 6
-    },
-    {
-      "file": "web/src/features/traces/components/AdvancedJsonViewer/components/JsonRowFixed.tsx",
-      "count": 6
-    },
-    {
-      "file": "web/src/components/ui/chart.tsx",
       "count": 5
     },
     {
-      "file": "packages/shared/src/server/services/email/usageThresholdWarning/UsageThresholdWarningEmailTemplate.tsx",
+      "file": "web/src/features/in-app-agent/components/InAppAgentMessage.tsx",
       "count": 5
     },
     {
-      "file": "packages/shared/src/server/services/email/usageThresholdSuspension/UsageThresholdSuspensionEmailTemplate.tsx",
+      "file": "web/src/features/scores-chart-view/components/ScoreOutlierBarStrip/ScoreOutlierBarStrip.tsx",
       "count": 5
     },
     {
-      "file": "packages/shared/src/server/services/email/integrationExportFailed/IntegrationExportFailedEmailTemplate.tsx",
+      "file": "web/src/features/events/components/outlier-strip/OutlierBarStrip.tsx",
       "count": 5
     },
     {
-      "file": "packages/shared/src/server/services/email/evaluatorBlocked/EvaluatorBlockedEmailTemplate.tsx",
-      "count": 5
+      "file": "web/src/components/ChatMessages/ChatMessageComponent.tsx",
+      "count": 4
+    },
+    {
+      "file": "web/src/features/search-bar/components/AutocompleteListbox.tsx",
+      "count": 4
     }
   ],
   "samples": [
-    {
-      "component": "Base",
-      "location": "web/src/components/publish-object-switch.tsx:190",
-      "entries": [
-        "fill: #b3d9ff (line 252)",
-        "stroke: #4d94ff (line 253)"
-      ]
-    },
-    {
-      "component": "PostHogLogo",
-      "location": "web/src/components/PosthogLogo.tsx:5",
-      "entries": [
-        "fill: #1D4AFF (line 9)",
-        "fill: #F9BD2B (line 13)",
-        "fill: #F54E00 (line 26)"
-      ]
-    },
-    {
-      "component": "MixpanelLogo",
-      "location": "web/src/components/MixpanelLogo.tsx:5",
-      "entries": [
-        "width: 1em (line 8)",
-        "height: 1em (line 9)"
-      ]
-    },
     {
       "component": "CodeBlock",
       "location": "web/src/components/design-system/Codeblock/Codeblock.tsx:20",
@@ -227,8 +174,6 @@
       "component": "GutterContent",
       "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:1953",
       "entries": [
-        "right: 2px (line 2067)",
-        "height: 16px (line 2069)",
         "fontSize: 10px (line 2080)"
       ]
     },
@@ -266,8 +211,8 @@
       "location": "web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx:24",
       "entries": [
         "marginRight: 8px (line 44)",
-        "width: 16px (line 45)",
-        "marginLeft: 8px (line 61)"
+        "marginLeft: 8px (line 61)",
+        "fontSize: 0.65rem (line 64)"
       ]
     },
     {
@@ -276,7 +221,32 @@
       "entries": [
         "marginRight: 8px (line 27)"
       ]
+    },
+    {
+      "component": "JsonRowScrollable",
+      "location": "web/src/features/traces/components/AdvancedJsonViewer/components/JsonRowScrollable.tsx:30",
+      "entries": [
+        "paddingRight: 4px (line 73)",
+        "marginLeft: 2px (line 94)",
+        "marginRight: 4px (line 95)"
+      ]
+    },
+    {
+      "component": "JsonRowFixed",
+      "location": "web/src/features/traces/components/AdvancedJsonViewer/components/JsonRowFixed.tsx:30",
+      "entries": [
+        "paddingLeft: 4px (line 60)",
+        "paddingRight: 4px (line 61)",
+        "fontSize: 9px (line 102)"
+      ]
+    },
+    {
+      "component": "CopyButton",
+      "location": "web/src/features/traces/components/AdvancedJsonViewer/components/CopyButton.tsx:21",
+      "entries": [
+        "marginLeft: 4px (line 56)"
+      ]
     }
   ],
-  "scanSeconds": 147
+  "scanSeconds": 139
 }

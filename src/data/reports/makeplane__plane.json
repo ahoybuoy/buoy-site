@@ -3,47 +3,47 @@
   "owner": "makeplane",
   "name": "plane",
   "description": "🔥🔥🔥 Open-source Jira, Linear, Monday, and ClickUp alternative. Plane is a modern project management platform to manage tasks, sprints, docs, and triage.",
-  "stars": 59803,
+  "stars": 59805,
   "homepage": "http://plane.so",
   "language": "TypeScript",
   "defaultBranch": "preview",
   "commit": "a2ccd4f074c238d63af7b5f058970fd29a53c454",
-  "generatedAt": "2026-09-24T03:30:22.948Z",
+  "generatedAt": "2026-09-24T05:04:56.033Z",
   "cliVersion": "latest",
-  "score": 68,
-  "tier": "Good",
+  "score": 93,
+  "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 48,
+      "score": 58,
       "max": 60
     },
     "tokenHealth": {
-      "score": 11,
+      "score": 15,
       "max": 20
     },
     "consistency": {
-      "score": 9,
+      "score": 10,
       "max": 10
     },
     "criticalIssues": {
-      "score": 0,
+      "score": 10,
       "max": 10
     }
   },
   "metrics": {
     "componentCount": 490,
     "tokenCount": 82,
-    "hardcodedValueCount": 155,
-    "unusedTokenCount": 73,
-    "namingInconsistencyCount": 12,
+    "hardcodedValueCount": 4,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
     "criticalCount": 0,
     "accessibilityConflictCount": 0,
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 395,
-    "unusedComponentCount": 98,
-    "repeatedPatternCount": 57,
+    "totalDriftCount": 5,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 1,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 0,
@@ -51,143 +51,57 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 15,
-    "vendoredDriftCount": 1,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
     "topHardcodedColor": {
       "value": "#B9B9B9",
       "count": 1
     },
     "worstFile": {
-      "path": "packages/blocks/src/breadcrumb/breadcrumbs.tsx",
-      "issueCount": 11
+      "path": "apps/admin/components/common/copy-field.tsx",
+      "issueCount": 1
     },
-    "uniqueSpacingValues": 12,
     "detectedFrameworkNames": [
       "react",
       "tailwind"
     ]
   },
   "suggestions": [
-    "154 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on packages/blocks/src/breadcrumb/breadcrumbs.tsx (11 issues)",
-    "1 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
-    "98 unused components detected — consider a cleanup sprint to remove dead code",
-    "57 repeated patterns — significant duplication, extract to a shared component library",
-    "73 of 82 tokens unused (89%) — many tokens may be stale, audit your token definitions",
-    "12 minor naming inconsistencies — consider standardizing conventions"
+    "Nearly there — just 4 hardcoded values left to tokenize"
   ],
   "driftSummary": {
-    "total": 395,
+    "total": 5,
     "critical": 0,
-    "warning": 109,
-    "info": 286
+    "warning": 1,
+    "info": 4
   },
   "driftByType": {
-    "naming-inconsistency": 12,
-    "hardcoded-value": 155,
-    "unused-component": 98,
-    "unused-token": 73,
-    "repeated-pattern": 57
+    "hardcoded-value": 4,
+    "repeated-pattern": 1
   },
   "topColors": [
     {
       "value": "#B9B9B9",
       "count": 1
-    },
-    {
-      "value": "#F7AE59",
-      "count": 1
-    },
-    {
-      "value": "#F76659",
-      "count": 1
-    },
-    {
-      "value": "#3f76ff",
-      "count": 1
-    },
-    {
-      "value": "#525252",
-      "count": 1
-    },
-    {
-      "value": "#16a34a",
-      "count": 1
-    },
-    {
-      "value": "#ef4444",
-      "count": 1
-    },
-    {
-      "value": "#A100FF",
-      "count": 1
     }
   ],
-  "topSpacing": [
-    {
-      "value": "30px",
-      "count": 3
-    },
-    {
-      "value": "1rem",
-      "count": 2
-    },
-    {
-      "value": "60%",
-      "count": 2
-    },
-    {
-      "value": "0.75rem",
-      "count": 1
-    },
-    {
-      "value": "20px",
-      "count": 1
-    },
-    {
-      "value": "36px",
-      "count": 1
-    },
-    {
-      "value": "80%",
-      "count": 1
-    },
-    {
-      "value": "22px",
-      "count": 1
-    }
-  ],
+  "topSpacing": [],
   "worstFiles": [
     {
-      "file": "packages/editor/src/components/editors/document/loader.tsx",
-      "count": 8
-    },
-    {
-      "file": "apps/web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/issues/(detail)/[archivedIssueId]/page.tsx",
-      "count": 4
-    },
-    {
-      "file": "apps/web/app/(all)/invitations/page.tsx",
-      "count": 4
-    },
-    {
-      "file": "apps/web/app/(all)/create-workspace/page.tsx",
-      "count": 4
-    },
-    {
-      "file": "apps/space/components/issues/issue-layouts/kanban/swimlanes.tsx",
-      "count": 4
-    },
-    {
       "file": "packages/editor/src/extensions/code-inline/index.tsx",
-      "count": 4
+      "count": 2
     },
     {
-      "file": "packages/blocks/src/select/skeleton.tsx",
-      "count": 3
+      "file": "packages/editor/src/components/editors/document/page-renderer.tsx",
+      "count": 2
     },
     {
-      "file": "apps/admin/app/(all)/(dashboard)/sidebar-help-section.tsx",
-      "count": 3
+      "file": "apps/admin/components/common/copy-field.tsx",
+      "count": 1
+    },
+    {
+      "file": "apps/space/components/issues/issue-layouts/properties/member.tsx",
+      "count": 1
     }
   ],
   "samples": [
@@ -199,86 +113,28 @@
       ]
     },
     {
-      "component": "SelectOptionsSkeleton",
-      "location": "packages/blocks/src/select/skeleton.tsx:16",
+      "component": "apps/space/components/issues/issue-layouts/properties/member.tsx",
+      "location": "apps/space/components/issues/issue-layouts/properties/member.tsx:71",
       "entries": [
-        "height: 1rem (line 22)",
-        "width: 1rem (line 22)",
-        "height: 0.75rem (line 23)"
+        "mx-[4px] (line 71)"
       ]
     },
     {
-      "component": "BlockerIcon",
-      "location": "packages/blocks/src/icons/blocker-icon.tsx:11",
+      "component": "packages/editor/src/extensions/code-inline/index.tsx",
+      "location": "packages/editor/src/extensions/code-inline/index.tsx:44",
       "entries": [
-        "fill: #F7AE59 (line 26)"
+        "px-[6px] (line 44)",
+        "py-[1.5px] (line 44)"
       ]
     },
     {
-      "component": "BlockedIcon",
-      "location": "packages/blocks/src/icons/blocked-icon.tsx:11",
+      "component": "packages/editor/src/components/editors/document/page-renderer.tsx",
+      "location": "packages/editor/src/components/editors/document/page-renderer.tsx:85",
       "entries": [
-        "fill: #F76659 (line 26)"
-      ]
-    },
-    {
-      "component": "FilterLabels",
-      "location": "apps/space/components/issues/filters/labels.tsx:27",
-      "entries": [
-        "height: 20px (line 80)"
-      ]
-    },
-    {
-      "component": "ModulePlannedIcon",
-      "location": "packages/blocks/src/icons/module/planned.tsx:11",
-      "entries": [
-        "fill: #3f76ff (line 23)"
-      ]
-    },
-    {
-      "component": "ModulePausedIcon",
-      "location": "packages/blocks/src/icons/module/paused.tsx:11",
-      "entries": [
-        "fill: #525252 (line 25)"
-      ]
-    },
-    {
-      "component": "ModuleCompletedIcon",
-      "location": "packages/blocks/src/icons/module/completed.tsx:11",
-      "entries": [
-        "fill: #16a34a (line 23)"
-      ]
-    },
-    {
-      "component": "ModuleCancelledIcon",
-      "location": "packages/blocks/src/icons/module/cancelled.tsx:11",
-      "entries": [
-        "fill: #ef4444 (line 25)"
-      ]
-    },
-    {
-      "component": "AccentureLogo",
-      "location": "packages/blocks/src/icons/brand/accenture-logo.tsx:11",
-      "entries": [
-        "fill: #A100FF (line 23)"
-      ]
-    },
-    {
-      "component": "DocumentContentLoader",
-      "location": "packages/editor/src/components/editors/document/loader.tsx:15",
-      "entries": [
-        "height: 36px (line 23)",
-        "width: 80% (line 25)",
-        "height: 22px (line 25)"
-      ]
-    },
-    {
-      "component": "StickiesVerticalStackIllustration",
-      "location": "packages/blocks/src/empty-state/assets/vertical-stack/stickies.tsx:13",
-      "entries": [
-        "fill: #011520 (line 78)"
+        "text-[2rem] (line 85)",
+        "leading-[2.375rem] (line 85)"
       ]
     }
   ],
-  "scanSeconds": 32
+  "scanSeconds": 30
 }

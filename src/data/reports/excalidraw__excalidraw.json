@@ -3,26 +3,26 @@
   "owner": "excalidraw",
   "name": "excalidraw",
   "description": "Virtual whiteboard for sketching hand-drawn like diagrams",
-  "stars": 132747,
+  "stars": 132749,
   "homepage": "https://excalidraw.com",
   "language": "TypeScript",
   "defaultBranch": "master",
   "commit": "4850bf336fe0a8501af49d84deebc7fb56357cc2",
-  "generatedAt": "2026-09-24T03:31:04.247Z",
+  "generatedAt": "2026-09-24T05:05:37.975Z",
   "cliVersion": "latest",
-  "score": 67,
+  "score": 77,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 53,
+      "score": 54,
       "max": 60
     },
     "tokenHealth": {
-      "score": 0,
+      "score": 3,
       "max": 20
     },
     "consistency": {
-      "score": 5,
+      "score": 10,
       "max": 10
     },
     "criticalIssues": {
@@ -33,17 +33,17 @@
   "metrics": {
     "componentCount": 422,
     "tokenCount": 0,
-    "hardcodedValueCount": 29,
+    "hardcodedValueCount": 12,
     "unusedTokenCount": 0,
-    "namingInconsistencyCount": 56,
+    "namingInconsistencyCount": 0,
     "criticalCount": 0,
     "accessibilityConflictCount": 0,
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 209,
-    "unusedComponentCount": 121,
-    "repeatedPatternCount": 3,
+    "totalDriftCount": 12,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 0,
@@ -51,46 +51,36 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 2,
+    "highDensityFileCount": 1,
     "vendoredDriftCount": 0,
     "topHardcodedColor": {
-      "value": "#fff",
-      "count": 13
+      "value": "#868e96",
+      "count": 1
     },
     "worstFile": {
-      "path": "packages/excalidraw/components/icons.tsx",
-      "issueCount": 37
+      "path": "packages/excalidraw/components/PublishLibrary.tsx",
+      "issueCount": 3
     },
-    "uniqueSpacingValues": 17,
+    "uniqueSpacingValues": 13,
     "detectedFrameworkNames": [
       "react",
       "next"
     ]
   },
   "suggestions": [
-    "Nearly there — just 29 hardcoded values left to tokenize. packages/excalidraw/components/icons.tsx has the most (37)",
-    "121 unused components detected — consider a cleanup sprint to remove dead code",
-    "No design token system detected — add CSS custom properties or a utility framework like Tailwind",
-    "56 naming inconsistencies — standardize prop/component conventions",
-    "17 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
+    "Nearly there — just 12 hardcoded values left to tokenize. packages/excalidraw/components/PublishLibrary.tsx has the most (3)",
+    "No design token system detected — add CSS custom properties or a utility framework like Tailwind"
   ],
   "driftSummary": {
-    "total": 209,
+    "total": 12,
     "critical": 0,
-    "warning": 135,
-    "info": 74
+    "warning": 1,
+    "info": 11
   },
   "driftByType": {
-    "hardcoded-value": 29,
-    "naming-inconsistency": 56,
-    "unused-component": 121,
-    "repeated-pattern": 3
+    "hardcoded-value": 12
   },
   "topColors": [
-    {
-      "value": "#fff",
-      "count": 13
-    },
     {
       "value": "#868e96",
       "count": 1
@@ -106,19 +96,7 @@
       "count": 3
     },
     {
-      "value": "1rem",
-      "count": 2
-    },
-    {
-      "value": "1px",
-      "count": 2
-    },
-    {
       "value": "14px",
-      "count": 1
-    },
-    {
-      "value": "80%",
       "count": 1
     },
     {
@@ -128,16 +106,24 @@
     {
       "value": "1em",
       "count": 1
+    },
+    {
+      "value": "1rem",
+      "count": 1
+    },
+    {
+      "value": "2em",
+      "count": 1
+    },
+    {
+      "value": "0.875rem",
+      "count": 1
     }
   ],
   "worstFiles": [
     {
-      "file": "packages/excalidraw/components/icons.tsx",
-      "count": 13
-    },
-    {
       "file": "packages/excalidraw/components/PublishLibrary.tsx",
-      "count": 5
+      "count": 4
     },
     {
       "file": "packages/excalidraw/components/main-menu/DefaultItems.tsx",
@@ -152,103 +138,112 @@
       "count": 2
     },
     {
-      "file": "packages/excalidraw/components/ColorPicker/ColorInput.tsx",
-      "count": 2
-    },
-    {
       "file": "packages/excalidraw/components/LibraryMenu.tsx",
       "count": 1
     },
     {
-      "file": "packages/excalidraw/components/ButtonSeparator.tsx",
+      "file": "packages/excalidraw/components/TTDDialog/TTDDialogOutput.tsx",
+      "count": 1
+    },
+    {
+      "file": "packages/excalidraw/components/CommandPalette/CommandPalette.tsx",
+      "count": 1
+    },
+    {
+      "file": "packages/excalidraw/components/ColorPicker/ShadeList.tsx",
       "count": 1
     }
   ],
   "samples": [
     {
-      "component": "UnlockedIcon",
-      "location": "packages/excalidraw/components/icons.tsx:163",
+      "component": "Toolbar",
+      "location": "packages/excalidraw/components/Toolbar.tsx:223",
       "entries": [
-        "fill: #fff (line 187)"
+        "marginRight: 0.25rem (line 285)",
+        "marginLeft: 0.25rem (line 314)"
       ]
     },
     {
-      "component": "AlignTopIcon",
-      "location": "packages/excalidraw/components/icons.tsx:804",
+      "component": "SingleLibraryItem",
+      "location": "packages/excalidraw/components/PublishLibrary.tsx:107",
       "entries": [
-        "fill: #fff (line 816)"
+        "color: #868e96 (line 177)"
       ]
     },
     {
-      "component": "AlignBottomIcon",
-      "location": "packages/excalidraw/components/icons.tsx:823",
+      "component": "SingleLibraryItem",
+      "location": "packages/excalidraw/components/PublishLibrary.tsx:107",
       "entries": [
-        "fill: #fff (line 835)"
+        "fontSize: 14px (line 164)",
+        "padding: 0.2rem (line 187)"
       ]
     },
     {
-      "component": "AlignLeftIcon",
-      "location": "packages/excalidraw/components/icons.tsx:842",
+      "component": "PublishLibrary",
+      "location": "packages/excalidraw/components/PublishLibrary.tsx:201",
       "entries": [
-        "fill: #fff (line 854)"
+        "padding: 1em (line 533)"
       ]
     },
     {
-      "component": "AlignRightIcon",
-      "location": "packages/excalidraw/components/icons.tsx:861",
+      "component": "LibraryMenuItems",
+      "location": "packages/excalidraw/components/LibraryMenuItems.tsx:55",
       "entries": [
-        "fill: #fff (line 873)"
+        "marginTop: 0.75rem (line 310)",
+        "marginTop: 1rem (line 370)"
       ]
     },
     {
-      "component": "DistributeHorizontallyIcon",
-      "location": "packages/excalidraw/components/icons.tsx:880",
+      "component": "LibraryMenuContent",
+      "location": "packages/excalidraw/components/LibraryMenu.tsx:64",
       "entries": [
-        "fill: #fff (line 892)"
+        "size: 2em (line 136)"
       ]
     },
     {
-      "component": "DistributeVerticallyIcon",
-      "location": "packages/excalidraw/components/icons.tsx:899",
+      "component": "ChangeCanvasBackground",
+      "location": "packages/excalidraw/components/main-menu/DefaultItems.tsx:323",
       "entries": [
-        "fill: #fff (line 911)"
+        "marginTop: 0.75rem (line 336)",
+        "fontSize: 0.875rem (line 340)",
+        "marginBottom: 0.25rem (line 341)"
       ]
     },
     {
-      "component": "CloseIcon",
-      "location": "packages/excalidraw/components/icons.tsx:958",
+      "component": "TTDDialogOutput",
+      "location": "packages/excalidraw/components/TTDDialog/TTDDialogOutput.tsx:24",
       "entries": [
-        "fill: #fff (line 971)"
+        "size: 2rem (line 118)"
       ]
     },
     {
-      "component": "FillCrossHatchIcon",
-      "location": "packages/excalidraw/components/icons.tsx:1101",
+      "component": "CommandPaletteInner",
+      "location": "packages/excalidraw/components/CommandPalette/CommandPalette.tsx:200",
       "entries": [
-        "fill: #fff (line 1135)"
+        "marginLeft: 6px (line 922)"
       ]
     },
     {
-      "component": "FillSolidIcon",
-      "location": "packages/excalidraw/components/icons.tsx:1142",
+      "component": "ShadeList",
+      "location": "packages/excalidraw/components/ColorPicker/ShadeList.tsx:30",
       "entries": [
-        "fill: #fff (line 1153)"
+        "fontSize: 0.75rem (line 130)"
       ]
     },
     {
-      "component": "FontSizeSmallIcon",
-      "location": "packages/excalidraw/components/icons.tsx:1617",
+      "component": "ChatMessage",
+      "location": "packages/excalidraw/components/TTDDialog/Chat/ChatMessage.tsx:10",
       "entries": [
-        "fill: #fff (line 1630)"
+        "marginTop: 10px (line 83)"
       ]
     },
     {
-      "component": "FontSizeMediumIcon",
-      "location": "packages/excalidraw/components/icons.tsx:1637",
+      "component": "ChatInterface",
+      "location": "packages/excalidraw/components/TTDDialog/Chat/ChatInterface.tsx:17",
       "entries": [
-        "fill: #fff (line 1650)"
+        "size: 1.5em (line 182)"
       ]
     }
   ],
-  "scanSeconds": 17
+  "scanSeconds": 18
 }
