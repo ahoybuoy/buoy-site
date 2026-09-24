@@ -1,0 +1,278 @@
+{
+  "repo": "TryGhost/Ghost",
+  "owner": "TryGhost",
+  "name": "Ghost",
+  "description": "Independent technology for modern publishing, memberships, subscriptions and newsletters.",
+  "stars": 55415,
+  "homepage": "https://ghost.org",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "33fbb7f603cf55c27baeeb9d3d59b4939e0a68c6",
+  "generatedAt": "2026-09-24T06:15:31.443Z",
+  "cliVersion": "0.8.1",
+  "score": 64,
+  "tier": "Good",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 32,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 2,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 1686,
+    "tokenCount": 757,
+    "hardcodedValueCount": 248,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 248,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 13,
+    "vendoredDriftCount": 8,
+    "worstFile": {
+      "path": "apps/admin/src/settings/layout/sidebar.tsx",
+      "issueCount": 4
+    },
+    "uniqueSpacingValues": 4,
+    "detectedFrameworkNames": [
+      "react",
+      "tailwind",
+      "storybook",
+      "headlessui",
+      "radix"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 240 hardcoded values left to tokenize. apps/admin/src/settings/layout/sidebar.tsx has the most (4)",
+    "8 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
+  ],
+  "driftSummary": {
+    "total": 248,
+    "critical": 0,
+    "warning": 30,
+    "info": 218
+  },
+  "driftByType": {
+    "hardcoded-value": 248
+  },
+  "topColors": [
+    {
+      "value": "#c8ccd3",
+      "count": 8
+    },
+    {
+      "value": "#101114",
+      "count": 7
+    },
+    {
+      "value": "#8a8f98",
+      "count": 6
+    },
+    {
+      "value": "#23262c",
+      "count": 5
+    },
+    {
+      "value": "#16181c",
+      "count": 5
+    },
+    {
+      "value": "#6a6f78",
+      "count": 4
+    },
+    {
+      "value": "#17191d",
+      "count": 4
+    },
+    {
+      "value": "#355070",
+      "count": 4
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "-5px",
+      "count": 17
+    },
+    {
+      "value": "3px",
+      "count": 13
+    },
+    {
+      "value": "6rem",
+      "count": 12
+    },
+    {
+      "value": "28px",
+      "count": 11
+    },
+    {
+      "value": "7px",
+      "count": 9
+    },
+    {
+      "value": "10px",
+      "count": 8
+    },
+    {
+      "value": "4rem",
+      "count": 8
+    },
+    {
+      "value": "8rem",
+      "count": 7
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "apps/admin/src/settings/site/theme/theme-code-editor-modal.tsx",
+      "count": 53
+    },
+    {
+      "file": "apps/admin/src/settings/site/theme/theme-file-tree.tsx",
+      "count": 26
+    },
+    {
+      "file": "koenig/koenig-lexical/src/components/ui/cards/SignupCard.tsx",
+      "count": 25
+    },
+    {
+      "file": "koenig/koenig-lexical/src/components/ui/cards/HeaderCard/v2/HeaderCard.tsx",
+      "count": 24
+    },
+    {
+      "file": "apps/activitypub/src/views/inbox/components/customizer.tsx",
+      "count": 21
+    },
+    {
+      "file": "apps/admin/src/onboarding/components/onboarding-checklist.tsx",
+      "count": 19
+    },
+    {
+      "file": "apps/admin/src/settings/membership/member-emails/member-email-editor.tsx",
+      "count": 19
+    },
+    {
+      "file": "apps/admin/src/automations/components/email-modal/email-editor.tsx",
+      "count": 19
+    }
+  ],
+  "samples": [
+    {
+      "component": "NewsletterSelectionPage",
+      "location": "apps/portal/src/components/pages/newsletter-selection-page.jsx:97",
+      "entries": [
+        "marginBottom: 20px (line 132)"
+      ]
+    },
+    {
+      "component": "RetentionOfferSection",
+      "location": "apps/portal/src/components/pages/account-plan-page.jsx:376",
+      "entries": [
+        "marginTop: 20px (line 446)",
+        "marginTop: 32px (line 461)",
+        "marginBottom: 24px (line 462)"
+      ]
+    },
+    {
+      "component": "ShowPaidMemberMessage",
+      "location": "apps/portal/src/components/common/newsletter-management.jsx:242",
+      "entries": [
+        "marginTop: 12px (line 246)"
+      ]
+    },
+    {
+      "component": "apps/shade/src/providers/shade-provider.tsx",
+      "location": "apps/shade/src/providers/shade-provider.tsx:58",
+      "entries": [
+        "tracking-[0.1px] (line 58)"
+      ]
+    },
+    {
+      "component": "apps/admin/src/layout/admin-layout.tsx",
+      "location": "apps/admin/src/layout/admin-layout.tsx:24",
+      "entries": [
+        "pt-[28px] (line 24)",
+        "pt-[28px] (line 25)",
+        "pt-[8px] (line 26)"
+      ]
+    },
+    {
+      "component": "apps/admin/src/automations/automations.tsx",
+      "location": "apps/admin/src/automations/automations.tsx:28",
+      "entries": [
+        "text-[10px] (line 28)"
+      ]
+    },
+    {
+      "component": "apps/signup-form/src/components/pages/success-view.tsx",
+      "location": "apps/signup-form/src/components/pages/success-view.tsx:21",
+      "entries": [
+        "sm:mb-[4.1rem] (line 21)"
+      ]
+    },
+    {
+      "component": "apps/signup-form/src/components/pages/form-view.tsx",
+      "location": "apps/signup-form/src/components/pages/form-view.tsx:90",
+      "entries": [
+        "p-[3px] (line 90)",
+        "mx-[-40px] (line 120)"
+      ]
+    },
+    {
+      "component": "apps/signup-form/src/components/pages/form-view.tsx",
+      "location": "apps/signup-form/src/components/pages/form-view.tsx:90",
+      "entries": [
+        "rounded-[.5rem] (line 90)",
+        "rounded-[.3rem] (line 107)"
+      ]
+    },
+    {
+      "component": "apps/shade/src/components/layout/heading.tsx",
+      "location": "apps/shade/src/components/layout/heading.tsx:16",
+      "entries": [
+        "leading-[1.1em] (line 16)"
+      ]
+    },
+    {
+      "component": "apps/shade/src/components/ui/tabs.tsx",
+      "location": "apps/shade/src/components/ui/tabs.tsx:67",
+      "entries": [
+        "px-[3px] (line 67)",
+        "px-[3px] (line 68)"
+      ]
+    },
+    {
+      "component": "apps/shade/src/components/ui/tabs.tsx",
+      "location": "apps/shade/src/components/ui/tabs.tsx:172",
+      "entries": [
+        "leading-[21px] (line 172)"
+      ]
+    }
+  ],
+  "scanSeconds": 93
+}
