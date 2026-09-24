@@ -12,16 +12,16 @@ const totalHardcoded = reports.reduce((n, r) => n + ownHardcoded(r), 0)
 ---
 
 <Layout
-  title="Design Drift Reports | Buoy"
-  description="How well-known open-source codebases hold their design system together: health scores, hardcoded values, and the worst files, scanned by Buoy."
-  keywords="design system health, design drift report, hardcoded values, open source design systems"
+  title="Open-Source Design-System Review Reports | Buoy"
+  description="See how Buoy's deterministic scanner reviews well-known codebases for token coverage, hardcoded values, and design-system health."
+  keywords="deterministic design review, design system health, design token linting, open source design systems"
 >
   <Nav />
 
   <section class="relative pt-32 pb-12 overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
     <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6">Design drift in the open</h1>
+      <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6">Deterministic design review, in the open</h1>
       <p class="text-lg text-slate max-w-2xl mx-auto">
         {reports.length} well-known codebases, scanned with the open-source Buoy CLI: {totalHardcoded.toLocaleString()} findings of hardcoded
         values that a token already covers or should. Same scan you get on <code class="text-buoy">npx @buoy-design/cli show health</code>.

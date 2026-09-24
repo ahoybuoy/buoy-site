@@ -2,13 +2,12 @@
 import DocsLayout from '../../../layouts/DocsLayout.astro'
 ---
 
-<DocsLayout title="Claude Code Hooks" description="Self-validating AI agents with Buoy">
+<DocsLayout title="Claude Code Design-System Guardrails" description="Complement Claude Code with deterministic checks after each frontend edit">
   <h1>Claude Code Hooks</h1>
 
   <p>
-    Turn Claude Code into a self-validating agent. When Claude edits a UI component,
-    Buoy automatically checks for design drift and feeds corrections back—creating
-    a closed loop where the AI catches and fixes its own mistakes.
+    Buoy complements Claude Code with a deterministic check after each UI edit.
+    Claude gets exact findings and can correct the code before the pull request.
   </p>
 
   <h2>How It Works</h2>
@@ -79,7 +78,7 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
 
 Run `buoy show drift` for full details.</code></pre>
 
-  <p>Claude then fixes the issues automatically in its next edit.</p>
+  <p>Claude can use those verified findings as context for its next edit.</p>
 
   <h2>Manual Setup</h2>
 
