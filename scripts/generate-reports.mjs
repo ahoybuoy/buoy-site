@@ -128,6 +128,9 @@ for (const fullName of targets) {
     failed++;
     const reason = error.killed ? `timed out after ${Math.round(TIMEOUT_MS / 60000)} min` : error.message?.split("\n")[0];
     console.error(`${fullName}: FAILED ${reason}`);
+    // The first line is only "Command failed: <cmd>"; the cause is in stderr.
+    const detail = String(error.stderr ?? "").trim().split("\n").filter((line) => !line.startsWith("npm warn")).slice(-15);
+    if (!error.killed && detail.length) console.error(detail.map((line) => `  ${line}`).join("\n"));
   }
 }
 console.log(`${targets.length - failed}/${targets.length} reports refreshed`);
