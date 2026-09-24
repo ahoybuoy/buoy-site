@@ -3,18 +3,18 @@
   "owner": "novuhq",
   "name": "novu",
   "description": "The open-source communication infrastructure for agents and products",
-  "stars": 40049,
+  "stars": 40052,
   "homepage": "https://go.novu.co/github",
   "language": "TypeScript",
   "defaultBranch": "next",
-  "commit": "eda627cdee8c1e4601109467006f262177b88732",
-  "generatedAt": "2026-09-24T05:44:00.799Z",
-  "cliVersion": "latest",
-  "score": 60,
+  "commit": "4a4be7fe89fd398d14c4b14321922c494d02b9d6",
+  "generatedAt": "2026-09-24T09:21:51.209Z",
+  "cliVersion": "0.8.4",
+  "score": 69,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 30,
+      "score": 29,
       "max": 60
     },
     "tokenHealth": {
@@ -26,14 +26,14 @@
       "max": 10
     },
     "criticalIssues": {
-      "score": 0,
+      "score": 10,
       "max": 10
     }
   },
   "metrics": {
     "componentCount": 2414,
     "tokenCount": 462,
-    "hardcodedValueCount": 372,
+    "hardcodedValueCount": 389,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 377,
+    "totalDriftCount": 394,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 5,
     "orphanedComponentCount": 0,
@@ -71,17 +71,24 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 361 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
+    "Nearly there — just 378 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
     "11 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 31,
+      "action": "Replace the hardcoded values in 372 of the 378 findings with tokens or scale steps, and remove or reuse 5 unused components and repeated patterns"
+    }
+  ],
   "driftSummary": {
-    "total": 377,
+    "total": 394,
     "critical": 0,
-    "warning": 81,
-    "info": 296
+    "warning": 97,
+    "info": 297
   },
   "driftByType": {
-    "hardcoded-value": 372,
+    "hardcoded-value": 389,
     "repeated-pattern": 5
   },
   "topColors": [
@@ -144,15 +151,27 @@
       "count": 7
     },
     {
-      "value": "100px",
+      "value": "6px",
       "count": 5
     },
     {
-      "value": "6px",
+      "value": "100px",
       "count": 5
     }
   ],
   "worstFiles": [
+    {
+      "file": "playground/web-chat/src/app/globals.css",
+      "count": 148
+    },
+    {
+      "file": "packages/novu/src/commands/init/templates/app-react-email/ts/app/page.module.css",
+      "count": 125
+    },
+    {
+      "file": "packages/novu/src/commands/connect/templates/web-chat/ts/globals.css",
+      "count": 107
+    },
     {
       "file": "apps/dashboard/src/pages/usecase-select-page.tsx",
       "count": 61
@@ -162,28 +181,16 @@
       "count": 40
     },
     {
-      "file": "apps/dashboard/src/components/workflow-editor/steps/shared/step-resolver-not-published.tsx",
-      "count": 24
+      "file": "packages/novu/src/commands/init/templates/app-agent-ai-sdk/ts/app/page.module.css",
+      "count": 32
     },
     {
-      "file": "apps/dashboard/src/components/workflow-editor/steps/chat/preview/card-renderer.tsx",
-      "count": 24
+      "file": "packages/novu/src/commands/init/templates/app-agent-langchain/ts/app/page.module.css",
+      "count": 32
     },
     {
-      "file": "apps/dashboard/src/pages/landing-1-signup.tsx",
-      "count": 19
-    },
-    {
-      "file": "apps/dashboard/src/components/agents/setup-guide-primitives.tsx",
-      "count": 19
-    },
-    {
-      "file": "apps/dashboard/src/components/agents/teams-setup-guide.tsx",
-      "count": 18
-    },
-    {
-      "file": "apps/dashboard/src/components/workflow-editor/steps/shared/step-resolver-empty-preview.tsx",
-      "count": 18
+      "file": "packages/novu/src/commands/init/templates/app-agent/ts/app/page.module.css",
+      "count": 32
     }
   ],
   "samples": [
@@ -194,34 +201,6 @@
         "color: #335cff (line 133)",
         "color: #47c2ff (line 136)",
         "color: #7d52f4 (line 139)"
-      ]
-    },
-    {
-      "component": "StepButton",
-      "location": "apps/dashboard/src/components/welcome/framework-guides.tsx:334",
-      "entries": [
-        "fontSize: 12px (line 386)"
-      ]
-    },
-    {
-      "component": "WorkflowHoverCard",
-      "location": "apps/dashboard/src/components/header-navigation/workflow-hover-card.tsx:19",
-      "entries": [
-        "fontSize: 10px (line 196)"
-      ]
-    },
-    {
-      "component": "LayoutUsageIndicator",
-      "location": "apps/dashboard/src/components/header-navigation/layout-usage-indicator.tsx:12",
-      "entries": [
-        "fontSize: 8px (line 75)"
-      ]
-    },
-    {
-      "component": "InboxPlayground",
-      "location": "apps/dashboard/src/components/auth/inbox-playground.tsx:50",
-      "entries": [
-        "fontSize: 12px (line 193)"
       ]
     },
     {
@@ -236,6 +215,34 @@
       "location": "apps/dashboard/src/components/auth/auth-side-banner.tsx:168",
       "entries": [
         "color: #99a0ad (line 182)"
+      ]
+    },
+    {
+      "component": "InboxPlayground",
+      "location": "apps/dashboard/src/components/auth/inbox-playground.tsx:50",
+      "entries": [
+        "fontSize: 12px (line 193)"
+      ]
+    },
+    {
+      "component": "LayoutUsageIndicator",
+      "location": "apps/dashboard/src/components/header-navigation/layout-usage-indicator.tsx:12",
+      "entries": [
+        "fontSize: 8px (line 75)"
+      ]
+    },
+    {
+      "component": "WorkflowHoverCard",
+      "location": "apps/dashboard/src/components/header-navigation/workflow-hover-card.tsx:19",
+      "entries": [
+        "fontSize: 10px (line 196)"
+      ]
+    },
+    {
+      "component": "StepButton",
+      "location": "apps/dashboard/src/components/welcome/framework-guides.tsx:334",
+      "entries": [
+        "fontSize: 12px (line 386)"
       ]
     },
     {
@@ -276,5 +283,5 @@
       ]
     }
   ],
-  "scanSeconds": 103
+  "scanSeconds": 78
 }

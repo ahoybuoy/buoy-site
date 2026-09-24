@@ -3,22 +3,22 @@
   "owner": "n8n-io",
   "name": "n8n",
   "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
-  "stars": 205821,
+  "stars": 205826,
   "homepage": "https://n8n.io",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "adf1eb245e85def123f29cdc8265949d69f86cf4",
-  "generatedAt": "2026-09-24T05:52:57.344Z",
-  "cliVersion": "latest",
-  "score": 93,
-  "tier": "Great",
+  "commit": "96735b20d9ca9e591f765dc9437630305f41e370",
+  "generatedAt": "2026-09-24T09:29:08.623Z",
+  "cliVersion": "0.8.4",
+  "score": 56,
+  "tier": "OK",
   "pillars": {
     "valueDiscipline": {
-      "score": 60,
+      "score": 18,
       "max": 60
     },
     "tokenHealth": {
-      "score": 15,
+      "score": 20,
       "max": 20
     },
     "consistency": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1302,
+    "componentCount": 1303,
     "tokenCount": 637,
-    "hardcodedValueCount": 2,
+    "hardcodedValueCount": 275,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 3,
+    "totalDriftCount": 276,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,9 +53,13 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
+    "topHardcodedColor": {
+      "value": "#fff (use var(--chat--color-white))",
+      "count": 2
+    },
     "worstFile": {
       "path": "packages/frontend/editor-ui/src/features/settings/communityNodes/components/ContactAdministratorToInstall.vue",
-      "issueCount": 1
+      "issueCount": 2
     },
     "uniqueSpacingValues": 2,
     "detectedFrameworkNames": [
@@ -66,29 +70,65 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 2 hardcoded values left to tokenize",
+    "Nearly there — just 275 hardcoded values left to tokenize. packages/frontend/editor-ui/src/features/settings/communityNodes/components/ContactAdministratorToInstall.vue has the most (2)",
     "1 deprecated pattern — migrate to current API"
   ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 42,
+      "action": "Replace the hardcoded values in 272 of the 275 findings with tokens or scale steps"
+    },
+    {
+      "pillar": "criticalIssues",
+      "points": 2,
+      "action": "Migrate 1 deprecated pattern"
+    }
+  ],
   "driftSummary": {
-    "total": 3,
+    "total": 276,
     "critical": 0,
-    "warning": 1,
-    "info": 2
+    "warning": 94,
+    "info": 182
   },
   "driftByType": {
     "deprecated-pattern": 1,
-    "hardcoded-value": 2
+    "hardcoded-value": 275
   },
   "topColors": [],
   "topSpacing": [],
   "worstFiles": [
     {
-      "file": "packages/frontend/editor-ui/src/features/settings/communityNodes/components/ContactAdministratorToInstall.vue",
-      "count": 1
+      "file": "packages/@n8n/local-gateway/src/renderer/styles.css",
+      "count": 40
     },
     {
-      "file": "packages/frontend/editor-ui/src/features/settings/communityNodes/components/nodeCreator/CommunityNodeDocsLink.vue",
-      "count": 1
+      "file": "packages/frontend/@n8n/design-system/src/components/DateRangePicker/DateRangePicker.vue",
+      "count": 26
+    },
+    {
+      "file": "packages/frontend/@n8n/design-system/src/css/tabs.scss",
+      "count": 26
+    },
+    {
+      "file": "packages/frontend/@n8n/design-system/src/css/color-picker.scss",
+      "count": 25
+    },
+    {
+      "file": "packages/frontend/@n8n/design-system/src/css/date-picker/date-table.scss",
+      "count": 19
+    },
+    {
+      "file": "packages/frontend/@n8n/design-system/src/css/menu.scss",
+      "count": 19
+    },
+    {
+      "file": "packages/frontend/@n8n/design-system/src/css/table.scss",
+      "count": 19
+    },
+    {
+      "file": "packages/frontend/editor-ui/src/features/ai/evaluation.ee/views/EvaluationsView.vue",
+      "count": 18
     }
   ],
   "samples": [
@@ -105,7 +145,89 @@
       "entries": [
         "margin-right: 5px (template)"
       ]
+    },
+    {
+      "component": "packages/@n8n/local-gateway/src/renderer/styles.css",
+      "location": "packages/@n8n/local-gateway/src/renderer/styles.css:38",
+      "entries": [
+        "font size: 13px (line 38)",
+        "font size: 15px (line 62)",
+        "font weight: 600 (line 63)"
+      ]
+    },
+    {
+      "component": "packages/cli/src/public-api/swagger-theme.css",
+      "location": "packages/cli/src/public-api/swagger-theme.css:2",
+      "entries": [
+        "colour: #ff6d5a (line 2)",
+        "colour: #fff (line 6)",
+        "colour: #ff6d5a (line 16)"
+      ]
+    },
+    {
+      "component": "packages/frontend/@n8n/chat/src/components/Button.vue",
+      "location": "packages/frontend/@n8n/chat/src/components/Button.vue:55",
+      "entries": [
+        "shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25) (line 55)"
+      ]
+    },
+    {
+      "component": "packages/frontend/@n8n/chat/src/components/ChatFile.vue",
+      "location": "packages/frontend/@n8n/chat/src/components/ChatFile.vue:71",
+      "entries": [
+        "spacing: 0.5rem (line 71)",
+        "radius: 0.25rem (line 72)",
+        "spacing: 0.25rem (line 73)"
+      ]
+    },
+    {
+      "component": "packages/frontend/@n8n/chat/src/components/Input.vue",
+      "location": "packages/frontend/@n8n/chat/src/components/Input.vue:473",
+      "entries": [
+        "font size: 24px (line 473)",
+        "spacing: 8px (line 478)",
+        "spacing: 0.5rem (line 511)"
+      ]
+    },
+    {
+      "component": "packages/frontend/@n8n/chat/src/components/Layout.vue",
+      "location": "packages/frontend/@n8n/chat/src/components/Layout.vue:52",
+      "entries": [
+        "spacing: 1em (line 52)"
+      ]
+    },
+    {
+      "component": "packages/frontend/@n8n/chat/src/components/Message.vue",
+      "location": "packages/frontend/@n8n/chat/src/components/Message.vue:112",
+      "entries": [
+        "spacing: 1rem (line 112)",
+        "spacing: 0.25rem (line 164)",
+        "spacing: 0.5rem (line 165)"
+      ]
+    },
+    {
+      "component": "packages/frontend/@n8n/chat/src/components/MessageTyping.vue",
+      "location": "packages/frontend/@n8n/chat/src/components/MessageTyping.vue:75",
+      "entries": [
+        "spacing: 3px (line 75)"
+      ]
+    },
+    {
+      "component": "packages/frontend/@n8n/design-system/src/components/AskAssistantChat/messages/TextMessage.vue",
+      "location": "packages/frontend/@n8n/design-system/src/components/AskAssistantChat/messages/TextMessage.vue:190",
+      "entries": [
+        "font weight: 500 (line 190)"
+      ]
+    },
+    {
+      "component": "packages/frontend/@n8n/design-system/src/components/AskAssistantText/AssistantText.vue",
+      "location": "packages/frontend/@n8n/design-system/src/components/AskAssistantText/AssistantText.vue:22",
+      "entries": [
+        "font size: 9px (line 22)",
+        "font size: 14px (line 32)",
+        "line height: 18px (line 33)"
+      ]
     }
   ],
-  "scanSeconds": 71
+  "scanSeconds": 69
 }

@@ -3,18 +3,18 @@
   "owner": "formbricks",
   "name": "formbricks",
   "description": "Open Source Qualtrics Alternative",
-  "stars": 13011,
+  "stars": 13015,
   "homepage": "https://formbricks.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "97a1c69b965691a8d80a89f42e313fd1d7c4ee28",
-  "generatedAt": "2026-09-24T05:48:54.528Z",
-  "cliVersion": "latest",
-  "score": 95,
+  "commit": "ce282a68be881e545264a09f7987ea0367585a46",
+  "generatedAt": "2026-09-24T09:25:47.630Z",
+  "cliVersion": "0.8.4",
+  "score": 92,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 55,
+      "score": 52,
       "max": 60
     },
     "tokenHealth": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 353,
     "tokenCount": 73,
-    "hardcodedValueCount": 16,
+    "hardcodedValueCount": 22,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 16,
+    "totalDriftCount": 22,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -66,17 +66,24 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 9 hardcoded values left to tokenize",
+    "Nearly there — just 15 hardcoded values left to tokenize",
     "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 8,
+      "action": "Replace the hardcoded values in all 15 findings with tokens or scale steps"
+    }
+  ],
   "driftSummary": {
-    "total": 16,
+    "total": 22,
     "critical": 0,
-    "warning": 0,
-    "info": 16
+    "warning": 5,
+    "info": 17
   },
   "driftByType": {
-    "hardcoded-value": 16
+    "hardcoded-value": 22
   },
   "topColors": [],
   "topSpacing": [
@@ -99,36 +106,36 @@
   ],
   "worstFiles": [
     {
+      "file": "apps/web/modules/ui/components/editor/styles-editor.css",
+      "count": 50
+    },
+    {
+      "file": "apps/web/modules/ui/globals.css",
+      "count": 10
+    },
+    {
+      "file": "apps/web/modules/ui/components/editor/styles-editor-frontend.css",
+      "count": 5
+    },
+    {
       "file": "packages/survey-ui/src/components/general/calendar.tsx",
       "count": 4
     },
     {
-      "file": "packages/surveys/src/components/general/headline.tsx",
-      "count": 2
+      "file": "apps/web/modules/ui/components/code-block/style.css",
+      "count": 3
+    },
+    {
+      "file": "packages/survey-ui/src/styles/globals.css",
+      "count": 3
     },
     {
       "file": "packages/survey-ui/src/components/general/checkbox.tsx",
       "count": 2
     },
     {
-      "file": "apps/web/app/(app)/workspaces/[workspaceId]/components/MainNavigation.tsx",
-      "count": 1
-    },
-    {
-      "file": "apps/web/app/(app)/workspaces/[workspaceId]/surveys/[surveyId]/(analysis)/summary/components/SummaryDropOffs.tsx",
-      "count": 1
-    },
-    {
-      "file": "apps/web/app/(app)/workspaces/[workspaceId]/surveys/[surveyId]/(analysis)/summary/components/shareEmbedModal/success-view.tsx",
-      "count": 1
-    },
-    {
-      "file": "packages/surveys/src/components/general/ending-card.tsx",
-      "count": 1
-    },
-    {
-      "file": "packages/survey-ui/src/components/general/textarea.tsx",
-      "count": 1
+      "file": "packages/surveys/src/components/general/headline.tsx",
+      "count": 2
     }
   ],
   "samples": [
@@ -154,46 +161,47 @@
       ]
     },
     {
-      "component": "packages/surveys/src/components/general/headline.tsx",
-      "location": "packages/surveys/src/components/general/headline.tsx:31",
+      "component": "packages/survey-ui/src/components/elements/multi-select.tsx",
+      "location": "packages/survey-ui/src/components/elements/multi-select.tsx:112",
       "entries": [
-        "mb-[3px] (line 31)",
-        "mb-[3px] (line 34)"
+        "rounded-[4px] (line 112)"
       ]
     },
     {
-      "component": "packages/surveys/src/components/general/ending-card.tsx",
-      "location": "packages/surveys/src/components/general/ending-card.tsx:88",
+      "component": "packages/survey-ui/src/components/elements/nps.tsx",
+      "location": "packages/survey-ui/src/components/elements/nps.tsx:181",
       "entries": [
-        "mb-[10px] (line 88)"
+        "px-[2px] (line 181)"
       ]
     },
     {
-      "component": "packages/survey-ui/src/components/general/textarea.tsx",
-      "location": "packages/survey-ui/src/components/general/textarea.tsx:15",
+      "component": "packages/survey-ui/src/components/elements/rating.tsx",
+      "location": "packages/survey-ui/src/components/elements/rating.tsx:406",
       "entries": [
-        "focus-visible:ring-[3px] (line 15)"
+        "px-[2px] (line 406)"
       ]
     },
     {
-      "component": "packages/survey-ui/src/components/general/radio-group.tsx",
-      "location": "packages/survey-ui/src/components/general/radio-group.tsx:34",
+      "component": "packages/survey-ui/src/components/general/button.tsx",
+      "location": "packages/survey-ui/src/components/general/button.tsx:18",
       "entries": [
-        "focus-visible:ring-[3px] (line 34)"
+        "focus-visible:ring-[3px] (line 18)"
       ]
     },
     {
-      "component": "packages/survey-ui/src/components/general/input.tsx",
-      "location": "packages/survey-ui/src/components/general/input.tsx:41",
+      "component": "packages/survey-ui/src/components/general/calendar.tsx",
+      "location": "packages/survey-ui/src/components/general/calendar.tsx:148",
       "entries": [
-        "focus-visible:ring-[3px] (line 41)"
+        "has-focus:ring-[3px] (line 148)",
+        "day:ring-[3px] (line 239)"
       ]
     },
     {
-      "component": "packages/survey-ui/src/components/general/element-header.tsx",
-      "location": "packages/survey-ui/src/components/general/element-header.tsx:64",
+      "component": "packages/survey-ui/src/components/general/calendar.tsx",
+      "location": "packages/survey-ui/src/components/general/calendar.tsx:162",
       "entries": [
-        "mb-[3px] (line 64)"
+        "text-[0.8rem] (line 162)",
+        "text-[0.8rem] (line 167)"
       ]
     },
     {
@@ -205,21 +213,19 @@
       ]
     },
     {
-      "component": "packages/survey-ui/src/components/general/calendar.tsx",
-      "location": "packages/survey-ui/src/components/general/calendar.tsx:148",
+      "component": "packages/survey-ui/src/components/general/element-header.tsx",
+      "location": "packages/survey-ui/src/components/general/element-header.tsx:64",
       "entries": [
-        "has-focus:ring-[3px] (line 148)",
-        "day:ring-[3px] (line 234)"
+        "mb-[3px] (line 64)"
       ]
     },
     {
-      "component": "packages/survey-ui/src/components/general/calendar.tsx",
-      "location": "packages/survey-ui/src/components/general/calendar.tsx:162",
+      "component": "packages/survey-ui/src/components/general/input.tsx",
+      "location": "packages/survey-ui/src/components/general/input.tsx:41",
       "entries": [
-        "text-[0.8rem] (line 162)",
-        "text-[0.8rem] (line 167)"
+        "focus-visible:ring-[3px] (line 41)"
       ]
     }
   ],
-  "scanSeconds": 36
+  "scanSeconds": 29
 }

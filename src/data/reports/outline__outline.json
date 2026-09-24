@@ -3,14 +3,14 @@
   "owner": "outline",
   "name": "outline",
   "description": "The fastest knowledge base for growing teams. Beautiful, realtime collaborative, feature packed, and markdown compatible.",
-  "stars": 40685,
+  "stars": 40688,
   "homepage": "https://www.getoutline.com",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "621b00ffc7e7bd09bf56292bfceeba093c6c760b",
-  "generatedAt": "2026-09-24T05:51:45.934Z",
-  "cliVersion": "latest",
-  "score": 88,
+  "generatedAt": "2026-09-24T09:27:58.817Z",
+  "cliVersion": "0.8.4",
+  "score": 97,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
@@ -18,7 +18,7 @@
       "max": 60
     },
     "tokenHealth": {
-      "score": 11,
+      "score": 20,
       "max": 20
     },
     "consistency": {
@@ -58,7 +58,7 @@
       "count": 1
     },
     "worstFile": {
-      "path": "app/scenes/TeamDelete.tsx",
+      "path": "app/components/EmojiDialog/EmojiCreateDialog.tsx",
       "issueCount": 1
     },
     "uniqueSpacingValues": 4,
@@ -70,6 +70,13 @@
   },
   "suggestions": [
     "Nearly there — just 8 hardcoded values left to tokenize"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 3,
+      "action": "Replace the hardcoded values in 7 of the 8 findings with tokens or scale steps"
+    }
   ],
   "driftSummary": {
     "total": 8,
@@ -96,33 +103,21 @@
       "count": 1
     },
     {
-      "value": "10px",
+      "value": "8px",
       "count": 1
     },
     {
-      "value": "8px",
+      "value": "10px",
       "count": 1
     }
   ],
   "worstFiles": [
     {
-      "file": "app/scenes/TeamDelete.tsx",
-      "count": 1
-    },
-    {
       "file": "app/components/InputSelect.tsx",
       "count": 1
     },
     {
-      "file": "app/scenes/Login/OAuthAuthorize.tsx",
-      "count": 1
-    },
-    {
-      "file": "app/components/Reactions/ViewReactionsDialog.tsx",
-      "count": 1
-    },
-    {
-      "file": "app/components/OAuthClient/InputClientType.tsx",
+      "file": "app/scenes/TeamDelete.tsx",
       "count": 1
     },
     {
@@ -130,22 +125,27 @@
       "count": 1
     },
     {
-      "file": "app/scenes/Settings/components/DropToImport.tsx",
+      "file": "app/components/OAuthClient/InputClientType.tsx",
+      "count": 1
+    },
+    {
+      "file": "app/components/Reactions/ViewReactionsDialog.tsx",
+      "count": 1
+    },
+    {
+      "file": "app/scenes/Login/OAuthAuthorize.tsx",
       "count": 1
     },
     {
       "file": "app/scenes/Login/components/SwitchHostDialog.tsx",
       "count": 1
+    },
+    {
+      "file": "app/scenes/Settings/components/DropToImport.tsx",
+      "count": 1
     }
   ],
   "samples": [
-    {
-      "component": "TeamDelete",
-      "location": "app/scenes/TeamDelete.tsx:23",
-      "entries": [
-        "marginBottom: 1em (line 97)"
-      ]
-    },
     {
       "component": "Label",
       "location": "app/components/InputSelect.tsx:339",
@@ -154,24 +154,10 @@
       ]
     },
     {
-      "component": "Authorize",
-      "location": "app/scenes/Login/OAuthAuthorize.tsx:78",
+      "component": "TeamDelete",
+      "location": "app/scenes/TeamDelete.tsx:23",
       "entries": [
-        "paddingLeft: 1em (line 231)"
-      ]
-    },
-    {
-      "component": "Placeholder",
-      "location": "app/components/Reactions/ViewReactionsDialog.tsx:96",
-      "entries": [
-        "paddingBottom: 10px (line 99)"
-      ]
-    },
-    {
-      "component": "InputClientType",
-      "location": "app/components/OAuthClient/InputClientType.tsx:8",
-      "entries": [
-        "marginBottom: 1em (line 23)"
+        "marginBottom: 1em (line 97)"
       ]
     },
     {
@@ -182,10 +168,24 @@
       ]
     },
     {
-      "component": "DropToImport",
-      "location": "app/scenes/Settings/components/DropToImport.tsx:37",
+      "component": "InputClientType",
+      "location": "app/components/OAuthClient/InputClientType.tsx:8",
       "entries": [
-        "color: #fff (line 118)"
+        "marginBottom: 1em (line 23)"
+      ]
+    },
+    {
+      "component": "Placeholder",
+      "location": "app/components/Reactions/ViewReactionsDialog.tsx:96",
+      "entries": [
+        "paddingBottom: 10px (line 99)"
+      ]
+    },
+    {
+      "component": "Authorize",
+      "location": "app/scenes/Login/OAuthAuthorize.tsx:78",
+      "entries": [
+        "paddingLeft: 1em (line 231)"
       ]
     },
     {
@@ -194,7 +194,14 @@
       "entries": [
         "marginTop: 1em (line 118)"
       ]
+    },
+    {
+      "component": "DropToImport",
+      "location": "app/scenes/Settings/components/DropToImport.tsx:37",
+      "entries": [
+        "color: #fff (line 118)"
+      ]
     }
   ],
-  "scanSeconds": 21
+  "scanSeconds": 14
 }

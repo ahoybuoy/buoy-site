@@ -3,14 +3,14 @@
   "owner": "twentyhq",
   "name": "twenty",
   "description": "The open alternative to Salesforce, designed for AI.",
-  "stars": 57392,
+  "stars": 57401,
   "homepage": "https://twenty.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "9641999140061d2c8e7b46cecb4d8eae5a1b3b0b",
-  "generatedAt": "2026-09-24T05:48:16.297Z",
-  "cliVersion": "latest",
-  "score": 89,
+  "commit": "d3d6d39ab90c19e7ba6389fe9e85f230bbe7f49e",
+  "generatedAt": "2026-09-24T09:25:16.599Z",
+  "cliVersion": "0.8.4",
+  "score": 99,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
@@ -18,7 +18,7 @@
       "max": 60
     },
     "tokenHealth": {
-      "score": 18,
+      "score": 20,
       "max": 20
     },
     "consistency": {
@@ -26,22 +26,22 @@
       "max": 10
     },
     "criticalIssues": {
-      "score": 2,
+      "score": 10,
       "max": 10
     }
   },
   "metrics": {
-    "componentCount": 3684,
+    "componentCount": 3687,
     "tokenCount": 13,
-    "hardcodedValueCount": 17,
+    "hardcodedValueCount": 24,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
-    "criticalCount": 4,
+    "criticalCount": 0,
     "accessibilityConflictCount": 0,
-    "colorContrastCount": 4,
+    "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 21,
+    "totalDriftCount": 24,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -54,12 +54,12 @@
     "highDensityFileCount": 1,
     "vendoredDriftCount": 0,
     "topHardcodedColor": {
-      "value": "#0369a1",
-      "count": 3
+      "value": "#333",
+      "count": 2
     },
     "worstFile": {
       "path": "packages/create-twenty-app/src/constants/template/src/front-components/main-page.tsx",
-      "issueCount": 5
+      "issueCount": 4
     },
     "uniqueSpacingValues": 12,
     "detectedFrameworkNames": [
@@ -73,18 +73,23 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 17 hardcoded values left to tokenize. packages/create-twenty-app/src/constants/template/src/front-components/main-page.tsx has the most (5)",
-    "4 color contrast issues — fix immediately"
+    "Nearly there — just 24 hardcoded values left to tokenize. packages/create-twenty-app/src/constants/template/src/front-components/main-page.tsx has the most (4)"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 1,
+      "action": "Replace the hardcoded values in 15 of the 24 findings with tokens or scale steps"
+    }
   ],
   "driftSummary": {
-    "total": 15,
-    "critical": 1,
-    "warning": 10,
-    "info": 4
+    "total": 20,
+    "critical": 0,
+    "warning": 3,
+    "info": 17
   },
   "driftByType": {
-    "hardcoded-value": 14,
-    "color-contrast": 1
+    "hardcoded-value": 20
   },
   "topColors": [
     {
@@ -92,39 +97,19 @@
       "count": 2
     },
     {
-      "value": "#f0f4f8",
+      "value": "#FFFFFF",
       "count": 1
     },
     {
-      "value": "#1a365d",
+      "value": "#888",
       "count": 1
     },
     {
-      "value": "#4a5568",
-      "count": 1
-    },
-    {
-      "value": "#48bb78",
-      "count": 1
-    },
-    {
-      "value": "#0369a1",
-      "count": 1
-    },
-    {
-      "value": "#e0f2fe",
-      "count": 1
-    },
-    {
-      "value": "#0284c7",
+      "value": "#fafafa",
       "count": 1
     }
   ],
   "topSpacing": [
-    {
-      "value": "12px",
-      "count": 3
-    },
     {
       "value": "16px",
       "count": 3
@@ -132,6 +117,10 @@
     {
       "value": "8px",
       "count": 3
+    },
+    {
+      "value": "12px",
+      "count": 2
     },
     {
       "value": "13px",
@@ -160,103 +149,35 @@
       "count": 21
     },
     {
-      "file": "packages/twenty-front-component-renderer/src/__stories__/showcase/static.front-component.tsx",
-      "count": 4
+      "file": "packages/twenty-companion/src/renderer/style.css",
+      "count": 9
     },
     {
-      "file": "packages/twenty-front-component-renderer/src/__stories__/showcase/sdk-context-example.front-component.tsx",
-      "count": 4
+      "file": "packages/twenty-docs/custom.css",
+      "count": 6
     },
     {
-      "file": "packages/twenty-front-component-renderer/src/__stories__/showcase/lifecycle.front-component.tsx",
-      "count": 4
+      "file": "packages/twenty-ui/src/primitives/data-display/Avatar/Avatar.module.scss",
+      "count": 5
     },
     {
-      "file": "packages/twenty-front-component-renderer/src/__stories__/showcase/interactive.front-component.tsx",
-      "count": 4
-    },
-    {
-      "file": "packages/twenty-website/src/platform/visuals/halftone-studio/studio/controls/ExportTab.tsx",
-      "count": 4
-    },
-    {
-      "file": "packages/twenty-front-component-renderer/src/__stories__/showcase/mui-example.front-component.tsx",
+      "file": "packages/twenty-ui/src/primitives/input/SegmentedControl/SegmentedControl.module.scss",
       "count": 3
     },
     {
-      "file": "packages/twenty-front-component-renderer/src/__stories__/showcase/emotion-example.front-component.tsx",
-      "count": 3
+      "file": "packages/twenty-companion/src/renderer/components/OnboardingText.module.scss",
+      "count": 2
+    },
+    {
+      "file": "packages/twenty-front/src/index.css",
+      "count": 2
+    },
+    {
+      "file": "packages/twenty-ui/src/components/feedback/Callout/Callout.module.scss",
+      "count": 2
     }
   ],
   "samples": [
-    {
-      "component": "StaticComponent",
-      "location": "packages/twenty-front-component-renderer/src/__stories__/showcase/static.front-component.tsx:3",
-      "entries": [
-        "backgroundColor: #f0f4f8 (line 8)",
-        "color: #1a365d (line 13)",
-        "color: #4a5568 (line 16)"
-      ]
-    },
-    {
-      "component": "SdkContextComponent",
-      "location": "packages/twenty-front-component-renderer/src/__stories__/showcase/sdk-context-example.front-component.tsx:35",
-      "entries": [
-        "color: #0369a1 (line 46)",
-        "background: #e0f2fe (line 69)",
-        "backgroundColor: #0284c7 (line 85)"
-      ]
-    },
-    {
-      "component": "MuiComponent",
-      "location": "packages/twenty-front-component-renderer/src/__stories__/showcase/mui-example.front-component.tsx:6",
-      "entries": [
-        "backgroundColor: #e3f2fd (line 15)",
-        "color: #1565c0 (line 28)",
-        "color: #1976d2 (line 37)"
-      ]
-    },
-    {
-      "component": "LifecycleComponent",
-      "location": "packages/twenty-front-component-renderer/src/__stories__/showcase/lifecycle.front-component.tsx:4",
-      "entries": [
-        "backgroundColor: #fffaf0 (line 21)",
-        "color: #c05621 (line 28)",
-        "backgroundColor: #bee3f8 (line 54)"
-      ]
-    },
-    {
-      "component": "InteractiveComponent",
-      "location": "packages/twenty-front-component-renderer/src/__stories__/showcase/interactive.front-component.tsx:4",
-      "entries": [
-        "backgroundColor: #faf5ff (line 12)",
-        "color: #553c9a (line 19)",
-        "color: #6b46c1 (line 32)"
-      ]
-    },
-    {
-      "component": "GeometryMeasureComponent",
-      "location": "packages/twenty-front-component-renderer/src/__stories__/showcase/geometry-measure.front-component.tsx:7",
-      "entries": [
-        "backgroundColor: #dbeafe (line 50)"
-      ]
-    },
-    {
-      "component": "EmotionComponent",
-      "location": "packages/twenty-front-component-renderer/src/__stories__/showcase/emotion-example.front-component.tsx:72",
-      "entries": [
-        "color: #eab308 (line 82)",
-        "color: #a855f7 (line 83)",
-        "color: #f97316 (line 84)"
-      ]
-    },
-    {
-      "component": "NavigationMenuItemIconWithOverlay",
-      "location": "packages/twenty-front/src/modules/navigation-menu-item/display/components/NavigationMenuItemIconWithOverlay.tsx:36",
-      "entries": [
-        "size: 12px (line 47)"
-      ]
-    },
     {
       "component": "CategoryCard",
       "location": "packages/create-twenty-app/src/constants/template/src/front-components/main-page.tsx:81",
@@ -291,7 +212,71 @@
         "padding: 40px (line 204)",
         "fontSize: 24px (line 210)"
       ]
+    },
+    {
+      "component": "NavigationMenuItemIconWithOverlay",
+      "location": "packages/twenty-front/src/modules/navigation-menu-item/display/components/NavigationMenuItemIconWithOverlay.tsx:36",
+      "entries": [
+        "size: 12px (line 47)"
+      ]
+    },
+    {
+      "component": "LinkIconWithLinkOverlay",
+      "location": "packages/twenty-front/src/modules/navigation-menu-item/display/link/components/LinkIconWithLinkOverlay.tsx:51",
+      "entries": [
+        "size: 14px (line 84)"
+      ]
+    },
+    {
+      "component": "packages/twenty-companion/src/renderer/components/OnboardingText.module.scss",
+      "location": "packages/twenty-companion/src/renderer/components/OnboardingText.module.scss:6",
+      "entries": [
+        "line height: 1.2 (line 6)",
+        "line height: 1.4 (line 14)"
+      ]
+    },
+    {
+      "component": "packages/twenty-companion/src/renderer/style.css",
+      "location": "packages/twenty-companion/src/renderer/style.css:6",
+      "entries": [
+        "font size: 13px (line 6)",
+        "line height: 1.45 (line 8)",
+        "line height: 1.3 (line 49)"
+      ]
+    },
+    {
+      "component": "packages/twenty-docs/custom.css",
+      "location": "packages/twenty-docs/custom.css:3",
+      "entries": [
+        "colour: #141414 (line 3)",
+        "colour: #ffffff (line 4)",
+        "radius: 8px (line 6)"
+      ]
+    },
+    {
+      "component": "packages/twenty-front/src/index.css",
+      "location": "packages/twenty-front/src/index.css:14",
+      "entries": [
+        "font size: 13px (line 14)",
+        "font size: 13px (line 44)"
+      ]
+    },
+    {
+      "component": "packages/twenty-ui/src/components/feedback/Callout/Callout.module.scss",
+      "location": "packages/twenty-ui/src/components/feedback/Callout/Callout.module.scss:87",
+      "entries": [
+        "line height: 1.4 (line 87)",
+        "line height: 1.4 (line 111)"
+      ]
+    },
+    {
+      "component": "packages/twenty-ui/src/components/input/ColorSchemePicker/internal/ColorSchemeCard/ColorSchemeCard.module.scss",
+      "location": "packages/twenty-ui/src/components/input/ColorSchemePicker/internal/ColorSchemeCard/ColorSchemeCard.module.scss:34",
+      "entries": [
+        "font size: 20px (line 34)",
+        "font size: 22px (line 44)"
+      ]
     }
   ],
-  "scanSeconds": 184
+  "scanSeconds": 161
 }

@@ -8,8 +8,8 @@
   "language": "Elixir",
   "defaultBranch": "master",
   "commit": "b04e601232064aced1b899a71630cba262e9eeee",
-  "generatedAt": "2026-09-24T05:50:55.001Z",
-  "cliVersion": "latest",
+  "generatedAt": "2026-09-24T09:27:20.672Z",
+  "cliVersion": "0.8.4",
   "score": null,
   "tier": "N/A",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 0,
     "tokenCount": 42,
-    "hardcodedValueCount": 0,
+    "hardcodedValueCount": 4,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 0,
+    "totalDriftCount": 4,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -60,16 +60,70 @@
   "suggestions": [
     "Only 0 UI components detected, too few to score. If this repo has more, Buoy may not recognise its framework yet."
   ],
+  "pathTo100": null,
   "driftSummary": {
-    "total": 0,
+    "total": 4,
     "critical": 0,
-    "warning": 0,
+    "warning": 4,
     "info": 0
   },
-  "driftByType": {},
+  "driftByType": {
+    "hardcoded-value": 4
+  },
   "topColors": [],
   "topSpacing": [],
-  "worstFiles": [],
-  "samples": [],
-  "scanSeconds": 7
+  "worstFiles": [
+    {
+      "file": "assets/css/tooltip.css",
+      "count": 5
+    },
+    {
+      "file": "assets/css/app.css",
+      "count": 3
+    },
+    {
+      "file": "assets/css/loader.css",
+      "count": 2
+    },
+    {
+      "file": "assets/css/modal.css",
+      "count": 1
+    }
+  ],
+  "samples": [
+    {
+      "component": "assets/css/app.css",
+      "location": "assets/css/app.css:263",
+      "entries": [
+        "radius: 45px (line 263)",
+        "colour: #9ae6b4 (line 264)",
+        "radius: 15px (line 278)"
+      ]
+    },
+    {
+      "component": "assets/css/loader.css",
+      "location": "assets/css/loader.css:16",
+      "entries": [
+        "colour: #dae1e7 (line 16)",
+        "colour: #606f7b (line 23)"
+      ]
+    },
+    {
+      "component": "assets/css/modal.css",
+      "location": "assets/css/modal.css:30",
+      "entries": [
+        "colour: rgb(0 0 0 / 60%) (line 30)"
+      ]
+    },
+    {
+      "component": "assets/css/tooltip.css",
+      "location": "assets/css/tooltip.css:15",
+      "entries": [
+        "colour: rgba(25 30 56) transparent transparent (line 15)",
+        "colour: rgba(25 30 56) (line 28)",
+        "colour: #fff (line 30)"
+      ]
+    }
+  ],
+  "scanSeconds": 6
 }

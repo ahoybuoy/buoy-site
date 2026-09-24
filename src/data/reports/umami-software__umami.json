@@ -3,22 +3,22 @@
   "owner": "umami-software",
   "name": "umami",
   "description": "Umami is a privacy-first analytics platform. Traffic, campaigns, behavior, conversions, and revenue in one place — no cookies, no surveillance, self-hosted or in the cloud.",
-  "stars": 38981,
+  "stars": 38985,
   "homepage": "https://umami.is",
   "language": "TypeScript",
   "defaultBranch": "master",
   "commit": "ec0ff50388c264ed8ce46f00967e92f7e71476ae",
-  "generatedAt": "2026-09-24T05:51:24.749Z",
-  "cliVersion": "latest",
-  "score": 81,
+  "generatedAt": "2026-09-24T09:27:44.767Z",
+  "cliVersion": "0.8.4",
+  "score": 87,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 53,
+      "score": 51,
       "max": 60
     },
     "tokenHealth": {
-      "score": 8,
+      "score": 16,
       "max": 20
     },
     "consistency": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 508,
     "tokenCount": 11,
-    "hardcodedValueCount": 17,
+    "hardcodedValueCount": 23,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 17,
+    "totalDriftCount": 23,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -58,7 +58,7 @@
       "count": 4
     },
     "worstFile": {
-      "path": "src/components/charts/ChartTooltip.tsx",
+      "path": "src/app/(main)/websites/[websiteId]/settings/SharesTable.tsx",
       "issueCount": 2
     },
     "uniqueSpacingValues": 9,
@@ -68,17 +68,28 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 17 hardcoded values left to tokenize. src/components/charts/ChartTooltip.tsx has the most (2)",
-    "No design token system detected — add CSS custom properties or a utility framework like Tailwind"
+    "Nearly there — just 23 hardcoded values left to tokenize. src/app/(main)/websites/[websiteId]/settings/SharesTable.tsx has the most (2)"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 9,
+      "action": "Replace the hardcoded values in 22 of the 23 findings with tokens or scale steps"
+    },
+    {
+      "pillar": "tokenHealth",
+      "points": 4,
+      "action": "Define 9 more design tokens (11 of the 20 that earn full credit)"
+    }
   ],
   "driftSummary": {
-    "total": 17,
+    "total": 23,
     "critical": 0,
-    "warning": 4,
-    "info": 13
+    "warning": 7,
+    "info": 16
   },
   "driftByType": {
-    "hardcoded-value": 17
+    "hardcoded-value": 23
   },
   "topColors": [],
   "topSpacing": [
@@ -89,10 +100,6 @@
     {
       "value": "24px",
       "count": 3
-    },
-    {
-      "value": "16px",
-      "count": 2
     },
     {
       "value": "8px",
@@ -107,105 +114,67 @@
       "count": 2
     },
     {
-      "value": "3px",
-      "count": 1
+      "value": "16px",
+      "count": 2
     },
     {
       "value": "10.5px",
+      "count": 1
+    },
+    {
+      "value": "14px",
       "count": 1
     }
   ],
   "worstFiles": [
     {
-      "file": "src/components/charts/ChartTooltip.tsx",
-      "count": 4
+      "file": "src/components/common/Badge.module.css",
+      "count": 23
+    },
+    {
+      "file": "src/app/(main)/websites/[websiteId]/(reports)/heatmaps/Heatmap.module.css",
+      "count": 17
+    },
+    {
+      "file": "src/app/(main)/websites/[websiteId]/(reports)/journeys/Journey.module.css",
+      "count": 11
+    },
+    {
+      "file": "src/app/global.css",
+      "count": 10
+    },
+    {
+      "file": "src/components/charts/ChartAnnotationMarkers.module.css",
+      "count": 8
     },
     {
       "file": "src/components/charts/ChartAnnotationMarkers.tsx",
       "count": 4
     },
     {
-      "file": "src/components/share/SharedSharesTable.tsx",
-      "count": 3
+      "file": "src/components/charts/ChartTooltip.tsx",
+      "count": 4
     },
     {
-      "file": "src/app/(main)/websites/[websiteId]/settings/SharesTable.tsx",
-      "count": 2
-    },
-    {
-      "file": "src/components/property-data/PropertyFilters.tsx",
-      "count": 1
-    },
-    {
-      "file": "src/components/metrics/WorldMap.tsx",
-      "count": 1
-    },
-    {
-      "file": "src/components/metrics/WeeklyTraffic.tsx",
-      "count": 1
-    },
-    {
-      "file": "src/components/input/WebsiteFilterButton.tsx",
-      "count": 1
+      "file": "src/components/modals/TwoFactorSuccessModal.module.css",
+      "count": 4
     }
   ],
   "samples": [
     {
-      "component": "SharedSharesTable",
-      "location": "src/components/share/SharedSharesTable.tsx:16",
+      "component": "ChartAnnotationMarkers",
+      "location": "src/components/charts/ChartAnnotationMarkers.tsx:33",
       "entries": [
-        "gap: 16px (line 44)",
-        "marginTop: 8px (line 69)",
-        "marginTop: 12px (line 72)"
+        "backgroundColor: rgba(0,0,0,0.8) (line 82)"
       ]
     },
     {
-      "component": "PropertyFilters",
-      "location": "src/components/property-data/PropertyFilters.tsx:32",
+      "component": "ChartAnnotationMarkers",
+      "location": "src/components/charts/ChartAnnotationMarkers.tsx:33",
       "entries": [
-        "paddingTop: 24px (line 176)"
-      ]
-    },
-    {
-      "component": "WorldMap",
-      "location": "src/components/metrics/WorldMap.tsx:21",
-      "entries": [
-        "backgroundColor: rgba(0,0,0,0.8) (line 105)"
-      ]
-    },
-    {
-      "component": "WeeklyTraffic",
-      "location": "src/components/metrics/WeeklyTraffic.tsx:8",
-      "entries": [
-        "backgroundColor: rgba(0,0,0,0.8) (line 110)"
-      ]
-    },
-    {
-      "component": "WebsiteFilterButton",
-      "location": "src/components/input/WebsiteFilterButton.tsx:13",
-      "entries": [
-        "marginTop: 3px (line 86)"
-      ]
-    },
-    {
-      "component": "SegmentSaveButton",
-      "location": "src/components/input/SegmentSaveButton.tsx:6",
-      "entries": [
-        "padding: 32px (line 26)"
-      ]
-    },
-    {
-      "component": "FilterBar",
-      "location": "src/components/input/FilterBar.tsx:28",
-      "entries": [
-        "padding: 32px (line 190)"
-      ]
-    },
-    {
-      "component": "FieldFilters",
-      "location": "src/components/input/FieldFilters.tsx:34",
-      "entries": [
-        "paddingTop: 24px (line 179)"
+        "gap: 8px (line 85)",
+        "padding: 12px (line 86)",
+        "fontSize: 12.25px (line 94)"
       ]
     },
     {
@@ -225,21 +194,63 @@
       ]
     },
     {
-      "component": "ChartAnnotationMarkers",
-      "location": "src/components/charts/ChartAnnotationMarkers.tsx:33",
+      "component": "FieldFilters",
+      "location": "src/components/input/FieldFilters.tsx:34",
       "entries": [
-        "backgroundColor: rgba(0,0,0,0.8) (line 82)"
+        "paddingTop: 24px (line 179)"
       ]
     },
     {
-      "component": "ChartAnnotationMarkers",
-      "location": "src/components/charts/ChartAnnotationMarkers.tsx:33",
+      "component": "FilterBar",
+      "location": "src/components/input/FilterBar.tsx:28",
       "entries": [
-        "gap: 8px (line 85)",
-        "padding: 12px (line 86)",
-        "fontSize: 12.25px (line 94)"
+        "padding: 32px (line 190)"
+      ]
+    },
+    {
+      "component": "SegmentSaveButton",
+      "location": "src/components/input/SegmentSaveButton.tsx:6",
+      "entries": [
+        "padding: 32px (line 26)"
+      ]
+    },
+    {
+      "component": "WebsiteFilterButton",
+      "location": "src/components/input/WebsiteFilterButton.tsx:13",
+      "entries": [
+        "marginTop: 3px (line 86)"
+      ]
+    },
+    {
+      "component": "WeeklyTraffic",
+      "location": "src/components/metrics/WeeklyTraffic.tsx:8",
+      "entries": [
+        "backgroundColor: rgba(0,0,0,0.8) (line 110)"
+      ]
+    },
+    {
+      "component": "WorldMap",
+      "location": "src/components/metrics/WorldMap.tsx:21",
+      "entries": [
+        "backgroundColor: rgba(0,0,0,0.8) (line 105)"
+      ]
+    },
+    {
+      "component": "PropertyFilters",
+      "location": "src/components/property-data/PropertyFilters.tsx:32",
+      "entries": [
+        "paddingTop: 24px (line 176)"
+      ]
+    },
+    {
+      "component": "SharedSharesTable",
+      "location": "src/components/share/SharedSharesTable.tsx:16",
+      "entries": [
+        "gap: 16px (line 44)",
+        "marginTop: 8px (line 69)",
+        "marginTop: 12px (line 72)"
       ]
     }
   ],
-  "scanSeconds": 29
+  "scanSeconds": 24
 }

@@ -3,13 +3,13 @@
   "owner": "triggerdotdev",
   "name": "trigger.dev",
   "description": "Trigger.dev – build and deploy durable AI agents and workflows",
-  "stars": 16387,
+  "stars": 16390,
   "homepage": "https://trigger.dev/changelog",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "c2b7a72180bbb2dcbc31caa8539e0ca8f8e9e9b8",
-  "generatedAt": "2026-09-24T06:02:09.433Z",
-  "cliVersion": "latest",
+  "generatedAt": "2026-09-24T09:35:44.844Z",
+  "cliVersion": "0.8.4",
   "score": 90,
   "tier": "Great",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 1696,
     "tokenCount": 273,
-    "hardcodedValueCount": 84,
+    "hardcodedValueCount": 86,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 84,
+    "totalDriftCount": 86,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -54,11 +54,11 @@
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
     "topHardcodedColor": {
-      "value": "#10B981",
+      "value": "#14B8A6",
       "count": 1
     },
     "worstFile": {
-      "path": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.runs.$runParam/route.tsx",
+      "path": "apps/webapp/app/components/primitives/Buttons.tsx",
       "issueCount": 2
     },
     "uniqueSpacingValues": 1,
@@ -71,16 +71,23 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 84 hardcoded values left to tokenize. apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.runs.$runParam/route.tsx has the most (2)"
+    "Nearly there — just 86 hardcoded values left to tokenize. apps/webapp/app/components/primitives/Buttons.tsx has the most (2)"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 10,
+      "action": "Replace the hardcoded values in 82 of the 86 findings with tokens or scale steps"
+    }
   ],
   "driftSummary": {
-    "total": 84,
+    "total": 86,
     "critical": 0,
-    "warning": 8,
+    "warning": 10,
     "info": 76
   },
   "driftByType": {
-    "hardcoded-value": 84
+    "hardcoded-value": 86
   },
   "topColors": [
     {
@@ -88,11 +95,11 @@
       "count": 2
     },
     {
-      "value": "#10B981",
+      "value": "#14B8A6",
       "count": 1
     },
     {
-      "value": "#14B8A6",
+      "value": "#10B981",
       "count": 1
     },
     {
@@ -104,7 +111,7 @@
       "count": 1
     },
     {
-      "value": "#c678dd",
+      "value": "#2F1D24",
       "count": 1
     },
     {
@@ -112,7 +119,7 @@
       "count": 1
     },
     {
-      "value": "#2F1D24",
+      "value": "#c678dd",
       "count": 1
     }
   ],
@@ -134,11 +141,11 @@
       "count": 3
     },
     {
-      "value": "0.4rem",
+      "value": "6px",
       "count": 2
     },
     {
-      "value": "6px",
+      "value": "0.4rem",
       "count": 2
     },
     {
@@ -146,7 +153,7 @@
       "count": 2
     },
     {
-      "value": "0.15rem",
+      "value": "2.9rem",
       "count": 1
     }
   ],
@@ -160,8 +167,8 @@
       "count": 6
     },
     {
-      "file": "apps/webapp/app/routes/admin.data-stores.tsx",
-      "count": 5
+      "file": "apps/webapp/app/tailwind.css",
+      "count": 6
     },
     {
       "file": "apps/webapp/app/components/dashboard-agent/InvestigationCard.tsx",
@@ -172,24 +179,24 @@
       "count": 5
     },
     {
-      "file": "apps/webapp/app/components/navigation/SideMenuItem.tsx",
-      "count": 4
+      "file": "apps/webapp/app/routes/admin.data-stores.tsx",
+      "count": 5
     },
     {
       "file": "apps/webapp/app/components/navigation/EnvironmentSelector.tsx",
       "count": 4
     },
     {
-      "file": "apps/webapp/app/components/primitives/ShortcutKey.tsx",
+      "file": "apps/webapp/app/components/navigation/SideMenuItem.tsx",
       "count": 4
     }
   ],
   "samples": [
     {
-      "component": "YourModelsTab",
-      "location": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.models._index/route.tsx:1219",
+      "component": "ResizableHandle",
+      "location": "apps/webapp/app/components/primitives/Resizable.tsx:39",
       "entries": [
-        "color: #10B981 (line 1409)"
+        "size: 3px (line 67)"
       ]
     },
     {
@@ -200,10 +207,10 @@
       ]
     },
     {
-      "component": "ResizableHandle",
-      "location": "apps/webapp/app/components/primitives/Resizable.tsx:39",
+      "component": "YourModelsTab",
+      "location": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.models._index/route.tsx:1219",
       "entries": [
-        "size: 3px (line 67)"
+        "color: #10B981 (line 1409)"
       ]
     },
     {
@@ -214,68 +221,63 @@
       ]
     },
     {
-      "component": "apps/webapp/app/routes/resources.branches.archive.tsx",
-      "location": "apps/webapp/app/routes/resources.branches.archive.tsx:120",
+      "component": "apps/webapp/app/components/code/CodeBlock.tsx",
+      "location": "apps/webapp/app/components/code/CodeBlock.tsx:383",
       "entries": [
-        "py-[0.9rem] (line 120)"
+        "pt-[2.9rem] (line 383)"
       ]
     },
     {
-      "component": "apps/webapp/app/routes/admin.notifications.tsx",
-      "location": "apps/webapp/app/routes/admin.notifications.tsx:1686",
+      "component": "apps/webapp/app/components/dashboard-agent/DashboardAgentChat.tsx",
+      "location": "apps/webapp/app/components/dashboard-agent/DashboardAgentChat.tsx:662",
       "entries": [
-        "text-[11px] (line 1686)",
-        "text-[11px] (line 1754)"
+        "mr-[6px] (line 662)"
       ]
     },
     {
-      "component": "apps/webapp/app/routes/admin.llm-models._index.tsx",
-      "location": "apps/webapp/app/routes/admin.llm-models._index.tsx:316",
+      "component": "apps/webapp/app/components/dashboard-agent/DashboardAgentComposer.tsx",
+      "location": "apps/webapp/app/components/dashboard-agent/DashboardAgentComposer.tsx:143",
       "entries": [
-        "text-[11px] (line 316)"
+        "leading-[1.5] (line 143)"
       ]
     },
     {
-      "component": "apps/webapp/app/routes/admin.llm-models.$modelId.tsx",
-      "location": "apps/webapp/app/routes/admin.llm-models.$modelId.tsx:212",
+      "component": "apps/webapp/app/components/dashboard-agent/InvestigationCard.tsx",
+      "location": "apps/webapp/app/components/dashboard-agent/InvestigationCard.tsx:82",
       "entries": [
-        "text-[11px] (line 212)"
+        "text-[10px] (line 82)",
+        "text-[10px] (line 87)",
+        "text-[11px] (line 90)"
       ]
     },
     {
-      "component": "apps/webapp/app/routes/admin.data-stores.tsx",
-      "location": "apps/webapp/app/routes/admin.data-stores.tsx:221",
+      "component": "apps/webapp/app/components/dashboard-agent/ReportView.tsx",
+      "location": "apps/webapp/app/components/dashboard-agent/ReportView.tsx:441",
       "entries": [
-        "text-[11px] (line 221)",
-        "text-[11px] (line 369)",
-        "text-[11px] (line 436)"
+        "pl-[1.375rem] (line 441)"
       ]
     },
     {
-      "component": "apps/webapp/app/components/schedules/SchedulesUsageBar.tsx",
-      "location": "apps/webapp/app/components/schedules/SchedulesUsageBar.tsx:39",
+      "component": "apps/webapp/app/components/dashboard-agent/WatchChips.tsx",
+      "location": "apps/webapp/app/components/dashboard-agent/WatchChips.tsx:83",
       "entries": [
-        "p-[0.86rem] (line 39)"
+        "text-[10px] (line 83)"
       ]
     },
     {
-      "component": "apps/webapp/app/components/navigation/SideMenuItem.tsx",
-      "location": "apps/webapp/app/components/navigation/SideMenuItem.tsx:166",
+      "component": "apps/webapp/app/components/dashboard-agent/demo/components/DemoIntentBubble.tsx",
+      "location": "apps/webapp/app/components/dashboard-agent/demo/components/DemoIntentBubble.tsx:50",
       "entries": [
-        "text-[0.90625rem] (line 166)",
-        "tracking-[-0.01em] (line 166)",
-        "text-[0.90625rem] (line 273)"
+        "text-[10px] (line 50)"
       ]
     },
     {
-      "component": "apps/webapp/app/components/navigation/SideMenu.tsx",
-      "location": "apps/webapp/app/components/navigation/SideMenu.tsx:1256",
+      "component": "apps/webapp/app/components/dashboard-agent/report-sparkline.tsx",
+      "location": "apps/webapp/app/components/dashboard-agent/report-sparkline.tsx:460",
       "entries": [
-        "text-[0.90625rem] (line 1256)",
-        "tracking-[-0.01em] (line 1256)",
-        "text-[0.90625rem] (line 1480)"
+        "text-[10px] (line 460)"
       ]
     }
   ],
-  "scanSeconds": 94
+  "scanSeconds": 46
 }

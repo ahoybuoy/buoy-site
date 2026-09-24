@@ -8,9 +8,9 @@
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "51587319f26a0ffaa9dfccab1920373cb65689b7",
-  "generatedAt": "2026-09-24T05:45:11.595Z",
-  "cliVersion": "latest",
-  "score": 30,
+  "generatedAt": "2026-09-24T09:22:35.250Z",
+  "cliVersion": "0.8.4",
+  "score": 38,
   "tier": "Bad",
   "pillars": {
     "valueDiscipline": {
@@ -26,22 +26,22 @@
       "max": 10
     },
     "criticalIssues": {
-      "score": 0,
+      "score": 8,
       "max": 10
     }
   },
   "metrics": {
     "componentCount": 1412,
     "tokenCount": 167,
-    "hardcodedValueCount": 448,
+    "hardcodedValueCount": 452,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
-    "criticalCount": 10,
+    "criticalCount": 1,
     "accessibilityConflictCount": 0,
-    "colorContrastCount": 10,
+    "colorContrastCount": 1,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 461,
+    "totalDriftCount": 456,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 3,
     "orphanedComponentCount": 0,
@@ -59,7 +59,7 @@
     },
     "worstFile": {
       "path": "packages/ui/src/components/animations/chat-demo-animation.tsx",
-      "issueCount": 23
+      "issueCount": 14
     },
     "uniqueSpacingValues": 3,
     "detectedFrameworkNames": [
@@ -70,19 +70,31 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 421 hardcoded values left to tokenize. packages/ui/src/components/animations/chat-demo-animation.tsx has the most (23)",
+    "425 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on packages/ui/src/components/animations/chat-demo-animation.tsx (14 issues)",
     "27 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
-    "10 color contrast issues — fix immediately"
+    "1 color contrast issue — fix immediately"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 60,
+      "action": "Replace the hardcoded values in 422 of the 425 findings with tokens or scale steps, and remove or reuse 3 unused components and repeated patterns"
+    },
+    {
+      "pillar": "criticalIssues",
+      "points": 2,
+      "action": "Fix 1 colour contrast failure"
+    }
   ],
   "driftSummary": {
-    "total": 461,
-    "critical": 10,
-    "warning": 259,
-    "info": 192
+    "total": 456,
+    "critical": 1,
+    "warning": 262,
+    "info": 193
   },
   "driftByType": {
-    "hardcoded-value": 448,
-    "color-contrast": 10,
+    "hardcoded-value": 452,
+    "color-contrast": 1,
     "repeated-pattern": 3
   },
   "topColors": [
@@ -125,11 +137,11 @@
       "count": 44
     },
     {
-      "value": "5px",
+      "value": "15px",
       "count": 3
     },
     {
-      "value": "15px",
+      "value": "5px",
       "count": 3
     },
     {
@@ -145,11 +157,11 @@
       "count": 2
     },
     {
-      "value": ".325em",
+      "value": "8px",
       "count": 2
     },
     {
-      "value": "8px",
+      "value": ".325em",
       "count": 2
     }
   ],
@@ -196,17 +208,11 @@
       ]
     },
     {
-      "component": "StartPage",
-      "location": "apps/website/src/components/startpage.tsx:130",
+      "component": "TransactionStatus",
+      "location": "apps/dashboard/src/components/transaction-status.tsx:71",
       "entries": [
-        "marginTop: 0.125rem (line 773)"
-      ]
-    },
-    {
-      "component": "PreAccounting",
-      "location": "apps/website/src/components/pre-accounting.tsx:40",
-      "entries": [
-        "marginTop: 0.125rem (line 271)"
+        "color: #f44336 (line 94)",
+        "color: #ff9800 (line 126)"
       ]
     },
     {
@@ -217,18 +223,25 @@
       ]
     },
     {
-      "component": "TransactionStatus",
-      "location": "apps/dashboard/src/components/transaction-status.tsx:71",
+      "component": "PreAccounting",
+      "location": "apps/website/src/components/pre-accounting.tsx:40",
       "entries": [
-        "color: #f44336 (line 94)",
-        "color: #ff9800 (line 126)"
+        "marginTop: 0.125rem (line 271)"
       ]
     },
     {
-      "component": "Timeline",
-      "location": "packages/workbench/src/ui/pages/job.tsx:554",
+      "component": "StartPage",
+      "location": "apps/website/src/components/startpage.tsx:130",
       "entries": [
-        "paddingLeft: 12px (line 804)"
+        "marginTop: 0.125rem (line 773)"
+      ]
+    },
+    {
+      "component": "PdfTemplate",
+      "location": "packages/invoice/src/templates/pdf/index.tsx:60",
+      "entries": [
+        "backgroundColor: #fff (line 108)",
+        "color: #000 (line 109)"
       ]
     },
     {
@@ -282,5 +295,5 @@
       ]
     }
   ],
-  "scanSeconds": 70
+  "scanSeconds": 43
 }

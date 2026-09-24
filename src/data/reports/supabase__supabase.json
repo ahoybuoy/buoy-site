@@ -3,14 +3,14 @@
   "owner": "supabase",
   "name": "supabase",
   "description": "The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications.",
-  "stars": 110711,
+  "stars": 110719,
   "homepage": "https://supabase.com",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "38fa40e851ec541ff51b5c9eb5e569442c1fac13",
-  "generatedAt": "2026-09-24T05:41:05.539Z",
-  "cliVersion": "latest",
-  "score": 32,
+  "commit": "d3f3903b69a821b2ed2caf22e146050576a847d9",
+  "generatedAt": "2026-09-24T09:19:40.515Z",
+  "cliVersion": "0.8.4",
+  "score": 38,
   "tier": "Bad",
   "pillars": {
     "valueDiscipline": {
@@ -26,25 +26,25 @@
       "max": 10
     },
     "criticalIssues": {
-      "score": 2,
+      "score": 8,
       "max": 10
     }
   },
   "metrics": {
-    "componentCount": 4578,
+    "componentCount": 4583,
     "tokenCount": 1158,
-    "hardcodedValueCount": 294,
+    "hardcodedValueCount": 337,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
-    "criticalCount": 2,
+    "criticalCount": 0,
     "accessibilityConflictCount": 0,
-    "colorContrastCount": 2,
+    "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 4875,
+    "totalDriftCount": 4921,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 7,
-    "orphanedComponentCount": 4570,
+    "orphanedComponentCount": 4575,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 2,
     "orphanedTokenCount": 0,
@@ -72,23 +72,33 @@
     ]
   },
   "suggestions": [
-    "287 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/www/app/(home)/_components/logos/PublicityLogos.tsx (33 issues)",
+    "330 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/www/app/(home)/_components/logos/PublicityLogos.tsx (33 issues)",
     "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
     "7 repeated patterns — extract to shared components",
-    "2 color contrast issues — fix immediately",
     "2 deprecated patterns — migrate to current API"
   ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 60,
+      "action": "Replace the hardcoded values in 319 of the 330 findings with tokens or scale steps, and remove or reuse 4582 unused components and repeated patterns"
+    },
+    {
+      "pillar": "criticalIssues",
+      "points": 2,
+      "action": "Migrate 2 deprecated patterns"
+    }
+  ],
   "driftSummary": {
-    "total": 4486,
-    "critical": 2,
-    "warning": 4238,
-    "info": 246
+    "total": 4492,
+    "critical": 0,
+    "warning": 4231,
+    "info": 261
   },
   "driftByType": {
-    "hardcoded-value": 291,
     "deprecated-pattern": 2,
-    "color-contrast": 2,
-    "orphaned-component": 4184,
+    "hardcoded-value": 337,
+    "orphaned-component": 4146,
     "repeated-pattern": 7
   },
   "topColors": [
@@ -113,15 +123,15 @@
       "count": 8
     },
     {
+      "value": "#f8f3ef",
+      "count": 7
+    },
+    {
       "value": "#F4FFFA",
       "count": 7
     },
     {
       "value": "#232323",
-      "count": 7
-    },
-    {
-      "value": "#f8f3ef",
       "count": 7
     }
   ],
@@ -161,6 +171,18 @@
   ],
   "worstFiles": [
     {
+      "file": "examples/todo-list/sveltejs-todo-list/src/assets/app.css",
+      "count": 68
+    },
+    {
+      "file": "packages/config/code-hike.css",
+      "count": 66
+    },
+    {
+      "file": "examples/todo-list/nextjs-todo-list/styles/app.css",
+      "count": 48
+    },
+    {
       "file": "apps/www/app/(products)/auth/_components/FeaturesSection.tsx",
       "count": 40
     },
@@ -173,24 +195,12 @@
       "count": 36
     },
     {
-      "file": "apps/www/components/LaunchWeek/8/Releases/index.tsx",
-      "count": 17
+      "file": "examples/user-management/sveltekit-user-management/src/styles.css",
+      "count": 25
     },
     {
-      "file": "packages/ui-patterns/src/Banners/Select26Banner.tsx",
-      "count": 16
-    },
-    {
-      "file": "apps/www/app/(products)/database/_components/FeaturesSection.tsx",
-      "count": 15
-    },
-    {
-      "file": "apps/www/components/Pricing/PricingPlans.tsx",
-      "count": 15
-    },
-    {
-      "file": "apps/www/app/state-of-startups/register/RegisterContent.tsx",
-      "count": 10
+      "file": "apps/www/styles/realtime.module.css",
+      "count": 24
     }
   ],
   "samples": [
@@ -210,14 +220,6 @@
       ]
     },
     {
-      "component": "HelpPanel",
-      "location": "apps/studio/components/ui/HelpPanel/HelpPanel.tsx:23",
-      "entries": [
-        "background: #404EED (line 105)",
-        "color: #404EED (line 128)"
-      ]
-    },
-    {
       "component": "DiscordCTACard",
       "location": "apps/studio/components/interfaces/Support/DiscordCTACard.tsx:15",
       "entries": [
@@ -226,16 +228,44 @@
       ]
     },
     {
-      "component": "PartnerCatalogDetail",
-      "location": "apps/www/app/partners/catalog/[slug]/PartnerCatalogDetail.tsx:39",
+      "component": "HelpPanel",
+      "location": "apps/studio/components/ui/HelpPanel/HelpPanel.tsx:23",
       "entries": [
-        "fontSize: 1.5rem (line 251)",
-        "marginBottom: 1rem (line 251)"
+        "background: #404EED (line 105)",
+        "color: #404EED (line 128)"
       ]
     },
     {
-      "component": "PermissionsSectionClient",
-      "location": "apps/www/app/(products)/storage/_components/PermissionsSectionClient.tsx:18",
+      "component": "ApiSectionClient",
+      "location": "apps/www/app/(products)/auth/_components/ApiSectionClient.tsx:25",
+      "entries": [
+        "fontSize: 0.8125rem (line 159)"
+      ]
+    },
+    {
+      "component": "RLSSectionClient",
+      "location": "apps/www/app/(products)/auth/_components/RLSSectionClient.tsx:18",
+      "entries": [
+        "fontSize: 0.8125rem (line 157)"
+      ]
+    },
+    {
+      "component": "ApiSectionClient",
+      "location": "apps/www/app/(products)/database/_components/ApiSectionClient.tsx:25",
+      "entries": [
+        "fontSize: 0.8125rem (line 147)"
+      ]
+    },
+    {
+      "component": "IntegratesSectionClient",
+      "location": "apps/www/app/(products)/edge-functions/_components/IntegratesSectionClient.tsx:24",
+      "entries": [
+        "fontSize: 0.8125rem (line 160)"
+      ]
+    },
+    {
+      "component": "ApiSectionClient",
+      "location": "apps/www/app/(products)/realtime/_components/ApiSectionClient.tsx:24",
       "entries": [
         "fontSize: 0.8125rem (line 146)"
       ]
@@ -248,40 +278,20 @@
       ]
     },
     {
-      "component": "ApiSectionClient",
-      "location": "apps/www/app/(products)/realtime/_components/ApiSectionClient.tsx:24",
+      "component": "PermissionsSectionClient",
+      "location": "apps/www/app/(products)/storage/_components/PermissionsSectionClient.tsx:18",
       "entries": [
         "fontSize: 0.8125rem (line 146)"
       ]
     },
     {
-      "component": "IntegratesSectionClient",
-      "location": "apps/www/app/(products)/edge-functions/_components/IntegratesSectionClient.tsx:24",
+      "component": "PartnerCatalogDetail",
+      "location": "apps/www/app/partners/catalog/[slug]/PartnerCatalogDetail.tsx:39",
       "entries": [
-        "fontSize: 0.8125rem (line 160)"
-      ]
-    },
-    {
-      "component": "ApiSectionClient",
-      "location": "apps/www/app/(products)/database/_components/ApiSectionClient.tsx:25",
-      "entries": [
-        "fontSize: 0.8125rem (line 147)"
-      ]
-    },
-    {
-      "component": "RLSSectionClient",
-      "location": "apps/www/app/(products)/auth/_components/RLSSectionClient.tsx:18",
-      "entries": [
-        "fontSize: 0.8125rem (line 157)"
-      ]
-    },
-    {
-      "component": "ApiSectionClient",
-      "location": "apps/www/app/(products)/auth/_components/ApiSectionClient.tsx:25",
-      "entries": [
-        "fontSize: 0.8125rem (line 159)"
+        "fontSize: 1.5rem (line 251)",
+        "marginBottom: 1rem (line 251)"
       ]
     }
   ],
-  "scanSeconds": 231
+  "scanSeconds": 185
 }

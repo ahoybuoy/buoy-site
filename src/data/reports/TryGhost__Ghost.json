@@ -7,14 +7,14 @@
   "homepage": "https://ghost.org",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "33fbb7f603cf55c27baeeb9d3d59b4939e0a68c6",
-  "generatedAt": "2026-09-24T06:15:31.443Z",
-  "cliVersion": "0.8.1",
-  "score": 64,
+  "commit": "847186f2251c0ddb7afc35eeb9962baa00994048",
+  "generatedAt": "2026-09-24T09:30:02.034Z",
+  "cliVersion": "0.8.4",
+  "score": 61,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 32,
+      "score": 21,
       "max": 60
     },
     "tokenHealth": {
@@ -26,14 +26,14 @@
       "max": 10
     },
     "criticalIssues": {
-      "score": 2,
+      "score": 10,
       "max": 10
     }
   },
   "metrics": {
     "componentCount": 1686,
     "tokenCount": 757,
-    "hardcodedValueCount": 248,
+    "hardcodedValueCount": 339,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 248,
+    "totalDriftCount": 339,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,8 +53,12 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 13,
     "vendoredDriftCount": 8,
+    "topHardcodedColor": {
+      "value": "#000.",
+      "count": 1
+    },
     "worstFile": {
-      "path": "apps/admin/src/settings/layout/sidebar.tsx",
+      "path": "apps/activitypub/src/views/inbox/components/customizer.tsx",
       "issueCount": 4
     },
     "uniqueSpacingValues": 4,
@@ -67,17 +71,24 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 240 hardcoded values left to tokenize. apps/admin/src/settings/layout/sidebar.tsx has the most (4)",
+    "Nearly there — just 331 hardcoded values left to tokenize. apps/activitypub/src/views/inbox/components/customizer.tsx has the most (4)",
     "8 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 39,
+      "action": "Replace the hardcoded values in 327 of the 331 findings with tokens or scale steps"
+    }
+  ],
   "driftSummary": {
-    "total": 248,
+    "total": 339,
     "critical": 0,
-    "warning": 30,
-    "info": 218
+    "warning": 114,
+    "info": 225
   },
   "driftByType": {
-    "hardcoded-value": 248
+    "hardcoded-value": 339
   },
   "topColors": [
     {
@@ -93,12 +104,16 @@
       "count": 6
     },
     {
+      "value": "#16181c",
+      "count": 5
+    },
+    {
       "value": "#23262c",
       "count": 5
     },
     {
-      "value": "#16181c",
-      "count": 5
+      "value": "#151719",
+      "count": 4
     },
     {
       "value": "#6a6f78",
@@ -106,10 +121,6 @@
     },
     {
       "value": "#17191d",
-      "count": 4
-    },
-    {
-      "value": "#355070",
       "count": 4
     }
   ],
@@ -149,44 +160,44 @@
   ],
   "worstFiles": [
     {
-      "file": "apps/admin/src/settings/site/theme/theme-code-editor-modal.tsx",
-      "count": 53
+      "file": "apps/ember-admin/app/styles/layouts/members.css",
+      "count": 236
     },
     {
-      "file": "apps/admin/src/settings/site/theme/theme-file-tree.tsx",
-      "count": 26
+      "file": "apps/ember-admin/app/styles/layouts/editor.css",
+      "count": 138
     },
     {
-      "file": "koenig/koenig-lexical/src/components/ui/cards/SignupCard.tsx",
-      "count": 25
+      "file": "apps/ember-admin/app/styles/layouts/post-preview.css",
+      "count": 135
     },
     {
-      "file": "koenig/koenig-lexical/src/components/ui/cards/HeaderCard/v2/HeaderCard.tsx",
-      "count": 24
+      "file": "apps/ember-admin/app/styles/components/publishmenu.css",
+      "count": 114
     },
     {
-      "file": "apps/activitypub/src/views/inbox/components/customizer.tsx",
-      "count": 21
+      "file": "apps/ember-admin/app/styles/layouts/content.css",
+      "count": 103
     },
     {
-      "file": "apps/admin/src/onboarding/components/onboarding-checklist.tsx",
-      "count": 19
+      "file": "apps/ember-admin/app/styles/spirit/_debug.css",
+      "count": 99
     },
     {
-      "file": "apps/admin/src/settings/membership/member-emails/member-email-editor.tsx",
-      "count": 19
+      "file": "apps/ember-admin/app/styles/layouts/main.css",
+      "count": 90
     },
     {
-      "file": "apps/admin/src/automations/components/email-modal/email-editor.tsx",
-      "count": 19
+      "file": "koenig/kg-simplemde/debug/simplemde.css",
+      "count": 87
     }
   ],
   "samples": [
     {
-      "component": "NewsletterSelectionPage",
-      "location": "apps/portal/src/components/pages/newsletter-selection-page.jsx:97",
+      "component": "ShowPaidMemberMessage",
+      "location": "apps/portal/src/components/common/newsletter-management.jsx:242",
       "entries": [
-        "marginBottom: 20px (line 132)"
+        "marginTop: 12px (line 246)"
       ]
     },
     {
@@ -199,80 +210,83 @@
       ]
     },
     {
-      "component": "ShowPaidMemberMessage",
-      "location": "apps/portal/src/components/common/newsletter-management.jsx:242",
+      "component": "NewsletterSelectionPage",
+      "location": "apps/portal/src/components/pages/newsletter-selection-page.jsx:97",
       "entries": [
-        "marginTop: 12px (line 246)"
+        "marginBottom: 20px (line 132)"
       ]
     },
     {
-      "component": "apps/shade/src/providers/shade-provider.tsx",
-      "location": "apps/shade/src/providers/shade-provider.tsx:58",
+      "component": "apps/activitypub/src/components/feed/deleted-feed-item.tsx",
+      "location": "apps/activitypub/src/components/feed/deleted-feed-item.tsx:10",
       "entries": [
-        "tracking-[0.1px] (line 58)"
+        "mt-[-5px] (line 10)",
+        "px-[10px] (line 11)",
+        "mb-[-13px] (line 16)"
       ]
     },
     {
-      "component": "apps/admin/src/layout/admin-layout.tsx",
-      "location": "apps/admin/src/layout/admin-layout.tsx:24",
+      "component": "apps/activitypub/src/components/feed/feed-item.tsx",
+      "location": "apps/activitypub/src/components/feed/feed-item.tsx:837",
       "entries": [
-        "pt-[28px] (line 24)",
-        "pt-[28px] (line 25)",
-        "pt-[8px] (line 26)"
+        "pb-[18px] (line 837)",
+        "pl-[52px] (line 918)",
+        "ml-[-8px] (line 944)"
       ]
     },
     {
-      "component": "apps/admin/src/automations/automations.tsx",
-      "location": "apps/admin/src/automations/automations.tsx:28",
+      "component": "apps/activitypub/src/components/feed/feed-item.tsx",
+      "location": "apps/activitypub/src/components/feed/feed-item.tsx:720",
       "entries": [
-        "text-[10px] (line 28)"
+        "leading-[1.4285714286] (line 720)",
+        "tracking-[-0.006em] (line 720)",
+        "leading-[1.4em] (line 934)"
       ]
     },
     {
-      "component": "apps/signup-form/src/components/pages/success-view.tsx",
-      "location": "apps/signup-form/src/components/pages/success-view.tsx:21",
+      "component": "apps/activitypub/src/components/global/ap-reply-box.tsx",
+      "location": "apps/activitypub/src/components/global/ap-reply-box.tsx:44",
       "entries": [
-        "sm:mb-[4.1rem] (line 21)"
+        "text-[1.5rem] (line 44)"
       ]
     },
     {
-      "component": "apps/signup-form/src/components/pages/form-view.tsx",
-      "location": "apps/signup-form/src/components/pages/form-view.tsx:90",
+      "component": "apps/activitypub/src/components/global/profile-preview-hover-card.tsx",
+      "location": "apps/activitypub/src/components/global/profile-preview-hover-card.tsx:195",
       "entries": [
-        "p-[3px] (line 90)",
-        "mx-[-40px] (line 120)"
+        "[&_a]:text-[#00a4eb] (line 195)"
       ]
     },
     {
-      "component": "apps/signup-form/src/components/pages/form-view.tsx",
-      "location": "apps/signup-form/src/components/pages/form-view.tsx:90",
+      "component": "apps/activitypub/src/components/global/show-replies-button.tsx",
+      "location": "apps/activitypub/src/components/global/show-replies-button.tsx:56",
       "entries": [
-        "rounded-[.5rem] (line 90)",
-        "rounded-[.3rem] (line 107)"
+        "mt-[-7px] (line 56)"
       ]
     },
     {
-      "component": "apps/shade/src/components/layout/heading.tsx",
-      "location": "apps/shade/src/components/layout/heading.tsx:16",
+      "component": "apps/activitypub/src/components/global/suggested-profiles.tsx",
+      "location": "apps/activitypub/src/components/global/suggested-profiles.tsx:102",
       "entries": [
-        "leading-[1.1em] (line 16)"
+        "mb-[-15px] (line 102)"
       ]
     },
     {
-      "component": "apps/shade/src/components/ui/tabs.tsx",
-      "location": "apps/shade/src/components/ui/tabs.tsx:67",
+      "component": "apps/activitypub/src/components/layout/header/header.tsx",
+      "location": "apps/activitypub/src/components/layout/header/header.tsx:36",
       "entries": [
-        "px-[3px] (line 67)",
-        "px-[3px] (line 68)"
+        "mr-[-9px] (line 36)",
+        "max-lg:pr-[15.5px] (line 67)",
+        "max-md:ml-[10px] (line 68)"
       ]
     },
     {
-      "component": "apps/shade/src/components/ui/tabs.tsx",
-      "location": "apps/shade/src/components/ui/tabs.tsx:172",
+      "component": "apps/activitypub/src/components/layout/header/header.tsx",
+      "location": "apps/activitypub/src/components/layout/header/header.tsx:30",
       "entries": [
-        "leading-[21px] (line 172)"
+        "text-[1.5rem] (line 30)"
       ]
     }
   ],
-  "scanSeconds": 93
+  "scanSeconds": 52
 }

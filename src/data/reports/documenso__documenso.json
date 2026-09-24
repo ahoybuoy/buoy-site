@@ -3,18 +3,18 @@
   "owner": "documenso",
   "name": "documenso",
   "description": "The Open Source DocuSign Alternative.",
-  "stars": 15170,
+  "stars": 15171,
   "homepage": "https://documenso.com",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "39ae85483ae0941b7b273bc0270d9687ff42f8fb",
-  "generatedAt": "2026-09-24T05:49:39.046Z",
-  "cliVersion": "latest",
-  "score": 94,
+  "generatedAt": "2026-09-24T09:26:19.793Z",
+  "cliVersion": "0.8.4",
+  "score": 93,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 54,
+      "score": 53,
       "max": 60
     },
     "tokenHealth": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 604,
     "tokenCount": 199,
-    "hardcodedValueCount": 18,
+    "hardcodedValueCount": 20,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 19,
+    "totalDriftCount": 21,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 1,
     "orphanedComponentCount": 0,
@@ -54,7 +54,7 @@
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
     "topHardcodedColor": {
-      "value": "#f9f9f9",
+      "value": "#A2E771",
       "count": 1
     },
     "worstFile": {
@@ -70,16 +70,23 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 18 hardcoded values left to tokenize. apps/remix/app/routes/embed+/playground.tsx has the most (2)"
+    "Nearly there — just 20 hardcoded values left to tokenize. apps/remix/app/routes/embed+/playground.tsx has the most (2)"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 7,
+      "action": "Replace the hardcoded values in 19 of the 20 findings with tokens or scale steps, and remove or reuse 1 unused component or repeated pattern"
+    }
   ],
   "driftSummary": {
-    "total": 19,
+    "total": 21,
     "critical": 0,
-    "warning": 4,
-    "info": 15
+    "warning": 5,
+    "info": 16
   },
   "driftByType": {
-    "hardcoded-value": 18,
+    "hardcoded-value": 20,
     "repeated-pattern": 1
   },
   "topColors": [
@@ -160,19 +167,19 @@
       "count": 8
     },
     {
-      "file": "apps/remix/app/components/general/settings-upsell/branding-upsell.tsx",
-      "count": 4
+      "file": "packages/ui/styles/theme.css",
+      "count": 5
     },
     {
-      "file": "apps/remix/app/components/general/settings-upsell/sso-portal-upsell.tsx",
-      "count": 1
+      "file": "apps/remix/app/components/general/settings-upsell/branding-upsell.tsx",
+      "count": 4
     },
     {
       "file": "apps/remix/app/components/general/envelope-editor/envelope-editor-fields-page-renderer.tsx",
       "count": 1
     },
     {
-      "file": "apps/remix/app/components/forms/inheritable-field.tsx",
+      "file": "apps/remix/app/components/general/settings-upsell/sso-portal-upsell.tsx",
       "count": 1
     },
     {
@@ -199,13 +206,6 @@
       ]
     },
     {
-      "component": "SuccessScene",
-      "location": "apps/remix/app/components/general/settings-upsell/sso-portal-upsell.tsx:194",
-      "entries": [
-        "borderColor: #A2E771 (line 205)"
-      ]
-    },
-    {
       "component": "EnvelopeEditorFieldsPageRenderer",
       "location": "apps/remix/app/components/general/envelope-editor/envelope-editor-fields-page-renderer.tsx:44",
       "entries": [
@@ -213,10 +213,10 @@
       ]
     },
     {
-      "component": "apps/remix/app/components/forms/inheritable-field.tsx",
-      "location": "apps/remix/app/components/forms/inheritable-field.tsx:38",
+      "component": "SuccessScene",
+      "location": "apps/remix/app/components/general/settings-upsell/sso-portal-upsell.tsx:194",
       "entries": [
-        "text-[9px] (line 38)"
+        "borderColor: #A2E771 (line 205)"
       ]
     },
     {
@@ -227,33 +227,10 @@
       ]
     },
     {
-      "component": "apps/remix/app/components/general/unified-settings-sidebar.tsx",
-      "location": "apps/remix/app/components/general/unified-settings-sidebar.tsx:28",
+      "component": "apps/remix/app/components/forms/inheritable-field.tsx",
+      "location": "apps/remix/app/components/forms/inheritable-field.tsx:38",
       "entries": [
-        "bg-[#F1FBEA] (line 28)",
-        "hover:bg-[#F1FBEA] (line 28)",
-        "dark:bg-[#1C2515] (line 28)"
-      ]
-    },
-    {
-      "component": "apps/remix/app/components/general/unified-settings-sidebar-mobile.tsx",
-      "location": "apps/remix/app/components/general/unified-settings-sidebar-mobile.tsx:142",
-      "entries": [
-        "text-[10px] (line 142)"
-      ]
-    },
-    {
-      "component": "apps/remix/app/components/general/stack-avatars-with-tooltip.tsx",
-      "location": "apps/remix/app/components/general/stack-avatars-with-tooltip.tsx:134",
-      "entries": [
-        "text-[10px] (line 134)"
-      ]
-    },
-    {
-      "component": "apps/remix/app/components/general/app-header.tsx",
-      "location": "apps/remix/app/components/general/app-header.tsx:78",
-      "entries": [
-        "text-[10px] (line 78)"
+        "text-[9px] (line 38)"
       ]
     },
     {
@@ -272,7 +249,35 @@
         "tracking-[0.07em] (line 64)",
         "text-[15px] (line 454)"
       ]
+    },
+    {
+      "component": "apps/remix/app/components/general/app-header.tsx",
+      "location": "apps/remix/app/components/general/app-header.tsx:78",
+      "entries": [
+        "text-[10px] (line 78)"
+      ]
+    },
+    {
+      "component": "apps/remix/app/components/general/document-signing/document-signing-field-container.tsx",
+      "location": "apps/remix/app/components/general/document-signing/document-signing-field-container.tsx:124",
+      "entries": [
+        "rounded-[2px] (line 124)"
+      ]
+    },
+    {
+      "component": "apps/remix/app/components/general/envelope-editor/envelope-editor-fields-drag-drop.tsx",
+      "location": "apps/remix/app/components/general/envelope-editor/envelope-editor-fields-drag-drop.tsx:273",
+      "entries": [
+        "rounded-[2px] (line 273)"
+      ]
+    },
+    {
+      "component": "apps/remix/app/components/general/envelope-editor/envelope-editor.tsx",
+      "location": "apps/remix/app/components/general/envelope-editor/envelope-editor.tsx:223",
+      "entries": [
+        "text-[10px] (line 223)"
+      ]
     }
   ],
-  "scanSeconds": 44
+  "scanSeconds": 32
 }

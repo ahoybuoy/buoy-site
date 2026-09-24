@@ -3,13 +3,13 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source agent evals & observability: Trace, evaluate, and improve LLM applications with one open platform.",
-  "stars": 34988,
+  "stars": 34994,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "5e53b9bcf8a6004ea910a5f10420519fa2c0b24d",
-  "generatedAt": "2026-09-24T06:00:34.931Z",
-  "cliVersion": "latest",
+  "commit": "aa446618298563ec3863d58b1e759d9a2297b303",
+  "generatedAt": "2026-09-24T09:34:58.595Z",
+  "cliVersion": "0.8.4",
   "score": 92,
   "tier": "Great",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1979,
+    "componentCount": 1980,
     "tokenCount": 239,
-    "hardcodedValueCount": 79,
+    "hardcodedValueCount": 80,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 79,
+    "totalDriftCount": 80,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -58,7 +58,7 @@
       "count": 1
     },
     "worstFile": {
-      "path": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx",
+      "path": "web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx",
       "issueCount": 2
     },
     "uniqueSpacingValues": 10,
@@ -68,17 +68,24 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 76 hardcoded values left to tokenize. web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx has the most (2)",
+    "Nearly there — just 77 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx has the most (2)",
     "3 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 8,
+      "action": "Replace the hardcoded values in 73 of the 77 findings with tokens or scale steps"
+    }
+  ],
   "driftSummary": {
-    "total": 79,
+    "total": 80,
     "critical": 0,
     "warning": 1,
-    "info": 78
+    "info": 79
   },
   "driftByType": {
-    "hardcoded-value": 79
+    "hardcoded-value": 80
   },
   "topColors": [
     {
@@ -108,7 +115,7 @@
       "count": 3
     },
     {
-      "value": "10px",
+      "value": "1rem",
       "count": 2
     },
     {
@@ -116,7 +123,7 @@
       "count": 2
     },
     {
-      "value": "1rem",
+      "value": "10px",
       "count": 2
     }
   ],
@@ -134,6 +141,10 @@
       "count": 5
     },
     {
+      "file": "web/src/features/events/components/outlier-strip/OutlierBarStrip.tsx",
+      "count": 5
+    },
+    {
       "file": "web/src/features/in-app-agent/components/InAppAgentMessage.tsx",
       "count": 5
     },
@@ -142,15 +153,11 @@
       "count": 5
     },
     {
-      "file": "web/src/features/events/components/outlier-strip/OutlierBarStrip.tsx",
-      "count": 5
-    },
-    {
       "file": "web/src/components/ChatMessages/ChatMessageComponent.tsx",
       "count": 4
     },
     {
-      "file": "web/src/features/search-bar/components/AutocompleteListbox.tsx",
+      "file": "web/src/features/experiments/components/table/ScoreColumnHeaderSummary.tsx",
       "count": 4
     }
   ],
@@ -160,6 +167,28 @@
       "location": "web/src/components/design-system/Codeblock/Codeblock.tsx:20",
       "entries": [
         "fontSize: 0.75rem (line 85)"
+      ]
+    },
+    {
+      "component": "MultiWindowPlayground",
+      "location": "web/src/features/playground/page/components/MultiWindowPlayground.tsx:49",
+      "entries": [
+        "gap: 1rem (line 113)",
+        "padding: 1rem (line 114)"
+      ]
+    },
+    {
+      "component": "SimpleMultiSectionViewerInner",
+      "location": "web/src/features/traces/components/AdvancedJsonViewer/SimpleMultiSectionViewer.tsx:59",
+      "entries": [
+        "paddingBottom: 0.5rem (line 431)"
+      ]
+    },
+    {
+      "component": "VirtualizedMultiSectionViewerInner",
+      "location": "web/src/features/traces/components/AdvancedJsonViewer/VirtualizedMultiSectionViewer.tsx:66",
+      "entries": [
+        "paddingBottom: 0.5rem (line 396)"
       ]
     },
     {
@@ -178,25 +207,35 @@
       ]
     },
     {
-      "component": "VirtualizedMultiSectionViewerInner",
-      "location": "web/src/features/traces/components/AdvancedJsonViewer/VirtualizedMultiSectionViewer.tsx:66",
+      "component": "CopyButton",
+      "location": "web/src/features/traces/components/AdvancedJsonViewer/components/CopyButton.tsx:21",
       "entries": [
-        "paddingBottom: 0.5rem (line 396)"
+        "marginLeft: 4px (line 56)"
       ]
     },
     {
-      "component": "SimpleMultiSectionViewerInner",
-      "location": "web/src/features/traces/components/AdvancedJsonViewer/SimpleMultiSectionViewer.tsx:59",
+      "component": "JsonRowFixed",
+      "location": "web/src/features/traces/components/AdvancedJsonViewer/components/JsonRowFixed.tsx:30",
       "entries": [
-        "paddingBottom: 0.5rem (line 431)"
+        "paddingLeft: 4px (line 60)",
+        "paddingRight: 4px (line 61)",
+        "fontSize: 9px (line 102)"
       ]
     },
     {
-      "component": "MultiWindowPlayground",
-      "location": "web/src/features/playground/page/components/MultiWindowPlayground.tsx:49",
+      "component": "JsonRowScrollable",
+      "location": "web/src/features/traces/components/AdvancedJsonViewer/components/JsonRowScrollable.tsx:30",
       "entries": [
-        "gap: 1rem (line 113)",
-        "padding: 1rem (line 114)"
+        "paddingRight: 4px (line 73)",
+        "marginLeft: 2px (line 94)",
+        "marginRight: 4px (line 95)"
+      ]
+    },
+    {
+      "component": "LineNumber",
+      "location": "web/src/features/traces/components/AdvancedJsonViewer/components/LineNumber.tsx:15",
+      "entries": [
+        "marginRight: 8px (line 27)"
       ]
     },
     {
@@ -214,39 +253,7 @@
         "marginLeft: 8px (line 61)",
         "fontSize: 0.65rem (line 64)"
       ]
-    },
-    {
-      "component": "LineNumber",
-      "location": "web/src/features/traces/components/AdvancedJsonViewer/components/LineNumber.tsx:15",
-      "entries": [
-        "marginRight: 8px (line 27)"
-      ]
-    },
-    {
-      "component": "JsonRowScrollable",
-      "location": "web/src/features/traces/components/AdvancedJsonViewer/components/JsonRowScrollable.tsx:30",
-      "entries": [
-        "paddingRight: 4px (line 73)",
-        "marginLeft: 2px (line 94)",
-        "marginRight: 4px (line 95)"
-      ]
-    },
-    {
-      "component": "JsonRowFixed",
-      "location": "web/src/features/traces/components/AdvancedJsonViewer/components/JsonRowFixed.tsx:30",
-      "entries": [
-        "paddingLeft: 4px (line 60)",
-        "paddingRight: 4px (line 61)",
-        "fontSize: 9px (line 102)"
-      ]
-    },
-    {
-      "component": "CopyButton",
-      "location": "web/src/features/traces/components/AdvancedJsonViewer/components/CopyButton.tsx:21",
-      "entries": [
-        "marginLeft: 4px (line 56)"
-      ]
     }
   ],
-  "scanSeconds": 137
+  "scanSeconds": 85
 }

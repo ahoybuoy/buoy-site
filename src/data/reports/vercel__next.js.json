@@ -3,18 +3,18 @@
   "owner": "vercel",
   "name": "next.js",
   "description": "The React Framework",
-  "stars": 142415,
+  "stars": 142419,
   "homepage": "https://nextjs.org",
   "language": "JavaScript",
   "defaultBranch": "canary",
-  "commit": "e71848173cf199bb56e88c1c04aa977cdb0a84df",
-  "generatedAt": "2026-09-24T06:04:43.935Z",
-  "cliVersion": "latest",
-  "score": 94,
-  "tier": "Great",
+  "commit": "76117ccd71fdfaf4d5377b7ed08d238de845321b",
+  "generatedAt": "2026-09-24T09:38:10.561Z",
+  "cliVersion": "0.8.4",
+  "score": 38,
+  "tier": "Bad",
   "pillars": {
     "valueDiscipline": {
-      "score": 56,
+      "score": 0,
       "max": 60
     },
     "tokenHealth": {
@@ -32,8 +32,8 @@
   },
   "metrics": {
     "componentCount": 331,
-    "tokenCount": 277,
-    "hardcodedValueCount": 7,
+    "tokenCount": 278,
+    "hardcodedValueCount": 265,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 8,
+    "totalDriftCount": 266,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,6 +53,10 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 1,
+    "topHardcodedColor": {
+      "value": "rgb(143 101 98 / 43%).",
+      "count": 1
+    },
     "worstFile": {
       "path": "packages/next/src/client/legacy/image.tsx",
       "issueCount": 1
@@ -70,19 +74,31 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 6 hardcoded values left to tokenize",
+    "264 hardcoded values to extract — use `cn()` utility with Tailwind theme classes. Focus on packages/next/src/client/legacy/image.tsx (1 issues)",
     "1 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
     "1 deprecated pattern — migrate to current API"
   ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 60,
+      "action": "Replace the hardcoded values in all 264 findings with tokens or scale steps"
+    },
+    {
+      "pillar": "criticalIssues",
+      "points": 2,
+      "action": "Migrate 1 deprecated pattern"
+    }
+  ],
   "driftSummary": {
-    "total": 8,
+    "total": 266,
     "critical": 0,
-    "warning": 1,
-    "info": 7
+    "warning": 192,
+    "info": 74
   },
   "driftByType": {
     "deprecated-pattern": 1,
-    "hardcoded-value": 7
+    "hardcoded-value": 265
   },
   "topColors": [],
   "topSpacing": [
@@ -101,32 +117,36 @@
   ],
   "worstFiles": [
     {
-      "file": "apps/bundle-analyzer/components/diff-table.tsx",
-      "count": 5
+      "file": "examples/cms-buttercms/css/main.css",
+      "count": 390
     },
     {
-      "file": "packages/next/src/next-devtools/dev-overlay/components/errors/dev-tools-indicator/dev-tools-info/dev-tools-header.tsx",
-      "count": 2
+      "file": "bench/basic-app/app/bench.css",
+      "count": 273
     },
     {
-      "file": "apps/bundle-analyzer/components/stat-cards.tsx",
-      "count": 2
+      "file": "test/e2e/next-dynamic-css-asset-prefix/src/Content4.module.css",
+      "count": 246
     },
     {
-      "file": "apps/bundle-analyzer/components/compare-layout.tsx",
-      "count": 2
+      "file": "test/e2e/next-dynamic-css/src/Content4.module.css",
+      "count": 246
     },
     {
-      "file": "packages/next/src/next-devtools/dev-overlay/menu/dev-overlay-menu.tsx",
-      "count": 1
+      "file": "test/e2e/app-dir/nx-handling/apps/next-nx-test/app/global.css",
+      "count": 112
     },
     {
-      "file": "apps/bundle-analyzer/components/ui/select.tsx",
-      "count": 1
+      "file": "examples/cms-payload/css/type.scss",
+      "count": 52
     },
     {
-      "file": "apps/bundle-analyzer/components/ui/multi-select.tsx",
-      "count": 1
+      "file": "examples/with-fingerprintjs-pro/styles/App.css",
+      "count": 48
+    },
+    {
+      "file": "packages/next/src/next-devtools/dev-overlay/components/request-insights/request-insights-panel.css",
+      "count": 35
     }
   ],
   "samples": [
@@ -146,11 +166,11 @@
       ]
     },
     {
-      "component": "apps/bundle-analyzer/components/stat-cards.tsx",
-      "location": "apps/bundle-analyzer/components/stat-cards.tsx:71",
+      "component": "apps/bundle-analyzer/components/compare-layout.tsx",
+      "location": "apps/bundle-analyzer/components/compare-layout.tsx:207",
       "entries": [
-        "text-[10px] (line 71)",
-        "text-[10px] (line 116)"
+        "text-[10px] (line 207)",
+        "text-[10px] (line 300)"
       ]
     },
     {
@@ -163,11 +183,18 @@
       ]
     },
     {
-      "component": "apps/bundle-analyzer/components/compare-layout.tsx",
-      "location": "apps/bundle-analyzer/components/compare-layout.tsx:207",
+      "component": "apps/bundle-analyzer/components/stat-cards.tsx",
+      "location": "apps/bundle-analyzer/components/stat-cards.tsx:71",
       "entries": [
-        "text-[10px] (line 207)",
-        "text-[10px] (line 300)"
+        "text-[10px] (line 71)",
+        "text-[10px] (line 116)"
+      ]
+    },
+    {
+      "component": "apps/bundle-analyzer/components/ui/multi-select.tsx",
+      "location": "apps/bundle-analyzer/components/ui/multi-select.tsx:76",
+      "entries": [
+        "focus-visible:ring-[3px] (line 76)"
       ]
     },
     {
@@ -178,12 +205,49 @@
       ]
     },
     {
-      "component": "apps/bundle-analyzer/components/ui/multi-select.tsx",
-      "location": "apps/bundle-analyzer/components/ui/multi-select.tsx:76",
+      "component": "bench/basic-app/app/bench.css",
+      "location": "bench/basic-app/app/bench.css:24",
       "entries": [
-        "focus-visible:ring-[3px] (line 76)"
+        "line height: 1.5 (line 24)",
+        "spacing: 16px (line 39)",
+        "spacing: 8px (line 50)"
+      ]
+    },
+    {
+      "component": "evals/evals/agent-030-app-router-migration-hard/styles/globals.css",
+      "location": "evals/evals/agent-030-app-router-migration-hard/styles/globals.css:9",
+      "entries": [
+        "line height: 1.6 (line 9)",
+        "colour: #333 (line 10)",
+        "colour: #eee (line 21)"
+      ]
+    },
+    {
+      "component": "evals/evals/agent-043-view-transitions/app/globals.css",
+      "location": "evals/evals/agent-043-view-transitions/app/globals.css:12",
+      "entries": [
+        "colour: #111 (line 12)",
+        "colour: #fafafa (line 13)",
+        "spacing: 2rem (line 19)"
+      ]
+    },
+    {
+      "component": "examples/basic-css/styles.module.css",
+      "location": "examples/basic-css/styles.module.css:6",
+      "entries": [
+        "colour: #eee (line 6)",
+        "spacing: 100px (line 7)",
+        "colour: #ccc (line 12)"
+      ]
+    },
+    {
+      "component": "examples/blog-starter/src/app/_components/switch.module.css",
+      "location": "examples/blog-starter/src/app/_components/switch.module.css:23",
+      "entries": [
+        "font weight: 600 (line 23)",
+        "shadow: 0 0 50px 10px yellow (line 32)"
       ]
     }
   ],
-  "scanSeconds": 136
+  "scanSeconds": 129
 }

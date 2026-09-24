@@ -8,9 +8,9 @@
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "54343aa685ae8f33159d2f485ec4a57bad5c574a",
-  "generatedAt": "2026-09-24T08:38:12.104Z",
-  "cliVersion": "0.8.3",
-  "score": 87,
+  "generatedAt": "2026-09-24T09:16:34.742Z",
+  "cliVersion": "0.8.4",
+  "score": 89,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
@@ -26,22 +26,22 @@
       "max": 10
     },
     "criticalIssues": {
-      "score": 6,
+      "score": 8,
       "max": 10
     }
   },
   "metrics": {
     "componentCount": 1013,
     "tokenCount": 739,
-    "hardcodedValueCount": 54,
+    "hardcodedValueCount": 53,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
-    "criticalCount": 1,
+    "criticalCount": 0,
     "accessibilityConflictCount": 0,
-    "colorContrastCount": 1,
+    "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 58,
+    "totalDriftCount": 56,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 1,
     "orphanedComponentCount": 0,
@@ -69,21 +69,31 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 47 hardcoded values left to tokenize. packages/ui/components/form/toggleGroup/BooleanToggleGroup.tsx has the most (3)",
+    "Nearly there — just 46 hardcoded values left to tokenize. packages/ui/components/form/toggleGroup/BooleanToggleGroup.tsx has the most (3)",
     "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
-    "1 color contrast issue — fix immediately",
     "2 deprecated patterns — migrate to current API"
   ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 9,
+      "action": "Replace the hardcoded values in 44 of the 46 findings with tokens or scale steps, and remove or reuse 1 unused component or repeated pattern"
+    },
+    {
+      "pillar": "criticalIssues",
+      "points": 2,
+      "action": "Migrate 2 deprecated patterns"
+    }
+  ],
   "driftSummary": {
-    "total": 58,
-    "critical": 1,
-    "warning": 13,
+    "total": 56,
+    "critical": 0,
+    "warning": 12,
     "info": 44
   },
   "driftByType": {
     "deprecated-pattern": 2,
-    "hardcoded-value": 54,
-    "color-contrast": 1,
+    "hardcoded-value": 53,
     "repeated-pattern": 1
   },
   "topColors": [
@@ -129,11 +139,11 @@
   "worstFiles": [
     {
       "file": "packages/platform/atoms/globals.css",
-      "count": 308
+      "count": 303
     },
     {
       "file": "packages/ui/components/editor/stylesEditor.css",
-      "count": 58
+      "count": 56
     },
     {
       "file": "packages/ui/components/form/date-range-picker/styles.css",
@@ -249,5 +259,5 @@
       ]
     }
   ],
-  "scanSeconds": 37
+  "scanSeconds": 41
 }

@@ -3,22 +3,22 @@
   "owner": "makeplane",
   "name": "plane",
   "description": "🔥🔥🔥 Open-source Jira, Linear, Monday, and ClickUp alternative. Plane is a modern project management platform to manage tasks, sprints, docs, and triage.",
-  "stars": 59807,
+  "stars": 59818,
   "homepage": "http://plane.so",
   "language": "TypeScript",
   "defaultBranch": "preview",
   "commit": "a2ccd4f074c238d63af7b5f058970fd29a53c454",
-  "generatedAt": "2026-09-24T05:50:07.807Z",
-  "cliVersion": "latest",
-  "score": 93,
+  "generatedAt": "2026-09-24T09:26:42.958Z",
+  "cliVersion": "0.8.4",
+  "score": 95,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 58,
+      "score": 55,
       "max": 60
     },
     "tokenHealth": {
-      "score": 15,
+      "score": 20,
       "max": 20
     },
     "consistency": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 490,
     "tokenCount": 82,
-    "hardcodedValueCount": 4,
+    "hardcodedValueCount": 12,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 5,
+    "totalDriftCount": 13,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 1,
     "orphanedComponentCount": 0,
@@ -67,16 +67,23 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 4 hardcoded values left to tokenize"
+    "Nearly there — just 12 hardcoded values left to tokenize"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 5,
+      "action": "Replace the hardcoded values in 11 of the 12 findings with tokens or scale steps, and remove or reuse 1 unused component or repeated pattern"
+    }
   ],
   "driftSummary": {
-    "total": 5,
+    "total": 13,
     "critical": 0,
-    "warning": 1,
-    "info": 4
+    "warning": 4,
+    "info": 9
   },
   "driftByType": {
-    "hardcoded-value": 4,
+    "hardcoded-value": 12,
     "repeated-pattern": 1
   },
   "topColors": [
@@ -101,20 +108,36 @@
   ],
   "worstFiles": [
     {
-      "file": "packages/editor/src/extensions/code-inline/index.tsx",
-      "count": 2
+      "file": "packages/editor/src/styles/editor.css",
+      "count": 20
+    },
+    {
+      "file": "packages/editor/src/styles/drag-drop.css",
+      "count": 6
+    },
+    {
+      "file": "apps/web/styles/emoji.css",
+      "count": 4
+    },
+    {
+      "file": "packages/editor/src/styles/title-editor.css",
+      "count": 4
+    },
+    {
+      "file": "apps/web/styles/globals.css",
+      "count": 3
     },
     {
       "file": "packages/editor/src/components/editors/document/page-renderer.tsx",
       "count": 2
     },
     {
-      "file": "apps/admin/components/common/copy-field.tsx",
-      "count": 1
+      "file": "packages/editor/src/extensions/code-inline/index.tsx",
+      "count": 2
     },
     {
-      "file": "apps/space/components/issues/issue-layouts/properties/member.tsx",
-      "count": 1
+      "file": "packages/editor/src/styles/table.css",
+      "count": 2
     }
   ],
   "samples": [
@@ -133,6 +156,14 @@
       ]
     },
     {
+      "component": "packages/editor/src/components/editors/document/page-renderer.tsx",
+      "location": "packages/editor/src/components/editors/document/page-renderer.tsx:85",
+      "entries": [
+        "text-[2rem] (line 85)",
+        "leading-[2.375rem] (line 85)"
+      ]
+    },
+    {
       "component": "packages/editor/src/extensions/code-inline/index.tsx",
       "location": "packages/editor/src/extensions/code-inline/index.tsx:44",
       "entries": [
@@ -141,13 +172,72 @@
       ]
     },
     {
-      "component": "packages/editor/src/components/editors/document/page-renderer.tsx",
-      "location": "packages/editor/src/components/editors/document/page-renderer.tsx:85",
+      "component": "apps/admin/styles/globals.css",
+      "location": "apps/admin/styles/globals.css:9",
       "entries": [
-        "text-[2rem] (line 85)",
-        "leading-[2.375rem] (line 85)"
+        "shadow: 2px 2px 8px 2px rgba(234, 231, 250, 0.3) (line 9)"
+      ]
+    },
+    {
+      "component": "apps/web/styles/emoji.css",
+      "location": "apps/web/styles/emoji.css:18",
+      "entries": [
+        "font size: 0.7875rem (line 18)",
+        "spacing: 0.5rem (line 24)",
+        "font size: 0.7875rem (line 33)"
+      ]
+    },
+    {
+      "component": "apps/web/styles/globals.css",
+      "location": "apps/web/styles/globals.css:25",
+      "entries": [
+        "shadow: 2px 2px 8px 2px rgba(234, 231, 250, 0.3) (line 25)",
+        "radius: 4px (line 136)",
+        "radius: 4px (line 140)"
+      ]
+    },
+    {
+      "component": "packages/editor/src/styles/drag-drop.css",
+      "location": "packages/editor/src/styles/drag-drop.css:59",
+      "entries": [
+        "radius: 4px (line 59)",
+        "spacing: -5px (line 76)",
+        "spacing: -10px (line 81)"
+      ]
+    },
+    {
+      "component": "packages/editor/src/styles/editor.css",
+      "location": "packages/editor/src/styles/editor.css:43",
+      "entries": [
+        "spacing: 10px (line 43)",
+        "line height: 1.5 (line 93)",
+        "spacing: 1.15rem (line 104)"
+      ]
+    },
+    {
+      "component": "packages/editor/src/styles/table.css",
+      "location": "packages/editor/src/styles/table.css:3",
+      "entries": [
+        "spacing: 26px (line 3)",
+        "radius: 4px (line 157)"
+      ]
+    },
+    {
+      "component": "packages/editor/src/styles/title-editor.css",
+      "location": "packages/editor/src/styles/title-editor.css:19",
+      "entries": [
+        "font size: 1.6rem (line 19)",
+        "line height: 1.9rem (line 20)",
+        "font size: 2rem (line 24)"
+      ]
+    },
+    {
+      "component": "packages/tailwind-config/index.css",
+      "location": "packages/tailwind-config/index.css:131",
+      "entries": [
+        "spacing: 44px (line 131)"
       ]
     }
   ],
-  "scanSeconds": 28
+  "scanSeconds": 23
 }

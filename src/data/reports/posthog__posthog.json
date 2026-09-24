@@ -3,18 +3,18 @@
   "owner": "posthog",
   "name": "posthog",
   "description": ":hedgehog: PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.",
-  "stars": 39911,
+  "stars": 39913,
   "homepage": "https://posthog.com",
   "language": "Python",
   "defaultBranch": "master",
-  "commit": "611eef85e45035cabab8cdd0a8347b518ed07352",
-  "generatedAt": "2026-09-24T05:58:14.783Z",
-  "cliVersion": "latest",
-  "score": 85,
-  "tier": "Great",
+  "commit": "f46ccb44ac241653ab5cc0ad83d170f83c5484e0",
+  "generatedAt": "2026-09-24T09:33:30.098Z",
+  "cliVersion": "0.8.4",
+  "score": 75,
+  "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 55,
+      "score": 45,
       "max": 60
     },
     "tokenHealth": {
@@ -33,15 +33,15 @@
   "metrics": {
     "componentCount": 4815,
     "tokenCount": 183,
-    "hardcodedValueCount": 116,
+    "hardcodedValueCount": 364,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
-    "criticalCount": 4,
+    "criticalCount": 3,
     "accessibilityConflictCount": 0,
-    "colorContrastCount": 4,
+    "colorContrastCount": 3,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 125,
+    "totalDriftCount": 372,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -59,7 +59,7 @@
     },
     "worstFile": {
       "path": "frontend/src/lib/KeaDevTools.tsx",
-      "issueCount": 8
+      "issueCount": 6
     },
     "uniqueSpacingValues": 6,
     "detectedFrameworkNames": [
@@ -70,20 +70,32 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 116 hardcoded values left to tokenize. frontend/src/lib/KeaDevTools.tsx has the most (8)",
-    "4 color contrast issues — fix immediately",
+    "Nearly there — just 364 hardcoded values left to tokenize. frontend/src/lib/KeaDevTools.tsx has the most (6)",
+    "3 color contrast issues — fix immediately",
     "3 deprecated patterns — migrate to current API"
   ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 15,
+      "action": "Replace the hardcoded values in 352 of the 364 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+    },
+    {
+      "pillar": "criticalIssues",
+      "points": 10,
+      "action": "Fix 3 colour contrast failures, migrate 3 deprecated patterns"
+    }
+  ],
   "driftSummary": {
-    "total": 125,
-    "critical": 4,
-    "warning": 33,
-    "info": 88
+    "total": 372,
+    "critical": 3,
+    "warning": 178,
+    "info": 191
   },
   "driftByType": {
-    "hardcoded-value": 116,
-    "color-contrast": 4,
+    "hardcoded-value": 364,
     "deprecated-pattern": 3,
+    "color-contrast": 3,
     "repeated-pattern": 2
   },
   "topColors": [
@@ -134,11 +146,11 @@
       "count": 3
     },
     {
-      "value": "1.5rem",
+      "value": "0.5rem",
       "count": 2
     },
     {
-      "value": "0.5rem",
+      "value": "1.5rem",
       "count": 2
     },
     {
@@ -146,46 +158,46 @@
       "count": 2
     },
     {
-      "value": "2.5rem",
+      "value": "5px",
       "count": 2
     },
     {
-      "value": "5px",
+      "value": "2.5rem",
       "count": 2
     }
   ],
   "worstFiles": [
     {
-      "file": "frontend/src/lib/KeaDevTools.tsx",
-      "count": 19
+      "file": "products/desktop/tools/announcements-admin/src/styles.css",
+      "count": 142
     },
     {
-      "file": "frontend/src/scenes/onboarding/legacy/data-warehouse/DataWarehouseQueryVariant.tsx",
-      "count": 16
+      "file": "frontend/src/lib/components/MarkdownNotebook/MarkdownNotebook.scss",
+      "count": 134
     },
     {
-      "file": "frontend/src/toolbar/product-tours/StepCard.tsx",
-      "count": 11
+      "file": "services/hogql-language-service/cmd/demo/assets/style.css",
+      "count": 87
     },
     {
-      "file": "frontend/src/scenes/audit-logs/AuditLogTable.tsx",
-      "count": 10
+      "file": "products/desktop/packages/quick-ask/src/panel/quick-ask.css",
+      "count": 85
     },
     {
-      "file": "frontend/src/scenes/surveys/components/AbsoluteCornerBadge.tsx",
-      "count": 8
+      "file": "frontend/src/scenes/notebooks/Notebook/Notebook.scss",
+      "count": 57
     },
     {
-      "file": "frontend/src/scenes/product-tours/components/StepSettings.tsx",
-      "count": 7
+      "file": "products/desktop/packages/ui/src/styles/globals.css",
+      "count": 53
     },
     {
-      "file": "packages/quill/packages/components/src/date-time-picker.tsx",
-      "count": 6
+      "file": "frontend/src/scenes/product-tours/editor/StepContentEditor.scss",
+      "count": 50
     },
     {
-      "file": "frontend/src/scenes/product-tours/editor/ProductTourStepsEditor.tsx",
-      "count": 4
+      "file": "frontend/src/styles/base.scss",
+      "count": 47
     }
   ],
   "samples": [
@@ -239,34 +251,38 @@
       ]
     },
     {
-      "component": "StepCard",
-      "location": "frontend/src/toolbar/product-tours/StepCard.tsx:26",
+      "component": "CohortEdit",
+      "location": "frontend/src/scenes/cohorts/CohortEdit.tsx:181",
       "entries": [
-        "color: #fff (line 96)"
+        "fontSize: 3rem (line 716)"
       ]
     },
     {
-      "component": "ProductToursSidebar",
-      "location": "frontend/src/toolbar/product-tours/ProductToursSidebar.tsx:23",
+      "component": "FeatureFlagVariantsForm",
+      "location": "frontend/src/scenes/feature-flags/FeatureFlagVariantsForm.tsx:51",
       "entries": [
-        "color: #fff (line 294)",
-        "backgroundColor: #fff (line 309)",
-        "background: rgba(255, 255, 255, 0.2) (line 321)"
+        "marginLeft: 0.5rem (line 134)"
       ]
     },
     {
-      "component": "ElementHighlight",
-      "location": "frontend/src/toolbar/product-tours/ElementHighlight.tsx:9",
+      "component": "SurveyHeadline",
+      "location": "frontend/src/scenes/surveys/SurveyHeadline.tsx:10",
       "entries": [
-        "background: #1d4aff (line 48)"
+        "color: #F7B955 (line 33)"
       ]
     },
     {
-      "component": "FieldNotesOverlay",
-      "location": "frontend/src/toolbar/field-notes/FieldNotesOverlay.tsx:16",
+      "component": "LockableMenuIcon",
+      "location": "frontend/src/toolbar/bar/Toolbar.tsx:130",
       "entries": [
-        "background: rgba(255, 255, 255, 0.2) (line 66)",
-        "color: #fff (line 66)"
+        "fontSize: 1.5rem (line 138)"
+      ]
+    },
+    {
+      "component": "Toolbar",
+      "location": "frontend/src/toolbar/bar/Toolbar.tsx:507",
+      "entries": [
+        "fontSize: 1.5rem (line 623)"
       ]
     },
     {
@@ -276,14 +292,7 @@
         "color: hsla(141, 21%, 12%, 1) (line 201)",
         "background: hsl(147, 100%, 62%) (line 202)"
       ]
-    },
-    {
-      "component": "LockableMenuIcon",
-      "location": "frontend/src/toolbar/bar/Toolbar.tsx:130",
-      "entries": [
-        "fontSize: 1.5rem (line 138)"
-      ]
     }
   ],
-  "scanSeconds": 311
+  "scanSeconds": 207
 }

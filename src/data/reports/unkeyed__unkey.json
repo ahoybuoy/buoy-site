@@ -7,9 +7,9 @@
   "homepage": "https://go.unkey.com",
   "language": "Go",
   "defaultBranch": "main",
-  "commit": "bd212d1b3bdc481d7a3f11f5d76244f9b6538454",
-  "generatedAt": "2026-09-24T06:02:27.127Z",
-  "cliVersion": "latest",
+  "commit": "ef0ade2c47c537be511ddd45c49cddbf0f6af44a",
+  "generatedAt": "2026-09-24T09:36:01.196Z",
+  "cliVersion": "0.8.4",
   "score": null,
   "tier": "N/A",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 0,
     "tokenCount": 351,
-    "hardcodedValueCount": 0,
+    "hardcodedValueCount": 4,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 2,
+    "totalDriftCount": 6,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -54,7 +54,7 @@
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
     "worstFile": {
-      "path": "web/apps/dashboard/components/ratelimits-overview-table/columns/create-ratelimits-overview-columns.tsx",
+      "path": "web/apps/dashboard/app/(app)/[workspaceSlug]/logs/components/table/logs-table.tsx",
       "issueCount": 1
     },
     "detectedFrameworkNames": [
@@ -64,18 +64,71 @@
   "suggestions": [
     "Only 0 UI components detected, too few to score. If this repo has more, Buoy may not recognise its framework yet."
   ],
+  "pathTo100": null,
   "driftSummary": {
-    "total": 2,
+    "total": 6,
     "critical": 0,
-    "warning": 0,
-    "info": 2
+    "warning": 3,
+    "info": 3
   },
   "driftByType": {
+    "hardcoded-value": 4,
     "repeated-pattern": 2
   },
   "topColors": [],
   "topSpacing": [],
-  "worstFiles": [],
-  "samples": [],
-  "scanSeconds": 17
+  "worstFiles": [
+    {
+      "file": "web/internal/workos-widgets/styles.css",
+      "count": 36
+    },
+    {
+      "file": "web/apps/design/theme.css",
+      "count": 13
+    },
+    {
+      "file": "web/apps/dashboard/styles/tailwind.css",
+      "count": 2
+    },
+    {
+      "file": "docs/engineering/style.css",
+      "count": 1
+    }
+  ],
+  "samples": [
+    {
+      "component": "docs/engineering/style.css",
+      "location": "docs/engineering/style.css:6",
+      "entries": [
+        "letter spacing: -0.02em (line 6)"
+      ]
+    },
+    {
+      "component": "web/apps/dashboard/styles/tailwind.css",
+      "location": "web/apps/dashboard/styles/tailwind.css:68",
+      "entries": [
+        "spacing: 1.5rem (line 68)",
+        "colour: rgba(115, 138, 148, 0.4) (line 71)"
+      ]
+    },
+    {
+      "component": "web/apps/design/theme.css",
+      "location": "web/apps/design/theme.css:19",
+      "entries": [
+        "font size: 1.875rem (line 19)",
+        "font weight: 600 (line 20)",
+        "letter spacing: -0.025em (line 21)"
+      ]
+    },
+    {
+      "component": "web/internal/workos-widgets/styles.css",
+      "location": "web/internal/workos-widgets/styles.css:115",
+      "entries": [
+        "font size: 0.875rem (line 115)",
+        "line height: 1.25rem (line 116)",
+        "font size: 0.8125rem (line 135)"
+      ]
+    }
+  ],
+  "scanSeconds": 16
 }
