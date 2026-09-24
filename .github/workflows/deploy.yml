@@ -39,4 +39,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=buoy-site
+          # Name the branch: checking out a SHA leaves git detached, and
+          # without --branch Pages files the upload as a preview ("head"),
+          # not production.
+          command: pages deploy dist --project-name=buoy-site --branch=main
