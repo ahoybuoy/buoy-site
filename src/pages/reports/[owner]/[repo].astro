@@ -20,6 +20,13 @@ const pillarLabels: Record<string, string> = {
 // Findings in vendored shadcn/ui templates are shown apart: the score leaves them out.
 const vendored = r.metrics.vendoredDriftCount ?? 0
 const ownHardcoded = Math.max(0, r.metrics.hardcodedValueCount - vendored)
+const notedLabels: Record<string, string> = {
+  explained: 'explained in a comment',
+  'known-debt': 'marked as known debt',
+  'optical-nudge': 'optical nudges',
+  history: 'deliberate per commit',
+  allowlisted: 'buoy-ignore',
+}
 const pathLabels: Record<string, string> = { ...pillarLabels, driftCap: 'Drift cap' }
 const typeLabels: Record<string, string> = {
   'hardcoded-value': 'Hardcoded values',
@@ -91,6 +98,32 @@ const description = `${ownHardcoded.toLocaleString()} hardcoded-value findings a
             </ul>
           )}
         </div>
+      </div>
+    </section>
+  )}
+
+  {r.noted && r.noted.count > 0 && (
+    <section class="py-2 bg-navy-dark">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <details class="bg-navy/40 border border-navy-light/20 rounded-2xl p-5">
+          <summary class="cursor-pointer text-light">
+            Left alone: {r.noted.count} value{r.noted.count === 1 ? '' : 's'} the code marks as deliberate
+            <span class="text-slate text-sm"> · not counted in the score</span>
+          </summary>
+          <p class="text-sm text-slate mt-3">
+            Buoy skips a value when a comment explains it or marks it as known debt, when it is a 2–3px optical nudge,
+            or when the commit that added it says it was deliberate.
+            {Object.entries(r.noted.byKind).map(([kind, n]) => `${n} ${notedLabels[kind] ?? kind}`).join(' · ')}.
+          </p>
+          <ul class="mt-3 space-y-2 text-sm">
+            {r.noted.samples.map((n) => (
+              <li class="text-slate">
+                <a href={fileUrl(r, `${n.file}:${n.line}`)} class="text-light hover:text-buoy"><code>{n.value}</code> in {n.file.split('/').pop()}:{n.line}</a>
+                <span> — {n.reason}</span>
+              </li>
+            ))}
+          </ul>
+        </details>
       </div>
     </section>
   )}

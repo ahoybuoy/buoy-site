@@ -31,6 +31,12 @@ export interface Report {
   suggestions: string[];
   /** Points each short pillar is missing and the change that earns them (CLI 0.8.4+). */
   pathTo100?: Array<{ pillar: string; points: number; action: string }>;
+  /** Values the code marks as deliberate (CLI 0.8.6+): left out of findings and the score. */
+  noted?: {
+    count: number;
+    byKind: Record<string, number>;
+    samples: Array<{ file: string; line: number; value: string; kind: string; reason: string }>;
+  } | null;
   driftSummary: { total: number; critical: number; warning: number; info: number };
   driftByType: Record<string, number>;
   topColors: Array<{ value: string; count: number }>;

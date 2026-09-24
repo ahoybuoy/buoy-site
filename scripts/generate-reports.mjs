@@ -129,6 +129,12 @@ async function report(fullName) {
       cliVersion: CLI.version,
       score: health.score, tier: health.tier, pillars: health.pillars, metrics: health.metrics, suggestions: health.suggestions,
       pathTo100: health.pathTo100 ?? null,
+      // Values the code marks as deliberate (CLI 0.8.6+): not counted, shown with the reason.
+      noted: drift.noted ? {
+        count: drift.noted.count,
+        byKind: drift.noted.byKind,
+        samples: [...drift.noted.items].sort((a, b) => (a.kind === "optical-nudge") - (b.kind === "optical-nudge")).slice(0, 6),
+      } : null,
       driftSummary: drift.summary, driftByType: byType,
       topColors: topValues(drift.drifts, "color"),
       topSpacing: topValues(drift.drifts, "spacing"),
