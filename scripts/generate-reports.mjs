@@ -25,7 +25,18 @@ const OUT_DIR = new URL("../src/data/reports/", import.meta.url);
 async function resolveBuoy() {
   if (process.env.BUOY_BIN) return { bin: process.env.BUOY_BIN, version: "local" };
   const prefix = await mkdtemp(join(tmpdir(), "buoy-cli-"));
-  await run("npm", ["install", "--prefix", prefix, "--no-audit", "--no-fund", "--ignore-scripts", "@buoy-design/cli@latest"], { maxBuffer: 64 * 1024 * 1024 });
+  // Right after a release the registry can list a version before its
+  // tarball is downloadable (E404), so retry before giving up on the run.
+  for (let attempt = 1; ; attempt++) {
+    try {
+      await run("npm", ["install", "--prefix", prefix, "--no-audit", "--no-fund", "--ignore-scripts", "@buoy-design/cli@latest"], { maxBuffer: 64 * 1024 * 1024 });
+      break;
+    } catch (error) {
+      if (attempt >= 5) throw error;
+      console.error(`CLI install failed (attempt ${attempt}/5), retrying in 60s`);
+      await new Promise((resolve) => setTimeout(resolve, 60_000));
+    }
+  }
   const pkg = JSON.parse(await readFile(join(prefix, "node_modules/@buoy-design/cli/package.json"), "utf8"));
   return { bin: join(prefix, "node_modules/@buoy-design/cli/dist/bin.js"), version: pkg.version };
 }
