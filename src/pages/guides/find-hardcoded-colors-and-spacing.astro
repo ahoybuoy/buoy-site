@@ -1,0 +1,89 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro'
+import { reportStats } from '../../utils/reports'
+
+const s = reportStats()
+const faqs = [
+  {
+    q: 'How do I find hardcoded colors in a React codebase?',
+    a: "Search for hex, rgb() and hsl() values in .tsx, .jsx, .css and .scss files, including inline style objects and Tailwind arbitrary classes like bg-[#2563eb]. Then remove the ones that are fine as literals: SVG icons, email templates, tests and fully transparent values. A token-aware scanner such as Buoy does both steps and names the existing token to use instead.",
+  },
+  {
+    q: 'How do I find Tailwind arbitrary values?',
+    a: 'Search for classes with square brackets holding a literal, such as p-[13px], text-[#555] or rounded-[3px]. The eslint-plugin-tailwindcss rule no-arbitrary-value flags them in the editor. Arbitrary values that reference a token, like bg-[var(--brand)], are fine.',
+  },
+  {
+    q: 'Is there a Stylelint rule for hardcoded colors?',
+    a: 'Yes. The built-in color-no-hex rule disallows hex colors, and declaration-property-value-disallowed-list can ban literal values for chosen properties. The stylelint-declaration-strict-value plugin requires variables for properties such as color and margin.',
+  },
+  {
+    q: 'Why does grep find so many false positives?',
+    a: 'Because many literals are correct: icon paths, brand logos, email templates (email clients do not support CSS variables), tests, 1px borders, calc() expressions and values that already reference a token. Counting them makes a codebase look worse than it is and trains the team to ignore the results.',
+  },
+]
+---
+
+<GuideLayout
+  title="How to find hardcoded colors and spacing in React, Vue and Tailwind"
+  seoTitle="How to Find Hardcoded Colors & Spacing in React, Vue and Tailwind | Buoy"
+  description="Find hardcoded hex colors, pixel spacing and Tailwind arbitrary values in a codebase: search patterns that work, lint rules that keep them out, and how to tell real drift from correct literals."
+  keywords="find hardcoded colors, hardcoded values react, tailwind arbitrary values, stylelint color-no-hex, hardcoded spacing, design token enforcement"
+  slug="find-hardcoded-colors-and-spacing"
+  updated={s.updated}
+  answer="Search for hex, rgb() and pixel values in components, stylesheets and Tailwind classes, then drop the ones that are correct as literals: icons, email templates, tests, layout math and values that already use a token. What remains is drift; the fastest fix is the literals that exactly match an existing token."
+  faqs={faqs}
+>
+  <p>
+    Hardcoded values are the most common kind of design drift. In {s.scoredCount} well-known open-source codebases,
+    Buoy found {s.findings.toLocaleString()} hardcoded-value findings across {s.components.toLocaleString()}
+    components (<a href="/reports">see the reports</a>). Here is how to find them in your own code, from a quick
+    search to a check that runs on every pull request.
+  </p>
+
+  <h2>Quick search with ripgrep</h2>
+  <p>These searches cover the usual places literals hide. Run them from the repository root.</p>
+  <h3>Hex colors in components and stylesheets</h3>
+  <pre><code>rg -n --glob '*.{'{'}tsx,jsx,vue,svelte,css,scss{'}'}' '#[0-9a-fA-F]{'{'}3,8{'}'}\b'</code></pre>
+  <h3>Tailwind arbitrary values holding a literal</h3>
+  <pre><code>rg -n '\b[a-z-]+-\[(#[0-9a-fA-F]{'{'}3,8{'}'}|[0-9.]+(px|rem))\]'</code></pre>
+  <h3>Pixel values in inline style objects</h3>
+  <pre><code>rg -n 'style=\{'{'}\{'{'}[^{'}'}]*\b[0-9]+px'</code></pre>
+
+  <h2>Why raw search over-reports</h2>
+  <p>A search finds every literal. Many of them are correct, and counting them buries the real problems:</p>
+  <ul>
+    <li><strong>Artwork.</strong> <code>fill</code> and <code>stroke</code> on SVG icons and logos are drawings, not theme colors.</li>
+    <li><strong>Email templates.</strong> Most email clients ignore CSS variables, so literals are required.</li>
+    <li><strong>Tests, stories, fixtures and Open Graph images</strong> hold values on purpose.</li>
+    <li><strong>Layout math.</strong> <code>calc(100% - 2rem)</code>, <code>100dvh</code> and 1px hairlines are not design decisions.</li>
+    <li><strong>Values that use a token</strong>, such as <code>bg-[var(--brand)]</code>.</li>
+    <li><strong>Deliberate choices.</strong> A comment such as <code>// match the OS scrollbar</code> or a 2–3px optical nudge.</li>
+  </ul>
+
+  <h2>Keep them out with lint rules</h2>
+  <ul>
+    <li><strong>Stylelint:</strong> <code>color-no-hex</code> bans hex colors; <code>declaration-property-value-disallowed-list</code> bans literals for chosen properties; the <code>stylelint-declaration-strict-value</code> plugin requires variables.</li>
+    <li><strong>ESLint with Tailwind:</strong> <code>tailwindcss/no-arbitrary-value</code> from <code>eslint-plugin-tailwindcss</code> flags arbitrary classes.</li>
+  </ul>
+  <p>
+    Lint rules are strict by design: they do not know which literal equals an existing token, so they cannot
+    suggest the fix, and they fire on the correct literals above unless you add exceptions.
+  </p>
+
+  <h2>A token-aware scan</h2>
+  <p>
+    A scanner that reads your tokens can tell <code>#2563eb</code> apart from a random blue: if
+    <code>--color-primary</code> holds exactly that value, the fix is a one-line swap. Buoy does this for CSS,
+    Sass, Tailwind, React, Vue, Svelte and Angular:
+  </p>
+  <pre><code>npx @buoy-design/cli drift check          # findings, each with the token to use
+npx @buoy-design/cli drift check --staged # only the lines you are committing</code></pre>
+  <p>Or paste a public GitHub URL into <a href="/scan">buoy.design/scan</a>.</p>
+
+  <h2>Fix in order of payoff</h2>
+  <ol>
+    <li>Literals that exactly equal an existing token: swap them.</li>
+    <li>The same literal repeated across files: add a token, then swap.</li>
+    <li>One-off values: check for a reason before changing them.</li>
+  </ol>
+</GuideLayout>

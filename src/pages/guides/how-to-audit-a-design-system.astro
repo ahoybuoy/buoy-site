@@ -1,0 +1,123 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro'
+import { reportStats } from '../../utils/reports'
+
+const s = reportStats()
+const faqs = [
+  {
+    q: 'How do I scan a design system in a codebase?',
+    a: 'Paste a public GitHub URL into buoy.design/scan, or run `npx @buoy-design/cli show health` in the repository. Both find the design tokens and components, list the hardcoded colors, spacing and font sizes that bypass them, and give a 0–100 health score with the changes that would raise it.',
+  },
+  {
+    q: 'What should a design system audit check?',
+    a: 'Four things: which tokens and components exist, where code bypasses them with literal values, whether the tokens are actually used, and accessibility problems such as low color contrast. It should skip values that are correct as literals: icons and logos, email templates, Open Graph images, tests, layout math like calc() and 100dvh, and deliberate optical nudges.',
+  },
+  {
+    q: 'How long does a design system audit take?',
+    a: `An automated scan takes seconds to a few minutes: the ${s.scoredCount} open-source codebases in Buoy's public reports took about half a minute each at the median. Fixing what it finds is the real work, which is why ranking by payoff matters: swapping a literal for an existing token is a one-line change.`,
+  },
+  {
+    q: 'Can I audit a private repository?',
+    a: 'Yes, with the CLI. Run `npx @buoy-design/cli show health` inside a checkout; nothing leaves your machine. The web scanner at buoy.design/scan only reads public GitHub repositories.',
+  },
+]
+const howTo = {
+  name: 'Audit a design system in code',
+  steps: [
+    { name: 'Inventory the tokens', text: 'List the design tokens the code defines: CSS custom properties, Tailwind theme values, tokens.json and Sass variables.' },
+    { name: 'Inventory the components', text: 'List the UI components and look for near-duplicates that should be one component with variants.' },
+    { name: 'Find the bypasses', text: 'Find hardcoded colors, spacing, font sizes, radii and shadows where a token belongs, skipping icons, email templates, tests and layout math.' },
+    { name: 'Rank by payoff', text: 'Fix literals that exactly match an existing token first, then values repeated across files, then one-offs.' },
+    { name: 'Score it', text: 'Record a health score so progress is visible over time.' },
+    { name: 'Keep it fixed', text: 'Check pull requests and commits for new literals so the audit does not have to be repeated.' },
+  ],
+}
+---
+
+<GuideLayout
+  title="How to audit a design system in code"
+  seoTitle="How to Audit a Design System in Code (Step-by-Step) | Buoy"
+  description="A practical design system audit: inventory tokens and components, find hardcoded values that bypass them, rank fixes by payoff, and keep it fixed. With free tools and real numbers from open-source codebases."
+  keywords="design system audit, how to audit a design system, design system scan, design token audit, design system checklist, UI consistency audit"
+  slug="how-to-audit-a-design-system"
+  updated={s.updated}
+  answer="Inventory the tokens and components, find where code bypasses them with hardcoded values, fix the ones that exactly match an existing token first, and check every pull request so the drift does not come back. A scanner does the first three in under a minute; you can run one on any public GitHub repository at buoy.design/scan."
+  faqs={faqs}
+  howTo={howTo}
+>
+  <p>
+    A design system audit answers one question: does the code actually use the design system? Design files and
+    Storybook show what the system is supposed to be. The codebase shows what shipped. The gap between them is
+    design drift, and it grows quietly with every deadline, copy-pasted snippet and AI-generated component.
+  </p>
+
+  <h2>1. Inventory the tokens</h2>
+  <p>Start with what the system provides. Tokens live in more places than people expect:</p>
+  <ul>
+    <li>CSS custom properties, usually in a <code>:root</code> block in <code>tokens.css</code>, <code>theme.css</code> or <code>globals.css</code></li>
+    <li>A Tailwind theme: <code>tailwind.config.js</code> in v3, or an <code>@theme</code> block in CSS in v4</li>
+    <li>Design token JSON (<code>tokens.json</code>, Style Dictionary, Tokens Studio exports)</li>
+    <li>Sass variables such as <code>$brand</code> in <code>_variables.scss</code> or <code>theme.scss</code></li>
+    <li>A component library theme (MUI, Chakra, Mantine)</li>
+  </ul>
+  <p>
+    Count them by category: colors, spacing, typography, radius, shadow. A system with 12 colors and no spacing
+    scale will show up later as dozens of hand-picked margins.
+  </p>
+
+  <h2>2. Inventory the components</h2>
+  <p>
+    List the UI components and look for near-duplicates: three buttons with slightly different padding usually
+    means one button that needed a variant. Duplicates are where drift multiplies, because each copy is edited
+    separately.
+  </p>
+
+  <h2>3. Find where the code bypasses the system</h2>
+  <p>
+    This is the core of the audit: colors, spacing, font sizes, radii and shadows written as literals where a token
+    belongs. <code>color: #2563eb</code> in a repository that defines <code>--color-primary: #2563eb</code> works
+    today and drifts the day the brand color changes.
+  </p>
+  <p>Just as important is what not to count. A useful audit skips values that are correct as literals:</p>
+  <ul>
+    <li>Icons, logos and illustrations: SVG paint is artwork, not theming</li>
+    <li>Email templates: most email clients do not support CSS variables</li>
+    <li>Open Graph and social images, tests, stories and fixtures</li>
+    <li>Layout math: <code>calc()</code>, <code>100dvh</code>, grid templates, 1px hairlines</li>
+    <li>Deliberate choices: a 2–3px optical nudge, or a value with a comment explaining why it differs</li>
+  </ul>
+  <p>
+    Skipping these is not leniency. An audit that flags a brand logo's fill color teaches the team to ignore the
+    audit. Across the {s.scoredCount} open-source codebases in <a href="/reports">Buoy's public reports</a>,
+    {s.noted.toLocaleString()} values were left alone because the code marked them as deliberate.
+  </p>
+
+  <h2>4. Rank the fixes by payoff</h2>
+  <ol>
+    <li><strong>Exact token matches.</strong> A literal that equals an existing token is a one-line, zero-risk swap.</li>
+    <li><strong>Repeated values.</strong> The same literal in five files is a missing token. Add it once and replace all five.</li>
+    <li><strong>One-offs.</strong> A single unusual value may be deliberate. Check before changing it.</li>
+  </ol>
+
+  <h2>5. Score it, so progress is visible</h2>
+  <p>
+    A single number makes an audit repeatable. Buoy's <a href="/guides/design-system-health-score">design health
+    score</a> weighs hardcoded values per component most heavily, then token health, naming consistency and
+    critical issues such as color contrast. Across the public reports the median is {s.medianScore}/100, and
+    {s.greatCount} of {s.scoredCount} codebases score 80 or more.
+  </p>
+
+  <h2>6. Keep it fixed</h2>
+  <p>An audit you run once decays. Put the check where new code arrives:</p>
+  <ul>
+    <li>On pull requests, flagging only lines the PR adds, with a committable fix when a token exists</li>
+    <li>In a pre-commit hook that checks staged lines: <code>npx @buoy-design/cli drift check --staged</code></li>
+    <li>In AI coding assistants, which write literals unless they are given the tokens: <code>npx @buoy-design/cli mcp install</code></li>
+  </ul>
+
+  <h2>Run the audit</h2>
+  <p>On any public GitHub repository, use <a href="/scan">buoy.design/scan</a>. In a private checkout:</p>
+  <pre><code>npx @buoy-design/cli show health     # score, pillars and the path to 100
+npx @buoy-design/cli drift check     # every finding, with the token to use
+npx @buoy-design/cli show tokens     # the token inventory</code></pre>
+</GuideLayout>

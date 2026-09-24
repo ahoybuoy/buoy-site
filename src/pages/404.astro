@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+---
+
+<Layout title="Page not found | Buoy" description="This page does not exist." noindex>
+  <Nav />
+  <section class="pt-32 pb-24 bg-navy-dark min-h-[60vh]">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold text-light">Page not found</h1>
+      <p class="text-slate mt-3">Nothing lives at this address.</p>
+      <ul class="mt-6 space-y-2">
+        <li><a href="/scan" class="text-buoy hover:underline">Scan a GitHub repository for design drift</a></li>
+        <li><a href="/reports" class="text-buoy hover:underline">Design health reports for open-source codebases</a></li>
+        <li><a href="/guides" class="text-buoy hover:underline">Guides</a></li>
+        <li><a href="/docs" class="text-buoy hover:underline">Docs</a></li>
+      </ul>
+    </div>
+  </section>
+  <Footer />
+</Layout>

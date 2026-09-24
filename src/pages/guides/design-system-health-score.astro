@@ -1,0 +1,89 @@
+---
+import GuideLayout from '../../layouts/GuideLayout.astro'
+import { reportStats } from '../../utils/reports'
+
+const s = reportStats()
+const faqs = [
+  {
+    q: 'How is design system health measured?',
+    a: 'Buoy scores it from 0 to 100 across four pillars: value discipline (60 points, hardcoded values per component), token health (20, whether a token system exists and its tokens are used), consistency (10, naming conflicts) and critical issues (10, color contrast failures, accessibility conflicts and deprecated patterns).',
+  },
+  {
+    q: 'What is a good design system health score?',
+    a: `80 or more is rated Great, 60–79 Good, 40–59 OK, 20–39 Bad and under 20 Terrible. Across ${s.scoredCount} well-known open-source codebases the median is ${s.medianScore}, and ${s.greatCount} score 80 or more.`,
+  },
+  {
+    q: 'What does it take to score 100?',
+    a: 'Almost no hardcoded design values per component, a token system whose tokens are used, no naming conflicts, and no critical findings. Every Buoy report lists its path to 100: the points each pillar is missing and the change that earns them back.',
+  },
+  {
+    q: 'Does using Tailwind or a component library raise the score?',
+    a: "Tailwind's theme counts as a token system, and so do your own CSS variables or tokens file, but adding dependencies earns nothing by itself. A plain-CSS codebase with a complete token set can score 100.",
+  },
+  {
+    q: 'Which values does the score ignore?',
+    a: 'Icons and logos, email templates, Open Graph images, tests and stories, example and demo apps, layout math such as calc() and 100dvh, 1px hairlines, vendored shadcn/ui templates, and values the code marks as deliberate with a comment, a 2–3px optical nudge or its commit message.',
+  },
+]
+---
+
+<GuideLayout
+  title="How to measure design system health"
+  seoTitle="Design System Health Score: How It's Measured and How to Reach 100 | Buoy"
+  description="What a design system health score measures, how each of the four pillars is calculated, what counts and what does not, and the path to 100, with real scores from open-source codebases."
+  keywords="design system health, design system metrics, design system score, measure design system adoption, design token coverage, design system KPIs"
+  slug="design-system-health-score"
+  updated={s.updated}
+  answer={`Count how often the code bypasses the design system per component, check that a token system exists and its tokens are used, and add naming conflicts and accessibility failures. Buoy combines these into a 0–100 score where hardcoded values per component carry 60 of the points; the median across ${s.scoredCount} well-known open-source codebases is ${s.medianScore}.`}
+  faqs={faqs}
+>
+  <p>
+    Design system adoption is usually measured in design tools: how many components are used, how many files are
+    detached. That misses what ships. A code-level health score measures how much of the product's UI actually
+    goes through the system.
+  </p>
+
+  <h2>The four pillars</h2>
+  <table>
+    <thead><tr><th>Pillar</th><th>Points</th><th>What it measures</th></tr></thead>
+    <tbody>
+      <tr><td>Value discipline</td><td>60</td><td>Hardcoded colors, spacing, font sizes, radii and shadows per component. Every finding costs a little; about one per three components empties the pillar.</td></tr>
+      <tr><td>Token health</td><td>20</td><td>Half for having a token system (your own tokens, full credit at 20, or Tailwind's theme), half for tokens actually being used rather than left stale.</td></tr>
+      <tr><td>Consistency</td><td>10</td><td>Naming and semantic conflicts, for example two components named for the same role with different APIs.</td></tr>
+      <tr><td>Critical issues</td><td>10</td><td>Color contrast failures between text and background on the same element, accessibility conflicts and deprecated patterns.</td></tr>
+    </tbody>
+  </table>
+  <p>Tiers: 80–100 Great, 60–79 Good, 40–59 OK, 20–39 Bad, under 20 Terrible.</p>
+
+  <h2>Why density, not totals</h2>
+  <p>
+    A large product has more code, so it has more literals. Counting findings per component keeps a 4,000-component
+    monorepo comparable with a 300-component app. Earlier versions of the score capped every large codebase at the
+    same number; density fixed that.
+  </p>
+
+  <h2>What does not count</h2>
+  <p>
+    The score only counts design decisions that should have used a token. It skips icons and logos, email
+    templates, social images, tests, stories, example and demo apps, layout math, hairlines, vendored shadcn/ui
+    templates, and values the code marks as deliberate. In the public reports, {s.noted.toLocaleString()} values
+    were left alone for that last reason alone.
+  </p>
+
+  <h2>The path to 100</h2>
+  <p>
+    Every report lists what stands between its score and 100, for example "Replace the hardcoded values in all 15
+    findings with tokens or scale steps (+8)". Run it on your own code:
+  </p>
+  <pre><code>npx @buoy-design/cli show health</code></pre>
+
+  <h2>Real scores</h2>
+  <p>
+    {s.scoredCount} well-known open-source codebases, scanned with the same CLI: median {s.medianScore}, range
+    {s.minScore}–{s.maxScore}. The highest right now:
+  </p>
+  <ul>
+    {s.best.map((r) => <li><a href={`/reports/${r.repo}`}>{r.repo}</a>: {r.score}/100</li>)}
+  </ul>
+  <p>All of them are on the <a href="/reports">reports page</a>, and any public repository can be scored at <a href="/scan">buoy.design/scan</a>.</p>
+</GuideLayout>

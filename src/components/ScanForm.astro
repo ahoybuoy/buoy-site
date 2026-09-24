@@ -1,0 +1,67 @@
+---
+/**
+ * The "scan a GitHub repository" form. Posts to the public scan API and goes
+ * to /scan/owner/repo, which shows progress and then the report. Works
+ * without JavaScript as a GET to /scan?url=..., which this script picks up.
+ */
+interface Props { id?: string; autofocus?: boolean }
+const { id = 'scan', autofocus = false } = Astro.props
+---
+
+<form id={`${id}-form`} action="/scan" method="get" class="scan-form flex flex-col sm:flex-row gap-3" data-scan-form>
+  <label for={`${id}-url`} class="sr-only">GitHub repository URL</label>
+  <input id={`${id}-url`} name="url" type="text" required autocomplete="off" spellcheck="false" autofocus={autofocus}
+    placeholder="https://github.com/owner/repo"
+    class="flex-1 rounded-lg bg-navy-dark border border-navy-light/40 px-4 py-3 text-light placeholder:text-slate/60 focus:outline-none focus:border-buoy" />
+  <button type="submit" class="rounded-lg bg-buoy px-6 py-3 font-semibold text-navy-dark hover:opacity-90 disabled:opacity-60">Scan repository</button>
+</form>
+<p class="scan-error text-sm text-red-400 mt-3 hidden" role="alert" data-scan-error></p>
+
+<script>
+  const API = 'https://api.buoy.design'
+
+  function parseRepo(input: string): string | null {
+    const m = input.trim().match(/^(?:https?:\/\/)?(?:www\.)?github\.com\/([A-Za-z0-9-]+)\/([A-Za-z0-9_.-]+?)(?:\.git)?(?:[/?#].*)?$/i)
+      ?? input.trim().match(/^([A-Za-z0-9-]+)\/([A-Za-z0-9_.-]+?)(?:\.git)?$/)
+    return m ? `${m[1]}/${m[2]}` : null
+  }
+
+  async function start(form: HTMLFormElement, value: string) {
+    const error = form.parentElement?.querySelector<HTMLElement>('[data-scan-error]')
+    const button = form.querySelector('button')
+    const show = (msg: string) => { if (error) { error.textContent = msg; error.classList.remove('hidden') } }
+    error?.classList.add('hidden')
+    const repo = parseRepo(value)
+    if (!repo) return show('Paste a GitHub repository URL, like https://github.com/owner/repo.')
+    if (button) { button.disabled = true; button.textContent = 'Starting…' }
+    try {
+      const res = await fetch(`${API}/public/scan`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url: value }),
+      })
+      const body = await res.json().catch(() => ({}))
+      if (!res.ok) throw new Error(body.error ?? (res.status === 429 ? 'Too many scans from here. Try again in a while.' : 'The scan could not start.'))
+      window.location.href = `/scan/${body.repo ?? repo}`
+    } catch (e) {
+      show(e instanceof Error ? e.message : 'The scan could not start.')
+      if (button) { button.disabled = false; button.textContent = 'Scan repository' }
+    }
+  }
+
+  for (const form of document.querySelectorAll<HTMLFormElement>('[data-scan-form]')) {
+    form.addEventListener('submit', (event) => {
+      event.preventDefault()
+      const input = form.querySelector<HTMLInputElement>('input[name="url"]')
+      if (input) start(form, input.value)
+    })
+  }
+
+  // /scan?url=... (a guide's form without JavaScript, or a shared link): start right away.
+  const initial = new URLSearchParams(window.location.search).get('url')
+  const firstForm = document.querySelector<HTMLFormElement>('[data-scan-form]')
+  const isBot = /bot|crawl|spider|slurp|headless|lighthouse/i.test(navigator.userAgent)
+  if (initial && firstForm && !isBot && window.location.pathname.replace(/\/$/, '') === '/scan') {
+    const input = firstForm.querySelector<HTMLInputElement>('input[name="url"]')
+    if (input) input.value = initial
+    start(firstForm, initial)
+  }
+</script>

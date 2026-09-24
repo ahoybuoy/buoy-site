@@ -1,0 +1,39 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import Nav from '../../components/Nav.astro'
+import Footer from '../../components/Footer.astro'
+
+const guides = [
+  { slug: 'how-to-audit-a-design-system', title: 'How to audit a design system in code', blurb: 'Inventory tokens and components, find what bypasses them, rank fixes by payoff, and keep it fixed.' },
+  { slug: 'find-hardcoded-colors-and-spacing', title: 'How to find hardcoded colors and spacing in React, Vue and Tailwind', blurb: 'Search patterns that work, lint rules that keep literals out, and how to tell real drift from correct literals.' },
+  { slug: 'design-system-health-score', title: 'How to measure design system health', blurb: 'The four pillars of a 0–100 health score, what does not count, and the path to 100.' },
+  { slug: 'what-is-design-drift', title: 'What is design drift?', blurb: 'The gap between a design system and the code that ships: causes, examples, and prevention.' },
+]
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Design system guides',
+  url: 'https://buoy.design/guides',
+  hasPart: guides.map((g) => ({ '@type': 'TechArticle', headline: g.title, url: `https://buoy.design/guides/${g.slug}` })),
+}
+---
+
+<Layout title="Design System Guides: Audits, Hardcoded Values and Health Scores | Buoy" description="Practical guides to auditing a design system in code: finding hardcoded colors and spacing, measuring design system health, and preventing design drift." keywords="design system guides, design system audit, hardcoded values, design system health, design drift" jsonLd={jsonLd}>
+  <Nav />
+  <section class="pt-32 pb-16 bg-navy-dark">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl sm:text-4xl font-bold text-light">Design system guides</h1>
+      <p class="text-slate mt-3">How to check whether a codebase actually uses its design system, and keep it that way.</p>
+      <ul class="mt-10 space-y-6">
+        {guides.map((g) => (
+          <li class="bg-navy/50 border border-navy-light/20 rounded-2xl p-6">
+            <a href={`/guides/${g.slug}`} class="text-xl font-semibold text-light hover:text-buoy">{g.title}</a>
+            <p class="text-slate mt-2">{g.blurb}</p>
+          </li>
+        ))}
+      </ul>
+      <p class="text-slate mt-10">Want the answer for a specific repository? <a href="/scan" class="text-buoy hover:underline">Scan it</a>.</p>
+    </div>
+  </section>
+  <Footer />
+</Layout>

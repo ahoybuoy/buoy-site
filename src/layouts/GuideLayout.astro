@@ -1,0 +1,141 @@
+---
+/**
+ * Guides: practical answers to how teams audit and measure a design system in
+ * code. Each guide leads with a short answer, then steps, then FAQs, with
+ * Article, FAQPage and BreadcrumbList structured data so search engines and
+ * AI answer engines can cite it.
+ */
+import Layout from './Layout.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+
+export interface Faq { q: string; a: string }
+
+interface Props {
+  title: string
+  seoTitle: string
+  description: string
+  keywords: string
+  slug: string
+  answer: string
+  updated: string
+  faqs?: Faq[]
+  howTo?: { name: string; steps: Array<{ name: string; text: string }> }
+}
+
+const { title, seoTitle, description, keywords, slug, answer, updated, faqs = [], howTo } = Astro.props
+const url = `https://buoy.design/guides/${slug}`
+const jsonLd: Record<string, unknown>[] = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    headline: title,
+    description,
+    url,
+    datePublished: updated,
+    dateModified: updated,
+    author: { '@type': 'Organization', name: 'Buoy', url: 'https://buoy.design' },
+    publisher: { '@type': 'Organization', name: 'Buoy', url: 'https://buoy.design', logo: { '@type': 'ImageObject', url: 'https://buoy.design/buoy-logo.jpg' } },
+    mainEntityOfPage: url,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Guides', item: 'https://buoy.design/guides' },
+      { '@type': 'ListItem', position: 2, name: title, item: url },
+    ],
+  },
+]
+if (faqs.length) {
+  jsonLd.push({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  })
+}
+if (howTo) {
+  jsonLd.push({
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: howTo.name,
+    step: howTo.steps.map((s, i) => ({ '@type': 'HowToStep', position: i + 1, name: s.name, text: s.text })),
+  })
+}
+const guides = [
+  { slug: 'how-to-audit-a-design-system', title: 'How to audit a design system in code' },
+  { slug: 'find-hardcoded-colors-and-spacing', title: 'How to find hardcoded colors and spacing' },
+  { slug: 'design-system-health-score', title: 'How to measure design system health' },
+  { slug: 'what-is-design-drift', title: 'What is design drift?' },
+].filter((g) => g.slug !== slug)
+---
+
+<Layout title={seoTitle} description={description} keywords={keywords} jsonLd={jsonLd}>
+  <Nav />
+  <article class="pt-32 pb-16 bg-navy-dark">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav class="text-sm text-slate"><a href="/guides" class="hover:text-buoy">Guides</a> <span>/</span></nav>
+      <h1 class="text-3xl sm:text-4xl font-bold text-light mt-3">{title}</h1>
+      <p class="text-sm text-slate/70 mt-2">Updated <time datetime={updated}>{updated}</time> · Buoy</p>
+
+      <div class="mt-8 bg-navy/50 border border-buoy/40 rounded-2xl p-6">
+        <p class="text-xs uppercase tracking-wide text-buoy font-semibold">Short answer</p>
+        <p class="text-light mt-2 leading-relaxed">{answer}</p>
+      </div>
+
+      <div class="guide-body mt-10 text-slate leading-relaxed">
+        <slot />
+      </div>
+
+      <div class="mt-12 bg-navy/50 border border-navy-light/30 rounded-2xl p-6">
+        <h2 class="text-xl font-bold text-light">Scan a repository now</h2>
+        <p class="text-slate mt-2">Paste a public GitHub URL and get a design health report in under a minute: score, the hardcoded values to fix first, and the path to 100.</p>
+        <form action="/scan" method="get" class="mt-4 flex flex-col sm:flex-row gap-3">
+          <label for="guide-scan-url" class="sr-only">GitHub repository URL</label>
+          <input id="guide-scan-url" name="url" type="text" required placeholder="https://github.com/owner/repo"
+            class="flex-1 rounded-lg bg-navy-dark border border-navy-light/40 px-4 py-2.5 text-light placeholder:text-slate/60 focus:outline-none focus:border-buoy" />
+          <button type="submit" class="rounded-lg bg-buoy px-5 py-2.5 font-semibold text-navy-dark hover:opacity-90">Scan</button>
+        </form>
+      </div>
+
+      {faqs.length > 0 && (
+        <section class="mt-12">
+          <h2 class="text-2xl font-bold text-light">Frequently asked questions</h2>
+          <dl class="mt-6 space-y-6">
+            {faqs.map((f) => (
+              <div>
+                <dt class="text-light font-semibold">{f.q}</dt>
+                <dd class="text-slate mt-2 leading-relaxed">{f.a}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      )}
+
+      <section class="mt-12">
+        <h2 class="text-lg font-semibold text-light">More guides</h2>
+        <ul class="mt-3 space-y-2">
+          {guides.map((g) => <li><a href={`/guides/${g.slug}`} class="text-buoy hover:underline">{g.title}</a></li>)}
+        </ul>
+      </section>
+    </div>
+  </article>
+  <Footer />
+</Layout>
+
+<style is:global>
+  .guide-body h2 { color: var(--color-light, #e8eef5); font-size: 1.5rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 0.75rem; }
+  .guide-body h3 { color: var(--color-light, #e8eef5); font-size: 1.15rem; font-weight: 600; margin-top: 1.75rem; margin-bottom: 0.5rem; }
+  .guide-body p { margin-top: 0.9rem; }
+  .guide-body ul, .guide-body ol { margin-top: 0.9rem; padding-left: 1.25rem; }
+  .guide-body ul { list-style: disc; }
+  .guide-body ol { list-style: decimal; }
+  .guide-body li { margin-top: 0.4rem; }
+  .guide-body a { color: var(--color-buoy, #4fd1c5); }
+  .guide-body a:hover { text-decoration: underline; }
+  .guide-body code { color: var(--color-light, #e8eef5); font-size: 0.9em; }
+  .guide-body pre { margin-top: 1rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.08); border-radius: 0.75rem; padding: 1rem; overflow-x: auto; font-size: 0.85rem; }
+  .guide-body table { margin-top: 1rem; width: 100%; font-size: 0.9rem; border-collapse: collapse; }
+  .guide-body th, .guide-body td { border-bottom: 1px solid rgba(255,255,255,0.08); padding: 0.5rem 0.75rem 0.5rem 0; text-align: left; }
+  .guide-body th { color: var(--color-light, #e8eef5); font-weight: 600; }
+</style>

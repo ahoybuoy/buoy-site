@@ -88,3 +88,52 @@ export function mergeColors(values: Array<{ value: string; count: number }>): Ar
   }
   return [...merged.entries()].sort((a, b) => b[1] - a[1]).map(([value, count]) => ({ value, count }));
 }
+
+/** schema.org structured data for a report page (search engines and AI answer engines read this). */
+export function reportJsonLd(r: Report, path: string): Record<string, unknown> {
+  const vendored = r.metrics.vendoredDriftCount ?? 0
+  const findings = Math.max(0, r.metrics.hardcodedValueCount - vendored)
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Report',
+    name: `${r.repo} design system health report`,
+    headline: `${r.repo}: design health ${r.score ?? 'N/A'}/100`,
+    description: `Design health ${r.score ?? 'N/A'}/100 (${r.tier}) for ${r.repo}: ${findings} hardcoded-value findings across ${r.metrics.componentCount} components and ${r.metrics.tokenCount} design tokens, scanned by Buoy.`,
+    url: `https://buoy.design${path}`,
+    datePublished: r.generatedAt,
+    dateModified: r.generatedAt,
+    author: { '@type': 'Organization', name: 'Buoy', url: 'https://buoy.design' },
+    publisher: { '@type': 'Organization', name: 'Buoy', url: 'https://buoy.design' },
+    about: {
+      '@type': 'SoftwareSourceCode',
+      name: r.repo,
+      codeRepository: `https://github.com/${r.repo}`,
+      ...(r.language ? { programmingLanguage: r.language } : {}),
+    },
+    isBasedOn: { '@type': 'SoftwareApplication', name: 'Buoy CLI', url: 'https://www.npmjs.com/package/@buoy-design/cli', softwareVersion: r.cliVersion },
+  }
+}
+
+/** Aggregate numbers across the public reports, computed at build time so guides quote current data. */
+export function reportStats() {
+  const reports = allReports()
+  const scored = reports.filter((r) => r.score !== null)
+  const scores = scored.map((r) => r.score as number).sort((a, b) => a - b)
+  const own = (r: Report) => Math.max(0, r.metrics.hardcodedValueCount - (r.metrics.vendoredDriftCount ?? 0))
+  const mid = Math.floor(scores.length / 2)
+  const median = scores.length === 0 ? 0 : scores.length % 2 ? scores[mid]! : Math.round((scores[mid - 1]! + scores[mid]!) / 2)
+  return {
+    repoCount: reports.length,
+    scoredCount: scored.length,
+    medianScore: median,
+    minScore: scores[0] ?? 0,
+    maxScore: scores[scores.length - 1] ?? 0,
+    greatCount: scores.filter((s) => s >= 80).length,
+    findings: scored.reduce((n, r) => n + own(r), 0),
+    components: scored.reduce((n, r) => n + r.metrics.componentCount, 0),
+    tokens: scored.reduce((n, r) => n + r.metrics.tokenCount, 0),
+    noted: scored.reduce((n, r) => n + (r.noted?.count ?? 0), 0),
+    best: [...scored].sort((a, b) => (b.score as number) - (a.score as number)).slice(0, 3),
+    updated: reports.map((r) => r.generatedAt).sort().pop()?.slice(0, 10) ?? '',
+  }
+}

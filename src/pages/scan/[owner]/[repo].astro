@@ -1,0 +1,166 @@
+---
+/**
+ * An on-demand design health report for one public GitHub repository.
+ * Rendered per request: the report when it is ready, progress while the scan
+ * runs (the page polls and reloads), and a clear fallback when it fails.
+ * These pages are noindex: the curated /reports pages are the indexed ones.
+ */
+import Layout from '../../../layouts/Layout.astro'
+import Nav from '../../../components/Nav.astro'
+import Footer from '../../../components/Footer.astro'
+import ReportView from '../../../components/ReportView.astro'
+import ScanForm from '../../../components/ScanForm.astro'
+import { allReports, type Report } from '../../../utils/reports'
+
+export const prerender = false
+
+const API = 'https://api.buoy.design'
+const { owner = '', repo = '' } = Astro.params
+const valid = /^[A-Za-z0-9-]+$/.test(owner) && /^[A-Za-z0-9_.-]+$/.test(repo)
+const fullName = `${owner}/${repo}`
+
+type View = { repo: string; status: 'queued' | 'running' | 'done' | 'failed' | 'none'; error: string | null; report: Report | null }
+let view: View = { repo: fullName, status: 'none', error: null, report: null }
+let apiDown = false
+if (valid) {
+  try {
+    const res = await fetch(`${API}/public/reports/${owner}/${repo}`, { headers: { Accept: 'application/json' } })
+    if (res.ok) view = await res.json() as View
+    else if (res.status !== 404) apiDown = true
+  } catch {
+    apiDown = true
+  }
+}
+if (!valid) Astro.response.status = 404
+
+const curated = allReports().find((r) => r.repo.toLowerCase() === fullName.toLowerCase())
+const report = view.report
+const pending = view.status === 'queued' || view.status === 'running'
+if (report && !pending) Astro.response.headers.set('Cache-Control', 'public, max-age=300')
+else Astro.response.headers.set('Cache-Control', 'no-store')
+
+const title = report
+  ? `${report.repo}: design health ${report.score ?? 'N/A'}/100 | Buoy scan`
+  : `Scanning ${fullName} | Buoy`
+const description = report
+  ? `Design health ${report.score ?? 'N/A'}/100 for ${report.repo}: hardcoded values, token health and the path to 100.`
+  : `Buoy is scanning ${fullName} for design drift.`
+---
+
+<Layout title={title} description={description} noindex canonical={curated ? `/reports/${curated.repo}` : undefined}>
+  <Nav />
+
+  {!valid && (
+    <section class="pt-32 pb-16 bg-navy-dark">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-bold text-light">That is not a GitHub repository name</h1>
+        <p class="text-slate mt-3">Paste a repository URL like https://github.com/owner/repo.</p>
+        <div class="mt-6"><ScanForm id="scan-invalid" /></div>
+      </div>
+    </section>
+  )}
+
+  {valid && report && (
+    <>
+      {pending && (
+        <div class="pt-24 bg-navy-dark">
+          <p class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-slate" data-scan-poll={fullName}>
+            A fresh scan is running; this page updates when it finishes.
+          </p>
+        </div>
+      )}
+      <ReportView report={report} backHref="/scan" backLabel="← Scan another repository" />
+      <section class="pb-16 bg-navy-dark">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="bg-navy/50 border border-navy-light/30 rounded-2xl p-6">
+            <h2 class="text-xl font-bold text-light">Keep it from drifting back</h2>
+            <p class="text-slate mt-2">
+              Install the <a href="https://github.com/marketplace/buoy-design" class="text-buoy hover:underline">Buoy GitHub App</a> to get
+              these checks on every pull request, limited to the lines a PR adds and with a one-click fix when a token exists.
+              Or run <code class="text-light">npx @buoy-design/cli drift check --staged</code> before each commit.
+            </p>
+            {curated && <p class="text-slate mt-3 text-sm">This repository also has a <a href={`/reports/${curated.repo}`} class="text-buoy hover:underline">curated report</a>, refreshed daily.</p>}
+          </div>
+        </div>
+      </section>
+    </>
+  )}
+
+  {valid && !report && (
+    <section class="pt-32 pb-24 bg-navy-dark min-h-[60vh]">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <a href="/scan" class="text-sm text-slate hover:text-buoy">← Scan another repository</a>
+        <h1 class="text-3xl sm:text-4xl font-bold text-light mt-4">{fullName}</h1>
+        {view.status === 'failed' ? (
+          <div class="mt-6">
+            <p class="text-light">The scan did not finish.</p>
+            <p class="text-slate mt-2 text-sm">{view.error}</p>
+            <p class="text-slate mt-4">Try again, or run it locally in a checkout:</p>
+            <pre class="mt-3 bg-black/30 border border-navy-light/20 rounded-xl p-4 text-sm text-light overflow-x-auto"><code>npx @buoy-design/cli show health</code></pre>
+            <div class="mt-6"><ScanForm id="scan-retry" /></div>
+          </div>
+        ) : apiDown ? (
+          <div class="mt-6">
+            <p class="text-slate">The scanner is not answering right now. Try again in a minute, or run it locally with <code class="text-light">npx @buoy-design/cli show health</code>.</p>
+          </div>
+        ) : (
+          <div class="mt-6" data-scan-poll={fullName} data-scan-start={view.status === 'none' ? 'true' : undefined}>
+            <div class="flex items-center gap-3">
+              <span class="inline-block w-3 h-3 rounded-full bg-buoy animate-pulse"></span>
+              <p class="text-light" data-scan-status>{view.status === 'none' ? 'Starting the scan…' : 'Scanning…'}</p>
+            </div>
+            <p class="text-slate mt-3 text-sm">
+              Buoy is cloning the default branch and running its open-source CLI. Most repositories take under a minute;
+              large monorepos take a few. This page updates by itself.
+            </p>
+            <p class="text-red-400 text-sm mt-3 hidden" role="alert" data-scan-poll-error></p>
+          </div>
+        )}
+      </div>
+    </section>
+  )}
+
+  <Footer />
+</Layout>
+
+<script>
+  const API = 'https://api.buoy.design'
+  const el = document.querySelector<HTMLElement>('[data-scan-poll]')
+  if (el) {
+    const repo = el.dataset.scanPoll!
+    const status = document.querySelector<HTMLElement>('[data-scan-status]')
+    const error = document.querySelector<HTMLElement>('[data-scan-poll-error]')
+    const fail = (msg: string) => { if (error) { error.textContent = msg; error.classList.remove('hidden') } }
+
+    const poll = async (attempt = 0): Promise<void> => {
+      if (attempt > 180) return fail('This is taking longer than usual. Reload the page to check again.')
+      try {
+        const res = await fetch(`${API}/public/reports/${repo}`, { cache: 'no-store' })
+        const body = res.ok ? await res.json() : null
+        if (body && (body.status === 'done' || body.status === 'failed')) { window.location.reload(); return }
+        if (status && body?.status === 'running') status.textContent = 'Scanning…'
+      } catch { /* keep polling */ }
+      setTimeout(() => poll(attempt + 1), 4000)
+    }
+
+    const start = async () => {
+      try {
+        const res = await fetch(`${API}/public/scan`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ repo }),
+        })
+        const body = await res.json().catch(() => ({}))
+        if (!res.ok) return fail(body.error ?? 'The scan could not start.')
+        if (body.repo && body.repo !== repo) { window.location.replace(`/scan/${body.repo}`); return }
+        if (status) status.textContent = 'Scanning…'
+      } catch {
+        return fail('The scanner is not answering right now. Try again in a minute.')
+      }
+      poll()
+    }
+
+    // Crawlers that run JavaScript must not start scans; people see the page as usual.
+    const isBot = /bot|crawl|spider|slurp|headless|lighthouse/i.test(navigator.userAgent)
+    if (el.dataset.scanStart === 'true' && !isBot) start()
+    else if (el.dataset.scanStart !== 'true') poll()
+  }
+</script>
