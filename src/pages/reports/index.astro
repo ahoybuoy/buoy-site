@@ -6,7 +6,9 @@ import { allReports, formatStars, scoreColor } from '../../utils/reports'
 
 const reports = allReports()
 const generated = reports.map((r) => r.generatedAt).sort().at(-1)?.slice(0, 10)
-const totalHardcoded = reports.reduce((n, r) => n + r.metrics.hardcodedValueCount, 0)
+// Scored findings only: vendored shadcn/ui templates are not the team's code.
+const ownHardcoded = (r: (typeof reports)[number]) => Math.max(0, r.metrics.hardcodedValueCount - (r.metrics.vendoredDriftCount ?? 0))
+const totalHardcoded = reports.reduce((n, r) => n + ownHardcoded(r), 0)
 ---
 
 <Layout
@@ -21,8 +23,8 @@ const totalHardcoded = reports.reduce((n, r) => n + r.metrics.hardcodedValueCoun
     <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6">Design drift in the open</h1>
       <p class="text-lg text-slate max-w-2xl mx-auto">
-        {reports.length} well-known codebases, scanned with the open-source Buoy CLI: {totalHardcoded.toLocaleString()} hardcoded values
-        that a token already covers or should. Same scan you get on <code class="text-buoy">npx @buoy-design/cli show health</code>.
+        {reports.length} well-known codebases, scanned with the open-source Buoy CLI: {totalHardcoded.toLocaleString()} findings of hardcoded
+        values that a token already covers or should. Same scan you get on <code class="text-buoy">npx @buoy-design/cli show health</code>.
       </p>
       {generated && <p class="text-sm text-slate/70 mt-4">Last scanned {generated}</p>}
     </div>
@@ -36,7 +38,7 @@ const totalHardcoded = reports.reduce((n, r) => n + r.metrics.hardcodedValueCoun
             <tr>
               <th class="px-4 py-3">Repository</th>
               <th class="px-4 py-3 text-right">Health</th>
-              <th class="px-4 py-3 text-right">Hardcoded values</th>
+              <th class="px-4 py-3 text-right">Hardcoded findings</th>
               <th class="px-4 py-3 text-right">Tokens</th>
               <th class="px-4 py-3 text-right">Components</th>
               <th class="px-4 py-3">Stack</th>
@@ -50,7 +52,7 @@ const totalHardcoded = reports.reduce((n, r) => n + r.metrics.hardcodedValueCoun
                   <span class="text-slate/70 ml-2">★ {formatStars(r.stars)}</span>
                 </td>
                 <td class={`px-4 py-3 text-right font-bold ${scoreColor(r.score)}`}>{r.score}</td>
-                <td class="px-4 py-3 text-right text-light">{r.metrics.hardcodedValueCount.toLocaleString()}</td>
+                <td class="px-4 py-3 text-right text-light">{ownHardcoded(r).toLocaleString()}</td>
                 <td class="px-4 py-3 text-right text-slate">{r.metrics.tokenCount}</td>
                 <td class="px-4 py-3 text-right text-slate">{r.metrics.componentCount.toLocaleString()}</td>
                 <td class="px-4 py-3 text-slate">{r.metrics.detectedFrameworkNames.slice(0, 3).join(', ')}</td>
@@ -63,7 +65,10 @@ const totalHardcoded = reports.reduce((n, r) => n + r.metrics.hardcodedValueCoun
         Buoy counts literal design values only: colours, spacing, font sizes, radii and shadows written by hand where a
         token belongs. It deliberately skips icons and logos, email templates (email clients cannot use CSS variables),
         social images, tests and stories, and layout values like <code>calc()</code>, <code>100dvh</code> or grid templates.
-        Health is Buoy's 0–100 score: value discipline (60), token health (20), consistency (10), critical issues (10).
+        Health is Buoy's 0–100 score. Value discipline (60) falls as hardcoded findings per component rise. Token health (20)
+        asks whether there is a token system, the repo's own tokens or Tailwind's theme, and whether its tokens are used.
+        Consistency (10) counts naming conflicts, and critical issues (10) counts colour contrast failures, accessibility
+        conflicts and deprecated patterns. Each report lists its path to 100: the points missing and the change that earns them.
         A low score on a popular project is not a judgement on the team; it is what happens to any codebase with many
         contributors and no check at the PR. Want your repo here, or want it fixed? <a href="https://github.com/marketplace/buoy-design" class="text-buoy">Install the GitHub App</a>.
       </p>

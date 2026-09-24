@@ -128,6 +128,7 @@ async function report(fullName) {
       generatedAt: new Date().toISOString(),
       cliVersion: CLI.version,
       score: health.score, tier: health.tier, pillars: health.pillars, metrics: health.metrics, suggestions: health.suggestions,
+      pathTo100: health.pathTo100 ?? null,
       driftSummary: drift.summary, driftByType: byType,
       topColors: topValues(drift.drifts, "color"),
       topSpacing: topValues(drift.drifts, "spacing"),

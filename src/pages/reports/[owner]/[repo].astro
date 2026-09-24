@@ -17,6 +17,10 @@ const pillarLabels: Record<string, string> = {
   consistency: 'Consistency',
   criticalIssues: 'Critical issues',
 }
+// Findings in vendored shadcn/ui templates are shown apart: the score leaves them out.
+const vendored = r.metrics.vendoredDriftCount ?? 0
+const ownHardcoded = Math.max(0, r.metrics.hardcodedValueCount - vendored)
+const pathLabels: Record<string, string> = { ...pillarLabels, driftCap: 'Drift cap' }
 const typeLabels: Record<string, string> = {
   'hardcoded-value': 'Hardcoded values',
   'unused-component': 'Unused components',
@@ -27,7 +31,7 @@ const typeLabels: Record<string, string> = {
   'color-contrast': 'Colour contrast',
 }
 const title = `${r.repo}: design health ${r.score}/100`
-const description = `${r.metrics.hardcodedValueCount.toLocaleString()} hardcoded values across ${r.metrics.componentCount.toLocaleString()} components in ${r.repo}, scanned by Buoy.`
+const description = `${ownHardcoded.toLocaleString()} hardcoded-value findings across ${r.metrics.componentCount.toLocaleString()} components in ${r.repo}, scanned by Buoy.`
 ---
 
 <Layout title={`${title} | Buoy`} description={description} keywords={`${r.name} design system, ${r.repo} hardcoded values, design drift`}>
@@ -67,9 +71,33 @@ const description = `${r.metrics.hardcodedValueCount.toLocaleString()} hardcoded
     </div>
   </section>
 
+  {r.pathTo100 && r.score !== null && (
+    <section class="py-6 bg-navy-dark">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-navy/50 border border-buoy/40 rounded-2xl p-6">
+          <h2 class="text-xl font-bold text-light">
+            {r.pathTo100.length === 0 ? 'A perfect 100' : `The path to 100: ${100 - r.score} points`}
+          </h2>
+          {r.pathTo100.length === 0 ? (
+            <p class="text-slate mt-2">Every pillar is at full marks.</p>
+          ) : (
+            <ul class="mt-4 space-y-3">
+              {r.pathTo100.map((step) => (
+                <li class="flex gap-4 items-baseline">
+                  <span class="text-buoy font-bold w-12 shrink-0 text-right">+{step.points}</span>
+                  <span class="text-light">{step.action}<span class="text-slate text-sm"> · {pathLabels[step.pillar] ?? step.pillar}</span></span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
+    </section>
+  )}
+
   <section class="py-6 bg-navy-dark">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-4 text-center">
-      <div class="bg-navy/50 border border-navy-light/20 rounded-2xl p-5"><div class="text-3xl font-bold text-light">{r.metrics.hardcodedValueCount.toLocaleString()}</div><div class="text-sm text-slate">hardcoded values</div></div>
+      <div class="bg-navy/50 border border-navy-light/20 rounded-2xl p-5"><div class="text-3xl font-bold text-light">{ownHardcoded.toLocaleString()}</div><div class="text-sm text-slate">hardcoded-value findings</div>{vendored > 0 && <div class="text-xs text-slate/70 mt-1">plus {vendored} in vendored shadcn/ui files, not scored</div>}</div>
       <div class="bg-navy/50 border border-navy-light/20 rounded-2xl p-5"><div class="text-3xl font-bold text-light">{r.metrics.tokenCount}</div><div class="text-sm text-slate">design tokens found</div></div>
       <div class="bg-navy/50 border border-navy-light/20 rounded-2xl p-5"><div class="text-3xl font-bold text-light">{r.metrics.componentCount.toLocaleString()}</div><div class="text-sm text-slate">components</div></div>
     </div>

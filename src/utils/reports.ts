@@ -21,6 +21,7 @@ export interface Report {
     componentCount: number;
     tokenCount: number;
     hardcodedValueCount: number;
+    vendoredDriftCount?: number;
     unusedComponentCount: number;
     repeatedPatternCount: number;
     detectedFrameworkNames: string[];
@@ -28,6 +29,8 @@ export interface Report {
     worstFile?: { path: string; issueCount: number } | null;
   };
   suggestions: string[];
+  /** Points each short pillar is missing and the change that earns them (CLI 0.8.4+). */
+  pathTo100?: Array<{ pillar: string; points: number; action: string }>;
   driftSummary: { total: number; critical: number; warning: number; info: number };
   driftByType: Record<string, number>;
   topColors: Array<{ value: string; count: number }>;
