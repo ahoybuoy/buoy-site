@@ -60,6 +60,9 @@ const totalHardcoded = reports.reduce((n, r) => n + r.metrics.hardcodedValueCoun
         </table>
       </div>
       <p class="text-sm text-slate mt-6 max-w-3xl">
+        Buoy counts literal design values only: colours, spacing, font sizes, radii and shadows written by hand where a
+        token belongs. It deliberately skips icons and logos, email templates (email clients cannot use CSS variables),
+        social images, tests and stories, and layout values like <code>calc()</code>, <code>100dvh</code> or grid templates.
         Health is Buoy's 0–100 score: value discipline (60), token health (20), consistency (10), critical issues (10).
         A low score on a popular project is not a judgement on the team; it is what happens to any codebase with many
         contributors and no check at the PR. Want your repo here, or want it fixed? <a href="https://github.com/marketplace/buoy-design" class="text-buoy">Install the GitHub App</a>.

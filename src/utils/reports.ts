@@ -13,7 +13,8 @@ export interface Report {
   defaultBranch: string;
   commit: string;
   generatedAt: string;
-  score: number;
+  /** null when Buoy found too few components to judge (see MIN_SCORABLE_COMPONENTS in core). */
+  score: number | null;
   tier: string;
   pillars: Record<string, { score: number; max: number }>;
   metrics: Record<string, unknown> & {
@@ -44,15 +45,17 @@ const MIN_COMPONENTS = 20;
 
 export function allReports(): Report[] {
   return Object.values(files)
-    .filter((r) => r.metrics.componentCount >= MIN_COMPONENTS)
+    .filter((r) => r.metrics.componentCount >= MIN_COMPONENTS && r.score !== null)
     .sort((a, b) => b.stars - a.stars);
 }
 
-export function scoreColor(score: number): string {
+export function scoreColor(score: number | null): string {
+  if (score === null) return 'text-slate';
   return score >= 80 ? 'text-success' : score >= 60 ? 'text-sunrise' : 'text-red-400';
 }
 
-export function scoreBg(score: number): string {
+export function scoreBg(score: number | null): string {
+  if (score === null) return 'bg-slate';
   return score >= 80 ? 'bg-success' : score >= 60 ? 'bg-sunrise' : 'bg-red-400';
 }
 
