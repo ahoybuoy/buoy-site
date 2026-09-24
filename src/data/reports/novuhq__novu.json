@@ -3,13 +3,13 @@
   "owner": "novuhq",
   "name": "novu",
   "description": "The open-source communication infrastructure for agents and products",
-  "stars": 40052,
+  "stars": 40053,
   "homepage": "https://go.novu.co/github",
   "language": "TypeScript",
   "defaultBranch": "next",
   "commit": "4a4be7fe89fd398d14c4b14321922c494d02b9d6",
-  "generatedAt": "2026-09-24T09:21:51.209Z",
-  "cliVersion": "0.8.4",
+  "generatedAt": "2026-09-24T10:02:09.153Z",
+  "cliVersion": "0.8.5",
   "score": 69,
   "tier": "Good",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 2414,
     "tokenCount": 462,
-    "hardcodedValueCount": 389,
+    "hardcodedValueCount": 387,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,9 +41,9 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 394,
+    "totalDriftCount": 389,
     "unusedComponentCount": 0,
-    "repeatedPatternCount": 5,
+    "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 0,
@@ -71,25 +71,25 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 378 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
+    "Nearly there — just 376 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
     "11 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 31,
-      "action": "Replace the hardcoded values in 372 of the 378 findings with tokens or scale steps, and remove or reuse 5 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 370 of the 376 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     }
   ],
   "driftSummary": {
-    "total": 394,
+    "total": 389,
     "critical": 0,
-    "warning": 97,
-    "info": 297
+    "warning": 95,
+    "info": 294
   },
   "driftByType": {
-    "hardcoded-value": 389,
-    "repeated-pattern": 5
+    "hardcoded-value": 387,
+    "repeated-pattern": 2
   },
   "topColors": [
     {
@@ -161,10 +161,6 @@
   ],
   "worstFiles": [
     {
-      "file": "playground/web-chat/src/app/globals.css",
-      "count": 148
-    },
-    {
       "file": "packages/novu/src/commands/init/templates/app-react-email/ts/app/page.module.css",
       "count": 125
     },
@@ -191,6 +187,10 @@
     {
       "file": "packages/novu/src/commands/init/templates/app-agent/ts/app/page.module.css",
       "count": 32
+    },
+    {
+      "file": "apps/dashboard/src/components/workflow-editor/steps/chat/preview/card-renderer.tsx",
+      "count": 24
     }
   ],
   "samples": [
@@ -283,5 +283,5 @@
       ]
     }
   ],
-  "scanSeconds": 78
+  "scanSeconds": 80
 }

@@ -3,18 +3,18 @@
   "owner": "hoppscotch",
   "name": "hoppscotch",
   "description": "Open-Source API Development Ecosystem • https://hoppscotch.io • Offline, On-Prem & Cloud • Web, Desktop & CLI • Open-Source Alternative to Postman, Insomnia",
-  "stars": 80494,
+  "stars": 80495,
   "homepage": "https://hoppscotch.io",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "a9ffa29ce5036ef5be0768db35a8b6bae32e1160",
-  "generatedAt": "2026-09-24T09:27:03.011Z",
-  "cliVersion": "0.8.4",
-  "score": 91,
+  "generatedAt": "2026-09-24T10:07:25.236Z",
+  "cliVersion": "0.8.5",
+  "score": 92,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 51,
+      "score": 52,
       "max": 60
     },
     "tokenHealth": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 405,
     "tokenCount": 0,
-    "hardcodedValueCount": 18,
+    "hardcodedValueCount": 17,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 18,
+    "totalDriftCount": 17,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -64,23 +64,23 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 18 hardcoded values left to tokenize. packages/hoppscotch-common/src/components/console/Value.vue has the most (2)"
+    "Nearly there — just 17 hardcoded values left to tokenize. packages/hoppscotch-common/src/components/console/Value.vue has the most (2)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 9,
-      "action": "Replace the hardcoded values in 17 of the 18 findings with tokens or scale steps"
+      "points": 8,
+      "action": "Replace the hardcoded values in 16 of the 17 findings with tokens or scale steps"
     }
   ],
   "driftSummary": {
-    "total": 18,
+    "total": 17,
     "critical": 0,
-    "warning": 4,
+    "warning": 3,
     "info": 14
   },
   "driftByType": {
-    "hardcoded-value": 18
+    "hardcoded-value": 17
   },
   "topColors": [],
   "topSpacing": [
@@ -94,10 +94,6 @@
     }
   ],
   "worstFiles": [
-    {
-      "file": "packages/hoppscotch-desktop/plugin-workspace/tauri-plugin-appload/examples/tauri-app/src/style.css",
-      "count": 21
-    },
     {
       "file": "packages/hoppscotch-common/src/components/collections/documentation/sections/CurlView.vue",
       "count": 5
@@ -124,6 +120,10 @@
     },
     {
       "file": "packages/hoppscotch-common/src/components/collections/Request.vue",
+      "count": 1
+    },
+    {
+      "file": "packages/hoppscotch-common/src/components/collections/documentation/PublishDocSnapshotPreview.vue",
       "count": 1
     }
   ],

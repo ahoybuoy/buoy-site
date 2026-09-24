@@ -7,14 +7,14 @@
   "homepage": "https://nextjs.org",
   "language": "JavaScript",
   "defaultBranch": "canary",
-  "commit": "76117ccd71fdfaf4d5377b7ed08d238de845321b",
-  "generatedAt": "2026-09-24T09:38:10.561Z",
-  "cliVersion": "0.8.4",
-  "score": 38,
-  "tier": "Bad",
+  "commit": "5a46fc6c3f25f9d3d4129c589515f2fddc438cc8",
+  "generatedAt": "2026-09-24T10:18:20.591Z",
+  "cliVersion": "0.8.5",
+  "score": 88,
+  "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 0,
+      "score": 50,
       "max": 60
     },
     "tokenHealth": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 331,
     "tokenCount": 278,
-    "hardcodedValueCount": 265,
+    "hardcodedValueCount": 17,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 266,
+    "totalDriftCount": 18,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,10 +53,6 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 1,
-    "topHardcodedColor": {
-      "value": "rgb(143 101 98 / 43%).",
-      "count": 1
-    },
     "worstFile": {
       "path": "packages/next/src/client/legacy/image.tsx",
       "issueCount": 1
@@ -74,15 +70,15 @@
     ]
   },
   "suggestions": [
-    "264 hardcoded values to extract — use `cn()` utility with Tailwind theme classes. Focus on packages/next/src/client/legacy/image.tsx (1 issues)",
+    "Nearly there — just 16 hardcoded values left to tokenize",
     "1 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
     "1 deprecated pattern — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 60,
-      "action": "Replace the hardcoded values in all 264 findings with tokens or scale steps"
+      "points": 10,
+      "action": "Replace the hardcoded values in all 16 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -91,14 +87,14 @@
     }
   ],
   "driftSummary": {
-    "total": 266,
+    "total": 18,
     "critical": 0,
-    "warning": 192,
-    "info": 74
+    "warning": 7,
+    "info": 11
   },
   "driftByType": {
     "deprecated-pattern": 1,
-    "hardcoded-value": 265
+    "hardcoded-value": 17
   },
   "topColors": [],
   "topSpacing": [
@@ -117,36 +113,36 @@
   ],
   "worstFiles": [
     {
-      "file": "examples/cms-buttercms/css/main.css",
-      "count": 390
-    },
-    {
-      "file": "bench/basic-app/app/bench.css",
-      "count": 273
-    },
-    {
-      "file": "test/e2e/next-dynamic-css-asset-prefix/src/Content4.module.css",
-      "count": 246
-    },
-    {
-      "file": "test/e2e/next-dynamic-css/src/Content4.module.css",
-      "count": 246
-    },
-    {
-      "file": "test/e2e/app-dir/nx-handling/apps/next-nx-test/app/global.css",
-      "count": 112
-    },
-    {
-      "file": "examples/cms-payload/css/type.scss",
-      "count": 52
-    },
-    {
-      "file": "examples/with-fingerprintjs-pro/styles/App.css",
-      "count": 48
-    },
-    {
       "file": "packages/next/src/next-devtools/dev-overlay/components/request-insights/request-insights-panel.css",
       "count": 35
+    },
+    {
+      "file": "packages/next/src/next-devtools/dev-overlay/components/instant-navs/instant-navs-panel.css",
+      "count": 32
+    },
+    {
+      "file": "packages/next/src/next-devtools/dev-overlay/components/overview/segment-explorer.css",
+      "count": 25
+    },
+    {
+      "file": "packages/next/src/next-devtools/dev-overlay/components/overview/segment-boundary-trigger.css",
+      "count": 19
+    },
+    {
+      "file": "packages/next/src/next-devtools/dev-overlay/components/devtools-indicator/devtools-indicator.css",
+      "count": 9
+    },
+    {
+      "file": "apps/bundle-analyzer/components/diff-table.tsx",
+      "count": 5
+    },
+    {
+      "file": "packages/next/src/next-devtools/dev-overlay/menu/panel-router.css",
+      "count": 5
+    },
+    {
+      "file": "packages/next/src/next-devtools/dev-overlay/components/toast/style.css",
+      "count": 3
     }
   ],
   "samples": [
@@ -205,49 +201,50 @@
       ]
     },
     {
-      "component": "bench/basic-app/app/bench.css",
-      "location": "bench/basic-app/app/bench.css:24",
+      "component": "packages/next/src/next-devtools/dev-overlay/components/devtools-indicator/devtools-indicator.css",
+      "location": "packages/next/src/next-devtools/dev-overlay/components/devtools-indicator/devtools-indicator.css:33",
       "entries": [
-        "line height: 1.5 (line 24)",
-        "spacing: 16px (line 39)",
-        "spacing: 8px (line 50)"
+        "spacing: 6px (line 33)",
+        "radius: 6px (line 42)",
+        "spacing: 6px (line 59)"
       ]
     },
     {
-      "component": "evals/evals/agent-030-app-router-migration-hard/styles/globals.css",
-      "location": "evals/evals/agent-030-app-router-migration-hard/styles/globals.css:9",
+      "component": "packages/next/src/next-devtools/dev-overlay/components/instant-navs/instant-navs-panel.css",
+      "location": "packages/next/src/next-devtools/dev-overlay/components/instant-navs/instant-navs-panel.css:47",
       "entries": [
-        "line height: 1.6 (line 9)",
-        "colour: #333 (line 10)",
-        "colour: #eee (line 21)"
+        "font weight: 600 (line 47)",
+        "line height: 21px (line 48)",
+        "spacing: 8px (line 52)"
       ]
     },
     {
-      "component": "evals/evals/agent-043-view-transitions/app/globals.css",
-      "location": "evals/evals/agent-043-view-transitions/app/globals.css:12",
+      "component": "packages/next/src/next-devtools/dev-overlay/components/overview/segment-boundary-trigger.css",
+      "location": "packages/next/src/next-devtools/dev-overlay/components/overview/segment-boundary-trigger.css:4",
       "entries": [
-        "colour: #111 (line 12)",
-        "colour: #fafafa (line 13)",
-        "spacing: 2rem (line 19)"
+        "spacing: 4px (line 4)",
+        "line height: 16px (line 6)",
+        "font weight: 500 (line 7)"
       ]
     },
     {
-      "component": "examples/basic-css/styles.module.css",
-      "location": "examples/basic-css/styles.module.css:6",
+      "component": "packages/next/src/next-devtools/dev-overlay/components/overview/segment-explorer.css",
+      "location": "packages/next/src/next-devtools/dev-overlay/components/overview/segment-explorer.css:13",
       "entries": [
-        "colour: #eee (line 6)",
-        "spacing: 100px (line 7)",
-        "colour: #ccc (line 12)"
+        "spacing: 12px (line 13)",
+        "font weight: 500 (line 18)",
+        "line height: 20px (line 22)"
       ]
     },
     {
-      "component": "examples/blog-starter/src/app/_components/switch.module.css",
-      "location": "examples/blog-starter/src/app/_components/switch.module.css:23",
+      "component": "packages/next/src/next-devtools/dev-overlay/components/request-insights/request-insights-panel.css",
+      "location": "packages/next/src/next-devtools/dev-overlay/components/request-insights/request-insights-panel.css:19",
       "entries": [
-        "font weight: 600 (line 23)",
-        "shadow: 0 0 50px 10px yellow (line 32)"
+        "line height: 1.5 (line 19)",
+        "spacing: 8px (line 35)",
+        "spacing: 6px (line 47)"
       ]
     }
   ],
-  "scanSeconds": 129
+  "scanSeconds": 128
 }

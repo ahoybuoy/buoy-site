@@ -3,13 +3,13 @@
   "owner": "TryGhost",
   "name": "Ghost",
   "description": "Independent technology for modern publishing, memberships, subscriptions and newsletters.",
-  "stars": 55415,
+  "stars": 55416,
   "homepage": "https://ghost.org",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "847186f2251c0ddb7afc35eeb9962baa00994048",
-  "generatedAt": "2026-09-24T09:30:02.034Z",
-  "cliVersion": "0.8.4",
+  "commit": "342b3bd051f2812f0ca332581b624a2b017d3597",
+  "generatedAt": "2026-09-24T10:10:22.598Z",
+  "cliVersion": "0.8.5",
   "score": 61,
   "tier": "Good",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1686,
+    "componentCount": 1690,
     "tokenCount": 757,
-    "hardcodedValueCount": 339,
+    "hardcodedValueCount": 338,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 339,
+    "totalDriftCount": 338,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -71,24 +71,24 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 331 hardcoded values left to tokenize. apps/activitypub/src/views/inbox/components/customizer.tsx has the most (4)",
+    "Nearly there — just 330 hardcoded values left to tokenize. apps/activitypub/src/views/inbox/components/customizer.tsx has the most (4)",
     "8 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 39,
-      "action": "Replace the hardcoded values in 327 of the 331 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 326 of the 330 findings with tokens or scale steps"
     }
   ],
   "driftSummary": {
-    "total": 339,
+    "total": 338,
     "critical": 0,
     "warning": 114,
-    "info": 225
+    "info": 224
   },
   "driftByType": {
-    "hardcoded-value": 339
+    "hardcoded-value": 338
   },
   "topColors": [
     {
@@ -288,5 +288,5 @@
       ]
     }
   ],
-  "scanSeconds": 52
+  "scanSeconds": 51
 }

@@ -3,18 +3,18 @@
   "owner": "excalidraw",
   "name": "excalidraw",
   "description": "Virtual whiteboard for sketching hand-drawn like diagrams",
-  "stars": 132768,
+  "stars": 132773,
   "homepage": "https://excalidraw.com",
   "language": "TypeScript",
   "defaultBranch": "master",
   "commit": "4850bf336fe0a8501af49d84deebc7fb56357cc2",
-  "generatedAt": "2026-09-24T09:27:14.445Z",
-  "cliVersion": "0.8.4",
-  "score": 61,
+  "generatedAt": "2026-09-24T10:07:36.873Z",
+  "cliVersion": "0.8.5",
+  "score": 63,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 21,
+      "score": 23,
       "max": 60
     },
     "tokenHealth": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 422,
     "tokenCount": 125,
-    "hardcodedValueCount": 82,
+    "hardcodedValueCount": 79,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 82,
+    "totalDriftCount": 79,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -68,23 +68,23 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 82 hardcoded values left to tokenize. packages/excalidraw/components/PublishLibrary.tsx has the most (3)"
+    "Nearly there — just 79 hardcoded values left to tokenize. packages/excalidraw/components/PublishLibrary.tsx has the most (3)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 39,
-      "action": "Replace the hardcoded values in 81 of the 82 findings with tokens or scale steps"
+      "points": 37,
+      "action": "Replace the hardcoded values in 78 of the 79 findings with tokens or scale steps"
     }
   ],
   "driftSummary": {
-    "total": 82,
+    "total": 79,
     "critical": 0,
-    "warning": 49,
+    "warning": 46,
     "info": 33
   },
   "driftByType": {
-    "hardcoded-value": 82
+    "hardcoded-value": 79
   },
   "topColors": [
     {
@@ -156,7 +156,7 @@
       "count": 17
     },
     {
-      "file": "examples/with-script-in-browser/components/sidebar/ExampleSidebar.scss",
+      "file": "packages/excalidraw/components/CommandPalette/CommandPalette.scss",
       "count": 16
     }
   ],

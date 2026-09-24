@@ -3,13 +3,13 @@
   "owner": "supabase",
   "name": "supabase",
   "description": "The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications.",
-  "stars": 110719,
+  "stars": 110722,
   "homepage": "https://supabase.com",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "d3f3903b69a821b2ed2caf22e146050576a847d9",
-  "generatedAt": "2026-09-24T09:19:40.515Z",
-  "cliVersion": "0.8.4",
+  "commit": "0d3b73794bdb584dc47222a72dca05821e498f09",
+  "generatedAt": "2026-09-24T09:59:57.304Z",
+  "cliVersion": "0.8.5",
   "score": 38,
   "tier": "Bad",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 4583,
+    "componentCount": 4584,
     "tokenCount": 1158,
-    "hardcodedValueCount": 337,
+    "hardcodedValueCount": 307,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,10 +41,10 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 4921,
+    "totalDriftCount": 4892,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 7,
-    "orphanedComponentCount": 4575,
+    "orphanedComponentCount": 4576,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 2,
     "orphanedTokenCount": 0,
@@ -72,7 +72,7 @@
     ]
   },
   "suggestions": [
-    "330 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/www/app/(home)/_components/logos/PublicityLogos.tsx (33 issues)",
+    "300 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/www/app/(home)/_components/logos/PublicityLogos.tsx (33 issues)",
     "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
     "7 repeated patterns — extract to shared components",
     "2 deprecated patterns — migrate to current API"
@@ -81,7 +81,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 319 of the 330 findings with tokens or scale steps, and remove or reuse 4582 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 289 of the 300 findings with tokens or scale steps, and remove or reuse 4583 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -90,15 +90,15 @@
     }
   ],
   "driftSummary": {
-    "total": 4492,
+    "total": 4463,
     "critical": 0,
-    "warning": 4231,
-    "info": 261
+    "warning": 4214,
+    "info": 249
   },
   "driftByType": {
     "deprecated-pattern": 2,
-    "hardcoded-value": 337,
-    "orphaned-component": 4146,
+    "hardcoded-value": 307,
+    "orphaned-component": 4147,
     "repeated-pattern": 7
   },
   "topColors": [
@@ -138,15 +138,15 @@
   "topSpacing": [
     {
       "value": "5px",
-      "count": 16
-    },
-    {
-      "value": "4px",
-      "count": 15
+      "count": 14
     },
     {
       "value": "2px",
-      "count": 15
+      "count": 14
+    },
+    {
+      "value": "4px",
+      "count": 13
     },
     {
       "value": "0.8125rem",
@@ -154,33 +154,25 @@
     },
     {
       "value": "3px",
-      "count": 7
+      "count": 6
     },
     {
       "value": "0.3rem",
-      "count": 7
+      "count": 6
     },
     {
       "value": "0.2rem",
-      "count": 7
+      "count": 6
     },
     {
-      "value": "-2px",
-      "count": 5
+      "value": "14px",
+      "count": 4
     }
   ],
   "worstFiles": [
     {
-      "file": "examples/todo-list/sveltejs-todo-list/src/assets/app.css",
-      "count": 68
-    },
-    {
       "file": "packages/config/code-hike.css",
       "count": 66
-    },
-    {
-      "file": "examples/todo-list/nextjs-todo-list/styles/app.css",
-      "count": 48
     },
     {
       "file": "apps/www/app/(products)/auth/_components/FeaturesSection.tsx",
@@ -195,12 +187,20 @@
       "count": 36
     },
     {
-      "file": "examples/user-management/sveltekit-user-management/src/styles.css",
-      "count": 25
-    },
-    {
       "file": "apps/www/styles/realtime.module.css",
       "count": 24
+    },
+    {
+      "file": "apps/docs/styles/Home.module.css",
+      "count": 21
+    },
+    {
+      "file": "apps/www/components/LaunchWeek/8/Releases/index.tsx",
+      "count": 17
+    },
+    {
+      "file": "apps/www/styles/globals.css",
+      "count": 17
     }
   ],
   "samples": [
@@ -293,5 +293,5 @@
       ]
     }
   ],
-  "scanSeconds": 185
+  "scanSeconds": 187
 }

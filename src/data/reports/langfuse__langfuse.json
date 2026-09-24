@@ -3,18 +3,18 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source agent evals & observability: Trace, evaluate, and improve LLM applications with one open platform.",
-  "stars": 34994,
+  "stars": 34998,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "aa446618298563ec3863d58b1e759d9a2297b303",
-  "generatedAt": "2026-09-24T09:34:58.595Z",
-  "cliVersion": "0.8.4",
-  "score": 92,
+  "commit": "9450b93368f468ee2ef30df240c1ff49e36989dc",
+  "generatedAt": "2026-09-24T10:15:09.802Z",
+  "cliVersion": "0.8.5",
+  "score": 93,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 52,
+      "score": 53,
       "max": 60
     },
     "tokenHealth": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 1980,
     "tokenCount": 239,
-    "hardcodedValueCount": 80,
+    "hardcodedValueCount": 75,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 80,
+    "totalDriftCount": 75,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -61,31 +61,31 @@
       "path": "web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx",
       "issueCount": 2
     },
-    "uniqueSpacingValues": 10,
+    "uniqueSpacingValues": 9,
     "detectedFrameworkNames": [
       "tailwind",
       "shadcn"
     ]
   },
   "suggestions": [
-    "Nearly there — just 77 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx has the most (2)",
+    "Nearly there — just 72 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx has the most (2)",
     "3 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 8,
-      "action": "Replace the hardcoded values in 73 of the 77 findings with tokens or scale steps"
+      "points": 7,
+      "action": "Replace the hardcoded values in 68 of the 72 findings with tokens or scale steps"
     }
   ],
   "driftSummary": {
-    "total": 80,
+    "total": 75,
     "critical": 0,
     "warning": 1,
-    "info": 79
+    "info": 74
   },
   "driftByType": {
-    "hardcoded-value": 80
+    "hardcoded-value": 75
   },
   "topColors": [
     {
@@ -115,15 +115,15 @@
       "count": 3
     },
     {
-      "value": "1rem",
-      "count": 2
-    },
-    {
       "value": "0.5rem",
       "count": 2
     },
     {
       "value": "10px",
+      "count": 2
+    },
+    {
+      "value": "5px",
       "count": 2
     }
   ],
@@ -167,14 +167,6 @@
       "location": "web/src/components/design-system/Codeblock/Codeblock.tsx:20",
       "entries": [
         "fontSize: 0.75rem (line 85)"
-      ]
-    },
-    {
-      "component": "MultiWindowPlayground",
-      "location": "web/src/features/playground/page/components/MultiWindowPlayground.tsx:49",
-      "entries": [
-        "gap: 1rem (line 113)",
-        "padding: 1rem (line 114)"
       ]
     },
     {
@@ -253,7 +245,16 @@
         "marginLeft: 8px (line 61)",
         "fontSize: 0.65rem (line 64)"
       ]
+    },
+    {
+      "component": "web/src/components/ChatMessages/ChatMessageComponent.tsx",
+      "location": "web/src/components/ChatMessages/ChatMessageComponent.tsx:304",
+      "entries": [
+        "text-[9px] (line 304)",
+        "text-[10px] (line 312)",
+        "text-[9px] (line 334)"
+      ]
     }
   ],
-  "scanSeconds": 85
+  "scanSeconds": 82
 }

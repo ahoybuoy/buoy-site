@@ -7,9 +7,9 @@
   "homepage": "https://posthog.com",
   "language": "Python",
   "defaultBranch": "master",
-  "commit": "f46ccb44ac241653ab5cc0ad83d170f83c5484e0",
-  "generatedAt": "2026-09-24T09:33:30.098Z",
-  "cliVersion": "0.8.4",
+  "commit": "cd310654eaac416f5d70f52861a9f43d9074b693",
+  "generatedAt": "2026-09-24T10:13:46.272Z",
+  "cliVersion": "0.8.5",
   "score": 75,
   "tier": "Good",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 4815,
     "tokenCount": 183,
-    "hardcodedValueCount": 364,
+    "hardcodedValueCount": 363,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 3,
@@ -41,7 +41,7 @@
     "colorContrastCount": 3,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 372,
+    "totalDriftCount": 371,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -70,7 +70,7 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 364 hardcoded values left to tokenize. frontend/src/lib/KeaDevTools.tsx has the most (6)",
+    "Nearly there — just 363 hardcoded values left to tokenize. frontend/src/lib/KeaDevTools.tsx has the most (6)",
     "3 color contrast issues — fix immediately",
     "3 deprecated patterns — migrate to current API"
   ],
@@ -78,7 +78,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 15,
-      "action": "Replace the hardcoded values in 352 of the 364 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 351 of the 363 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -87,13 +87,13 @@
     }
   ],
   "driftSummary": {
-    "total": 372,
+    "total": 371,
     "critical": 3,
-    "warning": 178,
+    "warning": 177,
     "info": 191
   },
   "driftByType": {
-    "hardcoded-value": 364,
+    "hardcoded-value": 363,
     "deprecated-pattern": 3,
     "color-contrast": 3,
     "repeated-pattern": 2
@@ -176,10 +176,6 @@
       "count": 134
     },
     {
-      "file": "services/hogql-language-service/cmd/demo/assets/style.css",
-      "count": 87
-    },
-    {
       "file": "products/desktop/packages/quick-ask/src/panel/quick-ask.css",
       "count": 85
     },
@@ -198,6 +194,10 @@
     {
       "file": "frontend/src/styles/base.scss",
       "count": 47
+    },
+    {
+      "file": "frontend/src/toolbar/bar/Toolbar.scss",
+      "count": 40
     }
   ],
   "samples": [
@@ -294,5 +294,5 @@
       ]
     }
   ],
-  "scanSeconds": 207
+  "scanSeconds": 203
 }

@@ -3,13 +3,13 @@
   "owner": "triggerdotdev",
   "name": "trigger.dev",
   "description": "Trigger.dev – build and deploy durable AI agents and workflows",
-  "stars": 16390,
+  "stars": 16391,
   "homepage": "https://trigger.dev/changelog",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "c2b7a72180bbb2dcbc31caa8539e0ca8f8e9e9b8",
-  "generatedAt": "2026-09-24T09:35:44.844Z",
-  "cliVersion": "0.8.4",
+  "generatedAt": "2026-09-24T10:15:55.408Z",
+  "cliVersion": "0.8.5",
   "score": 90,
   "tier": "Great",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 1696,
     "tokenCount": 273,
-    "hardcodedValueCount": 86,
+    "hardcodedValueCount": 85,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 86,
+    "totalDriftCount": 85,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -71,23 +71,23 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 86 hardcoded values left to tokenize. apps/webapp/app/components/primitives/Buttons.tsx has the most (2)"
+    "Nearly there — just 85 hardcoded values left to tokenize. apps/webapp/app/components/primitives/Buttons.tsx has the most (2)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 10,
-      "action": "Replace the hardcoded values in 82 of the 86 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 81 of the 85 findings with tokens or scale steps"
     }
   ],
   "driftSummary": {
-    "total": 86,
+    "total": 85,
     "critical": 0,
     "warning": 10,
-    "info": 76
+    "info": 75
   },
   "driftByType": {
-    "hardcoded-value": 86
+    "hardcoded-value": 85
   },
   "topColors": [
     {
@@ -265,19 +265,20 @@
       ]
     },
     {
-      "component": "apps/webapp/app/components/dashboard-agent/demo/components/DemoIntentBubble.tsx",
-      "location": "apps/webapp/app/components/dashboard-agent/demo/components/DemoIntentBubble.tsx:50",
-      "entries": [
-        "text-[10px] (line 50)"
-      ]
-    },
-    {
       "component": "apps/webapp/app/components/dashboard-agent/report-sparkline.tsx",
       "location": "apps/webapp/app/components/dashboard-agent/report-sparkline.tsx:460",
       "entries": [
         "text-[10px] (line 460)"
       ]
+    },
+    {
+      "component": "apps/webapp/app/components/integrations/ProjectConnectSelect.tsx",
+      "location": "apps/webapp/app/components/integrations/ProjectConnectSelect.tsx:15",
+      "entries": [
+        "text-[0.90625rem] (line 15)",
+        "tracking-[-0.01em] (line 15)"
+      ]
     }
   ],
-  "scanSeconds": 46
+  "scanSeconds": 45
 }
