@@ -19,7 +19,22 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
     <li>Open a PR — Buoy posts a review with drift issues</li>
   </ol>
 
-  <p>See <a href="/docs/integrations/github-actions">GitHub App docs</a> for details.</p>
+  <p>No Buoy account or sign-up is needed; installing the App is enough. See <a href="/docs/integrations/github-actions">GitHub App docs</a> for details.</p>
+
+  <h2>Coding Agents (Claude Code, Cursor)</h2>
+
+  <p>Give your agent the design system while it writes, so it uses tokens instead of hardcoding values.</p>
+
+  <p><strong>Claude Code</strong> — the plugin bundles the MCP server, a post-edit drift check and a design-tokens skill:</p>
+
+  <pre><code>/plugin marketplace add ahoybuoy/buoy
+/plugin install buoy@buoy</code></pre>
+
+  <p><strong>Cursor, Codex, Windsurf or any MCP client</strong> — write the config into your repository:</p>
+
+  <pre><code>npx @buoy-design/cli mcp install cursor   # or codex, windsurf, all</code></pre>
+
+  <p>See <a href="/docs/integrations/mcp">MCP Server</a> for the tools and the hook.</p>
 
   <h2>CLI Installation</h2>
 
@@ -83,7 +98,7 @@ npm install --save-dev ahoybuoy</code></pre>
   <h3>Verify Installation</h3>
 
   <pre><code>$ buoy --version
-0.3.23
+0.7.5
 
 $ buoy --help
 Usage: buoy [command] [options]
@@ -92,7 +107,8 @@ Commands:
   show        Show design system status and health
   drift       Detect, check, and fix design drift
   dock        Dock Buoy into your project
-  ahoy        Manage account and integrations</code></pre>
+  ahoy        Manage account and integrations
+  mcp         Connect coding agents to your design system</code></pre>
 
   <h2>Next Steps</h2>
 

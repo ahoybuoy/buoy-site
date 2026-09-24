@@ -28,12 +28,22 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
 
   <h2>Quick Setup</h2>
 
-  <pre><code>npx @buoy-design/cli mcp install claude</code></pre>
+  <p>Install the Buoy plugin:</p>
+
+  <pre><code>/plugin marketplace add ahoybuoy/buoy
+/plugin install buoy@buoy</code></pre>
 
   <p>
-    This installs the <a href="/docs/integrations/mcp">MCP server</a> (token lookup and drift checks Claude can call while
-    writing) together with a line-level <code>PostToolUse</code> hook. The older hook-only setup below still works:
+    It bundles the <a href="/docs/integrations/mcp">MCP server</a> (token lookup and drift checks Claude can call while
+    writing), the line-level <code>PostToolUse</code> hook, and a skill that tells Claude to look up tokens before writing
+    styles. Nothing to configure; the plugin's source is <a href="https://github.com/ahoybuoy/buoy-plugin">ahoybuoy/buoy-plugin</a>.
   </p>
+
+  <p>To commit the same setup into one repository for your whole team instead:</p>
+
+  <pre><code>npx @buoy-design/cli mcp install claude</code></pre>
+
+  <p>The older hook-only setup still works:</p>
 
   <pre><code>buoy dock hooks --claude</code></pre>
 
