@@ -3,13 +3,13 @@
   "owner": "novuhq",
   "name": "novu",
   "description": "The open-source communication infrastructure for agents and products",
-  "stars": 40019,
+  "stars": 40049,
   "homepage": "https://go.novu.co/github",
   "language": "TypeScript",
   "defaultBranch": "next",
-  "commit": "36c5c0cefa400e8edc6ec8b18ac4574288eabd03",
-  "generatedAt": "2026-09-20T07:49:06.748Z",
-  "cliVersion": "local",
+  "commit": "eda627cdee8c1e4601109467006f262177b88732",
+  "generatedAt": "2026-09-24T03:24:04.994Z",
+  "cliVersion": "latest",
   "score": 69,
   "tier": "Good",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2409,
+    "componentCount": 2414,
     "tokenCount": 462,
-    "hardcodedValueCount": 1041,
+    "hardcodedValueCount": 1044,
     "unusedTokenCount": 137,
     "namingInconsistencyCount": 49,
     "criticalCount": 0,
@@ -41,8 +41,8 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 1730,
-    "unusedComponentCount": 296,
+    "totalDriftCount": 1731,
+    "unusedComponentCount": 294,
     "repeatedPatternCount": 207,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
@@ -51,7 +51,7 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 125,
+    "highDensityFileCount": 126,
     "vendoredDriftCount": 41,
     "topHardcodedColor": {
       "value": "#E1E4EA",
@@ -71,23 +71,23 @@
     ]
   },
   "suggestions": [
-    "1000 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/dashboard/src/components/ai-elements/prompt-input.tsx (27 issues)",
+    "1003 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/dashboard/src/components/ai-elements/prompt-input.tsx (27 issues)",
     "41 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
-    "296 unused components detected — consider a cleanup sprint to remove dead code",
+    "294 unused components detected — consider a cleanup sprint to remove dead code",
     "207 repeated patterns — significant duplication, extract to a shared component library",
     "137 tokens defined but unused — wire them into components or remove stale definitions",
     "49 minor naming inconsistencies — consider standardizing conventions"
   ],
   "driftSummary": {
-    "total": 1728,
+    "total": 1733,
     "critical": 0,
-    "warning": 449,
-    "info": 1279
+    "warning": 451,
+    "info": 1282
   },
   "driftByType": {
-    "hardcoded-value": 1041,
+    "hardcoded-value": 1044,
     "naming-inconsistency": 49,
-    "unused-component": 294,
+    "unused-component": 296,
     "unused-token": 137,
     "repeated-pattern": 207
   },
@@ -244,12 +244,17 @@
       ]
     },
     {
-      "component": "EmptyVariablesIllustration",
-      "location": "apps/dashboard/src/components/variables/variable-list-upgrade-cta.tsx:13",
+      "component": "NovuLogoBlackBg",
+      "location": "apps/dashboard/src/utils/self-hosted/icons.tsx:1",
       "entries": [
-        "stroke: #CACFD8 (line 16)",
-        "stroke: #F2F5F8 (line 18)",
-        "fill: #E1E4EA (line 19)"
+        "fill: #0E121B (line 6)"
+      ]
+    },
+    {
+      "component": "StepButton",
+      "location": "apps/dashboard/src/components/welcome/framework-guides.tsx:334",
+      "entries": [
+        "fontSize: 12px (line 386)"
       ]
     },
     {
@@ -262,21 +267,14 @@
       ]
     },
     {
-      "component": "StepButton",
-      "location": "apps/dashboard/src/components/welcome/framework-guides.tsx:334",
+      "component": "EmptyVariablesIllustration",
+      "location": "apps/dashboard/src/components/variables/variable-list-upgrade-cta.tsx:13",
       "entries": [
-        "fontSize: 12px (line 386)"
-      ]
-    },
-    {
-      "component": "EmptyTranslationsIllustration",
-      "location": "apps/dashboard/src/components/translations/empty-translations-illustration.tsx:1",
-      "entries": [
-        "stroke: #E1E4EA (line 4)",
-        "stroke: #F2F5F8 (line 6)",
-        "fill: #FBFBFB (line 9)"
+        "stroke: #CACFD8 (line 16)",
+        "stroke: #F2F5F8 (line 18)",
+        "fill: #E1E4EA (line 19)"
       ]
     }
   ],
-  "scanSeconds": 119
+  "scanSeconds": 110
 }

@@ -1,0 +1,252 @@
+{
+  "repo": "vercel/next.js",
+  "owner": "vercel",
+  "name": "next.js",
+  "description": "The React Framework",
+  "stars": 142412,
+  "homepage": "https://nextjs.org",
+  "language": "JavaScript",
+  "defaultBranch": "canary",
+  "commit": "e71848173cf199bb56e88c1c04aa977cdb0a84df",
+  "generatedAt": "2026-09-24T03:45:29.649Z",
+  "cliVersion": "latest",
+  "score": 79,
+  "tier": "Good",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 53,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 19,
+      "max": 20
+    },
+    "consistency": {
+      "score": 9,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 8,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 331,
+    "tokenCount": 277,
+    "hardcodedValueCount": 33,
+    "unusedTokenCount": 81,
+    "namingInconsistencyCount": 5,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 164,
+    "unusedComponentCount": 35,
+    "repeatedPatternCount": 9,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 1,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 2,
+    "vendoredDriftCount": 7,
+    "topHardcodedColor": {
+      "value": "#fff",
+      "count": 2
+    },
+    "worstFile": {
+      "path": "packages/next/src/pages/_document.tsx",
+      "issueCount": 4
+    },
+    "uniqueSpacingValues": 4,
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "tailwind",
+      "storybook",
+      "mantine",
+      "emotion",
+      "radix",
+      "shadcn"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 26 hardcoded values left to tokenize. packages/next/src/pages/_document.tsx has the most (4)",
+    "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
+    "35 unused components — review and remove dead code",
+    "9 repeated patterns — extract to shared components",
+    "81 tokens defined but unused — wire them into components or remove stale definitions",
+    "5 minor naming inconsistencies — consider standardizing conventions",
+    "1 deprecated pattern — migrate to current API"
+  ],
+  "driftSummary": {
+    "total": 164,
+    "critical": 0,
+    "warning": 39,
+    "info": 125
+  },
+  "driftByType": {
+    "naming-inconsistency": 5,
+    "deprecated-pattern": 1,
+    "hardcoded-value": 33,
+    "unused-component": 35,
+    "unused-token": 81,
+    "repeated-pattern": 9
+  },
+  "topColors": [
+    {
+      "value": "#fff",
+      "count": 2
+    },
+    {
+      "value": "#666",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "20px",
+      "count": 6
+    },
+    {
+      "value": "6px",
+      "count": 1
+    },
+    {
+      "value": "14px",
+      "count": 1
+    },
+    {
+      "value": "4px",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "packages/next/src/next-devtools/dev-overlay/components/overview/segment-boundary-trigger.tsx",
+      "count": 4
+    },
+    {
+      "file": "apps/bundle-analyzer/components/ui/select.tsx",
+      "count": 3
+    },
+    {
+      "file": "apps/bundle-analyzer/components/ui/dialog.tsx",
+      "count": 3
+    },
+    {
+      "file": "packages/next/src/next-devtools/dev-overlay/menu/dev-overlay-menu.tsx",
+      "count": 2
+    },
+    {
+      "file": "packages/next/src/next-devtools/dev-overlay/icons/loading-icon.tsx",
+      "count": 2
+    },
+    {
+      "file": "packages/next/src/next-devtools/dev-overlay/components/errors/error-overlay-toolbar/nodejs-inspector-button.tsx",
+      "count": 2
+    },
+    {
+      "file": "packages/next/src/next-devtools/dev-overlay/components/errors/dev-tools-indicator/dev-tools-info/dev-tools-header.tsx",
+      "count": 2
+    },
+    {
+      "file": "apps/bundle-analyzer/components/ui/multi-select.tsx",
+      "count": 2
+    }
+  ],
+  "samples": [
+    {
+      "component": "DevtoolMenu",
+      "location": "packages/next/src/next-devtools/dev-overlay/menu/dev-overlay-menu.tsx:85",
+      "entries": [
+        "padding: 6px (line 254)"
+      ]
+    },
+    {
+      "component": "ChevronRight",
+      "location": "packages/next/src/next-devtools/dev-overlay/menu/dev-overlay-menu.tsx:337",
+      "entries": [
+        "fill: #666 (line 347)"
+      ]
+    },
+    {
+      "component": "LoadingIcon",
+      "location": "packages/next/src/next-devtools/dev-overlay/icons/loading-icon.tsx:1",
+      "entries": [
+        "width: 20px (line 4)",
+        "height: 20px (line 5)"
+      ]
+    },
+    {
+      "component": "LoadingIcon",
+      "location": "packages/next/src/next-devtools/dev-overlay/components/overview/segment-boundary-trigger.tsx:212",
+      "entries": [
+        "width: 20px (line 215)",
+        "height: 20px (line 216)"
+      ]
+    },
+    {
+      "component": "NotFoundIcon",
+      "location": "packages/next/src/next-devtools/dev-overlay/components/overview/segment-boundary-trigger.tsx:274",
+      "entries": [
+        "width: 20px (line 277)",
+        "height: 20px (line 278)"
+      ]
+    },
+    {
+      "component": "NodeJsIcon",
+      "location": "packages/next/src/next-devtools/dev-overlay/components/errors/error-overlay-toolbar/nodejs-inspector-button.tsx:4",
+      "entries": [
+        "fill: #fff (line 25)"
+      ]
+    },
+    {
+      "component": "NodeJsDisabledIcon",
+      "location": "packages/next/src/next-devtools/dev-overlay/components/errors/error-overlay-toolbar/nodejs-inspector-button.tsx:120",
+      "entries": [
+        "fill: #fff (line 141)"
+      ]
+    },
+    {
+      "component": "DevToolsHeader",
+      "location": "packages/next/src/next-devtools/dev-overlay/components/errors/dev-tools-indicator/dev-tools-info/dev-tools-header.tsx:10",
+      "entries": [
+        "fontSize: 14px (line 34)",
+        "padding: 4px (line 57)"
+      ]
+    },
+    {
+      "component": "apps/bundle-analyzer/components/stat-cards.tsx",
+      "location": "apps/bundle-analyzer/components/stat-cards.tsx:70",
+      "entries": [
+        "apps/bundle-analyzer/components/stat-cards.tsx"
+      ]
+    },
+    {
+      "component": "apps/bundle-analyzer/components/import-chain.tsx",
+      "location": "apps/bundle-analyzer/components/import-chain.tsx:429",
+      "entries": [
+        "apps/bundle-analyzer/components/import-chain.tsx"
+      ]
+    },
+    {
+      "component": "apps/bundle-analyzer/components/diff-table.tsx",
+      "location": "apps/bundle-analyzer/components/diff-table.tsx:488",
+      "entries": [
+        "apps/bundle-analyzer/components/diff-table.tsx"
+      ]
+    },
+    {
+      "component": "apps/bundle-analyzer/components/compare-layout.tsx",
+      "location": "apps/bundle-analyzer/components/compare-layout.tsx:207",
+      "entries": [
+        "apps/bundle-analyzer/components/compare-layout.tsx"
+      ]
+    }
+  ],
+  "scanSeconds": 135
+}

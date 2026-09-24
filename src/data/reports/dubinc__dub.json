@@ -3,13 +3,13 @@
   "owner": "dubinc",
   "name": "dub",
   "description": "The modern link attribution platform. Loved by world-class marketing teams like Framer, Perplexity, Superhuman, Twilio, Buffer and more.",
-  "stars": 24781,
+  "stars": 24809,
   "homepage": "https://dub.co",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "70350f7664db7076b95bacce0b2199c510836419",
-  "generatedAt": "2026-09-20T07:42:14.454Z",
-  "cliVersion": "local",
+  "commit": "277d31dffd7b36f73bfd48ad4c10015ae59aceed",
+  "generatedAt": "2026-09-24T03:22:14.318Z",
+  "cliVersion": "latest",
   "score": 62,
   "tier": "Good",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1578,
+    "componentCount": 1586,
     "tokenCount": 0,
-    "hardcodedValueCount": 732,
+    "hardcodedValueCount": 737,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 7,
     "criticalCount": 0,
@@ -41,9 +41,9 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 1241,
-    "unusedComponentCount": 317,
-    "repeatedPatternCount": 185,
+    "totalDriftCount": 1244,
+    "unusedComponentCount": 313,
+    "repeatedPatternCount": 187,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 0,
@@ -51,7 +51,7 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 72,
+    "highDensityFileCount": 73,
     "vendoredDriftCount": 19,
     "topHardcodedColor": {
       "value": "#171717",
@@ -70,24 +70,24 @@
     ]
   },
   "suggestions": [
-    "713 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/web/app/app.dub.co/(auth-marketing)/layout.tsx (7 issues)",
+    "718 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/web/app/app.dub.co/(auth-marketing)/layout.tsx (7 issues)",
     "19 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
-    "317 unused components detected — consider a cleanup sprint to remove dead code",
-    "185 repeated patterns — significant duplication, extract to a shared component library",
+    "313 unused components detected — consider a cleanup sprint to remove dead code",
+    "187 repeated patterns — significant duplication, extract to a shared component library",
     "Tailwind detected but token coverage is low — extend your theme config with custom values",
     "7 minor naming inconsistencies — consider standardizing conventions"
   ],
   "driftSummary": {
-    "total": 1236,
+    "total": 1242,
     "critical": 0,
-    "warning": 394,
-    "info": 842
+    "warning": 393,
+    "info": 849
   },
   "driftByType": {
     "naming-inconsistency": 7,
-    "hardcoded-value": 732,
-    "unused-component": 312,
-    "repeated-pattern": 185
+    "hardcoded-value": 737,
+    "unused-component": 311,
+    "repeated-pattern": 187
   },
   "topColors": [
     {
@@ -133,6 +133,10 @@
       "count": 5
     },
     {
+      "value": "5px",
+      "count": 2
+    },
+    {
       "value": "4px",
       "count": 2
     },
@@ -145,15 +149,11 @@
       "count": 2
     },
     {
-      "value": "5px",
-      "count": 2
-    },
-    {
-      "value": "200px",
+      "value": "30%",
       "count": 1
     },
     {
-      "value": "20px",
+      "value": "8%",
       "count": 1
     }
   ],
@@ -200,92 +200,94 @@
       ]
     },
     {
-      "component": "PendingApplicationsSummary",
-      "location": "packages/email/src/templates/pending-applications-summary.tsx:20",
+      "component": "YouTube",
+      "location": "packages/ui/src/icons/youtube.tsx:3",
       "entries": [
-        "paddingRight: 12px (line 106)",
-        "width: 200px (line 119)"
+        "fill: #ff0000 (line 22)"
       ]
     },
     {
-      "component": "ProgramCard",
-      "location": "packages/email/src/templates/partner-program-summary.tsx:216",
+      "component": "Veriff",
+      "location": "packages/ui/src/icons/veriff.tsx:3",
       "entries": [
-        "paddingRight: 12px (line 292)",
-        "paddingLeft: 12px (line 295)"
+        "fill: #14E5C5 (line 16)",
+        "fill: #0C3035 (line 24)"
       ]
     },
     {
-      "component": "NewLeadSubmitted",
-      "location": "packages/email/src/templates/new-lead-submitted.tsx:17",
+      "component": "TikTok",
+      "location": "packages/ui/src/icons/tiktok.tsx:3",
       "entries": [
-        "color: #737373 (line 132)",
-        "backgroundColor: #f2f2f2 (line 179)",
-        "color: #171717 (line 226)"
+        "fill: #FF004F (line 14)",
+        "fill: #171717 (line 18)",
+        "fill: #00F2EA (line 22)"
       ]
     },
     {
-      "component": "NewLeadSubmitted",
-      "location": "packages/email/src/templates/new-lead-submitted.tsx:17",
+      "component": "SlackColorful",
+      "location": "packages/ui/src/icons/slack-colorful.tsx:4",
       "entries": [
-        "marginTop: 4px (line 110)",
-        "paddingRight: 6px (line 116)",
-        "fontSize: 14px (line 131)"
+        "fill: #36C5F0 (line 18)",
+        "fill: #2EB67D (line 24)",
+        "fill: #ECB22E (line 30)"
       ]
     },
     {
-      "component": "LeadStatusUpdated",
-      "location": "packages/email/src/templates/lead-status-updated.tsx:16",
+      "component": "Ruby",
+      "location": "packages/ui/src/icons/ruby.tsx:3",
       "entries": [
-        "color: #737373 (line 119)"
+        "fill: #871101 (line 13)",
+        "fill: #fff (line 40)",
+        "fill: #9E1209 (line 60)"
       ]
     },
     {
-      "component": "LeadStatusUpdated",
-      "location": "packages/email/src/templates/lead-status-updated.tsx:16",
+      "component": "Reddit",
+      "location": "packages/ui/src/icons/reddit.tsx:1",
       "entries": [
-        "marginTop: 4px (line 97)",
-        "paddingRight: 6px (line 103)",
-        "fontSize: 14px (line 118)"
+        "fill: #fff (line 12)",
+        "fill: #ff4500 (line 17)"
       ]
     },
     {
-      "component": "DubPartnerRewind",
-      "location": "packages/email/src/templates/dub-partner-rewind.tsx:17",
+      "component": "ProductHunt",
+      "location": "packages/ui/src/icons/product-hunt.tsx:3",
       "entries": [
-        "backgroundColor: #171717 (line 90)",
-        "color: #ffffff (line 91)"
+        "fill: #fff (line 18)"
       ]
     },
     {
-      "component": "DubPartnerRewind",
-      "location": "packages/email/src/templates/dub-partner-rewind.tsx:17",
+      "component": "Php",
+      "location": "packages/ui/src/icons/php.tsx:3",
       "entries": [
-        "fontSize: 14px (line 97)"
+        "fill: #484c88 (line 16)"
       ]
     },
     {
-      "component": "ConnectPlatformsReminder",
-      "location": "packages/email/src/templates/connect-platforms-reminder.tsx:17",
+      "component": "LoadingSpinner",
+      "location": "packages/ui/src/icons/loading-spinner.tsx:3",
       "entries": [
-        "backgroundColor: #171717 (line 96)",
-        "color: #ffffff (line 97)"
+        "width: 30% (line 22)",
+        "height: 8% (line 23)"
       ]
     },
     {
-      "component": "ConnectPlatformsReminder",
-      "location": "packages/email/src/templates/connect-platforms-reminder.tsx:17",
+      "component": "LoadingDots",
+      "location": "packages/ui/src/icons/loading-dots.tsx:1",
       "entries": [
-        "fontSize: 14px (line 103)"
+        "width: 5px (line 10)",
+        "height: 5px (line 11)"
       ]
     },
     {
-      "component": "CampaignEmail",
-      "location": "packages/email/src/templates/campaign-email.tsx:20",
+      "component": "Google",
+      "location": "packages/ui/src/icons/google.tsx:1",
       "entries": [
-        "fontSize: 14px (line 84)"
+        "fill: #4285F4 (line 12)",
+        "fill: #34A853 (line 16)",
+        "fill: #FBBC05 (line 20)"
       ]
     }
   ],
-  "scanSeconds": 83
+  "scanSeconds": 75
 }

@@ -3,13 +3,13 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source agent evals & observability: Trace, evaluate, and improve LLM applications with one open platform.",
-  "stars": 34832,
+  "stars": 34989,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "ef0add7b2598200bd44573178d9d1cc5f7cc770b",
-  "generatedAt": "2026-09-20T07:46:52.371Z",
-  "cliVersion": "local",
+  "commit": "ce3ef136762bdfe386153e5c2c0851a4cb72f2b0",
+  "generatedAt": "2026-09-24T03:41:12.387Z",
+  "cliVersion": "latest",
   "score": 69,
   "tier": "Good",
   "pillars": {
@@ -22,7 +22,7 @@
       "max": 20
     },
     "consistency": {
-      "score": 9,
+      "score": 10,
       "max": 10
     },
     "criticalIssues": {
@@ -31,19 +31,19 @@
     }
   },
   "metrics": {
-    "componentCount": 1891,
-    "tokenCount": 232,
-    "hardcodedValueCount": 453,
-    "unusedTokenCount": 30,
-    "namingInconsistencyCount": 24,
+    "componentCount": 1979,
+    "tokenCount": 239,
+    "hardcodedValueCount": 469,
+    "unusedTokenCount": 37,
+    "namingInconsistencyCount": 22,
     "criticalCount": 0,
     "accessibilityConflictCount": 0,
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 688,
-    "unusedComponentCount": 128,
-    "repeatedPatternCount": 53,
+    "totalDriftCount": 749,
+    "unusedComponentCount": 167,
+    "repeatedPatternCount": 54,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 0,
@@ -51,7 +51,7 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 27,
+    "highDensityFileCount": 26,
     "vendoredDriftCount": 29,
     "topHardcodedColor": {
       "value": "#b3d9ff",
@@ -68,25 +68,25 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 424 hardcoded values left to tokenize. web/src/components/design-system/Tabs/Tabs.tsx has the most (11)",
+    "Nearly there — just 440 hardcoded values left to tokenize. web/src/components/design-system/Tabs/Tabs.tsx has the most (11)",
     "29 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
-    "128 unused components detected — consider a cleanup sprint to remove dead code",
-    "53 repeated patterns — significant duplication, extract to a shared component library",
-    "30 tokens defined but unused — wire them into components or remove stale definitions",
-    "24 minor naming inconsistencies — consider standardizing conventions"
+    "167 unused components detected — consider a cleanup sprint to remove dead code",
+    "54 repeated patterns — significant duplication, extract to a shared component library",
+    "37 tokens defined but unused — wire them into components or remove stale definitions",
+    "22 minor naming inconsistencies — consider standardizing conventions"
   ],
   "driftSummary": {
-    "total": 688,
+    "total": 749,
     "critical": 0,
-    "warning": 144,
-    "info": 544
+    "warning": 182,
+    "info": 567
   },
   "driftByType": {
-    "hardcoded-value": 453,
-    "naming-inconsistency": 24,
-    "unused-component": 128,
-    "unused-token": 30,
-    "repeated-pattern": 53
+    "hardcoded-value": 469,
+    "naming-inconsistency": 22,
+    "unused-component": 167,
+    "unused-token": 37,
+    "repeated-pattern": 54
   },
   "topColors": [
     {
@@ -166,11 +166,11 @@
       "count": 5
     },
     {
-      "file": "packages/shared/src/server/services/email/usageThresholdSuspension/UsageThresholdSuspensionEmailTemplate.tsx",
+      "file": "packages/shared/src/server/services/email/usageThresholdWarning/UsageThresholdWarningEmailTemplate.tsx",
       "count": 5
     },
     {
-      "file": "packages/shared/src/server/services/email/usageThresholdWarning/UsageThresholdWarningEmailTemplate.tsx",
+      "file": "packages/shared/src/server/services/email/usageThresholdSuspension/UsageThresholdSuspensionEmailTemplate.tsx",
       "count": 5
     },
     {
@@ -217,19 +217,19 @@
     },
     {
       "component": "TimelineDense",
-      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:363",
+      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:366",
       "entries": [
-        "fontSize: 10px (line 1473)",
-        "fontSize: 9px (line 1554)"
+        "fontSize: 10px (line 1476)",
+        "fontSize: 9px (line 1557)"
       ]
     },
     {
       "component": "GutterContent",
-      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:1950",
+      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:1953",
       "entries": [
-        "right: 2px (line 2061)",
-        "height: 16px (line 2063)",
-        "fontSize: 10px (line 2071)"
+        "right: 2px (line 2067)",
+        "height: 16px (line 2069)",
+        "fontSize: 10px (line 2080)"
       ]
     },
     {
@@ -278,5 +278,5 @@
       ]
     }
   ],
-  "scanSeconds": 143
+  "scanSeconds": 147
 }

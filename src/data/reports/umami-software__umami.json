@@ -3,13 +3,13 @@
   "owner": "umami-software",
   "name": "umami",
   "description": "Umami is a privacy-first analytics platform. Traffic, campaigns, behavior, conversions, and revenue in one place — no cookies, no surveillance, self-hosted or in the cloud.",
-  "stars": 38915,
+  "stars": 38981,
   "homepage": "https://umami.is",
   "language": "TypeScript",
   "defaultBranch": "master",
   "commit": "ec0ff50388c264ed8ce46f00967e92f7e71476ae",
-  "generatedAt": "2026-09-20T07:44:12.745Z",
-  "cliVersion": "local",
+  "generatedAt": "2026-09-24T03:31:40.362Z",
+  "cliVersion": "latest",
   "score": 76,
   "tier": "Good",
   "pillars": {
@@ -143,11 +143,11 @@
       "count": 4
     },
     {
-      "file": "src/app/(main)/websites/[websiteId]/replays/ReplaysTable.tsx",
+      "file": "src/app/(main)/websites/[websiteId]/sessions/SessionsTable.tsx",
       "count": 4
     },
     {
-      "file": "src/app/(main)/websites/[websiteId]/sessions/SessionsTable.tsx",
+      "file": "src/app/(main)/websites/[websiteId]/replays/ReplaysTable.tsx",
       "count": 4
     },
     {
@@ -160,6 +160,22 @@
     }
   ],
   "samples": [
+    {
+      "component": "SimpleShareEditButton",
+      "location": "src/components/share/SimpleShareEditButton.tsx:6",
+      "entries": [
+        "width: 600px (line 10)"
+      ]
+    },
+    {
+      "component": "SharedSharesTable",
+      "location": "src/components/share/SharedSharesTable.tsx:16",
+      "entries": [
+        "gap: 16px (line 44)",
+        "marginTop: 8px (line 69)",
+        "marginTop: 12px (line 72)"
+      ]
+    },
     {
       "component": "SvgTag",
       "location": "src/components/svg/Tag.tsx:3",
@@ -182,22 +198,6 @@
       "entries": [
         "stroke: #fff (line 16)",
         "fill: #fff (line 21)"
-      ]
-    },
-    {
-      "component": "SimpleShareEditButton",
-      "location": "src/components/share/SimpleShareEditButton.tsx:6",
-      "entries": [
-        "width: 600px (line 10)"
-      ]
-    },
-    {
-      "component": "SharedSharesTable",
-      "location": "src/components/share/SharedSharesTable.tsx:16",
-      "entries": [
-        "gap: 16px (line 44)",
-        "marginTop: 8px (line 69)",
-        "marginTop: 12px (line 72)"
       ]
     },
     {
@@ -229,26 +229,27 @@
       ]
     },
     {
-      "component": "WebsiteFilterButton",
-      "location": "src/components/input/WebsiteFilterButton.tsx:13",
+      "component": "WorldMap",
+      "location": "src/components/metrics/WorldMap.tsx:21",
       "entries": [
-        "marginTop: 3px (line 86)"
+        "backgroundColor: rgba(0,0,0,0.8) (line 105)"
       ]
     },
     {
-      "component": "WebsiteDateFilter",
-      "location": "src/components/input/WebsiteDateFilter.tsx:17",
+      "component": "WeeklyTraffic",
+      "location": "src/components/metrics/WeeklyTraffic.tsx:8",
       "entries": [
-        "width: 200px (line 90)"
+        "backgroundColor: rgba(0,0,0,0.8) (line 110)"
       ]
     },
     {
-      "component": "SegmentSaveButton",
-      "location": "src/components/input/SegmentSaveButton.tsx:6",
+      "component": "WeeklyTraffic",
+      "location": "src/components/metrics/WeeklyTraffic.tsx:8",
       "entries": [
-        "padding: 32px (line 26)"
+        "width: 16px (line 85)",
+        "height: 16px (line 86)"
       ]
     }
   ],
-  "scanSeconds": 22
+  "scanSeconds": 28
 }

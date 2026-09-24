@@ -3,13 +3,13 @@
   "owner": "hoppscotch",
   "name": "hoppscotch",
   "description": "Open-Source API Development Ecosystem • https://hoppscotch.io • Offline, On-Prem & Cloud • Web, Desktop & CLI • Open-Source Alternative to Postman, Insomnia",
-  "stars": 80400,
+  "stars": 80490,
   "homepage": "https://hoppscotch.io",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "d86e59f6e9574c69f01b300691b9f4396eeb38d2",
-  "generatedAt": "2026-09-20T07:44:31.926Z",
-  "cliVersion": "local",
+  "commit": "a9ffa29ce5036ef5be0768db35a8b6bae32e1160",
+  "generatedAt": "2026-09-24T03:30:47.016Z",
+  "cliVersion": "latest",
   "score": 69,
   "tier": "Good",
   "pillars": {
@@ -41,8 +41,8 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 375,
-    "unusedComponentCount": 284,
+    "totalDriftCount": 378,
+    "unusedComponentCount": 287,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 2,
@@ -65,20 +65,20 @@
   },
   "suggestions": [
     "87 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on packages/hoppscotch-common/src/components/collections/documentation/CollectionStructure.vue (4 issues)",
-    "284 unused components detected — consider a cleanup sprint to remove dead code",
+    "287 unused components detected — consider a cleanup sprint to remove dead code",
     "Tailwind detected but token coverage is low — extend your theme config with custom values",
     "4 minor naming inconsistencies — consider standardizing conventions"
   ],
   "driftSummary": {
-    "total": 378,
+    "total": 375,
     "critical": 0,
-    "warning": 289,
+    "warning": 286,
     "info": 89
   },
   "driftByType": {
     "naming-inconsistency": 2,
     "semantic-mismatch": 2,
-    "unused-component": 287,
+    "unused-component": 284,
     "hardcoded-value": 87
   },
   "topColors": [],
@@ -113,7 +113,7 @@
       "count": 2
     },
     {
-      "file": "packages/hoppscotch-common/src/components/gql/Authorization.vue",
+      "file": "packages/hoppscotch-common/src/components/graphql/Authorization.vue",
       "count": 2
     }
   ],
@@ -203,5 +203,5 @@
       ]
     }
   ],
-  "scanSeconds": 19
+  "scanSeconds": 24
 }

@@ -1,0 +1,293 @@
+{
+  "repo": "supabase/supabase",
+  "owner": "supabase",
+  "name": "supabase",
+  "description": "The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications.",
+  "stars": 110711,
+  "homepage": "https://supabase.com",
+  "language": "TypeScript",
+  "defaultBranch": "master",
+  "commit": "d067e81a696808240094066d0272e2cc1f295aa1",
+  "generatedAt": "2026-09-24T03:20:58.059Z",
+  "cliVersion": "latest",
+  "score": 62,
+  "tier": "Good",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 34,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 18,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 0,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 4569,
+    "tokenCount": 1158,
+    "hardcodedValueCount": 1378,
+    "unusedTokenCount": 467,
+    "namingInconsistencyCount": 50,
+    "criticalCount": 2,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 2,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 7913,
+    "unusedComponentCount": 1171,
+    "repeatedPatternCount": 275,
+    "orphanedComponentCount": 4561,
+    "semanticMismatchCount": 7,
+    "deprecatedPatternCount": 2,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 78,
+    "vendoredDriftCount": 41,
+    "topHardcodedColor": {
+      "value": "#8F8F8F",
+      "count": 16
+    },
+    "worstFile": {
+      "path": "apps/www/app/(home)/_components/logos/PublicityLogos.tsx",
+      "issueCount": 73
+    },
+    "uniqueSpacingValues": 32,
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "vue",
+      "astro",
+      "tailwind",
+      "radix"
+    ]
+  },
+  "suggestions": [
+    "1337 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/www/app/(home)/_components/logos/PublicityLogos.tsx (73 issues)",
+    "41 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
+    "1171 unused components detected — consider a cleanup sprint to remove dead code",
+    "275 repeated patterns — significant duplication, extract to a shared component library",
+    "467 tokens defined but unused — wire them into components or remove stale definitions",
+    "57 minor naming inconsistencies — consider standardizing conventions",
+    "2 color contrast issues — fix immediately",
+    "2 deprecated patterns — migrate to current API",
+    "32 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
+  ],
+  "driftSummary": {
+    "total": 7428,
+    "critical": 2,
+    "warning": 5362,
+    "info": 2064
+  },
+  "driftByType": {
+    "naming-inconsistency": 50,
+    "hardcoded-value": 1372,
+    "deprecated-pattern": 2,
+    "color-contrast": 2,
+    "unused-component": 1107,
+    "unused-token": 467,
+    "semantic-mismatch": 1,
+    "orphaned-component": 4152,
+    "repeated-pattern": 275
+  },
+  "topColors": [
+    {
+      "value": "#8F8F8F",
+      "count": 16
+    },
+    {
+      "value": "#fff",
+      "count": 10
+    },
+    {
+      "value": "#3ECF8E",
+      "count": 8
+    },
+    {
+      "value": "#404EED",
+      "count": 4
+    },
+    {
+      "value": "#000",
+      "count": 1
+    },
+    {
+      "value": "#249361",
+      "count": 1
+    },
+    {
+      "value": "#FFFFFF",
+      "count": 1
+    },
+    {
+      "value": "#7FC8FF",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "1px",
+      "count": 10
+    },
+    {
+      "value": "0.8125rem",
+      "count": 8
+    },
+    {
+      "value": "0px",
+      "count": 6
+    },
+    {
+      "value": "10px",
+      "count": 3
+    },
+    {
+      "value": "35%",
+      "count": 3
+    },
+    {
+      "value": "1rem",
+      "count": 2
+    },
+    {
+      "value": "30px",
+      "count": 2
+    },
+    {
+      "value": "20px",
+      "count": 2
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "apps/www/app/api-v2/ticket-og/route.tsx",
+      "count": 22
+    },
+    {
+      "file": "apps/www/components/LaunchWeek/8/Releases/components/index.tsx",
+      "count": 14
+    },
+    {
+      "file": "apps/www/components/LaunchWeek/7/Releases/components/index.tsx",
+      "count": 11
+    },
+    {
+      "file": "apps/www/app/(home)/_components/logos/PublicityLogos.tsx",
+      "count": 9
+    },
+    {
+      "file": "apps/www/components/Products/RealtimeVisual.tsx",
+      "count": 6
+    },
+    {
+      "file": "apps/www/app/(products)/storage/_components/FeaturesSection.tsx",
+      "count": 6
+    },
+    {
+      "file": "apps/design-system/registry/default/example/chart-tooltip-demo.tsx",
+      "count": 6
+    },
+    {
+      "file": "apps/design-system/registry/default/example/connect-interstitial-shared.tsx",
+      "count": 5
+    }
+  ],
+  "samples": [
+    {
+      "component": "SideNavigation",
+      "location": "apps/ui-library/components/side-navigation.tsx:15",
+      "entries": [
+        "fill: #3ECF8E (line 40)"
+      ]
+    },
+    {
+      "component": "SideNavigation",
+      "location": "apps/learn/components/side-navigation.tsx:20",
+      "entries": [
+        "fill: #3ECF8E (line 84)"
+      ]
+    },
+    {
+      "component": "Quotes",
+      "location": "apps/www/components/Solutions/Quotes.tsx:11",
+      "entries": [
+        "marginRight: 1px (line 24)"
+      ]
+    },
+    {
+      "component": "TwitterSocialProofMobile",
+      "location": "apps/www/components/Sections/TwitterSocialProofMobile.tsx:23",
+      "entries": [
+        "marginRight: 1px (line 29)"
+      ]
+    },
+    {
+      "component": "TimedTabsSection",
+      "location": "apps/www/components/Sections/TimedTabsSection.tsx:79",
+      "entries": [
+        "marginRight: 1px (line 151)"
+      ]
+    },
+    {
+      "component": "TimedAccordionSection",
+      "location": "apps/www/components/Sections/TimedAccordionSection.tsx:82",
+      "entries": [
+        "marginRight: 1px (line 158)"
+      ]
+    },
+    {
+      "component": "FunctionsUsecases",
+      "location": "apps/www/components/Sections/FunctionsUsecases.tsx:26",
+      "entries": [
+        "marginRight: 1px (line 96)"
+      ]
+    },
+    {
+      "component": "APISection",
+      "location": "apps/www/components/Sections/APISection.tsx:30",
+      "entries": [
+        "marginRight: 1px (line 76)"
+      ]
+    },
+    {
+      "component": "RealtimeVisual",
+      "location": "apps/www/components/Products/RealtimeVisual.tsx:10",
+      "entries": [
+        "top: 60% (line 97)",
+        "left: 30% (line 98)",
+        "top: 80% (line 129)"
+      ]
+    },
+    {
+      "component": "Check",
+      "location": "apps/www/components/Pricing/PricingIcons.tsx:1",
+      "entries": [
+        "fill: #3ECF8E (line 4)"
+      ]
+    },
+    {
+      "component": "PricingComparisonTable",
+      "location": "apps/www/components/Pricing/PricingComparisonTable.tsx:115",
+      "entries": [
+        "height: 1px (line 404)"
+      ]
+    },
+    {
+      "component": "Quotes",
+      "location": "apps/www/components/Supasquad/Quotes.tsx:11",
+      "entries": [
+        "marginRight: 1px (line 24)"
+      ]
+    }
+  ],
+  "scanSeconds": 243
+}

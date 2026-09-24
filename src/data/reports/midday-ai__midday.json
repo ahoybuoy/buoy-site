@@ -3,13 +3,13 @@
   "owner": "midday-ai",
   "name": "midday",
   "description": "Invoicing, Time tracking, File reconciliation, Storage, Financial Overview & your own Assistant made for Freelancers",
-  "stars": 15022,
+  "stars": 15031,
   "homepage": "https://midday.ai",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "51587319f26a0ffaa9dfccab1920373cb65689b7",
-  "generatedAt": "2026-09-20T07:50:20.865Z",
-  "cliVersion": "local",
+  "generatedAt": "2026-09-24T03:25:18.065Z",
+  "cliVersion": "latest",
   "score": 69,
   "tier": "Good",
   "pillars": {
@@ -41,8 +41,8 @@
     "colorContrastCount": 10,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 1234,
-    "unusedComponentCount": 153,
+    "totalDriftCount": 1202,
+    "unusedComponentCount": 121,
     "repeatedPatternCount": 59,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
@@ -72,23 +72,23 @@
   "suggestions": [
     "913 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on packages/ui/src/components/animations/chat-demo-animation.tsx (30 issues)",
     "81 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
-    "153 unused components detected — consider a cleanup sprint to remove dead code",
+    "121 unused components detected — consider a cleanup sprint to remove dead code",
     "59 repeated patterns — significant duplication, extract to a shared component library",
     "14 tokens defined but unused — wire them into components or remove stale definitions",
     "4 minor naming inconsistencies — consider standardizing conventions",
     "10 color contrast issues — fix immediately"
   ],
   "driftSummary": {
-    "total": 1203,
+    "total": 1192,
     "critical": 10,
-    "warning": 420,
+    "warning": 409,
     "info": 773
   },
   "driftByType": {
     "hardcoded-value": 994,
     "naming-inconsistency": 4,
     "color-contrast": 10,
-    "unused-component": 122,
+    "unused-component": 111,
     "unused-token": 14,
     "repeated-pattern": 59
   },
@@ -282,5 +282,5 @@
       ]
     }
   ],
-  "scanSeconds": 73
+  "scanSeconds": 72
 }

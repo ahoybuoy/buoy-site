@@ -3,13 +3,13 @@
   "owner": "outline",
   "name": "outline",
   "description": "The fastest knowledge base for growing teams. Beautiful, realtime collaborative, feature packed, and markdown compatible.",
-  "stars": 40629,
+  "stars": 40681,
   "homepage": "https://www.getoutline.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "2f57a36d50f78a34adb77009d7499b8c556838db",
-  "generatedAt": "2026-09-20T07:45:22.990Z",
-  "cliVersion": "local",
+  "commit": "621b00ffc7e7bd09bf56292bfceeba093c6c760b",
+  "generatedAt": "2026-09-24T03:32:01.688Z",
+  "cliVersion": "latest",
   "score": 82,
   "tier": "Great",
   "pillars": {
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 487,
+    "componentCount": 486,
     "tokenCount": 0,
     "hardcodedValueCount": 9,
     "unusedTokenCount": 0,
@@ -41,8 +41,8 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 112,
-    "unusedComponentCount": 46,
+    "totalDriftCount": 111,
+    "unusedComponentCount": 45,
     "repeatedPatternCount": 1,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 54,
@@ -70,20 +70,20 @@
   },
   "suggestions": [
     "Nearly there — just 9 hardcoded values left to tokenize. app/components/primitives/Menu/index.tsx has the most (12)",
-    "46 unused components — review and remove dead code",
+    "45 unused components — review and remove dead code",
     "56 naming inconsistencies — standardize prop/component conventions"
   ],
   "driftSummary": {
-    "total": 125,
+    "total": 124,
     "critical": 0,
-    "warning": 116,
+    "warning": 115,
     "info": 9
   },
   "driftByType": {
     "hardcoded-value": 9,
     "semantic-mismatch": 54,
     "naming-inconsistency": 2,
-    "unused-component": 59,
+    "unused-component": 58,
     "repeated-pattern": 1
   },
   "topColors": [
@@ -144,7 +144,7 @@
       "count": 1
     },
     {
-      "file": "app/scenes/Login/components/SwitchHostDialog.tsx",
+      "file": "app/scenes/Settings/components/DropToImport.tsx",
       "count": 1
     }
   ],
@@ -199,19 +199,19 @@
       ]
     },
     {
-      "component": "SwitchHostDialog",
-      "location": "app/scenes/Login/components/SwitchHostDialog.tsx:20",
-      "entries": [
-        "marginTop: 1em (line 118)"
-      ]
-    },
-    {
       "component": "DropToImport",
       "location": "app/scenes/Settings/components/DropToImport.tsx:37",
       "entries": [
         "color: #fff (line 118)"
       ]
+    },
+    {
+      "component": "SwitchHostDialog",
+      "location": "app/scenes/Login/components/SwitchHostDialog.tsx:20",
+      "entries": [
+        "marginTop: 1em (line 118)"
+      ]
     }
   ],
-  "scanSeconds": 19
+  "scanSeconds": 21
 }

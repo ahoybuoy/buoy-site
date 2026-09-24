@@ -1,16 +1,16 @@
 {
-  "repo": "unkeyed/unkey",
-  "owner": "unkeyed",
-  "name": "unkey",
-  "description": "The Developer Platform for Modern APIs",
-  "stars": 5446,
-  "homepage": "https://go.unkey.com",
-  "language": "Go",
-  "defaultBranch": "main",
-  "commit": "bd212d1b3bdc481d7a3f11f5d76244f9b6538454",
-  "generatedAt": "2026-09-24T03:43:14.233Z",
+  "repo": "plausible/analytics",
+  "owner": "plausible",
+  "name": "analytics",
+  "description": "Open source, privacy-first web analytics. Lightweight, cookie-free Google Analytics alternative. Self-hosted or cloud.",
+  "stars": 29197,
+  "homepage": "https://plausible.io",
+  "language": "Elixir",
+  "defaultBranch": "master",
+  "commit": "b04e601232064aced1b899a71630cba262e9eeee",
+  "generatedAt": "2026-09-24T03:31:12.025Z",
   "cliVersion": "latest",
-  "score": 12,
+  "score": 10,
   "tier": "Terrible",
   "pillars": {
     "valueDiscipline": {
@@ -18,7 +18,7 @@
       "max": 60
     },
     "tokenHealth": {
-      "score": 12,
+      "score": 10,
       "max": 20
     },
     "consistency": {
@@ -32,18 +32,18 @@
   },
   "metrics": {
     "componentCount": 0,
-    "tokenCount": 351,
+    "tokenCount": 42,
     "hardcodedValueCount": 0,
-    "unusedTokenCount": 197,
+    "unusedTokenCount": 39,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
     "accessibilityConflictCount": 0,
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 252,
+    "totalDriftCount": 47,
     "unusedComponentCount": 0,
-    "repeatedPatternCount": 55,
+    "repeatedPatternCount": 8,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 0,
@@ -54,30 +54,30 @@
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
     "worstFile": {
-      "path": "web/apps/dashboard/components/virtual-table/index.tsx",
-      "issueCount": 8
+      "path": "assets/js/dashboard/nav-menu/dashboard-options-menu.tsx",
+      "issueCount": 2
     },
     "detectedFrameworkNames": [
       "tailwind"
     ]
   },
   "suggestions": [
-    "55 repeated patterns — significant duplication, extract to a shared component library",
-    "197 of 351 tokens unused (56%) — many tokens may be stale, audit your token definitions"
+    "8 repeated patterns — extract to shared components",
+    "39 of 42 tokens unused (93%) — many tokens may be stale, audit your token definitions"
   ],
   "driftSummary": {
-    "total": 252,
+    "total": 47,
     "critical": 0,
     "warning": 0,
-    "info": 252
+    "info": 47
   },
   "driftByType": {
-    "unused-token": 197,
-    "repeated-pattern": 55
+    "unused-token": 39,
+    "repeated-pattern": 8
   },
   "topColors": [],
   "topSpacing": [],
   "worstFiles": [],
   "samples": [],
-  "scanSeconds": 21
+  "scanSeconds": 7
 }

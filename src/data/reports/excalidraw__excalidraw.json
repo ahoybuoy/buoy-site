@@ -3,13 +3,13 @@
   "owner": "excalidraw",
   "name": "excalidraw",
   "description": "Virtual whiteboard for sketching hand-drawn like diagrams",
-  "stars": 132478,
+  "stars": 132747,
   "homepage": "https://excalidraw.com",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "97c68dd371e13c017a8dcca49f8b3995ba7890a8",
-  "generatedAt": "2026-09-20T07:47:07.111Z",
-  "cliVersion": "local",
+  "commit": "4850bf336fe0a8501af49d84deebc7fb56357cc2",
+  "generatedAt": "2026-09-24T03:31:04.247Z",
+  "cliVersion": "latest",
   "score": 67,
   "tier": "Good",
   "pillars": {
@@ -41,8 +41,8 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 211,
-    "unusedComponentCount": 123,
+    "totalDriftCount": 209,
+    "unusedComponentCount": 121,
     "repeatedPatternCount": 3,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
@@ -59,7 +59,7 @@
     },
     "worstFile": {
       "path": "packages/excalidraw/components/icons.tsx",
-      "issueCount": 39
+      "issueCount": 37
     },
     "uniqueSpacingValues": 17,
     "detectedFrameworkNames": [
@@ -68,8 +68,8 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 29 hardcoded values left to tokenize. packages/excalidraw/components/icons.tsx has the most (39)",
-    "123 unused components detected — consider a cleanup sprint to remove dead code",
+    "Nearly there — just 29 hardcoded values left to tokenize. packages/excalidraw/components/icons.tsx has the most (37)",
+    "121 unused components detected — consider a cleanup sprint to remove dead code",
     "No design token system detected — add CSS custom properties or a utility framework like Tailwind",
     "56 naming inconsistencies — standardize prop/component conventions",
     "17 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
@@ -250,5 +250,5 @@
       ]
     }
   ],
-  "scanSeconds": 13
+  "scanSeconds": 17
 }

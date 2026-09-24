@@ -3,13 +3,13 @@
   "owner": "documenso",
   "name": "documenso",
   "description": "The Open Source DocuSign Alternative.",
-  "stars": 15106,
+  "stars": 15169,
   "homepage": "https://documenso.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "e658cc581878f52c03b3e6a8f7ffd613aead4e69",
-  "generatedAt": "2026-09-20T07:43:50.320Z",
-  "cliVersion": "local",
+  "commit": "39ae85483ae0941b7b273bc0270d9687ff42f8fb",
+  "generatedAt": "2026-09-24T03:29:50.938Z",
+  "cliVersion": "latest",
   "score": 69,
   "tier": "Good",
   "pillars": {
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 583,
+    "componentCount": 604,
     "tokenCount": 199,
     "hardcodedValueCount": 174,
     "unusedTokenCount": 93,
@@ -41,9 +41,9 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 334,
+    "totalDriftCount": 336,
     "unusedComponentCount": 12,
-    "repeatedPatternCount": 50,
+    "repeatedPatternCount": 52,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 0,
@@ -72,23 +72,23 @@
   "suggestions": [
     "174 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on packages/ui/components/signing-card.tsx (6 issues)",
     "12 unused components — review and remove dead code",
-    "50 repeated patterns — significant duplication, extract to a shared component library",
+    "52 repeated patterns — significant duplication, extract to a shared component library",
     "93 tokens defined but unused — wire them into components or remove stale definitions",
     "5 minor naming inconsistencies — consider standardizing conventions",
     "19 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
   ],
   "driftSummary": {
-    "total": 333,
+    "total": 336,
     "critical": 0,
-    "warning": 22,
-    "info": 311
+    "warning": 23,
+    "info": 313
   },
   "driftByType": {
     "hardcoded-value": 174,
     "naming-inconsistency": 5,
-    "unused-component": 11,
+    "unused-component": 12,
     "unused-token": 93,
-    "repeated-pattern": 50
+    "repeated-pattern": 52
   },
   "topColors": [
     {
@@ -184,7 +184,7 @@
       "count": 3
     },
     {
-      "file": "apps/remix/app/components/embed/embed-document-signing-page-v1.tsx",
+      "file": "apps/remix/app/components/general/generic-error-layout.tsx",
       "count": 3
     },
     {
@@ -285,5 +285,5 @@
       ]
     }
   ],
-  "scanSeconds": 42
+  "scanSeconds": 51
 }

@@ -3,26 +3,26 @@
   "owner": "makeplane",
   "name": "plane",
   "description": "🔥🔥🔥 Open-source Jira, Linear, Monday, and ClickUp alternative. Plane is a modern project management platform to manage tasks, sprints, docs, and triage.",
-  "stars": 59651,
+  "stars": 59803,
   "homepage": "http://plane.so",
   "language": "TypeScript",
   "defaultBranch": "preview",
-  "commit": "01064a756221921a1ce3e7941ae4d439f298029a",
-  "generatedAt": "2026-09-20T07:45:02.534Z",
-  "cliVersion": "local",
-  "score": 69,
+  "commit": "a2ccd4f074c238d63af7b5f058970fd29a53c454",
+  "generatedAt": "2026-09-24T03:30:22.948Z",
+  "cliVersion": "latest",
+  "score": 68,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 46,
+      "score": 48,
       "max": 60
     },
     "tokenHealth": {
-      "score": 16,
+      "score": 11,
       "max": 20
     },
     "consistency": {
-      "score": 8,
+      "score": 9,
       "max": 10
     },
     "criticalIssues": {
@@ -31,19 +31,19 @@
     }
   },
   "metrics": {
-    "componentCount": 676,
+    "componentCount": 490,
     "tokenCount": 82,
-    "hardcodedValueCount": 238,
+    "hardcodedValueCount": 155,
     "unusedTokenCount": 73,
-    "namingInconsistencyCount": 38,
+    "namingInconsistencyCount": 12,
     "criticalCount": 0,
     "accessibilityConflictCount": 0,
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
-    "hasDesignSystemLibrary": true,
-    "totalDriftCount": 649,
-    "unusedComponentCount": 214,
-    "repeatedPatternCount": 86,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 395,
+    "unusedComponentCount": 98,
+    "repeatedPatternCount": 57,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 0,
@@ -51,91 +51,97 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 26,
-    "vendoredDriftCount": 6,
+    "highDensityFileCount": 15,
+    "vendoredDriftCount": 1,
     "topHardcodedColor": {
-      "value": "#15A34A",
-      "count": 2
+      "value": "#B9B9B9",
+      "count": 1
     },
     "worstFile": {
-      "path": "packages/propel/src/context-menu/context-menu.tsx",
-      "issueCount": 19
+      "path": "packages/blocks/src/breadcrumb/breadcrumbs.tsx",
+      "issueCount": 11
     },
-    "uniqueSpacingValues": 10,
+    "uniqueSpacingValues": 12,
     "detectedFrameworkNames": [
       "react",
-      "tailwind",
-      "storybook",
-      "headlessui"
+      "tailwind"
     ]
   },
   "suggestions": [
-    "232 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on packages/propel/src/context-menu/context-menu.tsx (19 issues)",
-    "6 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
-    "214 unused components detected — consider a cleanup sprint to remove dead code",
-    "86 repeated patterns — significant duplication, extract to a shared component library",
+    "154 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on packages/blocks/src/breadcrumb/breadcrumbs.tsx (11 issues)",
+    "1 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
+    "98 unused components detected — consider a cleanup sprint to remove dead code",
+    "57 repeated patterns — significant duplication, extract to a shared component library",
     "73 of 82 tokens unused (89%) — many tokens may be stale, audit your token definitions",
-    "38 naming inconsistencies — standardize prop/component conventions"
+    "12 minor naming inconsistencies — consider standardizing conventions"
   ],
   "driftSummary": {
-    "total": 651,
+    "total": 395,
     "critical": 0,
-    "warning": 230,
-    "info": 421
+    "warning": 109,
+    "info": 286
   },
   "driftByType": {
-    "naming-inconsistency": 38,
-    "hardcoded-value": 238,
-    "unused-component": 216,
+    "naming-inconsistency": 12,
+    "hardcoded-value": 155,
+    "unused-component": 98,
     "unused-token": 73,
-    "repeated-pattern": 86
+    "repeated-pattern": 57
   },
   "topColors": [
-    {
-      "value": "#15A34A",
-      "count": 2
-    },
     {
       "value": "#B9B9B9",
       "count": 1
     },
     {
-      "value": "#455068",
-      "count": 1
-    },
-    {
-      "value": "#1FAD40",
-      "count": 1
-    },
-    {
-      "value": "#CC0000",
-      "count": 1
-    },
-    {
-      "value": "#3372FF",
-      "count": 1
-    },
-    {
-      "value": "#F5F5FF",
-      "count": 1
-    },
-    {
       "value": "#F7AE59",
+      "count": 1
+    },
+    {
+      "value": "#F76659",
+      "count": 1
+    },
+    {
+      "value": "#3f76ff",
+      "count": 1
+    },
+    {
+      "value": "#525252",
+      "count": 1
+    },
+    {
+      "value": "#16a34a",
+      "count": 1
+    },
+    {
+      "value": "#ef4444",
+      "count": 1
+    },
+    {
+      "value": "#A100FF",
       "count": 1
     }
   ],
   "topSpacing": [
     {
-      "value": "20px",
-      "count": 3
-    },
-    {
       "value": "30px",
       "count": 3
     },
     {
+      "value": "1rem",
+      "count": 2
+    },
+    {
       "value": "60%",
       "count": 2
+    },
+    {
+      "value": "0.75rem",
+      "count": 1
+    },
+    {
+      "value": "20px",
+      "count": 1
     },
     {
       "value": "36px",
@@ -148,28 +154,12 @@
     {
       "value": "22px",
       "count": 1
-    },
-    {
-      "value": "30%",
-      "count": 1
-    },
-    {
-      "value": "70%",
-      "count": 1
     }
   ],
   "worstFiles": [
     {
       "file": "packages/editor/src/components/editors/document/loader.tsx",
       "count": 8
-    },
-    {
-      "file": "packages/propel/src/toast/toast.tsx",
-      "count": 5
-    },
-    {
-      "file": "packages/propel/src/tabs/tabs.tsx",
-      "count": 5
     },
     {
       "file": "apps/web/app/(all)/[workspaceSlug]/(projects)/projects/(detail)/[projectId]/archives/issues/(detail)/[archivedIssueId]/page.tsx",
@@ -190,6 +180,14 @@
     {
       "file": "packages/editor/src/extensions/code-inline/index.tsx",
       "count": 4
+    },
+    {
+      "file": "packages/blocks/src/select/skeleton.tsx",
+      "count": 3
+    },
+    {
+      "file": "apps/admin/app/(all)/(dashboard)/sidebar-help-section.tsx",
+      "count": 3
     }
   ],
   "samples": [
@@ -201,61 +199,26 @@
       ]
     },
     {
-      "component": "PlannedState",
-      "location": "packages/propel/src/icons/planned-icon.tsx:11",
+      "component": "SelectOptionsSkeleton",
+      "location": "packages/blocks/src/select/skeleton.tsx:16",
       "entries": [
-        "fill: #455068 (line 26)"
-      ]
-    },
-    {
-      "component": "OnTrackIcon",
-      "location": "packages/propel/src/icons/on-track-icon.tsx:11",
-      "entries": [
-        "fill: #1FAD40 (line 19)"
-      ]
-    },
-    {
-      "component": "OffTrackIcon",
-      "location": "packages/propel/src/icons/off-track-icon.tsx:11",
-      "entries": [
-        "fill: #CC0000 (line 19)"
-      ]
-    },
-    {
-      "component": "LeadIcon",
-      "location": "packages/propel/src/icons/lead-icon.tsx:11",
-      "entries": [
-        "fill: #3372FF (line 16)",
-        "fill: #F5F5FF (line 19)"
-      ]
-    },
-    {
-      "component": "DoneState",
-      "location": "packages/propel/src/icons/done-icon.tsx:11",
-      "entries": [
-        "stroke: #15A34A (line 21)",
-        "fill: #15A34A (line 26)"
+        "height: 1rem (line 22)",
+        "width: 1rem (line 22)",
+        "height: 0.75rem (line 23)"
       ]
     },
     {
       "component": "BlockerIcon",
-      "location": "packages/propel/src/icons/blocker-icon.tsx:11",
+      "location": "packages/blocks/src/icons/blocker-icon.tsx:11",
       "entries": [
         "fill: #F7AE59 (line 26)"
       ]
     },
     {
       "component": "BlockedIcon",
-      "location": "packages/propel/src/icons/blocked-icon.tsx:11",
+      "location": "packages/blocks/src/icons/blocked-icon.tsx:11",
       "entries": [
         "fill: #F76659 (line 26)"
-      ]
-    },
-    {
-      "component": "AtRiskIcon",
-      "location": "packages/propel/src/icons/at-risk-icon.tsx:11",
-      "entries": [
-        "fill: #CC7700 (line 19)"
       ]
     },
     {
@@ -266,20 +229,56 @@
       ]
     },
     {
-      "component": "AuthUniqueCodeForm",
-      "location": "apps/space/components/account/auth-forms/unique-code.tsx:40",
-      "entries": [
-        "height: 20px (line 157)",
-        "width: 20px (line 157)"
-      ]
-    },
-    {
       "component": "ModulePlannedIcon",
-      "location": "packages/propel/src/icons/module/planned.tsx:11",
+      "location": "packages/blocks/src/icons/module/planned.tsx:11",
       "entries": [
         "fill: #3f76ff (line 23)"
       ]
+    },
+    {
+      "component": "ModulePausedIcon",
+      "location": "packages/blocks/src/icons/module/paused.tsx:11",
+      "entries": [
+        "fill: #525252 (line 25)"
+      ]
+    },
+    {
+      "component": "ModuleCompletedIcon",
+      "location": "packages/blocks/src/icons/module/completed.tsx:11",
+      "entries": [
+        "fill: #16a34a (line 23)"
+      ]
+    },
+    {
+      "component": "ModuleCancelledIcon",
+      "location": "packages/blocks/src/icons/module/cancelled.tsx:11",
+      "entries": [
+        "fill: #ef4444 (line 25)"
+      ]
+    },
+    {
+      "component": "AccentureLogo",
+      "location": "packages/blocks/src/icons/brand/accenture-logo.tsx:11",
+      "entries": [
+        "fill: #A100FF (line 23)"
+      ]
+    },
+    {
+      "component": "DocumentContentLoader",
+      "location": "packages/editor/src/components/editors/document/loader.tsx:15",
+      "entries": [
+        "height: 36px (line 23)",
+        "width: 80% (line 25)",
+        "height: 22px (line 25)"
+      ]
+    },
+    {
+      "component": "StickiesVerticalStackIllustration",
+      "location": "packages/blocks/src/empty-state/assets/vertical-stack/stickies.tsx:13",
+      "entries": [
+        "fill: #011520 (line 78)"
+      ]
     }
   ],
-  "scanSeconds": 30
+  "scanSeconds": 32
 }

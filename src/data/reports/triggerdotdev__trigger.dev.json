@@ -3,13 +3,13 @@
   "owner": "triggerdotdev",
   "name": "trigger.dev",
   "description": "Trigger.dev – build and deploy durable AI agents and workflows",
-  "stars": 16347,
+  "stars": 16387,
   "homepage": "https://trigger.dev/changelog",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "6bf731b1aa3d1888bba06f7d6770d5ed2c011f55",
-  "generatedAt": "2026-09-20T07:47:05.640Z",
-  "cliVersion": "local",
+  "commit": "c2b7a72180bbb2dcbc31caa8539e0ca8f8e9e9b8",
+  "generatedAt": "2026-09-24T03:42:52.291Z",
+  "cliVersion": "latest",
   "score": 69,
   "tier": "Good",
   "pillars": {
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 1694,
+    "componentCount": 1696,
     "tokenCount": 273,
     "hardcodedValueCount": 321,
     "unusedTokenCount": 130,
@@ -108,19 +108,19 @@
       "count": 2
     },
     {
+      "value": "#10B981",
+      "count": 1
+    },
+    {
+      "value": "#6366F1",
+      "count": 1
+    },
+    {
+      "value": "#14B8A6",
+      "count": 1
+    },
+    {
       "value": "#4285F4",
-      "count": 1
-    },
-    {
-      "value": "#34A853",
-      "count": 1
-    },
-    {
-      "value": "#FBBC02",
-      "count": 1
-    },
-    {
-      "value": "#EA4335",
       "count": 1
     }
   ],
@@ -134,11 +134,11 @@
       "count": 1
     },
     {
-      "value": "3px",
+      "value": "320px",
       "count": 1
     },
     {
-      "value": "320px",
+      "value": "3px",
       "count": 1
     }
   ],
@@ -164,15 +164,15 @@
       "count": 5
     },
     {
+      "file": "apps/webapp/app/routes/storybook.layout/route.tsx",
+      "count": 4
+    },
+    {
       "file": "apps/webapp/app/assets/logos/GoogleLogo.tsx",
       "count": 4
     },
     {
       "file": "apps/webapp/app/assets/icons/RegionIcons.tsx",
-      "count": 4
-    },
-    {
-      "file": "apps/webapp/app/routes/storybook.layout/route.tsx",
       "count": 4
     }
   ],
@@ -183,6 +183,41 @@
       "entries": [
         "height: 100vh (line 44)",
         "left: 260px (line 62)"
+      ]
+    },
+    {
+      "component": "SidebarFixedDemo",
+      "location": "apps/webapp/app/routes/storybook.layout/route.tsx:243",
+      "entries": [
+        "width: 320px (line 261)"
+      ]
+    },
+    {
+      "component": "YourModelsTab",
+      "location": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.models._index/route.tsx:1219",
+      "entries": [
+        "color: #10B981 (line 1409)"
+      ]
+    },
+    {
+      "component": "ErrorActivityGraph",
+      "location": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.errors._index/route.tsx:713",
+      "entries": [
+        "fill: #6366F1 (line 731)"
+      ]
+    },
+    {
+      "component": "Page",
+      "location": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.agents.$agentParam/route.tsx:212",
+      "entries": [
+        "color: #14B8A6 (line 310)"
+      ]
+    },
+    {
+      "component": "ResizableHandle",
+      "location": "apps/webapp/app/components/primitives/Resizable.tsx:39",
+      "entries": [
+        "size: 3px (line 67)"
       ]
     },
     {
@@ -232,42 +267,7 @@
       "entries": [
         "fill: #3B82F6 (line 113)"
       ]
-    },
-    {
-      "component": "MachineIconSmall2x",
-      "location": "apps/webapp/app/assets/icons/MachineIcon.tsx:129",
-      "entries": [
-        "fill: #3B82F6 (line 134)"
-      ]
-    },
-    {
-      "component": "MachineIconMedium1x",
-      "location": "apps/webapp/app/assets/icons/MachineIcon.tsx:150",
-      "entries": [
-        "fill: #3B82F6 (line 155)"
-      ]
-    },
-    {
-      "component": "MachineIconMedium2x",
-      "location": "apps/webapp/app/assets/icons/MachineIcon.tsx:170",
-      "entries": [
-        "fill: #3B82F6 (line 175)"
-      ]
-    },
-    {
-      "component": "MachineIconLarge1x",
-      "location": "apps/webapp/app/assets/icons/MachineIcon.tsx:190",
-      "entries": [
-        "fill: #3B82F6 (line 195)"
-      ]
-    },
-    {
-      "component": "MachineIconLarge2x",
-      "location": "apps/webapp/app/assets/icons/MachineIcon.tsx:209",
-      "entries": [
-        "fill: #3B82F6 (line 214)"
-      ]
     }
   ],
-  "scanSeconds": 102
+  "scanSeconds": 99
 }

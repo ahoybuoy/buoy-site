@@ -3,13 +3,13 @@
   "owner": "twentyhq",
   "name": "twenty",
   "description": "The open alternative to Salesforce, designed for AI.",
-  "stars": 57116,
+  "stars": 57388,
   "homepage": "https://twenty.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "75a6b33263233f2c44c4f51f7ccd719b78b508de",
-  "generatedAt": "2026-09-20T07:44:09.234Z",
-  "cliVersion": "local",
+  "commit": "9641999140061d2c8e7b46cecb4d8eae5a1b3b0b",
+  "generatedAt": "2026-09-24T03:28:18.473Z",
+  "cliVersion": "latest",
   "score": 69,
   "tier": "Good",
   "pillars": {
@@ -31,18 +31,18 @@
     }
   },
   "metrics": {
-    "componentCount": 3678,
+    "componentCount": 3684,
     "tokenCount": 13,
     "hardcodedValueCount": 38,
     "unusedTokenCount": 7,
-    "namingInconsistencyCount": 66,
+    "namingInconsistencyCount": 64,
     "criticalCount": 4,
     "accessibilityConflictCount": 0,
     "colorContrastCount": 4,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 685,
-    "unusedComponentCount": 568,
+    "totalDriftCount": 702,
+    "unusedComponentCount": 587,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
@@ -74,23 +74,23 @@
   },
   "suggestions": [
     "Nearly there — just 38 hardcoded values left to tokenize. packages/twenty-front/src/modules/app/components/SettingsRoutes.tsx has the most (82)",
-    "568 unused components detected — consider a cleanup sprint to remove dead code",
+    "587 unused components detected — consider a cleanup sprint to remove dead code",
     "7 of 13 tokens unused (54%) — many tokens may be stale, audit your token definitions",
-    "66 minor naming inconsistencies — consider standardizing conventions",
+    "64 minor naming inconsistencies — consider standardizing conventions",
     "4 color contrast issues — fix immediately",
     "22 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
   ],
   "driftSummary": {
-    "total": 648,
+    "total": 660,
     "critical": 1,
-    "warning": 576,
-    "info": 71
+    "warning": 590,
+    "info": 69
   },
   "driftByType": {
-    "naming-inconsistency": 54,
+    "naming-inconsistency": 52,
     "hardcoded-value": 34,
     "color-contrast": 1,
-    "unused-component": 550,
+    "unused-component": 564,
     "unused-token": 7,
     "repeated-pattern": 2
   },
@@ -274,6 +274,13 @@
       ]
     },
     {
+      "component": "RectClickFrontComponent",
+      "location": "packages/twenty-front-component-renderer/src/__stories__/html-tag/svg/rect/rect-click.front-component.tsx:10",
+      "entries": [
+        "fill: #2563eb (line 23)"
+      ]
+    },
+    {
       "component": "SvgPointerFrontComponent",
       "location": "packages/twenty-front-component-renderer/src/__stories__/html-tag/svg/svg/svg-pointer.front-component.tsx:10",
       "entries": [
@@ -286,14 +293,7 @@
       "entries": [
         "fill: #2563eb (line 27)"
       ]
-    },
-    {
-      "component": "SvgClickFrontComponent",
-      "location": "packages/twenty-front-component-renderer/src/__stories__/html-tag/svg/svg/svg-click.front-component.tsx:10",
-      "entries": [
-        "fill: #2563eb (line 26)"
-      ]
     }
   ],
-  "scanSeconds": 191
+  "scanSeconds": 180
 }

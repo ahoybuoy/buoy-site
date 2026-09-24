@@ -1,0 +1,210 @@
+{
+  "repo": "shadcn-ui/ui",
+  "owner": "shadcn-ui",
+  "name": "ui",
+  "description": "Composable, accessible components with thoughtful defaults. Build your own component library with code you can customize, extend, and make your own.",
+  "stars": 124501,
+  "homepage": "https://ui.shadcn.com",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "98a1fe67b439324ddc857f47fbdce056600a4329",
+  "generatedAt": "2026-09-24T03:47:04.500Z",
+  "cliVersion": "latest",
+  "score": 69,
+  "tier": "Good",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 50,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 15,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 0,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 2410,
+    "tokenCount": 413,
+    "hardcodedValueCount": 767,
+    "unusedTokenCount": 11,
+    "namingInconsistencyCount": 13,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 1336,
+    "unusedComponentCount": 240,
+    "repeatedPatternCount": 305,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 53,
+    "vendoredDriftCount": 162,
+    "worstFile": {
+      "path": "apps/v4/registry/bases/radix/ui/questionnaire.tsx",
+      "issueCount": 19
+    },
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "tailwind"
+    ]
+  },
+  "suggestions": [
+    "605 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/v4/registry/bases/radix/ui/questionnaire.tsx (19 issues)",
+    "162 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
+    "240 unused components detected — consider a cleanup sprint to remove dead code",
+    "305 repeated patterns — significant duplication, extract to a shared component library",
+    "11 tokens defined but unused — wire them into components or remove stale definitions",
+    "13 minor naming inconsistencies — consider standardizing conventions"
+  ],
+  "driftSummary": {
+    "total": 1336,
+    "critical": 0,
+    "warning": 253,
+    "info": 1083
+  },
+  "driftByType": {
+    "naming-inconsistency": 13,
+    "unused-component": 240,
+    "unused-token": 11,
+    "hardcoded-value": 767,
+    "repeated-pattern": 305
+  },
+  "topColors": [],
+  "topSpacing": [],
+  "worstFiles": [
+    {
+      "file": "apps/v4/registry/new-york-v4/examples/chart-tooltip-demo.tsx",
+      "count": 6
+    },
+    {
+      "file": "apps/v4/registry/bases/base/ui/toast.tsx",
+      "count": 6
+    },
+    {
+      "file": "apps/v4/registry/bases/base/ui/drawer.tsx",
+      "count": 6
+    },
+    {
+      "file": "apps/v4/registry/bases/aria/ui/drawer.tsx",
+      "count": 6
+    },
+    {
+      "file": "apps/v4/components/block-viewer.tsx",
+      "count": 5
+    },
+    {
+      "file": "apps/v4/registry/new-york-v4/ui/navigation-menu.tsx",
+      "count": 5
+    },
+    {
+      "file": "apps/v4/registry/new-york-v4/ui/alert-dialog.tsx",
+      "count": 5
+    },
+    {
+      "file": "apps/v4/app/(app)/(root)/cards/index.tsx",
+      "count": 4
+    }
+  ],
+  "samples": [
+    {
+      "component": "apps/v4/app/layout.tsx",
+      "location": "apps/v4/app/layout.tsx:82",
+      "entries": [
+        "apps/v4/app/layout.tsx"
+      ]
+    },
+    {
+      "component": "apps/v4/app/og/route.tsx",
+      "location": "apps/v4/app/og/route.tsx:51",
+      "entries": [
+        "apps/v4/app/og/route.tsx"
+      ]
+    },
+    {
+      "component": "apps/v4/app/og/route.tsx",
+      "location": "apps/v4/app/og/route.tsx:89",
+      "entries": [
+        "apps/v4/app/og/route.tsx"
+      ]
+    },
+    {
+      "component": "apps/v4/app/(app)/examples/layout.tsx",
+      "location": "apps/v4/app/(app)/examples/layout.tsx:59",
+      "entries": [
+        "apps/v4/app/(app)/examples/layout.tsx"
+      ]
+    },
+    {
+      "component": "apps/v4/app/(app)/docs/layout.tsx",
+      "location": "apps/v4/app/(app)/docs/layout.tsx:13",
+      "entries": [
+        "apps/v4/app/(app)/docs/layout.tsx"
+      ]
+    },
+    {
+      "component": "apps/v4/app/(app)/docs/layout.tsx",
+      "location": "apps/v4/app/(app)/docs/layout.tsx:13",
+      "entries": [
+        "apps/v4/app/(app)/docs/layout.tsx"
+      ]
+    },
+    {
+      "component": "apps/v4/app/(app)/colors/layout.tsx",
+      "location": "apps/v4/app/(app)/colors/layout.tsx:54",
+      "entries": [
+        "apps/v4/app/(app)/colors/layout.tsx"
+      ]
+    },
+    {
+      "component": "apps/v4/app/(app)/charts/layout.tsx",
+      "location": "apps/v4/app/(app)/charts/layout.tsx:56",
+      "entries": [
+        "apps/v4/app/(app)/charts/layout.tsx"
+      ]
+    },
+    {
+      "component": "apps/v4/app/(app)/blocks/layout.tsx",
+      "location": "apps/v4/app/(app)/blocks/layout.tsx:55",
+      "entries": [
+        "apps/v4/app/(app)/blocks/layout.tsx"
+      ]
+    },
+    {
+      "component": "apps/v4/app/(app)/(root)/page.tsx",
+      "location": "apps/v4/app/(app)/(root)/page.tsx:86",
+      "entries": [
+        "apps/v4/app/(app)/(root)/page.tsx"
+      ]
+    },
+    {
+      "component": "apps/v4/app/(app)/examples/authentication/page.tsx",
+      "location": "apps/v4/app/(app)/examples/authentication/page.tsx:71",
+      "entries": [
+        "apps/v4/app/(app)/examples/authentication/page.tsx"
+      ]
+    },
+    {
+      "component": "apps/v4/app/(app)/examples/playground/page.tsx",
+      "location": "apps/v4/app/(app)/examples/playground/page.tsx:82",
+      "entries": [
+        "apps/v4/app/(app)/examples/playground/page.tsx"
+      ]
+    }
+  ],
+  "scanSeconds": 93
+}

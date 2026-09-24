@@ -1,0 +1,296 @@
+{
+  "repo": "posthog/posthog",
+  "owner": "posthog",
+  "name": "posthog",
+  "description": ":hedgehog: PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.",
+  "stars": 39909,
+  "homepage": "https://posthog.com",
+  "language": "Python",
+  "defaultBranch": "master",
+  "commit": "754fa69e9d80a13418543ede38875b6f084ab534",
+  "generatedAt": "2026-09-24T03:38:43.683Z",
+  "cliVersion": "latest",
+  "score": 69,
+  "tier": "Good",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 54,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 17,
+      "max": 20
+    },
+    "consistency": {
+      "score": 9,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 0,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 4815,
+    "tokenCount": 183,
+    "hardcodedValueCount": 691,
+    "unusedTokenCount": 121,
+    "namingInconsistencyCount": 102,
+    "criticalCount": 4,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 4,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 1749,
+    "unusedComponentCount": 671,
+    "repeatedPatternCount": 157,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 3,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 34,
+    "vendoredDriftCount": 8,
+    "topHardcodedColor": {
+      "value": "rgba(0",
+      "count": 10
+    },
+    "worstFile": {
+      "path": "frontend/src/lib/lemon-ui/icons/icons.tsx",
+      "issueCount": 38
+    },
+    "uniqueSpacingValues": 21,
+    "detectedFrameworkNames": [
+      "react",
+      "tailwind",
+      "storybook",
+      "radix"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 683 hardcoded values left to tokenize. frontend/src/lib/lemon-ui/icons/icons.tsx has the most (38)",
+    "8 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
+    "671 unused components detected — consider a cleanup sprint to remove dead code",
+    "157 repeated patterns — significant duplication, extract to a shared component library",
+    "121 of 183 tokens unused (66%) — many tokens may be stale, audit your token definitions",
+    "102 minor naming inconsistencies — consider standardizing conventions",
+    "4 color contrast issues — fix immediately",
+    "3 deprecated patterns — migrate to current API",
+    "21 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
+  ],
+  "driftSummary": {
+    "total": 1749,
+    "critical": 4,
+    "warning": 733,
+    "info": 1012
+  },
+  "driftByType": {
+    "naming-inconsistency": 102,
+    "hardcoded-value": 691,
+    "color-contrast": 4,
+    "deprecated-pattern": 3,
+    "unused-component": 671,
+    "unused-token": 121,
+    "repeated-pattern": 157
+  },
+  "topColors": [
+    {
+      "value": "#fff",
+      "count": 8
+    },
+    {
+      "value": "#fafafa",
+      "count": 3
+    },
+    {
+      "value": "#000",
+      "count": 2
+    },
+    {
+      "value": "#121212",
+      "count": 2
+    },
+    {
+      "value": "#f0f1f5",
+      "count": 1
+    },
+    {
+      "value": "#ffffff",
+      "count": 1
+    },
+    {
+      "value": "#f7f8fa",
+      "count": 1
+    },
+    {
+      "value": "#F7B955",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "1em",
+      "count": 20
+    },
+    {
+      "value": "40rem",
+      "count": 5
+    },
+    {
+      "value": "0.5rem",
+      "count": 4
+    },
+    {
+      "value": "1.5rem",
+      "count": 2
+    },
+    {
+      "value": "90vw",
+      "count": 2
+    },
+    {
+      "value": "1rem",
+      "count": 2
+    },
+    {
+      "value": "80vw",
+      "count": 2
+    },
+    {
+      "value": "45%",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "frontend/src/lib/KeaDevTools.tsx",
+      "count": 24
+    },
+    {
+      "file": "frontend/src/lib/lemon-ui/icons/icons.tsx",
+      "count": 22
+    },
+    {
+      "file": "frontend/src/scenes/product-tours/editor/icons.tsx",
+      "count": 12
+    },
+    {
+      "file": "frontend/src/scenes/surveys/SurveyEdit.tsx",
+      "count": 5
+    },
+    {
+      "file": "frontend/src/layout/scenes/components/SceneTitleSection.tsx",
+      "count": 5
+    },
+    {
+      "file": "frontend/src/scenes/authentication/shared/authScene/Typewriter.tsx",
+      "count": 5
+    },
+    {
+      "file": "frontend/src/scenes/authentication/shared/authScene/OrgTile.tsx",
+      "count": 5
+    },
+    {
+      "file": "frontend/src/scenes/surveys/SurveyAppearanceUtils.tsx",
+      "count": 4
+    }
+  ],
+  "samples": [
+    {
+      "component": "KeyAndProps",
+      "location": "frontend/src/lib/KeaDevTools.tsx:470",
+      "entries": [
+        "background: #fafafa (line 497)"
+      ]
+    },
+    {
+      "component": "GraphTab",
+      "location": "frontend/src/lib/KeaDevTools.tsx:535",
+      "entries": [
+        "background: #fff (line 933)",
+        "color: rgba(0,0,0,0.55) (line 956)",
+        "stroke: rgba(34,197,94,0.95) (line 999)"
+      ]
+    },
+    {
+      "component": "MemoryTree",
+      "location": "frontend/src/lib/KeaDevTools.tsx:1517",
+      "entries": [
+        "color: rgba(0,0,0,0.7) (line 1553)"
+      ]
+    },
+    {
+      "component": "MemoryTab",
+      "location": "frontend/src/lib/KeaDevTools.tsx:1595",
+      "entries": [
+        "background: #fff (line 1698)",
+        "color: rgba(0,0,0,0.7) (line 1705)",
+        "color: rgba(0,0,0,0.55) (line 1708)"
+      ]
+    },
+    {
+      "component": "MemoryTab",
+      "location": "frontend/src/lib/KeaDevTools.tsx:1595",
+      "entries": [
+        "width: 45% (line 1764)",
+        "width: 10% (line 1774)"
+      ]
+    },
+    {
+      "component": "KeaDevtools",
+      "location": "frontend/src/lib/KeaDevTools.tsx:1902",
+      "entries": [
+        "color: rgba(0,0,0,0.55) (line 2165)",
+        "background: #ffffff (line 2237)",
+        "color: rgba(0,0,0,0.6) (line 2286)"
+      ]
+    },
+    {
+      "component": "ActionsTab",
+      "location": "frontend/src/lib/KeaDevTools.tsx:2477",
+      "entries": [
+        "background: #fff (line 2618)",
+        "color: rgba(0,0,0,0.6) (line 2644)",
+        "background: #fafafa (line 2772)"
+      ]
+    },
+    {
+      "component": "SurveyHeadline",
+      "location": "frontend/src/scenes/surveys/SurveyHeadline.tsx:10",
+      "entries": [
+        "color: #F7B955 (line 33)"
+      ]
+    },
+    {
+      "component": "HighlightedTextArea",
+      "location": "frontend/src/scenes/surveys/SurveyAppearanceUtils.tsx:18",
+      "entries": [
+        "height: 150px (line 52)"
+      ]
+    },
+    {
+      "component": "DanglingHedgehog",
+      "location": "frontend/src/scenes/startups/DanglingHedgehog.tsx:31",
+      "entries": [
+        "height: 200% (line 59)"
+      ]
+    },
+    {
+      "component": "FeatureFlagVariantsForm",
+      "location": "frontend/src/scenes/feature-flags/FeatureFlagVariantsForm.tsx:51",
+      "entries": [
+        "marginLeft: 0.5rem (line 134)"
+      ]
+    },
+    {
+      "component": "CohortEdit",
+      "location": "frontend/src/scenes/cohorts/CohortEdit.tsx:181",
+      "entries": [
+        "fontSize: 3rem (line 716)"
+      ]
+    }
+  ],
+  "scanSeconds": 326
+}
