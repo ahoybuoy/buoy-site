@@ -5,7 +5,8 @@
  * builds /reports/<owner>/<repo> from those files.
  *
  *   node scripts/generate-reports.mjs [owner/repo ...]   (default: REPOS below)
- *   BUOY_BIN=/path/to/bin.js to use a local CLI build instead of npx.
+ *   BUOY_BIN=/path/to/bin.js to use a local CLI build instead of the latest
+ *   published one (installed once per run, outside the scanned repos).
  *   REPORT_TIMEOUT_MS caps each CLI call (default 15 min) so one huge repo
  *   cannot stall a scheduled run; a repo that times out keeps its last report.
  */
@@ -18,7 +19,18 @@ import { promisify } from "node:util";
 const run = promisify(execFile);
 const TIMEOUT_MS = Number(process.env.REPORT_TIMEOUT_MS || 15 * 60 * 1000);
 const OUT_DIR = new URL("../src/data/reports/", import.meta.url);
-const BUOY = process.env.BUOY_BIN ? ["node", [process.env.BUOY_BIN]] : ["npx", ["-y", "@buoy-design/cli@latest"]];
+// Install the CLI once, outside the scanned repos. `npx` run inside a repo
+// applies that repo's npm settings: Ghost pins an exact Node version in
+// devEngines, and npx refused to start on the runner's newer patch release.
+async function resolveBuoy() {
+  if (process.env.BUOY_BIN) return { bin: process.env.BUOY_BIN, version: "local" };
+  const prefix = await mkdtemp(join(tmpdir(), "buoy-cli-"));
+  await run("npm", ["install", "--prefix", prefix, "--no-audit", "--no-fund", "--ignore-scripts", "@buoy-design/cli@latest"], { maxBuffer: 64 * 1024 * 1024 });
+  const pkg = JSON.parse(await readFile(join(prefix, "node_modules/@buoy-design/cli/package.json"), "utf8"));
+  return { bin: join(prefix, "node_modules/@buoy-design/cli/dist/bin.js"), version: pkg.version };
+}
+const CLI = await resolveBuoy();
+const BUOY = ["node", [CLI.bin]];
 
 // Product codebases people know, not component libraries (those score high and prove little).
 const REPOS = [
@@ -103,7 +115,7 @@ async function report(fullName) {
       description: meta.description, stars: meta.stargazers_count, homepage: meta.homepage, language: meta.language,
       defaultBranch: meta.default_branch, commit: sha,
       generatedAt: new Date().toISOString(),
-      cliVersion: process.env.BUOY_BIN ? "local" : "latest",
+      cliVersion: CLI.version,
       score: health.score, tier: health.tier, pillars: health.pillars, metrics: health.metrics, suggestions: health.suggestions,
       driftSummary: drift.summary, driftByType: byType,
       topColors: topValues(drift.drifts, "color"),
