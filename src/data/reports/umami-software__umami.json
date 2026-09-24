@@ -8,8 +8,8 @@
   "language": "TypeScript",
   "defaultBranch": "master",
   "commit": "ec0ff50388c264ed8ce46f00967e92f7e71476ae",
-  "generatedAt": "2026-09-24T10:08:07.155Z",
-  "cliVersion": "0.8.5",
+  "generatedAt": "2026-09-24T10:57:06.708Z",
+  "cliVersion": "0.8.6",
   "score": 87,
   "tier": "Great",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 508,
     "tokenCount": 11,
-    "hardcodedValueCount": 23,
+    "hardcodedValueCount": 22,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 23,
+    "totalDriftCount": 22,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,6 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
+    "notedCount": 1,
     "topHardcodedColor": {
       "value": "rgba(0",
       "count": 4
@@ -61,20 +62,20 @@
       "path": "src/app/(main)/websites/[websiteId]/settings/SharesTable.tsx",
       "issueCount": 2
     },
-    "uniqueSpacingValues": 9,
+    "uniqueSpacingValues": 8,
     "detectedFrameworkNames": [
       "react",
       "next"
     ]
   },
   "suggestions": [
-    "Nearly there — just 23 hardcoded values left to tokenize. src/app/(main)/websites/[websiteId]/settings/SharesTable.tsx has the most (2)"
+    "Nearly there — just 22 hardcoded values left to tokenize. src/app/(main)/websites/[websiteId]/settings/SharesTable.tsx has the most (2)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 9,
-      "action": "Replace the hardcoded values in 22 of the 23 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 21 of the 22 findings with tokens or scale steps"
     },
     {
       "pillar": "tokenHealth",
@@ -82,14 +83,29 @@
       "action": "Define 9 more design tokens (11 of the 20 that earn full credit)"
     }
   ],
+  "noted": {
+    "count": 1,
+    "byKind": {
+      "optical-nudge": 1
+    },
+    "samples": [
+      {
+        "file": "src/components/input/WebsiteFilterButton.tsx",
+        "line": 86,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "marginTop: 3px is a 2-3px optical adjustment"
+      }
+    ]
+  },
   "driftSummary": {
-    "total": 23,
+    "total": 22,
     "critical": 0,
     "warning": 7,
-    "info": 16
+    "info": 15
   },
   "driftByType": {
-    "hardcoded-value": 23
+    "hardcoded-value": 22
   },
   "topColors": [],
   "topSpacing": [
@@ -215,13 +231,6 @@
       ]
     },
     {
-      "component": "WebsiteFilterButton",
-      "location": "src/components/input/WebsiteFilterButton.tsx:13",
-      "entries": [
-        "marginTop: 3px (line 86)"
-      ]
-    },
-    {
       "component": "WeeklyTraffic",
       "location": "src/components/metrics/WeeklyTraffic.tsx:8",
       "entries": [
@@ -250,7 +259,14 @@
         "marginTop: 8px (line 69)",
         "marginTop: 12px (line 72)"
       ]
+    },
+    {
+      "component": "BoardEditColumn",
+      "location": "src/app/(main)/boards/[boardId]/BoardEditColumn.tsx:25",
+      "entries": [
+        "padding: 32px (line 144)"
+      ]
     }
   ],
-  "scanSeconds": 23
+  "scanSeconds": 25
 }

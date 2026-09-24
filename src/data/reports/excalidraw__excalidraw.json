@@ -3,13 +3,13 @@
   "owner": "excalidraw",
   "name": "excalidraw",
   "description": "Virtual whiteboard for sketching hand-drawn like diagrams",
-  "stars": 132773,
+  "stars": 132774,
   "homepage": "https://excalidraw.com",
   "language": "TypeScript",
   "defaultBranch": "master",
   "commit": "4850bf336fe0a8501af49d84deebc7fb56357cc2",
-  "generatedAt": "2026-09-24T10:07:36.873Z",
-  "cliVersion": "0.8.5",
+  "generatedAt": "2026-09-24T10:56:35.547Z",
+  "cliVersion": "0.8.6",
   "score": 63,
   "tier": "Good",
   "pillars": {
@@ -53,6 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 1,
     "vendoredDriftCount": 0,
+    "notedCount": 13,
     "topHardcodedColor": {
       "value": "#fff (use var(--default-bg-color))",
       "count": 2
@@ -77,6 +78,57 @@
       "action": "Replace the hardcoded values in 78 of the 79 findings with tokens or scale steps"
     }
   ],
+  "noted": {
+    "count": 13,
+    "byKind": {
+      "optical-nudge": 9,
+      "explained": 4
+    },
+    "samples": [
+      {
+        "file": "packages/excalidraw/components/ColorPicker/ColorPicker.scss",
+        "line": 544,
+        "value": "width 0.15s ease, height 0.15s ease",
+        "kind": "explained",
+        "reason": "NOTE transform is deliberately not transitioned here (tracks the pointer every frame); --dropping adds it for the fly-t…"
+      },
+      {
+        "file": "packages/excalidraw/components/CursorHint.scss",
+        "line": 23,
+        "value": "opacity 100ms ease-out",
+        "kind": "explained",
+        "reason": "fade-out duration (keep in sync with CursorHint.tsx)"
+      },
+      {
+        "file": "packages/excalidraw/components/Sidebar/Sidebar.scss",
+        "line": 161,
+        "value": "-#",
+        "kind": "explained",
+        "reason": "offset by padding + border to vertically center the list with sibling buttons (both from top and bototm, due to flex la…"
+      },
+      {
+        "file": "packages/excalidraw/css/styles.scss",
+        "line": 64,
+        "value": "0.8333rem",
+        "kind": "explained",
+        "reason": "browser default. Looks kinda good on low-dpi."
+      },
+      {
+        "file": "excalidraw-app/components/AppSidebar.scss",
+        "line": 61,
+        "value": "0.125rem",
+        "kind": "optical-nudge",
+        "reason": "padding-top: 0.125rem is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/excalidraw/components/EyeDropper.scss",
+        "line": 38,
+        "value": "-2px",
+        "kind": "optical-nudge",
+        "reason": "margin-left: -2px is a 2-3px optical adjustment"
+      }
+    ]
+  },
   "driftSummary": {
     "total": 79,
     "critical": 0,
@@ -137,11 +189,11 @@
     },
     {
       "file": "packages/excalidraw/css/styles.scss",
-      "count": 32
+      "count": 31
     },
     {
       "file": "packages/excalidraw/components/TTDDialog/Chat/Chat.scss",
-      "count": 30
+      "count": 29
     },
     {
       "file": "packages/excalidraw/components/PublishLibrary.scss",

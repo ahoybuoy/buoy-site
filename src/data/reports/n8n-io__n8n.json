@@ -3,18 +3,18 @@
   "owner": "n8n-io",
   "name": "n8n",
   "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
-  "stars": 205831,
+  "stars": 205835,
   "homepage": "https://n8n.io",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "6aa0dda7eeb38609a97419dbb43a2e9911f30c01",
-  "generatedAt": "2026-09-24T10:09:30.300Z",
-  "cliVersion": "0.8.5",
-  "score": 56,
+  "commit": "b94a3e5d168bdc94006a51e565a692de6937281f",
+  "generatedAt": "2026-09-24T10:58:31.811Z",
+  "cliVersion": "0.8.6",
+  "score": 58,
   "tier": "OK",
   "pillars": {
     "valueDiscipline": {
-      "score": 18,
+      "score": 20,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1304,
+    "componentCount": 1305,
     "tokenCount": 637,
-    "hardcodedValueCount": 274,
+    "hardcodedValueCount": 263,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 275,
+    "totalDriftCount": 264,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,6 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
+    "notedCount": 38,
     "topHardcodedColor": {
       "value": "#fff (use var(--chat--color-white))",
       "count": 2
@@ -70,14 +71,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 274 hardcoded values left to tokenize. packages/frontend/editor-ui/src/features/settings/communityNodes/components/ContactAdministratorToInstall.vue has the most (2)",
+    "Nearly there — just 263 hardcoded values left to tokenize. packages/frontend/editor-ui/src/features/settings/communityNodes/components/ContactAdministratorToInstall.vue has the most (2)",
     "1 deprecated pattern — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 42,
-      "action": "Replace the hardcoded values in 271 of the 274 findings with tokens or scale steps"
+      "points": 40,
+      "action": "Replace the hardcoded values in 260 of the 263 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -85,22 +86,74 @@
       "action": "Migrate 1 deprecated pattern"
     }
   ],
+  "noted": {
+    "count": 38,
+    "byKind": {
+      "optical-nudge": 33,
+      "known-debt": 1,
+      "explained": 4
+    },
+    "samples": [
+      {
+        "file": "packages/frontend/@n8n/design-system/src/components/N8nSettingsSaveBar/SettingsSaveBar.vue",
+        "line": 210,
+        "value": "0.75rem",
+        "kind": "known-debt",
+        "reason": "feedback. Hardcoded because the legacy compat layer (_tokens.legacy.scss) still overrides used directly yet. Switch to …"
+      },
+      {
+        "file": "packages/frontend/@n8n/design-system/src/css/table.scss",
+        "line": 31,
+        "value": "60px",
+        "kind": "explained",
+        "reason": "min-height doesn't work in IE10 and IE11 https://github.com/philipwalton/flexbugs#3-min-height-on-a-flex-container-wont…"
+      },
+      {
+        "file": "packages/frontend/editor-ui/src/features/ai/chatHub/components/ChatSidebarContent.vue",
+        "line": 260,
+        "value": "-4px",
+        "kind": "explained",
+        "reason": "Adjust vertical alignment"
+      },
+      {
+        "file": "packages/frontend/editor-ui/src/features/ai/evaluation.ee/views/EvaluationsView.vue",
+        "line": 404,
+        "value": "10px",
+        "kind": "explained",
+        "reason": "Override N8nPopover's default 8px radius — Figma calls for 10px on this specific popover. Targets the portaled content …"
+      },
+      {
+        "file": "packages/frontend/editor-ui/src/features/workflows/canvas/components/elements/selection/CanvasSelectionToolbar.vue",
+        "line": 179,
+        "value": "var.$index-popper",
+        "kind": "explained",
+        "reason": "Matches the design-system $index-popper tier (var.scss) — sits above vue-flow's elevated selected nodes so the per-node…"
+      },
+      {
+        "file": "packages/@n8n/local-gateway/src/renderer/styles.css",
+        "line": 272,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "margin-top: 3px is a 2-3px optical adjustment"
+      }
+    ]
+  },
   "driftSummary": {
-    "total": 275,
+    "total": 264,
     "critical": 0,
     "warning": 94,
-    "info": 181
+    "info": 170
   },
   "driftByType": {
     "deprecated-pattern": 1,
-    "hardcoded-value": 274
+    "hardcoded-value": 263
   },
   "topColors": [],
   "topSpacing": [],
   "worstFiles": [
     {
       "file": "packages/@n8n/local-gateway/src/renderer/styles.css",
-      "count": 40
+      "count": 39
     },
     {
       "file": "packages/frontend/@n8n/design-system/src/components/DateRangePicker/DateRangePicker.vue",
@@ -120,15 +173,15 @@
     },
     {
       "file": "packages/frontend/@n8n/design-system/src/css/menu.scss",
-      "count": 19
+      "count": 17
     },
     {
       "file": "packages/frontend/@n8n/design-system/src/css/table.scss",
-      "count": 19
+      "count": 17
     },
     {
       "file": "packages/frontend/editor-ui/src/features/ai/evaluation.ee/views/EvaluationsView.vue",
-      "count": 18
+      "count": 17
     }
   ],
   "samples": [
@@ -206,13 +259,6 @@
       ]
     },
     {
-      "component": "packages/frontend/@n8n/chat/src/components/MessageTyping.vue",
-      "location": "packages/frontend/@n8n/chat/src/components/MessageTyping.vue:75",
-      "entries": [
-        "spacing: 3px (line 75)"
-      ]
-    },
-    {
       "component": "packages/frontend/@n8n/design-system/src/components/AskAssistantChat/messages/TextMessage.vue",
       "location": "packages/frontend/@n8n/design-system/src/components/AskAssistantChat/messages/TextMessage.vue:190",
       "entries": [
@@ -227,7 +273,15 @@
         "font size: 14px (line 32)",
         "line height: 18px (line 33)"
       ]
+    },
+    {
+      "component": "packages/frontend/@n8n/design-system/src/components/CanvasPill/CanvasPill.vue",
+      "location": "packages/frontend/@n8n/design-system/src/components/CanvasPill/CanvasPill.vue:28",
+      "entries": [
+        "radius: 22px (line 28)",
+        "colour: rgba(65, 66, 68, 0.92) (line 30)"
+      ]
     }
   ],
-  "scanSeconds": 69
+  "scanSeconds": 71
 }

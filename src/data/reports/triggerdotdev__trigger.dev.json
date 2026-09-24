@@ -3,13 +3,13 @@
   "owner": "triggerdotdev",
   "name": "trigger.dev",
   "description": "Trigger.dev – build and deploy durable AI agents and workflows",
-  "stars": 16391,
+  "stars": 16392,
   "homepage": "https://trigger.dev/changelog",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "c2b7a72180bbb2dcbc31caa8539e0ca8f8e9e9b8",
-  "generatedAt": "2026-09-24T10:15:55.408Z",
-  "cliVersion": "0.8.5",
+  "generatedAt": "2026-09-24T11:04:08.910Z",
+  "cliVersion": "0.8.6",
   "score": 90,
   "tier": "Great",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 1696,
     "tokenCount": 273,
-    "hardcodedValueCount": 85,
+    "hardcodedValueCount": 84,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 85,
+    "totalDriftCount": 84,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,6 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
+    "notedCount": 2,
     "topHardcodedColor": {
       "value": "#14B8A6",
       "count": 1
@@ -71,23 +72,45 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 85 hardcoded values left to tokenize. apps/webapp/app/components/primitives/Buttons.tsx has the most (2)"
+    "Nearly there — just 84 hardcoded values left to tokenize. apps/webapp/app/components/primitives/Buttons.tsx has the most (2)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 10,
-      "action": "Replace the hardcoded values in 81 of the 85 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 80 of the 84 findings with tokens or scale steps"
     }
   ],
+  "noted": {
+    "count": 2,
+    "byKind": {
+      "optical-nudge": 2
+    },
+    "samples": [
+      {
+        "file": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.concurrency/route.tsx",
+        "line": 958,
+        "value": "pb-[3px]",
+        "kind": "optical-nudge",
+        "reason": "pb-[3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.concurrency/route.tsx",
+        "line": 2161,
+        "value": "pb-[3px]",
+        "kind": "optical-nudge",
+        "reason": "pb-[3px] is a 2-3px optical adjustment"
+      }
+    ]
+  },
   "driftSummary": {
-    "total": 85,
+    "total": 84,
     "critical": 0,
     "warning": 10,
-    "info": 75
+    "info": 74
   },
   "driftByType": {
-    "hardcoded-value": 85
+    "hardcoded-value": 84
   },
   "topColors": [
     {
@@ -133,10 +156,6 @@
       "count": 5
     },
     {
-      "value": "3px",
-      "count": 3
-    },
-    {
       "value": "0.13rem",
       "count": 3
     },
@@ -151,6 +170,10 @@
     {
       "value": "0.15em",
       "count": 2
+    },
+    {
+      "value": "3px",
+      "count": 1
     },
     {
       "value": "2.9rem",
@@ -280,5 +303,5 @@
       ]
     }
   ],
-  "scanSeconds": 45
+  "scanSeconds": 38
 }

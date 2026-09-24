@@ -3,18 +3,18 @@
   "owner": "novuhq",
   "name": "novu",
   "description": "The open-source communication infrastructure for agents and products",
-  "stars": 40053,
+  "stars": 40054,
   "homepage": "https://go.novu.co/github",
   "language": "TypeScript",
   "defaultBranch": "next",
-  "commit": "4a4be7fe89fd398d14c4b14321922c494d02b9d6",
-  "generatedAt": "2026-09-24T10:02:09.153Z",
-  "cliVersion": "0.8.5",
-  "score": 69,
+  "commit": "569d407fd0c3cc191532790bafe0fa7101e98e0c",
+  "generatedAt": "2026-09-24T10:51:26.810Z",
+  "cliVersion": "0.8.6",
+  "score": 70,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 29,
+      "score": 30,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2414,
+    "componentCount": 2461,
     "tokenCount": 462,
-    "hardcodedValueCount": 387,
+    "hardcodedValueCount": 377,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 389,
+    "totalDriftCount": 379,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -51,8 +51,9 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 35,
-    "vendoredDriftCount": 11,
+    "highDensityFileCount": 33,
+    "vendoredDriftCount": 10,
+    "notedCount": 21,
     "topHardcodedColor": {
       "value": "#e9d5ff",
       "count": 3
@@ -71,24 +72,75 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 376 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
-    "11 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
+    "Nearly there — just 367 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
+    "10 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 31,
-      "action": "Replace the hardcoded values in 370 of the 376 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "points": 30,
+      "action": "Replace the hardcoded values in 361 of the 367 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     }
   ],
+  "noted": {
+    "count": 21,
+    "byKind": {
+      "optical-nudge": 20,
+      "explained": 1
+    },
+    "samples": [
+      {
+        "file": "apps/dashboard/src/components/auth/auth-side-banner.tsx",
+        "line": 163,
+        "value": "text-[#525866]",
+        "kind": "explained",
+        "reason": "Inline text flow (not flex) so the copy wraps word-by-word and fills each line; inline-flex pills sit mid-line via alig…"
+      },
+      {
+        "file": "apps/dashboard/src/components/agents/agent-behavior-section.tsx",
+        "line": 106,
+        "value": "py-[3px]",
+        "kind": "optical-nudge",
+        "reason": "py-[3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/dashboard/src/components/agents/setup-guide-primitives.tsx",
+        "line": 225,
+        "value": "pt-[3px]",
+        "kind": "optical-nudge",
+        "reason": "pt-[3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/dashboard/src/components/ai-sidekick/sidekick-toast.tsx",
+        "line": 61,
+        "value": "px-[3px]",
+        "kind": "optical-nudge",
+        "reason": "px-[3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/dashboard/src/components/auth/auth-side-banner.tsx",
+        "line": 160,
+        "value": "mt-[3px]",
+        "kind": "optical-nudge",
+        "reason": "mt-[3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/dashboard/src/components/maily/views/for-view.tsx",
+        "line": 25,
+        "value": "py-[2px]",
+        "kind": "optical-nudge",
+        "reason": "py-[2px] is a 2-3px optical adjustment"
+      }
+    ]
+  },
   "driftSummary": {
-    "total": 389,
+    "total": 379,
     "critical": 0,
     "warning": 95,
-    "info": 294
+    "info": 284
   },
   "driftByType": {
-    "hardcoded-value": 387,
+    "hardcoded-value": 377,
     "repeated-pattern": 2
   },
   "topColors": [
@@ -97,11 +149,11 @@
       "count": 22
     },
     {
-      "value": "#525866",
-      "count": 21
+      "value": "#dd2476",
+      "count": 20
     },
     {
-      "value": "#dd2476",
+      "value": "#525866",
       "count": 20
     },
     {
@@ -127,14 +179,6 @@
   ],
   "topSpacing": [
     {
-      "value": "2px",
-      "count": 14
-    },
-    {
-      "value": "3px",
-      "count": 11
-    },
-    {
       "value": "5px",
       "count": 11
     },
@@ -157,6 +201,14 @@
     {
       "value": "100px",
       "count": 5
+    },
+    {
+      "value": "4px",
+      "count": 4
+    },
+    {
+      "value": "3px",
+      "count": 4
     }
   ],
   "worstFiles": [
@@ -166,11 +218,11 @@
     },
     {
       "file": "packages/novu/src/commands/connect/templates/web-chat/ts/globals.css",
-      "count": 107
+      "count": 106
     },
     {
       "file": "apps/dashboard/src/pages/usecase-select-page.tsx",
-      "count": 61
+      "count": 59
     },
     {
       "file": "apps/dashboard/src/components/workflow-editor/steps/http-request/http-request-console-preview.tsx",
@@ -283,5 +335,5 @@
       ]
     }
   ],
-  "scanSeconds": 80
+  "scanSeconds": 72
 }

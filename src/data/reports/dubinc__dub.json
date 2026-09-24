@@ -8,8 +8,8 @@
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "279ff7312f4369c2ef3f84a51a41eb1adaac4be8",
-  "generatedAt": "2026-09-24T10:00:48.283Z",
-  "cliVersion": "0.8.5",
+  "generatedAt": "2026-09-24T10:50:14.519Z",
+  "cliVersion": "0.8.6",
   "score": 90,
   "tier": "Great",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 1586,
     "tokenCount": 0,
-    "hardcodedValueCount": 81,
+    "hardcodedValueCount": 79,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 99,
+    "totalDriftCount": 97,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 18,
     "orphanedComponentCount": 0,
@@ -53,6 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 4,
     "vendoredDriftCount": 4,
+    "notedCount": 4,
     "topHardcodedColor": {
       "value": "#737373",
       "count": 1
@@ -69,7 +70,7 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 77 hardcoded values left to tokenize. apps/web/app/(ee)/partners.dub.co/(dashboard)/referrals/page.tsx has the most (3)",
+    "Nearly there — just 75 hardcoded values left to tokenize. apps/web/app/(ee)/partners.dub.co/(dashboard)/referrals/page.tsx has the most (3)",
     "4 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
     "18 repeated patterns — extract to shared components"
   ],
@@ -77,17 +78,53 @@
     {
       "pillar": "valueDiscipline",
       "points": 10,
-      "action": "Replace the hardcoded values in 74 of the 77 findings with tokens or scale steps, and remove or reuse 18 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 72 of the 75 findings with tokens or scale steps, and remove or reuse 18 unused components and repeated patterns"
     }
   ],
+  "noted": {
+    "count": 4,
+    "byKind": {
+      "optical-nudge": 4
+    },
+    "samples": [
+      {
+        "file": "apps/web/app/(ee)/partners.dub.co/(dashboard)/programs/[programSlug]/(enrolled)/links/partner-link-card.tsx",
+        "line": 270,
+        "value": "py-[3px]",
+        "kind": "optical-nudge",
+        "reason": "py-[3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/web/app/app.dub.co/(onboarding)/onboarding/(steps)/plan/page.tsx",
+        "line": 29,
+        "value": "mb-[3px]",
+        "kind": "optical-nudge",
+        "reason": "mb-[3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/ui/src/multi-value-input.tsx",
+        "line": 257,
+        "value": "py-[3px]",
+        "kind": "optical-nudge",
+        "reason": "py-[3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/ui/src/nav/content/graphics/partners-graphic.tsx",
+        "line": 53,
+        "value": "p-[3px]",
+        "kind": "optical-nudge",
+        "reason": "p-[3px] is a 2-3px optical adjustment"
+      }
+    ]
+  },
   "driftSummary": {
-    "total": 99,
+    "total": 97,
     "critical": 0,
     "warning": 6,
-    "info": 93
+    "info": 91
   },
   "driftByType": {
-    "hardcoded-value": 81,
+    "hardcoded-value": 79,
     "repeated-pattern": 18
   },
   "topColors": [
@@ -126,12 +163,12 @@
   ],
   "topSpacing": [
     {
-      "value": "3px",
-      "count": 5
-    },
-    {
       "value": "18px",
       "count": 2
+    },
+    {
+      "value": "3px",
+      "count": 1
     },
     {
       "value": "5px",
@@ -168,10 +205,6 @@
       "count": 7
     },
     {
-      "file": "apps/web/app/(ee)/partners.dub.co/(dashboard)/programs/[programSlug]/(enrolled)/links/partner-link-card.tsx",
-      "count": 5
-    },
-    {
       "file": "apps/web/app/app.dub.co/(dashboard)/[slug]/(ee)/settings/integrations/[integrationSlug]/page-client.tsx",
       "count": 5
     },
@@ -181,6 +214,10 @@
     },
     {
       "file": "apps/web/app/(ee)/partners.dub.co/(dashboard)/programs/[programSlug]/(enrolled)/bounties/[bountyId]/bounty-submissions-table.tsx",
+      "count": 4
+    },
+    {
+      "file": "apps/web/app/(ee)/partners.dub.co/(dashboard)/programs/[programSlug]/(enrolled)/links/partner-link-card.tsx",
       "count": 4
     },
     {
@@ -287,5 +324,5 @@
       ]
     }
   ],
-  "scanSeconds": 50
+  "scanSeconds": 46
 }

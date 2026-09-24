@@ -3,13 +3,13 @@
   "owner": "twentyhq",
   "name": "twenty",
   "description": "The open alternative to Salesforce, designed for AI.",
-  "stars": 57404,
+  "stars": 57405,
   "homepage": "https://twenty.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "98a123dca96ad079148767f4c29d13a924282757",
-  "generatedAt": "2026-09-24T10:05:37.560Z",
-  "cliVersion": "0.8.5",
+  "commit": "f109f85c57cade129c39a4ab209429ac6a214468",
+  "generatedAt": "2026-09-24T10:54:49.336Z",
+  "cliVersion": "0.8.6",
   "score": 99,
   "tier": "Great",
   "pillars": {
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 3683,
+    "componentCount": 3684,
     "tokenCount": 13,
     "hardcodedValueCount": 24,
     "unusedTokenCount": 0,
@@ -53,6 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 1,
     "vendoredDriftCount": 0,
+    "notedCount": 3,
     "topHardcodedColor": {
       "value": "#333",
       "count": 2
@@ -82,6 +83,36 @@
       "action": "Replace the hardcoded values in 15 of the 24 findings with tokens or scale steps"
     }
   ],
+  "noted": {
+    "count": 3,
+    "byKind": {
+      "known-debt": 2,
+      "optical-nudge": 1
+    },
+    "samples": [
+      {
+        "file": "packages/twenty-ui/src/components/navigation/MenuItem/parts/StyledMenuItemBase.module.scss",
+        "line": 28,
+        "value": "disabled > accent > base",
+        "kind": "known-debt",
+        "reason": "Cascade order mirrors the deprecated Linaria ternaries: color: disabled > accent > base; hover background: disabled (wi…"
+      },
+      {
+        "file": "packages/twenty-ui/src/components/navigation/MenuItem/parts/StyledMenuItemBase.module.scss",
+        "line": 28,
+        "value": "disabled (with",
+        "kind": "known-debt",
+        "reason": "Cascade order mirrors the deprecated Linaria ternaries: color: disabled > accent > base; hover background: disabled (wi…"
+      },
+      {
+        "file": "packages/twenty-ui/src/primitives/input/SegmentedControl/SegmentedControl.module.scss",
+        "line": 12,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "padding: 3px is a 2-3px optical adjustment"
+      }
+    ]
+  },
   "driftSummary": {
     "total": 20,
     "critical": 0,
@@ -161,10 +192,6 @@
       "count": 5
     },
     {
-      "file": "packages/twenty-ui/src/primitives/input/SegmentedControl/SegmentedControl.module.scss",
-      "count": 3
-    },
-    {
       "file": "packages/twenty-companion/src/renderer/components/OnboardingText.module.scss",
       "count": 2
     },
@@ -174,6 +201,10 @@
     },
     {
       "file": "packages/twenty-ui/src/components/feedback/Callout/Callout.module.scss",
+      "count": 2
+    },
+    {
+      "file": "packages/twenty-ui/src/components/input/ColorSchemePicker/internal/ColorSchemeCard/ColorSchemeCard.module.scss",
       "count": 2
     }
   ],
@@ -278,5 +309,5 @@
       ]
     }
   ],
-  "scanSeconds": 163
+  "scanSeconds": 164
 }

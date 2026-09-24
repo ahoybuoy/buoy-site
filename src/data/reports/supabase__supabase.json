@@ -7,9 +7,9 @@
   "homepage": "https://supabase.com",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "0d3b73794bdb584dc47222a72dca05821e498f09",
-  "generatedAt": "2026-09-24T09:59:57.304Z",
-  "cliVersion": "0.8.5",
+  "commit": "ca28c945dbfd10fb76ef8b28fd7fa2f4332163b4",
+  "generatedAt": "2026-09-24T10:49:27.122Z",
+  "cliVersion": "0.8.6",
   "score": 38,
   "tier": "Bad",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 4584,
     "tokenCount": 1158,
-    "hardcodedValueCount": 307,
+    "hardcodedValueCount": 300,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 4892,
+    "totalDriftCount": 4885,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 7,
     "orphanedComponentCount": 4576,
@@ -53,6 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 4,
     "vendoredDriftCount": 7,
+    "notedCount": 16,
     "topHardcodedColor": {
       "value": "#404EED",
       "count": 4
@@ -61,7 +62,7 @@
       "path": "apps/www/app/(home)/_components/logos/PublicityLogos.tsx",
       "issueCount": 33
     },
-    "uniqueSpacingValues": 6,
+    "uniqueSpacingValues": 5,
     "detectedFrameworkNames": [
       "react",
       "next",
@@ -72,7 +73,7 @@
     ]
   },
   "suggestions": [
-    "300 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/www/app/(home)/_components/logos/PublicityLogos.tsx (33 issues)",
+    "293 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/www/app/(home)/_components/logos/PublicityLogos.tsx (33 issues)",
     "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
     "7 repeated patterns — extract to shared components",
     "2 deprecated patterns — migrate to current API"
@@ -81,7 +82,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 289 of the 300 findings with tokens or scale steps, and remove or reuse 4583 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 282 of the 293 findings with tokens or scale steps, and remove or reuse 4583 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -89,15 +90,65 @@
       "action": "Migrate 2 deprecated patterns"
     }
   ],
+  "noted": {
+    "count": 16,
+    "byKind": {
+      "optical-nudge": 16
+    },
+    "samples": [
+      {
+        "file": "apps/studio/components/grid/components/menu/ColumnMenu.tsx",
+        "line": 228,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "padding: 3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/studio/components/interfaces/Storage/StorageExplorer/FileExplorerRow.tsx",
+        "line": 300,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "top: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/studio/components/interfaces/DiskManagement/ui/DiskSpaceBar.tsx",
+        "line": 94,
+        "value": "mt-[-2px]",
+        "kind": "optical-nudge",
+        "reason": "mt-[-2px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/studio/components/interfaces/Organization/GeneralSettings/DeleteOrganizationButton.ListAck.tsx",
+        "line": 36,
+        "value": "mt-[2px]",
+        "kind": "optical-nudge",
+        "reason": "mt-[2px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/studio/components/interfaces/Organization/Usage/UsageSection/DatabaseSizeUsage.tsx",
+        "line": 126,
+        "value": "mt-[-2px]",
+        "kind": "optical-nudge",
+        "reason": "mt-[-2px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/studio/components/interfaces/ProjectHome/HighAvailabilityBadge.tsx",
+        "line": 19,
+        "value": "py-[3px]",
+        "kind": "optical-nudge",
+        "reason": "py-[3px] is a 2-3px optical adjustment"
+      }
+    ]
+  },
   "driftSummary": {
-    "total": 4463,
+    "total": 4456,
     "critical": 0,
     "warning": 4214,
-    "info": 249
+    "info": 242
   },
   "driftByType": {
     "deprecated-pattern": 2,
-    "hardcoded-value": 307,
+    "hardcoded-value": 300,
     "orphaned-component": 4147,
     "repeated-pattern": 7
   },
@@ -141,20 +192,16 @@
       "count": 14
     },
     {
-      "value": "2px",
-      "count": 14
-    },
-    {
       "value": "4px",
       "count": 13
     },
     {
-      "value": "0.8125rem",
-      "count": 8
+      "value": "2px",
+      "count": 9
     },
     {
-      "value": "3px",
-      "count": 6
+      "value": "0.8125rem",
+      "count": 8
     },
     {
       "value": "0.3rem",
@@ -166,6 +213,10 @@
     },
     {
       "value": "14px",
+      "count": 4
+    },
+    {
+      "value": "18px",
       "count": 4
     }
   ],
@@ -293,5 +344,5 @@
       ]
     }
   ],
-  "scanSeconds": 187
+  "scanSeconds": 167
 }

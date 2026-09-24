@@ -8,8 +8,8 @@
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "39ae85483ae0941b7b273bc0270d9687ff42f8fb",
-  "generatedAt": "2026-09-24T10:06:41.238Z",
-  "cliVersion": "0.8.5",
+  "generatedAt": "2026-09-24T10:55:46.267Z",
+  "cliVersion": "0.8.6",
   "score": 93,
   "tier": "Great",
   "pillars": {
@@ -53,6 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
+    "notedCount": 2,
     "topHardcodedColor": {
       "value": "#A2E771",
       "count": 1
@@ -61,7 +62,7 @@
       "path": "apps/remix/app/routes/embed+/playground.tsx",
       "issueCount": 2
     },
-    "uniqueSpacingValues": 9,
+    "uniqueSpacingValues": 8,
     "detectedFrameworkNames": [
       "react",
       "next",
@@ -79,6 +80,29 @@
       "action": "Replace the hardcoded values in 19 of the 20 findings with tokens or scale steps, and remove or reuse 1 unused component or repeated pattern"
     }
   ],
+  "noted": {
+    "count": 2,
+    "byKind": {
+      "optical-nudge": 1,
+      "explained": 1
+    },
+    "samples": [
+      {
+        "file": "packages/ui/styles/theme.css",
+        "line": 279,
+        "value": "10px",
+        "kind": "explained",
+        "reason": ".custom-scrollbar::-webkit-scrollbar-track {"
+      },
+      {
+        "file": "apps/remix/app/routes/embed+/playground.tsx",
+        "line": 379,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "marginBottom: 2px is a 2-3px optical adjustment"
+      }
+    ]
+  },
   "driftSummary": {
     "total": 21,
     "critical": 0,
@@ -141,22 +165,22 @@
       "count": 1
     },
     {
-      "value": "2px",
-      "count": 1
-    },
-    {
       "value": "11px",
       "count": 1
     },
     {
       "value": "14px",
       "count": 1
+    },
+    {
+      "value": "10px",
+      "count": 1
     }
   ],
   "worstFiles": [
     {
       "file": "apps/remix/app/routes/embed+/playground.tsx",
-      "count": 20
+      "count": 19
     },
     {
       "file": "apps/remix/app/components/general/unified-settings-sidebar.tsx",
@@ -167,11 +191,11 @@
       "count": 8
     },
     {
-      "file": "packages/ui/styles/theme.css",
-      "count": 5
+      "file": "apps/remix/app/components/general/settings-upsell/branding-upsell.tsx",
+      "count": 4
     },
     {
-      "file": "apps/remix/app/components/general/settings-upsell/branding-upsell.tsx",
+      "file": "packages/ui/styles/theme.css",
       "count": 4
     },
     {
@@ -279,5 +303,5 @@
       ]
     }
   ],
-  "scanSeconds": 32
+  "scanSeconds": 28
 }

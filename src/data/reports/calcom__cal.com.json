@@ -3,18 +3,18 @@
   "owner": "calcom",
   "name": "cal.com",
   "description": "Scheduling infrastructure for absolutely everyone.",
-  "stars": 48634,
+  "stars": 48635,
   "homepage": "https://cal.diy",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "54343aa685ae8f33159d2f485ec4a57bad5c574a",
-  "generatedAt": "2026-09-24T09:56:49.408Z",
-  "cliVersion": "0.8.5",
-  "score": 89,
+  "generatedAt": "2026-09-24T10:46:38.926Z",
+  "cliVersion": "0.8.6",
+  "score": 90,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 51,
+      "score": 52,
       "max": 60
     },
     "tokenHealth": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 1013,
     "tokenCount": 739,
-    "hardcodedValueCount": 53,
+    "hardcodedValueCount": 49,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 56,
+    "totalDriftCount": 52,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 1,
     "orphanedComponentCount": 0,
@@ -53,6 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 1,
     "vendoredDriftCount": 7,
+    "notedCount": 22,
     "topHardcodedColor": {
       "value": "#2F333D",
       "count": 1
@@ -69,15 +70,15 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 46 hardcoded values left to tokenize. packages/ui/components/form/toggleGroup/BooleanToggleGroup.tsx has the most (3)",
+    "Nearly there — just 42 hardcoded values left to tokenize. packages/ui/components/form/toggleGroup/BooleanToggleGroup.tsx has the most (3)",
     "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
     "2 deprecated patterns — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 9,
-      "action": "Replace the hardcoded values in 44 of the 46 findings with tokens or scale steps, and remove or reuse 1 unused component or repeated pattern"
+      "points": 8,
+      "action": "Replace the hardcoded values in 40 of the 42 findings with tokens or scale steps, and remove or reuse 1 unused component or repeated pattern"
     },
     {
       "pillar": "criticalIssues",
@@ -85,15 +86,66 @@
       "action": "Migrate 2 deprecated patterns"
     }
   ],
+  "noted": {
+    "count": 22,
+    "byKind": {
+      "optical-nudge": 19,
+      "known-debt": 3
+    },
+    "samples": [
+      {
+        "file": "apps/web/components/getting-started/components/ConnectedCalendarItem.tsx",
+        "line": 32,
+        "value": "py-[2px]",
+        "kind": "known-debt",
+        "reason": "Temporarily removed till we use it on another place <span className=\"mx-1 rounded-[4px] bg-cal-success py-[2px] px-[6px…"
+      },
+      {
+        "file": "apps/web/components/getting-started/components/ConnectedCalendarItem.tsx",
+        "line": 32,
+        "value": "px-[6px]",
+        "kind": "known-debt",
+        "reason": "Temporarily removed till we use it on another place <span className=\"mx-1 rounded-[4px] bg-cal-success py-[2px] px-[6px…"
+      },
+      {
+        "file": "apps/web/components/getting-started/components/ConnectedCalendarItem.tsx",
+        "line": 32,
+        "value": "rounded-[4px]",
+        "kind": "known-debt",
+        "reason": "Temporarily removed till we use it on another place <span className=\"mx-1 rounded-[4px] bg-cal-success py-[2px] px-[6px…"
+      },
+      {
+        "file": "packages/emails/src/components/BaseEmailHtml.tsx",
+        "line": 58,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/ui/components/editor/plugins/AddVariablesDropdown.tsx",
+        "line": 111,
+        "value": "mt-[2px]",
+        "kind": "optical-nudge",
+        "reason": "mt-[2px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/ui/components/editor/plugins/AddVariablesDropdown.tsx",
+        "line": 117,
+        "value": "mt-[2px]",
+        "kind": "optical-nudge",
+        "reason": "mt-[2px] is a 2-3px optical adjustment"
+      }
+    ]
+  },
   "driftSummary": {
-    "total": 56,
+    "total": 52,
     "critical": 0,
     "warning": 12,
-    "info": 44
+    "info": 40
   },
   "driftByType": {
     "deprecated-pattern": 2,
-    "hardcoded-value": 53,
+    "hardcoded-value": 49,
     "repeated-pattern": 1
   },
   "topColors": [
@@ -116,16 +168,12 @@
   ],
   "topSpacing": [
     {
-      "value": "2px",
-      "count": 8
-    },
-    {
       "value": "10px",
       "count": 5
     },
     {
       "value": "6px",
-      "count": 4
+      "count": 3
     },
     {
       "value": "-0.35rem",
@@ -139,11 +187,11 @@
   "worstFiles": [
     {
       "file": "packages/platform/atoms/globals.css",
-      "count": 303
+      "count": 295
     },
     {
       "file": "packages/ui/components/editor/stylesEditor.css",
-      "count": 56
+      "count": 54
     },
     {
       "file": "packages/ui/components/form/date-range-picker/styles.css",
@@ -155,11 +203,7 @@
     },
     {
       "file": "apps/web/styles/raqb.css",
-      "count": 10
-    },
-    {
-      "file": "packages/ui/components/editor/plugins/AddVariablesDropdown.tsx",
-      "count": 5
+      "count": 9
     },
     {
       "file": "packages/coss-ui/src/components/checkbox.tsx",
@@ -167,6 +211,10 @@
     },
     {
       "file": "packages/coss-ui/src/components/input-group.tsx",
+      "count": 3
+    },
+    {
+      "file": "packages/ui/components/form/toggleGroup/BooleanToggleGroup.tsx",
       "count": 3
     }
   ],
@@ -259,5 +307,5 @@
       ]
     }
   ],
-  "scanSeconds": 42
+  "scanSeconds": 40
 }

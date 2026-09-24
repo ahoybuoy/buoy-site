@@ -3,18 +3,18 @@
   "owner": "shadcn-ui",
   "name": "ui",
   "description": "Composable, accessible components with thoughtful defaults. Build your own component library with code you can customize, extend, and make your own.",
-  "stars": 124508,
+  "stars": 124509,
   "homepage": "https://ui.shadcn.com",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "98a1fe67b439324ddc857f47fbdce056600a4329",
-  "generatedAt": "2026-09-24T10:19:24.867Z",
-  "cliVersion": "0.8.5",
-  "score": 96,
+  "generatedAt": "2026-09-24T11:07:27.149Z",
+  "cliVersion": "0.8.6",
+  "score": 97,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 56,
+      "score": 57,
       "max": 60
     },
     "tokenHealth": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 2410,
     "tokenCount": 413,
-    "hardcodedValueCount": 81,
+    "hardcodedValueCount": 80,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 85,
+    "totalDriftCount": 84,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 4,
     "orphanedComponentCount": 0,
@@ -52,7 +52,8 @@
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
-    "vendoredDriftCount": 41,
+    "vendoredDriftCount": 40,
+    "notedCount": 2,
     "worstFile": {
       "path": "apps/v4/components/chart-toolbar.tsx",
       "issueCount": 2
@@ -65,31 +66,49 @@
   },
   "suggestions": [
     "Nearly there — just 40 hardcoded values left to tokenize. apps/v4/components/chart-toolbar.tsx has the most (2)",
-    "41 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
+    "40 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 4,
+      "points": 3,
       "action": "Replace the hardcoded values in 34 of the 40 findings with tokens or scale steps, and remove or reuse 4 unused components and repeated patterns"
     }
   ],
+  "noted": {
+    "count": 2,
+    "byKind": {
+      "optical-nudge": 2
+    },
+    "samples": [
+      {
+        "file": "apps/v4/components/block-viewer.tsx",
+        "line": 170,
+        "value": "p-[3px]",
+        "kind": "optical-nudge",
+        "reason": "p-[3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/v4/registry/new-york-v4/ui/tabs.tsx",
+        "line": 28,
+        "value": "p-[3px]",
+        "kind": "optical-nudge",
+        "reason": "p-[3px] is a 2-3px optical adjustment"
+      }
+    ]
+  },
   "driftSummary": {
-    "total": 85,
+    "total": 84,
     "critical": 0,
     "warning": 0,
-    "info": 85
+    "info": 84
   },
   "driftByType": {
-    "hardcoded-value": 81,
+    "hardcoded-value": 80,
     "repeated-pattern": 4
   },
   "topColors": [],
   "topSpacing": [
-    {
-      "value": "3px",
-      "count": 2
-    },
     {
       "value": "-0.45rem",
       "count": 2
@@ -210,9 +229,8 @@
     },
     {
       "component": "apps/v4/components/block-viewer.tsx",
-      "location": "apps/v4/components/block-viewer.tsx:170",
+      "location": "apps/v4/components/block-viewer.tsx:343",
       "entries": [
-        "p-[3px] (line 170)",
         "mr-[14px] (line 343)"
       ]
     },
@@ -245,5 +263,5 @@
       ]
     }
   ],
-  "scanSeconds": 63
+  "scanSeconds": 53
 }

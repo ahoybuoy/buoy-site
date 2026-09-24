@@ -3,13 +3,13 @@
   "owner": "posthog",
   "name": "posthog",
   "description": ":hedgehog: PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.",
-  "stars": 39913,
+  "stars": 39914,
   "homepage": "https://posthog.com",
   "language": "Python",
   "defaultBranch": "master",
-  "commit": "cd310654eaac416f5d70f52861a9f43d9074b693",
-  "generatedAt": "2026-09-24T10:13:46.272Z",
-  "cliVersion": "0.8.5",
+  "commit": "7f11b8e32ce69db332be05755711fe58cf2a619f",
+  "generatedAt": "2026-09-24T11:02:16.764Z",
+  "cliVersion": "0.8.6",
   "score": 75,
   "tier": "Good",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 4815,
     "tokenCount": 183,
-    "hardcodedValueCount": 363,
+    "hardcodedValueCount": 351,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 3,
@@ -41,7 +41,7 @@
     "colorContrastCount": 3,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 371,
+    "totalDriftCount": 359,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -53,6 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 2,
     "vendoredDriftCount": 0,
+    "notedCount": 81,
     "topHardcodedColor": {
       "value": "rgba(0",
       "count": 9
@@ -70,7 +71,7 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 363 hardcoded values left to tokenize. frontend/src/lib/KeaDevTools.tsx has the most (6)",
+    "Nearly there — just 351 hardcoded values left to tokenize. frontend/src/lib/KeaDevTools.tsx has the most (6)",
     "3 color contrast issues — fix immediately",
     "3 deprecated patterns — migrate to current API"
   ],
@@ -78,7 +79,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 15,
-      "action": "Replace the hardcoded values in 351 of the 363 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 339 of the 351 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -86,14 +87,66 @@
       "action": "Fix 3 colour contrast failures, migrate 3 deprecated patterns"
     }
   ],
+  "noted": {
+    "count": 81,
+    "byKind": {
+      "explained": 13,
+      "optical-nudge": 66,
+      "known-debt": 2
+    },
+    "samples": [
+      {
+        "file": "frontend/src/toolbar/bar/Toolbar.tsx",
+        "line": 623,
+        "value": "1.5rem",
+        "kind": "explained",
+        "reason": "Inline font-size because the wrapper breaks the `button > svg` size rule"
+      },
+      {
+        "file": "frontend/src/lib/components/CommandBlock/TerminalCard.tsx",
+        "line": 55,
+        "value": "text-[0.8125rem]",
+        "kind": "explained",
+        "reason": "Deliberately dark in both themes (primitive grays don't flip with the theme): it's a terminal."
+      },
+      {
+        "file": "frontend/src/layout/navigation-3000/Navigation.scss",
+        "line": 112,
+        "value": "0.99999",
+        "kind": "explained",
+        "reason": "This terrible hack makes it so that the .Navbar3000__overlay background is rendered also _underneath_ .Navbar3000 Other…"
+      },
+      {
+        "file": "frontend/src/lib/components/ScrollableShadows/ScrollableShadows.scss",
+        "line": 41,
+        "value": "8",
+        "kind": "explained",
+        "reason": "8 because we want it over lemon table headers/rows & other stuff"
+      },
+      {
+        "file": "frontend/src/lib/lemon-ui/LemonCheckbox/LemonCheckbox.scss",
+        "line": 38,
+        "value": "0.25rem",
+        "kind": "explained",
+        "reason": "Intentionally a bit smaller than --radius"
+      },
+      {
+        "file": "frontend/src/lib/lemon-ui/LemonMarkdown/LemonMarkdown.scss",
+        "line": 126,
+        "value": "0.125rem",
+        "kind": "explained",
+        "reason": "Slight adjustment to align with text"
+      }
+    ]
+  },
   "driftSummary": {
-    "total": 371,
+    "total": 359,
     "critical": 3,
     "warning": 177,
-    "info": 191
+    "info": 179
   },
   "driftByType": {
-    "hardcoded-value": 363,
+    "hardcoded-value": 351,
     "deprecated-pattern": 3,
     "color-contrast": 3,
     "repeated-pattern": 2
@@ -134,23 +187,11 @@
   ],
   "topSpacing": [
     {
-      "value": "2px",
-      "count": 12
-    },
-    {
-      "value": "3px",
-      "count": 3
-    },
-    {
       "value": "30px",
       "count": 3
     },
     {
       "value": "0.5rem",
-      "count": 2
-    },
-    {
-      "value": "1.5rem",
       "count": 2
     },
     {
@@ -164,24 +205,36 @@
     {
       "value": "2.5rem",
       "count": 2
+    },
+    {
+      "value": "3rem",
+      "count": 1
+    },
+    {
+      "value": "1.5rem",
+      "count": 1
+    },
+    {
+      "value": "1.2rem",
+      "count": 1
     }
   ],
   "worstFiles": [
     {
       "file": "products/desktop/tools/announcements-admin/src/styles.css",
-      "count": 142
+      "count": 140
     },
     {
       "file": "frontend/src/lib/components/MarkdownNotebook/MarkdownNotebook.scss",
-      "count": 134
+      "count": 131
     },
     {
       "file": "products/desktop/packages/quick-ask/src/panel/quick-ask.css",
-      "count": 85
+      "count": 81
     },
     {
       "file": "frontend/src/scenes/notebooks/Notebook/Notebook.scss",
-      "count": 57
+      "count": 56
     },
     {
       "file": "products/desktop/packages/ui/src/styles/globals.css",
@@ -279,20 +332,21 @@
       ]
     },
     {
-      "component": "Toolbar",
-      "location": "frontend/src/toolbar/bar/Toolbar.tsx:507",
-      "entries": [
-        "fontSize: 1.5rem (line 623)"
-      ]
-    },
-    {
       "component": "Elements",
       "location": "frontend/src/toolbar/elements/Elements.tsx:36",
       "entries": [
         "color: hsla(141, 21%, 12%, 1) (line 201)",
         "background: hsl(147, 100%, 62%) (line 202)"
       ]
+    },
+    {
+      "component": "FieldNotesOverlay",
+      "location": "frontend/src/toolbar/field-notes/FieldNotesOverlay.tsx:16",
+      "entries": [
+        "background: rgba(255, 255, 255, 0.2) (line 66)",
+        "color: #fff (line 66)"
+      ]
     }
   ],
-  "scanSeconds": 203
+  "scanSeconds": 179
 }

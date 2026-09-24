@@ -3,13 +3,13 @@
   "owner": "vercel",
   "name": "next.js",
   "description": "The React Framework",
-  "stars": 142419,
+  "stars": 142420,
   "homepage": "https://nextjs.org",
   "language": "JavaScript",
   "defaultBranch": "canary",
-  "commit": "5a46fc6c3f25f9d3d4129c589515f2fddc438cc8",
-  "generatedAt": "2026-09-24T10:18:20.591Z",
-  "cliVersion": "0.8.5",
+  "commit": "d35864d5c5d7bc99a035c835db87ad35ff52899a",
+  "generatedAt": "2026-09-24T11:06:31.934Z",
+  "cliVersion": "0.8.6",
   "score": 88,
   "tier": "Great",
   "pillars": {
@@ -53,6 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 1,
+    "notedCount": 4,
     "worstFile": {
       "path": "packages/next/src/client/legacy/image.tsx",
       "issueCount": 1
@@ -86,6 +87,44 @@
       "action": "Migrate 1 deprecated pattern"
     }
   ],
+  "noted": {
+    "count": 4,
+    "byKind": {
+      "optical-nudge": 2,
+      "known-debt": 1,
+      "explained": 1
+    },
+    "samples": [
+      {
+        "file": "packages/next/src/next-devtools/dev-overlay/components/devtools-panel/resize/resize-handle.css",
+        "line": 4,
+        "value": "10",
+        "kind": "known-debt",
+        "reason": "todo: better z index"
+      },
+      {
+        "file": "packages/next/src/next-devtools/dev-overlay/components/devtools-panel/resize/resize-handle.css",
+        "line": 23,
+        "value": "transform 0.25s cubic-bezier(0.23, 1, 0.32, 0.9)",
+        "kind": "explained",
+        "reason": "start really fast because we start super hidden initially behind the panel, otherwise feels like an unintended animatio…"
+      },
+      {
+        "file": "packages/next/src/next-devtools/dev-overlay/components/devtools-indicator/devtools-indicator.css",
+        "line": 102,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/next/src/next-devtools/dev-overlay/components/instant-navs/instant-navs-panel.css",
+        "line": 63,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-left: 2px is a 2-3px optical adjustment"
+      }
+    ]
+  },
   "driftSummary": {
     "total": 18,
     "critical": 0,
@@ -118,7 +157,7 @@
     },
     {
       "file": "packages/next/src/next-devtools/dev-overlay/components/instant-navs/instant-navs-panel.css",
-      "count": 32
+      "count": 31
     },
     {
       "file": "packages/next/src/next-devtools/dev-overlay/components/overview/segment-explorer.css",
@@ -130,7 +169,7 @@
     },
     {
       "file": "packages/next/src/next-devtools/dev-overlay/components/devtools-indicator/devtools-indicator.css",
-      "count": 9
+      "count": 8
     },
     {
       "file": "apps/bundle-analyzer/components/diff-table.tsx",
@@ -246,5 +285,5 @@
       ]
     }
   ],
-  "scanSeconds": 128
+  "scanSeconds": 126
 }

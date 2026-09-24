@@ -3,13 +3,13 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source agent evals & observability: Trace, evaluate, and improve LLM applications with one open platform.",
-  "stars": 34998,
+  "stars": 34999,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "9450b93368f468ee2ef30df240c1ff49e36989dc",
-  "generatedAt": "2026-09-24T10:15:09.802Z",
-  "cliVersion": "0.8.5",
+  "commit": "dbf5107df264bfcb0613a29237143e78ce16ca8a",
+  "generatedAt": "2026-09-24T11:03:29.998Z",
+  "cliVersion": "0.8.6",
   "score": 93,
   "tier": "Great",
   "pillars": {
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 1980,
+    "componentCount": 1981,
     "tokenCount": 239,
     "hardcodedValueCount": 75,
     "unusedTokenCount": 0,
@@ -53,6 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 3,
+    "notedCount": 4,
     "topHardcodedColor": {
       "value": "#6b7280",
       "count": 1
@@ -61,7 +62,7 @@
       "path": "web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx",
       "issueCount": 2
     },
-    "uniqueSpacingValues": 9,
+    "uniqueSpacingValues": 8,
     "detectedFrameworkNames": [
       "tailwind",
       "shadcn"
@@ -78,6 +79,42 @@
       "action": "Replace the hardcoded values in 68 of the 72 findings with tokens or scale steps"
     }
   ],
+  "noted": {
+    "count": 4,
+    "byKind": {
+      "optical-nudge": 4
+    },
+    "samples": [
+      {
+        "file": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx",
+        "line": 2067,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "right: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "web/src/features/traces/components/AdvancedJsonViewer/components/JsonRowFixed.tsx",
+        "line": 94,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "top: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "web/src/features/traces/components/AdvancedJsonViewer/components/JsonRowFixed.tsx",
+        "line": 95,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "right: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "web/src/features/traces/components/AdvancedJsonViewer/components/JsonRowScrollable.tsx",
+        "line": 94,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "marginLeft: 2px is a 2-3px optical adjustment"
+      }
+    ]
+  },
   "driftSummary": {
     "total": 75,
     "critical": 0,
@@ -219,7 +256,6 @@
       "location": "web/src/features/traces/components/AdvancedJsonViewer/components/JsonRowScrollable.tsx:30",
       "entries": [
         "paddingRight: 4px (line 73)",
-        "marginLeft: 2px (line 94)",
         "marginRight: 4px (line 95)"
       ]
     },
@@ -256,5 +292,5 @@
       ]
     }
   ],
-  "scanSeconds": 82
+  "scanSeconds": 71
 }

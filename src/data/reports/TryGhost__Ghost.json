@@ -7,14 +7,14 @@
   "homepage": "https://ghost.org",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "342b3bd051f2812f0ca332581b624a2b017d3597",
-  "generatedAt": "2026-09-24T10:10:22.598Z",
-  "cliVersion": "0.8.5",
-  "score": 61,
+  "commit": "a8744d95d12d0730f66e1ff4e65f905082aac10a",
+  "generatedAt": "2026-09-24T10:59:17.502Z",
+  "cliVersion": "0.8.6",
+  "score": 62,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 21,
+      "score": 22,
       "max": 60
     },
     "tokenHealth": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 1690,
     "tokenCount": 757,
-    "hardcodedValueCount": 338,
+    "hardcodedValueCount": 332,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 338,
+    "totalDriftCount": 332,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -51,8 +51,9 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 13,
-    "vendoredDriftCount": 8,
+    "highDensityFileCount": 12,
+    "vendoredDriftCount": 7,
+    "notedCount": 92,
     "topHardcodedColor": {
       "value": "#000.",
       "count": 1
@@ -71,24 +72,76 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 330 hardcoded values left to tokenize. apps/activitypub/src/views/inbox/components/customizer.tsx has the most (4)",
-    "8 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
+    "Nearly there — just 325 hardcoded values left to tokenize. apps/activitypub/src/views/inbox/components/customizer.tsx has the most (4)",
+    "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 39,
-      "action": "Replace the hardcoded values in 326 of the 330 findings with tokens or scale steps"
+      "points": 38,
+      "action": "Replace the hardcoded values in 321 of the 325 findings with tokens or scale steps"
     }
   ],
+  "noted": {
+    "count": 92,
+    "byKind": {
+      "optical-nudge": 84,
+      "explained": 5,
+      "known-debt": 3
+    },
+    "samples": [
+      {
+        "file": "apps/admin/src/automations/components/email-modal/email-editor.tsx",
+        "line": 104,
+        "value": "[&_.not-kg-prose>div]:text-[1.6rem]",
+        "kind": "explained",
+        "reason": "Nested-editor (callout, etc.) fixes: align placeholder with text"
+      },
+      {
+        "file": "apps/admin/src/automations/components/email-modal/email-editor.tsx",
+        "line": 104,
+        "value": "[&_.not-kg-prose>div]:leading-[1.6]",
+        "kind": "explained",
+        "reason": "Nested-editor (callout, etc.) fixes: align placeholder with text"
+      },
+      {
+        "file": "apps/admin/src/settings/membership/member-emails/member-email-editor.tsx",
+        "line": 77,
+        "value": "[&_.not-kg-prose>div]:text-[1.6rem]",
+        "kind": "explained",
+        "reason": "Nested-editor (callout, etc.) fixes: align placeholder with text"
+      },
+      {
+        "file": "apps/admin/src/settings/membership/member-emails/member-email-editor.tsx",
+        "line": 77,
+        "value": "[&_.not-kg-prose>div]:leading-[1.6]",
+        "kind": "explained",
+        "reason": "Nested-editor (callout, etc.) fixes: align placeholder with text"
+      },
+      {
+        "file": "apps/admin/src/index.css",
+        "line": 298,
+        "value": "20px",
+        "kind": "known-debt",
+        "reason": "Temporary overrides until Ember transition is finished"
+      },
+      {
+        "file": "apps/ember-admin/app/styles/app-dark.css",
+        "line": 1009,
+        "value": "rgba(88, 101, 116, 0.99)",
+        "kind": "explained",
+        "reason": "Opacity needed to display correctly in Safari"
+      }
+    ]
+  },
   "driftSummary": {
-    "total": 338,
+    "total": 332,
     "critical": 0,
     "warning": 114,
-    "info": 224
+    "info": 218
   },
   "driftByType": {
-    "hardcoded-value": 338
+    "hardcoded-value": 332
   },
   "topColors": [
     {
@@ -130,10 +183,6 @@
       "count": 17
     },
     {
-      "value": "3px",
-      "count": 13
-    },
-    {
       "value": "6rem",
       "count": 12
     },
@@ -156,28 +205,32 @@
     {
       "value": "8rem",
       "count": 7
+    },
+    {
+      "value": "52px",
+      "count": 6
     }
   ],
   "worstFiles": [
     {
       "file": "apps/ember-admin/app/styles/layouts/members.css",
-      "count": 236
+      "count": 229
     },
     {
       "file": "apps/ember-admin/app/styles/layouts/editor.css",
-      "count": 138
+      "count": 137
     },
     {
       "file": "apps/ember-admin/app/styles/layouts/post-preview.css",
-      "count": 135
+      "count": 125
     },
     {
       "file": "apps/ember-admin/app/styles/components/publishmenu.css",
-      "count": 114
+      "count": 112
     },
     {
       "file": "apps/ember-admin/app/styles/layouts/content.css",
-      "count": 103
+      "count": 100
     },
     {
       "file": "apps/ember-admin/app/styles/spirit/_debug.css",
@@ -185,7 +238,7 @@
     },
     {
       "file": "apps/ember-admin/app/styles/layouts/main.css",
-      "count": 90
+      "count": 89
     },
     {
       "file": "koenig/kg-simplemde/debug/simplemde.css",
@@ -288,5 +341,5 @@
       ]
     }
   ],
-  "scanSeconds": 51
+  "scanSeconds": 44
 }

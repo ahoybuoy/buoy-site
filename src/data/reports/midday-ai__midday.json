@@ -8,8 +8,8 @@
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "51587319f26a0ffaa9dfccab1920373cb65689b7",
-  "generatedAt": "2026-09-24T10:02:54.138Z",
-  "cliVersion": "0.8.5",
+  "generatedAt": "2026-09-24T10:52:05.173Z",
+  "cliVersion": "0.8.6",
   "score": 38,
   "tier": "Bad",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 1412,
     "tokenCount": 167,
-    "hardcodedValueCount": 452,
+    "hardcodedValueCount": 449,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 1,
@@ -41,7 +41,7 @@
     "colorContrastCount": 1,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 456,
+    "totalDriftCount": 453,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 3,
     "orphanedComponentCount": 0,
@@ -51,17 +51,18 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 9,
+    "highDensityFileCount": 8,
     "vendoredDriftCount": 27,
+    "notedCount": 49,
     "topHardcodedColor": {
       "value": "rgba(255",
       "count": 11
     },
     "worstFile": {
       "path": "packages/ui/src/components/animations/chat-demo-animation.tsx",
-      "issueCount": 14
+      "issueCount": 13
     },
-    "uniqueSpacingValues": 3,
+    "uniqueSpacingValues": 1,
     "detectedFrameworkNames": [
       "react",
       "next",
@@ -70,7 +71,7 @@
     ]
   },
   "suggestions": [
-    "425 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on packages/ui/src/components/animations/chat-demo-animation.tsx (14 issues)",
+    "Nearly there — just 422 hardcoded values left to tokenize. packages/ui/src/components/animations/chat-demo-animation.tsx has the most (13)",
     "27 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
     "1 color contrast issue — fix immediately"
   ],
@@ -78,7 +79,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 422 of the 425 findings with tokens or scale steps, and remove or reuse 3 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 419 of the 422 findings with tokens or scale steps, and remove or reuse 3 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -86,14 +87,65 @@
       "action": "Fix 1 colour contrast failure"
     }
   ],
+  "noted": {
+    "count": 49,
+    "byKind": {
+      "optical-nudge": 48,
+      "explained": 1
+    },
+    "samples": [
+      {
+        "file": "apps/dashboard/src/components/main-menu.tsx",
+        "line": 210,
+        "value": "dark:text-[#666666]",
+        "kind": "explained",
+        "reason": "Icon - always in same position from sidebar edge"
+      },
+      {
+        "file": "apps/website/src/components/pre-accounting.tsx",
+        "line": 271,
+        "value": "0.125rem",
+        "kind": "optical-nudge",
+        "reason": "marginTop: 0.125rem is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/website/src/components/startpage.tsx",
+        "line": 773,
+        "value": "0.125rem",
+        "kind": "optical-nudge",
+        "reason": "marginTop: 0.125rem is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/ui/src/components/animations/chat-demo-animation.tsx",
+        "line": 3557,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "margin: 3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/website/src/components/agents.tsx",
+        "line": 197,
+        "value": "py-[3px]",
+        "kind": "optical-nudge",
+        "reason": "py-[3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/website/src/components/agents.tsx",
+        "line": 198,
+        "value": "py-[3px]",
+        "kind": "optical-nudge",
+        "reason": "py-[3px] is a 2-3px optical adjustment"
+      }
+    ]
+  },
   "driftSummary": {
-    "total": 456,
+    "total": 453,
     "critical": 1,
     "warning": 262,
-    "info": 193
+    "info": 190
   },
   "driftByType": {
-    "hardcoded-value": 452,
+    "hardcoded-value": 449,
     "color-contrast": 1,
     "repeated-pattern": 3
   },
@@ -108,7 +160,7 @@
     },
     {
       "value": "#666666",
-      "count": 50
+      "count": 49
     },
     {
       "value": "#666",
@@ -133,10 +185,6 @@
   ],
   "topSpacing": [
     {
-      "value": "3px",
-      "count": 44
-    },
-    {
       "value": "15px",
       "count": 3
     },
@@ -153,15 +201,19 @@
       "count": 3
     },
     {
-      "value": "0.125rem",
-      "count": 2
-    },
-    {
       "value": "8px",
       "count": 2
     },
     {
       "value": ".325em",
+      "count": 2
+    },
+    {
+      "value": "70px",
+      "count": 2
+    },
+    {
+      "value": "520px",
       "count": 2
     }
   ],
@@ -173,10 +225,6 @@
     {
       "file": "packages/ui/src/components/animations/invoice-prompt-animation.tsx",
       "count": 76
-    },
-    {
-      "file": "apps/website/src/components/agents.tsx",
-      "count": 74
     },
     {
       "file": "packages/ui/src/components/animations/receipt-attachment-animation.tsx",
@@ -195,8 +243,12 @@
       "count": 40
     },
     {
-      "file": "apps/website/src/components/computer.tsx",
+      "file": "apps/dashboard/src/components/charts/revenue-forecast-chart.tsx",
       "count": 39
+    },
+    {
+      "file": "packages/ui/src/components/animations/customer-statement-animation.tsx",
+      "count": 38
     }
   ],
   "samples": [
@@ -220,20 +272,6 @@
       "location": "apps/website/src/components/computer.tsx:716",
       "entries": [
         "color: hsl(0, 0%, 30%) (line 847)"
-      ]
-    },
-    {
-      "component": "PreAccounting",
-      "location": "apps/website/src/components/pre-accounting.tsx:40",
-      "entries": [
-        "marginTop: 0.125rem (line 271)"
-      ]
-    },
-    {
-      "component": "StartPage",
-      "location": "apps/website/src/components/startpage.tsx:130",
-      "entries": [
-        "marginTop: 0.125rem (line 773)"
       ]
     },
     {
@@ -293,7 +331,25 @@
         "color: #6B7280 (line 2781)",
         "background: #FFFFFF (line 2849)"
       ]
+    },
+    {
+      "component": "InvoiceOgArtwork",
+      "location": "packages/ui/src/components/animations/chat-demo-animation.tsx:2933",
+      "entries": [
+        "background: #131313 (line 2941)",
+        "background: #FFFFFF (line 2968)",
+        "color: #111111 (line 2980)"
+      ]
+    },
+    {
+      "component": "OgLinkPreview",
+      "location": "packages/ui/src/components/animations/chat-demo-animation.tsx:3110",
+      "entries": [
+        "background: #2B2B2F (line 3116)",
+        "background: #36363A (line 3123)",
+        "color: #FFFFFF (line 3133)"
+      ]
     }
   ],
-  "scanSeconds": 44
+  "scanSeconds": 38
 }
