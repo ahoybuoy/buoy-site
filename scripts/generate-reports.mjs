@@ -67,11 +67,15 @@ function topValues(drifts, kind) {
   // hardcoded-value drifts list "prop: value (line N)" per affected file; count the values.
   const counts = new Map();
   for (const d of drifts) {
-    if (d.type !== "hardcoded-value" || !d.id.endsWith(`:${kind}`)) continue;
+    if (d.type !== "hardcoded-value") continue;
+    // Component findings carry the kind in their id; stylesheet findings label each entry ("colour: #fff (line 3)").
+    const label = kind === "color" ? /^(colour|color)\s*:/i : /^spacing\s*:/i;
+    const byId = String(d.id).endsWith(`:${kind}`);
     for (const entry of d.details?.affectedFiles ?? []) {
+      if (!byId && !label.test(entry)) continue;
       // Tailwind entries: "hover:bg-[#1B2334] (line 3)"; component styles: "color: #333 (line 3)"
       const tw = /\[([^\]]+)\]\s*\(line/.exec(entry);
-      const m = tw ?? /:\s*([^()]+?)\s*\(line/.exec(entry);
+      const m = tw ?? /:\s*(.+?)\s*\(line \d+\)\s*$/.exec(entry);
       if (!m) continue;
       const v = (tw ? m[1].replace(/_/g, " ") : m[1]).trim();
       counts.set(v, (counts.get(v) ?? 0) + 1);
