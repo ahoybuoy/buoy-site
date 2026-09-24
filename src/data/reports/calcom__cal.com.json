@@ -1,0 +1,253 @@
+{
+  "repo": "calcom/cal.com",
+  "owner": "calcom",
+  "name": "cal.com",
+  "description": "Scheduling infrastructure for absolutely everyone.",
+  "stars": 48634,
+  "homepage": "https://cal.diy",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "54343aa685ae8f33159d2f485ec4a57bad5c574a",
+  "generatedAt": "2026-09-24T08:38:12.104Z",
+  "cliVersion": "0.8.3",
+  "score": 87,
+  "tier": "Great",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 51,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 6,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 1013,
+    "tokenCount": 739,
+    "hardcodedValueCount": 54,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 1,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 1,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 58,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 1,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 2,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 1,
+    "vendoredDriftCount": 7,
+    "topHardcodedColor": {
+      "value": "#2F333D",
+      "count": 1
+    },
+    "worstFile": {
+      "path": "packages/ui/components/form/toggleGroup/BooleanToggleGroup.tsx",
+      "issueCount": 3
+    },
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "tailwind",
+      "radix"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 47 hardcoded values left to tokenize. packages/ui/components/form/toggleGroup/BooleanToggleGroup.tsx has the most (3)",
+    "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
+    "1 color contrast issue — fix immediately",
+    "2 deprecated patterns — migrate to current API"
+  ],
+  "driftSummary": {
+    "total": 58,
+    "critical": 1,
+    "warning": 13,
+    "info": 44
+  },
+  "driftByType": {
+    "deprecated-pattern": 2,
+    "hardcoded-value": 54,
+    "color-contrast": 1,
+    "repeated-pattern": 1
+  },
+  "topColors": [
+    {
+      "value": "#2F333D",
+      "count": 1
+    },
+    {
+      "value": "#5B93F9",
+      "count": 1
+    },
+    {
+      "value": "#ffc439",
+      "count": 1
+    },
+    {
+      "value": "#FAFAFA",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "2px",
+      "count": 8
+    },
+    {
+      "value": "10px",
+      "count": 5
+    },
+    {
+      "value": "6px",
+      "count": 4
+    },
+    {
+      "value": "-0.35rem",
+      "count": 2
+    },
+    {
+      "value": "60px",
+      "count": 2
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "packages/platform/atoms/globals.css",
+      "count": 308
+    },
+    {
+      "file": "packages/ui/components/editor/stylesEditor.css",
+      "count": 58
+    },
+    {
+      "file": "packages/ui/components/form/date-range-picker/styles.css",
+      "count": 32
+    },
+    {
+      "file": "apps/web/styles/globals.css",
+      "count": 13
+    },
+    {
+      "file": "apps/web/styles/raqb.css",
+      "count": 10
+    },
+    {
+      "file": "packages/ui/components/editor/plugins/AddVariablesDropdown.tsx",
+      "count": 5
+    },
+    {
+      "file": "packages/coss-ui/src/components/checkbox.tsx",
+      "count": 3
+    },
+    {
+      "file": "packages/coss-ui/src/components/input-group.tsx",
+      "count": 3
+    }
+  ],
+  "samples": [
+    {
+      "component": "AddToHomescreen",
+      "location": "apps/web/components/AddToHomescreen.tsx:6",
+      "entries": [
+        "background: #2F333D (line 18)"
+      ]
+    },
+    {
+      "component": "packages/coss-ui/src/components/accordion.tsx",
+      "location": "packages/coss-ui/src/components/accordion.tsx:31",
+      "entries": [
+        "focus-visible:ring-[3px] (line 31)"
+      ]
+    },
+    {
+      "component": "packages/coss-ui/src/components/badge.tsx",
+      "location": "packages/coss-ui/src/components/badge.tsx:21",
+      "entries": [
+        "rounded-[.25rem] (line 21)"
+      ]
+    },
+    {
+      "component": "packages/coss-ui/src/components/checkbox.tsx",
+      "location": "packages/coss-ui/src/components/checkbox.tsx:11",
+      "entries": [
+        "rounded-[.25rem] (line 11)",
+        "before:rounded-[3px] (line 11)",
+        "rounded-[.25rem] (line 18)"
+      ]
+    },
+    {
+      "component": "packages/coss-ui/src/components/combobox.tsx",
+      "location": "packages/coss-ui/src/components/combobox.tsx:358",
+      "entries": [
+        "focus-within:ring-[3px] (line 358)"
+      ]
+    },
+    {
+      "component": "packages/coss-ui/src/components/input-group.tsx",
+      "location": "packages/coss-ui/src/components/input-group.tsx:37",
+      "entries": [
+        "has-[>kbd:last-child]:me-[-0.35rem] (line 37)",
+        "has-[>kbd:last-child]:ms-[-0.35rem] (line 39)"
+      ]
+    },
+    {
+      "component": "packages/coss-ui/src/components/input-group.tsx",
+      "location": "packages/coss-ui/src/components/input-group.tsx:14",
+      "entries": [
+        "has-[input:focus-visible,textarea:focus-visible]:ring-[3px] (line 14)"
+      ]
+    },
+    {
+      "component": "packages/coss-ui/src/components/input.tsx",
+      "location": "packages/coss-ui/src/components/input.tsx:40",
+      "entries": [
+        "has-focus-visible:ring-[3px] (line 40)"
+      ]
+    },
+    {
+      "component": "packages/coss-ui/src/components/select.tsx",
+      "location": "packages/coss-ui/src/components/select.tsx:19",
+      "entries": [
+        "focus-visible:ring-[3px] (line 19)"
+      ]
+    },
+    {
+      "component": "packages/coss-ui/src/components/slider.tsx",
+      "location": "packages/coss-ui/src/components/slider.tsx:52",
+      "entries": [
+        "has-focus-visible:ring-[3px] (line 52)"
+      ]
+    },
+    {
+      "component": "packages/coss-ui/src/components/textarea.tsx",
+      "location": "packages/coss-ui/src/components/textarea.tsx:25",
+      "entries": [
+        "has-focus-visible:ring-[3px] (line 25)"
+      ]
+    },
+    {
+      "component": "packages/ui/components/alert/Alert.tsx",
+      "location": "packages/ui/components/alert/Alert.tsx:9",
+      "entries": [
+        "rounded-[10px] (line 9)"
+      ]
+    }
+  ],
+  "scanSeconds": 37
+}
