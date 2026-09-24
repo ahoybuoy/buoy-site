@@ -3,12 +3,12 @@
   "owner": "makeplane",
   "name": "plane",
   "description": "🔥🔥🔥 Open-source Jira, Linear, Monday, and ClickUp alternative. Plane is a modern project management platform to manage tasks, sprints, docs, and triage.",
-  "stars": 59805,
+  "stars": 59807,
   "homepage": "http://plane.so",
   "language": "TypeScript",
   "defaultBranch": "preview",
   "commit": "a2ccd4f074c238d63af7b5f058970fd29a53c454",
-  "generatedAt": "2026-09-24T05:04:56.033Z",
+  "generatedAt": "2026-09-24T05:50:07.807Z",
   "cliVersion": "latest",
   "score": 93,
   "tier": "Great",
@@ -85,7 +85,20 @@
       "count": 1
     }
   ],
-  "topSpacing": [],
+  "topSpacing": [
+    {
+      "value": "4px",
+      "count": 1
+    },
+    {
+      "value": "6px",
+      "count": 1
+    },
+    {
+      "value": "1.5px",
+      "count": 1
+    }
+  ],
   "worstFiles": [
     {
       "file": "packages/editor/src/extensions/code-inline/index.tsx",
@@ -136,5 +149,5 @@
       ]
     }
   ],
-  "scanSeconds": 30
+  "scanSeconds": 28
 }

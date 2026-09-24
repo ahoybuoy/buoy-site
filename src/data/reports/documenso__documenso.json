@@ -3,12 +3,12 @@
   "owner": "documenso",
   "name": "documenso",
   "description": "The Open Source DocuSign Alternative.",
-  "stars": 15169,
+  "stars": 15170,
   "homepage": "https://documenso.com",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "39ae85483ae0941b7b273bc0270d9687ff42f8fb",
-  "generatedAt": "2026-09-24T05:04:25.970Z",
+  "generatedAt": "2026-09-24T05:49:39.046Z",
   "cliVersion": "latest",
   "score": 94,
   "tier": "Great",
@@ -84,24 +84,12 @@
   },
   "topColors": [
     {
-      "value": "bg-[#F1FBEA]",
-      "count": 3
+      "value": "#F1FBEA",
+      "count": 12
     },
     {
-      "value": "bg-[#1C2515]",
-      "count": 3
-    },
-    {
-      "value": "text-[#F1FBEA]",
-      "count": 3
-    },
-    {
-      "value": "hover:bg-[#1C2515]",
-      "count": 3
-    },
-    {
-      "value": "hover:text-[#F1FBEA]",
-      "count": 3
+      "value": "#1C2515",
+      "count": 6
     },
     {
       "value": "#f9f9f9",
@@ -113,6 +101,14 @@
     },
     {
       "value": "#A2E771",
+      "count": 1
+    },
+    {
+      "value": "#0f172a",
+      "count": 1
+    },
+    {
+      "value": "#64748b",
       "count": 1
     }
   ],
@@ -176,11 +172,11 @@
       "count": 1
     },
     {
-      "file": "apps/remix/app/components/general/unified-settings-sidebar-mobile.tsx",
+      "file": "apps/remix/app/components/forms/inheritable-field.tsx",
       "count": 1
     },
     {
-      "file": "apps/remix/app/components/general/stack-avatars-with-tooltip.tsx",
+      "file": "apps/remix/app/components/dialogs/template-direct-link-dialog.tsx",
       "count": 1
     }
   ],
@@ -214,6 +210,20 @@
       "location": "apps/remix/app/components/general/envelope-editor/envelope-editor-fields-page-renderer.tsx:44",
       "entries": [
         "gap: 8px (line 732)"
+      ]
+    },
+    {
+      "component": "apps/remix/app/components/forms/inheritable-field.tsx",
+      "location": "apps/remix/app/components/forms/inheritable-field.tsx:38",
+      "entries": [
+        "text-[9px] (line 38)"
+      ]
+    },
+    {
+      "component": "apps/remix/app/components/dialogs/template-direct-link-dialog.tsx",
+      "location": "apps/remix/app/components/dialogs/template-direct-link-dialog.tsx:218",
+      "entries": [
+        "border-[3px] (line 218)"
       ]
     },
     {
@@ -262,21 +272,7 @@
         "tracking-[0.07em] (line 64)",
         "text-[15px] (line 454)"
       ]
-    },
-    {
-      "component": "apps/remix/app/components/forms/inheritable-field.tsx",
-      "location": "apps/remix/app/components/forms/inheritable-field.tsx:38",
-      "entries": [
-        "text-[9px] (line 38)"
-      ]
-    },
-    {
-      "component": "apps/remix/app/components/dialogs/template-direct-link-dialog.tsx",
-      "location": "apps/remix/app/components/dialogs/template-direct-link-dialog.tsx:218",
-      "entries": [
-        "border-[3px] (line 218)"
-      ]
     }
   ],
-  "scanSeconds": 46
+  "scanSeconds": 44
 }

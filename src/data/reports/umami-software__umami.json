@@ -8,7 +8,7 @@
   "language": "TypeScript",
   "defaultBranch": "master",
   "commit": "ec0ff50388c264ed8ce46f00967e92f7e71476ae",
-  "generatedAt": "2026-09-24T05:06:16.693Z",
+  "generatedAt": "2026-09-24T05:51:24.749Z",
   "cliVersion": "latest",
   "score": 81,
   "tier": "Great",
@@ -91,7 +91,7 @@
       "count": 3
     },
     {
-      "value": "12.25px",
+      "value": "16px",
       "count": 2
     },
     {
@@ -103,7 +103,7 @@
       "count": 2
     },
     {
-      "value": "16px",
+      "value": "12.25px",
       "count": 2
     },
     {
@@ -150,6 +150,15 @@
     }
   ],
   "samples": [
+    {
+      "component": "SharedSharesTable",
+      "location": "src/components/share/SharedSharesTable.tsx:16",
+      "entries": [
+        "gap: 16px (line 44)",
+        "marginTop: 8px (line 69)",
+        "marginTop: 12px (line 72)"
+      ]
+    },
     {
       "component": "PropertyFilters",
       "location": "src/components/property-data/PropertyFilters.tsx:32",
@@ -230,16 +239,7 @@
         "padding: 12px (line 86)",
         "fontSize: 12.25px (line 94)"
       ]
-    },
-    {
-      "component": "SharedSharesTable",
-      "location": "src/components/share/SharedSharesTable.tsx:16",
-      "entries": [
-        "gap: 16px (line 44)",
-        "marginTop: 8px (line 69)",
-        "marginTop: 12px (line 72)"
-      ]
     }
   ],
-  "scanSeconds": 30
+  "scanSeconds": 29
 }

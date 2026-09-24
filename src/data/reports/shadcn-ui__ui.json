@@ -3,12 +3,12 @@
   "owner": "shadcn-ui",
   "name": "ui",
   "description": "Composable, accessible components with thoughtful defaults. Build your own component library with code you can customize, extend, and make your own.",
-  "stars": 124502,
+  "stars": 124503,
   "homepage": "https://ui.shadcn.com",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "98a1fe67b439324ddc857f47fbdce056600a4329",
-  "generatedAt": "2026-09-24T05:20:56.661Z",
+  "generatedAt": "2026-09-24T06:06:11.175Z",
   "cliVersion": "latest",
   "score": 91,
   "tier": "Great",
@@ -81,19 +81,31 @@
   "topColors": [],
   "topSpacing": [
     {
-      "value": "ml-[-0.45rem]",
+      "value": "0.3rem",
+      "count": 2
+    },
+    {
+      "value": "0.2rem",
+      "count": 2
+    },
+    {
+      "value": "3px",
+      "count": 2
+    },
+    {
+      "value": "-0.45rem",
+      "count": 2
+    },
+    {
+      "value": "-0.35rem",
+      "count": 2
+    },
+    {
+      "value": "14px",
       "count": 1
     },
     {
-      "value": "ml-[-0.35rem]",
-      "count": 1
-    },
-    {
-      "value": "mr-[-0.45rem]",
-      "count": 1
-    },
-    {
-      "value": "mr-[-0.35rem]",
+      "value": "160px",
       "count": 1
     }
   ],
@@ -127,7 +139,7 @@
       "count": 3
     },
     {
-      "file": "apps/v4/registry/bases/base/ui/chart.tsx",
+      "file": "apps/v4/registry/bases/radix/ui/chart.tsx",
       "count": 3
     }
   ],
@@ -227,5 +239,5 @@
       ]
     }
   ],
-  "scanSeconds": 86
+  "scanSeconds": 85
 }

@@ -8,7 +8,7 @@
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "c2b7a72180bbb2dcbc31caa8539e0ca8f8e9e9b8",
-  "generatedAt": "2026-09-24T05:16:53.361Z",
+  "generatedAt": "2026-09-24T06:02:09.433Z",
   "cliVersion": "latest",
   "score": 90,
   "tier": "Great",
@@ -58,7 +58,7 @@
       "count": 1
     },
     "worstFile": {
-      "path": "apps/webapp/app/components/primitives/Tabs.tsx",
+      "path": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.runs.$runParam/route.tsx",
       "issueCount": 2
     },
     "uniqueSpacingValues": 1,
@@ -71,7 +71,7 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 84 hardcoded values left to tokenize. apps/webapp/app/components/primitives/Tabs.tsx has the most (2)"
+    "Nearly there — just 84 hardcoded values left to tokenize. apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.runs.$runParam/route.tsx has the most (2)"
   ],
   "driftSummary": {
     "total": 84,
@@ -84,6 +84,10 @@
   },
   "topColors": [
     {
+      "value": "#1B2334",
+      "count": 2
+    },
+    {
       "value": "#10B981",
       "count": 1
     },
@@ -92,13 +96,57 @@
       "count": 1
     },
     {
-      "value": "bg-[#f4f4f6]",
+      "value": "#16181C",
+      "count": 1
+    },
+    {
+      "value": "#f4f4f6",
+      "count": 1
+    },
+    {
+      "value": "#c678dd",
+      "count": 1
+    },
+    {
+      "value": "#121317",
+      "count": 1
+    },
+    {
+      "value": "#2F1D24",
       "count": 1
     }
   ],
   "topSpacing": [
     {
+      "value": "0.86rem",
+      "count": 6
+    },
+    {
+      "value": "0.9rem",
+      "count": 5
+    },
+    {
       "value": "3px",
+      "count": 3
+    },
+    {
+      "value": "0.13rem",
+      "count": 3
+    },
+    {
+      "value": "0.4rem",
+      "count": 2
+    },
+    {
+      "value": "6px",
+      "count": 2
+    },
+    {
+      "value": "0.15em",
+      "count": 2
+    },
+    {
+      "value": "0.15rem",
       "count": 1
     }
   ],
@@ -138,13 +186,6 @@
   ],
   "samples": [
     {
-      "component": "ResizableHandle",
-      "location": "apps/webapp/app/components/primitives/Resizable.tsx:39",
-      "entries": [
-        "size: 3px (line 67)"
-      ]
-    },
-    {
       "component": "YourModelsTab",
       "location": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.models._index/route.tsx:1219",
       "entries": [
@@ -156,6 +197,13 @@
       "location": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.agents.$agentParam/route.tsx:212",
       "entries": [
         "color: #14B8A6 (line 310)"
+      ]
+    },
+    {
+      "component": "ResizableHandle",
+      "location": "apps/webapp/app/components/primitives/Resizable.tsx:39",
+      "entries": [
+        "size: 3px (line 67)"
       ]
     },
     {

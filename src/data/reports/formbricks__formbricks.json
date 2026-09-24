@@ -3,12 +3,12 @@
   "owner": "formbricks",
   "name": "formbricks",
   "description": "Open Source Qualtrics Alternative",
-  "stars": 13012,
+  "stars": 13011,
   "homepage": "https://formbricks.com",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "97a1c69b965691a8d80a89f42e313fd1d7c4ee28",
-  "generatedAt": "2026-09-24T05:03:39.285Z",
+  "generatedAt": "2026-09-24T05:48:54.528Z",
   "cliVersion": "latest",
   "score": 95,
   "tier": "Great",
@@ -79,7 +79,24 @@
     "hardcoded-value": 16
   },
   "topColors": [],
-  "topSpacing": [],
+  "topSpacing": [
+    {
+      "value": "3px",
+      "count": 4
+    },
+    {
+      "value": "2px",
+      "count": 2
+    },
+    {
+      "value": "100px",
+      "count": 1
+    },
+    {
+      "value": "10px",
+      "count": 1
+    }
+  ],
   "worstFiles": [
     {
       "file": "packages/survey-ui/src/components/general/calendar.tsx",
@@ -110,7 +127,7 @@
       "count": 1
     },
     {
-      "file": "packages/survey-ui/src/components/elements/rating.tsx",
+      "file": "packages/survey-ui/src/components/general/textarea.tsx",
       "count": 1
     }
   ],
@@ -152,27 +169,6 @@
       ]
     },
     {
-      "component": "packages/survey-ui/src/components/elements/rating.tsx",
-      "location": "packages/survey-ui/src/components/elements/rating.tsx:406",
-      "entries": [
-        "px-[2px] (line 406)"
-      ]
-    },
-    {
-      "component": "packages/survey-ui/src/components/elements/nps.tsx",
-      "location": "packages/survey-ui/src/components/elements/nps.tsx:181",
-      "entries": [
-        "px-[2px] (line 181)"
-      ]
-    },
-    {
-      "component": "packages/survey-ui/src/components/elements/multi-select.tsx",
-      "location": "packages/survey-ui/src/components/elements/multi-select.tsx:112",
-      "entries": [
-        "rounded-[4px] (line 112)"
-      ]
-    },
-    {
       "component": "packages/survey-ui/src/components/general/textarea.tsx",
       "location": "packages/survey-ui/src/components/general/textarea.tsx:15",
       "entries": [
@@ -199,7 +195,31 @@
       "entries": [
         "mb-[3px] (line 64)"
       ]
+    },
+    {
+      "component": "packages/survey-ui/src/components/general/checkbox.tsx",
+      "location": "packages/survey-ui/src/components/general/checkbox.tsx:14",
+      "entries": [
+        "rounded-[4px] (line 14)",
+        "focus-visible:ring-[3px] (line 14)"
+      ]
+    },
+    {
+      "component": "packages/survey-ui/src/components/general/calendar.tsx",
+      "location": "packages/survey-ui/src/components/general/calendar.tsx:148",
+      "entries": [
+        "has-focus:ring-[3px] (line 148)",
+        "day:ring-[3px] (line 234)"
+      ]
+    },
+    {
+      "component": "packages/survey-ui/src/components/general/calendar.tsx",
+      "location": "packages/survey-ui/src/components/general/calendar.tsx:162",
+      "entries": [
+        "text-[0.8rem] (line 162)",
+        "text-[0.8rem] (line 167)"
+      ]
     }
   ],
-  "scanSeconds": 38
+  "scanSeconds": 36
 }
