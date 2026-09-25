@@ -41,7 +41,7 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
     <tbody>
       <tr><td><code>list_design_tokens</code></td><td>Every token in the repo (CSS custom properties, Tailwind theme, tokens.json, SCSS), filterable by category or name. Meant to be called before writing any style.</td></tr>
       <tr><td><code>find_token_for_value</code></td><td>The token whose value equals a literal the agent is about to write: <code>#1a73e8</code> → <code>--color-primary</code>. Handles hex shorthand, case and units.</td></tr>
-      <tr><td><code>check_design_drift</code></td><td>Line-level drift in the files just edited, each issue with the token to use instead. Without files, the full repository analysis.</td></tr>
+      <tr><td><code>check_ui_against_design_system</code></td><td>Line-level check of the files just edited: each off-system value with the token to use, plus an exact line edit when the swap is unambiguous. Without files, the full repository analysis.</td></tr>
       <tr><td><code>design_system_context</code></td><td>A Markdown overview of the system: token categories, components, and the anti-patterns Buoy flags. One call at the start of a UI task.</td></tr>
     </tbody>
   </table>
