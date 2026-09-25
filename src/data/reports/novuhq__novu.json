@@ -3,12 +3,12 @@
   "owner": "novuhq",
   "name": "novu",
   "description": "The open-source communication infrastructure for agents and products",
-  "stars": 40054,
+  "stars": 40063,
   "homepage": "https://go.novu.co/github",
   "language": "TypeScript",
   "defaultBranch": "next",
-  "commit": "569d407fd0c3cc191532790bafe0fa7101e98e0c",
-  "generatedAt": "2026-09-24T12:08:51.743Z",
+  "commit": "724e055b82f5a6520b59ca6dc9d13ce8eb53fa19",
+  "generatedAt": "2026-09-25T12:10:17.014Z",
   "cliVersion": "0.8.7",
   "score": 70,
   "tier": "Good",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 2461,
+    "componentCount": 2469,
     "tokenCount": 462,
     "hardcodedValueCount": 377,
     "unusedTokenCount": 0,
@@ -98,7 +98,7 @@
       },
       {
         "file": "apps/dashboard/src/components/agents/agent-behavior-section.tsx",
-        "line": 106,
+        "line": 187,
         "value": "py-[3px]",
         "kind": "optical-nudge",
         "reason": "py-[3px] is a 2-3px optical adjustment"
@@ -165,50 +165,50 @@
       "count": 18
     },
     {
+      "value": "#fafafa",
+      "count": 14
+    },
+    {
       "value": "#0e121b",
       "count": 14
     },
     {
       "value": "#E1E4EA",
       "count": 12
-    },
-    {
-      "value": "#f2f5f8",
-      "count": 9
     }
   ],
   "topSpacing": [
+    {
+      "value": "1rem",
+      "count": 20
+    },
+    {
+      "value": "2rem",
+      "count": 15
+    },
+    {
+      "value": "0.5rem",
+      "count": 15
+    },
+    {
+      "value": "6px",
+      "count": 11
+    },
     {
       "value": "5px",
       "count": 11
     },
     {
-      "value": "18px",
-      "count": 8
+      "value": "1.5rem",
+      "count": 11
     },
     {
       "value": "12px",
-      "count": 7
+      "count": 8
     },
     {
-      "value": "50px",
-      "count": 7
-    },
-    {
-      "value": "6px",
-      "count": 5
-    },
-    {
-      "value": "100px",
-      "count": 5
-    },
-    {
-      "value": "4px",
-      "count": 4
-    },
-    {
-      "value": "3px",
-      "count": 4
+      "value": "18px",
+      "count": 8
     }
   ],
   "worstFiles": [
@@ -335,5 +335,5 @@
       ]
     }
   ],
-  "scanSeconds": 55
+  "scanSeconds": 70
 }

@@ -3,12 +3,12 @@
   "owner": "umami-software",
   "name": "umami",
   "description": "Umami is a privacy-first analytics platform. Traffic, campaigns, behavior, conversions, and revenue in one place — no cookies, no surveillance, self-hosted or in the cloud.",
-  "stars": 38985,
+  "stars": 39003,
   "homepage": "https://umami.is",
   "language": "TypeScript",
   "defaultBranch": "master",
   "commit": "ec0ff50388c264ed8ce46f00967e92f7e71476ae",
-  "generatedAt": "2026-09-24T12:13:26.644Z",
+  "generatedAt": "2026-09-25T12:15:53.310Z",
   "cliVersion": "0.8.7",
   "score": 87,
   "tier": "Great",
@@ -107,23 +107,64 @@
   "driftByType": {
     "hardcoded-value": 22
   },
-  "topColors": [],
+  "topColors": [
+    {
+      "value": "rgba(0,0,0,0.8)",
+      "count": 4
+    },
+    {
+      "value": "rgba(0, 0, 0, 0.7)",
+      "count": 1
+    },
+    {
+      "value": "rgba(255, 255, 255, 0.85)",
+      "count": 1
+    },
+    {
+      "value": "#fff",
+      "count": 1
+    },
+    {
+      "value": "rgba(255, 255, 255, 0.15)",
+      "count": 1
+    },
+    {
+      "value": "#15803d",
+      "count": 1
+    },
+    {
+      "value": "#dcfce7",
+      "count": 1
+    },
+    {
+      "value": "#16a34a",
+      "count": 1
+    }
+  ],
   "topSpacing": [
+    {
+      "value": "8px",
+      "count": 9
+    },
     {
       "value": "32px",
       "count": 5
+    },
+    {
+      "value": "12px",
+      "count": 3
     },
     {
       "value": "24px",
       "count": 3
     },
     {
-      "value": "8px",
-      "count": 2
+      "value": "6px",
+      "count": 3
     },
     {
-      "value": "12px",
-      "count": 2
+      "value": "20px",
+      "count": 3
     },
     {
       "value": "12.25px",
@@ -132,14 +173,6 @@
     {
       "value": "16px",
       "count": 2
-    },
-    {
-      "value": "10.5px",
-      "count": 1
-    },
-    {
-      "value": "14px",
-      "count": 1
     }
   ],
   "worstFiles": [
@@ -268,5 +301,5 @@
       ]
     }
   ],
-  "scanSeconds": 20
+  "scanSeconds": 23
 }

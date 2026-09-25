@@ -3,18 +3,18 @@
   "owner": "excalidraw",
   "name": "excalidraw",
   "description": "Virtual whiteboard for sketching hand-drawn like diagrams",
-  "stars": 132778,
+  "stars": 132875,
   "homepage": "https://excalidraw.com",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "dc2c16d9e2073078cb4b8f3dce942133b90eec3d",
-  "generatedAt": "2026-09-24T12:13:00.300Z",
+  "commit": "5db42c3ddbbdc44d10120ab2f18e0864d083e268",
+  "generatedAt": "2026-09-25T12:15:23.374Z",
   "cliVersion": "0.8.7",
-  "score": 63,
+  "score": 62,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 23,
+      "score": 22,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 422,
-    "tokenCount": 125,
-    "hardcodedValueCount": 79,
+    "componentCount": 428,
+    "tokenCount": 124,
+    "hardcodedValueCount": 81,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 79,
+    "totalDriftCount": 81,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -69,13 +69,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 79 hardcoded values left to tokenize. packages/excalidraw/components/PublishLibrary.tsx has the most (3)"
+    "Nearly there — just 81 hardcoded values left to tokenize. packages/excalidraw/components/PublishLibrary.tsx has the most (3)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 37,
-      "action": "Replace the hardcoded values in 78 of the 79 findings with tokens or scale steps"
+      "points": 38,
+      "action": "Replace the hardcoded values in 80 of the 81 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -85,13 +85,6 @@
       "explained": 4
     },
     "samples": [
-      {
-        "file": "packages/excalidraw/components/ColorPicker/ColorPicker.scss",
-        "line": 544,
-        "value": "width 0.15s ease, height 0.15s ease",
-        "kind": "explained",
-        "reason": "NOTE transform is deliberately not transitioned here (tracks the pointer every frame); --dropping adds it for the fly-t…"
-      },
       {
         "file": "packages/excalidraw/components/CursorHint.scss",
         "line": 23,
@@ -105,6 +98,13 @@
         "value": "-#",
         "kind": "explained",
         "reason": "offset by padding + border to vertically center the list with sibling buttons (both from top and bototm, due to flex la…"
+      },
+      {
+        "file": "packages/excalidraw/components/TopPicksDnD/TopPicksDnD.scss",
+        "line": 147,
+        "value": "width 0.15s ease, height 0.15s ease",
+        "kind": "explained",
+        "reason": "NOTE transform is deliberately not transitioned here (tracks the pointer every frame); --dropping adds it for the fly-t…"
       },
       {
         "file": "packages/excalidraw/css/styles.scss",
@@ -130,15 +130,43 @@
     ]
   },
   "driftSummary": {
-    "total": 79,
+    "total": 81,
     "critical": 0,
-    "warning": 46,
-    "info": 33
+    "warning": 47,
+    "info": 34
   },
   "driftByType": {
-    "hardcoded-value": 79
+    "hardcoded-value": 81
   },
   "topColors": [
+    {
+      "value": "#fff",
+      "count": 20
+    },
+    {
+      "value": "#0fb884",
+      "count": 4
+    },
+    {
+      "value": "#000",
+      "count": 3
+    },
+    {
+      "value": "#ecfdf5",
+      "count": 2
+    },
+    {
+      "value": "#064e3c",
+      "count": 2
+    },
+    {
+      "value": "#aaa",
+      "count": 2
+    },
+    {
+      "value": "rgba(0, 0, 0, 0.5)",
+      "count": 2
+    },
     {
       "value": "#868e96",
       "count": 1
@@ -146,36 +174,36 @@
   ],
   "topSpacing": [
     {
-      "value": "0.75rem",
-      "count": 3
+      "value": "0.5rem",
+      "count": 67
     },
     {
       "value": "0.25rem",
-      "count": 3
+      "count": 30
     },
     {
-      "value": "2em",
-      "count": 1
+      "value": "0.75rem",
+      "count": 28
     },
     {
       "value": "1rem",
-      "count": 1
+      "count": 28
     },
     {
-      "value": "14px",
-      "count": 1
+      "value": "2rem",
+      "count": 12
     },
     {
-      "value": "0.2rem",
-      "count": 1
+      "value": "1.5rem",
+      "count": 12
+    },
+    {
+      "value": "2.5rem",
+      "count": 8
     },
     {
       "value": "1em",
-      "count": 1
-    },
-    {
-      "value": "6px",
-      "count": 1
+      "count": 7
     }
   ],
   "worstFiles": [
@@ -184,16 +212,16 @@
       "count": 59
     },
     {
-      "file": "packages/excalidraw/components/ColorPicker/ColorPicker.scss",
-      "count": 34
-    },
-    {
       "file": "packages/excalidraw/css/styles.scss",
       "count": 31
     },
     {
       "file": "packages/excalidraw/components/TTDDialog/Chat/Chat.scss",
       "count": 29
+    },
+    {
+      "file": "packages/excalidraw/components/ColorPicker/ColorPicker.scss",
+      "count": 27
     },
     {
       "file": "packages/excalidraw/components/PublishLibrary.scss",
@@ -303,5 +331,5 @@
       ]
     }
   ],
-  "scanSeconds": 10
+  "scanSeconds": 11
 }

@@ -3,12 +3,12 @@
   "owner": "posthog",
   "name": "posthog",
   "description": ":hedgehog: PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.",
-  "stars": 39914,
+  "stars": 39927,
   "homepage": "https://posthog.com",
   "language": "Python",
   "defaultBranch": "master",
-  "commit": "854c5395af26767987bb641a57b26e22e9702774",
-  "generatedAt": "2026-09-24T12:17:44.919Z",
+  "commit": "9480485e439e1fad18de8ebbf86448bb621d1f93",
+  "generatedAt": "2026-09-25T12:21:14.815Z",
   "cliVersion": "0.8.7",
   "score": 75,
   "tier": "Good",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 4815,
+    "componentCount": 4817,
     "tokenCount": 183,
-    "hardcodedValueCount": 351,
+    "hardcodedValueCount": 350,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 3,
@@ -41,7 +41,7 @@
     "colorContrastCount": 3,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 359,
+    "totalDriftCount": 358,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 2,
     "vendoredDriftCount": 0,
-    "notedCount": 81,
+    "notedCount": 80,
     "topHardcodedColor": {
       "value": "rgba(0",
       "count": 9
@@ -71,7 +71,7 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 351 hardcoded values left to tokenize. frontend/src/lib/KeaDevTools.tsx has the most (6)",
+    "Nearly there — just 350 hardcoded values left to tokenize. frontend/src/lib/KeaDevTools.tsx has the most (6)",
     "3 color contrast issues — fix immediately",
     "3 deprecated patterns — migrate to current API"
   ],
@@ -79,7 +79,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 15,
-      "action": "Replace the hardcoded values in 339 of the 351 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 338 of the 350 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -88,10 +88,10 @@
     }
   ],
   "noted": {
-    "count": 81,
+    "count": 80,
     "byKind": {
       "explained": 13,
-      "optical-nudge": 66,
+      "optical-nudge": 65,
       "known-debt": 2
     },
     "samples": [
@@ -140,13 +140,13 @@
     ]
   },
   "driftSummary": {
-    "total": 359,
+    "total": 358,
     "critical": 3,
     "warning": 177,
-    "info": 179
+    "info": 178
   },
   "driftByType": {
-    "hardcoded-value": 351,
+    "hardcoded-value": 350,
     "deprecated-pattern": 3,
     "color-contrast": 3,
     "repeated-pattern": 2
@@ -154,6 +154,10 @@
   "topColors": [
     {
       "value": "#fff",
+      "count": 29
+    },
+    {
+      "value": "#1d1f27",
       "count": 8
     },
     {
@@ -173,50 +177,46 @@
       "count": 3
     },
     {
-      "value": "#1d1f27",
+      "value": "rgba(0,0,0,0.55)",
       "count": 3
     },
     {
-      "value": "#f0f0f0",
+      "value": "rgba(0,0,0,0.6)",
       "count": 3
-    },
-    {
-      "value": "rgba(255,255,255,0.5)",
-      "count": 2
     }
   ],
   "topSpacing": [
     {
-      "value": "30px",
-      "count": 3
+      "value": "0.5rem",
+      "count": 265
     },
     {
-      "value": "0.5rem",
-      "count": 2
+      "value": "0.25rem",
+      "count": 144
+    },
+    {
+      "value": "0.375rem",
+      "count": 106
+    },
+    {
+      "value": "0.75rem",
+      "count": 86
     },
     {
       "value": "1rem",
-      "count": 2
+      "count": 85
     },
     {
-      "value": "5px",
-      "count": 2
+      "value": "0.625rem",
+      "count": 26
     },
     {
-      "value": "2.5rem",
-      "count": 2
+      "value": "4px",
+      "count": 19
     },
     {
-      "value": "3rem",
-      "count": 1
-    },
-    {
-      "value": "1.5rem",
-      "count": 1
-    },
-    {
-      "value": "1.2rem",
-      "count": 1
+      "value": "8px",
+      "count": 17
     }
   ],
   "worstFiles": [
@@ -348,5 +348,5 @@
       ]
     }
   ],
-  "scanSeconds": 154
+  "scanSeconds": 192
 }

@@ -3,12 +3,12 @@
   "owner": "supabase",
   "name": "supabase",
   "description": "The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications.",
-  "stars": 110723,
+  "stars": 110758,
   "homepage": "https://supabase.com",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "3990fb42076b321ccc0e8562108f469a8aa322b7",
-  "generatedAt": "2026-09-24T12:07:19.923Z",
+  "commit": "0e6fff6760ece94ea19caff367f81605ec7a2249",
+  "generatedAt": "2026-09-25T12:08:20.412Z",
   "cliVersion": "0.8.7",
   "score": 38,
   "tier": "Bad",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 4590,
+    "componentCount": 4594,
     "tokenCount": 1158,
     "hardcodedValueCount": 301,
     "unusedTokenCount": 0,
@@ -41,10 +41,10 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 4892,
+    "totalDriftCount": 4896,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 7,
-    "orphanedComponentCount": 4582,
+    "orphanedComponentCount": 4586,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 2,
     "orphanedTokenCount": 0,
@@ -82,7 +82,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 283 of the 294 findings with tokens or scale steps, and remove or reuse 4589 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 283 of the 294 findings with tokens or scale steps, and remove or reuse 4593 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -141,15 +141,15 @@
     ]
   },
   "driftSummary": {
-    "total": 4457,
+    "total": 4458,
     "critical": 0,
-    "warning": 4214,
+    "warning": 4215,
     "info": 243
   },
   "driftByType": {
     "deprecated-pattern": 2,
     "hardcoded-value": 301,
-    "orphaned-component": 4147,
+    "orphaned-component": 4148,
     "repeated-pattern": 7
   },
   "topColors": [
@@ -188,15 +188,19 @@
   ],
   "topSpacing": [
     {
+      "value": "4px",
+      "count": 15
+    },
+    {
       "value": "5px",
       "count": 14
     },
     {
-      "value": "4px",
-      "count": 13
+      "value": "2px",
+      "count": 9
     },
     {
-      "value": "2px",
+      "value": "0.5rem",
       "count": 9
     },
     {
@@ -212,12 +216,8 @@
       "count": 6
     },
     {
-      "value": "14px",
-      "count": 4
-    },
-    {
-      "value": "18px",
-      "count": 4
+      "value": "1rem",
+      "count": 5
     }
   ],
   "worstFiles": [
@@ -344,5 +344,5 @@
       ]
     }
   ],
-  "scanSeconds": 131
+  "scanSeconds": 166
 }

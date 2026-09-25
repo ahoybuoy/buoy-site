@@ -3,12 +3,12 @@
   "owner": "twentyhq",
   "name": "twenty",
   "description": "The open alternative to Salesforce, designed for AI.",
-  "stars": 57410,
+  "stars": 57476,
   "homepage": "https://twenty.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "ad7244b079eb805f6ef53fe9858dc4235f2f496f",
-  "generatedAt": "2026-09-24T12:11:29.219Z",
+  "commit": "5d43cec9eab6e04756a696a1e9f2d505b4ae0c51",
+  "generatedAt": "2026-09-25T12:13:37.928Z",
   "cliVersion": "0.8.7",
   "score": 99,
   "tier": "Great",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 3684,
+    "componentCount": 3701,
     "tokenCount": 13,
     "hardcodedValueCount": 24,
     "unusedTokenCount": 0,
@@ -106,7 +106,7 @@
       },
       {
         "file": "packages/twenty-ui/src/primitives/input/SegmentedControl/SegmentedControl.module.scss",
-        "line": 12,
+        "line": 14,
         "value": "3px",
         "kind": "optical-nudge",
         "reason": "padding: 3px is a 2-3px optical adjustment"
@@ -125,6 +125,14 @@
   "topColors": [
     {
       "value": "#333",
+      "count": 2
+    },
+    {
+      "value": "#141414",
+      "count": 2
+    },
+    {
+      "value": "#ffffff",
       "count": 2
     },
     {
@@ -150,6 +158,10 @@
       "count": 3
     },
     {
+      "value": "20px",
+      "count": 2
+    },
+    {
       "value": "12px",
       "count": 2
     },
@@ -158,8 +170,8 @@
       "count": 2
     },
     {
-      "value": "20px",
-      "count": 1
+      "value": "6px",
+      "count": 2
     },
     {
       "value": "4px",
@@ -167,10 +179,6 @@
     },
     {
       "value": "10px",
-      "count": 1
-    },
-    {
-      "value": "40px",
       "count": 1
     }
   ],
@@ -309,5 +317,5 @@
       ]
     }
   ],
-  "scanSeconds": 125
+  "scanSeconds": 162
 }

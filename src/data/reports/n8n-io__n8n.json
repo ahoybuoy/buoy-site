@@ -3,12 +3,12 @@
   "owner": "n8n-io",
   "name": "n8n",
   "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
-  "stars": 205840,
+  "stars": 205920,
   "homepage": "https://n8n.io",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "772d420dc4ab08fa2d1af5ffb874eeb74f32a2b9",
-  "generatedAt": "2026-09-24T12:14:33.671Z",
+  "commit": "8ccb6cd0a0529e5a10106d72c1fa0e7e838f58fb",
+  "generatedAt": "2026-09-25T12:17:16.752Z",
   "cliVersion": "0.8.7",
   "score": 58,
   "tier": "OK",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1305,
+    "componentCount": 1312,
     "tokenCount": 637,
-    "hardcodedValueCount": 263,
+    "hardcodedValueCount": 262,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 264,
+    "totalDriftCount": 263,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -71,14 +71,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 263 hardcoded values left to tokenize. packages/frontend/editor-ui/src/features/settings/communityNodes/components/ContactAdministratorToInstall.vue has the most (2)",
+    "Nearly there — just 262 hardcoded values left to tokenize. packages/frontend/editor-ui/src/features/settings/communityNodes/components/ContactAdministratorToInstall.vue has the most (2)",
     "1 deprecated pattern — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 40,
-      "action": "Replace the hardcoded values in 260 of the 263 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 259 of the 262 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -139,17 +139,83 @@
     ]
   },
   "driftSummary": {
-    "total": 264,
+    "total": 263,
     "critical": 0,
     "warning": 94,
-    "info": 170
+    "info": 169
   },
   "driftByType": {
     "deprecated-pattern": 1,
-    "hardcoded-value": 263
+    "hardcoded-value": 262
   },
-  "topColors": [],
-  "topSpacing": [],
+  "topColors": [
+    {
+      "value": "#fff",
+      "count": 7
+    },
+    {
+      "value": "#ff6d5a",
+      "count": 4
+    },
+    {
+      "value": "rgba(67, 142, 255, 1)",
+      "count": 3
+    },
+    {
+      "value": "#f0f0f0",
+      "count": 3
+    },
+    {
+      "value": "#999",
+      "count": 3
+    },
+    {
+      "value": "#f00",
+      "count": 2
+    },
+    {
+      "value": "#e6e6e6",
+      "count": 2
+    },
+    {
+      "value": "#d3dce6",
+      "count": 2
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "10px",
+      "count": 38
+    },
+    {
+      "value": "5px",
+      "count": 38
+    },
+    {
+      "value": "8px",
+      "count": 32
+    },
+    {
+      "value": "20px",
+      "count": 15
+    },
+    {
+      "value": "12px",
+      "count": 15
+    },
+    {
+      "value": "4px",
+      "count": 14
+    },
+    {
+      "value": "16px",
+      "count": 13
+    },
+    {
+      "value": "1em",
+      "count": 12
+    }
+  ],
   "worstFiles": [
     {
       "file": "packages/@n8n/local-gateway/src/renderer/styles.css",
@@ -283,5 +349,5 @@
       ]
     }
   ],
-  "scanSeconds": 55
+  "scanSeconds": 70
 }
