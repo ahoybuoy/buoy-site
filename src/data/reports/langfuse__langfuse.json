@@ -3,12 +3,12 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source agent evals & observability: Trace, evaluate, and improve LLM applications with one open platform.",
-  "stars": 35037,
+  "stars": 35065,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "50db7223b0fb196194fa6ecc2e24386fea4babd8",
-  "generatedAt": "2026-09-25T12:22:26.795Z",
+  "commit": "66f6226131714eb73cc88c3ccc4b851cd7b63c89",
+  "generatedAt": "2026-09-26T11:58:50.991Z",
   "cliVersion": "0.8.7",
   "score": 93,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1972,
+    "componentCount": 1988,
     "tokenCount": 239,
-    "hardcodedValueCount": 74,
+    "hardcodedValueCount": 76,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 74,
+    "totalDriftCount": 76,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -69,14 +69,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 72 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx has the most (2)",
+    "Nearly there — just 74 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx has the most (2)",
     "2 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 7,
-      "action": "Replace the hardcoded values in 68 of the 72 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 70 of the 74 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -87,7 +87,7 @@
     "samples": [
       {
         "file": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx",
-        "line": 2067,
+        "line": 1960,
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "right: 2px is a 2-3px optical adjustment"
@@ -116,13 +116,13 @@
     ]
   },
   "driftSummary": {
-    "total": 74,
+    "total": 76,
     "critical": 0,
     "warning": 1,
-    "info": 73
+    "info": 75
   },
   "driftByType": {
-    "hardcoded-value": 74
+    "hardcoded-value": 76
   },
   "topColors": [
     {
@@ -222,17 +222,17 @@
     },
     {
       "component": "TimelineDense",
-      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:366",
+      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:338",
       "entries": [
-        "fontSize: 10px (line 1476)",
-        "fontSize: 9px (line 1557)"
+        "fontSize: 10px (line 1398)",
+        "fontSize: 9px (line 1472)"
       ]
     },
     {
       "component": "GutterContent",
-      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:1953",
+      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:1846",
       "entries": [
-        "fontSize: 10px (line 2080)"
+        "fontSize: 10px (line 1973)"
       ]
     },
     {
@@ -292,5 +292,5 @@
       ]
     }
   ],
-  "scanSeconds": 70
+  "scanSeconds": 69
 }

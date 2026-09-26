@@ -3,18 +3,18 @@
   "owner": "vercel",
   "name": "next.js",
   "description": "The React Framework",
-  "stars": 142432,
+  "stars": 142458,
   "homepage": "https://nextjs.org",
   "language": "JavaScript",
   "defaultBranch": "canary",
-  "commit": "725705bd414a65d1fab9d284795b227abe8e1214",
-  "generatedAt": "2026-09-25T12:25:26.815Z",
+  "commit": "1cc0f6617e2f7df9068083066a4c2db76b51fdcb",
+  "generatedAt": "2026-09-26T12:01:51.006Z",
   "cliVersion": "0.8.7",
-  "score": 88,
+  "score": 89,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 50,
+      "score": 51,
       "max": 60
     },
     "tokenHealth": {
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 331,
+    "componentCount": 350,
     "tokenCount": 278,
     "hardcodedValueCount": 17,
     "unusedTokenCount": 0,
@@ -78,7 +78,7 @@
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 10,
+      "points": 9,
       "action": "Replace the hardcoded values in all 16 findings with tokens or scale steps"
     },
     {
@@ -255,10 +255,10 @@
     },
     {
       "component": "apps/bundle-analyzer/components/compare-layout.tsx",
-      "location": "apps/bundle-analyzer/components/compare-layout.tsx:207",
+      "location": "apps/bundle-analyzer/components/compare-layout.tsx:169",
       "entries": [
-        "text-[10px] (line 207)",
-        "text-[10px] (line 300)"
+        "text-[10px] (line 169)",
+        "text-[10px] (line 247)"
       ]
     },
     {

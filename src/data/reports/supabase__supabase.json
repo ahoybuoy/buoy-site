@@ -3,12 +3,12 @@
   "owner": "supabase",
   "name": "supabase",
   "description": "The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications.",
-  "stars": 110758,
+  "stars": 110774,
   "homepage": "https://supabase.com",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "0e6fff6760ece94ea19caff367f81605ec7a2249",
-  "generatedAt": "2026-09-25T12:08:20.412Z",
+  "commit": "36371de15127206280d2d40786e8578dfe1b681a",
+  "generatedAt": "2026-09-26T11:44:42.290Z",
   "cliVersion": "0.8.7",
   "score": 38,
   "tier": "Bad",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 4594,
+    "componentCount": 4601,
     "tokenCount": 1158,
-    "hardcodedValueCount": 301,
+    "hardcodedValueCount": 300,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,10 +41,10 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 4896,
+    "totalDriftCount": 4902,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 7,
-    "orphanedComponentCount": 4586,
+    "orphanedComponentCount": 4593,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 2,
     "orphanedTokenCount": 0,
@@ -73,7 +73,7 @@
     ]
   },
   "suggestions": [
-    "294 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/www/app/(home)/_components/logos/PublicityLogos.tsx (33 issues)",
+    "293 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/www/app/(home)/_components/logos/PublicityLogos.tsx (33 issues)",
     "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
     "7 repeated patterns — extract to shared components",
     "2 deprecated patterns — migrate to current API"
@@ -82,7 +82,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 283 of the 294 findings with tokens or scale steps, and remove or reuse 4593 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 282 of the 293 findings with tokens or scale steps, and remove or reuse 4600 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -143,13 +143,13 @@
   "driftSummary": {
     "total": 4458,
     "critical": 0,
-    "warning": 4215,
-    "info": 243
+    "warning": 4216,
+    "info": 242
   },
   "driftByType": {
     "deprecated-pattern": 2,
-    "hardcoded-value": 301,
-    "orphaned-component": 4148,
+    "hardcoded-value": 300,
+    "orphaned-component": 4149,
     "repeated-pattern": 7
   },
   "topColors": [
@@ -344,5 +344,5 @@
       ]
     }
   ],
-  "scanSeconds": 166
+  "scanSeconds": 167
 }
