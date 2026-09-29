@@ -3,12 +3,12 @@
   "owner": "n8n-io",
   "name": "n8n",
   "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
-  "stars": 206094,
+  "stars": 206259,
   "homepage": "https://n8n.io",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "2f2bac4645472e5efc72c4efedaadff6ef50348e",
-  "generatedAt": "2026-09-27T12:31:53.583Z",
+  "commit": "93b658c8db04869c992fc8311a1fec1faf5b195e",
+  "generatedAt": "2026-09-29T13:27:02.812Z",
   "cliVersion": "0.8.7",
   "score": 58,
   "tier": "OK",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 1313,
+    "componentCount": 1317,
     "tokenCount": 637,
     "hardcodedValueCount": 262,
     "unusedTokenCount": 0,
@@ -124,7 +124,7 @@
       },
       {
         "file": "packages/frontend/editor-ui/src/features/workflows/canvas/components/elements/selection/CanvasSelectionToolbar.vue",
-        "line": 179,
+        "line": 177,
         "value": "var.$index-popper",
         "kind": "explained",
         "reason": "Matches the design-system $index-popper tier (var.scss) — sits above vue-flow's elevated selected nodes so the per-node…"
@@ -349,5 +349,5 @@
       ]
     }
   ],
-  "scanSeconds": 70
+  "scanSeconds": 74
 }

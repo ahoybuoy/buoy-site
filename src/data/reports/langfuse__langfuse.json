@@ -3,12 +3,12 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source agent evals & observability: Trace, evaluate, and improve LLM applications with one open platform.",
-  "stars": 35099,
+  "stars": 35196,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "2ed0d25befdaceba736c08d7e855f3bc4135851e",
-  "generatedAt": "2026-09-27T12:37:02.018Z",
+  "commit": "d59f50ea3636605629ac061597be0c104a70d58b",
+  "generatedAt": "2026-09-29T13:32:21.628Z",
   "cliVersion": "0.8.7",
   "score": 93,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1988,
+    "componentCount": 2001,
     "tokenCount": 239,
-    "hardcodedValueCount": 76,
+    "hardcodedValueCount": 75,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 76,
+    "totalDriftCount": 75,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -52,7 +52,7 @@
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
-    "vendoredDriftCount": 2,
+    "vendoredDriftCount": 1,
     "notedCount": 4,
     "topHardcodedColor": {
       "value": "#6b7280",
@@ -70,13 +70,13 @@
   },
   "suggestions": [
     "Nearly there — just 74 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx has the most (2)",
-    "2 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
+    "1 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 7,
-      "action": "Replace the hardcoded values in 70 of the 74 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 69 of the 74 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -87,28 +87,28 @@
     "samples": [
       {
         "file": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx",
-        "line": 1960,
+        "line": 1970,
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "right: 2px is a 2-3px optical adjustment"
       },
       {
         "file": "web/src/features/traces/components/AdvancedJsonViewer/components/JsonRowFixed.tsx",
-        "line": 94,
+        "line": 97,
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "top: 2px is a 2-3px optical adjustment"
       },
       {
         "file": "web/src/features/traces/components/AdvancedJsonViewer/components/JsonRowFixed.tsx",
-        "line": 95,
+        "line": 98,
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "right: 2px is a 2-3px optical adjustment"
       },
       {
         "file": "web/src/features/traces/components/AdvancedJsonViewer/components/JsonRowScrollable.tsx",
-        "line": 94,
+        "line": 97,
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "marginLeft: 2px is a 2-3px optical adjustment"
@@ -116,13 +116,13 @@
     ]
   },
   "driftSummary": {
-    "total": 76,
+    "total": 75,
     "critical": 0,
     "warning": 1,
-    "info": 75
+    "info": 74
   },
   "driftByType": {
-    "hardcoded-value": 76
+    "hardcoded-value": 75
   },
   "topColors": [
     {
@@ -144,10 +144,6 @@
       "count": 4
     },
     {
-      "value": "9px",
-      "count": 3
-    },
-    {
       "value": "8px",
       "count": 3
     },
@@ -157,6 +153,10 @@
     },
     {
       "value": "10px",
+      "count": 2
+    },
+    {
+      "value": "9px",
       "count": 2
     },
     {
@@ -222,17 +222,17 @@
     },
     {
       "component": "TimelineDense",
-      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:338",
+      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:337",
       "entries": [
-        "fontSize: 10px (line 1398)",
-        "fontSize: 9px (line 1472)"
+        "fontSize: 10px (line 1408)",
+        "fontSize: 9px (line 1482)"
       ]
     },
     {
       "component": "GutterContent",
-      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:1846",
+      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:1856",
       "entries": [
-        "fontSize: 10px (line 1973)"
+        "fontSize: 10px (line 1983)"
       ]
     },
     {
@@ -244,19 +244,19 @@
     },
     {
       "component": "JsonRowFixed",
-      "location": "web/src/features/traces/components/AdvancedJsonViewer/components/JsonRowFixed.tsx:30",
+      "location": "web/src/features/traces/components/AdvancedJsonViewer/components/JsonRowFixed.tsx:29",
       "entries": [
-        "paddingLeft: 4px (line 60)",
-        "paddingRight: 4px (line 61)",
-        "fontSize: 9px (line 102)"
+        "paddingLeft: 4px (line 63)",
+        "paddingRight: 4px (line 64)",
+        "fontSize: 9px (line 105)"
       ]
     },
     {
       "component": "JsonRowScrollable",
-      "location": "web/src/features/traces/components/AdvancedJsonViewer/components/JsonRowScrollable.tsx:30",
+      "location": "web/src/features/traces/components/AdvancedJsonViewer/components/JsonRowScrollable.tsx:29",
       "entries": [
-        "paddingRight: 4px (line 73)",
-        "marginRight: 4px (line 95)"
+        "paddingRight: 4px (line 76)",
+        "marginRight: 4px (line 98)"
       ]
     },
     {
@@ -292,5 +292,5 @@
       ]
     }
   ],
-  "scanSeconds": 70
+  "scanSeconds": 72
 }

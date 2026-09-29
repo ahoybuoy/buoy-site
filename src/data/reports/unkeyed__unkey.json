@@ -3,12 +3,12 @@
   "owner": "unkeyed",
   "name": "unkey",
   "description": "The Developer Platform for Modern APIs",
-  "stars": 5450,
+  "stars": 5453,
   "homepage": "https://go.unkey.com",
   "language": "Go",
   "defaultBranch": "main",
-  "commit": "620cd8bc04662d1d0e650c4af52b692a337e986c",
-  "generatedAt": "2026-09-27T12:37:57.167Z",
+  "commit": "76fb5128a2befcff9ce8110a67dac3a4c9bc88e6",
+  "generatedAt": "2026-09-29T13:33:18.602Z",
   "cliVersion": "0.8.7",
   "score": null,
   "tier": "N/A",
@@ -32,7 +32,7 @@
   },
   "metrics": {
     "componentCount": 0,
-    "tokenCount": 363,
+    "tokenCount": 368,
     "hardcodedValueCount": 4,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
@@ -94,6 +94,10 @@
   "topSpacing": [
     {
       "value": "0.5rem",
+      "count": 3
+    },
+    {
+      "value": "0.4375rem",
       "count": 2
     },
     {
@@ -112,7 +116,7 @@
   "worstFiles": [
     {
       "file": "web/internal/workos-widgets/styles.css",
-      "count": 36
+      "count": 46
     },
     {
       "file": "web/apps/design/theme.css",
@@ -137,10 +141,10 @@
     },
     {
       "component": "web/apps/dashboard/styles/tailwind.css",
-      "location": "web/apps/dashboard/styles/tailwind.css:68",
+      "location": "web/apps/dashboard/styles/tailwind.css:140",
       "entries": [
-        "spacing: 1.5rem (line 68)",
-        "colour: rgba(115, 138, 148, 0.4) (line 71)"
+        "spacing: 1.5rem (line 140)",
+        "colour: rgba(115, 138, 148, 0.4) (line 143)"
       ]
     },
     {
@@ -154,13 +158,13 @@
     },
     {
       "component": "web/internal/workos-widgets/styles.css",
-      "location": "web/internal/workos-widgets/styles.css:115",
+      "location": "web/internal/workos-widgets/styles.css:122",
       "entries": [
-        "font size: 0.8125rem (line 115)",
-        "line height: 1.25rem (line 116)",
-        "font size: 0.8125rem (line 135)"
+        "font size: 0.8125rem (line 122)",
+        "line height: 1.25rem (line 123)",
+        "font size: 0.8125rem (line 142)"
       ]
     }
   ],
-  "scanSeconds": 16
+  "scanSeconds": 17
 }

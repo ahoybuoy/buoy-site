@@ -3,12 +3,12 @@
   "owner": "TryGhost",
   "name": "Ghost",
   "description": "Independent technology for modern publishing, memberships, subscriptions and newsletters.",
-  "stars": 55441,
+  "stars": 55454,
   "homepage": "https://ghost.org",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "019da35dd9c9cdc59a8f1b142309e26374cee75c",
-  "generatedAt": "2026-09-27T12:32:38.965Z",
+  "commit": "40cdab8b4d1aab787cefde8897f2538558f75b1e",
+  "generatedAt": "2026-09-29T13:27:49.872Z",
   "cliVersion": "0.8.7",
   "score": 62,
   "tier": "Good",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1714,
-    "tokenCount": 757,
-    "hardcodedValueCount": 332,
+    "componentCount": 1736,
+    "tokenCount": 761,
+    "hardcodedValueCount": 334,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 332,
+    "totalDriftCount": 334,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -72,14 +72,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 325 hardcoded values left to tokenize. apps/activitypub/src/views/inbox/components/customizer.tsx has the most (4)",
+    "Nearly there — just 327 hardcoded values left to tokenize. apps/activitypub/src/views/inbox/components/customizer.tsx has the most (4)",
     "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 38,
-      "action": "Replace the hardcoded values in 321 of the 325 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 323 of the 327 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -135,13 +135,13 @@
     ]
   },
   "driftSummary": {
-    "total": 332,
+    "total": 334,
     "critical": 0,
     "warning": 113,
-    "info": 219
+    "info": 221
   },
   "driftByType": {
-    "hardcoded-value": 332
+    "hardcoded-value": 334
   },
   "topColors": [
     {
@@ -280,11 +280,11 @@
     },
     {
       "component": "apps/activitypub/src/components/feed/feed-item.tsx",
-      "location": "apps/activitypub/src/components/feed/feed-item.tsx:837",
+      "location": "apps/activitypub/src/components/feed/feed-item.tsx:839",
       "entries": [
-        "pb-[18px] (line 837)",
-        "pl-[52px] (line 918)",
-        "ml-[-8px] (line 944)"
+        "pb-[18px] (line 839)",
+        "pl-[52px] (line 920)",
+        "ml-[-8px] (line 946)"
       ]
     },
     {
@@ -293,7 +293,7 @@
       "entries": [
         "leading-[1.4285714286] (line 720)",
         "tracking-[-0.006em] (line 720)",
-        "leading-[1.4em] (line 934)"
+        "leading-[1.4em] (line 936)"
       ]
     },
     {
@@ -329,8 +329,8 @@
       "location": "apps/activitypub/src/components/layout/header/header.tsx:36",
       "entries": [
         "mr-[-9px] (line 36)",
-        "max-lg:pr-[15.5px] (line 67)",
-        "max-md:ml-[10px] (line 68)"
+        "max-lg:pr-[15.5px] (line 68)",
+        "max-md:ml-[10px] (line 70)"
       ]
     },
     {
@@ -341,5 +341,5 @@
       ]
     }
   ],
-  "scanSeconds": 44
+  "scanSeconds": 45
 }

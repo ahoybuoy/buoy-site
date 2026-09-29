@@ -3,12 +3,12 @@
   "owner": "supabase",
   "name": "supabase",
   "description": "The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications.",
-  "stars": 110800,
+  "stars": 110884,
   "homepage": "https://supabase.com",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "36371de15127206280d2d40786e8578dfe1b681a",
-  "generatedAt": "2026-09-27T12:22:40.107Z",
+  "commit": "e1debe9a69a4c32eaed629322195b15fafa68bd9",
+  "generatedAt": "2026-09-29T13:17:20.684Z",
   "cliVersion": "0.8.7",
   "score": 38,
   "tier": "Bad",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 4601,
-    "tokenCount": 1158,
-    "hardcodedValueCount": 300,
+    "componentCount": 4609,
+    "tokenCount": 1128,
+    "hardcodedValueCount": 301,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,10 +41,10 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 4902,
+    "totalDriftCount": 4911,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 7,
-    "orphanedComponentCount": 4593,
+    "orphanedComponentCount": 4601,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 2,
     "orphanedTokenCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 4,
     "vendoredDriftCount": 7,
-    "notedCount": 16,
+    "notedCount": 18,
     "topHardcodedColor": {
       "value": "#404EED",
       "count": 4
@@ -73,7 +73,7 @@
     ]
   },
   "suggestions": [
-    "293 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/www/app/(home)/_components/logos/PublicityLogos.tsx (33 issues)",
+    "294 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/www/app/(home)/_components/logos/PublicityLogos.tsx (33 issues)",
     "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
     "7 repeated patterns — extract to shared components",
     "2 deprecated patterns — migrate to current API"
@@ -82,7 +82,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 282 of the 293 findings with tokens or scale steps, and remove or reuse 4600 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 283 of the 294 findings with tokens or scale steps, and remove or reuse 4608 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -91,9 +91,9 @@
     }
   ],
   "noted": {
-    "count": 16,
+    "count": 18,
     "byKind": {
-      "optical-nudge": 16
+      "optical-nudge": 18
     },
     "samples": [
       {
@@ -141,15 +141,15 @@
     ]
   },
   "driftSummary": {
-    "total": 4458,
+    "total": 4460,
     "critical": 0,
-    "warning": 4216,
-    "info": 242
+    "warning": 4217,
+    "info": 243
   },
   "driftByType": {
     "deprecated-pattern": 2,
-    "hardcoded-value": 300,
-    "orphaned-component": 4149,
+    "hardcoded-value": 301,
+    "orphaned-component": 4150,
     "repeated-pattern": 7
   },
   "topColors": [
@@ -344,5 +344,5 @@
       ]
     }
   ],
-  "scanSeconds": 162
+  "scanSeconds": 173
 }

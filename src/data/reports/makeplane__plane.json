@@ -3,18 +3,18 @@
   "owner": "makeplane",
   "name": "plane",
   "description": "🔥🔥🔥 Open-source Jira, Linear, Monday, and ClickUp alternative. Plane is a modern project management platform to manage tasks, sprints, docs, and triage.",
-  "stars": 59935,
+  "stars": 60063,
   "homepage": "http://plane.so",
   "language": "TypeScript",
   "defaultBranch": "preview",
-  "commit": "888b0869dc6a3cc993e6f2f289ee81b191139e1f",
-  "generatedAt": "2026-09-27T12:29:29.191Z",
+  "commit": "e72bf10fa529d0764a671b19d0657fb244882811",
+  "generatedAt": "2026-09-29T13:24:32.998Z",
   "cliVersion": "0.8.7",
-  "score": 95,
+  "score": 92,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 55,
+      "score": 52,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 490,
+    "componentCount": 882,
     "tokenCount": 82,
-    "hardcodedValueCount": 12,
+    "hardcodedValueCount": 40,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 13,
+    "totalDriftCount": 41,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 1,
     "orphanedComponentCount": 0,
@@ -52,8 +52,8 @@
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
-    "vendoredDriftCount": 0,
-    "notedCount": 0,
+    "vendoredDriftCount": 4,
+    "notedCount": 1,
     "topHardcodedColor": {
       "value": "#B9B9B9",
       "count": 1
@@ -68,37 +68,84 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 12 hardcoded values left to tokenize"
+    "Nearly there — just 36 hardcoded values left to tokenize",
+    "4 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 5,
-      "action": "Replace the hardcoded values in 11 of the 12 findings with tokens or scale steps, and remove or reuse 1 unused component or repeated pattern"
+      "points": 8,
+      "action": "Replace the hardcoded values in 34 of the 36 findings with tokens or scale steps, and remove or reuse 1 unused component or repeated pattern"
     }
   ],
   "noted": {
-    "count": 0,
-    "byKind": {},
-    "samples": []
+    "count": 1,
+    "byKind": {
+      "optical-nudge": 1
+    },
+    "samples": [
+      {
+        "file": "apps/web/components/stickies/action-bar.tsx",
+        "line": 69,
+        "value": "p-[2px]",
+        "kind": "optical-nudge",
+        "reason": "p-[2px] is a 2-3px optical adjustment"
+      }
+    ]
   },
   "driftSummary": {
-    "total": 13,
+    "total": 41,
     "critical": 0,
-    "warning": 4,
-    "info": 9
+    "warning": 11,
+    "info": 30
   },
   "driftByType": {
-    "hardcoded-value": 12,
+    "hardcoded-value": 40,
     "repeated-pattern": 1
   },
   "topColors": [
     {
+      "value": "#3f76ff",
+      "count": 4
+    },
+    {
       "value": "#B9B9B9",
+      "count": 1
+    },
+    {
+      "value": "#ffffff",
+      "count": 1
+    },
+    {
+      "value": "#CFCFCF",
+      "count": 1
+    },
+    {
+      "value": "#212121",
+      "count": 1
+    },
+    {
+      "value": "#3b5ec6",
+      "count": 1
+    },
+    {
+      "value": "#f5f7fe",
+      "count": 1
+    },
+    {
+      "value": "#387ED1",
       "count": 1
     }
   ],
   "topSpacing": [
+    {
+      "value": "6px",
+      "count": 3
+    },
+    {
+      "value": "4px",
+      "count": 2
+    },
     {
       "value": "0.5rem",
       "count": 2
@@ -108,27 +155,19 @@
       "count": 2
     },
     {
-      "value": "4px",
+      "value": "54.8px",
       "count": 1
     },
     {
-      "value": "6px",
+      "value": "64px",
       "count": 1
     },
     {
-      "value": "1.5px",
+      "value": "38px",
       "count": 1
     },
     {
-      "value": "-5px",
-      "count": 1
-    },
-    {
-      "value": "-10px",
-      "count": 1
-    },
-    {
-      "value": "-18px",
+      "value": "5px",
       "count": 1
     }
   ],
@@ -142,6 +181,18 @@
       "count": 6
     },
     {
+      "file": "apps/web/components/profile/sidebar.tsx",
+      "count": 5
+    },
+    {
+      "file": "apps/web/components/active-cycles/workspace-active-cycles-upgrade.tsx",
+      "count": 4
+    },
+    {
+      "file": "apps/web/components/gantt-chart/chart/views/week.tsx",
+      "count": 4
+    },
+    {
       "file": "apps/web/styles/emoji.css",
       "count": 4
     },
@@ -150,20 +201,8 @@
       "count": 4
     },
     {
-      "file": "apps/web/styles/globals.css",
+      "file": "apps/web/components/gantt-chart/chart/views/month.tsx",
       "count": 3
-    },
-    {
-      "file": "packages/editor/src/components/editors/document/page-renderer.tsx",
-      "count": 2
-    },
-    {
-      "file": "packages/editor/src/extensions/code-inline/index.tsx",
-      "count": 2
-    },
-    {
-      "file": "packages/editor/src/styles/table.css",
-      "count": 2
     }
   ],
   "samples": [
@@ -175,6 +214,13 @@
       ]
     },
     {
+      "component": "PDFDocument",
+      "location": "apps/web/components/editor/pdf/document.tsx:221",
+      "entries": [
+        "backgroundColor: #ffffff (line 229)"
+      ]
+    },
+    {
       "component": "apps/space/components/issues/issue-layouts/properties/member.tsx",
       "location": "apps/space/components/issues/issue-layouts/properties/member.tsx:71",
       "entries": [
@@ -182,88 +228,77 @@
       ]
     },
     {
-      "component": "packages/editor/src/components/editors/document/page-renderer.tsx",
-      "location": "packages/editor/src/components/editors/document/page-renderer.tsx:85",
+      "component": "apps/web/components/active-cycles/workspace-active-cycles-upgrade.tsx",
+      "location": "apps/web/components/active-cycles/workspace-active-cycles-upgrade.tsx:84",
       "entries": [
-        "text-[2rem] (line 85)",
-        "leading-[2.375rem] (line 85)"
+        "from-[#CFCFCF] (line 84)",
+        "to-[#212121] (line 84)",
+        "from-[#3b5ec6] (line 85)"
       ]
     },
     {
-      "component": "packages/editor/src/extensions/code-inline/index.tsx",
-      "location": "packages/editor/src/extensions/code-inline/index.tsx:44",
+      "component": "apps/web/components/auth-screens/footer.tsx",
+      "location": "apps/web/components/auth-screens/footer.tsx:16",
       "entries": [
-        "px-[6px] (line 44)",
-        "py-[1.5px] (line 44)"
+        "text-[#387ED1] (line 16)"
       ]
     },
     {
-      "component": "apps/admin/styles/globals.css",
-      "location": "apps/admin/styles/globals.css:9",
+      "component": "apps/web/components/common/latest-feature-block.tsx",
+      "location": "apps/web/components/common/latest-feature-block.tsx:19",
       "entries": [
-        "shadow: 2px 2px 8px 2px rgba(234, 231, 250, 0.3) (line 9)"
+        "rounded-[3.5px] (line 19)"
       ]
     },
     {
-      "component": "apps/web/styles/emoji.css",
-      "location": "apps/web/styles/emoji.css:18",
+      "component": "apps/web/components/dropdowns/member/avatar.tsx",
+      "location": "apps/web/components/dropdowns/member/avatar.tsx:70",
       "entries": [
-        "font size: 0.7875rem (line 18)",
-        "spacing: 0.5rem (line 24)",
-        "font size: 0.7875rem (line 33)"
+        "mx-[4px] (line 70)"
       ]
     },
     {
-      "component": "apps/web/styles/globals.css",
-      "location": "apps/web/styles/globals.css:25",
+      "component": "apps/web/components/gantt-chart/chart/views/month.tsx",
+      "location": "apps/web/components/gantt-chart/chart/views/month.tsx:35",
       "entries": [
-        "shadow: 2px 2px 8px 2px rgba(234, 231, 250, 0.3) (line 25)",
-        "radius: 4px (line 136)",
-        "radius: 4px (line 140)"
+        "outline-[0.25px] (line 35)",
+        "outline-[0.25px] (line 73)",
+        "outline-[0.25px] (line 99)"
       ]
     },
     {
-      "component": "packages/editor/src/styles/drag-drop.css",
-      "location": "packages/editor/src/styles/drag-drop.css:59",
+      "component": "apps/web/components/gantt-chart/chart/views/quarter.tsx",
+      "location": "apps/web/components/gantt-chart/chart/views/quarter.tsx:29",
       "entries": [
-        "radius: 4px (line 59)",
-        "spacing: -5px (line 76)",
-        "spacing: -10px (line 81)"
+        "outline-[0.25px] (line 29)",
+        "outline-[0.25px] (line 63)",
+        "outline-[0.25px] (line 88)"
       ]
     },
     {
-      "component": "packages/editor/src/styles/editor.css",
-      "location": "packages/editor/src/styles/editor.css:43",
+      "component": "apps/web/components/gantt-chart/chart/views/week.tsx",
+      "location": "apps/web/components/gantt-chart/chart/views/week.tsx:26",
       "entries": [
-        "spacing: 10px (line 43)",
-        "line height: 1.5 (line 93)",
-        "spacing: 1.15rem (line 104)"
+        "outline-[0.25px] (line 26)",
+        "outline-[0.25px] (line 55)",
+        "outline-[0.25px] (line 81)"
       ]
     },
     {
-      "component": "packages/editor/src/styles/table.css",
-      "location": "packages/editor/src/styles/table.css:3",
+      "component": "apps/web/components/home/widgets/empty-states/no-projects.tsx",
+      "location": "apps/web/components/home/widgets/empty-states/no-projects.tsx:108",
       "entries": [
-        "spacing: 26px (line 3)",
-        "radius: 4px (line 157)"
+        "bg-[#028375] (line 108)",
+        "bg-[#17a34a] (line 166)"
       ]
     },
     {
-      "component": "packages/editor/src/styles/title-editor.css",
-      "location": "packages/editor/src/styles/title-editor.css:19",
+      "component": "apps/web/components/issues/attachment/attachment-detail.tsx",
+      "location": "apps/web/components/issues/attachment/attachment-detail.tsx:73",
       "entries": [
-        "font size: 1.6rem (line 19)",
-        "line height: 1.9rem (line 20)",
-        "font size: 2rem (line 24)"
-      ]
-    },
-    {
-      "component": "packages/tailwind-config/index.css",
-      "location": "packages/tailwind-config/index.css:131",
-      "entries": [
-        "spacing: 44px (line 131)"
+        "border-[2px] (line 73)"
       ]
     }
   ],
-  "scanSeconds": 22
+  "scanSeconds": 39
 }
