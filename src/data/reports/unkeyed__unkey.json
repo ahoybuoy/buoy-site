@@ -3,12 +3,12 @@
   "owner": "unkeyed",
   "name": "unkey",
   "description": "The Developer Platform for Modern APIs",
-  "stars": 5453,
+  "stars": 5454,
   "homepage": "https://go.unkey.com",
   "language": "Go",
   "defaultBranch": "main",
-  "commit": "76fb5128a2befcff9ce8110a67dac3a4c9bc88e6",
-  "generatedAt": "2026-09-29T13:33:18.602Z",
+  "commit": "c36ffcf23ba15989320ebafaaf0eed09a5b4e19e",
+  "generatedAt": "2026-09-30T13:13:28.365Z",
   "cliVersion": "0.8.7",
   "score": null,
   "tier": "N/A",
@@ -32,8 +32,8 @@
   },
   "metrics": {
     "componentCount": 0,
-    "tokenCount": 368,
-    "hardcodedValueCount": 4,
+    "tokenCount": 386,
+    "hardcodedValueCount": 5,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 6,
+    "totalDriftCount": 7,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -72,13 +72,13 @@
     "samples": []
   },
   "driftSummary": {
-    "total": 6,
+    "total": 7,
     "critical": 0,
-    "warning": 3,
+    "warning": 4,
     "info": 3
   },
   "driftByType": {
-    "hardcoded-value": 4,
+    "hardcoded-value": 5,
     "repeated-pattern": 2
   },
   "topColors": [
@@ -93,27 +93,43 @@
   ],
   "topSpacing": [
     {
+      "value": "1rem",
+      "count": 8
+    },
+    {
+      "value": "1.5rem",
+      "count": 7
+    },
+    {
       "value": "0.5rem",
-      "count": 3
+      "count": 4
+    },
+    {
+      "value": "1.25rem",
+      "count": 2
+    },
+    {
+      "value": "0.4rem",
+      "count": 2
+    },
+    {
+      "value": "2.5rem",
+      "count": 2
     },
     {
       "value": "0.4375rem",
       "count": 2
     },
     {
-      "value": "1.5rem",
-      "count": 1
-    },
-    {
-      "value": "3.5rem",
-      "count": 1
-    },
-    {
-      "value": "2.5rem",
+      "value": "3rem",
       "count": 1
     }
   ],
   "worstFiles": [
+    {
+      "file": "docs/product/style.css",
+      "count": 71
+    },
     {
       "file": "web/internal/workos-widgets/styles.css",
       "count": 46
@@ -137,6 +153,15 @@
       "location": "docs/engineering/style.css:6",
       "entries": [
         "letter spacing: -0.02em (line 6)"
+      ]
+    },
+    {
+      "component": "docs/product/style.css",
+      "location": "docs/product/style.css:65",
+      "entries": [
+        "font weight: 600 (line 65)",
+        "letter spacing: -0.025em (line 66)",
+        "line height: 1.2 (line 67)"
       ]
     },
     {

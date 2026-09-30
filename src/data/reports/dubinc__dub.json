@@ -3,12 +3,12 @@
   "owner": "dubinc",
   "name": "dub",
   "description": "The modern link attribution platform. Loved by world-class marketing teams like Framer, Perplexity, Superhuman, Twilio, Buffer and more.",
-  "stars": 24840,
+  "stars": 24846,
   "homepage": "https://dub.co",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "940ba9fe914d5f20bbf0e16e0a2f72b80ca4907a",
-  "generatedAt": "2026-09-29T13:18:07.682Z",
+  "commit": "81b20f1b523e3222b5636852e7a01420a87078f0",
+  "generatedAt": "2026-09-30T12:57:59.333Z",
   "cliVersion": "0.8.7",
   "score": 90,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1586,
+    "componentCount": 1594,
     "tokenCount": 0,
-    "hardcodedValueCount": 79,
+    "hardcodedValueCount": 80,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 97,
+    "totalDriftCount": 98,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 18,
     "orphanedComponentCount": 0,
@@ -70,7 +70,7 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 75 hardcoded values left to tokenize. apps/web/app/(ee)/partners.dub.co/(dashboard)/referrals/page.tsx has the most (3)",
+    "Nearly there — just 76 hardcoded values left to tokenize. apps/web/app/(ee)/partners.dub.co/(dashboard)/referrals/page.tsx has the most (3)",
     "4 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
     "18 repeated patterns — extract to shared components"
   ],
@@ -78,7 +78,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 10,
-      "action": "Replace the hardcoded values in 72 of the 75 findings with tokens or scale steps, and remove or reuse 18 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 73 of the 76 findings with tokens or scale steps, and remove or reuse 18 unused components and repeated patterns"
     }
   ],
   "noted": {
@@ -118,13 +118,13 @@
     ]
   },
   "driftSummary": {
-    "total": 97,
+    "total": 98,
     "critical": 0,
     "warning": 6,
-    "info": 91
+    "info": 92
   },
   "driftByType": {
-    "hardcoded-value": 79,
+    "hardcoded-value": 80,
     "repeated-pattern": 18
   },
   "topColors": [
@@ -324,5 +324,5 @@
       ]
     }
   ],
-  "scanSeconds": 46
+  "scanSeconds": 48
 }

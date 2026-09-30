@@ -3,12 +3,12 @@
   "owner": "supabase",
   "name": "supabase",
   "description": "The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications.",
-  "stars": 110884,
+  "stars": 110927,
   "homepage": "https://supabase.com",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "e1debe9a69a4c32eaed629322195b15fafa68bd9",
-  "generatedAt": "2026-09-29T13:17:20.684Z",
+  "commit": "ec6be6835607c92c1ed1efd4dedc7fe2424f801b",
+  "generatedAt": "2026-09-30T12:57:10.430Z",
   "cliVersion": "0.8.7",
   "score": 38,
   "tier": "Bad",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 4609,
+    "componentCount": 4612,
     "tokenCount": 1128,
     "hardcodedValueCount": 301,
     "unusedTokenCount": 0,
@@ -41,10 +41,10 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 4911,
+    "totalDriftCount": 4914,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 7,
-    "orphanedComponentCount": 4601,
+    "orphanedComponentCount": 4604,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 2,
     "orphanedTokenCount": 0,
@@ -82,7 +82,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 283 of the 294 findings with tokens or scale steps, and remove or reuse 4608 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 283 of the 294 findings with tokens or scale steps, and remove or reuse 4611 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -141,15 +141,15 @@
     ]
   },
   "driftSummary": {
-    "total": 4460,
+    "total": 4458,
     "critical": 0,
-    "warning": 4217,
+    "warning": 4215,
     "info": 243
   },
   "driftByType": {
     "deprecated-pattern": 2,
     "hardcoded-value": 301,
-    "orphaned-component": 4150,
+    "orphaned-component": 4148,
     "repeated-pattern": 7
   },
   "topColors": [
@@ -344,5 +344,5 @@
       ]
     }
   ],
-  "scanSeconds": 173
+  "scanSeconds": 178
 }

@@ -3,18 +3,18 @@
   "owner": "n8n-io",
   "name": "n8n",
   "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
-  "stars": 206259,
+  "stars": 206348,
   "homepage": "https://n8n.io",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "93b658c8db04869c992fc8311a1fec1faf5b195e",
-  "generatedAt": "2026-09-29T13:27:02.812Z",
+  "commit": "902b039c4d4f05192200838d5342e3ade3307a69",
+  "generatedAt": "2026-09-30T13:07:05.477Z",
   "cliVersion": "0.8.7",
-  "score": 58,
+  "score": 59,
   "tier": "OK",
   "pillars": {
     "valueDiscipline": {
-      "score": 20,
+      "score": 21,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1317,
+    "componentCount": 1319,
     "tokenCount": 637,
-    "hardcodedValueCount": 262,
+    "hardcodedValueCount": 260,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 263,
+    "totalDriftCount": 261,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 39,
+    "notedCount": 38,
     "topHardcodedColor": {
       "value": "#fff (use var(--chat--color-white))",
       "count": 2
@@ -71,14 +71,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 262 hardcoded values left to tokenize. packages/frontend/editor-ui/src/features/settings/communityNodes/components/ContactAdministratorToInstall.vue has the most (2)",
+    "Nearly there — just 260 hardcoded values left to tokenize. packages/frontend/editor-ui/src/features/settings/communityNodes/components/ContactAdministratorToInstall.vue has the most (2)",
     "1 deprecated pattern — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 40,
-      "action": "Replace the hardcoded values in 259 of the 262 findings with tokens or scale steps"
+      "points": 39,
+      "action": "Replace the hardcoded values in 257 of the 260 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -87,9 +87,9 @@
     }
   ],
   "noted": {
-    "count": 39,
+    "count": 38,
     "byKind": {
-      "optical-nudge": 34,
+      "optical-nudge": 33,
       "known-debt": 1,
       "explained": 4
     },
@@ -139,14 +139,14 @@
     ]
   },
   "driftSummary": {
-    "total": 263,
+    "total": 261,
     "critical": 0,
     "warning": 94,
-    "info": 169
+    "info": 167
   },
   "driftByType": {
     "deprecated-pattern": 1,
-    "hardcoded-value": 262
+    "hardcoded-value": 260
   },
   "topColors": [
     {
@@ -196,12 +196,12 @@
       "count": 32
     },
     {
-      "value": "20px",
+      "value": "12px",
       "count": 15
     },
     {
-      "value": "12px",
-      "count": 15
+      "value": "20px",
+      "count": 14
     },
     {
       "value": "4px",
@@ -349,5 +349,5 @@
       ]
     }
   ],
-  "scanSeconds": 74
+  "scanSeconds": 76
 }

@@ -3,18 +3,18 @@
   "owner": "hoppscotch",
   "name": "hoppscotch",
   "description": "Open-Source API Development Ecosystem • https://hoppscotch.io • Offline, On-Prem & Cloud • Web, Desktop & CLI • Open-Source Alternative to Postman, Insomnia",
-  "stars": 80549,
+  "stars": 80556,
   "homepage": "https://hoppscotch.io",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "a9ffa29ce5036ef5be0768db35a8b6bae32e1160",
-  "generatedAt": "2026-09-29T13:24:49.681Z",
+  "commit": "63273f8e599e73f0fb38c0739314e8d46b6bc83d",
+  "generatedAt": "2026-09-30T13:04:49.922Z",
   "cliVersion": "0.8.7",
-  "score": 92,
+  "score": 90,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 52,
+      "score": 50,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 405,
+    "componentCount": 407,
     "tokenCount": 0,
-    "hardcodedValueCount": 17,
+    "hardcodedValueCount": 20,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 17,
+    "totalDriftCount": 20,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,9 +53,9 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 0,
+    "notedCount": 1,
     "worstFile": {
-      "path": "packages/hoppscotch-common/src/components/console/Value.vue",
+      "path": "packages/hoppscotch-common/src/components/aichat/Assistant.vue",
       "issueCount": 2
     },
     "detectedFrameworkNames": [
@@ -65,28 +65,38 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 17 hardcoded values left to tokenize. packages/hoppscotch-common/src/components/console/Value.vue has the most (2)"
+    "Nearly there — just 20 hardcoded values left to tokenize. packages/hoppscotch-common/src/components/aichat/Assistant.vue has the most (2)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 8,
-      "action": "Replace the hardcoded values in 16 of the 17 findings with tokens or scale steps"
+      "points": 10,
+      "action": "Replace the hardcoded values in 19 of the 20 findings with tokens or scale steps"
     }
   ],
   "noted": {
-    "count": 0,
-    "byKind": {},
-    "samples": []
+    "count": 1,
+    "byKind": {
+      "optical-nudge": 1
+    },
+    "samples": [
+      {
+        "file": "packages/hoppscotch-common/src/components/aichat/Message.vue",
+        "line": 467,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-left: 2px is a 2-3px optical adjustment"
+      }
+    ]
   },
   "driftSummary": {
-    "total": 17,
+    "total": 20,
     "critical": 0,
     "warning": 3,
-    "info": 14
+    "info": 17
   },
   "driftByType": {
-    "hardcoded-value": 17
+    "hardcoded-value": 20
   },
   "topColors": [
     {
@@ -120,6 +130,14 @@
       "count": 1
     },
     {
+      "value": "1.15rem",
+      "count": 1
+    },
+    {
+      "value": "0.6rem",
+      "count": 1
+    },
+    {
       "value": "5px",
       "count": 1
     },
@@ -130,17 +148,17 @@
     {
       "value": "4.2rem",
       "count": 1
-    },
-    {
-      "value": "4.8rem",
-      "count": 1
-    },
-    {
-      "value": "5.5rem",
-      "count": 1
     }
   ],
   "worstFiles": [
+    {
+      "file": "packages/hoppscotch-common/src/components/aichat/Message.vue",
+      "count": 13
+    },
+    {
+      "file": "packages/hoppscotch-common/src/components/aichat/Assistant.vue",
+      "count": 5
+    },
     {
       "file": "packages/hoppscotch-common/src/components/collections/documentation/sections/CurlView.vue",
       "count": 5
@@ -164,14 +182,6 @@
     {
       "file": "packages/hoppscotch-common/src/components/TabsNav.vue",
       "count": 1
-    },
-    {
-      "file": "packages/hoppscotch-common/src/components/collections/Request.vue",
-      "count": 1
-    },
-    {
-      "file": "packages/hoppscotch-common/src/components/collections/documentation/PublishDocSnapshotPreview.vue",
-      "count": 1
     }
   ],
   "samples": [
@@ -180,6 +190,23 @@
       "location": "packages/hoppscotch-common/src/components/TabsNav.vue:96",
       "entries": [
         "text-[8px] (line 96)"
+      ]
+    },
+    {
+      "component": "packages/hoppscotch-common/src/components/aichat/Assistant.vue",
+      "location": "packages/hoppscotch-common/src/components/aichat/Assistant.vue:49",
+      "entries": [
+        "text-[0.6rem] (line 49)",
+        "text-[0.6rem] (line 222)"
+      ]
+    },
+    {
+      "component": "packages/hoppscotch-common/src/components/aichat/Assistant.vue",
+      "location": "packages/hoppscotch-common/src/components/aichat/Assistant.vue:139",
+      "entries": [
+        "enabled:hover:shadow-[0_4px_12px_-6px_rgb(0_0_0_/_0.35)] (line 139)",
+        "shadow-[0_8px_24px_-8px_rgb(0_0_0_/_0.45)] (line 192)",
+        "shadow-[0_2px_10px_-2px_rgb(0_0_0_/_0.25)] (line 362)"
       ]
     },
     {
@@ -245,23 +272,7 @@
       "entries": [
         "text-[0.9rem] (line 19)"
       ]
-    },
-    {
-      "component": "packages/hoppscotch-sh-admin/src/components/ui/Accordion.vue",
-      "location": "packages/hoppscotch-sh-admin/src/components/ui/Accordion.vue:11",
-      "entries": [
-        "text-[0.8rem] (line 11)"
-      ]
-    },
-    {
-      "component": "packages/hoppscotch-common/assets/themes/tippy-themes.scss",
-      "location": "packages/hoppscotch-common/assets/themes/tippy-themes.scss:136",
-      "entries": [
-        "colour: rgba(0, 0, 0, 0.1) (line 136)",
-        "colour: rgba(255, 255, 255, 0.1) (line 183)",
-        "colour: rgba(255, 255, 255, 0.1) (line 230)"
-      ]
     }
   ],
-  "scanSeconds": 16
+  "scanSeconds": 17
 }
