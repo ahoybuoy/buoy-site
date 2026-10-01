@@ -45,7 +45,7 @@ import CodeBlock from '../../../components/CodeBlock.astro'
     { text: "Opening browser for authentication..." },
     { text: "" },
     { text: "✓ Authenticated as dylan@example.com", type: "success" },
-    { text: "  Plan: Founding Member" },
+    { text: "  Plan: Pro" },
     { text: "  Org: Acme Inc" },
   ]} />
 
@@ -56,7 +56,7 @@ import CodeBlock from '../../../components/CodeBlock.astro'
     { text: "Account Status" },
     { text: "──────────────" },
     { text: "User: dylan@example.com" },
-    { text: "Plan: Founding Member" },
+    { text: "Plan: Pro" },
     { text: "Org: Acme Inc" },
     { text: "GitHub: connected (acme-org)", type: "success" },
     { text: "GitLab: not connected", type: "muted" },
@@ -86,18 +86,20 @@ import CodeBlock from '../../../components/CodeBlock.astro'
 
   <DocTerminal command="buoy ahoy plans" lines={[
     { text: "" },
-    { text: "Current Plan: Founding Member" },
+    { text: "Current Plan: Pro" },
     { text: "─────────────────────────────" },
-    { text: "Repos: unlimited" },
-    { text: "Scans: unlimited" },
+    { text: "Private repos: 1" },
+    { text: "Hosted reviews: 42 / 250" },
     { text: "PR checks: ✓", type: "success" },
     { text: "Priority support: ✓", type: "success" },
     { text: "" },
     { text: "Available Plans" },
     { text: "───────────────" },
-    { text: "Free        $0/mo     3 repos, basic scanning", type: "muted" },
-    { text: "Pro         $29/mo    unlimited repos, PR checks" },
-    { text: "Enterprise  custom    SSO, dedicated support" },
+    { text: "Free        $0        local CLI + public repositories", type: "muted" },
+    { text: "Starter     $9/repo   deterministic hosted scans, limited AI" },
+    { text: "Pro         $19/repo  PR comments, AI explanations, history" },
+    { text: "Team        $49/mo    up to 5 private repositories" },
+    { text: "Enterprise  custom    reviewed high-volume capacity" },
   ]} />
 
   <h3>Manage billing</h3>
@@ -120,7 +122,7 @@ import CodeBlock from '../../../components/CodeBlock.astro'
 
   <CodeBlock code={`{
   "user": "dylan@example.com",
-  "plan": "founding-member",
+  "plan": "pro",
   "org": "Acme Inc",
   "github": {
     "connected": true,

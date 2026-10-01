@@ -2,13 +2,13 @@
 import DocsLayout from '../../../layouts/DocsLayout.astro'
 ---
 
-<DocsLayout title="MCP Server for Coding Agents" description="Give Claude Code, Cursor and Codex your design tokens so they stop hardcoding values">
+<DocsLayout title="MCP Server for Coding Agents" description="Give Claude Code, Cursor, Codex, and Windsurf repository-specific design-system context and deterministic checks">
   <h1>MCP Server for Coding Agents</h1>
 
   <p>
-    Coding agents hardcode values because they never read your token file. <code>buoy mcp</code>
-    gives Claude Code, Cursor, Codex and Windsurf four tools that answer "what tokens does this repo
-    have?" and "did I just drift?" while the agent is writing, so the fix happens before the PR.
+    Coding agents often miss token files and component conventions. <code>buoy mcp</code>
+    gives Claude Code, Cursor, Codex, and Windsurf four tools that answer "what tokens does this repo
+    have?" and "does this edit match the system?" while the agent is writing.
   </p>
 
   <h2>Setup</h2>

@@ -2,15 +2,15 @@
 import DocsLayout from '../../layouts/DocsLayout.astro'
 ---
 
-<DocsLayout title="Installation" description="Install Buoy in your project">
+<DocsLayout title="Installation" description="Install deterministic design-system guardrails for coding agents, CI, and pull requests">
   <h1>Installation</h1>
 
   <h2>GitHub App (Easiest)</h2>
 
   <p>
-    The fastest way to start catching design drift is to install the
+    The fastest way to review agent-generated frontend code is to install the
     <a href="https://github.com/marketplace/buoy-design">Buoy GitHub App</a>
-    from the GitHub Marketplace. It scans every PR automatically — no CLI, no config, no CI setup.
+    from the GitHub Marketplace. It scans every pull request automatically, with no workflow file or model API key.
   </p>
 
   <ol>
@@ -23,7 +23,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
 
   <h2>Coding Agents (Claude Code, Cursor)</h2>
 
-  <p>Give your agent the design system while it writes, so it uses tokens instead of hardcoding values.</p>
+  <p>Give the agent your design-system context while it writes, then check each edit with the deterministic scanner.</p>
 
   <p><strong>Claude Code</strong> — the plugin bundles the MCP server, a post-edit drift check and a design-tokens skill:</p>
 

@@ -45,8 +45,8 @@ const timeline = [
 ---
 
 <Layout
-  title="About Buoy | Design Drift Detection"
-  description="Buoy catches design drift in AI-generated code. Find issues, fix them automatically, and measure the improvement."
+  title="About Buoy | Deterministic Design Review for Coding Agents"
+  description="Buoy keeps AI coding agents on your design system with reproducible code checks, exact token guidance, and pull-request guardrails."
 >
   <Nav />
 
@@ -56,12 +56,30 @@ const timeline = [
 
     <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6">
-        Design systems shouldn't be optional
+        Your design system should survive AI-assisted development
       </h1>
       <p class="text-lg text-slate max-w-2xl mx-auto">
-        AI writes code fast. But it doesn't know your design system exists.
-        Buoy bridges that gap — finding drift, fixing it, and measuring the improvement.
+        Coding agents move quickly, but they do not automatically know which tokens, components, and exceptions belong in your product. Buoy gives them those rules and checks the code they produce.
       </p>
+    </div>
+  </section>
+
+  <!-- Origin -->
+  <section class="py-16 bg-navy-dark border-y border-navy-light/20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-buoy font-medium mb-3">Where Buoy came from</p>
+      <h2 class="text-3xl font-bold text-light mb-6">It started as scripts for organizing real design libraries.</h2>
+      <div class="space-y-5 text-slate text-lg">
+        <p>
+          Buoy began as a collection of scripts used to organize the design libraries of IXL, Rosetta Stone, Vocabulary.com, and Education.com.
+        </p>
+        <p>
+          Over approximately the past two years, those scripts developed into a deterministic design-system reviewer. Buoy now gives coding agents the same kind of repository-specific guidance, then checks the frontend code they produce.
+        </p>
+        <p>
+          Buoy is designed to complement AI coding agents, not replace them. Agents handle generation. Buoy provides design-system context and a reproducible review step.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -76,8 +94,7 @@ const timeline = [
             Your team invested months building a design system. Components, tokens, documentation — the works.
           </p>
           <p>
-            Then AI coding assistants arrived. Copilot, Cursor, Claude — they write code 10x faster.
-            But they don't know your design system exists.
+            Then teams adopted Copilot, Cursor, and Claude Code. These tools can build whole interfaces without knowing which parts of your system are intentional.
           </p>
           <p>
             The AI writes <code class="text-warning">color: #3b82f6</code> instead of <code class="text-success">var(--color-primary)</code>.
@@ -195,7 +212,7 @@ const timeline = [
   <!-- CTA -->
   <section class="py-16 bg-navy-dark">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-2xl font-bold text-light mb-4">Ready to catch design drift?</h2>
+      <h2 class="text-2xl font-bold text-light mb-4">Ready to keep coding agents on-system?</h2>
       <p class="text-slate mb-8">
         One command. 2 minutes. No signup required.
       </p>

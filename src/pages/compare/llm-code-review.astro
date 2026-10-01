@@ -4,25 +4,18 @@ import Nav from '../../components/Nav.astro'
 import Footer from '../../components/Footer.astro'
 import Button from '../../components/Button.astro'
 
-const models = [
-  { name: 'Claude Sonnet 4.5', correctnessBefore: '3/5', correctnessAfter: '5/5', hallucinatedBefore: true, hallucinatedAfter: false },
-  { name: 'Claude Haiku 4.5', correctnessBefore: '2/5', correctnessAfter: '5/5', hallucinatedBefore: true, hallucinatedAfter: false },
-  { name: 'GPT-4o', correctnessBefore: '0/5', correctnessAfter: '5/5', hallucinatedBefore: true, hallucinatedAfter: false },
-  { name: 'GPT-4o-mini', correctnessBefore: '1/5', correctnessAfter: '5/5', hallucinatedBefore: true, hallucinatedAfter: false },
-]
-
 const stats = [
-  { value: '4', label: 'Leading LLMs tested', sub: 'Claude & GPT families' },
-  { value: '100%', label: 'Hallucinated on clean PRs', sub: 'Every model, every time' },
-  { value: '0%', label: 'Hallucinations with Buoy', sub: 'Scanner-verified output' },
-  { value: '5/5', label: 'Correctness with Buoy', sub: 'Across all 4 models' },
+  { value: 'Repo', label: 'Source of truth', sub: 'Your tokens and rules' },
+  { value: 'Rules', label: 'Review method', sub: 'Reproducible checks' },
+  { value: 'Local', label: 'Core scan', sub: 'No source upload' },
+  { value: 'Optional', label: 'AI explanations', sub: 'Grounded in findings' },
 ]
 ---
 
 <Layout
-  title="LLM Code Review Hallucinations | Why Buoy Uses Deterministic Scanning"
-  description="We tested 4 leading LLMs reviewing clean PRs. Every one hallucinated design system violations that didn't exist. Buoy's deterministic scanner eliminates false positives."
-  keywords="llm code review, ai hallucination, design system review, deterministic scanning, buoy vs ai review"
+  title="Deterministic Design Review vs LLM-Only Code Review | Buoy"
+  description="See why Buoy uses reproducible scanner findings for design-system enforcement and reserves AI for explanations grounded in those findings."
+  keywords="deterministic AI code review, LLM code review, AI-generated UI review, design system enforcement"
 >
   <Nav />
 
@@ -35,18 +28,17 @@ const stats = [
 
     <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <div class="inline-flex items-center px-4 py-2 rounded-full bg-critical/10 border border-critical/30 mb-8">
-        <span class="text-sm text-critical font-medium">Based on real testing across 4 leading LLMs</span>
+        <span class="text-sm text-critical font-medium">Rule-based review before optional AI explanation</span>
       </div>
 
       <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-light mb-6 leading-tight">
-        Your design system deserves
+        Your design system needs
         <br />
-        <span class="text-gradient-sunrise">facts, not hallucinations.</span>
+        <span class="text-gradient-sunrise">a source of truth.</span>
       </h1>
 
       <p class="text-lg sm:text-xl text-slate max-w-2xl mx-auto mb-10">
-        We tested every major AI code reviewer on a clean PR with zero design system issues.
-        Every single one invented problems that didn't exist.
+        An LLM can explain a finding. It should not have to guess which tokens, components, and exceptions your team considers valid.
       </p>
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -54,7 +46,7 @@ const stats = [
           Try Buoy free
         </Button>
         <Button href="#results" variant="secondary" size="lg">
-          See the data
+          See the workflow
         </Button>
       </div>
     </div>
@@ -65,10 +57,10 @@ const stats = [
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
         <h2 class="text-2xl sm:text-3xl font-bold text-light mb-4">
-          Same PR. Same code. Very different reviews.
+          Same PR. Two different review methods.
         </h2>
         <p class="text-slate">
-          A clean PR using <code class="text-buoy bg-navy px-2 py-0.5 rounded text-sm">var(--color-gray-50)</code> correctly. Zero real issues.
+          This illustrative clean PR uses <code class="text-buoy bg-navy px-2 py-0.5 rounded text-sm">var(--color-gray-50)</code>, a token recorded by the repository.
         </p>
       </div>
 
@@ -188,7 +180,7 @@ const stats = [
                 <path d="M8 16A8 8 0 108 0a8 8 0 000 16zm3.78-9.72a.751.751 0 00-.018-1.042.751.751 0 00-1.042.018L6.75 9.23 5.28 7.72a.751.751 0 00-1.042.018.751.751 0 00-.018 1.042l2 2a.75.75 0 001.06 0l4.5-4.5z"/>
               </svg>
               <span class="text-[#3fb950] text-sm font-medium">All checks passed</span>
-              <span class="text-[#484f58] text-xs ml-auto">0 false positives</span>
+              <span class="text-[#484f58] text-xs ml-auto">Rule checks complete</span>
             </div>
           </div>
         </div>
@@ -197,8 +189,7 @@ const stats = [
       <!-- Annotation -->
       <div class="mt-6 text-center">
         <p class="text-sm text-slate-dark">
-          The LLM claimed <code class="text-critical/80 bg-navy px-1.5 py-0.5 rounded text-xs">#f9fafb</code> existed at line 112.
-          The file was 61 lines long, and the actual code used <code class="text-success/80 bg-navy px-1.5 py-0.5 rounded text-xs">var(--color-gray-50)</code>.
+          Illustrative example: an unconstrained review invents a hex value and line number. Buoy reads the repository's token definitions and reports only rule matches it can locate in the code.
         </p>
       </div>
     </div>
@@ -229,7 +220,7 @@ const stats = [
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
         <h2 class="text-2xl sm:text-3xl font-bold text-light mb-4">
-          How Buoy eliminates hallucinations
+          How Buoy reduces model guessing
         </h2>
         <p class="text-slate max-w-2xl mx-auto">
           The LLM never decides what's wrong. It only explains what the scanner already found.
@@ -251,7 +242,7 @@ const stats = [
               Deterministic analysis. Exact file, exact line, exact value. No guessing, no probability.
             </p>
             <div class="mt-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-success/10 border border-success/20 text-xs text-success">
-              <span>100% deterministic</span>
+              <span>Reproducible, rule-based findings</span>
             </div>
           </div>
 
@@ -294,7 +285,7 @@ const stats = [
           <div>
             <h4 class="text-light font-semibold mb-1">The key insight</h4>
             <p class="text-slate text-sm">
-              LLMs are great at explaining code. They're terrible at auditing it. Buoy uses each for what it's good at: the scanner audits, the LLM explains. The result is zero hallucinations and clear, actionable feedback.
+              Use the deterministic scanner to decide whether a repository rule matched. Use optional AI to explain that result in context. This keeps the review decision reproducible while still allowing useful natural-language guidance.
             </p>
           </div>
         </div>
@@ -307,10 +298,10 @@ const stats = [
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
         <h2 class="text-2xl sm:text-3xl font-bold text-light mb-4">
-          Why do LLMs invent issues on clean code?
+          Why can LLM-only review invent issues on clean code?
         </h2>
         <p class="text-slate max-w-2xl mx-auto">
-          It's not a bug — it's how they work.
+          Generative review is probabilistic and may lack the repository context needed to make a reliable design-system decision.
         </p>
       </div>
 
@@ -319,7 +310,7 @@ const stats = [
           <div class="text-xl mb-3">🎯</div>
           <h3 class="font-semibold text-light mb-2">Task-completion bias</h3>
           <p class="text-sm text-slate">
-            When you ask an LLM to "review this PR for design system violations," it wants to be helpful. If the code is clean, it will find something anyway — because saying "nothing's wrong" doesn't feel like completing the task.
+            When asked to find violations, a model may produce a plausible critique even when the repository rules do not support it. A deterministic check can return no match without needing to generate an answer.
           </p>
         </div>
 
@@ -327,7 +318,7 @@ const stats = [
           <div class="text-xl mb-3">🔮</div>
           <h3 class="font-semibold text-light mb-2">Pattern hallucination</h3>
           <p class="text-sm text-slate">
-            LLMs have seen millions of code reviews that found issues. They're pattern-matching against that history. A diff that "looks like" it might have a hardcoded color? The model will confidently assert it does.
+            A diff can resemble examples associated with hardcoded colors or inconsistent components. Similarity is useful for explanation, but it is not the same as verifying a repository rule.
           </p>
         </div>
 
@@ -335,7 +326,7 @@ const stats = [
           <div class="text-xl mb-3">🗺️</div>
           <h3 class="font-semibold text-light mb-2">No source of truth</h3>
           <p class="text-sm text-slate">
-            An LLM reviewing a diff doesn't know your token definitions. It doesn't know that <code class="text-buoy bg-navy px-1 py-0.5 rounded text-xs">var(--color-gray-50)</code> is valid in your system. It's guessing based on the diff alone.
+            A reviewer cannot reliably enforce rules it cannot see. Buoy reads the token definitions, component patterns, and exceptions recorded in the repository before it evaluates the code.
           </p>
         </div>
 
@@ -343,66 +334,9 @@ const stats = [
           <div class="text-xl mb-3">📍</div>
           <h3 class="font-semibold text-light mb-2">Line number fabrication</h3>
           <p class="text-sm text-slate">
-            LLMs generate text sequentially. Line numbers are just tokens to them — not verified positions. That's how one model referenced "line 112" in a 61-line file.
+            Generated references can be plausible without being verified. Buoy's scanner anchors each finding to the code location that matched the rule.
           </p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Model Scorecard -->
-  <section class="py-20 bg-navy-dark">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-2xl sm:text-3xl font-bold text-light mb-4">
-          Model-by-model results
-        </h2>
-        <p class="text-slate max-w-2xl mx-auto">
-          Correctness scores reviewing the same clean PR — before and after Buoy's scanner is the source of truth.
-        </p>
-      </div>
-
-      <div class="bg-navy/50 border border-navy-light/30 rounded-xl overflow-hidden">
-        <!-- Table header -->
-        <div class="grid grid-cols-5 bg-navy border-b border-navy-light/20 text-sm">
-          <div class="p-4 font-semibold text-slate col-span-1">Model</div>
-          <div class="p-4 font-semibold text-slate text-center">Hallucinated?</div>
-          <div class="p-4 font-semibold text-slate text-center">Correctness</div>
-          <div class="p-4 font-semibold text-buoy text-center">With Buoy</div>
-          <div class="p-4 font-semibold text-buoy text-center">Correctness</div>
-        </div>
-
-        {models.map((model, index) => (
-          <div class={`grid grid-cols-5 items-center ${index % 2 === 0 ? 'bg-navy/30' : ''} ${index < models.length - 1 ? 'border-b border-navy-light/10' : ''}`}>
-            <div class="p-4 text-light text-sm font-medium">{model.name}</div>
-            <div class="p-4 text-center">
-              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-critical/20 text-critical border border-critical/30">
-                Yes
-              </span>
-            </div>
-            <div class="p-4 text-center">
-              <span class={`font-mono text-sm font-bold ${model.correctnessBefore === '0/5' ? 'text-critical' : model.correctnessBefore === '1/5' ? 'text-critical/80' : 'text-warning'}`}>
-                {model.correctnessBefore}
-              </span>
-            </div>
-            <div class="p-4 text-center">
-              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-success/20 text-success border border-success/30">
-                No
-              </span>
-            </div>
-            <div class="p-4 text-center">
-              <span class="font-mono text-sm font-bold text-success">{model.correctnessAfter}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <!-- Callout -->
-      <div class="mt-6 bg-success/5 border border-success/20 rounded-xl p-4 flex items-start gap-3">
-        <span class="text-success text-lg mt-0.5">&#x2191;</span>
-        <p class="text-sm text-slate">
-          <strong class="text-light">GPT-4o scored 0/5 without Buoy</strong> — it claimed hex values like <code class="text-critical bg-navy px-1 py-0.5 rounded text-xs">#f9fafb</code> existed at specific lines when the actual code used <code class="text-success bg-navy px-1 py-0.5 rounded text-xs">var(--color-gray-50)</code>. With Buoy as the source of truth, it scored 5/5.
-        </p>
       </div>
     </div>
   </section>
@@ -438,10 +372,10 @@ const stats = [
   <section class="py-20 bg-navy-dark">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="text-3xl sm:text-4xl font-bold text-light mb-4">
-        Stop reviewing hallucinated issues.
+        Put repository rules before model opinions.
       </h2>
       <p class="text-lg text-slate mb-8 max-w-xl mx-auto">
-        Buoy is free, open source, and runs in under a minute. Your design system gets facts, not fiction.
+        Buoy's open-source scanner runs locally without a model or API key. Add optional explanations only when they help your team act on a verified finding.
       </p>
 
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">

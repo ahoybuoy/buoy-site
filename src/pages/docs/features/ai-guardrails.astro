@@ -2,20 +2,17 @@
 import DocsLayout from '../../../layouts/DocsLayout.astro'
 ---
 
-<DocsLayout title="AI Guardrails" description="A source of truth for AI-generated code">
-  <h1>AI Guardrails</h1>
+<DocsLayout title="AI Coding Agent Guardrails" description="Deterministic design review for AI-generated frontend code">
+  <h1>AI Coding Agent Guardrails</h1>
 
   <p>
-    Development has tests. Design systems need the same thing. Buoy provides the missing
-    feedback loop that keeps AI-generated code aligned with your design system.
+    Buoy complements coding agents with repository-specific context and a deterministic reviewer. The agent writes the code; Buoy checks the result against explicit design-system rules.
   </p>
 
   <h2>The Problem with AI Code Generation</h2>
 
   <p>
-    AI tools like Copilot, Claude, and ChatGPT are incredibly productive. They can scaffold
-    components in seconds. But they have a fundamental limitation: <strong>they don't know
-    your design system.</strong>
+    Copilot, Claude Code, Cursor, and similar tools can scaffold components quickly. They still need access to the decisions inside <strong>your design system.</strong>
   </p>
 
   <p>When you ask AI to "create a card component," it generates something reasonable:</p>

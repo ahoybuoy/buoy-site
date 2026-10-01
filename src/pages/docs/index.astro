@@ -2,12 +2,11 @@
 import DocsLayout from '../../layouts/DocsLayout.astro'
 ---
 
-<DocsLayout title="Introduction" description="Get started with Buoy - design drift detection for the AI era">
+<DocsLayout title="Introduction" description="Set up deterministic design-system guardrails for AI coding agents">
   <h1>Introduction to Buoy</h1>
 
   <p>
-    Buoy is an open-source design drift scanner (CLI) and a GitHub App that catches drift on every PR. It scans your codebase to catch when developers
-    (especially AI tools like Copilot and Claude) diverge from design system patterns before code ships.
+    Buoy is a deterministic design reviewer for AI-generated frontend code. The open-source CLI, MCP server, and GitHub App help Claude Code, Cursor, Copilot, and developers follow the tokens and component rules already in a repository.
   </p>
 
   <h2>The Missing Feedback Loop</h2>
@@ -24,8 +23,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
   </p>
 
   <p>
-    <strong>Buoy is that missing feedback loop.</strong> It's the linter for your design system—a
-    source of truth that tells AI and developers alike: "This doesn't match the system."
+    <strong>Buoy is that missing feedback loop.</strong> The scanner applies explicit repository rules, so the same input produces the same findings without prompt or model variance. Optional AI explains those findings; it does not invent them.
   </p>
 
   <h2>What is Design Drift?</h2>
