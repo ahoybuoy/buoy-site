@@ -3,12 +3,12 @@
   "owner": "posthog",
   "name": "posthog",
   "description": ":hedgehog: PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.",
-  "stars": 40033,
+  "stars": 40062,
   "homepage": "https://posthog.com",
   "language": "Python",
   "defaultBranch": "master",
-  "commit": "ceace69fd98924055ca42e00b84143f63b999acd",
-  "generatedAt": "2026-09-30T13:11:06.861Z",
+  "commit": "bd31a31576896f68770d9ebd1d75d0af0dd38f49",
+  "generatedAt": "2026-10-01T13:56:40.643Z",
   "cliVersion": "0.8.7",
   "score": 76,
   "tier": "Good",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 4855,
+    "componentCount": 4897,
     "tokenCount": 183,
     "hardcodedValueCount": 350,
     "unusedTokenCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 2,
     "vendoredDriftCount": 0,
-    "notedCount": 77,
+    "notedCount": 76,
     "topHardcodedColor": {
       "value": "rgba(0",
       "count": 9
@@ -88,10 +88,10 @@
     }
   ],
   "noted": {
-    "count": 77,
+    "count": 76,
     "byKind": {
       "explained": 13,
-      "optical-nudge": 62,
+      "optical-nudge": 61,
       "known-debt": 2
     },
     "samples": [
@@ -211,11 +211,11 @@
       "count": 26
     },
     {
-      "value": "4px",
+      "value": "10px",
       "count": 21
     },
     {
-      "value": "10px",
+      "value": "4px",
       "count": 20
     }
   ],
@@ -230,7 +230,7 @@
     },
     {
       "file": "frontend/src/scenes/project-homepage/today/Today.scss",
-      "count": 76
+      "count": 58
     },
     {
       "file": "frontend/src/scenes/notebooks/Notebook/Notebook.scss",
@@ -348,5 +348,5 @@
       ]
     }
   ],
-  "scanSeconds": 192
+  "scanSeconds": 128
 }

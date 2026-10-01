@@ -3,12 +3,12 @@
   "owner": "TryGhost",
   "name": "Ghost",
   "description": "Independent technology for modern publishing, memberships, subscriptions and newsletters.",
-  "stars": 55461,
+  "stars": 55472,
   "homepage": "https://ghost.org",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "8fadace4c43d5c8c4e2c33c90d263a75b8e05e10",
-  "generatedAt": "2026-09-30T13:07:53.676Z",
+  "commit": "93eb44e1af55fba83bfe86aa7bc80865a5b1c5ed",
+  "generatedAt": "2026-10-01T13:54:32.316Z",
   "cliVersion": "0.8.7",
   "score": 62,
   "tier": "Good",
@@ -31,8 +31,8 @@
     }
   },
   "metrics": {
-    "componentCount": 1739,
-    "tokenCount": 761,
+    "componentCount": 1743,
+    "tokenCount": 759,
     "hardcodedValueCount": 334,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 12,
     "vendoredDriftCount": 7,
-    "notedCount": 89,
+    "notedCount": 88,
     "topHardcodedColor": {
       "value": "#000.",
       "count": 1
@@ -83,9 +83,9 @@
     }
   ],
   "noted": {
-    "count": 89,
+    "count": 88,
     "byKind": {
-      "optical-nudge": 81,
+      "optical-nudge": 80,
       "explained": 5,
       "known-debt": 3
     },
@@ -120,14 +120,14 @@
       },
       {
         "file": "apps/admin/src/index.css",
-        "line": 305,
+        "line": 314,
         "value": "20px",
         "kind": "known-debt",
         "reason": "Temporary overrides until Ember transition is finished"
       },
       {
         "file": "apps/ember-admin/app/styles/app-dark.css",
-        "line": 1009,
+        "line": 1003,
         "value": "rgba(88, 101, 116, 0.99)",
         "kind": "explained",
         "reason": "Opacity needed to display correctly in Safari"
@@ -137,8 +137,8 @@
   "driftSummary": {
     "total": 334,
     "critical": 0,
-    "warning": 113,
-    "info": 221
+    "warning": 112,
+    "info": 222
   },
   "driftByType": {
     "hardcoded-value": 334
@@ -180,11 +180,11 @@
   "topSpacing": [
     {
       "value": "8px",
-      "count": 54
+      "count": 52
     },
     {
       "value": "4px",
-      "count": 52
+      "count": 51
     },
     {
       "value": "10px",
@@ -192,15 +192,15 @@
     },
     {
       "value": "12px",
-      "count": 45
-    },
-    {
-      "value": "20px",
-      "count": 39
+      "count": 42
     },
     {
       "value": "16px",
-      "count": 39
+      "count": 38
+    },
+    {
+      "value": "20px",
+      "count": 37
     },
     {
       "value": "6px",
@@ -237,12 +237,12 @@
       "count": 99
     },
     {
-      "file": "apps/ember-admin/app/styles/layouts/main.css",
-      "count": 89
-    },
-    {
       "file": "koenig/kg-simplemde/debug/simplemde.css",
       "count": 87
+    },
+    {
+      "file": "apps/ember-admin/app/styles/layouts/main.css",
+      "count": 70
     }
   ],
   "samples": [
@@ -341,5 +341,5 @@
       ]
     }
   ],
-  "scanSeconds": 46
+  "scanSeconds": 32
 }

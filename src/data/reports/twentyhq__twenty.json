@@ -3,12 +3,12 @@
   "owner": "twentyhq",
   "name": "twenty",
   "description": "The open alternative to Salesforce, designed for AI.",
-  "stars": 57732,
+  "stars": 57777,
   "homepage": "https://twenty.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "2260c77e6a2c4a8bad0a1644ebf08fb8750e26f0",
-  "generatedAt": "2026-09-30T13:02:53.150Z",
+  "commit": "c7299510dab9fab5ca648bbd5b4e0daef5dba636",
+  "generatedAt": "2026-10-01T13:51:03.504Z",
   "cliVersion": "0.8.7",
   "score": 99,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 3789,
+    "componentCount": 3801,
     "tokenCount": 13,
-    "hardcodedValueCount": 24,
+    "hardcodedValueCount": 23,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 24,
+    "totalDriftCount": 23,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -74,13 +74,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 24 hardcoded values left to tokenize. packages/create-twenty-app/src/constants/template/src/front-components/main-page.tsx has the most (4)"
+    "Nearly there — just 23 hardcoded values left to tokenize. packages/create-twenty-app/src/constants/template/src/front-components/main-page.tsx has the most (4)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 1,
-      "action": "Replace the hardcoded values in 15 of the 24 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 14 of the 23 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -114,13 +114,13 @@
     ]
   },
   "driftSummary": {
-    "total": 20,
+    "total": 19,
     "critical": 0,
     "warning": 3,
-    "info": 17
+    "info": 16
   },
   "driftByType": {
-    "hardcoded-value": 20
+    "hardcoded-value": 19
   },
   "topColors": [
     {
@@ -212,7 +212,7 @@
       "count": 2
     },
     {
-      "file": "packages/twenty-ui/src/components/input/ColorSchemePicker/internal/ColorSchemeCard/ColorSchemeCard.module.scss",
+      "file": "packages/twenty-ui/src/primitives/input/Checkbox/Checkbox.module.scss",
       "count": 2
     }
   ],
@@ -309,13 +309,14 @@
       ]
     },
     {
-      "component": "packages/twenty-ui/src/components/input/ColorSchemePicker/internal/ColorSchemeCard/ColorSchemeCard.module.scss",
-      "location": "packages/twenty-ui/src/components/input/ColorSchemePicker/internal/ColorSchemeCard/ColorSchemeCard.module.scss:34",
+      "component": "packages/twenty-ui/src/primitives/data-display/Avatar/Avatar.module.scss",
+      "location": "packages/twenty-ui/src/primitives/data-display/Avatar/Avatar.module.scss:45",
       "entries": [
-        "font size: 20px (line 34)",
-        "font size: 22px (line 44)"
+        "font size: 16px (line 45)",
+        "font size: 13px (line 51)",
+        "font size: 12px (line 57)"
       ]
     }
   ],
-  "scanSeconds": 179
+  "scanSeconds": 114
 }
