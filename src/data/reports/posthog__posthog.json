@@ -3,12 +3,12 @@
   "owner": "posthog",
   "name": "posthog",
   "description": ":hedgehog: PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.",
-  "stars": 40062,
+  "stars": 40100,
   "homepage": "https://posthog.com",
   "language": "Python",
   "defaultBranch": "master",
-  "commit": "bd31a31576896f68770d9ebd1d75d0af0dd38f49",
-  "generatedAt": "2026-10-01T13:56:40.643Z",
+  "commit": "d8d5ba976043cb6f8ba5dff0dd1c232a2f4c81ab",
+  "generatedAt": "2026-10-02T13:11:12.078Z",
   "cliVersion": "0.8.7",
   "score": 76,
   "tier": "Good",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 4897,
+    "componentCount": 4930,
     "tokenCount": 183,
-    "hardcodedValueCount": 350,
+    "hardcodedValueCount": 351,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 3,
@@ -41,9 +41,9 @@
     "colorContrastCount": 3,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 358,
+    "totalDriftCount": 360,
     "unusedComponentCount": 0,
-    "repeatedPatternCount": 2,
+    "repeatedPatternCount": 3,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 3,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 2,
     "vendoredDriftCount": 0,
-    "notedCount": 76,
+    "notedCount": 77,
     "topHardcodedColor": {
       "value": "rgba(0",
       "count": 9
@@ -71,7 +71,7 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 350 hardcoded values left to tokenize. frontend/src/lib/KeaDevTools.tsx has the most (6)",
+    "Nearly there — just 351 hardcoded values left to tokenize. frontend/src/lib/KeaDevTools.tsx has the most (6)",
     "3 color contrast issues — fix immediately",
     "3 deprecated patterns — migrate to current API"
   ],
@@ -79,7 +79,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 14,
-      "action": "Replace the hardcoded values in 338 of the 350 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 339 of the 351 findings with tokens or scale steps, and remove or reuse 3 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -88,9 +88,9 @@
     }
   ],
   "noted": {
-    "count": 76,
+    "count": 77,
     "byKind": {
-      "explained": 13,
+      "explained": 14,
       "optical-nudge": 61,
       "known-debt": 2
     },
@@ -140,16 +140,16 @@
     ]
   },
   "driftSummary": {
-    "total": 358,
+    "total": 360,
     "critical": 3,
-    "warning": 177,
-    "info": 178
+    "warning": 178,
+    "info": 179
   },
   "driftByType": {
-    "hardcoded-value": 350,
+    "hardcoded-value": 351,
     "deprecated-pattern": 3,
     "color-contrast": 3,
-    "repeated-pattern": 2
+    "repeated-pattern": 3
   },
   "topColors": [
     {
@@ -211,12 +211,12 @@
       "count": 26
     },
     {
-      "value": "10px",
-      "count": 21
+      "value": "8px",
+      "count": 24
     },
     {
       "value": "4px",
-      "count": 20
+      "count": 22
     }
   ],
   "worstFiles": [
@@ -230,7 +230,11 @@
     },
     {
       "file": "frontend/src/scenes/project-homepage/today/Today.scss",
-      "count": 58
+      "count": 59
+    },
+    {
+      "file": "products/tasks/frontend/infrastructure/infrastructureAdmin.css",
+      "count": 57
     },
     {
       "file": "frontend/src/scenes/notebooks/Notebook/Notebook.scss",
@@ -247,10 +251,6 @@
     {
       "file": "frontend/src/styles/base.scss",
       "count": 47
-    },
-    {
-      "file": "frontend/src/toolbar/bar/Toolbar.scss",
-      "count": 40
     }
   ],
   "samples": [
@@ -348,5 +348,5 @@
       ]
     }
   ],
-  "scanSeconds": 128
+  "scanSeconds": 136
 }
