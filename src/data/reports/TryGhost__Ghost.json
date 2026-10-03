@@ -3,12 +3,12 @@
   "owner": "TryGhost",
   "name": "Ghost",
   "description": "Independent technology for modern publishing, memberships, subscriptions and newsletters.",
-  "stars": 55475,
+  "stars": 55478,
   "homepage": "https://ghost.org",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "e520626d982c3e01a48343f8663a1de05bd984cb",
-  "generatedAt": "2026-10-02T13:08:55.646Z",
+  "commit": "9fd9295584c9a7491693303a487701911f231943",
+  "generatedAt": "2026-10-03T12:07:35.705Z",
   "cliVersion": "0.8.7",
   "score": 63,
   "tier": "Good",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 1763,
+    "componentCount": 1774,
     "tokenCount": 759,
     "hardcodedValueCount": 335,
     "unusedTokenCount": 0,
@@ -120,7 +120,7 @@
       },
       {
         "file": "apps/admin/src/index.css",
-        "line": 314,
+        "line": 334,
         "value": "20px",
         "kind": "known-debt",
         "reason": "Temporary overrides until Ember transition is finished"
@@ -341,5 +341,5 @@
       ]
     }
   ],
-  "scanSeconds": 29
+  "scanSeconds": 45
 }

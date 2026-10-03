@@ -3,12 +3,12 @@
   "owner": "vercel",
   "name": "next.js",
   "description": "The React Framework",
-  "stars": 142984,
+  "stars": 143041,
   "homepage": "https://nextjs.org",
   "language": "JavaScript",
   "defaultBranch": "canary",
-  "commit": "d2608c10259869084d2a07a9244721170c15deb6",
-  "generatedAt": "2026-10-02T13:13:52.390Z",
+  "commit": "2d5a45a578af9fb215a515829a8ae7fd14352a78",
+  "generatedAt": "2026-10-03T12:15:17.899Z",
   "cliVersion": "0.8.7",
   "score": 89,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 355,
+    "componentCount": 366,
     "tokenCount": 278,
-    "hardcodedValueCount": 17,
+    "hardcodedValueCount": 18,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 18,
+    "totalDriftCount": 19,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -71,7 +71,7 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 16 hardcoded values left to tokenize",
+    "Nearly there — just 17 hardcoded values left to tokenize",
     "1 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
     "1 deprecated pattern — migrate to current API"
   ],
@@ -79,7 +79,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 9,
-      "action": "Replace the hardcoded values in all 16 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in all 17 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -126,14 +126,14 @@
     ]
   },
   "driftSummary": {
-    "total": 18,
+    "total": 19,
     "critical": 0,
     "warning": 7,
-    "info": 11
+    "info": 12
   },
   "driftByType": {
     "deprecated-pattern": 1,
-    "hardcoded-value": 17
+    "hardcoded-value": 18
   },
   "topColors": [
     {
@@ -226,7 +226,7 @@
     },
     {
       "file": "apps/bundle-analyzer/components/diff-table.tsx",
-      "count": 5
+      "count": 6
     },
     {
       "file": "packages/next/src/next-devtools/dev-overlay/menu/panel-router.css",
@@ -254,20 +254,28 @@
       ]
     },
     {
-      "component": "apps/bundle-analyzer/components/compare-layout.tsx",
-      "location": "apps/bundle-analyzer/components/compare-layout.tsx:176",
+      "component": "apps/bundle-analyzer/components/analyzer.tsx",
+      "location": "apps/bundle-analyzer/components/analyzer.tsx:822",
       "entries": [
-        "text-[10px] (line 176)",
-        "text-[10px] (line 254)"
+        "after:border-l-[5px] (line 822)",
+        "after:border-t-[5px] (line 822)"
+      ]
+    },
+    {
+      "component": "apps/bundle-analyzer/components/compare-layout.tsx",
+      "location": "apps/bundle-analyzer/components/compare-layout.tsx:187",
+      "entries": [
+        "text-[10px] (line 187)",
+        "text-[10px] (line 265)"
       ]
     },
     {
       "component": "apps/bundle-analyzer/components/diff-table.tsx",
-      "location": "apps/bundle-analyzer/components/diff-table.tsx:563",
+      "location": "apps/bundle-analyzer/components/diff-table.tsx:570",
       "entries": [
-        "text-[10px] (line 563)",
-        "text-[10px] (line 909)",
-        "text-[10px] (line 965)"
+        "text-[10px] (line 570)",
+        "text-[10px] (line 922)",
+        "text-[10px] (line 964)"
       ]
     },
     {
@@ -327,16 +335,7 @@
         "font weight: 500 (line 18)",
         "line height: 20px (line 22)"
       ]
-    },
-    {
-      "component": "packages/next/src/next-devtools/dev-overlay/components/request-insights/request-insights-panel.css",
-      "location": "packages/next/src/next-devtools/dev-overlay/components/request-insights/request-insights-panel.css:19",
-      "entries": [
-        "line height: 1.5 (line 19)",
-        "spacing: 8px (line 35)",
-        "spacing: 6px (line 47)"
-      ]
     }
   ],
-  "scanSeconds": 75
+  "scanSeconds": 130
 }
