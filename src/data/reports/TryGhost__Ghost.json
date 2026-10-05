@@ -3,18 +3,18 @@
   "owner": "TryGhost",
   "name": "Ghost",
   "description": "Independent technology for modern publishing, memberships, subscriptions and newsletters.",
-  "stars": 55480,
+  "stars": 55487,
   "homepage": "https://ghost.org",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "fbe41023b26b908a14b64680e226258a229dfe9c",
-  "generatedAt": "2026-10-04T12:56:25.913Z",
+  "commit": "7938d65c5792e2086d4dab499ce0872ed0dcc157",
+  "generatedAt": "2026-10-05T15:18:06.040Z",
   "cliVersion": "0.8.7",
-  "score": 63,
+  "score": 62,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 23,
+      "score": 22,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1774,
+    "componentCount": 1765,
     "tokenCount": 759,
-    "hardcodedValueCount": 335,
+    "hardcodedValueCount": 340,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 335,
+    "totalDriftCount": 340,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -72,14 +72,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 328 hardcoded values left to tokenize. apps/activitypub/src/views/inbox/components/customizer.tsx has the most (4)",
+    "Nearly there — just 333 hardcoded values left to tokenize. apps/activitypub/src/views/inbox/components/customizer.tsx has the most (4)",
     "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 37,
-      "action": "Replace the hardcoded values in 324 of the 328 findings with tokens or scale steps"
+      "points": 38,
+      "action": "Replace the hardcoded values in 329 of the 333 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -120,7 +120,7 @@
       },
       {
         "file": "apps/admin/src/index.css",
-        "line": 334,
+        "line": 336,
         "value": "20px",
         "kind": "known-debt",
         "reason": "Temporary overrides until Ember transition is finished"
@@ -135,13 +135,13 @@
     ]
   },
   "driftSummary": {
-    "total": 335,
+    "total": 340,
     "critical": 0,
     "warning": 112,
-    "info": 223
+    "info": 228
   },
   "driftByType": {
-    "hardcoded-value": 335
+    "hardcoded-value": 340
   },
   "topColors": [
     {
@@ -325,21 +325,21 @@
       ]
     },
     {
-      "component": "apps/activitypub/src/components/layout/header/header.tsx",
-      "location": "apps/activitypub/src/components/layout/header/header.tsx:36",
+      "component": "apps/activitypub/src/components/layout/error/error.tsx",
+      "location": "apps/activitypub/src/components/layout/error/error.tsx:114",
       "entries": [
-        "mr-[-9px] (line 36)",
-        "max-lg:pr-[15.5px] (line 68)",
-        "max-md:ml-[10px] (line 70)"
+        "rounded-[20px] (line 114)"
       ]
     },
     {
-      "component": "apps/activitypub/src/components/layout/header/header.tsx",
-      "location": "apps/activitypub/src/components/layout/header/header.tsx:30",
+      "component": "apps/activitypub/src/components/layout/error/error.tsx",
+      "location": "apps/activitypub/src/components/layout/error/error.tsx:117",
       "entries": [
-        "text-[1.5rem] (line 30)"
+        "text-[2.9rem] (line 117)",
+        "leading-[1.3] (line 117)",
+        "tracking-[-0.021em] (line 117)"
       ]
     }
   ],
-  "scanSeconds": 39
+  "scanSeconds": 35
 }
