@@ -3,12 +3,12 @@
   "owner": "unkeyed",
   "name": "unkey",
   "description": "The Developer Platform for Modern APIs",
-  "stars": 5456,
+  "stars": 5458,
   "homepage": "https://go.unkey.com",
   "language": "Go",
   "defaultBranch": "main",
-  "commit": "a52e5586d90dd646835ed88ae6bfe0041d3ece81",
-  "generatedAt": "2026-10-05T15:22:09.041Z",
+  "commit": "e8a6d7985ea82f20376e779c614883fd04e5239a",
+  "generatedAt": "2026-10-06T13:49:39.354Z",
   "cliVersion": "0.8.7",
   "score": null,
   "tier": "N/A",
@@ -32,8 +32,8 @@
   },
   "metrics": {
     "componentCount": 0,
-    "tokenCount": 386,
-    "hardcodedValueCount": 5,
+    "tokenCount": 385,
+    "hardcodedValueCount": 4,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 7,
+    "totalDriftCount": 6,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -72,13 +72,13 @@
     "samples": []
   },
   "driftSummary": {
-    "total": 7,
+    "total": 6,
     "critical": 0,
     "warning": 4,
-    "info": 3
+    "info": 2
   },
   "driftByType": {
-    "hardcoded-value": 5,
+    "hardcoded-value": 4,
     "repeated-pattern": 2
   },
   "topColors": [
@@ -127,7 +127,7 @@
   ],
   "worstFiles": [
     {
-      "file": "docs/product/style.css",
+      "file": "docs/style.css",
       "count": 71
     },
     {
@@ -141,23 +141,12 @@
     {
       "file": "web/apps/dashboard/styles/tailwind.css",
       "count": 2
-    },
-    {
-      "file": "docs/engineering/style.css",
-      "count": 1
     }
   ],
   "samples": [
     {
-      "component": "docs/engineering/style.css",
-      "location": "docs/engineering/style.css:6",
-      "entries": [
-        "letter spacing: -0.02em (line 6)"
-      ]
-    },
-    {
-      "component": "docs/product/style.css",
-      "location": "docs/product/style.css:65",
+      "component": "docs/style.css",
+      "location": "docs/style.css:65",
       "entries": [
         "font weight: 600 (line 65)",
         "letter spacing: -0.025em (line 66)",
@@ -191,5 +180,5 @@
       ]
     }
   ],
-  "scanSeconds": 12
+  "scanSeconds": 14
 }

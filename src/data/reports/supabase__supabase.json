@@ -3,12 +3,12 @@
   "owner": "supabase",
   "name": "supabase",
   "description": "The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications.",
-  "stars": 111116,
+  "stars": 111161,
   "homepage": "https://supabase.com",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "c4221ef689ef76644242f3e9c036660adce5b276",
-  "generatedAt": "2026-10-05T15:10:09.779Z",
+  "commit": "1da25a7e72916081f786c3ed0c282ed2264c8d7b",
+  "generatedAt": "2026-10-06T13:34:15.686Z",
   "cliVersion": "0.8.7",
   "score": 38,
   "tier": "Bad",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 4630,
+    "componentCount": 4634,
     "tokenCount": 1128,
     "hardcodedValueCount": 297,
     "unusedTokenCount": 0,
@@ -41,10 +41,10 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 4928,
+    "totalDriftCount": 4932,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 7,
-    "orphanedComponentCount": 4622,
+    "orphanedComponentCount": 4626,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 2,
     "orphanedTokenCount": 0,
@@ -82,7 +82,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 279 of the 290 findings with tokens or scale steps, and remove or reuse 4629 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 279 of the 290 findings with tokens or scale steps, and remove or reuse 4633 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -141,15 +141,15 @@
     ]
   },
   "driftSummary": {
-    "total": 4456,
+    "total": 4454,
     "critical": 0,
-    "warning": 4215,
+    "warning": 4213,
     "info": 241
   },
   "driftByType": {
     "deprecated-pattern": 2,
     "hardcoded-value": 297,
-    "orphaned-component": 4150,
+    "orphaned-component": 4148,
     "repeated-pattern": 7
   },
   "topColors": [
@@ -265,9 +265,9 @@
     },
     {
       "component": "FrameworksSectionClient",
-      "location": "apps/www/app/(home)/_components/FrameworksSectionClient.tsx:19",
+      "location": "apps/www/app/(home)/_components/FrameworksSectionClient.tsx:20",
       "entries": [
-        "fontSize: 0.8125rem (line 106)"
+        "fontSize: 0.8125rem (line 128)"
       ]
     },
     {
@@ -288,51 +288,51 @@
     },
     {
       "component": "ApiSectionClient",
-      "location": "apps/www/app/(products)/auth/_components/ApiSectionClient.tsx:25",
+      "location": "apps/www/app/(products)/auth/_components/ApiSectionClient.tsx:24",
+      "entries": [
+        "fontSize: 0.8125rem (line 158)"
+      ]
+    },
+    {
+      "component": "RLSSectionClient",
+      "location": "apps/www/app/(products)/auth/_components/RLSSectionClient.tsx:17",
+      "entries": [
+        "fontSize: 0.8125rem (line 156)"
+      ]
+    },
+    {
+      "component": "ApiSectionClient",
+      "location": "apps/www/app/(products)/database/_components/ApiSectionClient.tsx:24",
+      "entries": [
+        "fontSize: 0.8125rem (line 146)"
+      ]
+    },
+    {
+      "component": "IntegratesSectionClient",
+      "location": "apps/www/app/(products)/edge-functions/_components/IntegratesSectionClient.tsx:23",
       "entries": [
         "fontSize: 0.8125rem (line 159)"
       ]
     },
     {
-      "component": "RLSSectionClient",
-      "location": "apps/www/app/(products)/auth/_components/RLSSectionClient.tsx:18",
+      "component": "ApiSectionClient",
+      "location": "apps/www/app/(products)/realtime/_components/ApiSectionClient.tsx:23",
       "entries": [
-        "fontSize: 0.8125rem (line 157)"
+        "fontSize: 0.8125rem (line 145)"
       ]
     },
     {
       "component": "ApiSectionClient",
-      "location": "apps/www/app/(products)/database/_components/ApiSectionClient.tsx:25",
+      "location": "apps/www/app/(products)/storage/_components/ApiSectionClient.tsx:24",
       "entries": [
         "fontSize: 0.8125rem (line 147)"
       ]
     },
     {
-      "component": "IntegratesSectionClient",
-      "location": "apps/www/app/(products)/edge-functions/_components/IntegratesSectionClient.tsx:24",
-      "entries": [
-        "fontSize: 0.8125rem (line 160)"
-      ]
-    },
-    {
-      "component": "ApiSectionClient",
-      "location": "apps/www/app/(products)/realtime/_components/ApiSectionClient.tsx:24",
-      "entries": [
-        "fontSize: 0.8125rem (line 146)"
-      ]
-    },
-    {
-      "component": "ApiSectionClient",
-      "location": "apps/www/app/(products)/storage/_components/ApiSectionClient.tsx:25",
-      "entries": [
-        "fontSize: 0.8125rem (line 148)"
-      ]
-    },
-    {
       "component": "PermissionsSectionClient",
-      "location": "apps/www/app/(products)/storage/_components/PermissionsSectionClient.tsx:18",
+      "location": "apps/www/app/(products)/storage/_components/PermissionsSectionClient.tsx:17",
       "entries": [
-        "fontSize: 0.8125rem (line 146)"
+        "fontSize: 0.8125rem (line 145)"
       ]
     },
     {
@@ -344,5 +344,5 @@
       ]
     }
   ],
-  "scanSeconds": 132
+  "scanSeconds": 165
 }

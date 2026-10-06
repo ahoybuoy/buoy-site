@@ -3,18 +3,18 @@
   "owner": "n8n-io",
   "name": "n8n",
   "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
-  "stars": 206710,
+  "stars": 206757,
   "homepage": "https://n8n.io",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "02f08035b4c292520850d1bca9ae105322988364",
-  "generatedAt": "2026-10-05T15:17:28.638Z",
+  "commit": "2fe28ea0eeaf155ee01cf8ad48c9cd1ac58db7b2",
+  "generatedAt": "2026-10-06T13:43:36.835Z",
   "cliVersion": "0.8.7",
-  "score": 59,
-  "tier": "OK",
+  "score": 60,
+  "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 21,
+      "score": 22,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1334,
+    "componentCount": 1346,
     "tokenCount": 637,
-    "hardcodedValueCount": 260,
+    "hardcodedValueCount": 259,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 261,
+    "totalDriftCount": 260,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -71,14 +71,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 260 hardcoded values left to tokenize. packages/frontend/editor-ui/src/features/settings/communityNodes/components/ContactAdministratorToInstall.vue has the most (2)",
+    "Nearly there — just 259 hardcoded values left to tokenize. packages/frontend/editor-ui/src/features/settings/communityNodes/components/ContactAdministratorToInstall.vue has the most (2)",
     "1 deprecated pattern — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 39,
-      "action": "Replace the hardcoded values in 257 of the 260 findings with tokens or scale steps"
+      "points": 38,
+      "action": "Replace the hardcoded values in 256 of the 259 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -139,14 +139,14 @@
     ]
   },
   "driftSummary": {
-    "total": 261,
+    "total": 260,
     "critical": 0,
     "warning": 94,
-    "info": 167
+    "info": 166
   },
   "driftByType": {
     "deprecated-pattern": 1,
-    "hardcoded-value": 260
+    "hardcoded-value": 259
   },
   "topColors": [
     {
@@ -193,7 +193,7 @@
     },
     {
       "value": "8px",
-      "count": 32
+      "count": 31
     },
     {
       "value": "12px",
@@ -349,5 +349,5 @@
       ]
     }
   ],
-  "scanSeconds": 53
+  "scanSeconds": 67
 }
