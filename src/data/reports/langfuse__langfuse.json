@@ -3,18 +3,18 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source agent evals & observability: Trace, evaluate, and improve LLM applications with one open platform.",
-  "stars": 35434,
+  "stars": 35480,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "a8f548c332767dd77b84e2cc13fa8ad389c6f0a5",
-  "generatedAt": "2026-10-06T13:48:45.692Z",
+  "commit": "4e733d07aed541f62041ac0165048d96e063df77",
+  "generatedAt": "2026-10-07T13:55:52.313Z",
   "cliVersion": "0.8.7",
-  "score": 93,
+  "score": 92,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 53,
+      "score": 52,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2033,
+    "componentCount": 2041,
     "tokenCount": 290,
-    "hardcodedValueCount": 77,
+    "hardcodedValueCount": 78,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 77,
+    "totalDriftCount": 78,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -69,14 +69,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 76 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx has the most (2)",
+    "Nearly there — just 77 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx has the most (2)",
     "1 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 7,
-      "action": "Replace the hardcoded values in 71 of the 76 findings with tokens or scale steps"
+      "points": 8,
+      "action": "Replace the hardcoded values in 72 of the 77 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -116,13 +116,13 @@
     ]
   },
   "driftSummary": {
-    "total": 77,
+    "total": 78,
     "critical": 0,
     "warning": 1,
-    "info": 76
+    "info": 77
   },
   "driftByType": {
-    "hardcoded-value": 77
+    "hardcoded-value": 78
   },
   "topColors": [
     {
@@ -148,6 +148,10 @@
       "count": 3
     },
     {
+      "value": "5px",
+      "count": 3
+    },
+    {
       "value": "0.5rem",
       "count": 2
     },
@@ -158,27 +162,19 @@
     {
       "value": "9px",
       "count": 2
-    },
-    {
-      "value": "5px",
-      "count": 2
     }
   ],
   "worstFiles": [
-    {
-      "file": "web/src/features/sessions/SessionConversationTimeline/components/SessionConversationTimelineTrace/SessionConversationTimelineTrace.tsx",
-      "count": 9
-    },
     {
       "file": "web/src/features/sessions/ModernSessionSidebar.tsx",
       "count": 7
     },
     {
-      "file": "web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx",
-      "count": 5
+      "file": "web/src/features/sessions/components/ConnectedModernSessionBodyTimeline/components/ConnectedSessionConversationTimeline/components/SessionConversationalView/components/SessionConversationSidebar/SessionConversationSidebar.tsx",
+      "count": 6
     },
     {
-      "file": "web/src/features/events/components/outlier-strip/OutlierBarStrip.tsx",
+      "file": "web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx",
       "count": 5
     },
     {
@@ -191,6 +187,10 @@
     },
     {
       "file": "web/src/components/ChatMessages/ChatMessageComponent.tsx",
+      "count": 4
+    },
+    {
+      "file": "web/src/features/events/components/outlier-strip/OutlierBarStrip.tsx",
       "count": 4
     },
     {
@@ -292,5 +292,5 @@
       ]
     }
   ],
-  "scanSeconds": 74
+  "scanSeconds": 46
 }
