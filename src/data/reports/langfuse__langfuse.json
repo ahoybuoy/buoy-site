@@ -3,12 +3,12 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source agent evals & observability: Trace, evaluate, and improve LLM applications with one open platform.",
-  "stars": 35480,
+  "stars": 35520,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "4e733d07aed541f62041ac0165048d96e063df77",
-  "generatedAt": "2026-10-07T13:55:52.313Z",
+  "commit": "4d5796d2557480464f39420c894fae49eec07646",
+  "generatedAt": "2026-10-08T14:10:15.887Z",
   "cliVersion": "0.8.7",
   "score": 92,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2041,
-    "tokenCount": 290,
-    "hardcodedValueCount": 78,
+    "componentCount": 2053,
+    "tokenCount": 294,
+    "hardcodedValueCount": 80,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 78,
+    "totalDriftCount": 80,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -69,14 +69,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 77 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx has the most (2)",
+    "Nearly there — just 79 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx has the most (2)",
     "1 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 8,
-      "action": "Replace the hardcoded values in 72 of the 77 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 74 of the 79 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -116,13 +116,13 @@
     ]
   },
   "driftSummary": {
-    "total": 78,
+    "total": 80,
     "critical": 0,
     "warning": 1,
-    "info": 77
+    "info": 79
   },
   "driftByType": {
-    "hardcoded-value": 78
+    "hardcoded-value": 80
   },
   "topColors": [
     {
@@ -292,5 +292,5 @@
       ]
     }
   ],
-  "scanSeconds": 46
+  "scanSeconds": 74
 }

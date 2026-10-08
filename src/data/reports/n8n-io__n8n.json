@@ -3,12 +3,12 @@
   "owner": "n8n-io",
   "name": "n8n",
   "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
-  "stars": 206807,
+  "stars": 206885,
   "homepage": "https://n8n.io",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "0bbea438e1906a0773cdbb46e273b4c01fea359b",
-  "generatedAt": "2026-10-07T13:52:14.609Z",
+  "commit": "63dc2854936f3e282ca422cd9b9babeab65a2375",
+  "generatedAt": "2026-10-08T14:05:05.943Z",
   "cliVersion": "0.8.7",
   "score": 59,
   "tier": "OK",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1322,
-    "tokenCount": 637,
-    "hardcodedValueCount": 259,
+    "componentCount": 1337,
+    "tokenCount": 632,
+    "hardcodedValueCount": 260,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 260,
+    "totalDriftCount": 261,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -71,14 +71,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 259 hardcoded values left to tokenize. packages/frontend/editor-ui/src/features/settings/communityNodes/components/ContactAdministratorToInstall.vue has the most (2)",
+    "Nearly there — just 260 hardcoded values left to tokenize. packages/frontend/editor-ui/src/features/settings/communityNodes/components/ContactAdministratorToInstall.vue has the most (2)",
     "1 deprecated pattern — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 39,
-      "action": "Replace the hardcoded values in 256 of the 259 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 257 of the 260 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -139,14 +139,14 @@
     ]
   },
   "driftSummary": {
-    "total": 260,
+    "total": 261,
     "critical": 0,
-    "warning": 94,
+    "warning": 95,
     "info": 166
   },
   "driftByType": {
     "deprecated-pattern": 1,
-    "hardcoded-value": 259
+    "hardcoded-value": 260
   },
   "topColors": [
     {
@@ -189,7 +189,7 @@
     },
     {
       "value": "5px",
-      "count": 38
+      "count": 37
     },
     {
       "value": "8px",
@@ -208,12 +208,12 @@
       "count": 14
     },
     {
-      "value": "16px",
+      "value": "1em",
       "count": 13
     },
     {
-      "value": "1em",
-      "count": 12
+      "value": "16px",
+      "count": 13
     }
   ],
   "worstFiles": [
@@ -349,5 +349,5 @@
       ]
     }
   ],
-  "scanSeconds": 46
+  "scanSeconds": 73
 }

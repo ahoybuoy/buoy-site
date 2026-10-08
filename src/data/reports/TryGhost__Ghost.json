@@ -3,12 +3,12 @@
   "owner": "TryGhost",
   "name": "Ghost",
   "description": "Independent technology for modern publishing, memberships, subscriptions and newsletters.",
-  "stars": 55493,
+  "stars": 55498,
   "homepage": "https://ghost.org",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "056f6bfa657f2175b924106fcb25c3fc245bb4e7",
-  "generatedAt": "2026-10-07T13:52:45.291Z",
+  "commit": "2279a19e13475951a85181b57cb7146e769b93fa",
+  "generatedAt": "2026-10-08T14:05:53.367Z",
   "cliVersion": "0.8.7",
   "score": 63,
   "tier": "Good",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1778,
-    "tokenCount": 761,
-    "hardcodedValueCount": 340,
+    "componentCount": 1814,
+    "tokenCount": 763,
+    "hardcodedValueCount": 344,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 340,
+    "totalDriftCount": 344,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -72,14 +72,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 333 hardcoded values left to tokenize. apps/activitypub/src/views/inbox/components/customizer.tsx has the most (4)",
+    "Nearly there — just 337 hardcoded values left to tokenize. apps/activitypub/src/views/inbox/components/customizer.tsx has the most (4)",
     "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 37,
-      "action": "Replace the hardcoded values in 329 of the 333 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 333 of the 337 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -120,7 +120,7 @@
       },
       {
         "file": "apps/admin/src/index.css",
-        "line": 348,
+        "line": 384,
         "value": "20px",
         "kind": "known-debt",
         "reason": "Temporary overrides until Ember transition is finished"
@@ -135,13 +135,13 @@
     ]
   },
   "driftSummary": {
-    "total": 340,
+    "total": 344,
     "critical": 0,
     "warning": 112,
-    "info": 228
+    "info": 232
   },
   "driftByType": {
-    "hardcoded-value": 340
+    "hardcoded-value": 344
   },
   "topColors": [
     {
@@ -343,5 +343,5 @@
       ]
     }
   ],
-  "scanSeconds": 29
+  "scanSeconds": 46
 }
