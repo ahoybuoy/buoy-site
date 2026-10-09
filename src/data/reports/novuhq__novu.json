@@ -3,18 +3,18 @@
   "owner": "novuhq",
   "name": "novu",
   "description": "The open-source communication infrastructure for agents and products",
-  "stars": 40129,
+  "stars": 40133,
   "homepage": "https://go.novu.co/github",
   "language": "TypeScript",
   "defaultBranch": "next",
-  "commit": "bf7990422d0a6b9e12f9690e4a3c3331e30f998b",
-  "generatedAt": "2026-10-08T13:57:26.070Z",
+  "commit": "c4d3eda128c0a2da19c5b674305bdebd0deccb62",
+  "generatedAt": "2026-10-09T13:42:32.834Z",
   "cliVersion": "0.8.7",
-  "score": 70,
+  "score": 69,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 30,
+      "score": 29,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2644,
+    "componentCount": 2670,
     "tokenCount": 499,
-    "hardcodedValueCount": 421,
+    "hardcodedValueCount": 433,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 423,
+    "totalDriftCount": 435,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -51,8 +51,8 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 34,
-    "vendoredDriftCount": 21,
+    "highDensityFileCount": 36,
+    "vendoredDriftCount": 23,
     "notedCount": 21,
     "topHardcodedColor": {
       "value": "#e9d5ff",
@@ -72,14 +72,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 400 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
-    "21 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
+    "Nearly there — just 410 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
+    "23 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 30,
-      "action": "Replace the hardcoded values in 394 of the 400 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "points": 31,
+      "action": "Replace the hardcoded values in 404 of the 410 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     }
   ],
   "noted": {
@@ -134,13 +134,13 @@
     ]
   },
   "driftSummary": {
-    "total": 423,
+    "total": 435,
     "critical": 0,
     "warning": 95,
-    "info": 328
+    "info": 340
   },
   "driftByType": {
-    "hardcoded-value": 421,
+    "hardcoded-value": 433,
     "repeated-pattern": 2
   },
   "topColors": [
@@ -335,5 +335,5 @@
       ]
     }
   ],
-  "scanSeconds": 75
+  "scanSeconds": 78
 }

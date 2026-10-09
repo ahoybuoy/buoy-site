@@ -3,12 +3,12 @@
   "owner": "posthog",
   "name": "posthog",
   "description": ":hedgehog: PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.",
-  "stars": 40189,
+  "stars": 40203,
   "homepage": "https://posthog.com",
   "language": "Python",
   "defaultBranch": "master",
-  "commit": "483dc7377d64548af4964fd5e3a327100dfe1c87",
-  "generatedAt": "2026-10-08T14:08:58.946Z",
+  "commit": "1f800aa7dfb80b06a7f6ae37b103848588e352d0",
+  "generatedAt": "2026-10-09T13:54:58.597Z",
   "cliVersion": "0.8.7",
   "score": 76,
   "tier": "Good",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 5008,
+    "componentCount": 5014,
     "tokenCount": 185,
     "hardcodedValueCount": 354,
     "unusedTokenCount": 0,
@@ -305,9 +305,9 @@
     },
     {
       "component": "CohortEdit",
-      "location": "frontend/src/scenes/cohorts/CohortEdit.tsx:197",
+      "location": "frontend/src/scenes/cohorts/CohortEdit.tsx:199",
       "entries": [
-        "fontSize: 3rem (line 749)"
+        "fontSize: 3rem (line 751)"
       ]
     },
     {
@@ -348,5 +348,5 @@
       ]
     }
   ],
-  "scanSeconds": 185
+  "scanSeconds": 211
 }

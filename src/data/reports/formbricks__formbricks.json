@@ -3,12 +3,12 @@
   "owner": "formbricks",
   "name": "formbricks",
   "description": "Open Source Qualtrics Alternative",
-  "stars": 13073,
+  "stars": 13078,
   "homepage": "https://formbricks.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "281db0962153d6fb7c8fdff92bbd5f336fee28a2",
-  "generatedAt": "2026-10-08T14:01:33.296Z",
+  "commit": "dadc0a1dc210d1a25487db55858d2ed473fbca6a",
+  "generatedAt": "2026-10-09T13:46:58.658Z",
   "cliVersion": "0.8.7",
   "score": 94,
   "tier": "Great",
@@ -86,7 +86,7 @@
     "samples": [
       {
         "file": "packages/survey-ui/src/components/general/calendar.tsx",
-        "line": 239,
+        "line": 242,
         "value": "day:ring-[3px]",
         "kind": "explained",
         "reason": "(4.19:1 against the card, below AA 4.5, and worse the lighter the survey's brand colour is). A tint this light keeps th…"
@@ -100,28 +100,28 @@
       },
       {
         "file": "packages/survey-ui/src/components/elements/nps.tsx",
-        "line": 181,
+        "line": 188,
         "value": "px-[2px]",
         "kind": "optical-nudge",
         "reason": "px-[2px] is a 2-3px optical adjustment"
       },
       {
         "file": "packages/survey-ui/src/components/elements/rating.tsx",
-        "line": 406,
+        "line": 417,
         "value": "px-[2px]",
         "kind": "optical-nudge",
         "reason": "px-[2px] is a 2-3px optical adjustment"
       },
       {
         "file": "packages/survey-ui/src/components/general/element-header.tsx",
-        "line": 64,
+        "line": 65,
         "value": "mb-[3px]",
         "kind": "optical-nudge",
         "reason": "mb-[3px] is a 2-3px optical adjustment"
       },
       {
         "file": "packages/surveys/src/components/general/headline.tsx",
-        "line": 31,
+        "line": 32,
         "value": "mb-[3px]",
         "kind": "optical-nudge",
         "reason": "mb-[3px] is a 2-3px optical adjustment"
@@ -256,9 +256,9 @@
     },
     {
       "component": "packages/survey-ui/src/components/elements/multi-select.tsx",
-      "location": "packages/survey-ui/src/components/elements/multi-select.tsx:112",
+      "location": "packages/survey-ui/src/components/elements/multi-select.tsx:116",
       "entries": [
-        "rounded-[4px] (line 112)"
+        "rounded-[4px] (line 116)"
       ]
     },
     {
@@ -270,17 +270,17 @@
     },
     {
       "component": "packages/survey-ui/src/components/general/calendar.tsx",
-      "location": "packages/survey-ui/src/components/general/calendar.tsx:148",
+      "location": "packages/survey-ui/src/components/general/calendar.tsx:149",
       "entries": [
-        "has-focus:ring-[3px] (line 148)"
+        "has-focus:ring-[3px] (line 149)"
       ]
     },
     {
       "component": "packages/survey-ui/src/components/general/calendar.tsx",
-      "location": "packages/survey-ui/src/components/general/calendar.tsx:162",
+      "location": "packages/survey-ui/src/components/general/calendar.tsx:163",
       "entries": [
-        "text-[0.8rem] (line 162)",
-        "text-[0.8rem] (line 167)"
+        "text-[0.8rem] (line 163)",
+        "text-[0.8rem] (line 168)"
       ]
     },
     {
@@ -293,9 +293,9 @@
     },
     {
       "component": "packages/survey-ui/src/components/general/input.tsx",
-      "location": "packages/survey-ui/src/components/general/input.tsx:41",
+      "location": "packages/survey-ui/src/components/general/input.tsx:43",
       "entries": [
-        "focus-visible:ring-[3px] (line 41)"
+        "focus-visible:ring-[3px] (line 43)"
       ]
     },
     {
@@ -307,16 +307,16 @@
     },
     {
       "component": "packages/survey-ui/src/components/general/textarea.tsx",
-      "location": "packages/survey-ui/src/components/general/textarea.tsx:15",
+      "location": "packages/survey-ui/src/components/general/textarea.tsx:17",
       "entries": [
-        "focus-visible:ring-[3px] (line 15)"
+        "focus-visible:ring-[3px] (line 17)"
       ]
     },
     {
       "component": "packages/surveys/src/components/general/ending-card.tsx",
-      "location": "packages/surveys/src/components/general/ending-card.tsx:88",
+      "location": "packages/surveys/src/components/general/ending-card.tsx:92",
       "entries": [
-        "mb-[10px] (line 88)"
+        "mb-[10px] (line 92)"
       ]
     },
     {
@@ -329,5 +329,5 @@
       ]
     }
   ],
-  "scanSeconds": 28
+  "scanSeconds": 31
 }
