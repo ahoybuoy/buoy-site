@@ -3,18 +3,18 @@
   "owner": "TryGhost",
   "name": "Ghost",
   "description": "Independent technology for modern publishing, memberships, subscriptions and newsletters.",
-  "stars": 55501,
+  "stars": 55506,
   "homepage": "https://ghost.org",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "d057c38995f66cf58b1d0b4b123fc2e685d62d7e",
-  "generatedAt": "2026-10-09T13:51:26.865Z",
+  "commit": "b791246aa0f90260c7382548d28fb910da1fa3a9",
+  "generatedAt": "2026-10-10T13:04:22.602Z",
   "cliVersion": "0.8.7",
-  "score": 64,
+  "score": 70,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 24,
+      "score": 30,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1849,
-    "tokenCount": 763,
-    "hardcodedValueCount": 344,
+    "componentCount": 1843,
+    "tokenCount": 473,
+    "hardcodedValueCount": 286,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 344,
+    "totalDriftCount": 286,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -51,9 +51,9 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 12,
+    "highDensityFileCount": 11,
     "vendoredDriftCount": 7,
-    "notedCount": 88,
+    "notedCount": 31,
     "topHardcodedColor": {
       "value": "#000.",
       "count": 1
@@ -72,22 +72,21 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 337 hardcoded values left to tokenize. apps/activitypub/src/views/inbox/components/customizer.tsx has the most (4)",
+    "Nearly there — just 279 hardcoded values left to tokenize. apps/activitypub/src/views/inbox/components/customizer.tsx has the most (4)",
     "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 36,
-      "action": "Replace the hardcoded values in 333 of the 337 findings with tokens or scale steps"
+      "points": 30,
+      "action": "Replace the hardcoded values in 275 of the 279 findings with tokens or scale steps"
     }
   ],
   "noted": {
-    "count": 88,
+    "count": 31,
     "byKind": {
-      "optical-nudge": 80,
-      "explained": 5,
-      "known-debt": 3
+      "optical-nudge": 27,
+      "explained": 4
     },
     "samples": [
       {
@@ -119,45 +118,37 @@
         "reason": "Nested-editor (callout, etc.) fixes: align placeholder with text"
       },
       {
-        "file": "apps/admin/src/index.css",
-        "line": 384,
-        "value": "20px",
-        "kind": "known-debt",
-        "reason": "Temporary overrides until Ember transition is finished"
+        "file": "apps/activitypub/src/components/feed/feed-item.tsx",
+        "line": 990,
+        "value": "pt-[3px]",
+        "kind": "optical-nudge",
+        "reason": "pt-[3px] is a 2-3px optical adjustment"
       },
       {
-        "file": "apps/ember-admin/app/styles/app-dark.css",
-        "line": 1003,
-        "value": "rgba(88, 101, 116, 0.99)",
-        "kind": "explained",
-        "reason": "Opacity needed to display correctly in Safari"
+        "file": "apps/activitypub/src/components/layout/onboarding/step-1.tsx",
+        "line": 93,
+        "value": "ml-[-2px]",
+        "kind": "optical-nudge",
+        "reason": "ml-[-2px] is a 2-3px optical adjustment"
       }
     ]
   },
   "driftSummary": {
-    "total": 344,
+    "total": 286,
     "critical": 0,
-    "warning": 112,
-    "info": 232
+    "warning": 57,
+    "info": 229
   },
   "driftByType": {
-    "hardcoded-value": 344
+    "hardcoded-value": 286
   },
   "topColors": [
     {
       "value": "#fff",
-      "count": 116
-    },
-    {
-      "value": "#ffffff",
-      "count": 12
+      "count": 37
     },
     {
       "value": "#c8ccd3",
-      "count": 8
-    },
-    {
-      "value": "#ddd",
       "count": 8
     },
     {
@@ -165,84 +156,92 @@
       "count": 8
     },
     {
-      "value": "#101114",
-      "count": 7
-    },
-    {
-      "value": "#bbb",
+      "value": "#ddd",
       "count": 7
     },
     {
       "value": "#8a8f98",
       "count": 6
+    },
+    {
+      "value": "#ffffff",
+      "count": 6
+    },
+    {
+      "value": "#bbb",
+      "count": 6
+    },
+    {
+      "value": "#15171a",
+      "count": 5
     }
   ],
   "topSpacing": [
     {
-      "value": "8px",
-      "count": 52
-    },
-    {
-      "value": "4px",
-      "count": 51
-    },
-    {
       "value": "10px",
-      "count": 47
+      "count": 21
     },
     {
-      "value": "12px",
-      "count": 41
+      "value": "-5px",
+      "count": 17
     },
     {
-      "value": "16px",
-      "count": 38
+      "value": "6rem",
+      "count": 14
     },
     {
       "value": "20px",
-      "count": 37
+      "count": 10
     },
     {
       "value": "6px",
-      "count": 33
+      "count": 10
     },
     {
-      "value": "24px",
-      "count": 20
+      "value": "8px",
+      "count": 10
+    },
+    {
+      "value": "28px",
+      "count": 9
+    },
+    {
+      "value": "4rem",
+      "count": 9
     }
   ],
   "worstFiles": [
-    {
-      "file": "apps/ember-admin/app/styles/layouts/members.css",
-      "count": 229
-    },
-    {
-      "file": "apps/ember-admin/app/styles/layouts/editor.css",
-      "count": 137
-    },
-    {
-      "file": "apps/ember-admin/app/styles/layouts/post-preview.css",
-      "count": 125
-    },
-    {
-      "file": "apps/ember-admin/app/styles/components/publishmenu.css",
-      "count": 112
-    },
-    {
-      "file": "apps/ember-admin/app/styles/layouts/content.css",
-      "count": 100
-    },
-    {
-      "file": "apps/ember-admin/app/styles/spirit/_debug.css",
-      "count": 99
-    },
     {
       "file": "koenig/kg-simplemde/debug/simplemde.css",
       "count": 87
     },
     {
-      "file": "apps/ember-admin/app/styles/layouts/main.css",
-      "count": 70
+      "file": "apps/admin/src/settings/site/theme/theme-code-editor-modal.tsx",
+      "count": 53
+    },
+    {
+      "file": "koenig/kg-simplemde/src/css/simplemde.css",
+      "count": 43
+    },
+    {
+      "file": "ghost/core/frontend/src/cards/css/header.css",
+      "count": 42
+    },
+    {
+      "file": "koenig/koenig-lexical/src/styles/components/kg-prose.css",
+      "count": 41
+    },
+    {
+      "file": "apps/admin/src/element-styles.css",
+      "count": 35
+    },
+    {
+      "file": "ghost/core/frontend/src/cards/css/audio.css",
+      "count": 33
+    },
+    {
+      "file": "ghost/core/frontend/src/cards/css/collection.css",
+      "count": 30
     }
   ],
   "samples": [
@@ -343,5 +342,5 @@
       ]
     }
   ],
-  "scanSeconds": 49
+  "scanSeconds": 35
 }

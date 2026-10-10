@@ -3,12 +3,12 @@
   "owner": "posthog",
   "name": "posthog",
   "description": ":hedgehog: PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.",
-  "stars": 40203,
+  "stars": 40211,
   "homepage": "https://posthog.com",
   "language": "Python",
   "defaultBranch": "master",
-  "commit": "1f800aa7dfb80b06a7f6ae37b103848588e352d0",
-  "generatedAt": "2026-10-09T13:54:58.597Z",
+  "commit": "5632da2b6b376eccecae3c1fa04833abd893e2a0",
+  "generatedAt": "2026-10-10T13:06:45.315Z",
   "cliVersion": "0.8.7",
   "score": 76,
   "tier": "Good",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 5014,
+    "componentCount": 5017,
     "tokenCount": 185,
     "hardcodedValueCount": 354,
     "unusedTokenCount": 0,
@@ -62,7 +62,7 @@
       "path": "frontend/src/lib/KeaDevTools.tsx",
       "issueCount": 6
     },
-    "uniqueSpacingValues": 6,
+    "uniqueSpacingValues": 5,
     "detectedFrameworkNames": [
       "react",
       "tailwind",
@@ -142,8 +142,8 @@
   "driftSummary": {
     "total": 363,
     "critical": 3,
-    "warning": 177,
-    "info": 183
+    "warning": 178,
+    "info": 182
   },
   "driftByType": {
     "hardcoded-value": 354,
@@ -207,16 +207,16 @@
       "count": 85
     },
     {
+      "value": "8px",
+      "count": 28
+    },
+    {
       "value": "0.625rem",
       "count": 26
     },
     {
-      "value": "8px",
-      "count": 23
-    },
-    {
       "value": "4px",
-      "count": 22
+      "count": 25
     }
   ],
   "worstFiles": [
@@ -304,13 +304,6 @@
       ]
     },
     {
-      "component": "CohortEdit",
-      "location": "frontend/src/scenes/cohorts/CohortEdit.tsx:199",
-      "entries": [
-        "fontSize: 3rem (line 751)"
-      ]
-    },
-    {
       "component": "FeatureFlagVariantsForm",
       "location": "frontend/src/scenes/feature-flags/FeatureFlagVariantsForm.tsx:51",
       "entries": [
@@ -346,7 +339,14 @@
         "background: rgba(255, 255, 255, 0.2) (line 66)",
         "color: #fff (line 66)"
       ]
+    },
+    {
+      "component": "ElementHighlight",
+      "location": "frontend/src/toolbar/product-tours/ElementHighlight.tsx:9",
+      "entries": [
+        "background: #1d4aff (line 48)"
+      ]
     }
   ],
-  "scanSeconds": 211
+  "scanSeconds": 142
 }
