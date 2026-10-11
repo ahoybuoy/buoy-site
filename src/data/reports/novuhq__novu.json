@@ -3,12 +3,12 @@
   "owner": "novuhq",
   "name": "novu",
   "description": "The open-source communication infrastructure for agents and products",
-  "stars": 40132,
+  "stars": 40136,
   "homepage": "https://go.novu.co/github",
   "language": "TypeScript",
   "defaultBranch": "next",
-  "commit": "c4d3eda128c0a2da19c5b674305bdebd0deccb62",
-  "generatedAt": "2026-10-10T12:57:31.685Z",
+  "commit": "2666614b46d3d4cb776155e066f9aa568ef4e201",
+  "generatedAt": "2026-10-11T13:22:39.288Z",
   "cliVersion": "0.8.7",
   "score": 69,
   "tier": "Good",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2670,
+    "componentCount": 2693,
     "tokenCount": 499,
-    "hardcodedValueCount": 433,
+    "hardcodedValueCount": 436,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 435,
+    "totalDriftCount": 438,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -72,14 +72,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 410 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
+    "Nearly there — just 413 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
     "23 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 31,
-      "action": "Replace the hardcoded values in 404 of the 410 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 407 of the 413 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     }
   ],
   "noted": {
@@ -134,13 +134,13 @@
     ]
   },
   "driftSummary": {
-    "total": 435,
+    "total": 438,
     "critical": 0,
     "warning": 95,
-    "info": 340
+    "info": 343
   },
   "driftByType": {
-    "hardcoded-value": 433,
+    "hardcoded-value": 436,
     "repeated-pattern": 2
   },
   "topColors": [
@@ -335,5 +335,5 @@
       ]
     }
   ],
-  "scanSeconds": 60
+  "scanSeconds": 76
 }
