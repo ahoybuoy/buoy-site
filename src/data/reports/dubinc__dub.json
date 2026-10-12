@@ -3,12 +3,12 @@
   "owner": "dubinc",
   "name": "dub",
   "description": "The modern link attribution platform. Loved by world-class marketing teams like Framer, Perplexity, Superhuman, Twilio, Buffer and more.",
-  "stars": 24873,
+  "stars": 24876,
   "homepage": "https://dub.co",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "bc7eeb882ead4652ed375545db81bb79b72137e8",
-  "generatedAt": "2026-10-11T13:21:22.957Z",
+  "commit": "d58184a32af53f0c0dc2691616a459e797407a25",
+  "generatedAt": "2026-10-12T15:56:25.932Z",
   "cliVersion": "0.8.7",
   "score": 90,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1630,
+    "componentCount": 1632,
     "tokenCount": 0,
-    "hardcodedValueCount": 81,
+    "hardcodedValueCount": 82,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 99,
+    "totalDriftCount": 100,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 18,
     "orphanedComponentCount": 0,
@@ -70,7 +70,7 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 77 hardcoded values left to tokenize. apps/web/app/(ee)/partners.dub.co/(dashboard)/referrals/page.tsx has the most (3)",
+    "Nearly there — just 78 hardcoded values left to tokenize. apps/web/app/(ee)/partners.dub.co/(dashboard)/referrals/page.tsx has the most (3)",
     "4 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
     "18 repeated patterns — extract to shared components"
   ],
@@ -78,7 +78,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 10,
-      "action": "Replace the hardcoded values in 73 of the 77 findings with tokens or scale steps, and remove or reuse 18 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 74 of the 78 findings with tokens or scale steps, and remove or reuse 18 unused components and repeated patterns"
     }
   ],
   "noted": {
@@ -118,13 +118,13 @@
     ]
   },
   "driftSummary": {
-    "total": 99,
+    "total": 100,
     "critical": 0,
     "warning": 7,
-    "info": 92
+    "info": 93
   },
   "driftByType": {
-    "hardcoded-value": 81,
+    "hardcoded-value": 82,
     "repeated-pattern": 18
   },
   "topColors": [
@@ -238,6 +238,13 @@
       ]
     },
     {
+      "component": "apps/web/app/(ee)/admin.dub.co/(dashboard)/components/ban-link.tsx",
+      "location": "apps/web/app/(ee)/admin.dub.co/(dashboard)/components/ban-link.tsx:265",
+      "entries": [
+        "text-[11px] (line 265)"
+      ]
+    },
+    {
       "component": "apps/web/app/(ee)/admin.dub.co/(dashboard)/components/user-info.tsx",
       "location": "apps/web/app/(ee)/admin.dub.co/(dashboard)/components/user-info.tsx:300",
       "entries": [
@@ -315,14 +322,7 @@
         "tracking-[-0.28px] (line 109)",
         "tracking-[-0.28px] (line 126)"
       ]
-    },
-    {
-      "component": "apps/web/app/(ee)/partners.dub.co/(dashboard)/programs/[programSlug]/(enrolled)/bounties/[bountyId]/page.tsx",
-      "location": "apps/web/app/(ee)/partners.dub.co/(dashboard)/programs/[programSlug]/(enrolled)/bounties/[bountyId]/page.tsx:63",
-      "entries": [
-        "tracking-[-0.36px] (line 63)"
-      ]
     }
   ],
-  "scanSeconds": 46
+  "scanSeconds": 30
 }

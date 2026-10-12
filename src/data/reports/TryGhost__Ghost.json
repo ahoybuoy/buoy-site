@@ -3,18 +3,18 @@
   "owner": "TryGhost",
   "name": "Ghost",
   "description": "Independent technology for modern publishing, memberships, subscriptions and newsletters.",
-  "stars": 55512,
+  "stars": 55521,
   "homepage": "https://ghost.org",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "1867524c44f12449ce12ba168a9f6b8efa96534f",
-  "generatedAt": "2026-10-11T13:31:11.245Z",
+  "commit": "5c8f62886e9451c3843fa2f89c6bbe6400f01386",
+  "generatedAt": "2026-10-12T16:03:03.786Z",
   "cliVersion": "0.8.7",
-  "score": 70,
+  "score": 71,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 30,
+      "score": 31,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1866,
-    "tokenCount": 483,
-    "hardcodedValueCount": 288,
+    "componentCount": 1876,
+    "tokenCount": 499,
+    "hardcodedValueCount": 282,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 288,
+    "totalDriftCount": 282,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -72,14 +72,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 281 hardcoded values left to tokenize. apps/activitypub/src/views/inbox/components/customizer.tsx has the most (4)",
+    "Nearly there — just 275 hardcoded values left to tokenize. apps/activitypub/src/views/inbox/components/customizer.tsx has the most (4)",
     "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 30,
-      "action": "Replace the hardcoded values in 277 of the 281 findings with tokens or scale steps"
+      "points": 29,
+      "action": "Replace the hardcoded values in 271 of the 275 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -134,13 +134,13 @@
     ]
   },
   "driftSummary": {
-    "total": 288,
+    "total": 282,
     "critical": 0,
-    "warning": 57,
-    "info": 231
+    "warning": 56,
+    "info": 226
   },
   "driftByType": {
-    "hardcoded-value": 288
+    "hardcoded-value": 282
   },
   "topColors": [
     {
@@ -228,10 +228,6 @@
       "count": 42
     },
     {
-      "file": "koenig/koenig-lexical/src/styles/components/kg-prose.css",
-      "count": 41
-    },
-    {
       "file": "apps/admin/src/element-styles.css",
       "count": 35
     },
@@ -241,6 +237,10 @@
     },
     {
       "file": "ghost/core/frontend/src/cards/css/collection.css",
+      "count": 30
+    },
+    {
+      "file": "ghost/core/frontend/src/cards/css/video.css",
       "count": 30
     }
   ],
@@ -342,5 +342,5 @@
       ]
     }
   ],
-  "scanSeconds": 46
+  "scanSeconds": 29
 }

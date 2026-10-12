@@ -3,12 +3,12 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source agent evals & observability: Trace, evaluate, and improve LLM applications with one open platform.",
-  "stars": 35644,
+  "stars": 35696,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "cb2cebae9f8e7d53e8e514780fce8493d680ecfb",
-  "generatedAt": "2026-10-11T13:35:36.269Z",
+  "commit": "69a84e0e955a02e5fa1d83aecc75623923c04cc2",
+  "generatedAt": "2026-10-12T16:05:53.560Z",
   "cliVersion": "0.8.7",
   "score": 92,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2116,
-    "tokenCount": 295,
-    "hardcodedValueCount": 82,
+    "componentCount": 2123,
+    "tokenCount": 298,
+    "hardcodedValueCount": 81,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 82,
+    "totalDriftCount": 81,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -69,14 +69,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 81 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx has the most (2)",
+    "Nearly there — just 80 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx has the most (2)",
     "1 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 8,
-      "action": "Replace the hardcoded values in 76 of the 81 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 75 of the 80 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -123,13 +123,13 @@
     ]
   },
   "driftSummary": {
-    "total": 82,
+    "total": 81,
     "critical": 0,
     "warning": 2,
-    "info": 80
+    "info": 79
   },
   "driftByType": {
-    "hardcoded-value": 82
+    "hardcoded-value": 81
   },
   "topColors": [
     {
@@ -210,7 +210,7 @@
       "component": "Codeblock",
       "location": "web/src/components/design-system/Codeblock/Codeblock.tsx:110",
       "entries": [
-        "fontSize: 0.75rem (line 292)"
+        "fontSize: 0.75rem (line 304)"
       ]
     },
     {
@@ -299,5 +299,5 @@
       ]
     }
   ],
-  "scanSeconds": 75
+  "scanSeconds": 50
 }
