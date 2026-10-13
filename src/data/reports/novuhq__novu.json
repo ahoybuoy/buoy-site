@@ -7,8 +7,8 @@
   "homepage": "https://go.novu.co/github",
   "language": "TypeScript",
   "defaultBranch": "next",
-  "commit": "c71b5ff583751d0d5bb8b8fedc1f3e507080d185",
-  "generatedAt": "2026-10-12T15:57:15.463Z",
+  "commit": "1cdbfd8bf165b58f18b8f91654aaf7246bd18638",
+  "generatedAt": "2026-10-13T14:33:47.401Z",
   "cliVersion": "0.8.7",
   "score": 69,
   "tier": "Good",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2702,
+    "componentCount": 2714,
     "tokenCount": 499,
-    "hardcodedValueCount": 442,
+    "hardcodedValueCount": 448,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 444,
+    "totalDriftCount": 450,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -51,7 +51,7 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 37,
+    "highDensityFileCount": 38,
     "vendoredDriftCount": 23,
     "notedCount": 24,
     "topHardcodedColor": {
@@ -72,14 +72,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 419 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
+    "Nearly there — just 425 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
     "23 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 31,
-      "action": "Replace the hardcoded values in 413 of the 419 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 419 of the 425 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     }
   ],
   "noted": {
@@ -134,13 +134,13 @@
     ]
   },
   "driftSummary": {
-    "total": 444,
+    "total": 450,
     "critical": 0,
-    "warning": 95,
-    "info": 349
+    "warning": 96,
+    "info": 354
   },
   "driftByType": {
-    "hardcoded-value": 442,
+    "hardcoded-value": 448,
     "repeated-pattern": 2
   },
   "topColors": [
@@ -192,7 +192,7 @@
     },
     {
       "value": "5px",
-      "count": 12
+      "count": 13
     },
     {
       "value": "6px",
@@ -335,5 +335,5 @@
       ]
     }
   ],
-  "scanSeconds": 49
+  "scanSeconds": 70
 }

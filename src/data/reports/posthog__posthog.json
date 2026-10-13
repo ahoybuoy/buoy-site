@@ -3,12 +3,12 @@
   "owner": "posthog",
   "name": "posthog",
   "description": ":hedgehog: PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.",
-  "stars": 40241,
+  "stars": 40256,
   "homepage": "https://posthog.com",
   "language": "Python",
   "defaultBranch": "master",
-  "commit": "8931994aee8d9f4774fdeb75e99bf3ab9763e12c",
-  "generatedAt": "2026-10-12T16:05:00.265Z",
+  "commit": "f760726e822895bd7b902e5d6ea705e334e59155",
+  "generatedAt": "2026-10-13T14:44:22.371Z",
   "cliVersion": "0.8.7",
   "score": 76,
   "tier": "Good",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 5039,
+    "componentCount": 4995,
     "tokenCount": 185,
-    "hardcodedValueCount": 356,
+    "hardcodedValueCount": 355,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 3,
@@ -41,7 +41,7 @@
     "colorContrastCount": 3,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 365,
+    "totalDriftCount": 364,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 3,
     "orphanedComponentCount": 0,
@@ -71,7 +71,7 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 356 hardcoded values left to tokenize. frontend/src/lib/KeaDevTools.tsx has the most (6)",
+    "Nearly there — just 355 hardcoded values left to tokenize. frontend/src/lib/KeaDevTools.tsx has the most (6)",
     "3 color contrast issues — fix immediately",
     "3 deprecated patterns — migrate to current API"
   ],
@@ -79,7 +79,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 14,
-      "action": "Replace the hardcoded values in 344 of the 356 findings with tokens or scale steps, and remove or reuse 3 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 343 of the 355 findings with tokens or scale steps, and remove or reuse 3 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -97,7 +97,7 @@
     "samples": [
       {
         "file": "frontend/src/toolbar/bar/Toolbar.tsx",
-        "line": 623,
+        "line": 598,
         "value": "1.5rem",
         "kind": "explained",
         "reason": "Inline font-size because the wrapper breaks the `button > svg` size rule"
@@ -140,13 +140,13 @@
     ]
   },
   "driftSummary": {
-    "total": 365,
+    "total": 364,
     "critical": 3,
-    "warning": 179,
+    "warning": 178,
     "info": 183
   },
   "driftByType": {
-    "hardcoded-value": 356,
+    "hardcoded-value": 355,
     "deprecated-pattern": 3,
     "color-contrast": 3,
     "repeated-pattern": 3
@@ -158,18 +158,10 @@
     },
     {
       "value": "#1d1f27",
-      "count": 7
-    },
-    {
-      "value": "#abb2bf",
-      "count": 7
+      "count": 6
     },
     {
       "value": "#e0e1d9",
-      "count": 5
-    },
-    {
-      "value": "#c678dd",
       "count": 5
     },
     {
@@ -182,6 +174,14 @@
     },
     {
       "value": "rgba(0,0,0,0.6)",
+      "count": 3
+    },
+    {
+      "value": "#1d4aff",
+      "count": 3
+    },
+    {
+      "value": "#f0f0f0",
       "count": 3
     }
   ],
@@ -211,12 +211,12 @@
       "count": 28
     },
     {
-      "value": "0.625rem",
+      "value": "4px",
       "count": 26
     },
     {
-      "value": "4px",
-      "count": 25
+      "value": "0.625rem",
+      "count": 26
     }
   ],
   "worstFiles": [
@@ -230,7 +230,7 @@
     },
     {
       "file": "products/tasks/frontend/infrastructure/infrastructureAdmin.css",
-      "count": 57
+      "count": 58
     },
     {
       "file": "frontend/src/scenes/notebooks/Notebook/Notebook.scss",
@@ -319,9 +319,9 @@
     },
     {
       "component": "LockableMenuIcon",
-      "location": "frontend/src/toolbar/bar/Toolbar.tsx:130",
+      "location": "frontend/src/toolbar/bar/Toolbar.tsx:120",
       "entries": [
-        "fontSize: 1.5rem (line 138)"
+        "fontSize: 1.5rem (line 128)"
       ]
     },
     {
@@ -348,5 +348,5 @@
       ]
     }
   ],
-  "scanSeconds": 116
+  "scanSeconds": 171
 }

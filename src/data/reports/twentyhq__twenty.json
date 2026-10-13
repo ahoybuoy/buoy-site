@@ -3,12 +3,12 @@
   "owner": "twentyhq",
   "name": "twenty",
   "description": "The open alternative to Salesforce, designed for AI.",
-  "stars": 58247,
+  "stars": 58275,
   "homepage": "https://twenty.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "fd5d75034adf2c091c6d7c8e4a49fabc2062c5e6",
-  "generatedAt": "2026-10-12T15:59:47.202Z",
+  "commit": "03c8881efdefa8f6a9ffc838169c218017675d84",
+  "generatedAt": "2026-10-13T14:37:01.619Z",
   "cliVersion": "0.8.7",
   "score": 99,
   "tier": "Great",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 3991,
+    "componentCount": 3996,
     "tokenCount": 13,
     "hardcodedValueCount": 23,
     "unusedTokenCount": 0,
@@ -86,8 +86,8 @@
   "noted": {
     "count": 3,
     "byKind": {
-      "known-debt": 2,
-      "optical-nudge": 1
+      "optical-nudge": 1,
+      "known-debt": 2
     },
     "samples": [
       {
@@ -105,7 +105,7 @@
         "reason": "Cascade order mirrors the deprecated Linaria ternaries: color: disabled > accent > base; hover background: disabled (wi…"
       },
       {
-        "file": "packages/twenty-ui/src/primitives/input/SegmentedControl/SegmentedControl.module.scss",
+        "file": "packages/twenty-ui/src/components/input/SegmentedControl/SegmentedControl.module.scss",
         "line": 14,
         "value": "3px",
         "kind": "optical-nudge",
@@ -212,7 +212,7 @@
       "count": 2
     },
     {
-      "file": "packages/twenty-ui/src/primitives/input/SegmentedControl/SegmentedControl.module.scss",
+      "file": "packages/twenty-ui/src/components/input/SegmentedControl/SegmentedControl.module.scss",
       "count": 2
     }
   ],
@@ -309,14 +309,13 @@
       ]
     },
     {
-      "component": "packages/twenty-ui/src/primitives/data-display/Avatar/Avatar.module.scss",
-      "location": "packages/twenty-ui/src/primitives/data-display/Avatar/Avatar.module.scss:51",
+      "component": "packages/twenty-ui/src/components/input/SegmentedControl/SegmentedControl.module.scss",
+      "location": "packages/twenty-ui/src/components/input/SegmentedControl/SegmentedControl.module.scss:10",
       "entries": [
-        "font size: 16px (line 51)",
-        "font size: 13px (line 57)",
-        "font size: 12px (line 63)"
+        "spacing: 2px (line 10)",
+        "line height: 1.4 (line 38)"
       ]
     }
   ],
-  "scanSeconds": 125
+  "scanSeconds": 158
 }

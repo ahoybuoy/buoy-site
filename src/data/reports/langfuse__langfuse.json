@@ -3,12 +3,12 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source agent evals & observability: Trace, evaluate, and improve LLM applications with one open platform.",
-  "stars": 35696,
+  "stars": 35764,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "69a84e0e955a02e5fa1d83aecc75623923c04cc2",
-  "generatedAt": "2026-10-12T16:05:53.560Z",
+  "commit": "4a72ba83ec8cdfdfab928030b8ea83dff7146870",
+  "generatedAt": "2026-10-13T14:45:33.932Z",
   "cliVersion": "0.8.7",
   "score": 92,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2123,
-    "tokenCount": 298,
-    "hardcodedValueCount": 81,
+    "componentCount": 2143,
+    "tokenCount": 308,
+    "hardcodedValueCount": 82,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 81,
+    "totalDriftCount": 82,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -69,14 +69,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 80 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx has the most (2)",
+    "Nearly there — just 81 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx has the most (2)",
     "1 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 8,
-      "action": "Replace the hardcoded values in 75 of the 80 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 76 of the 81 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -115,7 +115,7 @@
       },
       {
         "file": "web/src/components/table/data-table.tsx",
-        "line": 526,
+        "line": 528,
         "value": "pb-[3px]",
         "kind": "optical-nudge",
         "reason": "pb-[3px] is a 2-3px optical adjustment"
@@ -123,13 +123,13 @@
     ]
   },
   "driftSummary": {
-    "total": 81,
+    "total": 82,
     "critical": 0,
     "warning": 2,
-    "info": 79
+    "info": 80
   },
   "driftByType": {
-    "hardcoded-value": 81
+    "hardcoded-value": 82
   },
   "topColors": [
     {
@@ -299,5 +299,5 @@
       ]
     }
   ],
-  "scanSeconds": 50
+  "scanSeconds": 68
 }
