@@ -13,6 +13,7 @@ export interface Report {
   defaultBranch: string;
   commit: string;
   generatedAt: string;
+  cliVersion?: string;
   /** null when Buoy found too few components to judge (see MIN_SCORABLE_COMPONENTS in core). */
   score: number | null;
   tier: string;
@@ -58,14 +59,29 @@ export function allReports(): Report[] {
     .sort((a, b) => b.stars - a.stars);
 }
 
+/**
+ * What the score measures, in words: how much of the UI goes through tokens.
+ * Public pages use this, not the CLI's Great/Good/OK/Bad tier, so a report
+ * describes the code instead of grading the team.
+ */
+export function tierLabel(score: number | null): string {
+  if (score === null) return 'not scored';
+  if (score >= 80) return 'mostly tokenized';
+  if (score >= 60) return 'largely tokenized';
+  if (score >= 40) return 'partly tokenized';
+  if (score >= 20) return 'often hardcoded';
+  return 'mostly hardcoded';
+}
+
+// No red: a low score is a description, not an alarm.
 export function scoreColor(score: number | null): string {
   if (score === null) return 'text-slate';
-  return score >= 80 ? 'text-success' : score >= 60 ? 'text-sunrise' : 'text-red-400';
+  return score >= 80 ? 'text-success' : score >= 60 ? 'text-sunrise' : 'text-light';
 }
 
 export function scoreBg(score: number | null): string {
   if (score === null) return 'bg-slate';
-  return score >= 80 ? 'bg-success' : score >= 60 ? 'bg-sunrise' : 'bg-red-400';
+  return score >= 80 ? 'bg-success' : score >= 60 ? 'bg-sunrise' : 'bg-slate';
 }
 
 export function formatStars(n: number): string {
@@ -98,7 +114,7 @@ export function reportJsonLd(r: Report, path: string): Record<string, unknown> {
     '@type': 'Report',
     name: `${r.repo} design system health report`,
     headline: `${r.repo}: design health ${r.score ?? 'N/A'}/100`,
-    description: `Design health ${r.score ?? 'N/A'}/100 (${r.tier}) for ${r.repo}: ${findings} hardcoded-value findings across ${r.metrics.componentCount} components and ${r.metrics.tokenCount} design tokens, scanned by Buoy.`,
+    description: `Design health ${r.score ?? 'N/A'}/100 (${tierLabel(r.score)}) for ${r.repo}: ${findings} hardcoded-value findings across ${r.metrics.componentCount} components and ${r.metrics.tokenCount} design tokens, scanned by Buoy.`,
     url: `https://buoy.design${path}`,
     datePublished: r.generatedAt,
     dateModified: r.generatedAt,
