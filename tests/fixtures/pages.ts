@@ -6,7 +6,6 @@ export const mainPages = [
   '/contact',
   '/services',
   '/demo',
-  '/pitch',
   '/status',
   '/terms',
   '/privacy',

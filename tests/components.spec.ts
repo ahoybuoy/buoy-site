@@ -34,9 +34,13 @@ test.describe('Pricing page', () => {
     const cards = page.locator('section .grid.md\\:grid-cols-3 > div');
     await expect(cards).toHaveCount(3);
 
-    await expect(cards.nth(0)).toContainText('Free');
-    await expect(cards.nth(1)).toContainText('Pro');
-    await expect(cards.nth(2)).toContainText('Done For You');
+    await expect(cards.nth(0)).toContainText('Open source');
+    await expect(cards.nth(1)).toContainText('GitHub App');
+    await expect(cards.nth(2)).toContainText('Design System');
+  });
+
+  test('free-for-life counter shows spots left', async ({ page }) => {
+    await expect(page.locator('[data-free-spots]').first()).toContainText('95 left');
   });
 
   test('FAQ details open and close', async ({ page }) => {

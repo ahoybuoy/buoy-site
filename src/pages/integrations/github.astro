@@ -13,7 +13,7 @@ const features = [
   },
   {
     title: 'Inline Suggestions',
-    description: 'Committable inline fix suggestions — apply with one click in the GitHub UI (Pro).'
+    description: 'Committable inline fix suggestions — apply with one click in the GitHub UI.'
   },
   {
     title: 'Multi-Repo',
@@ -137,32 +137,37 @@ const features = [
     </div>
   </section>
 
-  <!-- Free vs Pro -->
+  <!-- Pricing -->
   <section class="py-16 bg-navy">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Free vs Pro</h2>
+      <h2 class="text-2xl font-bold text-light mb-8 text-center">What it costs</h2>
 
       <div class="grid md:grid-cols-2 gap-6">
         <div class="bg-navy-dark border border-success/30 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-1">Free Tier</h3>
-          <p class="text-xs text-success mb-4">For all repositories</p>
+          <h3 class="font-semibold text-light mb-1">Free for life</h3>
+          <p class="text-xs text-success mb-4">The first 100 installs, and every public repo</p>
           <ul class="space-y-2 text-sm text-slate">
-            <li class="flex items-start gap-2"><span class="text-success">✓</span> Deterministic issues table</li>
-            <li class="flex items-start gap-2"><span class="text-success">✓</span> GitHub check run (pass/fail)</li>
-            <li class="flex items-start gap-2"><span class="text-success">✓</span> Dashboard with scan history</li>
+            <li class="flex items-start gap-2"><span class="text-success">✓</span> Every feature on this page</li>
+            <li class="flex items-start gap-2"><span class="text-success">✓</span> Unlimited repos, contributors and agents</li>
+            <li class="flex items-start gap-2"><span class="text-success">✓</span> Stays with the organization that installed</li>
           </ul>
         </div>
         <div class="bg-navy-dark border border-lavender/30 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-1">Pro Tier</h3>
-          <p class="text-xs text-lavender mb-4">Everything in Free, plus:</p>
+          <h3 class="font-semibold text-light mb-1">Team</h3>
+          <p class="text-xs text-lavender mb-4">After the first 100 installs</p>
           <ul class="space-y-2 text-sm text-slate">
-            <li class="flex items-start gap-2"><span class="text-lavender">+</span> AI-powered PR summaries & coaching</li>
-            <li class="flex items-start gap-2"><span class="text-lavender">+</span> Committable inline fix suggestions</li>
-            <li class="flex items-start gap-2"><span class="text-lavender">+</span> Builder mode coaching</li>
-            <li class="flex items-start gap-2"><span class="text-lavender">+</span> Custom review instructions</li>
+            <li class="flex items-start gap-2"><span class="text-lavender">+</span> $49 a month per design system</li>
+            <li class="flex items-start gap-2"><span class="text-lavender">+</span> No seats: unlimited repos, contributors, agents and runs</li>
+            <li class="flex items-start gap-2"><span class="text-lavender">+</span> Public repos stay free</li>
           </ul>
         </div>
       </div>
+
+      <p class="text-sm text-slate text-center mt-6">
+        Findings are deterministic. Summaries, builder-mode coaching and @ahoybuoy answers are written by an LLM;
+        <a href="/privacy#subprocessors" class="text-buoy hover:underline">see what is sent where</a>.
+        Full details on the <a href="/pricing" class="text-buoy hover:underline">pricing page</a>.
+      </p>
     </div>
   </section>
 </IntegrationLayout>

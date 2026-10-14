@@ -1,0 +1,35 @@
+---
+/**
+ * Live "free for life" counter for the first 100 GitHub App installs.
+ * Renders the static fallback, then fills in the count from /api/installs
+ * (GitHub Marketplace install count, cached for an hour). If the request
+ * fails, the fallback text stays.
+ */
+interface Props {
+  class?: string
+}
+
+const { class: className = '' } = Astro.props
+---
+
+<span class={className} data-free-spots>Free for life for the first 100 installs</span>
+
+<script>
+  async function updateFreeSpots() {
+    const els = document.querySelectorAll<HTMLElement>('[data-free-spots]')
+    if (els.length === 0) return
+    try {
+      const res = await fetch('/api/installs')
+      if (!res.ok) return
+      const data = await res.json()
+      if (typeof data.remaining !== 'number') return
+      const text = data.remaining > 0
+        ? `Free for life for the first 100 installs · ${data.remaining} left`
+        : 'All 100 free-for-life spots are taken'
+      els.forEach((el) => { el.textContent = text })
+    } catch {
+      // Keep the fallback text.
+    }
+  }
+  updateFreeSpots()
+</script>

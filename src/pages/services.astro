@@ -27,7 +27,13 @@ const stages = [
   },
 ]
 
-const deliverables = [
+const everyYear = [
+  'Everything in Team for one design system: unlimited repos, contributors, agents and runs',
+  'An org-wide drift record across every repo that uses your design system',
+  'A design-partner relationship with the people building Buoy',
+]
+
+const yearOne = [
   'One agreed frontend codebase and a complete Buoy baseline',
   'Three to five exemplary screens or components selected with your team',
   'Product principles, contextual rules, and explicit anti-patterns',
@@ -40,8 +46,8 @@ const deliverables = [
 ---
 
 <Layout
-  title="Buoy Design Calibration | Keep AI-Generated UI True to Your Product"
-  description="A fixed-scope implementation pilot that turns your product vision, design system, and strongest work into guidance AI agents can follow and guardrails your team can trust."
+  title="Design System Plan | Buoy"
+  description="For design-system owners: an org-wide drift record, calibration in year one, and a design-partner relationship. $5,000 per year, per design system."
 >
   <Nav />
 
@@ -51,17 +57,17 @@ const deliverables = [
       <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-sunrise/10 rounded-full blur-3xl"></div>
       <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sunrise/10 border border-sunrise/30 mb-6">
-          <span class="text-sunrise font-medium text-sm">Fixed-scope pilot · $5,000</span>
+          <span class="text-sunrise font-medium text-sm">Design System plan · $5,000 per year, per design system</span>
         </div>
         <h1 class="text-4xl sm:text-6xl font-bold text-light mb-6">
           Keep AI-generated UI<br />true to your product.
         </h1>
         <p class="text-xl text-slate max-w-3xl mx-auto mb-10">
-          In one week, we capture your product's design logic, connect it to your AI coding workflow, repair the clearest violations, and install guardrails that keep generic UI from creeping back in.
+          For design-system owners. Buoy keeps an org-wide record of how your system holds up across every repo that uses it. In year one, we calibrate it with you: capture your product's design logic, connect it to your AI coding workflow, repair the clearest violations, and install guardrails that keep generic UI from creeping back in.
         </p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button href="https://cal.com/tarre/rescue" size="lg" external>
-            Book a Design Calibration call →
+            Talk to Dylan →
           </Button>
           <Button href="#what-you-get" variant="secondary" size="lg">
             See what you get
@@ -87,10 +93,10 @@ const deliverables = [
     <section class="py-20 bg-navy-dark">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-3xl mb-12">
-          <p class="text-buoy font-medium mb-3">One coherent workflow</p>
+          <p class="text-buoy font-medium mb-3">Calibration, included in year one</p>
           <h2 class="text-3xl font-bold text-light mb-4">Capture → Codify → Calibrate → Guard</h2>
           <p class="text-slate text-lg">
-            Buoy Rescue remains the implementation engine underneath the engagement. Design Calibration adds the product context AI needs before it writes code.
+            Calibration gives your coding agents the product context they need before they write code, then holds them to it.
           </p>
         </div>
         <div class="grid md:grid-cols-2 gap-6">
@@ -107,12 +113,21 @@ const deliverables = [
 
     <section id="what-you-get" class="py-20 bg-navy scroll-mt-24">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
+        <div class="grid lg:grid-cols-2 gap-10 items-start">
           <div>
-            <p class="text-sunrise font-medium mb-3">Pilot scope</p>
-            <h2 class="text-3xl font-bold text-light mb-6">What the $5,000 engagement includes</h2>
+            <p class="text-sunrise font-medium mb-3">What $5,000 a year includes</p>
+            <h2 class="text-3xl font-bold text-light mb-6">Every year</h2>
+            <ul class="space-y-4 text-slate mb-10">
+              {everyYear.map((item) => (
+                <li class="flex items-start gap-3">
+                  <span class="text-success mt-0.5">✓</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <h2 class="text-2xl font-bold text-light mb-6">In year one: calibration</h2>
             <ul class="space-y-4 text-slate">
-              {deliverables.map((item) => (
+              {yearOne.map((item) => (
                 <li class="flex items-start gap-3">
                   <span class="text-success mt-0.5">✓</span>
                   <span>{item}</span>
@@ -130,8 +145,9 @@ const deliverables = [
               <li>Private code can be scanned locally without uploading it to Buoy Cloud.</li>
             </ul>
             <div class="border-t border-navy-light/20 mt-6 pt-6">
-              <p class="text-sm text-slate">Payment</p>
-              <p class="text-light font-medium mt-1">50% to begin · 50% at implementation handoff</p>
+              <p class="text-sm text-slate">Price</p>
+              <p class="text-light font-medium mt-1">$5,000 per year, per design system. Calibration is included in year one.</p>
+              <p class="text-sm text-slate mt-3">Running the GitHub App without the record? See <a href="/pricing" class="text-buoy hover:underline">Team pricing</a>.</p>
             </div>
           </aside>
         </div>
@@ -149,10 +165,10 @@ const deliverables = [
             </p>
           </article>
           <article class="border border-navy-light/20 rounded-xl p-7">
-            <p class="text-slate font-medium mb-3">Not the right engagement</p>
+            <p class="text-slate font-medium mb-3">Not the right plan</p>
             <h2 class="text-xl font-semibold text-light mb-4">You need someone to invent the entire brand from scratch.</h2>
             <p class="text-slate">
-              Design Calibration operationalizes existing product judgment. It is not a replacement for foundational brand strategy or zero-to-one product design.
+              Calibration puts existing product judgment to work. It is not a replacement for foundational brand strategy or zero-to-one product design.
             </p>
           </article>
         </div>
@@ -163,13 +179,13 @@ const deliverables = [
       <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl font-bold text-light mb-4">Start with evidence from your codebase.</h2>
         <p class="text-slate text-lg mb-8">
-          Run Buoy locally or bring one representative UI pull request. We will use the actual product and implementation to decide whether calibration is worthwhile.
+          Run Buoy locally or bring one representative UI pull request. We will use the actual product and implementation to decide whether the Design System plan is worthwhile.
         </p>
         <div class="bg-navy-dark border border-navy-light/30 rounded-xl p-5 mb-8 text-left">
           <code class="text-buoy">npx ahoybuoy show health</code>
         </div>
         <Button href="https://cal.com/tarre/rescue" size="lg" external>
-          Book a Design Calibration call →
+          Talk to Dylan →
         </Button>
         <p class="text-sm text-slate mt-4">No commitment. No invented ROI math. We will tell you if the product is not ready for this.</p>
       </div>
