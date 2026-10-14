@@ -36,7 +36,7 @@ test.describe('Pricing page', () => {
 
     await expect(cards.nth(0)).toContainText('Open source');
     await expect(cards.nth(1)).toContainText('GitHub App');
-    await expect(cards.nth(2)).toContainText('Design System');
+    await expect(cards.nth(2)).toContainText('Organization');
   });
 
   test('free-for-life counter shows spots left', async ({ page }) => {
