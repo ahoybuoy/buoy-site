@@ -48,9 +48,10 @@ export const POST: APIRoute = async ({ request, locals }) => {
         name: 'Design System Drift Checklist',
         type: 'quick',
       },
+      // Key kept from the old "Hall of Shame" name so existing sign-ups stay grouped.
       'hall-of-shame': {
-        url: '/downloads/hall-of-shame.pdf',
-        name: 'Hardcoded Color Hall of Shame',
+        url: '/downloads/hardcoded-color-patterns.pdf',
+        name: '10 Hardcoded Color Patterns',
         type: 'quick',
       },
       'pr-review-cheatsheet': {

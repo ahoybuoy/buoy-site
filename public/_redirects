@@ -1,3 +1,6 @@
 # /pitch was taken down on 2026-10-13. astro.config.mjs redirects /pitch; these cover the old trailing-slash URL.
 /pitch/ / 301
 /pitch/* / 301
+# /hall-of-shame was renamed on 2026-10-14; astro.config.mjs redirects the bare path.
+/hall-of-shame/ /hardcoded-color-patterns 301
+/downloads/hall-of-shame.pdf /downloads/hardcoded-color-patterns.pdf 301
