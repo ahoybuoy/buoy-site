@@ -3,13 +3,13 @@
   "owner": "dubinc",
   "name": "dub",
   "description": "The modern link attribution platform. Loved by world-class marketing teams like Framer, Perplexity, Superhuman, Twilio, Buffer and more.",
-  "stars": 24877,
+  "stars": 24879,
   "homepage": "https://dub.co",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "da324f7ac621b4264cebaefbe10f1fd49b517e6c",
-  "generatedAt": "2026-10-13T14:32:36.927Z",
-  "cliVersion": "0.8.7",
+  "commit": "5ec6dbc7755ad6d59600ed4f818f390f2e57303b",
+  "generatedAt": "2026-10-14T00:46:51.903Z",
+  "cliVersion": "0.8.8",
   "score": 90,
   "tier": "Great",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1635,
+    "componentCount": 1633,
     "tokenCount": 0,
-    "hardcodedValueCount": 82,
+    "hardcodedValueCount": 83,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 100,
+    "totalDriftCount": 101,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 18,
     "orphanedComponentCount": 0,
@@ -70,7 +70,7 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 78 hardcoded values left to tokenize. apps/web/app/(ee)/partners.dub.co/(dashboard)/referrals/page.tsx has the most (3)",
+    "Nearly there — just 79 hardcoded values left to tokenize. apps/web/app/(ee)/partners.dub.co/(dashboard)/referrals/page.tsx has the most (3)",
     "4 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
     "18 repeated patterns — extract to shared components"
   ],
@@ -78,7 +78,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 10,
-      "action": "Replace the hardcoded values in 74 of the 78 findings with tokens or scale steps, and remove or reuse 18 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 75 of the 79 findings with tokens or scale steps, and remove or reuse 18 unused components and repeated patterns"
     }
   ],
   "noted": {
@@ -118,13 +118,13 @@
     ]
   },
   "driftSummary": {
-    "total": 100,
+    "total": 101,
     "critical": 0,
-    "warning": 7,
+    "warning": 8,
     "info": 93
   },
   "driftByType": {
-    "hardcoded-value": 82,
+    "hardcoded-value": 83,
     "repeated-pattern": 18
   },
   "topColors": [
@@ -145,6 +145,10 @@
       "count": 1
     },
     {
+      "value": "#ededed",
+      "count": 1
+    },
+    {
       "value": "#F0F7FF",
       "count": 1
     },
@@ -154,10 +158,6 @@
     },
     {
       "value": "#FFE2E2",
-      "count": 1
-    },
-    {
-      "value": "#0D542B",
       "count": 1
     }
   ],
@@ -262,9 +262,9 @@
     },
     {
       "component": "apps/web/app/(ee)/app.dub.co/embed/referrals/bounties/submissions-table.tsx",
-      "location": "apps/web/app/(ee)/app.dub.co/embed/referrals/bounties/submissions-table.tsx:57",
+      "location": "apps/web/app/(ee)/app.dub.co/embed/referrals/bounties/submissions-table.tsx:58",
       "entries": [
-        "tracking-[-0.28px] (line 57)"
+        "tracking-[-0.28px] (line 58)"
       ]
     },
     {
@@ -307,22 +307,20 @@
       ]
     },
     {
-      "component": "apps/web/app/(ee)/partners.dub.co/(dashboard)/programs/[programSlug]/(enrolled)/bounties/[bountyId]/bounty-performance-section.tsx",
-      "location": "apps/web/app/(ee)/partners.dub.co/(dashboard)/programs/[programSlug]/(enrolled)/bounties/[bountyId]/bounty-performance-section.tsx:106",
+      "component": "apps/web/app/(ee)/partners.dub.co/(dashboard)/overview/top-programs-card.tsx",
+      "location": "apps/web/app/(ee)/partners.dub.co/(dashboard)/overview/top-programs-card.tsx:62",
       "entries": [
-        "tracking-[-0.36px] (line 106)",
-        "tracking-[-0.36px] (line 273)"
+        "from-[#ededed] (line 62)"
       ]
     },
     {
-      "component": "apps/web/app/(ee)/partners.dub.co/(dashboard)/programs/[programSlug]/(enrolled)/bounties/[bountyId]/bounty-submissions-table.tsx",
-      "location": "apps/web/app/(ee)/partners.dub.co/(dashboard)/programs/[programSlug]/(enrolled)/bounties/[bountyId]/bounty-submissions-table.tsx:67",
+      "component": "apps/web/app/(ee)/partners.dub.co/(dashboard)/programs/[programSlug]/(enrolled)/bounties/[bountyId]/bounty-performance-section.tsx",
+      "location": "apps/web/app/(ee)/partners.dub.co/(dashboard)/programs/[programSlug]/(enrolled)/bounties/[bountyId]/bounty-performance-section.tsx:105",
       "entries": [
-        "tracking-[-0.28px] (line 67)",
-        "tracking-[-0.28px] (line 109)",
-        "tracking-[-0.28px] (line 126)"
+        "tracking-[-0.36px] (line 105)",
+        "tracking-[-0.36px] (line 264)"
       ]
     }
   ],
-  "scanSeconds": 41
+  "scanSeconds": 46
 }

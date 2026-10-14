@@ -3,13 +3,13 @@
   "owner": "supabase",
   "name": "supabase",
   "description": "The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications.",
-  "stars": 111452,
+  "stars": 111493,
   "homepage": "https://supabase.com",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "44ed5227780d4310439087e226b6c4a3b8f2a182",
-  "generatedAt": "2026-10-13T14:31:54.826Z",
-  "cliVersion": "0.8.7",
+  "commit": "7fa436050a00a1b7c78b4bc87ee7eb3b483a78be",
+  "generatedAt": "2026-10-14T00:46:04.277Z",
+  "cliVersion": "0.8.8",
   "score": 38,
   "tier": "Bad",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 4695,
+    "componentCount": 4703,
     "tokenCount": 1120,
-    "hardcodedValueCount": 299,
+    "hardcodedValueCount": 298,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,10 +41,10 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 4995,
+    "totalDriftCount": 5001,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 7,
-    "orphanedComponentCount": 4687,
+    "orphanedComponentCount": 4694,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 2,
     "orphanedTokenCount": 0,
@@ -55,8 +55,8 @@
     "vendoredDriftCount": 7,
     "notedCount": 18,
     "topHardcodedColor": {
-      "value": "#404EED",
-      "count": 4
+      "value": "#111718",
+      "count": 9
     },
     "worstFile": {
       "path": "apps/www/app/(home)/_components/logos/PublicityLogos.tsx",
@@ -73,7 +73,7 @@
     ]
   },
   "suggestions": [
-    "292 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/www/app/(home)/_components/logos/PublicityLogos.tsx (33 issues)",
+    "291 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/www/app/(home)/_components/logos/PublicityLogos.tsx (33 issues)",
     "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
     "7 repeated patterns — extract to shared components",
     "2 deprecated patterns — migrate to current API"
@@ -82,7 +82,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 281 of the 292 findings with tokens or scale steps, and remove or reuse 4694 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 280 of the 291 findings with tokens or scale steps, and remove or reuse 4701 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -141,14 +141,14 @@
     ]
   },
   "driftSummary": {
-    "total": 4470,
+    "total": 4469,
     "critical": 0,
     "warning": 4227,
-    "info": 243
+    "info": 242
   },
   "driftByType": {
     "deprecated-pattern": 2,
-    "hardcoded-value": 299,
+    "hardcoded-value": 298,
     "orphaned-component": 4162,
     "repeated-pattern": 7
   },
@@ -344,5 +344,5 @@
       ]
     }
   ],
-  "scanSeconds": 156
+  "scanSeconds": 173
 }

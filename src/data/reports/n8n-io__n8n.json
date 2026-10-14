@@ -3,13 +3,13 @@
   "owner": "n8n-io",
   "name": "n8n",
   "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
-  "stars": 207213,
+  "stars": 207270,
   "homepage": "https://n8n.io",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "e859abaf189041f751fcee7333c79acde212f994",
-  "generatedAt": "2026-10-13T14:40:45.056Z",
-  "cliVersion": "0.8.7",
+  "commit": "94bdf85a8afbf76dec99dff2bca0d166be380509",
+  "generatedAt": "2026-10-14T00:55:47.866Z",
+  "cliVersion": "0.8.8",
   "score": 60,
   "tier": "Good",
   "pillars": {
@@ -32,7 +32,7 @@
   },
   "metrics": {
     "componentCount": 1357,
-    "tokenCount": 632,
+    "tokenCount": 636,
     "hardcodedValueCount": 260,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
@@ -53,10 +53,10 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 38,
+    "notedCount": 36,
     "topHardcodedColor": {
-      "value": "#fff (use var(--chat--color-white))",
-      "count": 2
+      "value": "#fff",
+      "count": 3
     },
     "worstFile": {
       "path": "packages/frontend/editor-ui/src/features/settings/communityNodes/components/ContactAdministratorToInstall.vue",
@@ -87,20 +87,12 @@
     }
   ],
   "noted": {
-    "count": 38,
+    "count": 36,
     "byKind": {
-      "optical-nudge": 33,
-      "known-debt": 1,
+      "optical-nudge": 32,
       "explained": 4
     },
     "samples": [
-      {
-        "file": "packages/frontend/@n8n/design-system/src/components/N8nSettingsSaveBar/SettingsSaveBar.vue",
-        "line": 210,
-        "value": "0.75rem",
-        "kind": "known-debt",
-        "reason": "feedback. Hardcoded because the legacy compat layer (_tokens.legacy.scss) still overrides used directly yet. Switch to …"
-      },
       {
         "file": "packages/frontend/@n8n/design-system/src/css/table.scss",
         "line": 31,
@@ -135,14 +127,21 @@
         "value": "3px",
         "kind": "optical-nudge",
         "reason": "margin-top: 3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/frontend/@n8n/chat/src/components/MessageTyping.vue",
+        "line": 75,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "margin: 3px is a 2-3px optical adjustment"
       }
     ]
   },
   "driftSummary": {
     "total": 261,
     "critical": 0,
-    "warning": 95,
-    "info": 166
+    "warning": 94,
+    "info": 167
   },
   "driftByType": {
     "deprecated-pattern": 1,
@@ -349,5 +348,5 @@
       ]
     }
   ],
-  "scanSeconds": 65
+  "scanSeconds": 69
 }

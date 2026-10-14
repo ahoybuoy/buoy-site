@@ -3,13 +3,13 @@
   "owner": "posthog",
   "name": "posthog",
   "description": ":hedgehog: PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.",
-  "stars": 40256,
+  "stars": 40266,
   "homepage": "https://posthog.com",
   "language": "Python",
   "defaultBranch": "master",
-  "commit": "f760726e822895bd7b902e5d6ea705e334e59155",
-  "generatedAt": "2026-10-13T14:44:22.371Z",
-  "cliVersion": "0.8.7",
+  "commit": "01366c105cc6b931dd34ee3cc095108fca7a88f4",
+  "generatedAt": "2026-10-14T01:00:12.663Z",
+  "cliVersion": "0.8.8",
   "score": 76,
   "tier": "Good",
   "pillars": {
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 4995,
+    "componentCount": 5005,
     "tokenCount": 185,
     "hardcodedValueCount": 355,
     "unusedTokenCount": 0,
@@ -55,8 +55,8 @@
     "vendoredDriftCount": 0,
     "notedCount": 79,
     "topHardcodedColor": {
-      "value": "rgba(0",
-      "count": 9
+      "value": "#fff",
+      "count": 8
     },
     "worstFile": {
       "path": "frontend/src/lib/KeaDevTools.tsx",
@@ -188,7 +188,7 @@
   "topSpacing": [
     {
       "value": "0.5rem",
-      "count": 264
+      "count": 265
     },
     {
       "value": "0.25rem",
@@ -222,7 +222,7 @@
   "worstFiles": [
     {
       "file": "frontend/src/lib/components/MarkdownNotebook/MarkdownNotebook.scss",
-      "count": 151
+      "count": 150
     },
     {
       "file": "products/desktop/tools/announcements-admin/src/styles.css",
@@ -348,5 +348,5 @@
       ]
     }
   ],
-  "scanSeconds": 171
+  "scanSeconds": 216
 }

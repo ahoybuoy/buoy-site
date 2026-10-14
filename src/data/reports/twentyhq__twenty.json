@@ -3,13 +3,13 @@
   "owner": "twentyhq",
   "name": "twenty",
   "description": "The open alternative to Salesforce, designed for AI.",
-  "stars": 58275,
+  "stars": 58297,
   "homepage": "https://twenty.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "03c8881efdefa8f6a9ffc838169c218017675d84",
-  "generatedAt": "2026-10-13T14:37:01.619Z",
-  "cliVersion": "0.8.7",
+  "commit": "8f7a6b078daa348e3cde5d999287a4056ab87f4c",
+  "generatedAt": "2026-10-14T00:51:50.749Z",
+  "cliVersion": "0.8.8",
   "score": 99,
   "tier": "Great",
   "pillars": {
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 3996,
+    "componentCount": 3991,
     "tokenCount": 13,
     "hardcodedValueCount": 23,
     "unusedTokenCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 1,
     "vendoredDriftCount": 0,
-    "notedCount": 3,
+    "notedCount": 1,
     "topHardcodedColor": {
       "value": "#333",
       "count": 2
@@ -84,26 +84,11 @@
     }
   ],
   "noted": {
-    "count": 3,
+    "count": 1,
     "byKind": {
-      "optical-nudge": 1,
-      "known-debt": 2
+      "optical-nudge": 1
     },
     "samples": [
-      {
-        "file": "packages/twenty-ui/src/components/navigation/MenuItem/parts/StyledMenuItemBase.module.scss",
-        "line": 28,
-        "value": "disabled > accent > base",
-        "kind": "known-debt",
-        "reason": "Cascade order mirrors the deprecated Linaria ternaries: color: disabled > accent > base; hover background: disabled (wi…"
-      },
-      {
-        "file": "packages/twenty-ui/src/components/navigation/MenuItem/parts/StyledMenuItemBase.module.scss",
-        "line": 28,
-        "value": "disabled (with",
-        "kind": "known-debt",
-        "reason": "Cascade order mirrors the deprecated Linaria ternaries: color: disabled > accent > base; hover background: disabled (wi…"
-      },
       {
         "file": "packages/twenty-ui/src/components/input/SegmentedControl/SegmentedControl.module.scss",
         "line": 14,
@@ -297,7 +282,7 @@
       "location": "packages/twenty-front/src/index.css:14",
       "entries": [
         "font size: 13px (line 14)",
-        "font size: 13px (line 44)"
+        "font size: 13px (line 47)"
       ]
     },
     {
@@ -317,5 +302,5 @@
       ]
     }
   ],
-  "scanSeconds": 158
+  "scanSeconds": 183
 }
