@@ -12,6 +12,7 @@ export default defineConfig({
   // /pitch was taken down on 2026-10-13; old links land on the homepage.
   redirects: {
     '/pitch': { status: 301, destination: '/' },
+    '/hall-of-shame': { status: 301, destination: '/hardcoded-color-patterns' },
   },
   integrations: [
     react(),
