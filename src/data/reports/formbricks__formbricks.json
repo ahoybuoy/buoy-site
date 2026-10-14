@@ -3,13 +3,13 @@
   "owner": "formbricks",
   "name": "formbricks",
   "description": "Open Source Qualtrics Alternative",
-  "stars": 13094,
+  "stars": 13100,
   "homepage": "https://formbricks.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "565ec3305ea4bb9bf2502efcf9118f2d9a463aec",
-  "generatedAt": "2026-10-14T00:52:21.729Z",
-  "cliVersion": "0.8.8",
+  "commit": "d28b1dcb76b75e4cff9de2bc419deca781e2ba41",
+  "generatedAt": "2026-10-14T12:24:06.784Z",
+  "cliVersion": "0.8.9",
   "score": 94,
   "tier": "Great",
   "pillars": {
@@ -32,7 +32,7 @@
   },
   "metrics": {
     "componentCount": 355,
-    "tokenCount": 73,
+    "tokenCount": 218,
     "hardcodedValueCount": 17,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
@@ -54,6 +54,10 @@
     "highDensityFileCount": 0,
     "vendoredDriftCount": 7,
     "notedCount": 9,
+    "topHardcodedColor": {
+      "value": "#e2e8f0",
+      "count": 2
+    },
     "worstFile": {
       "path": "apps/web/app/(app)/workspaces/[workspaceId]/components/MainNavigation.tsx",
       "issueCount": 1
@@ -131,8 +135,8 @@
   "driftSummary": {
     "total": 17,
     "critical": 0,
-    "warning": 5,
-    "info": 12
+    "warning": 6,
+    "info": 11
   },
   "driftByType": {
     "hardcoded-value": 17

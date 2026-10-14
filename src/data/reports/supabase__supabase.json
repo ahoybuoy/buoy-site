@@ -3,18 +3,18 @@
   "owner": "supabase",
   "name": "supabase",
   "description": "The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications.",
-  "stars": 111493,
+  "stars": 111522,
   "homepage": "https://supabase.com",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "7fa436050a00a1b7c78b4bc87ee7eb3b483a78be",
-  "generatedAt": "2026-10-14T00:46:04.277Z",
-  "cliVersion": "0.8.8",
-  "score": 38,
-  "tier": "Bad",
+  "commit": "09a1f431bcf6658830d1342322b532ed764cb224",
+  "generatedAt": "2026-10-14T12:17:52.985Z",
+  "cliVersion": "0.8.9",
+  "score": 86,
+  "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 0,
+      "score": 48,
       "max": 60
     },
     "tokenHealth": {
@@ -41,10 +41,10 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 5001,
+    "totalDriftCount": 307,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 7,
-    "orphanedComponentCount": 4694,
+    "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 2,
     "orphanedTokenCount": 0,
@@ -59,8 +59,8 @@
       "count": 9
     },
     "worstFile": {
-      "path": "apps/www/app/(home)/_components/logos/PublicityLogos.tsx",
-      "issueCount": 33
+      "path": "apps/studio/components/interfaces/Database/Policies/PolicyEditorPanel/LockedQuerySection.tsx",
+      "issueCount": 3
     },
     "uniqueSpacingValues": 5,
     "detectedFrameworkNames": [
@@ -73,7 +73,7 @@
     ]
   },
   "suggestions": [
-    "291 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/www/app/(home)/_components/logos/PublicityLogos.tsx (33 issues)",
+    "Nearly there — just 291 hardcoded values left to tokenize. apps/studio/components/interfaces/Database/Policies/PolicyEditorPanel/LockedQuerySection.tsx has the most (3)",
     "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
     "7 repeated patterns — extract to shared components",
     "2 deprecated patterns — migrate to current API"
@@ -81,8 +81,8 @@
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 60,
-      "action": "Replace the hardcoded values in 280 of the 291 findings with tokens or scale steps, and remove or reuse 4701 unused components and repeated patterns"
+      "points": 12,
+      "action": "Replace the hardcoded values in 280 of the 291 findings with tokens or scale steps, and remove or reuse 7 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -98,7 +98,7 @@
     "samples": [
       {
         "file": "apps/studio/components/grid/components/menu/ColumnMenu.tsx",
-        "line": 228,
+        "line": 238,
         "value": "3px",
         "kind": "optical-nudge",
         "reason": "padding: 3px is a 2-3px optical adjustment"
@@ -141,15 +141,14 @@
     ]
   },
   "driftSummary": {
-    "total": 4469,
+    "total": 307,
     "critical": 0,
-    "warning": 4227,
+    "warning": 65,
     "info": 242
   },
   "driftByType": {
     "deprecated-pattern": 2,
     "hardcoded-value": 298,
-    "orphaned-component": 4162,
     "repeated-pattern": 7
   },
   "topColors": [
@@ -344,5 +343,5 @@
       ]
     }
   ],
-  "scanSeconds": 173
+  "scanSeconds": 171
 }
