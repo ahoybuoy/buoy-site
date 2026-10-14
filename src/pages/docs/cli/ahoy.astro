@@ -45,7 +45,7 @@ import CodeBlock from '../../../components/CodeBlock.astro'
     { text: "Opening browser for authentication..." },
     { text: "" },
     { text: "✓ Authenticated as dylan@example.com", type: "success" },
-    { text: "  Plan: Founding Member" },
+    { text: "  Plan: Free for life" },
     { text: "  Org: Acme Inc" },
   ]} />
 
@@ -56,7 +56,7 @@ import CodeBlock from '../../../components/CodeBlock.astro'
     { text: "Account Status" },
     { text: "──────────────" },
     { text: "User: dylan@example.com" },
-    { text: "Plan: Founding Member" },
+    { text: "Plan: Free for life" },
     { text: "Org: Acme Inc" },
     { text: "GitHub: connected (acme-org)", type: "success" },
     { text: "GitLab: not connected", type: "muted" },
@@ -86,7 +86,7 @@ import CodeBlock from '../../../components/CodeBlock.astro'
 
   <DocTerminal command="buoy ahoy plans" lines={[
     { text: "" },
-    { text: "Current Plan: Founding Member" },
+    { text: "Current Plan: Free for life" },
     { text: "─────────────────────────────" },
     { text: "Repos: unlimited" },
     { text: "Scans: unlimited" },
@@ -95,9 +95,10 @@ import CodeBlock from '../../../components/CodeBlock.astro'
     { text: "" },
     { text: "Available Plans" },
     { text: "───────────────" },
-    { text: "Free        $0/mo     3 repos, basic scanning", type: "muted" },
-    { text: "Pro         $29/mo    unlimited repos, PR checks" },
-    { text: "Enterprise  custom    SSO, dedicated support" },
+    { text: "Open source    $0 forever                   CLI, MCP server, GitHub Action", type: "muted" },
+    { text: "GitHub App     free for life                first 100 installs" },
+    { text: "Team           $49/mo per design system     unlimited repos, no seats" },
+    { text: "Design System  $5,000/yr per design system  org-wide record, calibration" },
   ]} />
 
   <h3>Manage billing</h3>
@@ -120,7 +121,7 @@ import CodeBlock from '../../../components/CodeBlock.astro'
 
   <CodeBlock code={`{
   "user": "dylan@example.com",
-  "plan": "founding-member",
+  "plan": "free-for-life",
   "org": "Acme Inc",
   "github": {
     "connected": true,

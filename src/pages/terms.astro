@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro'
 import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
 
-const lastUpdated = 'January 9, 2026'
+const lastUpdated = 'October 13, 2026'
 ---
 
 <Layout
@@ -35,9 +35,9 @@ const lastUpdated = 'January 9, 2026'
             Buoy provides design system drift detection tools, including:
           </p>
           <ul class="list-disc list-inside text-slate space-y-2">
-            <li><strong class="text-light">Free CLI:</strong> Open source command-line tool for detecting design drift</li>
-            <li><strong class="text-light">Team Plan:</strong> Cloud features including GitHub integration, history, and alerts</li>
-            <li><strong class="text-light">Enterprise Plan:</strong> Contracted capabilities and dedicated support as described in the applicable order form</li>
+            <li><strong class="text-light">Open source tools:</strong> The CLI, MCP server and GitHub Action, free under the MIT License</li>
+            <li><strong class="text-light">GitHub App:</strong> Hosted pull request reviews, the dashboard and history. Free for life for the first 100 installs (see below); after that, the Team plan</li>
+            <li><strong class="text-light">Design System plan:</strong> An annual plan for design-system owners, as described on the <a href="/pricing" class="text-buoy hover:underline">pricing page</a> or in the applicable order form</li>
           </ul>
         </section>
 
@@ -75,7 +75,7 @@ const lastUpdated = 'January 9, 2026'
             <strong class="text-light">Our IP:</strong> The Buoy name, logo, and Services are owned by Buoy Design, Inc. and protected by intellectual property laws.
           </p>
           <p class="text-slate mb-4">
-            <strong class="text-light">Your Code:</strong> You retain all rights to your source code. The CLI runs locally and we never claim ownership of your code or scan results.
+            <strong class="text-light">Your Code:</strong> You retain all rights to your source code and scan results; we never claim ownership of them. The CLI runs locally. The GitHub App processes your code only to provide the Services, as described in our <a href="/privacy" class="text-buoy hover:underline">Privacy Policy</a>.
           </p>
           <p class="text-slate">
             <strong class="text-light">Open Source:</strong> The Buoy CLI is open source under the MIT License. Additional terms may apply to specific components.
@@ -90,16 +90,22 @@ const lastUpdated = 'January 9, 2026'
           <ul class="list-disc list-inside text-slate space-y-2">
             <li>Fees are billed in advance on a monthly or annual basis</li>
             <li>All fees are non-refundable except as required by law</li>
-            <li>We may change pricing with 30 days notice</li>
+            <li>We may change paid plan pricing with 30 days notice. This never ends free for life for an install that has it</li>
             <li>You are responsible for all applicable taxes</li>
             <li>Failure to pay may result in suspension of services</li>
           </ul>
         </section>
 
         <section>
-          <h2 class="text-xl font-semibold text-light mb-4">Free Tier</h2>
+          <h2 class="text-xl font-semibold text-light mb-4">Free Use</h2>
+          <p class="text-slate mb-4">
+            The open source tools are provided "as is" under the MIT License, without warranty.
+          </p>
+          <p class="text-slate mb-4">
+            <strong class="text-light">Free for life:</strong> if a GitHub organization or account installs the Buoy GitHub App while it is one of the first 100 installs, that organization uses the GitHub App free of charge for as long as Buoy operates the GitHub App, including features later added to the Team plan. It belongs to the organization that installed, does not transfer to another organization, and does not include the Design System plan. Public repositories are free on every install.
+          </p>
           <p class="text-slate">
-            The free CLI is provided "as is" without warranty. We reserve the right to modify or discontinue free features at any time, though we will provide reasonable notice when possible.
+            We may change or discontinue other free features with reasonable notice when possible.
           </p>
         </section>
 

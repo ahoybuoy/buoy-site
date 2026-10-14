@@ -9,6 +9,10 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://buoy.design',
   adapter: cloudflare(),
+  // /pitch was taken down on 2026-10-13; old links land on the homepage.
+  redirects: {
+    '/pitch': { status: 301, destination: '/' },
+  },
   integrations: [
     react(),
     // Indexable pages only: no API routes, downloads, on-demand scan results or 404.

@@ -8,8 +8,8 @@ import LeadMagnetCallout from '../../../components/LeadMagnetCallout.astro'
 
   <p>
     The Buoy GitHub App runs the same open-source scanner on every pull request automatically.
-    It posts a review with a deterministic issues table, and on Pro tier adds AI-powered summaries
-    and committable inline fix suggestions.
+    It posts a review with a deterministic issues table and committable inline fix suggestions, and
+    can add a short summary or coaching paragraph written by an LLM. Findings are always deterministic.
   </p>
 
   <h2>Quick Setup</h2>
@@ -32,7 +32,7 @@ import LeadMagnetCallout from '../../../components/LeadMagnetCallout.astro'
   <ol>
     <li>Buoy scans the changed files for design drift</li>
     <li>Posts a GitHub PR review with a summary and issues table</li>
-    <li>During early access, can add contextual summaries and supported high-confidence suggestions</li>
+    <li>Adds committable suggestions for supported high-confidence fixes, and in some cases a short LLM-written summary</li>
     <li>Creates a check run (pass/fail) based on configured thresholds</li>
   </ol>
 
@@ -63,7 +63,7 @@ import LeadMagnetCallout from '../../../components/LeadMagnetCallout.astro'
     <li><strong>&#x1F4A1; Suggested token</strong> — Buoy suggests a new token name that doesn't exist yet. Consider extracting this value into a new token.</li>
   </ul>
 
-  <p>During early access, the app may also provide committable inline suggestions for high-confidence fixes.</p>
+  <p>The app also posts committable inline suggestions for high-confidence fixes.</p>
 
   <h2>Two Modes</h2>
 
@@ -78,11 +78,11 @@ import LeadMagnetCallout from '../../../components/LeadMagnetCallout.astro'
 
   <ul>
     <li><strong>CLI:</strong> Local deterministic scanning, fix suggestions, and project checks under the MIT license.</li>
-    <li><strong>GitHub App early access:</strong> Pull-request checks, contextual summaries, and high-confidence committable suggestions where supported.</li>
+    <li><strong>GitHub App:</strong> Hosted pull-request reviews and checks, committable suggestions where supported, and LLM-written summaries and coaching.</li>
   </ul>
 
   <p>
-    <strong>Early access:</strong> The GitHub App is free while Buoy validates repeat usefulness with the first 100 teams. No credit card is required, and future pricing has not been set.
+    <strong>Pricing:</strong> The first 100 GitHub App installs are free for life. After that, Team is $49 a month per design system, with no seats, and public repos stay free. See <a href="/pricing">pricing</a>, and the <a href="/privacy#subprocessors">privacy page</a> for what the app sends where.
   </p>
 
   <h2>Design health badge</h2>
