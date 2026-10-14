@@ -10,7 +10,7 @@ const faqs = [
   },
   {
     q: 'What is a good design system health score?',
-    a: `80 or more is rated Great, 60–79 Good, 40–59 OK, 20–39 Bad and under 20 Terrible. Across ${s.scoredCount} well-known open-source codebases the median is ${s.medianScore}, and ${s.greatCount} score 80 or more.`,
+    a: `80 or more reads as mostly tokenized, 60–79 largely tokenized, 40–59 partly tokenized, 20–39 often hardcoded and under 20 mostly hardcoded. The labels describe the code, not the team. Across ${s.scoredCount} well-known open-source codebases the median is ${s.medianScore}, and ${s.greatCount} score 80 or more.`,
   },
   {
     q: 'What does it take to score 100?',
@@ -53,7 +53,7 @@ const faqs = [
       <tr><td>Critical issues</td><td>10</td><td>Color contrast failures between text and background on the same element, accessibility conflicts and deprecated patterns.</td></tr>
     </tbody>
   </table>
-  <p>Tiers: 80–100 Great, 60–79 Good, 40–59 OK, 20–39 Bad, under 20 Terrible.</p>
+  <p>Labels: 80–100 mostly tokenized, 60–79 largely tokenized, 40–59 partly tokenized, 20–39 often hardcoded, under 20 mostly hardcoded. They describe how much of the UI goes through tokens, not the quality of the product or the team. (The CLI prints Great, Good, OK, Bad and Terrible for the same bands.)</p>
 
   <h2>Why density, not totals</h2>
   <p>
