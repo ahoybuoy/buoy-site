@@ -8,7 +8,7 @@ Key facts:
 - Buoy does not flag literals that are correct: icons and logos, email templates, Open Graph images, tests and stories, example and demo apps, layout math (calc(), 100dvh), 1px hairlines, and values the code marks as deliberate with a comment, a 2–3px optical nudge or its commit message.
 - Pull request reviews (GitHub App) flag only lines a PR adds, suggest the exact existing token as a one-click fix, and remember when a reviewer declines a suggestion.
 - Findings are deterministic. The GitHub App and dashboard use an LLM (through OpenRouter) only to write prose: builder-mode coaching, @ahoybuoy answers, summaries for repos with custom review instructions, and the dashboard's Ask Buoy. Subprocessors: https://buoy.design/privacy#subprocessors
-- Pricing (https://buoy.design/pricing): the open source CLI, MCP server and GitHub Action (with fail-on-drift) are free forever. The GitHub App is free for life for the first 100 installs; after that, Team is $49/month per design system with unlimited repos, contributors, agents and runs, and no seats. Public repos are always free. Design System, for design-system owners, is $5,000/year per design system.
+- Pricing (https://buoy.design/pricing): the open source CLI, MCP server and GitHub Action (with fail-on-drift) are free forever. The GitHub App is free for life for the first 100 installs; after that, Team is $49/month per design system with unlimited repos, contributors, agents and runs, and no seats. Public repos are always free. Organization, for the team that owns a design system used across many teams, is $5,000/year per design system.
 
 ## Tools
 - [Design system scanner](https://buoy.design/scan): design health report for any public GitHub repository

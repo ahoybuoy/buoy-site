@@ -49,10 +49,10 @@ const plans = [
     featured: true,
   },
   {
-    name: 'Design System',
+    name: 'Organization',
     price: '$5,000',
     period: 'per year, per design system',
-    audience: 'For design-system owners',
+    audience: 'For the team that owns a design system used across many teams',
     description: 'Everything in Team for one design system, plus the record of how it holds up across your organization.',
     features: [
       'Everything in Team',
@@ -86,7 +86,7 @@ const comparison = [
 const faqs = [
   {
     question: 'What does "free for life" mean?',
-    answer: 'If your GitHub organization or account installs the Buoy GitHub App while it is one of the first 100 installs, that organization keeps the GitHub App free for life: every repo, contributor and agent, including what we add to Team later. It belongs to the organization that installed, not to a person, and it does not transfer to another organization. It lasts for as long as Buoy runs the GitHub App. The Design System plan is separate.',
+    answer: 'If your GitHub organization or account installs the Buoy GitHub App while it is one of the first 100 installs, that organization keeps the GitHub App free for life: every repo, contributor and agent, including what we add to Team later. It belongs to the organization that installed, not to a person, and it does not transfer to another organization. It lasts for as long as Buoy runs the GitHub App. The Organization plan is separate.',
   },
   {
     question: 'What happens after the first 100 installs?',
@@ -109,7 +109,7 @@ const faqs = [
     answerHtml: 'The CLI, MCP server and Action run on your machine or in your CI and send nothing to Buoy. The GitHub App reads pull request diffs and files through GitHub and scans them on Cloudflare. Some review prose, such as builder-mode coaching and @ahoybuoy answers, is written by an LLM through OpenRouter, which receives diff excerpts and file history. Findings are always deterministic; models never decide them. <a href="/privacy#subprocessors" class="text-buoy hover:underline">See exactly what is sent where</a>.',
   },
   {
-    question: 'What does the Design System plan include?',
+    question: 'What does the Organization plan include?',
     answer: 'Everything in Team for one design system, plus an org-wide drift record across every repo that uses it, plus optional calibration (we capture your product rules, codify them for your coding agents, ship agreed fixes as reviewable pull requests and set up guardrails), and a design-partner relationship with the people building Buoy, for $5,000 a year per design system. Calibration is a separate one-time engagement for $12,000.',
   },
 ]
@@ -240,7 +240,7 @@ const faqs = [
             <div class="p-4 font-semibold text-slate">Feature</div>
             <div class="p-4 font-semibold text-slate text-center border-l border-navy-light/20">Open source</div>
             <div class="p-4 font-semibold text-buoy text-center border-l border-navy-light/20">GitHub App / Team</div>
-            <div class="p-4 font-semibold text-slate text-center border-l border-navy-light/20">Design System</div>
+            <div class="p-4 font-semibold text-slate text-center border-l border-navy-light/20">Organization</div>
           </div>
 
           {comparison.map((row, index) => (
