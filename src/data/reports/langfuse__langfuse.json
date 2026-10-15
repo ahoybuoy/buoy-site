@@ -3,18 +3,18 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source agent evals & observability: Trace, evaluate, and improve LLM applications with one open platform.",
-  "stars": 35812,
+  "stars": 35856,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "ae145dc54458c8fb509bb468a8630e0f3492e7b2",
-  "generatedAt": "2026-10-14T12:33:16.438Z",
-  "cliVersion": "0.8.9",
-  "score": 92,
+  "commit": "b526ee2a35f6cbc37604d3bc45531deac6ef4dbb",
+  "generatedAt": "2026-10-15T12:10:13.784Z",
+  "cliVersion": "0.8.11",
+  "score": 93,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 52,
+      "score": 53,
       "max": 60
     },
     "tokenHealth": {
@@ -31,8 +31,8 @@
     }
   },
   "metrics": {
-    "componentCount": 2152,
-    "tokenCount": 308,
+    "componentCount": 2170,
+    "tokenCount": 316,
     "hardcodedValueCount": 82,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
@@ -75,7 +75,7 @@
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 8,
+      "points": 7,
       "action": "Replace the hardcoded values in 76 of the 81 findings with tokens or scale steps"
     }
   ],
@@ -87,7 +87,7 @@
     "samples": [
       {
         "file": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx",
-        "line": 1927,
+        "line": 1932,
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "right: 2px is a 2-3px optical adjustment"
@@ -229,17 +229,17 @@
     },
     {
       "component": "TimelineDense",
-      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:325",
+      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:327",
       "entries": [
-        "fontSize: 10px (line 1366)",
-        "fontSize: 9px (line 1440)"
+        "fontSize: 10px (line 1368)",
+        "fontSize: 9px (line 1442)"
       ]
     },
     {
       "component": "GutterContent",
-      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:1817",
+      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:1819",
       "entries": [
-        "fontSize: 10px (line 1940)"
+        "fontSize: 10px (line 1945)"
       ]
     },
     {
@@ -299,5 +299,5 @@
       ]
     }
   ],
-  "scanSeconds": 78
+  "scanSeconds": 61
 }

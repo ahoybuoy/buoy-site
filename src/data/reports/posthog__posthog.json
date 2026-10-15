@@ -3,13 +3,13 @@
   "owner": "posthog",
   "name": "posthog",
   "description": ":hedgehog: PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.",
-  "stars": 40282,
+  "stars": 40288,
   "homepage": "https://posthog.com",
   "language": "Python",
   "defaultBranch": "master",
-  "commit": "93a61f22212f91d2459c88ca49ba50f883e477a3",
-  "generatedAt": "2026-10-14T12:31:55.857Z",
-  "cliVersion": "0.8.9",
+  "commit": "5fe8d7dc48bc08213188b96d7e2dc5a6dbe7dc4a",
+  "generatedAt": "2026-10-15T12:09:08.308Z",
+  "cliVersion": "0.8.11",
   "score": 76,
   "tier": "Good",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 5010,
+    "componentCount": 4983,
     "tokenCount": 185,
-    "hardcodedValueCount": 355,
+    "hardcodedValueCount": 352,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 3,
@@ -41,7 +41,7 @@
     "colorContrastCount": 3,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 364,
+    "totalDriftCount": 361,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 3,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 2,
     "vendoredDriftCount": 0,
-    "notedCount": 79,
+    "notedCount": 81,
     "topHardcodedColor": {
       "value": "#fff",
       "count": 8
@@ -62,7 +62,7 @@
       "path": "frontend/src/lib/KeaDevTools.tsx",
       "issueCount": 6
     },
-    "uniqueSpacingValues": 5,
+    "uniqueSpacingValues": 4,
     "detectedFrameworkNames": [
       "react",
       "tailwind",
@@ -71,7 +71,7 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 355 hardcoded values left to tokenize. frontend/src/lib/KeaDevTools.tsx has the most (6)",
+    "Nearly there — just 352 hardcoded values left to tokenize. frontend/src/lib/KeaDevTools.tsx has the most (6)",
     "3 color contrast issues — fix immediately",
     "3 deprecated patterns — migrate to current API"
   ],
@@ -79,7 +79,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 14,
-      "action": "Replace the hardcoded values in 343 of the 355 findings with tokens or scale steps, and remove or reuse 3 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 340 of the 352 findings with tokens or scale steps, and remove or reuse 3 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -88,10 +88,10 @@
     }
   ],
   "noted": {
-    "count": 79,
+    "count": 81,
     "byKind": {
       "explained": 16,
-      "optical-nudge": 61,
+      "optical-nudge": 63,
       "known-debt": 2
     },
     "samples": [
@@ -140,13 +140,13 @@
     ]
   },
   "driftSummary": {
-    "total": 364,
+    "total": 361,
     "critical": 3,
     "warning": 178,
-    "info": 183
+    "info": 180
   },
   "driftByType": {
-    "hardcoded-value": 355,
+    "hardcoded-value": 352,
     "deprecated-pattern": 3,
     "color-contrast": 3,
     "repeated-pattern": 3
@@ -154,7 +154,7 @@
   "topColors": [
     {
       "value": "#fff",
-      "count": 31
+      "count": 29
     },
     {
       "value": "#1d1f27",
@@ -208,11 +208,11 @@
     },
     {
       "value": "8px",
-      "count": 28
+      "count": 31
     },
     {
       "value": "4px",
-      "count": 26
+      "count": 29
     },
     {
       "value": "0.625rem",
@@ -227,6 +227,10 @@
     {
       "file": "products/desktop/tools/announcements-admin/src/styles.css",
       "count": 140
+    },
+    {
+      "file": "frontend/src/scenes/project-homepage/today/Today.scss",
+      "count": 72
     },
     {
       "file": "products/tasks/frontend/infrastructure/infrastructureAdmin.css",
@@ -247,10 +251,6 @@
     {
       "file": "frontend/src/styles/base.scss",
       "count": 47
-    },
-    {
-      "file": "frontend/src/toolbar/bar/Toolbar.scss",
-      "count": 40
     }
   ],
   "samples": [
@@ -348,5 +348,5 @@
       ]
     }
   ],
-  "scanSeconds": 211
+  "scanSeconds": 147
 }

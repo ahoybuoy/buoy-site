@@ -3,13 +3,13 @@
   "owner": "formbricks",
   "name": "formbricks",
   "description": "Open Source Qualtrics Alternative",
-  "stars": 13100,
+  "stars": 13108,
   "homepage": "https://formbricks.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "d28b1dcb76b75e4cff9de2bc419deca781e2ba41",
-  "generatedAt": "2026-10-14T12:24:06.784Z",
-  "cliVersion": "0.8.9",
+  "commit": "7ade8385077980c6021f7e170e1eb708e30dbff2",
+  "generatedAt": "2026-10-15T12:03:16.291Z",
+  "cliVersion": "0.8.11",
   "score": 94,
   "tier": "Great",
   "pillars": {
@@ -111,7 +111,7 @@
       },
       {
         "file": "packages/survey-ui/src/components/elements/rating.tsx",
-        "line": 417,
+        "line": 374,
         "value": "px-[2px]",
         "kind": "optical-nudge",
         "reason": "px-[2px] is a 2-3px optical adjustment"
@@ -246,9 +246,9 @@
   "samples": [
     {
       "component": "apps/web/app/(app)/workspaces/[workspaceId]/components/MainNavigation.tsx",
-      "location": "apps/web/app/(app)/workspaces/[workspaceId]/components/MainNavigation.tsx:81",
+      "location": "apps/web/app/(app)/workspaces/[workspaceId]/components/MainNavigation.tsx:84",
       "entries": [
-        "text-[10px] (line 81)"
+        "text-[10px] (line 84)"
       ]
     },
     {
@@ -333,5 +333,5 @@
       ]
     }
   ],
-  "scanSeconds": 29
+  "scanSeconds": 23
 }
