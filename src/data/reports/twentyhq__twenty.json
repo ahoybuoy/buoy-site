@@ -3,12 +3,12 @@
   "owner": "twentyhq",
   "name": "twenty",
   "description": "The open alternative to Salesforce, designed for AI.",
-  "stars": 58375,
+  "stars": 58411,
   "homepage": "https://twenty.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "0fcf754337bd401735d84358de191a6fc8947036",
-  "generatedAt": "2026-10-15T12:02:39.936Z",
+  "commit": "a57daf67eced997af80ff830919648b80bbd8fb3",
+  "generatedAt": "2026-10-16T11:53:29.127Z",
   "cliVersion": "0.8.11",
   "score": 99,
   "tier": "Great",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 4050,
+    "componentCount": 4061,
     "tokenCount": 13,
     "hardcodedValueCount": 23,
     "unusedTokenCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 1,
     "vendoredDriftCount": 0,
-    "notedCount": 1,
+    "notedCount": 0,
     "topHardcodedColor": {
       "value": "#333",
       "count": 2
@@ -84,19 +84,9 @@
     }
   ],
   "noted": {
-    "count": 1,
-    "byKind": {
-      "optical-nudge": 1
-    },
-    "samples": [
-      {
-        "file": "packages/twenty-ui/src/components/input/SegmentedControl/SegmentedControl.module.scss",
-        "line": 14,
-        "value": "3px",
-        "kind": "optical-nudge",
-        "reason": "padding: 3px is a 2-3px optical adjustment"
-      }
-    ]
+    "count": 0,
+    "byKind": {},
+    "samples": []
   },
   "driftSummary": {
     "total": 19,
@@ -298,9 +288,9 @@
       "location": "packages/twenty-ui/src/components/input/SegmentedControl/SegmentedControl.module.scss:10",
       "entries": [
         "spacing: 2px (line 10)",
-        "line height: 1.4 (line 38)"
+        "line height: 1.4 (line 50)"
       ]
     }
   ],
-  "scanSeconds": 144
+  "scanSeconds": 147
 }
