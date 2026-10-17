@@ -3,12 +3,12 @@
   "owner": "dubinc",
   "name": "dub",
   "description": "The modern link attribution platform. Loved by world-class marketing teams like Framer, Perplexity, Superhuman, Twilio, Buffer and more.",
-  "stars": 24900,
+  "stars": 24905,
   "homepage": "https://dub.co",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "1ee6e7578b41371aacd805b97d0e991927f10aed",
-  "generatedAt": "2026-10-16T11:49:28.164Z",
+  "commit": "0d216ee41eafb21ade9c21d5ec2bf8609c21c145",
+  "generatedAt": "2026-10-17T11:07:25.298Z",
   "cliVersion": "0.8.11",
   "score": 89,
   "tier": "Great",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 1643,
+    "componentCount": 1645,
     "tokenCount": 0,
     "hardcodedValueCount": 86,
     "unusedTokenCount": 0,
@@ -89,7 +89,7 @@
     "samples": [
       {
         "file": "apps/web/app/(ee)/partners.dub.co/(dashboard)/programs/[programSlug]/(enrolled)/links/partner-link-card.tsx",
-        "line": 270,
+        "line": 318,
         "value": "py-[3px]",
         "kind": "optical-nudge",
         "reason": "py-[3px] is a 2-3px optical adjustment"
@@ -254,10 +254,10 @@
     },
     {
       "component": "apps/web/app/(ee)/app.dub.co/embed/referrals/bounties/performance-section.tsx",
-      "location": "apps/web/app/(ee)/app.dub.co/embed/referrals/bounties/performance-section.tsx:504",
+      "location": "apps/web/app/(ee)/app.dub.co/embed/referrals/bounties/performance-section.tsx:515",
       "entries": [
-        "tracking-[-0.36px] (line 504)",
-        "tracking-[-0.36px] (line 677)"
+        "tracking-[-0.36px] (line 515)",
+        "tracking-[-0.36px] (line 688)"
       ]
     },
     {
@@ -315,12 +315,12 @@
     },
     {
       "component": "apps/web/app/(ee)/partners.dub.co/(dashboard)/programs/[programSlug]/(enrolled)/bounties/[bountyId]/bounty-performance-section.tsx",
-      "location": "apps/web/app/(ee)/partners.dub.co/(dashboard)/programs/[programSlug]/(enrolled)/bounties/[bountyId]/bounty-performance-section.tsx:105",
+      "location": "apps/web/app/(ee)/partners.dub.co/(dashboard)/programs/[programSlug]/(enrolled)/bounties/[bountyId]/bounty-performance-section.tsx:119",
       "entries": [
-        "tracking-[-0.36px] (line 105)",
-        "tracking-[-0.36px] (line 264)"
+        "tracking-[-0.36px] (line 119)",
+        "tracking-[-0.36px] (line 278)"
       ]
     }
   ],
-  "scanSeconds": 35
+  "scanSeconds": 46
 }

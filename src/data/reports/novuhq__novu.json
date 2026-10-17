@@ -3,12 +3,12 @@
   "owner": "novuhq",
   "name": "novu",
   "description": "The open-source communication infrastructure for agents and products",
-  "stars": 40152,
+  "stars": 40158,
   "homepage": "https://go.novu.co/github",
   "language": "TypeScript",
   "defaultBranch": "next",
-  "commit": "4d9795e21af3bc322dc24ad1880361b8283e190f",
-  "generatedAt": "2026-10-16T11:50:29.844Z",
+  "commit": "e433a078f71e6636f0a14e8360feb444d8dd6f7d",
+  "generatedAt": "2026-10-17T11:08:43.728Z",
   "cliVersion": "0.8.11",
   "score": 67,
   "tier": "Good",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2829,
-    "tokenCount": 502,
-    "hardcodedValueCount": 498,
+    "componentCount": 2870,
+    "tokenCount": 503,
+    "hardcodedValueCount": 506,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 500,
+    "totalDriftCount": 508,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -51,9 +51,9 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 42,
+    "highDensityFileCount": 43,
     "vendoredDriftCount": 27,
-    "notedCount": 24,
+    "notedCount": 26,
     "topHardcodedColor": {
       "value": "#dd2476",
       "count": 8
@@ -72,21 +72,21 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 471 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
+    "Nearly there — just 479 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
     "27 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 33,
-      "action": "Replace the hardcoded values in 464 of the 471 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 472 of the 479 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     }
   ],
   "noted": {
-    "count": 24,
+    "count": 26,
     "byKind": {
       "optical-nudge": 23,
-      "explained": 1
+      "explained": 3
     },
     "samples": [
       {
@@ -95,6 +95,20 @@
         "value": "text-[#525866]",
         "kind": "explained",
         "reason": "Inline text flow (not flex) so the copy wraps word-by-word and fills each line; inline-flex pills sit mid-line via alig…"
+      },
+      {
+        "file": "apps/human-dashboard/src/components/dashboard/share-dialog.tsx",
+        "line": 50,
+        "value": "rounded-[14px]",
+        "kind": "explained",
+        "reason": "On a short screen, such as a phone on its side, it scrolls rather than lose its buttons off the edge."
+      },
+      {
+        "file": "apps/human-dashboard/src/components/dashboard/share-dialog.tsx",
+        "line": 50,
+        "value": "shadow-[0_24px_60px_0_rgb(0_0_0/0.55)]",
+        "kind": "explained",
+        "reason": "On a short screen, such as a phone on its side, it scrolls rather than lose its buttons off the edge."
       },
       {
         "file": "apps/dashboard/src/components/agents/agent-behavior-section.tsx",
@@ -116,31 +130,17 @@
         "value": "px-[3px]",
         "kind": "optical-nudge",
         "reason": "px-[3px] is a 2-3px optical adjustment"
-      },
-      {
-        "file": "apps/dashboard/src/components/auth/auth-side-banner.tsx",
-        "line": 160,
-        "value": "mt-[3px]",
-        "kind": "optical-nudge",
-        "reason": "mt-[3px] is a 2-3px optical adjustment"
-      },
-      {
-        "file": "apps/dashboard/src/components/maily/views/for-view.tsx",
-        "line": 25,
-        "value": "py-[2px]",
-        "kind": "optical-nudge",
-        "reason": "py-[2px] is a 2-3px optical adjustment"
       }
     ]
   },
   "driftSummary": {
-    "total": 500,
+    "total": 508,
     "critical": 0,
     "warning": 97,
-    "info": 403
+    "info": 411
   },
   "driftByType": {
-    "hardcoded-value": 498,
+    "hardcoded-value": 506,
     "repeated-pattern": 2
   },
   "topColors": [
@@ -335,5 +335,5 @@
       ]
     }
   ],
-  "scanSeconds": 61
+  "scanSeconds": 78
 }

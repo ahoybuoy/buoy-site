@@ -3,12 +3,12 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source agent evals & observability: Trace, evaluate, and improve LLM applications with one open platform.",
-  "stars": 35910,
+  "stars": 35953,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "5832994c9a0e6768c8a6b7f8398dabba1b718b5a",
-  "generatedAt": "2026-10-16T12:01:06.913Z",
+  "commit": "e3a2bee2a2c048adf29b8d8a18b29bd4a8bf8ac3",
+  "generatedAt": "2026-10-17T11:21:05.932Z",
   "cliVersion": "0.8.11",
   "score": 93,
   "tier": "Great",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 2197,
+    "componentCount": 2236,
     "tokenCount": 317,
     "hardcodedValueCount": 82,
     "unusedTokenCount": 0,
@@ -115,7 +115,7 @@
       },
       {
         "file": "web/src/components/table/data-table.tsx",
-        "line": 528,
+        "line": 530,
         "value": "pb-[3px]",
         "kind": "optical-nudge",
         "reason": "pb-[3px] is a 2-3px optical adjustment"
@@ -299,5 +299,5 @@
       ]
     }
   ],
-  "scanSeconds": 60
+  "scanSeconds": 76
 }
