@@ -3,12 +3,12 @@
   "owner": "novuhq",
   "name": "novu",
   "description": "The open-source communication infrastructure for agents and products",
-  "stars": 40158,
+  "stars": 40165,
   "homepage": "https://go.novu.co/github",
   "language": "TypeScript",
   "defaultBranch": "next",
-  "commit": "e433a078f71e6636f0a14e8360feb444d8dd6f7d",
-  "generatedAt": "2026-10-17T11:08:43.728Z",
+  "commit": "1533ad6df68d713905f24fcf96d39f88c382dec4",
+  "generatedAt": "2026-10-18T11:39:17.001Z",
   "cliVersion": "0.8.11",
   "score": 67,
   "tier": "Good",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2870,
+    "componentCount": 2871,
     "tokenCount": 503,
-    "hardcodedValueCount": 506,
+    "hardcodedValueCount": 507,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 508,
+    "totalDriftCount": 509,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -72,14 +72,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 479 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
+    "Nearly there — just 480 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
     "27 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 33,
-      "action": "Replace the hardcoded values in 472 of the 479 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 473 of the 480 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     }
   ],
   "noted": {
@@ -134,13 +134,13 @@
     ]
   },
   "driftSummary": {
-    "total": 508,
+    "total": 509,
     "critical": 0,
     "warning": 97,
-    "info": 411
+    "info": 412
   },
   "driftByType": {
-    "hardcoded-value": 506,
+    "hardcoded-value": 507,
     "repeated-pattern": 2
   },
   "topColors": [
@@ -335,5 +335,5 @@
       ]
     }
   ],
-  "scanSeconds": 78
+  "scanSeconds": 77
 }
