@@ -3,12 +3,12 @@
   "owner": "twentyhq",
   "name": "twenty",
   "description": "The open alternative to Salesforce, designed for AI.",
-  "stars": 58473,
+  "stars": 58531,
   "homepage": "https://twenty.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "289976eaeeb78fda1b85ff9f3c92fa6ab6f93eb6",
-  "generatedAt": "2026-10-18T11:42:51.908Z",
+  "commit": "7e09b9a6b963df5f0f539dfb885de442551d93e2",
+  "generatedAt": "2026-10-19T13:58:20.719Z",
   "cliVersion": "0.8.11",
   "score": 99,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 4089,
+    "componentCount": 4100,
     "tokenCount": 13,
-    "hardcodedValueCount": 23,
+    "hardcodedValueCount": 22,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 23,
+    "totalDriftCount": 22,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -74,13 +74,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 23 hardcoded values left to tokenize. packages/create-twenty-app/src/constants/template/src/front-components/main-page.tsx has the most (4)"
+    "Nearly there — just 22 hardcoded values left to tokenize. packages/create-twenty-app/src/constants/template/src/front-components/main-page.tsx has the most (4)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 1,
-      "action": "Replace the hardcoded values in 13 of the 23 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 12 of the 22 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -89,13 +89,13 @@
     "samples": []
   },
   "driftSummary": {
-    "total": 19,
+    "total": 18,
     "critical": 0,
     "warning": 3,
-    "info": 16
+    "info": 15
   },
   "driftByType": {
-    "hardcoded-value": 19
+    "hardcoded-value": 18
   },
   "topColors": [
     {
@@ -292,5 +292,5 @@
       ]
     }
   ],
-  "scanSeconds": 177
+  "scanSeconds": 198
 }

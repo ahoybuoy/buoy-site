@@ -3,12 +3,12 @@
   "owner": "n8n-io",
   "name": "n8n",
   "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
-  "stars": 207874,
+  "stars": 207991,
   "homepage": "https://n8n.io",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "d2dc2f9ce50294df5c08799af437c56e3e04ab13",
-  "generatedAt": "2026-10-18T11:46:54.582Z",
+  "commit": "d74f3f2cddabf0b732f4a22ae8a784ad66ed7f29",
+  "generatedAt": "2026-10-19T14:02:51.494Z",
   "cliVersion": "0.8.11",
   "score": 60,
   "tier": "Good",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1356,
+    "componentCount": 1357,
     "tokenCount": 636,
-    "hardcodedValueCount": 258,
+    "hardcodedValueCount": 257,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 259,
+    "totalDriftCount": 258,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -71,14 +71,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 258 hardcoded values left to tokenize. packages/frontend/editor-ui/src/features/settings/communityNodes/components/ContactAdministratorToInstall.vue has the most (2)",
+    "Nearly there — just 257 hardcoded values left to tokenize. packages/frontend/editor-ui/src/features/settings/communityNodes/components/ContactAdministratorToInstall.vue has the most (2)",
     "1 deprecated pattern — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 38,
-      "action": "Replace the hardcoded values in 255 of the 258 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 254 of the 257 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -138,14 +138,14 @@
     ]
   },
   "driftSummary": {
-    "total": 259,
+    "total": 258,
     "critical": 0,
     "warning": 94,
-    "info": 165
+    "info": 164
   },
   "driftByType": {
     "deprecated-pattern": 1,
-    "hardcoded-value": 258
+    "hardcoded-value": 257
   },
   "topColors": [
     {
@@ -348,5 +348,5 @@
       ]
     }
   ],
-  "scanSeconds": 71
+  "scanSeconds": 84
 }
