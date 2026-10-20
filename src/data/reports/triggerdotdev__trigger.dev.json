@@ -3,18 +3,18 @@
   "owner": "triggerdotdev",
   "name": "trigger.dev",
   "description": "Trigger.dev – build and deploy durable AI agents and workflows",
-  "stars": 16573,
+  "stars": 16585,
   "homepage": "https://trigger.dev/changelog",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "13d02beb284c305bb082eef80a39ea4d26f8ce2c",
-  "generatedAt": "2026-10-19T14:09:52.950Z",
+  "commit": "b1998e45379eb622dc242c4cc3147c91fe42cee1",
+  "generatedAt": "2026-10-20T12:13:19.504Z",
   "cliVersion": "0.8.11",
-  "score": 90,
+  "score": 91,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 50,
+      "score": 51,
       "max": 60
     },
     "tokenHealth": {
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 1765,
+    "componentCount": 1778,
     "tokenCount": 273,
     "hardcodedValueCount": 84,
     "unusedTokenCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 2,
+    "notedCount": 3,
     "topHardcodedColor": {
       "value": "#14B8A6",
       "count": 1
@@ -77,16 +77,24 @@
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 10,
+      "points": 9,
       "action": "Replace the hardcoded values in 80 of the 84 findings with tokens or scale steps"
     }
   ],
   "noted": {
-    "count": 2,
+    "count": 3,
     "byKind": {
+      "explained": 1,
       "optical-nudge": 2
     },
     "samples": [
+      {
+        "file": "apps/webapp/app/components/dashboard-agent/panel-layout.tsx",
+        "line": 340,
+        "value": "light:shadow-[0_0_20px_rgb(0_0_0/0.08),0_0_6px_rgb(0_0_0/0.04)]",
+        "kind": "explained",
+        "reason": "Light themes need far less shadow to lift the panel off the page, and an even one: any offset reads as a heavier bottom…"
+      },
       {
         "file": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.concurrency/route.tsx",
         "line": 1068,
@@ -160,10 +168,6 @@
       "count": 3
     },
     {
-      "value": "6px",
-      "count": 2
-    },
-    {
       "value": "0.4rem",
       "count": 2
     },
@@ -177,6 +181,10 @@
     },
     {
       "value": "2.9rem",
+      "count": 1
+    },
+    {
+      "value": "1.375rem",
       "count": 1
     }
   ],
@@ -251,17 +259,17 @@
       ]
     },
     {
-      "component": "apps/webapp/app/components/dashboard-agent/DashboardAgentChat.tsx",
-      "location": "apps/webapp/app/components/dashboard-agent/DashboardAgentChat.tsx:662",
+      "component": "apps/webapp/app/components/dashboard-agent/DashboardAgentComposer.tsx",
+      "location": "apps/webapp/app/components/dashboard-agent/DashboardAgentComposer.tsx:176",
       "entries": [
-        "mr-[6px] (line 662)"
+        "leading-[1.5] (line 176)"
       ]
     },
     {
-      "component": "apps/webapp/app/components/dashboard-agent/DashboardAgentComposer.tsx",
-      "location": "apps/webapp/app/components/dashboard-agent/DashboardAgentComposer.tsx:143",
+      "component": "apps/webapp/app/components/dashboard-agent/DashboardAgentHeader.tsx",
+      "location": "apps/webapp/app/components/dashboard-agent/DashboardAgentHeader.tsx:127",
       "entries": [
-        "leading-[1.5] (line 143)"
+        "rounded-[3px] (line 127)"
       ]
     },
     {
@@ -303,5 +311,5 @@
       ]
     }
   ],
-  "scanSeconds": 43
+  "scanSeconds": 32
 }
