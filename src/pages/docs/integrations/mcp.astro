@@ -39,7 +39,8 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
   <table>
     <thead><tr><th>Tool</th><th>What the agent gets</th></tr></thead>
     <tbody>
-      <tr><td><code>list_design_tokens</code></td><td>Every token in the repo (CSS custom properties, Tailwind theme, tokens.json, SCSS), filterable by category or name. Meant to be called before writing any style.</td></tr>
+      <tr><td><code>context_for_file</code></td><td>Just the design context for the file the agent is about to edit: tokens it and its neighbours already use, the spacing, type and radius steps for the values it contains, components to reuse, and drift already in it. About 500 tokens of context where the full token list of a large system is about 8,000. Meant to be called before each edit.</td></tr>
+      <tr><td><code>list_design_tokens</code></td><td>The repo's tokens (CSS custom properties, Tailwind theme, tokens.json, SCSS). Without arguments, a short summary: counts plus a few per category. With a category or name, the full list.</td></tr>
       <tr><td><code>find_token_for_value</code></td><td>The token whose value equals a literal the agent is about to write: <code>#1a73e8</code> → <code>--color-primary</code>. Handles hex shorthand, case and units.</td></tr>
       <tr><td><code>check_ui_against_design_system</code></td><td>Line-level check of the files just edited: each off-system value with the token to use, plus an exact line edit when the swap is unambiguous. Without files, the full repository analysis.</td></tr>
       <tr><td><code>design_system_context</code></td><td>A Markdown overview of the system: token categories, components, and the anti-patterns Buoy flags. One call at the start of a UI task.</td></tr>

@@ -1,6 +1,6 @@
 # Buoy
 
-> Buoy detects design drift: code that bypasses a design system, such as hardcoded colors, spacing and font sizes where design tokens exist. It scans React, Vue, Svelte, Angular, Tailwind, CSS and Sass, gives a 0–100 design health score with the path to 100, reviews pull requests with committable fixes, and gives AI coding assistants the design tokens through an MCP server. The CLI is open source (MIT).
+> Buoy detects design drift: code that bypasses a design system, such as hardcoded colors, spacing and font sizes where design tokens exist. It scans React, Vue, Svelte, Angular, Tailwind, CSS and Sass, gives a 0–100 design health score with the path to 100, reviews pull requests with committable fixes, and gives AI coding assistants just the design context each file needs through an MCP server (`context_for_file`), instead of the whole system. The CLI is open source (MIT).
 
 Key facts:
 - Scan any public GitHub repository at https://buoy.design/scan (free, about a minute). Private code: `npx @buoy-design/cli show health` in a checkout; nothing leaves the machine.
