@@ -3,13 +3,13 @@
   "owner": "supabase",
   "name": "supabase",
   "description": "The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications.",
-  "stars": 112130,
+  "stars": 112617,
   "homepage": "https://supabase.com",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "807fb3df167bd8b4835ed1f14e4bc74fa212ceda",
-  "generatedAt": "2026-10-20T11:59:59.203Z",
-  "cliVersion": "0.8.11",
+  "commit": "fdf03de35f5cad4a5e396e98ecbbaa1f8cc5ea8d",
+  "generatedAt": "2026-10-21T12:13:48.605Z",
+  "cliVersion": "0.8.12",
   "score": 86,
   "tier": "Great",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 4723,
-    "tokenCount": 1120,
-    "hardcodedValueCount": 298,
+    "componentCount": 4750,
+    "tokenCount": 1133,
+    "hardcodedValueCount": 299,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 307,
+    "totalDriftCount": 308,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 7,
     "orphanedComponentCount": 0,
@@ -73,7 +73,7 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 291 hardcoded values left to tokenize. apps/studio/components/interfaces/Database/Policies/PolicyEditorPanel/LockedQuerySection.tsx has the most (3)",
+    "Nearly there — just 292 hardcoded values left to tokenize. apps/studio/components/interfaces/Database/Policies/PolicyEditorPanel/LockedQuerySection.tsx has the most (3)",
     "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
     "7 repeated patterns — extract to shared components",
     "2 deprecated patterns — migrate to current API"
@@ -82,7 +82,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 12,
-      "action": "Replace the hardcoded values in 280 of the 291 findings with tokens or scale steps, and remove or reuse 7 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 281 of the 292 findings with tokens or scale steps, and remove or reuse 7 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -105,7 +105,7 @@
       },
       {
         "file": "apps/studio/components/interfaces/Storage/StorageExplorer/FileExplorerRow.tsx",
-        "line": 532,
+        "line": 531,
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "top: 2px is a 2-3px optical adjustment"
@@ -141,14 +141,14 @@
     ]
   },
   "driftSummary": {
-    "total": 307,
+    "total": 308,
     "critical": 0,
     "warning": 65,
-    "info": 242
+    "info": 243
   },
   "driftByType": {
     "deprecated-pattern": 2,
-    "hardcoded-value": 298,
+    "hardcoded-value": 299,
     "repeated-pattern": 7
   },
   "topColors": [
@@ -343,5 +343,5 @@
       ]
     }
   ],
-  "scanSeconds": 145
+  "scanSeconds": 127
 }

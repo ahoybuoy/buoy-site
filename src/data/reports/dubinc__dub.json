@@ -3,13 +3,13 @@
   "owner": "dubinc",
   "name": "dub",
   "description": "The modern link attribution platform. Loved by world-class marketing teams like Framer, Perplexity, Superhuman, Twilio, Buffer and more.",
-  "stars": 24919,
+  "stars": 24917,
   "homepage": "https://dub.co",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "33ede443270a11381ed53ee03312208e1370195b",
-  "generatedAt": "2026-10-20T12:00:40.143Z",
-  "cliVersion": "0.8.11",
+  "commit": "c43a4b389caa99acea352f8c4c520ece41061bd5",
+  "generatedAt": "2026-10-21T12:14:24.887Z",
+  "cliVersion": "0.8.12",
   "score": 89,
   "tier": "Great",
   "pillars": {
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 1645,
+    "componentCount": 1648,
     "tokenCount": 0,
     "hardcodedValueCount": 86,
     "unusedTokenCount": 0,
@@ -89,7 +89,7 @@
     "samples": [
       {
         "file": "apps/web/app/(ee)/partners.dub.co/(dashboard)/programs/[programSlug]/(enrolled)/links/partner-link-card.tsx",
-        "line": 318,
+        "line": 349,
         "value": "py-[3px]",
         "kind": "optical-nudge",
         "reason": "py-[3px] is a 2-3px optical adjustment"
@@ -322,5 +322,5 @@
       ]
     }
   ],
-  "scanSeconds": 39
+  "scanSeconds": 35
 }
