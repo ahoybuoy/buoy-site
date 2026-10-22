@@ -3,18 +3,18 @@
   "owner": "novuhq",
   "name": "novu",
   "description": "The open-source communication infrastructure for agents and products",
-  "stars": 40178,
+  "stars": 40183,
   "homepage": "https://go.novu.co/github",
   "language": "TypeScript",
   "defaultBranch": "next",
-  "commit": "7bffa67a52ddbb0d7683a0ec4fe308e4d4ecaf9f",
-  "generatedAt": "2026-10-21T12:15:25.242Z",
+  "commit": "17a13c8f946ba997665a3b13c7cb6bc250758648",
+  "generatedAt": "2026-10-22T12:21:05.041Z",
   "cliVersion": "0.8.12",
-  "score": 67,
+  "score": 64,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 27,
+      "score": 24,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2902,
-    "tokenCount": 504,
-    "hardcodedValueCount": 510,
+    "componentCount": 2963,
+    "tokenCount": 510,
+    "hardcodedValueCount": 555,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 512,
+    "totalDriftCount": 557,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -51,7 +51,7 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 42,
+    "highDensityFileCount": 48,
     "vendoredDriftCount": 27,
     "notedCount": 26,
     "topHardcodedColor": {
@@ -72,14 +72,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 483 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
+    "Nearly there — just 528 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
     "27 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 33,
-      "action": "Replace the hardcoded values in 476 of the 483 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "points": 36,
+      "action": "Replace the hardcoded values in 521 of the 528 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     }
   ],
   "noted": {
@@ -134,13 +134,13 @@
     ]
   },
   "driftSummary": {
-    "total": 512,
+    "total": 557,
     "critical": 0,
-    "warning": 98,
-    "info": 414
+    "warning": 100,
+    "info": 457
   },
   "driftByType": {
-    "hardcoded-value": 510,
+    "hardcoded-value": 555,
     "repeated-pattern": 2
   },
   "topColors": [
@@ -184,7 +184,7 @@
     },
     {
       "value": "5px",
-      "count": 16
+      "count": 17
     },
     {
       "value": "2rem",
@@ -196,19 +196,19 @@
     },
     {
       "value": "6px",
+      "count": 13
+    },
+    {
+      "value": "10px",
+      "count": 12
+    },
+    {
+      "value": "18px",
       "count": 11
     },
     {
       "value": "1.5rem",
       "count": 11
-    },
-    {
-      "value": "12px",
-      "count": 8
-    },
-    {
-      "value": "18px",
-      "count": 8
     }
   ],
   "worstFiles": [
@@ -225,12 +225,16 @@
       "count": 59
     },
     {
-      "file": "apps/dashboard/src/components/workflow-editor/steps/http-request/http-request-console-preview.tsx",
-      "count": 40
+      "file": "apps/human-dashboard/src/styles/home.css",
+      "count": 44
     },
     {
-      "file": "apps/human-dashboard/src/app/page.tsx",
-      "count": 35
+      "file": "apps/human-dashboard/src/components/sapien/inbox-dashboard.tsx",
+      "count": 43
+    },
+    {
+      "file": "apps/dashboard/src/components/workflow-editor/steps/http-request/http-request-console-preview.tsx",
+      "count": 40
     },
     {
       "file": "packages/novu/src/commands/init/templates/app-agent-ai-sdk/ts/app/page.module.css",
@@ -238,10 +242,6 @@
     },
     {
       "file": "packages/novu/src/commands/init/templates/app-agent-langchain/ts/app/page.module.css",
-      "count": 32
-    },
-    {
-      "file": "packages/novu/src/commands/init/templates/app-agent/ts/app/page.module.css",
       "count": 32
     }
   ],
@@ -335,5 +335,5 @@
       ]
     }
   ],
-  "scanSeconds": 60
+  "scanSeconds": 87
 }

@@ -3,14 +3,14 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source agent evals & observability: Trace, evaluate, and improve LLM applications with one open platform.",
-  "stars": 36132,
+  "stars": 36182,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "792a35d7cee6839648f7667b064bd324116b9a88",
-  "generatedAt": "2026-10-21T12:25:24.507Z",
+  "commit": "baf2f3c39d6a464620d4de3d8e04658a5855a025",
+  "generatedAt": "2026-10-22T12:35:11.902Z",
   "cliVersion": "0.8.12",
-  "score": 93,
+  "score": 91,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
@@ -26,13 +26,13 @@
       "max": 10
     },
     "criticalIssues": {
-      "score": 10,
+      "score": 8,
       "max": 10
     }
   },
   "metrics": {
-    "componentCount": 2256,
-    "tokenCount": 317,
+    "componentCount": 2286,
+    "tokenCount": 327,
     "hardcodedValueCount": 82,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
@@ -41,18 +41,18 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 82,
+    "totalDriftCount": 83,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
-    "deprecatedPatternCount": 0,
+    "deprecatedPatternCount": 1,
     "orphanedTokenCount": 0,
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
-    "vendoredDriftCount": 1,
+    "vendoredDriftCount": 0,
     "notedCount": 5,
     "topHardcodedColor": {
       "value": "#6b7280",
@@ -70,14 +70,19 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 81 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx has the most (2)",
-    "1 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
+    "Nearly there — just 82 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx has the most (2)",
+    "1 deprecated pattern — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 7,
-      "action": "Replace the hardcoded values in 76 of the 81 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 77 of the 82 findings with tokens or scale steps"
+    },
+    {
+      "pillar": "criticalIssues",
+      "points": 2,
+      "action": "Migrate 1 deprecated pattern"
     }
   ],
   "noted": {
@@ -124,12 +129,13 @@
     ]
   },
   "driftSummary": {
-    "total": 82,
+    "total": 83,
     "critical": 0,
-    "warning": 2,
+    "warning": 3,
     "info": 80
   },
   "driftByType": {
+    "deprecated-pattern": 1,
     "hardcoded-value": 82
   },
   "topColors": [
@@ -300,5 +306,5 @@
       ]
     }
   ],
-  "scanSeconds": 61
+  "scanSeconds": 88
 }

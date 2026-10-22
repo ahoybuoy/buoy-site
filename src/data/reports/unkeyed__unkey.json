@@ -3,12 +3,12 @@
   "owner": "unkeyed",
   "name": "unkey",
   "description": "The Developer Platform for Modern APIs",
-  "stars": 5472,
+  "stars": 5473,
   "homepage": "https://go.unkey.com",
   "language": "Go",
   "defaultBranch": "main",
-  "commit": "5bbf44f2e92eee0a30671d691ef162dd70945201",
-  "generatedAt": "2026-10-21T12:26:06.479Z",
+  "commit": "35163e3dab7709ba24e534ec2e7c246d0a30197b",
+  "generatedAt": "2026-10-22T12:36:11.307Z",
   "cliVersion": "0.8.12",
   "score": null,
   "tier": "N/A",
@@ -98,11 +98,19 @@
     },
     {
       "value": "1.5rem",
-      "count": 7
+      "count": 8
     },
     {
       "value": "0.5rem",
+      "count": 5
+    },
+    {
+      "value": "2rem",
       "count": 4
+    },
+    {
+      "value": "0.75rem",
+      "count": 3
     },
     {
       "value": "1.25rem",
@@ -115,20 +123,12 @@
     {
       "value": "2.5rem",
       "count": 2
-    },
-    {
-      "value": "0.4375rem",
-      "count": 2
-    },
-    {
-      "value": "3rem",
-      "count": 1
     }
   ],
   "worstFiles": [
     {
       "file": "docs/style.css",
-      "count": 71
+      "count": 81
     },
     {
       "file": "web/internal/workos-widgets/styles.css",
@@ -180,5 +180,5 @@
       ]
     }
   ],
-  "scanSeconds": 11
+  "scanSeconds": 15
 }

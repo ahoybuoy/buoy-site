@@ -3,18 +3,18 @@
   "owner": "n8n-io",
   "name": "n8n",
   "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
-  "stars": 208207,
+  "stars": 208307,
   "homepage": "https://n8n.io",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "e228ee968e8a8f8652e5370b81d2ef39c8d42f75",
-  "generatedAt": "2026-10-21T12:21:15.458Z",
+  "commit": "b01796538157598dde70ae1cdfb4aeb0a8aa41bb",
+  "generatedAt": "2026-10-22T12:29:36.330Z",
   "cliVersion": "0.8.12",
-  "score": 60,
+  "score": 61,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 22,
+      "score": 23,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1371,
-    "tokenCount": 636,
-    "hardcodedValueCount": 258,
+    "componentCount": 1383,
+    "tokenCount": 621,
+    "hardcodedValueCount": 257,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 260,
+    "totalDriftCount": 259,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 34,
+    "notedCount": 33,
     "topHardcodedColor": {
       "value": "#fff",
       "count": 3
@@ -71,14 +71,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 258 hardcoded values left to tokenize. packages/frontend/editor-ui/src/features/settings/communityNodes/components/ContactAdministratorToInstall.vue has the most (2)",
+    "Nearly there — just 257 hardcoded values left to tokenize. packages/frontend/editor-ui/src/features/settings/communityNodes/components/ContactAdministratorToInstall.vue has the most (2)",
     "2 deprecated patterns — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 38,
-      "action": "Replace the hardcoded values in 255 of the 258 findings with tokens or scale steps"
+      "points": 37,
+      "action": "Replace the hardcoded values in 254 of the 257 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -87,9 +87,9 @@
     }
   ],
   "noted": {
-    "count": 34,
+    "count": 33,
     "byKind": {
-      "optical-nudge": 30,
+      "optical-nudge": 29,
       "explained": 4
     },
     "samples": [
@@ -122,30 +122,30 @@
         "reason": "Matches the design-system $index-popper tier (var.scss) — sits above vue-flow's elevated selected nodes so the per-node…"
       },
       {
-        "file": "packages/@n8n/local-gateway/src/renderer/styles.css",
-        "line": 272,
-        "value": "3px",
-        "kind": "optical-nudge",
-        "reason": "margin-top: 3px is a 2-3px optical adjustment"
-      },
-      {
         "file": "packages/frontend/@n8n/chat/src/components/MessageTyping.vue",
         "line": 75,
         "value": "3px",
         "kind": "optical-nudge",
         "reason": "margin: 3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/frontend/@n8n/design-system/src/components/N8nSelectableList/SelectableList.vue",
+        "line": 146,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "margin-top: 3px is a 2-3px optical adjustment"
       }
     ]
   },
   "driftSummary": {
-    "total": 260,
+    "total": 259,
     "critical": 0,
-    "warning": 95,
-    "info": 165
+    "warning": 90,
+    "info": 169
   },
   "driftByType": {
     "deprecated-pattern": 2,
-    "hardcoded-value": 258
+    "hardcoded-value": 257
   },
   "topColors": [
     {
@@ -183,43 +183,39 @@
   ],
   "topSpacing": [
     {
-      "value": "10px",
-      "count": 37
-    },
-    {
       "value": "5px",
       "count": 36
     },
     {
+      "value": "10px",
+      "count": 36
+    },
+    {
       "value": "8px",
-      "count": 31
+      "count": 27
     },
     {
       "value": "12px",
-      "count": 15
-    },
-    {
-      "value": "20px",
-      "count": 14
-    },
-    {
-      "value": "4px",
-      "count": 14
+      "count": 13
     },
     {
       "value": "1em",
       "count": 13
     },
     {
+      "value": "4px",
+      "count": 13
+    },
+    {
       "value": "16px",
+      "count": 13
+    },
+    {
+      "value": "20px",
       "count": 13
     }
   ],
   "worstFiles": [
-    {
-      "file": "packages/@n8n/local-gateway/src/renderer/styles.css",
-      "count": 39
-    },
     {
       "file": "packages/frontend/@n8n/design-system/src/components/DateRangePicker/DateRangePicker.vue",
       "count": 26
@@ -247,6 +243,10 @@
     {
       "file": "packages/frontend/editor-ui/src/features/ai/evaluation.ee/views/EvaluationsView.vue",
       "count": 17
+    },
+    {
+      "file": "packages/frontend/@n8n/design-system/src/css/date-picker/picker-panel.scss",
+      "count": 16
     }
   ],
   "samples": [
@@ -262,15 +262,6 @@
       "location": "packages/frontend/editor-ui/src/features/settings/communityNodes/components/nodeCreator/CommunityNodeDocsLink.vue:1",
       "entries": [
         "margin-right: 5px (template)"
-      ]
-    },
-    {
-      "component": "packages/@n8n/local-gateway/src/renderer/styles.css",
-      "location": "packages/@n8n/local-gateway/src/renderer/styles.css:38",
-      "entries": [
-        "font size: 13px (line 38)",
-        "font size: 15px (line 62)",
-        "font weight: 600 (line 63)"
       ]
     },
     {
@@ -346,7 +337,14 @@
         "radius: 22px (line 28)",
         "colour: rgba(65, 66, 68, 0.92) (line 30)"
       ]
+    },
+    {
+      "component": "packages/frontend/@n8n/design-system/src/components/CodeDiff/CodeDiff.vue",
+      "location": "packages/frontend/@n8n/design-system/src/components/CodeDiff/CodeDiff.vue:181",
+      "entries": [
+        "line height: 18px (line 181)"
+      ]
     }
   ],
-  "scanSeconds": 48
+  "scanSeconds": 77
 }
