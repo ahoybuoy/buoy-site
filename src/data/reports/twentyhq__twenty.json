@@ -3,12 +3,12 @@
   "owner": "twentyhq",
   "name": "twenty",
   "description": "The open alternative to Salesforce, designed for AI.",
-  "stars": 59485,
+  "stars": 59575,
   "homepage": "https://twenty.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "b3b8ffd9153a5fc5887025b55767524a0a92f999",
-  "generatedAt": "2026-10-22T12:25:11.970Z",
+  "commit": "2fb33f17eeb13cf5f261abe7ecbc6516dab46101",
+  "generatedAt": "2026-10-23T12:05:31.392Z",
   "cliVersion": "0.8.12",
   "score": 99,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 4161,
+    "componentCount": 4198,
     "tokenCount": 13,
-    "hardcodedValueCount": 20,
+    "hardcodedValueCount": 21,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 20,
+    "totalDriftCount": 21,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -68,19 +68,18 @@
       "next",
       "mui",
       "chakra",
-      "mantine",
       "styled-components",
       "emotion"
     ]
   },
   "suggestions": [
-    "Nearly there — just 20 hardcoded values left to tokenize. packages/create-twenty-app/src/constants/template/src/front-components/main-page.tsx has the most (4)"
+    "Nearly there — just 21 hardcoded values left to tokenize. packages/create-twenty-app/src/constants/template/src/front-components/main-page.tsx has the most (4)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 1,
-      "action": "Replace the hardcoded values in 10 of the 20 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 11 of the 21 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -235,13 +234,6 @@
       ]
     },
     {
-      "component": "LinkIconWithLinkOverlay",
-      "location": "packages/twenty-front/src/modules/navigation-menu-item/display/link/components/LinkIconWithLinkOverlay.tsx:51",
-      "entries": [
-        "size: 14px (line 84)"
-      ]
-    },
-    {
       "component": "packages/twenty-companion/src/renderer/components/OnboardingText.module.scss",
       "location": "packages/twenty-companion/src/renderer/components/OnboardingText.module.scss:6",
       "entries": [
@@ -290,7 +282,14 @@
         "spacing: 2px (line 10)",
         "line height: 1.4 (line 75)"
       ]
+    },
+    {
+      "component": "packages/twenty-ui/src/components/layout/LabeledSeparator/LabeledSeparator.module.scss",
+      "location": "packages/twenty-ui/src/components/layout/LabeledSeparator/LabeledSeparator.module.scss:39",
+      "entries": [
+        "line height: 1.4 (line 39)"
+      ]
     }
   ],
-  "scanSeconds": 206
+  "scanSeconds": 193
 }

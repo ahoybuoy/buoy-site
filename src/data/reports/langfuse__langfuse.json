@@ -3,12 +3,12 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source agent evals & observability: Trace, evaluate, and improve LLM applications with one open platform.",
-  "stars": 36182,
+  "stars": 36249,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "baf2f3c39d6a464620d4de3d8e04658a5855a025",
-  "generatedAt": "2026-10-22T12:35:11.902Z",
+  "commit": "6d63a0e5ab2af340c73f6a309589c89f1a8376f5",
+  "generatedAt": "2026-10-23T12:15:17.357Z",
   "cliVersion": "0.8.12",
   "score": 91,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2286,
+    "componentCount": 2305,
     "tokenCount": 327,
-    "hardcodedValueCount": 82,
+    "hardcodedValueCount": 77,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 83,
+    "totalDriftCount": 78,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -70,14 +70,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 82 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx has the most (2)",
+    "Nearly there — just 77 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx has the most (2)",
     "1 deprecated pattern — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 7,
-      "action": "Replace the hardcoded values in 77 of the 82 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 72 of the 77 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -93,7 +93,7 @@
     "samples": [
       {
         "file": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx",
-        "line": 1932,
+        "line": 1933,
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "right: 2px is a 2-3px optical adjustment"
@@ -129,14 +129,14 @@
     ]
   },
   "driftSummary": {
-    "total": 83,
+    "total": 78,
     "critical": 0,
     "warning": 3,
-    "info": 80
+    "info": 75
   },
   "driftByType": {
     "deprecated-pattern": 1,
-    "hardcoded-value": 82
+    "hardcoded-value": 77
   },
   "topColors": [
     {
@@ -236,17 +236,17 @@
     },
     {
       "component": "TimelineDense",
-      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:327",
+      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:328",
       "entries": [
-        "fontSize: 10px (line 1368)",
-        "fontSize: 9px (line 1442)"
+        "fontSize: 10px (line 1369)",
+        "fontSize: 9px (line 1443)"
       ]
     },
     {
       "component": "GutterContent",
-      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:1819",
+      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:1820",
       "entries": [
-        "fontSize: 10px (line 1945)"
+        "fontSize: 10px (line 1946)"
       ]
     },
     {
@@ -298,13 +298,13 @@
     },
     {
       "component": "web/src/components/ChatMessages/ChatMessageComponent.tsx",
-      "location": "web/src/components/ChatMessages/ChatMessageComponent.tsx:304",
+      "location": "web/src/components/ChatMessages/ChatMessageComponent.tsx:305",
       "entries": [
-        "text-[9px] (line 304)",
-        "text-[10px] (line 312)",
-        "text-[9px] (line 334)"
+        "text-[9px] (line 305)",
+        "text-[10px] (line 313)",
+        "text-[9px] (line 335)"
       ]
     }
   ],
-  "scanSeconds": 88
+  "scanSeconds": 86
 }

@@ -3,12 +3,12 @@
   "owner": "supabase",
   "name": "supabase",
   "description": "The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications.",
-  "stars": 113276,
+  "stars": 113673,
   "homepage": "https://supabase.com",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "cf5a2369101ff17744306e03fe12c192040c73cc",
-  "generatedAt": "2026-10-22T12:18:46.357Z",
+  "commit": "60b51d74d53c788d120b6dd656f137828a8cc9e3",
+  "generatedAt": "2026-10-23T11:59:23.672Z",
   "cliVersion": "0.8.12",
   "score": 86,
   "tier": "Great",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 4761,
+    "componentCount": 4769,
     "tokenCount": 1120,
     "hardcodedValueCount": 293,
     "unusedTokenCount": 0,
@@ -141,14 +141,14 @@
     ]
   },
   "driftSummary": {
-    "total": 302,
+    "total": 299,
     "critical": 0,
     "warning": 66,
-    "info": 236
+    "info": 233
   },
   "driftByType": {
     "deprecated-pattern": 2,
-    "hardcoded-value": 293,
+    "hardcoded-value": 290,
     "repeated-pattern": 7
   },
   "topColors": [
@@ -211,11 +211,11 @@
       "count": 5
     },
     {
-      "value": "14px",
+      "value": "18px",
       "count": 4
     },
     {
-      "value": "18px",
+      "value": "2.5px",
       "count": 4
     }
   ],
@@ -343,5 +343,5 @@
       ]
     }
   ],
-  "scanSeconds": 182
+  "scanSeconds": 177
 }
