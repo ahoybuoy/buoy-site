@@ -3,18 +3,18 @@
   "owner": "novuhq",
   "name": "novu",
   "description": "The open-source communication infrastructure for agents and products",
-  "stars": 40192,
+  "stars": 40196,
   "homepage": "https://go.novu.co/github",
   "language": "TypeScript",
   "defaultBranch": "next",
-  "commit": "c0ab93c55c3a11b68f361d74c3bb5fa11dd4cc80",
-  "generatedAt": "2026-10-23T12:01:38.033Z",
+  "commit": "85a346ba38c8f1e8f50be0cbfe24b6f0b8795860",
+  "generatedAt": "2026-10-24T11:31:02.109Z",
   "cliVersion": "0.8.12",
-  "score": 64,
+  "score": 65,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 24,
+      "score": 25,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2962,
+    "componentCount": 2975,
     "tokenCount": 512,
-    "hardcodedValueCount": 555,
+    "hardcodedValueCount": 554,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 557,
+    "totalDriftCount": 556,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -72,14 +72,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 528 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
+    "Nearly there — just 527 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
     "27 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 36,
-      "action": "Replace the hardcoded values in 521 of the 528 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "points": 35,
+      "action": "Replace the hardcoded values in 520 of the 527 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     }
   ],
   "noted": {
@@ -134,13 +134,13 @@
     ]
   },
   "driftSummary": {
-    "total": 557,
+    "total": 556,
     "critical": 0,
     "warning": 100,
-    "info": 457
+    "info": 456
   },
   "driftByType": {
-    "hardcoded-value": 555,
+    "hardcoded-value": 554,
     "repeated-pattern": 2
   },
   "topColors": [
@@ -335,5 +335,5 @@
       ]
     }
   ],
-  "scanSeconds": 84
+  "scanSeconds": 86
 }

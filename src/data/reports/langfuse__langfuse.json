@@ -3,12 +3,12 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source agent evals & observability: Trace, evaluate, and improve LLM applications with one open platform.",
-  "stars": 36249,
+  "stars": 36289,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "6d63a0e5ab2af340c73f6a309589c89f1a8376f5",
-  "generatedAt": "2026-10-23T12:15:17.357Z",
+  "commit": "07e45044a5abe1cd265fafd0d7e8cfd78b04d806",
+  "generatedAt": "2026-10-24T11:44:35.364Z",
   "cliVersion": "0.8.12",
   "score": 91,
   "tier": "Great",
@@ -31,8 +31,8 @@
     }
   },
   "metrics": {
-    "componentCount": 2305,
-    "tokenCount": 327,
+    "componentCount": 2327,
+    "tokenCount": 333,
     "hardcodedValueCount": 77,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
@@ -215,9 +215,9 @@
   "samples": [
     {
       "component": "Codeblock",
-      "location": "web/src/components/design-system/Codeblock/Codeblock.tsx:110",
+      "location": "web/src/components/design-system/Codeblock/Codeblock.tsx:112",
       "entries": [
-        "fontSize: 0.75rem (line 304)"
+        "fontSize: 0.75rem (line 306)"
       ]
     },
     {
@@ -306,5 +306,5 @@
       ]
     }
   ],
-  "scanSeconds": 86
+  "scanSeconds": 83
 }
