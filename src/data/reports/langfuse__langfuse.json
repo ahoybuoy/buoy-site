@@ -3,12 +3,12 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source agent evals & observability: Trace, evaluate, and improve LLM applications with one open platform.",
-  "stars": 36432,
+  "stars": 36520,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "f6c3660ced73d380f1936d2adb0cca97f16e4d2a",
-  "generatedAt": "2026-10-25T12:09:40.055Z",
+  "commit": "41510b2cb0e483787ba1f786ccc32768e75bd7b5",
+  "generatedAt": "2026-10-26T13:46:22.362Z",
   "cliVersion": "0.8.12",
   "score": 91,
   "tier": "Great",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 2327,
+    "componentCount": 2333,
     "tokenCount": 333,
     "hardcodedValueCount": 77,
     "unusedTokenCount": 0,
@@ -188,6 +188,10 @@
       "count": 6
     },
     {
+      "file": "web/src/features/topics/map/TopicMapExplorer.tsx",
+      "count": 6
+    },
+    {
       "file": "web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx",
       "count": 5
     },
@@ -197,10 +201,6 @@
     },
     {
       "file": "web/src/features/scores-chart-view/components/ScoreOutlierBarStrip/ScoreOutlierBarStrip.tsx",
-      "count": 5
-    },
-    {
-      "file": "web/src/features/topics/map/TopicMapExplorer.tsx",
       "count": 5
     },
     {
@@ -306,5 +306,5 @@
       ]
     }
   ],
-  "scanSeconds": 66
+  "scanSeconds": 84
 }

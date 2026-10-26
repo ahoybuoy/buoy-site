@@ -3,12 +3,12 @@
   "owner": "novuhq",
   "name": "novu",
   "description": "The open-source communication infrastructure for agents and products",
-  "stars": 40198,
+  "stars": 40204,
   "homepage": "https://go.novu.co/github",
   "language": "TypeScript",
   "defaultBranch": "next",
-  "commit": "cf87a541944ec3836e5510caa48e56afe98892b7",
-  "generatedAt": "2026-10-25T11:59:09.200Z",
+  "commit": "943ca963f463cf7acc3b5c9d35b2fd778ee06926",
+  "generatedAt": "2026-10-26T13:32:20.894Z",
   "cliVersion": "0.8.12",
   "score": 65,
   "tier": "Good",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 2975,
+    "componentCount": 2976,
     "tokenCount": 512,
     "hardcodedValueCount": 554,
     "unusedTokenCount": 0,
@@ -199,16 +199,16 @@
       "count": 13
     },
     {
-      "value": "10px",
-      "count": 12
-    },
-    {
       "value": "18px",
       "count": 11
     },
     {
       "value": "1.5rem",
       "count": 11
+    },
+    {
+      "value": "12px",
+      "count": 10
     }
   ],
   "worstFiles": [
@@ -226,7 +226,7 @@
     },
     {
       "file": "apps/human-dashboard/src/styles/home.css",
-      "count": 44
+      "count": 51
     },
     {
       "file": "apps/human-dashboard/src/components/sapien/inbox-dashboard.tsx",
@@ -335,5 +335,5 @@
       ]
     }
   ],
-  "scanSeconds": 66
+  "scanSeconds": 82
 }

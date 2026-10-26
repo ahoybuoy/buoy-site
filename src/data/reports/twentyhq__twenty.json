@@ -3,12 +3,12 @@
   "owner": "twentyhq",
   "name": "twenty",
   "description": "The open alternative to Salesforce, designed for AI.",
-  "stars": 59690,
+  "stars": 59784,
   "homepage": "https://twenty.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "835df659482d5fa8d501217b6b81b29c2821d64a",
-  "generatedAt": "2026-10-25T12:02:06.558Z",
+  "commit": "ed4330a33d441b4d55e3f3bfdcaf1eae933a8bff",
+  "generatedAt": "2026-10-26T13:36:14.626Z",
   "cliVersion": "0.8.12",
   "score": 99,
   "tier": "Great",
@@ -31,8 +31,8 @@
     }
   },
   "metrics": {
-    "componentCount": 4225,
-    "tokenCount": 13,
+    "componentCount": 4226,
+    "tokenCount": 76,
     "hardcodedValueCount": 17,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 0,
+    "notedCount": 1,
     "topHardcodedColor": {
       "value": "#f0f9ff",
       "count": 2
@@ -83,36 +83,41 @@
     }
   ],
   "noted": {
-    "count": 0,
-    "byKind": {},
-    "samples": []
+    "count": 1,
+    "byKind": {
+      "optical-nudge": 1
+    },
+    "samples": [
+      {
+        "file": "packages/twenty-docs/custom.css",
+        "line": 718,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding: 2px is a 2-3px optical adjustment"
+      }
+    ]
   },
   "driftSummary": {
     "total": 12,
     "critical": 0,
-    "warning": 1,
-    "info": 11
+    "warning": 2,
+    "info": 10
   },
   "driftByType": {
     "hardcoded-value": 12
   },
-  "topColors": [
-    {
-      "value": "#141414",
-      "count": 2
-    },
-    {
-      "value": "#ffffff",
-      "count": 2
-    }
-  ],
+  "topColors": [],
   "topSpacing": [
     {
-      "value": "12px",
-      "count": 1
+      "value": "3rem",
+      "count": 2
     },
     {
       "value": "2px",
+      "count": 2
+    },
+    {
+      "value": "12px",
       "count": 1
     },
     {
@@ -122,12 +127,12 @@
   ],
   "worstFiles": [
     {
-      "file": "packages/twenty-companion/src/renderer/style.css",
-      "count": 9
+      "file": "packages/twenty-docs/custom.css",
+      "count": 26
     },
     {
-      "file": "packages/twenty-docs/custom.css",
-      "count": 6
+      "file": "packages/twenty-companion/src/renderer/style.css",
+      "count": 9
     },
     {
       "file": "packages/twenty-ui/src/primitives/data-display/Avatar/Avatar.module.scss",
@@ -181,11 +186,11 @@
     },
     {
       "component": "packages/twenty-docs/custom.css",
-      "location": "packages/twenty-docs/custom.css:3",
+      "location": "packages/twenty-docs/custom.css:13",
       "entries": [
-        "colour: #141414 (line 3)",
-        "colour: #ffffff (line 4)",
-        "radius: 8px (line 6)"
+        "font weight: 300 (line 13)",
+        "font weight: 300 (line 38)",
+        "font weight: 300 (line 124)"
       ]
     },
     {
@@ -251,5 +256,5 @@
       ]
     }
   ],
-  "scanSeconds": 146
+  "scanSeconds": 195
 }
