@@ -3,12 +3,12 @@
   "owner": "n8n-io",
   "name": "n8n",
   "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
-  "stars": 208636,
+  "stars": 208742,
   "homepage": "https://n8n.io",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "4636a33cbf43f9979e233cf0b8ebe1250fc4f794",
-  "generatedAt": "2026-10-26T13:40:21.764Z",
+  "commit": "70dd6b183832203933f3811cdf3d1d2d3de567b5",
+  "generatedAt": "2026-10-27T12:47:16.391Z",
   "cliVersion": "0.8.12",
   "score": 61,
   "tier": "Good",
@@ -56,7 +56,7 @@
     "notedCount": 33,
     "topHardcodedColor": {
       "value": "#fff",
-      "count": 3
+      "count": 2
     },
     "worstFile": {
       "path": "packages/frontend/editor-ui/src/features/settings/communityNodes/components/ContactAdministratorToInstall.vue",
@@ -109,7 +109,7 @@
       },
       {
         "file": "packages/frontend/editor-ui/src/features/ai/evaluation.ee/views/EvaluationsView.vue",
-        "line": 404,
+        "line": 366,
         "value": "10px",
         "kind": "explained",
         "reason": "Override N8nPopover's default 8px radius — Figma calls for 10px on this specific popover. Targets the portaled content …"
@@ -150,7 +150,7 @@
   "topColors": [
     {
       "value": "#fff",
-      "count": 7
+      "count": 6
     },
     {
       "value": "#ff6d5a",
@@ -241,12 +241,12 @@
       "count": 17
     },
     {
-      "file": "packages/frontend/editor-ui/src/features/ai/evaluation.ee/views/EvaluationsView.vue",
-      "count": 17
-    },
-    {
       "file": "packages/frontend/@n8n/design-system/src/css/date-picker/picker-panel.scss",
       "count": 16
+    },
+    {
+      "file": "packages/frontend/@n8n/design-system/src/css/date-picker/picker.scss",
+      "count": 13
     }
   ],
   "samples": [
@@ -346,5 +346,5 @@
       ]
     }
   ],
-  "scanSeconds": 76
+  "scanSeconds": 75
 }

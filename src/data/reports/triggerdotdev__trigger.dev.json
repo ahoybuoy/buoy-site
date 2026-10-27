@@ -3,12 +3,12 @@
   "owner": "triggerdotdev",
   "name": "trigger.dev",
   "description": "Trigger.dev – build and deploy durable AI agents and workflows",
-  "stars": 16619,
+  "stars": 16629,
   "homepage": "https://trigger.dev/changelog",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "bff268d18e948b5d1005f63a629a4d655952484f",
-  "generatedAt": "2026-10-26T13:47:05.547Z",
+  "commit": "4d9e4cf7a477d5b0a580613dbaf20e6a5ba5ef9e",
+  "generatedAt": "2026-10-27T12:53:58.927Z",
   "cliVersion": "0.8.12",
   "score": 91,
   "tier": "Great",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 1919,
+    "componentCount": 1920,
     "tokenCount": 273,
     "hardcodedValueCount": 89,
     "unusedTokenCount": 0,
@@ -97,14 +97,14 @@
       },
       {
         "file": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.concurrency/route.tsx",
-        "line": 1090,
+        "line": 1073,
         "value": "pb-[3px]",
         "kind": "optical-nudge",
         "reason": "pb-[3px] is a 2-3px optical adjustment"
       },
       {
         "file": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.concurrency/route.tsx",
-        "line": 2405,
+        "line": 2381,
         "value": "pb-[3px]",
         "kind": "optical-nudge",
         "reason": "pb-[3px] is a 2-3px optical adjustment"
@@ -308,5 +308,5 @@
       ]
     }
   ],
-  "scanSeconds": 42
+  "scanSeconds": 43
 }

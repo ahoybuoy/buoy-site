@@ -2,19 +2,19 @@
   "repo": "dubinc/dub",
   "owner": "dubinc",
   "name": "dub",
-  "description": "The modern link attribution platform. Loved by world-class marketing teams like Framer, Perplexity, Superhuman, Twilio, Buffer and more.",
-  "stars": 24947,
-  "homepage": "https://dub.co",
+  "description": "The modern link attribution platform. Loved by world-class engineering teams at Twilio, Zillow, Jobber, Vercel, Raycast, and more.",
+  "stars": 24951,
+  "homepage": "https://dub.link",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "b57281e577a92ee3e3fe8c683e7349ae329d7d76",
-  "generatedAt": "2026-10-26T13:30:58.095Z",
+  "commit": "6b463b4bdd9ed2fd9aa416f67b5b77d317b1471e",
+  "generatedAt": "2026-10-27T12:37:52.034Z",
   "cliVersion": "0.8.12",
-  "score": 89,
+  "score": 90,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 49,
+      "score": 50,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1651,
+    "componentCount": 827,
     "tokenCount": 0,
-    "hardcodedValueCount": 86,
+    "hardcodedValueCount": 44,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,9 +41,9 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 104,
+    "totalDriftCount": 48,
     "unusedComponentCount": 0,
-    "repeatedPatternCount": 18,
+    "repeatedPatternCount": 4,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 0,
@@ -51,15 +51,15 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 4,
+    "highDensityFileCount": 3,
     "vendoredDriftCount": 4,
-    "notedCount": 4,
+    "notedCount": 2,
     "topHardcodedColor": {
-      "value": "#737373",
+      "value": "#F0F7FF",
       "count": 1
     },
     "worstFile": {
-      "path": "apps/web/app/(ee)/partners.dub.co/(dashboard)/referrals/page.tsx",
+      "path": "apps/web/app/[domain]/[key]/inspect/page.tsx",
       "issueCount": 3
     },
     "detectedFrameworkNames": [
@@ -70,33 +70,25 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 82 hardcoded values left to tokenize. apps/web/app/(ee)/partners.dub.co/(dashboard)/referrals/page.tsx has the most (3)",
-    "4 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
-    "18 repeated patterns — extract to shared components"
+    "Nearly there — just 40 hardcoded values left to tokenize. apps/web/app/[domain]/[key]/inspect/page.tsx has the most (3)",
+    "4 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 11,
-      "action": "Replace the hardcoded values in 78 of the 82 findings with tokens or scale steps, and remove or reuse 18 unused components and repeated patterns"
+      "points": 10,
+      "action": "Replace the hardcoded values in 38 of the 40 findings with tokens or scale steps, and remove or reuse 4 unused components and repeated patterns"
     }
   ],
   "noted": {
-    "count": 4,
+    "count": 2,
     "byKind": {
-      "optical-nudge": 4
+      "optical-nudge": 2
     },
     "samples": [
       {
-        "file": "apps/web/app/(ee)/partners.dub.co/(dashboard)/programs/[programSlug]/(enrolled)/links/partner-link-card.tsx",
-        "line": 349,
-        "value": "py-[3px]",
-        "kind": "optical-nudge",
-        "reason": "py-[3px] is a 2-3px optical adjustment"
-      },
-      {
         "file": "apps/web/app/app.dub.co/(onboarding)/onboarding/(steps)/plan/page.tsx",
-        "line": 29,
+        "line": 25,
         "value": "mb-[3px]",
         "kind": "optical-nudge",
         "reason": "mb-[3px] is a 2-3px optical adjustment"
@@ -107,31 +99,20 @@
         "value": "py-[3px]",
         "kind": "optical-nudge",
         "reason": "py-[3px] is a 2-3px optical adjustment"
-      },
-      {
-        "file": "packages/ui/src/nav/content/graphics/partners-graphic.tsx",
-        "line": 53,
-        "value": "p-[3px]",
-        "kind": "optical-nudge",
-        "reason": "p-[3px] is a 2-3px optical adjustment"
       }
     ]
   },
   "driftSummary": {
-    "total": 104,
+    "total": 48,
     "critical": 0,
-    "warning": 8,
-    "info": 96
+    "warning": 5,
+    "info": 43
   },
   "driftByType": {
-    "hardcoded-value": 86,
-    "repeated-pattern": 18
+    "hardcoded-value": 44,
+    "repeated-pattern": 4
   },
   "topColors": [
-    {
-      "value": "#DA2778",
-      "count": 2
-    },
     {
       "value": "#536471",
       "count": 2
@@ -139,14 +120,6 @@
     {
       "value": "#262626",
       "count": 2
-    },
-    {
-      "value": "#737373",
-      "count": 1
-    },
-    {
-      "value": "#ededed",
-      "count": 1
     },
     {
       "value": "#F0F7FF",
@@ -159,39 +132,31 @@
     {
       "value": "#FFE2E2",
       "count": 1
+    },
+    {
+      "value": "#0D542B",
+      "count": 1
+    },
+    {
+      "value": "#82181A",
+      "count": 1
+    },
+    {
+      "value": "#0f1419",
+      "count": 1
     }
   ],
   "topSpacing": [
     {
-      "value": "18px",
-      "count": 2
-    },
-    {
-      "value": "3px",
-      "count": 1
-    },
-    {
-      "value": "5px",
-      "count": 1
-    },
-    {
-      "value": "88px",
-      "count": 1
-    },
-    {
-      "value": "84px",
-      "count": 1
-    },
-    {
-      "value": "-0.1em",
-      "count": 1
-    },
-    {
-      "value": "17px",
-      "count": 1
-    },
-    {
       "value": "4px",
+      "count": 1
+    },
+    {
+      "value": "1.5rem",
+      "count": 1
+    },
+    {
+      "value": "-4px",
       "count": 1
     }
   ],
@@ -205,10 +170,6 @@
       "count": 7
     },
     {
-      "file": "apps/web/app/app.dub.co/(dashboard)/[slug]/(ee)/program/partners/applications/application-settings-sheet.tsx",
-      "count": 5
-    },
-    {
       "file": "apps/web/app/app.dub.co/(dashboard)/[slug]/(ee)/settings/integrations/[integrationSlug]/page-client.tsx",
       "count": 5
     },
@@ -217,110 +178,111 @@
       "count": 5
     },
     {
-      "file": "apps/web/app/(ee)/partners.dub.co/(dashboard)/overview/earnings-chart.tsx",
+      "file": "apps/web/app/app.dub.co/(dashboard)/[slug]/(ee)/settings/tracking/stack-picker.tsx",
       "count": 4
     },
     {
-      "file": "apps/web/app/(ee)/partners.dub.co/(dashboard)/programs/[programSlug]/(enrolled)/bounties/[bountyId]/bounty-submissions-table.tsx",
-      "count": 4
+      "file": "apps/web/app/app.dub.co/(dashboard)/[slug]/(ee)/settings/billing/upgrade/page.tsx",
+      "count": 3
     },
     {
-      "file": "apps/web/app/(ee)/partners.dub.co/(dashboard)/programs/[programSlug]/(enrolled)/links/partner-link-card.tsx",
-      "count": 4
+      "file": "apps/web/app/app.dub.co/(dashboard)/[slug]/(ee)/settings/integrations/featured-integrations.tsx",
+      "count": 3
+    },
+    {
+      "file": "packages/ui/src/link-preview.tsx",
+      "count": 3
     }
   ],
   "samples": [
     {
-      "component": "EmbedInlineLoading",
-      "location": "apps/web/app/(ee)/app.dub.co/embed/referrals/page.tsx:60",
-      "entries": [
-        "color: #737373 (line 68)"
-      ]
-    },
-    {
-      "component": "apps/web/app/(ee)/admin.dub.co/(dashboard)/components/ban-link.tsx",
-      "location": "apps/web/app/(ee)/admin.dub.co/(dashboard)/components/ban-link.tsx:265",
-      "entries": [
-        "text-[11px] (line 265)"
-      ]
-    },
-    {
-      "component": "apps/web/app/(ee)/admin.dub.co/(dashboard)/components/user-info.tsx",
-      "location": "apps/web/app/(ee)/admin.dub.co/(dashboard)/components/user-info.tsx:316",
-      "entries": [
-        "text-[11px] (line 316)",
-        "text-[11px] (line 322)"
-      ]
-    },
-    {
-      "component": "apps/web/app/(ee)/app.dub.co/embed/referrals/bounties/performance-section.tsx",
-      "location": "apps/web/app/(ee)/app.dub.co/embed/referrals/bounties/performance-section.tsx:515",
-      "entries": [
-        "tracking-[-0.36px] (line 515)",
-        "tracking-[-0.36px] (line 688)"
-      ]
-    },
-    {
-      "component": "apps/web/app/(ee)/app.dub.co/embed/referrals/bounties/submissions-table.tsx",
-      "location": "apps/web/app/(ee)/app.dub.co/embed/referrals/bounties/submissions-table.tsx:58",
-      "entries": [
-        "tracking-[-0.28px] (line 58)"
-      ]
-    },
-    {
       "component": "apps/web/app/(ee)/app.dub.co/invoices/[invoiceId]/domain-renewal-invoice.tsx",
-      "location": "apps/web/app/(ee)/app.dub.co/invoices/[invoiceId]/domain-renewal-invoice.tsx:188",
+      "location": "apps/web/app/(ee)/app.dub.co/invoices/[invoiceId]/domain-renewal-invoice.tsx:185",
       "entries": [
-        "text-[16px] (line 188)",
-        "text-[16px] (line 201)"
+        "text-[16px] (line 185)",
+        "text-[16px] (line 198)"
       ]
     },
     {
-      "component": "apps/web/app/(ee)/app.dub.co/invoices/[invoiceId]/partner-payout-invoice.tsx",
-      "location": "apps/web/app/(ee)/app.dub.co/invoices/[invoiceId]/partner-payout-invoice.tsx:309",
+      "component": "apps/web/app/[domain]/[key]/inspect/page.tsx",
+      "location": "apps/web/app/[domain]/[key]/inspect/page.tsx:60",
       "entries": [
-        "text-[16px] (line 309)",
-        "text-[16px] (line 322)"
+        "sm:leading-[1.15] (line 60)"
       ]
     },
     {
-      "component": "apps/web/app/(ee)/partners.dub.co/(apply)/[programSlug]/(default)/apply/success/page.tsx",
-      "location": "apps/web/app/(ee)/partners.dub.co/(apply)/[programSlug]/(default)/apply/success/page.tsx:194",
+      "component": "apps/web/app/[domain]/banned/page.tsx",
+      "location": "apps/web/app/[domain]/banned/page.tsx:37",
       "entries": [
-        "shadow-[0_8px_28px_0_#00000017] (line 194)"
+        "sm:leading-[1.15] (line 37)"
       ]
     },
     {
-      "component": "apps/web/app/(ee)/partners.dub.co/(dashboard)/overview/earnings-chart.tsx",
-      "location": "apps/web/app/(ee)/partners.dub.co/(dashboard)/overview/earnings-chart.tsx:143",
+      "component": "apps/web/app/[domain]/disabled/page.tsx",
+      "location": "apps/web/app/[domain]/disabled/page.tsx:38",
       "entries": [
-        "text-[#DA2778] (line 143)",
-        "text-[#DA2778] (line 254)"
+        "sm:leading-[1.15] (line 38)"
       ]
     },
     {
-      "component": "apps/web/app/(ee)/partners.dub.co/(dashboard)/overview/earnings-chart.tsx",
-      "location": "apps/web/app/(ee)/partners.dub.co/(dashboard)/overview/earnings-chart.tsx:169",
+      "component": "apps/web/app/[domain]/expired/page.tsx",
+      "location": "apps/web/app/[domain]/expired/page.tsx:53",
       "entries": [
-        "text-[11px] (line 169)",
-        "leading-[1.1] (line 169)"
+        "sm:leading-[1.15] (line 53)"
       ]
     },
     {
-      "component": "apps/web/app/(ee)/partners.dub.co/(dashboard)/overview/top-programs-card.tsx",
-      "location": "apps/web/app/(ee)/partners.dub.co/(dashboard)/overview/top-programs-card.tsx:62",
+      "component": "apps/web/app/[domain]/notfound/page.tsx",
+      "location": "apps/web/app/[domain]/notfound/page.tsx:54",
       "entries": [
-        "from-[#ededed] (line 62)"
+        "sm:leading-[1.15] (line 54)"
       ]
     },
     {
-      "component": "apps/web/app/(ee)/partners.dub.co/(dashboard)/programs/[programSlug]/(enrolled)/bounties/[bountyId]/bounty-performance-section.tsx",
-      "location": "apps/web/app/(ee)/partners.dub.co/(dashboard)/programs/[programSlug]/(enrolled)/bounties/[bountyId]/bounty-performance-section.tsx:119",
+      "component": "apps/web/app/[domain]/page.tsx",
+      "location": "apps/web/app/[domain]/page.tsx:48",
       "entries": [
-        "tracking-[-0.36px] (line 119)",
-        "tracking-[-0.36px] (line 278)"
+        "sm:leading-[1.15] (line 48)"
+      ]
+    },
+    {
+      "component": "apps/web/app/app.dub.co/(dashboard)/[slug]/(ee)/settings/billing/payment-methods.tsx",
+      "location": "apps/web/app/app.dub.co/(dashboard)/[slug]/(ee)/settings/billing/payment-methods.tsx:136",
+      "entries": [
+        "text-[0.625rem] (line 136)"
+      ]
+    },
+    {
+      "component": "apps/web/app/app.dub.co/(dashboard)/[slug]/(ee)/settings/billing/upgrade/adjust-usage-row.tsx",
+      "location": "apps/web/app/app.dub.co/(dashboard)/[slug]/(ee)/settings/billing/upgrade/adjust-usage-row.tsx:54",
+      "entries": [
+        "rounded-b-[12px] (line 54)"
+      ]
+    },
+    {
+      "component": "apps/web/app/app.dub.co/(dashboard)/[slug]/(ee)/settings/billing/upgrade/page.tsx",
+      "location": "apps/web/app/app.dub.co/(dashboard)/[slug]/(ee)/settings/billing/upgrade/page.tsx:202",
+      "entries": [
+        "rounded-b-[12px] (line 202)",
+        "rounded-b-[11px] (line 205)",
+        "rounded-b-[12px] (line 366)"
+      ]
+    },
+    {
+      "component": "apps/web/app/app.dub.co/(dashboard)/[slug]/(ee)/settings/integrations/[integrationSlug]/page-client.tsx",
+      "location": "apps/web/app/app.dub.co/(dashboard)/[slug]/(ee)/settings/integrations/[integrationSlug]/page-client.tsx:142",
+      "entries": [
+        "bg-[#F0F7FF] (line 142)"
+      ]
+    },
+    {
+      "component": "apps/web/app/app.dub.co/(dashboard)/[slug]/(ee)/settings/integrations/[integrationSlug]/page-client.tsx",
+      "location": "apps/web/app/app.dub.co/(dashboard)/[slug]/(ee)/settings/integrations/[integrationSlug]/page-client.tsx:449",
+      "entries": [
+        "rounded-[6px] (line 449)",
+        "rounded-[5px] (line 462)"
       ]
     }
   ],
-  "scanSeconds": 47
+  "scanSeconds": 24
 }

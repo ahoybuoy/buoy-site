@@ -3,18 +3,18 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source agent evals & observability: Trace, evaluate, and improve LLM applications with one open platform.",
-  "stars": 36520,
+  "stars": 36587,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "41510b2cb0e483787ba1f786ccc32768e75bd7b5",
-  "generatedAt": "2026-10-26T13:46:22.362Z",
+  "commit": "2243a2dd0562377a92418b35f47055e7daf19a1d",
+  "generatedAt": "2026-10-27T12:53:15.150Z",
   "cliVersion": "0.8.12",
-  "score": 91,
+  "score": 92,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 53,
+      "score": 54,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2333,
+    "componentCount": 2344,
     "tokenCount": 333,
-    "hardcodedValueCount": 77,
+    "hardcodedValueCount": 76,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 78,
+    "totalDriftCount": 77,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -70,14 +70,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 77 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx has the most (2)",
+    "Nearly there — just 76 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx has the most (2)",
     "1 deprecated pattern — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 7,
-      "action": "Replace the hardcoded values in 72 of the 77 findings with tokens or scale steps"
+      "points": 6,
+      "action": "Replace the hardcoded values in 71 of the 76 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -129,14 +129,14 @@
     ]
   },
   "driftSummary": {
-    "total": 78,
+    "total": 77,
     "critical": 0,
     "warning": 3,
-    "info": 75
+    "info": 74
   },
   "driftByType": {
     "deprecated-pattern": 1,
-    "hardcoded-value": 77
+    "hardcoded-value": 76
   },
   "topColors": [
     {
@@ -306,5 +306,5 @@
       ]
     }
   ],
-  "scanSeconds": 84
+  "scanSeconds": 83
 }
