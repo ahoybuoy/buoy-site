@@ -3,12 +3,12 @@
   "owner": "triggerdotdev",
   "name": "trigger.dev",
   "description": "Trigger.dev – build and deploy durable AI agents and workflows",
-  "stars": 16629,
+  "stars": 16641,
   "homepage": "https://trigger.dev/changelog",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "4d9e4cf7a477d5b0a580613dbaf20e6a5ba5ef9e",
-  "generatedAt": "2026-10-27T12:53:58.927Z",
+  "commit": "1a9f2dc400f31d15b579e322f6cc68e634fff1b6",
+  "generatedAt": "2026-10-28T13:40:55.461Z",
   "cliVersion": "0.8.12",
   "score": 91,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1920,
+    "componentCount": 1957,
     "tokenCount": 273,
-    "hardcodedValueCount": 89,
+    "hardcodedValueCount": 90,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 89,
+    "totalDriftCount": 90,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -72,13 +72,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 89 hardcoded values left to tokenize. apps/webapp/app/components/alerts/ChartLegend.tsx has the most (2)"
+    "Nearly there — just 90 hardcoded values left to tokenize. apps/webapp/app/components/alerts/ChartLegend.tsx has the most (2)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 9,
-      "action": "Replace the hardcoded values in 85 of the 89 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 86 of the 90 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -112,13 +112,13 @@
     ]
   },
   "driftSummary": {
-    "total": 89,
+    "total": 90,
     "critical": 0,
     "warning": 10,
-    "info": 79
+    "info": 80
   },
   "driftByType": {
-    "hardcoded-value": 89
+    "hardcoded-value": 90
   },
   "topColors": [
     {
@@ -308,5 +308,5 @@
       ]
     }
   ],
-  "scanSeconds": 43
+  "scanSeconds": 42
 }
