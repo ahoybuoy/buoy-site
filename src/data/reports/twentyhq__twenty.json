@@ -3,12 +3,12 @@
   "owner": "twentyhq",
   "name": "twenty",
   "description": "The open alternative to Salesforce, designed for AI.",
-  "stars": 59990,
+  "stars": 60060,
   "homepage": "https://twenty.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "482dd2aa26d3ad18ead0aa0271aaff389ad4522f",
-  "generatedAt": "2026-10-28T13:30:23.227Z",
+  "commit": "e07a70d27e4a4af3e7b6246dd9d74622310ec2ab",
+  "generatedAt": "2026-10-29T13:40:32.558Z",
   "cliVersion": "0.8.12",
   "score": 99,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 4278,
+    "componentCount": 4290,
     "tokenCount": 76,
-    "hardcodedValueCount": 17,
+    "hardcodedValueCount": 19,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 17,
+    "totalDriftCount": 19,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -73,13 +73,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 17 hardcoded values left to tokenize"
+    "Nearly there — just 19 hardcoded values left to tokenize"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 1,
-      "action": "Replace the hardcoded values in 7 of the 17 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 9 of the 19 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -98,15 +98,48 @@
     ]
   },
   "driftSummary": {
-    "total": 12,
+    "total": 14,
     "critical": 0,
-    "warning": 2,
+    "warning": 4,
     "info": 10
   },
   "driftByType": {
-    "hardcoded-value": 12
+    "hardcoded-value": 14
   },
-  "topColors": [],
+  "topColors": [
+    {
+      "value": "#ffffff",
+      "count": 9
+    },
+    {
+      "value": "#000000",
+      "count": 7
+    },
+    {
+      "value": "#dfdfdf",
+      "count": 3
+    },
+    {
+      "value": "#015ba7",
+      "count": 3
+    },
+    {
+      "value": "#333333",
+      "count": 3
+    },
+    {
+      "value": "#1797c0",
+      "count": 2
+    },
+    {
+      "value": "#1468b6",
+      "count": 2
+    },
+    {
+      "value": "#4a4a56",
+      "count": 2
+    }
+  ],
   "topSpacing": [
     {
       "value": "3rem",
@@ -114,6 +147,14 @@
     },
     {
       "value": "2px",
+      "count": 2
+    },
+    {
+      "value": "4px",
+      "count": 2
+    },
+    {
+      "value": "8px",
       "count": 2
     },
     {
@@ -127,6 +168,10 @@
   ],
   "worstFiles": [
     {
+      "file": "packages/twenty-front/src/modules/salesfarce/styles/salesfarce-retro.css",
+      "count": 89
+    },
+    {
       "file": "packages/twenty-docs/custom.css",
       "count": 26
     },
@@ -139,6 +184,10 @@
       "count": 6
     },
     {
+      "file": "packages/twenty-front/src/modules/salesfarce/styles/salesfarce-badge.css",
+      "count": 5
+    },
+    {
       "file": "packages/twenty-companion/src/renderer/components/OnboardingText.module.scss",
       "count": 2
     },
@@ -148,14 +197,6 @@
     },
     {
       "file": "packages/twenty-ui/src/components/feedback/Callout/Callout.module.scss",
-      "count": 2
-    },
-    {
-      "file": "packages/twenty-ui/src/components/input/SegmentedControl/SegmentedControl.module.scss",
-      "count": 2
-    },
-    {
-      "file": "packages/twenty-ui/src/testing/ComponentStorybookLayout.module.scss",
       "count": 2
     }
   ],
@@ -202,6 +243,24 @@
       ]
     },
     {
+      "component": "packages/twenty-front/src/modules/salesfarce/styles/salesfarce-badge.css",
+      "location": "packages/twenty-front/src/modules/salesfarce/styles/salesfarce-badge.css:4",
+      "entries": [
+        "radius: 3px (line 4)",
+        "shadow: inset 0 0 0 1px #00000033 (line 5)",
+        "colour: #ffffff (line 7)"
+      ]
+    },
+    {
+      "component": "packages/twenty-front/src/modules/salesfarce/styles/salesfarce-retro.css",
+      "location": "packages/twenty-front/src/modules/salesfarce/styles/salesfarce-retro.css:78",
+      "entries": [
+        "colour: #ffffff (line 78)",
+        "colour: #ffffff (line 86)",
+        "colour: #dfdfdf (line 92)"
+      ]
+    },
+    {
       "component": "packages/twenty-ui/src/components/feedback/Callout/Callout.module.scss",
       "location": "packages/twenty-ui/src/components/feedback/Callout/Callout.module.scss:74",
       "entries": [
@@ -239,22 +298,7 @@
       "entries": [
         "line height: 16px (line 16)"
       ]
-    },
-    {
-      "component": "packages/twenty-ui/src/primitives/surfaces/internal/Dialog.module.scss",
-      "location": "packages/twenty-ui/src/primitives/surfaces/internal/Dialog.module.scss:133",
-      "entries": [
-        "line height: 1.5 (line 133)"
-      ]
-    },
-    {
-      "component": "packages/twenty-ui/src/testing/ComponentStorybookLayout.module.scss",
-      "location": "packages/twenty-ui/src/testing/ComponentStorybookLayout.module.scss:4",
-      "entries": [
-        "radius: 5px (line 4)",
-        "spacing: 20px (line 10)"
-      ]
     }
   ],
-  "scanSeconds": 178
+  "scanSeconds": 202
 }

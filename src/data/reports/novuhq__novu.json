@@ -3,18 +3,18 @@
   "owner": "novuhq",
   "name": "novu",
   "description": "The open-source communication infrastructure for agents and products",
-  "stars": 40215,
+  "stars": 40219,
   "homepage": "https://go.novu.co/github",
   "language": "TypeScript",
   "defaultBranch": "next",
-  "commit": "ccc50f1c4ff14df6ee4843d735c2bec22fd2b5c0",
-  "generatedAt": "2026-10-28T13:26:48.915Z",
+  "commit": "8382cdc909a56948e201998baf00a88218bc5113",
+  "generatedAt": "2026-10-29T13:36:29.665Z",
   "cliVersion": "0.8.12",
-  "score": 65,
+  "score": 64,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 25,
+      "score": 24,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2979,
+    "componentCount": 2993,
     "tokenCount": 512,
-    "hardcodedValueCount": 554,
+    "hardcodedValueCount": 558,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 556,
+    "totalDriftCount": 560,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -51,9 +51,9 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 48,
+    "highDensityFileCount": 49,
     "vendoredDriftCount": 27,
-    "notedCount": 26,
+    "notedCount": 27,
     "topHardcodedColor": {
       "value": "#dd2476",
       "count": 8
@@ -72,21 +72,22 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 527 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
+    "Nearly there — just 531 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
     "27 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 35,
-      "action": "Replace the hardcoded values in 520 of the 527 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "points": 36,
+      "action": "Replace the hardcoded values in 524 of the 531 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     }
   ],
   "noted": {
-    "count": 26,
+    "count": 27,
     "byKind": {
       "optical-nudge": 23,
-      "explained": 3
+      "explained": 3,
+      "known-debt": 1
     },
     "samples": [
       {
@@ -95,6 +96,13 @@
         "value": "text-[#525866]",
         "kind": "explained",
         "reason": "Inline text flow (not flex) so the copy wraps word-by-word and fills each line; inline-flex pills sit mid-line via alig…"
+      },
+      {
+        "file": "apps/human-dashboard/src/components/connect/host-setup-box.tsx",
+        "line": 520,
+        "value": "bg-[#1f1f1f]",
+        "kind": "known-debt",
+        "reason": "Until the sliding tile has been placed, the chosen tab draws its own."
       },
       {
         "file": "apps/human-dashboard/src/components/dashboard/share-dialog.tsx",
@@ -123,24 +131,17 @@
         "value": "pt-[3px]",
         "kind": "optical-nudge",
         "reason": "pt-[3px] is a 2-3px optical adjustment"
-      },
-      {
-        "file": "apps/dashboard/src/components/ai-sidekick/sidekick-toast.tsx",
-        "line": 61,
-        "value": "px-[3px]",
-        "kind": "optical-nudge",
-        "reason": "px-[3px] is a 2-3px optical adjustment"
       }
     ]
   },
   "driftSummary": {
-    "total": 556,
+    "total": 560,
     "critical": 0,
-    "warning": 100,
-    "info": 456
+    "warning": 102,
+    "info": 458
   },
   "driftByType": {
-    "hardcoded-value": 554,
+    "hardcoded-value": 558,
     "repeated-pattern": 2
   },
   "topColors": [
@@ -335,5 +336,5 @@
       ]
     }
   ],
-  "scanSeconds": 77
+  "scanSeconds": 84
 }

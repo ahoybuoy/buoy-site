@@ -3,12 +3,12 @@
   "owner": "posthog",
   "name": "posthog",
   "description": ":hedgehog: PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.",
-  "stars": 40491,
+  "stars": 40509,
   "homepage": "https://posthog.com",
   "language": "Python",
   "defaultBranch": "master",
-  "commit": "1a554172880272d8d7a4b860d6f834d17af5f83f",
-  "generatedAt": "2026-10-28T13:38:49.374Z",
+  "commit": "d3dfc10e7141a8d0a909f3651d40a9b7bb535d3f",
+  "generatedAt": "2026-10-29T13:48:48.879Z",
   "cliVersion": "0.8.12",
   "score": 78,
   "tier": "Good",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 5119,
+    "componentCount": 5062,
     "tokenCount": 185,
-    "hardcodedValueCount": 356,
+    "hardcodedValueCount": 355,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 2,
@@ -41,7 +41,7 @@
     "colorContrastCount": 2,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 364,
+    "totalDriftCount": 363,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 3,
     "orphanedComponentCount": 0,
@@ -71,7 +71,7 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 356 hardcoded values left to tokenize. frontend/src/lib/KeaDevTools.tsx has the most (6)",
+    "Nearly there — just 355 hardcoded values left to tokenize. frontend/src/lib/KeaDevTools.tsx has the most (6)",
     "2 color contrast issues — fix immediately",
     "3 deprecated patterns — migrate to current API"
   ],
@@ -79,7 +79,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 14,
-      "action": "Replace the hardcoded values in 344 of the 356 findings with tokens or scale steps, and remove or reuse 3 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 343 of the 355 findings with tokens or scale steps, and remove or reuse 3 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -96,8 +96,8 @@
     },
     "samples": [
       {
-        "file": "frontend/src/toolbar/bar/Toolbar.tsx",
-        "line": 585,
+        "file": "frontend/src/toolbar/floating/components/bar/Toolbar.tsx",
+        "line": 591,
         "value": "1.5rem",
         "kind": "explained",
         "reason": "Inline font-size because the wrapper breaks the `button > svg` size rule"
@@ -140,13 +140,13 @@
     ]
   },
   "driftSummary": {
-    "total": 364,
+    "total": 363,
     "critical": 2,
     "warning": 175,
-    "info": 187
+    "info": 186
   },
   "driftByType": {
-    "hardcoded-value": 356,
+    "hardcoded-value": 355,
     "deprecated-pattern": 3,
     "color-contrast": 2,
     "repeated-pattern": 3
@@ -192,7 +192,7 @@
     },
     {
       "value": "0.25rem",
-      "count": 142
+      "count": 141
     },
     {
       "value": "0.375rem",
@@ -230,7 +230,7 @@
     },
     {
       "file": "frontend/src/scenes/project-homepage/today/Today.scss",
-      "count": 79
+      "count": 78
     },
     {
       "file": "products/tasks/frontend/infrastructure/infrastructureAdmin.css",
@@ -318,35 +318,33 @@
       ]
     },
     {
-      "component": "LockableMenuIcon",
-      "location": "frontend/src/toolbar/bar/Toolbar.tsx:121",
+      "component": "DefinitionEdit",
+      "location": "frontend/src/lib/components/DefinitionPopover/DefinitionPopoverContents.tsx:598",
       "entries": [
-        "fontSize: 1.5rem (line 129)"
+        "fontSize: 1rem (line 678)"
       ]
     },
     {
-      "component": "ElementOverlays",
-      "location": "frontend/src/toolbar/elements/ElementOverlays.tsx:20",
+      "component": "TaxonomicFilterSearchInput",
+      "location": "frontend/src/lib/components/TaxonomicFilter/TaxonomicFilter.tsx:179",
       "entries": [
-        "color: hsla(141, 21%, 12%, 1) (line 167)",
-        "background: hsl(147, 100%, 62%) (line 168)"
+        "fontSize: 1.2rem (line 252)"
       ]
     },
     {
-      "component": "FieldNotesOverlay",
-      "location": "frontend/src/toolbar/field-notes/FieldNotesOverlay.tsx:16",
+      "component": "ChoosePathStep",
+      "location": "frontend/src/scenes/onboarding/productSelection/ProductSelection.tsx:34",
       "entries": [
-        "background: rgba(255, 255, 255, 0.2) (line 66)",
-        "color: #fff (line 66)"
+        "color: rgb(100, 116, 139) (line 77)"
       ]
     },
     {
-      "component": "ElementHighlight",
-      "location": "frontend/src/toolbar/product-tours/ElementHighlight.tsx:9",
+      "component": "EmbedNodeView",
+      "location": "frontend/src/scenes/product-tours/editor/EmbedExtension.tsx:58",
       "entries": [
-        "background: #1d4aff (line 48)"
+        "backgroundColor: #000 (line 74)"
       ]
     }
   ],
-  "scanSeconds": 223
+  "scanSeconds": 204
 }
