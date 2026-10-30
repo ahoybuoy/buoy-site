@@ -3,12 +3,12 @@
   "owner": "twentyhq",
   "name": "twenty",
   "description": "The open alternative to Salesforce, designed for AI.",
-  "stars": 60060,
+  "stars": 60136,
   "homepage": "https://twenty.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "e07a70d27e4a4af3e7b6246dd9d74622310ec2ab",
-  "generatedAt": "2026-10-29T13:40:32.558Z",
+  "commit": "c75ef7bfd0589219bd22e8f134df458af0af3445",
+  "generatedAt": "2026-10-30T13:26:44.593Z",
   "cliVersion": "0.8.12",
   "score": 99,
   "tier": "Great",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 4290,
+    "componentCount": 4304,
     "tokenCount": 76,
     "hardcodedValueCount": 19,
     "unusedTokenCount": 0,
@@ -109,7 +109,7 @@
   "topColors": [
     {
       "value": "#ffffff",
-      "count": 9
+      "count": 13
     },
     {
       "value": "#000000",
@@ -117,10 +117,14 @@
     },
     {
       "value": "#dfdfdf",
-      "count": 3
+      "count": 4
     },
     {
       "value": "#015ba7",
+      "count": 4
+    },
+    {
+      "value": "#1468b6",
       "count": 3
     },
     {
@@ -132,15 +136,15 @@
       "count": 2
     },
     {
-      "value": "#1468b6",
-      "count": 2
-    },
-    {
       "value": "#4a4a56",
       "count": 2
     }
   ],
   "topSpacing": [
+    {
+      "value": "8px",
+      "count": 3
+    },
     {
       "value": "3rem",
       "count": 2
@@ -151,10 +155,6 @@
     },
     {
       "value": "4px",
-      "count": 2
-    },
-    {
-      "value": "8px",
       "count": 2
     },
     {
@@ -169,7 +169,7 @@
   "worstFiles": [
     {
       "file": "packages/twenty-front/src/modules/salesfarce/styles/salesfarce-retro.css",
-      "count": 89
+      "count": 111
     },
     {
       "file": "packages/twenty-docs/custom.css",
@@ -300,5 +300,5 @@
       ]
     }
   ],
-  "scanSeconds": 202
+  "scanSeconds": 147
 }

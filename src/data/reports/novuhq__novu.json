@@ -3,12 +3,12 @@
   "owner": "novuhq",
   "name": "novu",
   "description": "The open-source communication infrastructure for agents and products",
-  "stars": 40219,
+  "stars": 40231,
   "homepage": "https://go.novu.co/github",
   "language": "TypeScript",
   "defaultBranch": "next",
-  "commit": "8382cdc909a56948e201998baf00a88218bc5113",
-  "generatedAt": "2026-10-29T13:36:29.665Z",
+  "commit": "ac58f0f90312b44d71eec17bb16a2b21b0f284d0",
+  "generatedAt": "2026-10-30T13:23:49.692Z",
   "cliVersion": "0.8.12",
   "score": 64,
   "tier": "Good",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2993,
-    "tokenCount": 512,
-    "hardcodedValueCount": 558,
+    "componentCount": 3013,
+    "tokenCount": 515,
+    "hardcodedValueCount": 563,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 560,
+    "totalDriftCount": 565,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -51,8 +51,8 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 49,
-    "vendoredDriftCount": 27,
+    "highDensityFileCount": 51,
+    "vendoredDriftCount": 26,
     "notedCount": 27,
     "topHardcodedColor": {
       "value": "#dd2476",
@@ -72,14 +72,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 531 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
-    "27 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
+    "Nearly there — just 537 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
+    "26 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 36,
-      "action": "Replace the hardcoded values in 524 of the 531 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 530 of the 537 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     }
   ],
   "noted": {
@@ -99,7 +99,7 @@
       },
       {
         "file": "apps/human-dashboard/src/components/connect/host-setup-box.tsx",
-        "line": 520,
+        "line": 522,
         "value": "bg-[#1f1f1f]",
         "kind": "known-debt",
         "reason": "Until the sliding tile has been placed, the chosen tab draws its own."
@@ -135,13 +135,13 @@
     ]
   },
   "driftSummary": {
-    "total": 560,
+    "total": 565,
     "critical": 0,
-    "warning": 102,
+    "warning": 107,
     "info": 458
   },
   "driftByType": {
-    "hardcoded-value": 558,
+    "hardcoded-value": 563,
     "repeated-pattern": 2
   },
   "topColors": [
@@ -222,16 +222,12 @@
       "count": 106
     },
     {
+      "file": "apps/human-dashboard/src/styles/home.css",
+      "count": 68
+    },
+    {
       "file": "apps/dashboard/src/pages/usecase-select-page.tsx",
       "count": 59
-    },
-    {
-      "file": "apps/human-dashboard/src/styles/home.css",
-      "count": 51
-    },
-    {
-      "file": "apps/human-dashboard/src/components/sapien/inbox-dashboard.tsx",
-      "count": 43
     },
     {
       "file": "apps/dashboard/src/components/workflow-editor/steps/http-request/http-request-console-preview.tsx",
@@ -243,6 +239,10 @@
     },
     {
       "file": "packages/novu/src/commands/init/templates/app-agent-langchain/ts/app/page.module.css",
+      "count": 32
+    },
+    {
+      "file": "packages/novu/src/commands/init/templates/app-agent/ts/app/page.module.css",
       "count": 32
     }
   ],
@@ -336,5 +336,5 @@
       ]
     }
   ],
-  "scanSeconds": 84
+  "scanSeconds": 57
 }

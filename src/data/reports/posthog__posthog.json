@@ -3,18 +3,18 @@
   "owner": "posthog",
   "name": "posthog",
   "description": ":hedgehog: PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.",
-  "stars": 40509,
+  "stars": 40517,
   "homepage": "https://posthog.com",
   "language": "Python",
   "defaultBranch": "master",
-  "commit": "d3dfc10e7141a8d0a909f3651d40a9b7bb535d3f",
-  "generatedAt": "2026-10-29T13:48:48.879Z",
+  "commit": "4cb88ec63ec33de3dcbbfc427cd37feaf2f5e155",
+  "generatedAt": "2026-10-30T13:32:22.146Z",
   "cliVersion": "0.8.12",
-  "score": 78,
+  "score": 79,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 46,
+      "score": 47,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 5062,
+    "componentCount": 5524,
     "tokenCount": 185,
-    "hardcodedValueCount": 355,
+    "hardcodedValueCount": 356,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 2,
@@ -41,7 +41,7 @@
     "colorContrastCount": 2,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 363,
+    "totalDriftCount": 364,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 3,
     "orphanedComponentCount": 0,
@@ -71,15 +71,15 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 355 hardcoded values left to tokenize. frontend/src/lib/KeaDevTools.tsx has the most (6)",
+    "Nearly there — just 356 hardcoded values left to tokenize. frontend/src/lib/KeaDevTools.tsx has the most (6)",
     "2 color contrast issues — fix immediately",
     "3 deprecated patterns — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 14,
-      "action": "Replace the hardcoded values in 343 of the 355 findings with tokens or scale steps, and remove or reuse 3 unused components and repeated patterns"
+      "points": 13,
+      "action": "Replace the hardcoded values in 343 of the 356 findings with tokens or scale steps, and remove or reuse 3 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -88,20 +88,13 @@
     }
   ],
   "noted": {
-    "count": 83,
+    "count": 82,
     "byKind": {
-      "explained": 17,
       "optical-nudge": 64,
+      "explained": 16,
       "known-debt": 2
     },
     "samples": [
-      {
-        "file": "frontend/src/toolbar/floating/components/bar/Toolbar.tsx",
-        "line": 591,
-        "value": "1.5rem",
-        "kind": "explained",
-        "reason": "Inline font-size because the wrapper breaks the `button > svg` size rule"
-      },
       {
         "file": "frontend/src/lib/components/CommandBlock/TerminalCard.tsx",
         "line": 55,
@@ -136,33 +129,35 @@
         "value": "0.25rem",
         "kind": "explained",
         "reason": "Intentionally a bit smaller than --radius"
+      },
+      {
+        "file": "frontend/src/lib/lemon-ui/LemonMarkdown/LemonMarkdown.scss",
+        "line": 138,
+        "value": "0.125rem",
+        "kind": "explained",
+        "reason": "Slight adjustment to align with text"
       }
     ]
   },
   "driftSummary": {
-    "total": 363,
-    "critical": 2,
-    "warning": 175,
+    "total": 357,
+    "critical": 0,
+    "warning": 171,
     "info": 186
   },
   "driftByType": {
-    "hardcoded-value": 355,
+    "hardcoded-value": 351,
     "deprecated-pattern": 3,
-    "color-contrast": 2,
     "repeated-pattern": 3
   },
   "topColors": [
     {
       "value": "#fff",
-      "count": 29
+      "count": 25
     },
     {
       "value": "#1d1f27",
       "count": 6
-    },
-    {
-      "value": "#e0e1d9",
-      "count": 5
     },
     {
       "value": "#fafafa",
@@ -181,6 +176,10 @@
       "count": 3
     },
     {
+      "value": "#e0e1d9",
+      "count": 3
+    },
+    {
       "value": "#f0f0f0",
       "count": 3
     }
@@ -188,7 +187,7 @@
   "topSpacing": [
     {
       "value": "0.5rem",
-      "count": 272
+      "count": 271
     },
     {
       "value": "0.25rem",
@@ -319,9 +318,9 @@
     },
     {
       "component": "DefinitionEdit",
-      "location": "frontend/src/lib/components/DefinitionPopover/DefinitionPopoverContents.tsx:598",
+      "location": "frontend/src/lib/components/DefinitionPopover/DefinitionPopoverContents.tsx:606",
       "entries": [
-        "fontSize: 1rem (line 678)"
+        "fontSize: 1rem (line 686)"
       ]
     },
     {
@@ -346,5 +345,5 @@
       ]
     }
   ],
-  "scanSeconds": 204
+  "scanSeconds": 130
 }
