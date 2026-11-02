@@ -3,12 +3,12 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source agent evals & observability: Trace, evaluate, and improve LLM applications with one open platform.",
-  "stars": 36830,
+  "stars": 36892,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "be69f6bddba4e148133db7d76305224de01a6cb5",
-  "generatedAt": "2026-11-01T14:02:11.365Z",
+  "commit": "7b6e8936cfcb07c2855a075eb2ba673782121c38",
+  "generatedAt": "2026-11-02T16:48:41.370Z",
   "cliVersion": "0.8.12",
   "score": 92,
   "tier": "Great",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 2394,
+    "componentCount": 2401,
     "tokenCount": 333,
     "hardcodedValueCount": 76,
     "unusedTokenCount": 0,
@@ -77,7 +77,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 6,
-      "action": "Replace the hardcoded values in 71 of the 76 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 70 of the 76 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -306,5 +306,5 @@
       ]
     }
   ],
-  "scanSeconds": 91
+  "scanSeconds": 96
 }

@@ -3,12 +3,12 @@
   "owner": "novuhq",
   "name": "novu",
   "description": "The open-source communication infrastructure for agents and products",
-  "stars": 40248,
+  "stars": 40249,
   "homepage": "https://go.novu.co/github",
   "language": "TypeScript",
   "defaultBranch": "next",
-  "commit": "93044bdae327099cc464b72d28ed9a4ac903e7e3",
-  "generatedAt": "2026-11-01T13:47:26.442Z",
+  "commit": "2961dd456141739d9c5b02b5101a4c1a820ed2c1",
+  "generatedAt": "2026-11-02T16:32:45.796Z",
   "cliVersion": "0.8.12",
   "score": 64,
   "tier": "Good",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 3016,
-    "tokenCount": 515,
-    "hardcodedValueCount": 566,
+    "componentCount": 2998,
+    "tokenCount": 514,
+    "hardcodedValueCount": 565,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 568,
+    "totalDriftCount": 567,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -72,14 +72,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 540 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
+    "Nearly there — just 539 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
     "26 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 36,
-      "action": "Replace the hardcoded values in 533 of the 540 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 532 of the 539 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     }
   ],
   "noted": {
@@ -99,7 +99,7 @@
       },
       {
         "file": "apps/human-dashboard/src/components/connect/host-setup-box.tsx",
-        "line": 522,
+        "line": 603,
         "value": "bg-[#1f1f1f]",
         "kind": "known-debt",
         "reason": "Until the sliding tile has been placed, the chosen tab draws its own."
@@ -135,13 +135,13 @@
     ]
   },
   "driftSummary": {
-    "total": 568,
+    "total": 567,
     "critical": 0,
     "warning": 109,
-    "info": 459
+    "info": 458
   },
   "driftByType": {
-    "hardcoded-value": 566,
+    "hardcoded-value": 565,
     "repeated-pattern": 2
   },
   "topColors": [
@@ -223,7 +223,7 @@
     },
     {
       "file": "apps/human-dashboard/src/styles/home.css",
-      "count": 68
+      "count": 69
     },
     {
       "file": "apps/dashboard/src/pages/usecase-select-page.tsx",
@@ -336,5 +336,5 @@
       ]
     }
   ],
-  "scanSeconds": 87
+  "scanSeconds": 101
 }

@@ -3,12 +3,12 @@
   "owner": "TryGhost",
   "name": "Ghost",
   "description": "Independent technology for modern publishing, memberships, subscriptions and newsletters.",
-  "stars": 55648,
+  "stars": 55658,
   "homepage": "https://ghost.org",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "33b8dabf2114676d68028d6f86c1945af4e7409c",
-  "generatedAt": "2026-11-01T13:56:42.472Z",
+  "commit": "78e65e569fa48477f3efbb98aa338005fcfa22e6",
+  "generatedAt": "2026-11-02T16:42:57.673Z",
   "cliVersion": "0.8.12",
   "score": 71,
   "tier": "Good",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1915,
-    "tokenCount": 500,
-    "hardcodedValueCount": 285,
+    "componentCount": 1918,
+    "tokenCount": 376,
+    "hardcodedValueCount": 282,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 285,
+    "totalDriftCount": 282,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -51,7 +51,7 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 11,
+    "highDensityFileCount": 10,
     "vendoredDriftCount": 7,
     "notedCount": 30,
     "topHardcodedColor": {
@@ -72,14 +72,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 278 hardcoded values left to tokenize. apps/activitypub/src/views/inbox/components/customizer.tsx has the most (4)",
+    "Nearly there — just 275 hardcoded values left to tokenize. apps/activitypub/src/views/inbox/components/customizer.tsx has the most (4)",
     "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 29,
-      "action": "Replace the hardcoded values in 274 of the 278 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 271 of the 275 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -126,7 +126,7 @@
       },
       {
         "file": "apps/activitypub/src/components/layout/onboarding/step-1.tsx",
-        "line": 93,
+        "line": 102,
         "value": "ml-[-2px]",
         "kind": "optical-nudge",
         "reason": "ml-[-2px] is a 2-3px optical adjustment"
@@ -134,13 +134,13 @@
     ]
   },
   "driftSummary": {
-    "total": 285,
+    "total": 282,
     "critical": 0,
-    "warning": 56,
+    "warning": 53,
     "info": 229
   },
   "driftByType": {
-    "hardcoded-value": 285
+    "hardcoded-value": 282
   },
   "topColors": [
     {
@@ -172,7 +172,7 @@
       "count": 6
     },
     {
-      "value": "#15171a",
+      "value": "#16181c",
       "count": 5
     }
   ],
@@ -229,7 +229,7 @@
     },
     {
       "file": "apps/admin/src/element-styles.css",
-      "count": 35
+      "count": 36
     },
     {
       "file": "ghost/core/frontend/src/cards/css/audio.css",
@@ -296,13 +296,6 @@
       ]
     },
     {
-      "component": "apps/activitypub/src/components/global/profile-preview-hover-card.tsx",
-      "location": "apps/activitypub/src/components/global/profile-preview-hover-card.tsx:195",
-      "entries": [
-        "[&_a]:text-[#00a4eb] (line 195)"
-      ]
-    },
-    {
       "component": "apps/activitypub/src/components/global/show-replies-button.tsx",
       "location": "apps/activitypub/src/components/global/show-replies-button.tsx:56",
       "entries": [
@@ -340,7 +333,14 @@
         "max-lg:pr-[15.5px] (line 68)",
         "max-md:ml-[10px] (line 70)"
       ]
+    },
+    {
+      "component": "apps/activitypub/src/components/layout/header/header.tsx",
+      "location": "apps/activitypub/src/components/layout/header/header.tsx:30",
+      "entries": [
+        "text-[1.5rem] (line 30)"
+      ]
     }
   ],
-  "scanSeconds": 50
+  "scanSeconds": 51
 }
