@@ -7,8 +7,8 @@
   "homepage": "https://go.unkey.com",
   "language": "Go",
   "defaultBranch": "main",
-  "commit": "f9a4a03bf660bc7ebebf0c62958b53823a593f0f",
-  "generatedAt": "2026-11-02T16:49:52.375Z",
+  "commit": "12afebcd234260476da992fe3417ca8ba808c5ae",
+  "generatedAt": "2026-11-03T14:53:53.869Z",
   "cliVersion": "0.8.12",
   "score": null,
   "tier": "N/A",
@@ -32,7 +32,7 @@
   },
   "metrics": {
     "componentCount": 0,
-    "tokenCount": 395,
+    "tokenCount": 398,
     "hardcodedValueCount": 4,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
@@ -41,9 +41,9 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 6,
+    "totalDriftCount": 7,
     "unusedComponentCount": 0,
-    "repeatedPatternCount": 2,
+    "repeatedPatternCount": 3,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 0,
@@ -72,14 +72,14 @@
     "samples": []
   },
   "driftSummary": {
-    "total": 6,
+    "total": 7,
     "critical": 0,
     "warning": 4,
-    "info": 2
+    "info": 3
   },
   "driftByType": {
     "hardcoded-value": 4,
-    "repeated-pattern": 2
+    "repeated-pattern": 3
   },
   "topColors": [
     {
@@ -180,5 +180,5 @@
       ]
     }
   ],
-  "scanSeconds": 20
+  "scanSeconds": 17
 }

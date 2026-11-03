@@ -3,18 +3,18 @@
   "owner": "makeplane",
   "name": "plane",
   "description": "🔥🔥🔥 Open-source Jira, Linear, Monday, and ClickUp alternative. Plane is a modern project management platform to manage tasks, sprints, docs, and triage.",
-  "stars": 61870,
+  "stars": 61910,
   "homepage": "http://plane.so",
   "language": "TypeScript",
   "defaultBranch": "preview",
-  "commit": "b98e1defb0e089d4505712d89ee9e137fd0935cd",
-  "generatedAt": "2026-11-02T16:39:21.864Z",
+  "commit": "bc65a78483b0b9d9dd9f329f841a5a5da4483dea",
+  "generatedAt": "2026-11-03T14:44:02.166Z",
   "cliVersion": "0.8.12",
-  "score": 92,
+  "score": 94,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 52,
+      "score": 54,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 882,
+    "componentCount": 928,
     "tokenCount": 82,
-    "hardcodedValueCount": 40,
+    "hardcodedValueCount": 30,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,9 +41,9 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 41,
+    "totalDriftCount": 30,
     "unusedComponentCount": 0,
-    "repeatedPatternCount": 1,
+    "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 0,
@@ -52,14 +52,14 @@
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
-    "vendoredDriftCount": 4,
-    "notedCount": 1,
+    "vendoredDriftCount": 3,
+    "notedCount": 2,
     "topHardcodedColor": {
       "value": "#3f76ff",
       "count": 2
     },
     "worstFile": {
-      "path": "apps/admin/components/common/copy-field.tsx",
+      "path": "apps/web/components/editor/pdf/document.tsx",
       "issueCount": 1
     },
     "detectedFrameworkNames": [
@@ -68,20 +68,20 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 36 hardcoded values left to tokenize",
-    "4 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
+    "Nearly there — just 27 hardcoded values left to tokenize",
+    "3 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 8,
-      "action": "Replace the hardcoded values in 34 of the 36 findings with tokens or scale steps, and remove or reuse 1 unused component or repeated pattern"
+      "points": 6,
+      "action": "Replace the hardcoded values in 25 of the 27 findings with tokens or scale steps"
     }
   ],
   "noted": {
-    "count": 1,
+    "count": 2,
     "byKind": {
-      "optical-nudge": 1
+      "optical-nudge": 2
     },
     "samples": [
       {
@@ -90,27 +90,29 @@
         "value": "p-[2px]",
         "kind": "optical-nudge",
         "reason": "p-[2px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/blocks/src/progress/segmented-progress.tsx",
+        "line": 78,
+        "value": "p-[2px]",
+        "kind": "optical-nudge",
+        "reason": "p-[2px] is a 2-3px optical adjustment"
       }
     ]
   },
   "driftSummary": {
-    "total": 41,
+    "total": 30,
     "critical": 0,
-    "warning": 11,
-    "info": 30
+    "warning": 9,
+    "info": 21
   },
   "driftByType": {
-    "hardcoded-value": 40,
-    "repeated-pattern": 1
+    "hardcoded-value": 30
   },
   "topColors": [
     {
       "value": "#3f76ff",
       "count": 4
-    },
-    {
-      "value": "#B9B9B9",
-      "count": 1
     },
     {
       "value": "#ffffff",
@@ -135,6 +137,10 @@
     {
       "value": "#387ED1",
       "count": 1
+    },
+    {
+      "value": "#028375",
+      "count": 1
     }
   ],
   "topSpacing": [
@@ -143,7 +149,7 @@
       "count": 3
     },
     {
-      "value": "4px",
+      "value": "1.5px",
       "count": 2
     },
     {
@@ -155,6 +161,10 @@
       "count": 2
     },
     {
+      "value": "4px",
+      "count": 1
+    },
+    {
       "value": "54.8px",
       "count": 1
     },
@@ -163,11 +173,7 @@
       "count": 1
     },
     {
-      "value": "38px",
-      "count": 1
-    },
-    {
-      "value": "5px",
+      "value": "8px",
       "count": 1
     }
   ],
@@ -181,15 +187,11 @@
       "count": 6
     },
     {
-      "file": "apps/web/components/profile/sidebar.tsx",
-      "count": 5
-    },
-    {
       "file": "apps/web/components/active-cycles/workspace-active-cycles-upgrade.tsx",
       "count": 4
     },
     {
-      "file": "apps/web/components/gantt-chart/chart/views/week.tsx",
+      "file": "apps/web/components/profile/sidebar.tsx",
       "count": 4
     },
     {
@@ -201,18 +203,15 @@
       "count": 4
     },
     {
-      "file": "apps/web/components/gantt-chart/chart/views/month.tsx",
+      "file": "apps/web/components/workspace/billing/comparison/plans.tsx",
+      "count": 3
+    },
+    {
+      "file": "apps/web/styles/globals.css",
       "count": 3
     }
   ],
   "samples": [
-    {
-      "component": "CopyField",
-      "location": "apps/admin/components/common/copy-field.tsx:27",
-      "entries": [
-        "color: #B9B9B9 (line 37)"
-      ]
-    },
     {
       "component": "PDFDocument",
       "location": "apps/web/components/editor/pdf/document.tsx:221",
@@ -221,19 +220,12 @@
       ]
     },
     {
-      "component": "apps/space/components/issues/issue-layouts/properties/member.tsx",
-      "location": "apps/space/components/issues/issue-layouts/properties/member.tsx:71",
-      "entries": [
-        "mx-[4px] (line 71)"
-      ]
-    },
-    {
       "component": "apps/web/components/active-cycles/workspace-active-cycles-upgrade.tsx",
-      "location": "apps/web/components/active-cycles/workspace-active-cycles-upgrade.tsx:84",
+      "location": "apps/web/components/active-cycles/workspace-active-cycles-upgrade.tsx:90",
       "entries": [
-        "from-[#CFCFCF] (line 84)",
-        "to-[#212121] (line 84)",
-        "from-[#3b5ec6] (line 85)"
+        "from-[#CFCFCF] (line 90)",
+        "to-[#212121] (line 90)",
+        "from-[#3b5ec6] (line 91)"
       ]
     },
     {
@@ -252,36 +244,9 @@
     },
     {
       "component": "apps/web/components/dropdowns/member/avatar.tsx",
-      "location": "apps/web/components/dropdowns/member/avatar.tsx:70",
+      "location": "apps/web/components/dropdowns/member/avatar.tsx:72",
       "entries": [
-        "mx-[4px] (line 70)"
-      ]
-    },
-    {
-      "component": "apps/web/components/gantt-chart/chart/views/month.tsx",
-      "location": "apps/web/components/gantt-chart/chart/views/month.tsx:35",
-      "entries": [
-        "outline-[0.25px] (line 35)",
-        "outline-[0.25px] (line 73)",
-        "outline-[0.25px] (line 99)"
-      ]
-    },
-    {
-      "component": "apps/web/components/gantt-chart/chart/views/quarter.tsx",
-      "location": "apps/web/components/gantt-chart/chart/views/quarter.tsx:29",
-      "entries": [
-        "outline-[0.25px] (line 29)",
-        "outline-[0.25px] (line 63)",
-        "outline-[0.25px] (line 88)"
-      ]
-    },
-    {
-      "component": "apps/web/components/gantt-chart/chart/views/week.tsx",
-      "location": "apps/web/components/gantt-chart/chart/views/week.tsx:26",
-      "entries": [
-        "outline-[0.25px] (line 26)",
-        "outline-[0.25px] (line 55)",
-        "outline-[0.25px] (line 81)"
+        "mx-[4px] (line 72)"
       ]
     },
     {
@@ -293,12 +258,48 @@
       ]
     },
     {
-      "component": "apps/web/components/issues/attachment/attachment-detail.tsx",
-      "location": "apps/web/components/issues/attachment/attachment-detail.tsx:73",
+      "component": "apps/web/components/issues/issue-layouts/calendar/quick-add-issue-actions.tsx",
+      "location": "apps/web/components/issues/issue-layouts/calendar/quick-add-issue-actions.tsx:125",
       "entries": [
-        "border-[2px] (line 73)"
+        "gap-x-[6px] (line 125)"
+      ]
+    },
+    {
+      "component": "apps/web/components/issues/issue-layouts/quick-add/button/spreadsheet.tsx",
+      "location": "apps/web/components/issues/issue-layouts/quick-add/button/spreadsheet.tsx:20",
+      "entries": [
+        "gap-x-[6px] (line 20)"
+      ]
+    },
+    {
+      "component": "apps/web/components/issues/issue-layouts/spreadsheet/issue-row.tsx",
+      "location": "apps/web/components/issues/issue-layouts/spreadsheet/issue-row.tsx:283",
+      "entries": [
+        "shadow-[8px_22px_22px_10px_rgba(0,0,0,0.05)] (line 283)"
+      ]
+    },
+    {
+      "component": "apps/web/components/onboarding/tour/root.tsx",
+      "location": "apps/web/components/onboarding/tour/root.tsx:96",
+      "entries": [
+        "rounded-[10px] (line 96)",
+        "rounded-[10px] (line 135)"
+      ]
+    },
+    {
+      "component": "apps/web/components/onboarding/tour/sidebar.tsx",
+      "location": "apps/web/components/onboarding/tour/sidebar.tsx:63",
+      "entries": [
+        "border-l-[3px] (line 63)"
+      ]
+    },
+    {
+      "component": "apps/web/components/pages/editor/ai/menu.tsx",
+      "location": "apps/web/components/pages/editor/ai/menu.tsx:276",
+      "entries": [
+        "pl-[54.8px] (line 276)"
       ]
     }
   ],
-  "scanSeconds": 43
+  "scanSeconds": 41
 }

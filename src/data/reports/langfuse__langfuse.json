@@ -3,12 +3,12 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source agent evals & observability: Trace, evaluate, and improve LLM applications with one open platform.",
-  "stars": 36892,
+  "stars": 36950,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "7b6e8936cfcb07c2855a075eb2ba673782121c38",
-  "generatedAt": "2026-11-02T16:48:41.370Z",
+  "commit": "c31e26a030868791e7f83461041158a4389684df",
+  "generatedAt": "2026-11-03T14:52:51.281Z",
   "cliVersion": "0.8.12",
   "score": 92,
   "tier": "Great",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 2401,
+    "componentCount": 2416,
     "tokenCount": 333,
     "hardcodedValueCount": 76,
     "unusedTokenCount": 0,
@@ -93,7 +93,7 @@
     "samples": [
       {
         "file": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx",
-        "line": 1933,
+        "line": 1932,
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "right: 2px is a 2-3px optical adjustment"
@@ -236,17 +236,17 @@
     },
     {
       "component": "TimelineDense",
-      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:328",
+      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:327",
       "entries": [
-        "fontSize: 10px (line 1369)",
-        "fontSize: 9px (line 1443)"
+        "fontSize: 10px (line 1368)",
+        "fontSize: 9px (line 1442)"
       ]
     },
     {
       "component": "GutterContent",
-      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:1820",
+      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:1819",
       "entries": [
-        "fontSize: 10px (line 1946)"
+        "fontSize: 10px (line 1945)"
       ]
     },
     {
@@ -306,5 +306,5 @@
       ]
     }
   ],
-  "scanSeconds": 96
+  "scanSeconds": 88
 }
