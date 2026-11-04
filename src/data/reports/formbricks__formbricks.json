@@ -3,12 +3,12 @@
   "owner": "formbricks",
   "name": "formbricks",
   "description": "Open Source Qualtrics Alternative",
-  "stars": 13213,
+  "stars": 13216,
   "homepage": "https://formbricks.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "f6a6adff61d5c8c2e3cc117264f3802df3eba92a",
-  "generatedAt": "2026-11-03T14:42:41.797Z",
+  "commit": "0be032bd0093fc2770a6b5bef2703111ff4859d2",
+  "generatedAt": "2026-11-04T14:56:37.326Z",
   "cliVersion": "0.8.12",
   "score": 94,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 352,
+    "componentCount": 372,
     "tokenCount": 219,
-    "hardcodedValueCount": 17,
+    "hardcodedValueCount": 18,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 17,
+    "totalDriftCount": 18,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -71,14 +71,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 10 hardcoded values left to tokenize",
+    "Nearly there — just 11 hardcoded values left to tokenize",
     "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 6,
-      "action": "Replace the hardcoded values in all 10 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in all 11 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -133,13 +133,13 @@
     ]
   },
   "driftSummary": {
-    "total": 17,
+    "total": 18,
     "critical": 0,
     "warning": 6,
-    "info": 11
+    "info": 12
   },
   "driftByType": {
-    "hardcoded-value": 17
+    "hardcoded-value": 18
   },
   "topColors": [
     {
@@ -185,6 +185,10 @@
       "count": 2
     },
     {
+      "value": "7px",
+      "count": 1
+    },
+    {
       "value": "100px",
       "count": 1
     },
@@ -202,10 +206,6 @@
     },
     {
       "value": "-6px",
-      "count": 1
-    },
-    {
-      "value": "30px",
       "count": 1
     }
   ],
@@ -249,6 +249,13 @@
       "location": "apps/web/app/(app)/workspaces/[workspaceId]/components/MainNavigation.tsx:88",
       "entries": [
         "text-[10px] (line 88)"
+      ]
+    },
+    {
+      "component": "apps/web/app/(app)/workspaces/[workspaceId]/surveys/[surveyId]/(analysis)/components/export-modal.tsx",
+      "location": "apps/web/app/(app)/workspaces/[workspaceId]/surveys/[surveyId]/(analysis)/components/export-modal.tsx:204",
+      "entries": [
+        "pb-[7px] (line 204)"
       ]
     },
     {
@@ -322,16 +329,7 @@
       "entries": [
         "mb-[10px] (line 92)"
       ]
-    },
-    {
-      "component": "apps/web/modules/ui/components/code-block/style.css",
-      "location": "apps/web/modules/ui/components/code-block/style.css:12",
-      "entries": [
-        "colour: #e2e8f0 (line 12)",
-        "colour: #cbd5e1 (line 17)",
-        "colour: #cbd5e1 (line 18)"
-      ]
     }
   ],
-  "scanSeconds": 31
+  "scanSeconds": 32
 }

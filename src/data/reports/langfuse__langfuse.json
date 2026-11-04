@@ -3,12 +3,12 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source agent evals & observability: Trace, evaluate, and improve LLM applications with one open platform.",
-  "stars": 36950,
+  "stars": 36994,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "c31e26a030868791e7f83461041158a4389684df",
-  "generatedAt": "2026-11-03T14:52:51.281Z",
+  "commit": "02313788ab2916e73f3a053e758d12a5223740c8",
+  "generatedAt": "2026-11-04T15:05:53.941Z",
   "cliVersion": "0.8.12",
   "score": 92,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2416,
+    "componentCount": 2421,
     "tokenCount": 333,
-    "hardcodedValueCount": 76,
+    "hardcodedValueCount": 77,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 77,
+    "totalDriftCount": 78,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -70,14 +70,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 76 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx has the most (2)",
+    "Nearly there — just 77 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx has the most (2)",
     "1 deprecated pattern — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 6,
-      "action": "Replace the hardcoded values in 70 of the 76 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 71 of the 77 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -129,14 +129,14 @@
     ]
   },
   "driftSummary": {
-    "total": 77,
+    "total": 78,
     "critical": 0,
     "warning": 3,
-    "info": 74
+    "info": 75
   },
   "driftByType": {
     "deprecated-pattern": 1,
-    "hardcoded-value": 76
+    "hardcoded-value": 77
   },
   "topColors": [
     {
@@ -184,10 +184,6 @@
       "count": 7
     },
     {
-      "file": "web/src/features/sessions/components/ConnectedModernSessionBodyTimeline/components/ConnectedSessionConversationTimeline/components/SessionConversationalView/components/SessionConversationSidebar/SessionConversationSidebar.tsx",
-      "count": 6
-    },
-    {
       "file": "web/src/features/topics/map/TopicMapExplorer.tsx",
       "count": 6
     },
@@ -209,6 +205,10 @@
     },
     {
       "file": "web/src/features/events/components/outlier-strip/OutlierBarStrip.tsx",
+      "count": 4
+    },
+    {
+      "file": "web/src/features/search-bar/components/AutocompleteListbox.tsx",
       "count": 4
     }
   ],
@@ -306,5 +306,5 @@
       ]
     }
   ],
-  "scanSeconds": 88
+  "scanSeconds": 84
 }
