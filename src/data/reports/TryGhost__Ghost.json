@@ -3,18 +3,18 @@
   "owner": "TryGhost",
   "name": "Ghost",
   "description": "Independent technology for modern publishing, memberships, subscriptions and newsletters.",
-  "stars": 55670,
+  "stars": 55684,
   "homepage": "https://ghost.org",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "98ac5cdadf92e62d606a3755c681bacac3c3cdaf",
-  "generatedAt": "2026-11-04T15:00:53.875Z",
+  "commit": "7336dc28b3ac6e4351c24b0b93ce03700d32a8e8",
+  "generatedAt": "2026-11-05T15:08:04.818Z",
   "cliVersion": "0.8.12",
-  "score": 71,
+  "score": 72,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 31,
+      "score": 32,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1939,
-    "tokenCount": 399,
-    "hardcodedValueCount": 284,
+    "componentCount": 1940,
+    "tokenCount": 412,
+    "hardcodedValueCount": 283,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 284,
+    "totalDriftCount": 283,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -72,14 +72,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 277 hardcoded values left to tokenize. apps/activitypub/src/views/inbox/components/customizer.tsx has the most (4)",
+    "Nearly there — just 276 hardcoded values left to tokenize. apps/activitypub/src/views/inbox/components/customizer.tsx has the most (4)",
     "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 29,
-      "action": "Replace the hardcoded values in 273 of the 277 findings with tokens or scale steps"
+      "points": 28,
+      "action": "Replace the hardcoded values in 272 of the 276 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -134,13 +134,13 @@
     ]
   },
   "driftSummary": {
-    "total": 284,
+    "total": 283,
     "critical": 0,
     "warning": 52,
-    "info": 232
+    "info": 231
   },
   "driftByType": {
-    "hardcoded-value": 284
+    "hardcoded-value": 283
   },
   "topColors": [
     {
@@ -342,5 +342,5 @@
       ]
     }
   ],
-  "scanSeconds": 46
+  "scanSeconds": 49
 }

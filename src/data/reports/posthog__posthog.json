@@ -3,12 +3,12 @@
   "owner": "posthog",
   "name": "posthog",
   "description": ":hedgehog: PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.",
-  "stars": 40631,
+  "stars": 40659,
   "homepage": "https://posthog.com",
   "language": "Python",
   "defaultBranch": "master",
-  "commit": "93ebb3f7c194c1c3eafe6f151a1e23e0d5173f33",
-  "generatedAt": "2026-11-04T15:04:27.338Z",
+  "commit": "887d0fb45c4edc6b4a830a4d64a738d12441a998",
+  "generatedAt": "2026-11-05T15:11:44.510Z",
   "cliVersion": "0.8.12",
   "score": 79,
   "tier": "Good",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 5594,
-    "tokenCount": 185,
-    "hardcodedValueCount": 356,
+    "componentCount": 5649,
+    "tokenCount": 393,
+    "hardcodedValueCount": 357,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 2,
@@ -41,19 +41,19 @@
     "colorContrastCount": 2,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 364,
+    "totalDriftCount": 365,
     "unusedComponentCount": 0,
-    "repeatedPatternCount": 3,
+    "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
-    "deprecatedPatternCount": 3,
+    "deprecatedPatternCount": 4,
     "orphanedTokenCount": 0,
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 2,
     "vendoredDriftCount": 0,
-    "notedCount": 83,
+    "notedCount": 82,
     "topHardcodedColor": {
       "value": "#fff",
       "count": 8
@@ -71,27 +71,27 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 356 hardcoded values left to tokenize. frontend/src/lib/KeaDevTools.tsx has the most (6)",
+    "Nearly there — just 357 hardcoded values left to tokenize. frontend/src/lib/KeaDevTools.tsx has the most (6)",
     "2 color contrast issues — fix immediately",
-    "3 deprecated patterns — migrate to current API"
+    "4 deprecated patterns — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 13,
-      "action": "Replace the hardcoded values in 343 of the 356 findings with tokens or scale steps, and remove or reuse 3 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 343 of the 357 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
       "points": 8,
-      "action": "Fix 2 colour contrast failures, migrate 3 deprecated patterns"
+      "action": "Fix 2 colour contrast failures, migrate 4 deprecated patterns"
     }
   ],
   "noted": {
-    "count": 82,
+    "count": 81,
     "byKind": {
       "optical-nudge": 63,
-      "explained": 17,
+      "explained": 16,
       "known-debt": 2
     },
     "samples": [
@@ -142,13 +142,13 @@
   "driftSummary": {
     "total": 357,
     "critical": 0,
-    "warning": 171,
-    "info": 186
+    "warning": 247,
+    "info": 110
   },
   "driftByType": {
-    "hardcoded-value": 351,
+    "hardcoded-value": 352,
     "deprecated-pattern": 3,
-    "repeated-pattern": 3
+    "repeated-pattern": 2
   },
   "topColors": [
     {
@@ -187,7 +187,7 @@
   "topSpacing": [
     {
       "value": "0.5rem",
-      "count": 271
+      "count": 270
     },
     {
       "value": "0.25rem",
@@ -345,5 +345,5 @@
       ]
     }
   ],
-  "scanSeconds": 213
+  "scanSeconds": 219
 }
