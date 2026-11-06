@@ -3,12 +3,12 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source agent evals & observability: Trace, evaluate, and improve LLM applications with one open platform.",
-  "stars": 37054,
+  "stars": 37099,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "30032da20422b6cb64cea3329ad095eaf719a667",
-  "generatedAt": "2026-11-05T15:13:18.904Z",
+  "commit": "2335676165d8f4f66ae276f7f187b44e43b26277",
+  "generatedAt": "2026-11-06T14:50:25.277Z",
   "cliVersion": "0.8.12",
   "score": 92,
   "tier": "Great",
@@ -31,8 +31,8 @@
     }
   },
   "metrics": {
-    "componentCount": 2428,
-    "tokenCount": 333,
+    "componentCount": 2436,
+    "tokenCount": 351,
     "hardcodedValueCount": 77,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
@@ -204,11 +204,11 @@
       "count": 4
     },
     {
-      "file": "web/src/features/events/components/outlier-strip/OutlierBarStrip.tsx",
+      "file": "web/src/components/design-system/QueryInput/QueryInput.tsx",
       "count": 4
     },
     {
-      "file": "web/src/features/search-bar/components/AutocompleteListbox.tsx",
+      "file": "web/src/features/events/components/outlier-strip/OutlierBarStrip.tsx",
       "count": 4
     }
   ],
@@ -306,5 +306,5 @@
       ]
     }
   ],
-  "scanSeconds": 91
+  "scanSeconds": 90
 }

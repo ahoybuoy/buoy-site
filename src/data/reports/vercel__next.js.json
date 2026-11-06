@@ -3,12 +3,12 @@
   "owner": "vercel",
   "name": "next.js",
   "description": "The React Framework",
-  "stars": 143343,
+  "stars": 143365,
   "homepage": "https://nextjs.org",
   "language": "JavaScript",
   "defaultBranch": "canary",
-  "commit": "d768085563d520882e200a244a90e068f71a6571",
-  "generatedAt": "2026-11-05T15:16:34.238Z",
+  "commit": "13ac36ea9451f35c5d39306ce6902d70dc3c93d9",
+  "generatedAt": "2026-11-06T14:53:40.322Z",
   "cliVersion": "0.8.12",
   "score": 89,
   "tier": "Great",
@@ -31,8 +31,8 @@
     }
   },
   "metrics": {
-    "componentCount": 369,
-    "tokenCount": 300,
+    "componentCount": 374,
+    "tokenCount": 301,
     "hardcodedValueCount": 18,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 1,
-    "notedCount": 4,
+    "notedCount": 5,
     "worstFile": {
       "path": "packages/next/src/client/legacy/image.tsx",
       "issueCount": 1
@@ -88,9 +88,9 @@
     }
   ],
   "noted": {
-    "count": 4,
+    "count": 5,
     "byKind": {
-      "optical-nudge": 2,
+      "optical-nudge": 3,
       "known-debt": 1,
       "explained": 1
     },
@@ -122,6 +122,13 @@
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "margin-left: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/next/src/next-devtools/dev-overlay/components/request-insights/request-insights-panel.css",
+        "line": 347,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-top: 2px is a 2-3px optical adjustment"
       }
     ]
   },
@@ -172,7 +179,7 @@
   "topSpacing": [
     {
       "value": "8px",
-      "count": 23
+      "count": 24
     },
     {
       "value": "6px",
@@ -180,7 +187,7 @@
     },
     {
       "value": "4px",
-      "count": 12
+      "count": 13
     },
     {
       "value": "12px",
@@ -206,7 +213,7 @@
   "worstFiles": [
     {
       "file": "packages/next/src/next-devtools/dev-overlay/components/request-insights/request-insights-panel.css",
-      "count": 45
+      "count": 52
     },
     {
       "file": "packages/next/src/next-devtools/dev-overlay/components/instant-navs/instant-navs-panel.css",
@@ -337,5 +344,5 @@
       ]
     }
   ],
-  "scanSeconds": 131
+  "scanSeconds": 132
 }
