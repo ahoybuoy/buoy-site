@@ -23,3 +23,10 @@ id = "50982c09944e4efc8182957e708da003"
 [[analytics_engine_datasets]]
 binding = "ANALYTICS"
 dataset = "buoy_events"
+
+# Buoy's email list lives in the platform database (table email_list,
+# buoy-cloud/migrations/0048_email_list.sql).
+[[d1_databases]]
+binding = "DB"
+database_name = "buoy_platform"
+database_id = "af1e1cd5-6300-4f9f-9d3b-0126a49a972b"
