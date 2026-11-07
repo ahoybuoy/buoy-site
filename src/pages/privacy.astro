@@ -79,14 +79,9 @@ const subprocessors = [
     data: 'Billing contact and payment details. Stripe holds card data; we do not.',
   },
   {
-    name: 'Loops',
-    purpose: 'Website download and update emails',
-    data: 'Email address and the download or list you signed up for',
-  },
-  {
     name: 'Mailgun',
-    purpose: 'Delivers support form messages to us',
-    data: 'Name, email address and message',
+    purpose: 'Sends download and update emails, and delivers support form messages to us',
+    data: 'Email address, the download or list you signed up for; for support, your name and message',
   },
 ]
 ---
@@ -192,7 +187,7 @@ const subprocessors = [
             <li><strong class="text-light">Page views:</strong> Cloudflare Web Analytics counts visits, referrers and browsers without cookies.</li>
             <li><strong class="text-light">Events:</strong> a few actions, such as form sign-ups, are recorded in Cloudflare Analytics Engine with an anonymous visitor ID cookie (<code>buoy_vid</code>, one year). Fields that look like emails or tokens are dropped.</li>
             <li><strong class="text-light">Repository scanner:</strong> when you scan a public repository at <a href="/scan" class="text-buoy hover:underline">/scan</a>, we clone it on Cloudflare, publish the report, and use your IP address for rate limiting.</li>
-            <li><strong class="text-light">Forms:</strong> download and update sign-ups send your email address to Loops. The support form emails your name, address and message to us through Mailgun.</li>
+            <li><strong class="text-light">Forms:</strong> download and update sign-ups are stored by Buoy (on Cloudflare) along with what you asked for, and the emails go out through Mailgun. Every email has an unsubscribe link. The support form emails your name, address and message to us through Mailgun.</li>
             <li><strong class="text-light">Your browser:</strong> your theme choice and a page-layout test variant are kept in local storage.</li>
           </ul>
         </section>
