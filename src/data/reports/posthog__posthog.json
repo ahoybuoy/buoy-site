@@ -3,13 +3,13 @@
   "owner": "posthog",
   "name": "posthog",
   "description": ":hedgehog: PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.",
-  "stars": 40673,
+  "stars": 40688,
   "homepage": "https://posthog.com",
   "language": "Python",
   "defaultBranch": "master",
-  "commit": "83d62395d1e6b65e12daa585dd3d13199a9eaf14",
-  "generatedAt": "2026-11-06T14:48:52.135Z",
-  "cliVersion": "0.8.12",
+  "commit": "515434ffe820137885b0473f0c2297fc2bece831",
+  "generatedAt": "2026-11-07T13:47:40.650Z",
+  "cliVersion": "0.8.13",
   "score": 79,
   "tier": "Good",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 5605,
+    "componentCount": 5620,
     "tokenCount": 395,
-    "hardcodedValueCount": 362,
+    "hardcodedValueCount": 364,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 2,
@@ -41,7 +41,7 @@
     "colorContrastCount": 2,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 370,
+    "totalDriftCount": 372,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -71,7 +71,7 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 362 hardcoded values left to tokenize. frontend/src/lib/KeaDevTools.tsx has the most (6)",
+    "Nearly there — just 364 hardcoded values left to tokenize. frontend/src/lib/KeaDevTools.tsx has the most (6)",
     "2 color contrast issues — fix immediately",
     "4 deprecated patterns — migrate to current API"
   ],
@@ -79,7 +79,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 13,
-      "action": "Replace the hardcoded values in 348 of the 362 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 350 of the 364 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -140,13 +140,13 @@
     ]
   },
   "driftSummary": {
-    "total": 362,
+    "total": 364,
     "critical": 0,
     "warning": 251,
-    "info": 111
+    "info": 113
   },
   "driftByType": {
-    "hardcoded-value": 357,
+    "hardcoded-value": 359,
     "deprecated-pattern": 3,
     "repeated-pattern": 2
   },
@@ -207,7 +207,7 @@
     },
     {
       "value": "8px",
-      "count": 40
+      "count": 39
     },
     {
       "value": "4px",
@@ -229,7 +229,7 @@
     },
     {
       "file": "frontend/src/scenes/project-homepage/today/Today.scss",
-      "count": 79
+      "count": 76
     },
     {
       "file": "products/tasks/frontend/infrastructure/infrastructureAdmin.css",
@@ -345,5 +345,5 @@
       ]
     }
   ],
-  "scanSeconds": 223
+  "scanSeconds": 266
 }
