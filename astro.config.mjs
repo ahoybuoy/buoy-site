@@ -9,6 +9,9 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://buoy.design',
   adapter: cloudflare(),
+  // Replaced by src/middleware.ts, which applies the same cross-site form
+  // check but lets one-click unsubscribe (POST /api/unsubscribe) through.
+  security: { checkOrigin: false },
   // /pitch was taken down on 2026-10-13; old links land on the homepage.
   redirects: {
     '/pitch': { status: 301, destination: '/' },
