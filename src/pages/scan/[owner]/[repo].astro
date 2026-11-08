@@ -73,9 +73,9 @@ const description = report
       {(report as Report & { hasMap?: boolean }).hasMap && (
         <section class="pb-8 bg-navy-dark">
           <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <a href={`/scan/${report.repo}/map`} class="block bg-navy/50 border border-navy-light/30 hover:border-buoy rounded-2xl p-6">
-              <h2 class="text-xl font-bold text-light">See how the UI is wired →</h2>
-              <p class="text-slate mt-2">Every token, component and page in {report.repo}, and what each one feeds. Click any piece to see its reach.</p>
+            <a href={`/scan/${report.repo}/v/system-map`} class="block bg-navy/50 border border-navy-light/30 hover:border-buoy rounded-2xl p-6">
+              <h2 class="text-xl font-bold text-light">See inside {report.repo} →</h2>
+              <p class="text-slate mt-2">Every token, component and page, drawn four ways: how they connect, the colour palette against hardcoded colours, every component as a brick, and where drift lives.</p>
             </a>
           </div>
         </section>
