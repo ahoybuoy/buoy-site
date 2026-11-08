@@ -70,6 +70,16 @@ const description = report
         </div>
       )}
       <ReportView report={report} backHref="/scan" backLabel="← Scan another repository" />
+      {(report as Report & { hasMap?: boolean }).hasMap && (
+        <section class="pb-8 bg-navy-dark">
+          <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <a href={`/scan/${report.repo}/map`} class="block bg-navy/50 border border-navy-light/30 hover:border-buoy rounded-2xl p-6">
+              <h2 class="text-xl font-bold text-light">See how the UI is wired →</h2>
+              <p class="text-slate mt-2">Every token, component and page in {report.repo}, and what each one feeds. Click any piece to see its reach.</p>
+            </a>
+          </div>
+        </section>
+      )}
       <section class="pb-16 bg-navy-dark">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="bg-navy/50 border border-navy-light/30 rounded-2xl p-6">
