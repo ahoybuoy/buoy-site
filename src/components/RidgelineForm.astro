@@ -1,0 +1,52 @@
+---
+/**
+ * "Make a ridgeline" form: posts to the public API, then goes to the render's
+ * page, which shows progress and then the ridgeline.
+ */
+interface Props { id?: string; value?: string; autofocus?: boolean }
+const { id = 'ridge', value = '', autofocus = false } = Astro.props
+---
+
+<form id={`${id}-form`} class="flex flex-col gap-3" data-ridge-form novalidate>
+  <div class="flex flex-col sm:flex-row gap-3">
+    <label for={`${id}-url`} class="sr-only">Website address</label>
+    <input id={`${id}-url`} name="url" type="text" required autocomplete="off" spellcheck="false" autofocus={autofocus} value={value}
+      placeholder="stripe.com"
+      class="flex-1 rounded-lg bg-navy-dark border border-navy-light/40 px-4 py-3 text-light placeholder:text-slate/60 focus:outline-none focus:border-buoy" />
+    <button type="submit" class="rounded-lg bg-buoy px-6 py-3 font-semibold text-navy-dark hover:opacity-90 disabled:opacity-60">Make ridgeline</button>
+  </div>
+  <label class="flex items-center gap-2 text-sm text-slate">
+    <input type="checkbox" name="private" id={`${id}-private`} class="accent-buoy" />
+    Keep it private (only people with the link can see it)
+  </label>
+  <p class="text-sm text-red-400 hidden" role="alert" data-ridge-error></p>
+</form>
+
+<script>
+  for (const form of document.querySelectorAll<HTMLFormElement>('[data-ridge-form]')) {
+    form.addEventListener('submit', async (ev) => {
+      ev.preventDefault()
+      const input = form.querySelector<HTMLInputElement>('input[name="url"]')!
+      const priv = form.querySelector<HTMLInputElement>('input[name="private"]')!.checked
+      const error = form.querySelector<HTMLElement>('[data-ridge-error]')!
+      const button = form.querySelector<HTMLButtonElement>('button[type="submit"]')!
+      const show = (msg: string) => { error.textContent = msg; error.classList.remove('hidden') }
+      error.classList.add('hidden')
+      if (!input.value.trim()) return show('Type a website address, like stripe.com.')
+      button.disabled = true
+      button.textContent = 'Starting…'
+      try {
+        const res = await fetch('https://api.buoy.design/public/ridgeline', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url: input.value, private: priv }),
+        })
+        const body = await res.json().catch(() => ({}))
+        if (!res.ok || !body.id) throw new Error(body.error || 'Could not start the render. Try again.')
+        location.href = `/ridgeline/p/${body.id}`
+      } catch (err) {
+        show((err as Error).message)
+        button.disabled = false
+        button.textContent = 'Make ridgeline'
+      }
+    })
+  }
+</script>

@@ -1,0 +1,91 @@
+---
+/**
+ * Two sites' ridgelines side by side: /ridgeline/compare?a=stripe.com&b=linear.app
+ * Reads the latest public ridgeline of each; a site without one gets a link to make it.
+ */
+import Layout from '../../layouts/Layout.astro'
+import Nav from '../../components/Nav.astro'
+import Footer from '../../components/Footer.astro'
+---
+
+<Layout title="Compare two sites as ridgelines | Buoy" description="Two websites side by side as ridgelines: rhythm, density, and how many button looks each one uses.">
+  <Nav />
+  <section class="pt-28 pb-20 bg-navy-dark">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <a href="/ridgeline" class="text-sm text-slate hover:text-light">← All ridgelines</a>
+      <h1 class="text-3xl sm:text-4xl font-bold text-light mt-3">Compare two sites</h1>
+      <form id="cmp" class="flex flex-col sm:flex-row gap-3 mt-6">
+        <label for="cmp-a" class="sr-only">First site</label>
+        <input id="cmp-a" name="a" placeholder="stripe.com" autocomplete="off" class="flex-1 rounded-lg bg-navy-dark border border-navy-light/40 px-4 py-3 text-light placeholder:text-slate/60 focus:outline-none focus:border-buoy" />
+        <label for="cmp-b" class="sr-only">Second site</label>
+        <input id="cmp-b" name="b" placeholder="linear.app" autocomplete="off" class="flex-1 rounded-lg bg-navy-dark border border-navy-light/40 px-4 py-3 text-light placeholder:text-slate/60 focus:outline-none focus:border-buoy" />
+        <button class="rounded-lg bg-buoy px-6 py-3 font-semibold text-navy-dark hover:opacity-90">Compare</button>
+      </form>
+      <div id="cmp-out" class="grid gap-4 mt-8" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))"></div>
+    </div>
+  </section>
+  <Footer />
+</Layout>
+
+<script>
+  import { API, draw, prepare, type RidgelineData } from '../../scripts/ridgeline'
+
+  const params = new URLSearchParams(location.search)
+  const form = document.getElementById('cmp') as HTMLFormElement
+  const a = form.querySelector<HTMLInputElement>('#cmp-a')!
+  const b = form.querySelector<HTMLInputElement>('#cmp-b')!
+  a.value = params.get('a') ?? ''
+  b.value = params.get('b') ?? ''
+  const out = document.getElementById('cmp-out')!
+
+  async function card(site: string): Promise<HTMLElement> {
+    const box = document.createElement('figure')
+    box.className = 'rounded-2xl border border-navy-light/30 p-3 m-0'
+    box.style.background = '#050506'
+    const cap = document.createElement('figcaption')
+    cap.className = 'flex justify-between gap-2 text-sm text-slate pt-3'
+    try {
+      const res = await fetch(`${API}/public/ridgeline?url=${encodeURIComponent(site)}`)
+      if (!res.ok) throw new Error('none')
+      const v = await res.json() as { result: RidgelineData }
+      const d = v.result
+      const cv = document.createElement('canvas')
+      cv.width = 700
+      cv.height = 840
+      cv.className = 'w-full h-auto'
+      draw(cv, d, prepare(d, 80), { components: true })
+      const link = document.createElement('a')
+      link.href = `/ridgeline/${d.host}`
+      link.className = 'text-light hover:underline'
+      link.textContent = d.host
+      const n = document.createElement('span')
+      n.textContent = `${d.looks} button looks · ${d.rare} used once`
+      cap.append(link, n)
+      box.append(cv, cap)
+    } catch {
+      const p = document.createElement('p')
+      p.className = 'text-slate text-sm p-6'
+      p.append(`${site} has no ridgeline yet. `)
+      const make = document.createElement('a')
+      make.href = `/ridgeline/${site.replace(/^https?:\/\//, '').replace(/\/$/, '')}`
+      make.className = 'text-buoy hover:underline'
+      make.textContent = 'Make one'
+      p.append(make)
+      box.append(p)
+    }
+    return box
+  }
+
+  async function run() {
+    const sites = [a.value.trim(), b.value.trim()].filter(Boolean)
+    if (sites.length === 0) return
+    out.replaceChildren(...await Promise.all(sites.map(card)))
+  }
+  form.addEventListener('submit', (ev) => {
+    ev.preventDefault()
+    const q = new URLSearchParams({ a: a.value.trim(), b: b.value.trim() })
+    history.replaceState(null, '', `?${q}`)
+    run()
+  })
+  run()
+</script>
