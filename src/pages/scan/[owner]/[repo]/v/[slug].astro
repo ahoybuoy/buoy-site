@@ -1,0 +1,109 @@
+---
+/**
+ * buoy.design/scan/<owner>/<repo>/v/<visualizer>: one Buoy visualizer drawing
+ * a public repository's latest snapshot. Shareable; only public scans (repos
+ * verified public) have snapshots here.
+ */
+import Layout from '../../../../../layouts/Layout.astro'
+import Nav from '../../../../../components/Nav.astro'
+import Footer from '../../../../../components/Footer.astro'
+
+export const prerender = false
+
+const API = 'https://api.buoy.design'
+const { owner = '', repo = '', slug = '' } = Astro.params
+const valid = /^[A-Za-z0-9-]+$/.test(owner) && /^[A-Za-z0-9_.-]+$/.test(repo) && /^[a-z0-9-]+$/.test(slug)
+const fullName = `${owner}/${repo}`
+
+type Viz = { slug: string; name: string; description: string; url: string }
+let list: Viz[] = []
+try {
+  const res = await fetch(`${API}/viz`)
+  if (res.ok) list = ((await res.json()) as { visualizers: Viz[] }).visualizers
+} catch { /* rendered below as unavailable */ }
+const current = list.find((v) => v.slug === slug)
+if (!valid || (list.length && !current)) Astro.response.status = 404
+Astro.response.headers.set('Cache-Control', 'public, max-age=300')
+
+const title = current ? `${fullName}: ${current.name} | Buoy` : `${fullName} | Buoy`
+const description = current ? `${current.name} for ${fullName}. ${current.description}` : 'See inside a repository’s UI code.'
+---
+
+<Layout title={title} description={description}>
+  <Nav />
+  <section class="pt-28 pb-16 bg-navy-dark min-h-[60vh]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <a href={`/scan/${fullName}`} class="text-sm text-slate hover:text-buoy">← Design health report</a>
+      <h1 class="text-3xl sm:text-4xl font-bold text-light mt-3">See inside {fullName}</h1>
+      <p class="text-slate mt-2 max-w-3xl">Buoy maps every token, component and page in the code. Each view draws that map a different way. Click anything to dig in.</p>
+
+      {list.length > 0 && (
+        <nav class="grid gap-3 mt-6" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))" aria-label="Visualizers">
+          {list.map((v) => (
+            <a href={`/scan/${fullName}/v/${v.slug}`} aria-current={v.slug === slug ? 'page' : undefined}
+              class={`block rounded-xl border p-4 ${v.slug === slug ? 'border-buoy' : 'border-navy-light/30 hover:border-navy-light'}`}>
+              <span class="block font-semibold text-light">{v.name}</span>
+              <span class="block text-sm text-slate mt-1">{v.description}</span>
+            </a>
+          ))}
+        </nav>
+      )}
+
+      {!valid || (list.length > 0 && !current) ? (
+        <p class="text-slate mt-8">There is no visualizer at this address. Pick one above.</p>
+      ) : list.length === 0 ? (
+        <p class="text-slate mt-8">Visualizers are unavailable right now. Try again in a minute.</p>
+      ) : (
+        <div class="mt-6" data-viz-host data-repo={fullName} data-src={current!.url} data-name={current!.name}>
+          <p class="text-slate" data-viz-status>Loading {fullName}…</p>
+          <div class="rounded-2xl overflow-hidden border border-navy-light/30" data-viz-frame hidden></div>
+        </div>
+      )}
+
+      <p class="text-slate text-sm mt-6">
+        Map your own repo: <code class="text-light">npx @buoy-design/cli show snapshot</code>, or <a href={`/scan`} class="text-buoy hover:underline">scan a public repository</a>. Install the <a href="/install?src=visualize" class="text-buoy hover:underline">Buoy GitHub App</a> to see these for private repos and catch drift on every pull request.
+      </p>
+    </div>
+  </section>
+  <Footer />
+</Layout>
+
+<script>
+  const host = document.querySelector<HTMLElement>('[data-viz-host]')
+  if (host) {
+    const repo = host.dataset.repo!
+    const status = host.querySelector<HTMLElement>('[data-viz-status]')!
+    const holder = host.querySelector<HTMLElement>('[data-viz-frame]')!
+    const showStatus = (html: string) => { status.innerHTML = html; status.hidden = false }
+    fetch(`https://api.buoy.design/public/snapshots/${repo}`).then(async (res) => {
+      if (res.status === 404) return showStatus(`${repo} has no map yet. <a class="text-buoy hover:underline" href="/scan/${repo}">Scan it</a>; maps come with each scan.`)
+      if (!res.ok) return showStatus('The map is unavailable right now. Try again in a minute.')
+      const found = await res.json() as { repo: string; commit: string | null; snapshot: { components?: Array<{ id: string; path: string; line?: number }>; tokens?: Array<{ id: string; path?: string }> } }
+      const frame = document.createElement('iframe')
+      frame.src = host.dataset.src!
+      frame.title = `${host.dataset.name} for ${repo}`
+      frame.setAttribute('sandbox', 'allow-scripts')
+      frame.referrerPolicy = 'no-referrer'
+      frame.style.cssText = 'display:block;width:100%;height:640px;border:0'
+      window.addEventListener('message', (e) => {
+        if (e.source !== frame.contentWindow) return
+        const m = e.data as { type?: string; height?: number; id?: string }
+        if (m?.type === 'buoy:ready') frame.contentWindow!.postMessage({ type: 'buoy:snapshot', snapshot: found.snapshot, theme: 'dark', repo: found.repo }, '*')
+        if (m?.type === 'buoy:resize' && typeof m.height === 'number') frame.style.height = `${Math.max(320, Math.min(6000, Math.ceil(m.height)))}px`
+        if (m?.type === 'buoy:open' && typeof m.id === 'string') {
+          const id = m.id
+          let path: string | undefined, line: number | undefined
+          if (id.startsWith('c:')) { const c = found.snapshot.components?.find((x) => x.id === id); path = c?.path ?? id.slice(2, id.lastIndexOf(':')); line = c?.line }
+          else if (id.startsWith('t:')) path = found.snapshot.tokens?.find((x) => x.id === id)?.path
+          else path = id
+          if (!path || path.includes('..')) return
+          const ref = found.commit && /^[0-9a-f]{7,40}$/i.test(found.commit) ? found.commit : 'HEAD'
+          window.open(`https://github.com/${found.repo}/blob/${ref}/${path.split('/').map(encodeURIComponent).join('/')}${line ? `#L${line}` : ''}`, '_blank', 'noopener,noreferrer')
+        }
+      })
+      status.hidden = true
+      holder.hidden = false
+      holder.append(frame)
+    }).catch(() => showStatus('The map is unavailable right now. Try again in a minute.'))
+  }
+</script>
