@@ -1,0 +1,76 @@
+---
+/**
+ * buoy.design/scan/<owner>/<repo>/map: how one public repository's UI is
+ * wired, from its latest public scan. Tokens → primitives → composites →
+ * pages; click anything to see what it feeds and what it is built from.
+ */
+import Layout from '../../../../layouts/Layout.astro'
+import Nav from '../../../../components/Nav.astro'
+import Footer from '../../../../components/Footer.astro'
+import SystemMapView from '../../../../components/SystemMapView.astro'
+import type { PackedMap } from '../../../../scripts/system-map'
+
+export const prerender = false
+
+const API = 'https://api.buoy.design'
+const { owner = '', repo = '' } = Astro.params
+const valid = /^[A-Za-z0-9-]+$/.test(owner) && /^[A-Za-z0-9_.-]+$/.test(repo)
+const fullName = `${owner}/${repo}`
+
+type Found = { repo: string; commit: string | null; generatedAt: string | null; map: PackedMap }
+let found: Found | null = null
+let apiDown = false
+if (valid) {
+  try {
+    const res = await fetch(`${API}/public/reports/${owner}/${repo}/map`, { headers: { Accept: 'application/json' } })
+    if (res.ok) found = await res.json() as Found
+    else if (res.status !== 404) apiDown = true
+  } catch {
+    apiDown = true
+  }
+}
+if (!valid || (!found && !apiDown)) Astro.response.status = 404
+Astro.response.headers.set('Cache-Control', found ? 'public, max-age=300' : 'no-store')
+
+const name = found?.repo ?? fullName
+const title = found ? `${name}: how the UI is wired | Buoy` : `${fullName} system map | Buoy`
+const description = found
+  ? `${name}: ${found.map.stats.tokens} tokens, ${found.map.stats.components} components and ${found.map.stats.pages} pages, and how they connect.`
+  : 'See how a repository’s tokens, components and pages connect.'
+const when = found?.generatedAt ? new Date(found.generatedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : null
+---
+
+<Layout title={title} description={description} noindex>
+  <Nav />
+  <section class="pt-28 pb-16 bg-navy-dark min-h-[60vh]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <a href={`/scan/${fullName}`} class="text-sm text-slate hover:text-buoy">← Design health report</a>
+      {found ? (
+        <>
+          <h1 class="text-3xl sm:text-4xl font-bold text-light mt-3">How {name}’s UI is wired</h1>
+          <p class="text-slate mt-2 mb-6 max-w-3xl">
+            Every token, component and page Buoy found, left to right in the order they build on each other. Click anything to see what it feeds and what it is built from. Bigger dots reach more pages.
+            {when && <span> Scanned {when}{found.commit ? ` at ${found.commit.slice(0, 7)}` : ''}.</span>}
+          </p>
+          <SystemMapView map={found.map} />
+          <p class="text-slate text-sm mt-6">
+            Run it on any repo: <code class="text-light">npx @buoy-design/cli show map</code>. Install the <a href="/install?src=map" class="text-buoy hover:underline">Buoy GitHub App</a> to get drift caught on every pull request.
+          </p>
+        </>
+      ) : apiDown ? (
+        <>
+          <h1 class="text-3xl font-bold text-light mt-3">The map is unavailable right now</h1>
+          <p class="text-slate mt-2">Try again in a minute.</p>
+        </>
+      ) : (
+        <>
+          <h1 class="text-3xl font-bold text-light mt-3">{valid ? `${fullName} has no map yet` : 'That is not a GitHub repository name'}</h1>
+          <p class="text-slate mt-2 max-w-2xl">
+            {valid ? <>Maps come with each scan. <a href={`/scan/${fullName}`} class="text-buoy hover:underline">Scan {fullName}</a>; if it was scanned before maps existed, the next scan (after a day) adds one.</> : 'Use an address like /scan/owner/repo/map.'}
+          </p>
+        </>
+      )}
+    </div>
+  </section>
+  <Footer />
+</Layout>
