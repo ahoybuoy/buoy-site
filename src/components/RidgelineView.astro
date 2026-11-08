@@ -1,0 +1,75 @@
+---
+/**
+ * The interactive ridgeline of one page: canvas, toggles, stats, and the slice
+ * of the real page under the cursor. Data is embedded as JSON and mounted by
+ * src/scripts/ridgeline.ts.
+ */
+interface Props { data: unknown; shareUrl?: string; isPrivate?: boolean }
+const { data, shareUrl, isPrivate = false } = Astro.props
+const json = JSON.stringify(data).replace(/</g, '\\u003c')
+---
+
+<div class="ridge" data-ridge-root>
+  <script type="application/json" data-ridge-json set:html={json} />
+  <div class="ridge-bar">
+    <button type="button" class="ridge-chip" data-ridge-toggle="components" aria-pressed="true">Components</button>
+    <button type="button" class="ridge-chip" data-ridge-toggle="columns" aria-pressed="false">Columns</button>
+    {shareUrl && (
+      <>
+        <button type="button" class="ridge-chip ridge-share" data-ridge-copy={shareUrl}>Copy link</button>
+        {!isPrivate && <a class="ridge-chip" href={`https://x.com/intent/post?text=${encodeURIComponent('My site as a ridgeline')}&url=${encodeURIComponent(shareUrl)}`} target="_blank" rel="noopener">Post</a>}
+      </>
+    )}
+    <span class="ridge-copied" data-ridge-copied hidden>Link copied</span>
+  </div>
+  <div class="ridge-stage">
+    <canvas data-ridge-canvas width="1000" height="1200" aria-label="Ridgeline of the page: one line per band of the page, height is how much is happening there"></canvas>
+    <aside class="ridge-side">
+      <div class="ridge-stats" data-ridge-stats></div>
+      <div class="ridge-key">
+        <span><i style="background:#43b0f1"></i>button</span>
+        <span><i style="background:#ff6b57"></i>button look used once</span>
+        <span><i style="background:#2fbf8f"></i>input</span>
+        <span><i style="background:#e8b04a"></i>heading</span>
+      </div>
+      <div class="ridge-slice" data-ridge-slice role="img" aria-label="The slice of the real page under the cursor"></div>
+      <p class="ridge-info" data-ridge-info></p>
+    </aside>
+  </div>
+</div>
+
+<style>
+  .ridge { background: #050506; border: 1px solid #25272d; border-radius: 1rem; padding: 1rem; color: #f1efe8; }
+  .ridge-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-bottom: 0.75rem; }
+  .ridge-chip { font: 500 0.7rem ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0.05em; text-transform: uppercase; background: transparent; color: #8c9099; border: 1px solid #25272d; border-radius: 99px; padding: 0.4rem 0.75rem; cursor: pointer; text-decoration: none; }
+  .ridge-chip[aria-pressed="true"] { color: #050506; background: #f1efe8; border-color: #f1efe8; }
+  .ridge-chip:focus-visible { outline: 2px solid #43b0f1; outline-offset: 2px; }
+  .ridge-copied { font-size: 0.75rem; color: #2fbf8f; }
+  .ridge-stage { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 320px); gap: 1rem; }
+  @media (max-width: 760px) { .ridge-stage { grid-template-columns: minmax(0, 1fr); } }
+  canvas { width: 100%; height: auto; aspect-ratio: 5 / 6; display: block; cursor: crosshair; touch-action: none; }
+  .ridge-side { display: flex; flex-direction: column; gap: 0.75rem; min-width: 0; }
+  .ridge-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; }
+  :global(.ridge-stat) { background: #0e0f12; border: 1px solid #25272d; border-radius: 0.6rem; padding: 0.5rem 0.65rem; }
+  :global(.ridge-stat-v) { font-weight: 700; font-size: 1.5rem; font-variant-numeric: tabular-nums; }
+  :global(.ridge-stat-l) { font-size: 0.65rem; letter-spacing: 0.05em; text-transform: uppercase; color: #8c9099; }
+  .ridge-key { display: flex; flex-wrap: wrap; gap: 0.6rem; font-size: 0.7rem; color: #8c9099; }
+  .ridge-key i { display: inline-block; width: 0.9rem; height: 3px; border-radius: 2px; vertical-align: middle; margin-right: 0.3rem; }
+  .ridge-slice { width: 100%; height: 6rem; border-radius: 0.5rem; border: 1px solid #25272d; background-color: #111; background-repeat: no-repeat; }
+  .ridge-info { font-size: 0.8rem; line-height: 1.55; color: #8c9099; margin: 0; }
+  .ridge-info :global(strong) { color: #f1efe8; font-weight: 500; }
+</style>
+
+<script>
+  import { mount, type RidgelineData } from '../scripts/ridgeline'
+  for (const root of document.querySelectorAll<HTMLElement>('[data-ridge-root]')) {
+    const raw = root.querySelector('[data-ridge-json]')?.textContent
+    if (raw) mount(root, JSON.parse(raw) as RidgelineData)
+    const copy = root.querySelector<HTMLButtonElement>('[data-ridge-copy]')
+    const done = root.querySelector<HTMLElement>('[data-ridge-copied]')
+    copy?.addEventListener('click', () => {
+      const url = copy.dataset.ridgeCopy ?? location.href
+      navigator.clipboard?.writeText(url).then(() => { if (done) { done.hidden = false; setTimeout(() => (done.hidden = true), 1600) } }).catch(() => prompt('Copy this link', url))
+    })
+  }
+</script>

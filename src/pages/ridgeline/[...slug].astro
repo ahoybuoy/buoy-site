@@ -1,0 +1,133 @@
+---
+/**
+ * One ridgeline, rendered per request.
+ *   /ridgeline/stripe.com            the latest public ridgeline of that page
+ *   /ridgeline/stripe.com/pricing    a deeper page
+ *   /ridgeline/p/<id>                one specific render: progress while it
+ *                                    runs, and the only address of a private one
+ */
+import Layout from '../../layouts/Layout.astro'
+import Nav from '../../components/Nav.astro'
+import Footer from '../../components/Footer.astro'
+import RidgelineView from '../../components/RidgelineView.astro'
+import RidgelineForm from '../../components/RidgelineForm.astro'
+
+export const prerender = false
+
+const API = 'https://api.buoy.design'
+const slug = Astro.params.slug ?? ''
+const byId = slug.startsWith('p/') ? slug.slice(2) : null
+const validId = byId ? /^[0-9a-f-]{36}$/.test(byId) : false
+const pageAddress = byId ? null : slug.replace(/\/+$/, '')
+const validAddress = pageAddress ? /^[a-z0-9.-]+\.[a-z]{2,}(\/[\w\-./%]*)?$/i.test(pageAddress) : false
+
+type View = { id: string; url: string; status: 'queued' | 'running' | 'done' | 'failed' | 'none'; error: string | null; result: any }
+let view: View | null = null
+let apiDown = false
+if ((byId && validId) || (pageAddress && validAddress)) {
+  try {
+    const res = await fetch(byId ? `${API}/public/ridgeline/${byId}` : `${API}/public/ridgeline?url=${encodeURIComponent(pageAddress!)}`, { headers: { Accept: 'application/json' } })
+    if (res.ok) view = await res.json() as View
+    else if (res.status !== 404) apiDown = true
+  } catch {
+    apiDown = true
+  }
+}
+const result = view?.status === 'done' ? view.result : null
+const pending = view?.status === 'queued' || view?.status === 'running'
+const isPrivate = !!byId
+const host = result?.host ?? (pageAddress ? pageAddress.split('/')[0] : '')
+const publicPath = result ? `/ridgeline/${new URL(result.url).hostname}${new URL(result.url).pathname === '/' ? '' : new URL(result.url).pathname}` : null
+const shareUrl = result ? new URL(isPrivate ? Astro.url.pathname : publicPath!, 'https://buoy.design').href : undefined
+if (!view && !apiDown && (byId || pageAddress)) Astro.response.status = 404
+Astro.response.headers.set('Cache-Control', result ? 'public, max-age=300' : 'no-store')
+
+const title = result ? `${result.host} as a ridgeline | Buoy` : host ? `${host} ridgeline | Buoy` : 'Ridgeline | Buoy'
+const description = result
+  ? `${result.host}: ${result.looks} button looks, ${result.rare} used only once. Every band of the page as a ridge.`
+  : 'See any website as a ridgeline: every band of the page as one line, with its components marked.'
+---
+
+<Layout title={title} description={description} noindex={isPrivate || !result}>
+  <Nav />
+  <section class="pt-28 pb-16 bg-navy-dark">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <a href="/ridgeline" class="text-sm text-slate hover:text-light">← All ridgelines</a>
+
+      {result && (
+        <>
+          <h1 class="text-3xl sm:text-4xl font-bold text-light mt-3">{result.host}{new URL(result.url).pathname !== '/' && <span class="text-slate font-normal">{new URL(result.url).pathname}</span>}</h1>
+          <p class="text-slate mt-2 mb-6">
+            {result.looks} button looks, {result.rare} used only once. Rendered {new Date(result.renderedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}{isPrivate ? ' · private link' : ''}.
+            <a class="text-buoy hover:underline" href={`/ridgeline/compare?a=${encodeURIComponent(result.host)}`}>Compare with another site</a>
+          </p>
+          <RidgelineView data={result} shareUrl={shareUrl} isPrivate={isPrivate} />
+          <div class="mt-8 bg-navy/50 border border-navy-light/30 rounded-2xl p-6">
+            <h2 class="text-xl font-bold text-light">Keep your UI this consistent</h2>
+            <p class="text-slate mt-2">
+              The red marks are button looks used only once. Install the <a href="/install?src=ridgeline" class="text-buoy hover:underline">Buoy GitHub App</a> and every pull request is checked against the looks your product already uses, with the exact fix for an agent to apply.
+            </p>
+          </div>
+        </>
+      )}
+
+      {pending && (
+        <div class="mt-6" data-ridge-poll={view!.id}>
+          <h1 class="text-3xl font-bold text-light">Rendering {host}…</h1>
+          <p class="text-slate mt-2">Loading the page, scrolling it, and measuring every band. Usually under a minute; this page updates when it is done.</p>
+          <div class="ridge-wait mt-8" aria-hidden="true"></div>
+        </div>
+      )}
+
+      {view?.status === 'failed' && (
+        <div class="mt-6">
+          <h1 class="text-3xl font-bold text-light">Couldn’t render {host}</h1>
+          <p class="text-slate mt-2">{view.error}</p>
+          <div class="mt-6"><RidgelineForm id="ridge-failed" /></div>
+        </div>
+      )}
+
+      {!view && !apiDown && (
+        <div class="mt-6">
+          <h1 class="text-3xl font-bold text-light">{validAddress ? `${host} has no ridgeline yet` : 'That isn’t a web address'}</h1>
+          <p class="text-slate mt-2">{validAddress ? 'Make the first one. It takes about a minute.' : 'Type an address like stripe.com.'}</p>
+          <div class="mt-6"><RidgelineForm id="ridge-missing" value={validAddress ? pageAddress! : ''} /></div>
+        </div>
+      )}
+
+      {apiDown && (
+        <div class="mt-6">
+          <h1 class="text-3xl font-bold text-light">Ridgelines are unavailable right now</h1>
+          <p class="text-slate mt-2">Try again in a minute.</p>
+        </div>
+      )}
+    </div>
+  </section>
+  <Footer />
+</Layout>
+
+<style>
+  .ridge-wait { height: 14rem; border-radius: 1rem; background: repeating-linear-gradient(180deg, transparent 0 10px, rgba(241, 239, 232, 0.08) 10px 11px); }
+  @media (prefers-reduced-motion: no-preference) {
+    .ridge-wait { animation: ridge-scan 2.4s linear infinite; }
+    @keyframes ridge-scan { from { background-position: 0 0; } to { background-position: 0 44px; } }
+  }
+</style>
+
+<script>
+  const poll = document.querySelector<HTMLElement>('[data-ridge-poll]')
+  if (poll) {
+    const id = poll.dataset.ridgePoll
+    const tick = async () => {
+      try {
+        const res = await fetch(`https://api.buoy.design/public/ridgeline/${id}`, { cache: 'no-store' })
+        const v = await res.json()
+        if (v.status === 'done' || v.status === 'failed') return location.reload()
+      } catch {
+        // keep waiting
+      }
+      setTimeout(tick, 3000)
+    }
+    setTimeout(tick, 3000)
+  }
+</script>

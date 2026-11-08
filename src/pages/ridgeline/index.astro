@@ -1,0 +1,87 @@
+---
+/**
+ * buoy.design/ridgeline: type any website, get its ridgeline. Below the form,
+ * the public wall of everyone's latest ridgelines (private ones never show).
+ */
+import Layout from '../../layouts/Layout.astro'
+import Nav from '../../components/Nav.astro'
+import Footer from '../../components/Footer.astro'
+import RidgelineForm from '../../components/RidgelineForm.astro'
+---
+
+<Layout title="Ridgeline: any website as one picture | Buoy" description="Type any website and see it as a ridgeline: every band of the page as one line, with its buttons, inputs and headings marked. Share it, or compare two sites.">
+  <Nav />
+  <section class="pt-28 pb-10 bg-navy-dark">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
+      <div>
+        <h1 class="text-4xl sm:text-5xl font-bold text-light text-balance">Any website as one picture</h1>
+        <p class="text-slate mt-4 text-lg max-w-xl">
+          Each line is a band of the page, top to bottom. Height is how much is happening there. Buttons, inputs and headings are marked, and button looks used only once show up in red.
+        </p>
+        <div class="mt-8"><RidgelineForm id="ridge-hero" autofocus /></div>
+        <p class="text-sm text-slate mt-4">Public pages only. Public ridgelines appear on the wall below; to remove one, email support@buoy.design.</p>
+      </div>
+      <a href="/ridgeline/linear.app" class="block" aria-label="Example: linear.app">
+        <canvas id="ridge-hero-art" width="900" height="1000" class="w-full h-auto rounded-2xl" style="background:#050506"></canvas>
+      </a>
+    </div>
+  </section>
+
+  <section class="pb-20 bg-navy-dark">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-end justify-between gap-4 mb-5">
+        <h2 class="text-2xl font-bold text-light">The wall</h2>
+        <a href="/ridgeline/compare" class="text-buoy hover:underline text-sm">Compare two sites →</a>
+      </div>
+      <div id="ridge-wall" class="grid gap-4" style="grid-template-columns:repeat(auto-fill,minmax(180px,1fr))">
+        <p class="text-slate text-sm" data-wall-empty>Loading the latest ridgelines…</p>
+      </div>
+    </div>
+  </section>
+  <Footer />
+</Layout>
+
+<script>
+  import { API, drawThumb, draw, prepare, type RidgelineData } from '../../scripts/ridgeline'
+
+  const wall = document.getElementById('ridge-wall')!
+  type Item = { url: string; host: string; title: string; looks: number; rare: number; thumb: { data: string; bands: number; bins: number } | null }
+  fetch(`${API}/public/ridgelines/recent?limit=48`).then((r) => r.json()).then((body: { items: Item[] }) => {
+    const items = body.items.filter((i) => i.thumb)
+    if (items.length === 0) {
+      wall.querySelector('[data-wall-empty]')!.textContent = 'No ridgelines yet. Make the first one above.'
+      return
+    }
+    wall.replaceChildren(...items.map((i) => {
+      const path = new URL(i.url).pathname
+      const a = document.createElement('a')
+      a.href = `/ridgeline/${i.host}${path === '/' ? '' : path}`
+      a.className = 'block rounded-xl border border-navy-light/30 hover:border-buoy p-2'
+      a.style.background = '#050506'
+      const cv = document.createElement('canvas')
+      cv.width = 360
+      cv.height = 420
+      cv.className = 'w-full h-auto'
+      drawThumb(cv, i.host, i.thumb!)
+      const cap = document.createElement('div')
+      cap.className = 'flex justify-between gap-2 text-xs text-slate pt-2 px-1'
+      const name = document.createElement('span')
+      name.className = 'text-light truncate'
+      name.textContent = i.host + (path === '/' ? '' : path)
+      const n = document.createElement('span')
+      n.textContent = `${i.looks} looks`
+      cap.append(name, n)
+      a.append(cv, cap)
+      return a
+    }))
+  }).catch(() => {
+    wall.querySelector('[data-wall-empty]')!.textContent = 'The wall is unavailable right now.'
+  })
+
+  // Hero art: the newest linear.app ridgeline, if there is one.
+  fetch(`${API}/public/ridgeline?url=linear.app`).then((r) => (r.ok ? r.json() : null)).then((v: { result: RidgelineData } | null) => {
+    if (!v?.result) return
+    const cv = document.getElementById('ridge-hero-art') as HTMLCanvasElement
+    draw(cv, v.result, prepare(v.result, 80), { components: true })
+  }).catch(() => {})
+</script>
