@@ -70,12 +70,21 @@ const description = report
         </div>
       )}
       <ReportView report={report} backHref="/scan" backLabel="← Scan another repository" />
-      {(report as Report & { hasMap?: boolean }).hasMap && (
+      {(report as Report & { hasSnapshot?: boolean }).hasSnapshot ? (
         <section class="pb-8 bg-navy-dark">
           <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <a href={`/scan/${report.repo}/v/system-map`} class="block bg-navy/50 border border-navy-light/30 hover:border-buoy rounded-2xl p-6">
               <h2 class="text-xl font-bold text-light">See inside {report.repo} →</h2>
               <p class="text-slate mt-2">Every token, component and page, drawn four ways: how they connect, the colour palette against hardcoded colours, every component as a brick, and where drift lives.</p>
+            </a>
+          </div>
+        </section>
+      ) : (report as Report & { hasMap?: boolean }).hasMap && (
+        <section class="pb-8 bg-navy-dark">
+          <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <a href={`/scan/${report.repo}/map`} class="block bg-navy/50 border border-navy-light/30 hover:border-buoy rounded-2xl p-6">
+              <h2 class="text-xl font-bold text-light">See how {report.repo}'s UI is wired →</h2>
+              <p class="text-slate mt-2">Tokens, components and pages, and which pages each one reaches.</p>
             </a>
           </div>
         </section>
