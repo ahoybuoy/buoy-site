@@ -3,13 +3,13 @@
   "owner": "TryGhost",
   "name": "Ghost",
   "description": "Independent technology for modern publishing, memberships, subscriptions and newsletters.",
-  "stars": 55704,
+  "stars": 55708,
   "homepage": "https://ghost.org",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "f2846cdacb6db4835a3a7ce7f0beb403b40c809a",
-  "generatedAt": "2026-11-07T13:43:14.256Z",
-  "cliVersion": "0.8.13",
+  "commit": "ed222ebdb56468db93f9735896107285386c7132",
+  "generatedAt": "2026-11-08T13:57:30.318Z",
+  "cliVersion": "0.8.15",
   "score": 72,
   "tier": "Good",
   "pillars": {
@@ -32,8 +32,8 @@
   },
   "metrics": {
     "componentCount": 1938,
-    "tokenCount": 412,
-    "hardcodedValueCount": 283,
+    "tokenCount": 850,
+    "hardcodedValueCount": 277,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 283,
+    "totalDriftCount": 277,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -52,8 +52,8 @@
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 10,
-    "vendoredDriftCount": 7,
-    "notedCount": 30,
+    "vendoredDriftCount": 2,
+    "notedCount": 36,
     "topHardcodedColor": {
       "value": "#6A1AD6",
       "count": 3
@@ -72,21 +72,22 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 276 hardcoded values left to tokenize. apps/activitypub/src/views/inbox/components/customizer.tsx has the most (4)",
-    "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
+    "Nearly there — just 275 hardcoded values left to tokenize. apps/activitypub/src/views/inbox/components/customizer.tsx has the most (4)",
+    "2 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 28,
-      "action": "Replace the hardcoded values in 272 of the 276 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 271 of the 275 findings with tokens or scale steps"
     }
   ],
   "noted": {
-    "count": 30,
+    "count": 36,
     "byKind": {
       "optical-nudge": 26,
-      "explained": 4
+      "explained": 4,
+      "vendored": 6
     },
     "samples": [
       {
@@ -118,29 +119,29 @@
         "reason": "Nested-editor (callout, etc.) fixes: align placeholder with text"
       },
       {
-        "file": "apps/activitypub/src/components/feed/feed-item.tsx",
-        "line": 990,
-        "value": "pt-[3px]",
-        "kind": "optical-nudge",
-        "reason": "pt-[3px] is a 2-3px optical adjustment"
+        "file": "apps/shade/src/components/ui/calendar.tsx",
+        "line": 61,
+        "value": "has-focus:ring-[3px], day:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
       },
       {
-        "file": "apps/activitypub/src/components/layout/onboarding/step-1.tsx",
-        "line": 102,
-        "value": "ml-[-2px]",
-        "kind": "optical-nudge",
-        "reason": "ml-[-2px] is a 2-3px optical adjustment"
+        "file": "apps/shade/src/components/ui/calendar.tsx",
+        "line": 81,
+        "value": "text-[0.8rem]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
       }
     ]
   },
   "driftSummary": {
-    "total": 283,
+    "total": 277,
     "critical": 0,
-    "warning": 52,
-    "info": 231
+    "warning": 55,
+    "info": 222
   },
   "driftByType": {
-    "hardcoded-value": 283
+    "hardcoded-value": 277
   },
   "topColors": [
     {
@@ -342,5 +343,5 @@
       ]
     }
   ],
-  "scanSeconds": 53
+  "scanSeconds": 43
 }

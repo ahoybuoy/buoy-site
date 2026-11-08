@@ -3,13 +3,13 @@
   "owner": "supabase",
   "name": "supabase",
   "description": "The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications.",
-  "stars": 114629,
+  "stars": 114657,
   "homepage": "https://supabase.com",
   "language": "TypeScript",
   "defaultBranch": "master",
   "commit": "dc73b346c1f37eaae9e529fae81a4307b78fefe6",
-  "generatedAt": "2026-11-07T13:29:41.299Z",
-  "cliVersion": "0.8.13",
+  "generatedAt": "2026-11-08T13:48:06.356Z",
+  "cliVersion": "0.8.15",
   "score": 86,
   "tier": "Great",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 4861,
     "tokenCount": 1126,
-    "hardcodedValueCount": 289,
+    "hardcodedValueCount": 283,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 298,
+    "totalDriftCount": 292,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 7,
     "orphanedComponentCount": 0,
@@ -52,8 +52,8 @@
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 4,
-    "vendoredDriftCount": 7,
-    "notedCount": 18,
+    "vendoredDriftCount": 2,
+    "notedCount": 24,
     "topHardcodedColor": {
       "value": "#111718",
       "count": 9
@@ -73,8 +73,8 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 282 hardcoded values left to tokenize. apps/studio/components/interfaces/Database/Policies/PolicyEditorPanel/LockedQuerySection.tsx has the most (3)",
-    "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
+    "Nearly there — just 281 hardcoded values left to tokenize. apps/studio/components/interfaces/Database/Policies/PolicyEditorPanel/LockedQuerySection.tsx has the most (3)",
+    "2 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
     "7 repeated patterns — extract to shared components",
     "2 deprecated patterns — migrate to current API"
   ],
@@ -82,7 +82,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 12,
-      "action": "Replace the hardcoded values in 270 of the 282 findings with tokens or scale steps, and remove or reuse 7 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 269 of the 281 findings with tokens or scale steps, and remove or reuse 7 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -91,64 +91,65 @@
     }
   ],
   "noted": {
-    "count": 18,
+    "count": 24,
     "byKind": {
-      "optical-nudge": 18
+      "optical-nudge": 18,
+      "vendored": 6
     },
     "samples": [
       {
-        "file": "apps/studio/components/grid/components/menu/ColumnMenu.tsx",
-        "line": 238,
-        "value": "3px",
-        "kind": "optical-nudge",
-        "reason": "padding: 3px is a 2-3px optical adjustment"
+        "file": "packages/ui/src/components/shadcn/ui/badge.tsx",
+        "line": 7,
+        "value": "px-[5.5px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
       },
       {
-        "file": "apps/studio/components/interfaces/Storage/StorageExplorer/FileExplorerRow.tsx",
-        "line": 531,
-        "value": "2px",
-        "kind": "optical-nudge",
-        "reason": "top: 2px is a 2-3px optical adjustment"
+        "file": "packages/ui/src/components/shadcn/ui/badge.tsx",
+        "line": 7,
+        "value": "text-[9px], tracking-[0.07em]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
       },
       {
-        "file": "apps/studio/components/interfaces/DiskManagement/ui/DiskSpaceBar.tsx",
-        "line": 94,
-        "value": "mt-[-2px]",
-        "kind": "optical-nudge",
-        "reason": "mt-[-2px] is a 2-3px optical adjustment"
+        "file": "packages/ui/src/components/shadcn/ui/calendar.tsx",
+        "line": 69,
+        "value": "text-[0.8rem]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
       },
       {
-        "file": "apps/studio/components/interfaces/Organization/GeneralSettings/DeleteOrganizationButton.ListAck.tsx",
-        "line": 36,
-        "value": "mt-[2px]",
-        "kind": "optical-nudge",
-        "reason": "mt-[2px] is a 2-3px optical adjustment"
+        "file": "packages/ui/src/components/shadcn/ui/chart.tsx",
+        "line": 195,
+        "value": "rounded-[2px], border-[1.5px], rounded-[2px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
       },
       {
-        "file": "apps/studio/components/interfaces/Organization/Usage/UsageSection/DatabaseSizeUsage.tsx",
-        "line": 126,
-        "value": "mt-[-2px]",
-        "kind": "optical-nudge",
-        "reason": "mt-[-2px] is a 2-3px optical adjustment"
+        "file": "packages/ui/src/components/shadcn/ui/input-group.tsx",
+        "line": 86,
+        "value": "has-[>button]:ml-[-0.45rem], has-[>kbd]:ml-[-0.35rem], has-[>button]:mr-[-0.4rem], has-[>kbd]:mr-[-0.35rem]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
       },
       {
-        "file": "apps/studio/components/interfaces/ProjectHome/HighAvailabilityBadge.tsx",
-        "line": 19,
-        "value": "py-[3px]",
-        "kind": "optical-nudge",
-        "reason": "py-[3px] is a 2-3px optical adjustment"
+        "file": "apps/ui-library/registry/default/components/ui/chart.tsx",
+        "line": 192,
+        "value": "rounded-[2px], border-[1.5px], rounded-[2px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
       }
     ]
   },
   "driftSummary": {
-    "total": 295,
+    "total": 289,
     "critical": 0,
     "warning": 65,
-    "info": 230
+    "info": 224
   },
   "driftByType": {
     "deprecated-pattern": 2,
-    "hardcoded-value": 286,
+    "hardcoded-value": 280,
     "repeated-pattern": 7
   },
   "topColors": [
@@ -343,5 +344,5 @@
       ]
     }
   ],
-  "scanSeconds": 228
+  "scanSeconds": 154
 }

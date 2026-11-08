@@ -3,13 +3,13 @@
   "owner": "vercel",
   "name": "next.js",
   "description": "The React Framework",
-  "stars": 143378,
+  "stars": 143418,
   "homepage": "https://nextjs.org",
   "language": "JavaScript",
   "defaultBranch": "canary",
-  "commit": "f4294f6e4286251d399780ebb554a0ff9274c8f4",
-  "generatedAt": "2026-11-07T13:52:51.071Z",
-  "cliVersion": "0.8.13",
+  "commit": "ec8ddcd7a52fb7b3508fa1cf467abc85dea3a0b8",
+  "generatedAt": "2026-11-08T14:04:48.229Z",
+  "cliVersion": "0.8.15",
   "score": 89,
   "tier": "Great",
   "pillars": {
@@ -32,8 +32,8 @@
   },
   "metrics": {
     "componentCount": 374,
-    "tokenCount": 301,
-    "hardcodedValueCount": 18,
+    "tokenCount": 303,
+    "hardcodedValueCount": 17,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 19,
+    "totalDriftCount": 18,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -52,8 +52,8 @@
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
-    "vendoredDriftCount": 1,
-    "notedCount": 5,
+    "vendoredDriftCount": 0,
+    "notedCount": 6,
     "worstFile": {
       "path": "packages/next/src/client/legacy/image.tsx",
       "issueCount": 1
@@ -72,7 +72,6 @@
   },
   "suggestions": [
     "Nearly there — just 17 hardcoded values left to tokenize",
-    "1 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
     "1 deprecated pattern — migrate to current API"
   ],
   "pathTo100": [
@@ -88,11 +87,12 @@
     }
   ],
   "noted": {
-    "count": 5,
+    "count": 6,
     "byKind": {
       "optical-nudge": 3,
       "known-debt": 1,
-      "explained": 1
+      "explained": 1,
+      "vendored": 1
     },
     "samples": [
       {
@@ -108,6 +108,13 @@
         "value": "transform 0.25s cubic-bezier(0.23, 1, 0.32, 0.9)",
         "kind": "explained",
         "reason": "start really fast because we start super hidden initially behind the panel, otherwise feels like an unintended animatio…"
+      },
+      {
+        "file": "apps/bundle-analyzer/components/ui/select.tsx",
+        "line": 40,
+        "value": "focus-visible:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
       },
       {
         "file": "packages/next/src/next-devtools/dev-overlay/components/devtools-indicator/devtools-indicator.css",
@@ -133,14 +140,14 @@
     ]
   },
   "driftSummary": {
-    "total": 19,
+    "total": 18,
     "critical": 0,
     "warning": 7,
-    "info": 12
+    "info": 11
   },
   "driftByType": {
     "deprecated-pattern": 1,
-    "hardcoded-value": 18
+    "hardcoded-value": 17
   },
   "topColors": [
     {
@@ -301,13 +308,6 @@
       ]
     },
     {
-      "component": "apps/bundle-analyzer/components/ui/select.tsx",
-      "location": "apps/bundle-analyzer/components/ui/select.tsx:40",
-      "entries": [
-        "focus-visible:ring-[3px] (line 40)"
-      ]
-    },
-    {
       "component": "packages/next/src/next-devtools/dev-overlay/components/devtools-indicator/devtools-indicator.css",
       "location": "packages/next/src/next-devtools/dev-overlay/components/devtools-indicator/devtools-indicator.css:33",
       "entries": [
@@ -342,7 +342,16 @@
         "font weight: 500 (line 18)",
         "line height: 20px (line 22)"
       ]
+    },
+    {
+      "component": "packages/next/src/next-devtools/dev-overlay/components/request-insights/request-insights-panel.css",
+      "location": "packages/next/src/next-devtools/dev-overlay/components/request-insights/request-insights-panel.css:25",
+      "entries": [
+        "line height: 1.5 (line 25)",
+        "spacing: 8px (line 44)",
+        "spacing: 6px (line 57)"
+      ]
     }
   ],
-  "scanSeconds": 138
+  "scanSeconds": 110
 }

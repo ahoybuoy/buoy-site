@@ -3,13 +3,13 @@
   "owner": "novuhq",
   "name": "novu",
   "description": "The open-source communication infrastructure for agents and products",
-  "stars": 40296,
+  "stars": 40302,
   "homepage": "https://go.novu.co/github",
   "language": "TypeScript",
   "defaultBranch": "next",
-  "commit": "46ff54befda2a5174bd2016cdff00326d9f3921a",
-  "generatedAt": "2026-11-07T13:31:55.660Z",
-  "cliVersion": "0.8.13",
+  "commit": "6d9a112399c02d38bd592489da224560120e3944",
+  "generatedAt": "2026-11-08T13:49:42.982Z",
+  "cliVersion": "0.8.15",
   "score": 64,
   "tier": "Good",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2999,
-    "tokenCount": 514,
-    "hardcodedValueCount": 565,
+    "componentCount": 2998,
+    "tokenCount": 828,
+    "hardcodedValueCount": 553,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 567,
+    "totalDriftCount": 555,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -52,8 +52,8 @@
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 52,
-    "vendoredDriftCount": 26,
-    "notedCount": 27,
+    "vendoredDriftCount": 18,
+    "notedCount": 38,
     "topHardcodedColor": {
       "value": "#dd2476",
       "count": 8
@@ -72,22 +72,23 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 539 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
-    "26 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
+    "Nearly there — just 535 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
+    "18 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 36,
-      "action": "Replace the hardcoded values in 532 of the 539 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 528 of the 535 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     }
   ],
   "noted": {
-    "count": 27,
+    "count": 38,
     "byKind": {
       "optical-nudge": 23,
       "explained": 3,
-      "known-debt": 1
+      "known-debt": 1,
+      "vendored": 11
     },
     "samples": [
       {
@@ -119,29 +120,29 @@
         "reason": "On a short screen, such as a phone on its side, it scrolls rather than lose its buttons off the edge."
       },
       {
-        "file": "apps/dashboard/src/components/agents/agent-behavior-section.tsx",
-        "line": 187,
-        "value": "py-[3px]",
-        "kind": "optical-nudge",
-        "reason": "py-[3px] is a 2-3px optical adjustment"
+        "file": "apps/dashboard/src/components/primitives/chart.tsx",
+        "line": 190,
+        "value": "border-[1.5px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
       },
       {
-        "file": "apps/dashboard/src/components/agents/setup-guide-primitives.tsx",
-        "line": 225,
-        "value": "pt-[3px]",
-        "kind": "optical-nudge",
-        "reason": "pt-[3px] is a 2-3px optical adjustment"
+        "file": "apps/dashboard/src/components/primitives/chart.tsx",
+        "line": 159,
+        "value": "text-[12px], text-[12px], text-[11px], text-[11px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
       }
     ]
   },
   "driftSummary": {
-    "total": 567,
+    "total": 555,
     "critical": 0,
     "warning": 109,
-    "info": 458
+    "info": 446
   },
   "driftByType": {
-    "hardcoded-value": 565,
+    "hardcoded-value": 553,
     "repeated-pattern": 2
   },
   "topColors": [
@@ -185,7 +186,7 @@
     },
     {
       "value": "5px",
-      "count": 17
+      "count": 16
     },
     {
       "value": "2rem",
@@ -223,7 +224,7 @@
     },
     {
       "file": "apps/human-dashboard/src/styles/home.css",
-      "count": 69
+      "count": 68
     },
     {
       "file": "apps/dashboard/src/pages/usecase-select-page.tsx",
@@ -336,5 +337,5 @@
       ]
     }
   ],
-  "scanSeconds": 102
+  "scanSeconds": 74
 }

@@ -3,13 +3,13 @@
   "owner": "shadcn-ui",
   "name": "ui",
   "description": "Composable, accessible components with thoughtful defaults. Build your own component library with code you can customize, extend, and make your own.",
-  "stars": 127566,
+  "stars": 127619,
   "homepage": "https://ui.shadcn.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "42f3bb63b46a69e52a24bd005cdc9ec15ba7a7b9",
-  "generatedAt": "2026-11-07T13:54:00.824Z",
-  "cliVersion": "0.8.13",
+  "commit": "8ab27715521cbd4f87ae6886cd989cbb678f6de7",
+  "generatedAt": "2026-11-08T14:05:40.304Z",
+  "cliVersion": "0.8.15",
   "score": 97,
   "tier": "Great",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 2671,
     "tokenCount": 416,
-    "hardcodedValueCount": 81,
+    "hardcodedValueCount": 59,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 85,
+    "totalDriftCount": 63,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 4,
     "orphanedComponentCount": 0,
@@ -52,8 +52,8 @@
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
-    "vendoredDriftCount": 40,
-    "notedCount": 2,
+    "vendoredDriftCount": 22,
+    "notedCount": 24,
     "worstFile": {
       "path": "apps/v4/components/chart-toolbar.tsx",
       "issueCount": 2
@@ -65,60 +65,81 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 41 hardcoded values left to tokenize. apps/v4/components/chart-toolbar.tsx has the most (2)",
-    "40 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
+    "Nearly there — just 37 hardcoded values left to tokenize. apps/v4/components/chart-toolbar.tsx has the most (2)",
+    "22 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 3,
-      "action": "Replace the hardcoded values in 35 of the 41 findings with tokens or scale steps, and remove or reuse 4 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 31 of the 37 findings with tokens or scale steps, and remove or reuse 4 unused components and repeated patterns"
     }
   ],
   "noted": {
-    "count": 2,
+    "count": 24,
     "byKind": {
-      "optical-nudge": 2
+      "optical-nudge": 2,
+      "vendored": 22
     },
     "samples": [
       {
-        "file": "apps/v4/components/block-viewer.tsx",
-        "line": 166,
-        "value": "p-[3px]",
-        "kind": "optical-nudge",
-        "reason": "p-[3px] is a 2-3px optical adjustment"
+        "file": "apps/v4/registry/new-york-v4/ui/accordion.tsx",
+        "line": 37,
+        "value": "focus-visible:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
       },
       {
-        "file": "apps/v4/registry/new-york-v4/ui/tabs.tsx",
-        "line": 28,
-        "value": "p-[3px]",
-        "kind": "optical-nudge",
-        "reason": "p-[3px] is a 2-3px optical adjustment"
+        "file": "apps/v4/registry/new-york-v4/ui/badge.tsx",
+        "line": 7,
+        "value": "focus-visible:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "apps/v4/registry/new-york-v4/ui/button.tsx",
+        "line": 7,
+        "value": "focus-visible:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "apps/v4/registry/new-york-v4/ui/calendar.tsx",
+        "line": 77,
+        "value": "has-focus:ring-[3px], day:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "apps/v4/registry/new-york-v4/ui/calendar.tsx",
+        "line": 94,
+        "value": "text-[0.8rem], text-[0.8rem]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "apps/v4/registry/new-york-v4/ui/chart.tsx",
+        "line": 224,
+        "value": "rounded-[2px], border-[1.5px], rounded-[2px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
       }
     ]
   },
   "driftSummary": {
-    "total": 85,
+    "total": 63,
     "critical": 0,
     "warning": 0,
-    "info": 85
+    "info": 63
   },
   "driftByType": {
-    "hardcoded-value": 81,
+    "hardcoded-value": 59,
     "repeated-pattern": 4
   },
   "topColors": [],
   "topSpacing": [
     {
       "value": "0.3rem",
-      "count": 2
-    },
-    {
-      "value": "-0.45rem",
-      "count": 2
-    },
-    {
-      "value": "-0.35rem",
       "count": 2
     },
     {
@@ -156,16 +177,8 @@
       "count": 5
     },
     {
-      "file": "apps/v4/registry/new-york-v4/ui/input-group.tsx",
-      "count": 5
-    },
-    {
       "file": "apps/v4/app/globals.css",
       "count": 5
-    },
-    {
-      "file": "apps/v4/registry/new-york-v4/ui/calendar.tsx",
-      "count": 4
     },
     {
       "file": "apps/v4/app/(app)/docs/[[...slug]]/page.tsx",
@@ -173,6 +186,14 @@
     },
     {
       "file": "apps/v4/registry/bases/aria/blocks/preview/cards/bar-chart-card.tsx",
+      "count": 3
+    },
+    {
+      "file": "apps/v4/registry/bases/aria/ui/chart.tsx",
+      "count": 3
+    },
+    {
+      "file": "apps/v4/registry/bases/base/blocks/preview/cards/bar-chart-card.tsx",
       "count": 3
     }
   ],
@@ -271,5 +292,5 @@
       ]
     }
   ],
-  "scanSeconds": 68
+  "scanSeconds": 51
 }
