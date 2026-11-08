@@ -13,6 +13,8 @@ export const prerender = false
 const API = 'https://api.buoy.design'
 const { owner = '', repo = '', slug = '' } = Astro.params
 const valid = /^[A-Za-z0-9-]+$/.test(owner) && /^[A-Za-z0-9_.-]+$/.test(repo) && /^[a-z0-9-]+$/.test(slug)
+// Community visualizers use c-<id>
+const communityId = /^c-([0-9a-f-]{36})$/.exec(slug)?.[1] ?? null
 const fullName = `${owner}/${repo}`
 
 type Viz = { slug: string; name: string; description: string; url: string }
@@ -21,7 +23,16 @@ try {
   const res = await fetch(`${API}/viz`)
   if (res.ok) list = ((await res.json()) as { visualizers: Viz[] }).visualizers
 } catch { /* rendered below as unavailable */ }
-const current = list.find((v) => v.slug === slug)
+let current = list.find((v) => v.slug === slug)
+if (communityId) {
+  try {
+    const res = await fetch(`${API}/viz/c/${communityId}/source`)
+    if (res.ok) {
+      const v = (await res.json()) as { id: string; name: string; description: string | null; author: string | null }
+      current = { slug, name: v.name, description: `${v.description ?? ''}${v.author ? ` By ${v.author}.` : ''}`.trim(), url: `${API}/viz/c/${v.id}` }
+    }
+  } catch { /* shown as missing */ }
+}
 if (!valid || (list.length && !current)) Astro.response.status = 404
 Astro.response.headers.set('Cache-Control', 'public, max-age=300')
 
@@ -50,7 +61,7 @@ const description = current ? `${current.name} for ${fullName}. ${current.descri
       )}
 
       {!valid || (list.length > 0 && !current) ? (
-        <p class="text-slate mt-8">There is no visualizer at this address. Pick one above.</p>
+        <p class="text-slate mt-8">There is no visualizer at this address. Pick one above, or <a class="text-buoy hover:underline" href="/visualizers">browse the library</a>.</p>
       ) : list.length === 0 ? (
         <p class="text-slate mt-8">Visualizers are unavailable right now. Try again in a minute.</p>
       ) : (
