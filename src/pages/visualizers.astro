@@ -1,0 +1,112 @@
+---
+/**
+ * buoy.design/visualizers: browse every Buoy visualizer, from Buoy and from
+ * the community. Each one opens live on a real public repo. People build new
+ * ones with their own coding agents (Buoy's models never write them).
+ */
+import Layout from '../layouts/Layout.astro'
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+
+export const prerender = false
+
+const API = 'https://api.buoy.design'
+const DEMO = 'shadcn-ui/next-template'
+type Builtin = { slug: string; name: string; description: string; author: string }
+type Community = { id: string; name: string; description: string | null; author: string | null; installs: number; remixedFrom: string | null }
+let builtins: Builtin[] = []
+let community: Community[] = []
+let apiDown = false
+try {
+  const [a, b] = await Promise.all([fetch(`${API}/viz`), fetch(`${API}/viz/community`)])
+  if (a.ok) builtins = ((await a.json()) as { visualizers: Builtin[] }).visualizers
+  if (b.ok) community = ((await b.json()) as { visualizers: Community[] }).visualizers
+  apiDown = !a.ok
+} catch { apiDown = true }
+Astro.response.headers.set('Cache-Control', 'public, max-age=120')
+---
+
+<Layout title="Visualizers: see inside any UI codebase | Buoy" description="Browse visualizers for design systems: component galleries, system maps, colour quilts and more, built by Buoy and by people with their own coding agents. Open any of them on a real repo.">
+  <Nav />
+  <section class="pt-28 pb-8 bg-navy-dark">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl sm:text-5xl font-bold text-light text-balance">Visualizers</h1>
+      <p class="text-slate mt-4 text-lg max-w-3xl">
+        Ways to see inside a codebase's UI: every component, token and page, drawn so a design team can get a handle on the whole app.
+        Open any of them on a real repo, add them to your Buoy workspace, or build your own with your coding agent.
+      </p>
+    </div>
+  </section>
+
+  <section class="pb-10 bg-navy-dark">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {apiDown && <p class="text-slate">The library is unavailable right now. Try again in a minute.</p>}
+
+      {builtins.length > 0 && (
+        <>
+          <h2 class="text-xl font-bold text-light mb-4">From Buoy</h2>
+          <div class="grid gap-4" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr))">
+            {builtins.map((v) => (
+              <a href={`/scan/${DEMO}/v/${v.slug}`} class="block rounded-2xl border border-navy-light/30 hover:border-buoy p-5 bg-navy/40">
+                <span class="block font-semibold text-light">{v.name}</span>
+                <span class="block text-sm text-slate mt-2">{v.description}</span>
+                <span class="block text-sm text-buoy mt-3">Open on {DEMO} →</span>
+              </a>
+            ))}
+          </div>
+        </>
+      )}
+
+      <h2 class="text-xl font-bold text-light mt-12 mb-4">From the community</h2>
+      {community.length === 0 ? (
+        <p class="text-slate max-w-2xl">Nothing shared yet. Build the first one: describe the view you want, let your coding agent write it, and share it from your Buoy workspace.</p>
+      ) : (
+        <div class="grid gap-4" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr))">
+          {community.map((v) => (
+            <a href={`/scan/${DEMO}/v/c-${v.id}`} class="block rounded-2xl border border-navy-light/30 hover:border-buoy p-5 bg-navy/40">
+              <span class="block font-semibold text-light">{v.name}</span>
+              <span class="block text-xs text-slate mt-1">by {v.author ?? 'someone'}{v.remixedFrom ? ' · remix' : ''} · in {v.installs} {v.installs === 1 ? 'workspace' : 'workspaces'}</span>
+              {v.description && <span class="block text-sm text-slate mt-2">{v.description}</span>}
+              <span class="block text-sm text-buoy mt-3">Open on {DEMO} →</span>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+
+  <section class="pb-20 bg-navy-dark">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-2xl border border-navy-light/30 bg-navy/50 p-6 grid gap-4 md:grid-cols-[1fr_auto] items-center">
+        <div>
+          <h2 class="text-xl font-bold text-light">Build your own with your coding agent</h2>
+          <p class="text-slate mt-2 max-w-2xl">
+            Copy the brief, add what you want to see, and paste it into Claude, ChatGPT, Cursor or any coding agent. It writes one HTML file;
+            paste that into your Buoy workspace to see it live on your repo and share it here.
+          </p>
+          <p class="text-red-400 text-sm mt-2 hidden" role="alert" data-brief-error></p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <button type="button" class="rounded-lg bg-buoy px-5 py-3 font-semibold text-navy-dark hover:opacity-90" data-copy-brief>Copy the brief</button>
+          <a href="https://app.buoy.design/visualize" class="rounded-lg border border-navy-light/40 px-5 py-3 font-semibold text-light hover:border-buoy">Open your workspace</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <Footer />
+</Layout>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('[data-copy-brief]')
+  const err = document.querySelector<HTMLElement>('[data-brief-error]')
+  btn?.addEventListener('click', async () => {
+    try {
+      const text = await fetch('https://api.buoy.design/viz/prompt').then((r) => { if (!r.ok) throw new Error(); return r.text() })
+      await navigator.clipboard.writeText(text)
+      btn.textContent = 'Copied'
+      setTimeout(() => { btn.textContent = 'Copy the brief' }, 4000)
+    } catch {
+      if (err) { err.textContent = 'Could not copy. Open https://api.buoy.design/viz/prompt and copy it from there.'; err.classList.remove('hidden') }
+    }
+  })
+</script>
