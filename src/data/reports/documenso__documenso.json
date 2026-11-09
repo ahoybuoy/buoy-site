@@ -3,18 +3,18 @@
   "owner": "documenso",
   "name": "documenso",
   "description": "The Open Source DocuSign Alternative.",
-  "stars": 15688,
+  "stars": 15700,
   "homepage": "https://documenso.com",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "fdd0337bdd8f6afac64faf97113c65ed2dd0e2a2",
-  "generatedAt": "2026-11-08T13:54:02.634Z",
-  "cliVersion": "0.8.15",
-  "score": 93,
+  "generatedAt": "2026-11-09T16:56:01.545Z",
+  "cliVersion": "0.8.20",
+  "score": 95,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 53,
+      "score": 55,
       "max": 60
     },
     "tokenHealth": {
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 659,
+    "componentCount": 901,
     "tokenCount": 200,
     "hardcodedValueCount": 21,
     "unusedTokenCount": 0,
@@ -76,8 +76,8 @@
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 7,
-      "action": "Replace the hardcoded values in 20 of the 21 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "points": 5,
+      "action": "Replace the hardcoded values in 19 of the 21 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     }
   ],
   "noted": {
@@ -307,5 +307,5 @@
       ]
     }
   ],
-  "scanSeconds": 26
+  "scanSeconds": 32
 }

@@ -3,18 +3,18 @@
   "owner": "dubinc",
   "name": "dub",
   "description": "The modern link attribution platform. Loved by world-class engineering teams at Twilio, Zillow, Jobber, Vercel, Raycast, and more.",
-  "stars": 25136,
+  "stars": 25147,
   "homepage": "https://dub.link",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "6b463b4bdd9ed2fd9aa416f67b5b77d317b1471e",
-  "generatedAt": "2026-11-08T13:48:28.683Z",
-  "cliVersion": "0.8.15",
-  "score": 90,
+  "generatedAt": "2026-11-09T16:49:05.112Z",
+  "cliVersion": "0.8.20",
+  "score": 92,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 50,
+      "score": 54,
       "max": 60
     },
     "tokenHealth": {
@@ -26,12 +26,12 @@
       "max": 10
     },
     "criticalIssues": {
-      "score": 10,
+      "score": 8,
       "max": 10
     }
   },
   "metrics": {
-    "componentCount": 827,
+    "componentCount": 1350,
     "tokenCount": 39,
     "hardcodedValueCount": 44,
     "unusedTokenCount": 0,
@@ -41,12 +41,12 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 48,
+    "totalDriftCount": 49,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 4,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
-    "deprecatedPatternCount": 0,
+    "deprecatedPatternCount": 1,
     "orphanedTokenCount": 0,
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
@@ -71,13 +71,19 @@
   },
   "suggestions": [
     "Nearly there — just 40 hardcoded values left to tokenize. apps/web/app/[domain]/[key]/inspect/page.tsx has the most (3)",
-    "4 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
+    "4 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
+    "1 deprecated pattern — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 10,
-      "action": "Replace the hardcoded values in 38 of the 40 findings with tokens or scale steps, and remove or reuse 4 unused components and repeated patterns"
+      "points": 6,
+      "action": "Replace the hardcoded values in 37 of the 40 findings with tokens or scale steps, and remove or reuse 4 unused components and repeated patterns"
+    },
+    {
+      "pillar": "criticalIssues",
+      "points": 2,
+      "action": "Migrate 1 deprecated pattern"
     }
   ],
   "noted": {
@@ -103,12 +109,13 @@
     ]
   },
   "driftSummary": {
-    "total": 48,
+    "total": 49,
     "critical": 0,
-    "warning": 5,
+    "warning": 6,
     "info": 43
   },
   "driftByType": {
+    "deprecated-pattern": 1,
     "hardcoded-value": 44,
     "repeated-pattern": 4
   },
@@ -284,5 +291,5 @@
       ]
     }
   ],
-  "scanSeconds": 21
+  "scanSeconds": 36
 }
