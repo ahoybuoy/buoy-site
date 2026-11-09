@@ -1,0 +1,94 @@
+---
+/**
+ * The report page's own look inside a repository: Buoy's visualizers drawing
+ * the repo's latest public snapshot, switchable in place. Same sandboxed frame
+ * and postMessage protocol as /scan/<repo>/v/<visualizer>, which stays the
+ * shareable full-page version.
+ */
+interface Props { repo: string }
+const { repo } = Astro.props
+const API = 'https://api.buoy.design'
+
+type Viz = { slug: string; name: string; description: string; url: string }
+let list: Viz[] = []
+try {
+  const res = await fetch(`${API}/viz`)
+  if (res.ok) list = ((await res.json()) as { visualizers: Viz[] }).visualizers
+} catch { /* section hides itself */ }
+// Views a repo snapshot can draw, system map first. The component gallery needs
+// renders from a running app and Ridgeline a live website, so they aren't here.
+const ORDER = ['system-map', 'colour-quilt', 'component-bricks', 'drift-heat']
+list = ORDER.map((slug) => list.find((v) => v.slug === slug)).filter((v): v is Viz => !!v)
+---
+
+{list.length > 0 && (
+  <section class="pb-8 bg-navy-dark" data-inline-viz data-repo={repo} hidden>
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-baseline justify-between gap-2">
+        <h2 class="text-2xl font-bold text-light">Inside {repo}</h2>
+        <a data-viz-full href={`/scan/${repo}/v/${list[0].slug}`} class="text-sm text-buoy hover:underline">Open full page →</a>
+      </div>
+      <div class="flex flex-wrap gap-2 mt-4" role="tablist" aria-label="Views">
+        {list.map((v, i) => (
+          <button type="button" role="tab" aria-selected={i === 0 ? 'true' : 'false'} data-viz-tab={v.slug} data-viz-url={v.url} data-viz-name={v.name} title={v.description}
+            class="rounded-full border px-4 py-1.5 text-sm font-medium border-navy-light/40 text-slate aria-selected:border-buoy aria-selected:text-light hover:text-light">
+            {v.name}
+          </button>
+        ))}
+      </div>
+      <div class="mt-4 rounded-2xl overflow-hidden border border-navy-light/30 bg-navy/40" data-viz-holder></div>
+    </div>
+  </section>
+)}
+
+<script>
+  const section = document.querySelector<HTMLElement>('[data-inline-viz]')
+  if (section) {
+    const repo = section.dataset.repo!
+    const holder = section.querySelector<HTMLElement>('[data-viz-holder]')!
+    const full = section.querySelector<HTMLAnchorElement>('[data-viz-full]')!
+    const tabs = [...section.querySelectorAll<HTMLButtonElement>('[data-viz-tab]')]
+    type Snap = { repo: string; commit: string | null; snapshot: { components?: Array<{ id: string; path: string; line?: number }>; tokens?: Array<{ id: string; path?: string }> } }
+    let found: Snap | null = null
+    let frame: HTMLIFrameElement | null = null
+
+    window.addEventListener('message', (e) => {
+      if (!frame || e.source !== frame.contentWindow || !found) return
+      const m = e.data as { type?: string; height?: number; id?: string }
+      if (m?.type === 'buoy:ready') frame.contentWindow!.postMessage({ type: 'buoy:snapshot', snapshot: found.snapshot, theme: 'dark', repo: found.repo }, '*')
+      if (m?.type === 'buoy:resize' && typeof m.height === 'number') frame.style.height = `${Math.max(320, Math.min(2400, Math.ceil(m.height)))}px`
+      if (m?.type === 'buoy:open' && typeof m.id === 'string') {
+        const id = m.id
+        let path: string | undefined, line: number | undefined
+        if (id.startsWith('c:')) { const c = found.snapshot.components?.find((x) => x.id === id); path = c?.path ?? id.slice(2, id.lastIndexOf(':')); line = c?.line }
+        else if (id.startsWith('t:')) path = found.snapshot.tokens?.find((x) => x.id === id)?.path
+        else path = id
+        if (!path || path.includes('..')) return
+        const ref = found.commit && /^[0-9a-f]{7,40}$/i.test(found.commit) ? found.commit : 'HEAD'
+        window.open(`https://github.com/${found.repo}/blob/${ref}/${path.split('/').map(encodeURIComponent).join('/')}${line ? `#L${line}` : ''}`, '_blank', 'noopener,noreferrer')
+      }
+    })
+
+    const show = (tab: HTMLButtonElement) => {
+      for (const t of tabs) t.setAttribute('aria-selected', String(t === tab))
+      full.href = `/scan/${repo}/v/${tab.dataset.vizTab}`
+      frame?.remove()
+      frame = document.createElement('iframe')
+      frame.src = tab.dataset.vizUrl!
+      frame.title = `${tab.dataset.vizName} for ${repo}`
+      frame.setAttribute('sandbox', 'allow-scripts')
+      frame.referrerPolicy = 'no-referrer'
+      frame.style.cssText = 'display:block;width:100%;height:640px;border:0'
+      holder.append(frame)
+    }
+    for (const t of tabs) t.addEventListener('click', () => show(t))
+
+    // Only reports with a snapshot get the section; older ones fill in as they are rescanned.
+    fetch(`https://api.buoy.design/public/snapshots/${repo}`).then(async (res) => {
+      if (!res.ok) return
+      found = await res.json() as Snap
+      section.hidden = false
+      show(tabs[0])
+    }).catch(() => {})
+  }
+</script>
