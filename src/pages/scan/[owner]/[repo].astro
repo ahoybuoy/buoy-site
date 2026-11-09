@@ -70,8 +70,9 @@ const description = report
           </p>
         </div>
       )}
-      <ReportView report={report} backHref="/scan" backLabel="← Scan another repository" />
-      <InlineVisualizers repo={report.repo} />
+      <ReportView report={report} backHref="/scan" backLabel="← Scan another repository">
+        <InlineVisualizers slot="after-score" repo={report.repo} />
+      </ReportView>
       {!(report as Report & { hasSnapshot?: boolean }).hasSnapshot && (report as Report & { hasMap?: boolean }).hasMap && (
         <section class="pb-8 bg-navy-dark">
           <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">

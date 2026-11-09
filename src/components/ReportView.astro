@@ -101,6 +101,9 @@ const typeLabels: Record<string, string> = {
     </section>
   )}
 
+  {/* Right under the score: e.g. the inline visualizers on /scan/<repo> */}
+  <slot name="after-score" />
+
   {r.noted && r.noted.count > 0 && (
     <section class="py-2 bg-navy-dark">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
