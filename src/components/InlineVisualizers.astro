@@ -22,7 +22,7 @@ list = ORDER.map((slug) => list.find((v) => v.slug === slug)).filter((v): v is V
 ---
 
 {list.length > 0 && (
-  <section class="pb-8 bg-navy-dark" data-inline-viz data-repo={repo} hidden>
+  <section class="py-8 bg-navy-dark" data-inline-viz data-repo={repo} hidden>
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-wrap items-baseline justify-between gap-2">
         <h2 class="text-2xl font-bold text-light">Inside {repo}</h2>
