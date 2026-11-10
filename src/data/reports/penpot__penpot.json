@@ -1,0 +1,341 @@
+{
+  "repo": "penpot/penpot",
+  "owner": "penpot",
+  "name": "penpot",
+  "description": "Penpot: The open-source design platform for Product teams that need scalable collaboration.",
+  "stars": 62221,
+  "homepage": "https://penpot.app",
+  "language": "Clojure",
+  "defaultBranch": "develop",
+  "commit": "cd1ece4beb55391a428c632b1fe609dc4748cb4e",
+  "generatedAt": "2026-11-10T00:42:19.978Z",
+  "cliVersion": "0.8.20",
+  "score": 40,
+  "tier": "OK",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 7,
+    "tokenCount": 360,
+    "hardcodedValueCount": 60,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 60,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 29,
+    "topHardcodedColor": {
+      "value": "#c0c0c2",
+      "count": 1
+    },
+    "detectedFrameworkNames": []
+  },
+  "suggestions": [
+    "60 hardcoded values across your components — high density. Most common: #c0c0c2 (1×). Create a design token file (e.g., tokens.css with CSS custom properties)"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 60,
+      "action": "Replace the hardcoded values in all 60 findings with tokens or scale steps"
+    }
+  ],
+  "noted": {
+    "count": 29,
+    "byKind": {
+      "optical-nudge": 7,
+      "known-debt": 20,
+      "explained": 2
+    },
+    "samples": [
+      {
+        "file": "frontend/src/app/main/ui/dashboard/import.scss",
+        "line": 413,
+        "value": "\"worksans\", \"vazirmatn\", sans-serif",
+        "kind": "known-debt",
+        "reason": "TODO: Typography does not match any existing DS typography token."
+      },
+      {
+        "file": "frontend/src/app/main/ui/inspect/code.scss",
+        "line": 40,
+        "value": "\"robotomono\", monospace",
+        "kind": "known-debt",
+        "reason": "TODO: No exact DS typography match found: the DS code-font names \"Roboto Mono\", the app loads it as \"robotomono\". Close…"
+      },
+      {
+        "file": "frontend/src/app/main/ui/viewer.scss",
+        "line": 58,
+        "value": "10",
+        "kind": "known-debt",
+        "reason": "TODO: no DS z-index token for 10; it keeps the backdrop above the viewer content (z-index 2), level with the thumbnails…"
+      },
+      {
+        "file": "frontend/src/app/main/ui/viewer.scss",
+        "line": 107,
+        "value": "2",
+        "kind": "known-debt",
+        "reason": "TODO: no DS z-index token for 2; it keeps the controls above the viewer section."
+      },
+      {
+        "file": "frontend/src/app/main/ui/viewer.scss",
+        "line": 138,
+        "value": "2",
+        "kind": "known-debt",
+        "reason": "TODO: no DS z-index token for 2; it keeps the controls above the viewer section."
+      },
+      {
+        "file": "frontend/src/app/main/ui/viewer/comments.scss",
+        "line": 113,
+        "value": "10",
+        "kind": "known-debt",
+        "reason": "TODO: no DS z-index token for 10; it keeps the list above the viewer content."
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 60,
+    "critical": 0,
+    "warning": 18,
+    "info": 42
+  },
+  "driftByType": {
+    "hardcoded-value": 60
+  },
+  "topColors": [
+    {
+      "value": "#adbac7",
+      "count": 4
+    },
+    {
+      "value": "#24292e",
+      "count": 4
+    },
+    {
+      "value": "#2d9d78",
+      "count": 4
+    },
+    {
+      "value": "#e5e5e5",
+      "count": 3
+    },
+    {
+      "value": "#a1efe4",
+      "count": 3
+    },
+    {
+      "value": "#e65244",
+      "count": 3
+    },
+    {
+      "value": "#6911d4",
+      "count": 3
+    },
+    {
+      "value": "#777",
+      "count": 2
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "1rem",
+      "count": 31
+    },
+    {
+      "value": "2rem",
+      "count": 20
+    },
+    {
+      "value": "10px",
+      "count": 15
+    },
+    {
+      "value": "20px",
+      "count": 8
+    },
+    {
+      "value": "0.5rem",
+      "count": 5
+    },
+    {
+      "value": "5px",
+      "count": 4
+    },
+    {
+      "value": "4px",
+      "count": 4
+    },
+    {
+      "value": "4rem",
+      "count": 4
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "docs/css/index.css",
+      "count": 149
+    },
+    {
+      "file": "frontend/text-editor/src/fonts.css",
+      "count": 70
+    },
+    {
+      "file": "backend/resources/app/templates/styles.css",
+      "count": 45
+    },
+    {
+      "file": "backend/resources/app/templates/api-doc.css",
+      "count": 34
+    },
+    {
+      "file": "docs/css/prism-base16-monokai.dark.css",
+      "count": 19
+    },
+    {
+      "file": "frontend/resources/styles/common/dependencies/_hljs-light-theme.scss",
+      "count": 19
+    },
+    {
+      "file": "frontend/resources/styles/common/dependencies/_hljs-dark-theme.scss",
+      "count": 18
+    },
+    {
+      "file": "plugins/apps/plugin-api-test-suite/src/ui.css",
+      "count": 16
+    }
+  ],
+  "samples": [
+    {
+      "component": "backend/resources/app/templates/api-doc.css",
+      "location": "backend/resources/app/templates/api-doc.css:3",
+      "entries": [
+        "font size: 12px (line 3)",
+        "spacing: 20px (line 13)",
+        "spacing: 20px (line 14)"
+      ]
+    },
+    {
+      "component": "backend/resources/app/templates/styles.css",
+      "location": "backend/resources/app/templates/styles.css:3",
+      "entries": [
+        "font size: 12px (line 3)",
+        "line height: 16px (line 13)",
+        "spacing: 10px (line 17)"
+      ]
+    },
+    {
+      "component": "docs/css/index.css",
+      "location": "docs/css/index.css:74",
+      "entries": [
+        "line height: 1.6 (line 74)",
+        "spacing: 2rem (line 77)",
+        "spacing: 1rem (line 78)"
+      ]
+    },
+    {
+      "component": "docs/css/prism-base16-monokai.dark.css",
+      "location": "docs/css/prism-base16-monokai.dark.css:4",
+      "entries": [
+        "font size: 14px (line 4)",
+        "line height: 1.375 (line 5)",
+        "colour: #272822 (line 18)"
+      ]
+    },
+    {
+      "component": "frontend/resources/styles/common/base.scss",
+      "location": "frontend/resources/styles/common/base.scss:76",
+      "entries": [
+        "spacing: 1rem (line 76)",
+        "spacing: 1rem (line 85)"
+      ]
+    },
+    {
+      "component": "frontend/resources/styles/common/dependencies/_hljs-dark-theme.scss",
+      "location": "frontend/resources/styles/common/dependencies/_hljs-dark-theme.scss:12",
+      "entries": [
+        "colour: #adbac7 (line 12)",
+        "colour: #22272e (line 13)",
+        "colour: #f47067 (line 24)"
+      ]
+    },
+    {
+      "component": "frontend/resources/styles/common/dependencies/_hljs-light-theme.scss",
+      "location": "frontend/resources/styles/common/dependencies/_hljs-light-theme.scss:13",
+      "entries": [
+        "colour: #24292e (line 13)",
+        "colour: #fff (line 14)",
+        "colour: #d73a49 (line 25)"
+      ]
+    },
+    {
+      "component": "frontend/resources/styles/common/refactor/basic-rules.scss",
+      "location": "frontend/resources/styles/common/refactor/basic-rules.scss:38",
+      "entries": [
+        "colour: rgb(170 181 186 / 0.3) (line 38)",
+        "colour: rgb(170 181 186 / 0.7) (line 44)"
+      ]
+    },
+    {
+      "component": "frontend/resources/styles/common/refactor/mixins.scss",
+      "location": "frontend/resources/styles/common/refactor/mixins.scss:44",
+      "entries": [
+        "line height: 1.2 (line 44)",
+        "line height: 1.2 (line 52)",
+        "line height: 1.2 (line 59)"
+      ]
+    },
+    {
+      "component": "frontend/resources/styles/debug.scss",
+      "location": "frontend/resources/styles/debug.scss:13",
+      "entries": [
+        "colour: rgb(255 255 0) (line 13)"
+      ]
+    },
+    {
+      "component": "frontend/src/app/main/ui/alert.scss",
+      "location": "frontend/src/app/main/ui/alert.scss:51",
+      "entries": [
+        "line height: 1.5 (line 51)",
+        "line height: 1.5 (line 62)"
+      ]
+    },
+    {
+      "component": "frontend/src/app/main/ui/auth/common.scss",
+      "location": "frontend/src/app/main/ui/auth/common.scss:113",
+      "entries": [
+        "line height: 1.2 (line 113)",
+        "line height: 1.2 (line 142)"
+      ]
+    }
+  ],
+  "scanSeconds": 15
+}

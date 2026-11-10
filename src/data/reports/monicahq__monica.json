@@ -1,0 +1,299 @@
+{
+  "repo": "monicahq/monica",
+  "owner": "monicahq",
+  "name": "monica",
+  "description": "Personal CRM. Remember everything about your friends, family and business relationships.",
+  "stars": 25754,
+  "homepage": "https://beta.monicahq.com",
+  "language": "PHP",
+  "defaultBranch": "main",
+  "commit": "dab74273acc5c9e0ba713a9f7c2c71c24ab16993",
+  "generatedAt": "2026-11-10T00:39:11.845Z",
+  "cliVersion": "0.8.20",
+  "score": 40,
+  "tier": "OK",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 254,
+    "tokenCount": 1,
+    "hardcodedValueCount": 107,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 107,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 1,
+    "worstFile": {
+      "path": "resources/js/Pages/Settings/CancelAccount/Index.vue",
+      "issueCount": 1
+    },
+    "detectedFrameworkNames": [
+      "vue",
+      "tailwind"
+    ]
+  },
+  "suggestions": [
+    "107 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on resources/js/Pages/Settings/CancelAccount/Index.vue (1 issues)"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 60,
+      "action": "Replace the hardcoded values in all 107 findings with tokens or scale steps"
+    }
+  ],
+  "noted": {
+    "count": 1,
+    "byKind": {
+      "optical-nudge": 1
+    },
+    "samples": [
+      {
+        "file": "resources/js/Pages/Vault/Contact/Goals/Show.vue",
+        "line": 232,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-bottom: 2px is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 107,
+    "critical": 0,
+    "warning": 40,
+    "info": 67
+  },
+  "driftByType": {
+    "hardcoded-value": 107
+  },
+  "topColors": [
+    {
+      "value": "#737e8d",
+      "count": 27
+    },
+    {
+      "value": "#283e59",
+      "count": 5
+    },
+    {
+      "value": "#edf2f9",
+      "count": 5
+    },
+    {
+      "value": "#d4d8dd",
+      "count": 5
+    },
+    {
+      "value": "#2f3031",
+      "count": 5
+    },
+    {
+      "value": "#fff",
+      "count": 2
+    },
+    {
+      "value": "#fafafa",
+      "count": 2
+    },
+    {
+      "value": "#f6f6f6",
+      "count": 2
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "9px",
+      "count": 6
+    },
+    {
+      "value": "0.5rem",
+      "count": 4
+    },
+    {
+      "value": "0.75rem",
+      "count": 4
+    },
+    {
+      "value": "4px",
+      "count": 1
+    },
+    {
+      "value": "24px",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "resources/js/Pages/Vault/Journal/Post/Show.vue",
+      "count": 19
+    },
+    {
+      "file": "resources/js/Pages/Vault/Journal/Post/Edit.vue",
+      "count": 14
+    },
+    {
+      "file": "resources/js/Pages/Vault/Contact/ImportantDates/Index.vue",
+      "count": 12
+    },
+    {
+      "file": "resources/js/Shared/Form/ContactSelector.vue",
+      "count": 8
+    },
+    {
+      "file": "resources/js/Shared/Form/PrettyButton.vue",
+      "count": 8
+    },
+    {
+      "file": "resources/js/Pages/Settings/Personalize/Templates/Partials/Modules.vue",
+      "count": 6
+    },
+    {
+      "file": "resources/js/Pages/Vault/Journal/Post/Partials/Tags.vue",
+      "count": 6
+    },
+    {
+      "file": "resources/js/Shared/Form/Errors.vue",
+      "count": 6
+    }
+  ],
+  "samples": [
+    {
+      "component": "resources/css/app.css",
+      "location": "resources/css/app.css:16",
+      "entries": [
+        "spacing: 4px (line 16)",
+        "colour: #3891ff (line 21)"
+      ]
+    },
+    {
+      "component": "resources/js/Pages/Settings/CancelAccount/Index.vue",
+      "location": "resources/js/Pages/Settings/CancelAccount/Index.vue:150",
+      "entries": [
+        "radius: 7px (line 150)",
+        "radius: 7px (line 151)"
+      ]
+    },
+    {
+      "component": "resources/js/Pages/Settings/Notifications/Logs/Index.vue",
+      "location": "resources/js/Pages/Settings/Notifications/Logs/Index.vue:150",
+      "entries": [
+        "radius: 8px (line 150)",
+        "radius: 8px (line 151)",
+        "radius: 8px (line 159)"
+      ]
+    },
+    {
+      "component": "resources/js/Pages/Settings/Notifications/Partials/Emails.vue",
+      "location": "resources/js/Pages/Settings/Notifications/Partials/Emails.vue:329",
+      "entries": [
+        "radius: 8px (line 329)",
+        "radius: 8px (line 330)",
+        "radius: 8px (line 338)"
+      ]
+    },
+    {
+      "component": "resources/js/Pages/Settings/Notifications/Partials/Telegram.vue",
+      "location": "resources/js/Pages/Settings/Notifications/Partials/Telegram.vue:298",
+      "entries": [
+        "radius: 8px (line 298)",
+        "radius: 8px (line 299)",
+        "radius: 8px (line 307)"
+      ]
+    },
+    {
+      "component": "resources/js/Pages/Settings/Personalize/AddressTypes/Index.vue",
+      "location": "resources/js/Pages/Settings/Personalize/AddressTypes/Index.vue:283",
+      "entries": [
+        "radius: 8px (line 283)",
+        "radius: 8px (line 284)",
+        "radius: 8px (line 292)"
+      ]
+    },
+    {
+      "component": "resources/js/Pages/Settings/Personalize/CallReasons/Index.vue",
+      "location": "resources/js/Pages/Settings/Personalize/CallReasons/Index.vue:479",
+      "entries": [
+        "radius: 8px (line 479)",
+        "radius: 8px (line 480)",
+        "radius: 8px (line 488)"
+      ]
+    },
+    {
+      "component": "resources/js/Pages/Settings/Personalize/ContactInformationTypes/Index.vue",
+      "location": "resources/js/Pages/Settings/Personalize/ContactInformationTypes/Index.vue:342",
+      "entries": [
+        "radius: 8px (line 342)",
+        "radius: 8px (line 343)",
+        "radius: 8px (line 351)"
+      ]
+    },
+    {
+      "component": "resources/js/Pages/Settings/Personalize/Currencies/Index.vue",
+      "location": "resources/js/Pages/Settings/Personalize/Currencies/Index.vue:218",
+      "entries": [
+        "radius: 8px (line 218)",
+        "radius: 8px (line 219)",
+        "radius: 8px (line 227)"
+      ]
+    },
+    {
+      "component": "resources/js/Pages/Settings/Personalize/Genders/Index.vue",
+      "location": "resources/js/Pages/Settings/Personalize/Genders/Index.vue:281",
+      "entries": [
+        "radius: 8px (line 281)",
+        "radius: 8px (line 282)",
+        "radius: 8px (line 290)"
+      ]
+    },
+    {
+      "component": "resources/js/Pages/Settings/Personalize/GiftOccasions/Index.vue",
+      "location": "resources/js/Pages/Settings/Personalize/GiftOccasions/Index.vue:316",
+      "entries": [
+        "radius: 8px (line 316)",
+        "radius: 8px (line 317)",
+        "radius: 8px (line 325)"
+      ]
+    },
+    {
+      "component": "resources/js/Pages/Settings/Personalize/GiftStates/Index.vue",
+      "location": "resources/js/Pages/Settings/Personalize/GiftStates/Index.vue:318",
+      "entries": [
+        "radius: 8px (line 318)",
+        "radius: 8px (line 319)",
+        "radius: 8px (line 323)"
+      ]
+    }
+  ],
+  "scanSeconds": 8
+}

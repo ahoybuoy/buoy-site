@@ -1,0 +1,231 @@
+{
+  "repo": "mckaywrigley/chatbot-ui",
+  "owner": "mckaywrigley",
+  "name": "chatbot-ui",
+  "description": "AI chat for any model.",
+  "stars": 33313,
+  "homepage": "https://JoinTakeoff.com",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "81328b61d2a4ab597a7a057be70e785cf756d9f8",
+  "generatedAt": "2026-11-10T00:38:41.315Z",
+  "cliVersion": "0.8.20",
+  "score": 94,
+  "tier": "Great",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 54,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 291,
+    "tokenCount": 22,
+    "hardcodedValueCount": 9,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 10,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 1,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 1,
+    "worstFile": {
+      "path": "components/chat/chat-files-display.tsx",
+      "issueCount": 1
+    },
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "tailwind",
+      "radix",
+      "shadcn"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 9 hardcoded values left to tokenize"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 6,
+      "action": "Replace the hardcoded values in all 9 findings with tokens or scale steps, and remove or reuse 1 unused component or repeated pattern"
+    }
+  ],
+  "noted": {
+    "count": 1,
+    "byKind": {
+      "vendored": 1
+    },
+    "samples": [
+      {
+        "file": "components/ui/calendar.tsx",
+        "line": 37,
+        "value": "text-[0.8rem]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 10,
+    "critical": 0,
+    "warning": 1,
+    "info": 9
+  },
+  "driftByType": {
+    "hardcoded-value": 9,
+    "repeated-pattern": 1
+  },
+  "topColors": [
+    {
+      "value": "#ccc",
+      "count": 1
+    },
+    {
+      "value": "#aaa",
+      "count": 1
+    },
+    {
+      "value": "#f2f2f2",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "4px",
+      "count": 1
+    },
+    {
+      "value": "5px",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "app/[locale]/globals.css",
+      "count": 4
+    },
+    {
+      "file": "components/chat/chat-files-display.tsx",
+      "count": 2
+    },
+    {
+      "file": "components/chat/chat-retrieval-settings.tsx",
+      "count": 1
+    },
+    {
+      "file": "components/messages/message-replies.tsx",
+      "count": 1
+    },
+    {
+      "file": "components/setup/api-step.tsx",
+      "count": 1
+    },
+    {
+      "file": "components/utility/alerts.tsx",
+      "count": 1
+    },
+    {
+      "file": "components/utility/announcements.tsx",
+      "count": 1
+    },
+    {
+      "file": "components/utility/profile-settings.tsx",
+      "count": 1
+    }
+  ],
+  "samples": [
+    {
+      "component": "components/chat/chat-files-display.tsx",
+      "location": "components/chat/chat-files-display.tsx:144",
+      "entries": [
+        "text-[10px] (line 144)",
+        "text-[10px] (line 211)"
+      ]
+    },
+    {
+      "component": "components/chat/chat-retrieval-settings.tsx",
+      "location": "components/chat/chat-retrieval-settings.tsx:31",
+      "entries": [
+        "pt-[4px] (line 31)"
+      ]
+    },
+    {
+      "component": "components/messages/message-replies.tsx",
+      "location": "components/messages/message-replies.tsx:32",
+      "entries": [
+        "text-[8px] (line 32)"
+      ]
+    },
+    {
+      "component": "components/setup/api-step.tsx",
+      "location": "components/setup/api-step.tsx:80",
+      "entries": [
+        "text-[11px] (line 80)"
+      ]
+    },
+    {
+      "component": "components/utility/alerts.tsx",
+      "location": "components/utility/alerts.tsx:19",
+      "entries": [
+        "text-[10px] (line 19)"
+      ]
+    },
+    {
+      "component": "components/utility/announcements.tsx",
+      "location": "components/utility/announcements.tsx:86",
+      "entries": [
+        "text-[10px] (line 86)"
+      ]
+    },
+    {
+      "component": "components/utility/profile-settings.tsx",
+      "location": "components/utility/profile-settings.tsx:448",
+      "entries": [
+        "text-[11px] (line 448)"
+      ]
+    },
+    {
+      "component": "components/workspace/workspace-settings.tsx",
+      "location": "components/workspace/workspace-settings.tsx:174",
+      "entries": [
+        "pr-[5px] (line 174)"
+      ]
+    },
+    {
+      "component": "app/[locale]/globals.css",
+      "location": "app/[locale]/globals.css:10",
+      "entries": [
+        "colour: #ccc (line 10)",
+        "radius: 10px (line 11)",
+        "colour: #aaa (line 15)"
+      ]
+    }
+  ],
+  "scanSeconds": 7
+}

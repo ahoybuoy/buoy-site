@@ -1,0 +1,225 @@
+{
+  "repo": "heyform/heyform",
+  "owner": "heyform",
+  "name": "heyform",
+  "description": "Open-Source Form Builder",
+  "stars": 9069,
+  "homepage": "https://heyform.net",
+  "language": "TypeScript",
+  "defaultBranch": "next",
+  "commit": "18d9c2fc531c2a43c0561475160670babacb5f5e",
+  "generatedAt": "2026-11-10T00:31:49.675Z",
+  "cliVersion": "0.8.20",
+  "score": null,
+  "tier": "N/A",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 0,
+      "max": 20
+    },
+    "consistency": {
+      "score": 0,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 0,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 0,
+    "tokenCount": 10,
+    "hardcodedValueCount": 5,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 5,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 2,
+    "detectedFrameworkNames": []
+  },
+  "suggestions": [
+    "Only 0 UI components detected, too few to score. If this repo has more, Buoy may not recognise its framework yet."
+  ],
+  "pathTo100": null,
+  "noted": {
+    "count": 2,
+    "byKind": {
+      "optical-nudge": 2
+    },
+    "samples": [
+      {
+        "file": "packages/embed/src/style.scss",
+        "line": 96,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/webapp/src/styles/builder.scss",
+        "line": 1134,
+        "value": "0.1875rem",
+        "kind": "optical-nudge",
+        "reason": "padding: 0.1875rem is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 5,
+    "critical": 0,
+    "warning": 4,
+    "info": 1
+  },
+  "driftByType": {
+    "hardcoded-value": 5
+  },
+  "topColors": [
+    {
+      "value": "#fff",
+      "count": 7
+    },
+    {
+      "value": "#020617",
+      "count": 4
+    },
+    {
+      "value": "rgba(0, 0, 0, 0.1)",
+      "count": 2
+    },
+    {
+      "value": "rgba(0, 0, 0, .85)",
+      "count": 1
+    },
+    {
+      "value": "rgba(0, 0, 0, 0.2)",
+      "count": 1
+    },
+    {
+      "value": "#dbeafe",
+      "count": 1
+    },
+    {
+      "value": "#1d4ed8",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "24px",
+      "count": 8
+    },
+    {
+      "value": "0.5rem",
+      "count": 6
+    },
+    {
+      "value": "0.25rem",
+      "count": 4
+    },
+    {
+      "value": "1rem",
+      "count": 3
+    },
+    {
+      "value": "0.625rem",
+      "count": 2
+    },
+    {
+      "value": "1.75rem",
+      "count": 2
+    },
+    {
+      "value": "5rem",
+      "count": 2
+    },
+    {
+      "value": "3.5rem",
+      "count": 2
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "packages/form-renderer/src/style.scss",
+      "count": 37
+    },
+    {
+      "file": "packages/embed/src/style.scss",
+      "count": 21
+    },
+    {
+      "file": "packages/webapp/src/styles/builder.scss",
+      "count": 16
+    },
+    {
+      "file": "packages/webapp/src/styles/render.scss",
+      "count": 2
+    },
+    {
+      "file": "packages/webapp/src/styles/globals.scss",
+      "count": 1
+    }
+  ],
+  "samples": [
+    {
+      "component": "packages/embed/src/style.scss",
+      "location": "packages/embed/src/style.scss:28",
+      "entries": [
+        "font size: 16px (line 28)",
+        "line height: 1.5 (line 29)",
+        "font weight: 500 (line 30)"
+      ]
+    },
+    {
+      "component": "packages/form-renderer/src/style.scss",
+      "location": "packages/form-renderer/src/style.scss:11",
+      "entries": [
+        "radius: 6px (line 11)",
+        "colour: rgba(0, 0, 0, 0.2) (line 16)",
+        "spacing: 24px (line 643)"
+      ]
+    },
+    {
+      "component": "packages/webapp/src/styles/builder.scss",
+      "location": "packages/webapp/src/styles/builder.scss:137",
+      "entries": [
+        "spacing: 5rem (line 137)",
+        "spacing: 3.5rem (line 138)",
+        "spacing: 3.5rem (line 154)"
+      ]
+    },
+    {
+      "component": "packages/webapp/src/styles/globals.scss",
+      "location": "packages/webapp/src/styles/globals.scss:64",
+      "entries": [
+        "radius: 6px (line 64)"
+      ]
+    },
+    {
+      "component": "packages/webapp/src/styles/render.scss",
+      "location": "packages/webapp/src/styles/render.scss:6",
+      "entries": [
+        "radius: 1rem (line 6)",
+        "colour: rgba(0, 0, 0, 0.1) (line 135)"
+      ]
+    }
+  ],
+  "scanSeconds": 9
+}

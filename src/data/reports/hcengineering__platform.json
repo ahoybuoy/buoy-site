@@ -1,0 +1,331 @@
+{
+  "repo": "hcengineering/platform",
+  "owner": "hcengineering",
+  "name": "platform",
+  "description": "Huly — All-in-One Project Management Platform (alternative to Linear, Jira, Slack, Notion, Motion)",
+  "stars": 28079,
+  "homepage": "https://huly.io",
+  "language": "TypeScript",
+  "defaultBranch": "develop",
+  "commit": "a1dd19d4f7699e8b8d9e0dbeb610c7884b6255bc",
+  "generatedAt": "2026-11-10T00:31:18.862Z",
+  "cliVersion": "0.8.20",
+  "score": null,
+  "tier": "N/A",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 0,
+      "max": 20
+    },
+    "consistency": {
+      "score": 0,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 0,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 0,
+    "tokenCount": 0,
+    "hardcodedValueCount": 646,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 646,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 54,
+    "worstFile": {
+      "path": "packages/kanban/src/components/Kanban.svelte",
+      "issueCount": 1
+    },
+    "detectedFrameworkNames": []
+  },
+  "suggestions": [
+    "Only 0 UI components detected, too few to score. If this repo has more, Buoy may not recognise its framework yet."
+  ],
+  "pathTo100": null,
+  "noted": {
+    "count": 54,
+    "byKind": {
+      "optical-nudge": 53,
+      "explained": 1
+    },
+    "samples": [
+      {
+        "file": "packages/presentation/src/components/AttributeBarEditor.svelte",
+        "line": 157,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-left: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/presentation/src/components/IconWithEmoji.svelte",
+        "line": 70,
+        "value": "-0.125rem",
+        "kind": "optical-nudge",
+        "reason": "margin-bottom: -0.125rem is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/theme/styles/_text-editor.scss",
+        "line": 403,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding-bottom: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/theme/styles/button.scss",
+        "line": 787,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/theme/styles/common.scss",
+        "line": 320,
+        "value": ".125rem",
+        "kind": "optical-nudge",
+        "reason": "margin-left: .125rem is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/theme/styles/common.scss",
+        "line": 341,
+        "value": ".125rem",
+        "kind": "optical-nudge",
+        "reason": "margin-right: .125rem is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 646,
+    "critical": 0,
+    "warning": 46,
+    "info": 600
+  },
+  "driftByType": {
+    "hardcoded-value": 646
+  },
+  "topColors": [
+    {
+      "value": "rgba(0, 0, 0, 0.1)",
+      "count": 9
+    },
+    {
+      "value": "#3575de33",
+      "count": 6
+    },
+    {
+      "value": "#fff",
+      "count": 4
+    },
+    {
+      "value": "#24292e",
+      "count": 4
+    },
+    {
+      "value": "rgba(45, 50, 160, 0.5)",
+      "count": 4
+    },
+    {
+      "value": "rgba(black, 0.5)",
+      "count": 4
+    },
+    {
+      "value": "rgba(0, 0, 0, 0.5)",
+      "count": 3
+    },
+    {
+      "value": "#3871e0",
+      "count": 3
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "1rem",
+      "count": 200
+    },
+    {
+      "value": "0.5rem",
+      "count": 197
+    },
+    {
+      "value": "0.25rem",
+      "count": 168
+    },
+    {
+      "value": "0.75rem",
+      "count": 83
+    },
+    {
+      "value": "1.5rem",
+      "count": 43
+    },
+    {
+      "value": "0.375rem",
+      "count": 41
+    },
+    {
+      "value": "2rem",
+      "count": 34
+    },
+    {
+      "value": "8px",
+      "count": 24
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "packages/theme/styles/components.scss",
+      "count": 76
+    },
+    {
+      "file": "plugins/tracker-resources/src/components/gantt/GanttView.svelte",
+      "count": 52
+    },
+    {
+      "file": "packages/theme/styles/common.scss",
+      "count": 41
+    },
+    {
+      "file": "packages/theme/styles/_text-editor.scss",
+      "count": 39
+    },
+    {
+      "file": "plugins/tracker-resources/src/components/gantt/GanttSidebar.svelte",
+      "count": 32
+    },
+    {
+      "file": "plugins/setting-resources/src/components/ApiDocsSection.svelte",
+      "count": 28
+    },
+    {
+      "file": "plugins/tracker-resources/src/components/issues/IssueDependenciesPanel.svelte",
+      "count": 25
+    },
+    {
+      "file": "plugins/view-resources/src/components/ActionsPopup.svelte",
+      "count": 23
+    }
+  ],
+  "samples": [
+    {
+      "component": "packages/kanban/src/components/Kanban.svelte",
+      "location": "packages/kanban/src/components/Kanban.svelte:480",
+      "entries": [
+        "radius: 0.25rem (line 480)"
+      ]
+    },
+    {
+      "component": "packages/kanban/src/components/KanbanRow.svelte",
+      "location": "packages/kanban/src/components/KanbanRow.svelte:166",
+      "entries": [
+        "radius: 0.25rem (line 166)"
+      ]
+    },
+    {
+      "component": "packages/presentation/src/components/DocPopup.svelte",
+      "location": "packages/presentation/src/components/DocPopup.svelte:379",
+      "entries": [
+        "radius: 0.25rem (line 379)"
+      ]
+    },
+    {
+      "component": "packages/presentation/src/components/DrawingBoardToolbar.svelte",
+      "location": "packages/presentation/src/components/DrawingBoardToolbar.svelte:350",
+      "entries": [
+        "spacing: 0.25rem (line 350)",
+        "shadow: 0.05rem 0.05rem 0.25rem rgba(0, 0, 0, 0.2) (line 365)",
+        "spacing: -0.15rem (line 374)"
+      ]
+    },
+    {
+      "component": "packages/presentation/src/components/IconWithEmoji.svelte",
+      "location": "packages/presentation/src/components/IconWithEmoji.svelte:78",
+      "entries": [
+        "font size: 1rem (line 78)",
+        "font size: 0.75rem (line 83)",
+        "font size: 0.875rem (line 89)"
+      ]
+    },
+    {
+      "component": "packages/presentation/src/components/MessageBox.svelte",
+      "location": "packages/presentation/src/components/MessageBox.svelte:109",
+      "entries": [
+        "radius: 0.5rem (line 109)",
+        "spacing: 1.75rem (line 120)",
+        "spacing: 0.5rem (line 130)"
+      ]
+    },
+    {
+      "component": "packages/presentation/src/components/PDFViewer.svelte",
+      "location": "packages/presentation/src/components/PDFViewer.svelte:115",
+      "entries": [
+        "font weight: 500 (line 115)",
+        "font size: 0.625rem (line 116)",
+        "colour: rgba(0, 0, 0, 0.1) (line 119)"
+      ]
+    },
+    {
+      "component": "packages/presentation/src/components/PluginConfigurationCard.svelte",
+      "location": "packages/presentation/src/components/PluginConfigurationCard.svelte:72",
+      "entries": [
+        "spacing: 0.5rem (line 72)",
+        "radius: 0.5rem (line 75)",
+        "spacing: 0.625rem (line 93)"
+      ]
+    },
+    {
+      "component": "packages/presentation/src/components/SearchResult.svelte",
+      "location": "packages/presentation/src/components/SearchResult.svelte:98",
+      "entries": [
+        "spacing: 0.5rem (line 98)",
+        "spacing: 0.5rem (line 107)"
+      ]
+    },
+    {
+      "component": "packages/presentation/src/components/markup/NodeContent.svelte",
+      "location": "packages/presentation/src/components/markup/NodeContent.svelte:262",
+      "entries": [
+        "font size: 2rem (line 262)"
+      ]
+    },
+    {
+      "component": "packages/theme/styles/_text-editor.scss",
+      "location": "packages/theme/styles/_text-editor.scss:23",
+      "entries": [
+        "spacing: 0.25rem (line 23)",
+        "font weight: 600 (line 34)",
+        "font size: 2.25rem (line 46)"
+      ]
+    },
+    {
+      "component": "packages/theme/styles/button.scss",
+      "location": "packages/theme/styles/button.scss:175",
+      "entries": [
+        "font weight: 600 (line 175)",
+        "font weight: 500 (line 232)",
+        "font weight: 500 (line 283)"
+      ]
+    }
+  ],
+  "scanSeconds": 20
+}

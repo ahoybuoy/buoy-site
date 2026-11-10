@@ -1,0 +1,225 @@
+{
+  "repo": "knadh/listmonk",
+  "owner": "knadh",
+  "name": "listmonk",
+  "description": "High performance, self-hosted, newsletter and mailing list manager with a modern dashboard. Single binary app.",
+  "stars": 24226,
+  "homepage": "https://listmonk.app",
+  "language": "Go",
+  "defaultBranch": "master",
+  "commit": "94522d5279c3b6a9a56b8d585805ea8405b22443",
+  "generatedAt": "2026-11-10T00:34:01.741Z",
+  "cliVersion": "0.8.20",
+  "score": null,
+  "tier": "N/A",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 0,
+      "max": 20
+    },
+    "consistency": {
+      "score": 0,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 0,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 0,
+    "tokenCount": 9,
+    "hardcodedValueCount": 5,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 5,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 1,
+    "detectedFrameworkNames": []
+  },
+  "suggestions": [
+    "Only 0 UI components detected, too few to score. If this repo has more, Buoy may not recognise its framework yet."
+  ],
+  "pathTo100": null,
+  "noted": {
+    "count": 1,
+    "byKind": {
+      "optical-nudge": 1
+    },
+    "samples": [
+      {
+        "file": "static/admin/assets/css/richtext.css",
+        "line": 366,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding: 2px is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 5,
+    "critical": 0,
+    "warning": 3,
+    "info": 2
+  },
+  "driftByType": {
+    "hardcoded-value": 5
+  },
+  "topColors": [
+    {
+      "value": "#ddd",
+      "count": 5
+    },
+    {
+      "value": "#0055d4",
+      "count": 5
+    },
+    {
+      "value": "#f6f6f6",
+      "count": 4
+    },
+    {
+      "value": "#333",
+      "count": 3
+    },
+    {
+      "value": "#fff",
+      "count": 2
+    },
+    {
+      "value": "#eee",
+      "count": 2
+    },
+    {
+      "value": "#666",
+      "count": 2
+    },
+    {
+      "value": "#05a200",
+      "count": 2
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "5px",
+      "count": 3
+    },
+    {
+      "value": "10px",
+      "count": 3
+    },
+    {
+      "value": "15px",
+      "count": 3
+    },
+    {
+      "value": "20px",
+      "count": 2
+    },
+    {
+      "value": "2rem",
+      "count": 2
+    },
+    {
+      "value": "30px",
+      "count": 2
+    },
+    {
+      "value": "-120px",
+      "count": 1
+    },
+    {
+      "value": "0.4rem",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "docs/docs/content/static/style.css",
+      "count": 35
+    },
+    {
+      "file": "docs/i18n/style.css",
+      "count": 21
+    },
+    {
+      "file": "static/admin/assets/css/richtext.css",
+      "count": 11
+    },
+    {
+      "file": "static/admin/assets/css/style.css",
+      "count": 9
+    },
+    {
+      "file": "docs/site/static/static/style.css",
+      "count": 3
+    }
+  ],
+  "samples": [
+    {
+      "component": "docs/docs/content/static/style.css",
+      "location": "docs/docs/content/static/style.css:2",
+      "entries": [
+        "colour: #fff (line 2)",
+        "colour: #333 (line 4)",
+        "shadow: 1px 1px 3px #ddd (line 6)"
+      ]
+    },
+    {
+      "component": "docs/i18n/style.css",
+      "location": "docs/i18n/style.css:7",
+      "entries": [
+        "font size: 16px (line 7)",
+        "line height: 24px (line 8)",
+        "colour: #0055d4 (line 16)"
+      ]
+    },
+    {
+      "component": "docs/site/static/static/style.css",
+      "location": "docs/site/static/static/style.css:18",
+      "entries": [
+        "letter spacing: -0.02em (line 18)",
+        "line height: 1.06 (line 80)",
+        "shadow: 0 8px 24px -12px rgb(16 42 80 / 0.25), (line 216)"
+      ]
+    },
+    {
+      "component": "static/admin/assets/css/richtext.css",
+      "location": "static/admin/assets/css/richtext.css:40",
+      "entries": [
+        "spacing: 0.4rem (line 40)",
+        "font size: 15px (line 91)",
+        "line height: 1.5 (line 92)"
+      ]
+    },
+    {
+      "component": "static/admin/assets/css/style.css",
+      "location": "static/admin/assets/css/style.css:307",
+      "entries": [
+        "font size: 0.6em (line 307)",
+        "spacing: 10px (line 553)",
+        "line height: 1.5 (line 693)"
+      ]
+    }
+  ],
+  "scanSeconds": 3
+}

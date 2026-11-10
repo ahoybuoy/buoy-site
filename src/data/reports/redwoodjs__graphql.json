@@ -1,0 +1,321 @@
+{
+  "repo": "redwoodjs/graphql",
+  "owner": "redwoodjs",
+  "name": "graphql",
+  "description": "RedwoodGraphQL",
+  "stars": 17589,
+  "homepage": "https://redwoodjs.com",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "a7852fb92d0e4ac2bcce1d9a755717ba6cf53ffd",
+  "generatedAt": "2026-11-10T00:42:39.015Z",
+  "cliVersion": "0.8.20",
+  "score": 78,
+  "tier": "Good",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 40,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 8,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 168,
+    "tokenCount": 40,
+    "hardcodedValueCount": 17,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 18,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 1,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 3,
+    "worstFile": {
+      "path": "packages/router/src/Set.tsx",
+      "issueCount": 1
+    },
+    "detectedFrameworkNames": [
+      "react",
+      "storybook"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 17 hardcoded values left to tokenize",
+    "1 deprecated pattern — migrate to current API"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 20,
+      "action": "Replace the hardcoded values in all 17 findings with tokens or scale steps"
+    },
+    {
+      "pillar": "criticalIssues",
+      "points": 2,
+      "action": "Migrate 1 deprecated pattern"
+    }
+  ],
+  "noted": {
+    "count": 3,
+    "byKind": {
+      "optical-nudge": 3
+    },
+    "samples": [
+      {
+        "file": "__fixtures__/rsc-caching/web/src/components/CachingBoxes/CachingBoxes.css",
+        "line": 8,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "__fixtures__/test-project-rsc-kitchen-sink/web/src/layouts/NavigationLayout/NavigationLayout.css",
+        "line": 33,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding-left: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "__fixtures__/test-project-rsc-kitchen-sink/web/src/scaffold.css",
+        "line": 81,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding: 2px is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 18,
+    "critical": 0,
+    "warning": 8,
+    "info": 10
+  },
+  "driftByType": {
+    "deprecated-pattern": 1,
+    "hardcoded-value": 17
+  },
+  "topColors": [
+    {
+      "value": "#fff",
+      "count": 9
+    },
+    {
+      "value": "#4a5568",
+      "count": 8
+    },
+    {
+      "value": "#333",
+      "count": 7
+    },
+    {
+      "value": "#c53030",
+      "count": 7
+    },
+    {
+      "value": "#a0aec0",
+      "count": 5
+    },
+    {
+      "value": "#e2e8f0",
+      "count": 4
+    },
+    {
+      "value": "#718096",
+      "count": 3
+    },
+    {
+      "value": "#3182ce",
+      "count": 3
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "1rem",
+      "count": 12
+    },
+    {
+      "value": "10px",
+      "count": 7
+    },
+    {
+      "value": "0.5rem",
+      "count": 5
+    },
+    {
+      "value": "0.25rem",
+      "count": 5
+    },
+    {
+      "value": "2rem",
+      "count": 4
+    },
+    {
+      "value": "5px",
+      "count": 3
+    },
+    {
+      "value": "1em",
+      "count": 3
+    },
+    {
+      "value": "4px",
+      "count": 2
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "__fixtures__/test-project-rsc-kitchen-sink/web/src/scaffold.css",
+      "count": 106
+    },
+    {
+      "file": "docs/src/css/custom.css",
+      "count": 11
+    },
+    {
+      "file": "__fixtures__/test-project-rsc-kitchen-sink/web/src/layouts/AuthLayout/AuthLayout.css",
+      "count": 6
+    },
+    {
+      "file": "__fixtures__/test-project-rsc-kitchen-sink/web/src/layouts/NavigationLayout/NavigationLayout.css",
+      "count": 6
+    },
+    {
+      "file": "__fixtures__/test-project-rsa/web/src/layouts/NavigationLayout/NavigationLayout.css",
+      "count": 5
+    },
+    {
+      "file": "__fixtures__/rsc-caching/web/src/components/ServerDelayForm/ServerDelayForm.css",
+      "count": 3
+    },
+    {
+      "file": "__fixtures__/rsc-caching/web/src/layouts/MainLayout/MainLayout.css",
+      "count": 2
+    },
+    {
+      "file": "__fixtures__/test-project-rsc-kitchen-sink/web/src/layouts/BlogLayout/BlogLayout.css",
+      "count": 2
+    }
+  ],
+  "samples": [
+    {
+      "component": "__fixtures__/fragment-test-project/web/src/scaffold.css",
+      "location": "__fixtures__/fragment-test-project/web/src/scaffold.css:157",
+      "entries": [
+        "shadow: 0 0 5px #c53030 (line 157)"
+      ]
+    },
+    {
+      "component": "__fixtures__/rsc-caching/web/src/components/CachingBoxes/CachingBoxes.css",
+      "location": "__fixtures__/rsc-caching/web/src/components/CachingBoxes/CachingBoxes.css:6",
+      "entries": [
+        "spacing: 10px (line 6)"
+      ]
+    },
+    {
+      "component": "__fixtures__/rsc-caching/web/src/components/ServerDelayForm/ServerDelayForm.css",
+      "location": "__fixtures__/rsc-caching/web/src/components/ServerDelayForm/ServerDelayForm.css:2",
+      "entries": [
+        "spacing: 1rem (line 2)",
+        "spacing: 4px (line 5)",
+        "spacing: 4px (line 9)"
+      ]
+    },
+    {
+      "component": "__fixtures__/rsc-caching/web/src/layouts/MainLayout/MainLayout.css",
+      "location": "__fixtures__/rsc-caching/web/src/layouts/MainLayout/MainLayout.css:11",
+      "entries": [
+        "colour: #333 (line 11)",
+        "colour: #111 (line 32)"
+      ]
+    },
+    {
+      "component": "__fixtures__/test-project-rsa/web/src/layouts/NavigationLayout/NavigationLayout.css",
+      "location": "__fixtures__/test-project-rsa/web/src/layouts/NavigationLayout/NavigationLayout.css:6",
+      "entries": [
+        "spacing: 10px (line 6)",
+        "spacing: 10px (line 19)",
+        "colour: #333 (line 24)"
+      ]
+    },
+    {
+      "component": "__fixtures__/test-project-rsc-kitchen-sink/web/src/components/RandomNumberServerCell/RandomNumberServerCell.css",
+      "location": "__fixtures__/test-project-rsc-kitchen-sink/web/src/components/RandomNumberServerCell/RandomNumberServerCell.css:3",
+      "entries": [
+        "spacing: 1em (line 3)"
+      ]
+    },
+    {
+      "component": "__fixtures__/test-project-rsc-kitchen-sink/web/src/layouts/AuthLayout/AuthLayout.css",
+      "location": "__fixtures__/test-project-rsc-kitchen-sink/web/src/layouts/AuthLayout/AuthLayout.css:6",
+      "entries": [
+        "spacing: 10px (line 6)",
+        "spacing: 30px (line 7)",
+        "spacing: 10px (line 19)"
+      ]
+    },
+    {
+      "component": "__fixtures__/test-project-rsc-kitchen-sink/web/src/layouts/BlogLayout/BlogLayout.css",
+      "location": "__fixtures__/test-project-rsc-kitchen-sink/web/src/layouts/BlogLayout/BlogLayout.css:9",
+      "entries": [
+        "spacing: 1rem (line 9)",
+        "spacing: 0.8rem (line 22)"
+      ]
+    },
+    {
+      "component": "__fixtures__/test-project-rsc-kitchen-sink/web/src/layouts/NavigationLayout/NavigationLayout.css",
+      "location": "__fixtures__/test-project-rsc-kitchen-sink/web/src/layouts/NavigationLayout/NavigationLayout.css:10",
+      "entries": [
+        "spacing: 10px (line 10)",
+        "spacing: 10px (line 22)",
+        "colour: #333 (line 27)"
+      ]
+    },
+    {
+      "component": "__fixtures__/test-project-rsc-kitchen-sink/web/src/pages/EditBlogPostPage/EditBlogPostPage.css",
+      "location": "__fixtures__/test-project-rsc-kitchen-sink/web/src/pages/EditBlogPostPage/EditBlogPostPage.css:4",
+      "entries": [
+        "spacing: 1rem (line 4)"
+      ]
+    },
+    {
+      "component": "__fixtures__/test-project-rsc-kitchen-sink/web/src/pages/MultiCellPage/MultiCellPage.css",
+      "location": "__fixtures__/test-project-rsc-kitchen-sink/web/src/pages/MultiCellPage/MultiCellPage.css:2",
+      "entries": [
+        "spacing: 1em (line 2)",
+        "spacing: 1em (line 8)"
+      ]
+    },
+    {
+      "component": "__fixtures__/test-project-rsc-kitchen-sink/web/src/pages/NewBlogPostPage/NewBlogPostPage.css",
+      "location": "__fixtures__/test-project-rsc-kitchen-sink/web/src/pages/NewBlogPostPage/NewBlogPostPage.css:4",
+      "entries": [
+        "spacing: 1rem (line 4)"
+      ]
+    }
+  ],
+  "scanSeconds": 11
+}

@@ -1,0 +1,292 @@
+{
+  "repo": "lobehub/lobehub",
+  "owner": "lobehub",
+  "name": "lobehub",
+  "description": "🤯 LobeHub - Super-Agents on Your Team. Add super-agents to the chats your team already uses.They take on work by themselves and get better every week.",
+  "stars": 84593,
+  "homepage": "https://lobehub.com",
+  "language": "TypeScript",
+  "defaultBranch": "canary",
+  "commit": "d29fee054933b6e76cdd396f5e45f5ebfce3f5f0",
+  "generatedAt": "2026-11-10T00:37:05.760Z",
+  "cliVersion": "0.8.20",
+  "score": 99,
+  "tier": "Great",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 59,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 4799,
+    "tokenCount": 7,
+    "hardcodedValueCount": 32,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 32,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 0,
+    "topHardcodedColor": {
+      "value": "#000",
+      "count": 4
+    },
+    "worstFile": {
+      "path": "src/features/Portal/GroupThread/Body/ThreadChatList.tsx",
+      "issueCount": 2
+    },
+    "uniqueSpacingValues": 10,
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "emotion"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 32 hardcoded values left to tokenize. src/features/Portal/GroupThread/Body/ThreadChatList.tsx has the most (2)"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 1,
+      "action": "Replace the hardcoded values in 21 of the 32 findings with tokens or scale steps"
+    }
+  ],
+  "noted": {
+    "count": 0,
+    "byKind": {},
+    "samples": []
+  },
+  "driftSummary": {
+    "total": 24,
+    "critical": 0,
+    "warning": 10,
+    "info": 14
+  },
+  "driftByType": {
+    "hardcoded-value": 24
+  },
+  "topColors": [
+    {
+      "value": "#000",
+      "count": 4
+    },
+    {
+      "value": "#fff",
+      "count": 2
+    },
+    {
+      "value": "#f59e0b",
+      "count": 2
+    },
+    {
+      "value": "#5865F2",
+      "count": 1
+    },
+    {
+      "value": "#999",
+      "count": 1
+    },
+    {
+      "value": "rgba(0,0,0,0.9)",
+      "count": 1
+    },
+    {
+      "value": "#9ca3af",
+      "count": 1
+    },
+    {
+      "value": "#374151",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "12px",
+      "count": 5
+    },
+    {
+      "value": "16px",
+      "count": 5
+    },
+    {
+      "value": "1em",
+      "count": 4
+    },
+    {
+      "value": "2em",
+      "count": 3
+    },
+    {
+      "value": "14px",
+      "count": 3
+    },
+    {
+      "value": "8px",
+      "count": 3
+    },
+    {
+      "value": "10px",
+      "count": 2
+    },
+    {
+      "value": "24px",
+      "count": 2
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "apps/desktop/shell/update/style.css",
+      "count": 19
+    },
+    {
+      "file": "packages/canvas-runtime/src/base.css",
+      "count": 15
+    },
+    {
+      "file": "src/features/Conversation/ChatList/components/AutoScroll/DebugInspector.tsx",
+      "count": 5
+    },
+    {
+      "file": "src/components/404/index.tsx",
+      "count": 3
+    },
+    {
+      "file": "src/components/Error/index.tsx",
+      "count": 3
+    },
+    {
+      "file": "src/features/MCPPluginDetail/Score/TotalScore.tsx",
+      "count": 3
+    },
+    {
+      "file": "src/features/WorkspaceSetting/AdminOnly.tsx",
+      "count": 2
+    },
+    {
+      "file": "src/features/Portal/GroupThread/Body/ThreadChatList.tsx",
+      "count": 2
+    }
+  ],
+  "samples": [
+    {
+      "component": "NotFound",
+      "location": "src/components/404/index.tsx:10",
+      "entries": [
+        "marginTop: 1em (line 36)",
+        "marginBottom: 2em (line 39)",
+        "marginTop: 0.5em (line 41)"
+      ]
+    },
+    {
+      "component": "ErrorCapture",
+      "location": "src/components/Error/index.tsx:19",
+      "entries": [
+        "marginTop: 1em (line 42)",
+        "marginBottom: 2em (line 45)",
+        "marginBottom: 1em (line 56)"
+      ]
+    },
+    {
+      "component": "KeyValueEditor",
+      "location": "src/components/KeyValueEditor/index.tsx:43",
+      "entries": [
+        "fontSize: 12px (line 165)"
+      ]
+    },
+    {
+      "component": "SkillAvatar",
+      "location": "src/components/SkillAvatar/index.tsx:13",
+      "entries": [
+        "color: #000 (line 20)"
+      ]
+    },
+    {
+      "component": "PageExplorerPlaceholder",
+      "location": "src/features/PageExplorer/PageExplorerPlaceholder.tsx:82",
+      "entries": [
+        "color: #fff (line 263)"
+      ]
+    },
+    {
+      "component": "Forbidden",
+      "location": "src/features/WorkspaceSetting/AdminOnly.tsx:12",
+      "entries": [
+        "marginTop: 1em (line 30)",
+        "marginBottom: 2em (line 33)"
+      ]
+    },
+    {
+      "component": "FeishuQuickCreate",
+      "location": "src/features/AgentChannel/quickSetup/FeishuQuickCreate.tsx:62",
+      "entries": [
+        "color: #000 (line 167)"
+      ]
+    },
+    {
+      "component": "TaskDetailBodySkeleton",
+      "location": "src/features/AgentTasks/AgentTaskDetail/TaskDetailSkeleton.tsx:34",
+      "entries": [
+        "padding: 12px (line 90)"
+      ]
+    },
+    {
+      "component": "CommandInput",
+      "location": "src/features/CommandMenu/components/CommandInput.tsx:22",
+      "entries": [
+        "fontSize: 14px (line 134)"
+      ]
+    },
+    {
+      "component": "TraceIdError",
+      "location": "src/features/Conversation/Error/TraceIdError.tsx:24",
+      "entries": [
+        "color: #5865F2 (line 90)"
+      ]
+    },
+    {
+      "component": "List",
+      "location": "src/features/LibraryModal/AssignKnowledgeBase/List.tsx:26",
+      "entries": [
+        "gap: 16px (line 154)"
+      ]
+    },
+    {
+      "component": "TotalScore",
+      "location": "src/features/MCPPluginDetail/Score/TotalScore.tsx:123",
+      "entries": [
+        "fontSize: 14px (line 153)",
+        "marginBottom: 12px (line 153)",
+        "fontSize: 16px (line 288)"
+      ]
+    }
+  ],
+  "scanSeconds": 156
+}

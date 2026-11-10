@@ -1,0 +1,344 @@
+{
+  "repo": "plankanban/planka",
+  "owner": "plankanban",
+  "name": "planka",
+  "description": "Elegant open source project tracking. Self-hosted Kanban for teams — free Community edition, with PLANKA Pro for organisations.",
+  "stars": 12672,
+  "homepage": "https://planka.app",
+  "language": "JavaScript",
+  "defaultBranch": "master",
+  "commit": "2cf423824a09f84df7dc3acf0ded9a700292d882",
+  "generatedAt": "2026-11-10T00:42:27.493Z",
+  "cliVersion": "0.8.20",
+  "score": 20,
+  "tier": "Bad",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 0,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 238,
+    "tokenCount": 0,
+    "hardcodedValueCount": 189,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 189,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 11,
+    "detectedFrameworkNames": []
+  },
+  "suggestions": [
+    "189 hardcoded values to extract",
+    "No design token system detected — add CSS custom properties or a utility framework like Tailwind"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 60,
+      "action": "Replace the hardcoded values in all 189 findings with tokens or scale steps"
+    },
+    {
+      "pillar": "tokenHealth",
+      "points": 20,
+      "action": "Add a token system: CSS custom properties, a tokens file or a Tailwind theme"
+    }
+  ],
+  "noted": {
+    "count": 11,
+    "byKind": {
+      "optical-nudge": 9,
+      "explained": 1,
+      "known-debt": 1
+    },
+    "samples": [
+      {
+        "file": "client/src/components/lists/List/List.module.scss",
+        "line": 46,
+        "value": "20px",
+        "kind": "explained",
+        "reason": "Same 20px line box as the label beside it, so the two are centred on each other by construction rather than by a nudge …"
+      },
+      {
+        "file": "client/src/components/users/UserAvatar/UserAvatar.module.scss",
+        "line": 18,
+        "value": "#fff",
+        "kind": "known-debt",
+        "reason": "TODO: provide for different sizes"
+      },
+      {
+        "file": "client/src/components/cards/Card/ProjectContent.module.scss",
+        "line": 33,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-left: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "client/src/components/cards/Card/ProjectContent.module.scss",
+        "line": 38,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding-bottom: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "client/src/components/cards/Card/StoryContent.module.scss",
+        "line": 34,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding-bottom: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "client/src/components/cards/Card/TaskList/TaskList.module.scss",
+        "line": 20,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-left: 2px is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 189,
+    "critical": 0,
+    "warning": 145,
+    "info": 44
+  },
+  "driftByType": {
+    "hardcoded-value": 189
+  },
+  "topColors": [
+    {
+      "value": "#fff",
+      "count": 63
+    },
+    {
+      "value": "#6b808c",
+      "count": 60
+    },
+    {
+      "value": "#17394d",
+      "count": 49
+    },
+    {
+      "value": "#444444",
+      "count": 34
+    },
+    {
+      "value": "rgba(9, 30, 66, 0.08)",
+      "count": 32
+    },
+    {
+      "value": "rgba(9, 30, 66, 0.04)",
+      "count": 21
+    },
+    {
+      "value": "#e9e9e9",
+      "count": 19
+    },
+    {
+      "value": "#092d42",
+      "count": 17
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "8px",
+      "count": 112
+    },
+    {
+      "value": "6px",
+      "count": 59
+    },
+    {
+      "value": "4px",
+      "count": 40
+    },
+    {
+      "value": "16px",
+      "count": 25
+    },
+    {
+      "value": "12px",
+      "count": 22
+    },
+    {
+      "value": "10px",
+      "count": 22
+    },
+    {
+      "value": "14px",
+      "count": 17
+    },
+    {
+      "value": "20px",
+      "count": 17
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "client/src/styles.module.scss",
+      "count": 112
+    },
+    {
+      "file": "client/src/components/cards/CardModal/StoryContent.module.scss",
+      "count": 70
+    },
+    {
+      "file": "client/src/components/cards/CardModal/ProjectContent.module.scss",
+      "count": 65
+    },
+    {
+      "file": "client/src/components/common/AdministrationModal/UserEditModal/ProfilePane.module.scss",
+      "count": 27
+    },
+    {
+      "file": "client/src/components/lists/List/List.module.scss",
+      "count": 26
+    },
+    {
+      "file": "client/src/components/attachments/Attachments/ItemContent.module.scss",
+      "count": 23
+    },
+    {
+      "file": "client/src/components/common/GhostError/GhostError.module.scss",
+      "count": 22
+    },
+    {
+      "file": "client/src/components/labels/LabelsStep/LabelsStep.module.scss",
+      "count": 22
+    }
+  ],
+  "samples": [
+    {
+      "component": "client/src/components/activities/BoardActivitiesModal/BoardActivitiesModal.module.scss",
+      "location": "client/src/components/activities/BoardActivitiesModal/BoardActivitiesModal.module.scss:12",
+      "entries": [
+        "spacing: 12px (line 12)",
+        "spacing: 10px (line 16)"
+      ]
+    },
+    {
+      "component": "client/src/components/activities/BoardActivitiesModal/Item.module.scss",
+      "location": "client/src/components/activities/BoardActivitiesModal/Item.module.scss:8",
+      "entries": [
+        "colour: #17394d (line 8)",
+        "colour: #092d4221 (line 13)",
+        "line height: 20px (line 15)"
+      ]
+    },
+    {
+      "component": "client/src/components/activities/CardActivities/CardActivities.module.scss",
+      "location": "client/src/components/activities/CardActivities/CardActivities.module.scss:12",
+      "entries": [
+        "spacing: -40px (line 12)",
+        "spacing: 12px (line 13)",
+        "spacing: 10px (line 17)"
+      ]
+    },
+    {
+      "component": "client/src/components/activities/CardActivities/Item.module.scss",
+      "location": "client/src/components/activities/CardActivities/Item.module.scss:8",
+      "entries": [
+        "colour: #17394d (line 8)",
+        "colour: #092d4221 (line 13)",
+        "line height: 20px (line 15)"
+      ]
+    },
+    {
+      "component": "client/src/components/attachments/AddAttachmentStep/AddAttachmentStep.module.scss",
+      "location": "client/src/components/attachments/AddAttachmentStep/AddAttachmentStep.module.scss:8",
+      "entries": [
+        "colour: #eee (line 8)",
+        "spacing: 8px (line 11)",
+        "spacing: 14px (line 21)"
+      ]
+    },
+    {
+      "component": "client/src/components/attachments/Attachments/Attachments.module.scss",
+      "location": "client/src/components/attachments/Attachments/Attachments.module.scss:10",
+      "entries": [
+        "colour: #6b808c (line 10)",
+        "spacing: 8px (line 12)",
+        "colour: rgba(9, 30, 66, 0.08) (line 19)"
+      ]
+    },
+    {
+      "component": "client/src/components/attachments/Attachments/ContentViewer.module.scss",
+      "location": "client/src/components/attachments/Attachments/ContentViewer.module.scss:8",
+      "entries": [
+        "colour: #fff (line 8)"
+      ]
+    },
+    {
+      "component": "client/src/components/attachments/Attachments/CsvViewer.module.scss",
+      "location": "client/src/components/attachments/Attachments/CsvViewer.module.scss:8",
+      "entries": [
+        "colour: #fff (line 8)"
+      ]
+    },
+    {
+      "component": "client/src/components/attachments/Attachments/EditStep.module.scss",
+      "location": "client/src/components/attachments/Attachments/EditStep.module.scss:9",
+      "entries": [
+        "shadow: 0 1px 0 #cbcccc (line 9)",
+        "spacing: 8px (line 15)",
+        "colour: #444444 (line 19)"
+      ]
+    },
+    {
+      "component": "client/src/components/attachments/Attachments/Item.module.scss",
+      "location": "client/src/components/attachments/Attachments/Item.module.scss:25",
+      "entries": [
+        "colour: #fff (line 25)",
+        "font size: 20px (line 27)",
+        "line height: 1.2 (line 31)"
+      ]
+    },
+    {
+      "component": "client/src/components/attachments/Attachments/ItemContent.module.scss",
+      "location": "client/src/components/attachments/Attachments/ItemContent.module.scss:17",
+      "entries": [
+        "line height: 28px (line 17)",
+        "colour: rgba(9, 30, 66, 0.08) (line 28)",
+        "colour: #6b808c (line 34)"
+      ]
+    },
+    {
+      "component": "client/src/components/base-custom-field-groups/AddBaseCustomFieldGroupStep/AddBaseCustomFieldGroupStep.module.scss",
+      "location": "client/src/components/base-custom-field-groups/AddBaseCustomFieldGroupStep/AddBaseCustomFieldGroupStep.module.scss:8",
+      "entries": [
+        "spacing: 8px (line 8)",
+        "colour: #444444 (line 12)",
+        "font size: 12px (line 13)"
+      ]
+    }
+  ],
+  "scanSeconds": 7
+}

@@ -1,0 +1,340 @@
+{
+  "repo": "payloadcms/payload",
+  "owner": "payloadcms",
+  "name": "payload",
+  "description": "Payload is the open-source, fullstack Next.js framework, giving you instant backend superpowers. Get a full TypeScript backend and admin panel instantly. Use Payload as a headless CMS or for building powerful applications.",
+  "stars": 45743,
+  "homepage": "https://payloadcms.com",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "23cbb98201bc591785a0e9818b0a320a4892a4b8",
+  "generatedAt": "2026-11-10T00:42:03.988Z",
+  "cliVersion": "0.8.20",
+  "score": 94,
+  "tier": "Great",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 54,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 1340,
+    "tokenCount": 1031,
+    "hardcodedValueCount": 43,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 43,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 9,
+    "topHardcodedColor": {
+      "value": "#9A9A9A",
+      "count": 1
+    },
+    "worstFile": {
+      "path": "packages/plugin-form-builder/src/collections/Forms/DynamicPriceSelector.tsx",
+      "issueCount": 1
+    },
+    "uniqueSpacingValues": 5,
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "vue"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 43 hardcoded values left to tokenize"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 6,
+      "action": "Replace the hardcoded values in 40 of the 43 findings with tokens or scale steps"
+    }
+  ],
+  "noted": {
+    "count": 9,
+    "byKind": {
+      "optical-nudge": 9
+    },
+    "samples": [
+      {
+        "file": "test/evals/components/EvalDashboard/CompareTable.tsx",
+        "line": 1053,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "marginLeft: 3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "test/evals/components/EvalDashboard/ResultsTable.tsx",
+        "line": 658,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "marginLeft: 3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/ui/src/elements/DatePicker/index.css",
+        "line": 430,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/ui/src/elements/EditUpload/library.css",
+        "line": 340,
+        "value": "-3px",
+        "kind": "optical-nudge",
+        "reason": "margin-top: -3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/ui/src/elements/EditUpload/library.css",
+        "line": 348,
+        "value": "-3px",
+        "kind": "optical-nudge",
+        "reason": "margin-right: -3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/ui/src/elements/EditUpload/library.css",
+        "line": 356,
+        "value": "-3px",
+        "kind": "optical-nudge",
+        "reason": "margin-bottom: -3px is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 43,
+    "critical": 0,
+    "warning": 27,
+    "info": 16
+  },
+  "driftByType": {
+    "hardcoded-value": 43
+  },
+  "topColors": [
+    {
+      "value": "rgb(0, 0, 0)",
+      "count": 24
+    },
+    {
+      "value": "rgb(1000, 1000, 1000)",
+      "count": 24
+    },
+    {
+      "value": "#fff",
+      "count": 6
+    },
+    {
+      "value": "rgb(60, 60, 60)",
+      "count": 6
+    },
+    {
+      "value": "#222",
+      "count": 3
+    },
+    {
+      "value": "#9A9A9A",
+      "count": 1
+    },
+    {
+      "value": "rgba(0, 0, 0, 0.8)",
+      "count": 1
+    },
+    {
+      "value": "rgba(255, 255, 255, 0.4)",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "-5px",
+      "count": 16
+    },
+    {
+      "value": "10px",
+      "count": 7
+    },
+    {
+      "value": "6px",
+      "count": 7
+    },
+    {
+      "value": "8px",
+      "count": 7
+    },
+    {
+      "value": "20px",
+      "count": 6
+    },
+    {
+      "value": "45px",
+      "count": 6
+    },
+    {
+      "value": "24px",
+      "count": 6
+    },
+    {
+      "value": "12px",
+      "count": 6
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "templates/blank-tanstack/src/app/_frontend/styles.css",
+      "count": 30
+    },
+    {
+      "file": "templates/blank/src/app/(frontend)/styles.css",
+      "count": 30
+    },
+    {
+      "file": "templates/with-cloudflare-d1/src/app/(frontend)/styles.css",
+      "count": 30
+    },
+    {
+      "file": "templates/with-postgres/src/app/(frontend)/styles.css",
+      "count": 30
+    },
+    {
+      "file": "templates/with-vercel-mongodb/src/app/(frontend)/styles.css",
+      "count": 30
+    },
+    {
+      "file": "templates/with-vercel-postgres/src/app/(frontend)/styles.css",
+      "count": 30
+    },
+    {
+      "file": "packages/ui/src/elements/EditUpload/library.css",
+      "count": 18
+    },
+    {
+      "file": "packages/richtext-lexical/src/field/Diff/index.css",
+      "count": 16
+    }
+  ],
+  "samples": [
+    {
+      "component": "LengthIndicator",
+      "location": "packages/plugin-seo/src/ui/LengthIndicator.tsx:11",
+      "entries": [
+        "marginRight: 10px (line 98)"
+      ]
+    },
+    {
+      "component": "Pill",
+      "location": "packages/plugin-seo/src/ui/Pill.tsx:5",
+      "entries": [
+        "marginRight: 10px (line 20)"
+      ]
+    },
+    {
+      "component": "DynamicPriceSelector",
+      "location": "packages/plugin-form-builder/src/collections/Forms/DynamicPriceSelector.tsx:13",
+      "entries": [
+        "color: #9A9A9A (line 62)"
+      ]
+    },
+    {
+      "component": "ImportPreview",
+      "location": "packages/plugin-import-export/src/components/ImportPreview/index.tsx:57",
+      "entries": [
+        "marginTop: 1rem (line 557)",
+        "marginTop: 0.5rem (line 559)"
+      ]
+    },
+    {
+      "component": "MetaDescriptionComponent",
+      "location": "packages/plugin-seo/src/fields/MetaDescription/MetaDescriptionComponent.tsx:35",
+      "entries": [
+        "marginBottom: 20px (line 131)",
+        "marginBottom: 5px (line 136)",
+        "marginBottom: 10px (line 185)"
+      ]
+    },
+    {
+      "component": "MetaImageComponent",
+      "location": "packages/plugin-seo/src/fields/MetaImage/MetaImageComponent.tsx:33",
+      "entries": [
+        "marginBottom: 20px (line 134)",
+        "marginBottom: 5px (line 139)",
+        "marginBottom: 10px (line 186)"
+      ]
+    },
+    {
+      "component": "MetaTitleComponent",
+      "location": "packages/plugin-seo/src/fields/MetaTitle/MetaTitleComponent.tsx:35",
+      "entries": [
+        "marginBottom: 20px (line 130)",
+        "marginBottom: 5px (line 135)",
+        "marginBottom: 10px (line 185)"
+      ]
+    },
+    {
+      "component": "OverviewComponent",
+      "location": "packages/plugin-seo/src/fields/Overview/OverviewComponent.tsx:31",
+      "entries": [
+        "marginBottom: 20px (line 76)"
+      ]
+    },
+    {
+      "component": "PreviewComponent",
+      "location": "packages/plugin-seo/src/fields/Preview/PreviewComponent.tsx:29",
+      "entries": [
+        "marginBottom: 20px (line 102)",
+        "marginBottom: 5px (line 109)",
+        "padding: 20px (line 120)"
+      ]
+    },
+    {
+      "component": "DroppableItem",
+      "location": "packages/ui/src/views/Dashboard/Default/ModularDashboard/index.client.tsx:505",
+      "entries": [
+        "marginBottom: 10px (line 522)",
+        "marginTop: 10px (line 523)"
+      ]
+    },
+    {
+      "component": "packages/plugin-search/src/Search/ui/LinkToDoc/index.css",
+      "location": "packages/plugin-search/src/Search/ui/LinkToDoc/index.css:15",
+      "entries": [
+        "font weight: 600 (line 15)"
+      ]
+    },
+    {
+      "component": "packages/plugin-stripe/src/ui/LinkToDoc/index.css",
+      "location": "packages/plugin-stripe/src/ui/LinkToDoc/index.css:15",
+      "entries": [
+        "font weight: 600 (line 15)"
+      ]
+    }
+  ],
+  "scanSeconds": 48
+}

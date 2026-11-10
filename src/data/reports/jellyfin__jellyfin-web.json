@@ -1,0 +1,339 @@
+{
+  "repo": "jellyfin/jellyfin-web",
+  "owner": "jellyfin",
+  "name": "jellyfin-web",
+  "description": "The Free Software Media System - Official Web Client",
+  "stars": 3974,
+  "homepage": "https://jellyfin.org",
+  "language": "JavaScript",
+  "defaultBranch": "master",
+  "commit": "a953a95ed27f1761c979192ee432ea857ec3ba9c",
+  "generatedAt": "2026-11-10T00:33:32.237Z",
+  "cliVersion": "0.8.20",
+  "score": 52,
+  "tier": "OK",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 12,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 345,
+    "tokenCount": 251,
+    "hardcodedValueCount": 83,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 83,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 7,
+    "worstFile": {
+      "path": "src/apps/dashboard/features/devices/components/DeviceNameCell.tsx",
+      "issueCount": 1
+    },
+    "uniqueSpacingValues": 4,
+    "detectedFrameworkNames": [
+      "react",
+      "mui",
+      "emotion"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 83 hardcoded values left to tokenize"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 48,
+      "action": "Replace the hardcoded values in all 83 findings with tokens or scale steps"
+    }
+  ],
+  "noted": {
+    "count": 7,
+    "byKind": {
+      "optical-nudge": 2,
+      "explained": 4,
+      "known-debt": 1
+    },
+    "samples": [
+      {
+        "file": "src/components/guide/guide.scss",
+        "line": 434,
+        "value": "7em",
+        "kind": "explained",
+        "reason": "This is needed to combat the rubber banding in iOS"
+      },
+      {
+        "file": "src/components/loading/loading.scss",
+        "line": 94,
+        "value": "1`, we set it to `opacity: 0.99` instead since this forces Chrome",
+        "kind": "explained",
+        "reason": "HACK: Even though the intention is to have the current .mdl-spinner__layer-N at `opacity: 1`, we set it to `opacity: 0.…"
+      },
+      {
+        "file": "src/elements/emby-slider/emby-slider.scss",
+        "line": 243,
+        "value": "1.8em",
+        "kind": "known-debt",
+        "reason": "FIXME: 'sliderContainer' is used to wrap slider's pieces"
+      },
+      {
+        "file": "src/styles/fonts.sized.scss",
+        "line": 13,
+        "value": "27px",
+        "kind": "explained",
+        "reason": "This is supposed to be 1080p, but had to reduce the min height to account for possible browser chrome"
+      },
+      {
+        "file": "src/styles/librarybrowser.scss",
+        "line": 1155,
+        "value": "0.622em 0",
+        "kind": "explained",
+        "reason": "copy button height compensation"
+      },
+      {
+        "file": "src/components/filterdialog/filterIndicator.scss",
+        "line": 38,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "margin-right: 3px is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 83,
+    "critical": 0,
+    "warning": 45,
+    "info": 38
+  },
+  "driftByType": {
+    "hardcoded-value": 83
+  },
+  "topColors": [
+    {
+      "value": "#fff",
+      "count": 38
+    },
+    {
+      "value": "#00a4dc",
+      "count": 27
+    },
+    {
+      "value": "#000",
+      "count": 10
+    },
+    {
+      "value": "rgba(0, 0, 0, 0.7)",
+      "count": 8
+    },
+    {
+      "value": "#c33",
+      "count": 8
+    },
+    {
+      "value": "#ccc",
+      "count": 8
+    },
+    {
+      "value": "rgba(0, 0, 0, 0.1)",
+      "count": 5
+    },
+    {
+      "value": "#ddd",
+      "count": 4
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "1em",
+      "count": 62
+    },
+    {
+      "value": "0.5em",
+      "count": 53
+    },
+    {
+      "value": "0.25em",
+      "count": 21
+    },
+    {
+      "value": "1.5em",
+      "count": 19
+    },
+    {
+      "value": "2em",
+      "count": 10
+    },
+    {
+      "value": "0.1em",
+      "count": 7
+    },
+    {
+      "value": "0.6em",
+      "count": 7
+    },
+    {
+      "value": "0.75em",
+      "count": 7
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "src/styles/librarybrowser.scss",
+      "count": 102
+    },
+    {
+      "file": "src/components/cardbuilder/card.scss",
+      "count": 45
+    },
+    {
+      "file": "src/styles/dashboard.scss",
+      "count": 44
+    },
+    {
+      "file": "src/styles/videoosd.scss",
+      "count": 31
+    },
+    {
+      "file": "src/components/indicators/indicators.scss",
+      "count": 28
+    },
+    {
+      "file": "src/themes/purplehaze/theme.scss",
+      "count": 28
+    },
+    {
+      "file": "src/components/listview/listview.scss",
+      "count": 26
+    },
+    {
+      "file": "src/components/guide/guide.scss",
+      "count": 23
+    }
+  ],
+  "samples": [
+    {
+      "component": "Component",
+      "location": "src/apps/dashboard/routes/logs/file.tsx:17",
+      "entries": [
+        "padding: 16px (line 159)"
+      ]
+    },
+    {
+      "component": "DeviceNameCell",
+      "location": "src/apps/dashboard/features/devices/components/DeviceNameCell.tsx:6",
+      "entries": [
+        "marginRight: 1rem (line 15)"
+      ]
+    },
+    {
+      "component": "ParentalControl",
+      "location": "src/apps/dashboard/features/users/components/ParentalControl.tsx:70",
+      "entries": [
+        "marginBottom: 2em (line 439)"
+      ]
+    },
+    {
+      "component": "Profile",
+      "location": "src/apps/dashboard/features/users/components/Profile.tsx:35",
+      "entries": [
+        "paddingBottom: 1em (line 327)",
+        "marginBottom: 1em (line 481)"
+      ]
+    },
+    {
+      "component": "src/apps/legacy/controllers/session/login/login.scss",
+      "location": "src/apps/legacy/controllers/session/login/login.scss:3",
+      "entries": [
+        "spacing: 2em (line 3)"
+      ]
+    },
+    {
+      "component": "src/apps/legacy/features/search/components/searchfields.scss",
+      "location": "src/apps/legacy/features/search/components/searchfields.scss:7",
+      "entries": [
+        "spacing: 0.1em (line 7)",
+        "spacing: 0.25em (line 8)",
+        "font size: 2em (line 9)"
+      ]
+    },
+    {
+      "component": "src/apps/legacy/routes/quickConnect/quickConnect.scss",
+      "location": "src/apps/legacy/routes/quickConnect/quickConnect.scss:2",
+      "entries": [
+        "radius: 0.2em (line 2)",
+        "colour: #160b0b (line 3)",
+        "colour: #f4c7c3 (line 4)"
+      ]
+    },
+    {
+      "component": "src/apps/modern/AppOverrides.scss",
+      "location": "src/apps/modern/AppOverrides.scss:35",
+      "entries": [
+        "spacing: -48px (line 35)"
+      ]
+    },
+    {
+      "component": "src/components/actionSheet/actionSheet.scss",
+      "location": "src/components/actionSheet/actionSheet.scss:7",
+      "entries": [
+        "radius: 0.1em (line 7)",
+        "spacing: 5em (line 75)",
+        "spacing: 0.5em (line 76)"
+      ]
+    },
+    {
+      "component": "src/components/alphaPicker/style.scss",
+      "location": "src/components/alphaPicker/style.scss:42",
+      "entries": [
+        "radius: 0.1em (line 42)"
+      ]
+    },
+    {
+      "component": "src/components/cardbuilder/card.scss",
+      "location": "src/components/cardbuilder/card.scss:90",
+      "entries": [
+        "spacing: 0.6em (line 90)",
+        "spacing: 0.4em (line 107)",
+        "radius: 0.7em (line 113)"
+      ]
+    },
+    {
+      "component": "src/components/dialogHelper/dialoghelper.scss",
+      "location": "src/components/dialogHelper/dialoghelper.scss:18",
+      "entries": [
+        "radius: 0.2em (line 18)",
+        "shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4) (line 26)",
+        "colour: #000 (line 143)"
+      ]
+    }
+  ],
+  "scanSeconds": 10
+}

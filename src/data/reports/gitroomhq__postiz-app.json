@@ -1,0 +1,340 @@
+{
+  "repo": "gitroomhq/postiz-app",
+  "owner": "gitroomhq",
+  "name": "postiz-app",
+  "description": "📨 The ultimate agentic social media scheduling tool 🤖",
+  "stars": 41209,
+  "homepage": "https://postiz.com",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "e0991b2f74eb22a6b0e1c686abd948896fac8717",
+  "generatedAt": "2026-11-10T00:30:49.437Z",
+  "cliVersion": "0.8.20",
+  "score": 40,
+  "tier": "OK",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 507,
+    "tokenCount": 113,
+    "hardcodedValueCount": 483,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 483,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 109,
+    "vendoredDriftCount": 4,
+    "notedCount": 62,
+    "topHardcodedColor": {
+      "value": "#612BD3",
+      "count": 32
+    },
+    "worstFile": {
+      "path": "apps/frontend/src/components/launches/ai.image.tsx",
+      "issueCount": 5
+    },
+    "uniqueSpacingValues": 1,
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "tailwind",
+      "mantine"
+    ]
+  },
+  "suggestions": [
+    "479 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/frontend/src/components/launches/ai.image.tsx (5 issues)",
+    "4 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 60,
+      "action": "Replace the hardcoded values in 478 of the 479 findings with tokens or scale steps"
+    }
+  ],
+  "noted": {
+    "count": 62,
+    "byKind": {
+      "optical-nudge": 62
+    },
+    "samples": [
+      {
+        "file": "apps/frontend/src/components/developer/developer.component.tsx",
+        "line": 240,
+        "value": "mt-[2px]",
+        "kind": "optical-nudge",
+        "reason": "mt-[2px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/frontend/src/components/developer/developer.component.tsx",
+        "line": 247,
+        "value": "pt-[2px]",
+        "kind": "optical-nudge",
+        "reason": "pt-[2px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/frontend/src/components/developer/developer.component.tsx",
+        "line": 292,
+        "value": "mt-[2px]",
+        "kind": "optical-nudge",
+        "reason": "mt-[2px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/frontend/src/components/developer/developer.component.tsx",
+        "line": 403,
+        "value": "mt-[2px]",
+        "kind": "optical-nudge",
+        "reason": "mt-[2px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/frontend/src/components/developer/developer.component.tsx",
+        "line": 410,
+        "value": "pt-[2px]",
+        "kind": "optical-nudge",
+        "reason": "pt-[2px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/frontend/src/components/launches/calendar.tsx",
+        "line": 1023,
+        "value": "pt-[3px]",
+        "kind": "optical-nudge",
+        "reason": "pt-[3px] is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 483,
+    "critical": 0,
+    "warning": 62,
+    "info": 421
+  },
+  "driftByType": {
+    "hardcoded-value": 483
+  },
+  "topColors": [
+    {
+      "value": "#ffffff",
+      "count": 79
+    },
+    {
+      "value": "#612BD3",
+      "count": 68
+    },
+    {
+      "value": "#5f6b7c",
+      "count": 57
+    },
+    {
+      "value": "#f6f7f9",
+      "count": 56
+    },
+    {
+      "value": "#abb3bf",
+      "count": 56
+    },
+    {
+      "value": "#1c2127",
+      "count": 53
+    },
+    {
+      "value": "rgba(95, 107, 124, 0.6)",
+      "count": 44
+    },
+    {
+      "value": "#215db0",
+      "count": 43
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "16px",
+      "count": 290
+    },
+    {
+      "value": "8px",
+      "count": 282
+    },
+    {
+      "value": "12px",
+      "count": 275
+    },
+    {
+      "value": "10px",
+      "count": 231
+    },
+    {
+      "value": "20px",
+      "count": 225
+    },
+    {
+      "value": "6px",
+      "count": 163
+    },
+    {
+      "value": "4px",
+      "count": 117
+    },
+    {
+      "value": "24px",
+      "count": 107
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "apps/frontend/src/app/polonto.css",
+      "count": 1947
+    },
+    {
+      "file": "apps/frontend/src/components/onboarding/onboarding.modal.tsx",
+      "count": 213
+    },
+    {
+      "file": "apps/frontend/src/components/public-api/public.component.tsx",
+      "count": 190
+    },
+    {
+      "file": "apps/frontend/src/components/developer/developer.component.tsx",
+      "count": 185
+    },
+    {
+      "file": "apps/frontend/src/components/billing/main.billing.component.tsx",
+      "count": 115
+    },
+    {
+      "file": "apps/frontend/src/components/new-launch/manage.modal.tsx",
+      "count": 102
+    },
+    {
+      "file": "apps/frontend/src/components/media/media.component.tsx",
+      "count": 95
+    },
+    {
+      "file": "apps/frontend/src/components/launches/calendar.tsx",
+      "count": 92
+    }
+  ],
+  "samples": [
+    {
+      "component": "Button",
+      "location": "libraries/react-shared-libraries/src/form/button.tsx:28",
+      "entries": [
+        "color: #fff (line 60)"
+      ]
+    },
+    {
+      "component": "StarsTableComponent",
+      "location": "apps/frontend/src/components/analytics/stars.table.component.tsx:90",
+      "entries": [
+        "color: #fff (line 200)"
+      ]
+    },
+    {
+      "component": "AiImage",
+      "location": "apps/frontend/src/components/launches/ai.image.tsx:120",
+      "entries": [
+        "color: #fff (line 155)"
+      ]
+    },
+    {
+      "component": "AiVideo",
+      "location": "apps/frontend/src/components/launches/ai.video.tsx:165",
+      "entries": [
+        "color: #fff (line 221)"
+      ]
+    },
+    {
+      "component": "CheckPaymentInner",
+      "location": "apps/frontend/src/components/layout/check.payment.tsx:20",
+      "entries": [
+        "color: #612AD5 (line 74)"
+      ]
+    },
+    {
+      "component": "LoadingComponent",
+      "location": "apps/frontend/src/components/layout/loading.tsx:30",
+      "entries": [
+        "color: #612bd3 (line 37)"
+      ]
+    },
+    {
+      "component": "FacebookSettings",
+      "location": "apps/frontend/src/components/new-launch/providers/facebook/facebook.provider.tsx:31",
+      "entries": [
+        "background: #ffffff (line 96)",
+        "color: #1c1e21 (line 96)"
+      ]
+    },
+    {
+      "component": "RenderRedditComponent",
+      "location": "apps/frontend/src/components/new-launch/providers/reddit/reddit.provider.tsx:23",
+      "entries": [
+        "fontSize: 14px (line 44)"
+      ]
+    },
+    {
+      "component": "apps/frontend/src/app/(app)/(preview)/p/[id]/page.tsx",
+      "location": "apps/frontend/src/app/(app)/(preview)/p/[id]/page.tsx:56",
+      "entries": [
+        "p-[12px] (line 56)",
+        "gap-[8px] (line 56)",
+        "px-[20px] (line 57)"
+      ]
+    },
+    {
+      "component": "apps/frontend/src/app/(app)/(preview)/p/[id]/page.tsx",
+      "location": "apps/frontend/src/app/(app)/(preview)/p/[id]/page.tsx:57",
+      "entries": [
+        "rounded-[12px] (line 57)",
+        "rounded-[12px] (line 114)",
+        "rounded-[10px] (line 160)"
+      ]
+    },
+    {
+      "component": "apps/frontend/src/app/(app)/(preview)/p/[id]/page.tsx",
+      "location": "apps/frontend/src/app/(app)/(preview)/p/[id]/page.tsx:45",
+      "entries": [
+        "text-[20px] (line 45)",
+        "text-[14px] (line 93)",
+        "text-[14px] (line 137)"
+      ]
+    },
+    {
+      "component": "apps/frontend/src/app/(app)/(site)/admin/errors/page.tsx",
+      "location": "apps/frontend/src/app/(app)/(site)/admin/errors/page.tsx:13",
+      "entries": [
+        "p-[20px] (line 13)",
+        "gap-[12px] (line 13)"
+      ]
+    }
+  ],
+  "scanSeconds": 15
+}

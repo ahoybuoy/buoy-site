@@ -1,0 +1,334 @@
+{
+  "repo": "papermark/papermark",
+  "owner": "papermark",
+  "name": "papermark",
+  "description": "Papermark is the open-source DocSend alternative  and secure data rooms with built-in analytics and custom domains.",
+  "stars": 9318,
+  "homepage": "https://www.papermark.com",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "ed19717ec02a1ac79aecf5569159aa9d2d869312",
+  "generatedAt": "2026-11-10T00:41:15.785Z",
+  "cliVersion": "0.8.20",
+  "score": 86,
+  "tier": "Great",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 46,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 857,
+    "tokenCount": 125,
+    "hardcodedValueCount": 60,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 60,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 1,
+    "vendoredDriftCount": 0,
+    "notedCount": 10,
+    "topHardcodedColor": {
+      "value": "#fb7a00",
+      "count": 33
+    },
+    "worstFile": {
+      "path": "components/settings/og-preview.tsx",
+      "issueCount": 4
+    },
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "tailwind",
+      "radix",
+      "shadcn"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 60 hardcoded values left to tokenize. components/settings/og-preview.tsx has the most (4)"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 14,
+      "action": "Replace the hardcoded values in 58 of the 60 findings with tokens or scale steps"
+    }
+  ],
+  "noted": {
+    "count": 10,
+    "byKind": {
+      "optical-nudge": 2,
+      "explained": 2,
+      "vendored": 6
+    },
+    "samples": [
+      {
+        "file": "styles/custom-notion-styles.css",
+        "line": 51,
+        "value": "96px",
+        "kind": "explained",
+        "reason": "Keep collection/database views aligned with the widened content."
+      },
+      {
+        "file": "styles/custom-notion-styles.css",
+        "line": 439,
+        "value": "-70px",
+        "kind": "explained",
+        "reason": "Style page icon like actual Notion - overlapping cover, aligned with content"
+      },
+      {
+        "file": "components/ui/button.tsx",
+        "line": 19,
+        "value": "bg-[#fb7a00], hover:bg-[#fb7a00]/90",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "components/ui/calendar.tsx",
+        "line": 37,
+        "value": "text-[0.8rem]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "components/ui/drawer.tsx",
+        "line": 45,
+        "value": "rounded-t-[10px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "components/ui/input-group.tsx",
+        "line": 43,
+        "value": "has-[>button]:ml-[-0.45rem], has-[>kbd]:ml-[-0.35rem], has-[>button]:mr-[-0.4rem], has-[>kbd]:mr-[-0.35rem]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 60,
+    "critical": 0,
+    "warning": 26,
+    "info": 34
+  },
+  "driftByType": {
+    "hardcoded-value": 60
+  },
+  "topColors": [
+    {
+      "value": "#fb7a00",
+      "count": 57
+    },
+    {
+      "value": "text-[#fb7a00]/90",
+      "count": 4
+    },
+    {
+      "value": "rgb(210, 210, 208)",
+      "count": 4
+    },
+    {
+      "value": "#606770",
+      "count": 3
+    },
+    {
+      "value": "#f9fafb",
+      "count": 2
+    },
+    {
+      "value": "#3B82F6",
+      "count": 2
+    },
+    {
+      "value": "#000000E6",
+      "count": 2
+    },
+    {
+      "value": "#f0f0f0",
+      "count": 2
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "10px",
+      "count": 2
+    },
+    {
+      "value": "18px",
+      "count": 1
+    },
+    {
+      "value": "400px",
+      "count": 1
+    },
+    {
+      "value": "96px",
+      "count": 1
+    },
+    {
+      "value": "2rem",
+      "count": 1
+    },
+    {
+      "value": "1rem",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "components/billing/upgrade-plan-modal-with-discount.tsx",
+      "count": 16
+    },
+    {
+      "file": "styles/custom-notion-styles.css",
+      "count": 16
+    },
+    {
+      "file": "components/billing/upgrade-plan-modal.tsx",
+      "count": 15
+    },
+    {
+      "file": "components/settings/og-preview.tsx",
+      "count": 13
+    },
+    {
+      "file": "components/shared/logo-cloud.tsx",
+      "count": 7
+    },
+    {
+      "file": "components/billing/yearly-upgrade-banner.tsx",
+      "count": 7
+    },
+    {
+      "file": "app/(auth)/login/page-client.tsx",
+      "count": 5
+    },
+    {
+      "file": "components/links/link-sheet/watermark-panel/watermark-preview.tsx",
+      "count": 5
+    }
+  ],
+  "samples": [
+    {
+      "component": "LogoCloud",
+      "location": "components/shared/logo-cloud.tsx:41",
+      "entries": [
+        "backgroundColor: #f9fafb (line 64)"
+      ]
+    },
+    {
+      "component": "Login",
+      "location": "app/(auth)/login/page-client.tsx:26",
+      "entries": [
+        "backgroundColor: #f9fafb (line 256)"
+      ]
+    },
+    {
+      "component": "app/(auth)/login/page-client.tsx",
+      "location": "app/(auth)/login/page-client.tsx:76",
+      "entries": [
+        "rounded-[4px] (line 76)",
+        "rounded-[4px] (line 139)",
+        "rounded-[4px] (line 151)"
+      ]
+    },
+    {
+      "component": "app/(auth)/register/page-client.tsx",
+      "location": "app/(auth)/register/page-client.tsx:29",
+      "entries": [
+        "from-[#80caff] (line 29)",
+        "to-[#4f46e5] (line 29)"
+      ]
+    },
+    {
+      "component": "components/agreements/agreement-row.tsx",
+      "location": "components/agreements/agreement-row.tsx:425",
+      "entries": [
+        "text-[#fb7a00] (line 425)"
+      ]
+    },
+    {
+      "component": "components/analytics/dashboard-views-chart.tsx",
+      "location": "components/analytics/dashboard-views-chart.tsx:234",
+      "entries": [
+        "text-[0.70rem] (line 234)",
+        "text-[0.70rem] (line 251)"
+      ]
+    },
+    {
+      "component": "components/analytics/time-range-select.tsx",
+      "location": "components/analytics/time-range-select.tsx:220",
+      "entries": [
+        "text-[10px] (line 220)"
+      ]
+    },
+    {
+      "component": "components/analytics/views-table.tsx",
+      "location": "components/analytics/views-table.tsx:117",
+      "entries": [
+        "text-[#fb7a00] (line 117)",
+        "hover:text-[#fb7a00]/90 (line 117)"
+      ]
+    },
+    {
+      "component": "components/billing/unlimited-plan-modal.tsx",
+      "location": "components/billing/unlimited-plan-modal.tsx:126",
+      "entries": [
+        "text-[#fb7a00] (line 126)",
+        "text-[#fb7a00] (line 155)"
+      ]
+    },
+    {
+      "component": "components/billing/upgrade-plan-container.tsx",
+      "location": "components/billing/upgrade-plan-container.tsx:201",
+      "entries": [
+        "rounded-[3px] (line 201)"
+      ]
+    },
+    {
+      "component": "components/billing/upgrade-plan-modal-old.tsx",
+      "location": "components/billing/upgrade-plan-modal-old.tsx:156",
+      "entries": [
+        "text-[#fb7a00] (line 156)",
+        "text-[#fb7a00] (line 212)"
+      ]
+    },
+    {
+      "component": "components/billing/upgrade-plan-modal-with-discount.tsx",
+      "location": "components/billing/upgrade-plan-modal-with-discount.tsx:63",
+      "entries": [
+        "text-[#fb7a00] (line 63)",
+        "text-[#fb7a00] (line 90)",
+        "text-[#fb7a00] (line 259)"
+      ]
+    }
+  ],
+  "scanSeconds": 21
+}

@@ -1,0 +1,341 @@
+{
+  "repo": "ever-co/ever-gauzy",
+  "owner": "ever-co",
+  "name": "ever-gauzy",
+  "description": "Ever® Gauzy™ - Open Business Management Platform (ERP/CRM/HRM/ATS/PM) - https://gauzy.co",
+  "stars": 8735,
+  "homepage": "https://gauzy.co",
+  "language": "TypeScript",
+  "defaultBranch": "develop",
+  "commit": "f4219638cc9098a5cf4f163efed206bbba0d105d",
+  "generatedAt": "2026-11-10T00:29:47.419Z",
+  "cliVersion": "0.8.20",
+  "score": 35,
+  "tier": "Bad",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 15,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 839,
+    "tokenCount": 0,
+    "hardcodedValueCount": 710,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 711,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 1,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 164,
+    "topHardcodedColor": {
+      "value": "rgba(255, 61, 113, 0.12)",
+      "count": 1
+    },
+    "worstFile": {
+      "path": "packages/ui-react-components/src/lib/components/ColorDots.tsx",
+      "issueCount": 1
+    },
+    "uniqueSpacingValues": 9,
+    "detectedFrameworkNames": [
+      "react",
+      "angular",
+      "bootstrap"
+    ]
+  },
+  "suggestions": [
+    "710 hardcoded values to extract. Focus on packages/ui-react-components/src/lib/components/ColorDots.tsx (1 issues)",
+    "1 framework sprawl signal — standardize on fewer UI/styling frameworks"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 60,
+      "action": "Replace the hardcoded values in 708 of the 710 findings with tokens or scale steps"
+    },
+    {
+      "pillar": "tokenHealth",
+      "points": 5,
+      "action": "Add a token system: CSS custom properties, a tokens file or a Tailwind theme (a component library alone earns half)"
+    }
+  ],
+  "noted": {
+    "count": 164,
+    "byKind": {
+      "optical-nudge": 115,
+      "explained": 44,
+      "known-debt": 5
+    },
+    "samples": [
+      {
+        "file": "apps/gauzy/src/app/pages/about/about.component.scss",
+        "line": 138,
+        "value": "$hairline",
+        "kind": "explained",
+        "reason": "A hairline so the dark tile keeps its edge on the dark theme's dark card."
+      },
+      {
+        "file": "apps/gauzy/src/app/pages/candidates/manage-candidate-interviews/interview-panel/interview-panel.component.scss",
+        "line": 35,
+        "value": "0.75rem",
+        "kind": "known-debt",
+        "reason": "The checkbox group is a `.btn` (a legacy class name), so Bootstrap gives it button padding and margin that made the row…"
+      },
+      {
+        "file": "apps/gauzy/src/app/pages/contacts/contact-mutation/contact-mutation.component.scss",
+        "line": 53,
+        "value": "black",
+        "kind": "explained",
+        "reason": "Deliberately a literal, and deliberately NOT a theme token: this is a scrim over the uploaded PHOTO, so what it has to …"
+      },
+      {
+        "file": "apps/gauzy/src/app/pages/contacts/contact-mutation/contact-mutation.component.scss",
+        "line": 604,
+        "value": "1.25rem",
+        "kind": "explained",
+        "reason": "No rule above: the step panel's own edge already ends the form."
+      },
+      {
+        "file": "apps/gauzy/src/app/pages/dashboard/custom-dashboard/dashboard-canvas.component.scss",
+        "line": 121,
+        "value": "0.45",
+        "kind": "known-debt",
+        "reason": "Visible from the moment edit mode starts. At `opacity: 0` the ONLY affordance for rearranging the canvas was hovering a…"
+      },
+      {
+        "file": "apps/gauzy/src/app/pages/dashboard/dashboard-switcher/dashboard-switcher.component.scss",
+        "line": 39,
+        "value": "3px",
+        "kind": "explained",
+        "reason": "the top half is clipped and unreachable — which is how \"Standard\" lost its top edge. The block padding gives the border…"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 711,
+    "critical": 0,
+    "warning": 164,
+    "info": 547
+  },
+  "driftByType": {
+    "hardcoded-value": 710,
+    "framework-sprawl": 1
+  },
+  "topColors": [
+    {
+      "value": "#fff",
+      "count": 44
+    },
+    {
+      "value": "#ffffff",
+      "count": 37
+    },
+    {
+      "value": "rgba(0, 0, 0, 0.08)",
+      "count": 36
+    },
+    {
+      "value": "rgba(126, 126, 143, 0.5)",
+      "count": 16
+    },
+    {
+      "value": "rgba(126, 126, 143, 0.05)",
+      "count": 14
+    },
+    {
+      "value": "rgba(126, 126, 143, 0.25)",
+      "count": 13
+    },
+    {
+      "value": "rgba(126, 126, 143, 1)",
+      "count": 13
+    },
+    {
+      "value": "#7e7e8f",
+      "count": 12
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "0.5rem",
+      "count": 730
+    },
+    {
+      "value": "1rem",
+      "count": 688
+    },
+    {
+      "value": "0.75rem",
+      "count": 420
+    },
+    {
+      "value": "0.375rem",
+      "count": 327
+    },
+    {
+      "value": "0.25rem",
+      "count": 320
+    },
+    {
+      "value": "10px",
+      "count": 199
+    },
+    {
+      "value": "8px",
+      "count": 174
+    },
+    {
+      "value": "1.5rem",
+      "count": 171
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "packages/plugins/legal-ui/src/lib/components/privacy-policy/privacy-policy.component.scss",
+      "count": 237
+    },
+    {
+      "file": "packages/desktop-ui-lib/src/lib/settings/plugins/component/plugin-marketplace/plugin-subscription-plan-selection/plugin-subscription-plan-selection.component.scss",
+      "count": 180
+    },
+    {
+      "file": "packages/desktop-ui-lib/src/lib/settings/plugins/component/plugin-marketplace/plugin-subscription-manager/plugin-subscription-manager.component.scss",
+      "count": 175
+    },
+    {
+      "file": "packages/plugins/ai-chat-react-ui/src/lib/settings/ai-chat-settings.component.scss",
+      "count": 171
+    },
+    {
+      "file": "apps/gauzy/src/app/pages/projects/components/project-quick-look/project-quick-look.component.scss",
+      "count": 139
+    },
+    {
+      "file": "apps/gauzy/src/app/pages/employees/view-employee/view-employee.component.scss",
+      "count": 137
+    },
+    {
+      "file": "packages/desktop-ui-lib/src/lib/settings/plugins/component/plugin-marketplace/plugin-marketplace-upload/plugin-marketplace-upload.component.scss",
+      "count": 129
+    },
+    {
+      "file": "apps/gauzy/src/app/pages/employees/edit-employee/edit-employee-profile/edit-employee-projects/edit-employee-projects.component.scss",
+      "count": 123
+    }
+  ],
+  "samples": [
+    {
+      "component": "ColorDots",
+      "location": "packages/ui-react-components/src/lib/components/ColorDots.tsx:11",
+      "entries": [
+        "gap: 0.3rem (line 13)"
+      ]
+    },
+    {
+      "component": "WidgetCard",
+      "location": "packages/ui-react-components/src/lib/components/WidgetCard.tsx:17",
+      "entries": [
+        "gap: 0.375rem (line 24)",
+        "fontSize: 0.75rem (line 30)",
+        "fontSize: 1rem (line 34)"
+      ]
+    },
+    {
+      "component": "CardAction",
+      "location": "packages/ui-react-components/src/lib/components/ui/CardAction.tsx:14",
+      "entries": [
+        "gap: 0.5rem (line 24)"
+      ]
+    },
+    {
+      "component": "CardContent",
+      "location": "packages/ui-react-components/src/lib/components/ui/CardContent.tsx:13",
+      "entries": [
+        "padding: 1rem (line 18)"
+      ]
+    },
+    {
+      "component": "CardDescription",
+      "location": "packages/ui-react-components/src/lib/components/ui/CardDescription.tsx:13",
+      "entries": [
+        "fontSize: 0.8125rem (line 19)"
+      ]
+    },
+    {
+      "component": "CardHeader",
+      "location": "packages/ui-react-components/src/lib/components/ui/CardHeader.tsx:16",
+      "entries": [
+        "gap: 0.375rem (line 23)"
+      ]
+    },
+    {
+      "component": "CardTitle",
+      "location": "packages/ui-react-components/src/lib/components/ui/CardTitle.tsx:13",
+      "entries": [
+        "fontSize: 1.125rem (line 19)"
+      ]
+    },
+    {
+      "component": "AiChatPanel",
+      "location": "packages/plugins/ai-chat-react-ui/src/lib/components/AiChatPanel.tsx:110",
+      "entries": [
+        "backgroundColor: rgba(255, 61, 113, 0.12) (line 1327)"
+      ]
+    },
+    {
+      "component": "AttachmentPreview",
+      "location": "packages/plugins/ai-chat-react-ui/src/lib/components/AttachmentPreview.tsx:112",
+      "entries": [
+        "background: #fff (line 471)"
+      ]
+    },
+    {
+      "component": "ChatHistoryPanel",
+      "location": "packages/plugins/ai-chat-react-ui/src/lib/components/ChatHistoryPanel.tsx:29",
+      "entries": [
+        "fontSize: 0.625rem (line 172)"
+      ]
+    },
+    {
+      "component": "ChatInput",
+      "location": "packages/plugins/ai-chat-react-ui/src/lib/components/ChatInput.tsx:267",
+      "entries": [
+        "backgroundColor: rgba(255, 61, 113, 0.1) (line 818)"
+      ]
+    },
+    {
+      "component": "AssistantAvatar",
+      "location": "packages/plugins/ai-chat-react-ui/src/lib/components/ChatWelcome.tsx:125",
+      "entries": [
+        "color: #ffffff (line 137)"
+      ]
+    }
+  ],
+  "scanSeconds": 119
+}

@@ -1,0 +1,336 @@
+{
+  "repo": "teableio/teable",
+  "owner": "teableio",
+  "name": "teable",
+  "description": "✨ AI Spreadsheet for Business",
+  "stars": 21965,
+  "homepage": "https://teable.ai",
+  "language": "TypeScript",
+  "defaultBranch": "develop",
+  "commit": "10a97939829d8b3ea99d618a38bf760e0787a3fa",
+  "generatedAt": "2026-11-10T00:43:33.652Z",
+  "cliVersion": "0.8.20",
+  "score": 83,
+  "tier": "Great",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 43,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 1784,
+    "tokenCount": 67,
+    "hardcodedValueCount": 149,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 149,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 2,
+    "vendoredDriftCount": 0,
+    "notedCount": 38,
+    "topHardcodedColor": {
+      "value": "#303132",
+      "count": 3
+    },
+    "worstFile": {
+      "path": "apps/nextjs-app/src/features/app/blocks/base/base-side-bar/BaseSidebarHeaderLeft.tsx",
+      "issueCount": 3
+    },
+    "uniqueSpacingValues": 5,
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "tailwind",
+      "storybook",
+      "radix"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 149 hardcoded values left to tokenize. apps/nextjs-app/src/features/app/blocks/base/base-side-bar/BaseSidebarHeaderLeft.tsx has the most (3)"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 17,
+      "action": "Replace the hardcoded values in 145 of the 149 findings with tokens or scale steps"
+    }
+  ],
+  "noted": {
+    "count": 38,
+    "byKind": {
+      "optical-nudge": 31,
+      "explained": 1,
+      "vendored": 6
+    },
+    "samples": [
+      {
+        "file": "apps/nextjs-app/src/features/app/components/setting/account/delete-account/DeleteAccountFields.tsx",
+        "line": 52,
+        "value": "sm:text-[13px]",
+        "kind": "explained",
+        "reason": "16px on a phone: anything smaller and iOS Safari zooms the page on focus."
+      },
+      {
+        "file": "packages/ui-lib/src/shadcn/ui/button.tsx",
+        "line": 22,
+        "value": "text-[13px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "packages/ui-lib/src/shadcn/ui/calendar.tsx",
+        "line": 424,
+        "value": "day:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "packages/ui-lib/src/shadcn/ui/calendar.tsx",
+        "line": 135,
+        "value": "text-[0.8rem], text-[0.8rem]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "packages/ui-lib/src/shadcn/ui/chart.tsx",
+        "line": 199,
+        "value": "rounded-[2px], border-[1.5px], rounded-[2px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "packages/ui-lib/src/shadcn/ui/form.tsx",
+        "line": 121,
+        "value": "text-[0.8rem]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 149,
+    "critical": 0,
+    "warning": 6,
+    "info": 143
+  },
+  "driftByType": {
+    "hardcoded-value": 149
+  },
+  "topColors": [
+    {
+      "value": "#303132",
+      "count": 3
+    },
+    {
+      "value": "#0A66C2",
+      "count": 1
+    },
+    {
+      "value": "#5865F2",
+      "count": 1
+    },
+    {
+      "value": "#241A31",
+      "count": 1
+    },
+    {
+      "value": "#322245",
+      "count": 1
+    },
+    {
+      "value": "#2F2518",
+      "count": 1
+    },
+    {
+      "value": "#392C1B",
+      "count": 1
+    },
+    {
+      "value": "#0C3026",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "10px",
+      "count": 8
+    },
+    {
+      "value": "1rem",
+      "count": 5
+    },
+    {
+      "value": "6px",
+      "count": 5
+    },
+    {
+      "value": "14px",
+      "count": 4
+    },
+    {
+      "value": "24px",
+      "count": 3
+    },
+    {
+      "value": "1.5rem",
+      "count": 2
+    },
+    {
+      "value": "0.875rem",
+      "count": 2
+    },
+    {
+      "value": "-40px",
+      "count": 2
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "packages/sdk/src/components/editor/long-text/milkdown.css",
+      "count": 61
+    },
+    {
+      "file": "apps/nextjs-app/src/features/app/components/ShareSelectSpaceDialog.tsx",
+      "count": 12
+    },
+    {
+      "file": "apps/nextjs-app/src/components/Guide.tsx",
+      "count": 8
+    },
+    {
+      "file": "apps/nextjs-app/src/features/app/blocks/admin/setting/components/ai-config/LlmProviderForm.tsx",
+      "count": 8
+    },
+    {
+      "file": "apps/nextjs-app/src/features/app/components/upload-progress-panel/TaskItem.tsx",
+      "count": 7
+    },
+    {
+      "file": "packages/sdk/src/components/expand-record/RecordHistory.tsx",
+      "count": 7
+    },
+    {
+      "file": "apps/nextjs-app/src/features/app/blocks/admin/setting/components/ai-config/GatewayModelPickerDialog.tsx",
+      "count": 6
+    },
+    {
+      "file": "apps/nextjs-app/src/features/app/blocks/view/tool-bar/components/GridViewOperators.tsx",
+      "count": 6
+    }
+  ],
+  "samples": [
+    {
+      "component": "BaseErdTableNode",
+      "location": "apps/nextjs-app/src/features/app/blocks/erd/BaseErdTableNode.tsx:16",
+      "entries": [
+        "size: 1rem (line 72)"
+      ]
+    },
+    {
+      "component": "BaseItem",
+      "location": "apps/nextjs-app/src/features/app/blocks/space/BaseItem.tsx:43",
+      "entries": [
+        "size: 1rem (line 143)"
+      ]
+    },
+    {
+      "component": "EnterBaseOverlay",
+      "location": "apps/nextjs-app/src/features/app/blocks/space/useEnterBase.tsx:44",
+      "entries": [
+        "size: 1.5rem (line 79)"
+      ]
+    },
+    {
+      "component": "TableListItem",
+      "location": "apps/nextjs-app/src/features/app/blocks/table-list/TableListItem.tsx:25",
+      "entries": [
+        "size: 1rem (line 85)"
+      ]
+    },
+    {
+      "component": "BaseNodeTree",
+      "location": "apps/nextjs-app/src/features/app/blocks/base/base-side-bar/BaseNodeTree.tsx:240",
+      "entries": [
+        "size: 1rem (line 714)"
+      ]
+    },
+    {
+      "component": "BaseDropdownMenu",
+      "location": "apps/nextjs-app/src/features/app/blocks/base/base-side-bar/BaseSidebarHeaderLeft.tsx:48",
+      "entries": [
+        "size: 1rem (line 179)"
+      ]
+    },
+    {
+      "component": "BaseSidebarHeaderLeft",
+      "location": "apps/nextjs-app/src/features/app/blocks/base/base-side-bar/BaseSidebarHeaderLeft.tsx:271",
+      "entries": [
+        "size: 1.5rem (line 344)"
+      ]
+    },
+    {
+      "component": "SpacePalette",
+      "location": "apps/nextjs-app/src/features/app/blocks/base/base-side-bar/CommandPalette.tsx:101",
+      "entries": [
+        "size: 1em (line 148)"
+      ]
+    },
+    {
+      "component": "PaletteHeader",
+      "location": "apps/nextjs-app/src/features/app/blocks/base/base-side-bar/PaletteContentView.tsx:54",
+      "entries": [
+        "size: 0.875rem (line 106)"
+      ]
+    },
+    {
+      "component": "TableInfo",
+      "location": "apps/nextjs-app/src/features/app/blocks/table/table-header/TableInfo.tsx:31",
+      "entries": [
+        "size: 1.25rem (line 78)"
+      ]
+    },
+    {
+      "component": "AffectedFieldsList",
+      "location": "apps/nextjs-app/src/features/app/components/field-setting/field-delete-confirm-dialog/AffectedFieldsList.tsx:25",
+      "entries": [
+        "size: 0.875rem (line 76)"
+      ]
+    },
+    {
+      "component": "apps/nextjs-app/src/components/Guide.tsx",
+      "location": "apps/nextjs-app/src/components/Guide.tsx:74",
+      "entries": [
+        "text-[13px] (line 74)",
+        "text-[13px] (line 88)",
+        "text-[13px] (line 96)"
+      ]
+    }
+  ],
+  "scanSeconds": 49
+}

@@ -1,0 +1,337 @@
+{
+  "repo": "zitadel/zitadel",
+  "owner": "zitadel",
+  "name": "zitadel",
+  "description": "ZITADEL - Identity infrastructure, simplified for you.",
+  "stars": 15556,
+  "homepage": "https://zitadel.com",
+  "language": "Go",
+  "defaultBranch": "main",
+  "commit": "ae4364f473a4b4fd2217cf377492265fb31d92cc",
+  "generatedAt": "2026-11-10T00:46:03.595Z",
+  "cliVersion": "0.8.20",
+  "score": 40,
+  "tier": "OK",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 160,
+    "tokenCount": 86,
+    "hardcodedValueCount": 224,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 224,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 1,
+    "vendoredDriftCount": 2,
+    "notedCount": 16,
+    "topHardcodedColor": {
+      "value": "#187aff",
+      "count": 3
+    },
+    "worstFile": {
+      "path": "apps/docs/components/docs-chat.tsx",
+      "issueCount": 3
+    },
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "tailwind",
+      "headlessui",
+      "radix"
+    ]
+  },
+  "suggestions": [
+    "222 hardcoded values across your components — high density. Most common: #187aff (3×). Add values to your Tailwind theme config instead of using arbitrary values",
+    "2 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 60,
+      "action": "Replace the hardcoded values in all 222 findings with tokens or scale steps"
+    }
+  ],
+  "noted": {
+    "count": 16,
+    "byKind": {
+      "optical-nudge": 16
+    },
+    "samples": [
+      {
+        "file": "apps/login/src/components/input.tsx",
+        "line": 24,
+        "value": "mb-[2px]",
+        "kind": "optical-nudge",
+        "reason": "mb-[2px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/login/src/components/session-clear-item.tsx",
+        "line": 93,
+        "value": "py-[2px]",
+        "kind": "optical-nudge",
+        "reason": "py-[2px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/login/src/components/state-badge.tsx",
+        "line": 28,
+        "value": "p-[2px]",
+        "kind": "optical-nudge",
+        "reason": "p-[2px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/docs/css/environment.module.css",
+        "line": 8,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-bottom: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/docs/css/environment.module.css",
+        "line": 32,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-bottom: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "console/src/app/modules/accounts-card/accounts-card.component.scss",
+        "line": 134,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "margin-top: 3px is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 224,
+    "critical": 0,
+    "warning": 148,
+    "info": 76
+  },
+  "driftByType": {
+    "hardcoded-value": 224
+  },
+  "topColors": [
+    {
+      "value": "rgba(#8795a1, 0.2)",
+      "count": 9
+    },
+    {
+      "value": "#ffffff20",
+      "count": 7
+    },
+    {
+      "value": "#187aff",
+      "count": 5
+    },
+    {
+      "value": "#fff",
+      "count": 5
+    },
+    {
+      "value": "#8795a110",
+      "count": 4
+    },
+    {
+      "value": "#8795a160",
+      "count": 4
+    },
+    {
+      "value": "rgba(128, 203, 196, 0.2)",
+      "count": 4
+    },
+    {
+      "value": "#00000010",
+      "count": 3
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "1rem",
+      "count": 266
+    },
+    {
+      "value": "0.5rem",
+      "count": 223
+    },
+    {
+      "value": "2rem",
+      "count": 55
+    },
+    {
+      "value": "0.25rem",
+      "count": 29
+    },
+    {
+      "value": "1.5rem",
+      "count": 24
+    },
+    {
+      "value": "3rem",
+      "count": 18
+    },
+    {
+      "value": "-0.5rem",
+      "count": 16
+    },
+    {
+      "value": "4px",
+      "count": 8
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "console/src/app/pages/projects/apps/app-detail/app-detail.component.scss",
+      "count": 46
+    },
+    {
+      "file": "apps/docs/app/global.css",
+      "count": 42
+    },
+    {
+      "file": "console/src/app/modules/policies/private-labeling-policy/private-labeling-policy.component.scss",
+      "count": 38
+    },
+    {
+      "file": "console/src/styles/codemirror.scss",
+      "count": 33
+    },
+    {
+      "file": "console/src/app/pages/projects/project-grid/project-grid.component.scss",
+      "count": 26
+    },
+    {
+      "file": "console/src/app/modules/onboarding/onboarding.component.scss",
+      "count": 25
+    },
+    {
+      "file": "console/src/app/pages/projects/apps/integrate/integrate.component.scss",
+      "count": 25
+    },
+    {
+      "file": "console/src/app/modules/header/header.component.scss",
+      "count": 24
+    }
+  ],
+  "samples": [
+    {
+      "component": "apps/login/src/components/avatar.tsx",
+      "location": "apps/login/src/components/avatar.tsx:65",
+      "entries": [
+        "text-[13px] (line 65)"
+      ]
+    },
+    {
+      "component": "apps/login/src/components/boundary.tsx",
+      "location": "apps/login/src/components/boundary.tsx:59",
+      "entries": [
+        "text-[9px] (line 59)"
+      ]
+    },
+    {
+      "component": "apps/login/src/components/idps/sign-in-with-azure-ad.tsx",
+      "location": "apps/login/src/components/idps/sign-in-with-azure-ad.tsx:13",
+      "entries": [
+        "p-[10px] (line 13)"
+      ]
+    },
+    {
+      "component": "apps/login/src/components/input.tsx",
+      "location": "apps/login/src/components/input.tsx:24",
+      "entries": [
+        "p-[7px] (line 24)"
+      ]
+    },
+    {
+      "component": "apps/login/src/components/session-clear-item.tsx",
+      "location": "apps/login/src/components/session-clear-item.tsx:93",
+      "entries": [
+        "bg-[#ff0000]/10 (line 93)",
+        "dark:bg-[#ff0000]/10 (line 93)"
+      ]
+    },
+    {
+      "component": "apps/docs/components/ErrorReference/index.tsx",
+      "location": "apps/docs/components/ErrorReference/index.tsx:325",
+      "entries": [
+        "text-[10px] (line 325)"
+      ]
+    },
+    {
+      "component": "apps/docs/components/custom-search-dialog.tsx",
+      "location": "apps/docs/components/custom-search-dialog.tsx:151",
+      "entries": [
+        "text-[11px] (line 151)"
+      ]
+    },
+    {
+      "component": "apps/docs/components/docs-chat.tsx",
+      "location": "apps/docs/components/docs-chat.tsx:189",
+      "entries": [
+        "bg-[#187aff] (line 189)",
+        "text-[#187aff] (line 207)",
+        "dark:text-[#3f90ff] (line 207)"
+      ]
+    },
+    {
+      "component": "apps/docs/components/docs-chat.tsx",
+      "location": "apps/docs/components/docs-chat.tsx:285",
+      "entries": [
+        "text-[11px] (line 285)"
+      ]
+    },
+    {
+      "component": "apps/docs/components/docs-chat.tsx",
+      "location": "apps/docs/components/docs-chat.tsx:296",
+      "entries": [
+        "shadow-[0_4px_14px_0_rgba(24,122,255,0.39)] (line 296)"
+      ]
+    },
+    {
+      "component": "apps/docs/app/global.css",
+      "location": "apps/docs/app/global.css:155",
+      "entries": [
+        "spacing: 2rem (line 155)",
+        "spacing: 3rem (line 156)",
+        "colour: #ff2069 (line 258)"
+      ]
+    },
+    {
+      "component": "apps/docs/css/apicard.module.css",
+      "location": "apps/docs/css/apicard.module.css:10",
+      "entries": [
+        "font size: 14px (line 10)"
+      ]
+    }
+  ],
+  "scanSeconds": 19
+}

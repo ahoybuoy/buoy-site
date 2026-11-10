@@ -1,0 +1,335 @@
+{
+  "repo": "ChatGPTNextWeb/NextChat",
+  "owner": "ChatGPTNextWeb",
+  "name": "NextChat",
+  "description": "✨ Zero-config AI chat assistant. No API key needed — sign up and instantly chat with GPT-5, Claude 4, Gemini 2.5, DeepSeek & 100+ top models. Pay-as-you-go saves you more. Available on Web, iOS, macOS, Android, Linux, Windows.",
+  "stars": 88941,
+  "homepage": "https://nextchat.club",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "1d3dc331512929a4b1d3e82354e72acce33b5c7a",
+  "generatedAt": "2026-11-10T00:20:22.837Z",
+  "cliVersion": "0.8.20",
+  "score": 28,
+  "tier": "Bad",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 8,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 0,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 88,
+    "tokenCount": 0,
+    "hardcodedValueCount": 23,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 23,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 4,
+    "worstFile": {
+      "path": "app/components/auth.tsx",
+      "issueCount": 1
+    },
+    "uniqueSpacingValues": 2,
+    "detectedFrameworkNames": [
+      "react",
+      "next"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 23 hardcoded values left to tokenize",
+    "No design token system detected — add CSS custom properties or a utility framework like Tailwind"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 52,
+      "action": "Replace the hardcoded values in all 23 findings with tokens or scale steps"
+    },
+    {
+      "pillar": "tokenHealth",
+      "points": 20,
+      "action": "Add a token system: CSS custom properties, a tokens file or a Tailwind theme"
+    }
+  ],
+  "noted": {
+    "count": 4,
+    "byKind": {
+      "optical-nudge": 4
+    },
+    "samples": [
+      {
+        "file": "app/components/home.module.scss",
+        "line": 93,
+        "value": "-2px",
+        "kind": "optical-nudge",
+        "reason": "margin-left: -2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "app/components/realtime-chat/realtime-chat.module.scss",
+        "line": 42,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "app/components/sd/sd-panel.module.scss",
+        "line": 23,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "margin-top: 3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "app/components/ui-lib.module.scss",
+        "line": 73,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-bottom: 2px is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 23,
+    "critical": 0,
+    "warning": 7,
+    "info": 16
+  },
+  "driftByType": {
+    "hardcoded-value": 23
+  },
+  "topColors": [
+    {
+      "value": "rgba(0, 0, 0, 0.05)",
+      "count": 3
+    },
+    {
+      "value": "#aaa",
+      "count": 2
+    },
+    {
+      "value": "#fff",
+      "count": 2
+    },
+    {
+      "value": "rgb(166, 166, 166)",
+      "count": 1
+    },
+    {
+      "value": "#16a34a",
+      "count": 1
+    },
+    {
+      "value": "#9ca3af",
+      "count": 1
+    },
+    {
+      "value": "#4ade80",
+      "count": 1
+    },
+    {
+      "value": "#f87171",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "10px",
+      "count": 73
+    },
+    {
+      "value": "20px",
+      "count": 45
+    },
+    {
+      "value": "8px",
+      "count": 17
+    },
+    {
+      "value": "5px",
+      "count": 17
+    },
+    {
+      "value": "4px",
+      "count": 15
+    },
+    {
+      "value": "16px",
+      "count": 5
+    },
+    {
+      "value": "12px",
+      "count": 5
+    },
+    {
+      "value": "15px",
+      "count": 3
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "app/components/mcp-market.module.scss",
+      "count": 100
+    },
+    {
+      "file": "app/components/chat.module.scss",
+      "count": 77
+    },
+    {
+      "file": "app/components/exporter.module.scss",
+      "count": 33
+    },
+    {
+      "file": "app/components/ui-lib.module.scss",
+      "count": 24
+    },
+    {
+      "file": "app/components/home.module.scss",
+      "count": 21
+    },
+    {
+      "file": "app/styles/globals.scss",
+      "count": 19
+    },
+    {
+      "file": "app/components/tts.module.scss",
+      "count": 18
+    },
+    {
+      "file": "app/components/mask.module.scss",
+      "count": 16
+    }
+  ],
+  "samples": [
+    {
+      "component": "TopBanner",
+      "location": "app/components/auth.tsx:129",
+      "entries": [
+        "marginLeft: 4px (line 180)"
+      ]
+    },
+    {
+      "component": "ControlParam",
+      "location": "app/components/sd/sd-panel.tsx:159",
+      "entries": [
+        "padding: 10px (line 178)"
+      ]
+    },
+    {
+      "component": "Sd",
+      "location": "app/components/sd/sd.tsx:90",
+      "entries": [
+        "marginLeft: 10px (line 192)",
+        "margin: 10px (line 269)"
+      ]
+    },
+    {
+      "component": "app/components/artifacts.module.scss",
+      "location": "app/components/artifacts.module.scss:10",
+      "entries": [
+        "spacing: 20px (line 10)",
+        "font size: 24px (line 17)",
+        "radius: 6px (line 29)"
+      ]
+    },
+    {
+      "component": "app/components/auth.module.scss",
+      "location": "app/components/auth.module.scss:21",
+      "entries": [
+        "font size: 14px (line 21)",
+        "spacing: 8px (line 24)",
+        "spacing: 8px (line 29)"
+      ]
+    },
+    {
+      "component": "app/components/button.module.scss",
+      "location": "app/components/button.module.scss:3",
+      "entries": [
+        "radius: 10px (line 3)",
+        "spacing: 10px (line 7)",
+        "spacing: 16px (line 69)"
+      ]
+    },
+    {
+      "component": "app/components/chat.module.scss",
+      "location": "app/components/chat.module.scss:15",
+      "entries": [
+        "radius: 5px (line 15)",
+        "spacing: 10px (line 16)",
+        "radius: 5px (line 39)"
+      ]
+    },
+    {
+      "component": "app/components/exporter.module.scss",
+      "location": "app/components/exporter.module.scss:3",
+      "entries": [
+        "spacing: 20px (line 3)",
+        "spacing: 10px (line 9)",
+        "radius: 10px (line 14)"
+      ]
+    },
+    {
+      "component": "app/components/home.module.scss",
+      "location": "app/components/home.module.scss:4",
+      "entries": [
+        "radius: 20px (line 4)",
+        "spacing: 20px (line 44)",
+        "shadow: inset -2px 0px 2px 0px rgb(0, 0, 0, 0.05) (line 48)"
+      ]
+    },
+    {
+      "component": "app/components/input-range.module.scss",
+      "location": "app/components/input-range.module.scss:3",
+      "entries": [
+        "radius: 10px (line 3)",
+        "font size: 12px (line 5)"
+      ]
+    },
+    {
+      "component": "app/components/mask.module.scss",
+      "location": "app/components/mask.module.scss:8",
+      "entries": [
+        "spacing: 20px (line 8)",
+        "spacing: 20px (line 14)",
+        "spacing: 10px (line 28)"
+      ]
+    },
+    {
+      "component": "app/components/mcp-market.module.scss",
+      "location": "app/components/mcp-market.module.scss:9",
+      "entries": [
+        "font size: 12px (line 9)",
+        "spacing: 8px (line 11)",
+        "spacing: 20px (line 17)"
+      ]
+    }
+  ],
+  "scanSeconds": 4
+}

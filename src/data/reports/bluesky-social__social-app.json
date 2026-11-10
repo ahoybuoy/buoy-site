@@ -1,0 +1,230 @@
+{
+  "repo": "bluesky-social/social-app",
+  "owner": "bluesky-social",
+  "name": "social-app",
+  "description": "The Bluesky Social application for Web, iOS, and Android",
+  "stars": 18385,
+  "homepage": "https://bsky.app",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "456d588adea7c0fca964d9067e3adb4a3167a8d9",
+  "generatedAt": "2026-11-10T00:25:11.085Z",
+  "cliVersion": "0.8.20",
+  "score": 86,
+  "tier": "Great",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 59,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 15,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 2,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 1897,
+    "tokenCount": 10,
+    "hardcodedValueCount": 7,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 15,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 8,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 0,
+    "topHardcodedColor": {
+      "value": "#FFF",
+      "count": 2
+    },
+    "worstFile": {
+      "path": "src/components/forms/ToggleButton.tsx",
+      "issueCount": 3
+    },
+    "detectedFrameworkNames": [
+      "react"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 7 hardcoded values left to tokenize. src/components/forms/ToggleButton.tsx has the most (3)",
+    "8 deprecated patterns — migrate to current API"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 1,
+      "action": "Replace the hardcoded values in 3 of the 7 findings with tokens or scale steps"
+    },
+    {
+      "pillar": "tokenHealth",
+      "points": 5,
+      "action": "Define 10 more design tokens (10 of the 20 that earn full credit)"
+    },
+    {
+      "pillar": "criticalIssues",
+      "points": 8,
+      "action": "Migrate 8 deprecated patterns"
+    }
+  ],
+  "noted": {
+    "count": 0,
+    "byKind": {},
+    "samples": []
+  },
+  "driftSummary": {
+    "total": 15,
+    "critical": 0,
+    "warning": 15,
+    "info": 0
+  },
+  "driftByType": {
+    "hardcoded-value": 7,
+    "deprecated-pattern": 8
+  },
+  "topColors": [
+    {
+      "value": "#FFF",
+      "count": 2
+    },
+    {
+      "value": "#0085ff",
+      "count": 2
+    },
+    {
+      "value": "#006AFF",
+      "count": 1
+    },
+    {
+      "value": "#354358",
+      "count": 1
+    },
+    {
+      "value": "#006aff",
+      "count": 1
+    },
+    {
+      "value": "#FFFFFF",
+      "count": 1
+    },
+    {
+      "value": "#0085FF",
+      "count": 1
+    },
+    {
+      "value": "#8d8e96",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "-6px",
+      "count": 2
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "src/style.css",
+      "count": 9
+    },
+    {
+      "file": "src/components/WelcomeModal.tsx",
+      "count": 2
+    },
+    {
+      "file": "src/features/inviteFriends/InviteScannerScreen.tsx",
+      "count": 1
+    },
+    {
+      "file": "src/features/trendingWidget/TrendingTopicsWidget.android.tsx",
+      "count": 1
+    },
+    {
+      "file": "src/features/trendingWidget/TrendingTopicsWidget.ios.tsx",
+      "count": 1
+    },
+    {
+      "file": "src/components/Lightbox/pager/ImageItem/ImageItem.android.tsx",
+      "count": 1
+    },
+    {
+      "file": "src/components/Lightbox/pager/ImageItem/ImageItem.ios.tsx",
+      "count": 1
+    }
+  ],
+  "samples": [
+    {
+      "component": "WelcomeModal",
+      "location": "src/components/WelcomeModal.tsx:23",
+      "entries": [
+        "backgroundColor: #006AFF (line 162)",
+        "color: #354358 (line 238)"
+      ]
+    },
+    {
+      "component": "InviteScannerScreen",
+      "location": "src/features/inviteFriends/InviteScannerScreen.tsx:28",
+      "entries": [
+        "borderColor: #006aff (line 151)"
+      ]
+    },
+    {
+      "component": "TrendingTopicsWidget",
+      "location": "src/features/trendingWidget/TrendingTopicsWidget.android.tsx:40",
+      "entries": [
+        "color: #FFFFFF (line 144)"
+      ]
+    },
+    {
+      "component": "TrendingTopicsWidget",
+      "location": "src/features/trendingWidget/TrendingTopicsWidget.ios.tsx:40",
+      "entries": [
+        "color: #0085FF (line 153)"
+      ]
+    },
+    {
+      "component": "ImageItem",
+      "location": "src/components/Lightbox/pager/ImageItem/ImageItem.android.tsx:64",
+      "entries": [
+        "color: #FFF (line 404)"
+      ]
+    },
+    {
+      "component": "ImageItemContent",
+      "location": "src/components/Lightbox/pager/ImageItem/ImageItem.ios.tsx:78",
+      "entries": [
+        "color: #FFF (line 258)"
+      ]
+    },
+    {
+      "component": "src/style.css",
+      "location": "src/style.css:71",
+      "entries": [
+        "colour: #8d8e96 (line 71)",
+        "colour: #0085ff (line 78)",
+        "colour: #0085ff (line 82)"
+      ]
+    }
+  ],
+  "scanSeconds": 23
+}

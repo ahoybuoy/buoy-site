@@ -1,0 +1,277 @@
+{
+  "repo": "TabbyML/tabby",
+  "owner": "TabbyML",
+  "name": "tabby",
+  "description": "Self-hosted AI coding assistant",
+  "stars": 33931,
+  "homepage": "https://tabbyml.com",
+  "language": "Rust",
+  "defaultBranch": "main",
+  "commit": "21b29048d7bcf6b94f9f482f2d0fd05efadfd19f",
+  "generatedAt": "2026-11-10T00:23:25.677Z",
+  "cliVersion": "0.8.20",
+  "score": 95,
+  "tier": "Great",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 55,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 293,
+    "tokenCount": 72,
+    "hardcodedValueCount": 7,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 7,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 102,
+    "detectedFrameworkNames": [
+      "react",
+      "shadcn"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 7 hardcoded values left to tokenize"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 5,
+      "action": "Replace the hardcoded values in all 7 findings with tokens or scale steps"
+    }
+  ],
+  "noted": {
+    "count": 102,
+    "byKind": {
+      "explained": 99,
+      "optical-nudge": 3
+    },
+    "samples": [
+      {
+        "file": "ee/tabby-webserver/ui/_next/static/css/1df4303b470c4ade.css",
+        "line": 5,
+        "value": "0 solid #e5e7eb",
+        "kind": "explained",
+        "reason": ",:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:\"\"}html{line-height:1.5;-webki…"
+      },
+      {
+        "file": "ee/tabby-webserver/ui/_next/static/css/1df4303b470c4ade.css",
+        "line": 5,
+        "value": "1.5",
+        "kind": "explained",
+        "reason": ",:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:\"\"}html{line-height:1.5;-webki…"
+      },
+      {
+        "file": "ee/tabby-webserver/ui/_next/static/css/1df4303b470c4ade.css",
+        "line": 5,
+        "value": "ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace",
+        "kind": "explained",
+        "reason": ",:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:\"\"}html{line-height:1.5;-webki…"
+      },
+      {
+        "file": "ee/tabby-webserver/ui/_next/static/css/1df4303b470c4ade.css",
+        "line": 5,
+        "value": "1em",
+        "kind": "explained",
+        "reason": ",:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:\"\"}html{line-height:1.5;-webki…"
+      },
+      {
+        "file": "ee/tabby-webserver/ui/_next/static/css/1df4303b470c4ade.css",
+        "line": 5,
+        "value": "#9ca3af",
+        "kind": "explained",
+        "reason": ",:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:\"\"}html{line-height:1.5;-webki…"
+      },
+      {
+        "file": "ee/tabby-webserver/ui/_next/static/css/1df4303b470c4ade.css",
+        "line": 5,
+        "value": "2rem",
+        "kind": "explained",
+        "reason": ",:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:\"\"}html{line-height:1.5;-webki…"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 7,
+    "critical": 0,
+    "warning": 4,
+    "info": 3
+  },
+  "driftByType": {
+    "hardcoded-value": 7
+  },
+  "topColors": [
+    {
+      "value": "rgba(255, 0, 0, 0.2)",
+      "count": 2
+    },
+    {
+      "value": "rgb(232, 226, 210)",
+      "count": 1
+    },
+    {
+      "value": "#999",
+      "count": 1
+    },
+    {
+      "value": "rgba(0,0,0,.8)",
+      "count": 1
+    },
+    {
+      "value": "rgba(255,0,0,.2)",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "2rem",
+      "count": 2
+    },
+    {
+      "value": "-6px",
+      "count": 2
+    },
+    {
+      "value": "0.4rem",
+      "count": 1
+    },
+    {
+      "value": "0.2rem",
+      "count": 1
+    },
+    {
+      "value": "1.25em",
+      "count": 1
+    },
+    {
+      "value": "1.2em",
+      "count": 1
+    },
+    {
+      "value": "1.625em",
+      "count": 1
+    },
+    {
+      "value": "3em",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "ee/tabby-webserver/ui/_next/static/css/4d92cebb017c1f0c.css",
+      "count": 64
+    },
+    {
+      "file": "website/src/css/custom.css",
+      "count": 11
+    },
+    {
+      "file": "clients/vscode/assets/chat-panel.css",
+      "count": 6
+    },
+    {
+      "file": "ee/tabby-ui/app/files/lib/line-menu-extension/line-menu.css",
+      "count": 2
+    },
+    {
+      "file": "ee/tabby-webserver/ui/_next/static/css/1df4303b470c4ade.css",
+      "count": 1
+    },
+    {
+      "file": "ee/tabby-webserver/ui/_next/static/css/a672f7c938d6675d.css",
+      "count": 1
+    },
+    {
+      "file": "website/src/pages/index.module.css",
+      "count": 1
+    }
+  ],
+  "samples": [
+    {
+      "component": "clients/vscode/assets/chat-panel.css",
+      "location": "clients/vscode/assets/chat-panel.css:39",
+      "entries": [
+        "spacing: 0.4rem (line 39)",
+        "spacing: 0.2rem (line 40)",
+        "colour: rgb(232, 226, 210) (line 42)"
+      ]
+    },
+    {
+      "component": "ee/tabby-ui/app/files/lib/line-menu-extension/line-menu.css",
+      "location": "ee/tabby-ui/app/files/lib/line-menu-extension/line-menu.css:2",
+      "entries": [
+        "colour: rgba(255, 0, 0, 0.2) (line 2)",
+        "colour: rgba(255, 0, 0, 0.2) (line 6)"
+      ]
+    },
+    {
+      "component": "ee/tabby-webserver/ui/_next/static/css/1df4303b470c4ade.css",
+      "location": "ee/tabby-webserver/ui/_next/static/css/1df4303b470c4ade.css:1",
+      "entries": [
+        "font weight: 600 (line 1)"
+      ]
+    },
+    {
+      "component": "ee/tabby-webserver/ui/_next/static/css/4d92cebb017c1f0c.css",
+      "location": "ee/tabby-webserver/ui/_next/static/css/4d92cebb017c1f0c.css:1",
+      "entries": [
+        "spacing: 2rem (line 1)",
+        "spacing: 1.25em (line 1)",
+        "font size: 1.25em (line 1)"
+      ]
+    },
+    {
+      "component": "ee/tabby-webserver/ui/_next/static/css/a672f7c938d6675d.css",
+      "location": "ee/tabby-webserver/ui/_next/static/css/a672f7c938d6675d.css:1",
+      "entries": [
+        "colour: rgba(255,0,0,.2) (line 1)"
+      ]
+    },
+    {
+      "component": "website/src/css/custom.css",
+      "location": "website/src/css/custom.css:47",
+      "entries": [
+        "spacing: -6px (line 47)",
+        "radius: 3px (line 50)",
+        "font size: 10px (line 54)"
+      ]
+    },
+    {
+      "component": "website/src/pages/index.module.css",
+      "location": "website/src/pages/index.module.css:15",
+      "entries": [
+        "spacing: 2rem (line 15)"
+      ]
+    }
+  ],
+  "scanSeconds": 10
+}

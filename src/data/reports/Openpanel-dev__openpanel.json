@@ -1,0 +1,336 @@
+{
+  "repo": "Openpanel-dev/openpanel",
+  "owner": "Openpanel-dev",
+  "name": "openpanel",
+  "description": "OpenPanel is an open-source web and product analytics platform, an open-source alternative to Mixpanel with optional self-hosting.",
+  "stars": 7275,
+  "homepage": "https://openpanel.dev",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "a5a6eb7d62c9579620ec5e3fbfd4ce760f3d8073",
+  "generatedAt": "2026-11-10T00:22:01.143Z",
+  "cliVersion": "0.8.20",
+  "score": 88,
+  "tier": "Great",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 48,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 1619,
+    "tokenCount": 243,
+    "hardcodedValueCount": 96,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 97,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 1,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 4,
+    "vendoredDriftCount": 0,
+    "notedCount": 6,
+    "topHardcodedColor": {
+      "value": "#3ba974",
+      "count": 4
+    },
+    "worstFile": {
+      "path": "apps/start/src/components/overview/overview-widget-table.tsx",
+      "issueCount": 3
+    },
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "astro",
+      "tailwind",
+      "radix"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 96 hardcoded values left to tokenize. apps/start/src/components/overview/overview-widget-table.tsx has the most (3)"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 12,
+      "action": "Replace the hardcoded values in 92 of the 96 findings with tokens or scale steps, and remove or reuse 1 unused component or repeated pattern"
+    }
+  ],
+  "noted": {
+    "count": 6,
+    "byKind": {
+      "explained": 1,
+      "vendored": 5
+    },
+    "samples": [
+      {
+        "file": "apps/start/src/components/onboarding/activation-banner.tsx",
+        "line": 198,
+        "value": "mt-[13px]",
+        "kind": "explained",
+        "reason": "Aligned to the node centers (size-7 nodes), not the taller node+label buttons the row centers against."
+      },
+      {
+        "file": "apps/start/src/components/ui/badge.tsx",
+        "line": 7,
+        "value": "focus-visible:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "apps/start/src/components/ui/calendar.tsx",
+        "line": 68,
+        "value": "has-focus:ring-[3px], day:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "apps/start/src/components/ui/checkbox.tsx",
+        "line": 48,
+        "value": "py-[0.5rem]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "apps/start/src/components/ui/dialog.tsx",
+        "line": 81,
+        "value": "rounded-[10px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "apps/start/src/components/ui/scroll-area.tsx",
+        "line": 49,
+        "value": "focus-visible:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 97,
+    "critical": 0,
+    "warning": 12,
+    "info": 85
+  },
+  "driftByType": {
+    "hardcoded-value": 96,
+    "repeated-pattern": 1
+  },
+  "topColors": [
+    {
+      "value": "#3ba974",
+      "count": 4
+    },
+    {
+      "value": "#fff",
+      "count": 3
+    },
+    {
+      "value": "#c00",
+      "count": 3
+    },
+    {
+      "value": "#000",
+      "count": 2
+    },
+    {
+      "value": "#ff5f57",
+      "count": 2
+    },
+    {
+      "value": "#febc2e",
+      "count": 2
+    },
+    {
+      "value": "#28c840",
+      "count": 2
+    },
+    {
+      "value": "#10b981",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "8px",
+      "count": 7
+    },
+    {
+      "value": "16px",
+      "count": 4
+    },
+    {
+      "value": "12px",
+      "count": 4
+    },
+    {
+      "value": "6px",
+      "count": 3
+    },
+    {
+      "value": "3px",
+      "count": 1
+    },
+    {
+      "value": "20px",
+      "count": 1
+    },
+    {
+      "value": "4px",
+      "count": 1
+    },
+    {
+      "value": "32px",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "apps/testbed/src/styles.css",
+      "count": 45
+    },
+    {
+      "file": "apps/public/src/components/dashboard-mock/reports.tsx",
+      "count": 39
+    },
+    {
+      "file": "apps/public/src/components/dashboard-mock/product-analytics.tsx",
+      "count": 29
+    },
+    {
+      "file": "apps/public/src/components/dashboard-mock/revenue.tsx",
+      "count": 29
+    },
+    {
+      "file": "apps/public/src/components/dashboard-mock/manage.tsx",
+      "count": 28
+    },
+    {
+      "file": "apps/public/src/components/dashboard-mock/chat.tsx",
+      "count": 24
+    },
+    {
+      "file": "apps/public/src/components/dashboard-mock/manage-sharing.tsx",
+      "count": 24
+    },
+    {
+      "file": "apps/public/src/components/dashboard-mock/profiles.tsx",
+      "count": 24
+    }
+  ],
+  "samples": [
+    {
+      "component": "OverviewListModal",
+      "location": "apps/start/src/components/overview/overview-list-modal.tsx:70",
+      "entries": [
+        "color: #3ba974 (line 209)"
+      ]
+    },
+    {
+      "component": "OverviewWeeklyTrends",
+      "location": "apps/start/src/components/overview/overview-weekly-trends.tsx:94",
+      "entries": [
+        "color: #10b981 (line 235)"
+      ]
+    },
+    {
+      "component": "OverviewWidgetTablePages",
+      "location": "apps/start/src/components/overview/overview-widget-table.tsx:267",
+      "entries": [
+        "color: #3ba974 (line 351)"
+      ]
+    },
+    {
+      "component": "OverviewWidgetTableEntries",
+      "location": "apps/start/src/components/overview/overview-widget-table.tsx:400",
+      "entries": [
+        "color: #3ba974 (line 486)"
+      ]
+    },
+    {
+      "component": "OverviewWidgetTableGeneric",
+      "location": "apps/start/src/components/overview/overview-widget-table.tsx:600",
+      "entries": [
+        "color: #3ba974 (line 645)"
+      ]
+    },
+    {
+      "component": "PreviousDiffIndicator",
+      "location": "apps/start/src/components/report-chart/common/previous-diff-indicator.tsx:33",
+      "entries": [
+        "color: #000 (line 59)"
+      ]
+    },
+    {
+      "component": "PreviousDiffIndicatorPure",
+      "location": "apps/start/src/components/report-chart/common/previous-diff-indicator.tsx:102",
+      "entries": [
+        "color: #000 (line 124)"
+      ]
+    },
+    {
+      "component": "apps/public/src/app/(content)/[...pages]/page.tsx",
+      "location": "apps/public/src/app/(content)/[...pages]/page.tsx:24",
+      "entries": [
+        "[&_h2]:tracking-[-0.01em] (line 24)"
+      ]
+    },
+    {
+      "component": "apps/public/src/app/(content)/_components/company-band.tsx",
+      "location": "apps/public/src/app/(content)/_components/company-band.tsx:93",
+      "entries": [
+        "leading-[1.1] (line 93)",
+        "tracking-[-0.02em] (line 93)"
+      ]
+    },
+    {
+      "component": "apps/public/src/app/(content)/about/page.tsx",
+      "location": "apps/public/src/app/(content)/about/page.tsx:85",
+      "entries": [
+        "tracking-[-0.03em] (line 85)",
+        "[&_h2]:tracking-[-0.02em] (line 211)"
+      ]
+    },
+    {
+      "component": "apps/public/src/app/(content)/articles/[articleSlug]/page.tsx",
+      "location": "apps/public/src/app/(content)/articles/[articleSlug]/page.tsx:122",
+      "entries": [
+        "leading-[1.1] (line 122)"
+      ]
+    },
+    {
+      "component": "apps/public/src/app/(content)/compare/[slug]/_components/compare-overview.tsx",
+      "location": "apps/public/src/app/(content)/compare/[slug]/_components/compare-overview.tsx:15",
+      "entries": [
+        "leading-[1.1] (line 15)",
+        "tracking-[-0.02em] (line 15)"
+      ]
+    }
+  ],
+  "scanSeconds": 32
+}

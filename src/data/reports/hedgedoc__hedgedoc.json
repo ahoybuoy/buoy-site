@@ -1,0 +1,347 @@
+{
+  "repo": "hedgedoc/hedgedoc",
+  "owner": "hedgedoc",
+  "name": "hedgedoc",
+  "description": "HedgeDoc - Ideas grow better together",
+  "stars": 7506,
+  "homepage": "https://hedgedoc.org",
+  "language": "TypeScript",
+  "defaultBranch": "develop",
+  "commit": "c937fd26b5d20ca8b2c5fd26e5b467f0a5c03e08",
+  "generatedAt": "2026-11-10T00:31:39.834Z",
+  "cliVersion": "0.8.20",
+  "score": 77,
+  "tier": "Good",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 57,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 0,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 2310,
+    "tokenCount": 0,
+    "hardcodedValueCount": 38,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 38,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 8,
+    "topHardcodedColor": {
+      "value": "#b51f08",
+      "count": 1
+    },
+    "worstFile": {
+      "path": "frontend/src/app/(editor)/layout.tsx",
+      "issueCount": 1
+    },
+    "detectedFrameworkNames": []
+  },
+  "suggestions": [
+    "Nearly there — just 38 hardcoded values left to tokenize",
+    "No design token system detected — add CSS custom properties or a utility framework like Tailwind"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 3,
+      "action": "Replace the hardcoded values in 33 of the 38 findings with tokens or scale steps"
+    },
+    {
+      "pillar": "tokenHealth",
+      "points": 20,
+      "action": "Add a token system: CSS custom properties, a tokens file or a Tailwind theme"
+    }
+  ],
+  "noted": {
+    "count": 8,
+    "byKind": {
+      "explained": 3,
+      "optical-nudge": 5
+    },
+    "samples": [
+      {
+        "file": "frontend/global-styles/colors-only-bootstrap/forms/_form-control.scss",
+        "line": 20,
+        "value": "$input-focus-color",
+        "kind": "explained",
+        "reason": "Customize the `:focus` state to imitate native WebKit styles."
+      },
+      {
+        "file": "frontend/global-styles/colors-only-bootstrap/forms/_form-control.scss",
+        "line": 42,
+        "value": "$input-disabled-color",
+        "kind": "explained",
+        "reason": "HTML5 says that controls under a fieldset > legend:first-child won't be disabled if the fieldset is disabled. Due to im…"
+      },
+      {
+        "file": "frontend/global-styles/colors-only-bootstrap/forms/_labels.scss",
+        "line": 18,
+        "value": "$form-label-color",
+        "kind": "explained",
+        "reason": "For use with horizontal and inline forms, when you need the label (or legend) text to align with the form controls."
+      },
+      {
+        "file": "frontend/global-styles/github-markdown.scss",
+        "line": 969,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "margin-top: 3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/src/components/editor-page/editor-pane/tool-bar/tool-bar.module.scss",
+        "line": 16,
+        "value": "0.1875rem",
+        "kind": "optical-nudge",
+        "reason": "padding: 0.1875rem is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/src/components/editor-page/table-of-contents/table-of-contents.module.scss",
+        "line": 19,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding: 2px is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 38,
+    "critical": 0,
+    "warning": 16,
+    "info": 22
+  },
+  "driftByType": {
+    "hardcoded-value": 38
+  },
+  "topColors": [
+    {
+      "value": "#005cc5",
+      "count": 5
+    },
+    {
+      "value": "#fafbfc",
+      "count": 4
+    },
+    {
+      "value": "#24292e",
+      "count": 4
+    },
+    {
+      "value": "#fff",
+      "count": 3
+    },
+    {
+      "value": "#dfe2e5",
+      "count": 3
+    },
+    {
+      "value": "#e1e4e8",
+      "count": 3
+    },
+    {
+      "value": "#22863a",
+      "count": 3
+    },
+    {
+      "value": "#b31d28",
+      "count": 3
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "8px",
+      "count": 11
+    },
+    {
+      "value": "16px",
+      "count": 11
+    },
+    {
+      "value": "1rem",
+      "count": 7
+    },
+    {
+      "value": "10px",
+      "count": 7
+    },
+    {
+      "value": "4px",
+      "count": 4
+    },
+    {
+      "value": "0.5rem",
+      "count": 4
+    },
+    {
+      "value": "24px",
+      "count": 3
+    },
+    {
+      "value": "2em",
+      "count": 2
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "frontend/global-styles/github-markdown.scss",
+      "count": 139
+    },
+    {
+      "file": "frontend/src/components/application-loader/loading-screen/animations.module.scss",
+      "count": 7
+    },
+    {
+      "file": "frontend/src/components/application-loader/loading-screen/keyframes.scss",
+      "count": 6
+    },
+    {
+      "file": "docs/content/theme/styles/hedgedoc-custom.css",
+      "count": 5
+    },
+    {
+      "file": "frontend/src/components/common/highlighted-code/highlighted-code.module.scss",
+      "count": 5
+    },
+    {
+      "file": "frontend/src/components/editor-page/editor-pane/extended-codemirror/hints.scss",
+      "count": 5
+    },
+    {
+      "file": "frontend/src/components/explore-page/pinned-notes/pinned-notes.module.css",
+      "count": 5
+    },
+    {
+      "file": "frontend/global-styles/colors-only-bootstrap/_reboot.scss",
+      "count": 4
+    }
+  ],
+  "samples": [
+    {
+      "component": "RootLayout",
+      "location": "frontend/src/app/(editor)/layout.tsx:30",
+      "entries": [
+        "color: #b51f08 (line 38)"
+      ]
+    },
+    {
+      "component": "docs/content/theme/styles/hedgedoc-custom.css",
+      "location": "docs/content/theme/styles/hedgedoc-custom.css:58",
+      "entries": [
+        "colour: #2b90d9 (line 58)",
+        "spacing: 2em (line 73)",
+        "colour: #fff (line 87)"
+      ]
+    },
+    {
+      "component": "frontend/global-styles/colors-only-bootstrap/_reboot.scss",
+      "location": "frontend/global-styles/colors-only-bootstrap/_reboot.scss:157",
+      "entries": [
+        "spacing: 1rem (line 157)",
+        "spacing: 2rem (line 167)",
+        "spacing: 1rem (line 174)"
+      ]
+    },
+    {
+      "component": "frontend/global-styles/github-markdown.scss",
+      "location": "frontend/global-styles/github-markdown.scss:10",
+      "entries": [
+        "line height: 1.5 (line 10)",
+        "font size: 16px (line 12)",
+        "spacing: -20px (line 24)"
+      ]
+    },
+    {
+      "component": "frontend/global-styles/index.scss",
+      "location": "frontend/global-styles/index.scss:35",
+      "entries": [
+        "spacing: 0.375rem (line 35)"
+      ]
+    },
+    {
+      "component": "frontend/global-styles/markdown-tweaks.scss",
+      "location": "frontend/global-styles/markdown-tweaks.scss:51",
+      "entries": [
+        "font size: 0.7em (line 51)",
+        "spacing: 0.25em (line 52)",
+        "font size: 0.85em (line 83)"
+      ]
+    },
+    {
+      "component": "frontend/global-styles/print.scss",
+      "location": "frontend/global-styles/print.scss:17",
+      "entries": [
+        "font size: 0.75em (line 17)",
+        "colour: #bbbcbf (line 65)"
+      ]
+    },
+    {
+      "component": "frontend/src/components/application-loader/loading-screen/animations.module.scss",
+      "location": "frontend/src/components/application-loader/loading-screen/animations.module.scss:21",
+      "entries": [
+        "font size: 1.3em (line 21)",
+        "font size: 3em (line 45)",
+        "colour: #ffffff (line 48)"
+      ]
+    },
+    {
+      "component": "frontend/src/components/application-loader/loading-screen/keyframes.scss",
+      "location": "frontend/src/components/application-loader/loading-screen/keyframes.scss:48",
+      "entries": [
+        "colour: #ffffff (line 48)",
+        "radius: 10px (line 56)",
+        "colour: rgb(181, 31, 8) (line 63)"
+      ]
+    },
+    {
+      "component": "frontend/src/components/cheatsheet/cheatsheet.module.scss",
+      "location": "frontend/src/components/cheatsheet/cheatsheet.module.scss:20",
+      "entries": [
+        "spacing: 1rem (line 20)",
+        "font weight: 550 (line 25)"
+      ]
+    },
+    {
+      "component": "frontend/src/components/common/application-error-alert/style.module.scss",
+      "location": "frontend/src/components/common/application-error-alert/style.module.scss:8",
+      "entries": [
+        "colour: #5a0f04 (line 8)",
+        "spacing: 8px (line 19)"
+      ]
+    },
+    {
+      "component": "frontend/src/components/common/custom-branding/branding.module.scss",
+      "location": "frontend/src/components/common/custom-branding/branding.module.scss:16",
+      "entries": [
+        "font size: 18px (line 16)"
+      ]
+    }
+  ],
+  "scanSeconds": 20
+}

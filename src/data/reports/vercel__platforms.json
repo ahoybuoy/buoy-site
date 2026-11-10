@@ -1,0 +1,154 @@
+{
+  "repo": "vercel/platforms",
+  "owner": "vercel",
+  "name": "platforms",
+  "description": "A full-stack Next.js app with multi-tenancy.",
+  "stars": 6724,
+  "homepage": "",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "ec12e65709c8263dd3462c4d33261851b8a3157d",
+  "generatedAt": "2026-11-10T00:44:47.774Z",
+  "cliVersion": "0.8.20",
+  "score": 90,
+  "tier": "Great",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 50,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 42,
+    "tokenCount": 69,
+    "hardcodedValueCount": 2,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 2,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 2,
+    "worstFile": {
+      "path": "app/subdomain-form.tsx",
+      "issueCount": 1
+    },
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "tailwind",
+      "radix",
+      "shadcn"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 2 hardcoded values left to tokenize"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 10,
+      "action": "Replace the hardcoded values in all 2 findings with tokens or scale steps"
+    }
+  ],
+  "noted": {
+    "count": 2,
+    "byKind": {
+      "vendored": 2
+    },
+    "samples": [
+      {
+        "file": "components/ui/button.tsx",
+        "line": 8,
+        "value": "focus-visible:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "components/ui/input.tsx",
+        "line": 12,
+        "value": "focus-visible:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 2,
+    "critical": 0,
+    "warning": 0,
+    "info": 2
+  },
+  "driftByType": {
+    "hardcoded-value": 2
+  },
+  "topColors": [],
+  "topSpacing": [
+    {
+      "value": "14px",
+      "count": 1
+    },
+    {
+      "value": "8px",
+      "count": 1
+    },
+    {
+      "value": "4px",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "app/globals.css",
+      "count": 4
+    },
+    {
+      "file": "app/subdomain-form.tsx",
+      "count": 1
+    }
+  ],
+  "samples": [
+    {
+      "component": "app/subdomain-form.tsx",
+      "location": "app/subdomain-form.tsx:79",
+      "entries": [
+        "pl-[14px] (line 79)"
+      ]
+    },
+    {
+      "component": "app/globals.css",
+      "location": "app/globals.css:134",
+      "entries": [
+        "radius: 20px (line 134)",
+        "font size: 0.875rem (line 151)",
+        "spacing: 8px (line 157)"
+      ]
+    }
+  ],
+  "scanSeconds": 2
+}

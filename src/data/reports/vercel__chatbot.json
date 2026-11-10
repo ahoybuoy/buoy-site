@@ -1,0 +1,311 @@
+{
+  "repo": "vercel/chatbot",
+  "owner": "vercel",
+  "name": "chatbot",
+  "description": "A full-featured, hackable Next.js AI chatbot built by Vercel",
+  "stars": 21042,
+  "homepage": "https://chatbot.ai-sdk.dev",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "a8989b522fa3672a2ae52f053105e40993b36ca1",
+  "generatedAt": "2026-11-10T00:44:44.963Z",
+  "cliVersion": "0.8.20",
+  "score": 90,
+  "tier": "Great",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 50,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 366,
+    "tokenCount": 79,
+    "hardcodedValueCount": 19,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 19,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 10,
+    "worstFile": {
+      "path": "app/(auth)/layout.tsx",
+      "issueCount": 1
+    },
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "tailwind",
+      "radix",
+      "shadcn"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 19 hardcoded values left to tokenize"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 10,
+      "action": "Replace the hardcoded values in all 19 findings with tokens or scale steps"
+    }
+  ],
+  "noted": {
+    "count": 10,
+    "byKind": {
+      "vendored": 10
+    },
+    "samples": [
+      {
+        "file": "components/ui/badge.tsx",
+        "line": 8,
+        "value": "focus-visible:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "components/ui/input-group.tsx",
+        "line": 31,
+        "value": "has-[>kbd]:ml-[-0.15rem], has-[>kbd]:mr-[-0.15rem]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "components/ui/input-group.tsx",
+        "line": 17,
+        "value": "ring-[3px], ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "components/ui/input.tsx",
+        "line": 11,
+        "value": "focus-visible:ring-[3px], aria-invalid:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "components/ui/scroll-area.tsx",
+        "line": 21,
+        "value": "focus-visible:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "components/ui/select.tsx",
+        "line": 47,
+        "value": "focus-visible:ring-[3px], aria-invalid:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 19,
+    "critical": 0,
+    "warning": 1,
+    "info": 18
+  },
+  "driftByType": {
+    "hardcoded-value": 19
+  },
+  "topColors": [
+    {
+      "value": "oklch(0.55 0.12 250 / 0.15)",
+      "count": 1
+    },
+    {
+      "value": "oklch(0.55 0.12 250 / 0.2)",
+      "count": 1
+    },
+    {
+      "value": "oklch(0.55 0.12 250 / 0.3)",
+      "count": 1
+    },
+    {
+      "value": "oklch(0.55 0.12 250 / 0.12)",
+      "count": 1
+    },
+    {
+      "value": "oklch(0 0 0 / 0.12)",
+      "count": 1
+    },
+    {
+      "value": "oklch(0 0 0 / 0.25)",
+      "count": 1
+    },
+    {
+      "value": "oklch(1 0 0 / 0.1)",
+      "count": 1
+    },
+    {
+      "value": "oklch(1 0 0 / 0.2)",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "12px",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "components/chat/sidebar-history.tsx",
+      "count": 19
+    },
+    {
+      "file": "app/globals.css",
+      "count": 14
+    },
+    {
+      "file": "components/chat/message.tsx",
+      "count": 4
+    },
+    {
+      "file": "components/chat/sidebar-user-nav.tsx",
+      "count": 4
+    },
+    {
+      "file": "components/chat/slash-commands.tsx",
+      "count": 4
+    },
+    {
+      "file": "components/ai-elements/reasoning.tsx",
+      "count": 3
+    },
+    {
+      "file": "components/chat/multimodal-input.tsx",
+      "count": 3
+    },
+    {
+      "file": "components/chat/preview.tsx",
+      "count": 3
+    }
+  ],
+  "samples": [
+    {
+      "component": "app/(auth)/layout.tsx",
+      "location": "app/(auth)/layout.tsx:15",
+      "entries": [
+        "text-[13px] (line 15)",
+        "text-[13px] (line 32)"
+      ]
+    },
+    {
+      "component": "app/(auth)/login/page.tsx",
+      "location": "app/(auth)/login/page.tsx:54",
+      "entries": [
+        "text-[13px] (line 54)"
+      ]
+    },
+    {
+      "component": "app/(auth)/register/page.tsx",
+      "location": "app/(auth)/register/page.tsx:54",
+      "entries": [
+        "text-[13px] (line 54)"
+      ]
+    },
+    {
+      "component": "components/ai-elements/model-selector.tsx",
+      "location": "components/ai-elements/model-selector.tsx:70",
+      "entries": [
+        "text-[13px] (line 70)",
+        "text-[13px] (line 94)"
+      ]
+    },
+    {
+      "component": "components/ai-elements/reasoning.tsx",
+      "location": "components/ai-elements/reasoning.tsx:179",
+      "entries": [
+        "text-[13px] (line 179)",
+        "leading-[1.65] (line 179)",
+        "text-[11px] (line 226)"
+      ]
+    },
+    {
+      "component": "components/chat/app-sidebar.tsx",
+      "location": "components/chat/app-sidebar.tsx:126",
+      "entries": [
+        "text-[13px] (line 126)",
+        "text-[13px] (line 142)"
+      ]
+    },
+    {
+      "component": "components/chat/artifact.tsx",
+      "location": "components/chat/artifact.tsx:361",
+      "entries": [
+        "text-[10px] (line 361)"
+      ]
+    },
+    {
+      "component": "components/chat/console.tsx",
+      "location": "components/chat/console.tsx:120",
+      "entries": [
+        "text-[13px] (line 120)",
+        "text-[12px] (line 137)"
+      ]
+    },
+    {
+      "component": "components/chat/message.tsx",
+      "location": "components/chat/message.tsx:30",
+      "entries": [
+        "text-[13px] (line 30)",
+        "leading-[1.65] (line 30)",
+        "text-[13px] (line 179)"
+      ]
+    },
+    {
+      "component": "components/chat/messages.tsx",
+      "location": "components/chat/messages.tsx:119",
+      "entries": [
+        "text-[10px] (line 119)"
+      ]
+    },
+    {
+      "component": "components/chat/multimodal-input.tsx",
+      "location": "components/chat/multimodal-input.tsx:460",
+      "entries": [
+        "text-[12px] (line 460)",
+        "text-[13px] (line 536)",
+        "text-[12px] (line 815)"
+      ]
+    },
+    {
+      "component": "components/chat/preview.tsx",
+      "location": "components/chat/preview.tsx:21",
+      "entries": [
+        "text-[11px] (line 21)",
+        "text-[13px] (line 51)",
+        "text-[13px] (line 77)"
+      ]
+    }
+  ],
+  "scanSeconds": 5
+}

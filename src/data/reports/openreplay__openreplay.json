@@ -1,0 +1,332 @@
+{
+  "repo": "openreplay/openreplay",
+  "owner": "openreplay",
+  "name": "openreplay",
+  "description": "Session replay, cobrowsing and product analytics you can self-host. Best for reproducing issues and iterating on your product.",
+  "stars": 13124,
+  "homepage": "https://openreplay.com",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "c5ba2a88062e8ce0a58d4f1dee4d499ab6d5bcad",
+  "generatedAt": "2026-11-10T00:40:11.594Z",
+  "cliVersion": "0.8.20",
+  "score": 68,
+  "tier": "Good",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 28,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 1650,
+    "tokenCount": 39,
+    "hardcodedValueCount": 263,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 263,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 3,
+    "vendoredDriftCount": 0,
+    "notedCount": 29,
+    "topHardcodedColor": {
+      "value": "rgba(217, 219, 238, 0.7)",
+      "count": 4
+    },
+    "worstFile": {
+      "path": "frontend/app/components/Funnels/FunnelWidget/FunnelBar.tsx",
+      "issueCount": 3
+    },
+    "uniqueSpacingValues": 14,
+    "detectedFrameworkNames": [
+      "tailwind"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 263 hardcoded values left to tokenize. frontend/app/components/Funnels/FunnelWidget/FunnelBar.tsx has the most (3)"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 32,
+      "action": "Replace the hardcoded values in 259 of the 263 findings with tokens or scale steps"
+    }
+  ],
+  "noted": {
+    "count": 29,
+    "byKind": {
+      "optical-nudge": 26,
+      "explained": 2,
+      "known-debt": 1
+    },
+    "samples": [
+      {
+        "file": "frontend/app/components/shared/Filters/FilterList/UnifiedFilterList.tsx",
+        "line": 218,
+        "value": "pt-[4px]",
+        "kind": "explained",
+        "reason": "Align handle visually"
+      },
+      {
+        "file": "frontend/app/components/shared/Filters/FilterValueDropdown/FilterValueDropdown.module.css",
+        "line": 9,
+        "value": "3",
+        "kind": "known-debt",
+        "reason": "z-index: 3; TODO this has to be fixed in clickmaps @Nikita"
+      },
+      {
+        "file": "frontend/app/styles/import/icons.css",
+        "line": 16,
+        "value": "5px",
+        "kind": "explained",
+        "reason": "vertical-align: text-bottom;"
+      },
+      {
+        "file": "frontend/app/components/ui/Avatar/Avatar.jsx",
+        "line": 37,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "marginRight: 3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/app/components/ui/TimelinePointer/TimelinePointer.jsx",
+        "line": 14,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "top: 3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/app/components/SmartAlerts/shared/AiSummary.tsx",
+        "line": 19,
+        "value": "mt-[3px]",
+        "kind": "optical-nudge",
+        "reason": "mt-[3px] is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 263,
+    "critical": 0,
+    "warning": 138,
+    "info": 125
+  },
+  "driftByType": {
+    "hardcoded-value": 263
+  },
+  "topColors": [
+    {
+      "value": "rgba(0,0,0,0.1)",
+      "count": 14
+    },
+    {
+      "value": "#CC0000",
+      "count": 9
+    },
+    {
+      "value": "#f6f6f6",
+      "count": 9
+    },
+    {
+      "value": "#394EFF",
+      "count": 8
+    },
+    {
+      "value": "#394eff",
+      "count": 8
+    },
+    {
+      "value": "#f5f5f5",
+      "count": 7
+    },
+    {
+      "value": "rgba(204, 0, 0, 0.1)",
+      "count": 6
+    },
+    {
+      "value": "#ddd",
+      "count": 6
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "10px",
+      "count": 98
+    },
+    {
+      "value": "5px",
+      "count": 43
+    },
+    {
+      "value": "20px",
+      "count": 41
+    },
+    {
+      "value": "15px",
+      "count": 26
+    },
+    {
+      "value": "4px",
+      "count": 20
+    },
+    {
+      "value": "8px",
+      "count": 17
+    },
+    {
+      "value": "6px",
+      "count": 17
+    },
+    {
+      "value": "16px",
+      "count": 14
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "frontend/app/assets/marvel-device.module.css",
+      "count": 112
+    },
+    {
+      "file": "mcp_app/src/styles/charts.css",
+      "count": 85
+    },
+    {
+      "file": "mcp_app/src/styles/replay.css",
+      "count": 63
+    },
+    {
+      "file": "frontend/app/styles/general.css",
+      "count": 43
+    },
+    {
+      "file": "spot/entrypoints/content/style.css",
+      "count": 42
+    },
+    {
+      "file": "frontend/app/styles/main.css",
+      "count": 37
+    },
+    {
+      "file": "mcp_app/src/styles/session-list.css",
+      "count": 33
+    },
+    {
+      "file": "frontend/app/styles/semantic.css",
+      "count": 31
+    }
+  ],
+  "samples": [
+    {
+      "component": "AlertForm",
+      "location": "frontend/app/components/Alerts/AlertForm.tsx:65",
+      "entries": [
+        "fontSize: 18px (line 138)",
+        "padding: 10px (line 138)",
+        "marginRight: 31px (line 249)"
+      ]
+    },
+    {
+      "component": "HighlightPlayer",
+      "location": "frontend/app/components/Highlights/HighlightPlayer.tsx:15",
+      "entries": [
+        "background: rgba(0,0,0, 0.15) (line 54)"
+      ]
+    },
+    {
+      "component": "ModalOverlay",
+      "location": "frontend/app/components/Modal/ModalOverlay.tsx:5",
+      "entries": [
+        "background: rgba(0,0,0,0.5) (line 16)"
+      ]
+    },
+    {
+      "component": "WarnBadge",
+      "location": "frontend/app/components/Session_/WarnBadge.tsx:59",
+      "entries": [
+        "color: #000000 (line 213)"
+      ]
+    },
+    {
+      "component": "RequestingWindow",
+      "location": "frontend/app/components/Assist/RequestingWindow/RequestingWindow.tsx:56",
+      "entries": [
+        "background: rgba(0,0,0, 0.30) (line 79)"
+      ]
+    },
+    {
+      "component": "Row",
+      "location": "frontend/app/components/AssistStats/components/Table.tsx:159",
+      "entries": [
+        "color: #8C8C8C (line 197)"
+      ]
+    },
+    {
+      "component": "EChartsSunburst",
+      "location": "frontend/app/components/Charts/SunburstChart/Sunburst.tsx:20",
+      "entries": [
+        "gap: 0.5rem (line 121)"
+      ]
+    },
+    {
+      "component": "AddCardSelectionModal",
+      "location": "frontend/app/components/Dashboard/components/AddCardSelectionModal.tsx:15",
+      "entries": [
+        "color: #394EFF (line 50)"
+      ]
+    },
+    {
+      "component": "AddCardSelectionModal",
+      "location": "frontend/app/components/Dashboard/components/AddCardSelectionModal.tsx:15",
+      "entries": [
+        "fontSize: 24px (line 50)"
+      ]
+    },
+    {
+      "component": "FunnelItem",
+      "location": "frontend/app/components/Funnels/FunnelItem/FunnelItem.tsx:8",
+      "entries": [
+        "backgroundColor: rgba() (line 15)"
+      ]
+    },
+    {
+      "component": "BreakdownRow",
+      "location": "frontend/app/components/Funnels/FunnelWidget/FunnelBar.tsx:24",
+      "entries": [
+        "backgroundColor: #f5f5f5 (line 55)"
+      ]
+    },
+    {
+      "component": "FunnelBarData",
+      "location": "frontend/app/components/Funnels/FunnelWidget/FunnelBar.tsx:155",
+      "entries": [
+        "backgroundColor: #f5f5f5 (line 210)"
+      ]
+    }
+  ],
+  "scanSeconds": 33
+}

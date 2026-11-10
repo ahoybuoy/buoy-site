@@ -1,0 +1,334 @@
+{
+  "repo": "SigNoz/signoz",
+  "owner": "SigNoz",
+  "name": "signoz",
+  "description": "SigNoz is an open-source, OpenTelemetry-native observability platform for your team and their AI agents. Get logs, metrics, and traces in one tool with features like APM, distributed tracing, log management, infra monitoring, etc. Combined with SigNoz MCP and a native AI teammate (in SigNoz Cloud) it helps you build more resilient apps.",
+  "stars": 32563,
+  "homepage": "https://signoz.io",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "4b1b3092d5ce37e2395631f19a60f65d9b293609",
+  "generatedAt": "2026-11-10T00:22:33.284Z",
+  "cliVersion": "0.8.20",
+  "score": 20,
+  "tier": "Bad",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 0,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 1478,
+    "tokenCount": 0,
+    "hardcodedValueCount": 615,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 615,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 52,
+    "topHardcodedColor": {
+      "value": "#1890ff",
+      "count": 4
+    },
+    "worstFile": {
+      "path": "frontend/src/components/QueryBuilderV2/QueryV2/QueryAggregation/QueryAggregationSelect.tsx",
+      "issueCount": 2
+    },
+    "uniqueSpacingValues": 12,
+    "detectedFrameworkNames": []
+  },
+  "suggestions": [
+    "615 hardcoded values to extract. Focus on frontend/src/components/QueryBuilderV2/QueryV2/QueryAggregation/QueryAggregationSelect.tsx (2 issues)",
+    "No design token system detected — add CSS custom properties or a utility framework like Tailwind"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 60,
+      "action": "Replace the hardcoded values in 612 of the 615 findings with tokens or scale steps"
+    },
+    {
+      "pillar": "tokenHealth",
+      "points": 20,
+      "action": "Add a token system: CSS custom properties, a tokens file or a Tailwind theme"
+    }
+  ],
+  "noted": {
+    "count": 52,
+    "byKind": {
+      "optical-nudge": 47,
+      "explained": 4,
+      "known-debt": 1
+    },
+    "samples": [
+      {
+        "file": "frontend/src/container/AIAssistant/components/VirtualizedMessages/VirtualizedMessages.module.scss",
+        "line": 14,
+        "value": "16px 0 64px",
+        "kind": "explained",
+        "reason": "disclaimer / input bar. The scroll-to-bottom effect uses the scroller ref to scroll past this padding (Virtuoso's `alig…"
+      },
+      {
+        "file": "frontend/src/pages/DashboardPage/DashboardContainer/DashboardSettings/Overview/DashboardInfoForm/DashboardInfoForm.module.scss",
+        "line": 31,
+        "value": "2px 0px 0px 2px",
+        "kind": "explained",
+        "reason": "The image-picker owns its size/background; here we only round the left edge so it joins flush with the name input to it…"
+      },
+      {
+        "file": "frontend/src/pages/DashboardPage/DashboardContainer/PanelEditor/ListColumnsEditor/components/AddColumnDropdown/AddColumnDropdown.module.scss",
+        "line": 7,
+        "value": "1100",
+        "kind": "known-debt",
+        "reason": "The dropdown portals to body; lift it above the query builder's antd popups (1050) so it stays clickable, incl. inside …"
+      },
+      {
+        "file": "frontend/src/pages/TraceDetailsV3/TraceWaterfall/TraceWaterfallStates/Success/Success.module.scss",
+        "line": 261,
+        "value": "0 15px",
+        "kind": "explained",
+        "reason": "Match timelineHeader's 15px padding so bars align with ticks"
+      },
+      {
+        "file": "frontend/src/periscope/components/PrettyView/PrettyView.styles.scss",
+        "line": 101,
+        "value": "1.25em",
+        "kind": "explained",
+        "reason": "react-json-tree indents leaf values with a depth-dependent padding-left (2.125em when nested vs 1.25em at top); we inde…"
+      },
+      {
+        "file": "frontend/src/components/AppLoading/AppLoading.styles.scss",
+        "line": 56,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin: 2px is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 615,
+    "critical": 0,
+    "warning": 32,
+    "info": 583
+  },
+  "driftByType": {
+    "hardcoded-value": 615
+  },
+  "topColors": [
+    {
+      "value": "#f0f0f0",
+      "count": 11
+    },
+    {
+      "value": "rgba(0, 0, 0, 0.45)",
+      "count": 7
+    },
+    {
+      "value": "rgb(136, 136, 136)",
+      "count": 7
+    },
+    {
+      "value": "#1890ff",
+      "count": 6
+    },
+    {
+      "value": "rgba(0, 0, 0, 0.85)",
+      "count": 5
+    },
+    {
+      "value": "#f5f5f5",
+      "count": 4
+    },
+    {
+      "value": "rgba(255, 205, 86, 0.1)",
+      "count": 4
+    },
+    {
+      "value": "rgba(37, 225, 146, 0.1)",
+      "count": 4
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "8px",
+      "count": 795
+    },
+    {
+      "value": "16px",
+      "count": 370
+    },
+    {
+      "value": "12px",
+      "count": 303
+    },
+    {
+      "value": "4px",
+      "count": 302
+    },
+    {
+      "value": "6px",
+      "count": 209
+    },
+    {
+      "value": "10px",
+      "count": 125
+    },
+    {
+      "value": "24px",
+      "count": 125
+    },
+    {
+      "value": "20px",
+      "count": 45
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "frontend/src/container/OnboardingV2Container/OnboardingV2.styles.scss",
+      "count": 171
+    },
+    {
+      "file": "frontend/src/container/ApiMonitoring/Explorer/Domains/DomainDetails/DomainDetails.styles.scss",
+      "count": 133
+    },
+    {
+      "file": "frontend/src/container/IngestionSettings/IngestionSettings.styles.scss",
+      "count": 126
+    },
+    {
+      "file": "frontend/src/container/Home/Home.styles.scss",
+      "count": 115
+    },
+    {
+      "file": "frontend/src/container/Integrations/IntegrationDetailPage/IntegrationDetailPage.styles.scss",
+      "count": 113
+    },
+    {
+      "file": "frontend/src/components/NewSelect/styles.scss",
+      "count": 104
+    },
+    {
+      "file": "frontend/src/container/SideNav/SideNav.styles.scss",
+      "count": 100
+    },
+    {
+      "file": "frontend/src/container/Integrations/CloudIntegration/ServiceTabs/ServicesTabs.style.scss",
+      "count": 81
+    }
+  ],
+  "samples": [
+    {
+      "component": "Badges",
+      "location": "frontend/src/components/Badges/Badges.tsx:9",
+      "entries": [
+        "fontSize: 11px (line 97)"
+      ]
+    },
+    {
+      "component": "ChangelogModal",
+      "location": "frontend/src/components/ChangelogModal/ChangelogModal.tsx:23",
+      "entries": [
+        "gap: 4px (line 119)"
+      ]
+    },
+    {
+      "component": "BillingContainer",
+      "location": "frontend/src/container/BillingContainer/BillingContainer.tsx:140",
+      "entries": [
+        "marginTop: 10px (line 293)"
+      ]
+    },
+    {
+      "component": "QuerySection",
+      "location": "frontend/src/container/FormAlertRules/QuerySection.tsx:34",
+      "entries": [
+        "gap: 1rem (line 235)"
+      ]
+    },
+    {
+      "component": "StatusMessage",
+      "location": "frontend/src/container/GeneralSettings/StatusMessage.tsx:10",
+      "entries": [
+        "gap: 1rem (line 55)"
+      ]
+    },
+    {
+      "component": "OptionsMenu",
+      "location": "frontend/src/container/OptionsMenu/index.tsx:19",
+      "entries": [
+        "gap: 4px (line 41)"
+      ]
+    },
+    {
+      "component": "ContextLogRenderer",
+      "location": "frontend/src/container/LogDetailedView/ContextView/ContextLogRenderer.tsx:27",
+      "entries": [
+        "padding: 16px (line 168)"
+      ]
+    },
+    {
+      "component": "QueryHeader",
+      "location": "frontend/src/container/QueryBuilder/rawQueryEditors/QueryHeader.tsx:24",
+      "entries": [
+        "marginBottom: 0.4rem (line 35)"
+      ]
+    },
+    {
+      "component": "WidgetHeader",
+      "location": "frontend/src/container/WidgetCard/Header/index.tsx:76",
+      "entries": [
+        "paddingRight: 0.25rem (line 274)"
+      ]
+    },
+    {
+      "component": "PaginationInfoText",
+      "location": "frontend/src/periscope/components/PaginationInfoText/PaginationInfoText.tsx:3",
+      "entries": [
+        "marginLeft: 16px (line 13)"
+      ]
+    },
+    {
+      "component": "MetricsAggregateSection",
+      "location": "frontend/src/components/QueryBuilderV2/QueryV2/MerticsAggregateSection/MetricsAggregateSection.tsx:23",
+      "entries": [
+        "color: #1890ff (line 116)"
+      ]
+    },
+    {
+      "component": "QueryAggregationOptions",
+      "location": "frontend/src/components/QueryBuilderV2/QueryV2/QueryAggregation/QueryAggregation.tsx:26",
+      "entries": [
+        "color: #1890ff (line 88)"
+      ]
+    }
+  ],
+  "scanSeconds": 32
+}

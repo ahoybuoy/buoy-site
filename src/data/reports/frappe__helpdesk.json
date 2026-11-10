@@ -1,0 +1,277 @@
+{
+  "repo": "frappe/helpdesk",
+  "owner": "frappe",
+  "name": "helpdesk",
+  "description": "Modern, Streamlined, Free and Open Source Customer Service Software",
+  "stars": 3491,
+  "homepage": "https://frappe.io/helpdesk",
+  "language": "Vue",
+  "defaultBranch": "develop",
+  "commit": "9aea74cf82381e3eb528bb8c8e5fc8a0379a1ec0",
+  "generatedAt": "2026-11-10T00:30:13.637Z",
+  "cliVersion": "0.8.20",
+  "score": null,
+  "tier": "N/A",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 0,
+      "max": 20
+    },
+    "consistency": {
+      "score": 0,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 0,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 0,
+    "tokenCount": 0,
+    "hardcodedValueCount": 13,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 13,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 1,
+    "worstFile": {
+      "path": "desk/src/components/Settings/Holiday/HolidayView.vue",
+      "issueCount": 1
+    },
+    "detectedFrameworkNames": []
+  },
+  "suggestions": [
+    "Only 0 UI components detected, too few to score. If this repo has more, Buoy may not recognise its framework yet."
+  ],
+  "pathTo100": null,
+  "noted": {
+    "count": 1,
+    "byKind": {
+      "explained": 1
+    },
+    "samples": [
+      {
+        "file": "desk/src/components/tag/Tags.vue",
+        "line": 249,
+        "value": "string)",
+        "kind": "explained",
+        "reason": "closing the popover ends the session, so the tag must be added synchronously here: the watcher that syncs only runs on …"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 13,
+    "critical": 0,
+    "warning": 6,
+    "info": 7
+  },
+  "driftByType": {
+    "hardcoded-value": 13
+  },
+  "topColors": [
+    {
+      "value": "#c5c2c2",
+      "count": 3
+    },
+    {
+      "value": "#000",
+      "count": 3
+    },
+    {
+      "value": "#fff",
+      "count": 3
+    },
+    {
+      "value": "rgb(237, 237, 237)",
+      "count": 2
+    },
+    {
+      "value": "#6b7280",
+      "count": 1
+    },
+    {
+      "value": "#e8eaed",
+      "count": 1
+    },
+    {
+      "value": "#dadce0",
+      "count": 1
+    },
+    {
+      "value": "#e2e2e2",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "8px",
+      "count": 6
+    },
+    {
+      "value": "9px",
+      "count": 2
+    },
+    {
+      "value": "2px",
+      "count": 1
+    },
+    {
+      "value": "1rem",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "desk/src/index.css",
+      "count": 7
+    },
+    {
+      "file": "desk/src/components/Settings/Holiday/HolidayView.vue",
+      "count": 4
+    },
+    {
+      "file": "desk/src/components/Settings/Sla/SlaHolidays.vue",
+      "count": 4
+    },
+    {
+      "file": "desk/src/components/Settings/Sla/SlaPolicyView.vue",
+      "count": 4
+    },
+    {
+      "file": "studio/helpdesk/components/knowledge_base/PortalArticleSearch.vue",
+      "count": 4
+    },
+    {
+      "file": "desk/src/pages/call-logs/CallLogDetailModal.vue",
+      "count": 3
+    },
+    {
+      "file": "desk/src/components/TypingIndicator.vue",
+      "count": 2
+    },
+    {
+      "file": "desk/src/components/TicketField.vue",
+      "count": 1
+    }
+  ],
+  "samples": [
+    {
+      "component": "desk/src/components/Settings/Holiday/HolidayView.vue",
+      "location": "desk/src/components/Settings/Holiday/HolidayView.vue:462",
+      "entries": [
+        "spacing: 8px (line 462)",
+        "colour: #c5c2c2 (line 464)",
+        "colour: #000 (line 473)"
+      ]
+    },
+    {
+      "component": "desk/src/components/Settings/Sla/SlaHolidays.vue",
+      "location": "desk/src/components/Settings/Sla/SlaHolidays.vue:126",
+      "entries": [
+        "spacing: 8px (line 126)",
+        "colour: #c5c2c2 (line 128)",
+        "colour: #000 (line 137)"
+      ]
+    },
+    {
+      "component": "desk/src/components/Settings/Sla/SlaPolicyView.vue",
+      "location": "desk/src/components/Settings/Sla/SlaPolicyView.vue:547",
+      "entries": [
+        "spacing: 8px (line 547)",
+        "colour: #c5c2c2 (line 549)",
+        "colour: #000 (line 558)"
+      ]
+    },
+    {
+      "component": "desk/src/components/TicketField.vue",
+      "location": "desk/src/components/TicketField.vue:334",
+      "entries": [
+        "spacing: 9px (line 334)"
+      ]
+    },
+    {
+      "component": "desk/src/components/TypingIndicator.vue",
+      "location": "desk/src/components/TypingIndicator.vue:78",
+      "entries": [
+        "spacing: 2px (line 78)",
+        "colour: #6b7280 (line 85)"
+      ]
+    },
+    {
+      "component": "desk/src/components/frappe-ui/GridLayout/GridLayout.vue",
+      "location": "desk/src/components/frappe-ui/GridLayout/GridLayout.vue:108",
+      "entries": [
+        "radius: 0.5rem (line 108)"
+      ]
+    },
+    {
+      "component": "desk/src/components/notifications/Notifications.vue",
+      "location": "desk/src/components/notifications/Notifications.vue:99",
+      "entries": [
+        "shadow: -8px 0px 8px rgba(0, 0, 0, 0.1) (line 99)"
+      ]
+    },
+    {
+      "component": "desk/src/components/ticket/TicketAgentFields.vue",
+      "location": "desk/src/components/ticket/TicketAgentFields.vue:58",
+      "entries": [
+        "spacing: 9px (line 58)"
+      ]
+    },
+    {
+      "component": "desk/src/index.css",
+      "location": "desk/src/index.css:86",
+      "entries": [
+        "line height: 0.3 (line 86)",
+        "colour: #e8eaed (line 87)",
+        "radius: 5px (line 90)"
+      ]
+    },
+    {
+      "component": "desk/src/pages/call-logs/CallLogDetailModal.vue",
+      "location": "desk/src/pages/call-logs/CallLogDetailModal.vue:269",
+      "entries": [
+        "radius: 10px (line 269)",
+        "colour: rgb(237, 237, 237) (line 271)",
+        "colour: rgb(237, 237, 237) (line 275)"
+      ]
+    },
+    {
+      "component": "studio/helpdesk/components/knowledge_base/PortalArticleBody.vue",
+      "location": "studio/helpdesk/components/knowledge_base/PortalArticleBody.vue:123",
+      "entries": [
+        "radius: 2px (line 123)"
+      ]
+    },
+    {
+      "component": "studio/helpdesk/components/knowledge_base/PortalArticleSearch.vue",
+      "location": "studio/helpdesk/components/knowledge_base/PortalArticleSearch.vue:272",
+      "entries": [
+        "spacing: 8px (line 272)",
+        "spacing: 8px (line 281)",
+        "spacing: 8px (line 289)"
+      ]
+    }
+  ],
+  "scanSeconds": 5
+}

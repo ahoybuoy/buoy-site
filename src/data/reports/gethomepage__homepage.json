@@ -1,0 +1,315 @@
+{
+  "repo": "gethomepage/homepage",
+  "owner": "gethomepage",
+  "name": "homepage",
+  "description": "A highly customizable homepage (or startpage / application dashboard) with Docker and service API integrations.",
+  "stars": 33583,
+  "homepage": "https://gethomepage.dev",
+  "language": "JavaScript",
+  "defaultBranch": "dev",
+  "commit": "91b28e8a6ef15485a718a745a1c0270bf8c242d2",
+  "generatedAt": "2026-11-10T00:30:25.819Z",
+  "cliVersion": "0.8.20",
+  "score": 82,
+  "tier": "Great",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 42,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 296,
+    "tokenCount": 26,
+    "hardcodedValueCount": 27,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 27,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 16,
+    "topHardcodedColor": {
+      "value": "#1e9cd7",
+      "count": 1
+    },
+    "worstFile": {
+      "path": "src/components/services/kubernetes-status.jsx",
+      "issueCount": 2
+    },
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "tailwind",
+      "headlessui"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 27 hardcoded values left to tokenize. src/components/services/kubernetes-status.jsx has the most (2)"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 18,
+      "action": "Replace the hardcoded values in all 27 findings with tokens or scale steps"
+    }
+  ],
+  "noted": {
+    "count": 16,
+    "byKind": {
+      "optical-nudge": 16
+    },
+    "samples": [
+      {
+        "file": "src/widgets/emby/component.jsx",
+        "line": 252,
+        "value": "mt-[2px]",
+        "kind": "optical-nudge",
+        "reason": "mt-[2px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "src/widgets/emby/component.jsx",
+        "line": 256,
+        "value": "mt-[2px]",
+        "kind": "optical-nudge",
+        "reason": "mt-[2px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "src/widgets/emby/component.jsx",
+        "line": 284,
+        "value": "mt-[2px]",
+        "kind": "optical-nudge",
+        "reason": "mt-[2px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "src/widgets/emby/component.jsx",
+        "line": 288,
+        "value": "mt-[2px]",
+        "kind": "optical-nudge",
+        "reason": "mt-[2px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "src/widgets/jellyfin/component.jsx",
+        "line": 268,
+        "value": "mt-[2px]",
+        "kind": "optical-nudge",
+        "reason": "mt-[2px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "src/widgets/jellyfin/component.jsx",
+        "line": 272,
+        "value": "mt-[2px]",
+        "kind": "optical-nudge",
+        "reason": "mt-[2px] is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 27,
+    "critical": 0,
+    "warning": 3,
+    "info": 24
+  },
+  "driftByType": {
+    "hardcoded-value": 27
+  },
+  "topColors": [
+    {
+      "value": "hsla(0, 0%, 0%, 0.8)",
+      "count": 4
+    },
+    {
+      "value": "hsla(0, 0%, 0%, 0.3)",
+      "count": 3
+    },
+    {
+      "value": "#fff",
+      "count": 2
+    },
+    {
+      "value": "hsla(0, 0%, 100%, 0.1)",
+      "count": 2
+    },
+    {
+      "value": "#1e9cd7",
+      "count": 1
+    },
+    {
+      "value": "rgba(255, 255, 255, 0.8)",
+      "count": 1
+    },
+    {
+      "value": "rgba(255, 255, 255, 1)",
+      "count": 1
+    },
+    {
+      "value": "#36464eaa",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "10px",
+      "count": 1
+    },
+    {
+      "value": "0.8rem",
+      "count": 1
+    },
+    {
+      "value": "2em",
+      "count": 1
+    },
+    {
+      "value": "2.5rem",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "docs/stylesheets/extra.css",
+      "count": 21
+    },
+    {
+      "file": "src/styles/globals.css",
+      "count": 4
+    },
+    {
+      "file": "src/styles/manrope.css",
+      "count": 3
+    },
+    {
+      "file": "src/styles/plex-mono.css",
+      "count": 3
+    },
+    {
+      "file": "src/styles/theme.css",
+      "count": 3
+    },
+    {
+      "file": "src/components/services/kubernetes-status.jsx",
+      "count": 2
+    },
+    {
+      "file": "src/components/services/ping.jsx",
+      "count": 2
+    },
+    {
+      "file": "src/components/services/proxmox-status.jsx",
+      "count": 2
+    }
+  ],
+  "samples": [
+    {
+      "component": "Home",
+      "location": "src/pages/index.jsx:164",
+      "entries": [
+        "color: #1e9cd7 (line 393)"
+      ]
+    },
+    {
+      "component": "src/components/services/kubernetes-status.jsx",
+      "location": "src/components/services/kubernetes-status.jsx:38",
+      "entries": [
+        "rounded-b-[3px] (line 38)"
+      ]
+    },
+    {
+      "component": "src/components/services/kubernetes-status.jsx",
+      "location": "src/components/services/kubernetes-status.jsx:42",
+      "entries": [
+        "text-[8px] (line 42)"
+      ]
+    },
+    {
+      "component": "src/components/services/ping.jsx",
+      "location": "src/components/services/ping.jsx:46",
+      "entries": [
+        "rounded-b-[3px] (line 46)"
+      ]
+    },
+    {
+      "component": "src/components/services/ping.jsx",
+      "location": "src/components/services/ping.jsx:49",
+      "entries": [
+        "text-[8px] (line 49)"
+      ]
+    },
+    {
+      "component": "src/components/services/proxmox-status.jsx",
+      "location": "src/components/services/proxmox-status.jsx:53",
+      "entries": [
+        "rounded-b-[3px] (line 53)"
+      ]
+    },
+    {
+      "component": "src/components/services/proxmox-status.jsx",
+      "location": "src/components/services/proxmox-status.jsx:59",
+      "entries": [
+        "text-[8px] (line 59)"
+      ]
+    },
+    {
+      "component": "src/components/services/site-monitor.jsx",
+      "location": "src/components/services/site-monitor.jsx:56",
+      "entries": [
+        "rounded-b-[3px] (line 56)"
+      ]
+    },
+    {
+      "component": "src/components/services/site-monitor.jsx",
+      "location": "src/components/services/site-monitor.jsx:59",
+      "entries": [
+        "text-[8px] (line 59)"
+      ]
+    },
+    {
+      "component": "src/components/services/status.jsx",
+      "location": "src/components/services/status.jsx:68",
+      "entries": [
+        "rounded-b-[3px] (line 68)"
+      ]
+    },
+    {
+      "component": "src/components/services/status.jsx",
+      "location": "src/components/services/status.jsx:74",
+      "entries": [
+        "text-[8px] (line 74)"
+      ]
+    },
+    {
+      "component": "src/components/services/widget/block.jsx",
+      "location": "src/components/services/widget/block.jsx:53",
+      "entries": [
+        "text-[13px] (line 53)",
+        "text-[10px] (line 61)"
+      ]
+    }
+  ],
+  "scanSeconds": 12
+}

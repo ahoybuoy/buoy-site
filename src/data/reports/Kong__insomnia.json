@@ -1,0 +1,270 @@
+{
+  "repo": "Kong/insomnia",
+  "owner": "Kong",
+  "name": "insomnia",
+  "description": "The open-source, cross-platform API client for GraphQL, REST, WebSockets, SSE and gRPC. With Cloud, Local and Git storage.",
+  "stars": 40135,
+  "homepage": "https://insomnia.rest",
+  "language": "TypeScript",
+  "defaultBranch": "develop",
+  "commit": "0baa87e4b089d3bc9160b6af46bf4ca04760aaed",
+  "generatedAt": "2026-11-10T00:20:33.832Z",
+  "cliVersion": "0.8.20",
+  "score": null,
+  "tier": "N/A",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 0,
+      "max": 20
+    },
+    "consistency": {
+      "score": 0,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 0,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 0,
+    "tokenCount": 3,
+    "hardcodedValueCount": 8,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 8,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 2,
+    "detectedFrameworkNames": []
+  },
+  "suggestions": [
+    "Only 0 UI components detected, too few to score. If this repo has more, Buoy may not recognise its framework yet."
+  ],
+  "pathTo100": null,
+  "noted": {
+    "count": 2,
+    "byKind": {
+      "optical-nudge": 2
+    },
+    "samples": [
+      {
+        "file": "packages/insomnia/src/ui/css/main.css",
+        "line": 1368,
+        "value": "-2px",
+        "kind": "optical-nudge",
+        "reason": "margin-left: -2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/insomnia/src/ui/css/main.css",
+        "line": 1381,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "margin-right: 3px is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 8,
+    "critical": 0,
+    "warning": 5,
+    "info": 3
+  },
+  "driftByType": {
+    "hardcoded-value": 8
+  },
+  "topColors": [
+    {
+      "value": "rgba(255, 255, 255, 0.1)",
+      "count": 4
+    },
+    {
+      "value": "#80cbc4",
+      "count": 4
+    },
+    {
+      "value": "#999",
+      "count": 3
+    },
+    {
+      "value": "#d7d4f0",
+      "count": 3
+    },
+    {
+      "value": "rgba(233, 237, 237, 1)",
+      "count": 3
+    },
+    {
+      "value": "#decb6b",
+      "count": 3
+    },
+    {
+      "value": "#7e7",
+      "count": 2
+    },
+    {
+      "value": "#555",
+      "count": 2
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "0.3em",
+      "count": 6
+    },
+    {
+      "value": "1rem",
+      "count": 5
+    },
+    {
+      "value": "-30px",
+      "count": 3
+    },
+    {
+      "value": "30px",
+      "count": 2
+    },
+    {
+      "value": "1.5em",
+      "count": 2
+    },
+    {
+      "value": "0.25em",
+      "count": 2
+    },
+    {
+      "value": "2em",
+      "count": 1
+    },
+    {
+      "value": "0.5em",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "packages/insomnia/src/ui/css/main.css",
+      "count": 71
+    },
+    {
+      "file": "packages/insomnia/src/ui/css/lib/codemirror/codemirror.css",
+      "count": 43
+    },
+    {
+      "file": "packages/insomnia/src/ui/css/lib/codemirror/material.css",
+      "count": 31
+    },
+    {
+      "file": "packages/insomnia/src/ui/css/lib/fontawesome/css/fontawesome.css",
+      "count": 24
+    },
+    {
+      "file": "packages/insomnia/src/ui/css/lib/codemirror/merge-dark.css",
+      "count": 18
+    },
+    {
+      "file": "packages/insomnia/src/ui/css/styles.css",
+      "count": 9
+    },
+    {
+      "file": "packages/insomnia-component-docs/src/css/default.css",
+      "count": 4
+    },
+    {
+      "file": "packages/insomnia/src/ui/css/lib/fontawesome/css/solid.css",
+      "count": 2
+    }
+  ],
+  "samples": [
+    {
+      "component": "packages/insomnia-component-docs/src/css/default.css",
+      "location": "packages/insomnia-component-docs/src/css/default.css:95",
+      "entries": [
+        "spacing: 1rem (line 95)",
+        "spacing: 1rem (line 96)",
+        "spacing: 1rem (line 100)"
+      ]
+    },
+    {
+      "component": "packages/insomnia/src/ui/css/lib/codemirror/codemirror.css",
+      "location": "packages/insomnia/src/ui/css/lib/codemirror/codemirror.css:27",
+      "entries": [
+        "colour: #ddd (line 27)",
+        "colour: #f7f7f7 (line 28)",
+        "colour: #999 (line 37)"
+      ]
+    },
+    {
+      "component": "packages/insomnia/src/ui/css/lib/codemirror/material.css",
+      "location": "packages/insomnia/src/ui/css/lib/codemirror/material.css:11",
+      "entries": [
+        "colour: #263238 (line 11)",
+        "colour: rgba(233, 237, 237, 1) (line 12)",
+        "colour: #263238 (line 15)"
+      ]
+    },
+    {
+      "component": "packages/insomnia/src/ui/css/lib/codemirror/merge-dark.css",
+      "location": "packages/insomnia/src/ui/css/lib/codemirror/merge-dark.css:6",
+      "entries": [
+        "colour: #444 (line 6)",
+        "colour: #333 (line 9)",
+        "colour: #333 (line 10)"
+      ]
+    },
+    {
+      "component": "packages/insomnia/src/ui/css/lib/fontawesome/css/fontawesome.css",
+      "location": "packages/insomnia/src/ui/css/lib/fontawesome/css/fontawesome.css:43",
+      "entries": [
+        "font size: 1em (line 43)",
+        "font size: 2em (line 47)",
+        "font size: 3em (line 51)"
+      ]
+    },
+    {
+      "component": "packages/insomnia/src/ui/css/lib/fontawesome/css/solid.css",
+      "location": "packages/insomnia/src/ui/css/lib/fontawesome/css/solid.css:15",
+      "entries": [
+        "font weight: 900 (line 15)",
+        "font weight: 900 (line 24)"
+      ]
+    },
+    {
+      "component": "packages/insomnia/src/ui/css/main.css",
+      "location": "packages/insomnia/src/ui/css/main.css:201",
+      "entries": [
+        "spacing: 1.5em (line 201)",
+        "font size: 0.85em (line 204)",
+        "font weight: 600 (line 210)"
+      ]
+    },
+    {
+      "component": "packages/insomnia/src/ui/css/styles.css",
+      "location": "packages/insomnia/src/ui/css/styles.css:85",
+      "entries": [
+        "font size: 11px (line 85)",
+        "font size: 12px (line 215)",
+        "font size: 12px (line 230)"
+      ]
+    }
+  ],
+  "scanSeconds": 5
+}

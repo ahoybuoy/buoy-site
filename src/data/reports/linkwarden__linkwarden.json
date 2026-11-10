@@ -1,0 +1,277 @@
+{
+  "repo": "linkwarden/linkwarden",
+  "owner": "linkwarden",
+  "name": "linkwarden",
+  "description": "⚡️⚡️⚡️ Self-hosted collaborative bookmark manager to collect, read, annotate, and fully preserve what matters, all in one place.",
+  "stars": 20354,
+  "homepage": "https://linkwarden.app",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "eff7c6b735f6b20a4766745dc86c6bdc52bd9840",
+  "generatedAt": "2026-11-10T00:34:29.692Z",
+  "cliVersion": "0.8.20",
+  "score": 90,
+  "tier": "Great",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 50,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 260,
+    "tokenCount": 45,
+    "hardcodedValueCount": 13,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 13,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 0,
+    "topHardcodedColor": {
+      "value": "#6B7280",
+      "count": 3
+    },
+    "worstFile": {
+      "path": "apps/mobile/components/ActionSheets/LinkDetailsSheet.tsx",
+      "issueCount": 2
+    },
+    "uniqueSpacingValues": 1,
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "tailwind",
+      "headlessui",
+      "radix",
+      "shadcn"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 13 hardcoded values left to tokenize. apps/mobile/components/ActionSheets/LinkDetailsSheet.tsx has the most (2)"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 10,
+      "action": "Replace the hardcoded values in all 13 findings with tokens or scale steps"
+    }
+  ],
+  "noted": {
+    "count": 0,
+    "byKind": {},
+    "samples": []
+  },
+  "driftSummary": {
+    "total": 13,
+    "critical": 0,
+    "warning": 7,
+    "info": 6
+  },
+  "driftByType": {
+    "hardcoded-value": 13
+  },
+  "topColors": [
+    {
+      "value": "#6B7280",
+      "count": 3
+    },
+    {
+      "value": "#FFFFFF",
+      "count": 2
+    },
+    {
+      "value": "#9c00cc",
+      "count": 1
+    },
+    {
+      "value": "#0096cc",
+      "count": 1
+    },
+    {
+      "value": "#00cc99",
+      "count": 1
+    },
+    {
+      "value": "#cc6d00",
+      "count": 1
+    },
+    {
+      "value": "#d70015",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "1.65rem",
+      "count": 1
+    },
+    {
+      "value": "6px",
+      "count": 1
+    },
+    {
+      "value": "4px",
+      "count": 1
+    },
+    {
+      "value": "3.1rem",
+      "count": 1
+    },
+    {
+      "value": "0.3rem",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "apps/mobile/components/DashboardSection.tsx",
+      "count": 4
+    },
+    {
+      "file": "apps/mobile/components/ActionSheets/LinkDetailsSheet.tsx",
+      "count": 2
+    },
+    {
+      "file": "apps/web/components/IconGrid.tsx",
+      "count": 2
+    },
+    {
+      "file": "apps/web/components/ModalContent/SurveyModal.tsx",
+      "count": 2
+    },
+    {
+      "file": "apps/extension/safari/Linkwarden/Linkwarden/Resources/Style.css",
+      "count": 2
+    },
+    {
+      "file": "apps/mobile/app/subscribe.tsx",
+      "count": 1
+    },
+    {
+      "file": "apps/mobile/components/ActionSheets/ReaderSettingsSheet.tsx",
+      "count": 1
+    },
+    {
+      "file": "apps/mobile/components/ActionSheets/SignUpSheet.tsx",
+      "count": 1
+    }
+  ],
+  "samples": [
+    {
+      "component": "SubscribeScreen",
+      "location": "apps/mobile/app/subscribe.tsx:84",
+      "entries": [
+        "color: #FFFFFF (line 542)"
+      ]
+    },
+    {
+      "component": "DashboardSection",
+      "location": "apps/mobile/components/DashboardSection.tsx:42",
+      "entries": [
+        "color: #9c00cc (line 66)",
+        "color: #0096cc (line 72)",
+        "color: #00cc99 (line 80)"
+      ]
+    },
+    {
+      "component": "PreservedFormatRow",
+      "location": "apps/mobile/components/ActionSheets/LinkDetailsSheet.tsx:51",
+      "entries": [
+        "color: #6B7280 (line 66)"
+      ]
+    },
+    {
+      "component": "LinkDetailsSheet",
+      "location": "apps/mobile/components/ActionSheets/LinkDetailsSheet.tsx:71",
+      "entries": [
+        "color: #6B7280 (line 233)"
+      ]
+    },
+    {
+      "component": "StepperRow",
+      "location": "apps/mobile/components/ActionSheets/ReaderSettingsSheet.tsx:72",
+      "entries": [
+        "color: #6B7280 (line 92)"
+      ]
+    },
+    {
+      "component": "SignUpSheet",
+      "location": "apps/mobile/components/ActionSheets/SignUpSheet.tsx:42",
+      "entries": [
+        "color: #FFFFFF (line 228)"
+      ]
+    },
+    {
+      "component": "NotConfigured",
+      "location": "apps/extension/src/@/components/NotConfigured.tsx:4",
+      "entries": [
+        "fontSize: 1.65rem (line 20)"
+      ]
+    },
+    {
+      "component": "apps/web/components/IconGrid.tsx",
+      "location": "apps/web/components/IconGrid.tsx:49",
+      "entries": [
+        "p-[6px] (line 49)",
+        "ml-[4px] (line 84)"
+      ]
+    },
+    {
+      "component": "apps/web/components/InstallApp.tsx",
+      "location": "apps/web/components/InstallApp.tsx:29",
+      "entries": [
+        "text-[0.92rem] (line 29)"
+      ]
+    },
+    {
+      "component": "apps/web/components/ModalContent/SurveyModal.tsx",
+      "location": "apps/web/components/ModalContent/SurveyModal.tsx:31",
+      "entries": [
+        "rounded-[0.375rem] (line 31)",
+        "rounded-[0.375rem] (line 54)"
+      ]
+    },
+    {
+      "component": "apps/web/components/Preservation/PreservationPageContent.tsx",
+      "location": "apps/web/components/Preservation/PreservationPageContent.tsx:26",
+      "entries": [
+        "mt-[3.1rem] (line 26)"
+      ]
+    },
+    {
+      "component": "apps/extension/safari/Linkwarden/Linkwarden/Resources/Style.css",
+      "location": "apps/extension/safari/Linkwarden/Linkwarden/Resources/Style.css:45",
+      "entries": [
+        "colour: #d70015 (line 45)",
+        "font size: 1em (line 61)"
+      ]
+    }
+  ],
+  "scanSeconds": 10
+}

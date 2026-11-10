@@ -1,0 +1,296 @@
+{
+  "repo": "glanceapp/glance",
+  "owner": "glanceapp",
+  "name": "glance",
+  "description": "A self-hosted dashboard that puts all your feeds in one place",
+  "stars": 38113,
+  "homepage": "",
+  "language": "Go",
+  "defaultBranch": "main",
+  "commit": "53aec7f392ca72143870dcb45526ec7c80a68f32",
+  "generatedAt": "2026-11-10T00:30:52.395Z",
+  "cliVersion": "0.8.20",
+  "score": null,
+  "tier": "N/A",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 0,
+      "max": 20
+    },
+    "consistency": {
+      "score": 0,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 0,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 0,
+    "tokenCount": 48,
+    "hardcodedValueCount": 16,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 16,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 7,
+    "detectedFrameworkNames": []
+  },
+  "suggestions": [
+    "Only 0 UI components detected, too few to score. If this repo has more, Buoy may not recognise its framework yet."
+  ],
+  "pathTo100": null,
+  "noted": {
+    "count": 7,
+    "byKind": {
+      "explained": 2,
+      "optical-nudge": 5
+    },
+    "samples": [
+      {
+        "file": "internal/glance/static/css/mobile.css",
+        "line": 157,
+        "value": "16px",
+        "kind": "explained",
+        "reason": "so that iOS Safari does not zoom the page when the input is focused"
+      },
+      {
+        "file": "internal/glance/static/css/site.css",
+        "line": 179,
+        "value": "0.001",
+        "kind": "explained",
+        "reason": "Using 0.001 instead of 0 fixes a random 1s freeze on Chrome on page load when all elements have opacity 0 and are anima…"
+      },
+      {
+        "file": "internal/glance/static/css/site.css",
+        "line": 295,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "margin-top: 3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "internal/glance/static/css/utils.css",
+        "line": 397,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "internal/glance/static/css/utils.css",
+        "line": 400,
+        "value": "-3px",
+        "kind": "optical-nudge",
+        "reason": "margin-inline: -3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "internal/glance/static/css/widget-twitch.css",
+        "line": 16,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding: 2px is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 16,
+    "critical": 0,
+    "warning": 2,
+    "info": 14
+  },
+  "driftByType": {
+    "hardcoded-value": 16
+  },
+  "topColors": [],
+  "topSpacing": [
+    {
+      "value": "0.5rem",
+      "count": 12
+    },
+    {
+      "value": "1rem",
+      "count": 11
+    },
+    {
+      "value": "0.3rem",
+      "count": 8
+    },
+    {
+      "value": "2rem",
+      "count": 6
+    },
+    {
+      "value": "1.5rem",
+      "count": 6
+    },
+    {
+      "value": "0.7rem",
+      "count": 5
+    },
+    {
+      "value": "2.5rem",
+      "count": 4
+    },
+    {
+      "value": "0.1rem",
+      "count": 3
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "internal/glance/static/css/utils.css",
+      "count": 42
+    },
+    {
+      "file": "internal/glance/static/css/site.css",
+      "count": 11
+    },
+    {
+      "file": "internal/glance/static/css/widget-server-stats.css",
+      "count": 11
+    },
+    {
+      "file": "internal/glance/static/css/login.css",
+      "count": 8
+    },
+    {
+      "file": "internal/glance/static/css/mobile.css",
+      "count": 6
+    },
+    {
+      "file": "internal/glance/static/css/widget-weather.css",
+      "count": 5
+    },
+    {
+      "file": "internal/glance/static/css/widget-dns-stats.css",
+      "count": 4
+    },
+    {
+      "file": "internal/glance/static/css/popover.css",
+      "count": 3
+    }
+  ],
+  "samples": [
+    {
+      "component": "internal/glance/static/css/forum-posts.css",
+      "location": "internal/glance/static/css/forum-posts.css:8",
+      "entries": [
+        "spacing: 0.1rem (line 8)"
+      ]
+    },
+    {
+      "component": "internal/glance/static/css/login.css",
+      "location": "internal/glance/static/css/login.css:8",
+      "entries": [
+        "spacing: 0.5rem (line 8)",
+        "spacing: -0.1rem (line 28)",
+        "letter spacing: 0.3rem (line 33)"
+      ]
+    },
+    {
+      "component": "internal/glance/static/css/main.css",
+      "location": "internal/glance/static/css/main.css:10",
+      "entries": [
+        "font size: 10px (line 10)"
+      ]
+    },
+    {
+      "component": "internal/glance/static/css/mobile.css",
+      "location": "internal/glance/static/css/mobile.css:52",
+      "entries": [
+        "spacing: 1.1rem (line 52)",
+        "spacing: 2.5rem (line 80)",
+        "font size: 15px (line 103)"
+      ]
+    },
+    {
+      "component": "internal/glance/static/css/popover.css",
+      "location": "internal/glance/static/css/popover.css:28",
+      "entries": [
+        "spacing: 10px (line 28)",
+        "radius: 5px (line 31)",
+        "radius: 2px (line 43)"
+      ]
+    },
+    {
+      "component": "internal/glance/static/css/site.css",
+      "location": "internal/glance/static/css/site.css:130",
+      "entries": [
+        "font size: 1.3rem (line 130)",
+        "line height: 1.6 (line 133)",
+        "font size: 2rem (line 168)"
+      ]
+    },
+    {
+      "component": "internal/glance/static/css/utils.css",
+      "location": "internal/glance/static/css/utils.css:81",
+      "entries": [
+        "font size: 1.2em (line 81)",
+        "line height: 1.3em (line 85)",
+        "spacing: 1rem (line 196)"
+      ]
+    },
+    {
+      "component": "internal/glance/static/css/widget-bookmarks.css",
+      "location": "internal/glance/static/css/widget-bookmarks.css:11",
+      "entries": [
+        "spacing: 0.5em (line 11)",
+        "spacing: 0.1rem (line 19)",
+        "spacing: 0.5rem (line 22)"
+      ]
+    },
+    {
+      "component": "internal/glance/static/css/widget-calendar.css",
+      "location": "internal/glance/static/css/widget-calendar.css:17",
+      "entries": [
+        "spacing: 2px (line 17)",
+        "spacing: 0.7rem (line 70)"
+      ]
+    },
+    {
+      "component": "internal/glance/static/css/widget-dns-stats.css",
+      "location": "internal/glance/static/css/widget-dns-stats.css:15",
+      "entries": [
+        "spacing: 2.5rem (line 15)",
+        "spacing: 2px (line 64)",
+        "radius: 2px (line 75)"
+      ]
+    },
+    {
+      "component": "internal/glance/static/css/widget-rss.css",
+      "location": "internal/glance/static/css/widget-rss.css:50",
+      "entries": [
+        "spacing: 0.3rem (line 50)"
+      ]
+    },
+    {
+      "component": "internal/glance/static/css/widget-server-stats.css",
+      "location": "internal/glance/static/css/widget-server-stats.css:6",
+      "entries": [
+        "spacing: 3rem (line 6)",
+        "spacing: 1rem (line 10)",
+        "spacing: 1.5rem (line 19)"
+      ]
+    }
+  ],
+  "scanSeconds": 3
+}

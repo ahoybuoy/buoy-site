@@ -1,0 +1,329 @@
+{
+  "repo": "paperless-ngx/paperless-ngx",
+  "owner": "paperless-ngx",
+  "name": "paperless-ngx",
+  "description": "A community-supported supercharged document management system: scan, index and archive all your documents",
+  "stars": 47957,
+  "homepage": "http://docs.paperless-ngx.com/",
+  "language": "Python",
+  "defaultBranch": "dev",
+  "commit": "936b1b3bfa3b83fd5c1762bdc8e8e2953c5bace2",
+  "generatedAt": "2026-11-10T00:40:54.413Z",
+  "cliVersion": "0.8.20",
+  "score": null,
+  "tier": "N/A",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 0,
+      "max": 20
+    },
+    "consistency": {
+      "score": 0,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 0,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 0,
+    "tokenCount": 542,
+    "hardcodedValueCount": 32,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 32,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 8,
+    "topHardcodedColor": {
+      "value": "#abb2bf",
+      "count": 1
+    },
+    "detectedFrameworkNames": []
+  },
+  "suggestions": [
+    "Only 0 UI components detected, too few to score. If this repo has more, Buoy may not recognise its framework yet."
+  ],
+  "pathTo100": null,
+  "noted": {
+    "count": 8,
+    "byKind": {
+      "optical-nudge": 7,
+      "explained": 1
+    },
+    "samples": [
+      {
+        "file": "src-ui/src/app/components/app-frame/global-search/global-search.component.scss",
+        "line": 45,
+        "value": "all .3s ease, padding-left 0s ease, background-color 0s ease",
+        "kind": "explained",
+        "reason": "Safari requires all"
+      },
+      {
+        "file": "src-ui/src/app/components/app-frame/app-frame.component.scss",
+        "line": 396,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-bottom: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "src-ui/src/app/components/chat/chat/chat.component.scss",
+        "line": 36,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-left: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "src-ui/src/app/components/common/upload-status-tray/upload-status-tray.component.scss",
+        "line": 2,
+        "value": "-3px",
+        "kind": "optical-nudge",
+        "reason": "margin-top: -3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "src-ui/src/app/components/dashboard/widgets/saved-view-widget/saved-view-widget.component.scss",
+        "line": 29,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-right: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "src-ui/src/app/components/dashboard/widgets/upload-file-widget/upload-file-widget.component.scss",
+        "line": 2,
+        "value": "-3px",
+        "kind": "optical-nudge",
+        "reason": "margin-top: -3px is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 32,
+    "critical": 0,
+    "warning": 25,
+    "info": 7
+  },
+  "driftByType": {
+    "hardcoded-value": 32
+  },
+  "topColors": [
+    {
+      "value": "#fff",
+      "count": 5
+    },
+    {
+      "value": "#9ca3af",
+      "count": 3
+    },
+    {
+      "value": "rgba(255, 255, 255, 0.2)",
+      "count": 2
+    },
+    {
+      "value": "rgba(255, 255, 255, .1)",
+      "count": 2
+    },
+    {
+      "value": "rgba(255, 255, 255, 0.82)",
+      "count": 1
+    },
+    {
+      "value": "rgba(0, 0, 0, .14)",
+      "count": 1
+    },
+    {
+      "value": "rgba(255, 255, 255, .2)",
+      "count": 1
+    },
+    {
+      "value": "rgba(255, 255, 255, 0.6)",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "0.5rem",
+      "count": 8
+    },
+    {
+      "value": "-0.5rem",
+      "count": 6
+    },
+    {
+      "value": "1rem",
+      "count": 5
+    },
+    {
+      "value": "0.25rem",
+      "count": 5
+    },
+    {
+      "value": "2rem",
+      "count": 3
+    },
+    {
+      "value": "-1rem",
+      "count": 3
+    },
+    {
+      "value": "12px",
+      "count": 2
+    },
+    {
+      "value": "0.75rem",
+      "count": 2
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "src-ui/src/styles.scss",
+      "count": 31
+    },
+    {
+      "file": "src-ui/src/app/components/app-frame/app-frame.component.scss",
+      "count": 27
+    },
+    {
+      "file": "src/paperless_mail/templates/output.css",
+      "count": 13
+    },
+    {
+      "file": "src-ui/src/app/components/app-frame/global-search/global-search.component.scss",
+      "count": 11
+    },
+    {
+      "file": "docs/assets/extra.css",
+      "count": 8
+    },
+    {
+      "file": "src-ui/src/app/components/document-list/document-card-large/document-card-large.component.scss",
+      "count": 5
+    },
+    {
+      "file": "src-ui/src/app/components/common/pdf-viewer/pdf-viewer.component.scss",
+      "count": 4
+    },
+    {
+      "file": "src-ui/src/app/components/common/dates-dropdown/dates-dropdown.component.scss",
+      "count": 3
+    }
+  ],
+  "samples": [
+    {
+      "component": "docs/assets/extra.css",
+      "location": "docs/assets/extra.css:14",
+      "entries": [
+        "colour: #fff (line 14)",
+        "colour: rgba(255, 255, 255, 0.82) (line 18)",
+        "colour: #fff (line 23)"
+      ]
+    },
+    {
+      "component": "src-ui/src/app/components/app-frame/app-frame.component.scss",
+      "location": "src-ui/src/app/components/app-frame/app-frame.component.scss:25",
+      "entries": [
+        "letter spacing: 0.06em (line 25)",
+        "spacing: 56px (line 60)",
+        "spacing: 1rem (line 70)"
+      ]
+    },
+    {
+      "component": "src-ui/src/app/components/app-frame/global-search/global-search.component.scss",
+      "location": "src-ui/src/app/components/app-frame/global-search/global-search.component.scss:8",
+      "entries": [
+        "colour: rgba(255, 255, 255, 0.6) (line 8)",
+        "font size: 0.8rem (line 28)",
+        "colour: rgba(255, 255, 255, 0.2) (line 32)"
+      ]
+    },
+    {
+      "component": "src-ui/src/app/components/chat/chat/chat.component.scss",
+      "location": "src-ui/src/app/components/chat/chat/chat.component.scss:51",
+      "entries": [
+        "font size: 1em (line 51)"
+      ]
+    },
+    {
+      "component": "src-ui/src/app/components/common/custom-fields-query-dropdown/custom-fields-query-dropdown.component.scss",
+      "location": "src-ui/src/app/components/common/custom-fields-query-dropdown/custom-fields-query-dropdown.component.scss:29",
+      "entries": [
+        "font size: 14px (line 29)"
+      ]
+    },
+    {
+      "component": "src-ui/src/app/components/common/dates-dropdown/dates-dropdown.component.scss",
+      "location": "src-ui/src/app/components/common/dates-dropdown/dates-dropdown.component.scss:16",
+      "entries": [
+        "line height: 2em (line 16)",
+        "font size: 0.875rem (line 21)",
+        "radius: 0.15rem (line 42)"
+      ]
+    },
+    {
+      "component": "src-ui/src/app/components/common/edit-dialog/mail-account-edit-dialog/mail-account-edit-dialog.component.scss",
+      "location": "src-ui/src/app/components/common/edit-dialog/mail-account-edit-dialog/mail-account-edit-dialog.component.scss:2",
+      "entries": [
+        "spacing: 0.75rem (line 2)",
+        "spacing: 0.75rem (line 3)"
+      ]
+    },
+    {
+      "component": "src-ui/src/app/components/common/edit-dialog/workflow-edit-dialog/workflow-edit-dialog.component.scss",
+      "location": "src-ui/src/app/components/common/edit-dialog/workflow-edit-dialog/workflow-edit-dialog.component.scss:8",
+      "entries": [
+        "font size: 1rem (line 8)",
+        "spacing: -1rem (line 16)"
+      ]
+    },
+    {
+      "component": "src-ui/src/app/components/common/filterable-dropdown/filterable-dropdown.component.scss",
+      "location": "src-ui/src/app/components/common/filterable-dropdown/filterable-dropdown.component.scss:32",
+      "entries": [
+        "font size: 0.65rem (line 32)",
+        "colour: #fff (line 37)"
+      ]
+    },
+    {
+      "component": "src-ui/src/app/components/common/filterable-dropdown/toggleable-dropdown-button/toggleable-dropdown-button.component.scss",
+      "location": "src-ui/src/app/components/common/filterable-dropdown/toggleable-dropdown-button/toggleable-dropdown-button.component.scss:26",
+      "entries": [
+        "font size: 0.75rem (line 26)",
+        "font size: 1rem (line 30)"
+      ]
+    },
+    {
+      "component": "src-ui/src/app/components/common/input/date/date.component.scss",
+      "location": "src-ui/src/app/components/common/input/date/date.component.scss:3",
+      "entries": [
+        "radius: 0.15rem (line 3)"
+      ]
+    },
+    {
+      "component": "src-ui/src/app/components/common/input/tags/tags.component.scss",
+      "location": "src-ui/src/app/components/common/input/tags/tags.component.scss:7",
+      "entries": [
+        "font size: 1rem (line 7)",
+        "font size: 1rem (line 29)"
+      ]
+    }
+  ],
+  "scanSeconds": 5
+}

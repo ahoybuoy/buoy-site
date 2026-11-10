@@ -1,0 +1,292 @@
+{
+  "repo": "immich-app/immich",
+  "owner": "immich-app",
+  "name": "immich",
+  "description": "High performance self-hosted photo and video management solution.",
+  "stars": 118642,
+  "homepage": "https://immich.app",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "f3de6f242c32b2ea3b3bc065b57c392dc9d557c1",
+  "generatedAt": "2026-11-10T00:33:18.161Z",
+  "cliVersion": "0.8.20",
+  "score": 81,
+  "tier": "Great",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 41,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 350,
+    "tokenCount": 45,
+    "hardcodedValueCount": 33,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 33,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 3,
+    "topHardcodedColor": {
+      "value": "#232932",
+      "count": 3
+    },
+    "worstFile": {
+      "path": "web/src/lib/components/asset-viewer/AssetViewer.svelte",
+      "issueCount": 2
+    },
+    "detectedFrameworkNames": [
+      "tailwind"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 33 hardcoded values left to tokenize. web/src/lib/components/asset-viewer/AssetViewer.svelte has the most (2)"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 19,
+      "action": "Replace the hardcoded values in all 33 findings with tokens or scale steps"
+    }
+  ],
+  "noted": {
+    "count": 3,
+    "byKind": {
+      "explained": 3
+    },
+    "samples": [
+      {
+        "file": "docs/src/css/custom.css",
+        "line": 40,
+        "value": "'GoogleSans', sans-serif",
+        "kind": "explained",
+        "reason": "You can override the default Infima variables here."
+      },
+      {
+        "file": "web/src/lib/components/asset-viewer/ActivityViewer.svelte",
+        "line": 277,
+        "value": "white",
+        "kind": "explained",
+        "reason": "Edge 12 -18"
+      },
+      {
+        "file": "web/src/routes/(user)/albums/[albumId=id]/[[photos=photos]]/[[assetId=id]]/+page.svelte",
+        "line": 565,
+        "value": "white",
+        "kind": "explained",
+        "reason": "Edge 12 -18"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 33,
+    "critical": 0,
+    "warning": 10,
+    "info": 23
+  },
+  "driftByType": {
+    "hardcoded-value": 33
+  },
+  "topColors": [
+    {
+      "value": "#232932",
+      "count": 5
+    },
+    {
+      "value": "rgb(60, 60, 60)",
+      "count": 2
+    },
+    {
+      "value": "rgba(156, 163, 175, 0.35)",
+      "count": 2
+    },
+    {
+      "value": "#D9DCEF",
+      "count": 1
+    },
+    {
+      "value": "#001a06",
+      "count": 1
+    },
+    {
+      "value": "#070707",
+      "count": 1
+    },
+    {
+      "value": "#2b3336",
+      "count": 1
+    },
+    {
+      "value": "#000000",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "0.25em",
+      "count": 2
+    },
+    {
+      "value": "16px",
+      "count": 2
+    },
+    {
+      "value": "1.5em",
+      "count": 1
+    },
+    {
+      "value": "5px",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "docs/src/css/custom.css",
+      "count": 19
+    },
+    {
+      "file": "web/src/lib/components/asset-viewer/AssetViewer.svelte",
+      "count": 7
+    },
+    {
+      "file": "web/src/lib/components/shared-components/settings/SettingInputField.svelte",
+      "count": 3
+    },
+    {
+      "file": "web/src/lib/components/timeline/Scrubber.svelte",
+      "count": 3
+    },
+    {
+      "file": "web/src/app.css",
+      "count": 3
+    },
+    {
+      "file": "web/src/lib/components/assets/thumbnail/Thumbnail.svelte",
+      "count": 2
+    },
+    {
+      "file": "web/src/lib/components/faces-page/PersonIndicator.svelte",
+      "count": 2
+    },
+    {
+      "file": "web/src/lib/modals/GeolocationPointPickerModal.svelte",
+      "count": 2
+    }
+  ],
+  "samples": [
+    {
+      "component": "web/src/lib/components/LoadingDots.svelte",
+      "location": "web/src/lib/components/LoadingDots.svelte:14",
+      "entries": [
+        "shadow-[0_0_3px_rgba(0,0,0,0.6)] (line 14)"
+      ]
+    },
+    {
+      "component": "web/src/lib/components/asset-viewer/AssetViewer.svelte",
+      "location": "web/src/lib/components/asset-viewer/AssetViewer.svelte:607",
+      "entries": [
+        "drop-shadow-[0_0_1px_rgba(0,0,0,0.4)] (line 607)"
+      ]
+    },
+    {
+      "component": "web/src/lib/components/asset-viewer/AssetViewerNavBar.svelte",
+      "location": "web/src/lib/components/asset-viewer/AssetViewerNavBar.svelte:87",
+      "entries": [
+        "drop-shadow-[0_0_1px_rgba(0,0,0,0.4)] (line 87)"
+      ]
+    },
+    {
+      "component": "web/src/lib/components/assets/thumbnail/Thumbnail.svelte",
+      "location": "web/src/lib/components/assets/thumbnail/Thumbnail.svelte:410",
+      "entries": [
+        "bg-[#D9DCEF] (line 410)",
+        "dark:bg-[#232932] (line 410)"
+      ]
+    },
+    {
+      "component": "web/src/lib/components/assets/thumbnail/VideoThumbnail.svelte",
+      "location": "web/src/lib/components/assets/thumbnail/VideoThumbnail.svelte:110",
+      "entries": [
+        "drop-shadow-[1px_1px_6px_rgb(0_0_0)] (line 110)"
+      ]
+    },
+    {
+      "component": "web/src/lib/components/faces-page/PersonIndicator.svelte",
+      "location": "web/src/lib/components/faces-page/PersonIndicator.svelte:16",
+      "entries": [
+        "gap-[0.25em] (line 16)",
+        "p-[0.25em] (line 16)"
+      ]
+    },
+    {
+      "component": "web/src/lib/components/shared-components/navigation-bar/NavigationBar.svelte",
+      "location": "web/src/lib/components/shared-components/navigation-bar/NavigationBar.svelte:138",
+      "entries": [
+        "text-[10px] (line 138)"
+      ]
+    },
+    {
+      "component": "web/src/lib/components/shared-components/search-bar/SearchBar.svelte",
+      "location": "web/src/lib/components/shared-components/search-bar/SearchBar.svelte:160",
+      "entries": [
+        "shadow-[0_8px_20px_rgba(0,0,0,0.12)] (line 160)"
+      ]
+    },
+    {
+      "component": "web/src/lib/components/shared-components/search-bar/SearchFilters.svelte",
+      "location": "web/src/lib/components/shared-components/search-bar/SearchFilters.svelte:191",
+      "entries": [
+        "shadow-[0_8px_20px_rgba(0,0,0,0.12)] (line 191)"
+      ]
+    },
+    {
+      "component": "web/src/lib/components/shared-components/settings/SettingInputField.svelte",
+      "location": "web/src/lib/components/shared-components/settings/SettingInputField.svelte:97",
+      "entries": [
+        "text-[10px] (line 97)"
+      ]
+    },
+    {
+      "component": "web/src/lib/components/shared-components/settings/SettingSwitch.svelte",
+      "location": "web/src/lib/components/shared-components/settings/SettingSwitch.svelte:42",
+      "entries": [
+        "text-[10px] (line 42)"
+      ]
+    },
+    {
+      "component": "web/src/lib/components/shared-components/side-bar/ServerStatus.svelte",
+      "location": "web/src/lib/components/shared-components/side-bar/ServerStatus.svelte:93",
+      "entries": [
+        "text-[11px] (line 93)"
+      ]
+    }
+  ],
+  "scanSeconds": 14
+}

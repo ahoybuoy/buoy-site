@@ -1,0 +1,317 @@
+{
+  "repo": "usebruno/bruno",
+  "owner": "usebruno",
+  "name": "bruno",
+  "description": "Opensource IDE For Exploring and Testing API's (lightweight alternative to Postman/Insomnia)",
+  "stars": 48308,
+  "homepage": "https://www.usebruno.com/",
+  "language": "JavaScript",
+  "defaultBranch": "main",
+  "commit": "60d7517d0545ef82c032c10dcbb6a3c815d246cf",
+  "generatedAt": "2026-11-10T00:44:30.599Z",
+  "cliVersion": "0.8.20",
+  "score": 40,
+  "tier": "OK",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 39,
+    "tokenCount": 61,
+    "hardcodedValueCount": 18,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 18,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 2,
+    "vendoredDriftCount": 0,
+    "notedCount": 1,
+    "topHardcodedColor": {
+      "value": "rgb(160 160 160)",
+      "count": 2
+    },
+    "worstFile": {
+      "path": "packages/bruno-app/src/themes/DesignSystem/Overview.jsx",
+      "issueCount": 8
+    },
+    "uniqueSpacingValues": 19,
+    "detectedFrameworkNames": [
+      "react",
+      "tailwind",
+      "storybook",
+      "styled-components"
+    ]
+  },
+  "suggestions": [
+    "18 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on packages/bruno-app/src/themes/DesignSystem/Overview.jsx (8 issues)",
+    "19 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 60,
+      "action": "Replace the hardcoded values in all 18 findings with tokens or scale steps"
+    }
+  ],
+  "noted": {
+    "count": 1,
+    "byKind": {
+      "optical-nudge": 1
+    },
+    "samples": [
+      {
+        "file": "packages/bruno-app/src/themes/DesignSystem/Overview.jsx",
+        "line": 107,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "marginBottom: 2px is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 18,
+    "critical": 0,
+    "warning": 4,
+    "info": 14
+  },
+  "driftByType": {
+    "hardcoded-value": 18
+  },
+  "topColors": [
+    {
+      "value": "#3b5998",
+      "count": 3
+    },
+    {
+      "value": "rgb(160 160 160)",
+      "count": 2
+    },
+    {
+      "value": "#555",
+      "count": 2
+    },
+    {
+      "value": "rgb(52 52 52)",
+      "count": 1
+    },
+    {
+      "value": "#f1f1f1",
+      "count": 1
+    },
+    {
+      "value": "#cdcdcd",
+      "count": 1
+    },
+    {
+      "value": "#ffffff",
+      "count": 1
+    },
+    {
+      "value": "#d6d6d6",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "12px",
+      "count": 19
+    },
+    {
+      "value": "16px",
+      "count": 13
+    },
+    {
+      "value": "24px",
+      "count": 12
+    },
+    {
+      "value": "32px",
+      "count": 9
+    },
+    {
+      "value": "8px",
+      "count": 8
+    },
+    {
+      "value": "4px",
+      "count": 8
+    },
+    {
+      "value": "13px",
+      "count": 7
+    },
+    {
+      "value": "20px",
+      "count": 6
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "packages/bruno-app/src/themes/DesignSystem/Overview.jsx",
+      "count": 103
+    },
+    {
+      "file": "packages/bruno-graphql-docs/src/index.css",
+      "count": 48
+    },
+    {
+      "file": "packages/bruno-app/src/themes/PaletteViewer/components.jsx",
+      "count": 7
+    },
+    {
+      "file": "packages/bruno-app/src/components/ResponsePane/QueryResult/QueryResultTypeSelector/index.jsx",
+      "count": 5
+    },
+    {
+      "file": "packages/bruno-app/src/styles/globals.css",
+      "count": 5
+    },
+    {
+      "file": "packages/bruno-app/src/components/Sidebar/Collections/Collection/CollectionRow/index.jsx",
+      "count": 1
+    },
+    {
+      "file": "packages/bruno-app/src/components/Sidebar/Collections/Collection/CollectionItem/CollectionItemRow/index.jsx",
+      "count": 1
+    },
+    {
+      "file": "packages/bruno-app/src/components/RunnerResults/index.jsx",
+      "count": 1
+    }
+  ],
+  "samples": [
+    {
+      "component": "Section",
+      "location": "packages/bruno-app/src/themes/DesignSystem/Overview.jsx:7",
+      "entries": [
+        "marginBottom: 48px (line 8)",
+        "fontSize: 20px (line 9)",
+        "marginBottom: 8px (line 9)"
+      ]
+    },
+    {
+      "component": "ColorToken",
+      "location": "packages/bruno-app/src/themes/DesignSystem/Overview.jsx:19",
+      "entries": [
+        "gap: 16px (line 25)",
+        "padding: 16px (line 26)",
+        "marginBottom: 12px (line 29)"
+      ]
+    },
+    {
+      "component": "LayerDemo",
+      "location": "packages/bruno-app/src/themes/DesignSystem/Overview.jsx:78",
+      "entries": [
+        "gap: 24px (line 83)",
+        "marginTop: 16px (line 85)",
+        "marginBottom: 8px (line 96)"
+      ]
+    },
+    {
+      "component": "IntroductionRender",
+      "location": "packages/bruno-app/src/themes/DesignSystem/Overview.jsx:116",
+      "entries": [
+        "marginBottom: 64px (line 142)",
+        "gap: 3px (line 145)",
+        "marginBottom: 24px (line 146)"
+      ]
+    },
+    {
+      "component": "PrimaryColorsRender",
+      "location": "packages/bruno-app/src/themes/DesignSystem/Overview.jsx:324",
+      "entries": [
+        "marginBottom: 48px (line 369)",
+        "fontSize: 32px (line 370)",
+        "marginBottom: 12px (line 370)"
+      ]
+    },
+    {
+      "component": "BackgroundLayersRender",
+      "location": "packages/bruno-app/src/themes/DesignSystem/Overview.jsx:585",
+      "entries": [
+        "marginBottom: 48px (line 623)",
+        "fontSize: 32px (line 624)",
+        "marginBottom: 12px (line 624)"
+      ]
+    },
+    {
+      "component": "TextColorsRender",
+      "location": "packages/bruno-app/src/themes/DesignSystem/Overview.jsx:985",
+      "entries": [
+        "padding: 32px (line 1005)",
+        "marginBottom: 48px (line 1012)",
+        "fontSize: 32px (line 1013)"
+      ]
+    },
+    {
+      "component": "BordersAndOverlaysRender",
+      "location": "packages/bruno-app/src/themes/DesignSystem/Overview.jsx:1177",
+      "entries": [
+        "padding: 32px (line 1196)",
+        "marginBottom: 48px (line 1203)",
+        "fontSize: 32px (line 1204)"
+      ]
+    },
+    {
+      "component": "ColorSwatch",
+      "location": "packages/bruno-app/src/themes/PaletteViewer/components.jsx:21",
+      "entries": [
+        "gap: 6px (line 22)",
+        "fontSize: 10px (line 33)",
+        "fontSize: 9px (line 34)"
+      ]
+    },
+    {
+      "component": "ColorSection",
+      "location": "packages/bruno-app/src/themes/PaletteViewer/components.jsx:39",
+      "entries": [
+        "marginBottom: 24px (line 40)",
+        "fontSize: 14px (line 41)",
+        "marginBottom: 12px (line 41)"
+      ]
+    },
+    {
+      "component": "CollectionRow",
+      "location": "packages/bruno-app/src/components/Sidebar/Collections/Collection/CollectionRow/index.jsx:63",
+      "entries": [
+        "color: rgb(160 160 160) (line 596)"
+      ]
+    },
+    {
+      "component": "CollectionItemRow",
+      "location": "packages/bruno-app/src/components/Sidebar/Collections/Collection/CollectionItem/CollectionItemRow/index.jsx:76",
+      "entries": [
+        "color: rgb(160 160 160) (line 790)"
+      ]
+    }
+  ],
+  "scanSeconds": 14
+}

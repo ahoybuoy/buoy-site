@@ -1,0 +1,109 @@
+{
+  "repo": "nextjs/saas-starter",
+  "owner": "nextjs",
+  "name": "saas-starter",
+  "description": "Get started quickly with Next.js, Postgres, Stripe, and shadcn/ui.",
+  "stars": 16250,
+  "homepage": "https://next-saas-start.vercel.app",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "6e33e58b1e553a41fe22e6b941a7229a002de361",
+  "generatedAt": "2026-11-10T00:39:15.286Z",
+  "cliVersion": "0.8.20",
+  "score": 100,
+  "tier": "Great",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 60,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 57,
+    "tokenCount": 69,
+    "hardcodedValueCount": 0,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 0,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 3,
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "tailwind",
+      "shadcn"
+    ]
+  },
+  "suggestions": [
+    "Perfect design system health — no issues detected"
+  ],
+  "pathTo100": [],
+  "noted": {
+    "count": 3,
+    "byKind": {
+      "vendored": 3
+    },
+    "samples": [
+      {
+        "file": "components/ui/button.tsx",
+        "line": 8,
+        "value": "focus-visible:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "components/ui/input.tsx",
+        "line": 12,
+        "value": "focus-visible:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "components/ui/radio-group.tsx",
+        "line": 30,
+        "value": "focus-visible:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 0,
+    "critical": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "driftByType": {},
+  "topColors": [],
+  "topSpacing": [],
+  "worstFiles": [],
+  "samples": [],
+  "scanSeconds": 3
+}

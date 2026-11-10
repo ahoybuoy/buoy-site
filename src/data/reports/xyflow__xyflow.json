@@ -1,0 +1,180 @@
+{
+  "repo": "xyflow/xyflow",
+  "owner": "xyflow",
+  "name": "xyflow",
+  "description": "React Flow | Svelte Flow - Powerful open source libraries for building node-based UIs with React (https://reactflow.dev) or Svelte (https://svelteflow.dev). Ready out-of-the-box and infinitely customizable.",
+  "stars": 38947,
+  "homepage": "https://xyflow.com",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "1bc405cd113618c17fd181b931a9fe573bec9fee",
+  "generatedAt": "2026-11-10T00:45:44.230Z",
+  "cliVersion": "0.8.20",
+  "score": 73,
+  "tier": "Good",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 53,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 0,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 117,
+    "tokenCount": 0,
+    "hardcodedValueCount": 4,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 4,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 1,
+    "detectedFrameworkNames": [
+      "react",
+      "svelte",
+      "astro"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 4 hardcoded values left to tokenize",
+    "No design token system detected — add CSS custom properties or a utility framework like Tailwind"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 7,
+      "action": "Replace the hardcoded values in all 4 findings with tokens or scale steps"
+    },
+    {
+      "pillar": "tokenHealth",
+      "points": 20,
+      "action": "Add a token system: CSS custom properties, a tokens file or a Tailwind theme"
+    }
+  ],
+  "noted": {
+    "count": 1,
+    "byKind": {
+      "optical-nudge": 1
+    },
+    "samples": [
+      {
+        "file": "packages/svelte/src/styles/style.css",
+        "line": 9,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding: 2px is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 4,
+    "critical": 0,
+    "warning": 2,
+    "info": 2
+  },
+  "driftByType": {
+    "hardcoded-value": 4
+  },
+  "topColors": [
+    {
+      "value": "#999",
+      "count": 1
+    },
+    {
+      "value": "#fff",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "15px",
+      "count": 1
+    },
+    {
+      "value": "4px",
+      "count": 1
+    },
+    {
+      "value": "10px",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "packages/system/src/styles/init.css",
+      "count": 4
+    },
+    {
+      "file": "packages/system/src/styles/style.css",
+      "count": 3
+    },
+    {
+      "file": "packages/svelte/src/styles/style.css",
+      "count": 1
+    },
+    {
+      "file": "packages/system/src/styles/node-resizer.css",
+      "count": 1
+    }
+  ],
+  "samples": [
+    {
+      "component": "packages/svelte/src/styles/style.css",
+      "location": "packages/svelte/src/styles/style.css:10",
+      "entries": [
+        "font size: 10px (line 10)"
+      ]
+    },
+    {
+      "component": "packages/system/src/styles/init.css",
+      "location": "packages/system/src/styles/init.css:286",
+      "entries": [
+        "spacing: 15px (line 286)",
+        "font size: 10px (line 322)",
+        "colour: #999 (line 329)"
+      ]
+    },
+    {
+      "component": "packages/system/src/styles/node-resizer.css",
+      "location": "packages/system/src/styles/node-resizer.css:33",
+      "entries": [
+        "colour: #fff (line 33)"
+      ]
+    },
+    {
+      "component": "packages/system/src/styles/style.css",
+      "location": "packages/system/src/styles/style.css:60",
+      "entries": [
+        "font size: 10px (line 60)",
+        "spacing: 10px (line 75)",
+        "font size: 12px (line 78)"
+      ]
+    }
+  ],
+  "scanSeconds": 5
+}

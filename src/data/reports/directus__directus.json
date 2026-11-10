@@ -1,0 +1,347 @@
+{
+  "repo": "directus/directus",
+  "owner": "directus",
+  "name": "directus",
+  "description": "The flexible backend for all your projects 🐰 Turn your DB into a headless CMS, admin panels, or apps with a custom UI, instant APIs, auth & more.",
+  "stars": 38672,
+  "homepage": "https://directus.com",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "9dd14d370f682023b9dccf82489908a42e66f342",
+  "generatedAt": "2026-11-10T00:26:22.513Z",
+  "cliVersion": "0.8.20",
+  "score": 34,
+  "tier": "Bad",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 4,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 586,
+    "tokenCount": 38,
+    "hardcodedValueCount": 248,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 254,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 6,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 11,
+    "worstFile": {
+      "path": "app/src/components/v-chip.vue",
+      "issueCount": 2
+    },
+    "detectedFrameworkNames": [
+      "vue"
+    ]
+  },
+  "suggestions": [
+    "248 hardcoded values to extract. Focus on app/src/components/v-chip.vue (2 issues)",
+    "6 deprecated patterns — migrate to current API"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 60,
+      "action": "Replace the hardcoded values in 247 of the 248 findings with tokens or scale steps"
+    },
+    {
+      "pillar": "criticalIssues",
+      "points": 6,
+      "action": "Migrate 6 deprecated patterns"
+    }
+  ],
+  "noted": {
+    "count": 11,
+    "byKind": {
+      "optical-nudge": 10,
+      "explained": 1
+    },
+    "samples": [
+      {
+        "file": "app/src/styles/_base.scss",
+        "line": 27,
+        "value": "left at browser default (typically 16px) for WCAG compliance — do not set a px value */",
+        "kind": "explained",
+        "reason": "font-size: left at browser default (typically 16px) for WCAG compliance — do not set a px value"
+      },
+      {
+        "file": "app/src/ai/components/ai-context-card.vue",
+        "line": 106,
+        "value": "0.125rem",
+        "kind": "optical-nudge",
+        "reason": "padding: 0.125rem is a 2-3px optical adjustment"
+      },
+      {
+        "file": "app/src/ai/components/ai-context-card.vue",
+        "line": 140,
+        "value": "0.125rem",
+        "kind": "optical-nudge",
+        "reason": "padding: 0.125rem is a 2-3px optical adjustment"
+      },
+      {
+        "file": "app/src/ai/components/ai-loading-indicator.vue",
+        "line": 13,
+        "value": "0.1875rem",
+        "kind": "optical-nudge",
+        "reason": "padding-inline: 0.1875rem is a 2-3px optical adjustment"
+      },
+      {
+        "file": "app/src/ai/components/parts/ai-ask-user-summary.vue",
+        "line": 43,
+        "value": "0.1875rem",
+        "kind": "optical-nudge",
+        "reason": "padding: 0.1875rem is a 2-3px optical adjustment"
+      },
+      {
+        "file": "app/src/components/v-progress-circular.vue",
+        "line": 89,
+        "value": "0.125rem",
+        "kind": "optical-nudge",
+        "reason": "margin: 0.125rem is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 254,
+    "critical": 0,
+    "warning": 47,
+    "info": 207
+  },
+  "driftByType": {
+    "deprecated-pattern": 6,
+    "hardcoded-value": 248
+  },
+  "topColors": [
+    {
+      "value": "#fff",
+      "count": 5
+    },
+    {
+      "value": "#ffc107",
+      "count": 2
+    },
+    {
+      "value": "#0d6efd",
+      "count": 2
+    },
+    {
+      "value": "#7c7c7c",
+      "count": 2
+    },
+    {
+      "value": "#000",
+      "count": 2
+    },
+    {
+      "value": "rgb(255 193 7 / 0.15)",
+      "count": 1
+    },
+    {
+      "value": "rgb(255 255 255 / 0.75)",
+      "count": 1
+    },
+    {
+      "value": "rgb(168, 214, 255)",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "0.25rem",
+      "count": 47
+    },
+    {
+      "value": "0.4375rem",
+      "count": 44
+    },
+    {
+      "value": "0.6875rem",
+      "count": 39
+    },
+    {
+      "value": "0.5rem",
+      "count": 33
+    },
+    {
+      "value": "0.3125rem",
+      "count": 20
+    },
+    {
+      "value": "0.375rem",
+      "count": 20
+    },
+    {
+      "value": "0.5625rem",
+      "count": 18
+    },
+    {
+      "value": "1rem",
+      "count": 13
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "app/src/interfaces/input-block-editor/editorjs-overrides.css",
+      "count": 31
+    },
+    {
+      "file": "app/src/styles/mixins/_markdown.scss",
+      "count": 31
+    },
+    {
+      "file": "app/src/ai/components/parts/ai-message-text.vue",
+      "count": 25
+    },
+    {
+      "file": "app/src/interfaces/input-rich-text-html/input-rich-text-html.vue",
+      "count": 24
+    },
+    {
+      "file": "app/src/components/v-date-picker/v-date-picker.vue",
+      "count": 22
+    },
+    {
+      "file": "app/src/ai/components/parts/ai-ask-user.vue",
+      "count": 21
+    },
+    {
+      "file": "app/src/interfaces/translations/translate-modal.vue",
+      "count": 17
+    },
+    {
+      "file": "app/src/modules/settings/routes/license/components/license-resolution-dialog.vue",
+      "count": 15
+    }
+  ],
+  "samples": [
+    {
+      "component": "app/src/ai/components/ai-context-card.vue",
+      "location": "app/src/ai/components/ai-context-card.vue:77",
+      "entries": [
+        "spacing: 0.3125rem (line 77)",
+        "font size: 0.6875rem (line 128)",
+        "font weight: 500 (line 129)"
+      ]
+    },
+    {
+      "component": "app/src/ai/components/ai-context-menu.vue",
+      "location": "app/src/ai/components/ai-context-menu.vue:389",
+      "entries": [
+        "spacing: 0.4375rem (line 389)",
+        "spacing: 0.4375rem (line 395)",
+        "spacing: 0.4375rem (line 396)"
+      ]
+    },
+    {
+      "component": "app/src/ai/components/ai-context-menu/context-menu-item.vue",
+      "location": "app/src/ai/components/ai-context-menu/context-menu-item.vue:43",
+      "entries": [
+        "spacing: 0.25rem (line 43)",
+        "spacing: 0.4375rem (line 49)",
+        "font weight: 500 (line 50)"
+      ]
+    },
+    {
+      "component": "app/src/ai/components/ai-context-menu/empty-state.vue",
+      "location": "app/src/ai/components/ai-context-menu/empty-state.vue:24",
+      "entries": [
+        "spacing: 0.6875rem (line 24)"
+      ]
+    },
+    {
+      "component": "app/src/ai/components/ai-conversation.vue",
+      "location": "app/src/ai/components/ai-conversation.vue:199",
+      "entries": [
+        "font size: 0.6875rem (line 199)",
+        "spacing: 0.8125rem (line 208)",
+        "shadow: 0 0 8px rgb(0 0 0 / 0.15) (line 235)"
+      ]
+    },
+    {
+      "component": "app/src/ai/components/ai-input.vue",
+      "location": "app/src/ai/components/ai-input.vue:96",
+      "entries": [
+        "spacing: 0.6875rem (line 96)",
+        "spacing: 0.6875rem (line 97)",
+        "spacing: 0.4375rem (line 128)"
+      ]
+    },
+    {
+      "component": "app/src/ai/components/ai-loading-indicator.vue",
+      "location": "app/src/ai/components/ai-loading-indicator.vue:12",
+      "entries": [
+        "spacing: 0.3125rem (line 12)"
+      ]
+    },
+    {
+      "component": "app/src/ai/components/ai-message-list.vue",
+      "location": "app/src/ai/components/ai-message-list.vue:36",
+      "entries": [
+        "spacing: 1.1875rem (line 36)"
+      ]
+    },
+    {
+      "component": "app/src/ai/components/ai-message.vue",
+      "location": "app/src/ai/components/ai-message.vue:170",
+      "entries": [
+        "spacing: 0.375rem (line 170)",
+        "spacing: 0.1875rem (line 181)",
+        "spacing: 0.375rem (line 189)"
+      ]
+    },
+    {
+      "component": "app/src/ai/components/ai-model-selector.vue",
+      "location": "app/src/ai/components/ai-model-selector.vue:75",
+      "entries": [
+        "spacing: 0.25rem (line 75)",
+        "font size: 0.6875rem (line 81)",
+        "spacing: 0.25rem (line 104)"
+      ]
+    },
+    {
+      "component": "app/src/ai/components/ai-pending-context.vue",
+      "location": "app/src/ai/components/ai-pending-context.vue:173",
+      "entries": [
+        "spacing: 0.4375rem (line 173)",
+        "radius: 0.1875rem (line 190)",
+        "radius: 0.1875rem (line 195)"
+      ]
+    },
+    {
+      "component": "app/src/ai/components/ai-prompt-variables-modal.vue",
+      "location": "app/src/ai/components/ai-prompt-variables-modal.vue:89",
+      "entries": [
+        "spacing: 0.8125rem (line 89)"
+      ]
+    }
+  ],
+  "scanSeconds": 12
+}

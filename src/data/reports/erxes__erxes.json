@@ -1,0 +1,340 @@
+{
+  "repo": "erxes/erxes",
+  "owner": "erxes",
+  "name": "erxes",
+  "description": "Experience Operating System (XOS) that unifies marketing, sales, operations, and support — run your core business seamlessly while replacing HubSpot, Zendesk, Linear, Wix and more.",
+  "stars": 4111,
+  "homepage": "https://erxes.io",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "15390a12becd1cee8de94d77a6e8cf2a14742a83",
+  "generatedAt": "2026-11-10T00:27:46.698Z",
+  "cliVersion": "0.8.20",
+  "score": 91,
+  "tier": "Great",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 51,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 2599,
+    "tokenCount": 472,
+    "hardcodedValueCount": 114,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 119,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 5,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 6,
+    "topHardcodedColor": {
+      "value": "#d9d9d9",
+      "count": 6
+    },
+    "worstFile": {
+      "path": "frontend/core-ui/src/modules/agent/components/Composer.tsx",
+      "issueCount": 2
+    },
+    "detectedFrameworkNames": [
+      "react",
+      "tailwind",
+      "storybook",
+      "radix",
+      "shadcn"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 114 hardcoded values left to tokenize. frontend/core-ui/src/modules/agent/components/Composer.tsx has the most (2)"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 9,
+      "action": "Replace the hardcoded values in 108 of the 114 findings with tokens or scale steps, and remove or reuse 5 unused components and repeated patterns"
+    }
+  ],
+  "noted": {
+    "count": 6,
+    "byKind": {
+      "optical-nudge": 4,
+      "vendored": 2
+    },
+    "samples": [
+      {
+        "file": "apps/posclient-front/components/ui/calendar.tsx",
+        "line": 38,
+        "value": "text-[0.8rem]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "apps/posclient-front/components/ui/drawer.tsx",
+        "line": 46,
+        "value": "rounded-t-[10px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "apps/posclient-front/styles/globals.css",
+        "line": 326,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "padding-top: 3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/posclient-front/styles/globals.css",
+        "line": 327,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "padding-bottom: 3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/core-ui/src/styles.css",
+        "line": 164,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/core-ui/src/styles.css",
+        "line": 214,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding: 2px is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 119,
+    "critical": 0,
+    "warning": 6,
+    "info": 113
+  },
+  "driftByType": {
+    "hardcoded-value": 114,
+    "repeated-pattern": 5
+  },
+  "topColors": [
+    {
+      "value": "#d9d9d9",
+      "count": 24
+    },
+    {
+      "value": "#000",
+      "count": 4
+    },
+    {
+      "value": "#fff",
+      "count": 3
+    },
+    {
+      "value": "rgba(0, 0, 0, 0.15)",
+      "count": 3
+    },
+    {
+      "value": "rgba(0, 0, 0, 0.25)",
+      "count": 2
+    },
+    {
+      "value": "#f0f0f0",
+      "count": 1
+    },
+    {
+      "value": "#d7d7d7",
+      "count": 1
+    },
+    {
+      "value": "rgba(79, 51, 175, 0.4)",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "10px",
+      "count": 7
+    },
+    {
+      "value": "7px",
+      "count": 6
+    },
+    {
+      "value": "8px",
+      "count": 5
+    },
+    {
+      "value": "4px",
+      "count": 4
+    },
+    {
+      "value": "3px",
+      "count": 3
+    },
+    {
+      "value": "22px",
+      "count": 3
+    },
+    {
+      "value": "18px",
+      "count": 3
+    },
+    {
+      "value": "14px",
+      "count": 3
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "apps/posclient-front/styles/globals.css",
+      "count": 82
+    },
+    {
+      "file": "frontend/core-ui/src/styles.css",
+      "count": 26
+    },
+    {
+      "file": "frontend/core-ui/src/modules/broadcast/components/mockup/BroadcastWebNotificationMockup.tsx",
+      "count": 23
+    },
+    {
+      "file": "frontend/core-ui/src/modules/agent/components/ModelPicker.tsx",
+      "count": 12
+    },
+    {
+      "file": "apps/frontline-widgets/src/app/messenger/components/header.tsx",
+      "count": 8
+    },
+    {
+      "file": "apps/frontline-widgets/src/formstyle.css",
+      "count": 7
+    },
+    {
+      "file": "apps/frontline-widgets/src/knowledgebasestyle.css",
+      "count": 7
+    },
+    {
+      "file": "frontend/core-ui/src/modules/agent/components/Composer.tsx",
+      "count": 6
+    }
+  ],
+  "samples": [
+    {
+      "component": "frontend/core-ui/src/modules/agent/artifacts/previews/SpreadsheetPreview.tsx",
+      "location": "frontend/core-ui/src/modules/agent/artifacts/previews/SpreadsheetPreview.tsx:34",
+      "entries": [
+        "text-[13px] (line 34)"
+      ]
+    },
+    {
+      "component": "frontend/core-ui/src/modules/agent/components/AgentAttachmentCard.tsx",
+      "location": "frontend/core-ui/src/modules/agent/components/AgentAttachmentCard.tsx:78",
+      "entries": [
+        "text-[11px] (line 78)"
+      ]
+    },
+    {
+      "component": "frontend/core-ui/src/modules/agent/components/AgentMentionPopup.tsx",
+      "location": "frontend/core-ui/src/modules/agent/components/AgentMentionPopup.tsx:246",
+      "entries": [
+        "text-[11px] (line 246)"
+      ]
+    },
+    {
+      "component": "frontend/core-ui/src/modules/agent/components/AgentPageContextChip.tsx",
+      "location": "frontend/core-ui/src/modules/agent/components/AgentPageContextChip.tsx:28",
+      "entries": [
+        "text-[11px] (line 28)"
+      ]
+    },
+    {
+      "component": "frontend/core-ui/src/modules/agent/components/AgentReferenceChip.tsx",
+      "location": "frontend/core-ui/src/modules/agent/components/AgentReferenceChip.tsx:133",
+      "entries": [
+        "text-[0.92em] (line 133)",
+        "text-[10px] (line 142)"
+      ]
+    },
+    {
+      "component": "frontend/core-ui/src/modules/agent/components/AgentThinkingBlock.tsx",
+      "location": "frontend/core-ui/src/modules/agent/components/AgentThinkingBlock.tsx:91",
+      "entries": [
+        "text-[11px] (line 91)"
+      ]
+    },
+    {
+      "component": "frontend/core-ui/src/modules/agent/components/AskUserPrompt.tsx",
+      "location": "frontend/core-ui/src/modules/agent/components/AskUserPrompt.tsx:193",
+      "entries": [
+        "text-[11px] (line 193)"
+      ]
+    },
+    {
+      "component": "frontend/core-ui/src/modules/agent/components/AttachedFiles.tsx",
+      "location": "frontend/core-ui/src/modules/agent/components/AttachedFiles.tsx:103",
+      "entries": [
+        "text-[11px] (line 103)"
+      ]
+    },
+    {
+      "component": "frontend/core-ui/src/modules/agent/components/ChatPanel.tsx",
+      "location": "frontend/core-ui/src/modules/agent/components/ChatPanel.tsx:171",
+      "entries": [
+        "text-[13px] (line 171)",
+        "text-[13px] (line 211)",
+        "text-[13px] (line 294)"
+      ]
+    },
+    {
+      "component": "frontend/core-ui/src/modules/agent/components/Composer.tsx",
+      "location": "frontend/core-ui/src/modules/agent/components/Composer.tsx:427",
+      "entries": [
+        "rounded-[22px] (line 427)"
+      ]
+    },
+    {
+      "component": "frontend/core-ui/src/modules/agent/components/Composer.tsx",
+      "location": "frontend/core-ui/src/modules/agent/components/Composer.tsx:470",
+      "entries": [
+        "text-[11px] (line 470)",
+        "text-[11px] (line 477)",
+        "text-[11px] (line 483)"
+      ]
+    },
+    {
+      "component": "frontend/core-ui/src/modules/agent/components/MessageList.tsx",
+      "location": "frontend/core-ui/src/modules/agent/components/MessageList.tsx:288",
+      "entries": [
+        "text-[11px] (line 288)",
+        "text-[11px] (line 368)",
+        "text-[11px] (line 387)"
+      ]
+    }
+  ],
+  "scanSeconds": 59
+}

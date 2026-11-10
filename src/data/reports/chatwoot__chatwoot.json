@@ -1,0 +1,268 @@
+{
+  "repo": "chatwoot/chatwoot",
+  "owner": "chatwoot",
+  "name": "chatwoot",
+  "description": "Open-source live-chat, email support, omni-channel desk. An alternative to Intercom, Zendesk, Salesforce Service Cloud etc. 🔥💬",
+  "stars": 39512,
+  "homepage": "https://www.chatwoot.com/help-center",
+  "language": "Ruby",
+  "defaultBranch": "develop",
+  "commit": "570e12f0e523e6fc32d7e0d5abbc2c50fb2f6001",
+  "generatedAt": "2026-11-10T00:25:26.421Z",
+  "cliVersion": "0.8.20",
+  "score": null,
+  "tier": "N/A",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 0,
+      "max": 20
+    },
+    "consistency": {
+      "score": 0,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 0,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 0,
+    "tokenCount": 16,
+    "hardcodedValueCount": 14,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 14,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 0,
+    "worstFile": {
+      "path": "app/javascript/dashboard/App.vue",
+      "issueCount": 1
+    },
+    "detectedFrameworkNames": [
+      "vue",
+      "tailwind"
+    ]
+  },
+  "suggestions": [
+    "Only 0 UI components detected, too few to score. If this repo has more, Buoy may not recognise its framework yet."
+  ],
+  "pathTo100": null,
+  "noted": {
+    "count": 0,
+    "byKind": {},
+    "samples": []
+  },
+  "driftSummary": {
+    "total": 14,
+    "critical": 0,
+    "warning": 1,
+    "info": 13
+  },
+  "driftByType": {
+    "hardcoded-value": 14
+  },
+  "topColors": [
+    {
+      "value": "#1f93ff",
+      "count": 2
+    },
+    {
+      "value": "#fff",
+      "count": 2
+    },
+    {
+      "value": "#ff4040",
+      "count": 1
+    },
+    {
+      "value": "#ffffff",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "0.25rem",
+      "count": 2
+    },
+    {
+      "value": "2rem",
+      "count": 2
+    },
+    {
+      "value": "20px",
+      "count": 2
+    },
+    {
+      "value": "4px",
+      "count": 1
+    },
+    {
+      "value": "10px",
+      "count": 1
+    },
+    {
+      "value": "-10px",
+      "count": 1
+    },
+    {
+      "value": "15px",
+      "count": 1
+    },
+    {
+      "value": "0.5rem",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "app/javascript/dashboard/assets/scss/_typography.scss",
+      "count": 17
+    },
+    {
+      "file": "app/javascript/sdk/sdk.css",
+      "count": 16
+    },
+    {
+      "file": "app/javascript/shared/assets/fonts/InterDisplay/inter-display.scss",
+      "count": 7
+    },
+    {
+      "file": "app/javascript/shared/assets/fonts/widget_fonts.scss",
+      "count": 4
+    },
+    {
+      "file": "app/javascript/dashboard/routes/dashboard/settings/inbox/components/InputRadioGroup.vue",
+      "count": 3
+    },
+    {
+      "file": "app/javascript/dashboard/App.vue",
+      "count": 2
+    },
+    {
+      "file": "app/javascript/dashboard/routes/dashboard/settings/inbox/channels/Twilio.vue",
+      "count": 2
+    },
+    {
+      "file": "app/javascript/dashboard/routes/dashboard/settings/macros/MacroNodes.vue",
+      "count": 2
+    }
+  ],
+  "samples": [
+    {
+      "component": "app/javascript/dashboard/App.vue",
+      "location": "app/javascript/dashboard/App.vue:172",
+      "entries": [
+        "font size: 0.75rem (line 172)",
+        "radius: 6px (line 174)"
+      ]
+    },
+    {
+      "component": "app/javascript/dashboard/assets/scss/_typography.scss",
+      "location": "app/javascript/dashboard/assets/scss/_typography.scss:21",
+      "entries": [
+        "letter spacing: -0.28px (line 21)",
+        "line height: 21px (line 22)",
+        "letter spacing: -0.21px (line 28)"
+      ]
+    },
+    {
+      "component": "app/javascript/dashboard/components-next/message/bubbles/Dyte.vue",
+      "location": "app/javascript/dashboard/components-next/message/bubbles/Dyte.vue:87",
+      "entries": [
+        "spacing: 0.25rem (line 87)"
+      ]
+    },
+    {
+      "component": "app/javascript/dashboard/components/widgets/AILoader.vue",
+      "location": "app/javascript/dashboard/components/widgets/AILoader.vue:22",
+      "entries": [
+        "spacing: 4px (line 22)"
+      ]
+    },
+    {
+      "component": "app/javascript/dashboard/components/widgets/WootWriter/Editor.vue",
+      "location": "app/javascript/dashboard/components/widgets/WootWriter/Editor.vue:1191",
+      "entries": [
+        "spacing: 10px (line 1191)"
+      ]
+    },
+    {
+      "component": "app/javascript/dashboard/routes/dashboard/conversation/labels/LabelBox.vue",
+      "location": "app/javascript/dashboard/routes/dashboard/conversation/labels/LabelBox.vue:172",
+      "entries": [
+        "line height: 1.5rem (line 172)"
+      ]
+    },
+    {
+      "component": "app/javascript/dashboard/routes/dashboard/settings/inbox/channels/Twilio.vue",
+      "location": "app/javascript/dashboard/routes/dashboard/settings/inbox/channels/Twilio.vue:257",
+      "entries": [
+        "spacing: -10px (line 257)",
+        "spacing: 15px (line 258)"
+      ]
+    },
+    {
+      "component": "app/javascript/dashboard/routes/dashboard/settings/inbox/components/InputRadioGroup.vue",
+      "location": "app/javascript/dashboard/routes/dashboard/settings/inbox/components/InputRadioGroup.vue:46",
+      "entries": [
+        "spacing: 0.25rem (line 46)",
+        "spacing: 0.5rem (line 50)",
+        "spacing: 0.625rem (line 54)"
+      ]
+    },
+    {
+      "component": "app/javascript/dashboard/routes/dashboard/settings/macros/MacroNodes.vue",
+      "location": "app/javascript/dashboard/routes/dashboard/settings/macros/MacroNodes.vue:121",
+      "entries": [
+        "spacing: 2rem (line 121)",
+        "spacing: 2rem (line 131)"
+      ]
+    },
+    {
+      "component": "app/javascript/portal/application.scss",
+      "location": "app/javascript/portal/application.scss:16",
+      "entries": [
+        "letter spacing: 0.2px (line 16)"
+      ]
+    },
+    {
+      "component": "app/javascript/sdk/sdk.css",
+      "location": "app/javascript/sdk/sdk.css:7",
+      "entries": [
+        "shadow: 0 5px 40px rgba(0, 0, 0, 0.16) (line 7)",
+        "colour: #1f93ff (line 43)",
+        "radius: 100px (line 44)"
+      ]
+    },
+    {
+      "component": "app/javascript/shared/assets/fonts/InterDisplay/inter-display.scss",
+      "location": "app/javascript/shared/assets/fonts/InterDisplay/inter-display.scss:4",
+      "entries": [
+        "font weight: 100 (line 4)",
+        "font weight: 200 (line 12)",
+        "font weight: 300 (line 20)"
+      ]
+    }
+  ],
+  "scanSeconds": 15
+}

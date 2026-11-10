@@ -1,0 +1,345 @@
+{
+  "repo": "karakeep-app/karakeep",
+  "owner": "karakeep-app",
+  "name": "karakeep",
+  "description": "A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search",
+  "stars": 30431,
+  "homepage": "https://karakeep.com",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "d1514c25302fa5794795a4edfa9227939cffdc0f",
+  "generatedAt": "2026-11-10T00:33:58.581Z",
+  "cliVersion": "0.8.20",
+  "score": 77,
+  "tier": "Good",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 37,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 825,
+    "tokenCount": 87,
+    "hardcodedValueCount": 96,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 96,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 8,
+    "vendoredDriftCount": 2,
+    "notedCount": 23,
+    "topHardcodedColor": {
+      "value": "#fde047",
+      "count": 2
+    },
+    "worstFile": {
+      "path": "apps/landing/src/Pricing.tsx",
+      "issueCount": 5
+    },
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "astro",
+      "tailwind",
+      "radix",
+      "shadcn"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 94 hardcoded values left to tokenize. apps/landing/src/Pricing.tsx has the most (5)",
+    "2 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 23,
+      "action": "Replace the hardcoded values in 92 of the 94 findings with tokens or scale steps"
+    }
+  ],
+  "noted": {
+    "count": 23,
+    "byKind": {
+      "optical-nudge": 4,
+      "vendored": 19
+    },
+    "samples": [
+      {
+        "file": "apps/browser-extension/src/components/ui/button.tsx",
+        "line": 9,
+        "value": "focus-visible:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "apps/browser-extension/src/components/ui/input.tsx",
+        "line": 13,
+        "value": "focus-visible:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "apps/browser-extension/src/components/ui/switch.tsx",
+        "line": 12,
+        "value": "focus-visible:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "apps/browser-extension/src/components/ui/textarea.tsx",
+        "line": 12,
+        "value": "focus-visible:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "apps/landing/components/ui/button.tsx",
+        "line": 13,
+        "value": "bg-[#171717], text-[#f8fafc], hover:bg-[#171717]/90",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "apps/web/components/ui/badge.tsx",
+        "line": 7,
+        "value": "focus-visible:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 96,
+    "critical": 0,
+    "warning": 15,
+    "info": 81
+  },
+  "driftByType": {
+    "hardcoded-value": 96
+  },
+  "topColors": [
+    {
+      "value": "#fde047",
+      "count": 4
+    },
+    {
+      "value": "#a3a3a3",
+      "count": 4
+    },
+    {
+      "value": "#ececec",
+      "count": 4
+    },
+    {
+      "value": "#171717",
+      "count": 3
+    },
+    {
+      "value": "#2a2a2a",
+      "count": 3
+    },
+    {
+      "value": "#404040",
+      "count": 3
+    },
+    {
+      "value": "#f1f3f5",
+      "count": 3
+    },
+    {
+      "value": "#34c759",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "18px",
+      "count": 4
+    },
+    {
+      "value": "7px",
+      "count": 4
+    },
+    {
+      "value": "9px",
+      "count": 4
+    },
+    {
+      "value": "1.5rem",
+      "count": 4
+    },
+    {
+      "value": "11px",
+      "count": 3
+    },
+    {
+      "value": "72px",
+      "count": 2
+    },
+    {
+      "value": "0.5rem",
+      "count": 2
+    },
+    {
+      "value": "0.25rem",
+      "count": 2
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "docs/src/css/custom.css",
+      "count": 73
+    },
+    {
+      "file": "apps/landing/src/Pricing.tsx",
+      "count": 37
+    },
+    {
+      "file": "apps/landing/src/components/showcase/SearchCardMockup.tsx",
+      "count": 23
+    },
+    {
+      "file": "apps/landing/src/components/FeatureShowcase.tsx",
+      "count": 18
+    },
+    {
+      "file": "apps/landing/src/components/LlmReady.tsx",
+      "count": 15
+    },
+    {
+      "file": "apps/web/components/wrapped/WrappedContent.tsx",
+      "count": 15
+    },
+    {
+      "file": "apps/landing/src/components/TerminalCard.tsx",
+      "count": 10
+    },
+    {
+      "file": "apps/landing/src/components/showcase/RuleCardMockup.tsx",
+      "count": 10
+    }
+  ],
+  "samples": [
+    {
+      "component": "TestConnection",
+      "location": "apps/mobile/app/test-connection.tsx:17",
+      "entries": [
+        "color: #34c759 (line 118)"
+      ]
+    },
+    {
+      "component": "CustomHeadersModal",
+      "location": "apps/mobile/components/CustomHeadersModal.tsx:19",
+      "entries": [
+        "color: #ef4444 (line 148)"
+      ]
+    },
+    {
+      "component": "UsageStatsScreen",
+      "location": "apps/mobile/components/settings/UsageStatsScreen.tsx:523",
+      "entries": [
+        "color: #34C759 (line 682)",
+        "color: #AF52DE (line 689)"
+      ]
+    },
+    {
+      "component": "packages/shared-react/components/ui/button.tsx",
+      "location": "packages/shared-react/components/ui/button.tsx:8",
+      "entries": [
+        "focus-visible:ring-[3px] (line 8)"
+      ]
+    },
+    {
+      "component": "packages/shared-react/components/ui/textarea.tsx",
+      "location": "packages/shared-react/components/ui/textarea.tsx:11",
+      "entries": [
+        "focus-visible:ring-[3px] (line 11)"
+      ]
+    },
+    {
+      "component": "apps/browser-extension/src/OptionsPage.tsx",
+      "location": "apps/browser-extension/src/OptionsPage.tsx:172",
+      "entries": [
+        "text-[10px] (line 172)"
+      ]
+    },
+    {
+      "component": "apps/landing/src/Pricing.tsx",
+      "location": "apps/landing/src/Pricing.tsx:153",
+      "entries": [
+        "bg-[#171717] (line 153)",
+        "text-[#fde047] (line 155)",
+        "text-[#a3a3a3] (line 161)"
+      ]
+    },
+    {
+      "component": "apps/landing/src/Pricing.tsx",
+      "location": "apps/landing/src/Pricing.tsx:119",
+      "entries": [
+        "gap-[13px] (line 119)",
+        "lg:gap-[72px] (line 153)",
+        "gap-[18px] (line 154)"
+      ]
+    },
+    {
+      "component": "apps/landing/src/Pricing.tsx",
+      "location": "apps/landing/src/Pricing.tsx:37",
+      "entries": [
+        "rounded-[10px] (line 37)"
+      ]
+    },
+    {
+      "component": "apps/landing/src/Pricing.tsx",
+      "location": "apps/landing/src/Pricing.tsx:27",
+      "entries": [
+        "tracking-[0.14em] (line 27)",
+        "sm:text-[52px] (line 30)",
+        "leading-[1.1] (line 30)"
+      ]
+    },
+    {
+      "component": "apps/landing/src/Pricing.tsx",
+      "location": "apps/landing/src/Pricing.tsx:43",
+      "entries": [
+        "shadow-[0_1px_2px_rgba(15,23,42,0.08)] (line 43)",
+        "shadow-[0_1px_2px_rgba(15,23,42,0.08)] (line 54)",
+        "shadow-[0_1px_2px_rgba(15,23,42,0.04),0_24px_48px_-12px_rgba(15,23,42,0.18),0_16px_40px_-12px_rgba(15,23,42,0.12)] (line 89)"
+      ]
+    },
+    {
+      "component": "apps/landing/src/components/ClosingCta.tsx",
+      "location": "apps/landing/src/components/ClosingCta.tsx:12",
+      "entries": [
+        "sm:text-[44px] (line 12)",
+        "sm:leading-[1.15] (line 12)",
+        "leading-[1.6] (line 18)"
+      ]
+    }
+  ],
+  "scanSeconds": 21
+}

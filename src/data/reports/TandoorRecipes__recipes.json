@@ -1,0 +1,303 @@
+{
+  "repo": "TandoorRecipes/recipes",
+  "owner": "TandoorRecipes",
+  "name": "recipes",
+  "description": "Application for managing recipes, planning meals, building shopping lists and much much more!",
+  "stars": 8728,
+  "homepage": "https://docs.tandoor.dev",
+  "language": "HTML",
+  "defaultBranch": "develop",
+  "commit": "cbb96e151fe0c57c16a4456fe1bd04230b1c1e5c",
+  "generatedAt": "2026-11-10T00:23:31.508Z",
+  "cliVersion": "0.8.20",
+  "score": null,
+  "tier": "N/A",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 0,
+      "max": 20
+    },
+    "consistency": {
+      "score": 0,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 0,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 0,
+    "tokenCount": 349,
+    "hardcodedValueCount": 10,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 10,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 75,
+    "topHardcodedColor": {
+      "value": "rgb(255 255 255)",
+      "count": 1
+    },
+    "worstFile": {
+      "path": "vue3/src/apps/tandoor/Tandoor.vue",
+      "issueCount": 1
+    },
+    "detectedFrameworkNames": []
+  },
+  "suggestions": [
+    "Only 0 UI components detected, too few to score. If this repo has more, Buoy may not recognise its framework yet."
+  ],
+  "pathTo100": null,
+  "noted": {
+    "count": 75,
+    "byKind": {
+      "explained": 74,
+      "optical-nudge": 1
+    },
+    "samples": [
+      {
+        "file": "cookbook/static/custom/css/markdown_blockquote.css",
+        "line": 3,
+        "value": "#f9f9f9",
+        "kind": "explained",
+        "reason": "css classes needed to render markdown blockquotes"
+      },
+      {
+        "file": "vue3/src/components/display/Instructions.vue",
+        "line": 59,
+        "value": "rgb(200,200,200,0.2)",
+        "kind": "explained",
+        "reason": "css classes needed to render markdown blockquotes"
+      },
+      {
+        "file": "vue3/src/components/inputs/StepMarkdownEditor.vue",
+        "line": 128,
+        "value": "octicons-link",
+        "kind": "explained",
+        "reason": "# load this locally/scoped instead of with the editor to prevent the styles from messing with the other pages as they a…"
+      },
+      {
+        "file": "vue3/src/components/inputs/StepMarkdownEditor.vue",
+        "line": 128,
+        "value": "1.5",
+        "kind": "explained",
+        "reason": "# load this locally/scoped instead of with the editor to prevent the styles from messing with the other pages as they a…"
+      },
+      {
+        "file": "vue3/src/components/inputs/StepMarkdownEditor.vue",
+        "line": 128,
+        "value": "#24292e",
+        "kind": "explained",
+        "reason": "# load this locally/scoped instead of with the editor to prevent the styles from messing with the other pages as they a…"
+      },
+      {
+        "file": "vue3/src/components/inputs/StepMarkdownEditor.vue",
+        "line": 128,
+        "value": "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\"",
+        "kind": "explained",
+        "reason": "# load this locally/scoped instead of with the editor to prevent the styles from messing with the other pages as they a…"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 10,
+    "critical": 0,
+    "warning": 10,
+    "info": 0
+  },
+  "driftByType": {
+    "hardcoded-value": 10
+  },
+  "topColors": [
+    {
+      "value": "#fff",
+      "count": 9
+    },
+    {
+      "value": "#e0e0e0",
+      "count": 9
+    },
+    {
+      "value": "#ccc",
+      "count": 7
+    },
+    {
+      "value": "#b98766",
+      "count": 7
+    },
+    {
+      "value": "#555",
+      "count": 7
+    },
+    {
+      "value": "#212121",
+      "count": 6
+    },
+    {
+      "value": "#303030",
+      "count": 5
+    },
+    {
+      "value": "rgb(0 0 0)",
+      "count": 3
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "8px",
+      "count": 2
+    },
+    {
+      "value": "5px",
+      "count": 1
+    },
+    {
+      "value": "0.25rem",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "vue3/src/apps/tandoor/Tandoor.vue",
+      "count": 62
+    },
+    {
+      "file": "vue3/src/components/display/MealPlanView.vue",
+      "count": 25
+    },
+    {
+      "file": "cookbook/static/pdfjs/web/debugger.css",
+      "count": 18
+    },
+    {
+      "file": "vue3/src/components/display/Instructions.vue",
+      "count": 4
+    },
+    {
+      "file": "cookbook/static/custom/css/markdown_blockquote.css",
+      "count": 3
+    },
+    {
+      "file": "vue3/src/components/inputs/StepMarkdownEditor.vue",
+      "count": 3
+    },
+    {
+      "file": "vue3/src/components/model_editors/MealPlanEditor.vue",
+      "count": 3
+    },
+    {
+      "file": "vue3/src/components/dialogs/AutoPlanDialog.vue",
+      "count": 2
+    }
+  ],
+  "samples": [
+    {
+      "component": "cookbook/static/custom/css/markdown_blockquote.css",
+      "location": "cookbook/static/custom/css/markdown_blockquote.css:4",
+      "entries": [
+        "colour: #ccc (line 4)",
+        "colour: #ccc (line 11)",
+        "font size: 4em (line 13)"
+      ]
+    },
+    {
+      "component": "cookbook/static/pdfjs/web/debugger.css",
+      "location": "cookbook/static/pdfjs/web/debugger.css:25",
+      "entries": [
+        "colour: rgb(255 255 255) (line 25)",
+        "colour: rgb(102 102 102) (line 26)",
+        "font size: 10px (line 31)"
+      ]
+    },
+    {
+      "component": "vue3/src/apps/tandoor/Tandoor.vue",
+      "location": "vue3/src/apps/tandoor/Tandoor.vue:221",
+      "entries": [
+        "colour: #b98766 (line 221)",
+        "colour: #fff (line 227)",
+        "colour: #303030 (line 243)"
+      ]
+    },
+    {
+      "component": "vue3/src/components/dialogs/AutoPlanDialog.vue",
+      "location": "vue3/src/components/dialogs/AutoPlanDialog.vue:130",
+      "entries": [
+        "spacing: 8px (line 130)",
+        "colour: rgba(0, 0, 0, 0.12) (line 138)"
+      ]
+    },
+    {
+      "component": "vue3/src/components/display/Instructions.vue",
+      "location": "vue3/src/components/display/Instructions.vue:60",
+      "entries": [
+        "colour: #ccc (line 60)",
+        "colour: #ccc (line 67)",
+        "font size: 4em (line 69)"
+      ]
+    },
+    {
+      "component": "vue3/src/components/display/MealPlanView.vue",
+      "location": "vue3/src/components/display/MealPlanView.vue:210",
+      "entries": [
+        "radius: 3px (line 210)",
+        "shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) (line 215)",
+        "shadow: inset 0 0 0.2em 0.2em rgb(221, 191, 134) (line 219)"
+      ]
+    },
+    {
+      "component": "vue3/src/components/inputs/ModelSelect.vue",
+      "location": "vue3/src/components/inputs/ModelSelect.vue:189",
+      "entries": [
+        "colour: rgba(50, 50, 50, 0.8) (line 189)",
+        "colour: #b98766 (line 208)"
+      ]
+    },
+    {
+      "component": "vue3/src/components/inputs/ShoppingListEntryInput.vue",
+      "location": "vue3/src/components/inputs/ShoppingListEntryInput.vue:143",
+      "entries": [
+        "colour: rgba(50, 50, 50, 0.8) (line 143)",
+        "colour: #b98766 (line 162)"
+      ]
+    },
+    {
+      "component": "vue3/src/components/inputs/StepMarkdownEditor.vue",
+      "location": "vue3/src/components/inputs/StepMarkdownEditor.vue:134",
+      "entries": [
+        "colour: #ccc (line 134)",
+        "colour: #ccc (line 141)",
+        "font size: 4em (line 143)"
+      ]
+    },
+    {
+      "component": "vue3/src/components/model_editors/MealPlanEditor.vue",
+      "location": "vue3/src/components/model_editors/MealPlanEditor.vue:314",
+      "entries": [
+        "colour: rgba(0, 0, 0, 0.04) (line 314)",
+        "radius: 4px (line 324)",
+        "radius: 4px (line 327)"
+      ]
+    }
+  ],
+  "scanSeconds": 5
+}

@@ -1,0 +1,237 @@
+{
+  "repo": "coollabsio/coolify",
+  "owner": "coollabsio",
+  "name": "coolify",
+  "description": "An open-source, self-hostable PaaS alternative to Vercel, Heroku & Netlify that lets you easily deploy static sites, databases, full-stack applications and 360+ one-click services on your own servers.",
+  "stars": 65855,
+  "homepage": "https://coolify.io",
+  "language": "PHP",
+  "defaultBranch": "main",
+  "commit": "30335d80866ff3391d899cf4ccb599b696f47b7e",
+  "generatedAt": "2026-11-10T00:26:09.695Z",
+  "cliVersion": "0.8.20",
+  "score": null,
+  "tier": "N/A",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 0,
+      "max": 20
+    },
+    "consistency": {
+      "score": 0,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 0,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 0,
+    "tokenCount": 182,
+    "hardcodedValueCount": 3,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 3,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 8,
+    "detectedFrameworkNames": [
+      "svelte",
+      "tailwind"
+    ]
+  },
+  "suggestions": [
+    "Only 0 UI components detected, too few to score. If this repo has more, Buoy may not recognise its framework yet."
+  ],
+  "pathTo100": null,
+  "noted": {
+    "count": 8,
+    "byKind": {
+      "optical-nudge": 7,
+      "explained": 1
+    },
+    "samples": [
+      {
+        "file": "resources/css/app.css",
+        "line": 6784,
+        "value": "rgb(163 145 255 / 0.10)",
+        "kind": "explained",
+        "reason": "Group dividers use the lavender sidebar edge: the neutral hairline looks olive on the purple-black sidebar."
+      },
+      {
+        "file": "resources/css/app.css",
+        "line": 2134,
+        "value": "0.125rem",
+        "kind": "optical-nudge",
+        "reason": "margin-top: 0.125rem is a 2-3px optical adjustment"
+      },
+      {
+        "file": "resources/css/app.css",
+        "line": 4587,
+        "value": "0.125rem",
+        "kind": "optical-nudge",
+        "reason": "padding-block: 0.125rem is a 2-3px optical adjustment"
+      },
+      {
+        "file": "resources/css/app.css",
+        "line": 5242,
+        "value": "0.125rem",
+        "kind": "optical-nudge",
+        "reason": "margin-top: 0.125rem is a 2-3px optical adjustment"
+      },
+      {
+        "file": "resources/css/app.css",
+        "line": 5615,
+        "value": "0.125rem",
+        "kind": "optical-nudge",
+        "reason": "padding: 0.125rem is a 2-3px optical adjustment"
+      },
+      {
+        "file": "resources/css/app.css",
+        "line": 5920,
+        "value": "0.125rem",
+        "kind": "optical-nudge",
+        "reason": "margin-bottom: 0.125rem is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 3,
+    "critical": 0,
+    "warning": 2,
+    "info": 1
+  },
+  "driftByType": {
+    "hardcoded-value": 3
+  },
+  "topColors": [
+    {
+      "value": "#171717",
+      "count": 17
+    },
+    {
+      "value": "#fff",
+      "count": 13
+    },
+    {
+      "value": "#000000",
+      "count": 8
+    },
+    {
+      "value": "#737373",
+      "count": 8
+    },
+    {
+      "value": "#52525b",
+      "count": 7
+    },
+    {
+      "value": "rgb(255 255 255 / 0.08)",
+      "count": 4
+    },
+    {
+      "value": "rgba(255, 255, 255, 0.06)",
+      "count": 4
+    },
+    {
+      "value": "rgba(0, 0, 0, 0.05)",
+      "count": 3
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "0.75rem",
+      "count": 23
+    },
+    {
+      "value": "0.5rem",
+      "count": 21
+    },
+    {
+      "value": "0.375rem",
+      "count": 20
+    },
+    {
+      "value": "0.25rem",
+      "count": 18
+    },
+    {
+      "value": "0.625rem",
+      "count": 13
+    },
+    {
+      "value": "1rem",
+      "count": 12
+    },
+    {
+      "value": "0.3125rem",
+      "count": 6
+    },
+    {
+      "value": "2.5rem",
+      "count": 4
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "resources/css/app.css",
+      "count": 527
+    },
+    {
+      "file": "resources/css/fonts.css",
+      "count": 7
+    },
+    {
+      "file": "resources/css/utilities.css",
+      "count": 2
+    }
+  ],
+  "samples": [
+    {
+      "component": "resources/css/app.css",
+      "location": "resources/css/app.css:341",
+      "entries": [
+        "spacing: 1.1rem (line 341)",
+        "spacing: 0.25rem (line 342)",
+        "font size: 16px (line 484)"
+      ]
+    },
+    {
+      "component": "resources/css/fonts.css",
+      "location": "resources/css/fonts.css:5",
+      "entries": [
+        "font weight: 100 (line 5)",
+        "font weight: 200 (line 13)",
+        "font weight: 300 (line 21)"
+      ]
+    },
+    {
+      "component": "resources/css/utilities.css",
+      "location": "resources/css/utilities.css:429",
+      "entries": [
+        "spacing: 0.625rem (line 429)",
+        "spacing: 0.625rem (line 430)"
+      ]
+    }
+  ],
+  "scanSeconds": 9
+}

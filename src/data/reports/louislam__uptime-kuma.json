@@ -1,0 +1,336 @@
+{
+  "repo": "louislam/uptime-kuma",
+  "owner": "louislam",
+  "name": "uptime-kuma",
+  "description": "A fancy self-hosted monitoring tool",
+  "stars": 93424,
+  "homepage": "https://uptime.kuma.pet",
+  "language": "JavaScript",
+  "defaultBranch": "master",
+  "commit": "b376409720f6df948707a3366398248d370bbf51",
+  "generatedAt": "2026-11-10T00:38:16.146Z",
+  "cliVersion": "0.8.20",
+  "score": 35,
+  "tier": "Bad",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 15,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 183,
+    "tokenCount": 0,
+    "hardcodedValueCount": 79,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 79,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 6,
+    "worstFile": {
+      "path": "src/components/settings/APIKeys.vue",
+      "issueCount": 2
+    },
+    "uniqueSpacingValues": 8,
+    "detectedFrameworkNames": [
+      "vue",
+      "bootstrap"
+    ]
+  },
+  "suggestions": [
+    "79 hardcoded values to extract. Focus on src/components/settings/APIKeys.vue (2 issues)"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 60,
+      "action": "Replace the hardcoded values in all 79 findings with tokens or scale steps"
+    },
+    {
+      "pillar": "tokenHealth",
+      "points": 5,
+      "action": "Add a token system: CSS custom properties, a tokens file or a Tailwind theme (a component library alone earns half)"
+    }
+  ],
+  "noted": {
+    "count": 6,
+    "byKind": {
+      "optical-nudge": 4,
+      "explained": 2
+    },
+    "samples": [
+      {
+        "file": "src/components/MonitorListItem.vue",
+        "line": 408,
+        "value": "9px 11px 6px 11px",
+        "kind": "explained",
+        "reason": "-4px on all due to border-width"
+      },
+      {
+        "file": "src/components/MonitorListItem.vue",
+        "line": 417,
+        "value": "12px 15px",
+        "kind": "explained",
+        "reason": "We don't want the padding change due to the border animated"
+      },
+      {
+        "file": "src/components/HeartbeatBar.vue",
+        "line": 893,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-top: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "src/components/MonitorListItem.vue",
+        "line": 387,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "margin-left: 3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "src/components/PublicGroupList.vue",
+        "line": 390,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "src/components/Tooltip.vue",
+        "line": 176,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-bottom: 2px is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 79,
+    "critical": 0,
+    "warning": 22,
+    "info": 57
+  },
+  "driftByType": {
+    "hardcoded-value": 79
+  },
+  "topColors": [
+    {
+      "value": "#ededed",
+      "count": 5
+    },
+    {
+      "value": "#fff",
+      "count": 4
+    },
+    {
+      "value": "#dc3545",
+      "count": 4
+    },
+    {
+      "value": "#d1d5db",
+      "count": 4
+    },
+    {
+      "value": "rgba(75, 85, 99, 0.3)",
+      "count": 4
+    },
+    {
+      "value": "#ced4da",
+      "count": 3
+    },
+    {
+      "value": "rgba(255, 255, 255, 0.1)",
+      "count": 3
+    },
+    {
+      "value": "rgba(0, 0, 0, 0.125)",
+      "count": 3
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "10px",
+      "count": 31
+    },
+    {
+      "value": "5px",
+      "count": 20
+    },
+    {
+      "value": "20px",
+      "count": 18
+    },
+    {
+      "value": "4px",
+      "count": 12
+    },
+    {
+      "value": "8px",
+      "count": 11
+    },
+    {
+      "value": "1.3rem",
+      "count": 10
+    },
+    {
+      "value": "40px",
+      "count": 6
+    },
+    {
+      "value": "6px",
+      "count": 4
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "src/assets/app.scss",
+      "count": 60
+    },
+    {
+      "file": "src/pages/StatusPage.vue",
+      "count": 32
+    },
+    {
+      "file": "src/components/MonitorList.vue",
+      "count": 31
+    },
+    {
+      "file": "src/pages/Details.vue",
+      "count": 25
+    },
+    {
+      "file": "src/layouts/Layout.vue",
+      "count": 24
+    },
+    {
+      "file": "src/components/Tooltip.vue",
+      "count": 23
+    },
+    {
+      "file": "src/components/settings/APIKeys.vue",
+      "count": 18
+    },
+    {
+      "file": "src/pages/ManageMaintenance.vue",
+      "count": 13
+    }
+  ],
+  "samples": [
+    {
+      "component": "Details",
+      "location": "src/pages/Details.vue:1",
+      "entries": [
+        "font-size: 30px (template)",
+        "padding: 10px (template)"
+      ]
+    },
+    {
+      "component": "ManageMaintenance",
+      "location": "src/pages/ManageMaintenance.vue:1",
+      "entries": [
+        "font-size: 13px (template)"
+      ]
+    },
+    {
+      "component": "Setup",
+      "location": "src/pages/Setup.vue:1",
+      "entries": [
+        "font-size: 28px (template)",
+        "margin-top: 5px (template)"
+      ]
+    },
+    {
+      "component": "SetupDatabase",
+      "location": "src/pages/SetupDatabase.vue:1",
+      "entries": [
+        "font-size: 28px (template)",
+        "margin-top: 5px (template)"
+      ]
+    },
+    {
+      "component": "46elks",
+      "location": "src/components/notifications/46elks.vue:1",
+      "entries": [
+        "margin-top: 8px (template)"
+      ]
+    },
+    {
+      "component": "AlertNow",
+      "location": "src/components/notifications/AlertNow.vue:1",
+      "entries": [
+        "margin-top: 8px (template)"
+      ]
+    },
+    {
+      "component": "Bale",
+      "location": "src/components/notifications/Bale.vue:1",
+      "entries": [
+        "margin-top: 8px (template)"
+      ]
+    },
+    {
+      "component": "Brevo",
+      "location": "src/components/notifications/Brevo.vue:1",
+      "entries": [
+        "margin-top: 8px (template)"
+      ]
+    },
+    {
+      "component": "Cellsynt",
+      "location": "src/components/notifications/Cellsynt.vue:1",
+      "entries": [
+        "margin-top: 8px (template)"
+      ]
+    },
+    {
+      "component": "GoogleChat",
+      "location": "src/components/notifications/GoogleChat.vue:1",
+      "entries": [
+        "margin-top: 8px (template)"
+      ]
+    },
+    {
+      "component": "GoogleSheets",
+      "location": "src/components/notifications/GoogleSheets.vue:1",
+      "entries": [
+        "margin-bottom: 12px (template)",
+        "padding-left: 20px (template)",
+        "font-size: 12px (template)"
+      ]
+    },
+    {
+      "component": "JiraServiceManagement",
+      "location": "src/components/notifications/JiraServiceManagement.vue:1",
+      "entries": [
+        "margin-top: 8px (template)"
+      ]
+    }
+  ],
+  "scanSeconds": 5
+}

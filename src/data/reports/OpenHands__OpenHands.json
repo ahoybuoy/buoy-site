@@ -1,0 +1,281 @@
+{
+  "repo": "OpenHands/OpenHands",
+  "owner": "OpenHands",
+  "name": "OpenHands",
+  "description": "🙌 OpenHands: AI-Driven Development",
+  "stars": 93057,
+  "homepage": "https://openhands.dev",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "aceb6b1f3ad3c5593c257a2ceed332858d6e5a5a",
+  "generatedAt": "2026-11-10T00:21:29.224Z",
+  "cliVersion": "0.8.20",
+  "score": 93,
+  "tier": "Great",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 53,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 815,
+    "tokenCount": 333,
+    "hardcodedValueCount": 26,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 28,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 2,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 0,
+    "topHardcodedColor": {
+      "value": "#597FF4",
+      "count": 4
+    },
+    "worstFile": {
+      "path": "src/components/conversation-events/chat/event-message-components/corrective-nudge-message.tsx",
+      "issueCount": 1
+    },
+    "detectedFrameworkNames": [
+      "react",
+      "tailwind"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 26 hardcoded values left to tokenize"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 7,
+      "action": "Replace the hardcoded values in 24 of the 26 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+    }
+  ],
+  "noted": {
+    "count": 0,
+    "byKind": {},
+    "samples": []
+  },
+  "driftSummary": {
+    "total": 28,
+    "critical": 0,
+    "warning": 19,
+    "info": 9
+  },
+  "driftByType": {
+    "hardcoded-value": 26,
+    "repeated-pattern": 2
+  },
+  "topColors": [
+    {
+      "value": "#717888",
+      "count": 8
+    },
+    {
+      "value": "#3B82F6",
+      "count": 5
+    },
+    {
+      "value": "#597FF4",
+      "count": 4
+    },
+    {
+      "value": "rgba(71,74,84,0.50)",
+      "count": 3
+    },
+    {
+      "value": "#1E3A5F",
+      "count": 3
+    },
+    {
+      "value": "#ef4444",
+      "count": 2
+    },
+    {
+      "value": "#3D4046",
+      "count": 2
+    },
+    {
+      "value": "#4A67BD",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "8px",
+      "count": 2
+    },
+    {
+      "value": "5px",
+      "count": 1
+    },
+    {
+      "value": "3.5px",
+      "count": 1
+    },
+    {
+      "value": "16px",
+      "count": 1
+    },
+    {
+      "value": "0.5rem",
+      "count": 1
+    },
+    {
+      "value": "2rem",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "src/tailwind.css",
+      "count": 21
+    },
+    {
+      "file": "src/components/features/setup-guide/tour/tour-theme.css",
+      "count": 15
+    },
+    {
+      "file": "src/routes/agent-settings.tsx",
+      "count": 9
+    },
+    {
+      "file": "src/components/features/settings/agent-canvas-update-card.tsx",
+      "count": 5
+    },
+    {
+      "file": "src/components/shared/buttons/circle-plus-check-toggle.tsx",
+      "count": 4
+    },
+    {
+      "file": "src/components/features/chat/change-agent-button.tsx",
+      "count": 3
+    },
+    {
+      "file": "src/components/features/chat/components/chat-input-field.tsx",
+      "count": 3
+    },
+    {
+      "file": "src/components/features/settings/agent-canvas-version-modal.tsx",
+      "count": 3
+    }
+  ],
+  "samples": [
+    {
+      "component": "src/components/conversation-events/chat/event-message-components/corrective-nudge-message.tsx",
+      "location": "src/components/conversation-events/chat/event-message-components/corrective-nudge-message.tsx:19",
+      "entries": [
+        "mt-[5px] (line 19)"
+      ]
+    },
+    {
+      "component": "src/components/features/automations/setup/automation-setup-panel.tsx",
+      "location": "src/components/features/automations/setup/automation-setup-panel.tsx:272",
+      "entries": [
+        "shadow-[0_0_24px_rgba(213,199,107,0.24)] (line 272)"
+      ]
+    },
+    {
+      "component": "src/components/features/chat/change-agent-button.tsx",
+      "location": "src/components/features/chat/change-agent-button.tsx:172",
+      "entries": [
+        "border-[#597FF4] (line 172)",
+        "bg-[#4A67BD] (line 172)",
+        "hover:bg-[#597FF4] (line 178)"
+      ]
+    },
+    {
+      "component": "src/components/features/chat/chat-message.tsx",
+      "location": "src/components/features/chat/chat-message.tsx:173",
+      "entries": [
+        "border-[#597ff4] (line 173)"
+      ]
+    },
+    {
+      "component": "src/components/features/chat/components/chat-input-container.tsx",
+      "location": "src/components/features/chat/components/chat-input-container.tsx:74",
+      "entries": [
+        "border-[#597FF4] (line 74)"
+      ]
+    },
+    {
+      "component": "src/components/features/chat/components/chat-input-field.tsx",
+      "location": "src/components/features/chat/components/chat-input-field.tsx:57",
+      "entries": [
+        "text-[16px] (line 57)",
+        "leading-[0] (line 57)",
+        "text-[16px] (line 62)"
+      ]
+    },
+    {
+      "component": "src/components/features/chat/git-control-bar-branch-button.tsx",
+      "location": "src/components/features/chat/git-control-bar-branch-button.tsx:52",
+      "entries": [
+        "dark:border-[rgba(71,74,84,0.50)] (line 52)"
+      ]
+    },
+    {
+      "component": "src/components/features/chat/git-control-bar-repo-button.tsx",
+      "location": "src/components/features/chat/git-control-bar-repo-button.tsx:85",
+      "entries": [
+        "dark:border-[rgba(71,74,84,0.50)] (line 85)"
+      ]
+    },
+    {
+      "component": "src/components/features/chat/plan-preview.tsx",
+      "location": "src/components/features/chat/plan-preview.tsx:70",
+      "entries": [
+        "border-[#597FF4] (line 70)",
+        "text-[#4a67bd] (line 108)"
+      ]
+    },
+    {
+      "component": "src/components/features/chat/workspace-mode-selector.tsx",
+      "location": "src/components/features/chat/workspace-mode-selector.tsx:76",
+      "entries": [
+        "dark:border-[rgba(71,74,84,0.50)] (line 76)"
+      ]
+    },
+    {
+      "component": "src/components/features/conversation-panel/cloud-new-conversation-menu.tsx",
+      "location": "src/components/features/conversation-panel/cloud-new-conversation-menu.tsx:333",
+      "entries": [
+        "dark:text-[#F87171] (line 333)"
+      ]
+    },
+    {
+      "component": "src/components/features/conversation-panel/exit-conversation-modal.tsx",
+      "location": "src/components/features/conversation-panel/exit-conversation-modal.tsx:34",
+      "entries": [
+        "bg-[#C63143] (line 34)"
+      ]
+    }
+  ],
+  "scanSeconds": 19
+}

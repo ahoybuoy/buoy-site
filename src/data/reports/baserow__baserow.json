@@ -1,0 +1,338 @@
+{
+  "repo": "baserow/baserow",
+  "owner": "baserow",
+  "name": "baserow",
+  "description": "Build databases, automations, apps & agents with AI — no code.  Open source platform available on cloud and self-hosted. GDPR, HIPAA, SOC 2 compliant. Best Airtable alternative.",
+  "stars": 6301,
+  "homepage": "https://baserow.io",
+  "language": "Python",
+  "defaultBranch": "develop",
+  "commit": "68f8fed4c2cd40fa26ad437c7091863ecfbaa525",
+  "generatedAt": "2026-11-10T00:24:47.529Z",
+  "cliVersion": "0.8.20",
+  "score": null,
+  "tier": "N/A",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 0,
+      "max": 20
+    },
+    "consistency": {
+      "score": 0,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 0,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 0,
+    "tokenCount": 56,
+    "hardcodedValueCount": 383,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 383,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 62,
+    "topHardcodedColor": {
+      "value": "#fff",
+      "count": 1
+    },
+    "worstFile": {
+      "path": "web-frontend/modules/core/pages/debug.vue",
+      "issueCount": 1
+    },
+    "detectedFrameworkNames": []
+  },
+  "suggestions": [
+    "Only 0 UI components detected, too few to score. If this repo has more, Buoy may not recognise its framework yet."
+  ],
+  "pathTo100": null,
+  "noted": {
+    "count": 62,
+    "byKind": {
+      "optical-nudge": 55,
+      "explained": 7
+    },
+    "samples": [
+      {
+        "file": "premium/web-frontend/modules/baserow_premium/assets/scss/components/views/kanban.scss",
+        "line": 176,
+        "value": "transform 0.1s ease-out 0s",
+        "kind": "explained",
+        "reason": "Must be kept in sync with the timeout of KanbanViewStack.vue::moved"
+      },
+      {
+        "file": "web-frontend/modules/core/assets/scss/components/agent_application.scss",
+        "line": 390,
+        "value": "0 10px 0 36px",
+        "kind": "explained",
+        "reason": "Align the divider with the text, leaving the leading icon outside it."
+      },
+      {
+        "file": "web-frontend/modules/core/assets/scss/components/builder/elements/ab_components/ab_datetime_picker.scss",
+        "line": 93,
+        "value": "$datepicker-cell-font-size",
+        "kind": "explained",
+        "reason": "Override vuejs3-datepicker default font size"
+      },
+      {
+        "file": "web-frontend/modules/core/assets/scss/components/builder/elements/forms/property_option_form.scss",
+        "line": 32,
+        "value": "0 auto",
+        "kind": "explained",
+        "reason": "Align the checkbox to the center of the cell."
+      },
+      {
+        "file": "web-frontend/modules/core/assets/scss/components/builder/page_preview.scss",
+        "line": 35,
+        "value": "4",
+        "kind": "explained",
+        "reason": "Selected fixed stacks must stay above the normal selected sections."
+      },
+      {
+        "file": "web-frontend/modules/core/assets/scss/components/node_help_tooltip.scss",
+        "line": 60,
+        "value": "0 -6px",
+        "kind": "explained",
+        "reason": "Clickable examples carry their own padding so the hover background can bleed past the snippet. Offset the container by …"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 383,
+    "critical": 0,
+    "warning": 133,
+    "info": 250
+  },
+  "driftByType": {
+    "hardcoded-value": 383
+  },
+  "topColors": [
+    {
+      "value": "#d9dbde",
+      "count": 7
+    },
+    {
+      "value": "#fff",
+      "count": 6
+    },
+    {
+      "value": "#c2f0d3",
+      "count": 4
+    },
+    {
+      "value": "#6a6b70",
+      "count": 3
+    },
+    {
+      "value": "rgba(0, 0, 0, 0.1)",
+      "count": 3
+    },
+    {
+      "value": "#f5d3ce",
+      "count": 3
+    },
+    {
+      "value": "rgba(0, 0, 0, 0.2)",
+      "count": 2
+    },
+    {
+      "value": "#ededed",
+      "count": 2
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "8px",
+      "count": 204
+    },
+    {
+      "value": "12px",
+      "count": 154
+    },
+    {
+      "value": "16px",
+      "count": 138
+    },
+    {
+      "value": "10px",
+      "count": 134
+    },
+    {
+      "value": "20px",
+      "count": 129
+    },
+    {
+      "value": "4px",
+      "count": 115
+    },
+    {
+      "value": "6px",
+      "count": 98
+    },
+    {
+      "value": "24px",
+      "count": 72
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "web-frontend/modules/core/assets/scss/components/views/form.scss",
+      "count": 88
+    },
+    {
+      "file": "web-frontend/modules/core/assets/scss/components/agent_application.scss",
+      "count": 70
+    },
+    {
+      "file": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/assistant.scss",
+      "count": 66
+    },
+    {
+      "file": "web-frontend/modules/core/assets/scss/components/views/grid.scss",
+      "count": 60
+    },
+    {
+      "file": "web-frontend/modules/core/assets/scss/components/chat.scss",
+      "count": 55
+    },
+    {
+      "file": "web-frontend/modules/core/assets/scss/components/ai_provider_admin.scss",
+      "count": 47
+    },
+    {
+      "file": "web-frontend/modules/core/assets/scss/components/workspace_search.scss",
+      "count": 46
+    },
+    {
+      "file": "web-frontend/modules/core/assets/scss/components/sidebar.scss",
+      "count": 43
+    }
+  ],
+  "samples": [
+    {
+      "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/agents.scss",
+      "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/agents.scss:5",
+      "entries": [
+        "spacing: 8px (line 5)"
+      ]
+    },
+    {
+      "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/ai_onboarding.scss",
+      "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/ai_onboarding.scss:2",
+      "entries": [
+        "font size: 13px (line 2)",
+        "font weight: 500 (line 3)",
+        "spacing: 8px (line 5)"
+      ]
+    },
+    {
+      "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/assistant.scss",
+      "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/assistant.scss:19",
+      "entries": [
+        "spacing: 12px (line 19)",
+        "colour: rgba(0, 0, 0, 0.3) (line 33)",
+        "radius: 3px (line 34)"
+      ]
+    },
+    {
+      "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/assistant_onboarding.scss",
+      "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/assistant_onboarding.scss:2",
+      "entries": [
+        "spacing: 20px (line 2)",
+        "spacing: 10px (line 11)",
+        "font size: 20px (line 15)"
+      ]
+    },
+    {
+      "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/assistant_prompt.scss",
+      "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/assistant_prompt.scss:8",
+      "entries": [
+        "spacing: 24px (line 8)",
+        "spacing: 8px (line 19)",
+        "spacing: 16px (line 20)"
+      ]
+    },
+    {
+      "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/audit_log.scss",
+      "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/audit_log.scss:6",
+      "entries": [
+        "spacing: 12px (line 6)",
+        "spacing: 30px (line 26)",
+        "spacing: 20px (line 28)"
+      ]
+    },
+    {
+      "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/auth_form_element.scss",
+      "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/auth_form_element.scss:8",
+      "entries": [
+        "spacing: 1em (line 8)",
+        "spacing: 0.5em (line 16)",
+        "spacing: 16px (line 20)"
+      ]
+    },
+    {
+      "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/auth_provider_admin.scss",
+      "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/auth_provider_admin.scss:4",
+      "entries": [
+        "spacing: 8px (line 4)",
+        "spacing: 48px (line 10)",
+        "spacing: 32px (line 11)"
+      ]
+    },
+    {
+      "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/auth_provider_buttons.scss",
+      "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/auth_provider_buttons.scss:4",
+      "entries": [
+        "spacing: 16px (line 4)",
+        "spacing: 32px (line 8)",
+        "spacing: 16px (line 19)"
+      ]
+    },
+    {
+      "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/auth_provider_icon.scss",
+      "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/auth_provider_icon.scss:5",
+      "entries": [
+        "spacing: 8px (line 5)"
+      ]
+    },
+    {
+      "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/common_oidc_setting_form.scss",
+      "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/common_oidc_setting_form.scss:12",
+      "entries": [
+        "spacing: 8px (line 12)",
+        "spacing: 5px (line 15)"
+      ]
+    },
+    {
+      "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/common_saml_setting_form.scss",
+      "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/common_saml_setting_form.scss:12",
+      "entries": [
+        "spacing: 8px (line 12)",
+        "spacing: 5px (line 15)"
+      ]
+    }
+  ],
+  "scanSeconds": 22
+}

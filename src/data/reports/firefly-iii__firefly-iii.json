@@ -1,0 +1,135 @@
+{
+  "repo": "firefly-iii/firefly-iii",
+  "owner": "firefly-iii",
+  "name": "firefly-iii",
+  "description": "Firefly III: a personal finances manager",
+  "stars": 25189,
+  "homepage": "https://firefly-iii.org/",
+  "language": "PHP",
+  "defaultBranch": "main",
+  "commit": "d65e916130c91d8f13ca808ca088d225ddd9a939",
+  "generatedAt": "2026-11-10T00:29:54.185Z",
+  "cliVersion": "0.8.20",
+  "score": null,
+  "tier": "N/A",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 0,
+      "max": 20
+    },
+    "consistency": {
+      "score": 0,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 0,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 0,
+    "tokenCount": 0,
+    "hardcodedValueCount": 1,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 1,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 0,
+    "detectedFrameworkNames": []
+  },
+  "suggestions": [
+    "Only 0 UI components detected, too few to score. If this repo has more, Buoy may not recognise its framework yet."
+  ],
+  "pathTo100": null,
+  "noted": {
+    "count": 0,
+    "byKind": {},
+    "samples": []
+  },
+  "driftSummary": {
+    "total": 1,
+    "critical": 0,
+    "warning": 1,
+    "info": 0
+  },
+  "driftByType": {
+    "hardcoded-value": 1
+  },
+  "topColors": [
+    {
+      "value": "#aaa",
+      "count": 2
+    },
+    {
+      "value": "rgb(222, 226, 230)",
+      "count": 1
+    },
+    {
+      "value": "rgb(31 160 98)",
+      "count": 1
+    },
+    {
+      "value": "#993b1e",
+      "count": 1
+    },
+    {
+      "value": "#356114",
+      "count": 1
+    },
+    {
+      "value": "#065e6f",
+      "count": 1
+    },
+    {
+      "value": "#e69f89",
+      "count": 1
+    },
+    {
+      "value": "#6bc427",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "1em",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "resources/assets/v3/sass/app.scss",
+      "count": 15
+    }
+  ],
+  "samples": [
+    {
+      "component": "resources/assets/v3/sass/app.scss",
+      "location": "resources/assets/v3/sass/app.scss:56",
+      "entries": [
+        "colour: rgb(222, 226, 230) (line 56)",
+        "colour: rgb(31 160 98) (line 74)",
+        "colour: #993b1e (line 80)"
+      ]
+    }
+  ],
+  "scanSeconds": 5
+}

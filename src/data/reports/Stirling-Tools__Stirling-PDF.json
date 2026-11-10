@@ -1,0 +1,340 @@
+{
+  "repo": "Stirling-Tools/Stirling-PDF",
+  "owner": "Stirling-Tools",
+  "name": "Stirling-PDF",
+  "description": "#1 PDF Application on GitHub that lets you edit PDFs on any device anywhere",
+  "stars": 96156,
+  "homepage": "https://stirling.com",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "0b7d3a44821c047eebd34b6da0f48fe5913f67f5",
+  "generatedAt": "2026-11-10T00:23:14.281Z",
+  "cliVersion": "0.8.20",
+  "score": 40,
+  "tier": "OK",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 1678,
+    "tokenCount": 690,
+    "hardcodedValueCount": 551,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 551,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 8,
+    "vendoredDriftCount": 0,
+    "notedCount": 57,
+    "topHardcodedColor": {
+      "value": "#fff",
+      "count": 9
+    },
+    "worstFile": {
+      "path": "frontend/src/editor/core/components/filesPage/FileGrid.tsx",
+      "issueCount": 8
+    },
+    "uniqueSpacingValues": 55,
+    "detectedFrameworkNames": []
+  },
+  "suggestions": [
+    "551 hardcoded values to extract. Focus on frontend/src/editor/core/components/filesPage/FileGrid.tsx (8 issues)",
+    "55 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 60,
+      "action": "Replace the hardcoded values in 547 of the 551 findings with tokens or scale steps"
+    }
+  ],
+  "noted": {
+    "count": 57,
+    "byKind": {
+      "explained": 7,
+      "optical-nudge": 49,
+      "known-debt": 1
+    },
+    "samples": [
+      {
+        "file": "frontend/src/editor/core/components/viewer/EmbedPdfViewer.tsx",
+        "line": 2040,
+        "value": "0.5rem",
+        "kind": "explained",
+        "reason": "Gutter matching the workbench rails, so the bar reads as a floating card rather than one welded to the viewport edge."
+      },
+      {
+        "file": "frontend/src/editor/core/components/toast/ToastRenderer.css",
+        "line": 4,
+        "value": "10001",
+        "kind": "explained",
+        "reason": "Always on top - must match Z_INDEX_TOAST in zIndex.ts"
+      },
+      {
+        "file": "frontend/src/editor/core/components/tools/compare/compareView.css",
+        "line": 289,
+        "value": "color-mix(",
+        "kind": "known-debt",
+        "reason": "Bonus: temporarily override red/green to yellow during flash for clarity"
+      },
+      {
+        "file": "frontend/src/editor/core/components/tools/toolPicker/ToolPicker.css",
+        "line": 33,
+        "value": "1rem",
+        "kind": "explained",
+        "reason": "Align the text with tool labels to account for icon gutter"
+      },
+      {
+        "file": "frontend/src/editor/core/ui/Avatar.css",
+        "line": 13,
+        "value": "1 + centred tracking keeps initials optically centred at small sizes. */",
+        "kind": "explained",
+        "reason": "line-height:1 + centred tracking keeps initials optically centred at small sizes."
+      },
+      {
+        "file": "frontend/src/editor/core/components/tools/toolPicker/ToolSearch.tsx",
+        "line": 161,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "marginTop: 2px is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 551,
+    "critical": 0,
+    "warning": 240,
+    "info": 311
+  },
+  "driftByType": {
+    "hardcoded-value": 551
+  },
+  "topColors": [
+    {
+      "value": "#fff",
+      "count": 21
+    },
+    {
+      "value": "#ffffff",
+      "count": 11
+    },
+    {
+      "value": "rgba(255, 255, 255, 0.9)",
+      "count": 6
+    },
+    {
+      "value": "rgba(6, 114, 197, 0.82)",
+      "count": 6
+    },
+    {
+      "value": "#5f6368",
+      "count": 5
+    },
+    {
+      "value": "rgba(0, 0, 0, 0.5)",
+      "count": 3
+    },
+    {
+      "value": "#e0e0e0",
+      "count": 3
+    },
+    {
+      "value": "#f8f9fa",
+      "count": 3
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "0.5rem",
+      "count": 303
+    },
+    {
+      "value": "1rem",
+      "count": 270
+    },
+    {
+      "value": "0.75rem",
+      "count": 218
+    },
+    {
+      "value": "0.25rem",
+      "count": 129
+    },
+    {
+      "value": "8px",
+      "count": 92
+    },
+    {
+      "value": "0.375rem",
+      "count": 78
+    },
+    {
+      "value": "0.625rem",
+      "count": 75
+    },
+    {
+      "value": "0.875rem",
+      "count": 69
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "frontend/src/processor/proprietary/components/billing/billing.css",
+      "count": 236
+    },
+    {
+      "file": "frontend/src/processor/proprietary/views/Procurement.css",
+      "count": 169
+    },
+    {
+      "file": "frontend/src/editor/core/components/filesPage/FilesPage.css",
+      "count": 153
+    },
+    {
+      "file": "frontend/src/editor/core/components/docs/DeveloperDocs.css",
+      "count": 110
+    },
+    {
+      "file": "frontend/src/editor/core/components/shared/signing/signing.css",
+      "count": 105
+    },
+    {
+      "file": "frontend/src/processor/proprietary/views/Enterprise.css",
+      "count": 99
+    },
+    {
+      "file": "frontend/src/editor/proprietary/auth/ui/auth.css",
+      "count": 96
+    },
+    {
+      "file": "frontend/src/editor/proprietary/billing/billing-screen.css",
+      "count": 87
+    }
+  ],
+  "samples": [
+    {
+      "component": "HomePage",
+      "location": "frontend/src/editor/core/pages/HomePage.tsx:114",
+      "entries": [
+        "size: 1.5rem (line 623)"
+      ]
+    },
+    {
+      "component": "MobileScannerPage",
+      "location": "frontend/src/editor/core/pages/MobileScannerPage.tsx:139",
+      "entries": [
+        "background: #000 (line 1003)",
+        "backgroundColor: rgba(0, 0, 0, 0.6) (line 1019)"
+      ]
+    },
+    {
+      "component": "MobileScannerPage",
+      "location": "frontend/src/editor/core/pages/MobileScannerPage.tsx:139",
+      "entries": [
+        "gap: 1rem (line 803)",
+        "gap: 0.25rem (line 838)",
+        "padding: 2rem (line 840)"
+      ]
+    },
+    {
+      "component": "MobileSignPage",
+      "location": "frontend/src/editor/core/pages/MobileSignPage.tsx:84",
+      "entries": [
+        "size: 1rem (line 256)",
+        "fontSize: 2.5rem (line 456)"
+      ]
+    },
+    {
+      "component": "SwaggerUI",
+      "location": "frontend/src/editor/core/tools/SwaggerUI.tsx:6",
+      "entries": [
+        "padding: 2rem (line 14)"
+      ]
+    },
+    {
+      "component": "Landing",
+      "location": "frontend/src/editor/proprietary/routes/Landing.tsx:21",
+      "entries": [
+        "padding: 1.5rem (line 106)",
+        "marginTop: 1rem (line 107)"
+      ]
+    },
+    {
+      "component": "Login",
+      "location": "frontend/src/editor/proprietary/routes/Login.tsx:38",
+      "entries": [
+        "padding: 1.5rem (line 415)",
+        "marginTop: 1rem (line 416)",
+        "padding: 1rem (line 458)"
+      ]
+    },
+    {
+      "component": "ConnectApproveView",
+      "location": "frontend/src/editor/saas/routes/ConnectApproveView.tsx:81",
+      "entries": [
+        "size: 1rem (line 226)"
+      ]
+    },
+    {
+      "component": "Login",
+      "location": "frontend/src/editor/saas/routes/Login.tsx:35",
+      "entries": [
+        "gap: 0.75rem (line 319)",
+        "marginBottom: 2.5rem (line 320)",
+        "marginRight: 0.5rem (line 342)"
+      ]
+    },
+    {
+      "component": "Signup",
+      "location": "frontend/src/editor/saas/routes/Signup.tsx:28",
+      "entries": [
+        "marginTop: 2.5rem (line 236)",
+        "paddingBottom: 0.5rem (line 236)",
+        "paddingTop: 1rem (line 259)"
+      ]
+    },
+    {
+      "component": "FullScreenMessage",
+      "location": "frontend/src/processor/proprietary/components/AuthGate.tsx:13",
+      "entries": [
+        "gap: 0.75rem (line 21)"
+      ]
+    },
+    {
+      "component": "DownloadEditorModal",
+      "location": "frontend/src/processor/proprietary/components/DownloadEditorModal.tsx:64",
+      "entries": [
+        "gap: 0.5rem (line 261)"
+      ]
+    }
+  ],
+  "scanSeconds": 40
+}

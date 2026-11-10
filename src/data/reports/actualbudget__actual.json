@@ -1,0 +1,316 @@
+{
+  "repo": "actualbudget/actual",
+  "owner": "actualbudget",
+  "name": "actual",
+  "description": "A local-first personal finance app",
+  "stars": 30125,
+  "homepage": "https://actualbudget.org",
+  "language": "TypeScript",
+  "defaultBranch": "master",
+  "commit": "5ffb72ad659cca65aa056f4a3239976464bf4868",
+  "generatedAt": "2026-11-10T00:23:52.184Z",
+  "cliVersion": "0.8.20",
+  "score": 91,
+  "tier": "Great",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 51,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 1346,
+    "tokenCount": 26,
+    "hardcodedValueCount": 59,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 59,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 3,
+    "topHardcodedColor": {
+      "value": "rgba(0, 0, 0, .05)",
+      "count": 1
+    },
+    "worstFile": {
+      "path": "packages/component-library/src/ColorPicker.tsx",
+      "issueCount": 2
+    },
+    "uniqueSpacingValues": 26,
+    "detectedFrameworkNames": [
+      "react"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 59 hardcoded values left to tokenize. packages/component-library/src/ColorPicker.tsx has the most (2)",
+    "26 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 9,
+      "action": "Replace the hardcoded values in 56 of the 59 findings with tokens or scale steps"
+    }
+  ],
+  "noted": {
+    "count": 3,
+    "byKind": {
+      "optical-nudge": 3
+    },
+    "samples": [
+      {
+        "file": "packages/desktop-client/src/components/autocomplete/Autocomplete.tsx",
+        "line": 695,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/docs/src/components/Button.module.css",
+        "line": 9,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "margin: 3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/docs/src/css/custom.css",
+        "line": 86,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "padding-bottom: 3px is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 59,
+    "critical": 0,
+    "warning": 8,
+    "info": 51
+  },
+  "driftByType": {
+    "hardcoded-value": 59
+  },
+  "topColors": [
+    {
+      "value": "#ffffff",
+      "count": 2
+    },
+    {
+      "value": "rgba(0, 0, 0, .05)",
+      "count": 1
+    },
+    {
+      "value": "#fff",
+      "count": 1
+    },
+    {
+      "value": "#000",
+      "count": 1
+    },
+    {
+      "value": "#e0e0e0",
+      "count": 1
+    },
+    {
+      "value": "rgba(0, 0, 0, 0.15)",
+      "count": 1
+    },
+    {
+      "value": "#8719e0",
+      "count": 1
+    },
+    {
+      "value": "rgba(0, 0, 0, 0.1)",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "15px",
+      "count": 9
+    },
+    {
+      "value": "10px",
+      "count": 7
+    },
+    {
+      "value": "0.5rem",
+      "count": 7
+    },
+    {
+      "value": "1rem",
+      "count": 6
+    },
+    {
+      "value": "5px",
+      "count": 6
+    },
+    {
+      "value": "8px",
+      "count": 4
+    },
+    {
+      "value": "6px",
+      "count": 4
+    },
+    {
+      "value": "12px",
+      "count": 4
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "packages/docs/src/pages/index.module.css",
+      "count": 29
+    },
+    {
+      "file": "packages/docs/src/css/custom.css",
+      "count": 9
+    },
+    {
+      "file": "packages/docs/src/components/Button.module.css",
+      "count": 5
+    },
+    {
+      "file": "packages/desktop-client/src/components/modals/manager/FilesSettingsModal.tsx",
+      "count": 4
+    },
+    {
+      "file": "packages/component-library/src/ColorPicker.tsx",
+      "count": 3
+    },
+    {
+      "file": "packages/docs/src/components/DownloadCard.tsx",
+      "count": 3
+    },
+    {
+      "file": "packages/docs/src/pages/index.jsx",
+      "count": 3
+    },
+    {
+      "file": "packages/desktop-client/src/components/modals/SelectLinkedAccountsModal.tsx",
+      "count": 3
+    }
+  ],
+  "samples": [
+    {
+      "component": "ColorSwatchPicker",
+      "location": "packages/component-library/src/ColorPicker.tsx:85",
+      "entries": [
+        "gap: 8px (line 133)"
+      ]
+    },
+    {
+      "component": "ColorPicker",
+      "location": "packages/component-library/src/ColorPicker.tsx:152",
+      "entries": [
+        "padding: 15px (line 177)",
+        "gap: 8px (line 180)"
+      ]
+    },
+    {
+      "component": "ProtectedRoute",
+      "location": "packages/desktop-client/src/auth/ProtectedRoute.tsx:20",
+      "entries": [
+        "margin: 50px (line 61)"
+      ]
+    },
+    {
+      "component": "Notification",
+      "location": "packages/desktop-client/src/components/Notifications.tsx:91",
+      "entries": [
+        "backgroundColor: rgba(0, 0, 0, .05) (line 336)"
+      ]
+    },
+    {
+      "component": "SharedArrayBufferWarning",
+      "location": "packages/desktop-client/src/components/SharedArrayBufferWarning.tsx:13",
+      "entries": [
+        "marginTop: 10px (line 36)",
+        "marginLeft: 6px (line 54)"
+      ]
+    },
+    {
+      "component": "DownloadCard",
+      "location": "packages/docs/src/components/DownloadCard.tsx:14",
+      "entries": [
+        "padding: 1.5rem (line 19)",
+        "marginBottom: 1rem (line 30)",
+        "marginTop: 0.5rem (line 40)"
+      ]
+    },
+    {
+      "component": "Hello",
+      "location": "packages/docs/src/pages/index.jsx:10",
+      "entries": [
+        "gap: 1em (line 38)",
+        "fontSize: 0.75em (line 45)",
+        "marginTop: 12em (line 264)"
+      ]
+    },
+    {
+      "component": "AccountSyncCheck",
+      "location": "packages/desktop-client/src/components/accounts/AccountSyncCheck.tsx:106",
+      "entries": [
+        "marginBottom: 1.15em (line 208)",
+        "marginBottom: 1.25em (line 212)"
+      ]
+    },
+    {
+      "component": "AccountSyncSidebar",
+      "location": "packages/desktop-client/src/components/accounts/Header.tsx:596",
+      "entries": [
+        "marginRight: 4px (line 608)"
+      ]
+    },
+    {
+      "component": "ReconcileMenu",
+      "location": "packages/desktop-client/src/components/accounts/Reconcile.tsx:130",
+      "entries": [
+        "marginTop: 8px (line 211)"
+      ]
+    },
+    {
+      "component": "NearbyPayeeItem",
+      "location": "packages/desktop-client/src/components/autocomplete/PayeeAutocomplete.tsx:809",
+      "entries": [
+        "fontSize: 10px (line 896)",
+        "fontSize: 11px (line 915)"
+      ]
+    },
+    {
+      "component": "FieldMapping",
+      "location": "packages/desktop-client/src/components/banksync/FieldMapping.tsx:45",
+      "entries": [
+        "paddingLeft: 10px (line 111)"
+      ]
+    }
+  ],
+  "scanSeconds": 20
+}

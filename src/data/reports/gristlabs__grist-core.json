@@ -1,0 +1,337 @@
+{
+  "repo": "gristlabs/grist-core",
+  "owner": "gristlabs",
+  "name": "grist-core",
+  "description": "Grist is the evolution of spreadsheets.",
+  "stars": 12076,
+  "homepage": "https://www.getgrist.com",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "fa19f551e8d90c1b15783068d1f28f76f0026ce2",
+  "generatedAt": "2026-11-10T00:30:59.000Z",
+  "cliVersion": "0.8.20",
+  "score": null,
+  "tier": "N/A",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 0,
+      "max": 20
+    },
+    "consistency": {
+      "score": 0,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 0,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 0,
+    "tokenCount": 425,
+    "hardcodedValueCount": 31,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 31,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 23,
+    "topHardcodedColor": {
+      "value": "#ccc",
+      "count": 1
+    },
+    "detectedFrameworkNames": [
+      "storybook"
+    ]
+  },
+  "suggestions": [
+    "Only 0 UI components detected, too few to score. If this repo has more, Buoy may not recognise its framework yet."
+  ],
+  "pathTo100": null,
+  "noted": {
+    "count": 23,
+    "byKind": {
+      "optical-nudge": 19,
+      "explained": 4
+    },
+    "samples": [
+      {
+        "file": "app/client/components/DetailView.css",
+        "line": 253,
+        "value": "3px",
+        "kind": "explained",
+        "reason": "to align with the .field_clip content"
+      },
+      {
+        "file": "app/client/components/DetailView.css",
+        "line": 335,
+        "value": "3px",
+        "kind": "explained",
+        "reason": "to align with the .field_clip content"
+      },
+      {
+        "file": "app/client/components/GridView.css",
+        "line": 43,
+        "value": "20",
+        "kind": "explained",
+        "reason": "z-index must be here, doesnt work on children"
+      },
+      {
+        "file": "app/client/components/GridView.css",
+        "line": 377,
+        "value": "0px 1px 0px white",
+        "kind": "explained",
+        "reason": "HACK: add box shadow to fix outline overflow from active cursor"
+      },
+      {
+        "file": "app/client/components/ActionLog.css",
+        "line": 104,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "padding-left: 3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "app/client/components/ActionLog.css",
+        "line": 105,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "padding-right: 3px is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 31,
+    "critical": 0,
+    "warning": 20,
+    "info": 11
+  },
+  "driftByType": {
+    "hardcoded-value": 31
+  },
+  "topColors": [
+    {
+      "value": "#aaa",
+      "count": 10
+    },
+    {
+      "value": "#ddd",
+      "count": 6
+    },
+    {
+      "value": "#A0A0A0",
+      "count": 6
+    },
+    {
+      "value": "#fff",
+      "count": 5
+    },
+    {
+      "value": "#ccc",
+      "count": 5
+    },
+    {
+      "value": "#666",
+      "count": 5
+    },
+    {
+      "value": "#ffb6c1",
+      "count": 5
+    },
+    {
+      "value": "#606060",
+      "count": 5
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "4px",
+      "count": 19
+    },
+    {
+      "value": "8px",
+      "count": 10
+    },
+    {
+      "value": "10px",
+      "count": 8
+    },
+    {
+      "value": "1rem",
+      "count": 5
+    },
+    {
+      "value": "15px",
+      "count": 5
+    },
+    {
+      "value": "18px",
+      "count": 5
+    },
+    {
+      "value": "0.5rem",
+      "count": 4
+    },
+    {
+      "value": "5px",
+      "count": 4
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "app/client/lib/koForm.css",
+      "count": 94
+    },
+    {
+      "file": "app/client/components/DetailView.css",
+      "count": 30
+    },
+    {
+      "file": "app/client/components/commands.css",
+      "count": 28
+    },
+    {
+      "file": "app/client/ui/DocTutorial.css",
+      "count": 22
+    },
+    {
+      "file": "app/client/components/Login.css",
+      "count": 19
+    },
+    {
+      "file": "app/client/app.css",
+      "count": 17
+    },
+    {
+      "file": "app/client/components/ActionLog.css",
+      "count": 17
+    },
+    {
+      "file": "app/client/components/ViewLayout.css",
+      "count": 17
+    }
+  ],
+  "samples": [
+    {
+      "component": "app/client/app.css",
+      "location": "app/client/app.css:141",
+      "entries": [
+        "spacing: 4px (line 141)",
+        "font size: 13px (line 146)",
+        "line height: 16px (line 147)"
+      ]
+    },
+    {
+      "component": "app/client/components/AceEditor.css",
+      "location": "app/client/components/AceEditor.css:7",
+      "entries": [
+        "font size: 11px (line 7)",
+        "shadow: 0 0 0.01em (line 31)"
+      ]
+    },
+    {
+      "component": "app/client/components/ActionLog.css",
+      "location": "app/client/components/ActionLog.css:2",
+      "entries": [
+        "spacing: 1rem (line 2)",
+        "font size: 1.1rem (line 10)",
+        "font size: 0.9rem (line 15)"
+      ]
+    },
+    {
+      "component": "app/client/components/ChartView.css",
+      "location": "app/client/components/ChartView.css:25",
+      "entries": [
+        "font size: 14px (line 25)"
+      ]
+    },
+    {
+      "component": "app/client/components/CodeEditorPanel.css",
+      "location": "app/client/components/CodeEditorPanel.css:2",
+      "entries": [
+        "spacing: 10px (line 2)"
+      ]
+    },
+    {
+      "component": "app/client/components/ColumnFilters.css",
+      "location": "app/client/components/ColumnFilters.css:24",
+      "entries": [
+        "spacing: 4px (line 24)",
+        "colour: #fff (line 26)",
+        "colour: #9D8BB5 (line 27)"
+      ]
+    },
+    {
+      "component": "app/client/components/CustomView.css",
+      "location": "app/client/components/CustomView.css:21",
+      "entries": [
+        "spacing: 15px (line 21)",
+        "spacing: 15px (line 22)",
+        "spacing: 15px (line 26)"
+      ]
+    },
+    {
+      "component": "app/client/components/DetailView.css",
+      "location": "app/client/components/DetailView.css:14",
+      "entries": [
+        "spacing: -6px (line 14)",
+        "spacing: 16px (line 18)",
+        "spacing: 16px (line 19)"
+      ]
+    },
+    {
+      "component": "app/client/components/EmbedForm.css",
+      "location": "app/client/components/EmbedForm.css:7",
+      "entries": [
+        "spacing: 5px (line 7)",
+        "colour: #f0f9f9 (line 24)",
+        "colour: #35afae (line 25)"
+      ]
+    },
+    {
+      "component": "app/client/components/FieldConfigTab.css",
+      "location": "app/client/components/FieldConfigTab.css:2",
+      "entries": [
+        "font size: 1.2rem (line 2)",
+        "font size: 0.9rem (line 7)",
+        "line height: 0.9rem (line 8)"
+      ]
+    },
+    {
+      "component": "app/client/components/GridView.css",
+      "location": "app/client/components/GridView.css:92",
+      "entries": [
+        "font size: 1rem (line 92)",
+        "font size: 0.9em (line 99)",
+        "spacing: 10px (line 438)"
+      ]
+    },
+    {
+      "component": "app/client/components/GristDoc.css",
+      "location": "app/client/components/GristDoc.css:9",
+      "entries": [
+        "font size: 2rem (line 9)",
+        "line height: 15px (line 10)",
+        "spacing: 4px (line 11)"
+      ]
+    }
+  ],
+  "scanSeconds": 6
+}

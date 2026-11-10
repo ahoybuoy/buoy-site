@@ -1,0 +1,219 @@
+{
+  "repo": "mermaid-js/mermaid-live-editor",
+  "owner": "mermaid-js",
+  "name": "mermaid-live-editor",
+  "description": "Edit, preview and share mermaid charts/diagrams. New implementation of the live editor.",
+  "stars": 6899,
+  "homepage": "https://mermaid.live",
+  "language": "TypeScript",
+  "defaultBranch": "develop",
+  "commit": "df04db01dc6697d5aa01d5d02bdd39193e22945d",
+  "generatedAt": "2026-11-10T00:38:50.096Z",
+  "cliVersion": "0.8.20",
+  "score": 77,
+  "tier": "Good",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 37,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 52,
+    "tokenCount": 54,
+    "hardcodedValueCount": 6,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 6,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 1,
+    "topHardcodedColor": {
+      "value": "#261A56",
+      "count": 3
+    },
+    "worstFile": {
+      "path": "src/lib/components/Navbar.svelte",
+      "issueCount": 1
+    },
+    "detectedFrameworkNames": [
+      "svelte",
+      "tailwind"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 6 hardcoded values left to tokenize"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 23,
+      "action": "Replace the hardcoded values in all 6 findings with tokens or scale steps"
+    }
+  ],
+  "noted": {
+    "count": 1,
+    "byKind": {
+      "optical-nudge": 1
+    },
+    "samples": [
+      {
+        "file": "src/lib/components/AIPromptPopup.svelte",
+        "line": 138,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding: 2px is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 6,
+    "critical": 0,
+    "warning": 6,
+    "info": 0
+  },
+  "driftByType": {
+    "hardcoded-value": 6
+  },
+  "topColors": [
+    {
+      "value": "#261A56",
+      "count": 3
+    },
+    {
+      "value": "#E0095F",
+      "count": 2
+    },
+    {
+      "value": "#1E1A2E",
+      "count": 2
+    },
+    {
+      "value": "#e8eaf9",
+      "count": 1
+    },
+    {
+      "value": "#2e4d6b",
+      "count": 1
+    },
+    {
+      "value": "#f3f3f3",
+      "count": 1
+    },
+    {
+      "value": "#6365f1",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "4px",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "src/lib/components/DesktopEditor.svelte",
+      "count": 4
+    },
+    {
+      "file": "src/lib/util/promos/April2025.svelte",
+      "count": 3
+    },
+    {
+      "file": "src/lib/util/promos/JS2026.svelte",
+      "count": 3
+    },
+    {
+      "file": "src/lib/components/AIPromptPopup.svelte",
+      "count": 2
+    },
+    {
+      "file": "src/routes/(app)/+layout.svelte",
+      "count": 2
+    },
+    {
+      "file": "src/lib/components/Navbar.svelte",
+      "count": 1
+    }
+  ],
+  "samples": [
+    {
+      "component": "src/lib/components/Navbar.svelte",
+      "location": "src/lib/components/Navbar.svelte:71",
+      "entries": [
+        "hover:text-[#261A56] (line 71)"
+      ]
+    },
+    {
+      "component": "src/lib/util/promos/April2025.svelte",
+      "location": "src/lib/util/promos/April2025.svelte:73",
+      "entries": [
+        "bg-[#E0095F] (line 73)",
+        "bg-[#1E1A2E] (line 88)",
+        "hover:bg-[#261A56] (line 88)"
+      ]
+    },
+    {
+      "component": "src/lib/util/promos/JS2026.svelte",
+      "location": "src/lib/util/promos/JS2026.svelte:15",
+      "entries": [
+        "bg-[#E0095F] (line 15)",
+        "bg-[#1E1A2E] (line 25)",
+        "hover:bg-[#261A56] (line 25)"
+      ]
+    },
+    {
+      "component": "src/lib/components/AIPromptPopup.svelte",
+      "location": "src/lib/components/AIPromptPopup.svelte:130",
+      "entries": [
+        "radius: 12px (line 130)",
+        "radius: 14px (line 137)"
+      ]
+    },
+    {
+      "component": "src/lib/components/DesktopEditor.svelte",
+      "location": "src/lib/components/DesktopEditor.svelte:257",
+      "entries": [
+        "colour: #e8eaf9 (line 257)",
+        "spacing: 4px (line 260)",
+        "radius: 4px (line 265)"
+      ]
+    },
+    {
+      "component": "src/routes/(app)/+layout.svelte",
+      "location": "src/routes/(app)/+layout.svelte:59",
+      "entries": [
+        "colour: #f3f3f3 (line 59)",
+        "colour: #6365f1 (line 61)"
+      ]
+    }
+  ],
+  "scanSeconds": 3
+}

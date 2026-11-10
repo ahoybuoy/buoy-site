@@ -1,0 +1,323 @@
+{
+  "repo": "mealie-recipes/mealie",
+  "owner": "mealie-recipes",
+  "name": "mealie",
+  "description": "Mealie is a self hosted recipe manager and meal planner with a RestAPI backend and a reactive frontend application built in Vue for a pleasant user experience for the whole family. Easily add recipes into your database by providing the url and mealie will automatically import the relevant data or add a family recipe with the UI editor",
+  "stars": 13864,
+  "homepage": "https://docs.mealie.io",
+  "language": "Python",
+  "defaultBranch": "mealie-next",
+  "commit": "60fc3bcfa98402cb6cf3848a93b55a119b91d6b3",
+  "generatedAt": "2026-11-10T00:38:46.377Z",
+  "cliVersion": "0.8.20",
+  "score": null,
+  "tier": "N/A",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 0,
+      "max": 20
+    },
+    "consistency": {
+      "score": 0,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 0,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 0,
+    "tokenCount": 18,
+    "hardcodedValueCount": 38,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 38,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 9,
+    "topHardcodedColor": {
+      "value": "#ffffff",
+      "count": 1
+    },
+    "worstFile": {
+      "path": "frontend/app/components/Domain/Admin/Setup/EndPageContent.vue",
+      "issueCount": 1
+    },
+    "detectedFrameworkNames": []
+  },
+  "suggestions": [
+    "Only 0 UI components detected, too few to score. If this repo has more, Buoy may not recognise its framework yet."
+  ],
+  "pathTo100": null,
+  "noted": {
+    "count": 9,
+    "byKind": {
+      "optical-nudge": 7,
+      "explained": 1,
+      "known-debt": 1
+    },
+    "samples": [
+      {
+        "file": "frontend/app/components/Domain/Recipe/RecipeOrganizerSelector.vue",
+        "line": 237,
+        "value": "6px",
+        "kind": "explained",
+        "reason": "This aligns the input with other standard input fields"
+      },
+      {
+        "file": "frontend/app/pages/shopping-lists/[id].vue",
+        "line": 568,
+        "value": "0.55",
+        "kind": "known-debt",
+        "reason": "the row's action icons are secondary to the item text, so they sit back until used"
+      },
+      {
+        "file": "frontend/app/components/Domain/Recipe/RecipeIngredientListItem.vue",
+        "line": 129,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-top: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/app/components/Domain/Recipe/RecipePrintView.vue",
+        "line": 541,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/app/pages/shopping-lists/[id].vue",
+        "line": 513,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-bottom: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/app/pages/shopping-lists/[id].vue",
+        "line": 535,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding-top: 2px is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 38,
+    "critical": 0,
+    "warning": 8,
+    "info": 30
+  },
+  "driftByType": {
+    "hardcoded-value": 38
+  },
+  "topColors": [
+    {
+      "value": "rgba(0, 0, 0, 0.12)",
+      "count": 4
+    },
+    {
+      "value": "#f5f8fa",
+      "count": 4
+    },
+    {
+      "value": "#ffffff",
+      "count": 2
+    },
+    {
+      "value": "#000000",
+      "count": 1
+    },
+    {
+      "value": "#e58325",
+      "count": 1
+    },
+    {
+      "value": "rgba(0, 0, 0, 0.5)",
+      "count": 1
+    },
+    {
+      "value": "#f0f0f0",
+      "count": 1
+    },
+    {
+      "value": "rgba(0, 0, 0, 0.309)",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "8px",
+      "count": 11
+    },
+    {
+      "value": "0.5rem",
+      "count": 6
+    },
+    {
+      "value": "1rem",
+      "count": 3
+    },
+    {
+      "value": "2.5rem",
+      "count": 3
+    },
+    {
+      "value": "-2.5rem",
+      "count": 3
+    },
+    {
+      "value": "6px",
+      "count": 2
+    },
+    {
+      "value": "0.25rem",
+      "count": 2
+    },
+    {
+      "value": "4px",
+      "count": 2
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "frontend/app/components/Domain/Recipe/RecipePrintView.vue",
+      "count": 8
+    },
+    {
+      "file": "docs/docs/assets/stylesheets/custom.css",
+      "count": 6
+    },
+    {
+      "file": "frontend/app/components/Domain/Recipe/RecipeIngredientListItem.vue",
+      "count": 5
+    },
+    {
+      "file": "frontend/app/components/Domain/Recipe/RecipePage/RecipePageParts/RecipePageInstructions.vue",
+      "count": 5
+    },
+    {
+      "file": "frontend/app/pages/admin/setup.vue",
+      "count": 5
+    },
+    {
+      "file": "frontend/app/pages/login.vue",
+      "count": 5
+    },
+    {
+      "file": "frontend/app/pages/shopping-lists/[id].vue",
+      "count": 5
+    },
+    {
+      "file": "frontend/app/components/Domain/Recipe/RecipeIngredientSubstitutions.vue",
+      "count": 4
+    }
+  ],
+  "samples": [
+    {
+      "component": "docs/docs/assets/stylesheets/custom.css",
+      "location": "docs/docs/assets/stylesheets/custom.css:89",
+      "entries": [
+        "font size: 2.41rem (line 89)",
+        "colour: #ffffff (line 94)",
+        "colour: #000000 (line 97)"
+      ]
+    },
+    {
+      "component": "frontend/app/components/Domain/Admin/Setup/EndPageContent.vue",
+      "location": "frontend/app/components/Domain/Admin/Setup/EndPageContent.vue:113",
+      "entries": [
+        "spacing: 0.5rem (line 113)"
+      ]
+    },
+    {
+      "component": "frontend/app/components/Domain/Announcement/Announcements/2026-03-27_1_welcome.vue",
+      "location": "frontend/app/components/Domain/Announcement/Announcements/2026-03-27_1_welcome.vue:60",
+      "entries": [
+        "spacing: 8px (line 60)"
+      ]
+    },
+    {
+      "component": "frontend/app/components/Domain/Announcement/Announcements/2026-05-21_1_ai-providers.vue",
+      "location": "frontend/app/components/Domain/Announcement/Announcements/2026-05-21_1_ai-providers.vue:61",
+      "entries": [
+        "spacing: 8px (line 61)"
+      ]
+    },
+    {
+      "component": "frontend/app/components/Domain/Announcement/Announcements/2026-05-31_1_iframe-embeds.vue",
+      "location": "frontend/app/components/Domain/Announcement/Announcements/2026-05-31_1_iframe-embeds.vue:52",
+      "entries": [
+        "spacing: 8px (line 52)"
+      ]
+    },
+    {
+      "component": "frontend/app/components/Domain/Announcement/Announcements/2026-07-27_1_oidc-email-verification.vue",
+      "location": "frontend/app/components/Domain/Announcement/Announcements/2026-07-27_1_oidc-email-verification.vue:62",
+      "entries": [
+        "spacing: 8px (line 62)"
+      ]
+    },
+    {
+      "component": "frontend/app/components/Domain/Announcement/Announcements/2026-07-27_2_scraper-proxy-flaresolverr.vue",
+      "location": "frontend/app/components/Domain/Announcement/Announcements/2026-07-27_2_scraper-proxy-flaresolverr.vue:69",
+      "entries": [
+        "spacing: 8px (line 69)"
+      ]
+    },
+    {
+      "component": "frontend/app/components/Domain/Announcement/Announcements/2026-09-04_1_outbound-request-protection.vue",
+      "location": "frontend/app/components/Domain/Announcement/Announcements/2026-09-04_1_outbound-request-protection.vue:86",
+      "entries": [
+        "spacing: 8px (line 86)"
+      ]
+    },
+    {
+      "component": "frontend/app/components/Domain/Announcement/Announcements/2026-10-15_1_ai-prompts.vue",
+      "location": "frontend/app/components/Domain/Announcement/Announcements/2026-10-15_1_ai-prompts.vue:50",
+      "entries": [
+        "spacing: 8px (line 50)"
+      ]
+    },
+    {
+      "component": "frontend/app/components/Domain/Announcement/Announcements/2026-10-18_1_organize-permission.vue",
+      "location": "frontend/app/components/Domain/Announcement/Announcements/2026-10-18_1_organize-permission.vue:38",
+      "entries": [
+        "spacing: 8px (line 38)"
+      ]
+    },
+    {
+      "component": "frontend/app/components/Domain/Announcement/Announcements/2026-10-26_1_household-integrations-permission.vue",
+      "location": "frontend/app/components/Domain/Announcement/Announcements/2026-10-26_1_household-integrations-permission.vue:34",
+      "entries": [
+        "spacing: 8px (line 34)"
+      ]
+    },
+    {
+      "component": "frontend/app/components/Domain/Household/HouseholdPreferencesEditor.vue",
+      "location": "frontend/app/components/Domain/Household/HouseholdPreferencesEditor.vue:148",
+      "entries": [
+        "spacing: 0.5rem (line 148)"
+      ]
+    }
+  ],
+  "scanSeconds": 5
+}

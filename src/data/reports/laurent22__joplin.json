@@ -1,0 +1,348 @@
+{
+  "repo": "laurent22/joplin",
+  "owner": "laurent22",
+  "name": "joplin",
+  "description": "Joplin - the privacy-focused note taking app with sync capabilities for Windows, macOS, Linux, Android and iOS.",
+  "stars": 57116,
+  "homepage": "https://joplinapp.org",
+  "language": "TypeScript",
+  "defaultBranch": "dev",
+  "commit": "39cc8a932e07017492bb08bbdcb06ad859c2a6b1",
+  "generatedAt": "2026-11-10T00:34:19.513Z",
+  "cliVersion": "0.8.20",
+  "score": 40,
+  "tier": "OK",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 159,
+    "tokenCount": 35,
+    "hardcodedValueCount": 67,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 67,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 7,
+    "worstFile": {
+      "path": "packages/pdf-viewer/ui/ZoomControls.tsx",
+      "issueCount": 1
+    },
+    "uniqueSpacingValues": 1,
+    "detectedFrameworkNames": [
+      "react",
+      "styled-components"
+    ]
+  },
+  "suggestions": [
+    "67 hardcoded values to extract. Focus on packages/pdf-viewer/ui/ZoomControls.tsx (1 issues)"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 60,
+      "action": "Replace the hardcoded values in all 67 findings with tokens or scale steps"
+    }
+  ],
+  "noted": {
+    "count": 7,
+    "byKind": {
+      "optical-nudge": 6,
+      "explained": 1
+    },
+    "samples": [
+      {
+        "file": "Assets/WebsiteAssets/css/site.css",
+        "line": 1009,
+        "value": "1em",
+        "kind": "explained",
+        "reason": "text-align: center;"
+      },
+      {
+        "file": "Assets/PluginDocTheme/assets/css/main.css",
+        "line": 2111,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding-top: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "Assets/PluginDocTheme/assets/css/main.css",
+        "line": 2112,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding-bottom: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/app-desktop/gui/KeymapConfig/styles/shortcut-recorder.scss",
+        "line": 2,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/app-desktop/gui/styles/combobox-wrapper.scss",
+        "line": 44,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-top: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/editor/ProseMirror/styles/link-tooltip.css",
+        "line": 9,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "padding: 3px is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 67,
+    "critical": 0,
+    "warning": 11,
+    "info": 56
+  },
+  "driftByType": {
+    "hardcoded-value": 67
+  },
+  "topColors": [
+    {
+      "value": "#fff",
+      "count": 24
+    },
+    {
+      "value": "#eee",
+      "count": 15
+    },
+    {
+      "value": "#808080",
+      "count": 12
+    },
+    {
+      "value": "#0557ba",
+      "count": 8
+    },
+    {
+      "value": "#4f9cf9",
+      "count": 6
+    },
+    {
+      "value": "#a31515",
+      "count": 5
+    },
+    {
+      "value": "#90b1d9",
+      "count": 4
+    },
+    {
+      "value": "#00f",
+      "count": 3
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "10px",
+      "count": 48
+    },
+    {
+      "value": "20px",
+      "count": 46
+    },
+    {
+      "value": "5px",
+      "count": 23
+    },
+    {
+      "value": "8px",
+      "count": 21
+    },
+    {
+      "value": "30px",
+      "count": 18
+    },
+    {
+      "value": "50px",
+      "count": 13
+    },
+    {
+      "value": "15px",
+      "count": 12
+    },
+    {
+      "value": "16px",
+      "count": 12
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "Assets/WebsiteAssets/css/site.css",
+      "count": 231
+    },
+    {
+      "file": "Assets/PluginDocTheme/assets/css/main.css",
+      "count": 159
+    },
+    {
+      "file": "Assets/WebsiteAssets/css/brand.css",
+      "count": 90
+    },
+    {
+      "file": "packages/app-desktop/gui/NoteEditor/NoteBody/WhiteboardEditor/style.scss",
+      "count": 60
+    },
+    {
+      "file": "packages/renderer/assets/katex/katex.css",
+      "count": 47
+    },
+    {
+      "file": "packages/app-desktop/main.scss",
+      "count": 23
+    },
+    {
+      "file": "packages/app-desktop/gui/ChatPanel/style.scss",
+      "count": 22
+    },
+    {
+      "file": "packages/app-clipper/popup/src/App.css",
+      "count": 20
+    }
+  ],
+  "samples": [
+    {
+      "component": "ZoomControls",
+      "location": "packages/pdf-viewer/ui/ZoomControls.tsx:31",
+      "entries": [
+        "paddingRight: 0.2rem (line 42)",
+        "paddingLeft: 0.2rem (line 44)"
+      ]
+    },
+    {
+      "component": "Assets/PluginDocTheme/assets/css/main.css",
+      "location": "Assets/PluginDocTheme/assets/css/main.css:87",
+      "entries": [
+        "font size: 2em (line 87)",
+        "font size: 1.5em (line 92)",
+        "font size: 1.17em (line 97)"
+      ]
+    },
+    {
+      "component": "Assets/WebsiteAssets/css/brand.css",
+      "location": "Assets/WebsiteAssets/css/brand.css:1",
+      "entries": [
+        "line height: 1.15 (line 1)",
+        "font size: 2em (line 1)",
+        "font size: 1em (line 1)"
+      ]
+    },
+    {
+      "component": "Assets/WebsiteAssets/css/site.css",
+      "location": "Assets/WebsiteAssets/css/site.css:13",
+      "entries": [
+        "font size: 16px (line 13)",
+        "spacing: 1rem (line 21)",
+        "spacing: 1rem (line 25)"
+      ]
+    },
+    {
+      "component": "packages/app-clipper/popup/src/App.css",
+      "location": "packages/app-clipper/popup/src/App.css:7",
+      "entries": [
+        "line height: 32px (line 7)",
+        "colour: #162b3d (line 17)",
+        "font size: 16px (line 18)"
+      ]
+    },
+    {
+      "component": "packages/app-desktop/gui/ChatPanel/ChatHistory.scss",
+      "location": "packages/app-desktop/gui/ChatPanel/ChatHistory.scss:7",
+      "entries": [
+        "radius: 4px (line 7)",
+        "shadow: 0 4px 12px rgba(0, 0, 0, 0.2) (line 24)",
+        "line height: 16px (line 61)"
+      ]
+    },
+    {
+      "component": "packages/app-desktop/gui/ChatPanel/style.scss",
+      "location": "packages/app-desktop/gui/ChatPanel/style.scss:23",
+      "entries": [
+        "font weight: 600 (line 23)",
+        "font size: 0.8em (line 48)",
+        "line height: 1.3 (line 52)"
+      ]
+    },
+    {
+      "component": "packages/app-desktop/gui/ConfigScreen/Sidebar/style.scss",
+      "location": "packages/app-desktop/gui/ConfigScreen/Sidebar/style.scss:42",
+      "entries": [
+        "spacing: 35px (line 42)",
+        "font weight: 500 (line 79)"
+      ]
+    },
+    {
+      "component": "packages/app-desktop/gui/ConfigScreen/controls/AiIndexStatus.scss",
+      "location": "packages/app-desktop/gui/ConfigScreen/controls/AiIndexStatus.scss:2",
+      "entries": [
+        "spacing: 16px (line 2)",
+        "radius: 4px (line 5)",
+        "font size: 1em (line 11)"
+      ]
+    },
+    {
+      "component": "packages/app-desktop/gui/ConfigScreen/controls/AiStatus.scss",
+      "location": "packages/app-desktop/gui/ConfigScreen/controls/AiStatus.scss:2",
+      "entries": [
+        "spacing: 16px (line 2)",
+        "radius: 4px (line 4)",
+        "line height: 1.4 (line 5)"
+      ]
+    },
+    {
+      "component": "packages/app-desktop/gui/ConfigScreen/controls/NoteLockSettings.scss",
+      "location": "packages/app-desktop/gui/ConfigScreen/controls/NoteLockSettings.scss:2",
+      "entries": [
+        "spacing: 16px (line 2)",
+        "spacing: 16px (line 3)",
+        "spacing: 8px (line 23)"
+      ]
+    },
+    {
+      "component": "packages/app-desktop/gui/ConfigScreen/style.scss",
+      "location": "packages/app-desktop/gui/ConfigScreen/style.scss:8",
+      "entries": [
+        "spacing: 24px (line 8)",
+        "spacing: 20px (line 14)",
+        "radius: 5px (line 29)"
+      ]
+    }
+  ],
+  "scanSeconds": 17
+}

@@ -1,0 +1,88 @@
+{
+  "repo": "OpenCut-app/OpenCut",
+  "owner": "OpenCut-app",
+  "name": "OpenCut",
+  "description": "The open-source CapCut alternative",
+  "stars": 97939,
+  "homepage": "https://opencut.app",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "e668010778568641babef2cc40be4703ae6916d6",
+  "generatedAt": "2026-11-10T00:21:10.110Z",
+  "cliVersion": "0.8.20",
+  "score": null,
+  "tier": "N/A",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 0,
+      "max": 20
+    },
+    "consistency": {
+      "score": 0,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 0,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 0,
+    "tokenCount": 72,
+    "hardcodedValueCount": 0,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 2,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 2,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 0,
+    "worstFile": {
+      "path": "apps/web/src/components/ui/combobox.tsx",
+      "issueCount": 1
+    },
+    "detectedFrameworkNames": [
+      "tailwind"
+    ]
+  },
+  "suggestions": [
+    "Only 0 UI components detected, too few to score. If this repo has more, Buoy may not recognise its framework yet."
+  ],
+  "pathTo100": null,
+  "noted": {
+    "count": 0,
+    "byKind": {},
+    "samples": []
+  },
+  "driftSummary": {
+    "total": 2,
+    "critical": 0,
+    "warning": 0,
+    "info": 2
+  },
+  "driftByType": {
+    "repeated-pattern": 2
+  },
+  "topColors": [],
+  "topSpacing": [],
+  "worstFiles": [],
+  "samples": [],
+  "scanSeconds": 2
+}

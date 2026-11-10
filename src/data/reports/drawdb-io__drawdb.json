@@ -1,0 +1,319 @@
+{
+  "repo": "drawdb-io/drawdb",
+  "owner": "drawdb-io",
+  "name": "drawdb",
+  "description": "Free, simple, and intuitive online database diagram editor and SQL generator.",
+  "stars": 40290,
+  "homepage": "https://drawdb.app",
+  "language": "JavaScript",
+  "defaultBranch": "main",
+  "commit": "602778410be211b39f011c706f7521a75f668930",
+  "generatedAt": "2026-11-10T00:26:27.826Z",
+  "cliVersion": "0.8.20",
+  "score": 61,
+  "tier": "Good",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 21,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 122,
+    "tokenCount": 0,
+    "hardcodedValueCount": 24,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 24,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 1,
+    "vendoredDriftCount": 0,
+    "notedCount": 4,
+    "topHardcodedColor": {
+      "value": "#2f68adcc",
+      "count": 3
+    },
+    "worstFile": {
+      "path": "src/components/EditorCanvas/Table.jsx",
+      "issueCount": 3
+    },
+    "uniqueSpacingValues": 3,
+    "detectedFrameworkNames": [
+      "react",
+      "tailwind"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 24 hardcoded values left to tokenize. src/components/EditorCanvas/Table.jsx has the most (3)"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 39,
+      "action": "Replace the hardcoded values in all 24 findings with tokens or scale steps"
+    }
+  ],
+  "noted": {
+    "count": 4,
+    "byKind": {
+      "optical-nudge": 4
+    },
+    "samples": [
+      {
+        "file": "src/components/Thumbnail.jsx",
+        "line": 156,
+        "value": "mt-[2px]",
+        "kind": "optical-nudge",
+        "reason": "mt-[2px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "src/components/LexicalEditor/styles/index.css",
+        "line": 115,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "padding: 3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "src/components/LexicalEditor/styles/index.css",
+        "line": 247,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-right: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "src/components/LexicalEditor/styles/index.css",
+        "line": 255,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-top: 2px is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 24,
+    "critical": 0,
+    "warning": 7,
+    "info": 17
+  },
+  "driftByType": {
+    "hardcoded-value": 24
+  },
+  "topColors": [
+    {
+      "value": "#2f68adcc",
+      "count": 3
+    },
+    {
+      "value": "#12495e",
+      "count": 3
+    },
+    {
+      "value": "#999",
+      "count": 3
+    },
+    {
+      "value": "#8e2a20",
+      "count": 2
+    },
+    {
+      "value": "rgb(33, 111, 219)",
+      "count": 2
+    },
+    {
+      "value": "#239144",
+      "count": 1
+    },
+    {
+      "value": "#6f1e16",
+      "count": 1
+    },
+    {
+      "value": "#fbe9e6",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "12px",
+      "count": 12
+    },
+    {
+      "value": "8px",
+      "count": 10
+    },
+    {
+      "value": "16px",
+      "count": 6
+    },
+    {
+      "value": "18px",
+      "count": 1
+    },
+    {
+      "value": "10px",
+      "count": 1
+    },
+    {
+      "value": "20px",
+      "count": 1
+    },
+    {
+      "value": "4px",
+      "count": 1
+    },
+    {
+      "value": "-6px",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "src/components/LexicalEditor/styles/index.css",
+      "count": 56
+    },
+    {
+      "file": "src/pages/LandingPage.jsx",
+      "count": 5
+    },
+    {
+      "file": "src/components/MigrationBanner.jsx",
+      "count": 4
+    },
+    {
+      "file": "src/components/EditorCanvas/Table.jsx",
+      "count": 3
+    },
+    {
+      "file": "src/components/Thumbnail.jsx",
+      "count": 3
+    },
+    {
+      "file": "src/index.css",
+      "count": 3
+    },
+    {
+      "file": "src/components/EditorHeader/ControlPanel.jsx",
+      "count": 2
+    },
+    {
+      "file": "src/components/EditorSidePanel/RelationshipsTab/RelationshipInfo.jsx",
+      "count": 2
+    }
+  ],
+  "samples": [
+    {
+      "component": "BugReport",
+      "location": "src/pages/BugReport.jsx:126",
+      "entries": [
+        "backgroundColor: #239144 (line 211)"
+      ]
+    },
+    {
+      "component": "Templates",
+      "location": "src/pages/Templates.jsx:11",
+      "entries": [
+        "margin: 12px (line 157)"
+      ]
+    },
+    {
+      "component": "RelationshipEditSheet",
+      "location": "src/components/EditorCanvas/Relationship.jsx:64",
+      "entries": [
+        "paddingBottom: 16px (line 88)"
+      ]
+    },
+    {
+      "component": "TableEditSheet",
+      "location": "src/components/EditorCanvas/Table.jsx:648",
+      "entries": [
+        "paddingBottom: 16px (line 672)"
+      ]
+    },
+    {
+      "component": "ControlPanel",
+      "location": "src/components/EditorHeader/ControlPanel.jsx:142",
+      "entries": [
+        "margin: 8px (line 2219)"
+      ]
+    },
+    {
+      "component": "Sidesheet",
+      "location": "src/components/EditorHeader/SideSheet/Sidesheet.jsx:8",
+      "entries": [
+        "paddingBottom: 16px (line 48)"
+      ]
+    },
+    {
+      "component": "RelationshipInfo",
+      "location": "src/components/EditorSidePanel/RelationshipsTab/RelationshipInfo.jsx:28",
+      "entries": [
+        "marginTop: 12px (line 357)",
+        "marginBottom: 12px (line 357)"
+      ]
+    },
+    {
+      "component": "IndexDetails",
+      "location": "src/components/EditorSidePanel/TablesTab/IndexDetails.jsx:8",
+      "entries": [
+        "marginLeft: 12px (line 194)"
+      ]
+    },
+    {
+      "component": "TableInfo",
+      "location": "src/components/EditorSidePanel/TablesTab/TableInfo.jsx:27",
+      "entries": [
+        "marginTop: 12px (line 246)",
+        "marginBottom: 12px (line 246)"
+      ]
+    },
+    {
+      "component": "UniqueConstraintDetails",
+      "location": "src/components/EditorSidePanel/TablesTab/UniqueConstraintDetails.jsx:8",
+      "entries": [
+        "marginLeft: 12px (line 153)"
+      ]
+    },
+    {
+      "component": "TypeInfo",
+      "location": "src/components/EditorSidePanel/TypesTab/TypeInfo.jsx:18",
+      "entries": [
+        "marginTop: 12px (line 97)",
+        "marginBottom: 12px (line 97)"
+      ]
+    },
+    {
+      "component": "ViewInfo",
+      "location": "src/components/EditorSidePanel/ViewsTab/ViewInfo.jsx:48",
+      "entries": [
+        "marginTop: 12px (line 365)",
+        "marginBottom: 12px (line 365)"
+      ]
+    }
+  ],
+  "scanSeconds": 5
+}

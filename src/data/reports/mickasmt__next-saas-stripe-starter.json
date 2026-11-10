@@ -1,0 +1,263 @@
+{
+  "repo": "mickasmt/next-saas-stripe-starter",
+  "owner": "mickasmt",
+  "name": "next-saas-stripe-starter",
+  "description": "Open-source SaaS Starter with User Roles, Organizations & Admin Panel. Built using Next.js 16, Better Auth, Drizzle, Neon, Fumadocs, Shadcn/ui, Stripe, Server Actions.",
+  "stars": 3012,
+  "homepage": "https://next-saas-stripe-starter.vercel.app",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "c6df229ae73c207e87356d5e592779c511a9b56d",
+  "generatedAt": "2026-11-10T00:38:56.875Z",
+  "cliVersion": "0.8.20",
+  "score": 71,
+  "tier": "Good",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 31,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 210,
+    "tokenCount": 85,
+    "hardcodedValueCount": 30,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 31,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 1,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 1,
+    "vendoredDriftCount": 0,
+    "notedCount": 4,
+    "topHardcodedColor": {
+      "value": "#3178c6",
+      "count": 1
+    },
+    "worstFile": {
+      "path": "components/dev/modules-panel.tsx",
+      "issueCount": 3
+    },
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "tailwind",
+      "shadcn"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 30 hardcoded values left to tokenize. components/dev/modules-panel.tsx has the most (3)"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 29,
+      "action": "Replace the hardcoded values in all 30 findings with tokens or scale steps, and remove or reuse 1 unused component or repeated pattern"
+    }
+  ],
+  "noted": {
+    "count": 4,
+    "byKind": {
+      "vendored": 4
+    },
+    "samples": [
+      {
+        "file": "components/ui/badge.tsx",
+        "line": 7,
+        "value": "focus-visible:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "components/ui/button.tsx",
+        "line": 6,
+        "value": "focus-visible:ring-[3px], aria-invalid:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "components/ui/input.tsx",
+        "line": 11,
+        "value": "focus-visible:ring-[3px], aria-invalid:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "components/ui/switch.tsx",
+        "line": 18,
+        "value": "focus-visible:ring-[3px], aria-invalid:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 31,
+    "critical": 0,
+    "warning": 1,
+    "info": 30
+  },
+  "driftByType": {
+    "hardcoded-value": 30,
+    "repeated-pattern": 1
+  },
+  "topColors": [
+    {
+      "value": "#3178c6",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "3.375rem",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "components/marketing/modules-showcase.tsx",
+      "count": 8
+    },
+    {
+      "file": "components/marketing/panel-demo.tsx",
+      "count": 8
+    },
+    {
+      "file": "components/dev/modules-panel.tsx",
+      "count": 7
+    },
+    {
+      "file": "components/billing/billing-overview.tsx",
+      "count": 3
+    },
+    {
+      "file": "components/marketing/closing-cta.tsx",
+      "count": 3
+    },
+    {
+      "file": "components/marketing/onboarding-demo.tsx",
+      "count": 3
+    },
+    {
+      "file": "components/marketing/module-deck.tsx",
+      "count": 2
+    },
+    {
+      "file": "app/(app)/dashboard/page.tsx",
+      "count": 1
+    }
+  ],
+  "samples": [
+    {
+      "component": "app/(app)/dashboard/page.tsx",
+      "location": "app/(app)/dashboard/page.tsx:44",
+      "entries": [
+        "tracking-[-0.04em] (line 44)"
+      ]
+    },
+    {
+      "component": "app/(marketing)/blog/[slug]/page.tsx",
+      "location": "app/(marketing)/blog/[slug]/page.tsx:63",
+      "entries": [
+        "sm:leading-[1.25] (line 63)"
+      ]
+    },
+    {
+      "component": "app/(marketing)/blog/page.tsx",
+      "location": "app/(marketing)/blog/page.tsx:78",
+      "entries": [
+        "sm:leading-[1.15] (line 78)"
+      ]
+    },
+    {
+      "component": "app/(marketing)/changelog/[slug]/page.tsx",
+      "location": "app/(marketing)/changelog/[slug]/page.tsx:45",
+      "entries": [
+        "sm:leading-[1.25] (line 45)"
+      ]
+    },
+    {
+      "component": "app/(marketing)/changelog/page.tsx",
+      "location": "app/(marketing)/changelog/page.tsx:50",
+      "entries": [
+        "sm:leading-[1.15] (line 50)"
+      ]
+    },
+    {
+      "component": "app/(marketing)/pricing/page.tsx",
+      "location": "app/(marketing)/pricing/page.tsx:35",
+      "entries": [
+        "sm:leading-[1.15] (line 35)"
+      ]
+    },
+    {
+      "component": "components/auth/auth-panel.tsx",
+      "location": "components/auth/auth-panel.tsx:55",
+      "entries": [
+        "text-[11px] (line 55)"
+      ]
+    },
+    {
+      "component": "components/billing/billing-overview.tsx",
+      "location": "components/billing/billing-overview.tsx:182",
+      "entries": [
+        "tracking-[-0.04em] (line 182)",
+        "tracking-[-0.02em] (line 220)",
+        "tracking-[-0.04em] (line 259)"
+      ]
+    },
+    {
+      "component": "components/dashboard/organization-avatar.tsx",
+      "location": "components/dashboard/organization-avatar.tsx:24",
+      "entries": [
+        "text-[10px] (line 24)"
+      ]
+    },
+    {
+      "component": "components/dashboard/organization-switcher.tsx",
+      "location": "components/dashboard/organization-switcher.tsx:20",
+      "entries": [
+        "text-[11px] (line 20)"
+      ]
+    },
+    {
+      "component": "components/dashboard/page-header.tsx",
+      "location": "components/dashboard/page-header.tsx:21",
+      "entries": [
+        "tracking-[-0.04em] (line 21)"
+      ]
+    },
+    {
+      "component": "components/dashboard/section-card.tsx",
+      "location": "components/dashboard/section-card.tsx:29",
+      "entries": [
+        "tracking-[-0.02em] (line 29)"
+      ]
+    }
+  ],
+  "scanSeconds": 6
+}

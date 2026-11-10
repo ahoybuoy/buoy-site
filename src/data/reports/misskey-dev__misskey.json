@@ -1,0 +1,335 @@
+{
+  "repo": "misskey-dev/misskey",
+  "owner": "misskey-dev",
+  "name": "misskey",
+  "description": "🌎 A completely free and open interplanetary-microblogging platform 🚀",
+  "stars": 11362,
+  "homepage": "https://misskey-hub.net/",
+  "language": "TypeScript",
+  "defaultBranch": "develop",
+  "commit": "d80856c18fe68eab9040696cc5cda741dee5a9c2",
+  "generatedAt": "2026-11-10T00:39:03.337Z",
+  "cliVersion": "0.8.20",
+  "score": null,
+  "tier": "N/A",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 0,
+      "max": 20
+    },
+    "consistency": {
+      "score": 0,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 0,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 0,
+    "tokenCount": 0,
+    "hardcodedValueCount": 359,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 359,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 33,
+    "worstFile": {
+      "path": "packages/frontend-embed/src/components/EmAvatar.vue",
+      "issueCount": 1
+    },
+    "detectedFrameworkNames": []
+  },
+  "suggestions": [
+    "Only 0 UI components detected, too few to score. If this repo has more, Buoy may not recognise its framework yet."
+  ],
+  "pathTo100": null,
+  "noted": {
+    "count": 33,
+    "byKind": {
+      "optical-nudge": 30,
+      "explained": 3
+    },
+    "samples": [
+      {
+        "file": "packages/frontend-embed/src/components/EmMediaImage.vue",
+        "line": 154,
+        "value": "black",
+        "kind": "explained",
+        "reason": "Hardcode to black because either --MI_THEME-bg or --MI_THEME-fg makes it hard to read in dark/light mode"
+      },
+      {
+        "file": "packages/frontend/src/components/MkMediaImage.vue",
+        "line": 253,
+        "value": "black",
+        "kind": "explained",
+        "reason": "Hardcode to black because either --MI_THEME-bg or --MI_THEME-fg makes it hard to read in dark/light mode"
+      },
+      {
+        "file": "packages/frontend/src/components/grid/MkGrid.vue",
+        "line": 1297,
+        "value": "8px",
+        "kind": "explained",
+        "reason": "firefoxだとスクロールバーがセルに重なって見づらくなってしまうのでスペースを空けておく"
+      },
+      {
+        "file": "packages/frontend-embed/src/components/EmLink.vue",
+        "line": 39,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding-left: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/frontend-embed/src/components/EmNoteDetailed.vue",
+        "line": 307,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-bottom: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/frontend-embed/src/components/EmNoteSimple.vue",
+        "line": 66,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-bottom: 2px is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 359,
+    "critical": 0,
+    "warning": 91,
+    "info": 268
+  },
+  "driftByType": {
+    "hardcoded-value": 359
+  },
+  "topColors": [
+    {
+      "value": "#fff",
+      "count": 63
+    },
+    {
+      "value": "rgba(0, 0, 0, 0.1)",
+      "count": 10
+    },
+    {
+      "value": "#ff2a2a",
+      "count": 10
+    },
+    {
+      "value": "#000",
+      "count": 8
+    },
+    {
+      "value": "rgba(0, 0, 0, 0.7)",
+      "count": 8
+    },
+    {
+      "value": "rgba(0, 0, 0, 0.5)",
+      "count": 5
+    },
+    {
+      "value": "#c3c3c3",
+      "count": 4
+    },
+    {
+      "value": "#d28a3f",
+      "count": 4
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "8px",
+      "count": 216
+    },
+    {
+      "value": "16px",
+      "count": 166
+    },
+    {
+      "value": "12px",
+      "count": 85
+    },
+    {
+      "value": "4px",
+      "count": 79
+    },
+    {
+      "value": "6px",
+      "count": 32
+    },
+    {
+      "value": "32px",
+      "count": 29
+    },
+    {
+      "value": "10px",
+      "count": 28
+    },
+    {
+      "value": "20px",
+      "count": 18
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "packages/frontend/src/pages/user/home.vue",
+      "count": 45
+    },
+    {
+      "file": "packages/frontend/src/components/MkNoteDetailed.vue",
+      "count": 36
+    },
+    {
+      "file": "packages/frontend/src/components/MkNote.vue",
+      "count": 34
+    },
+    {
+      "file": "packages/frontend-embed/src/components/EmNote.vue",
+      "count": 31
+    },
+    {
+      "file": "packages/frontend-embed/src/components/EmNoteDetailed.vue",
+      "count": 30
+    },
+    {
+      "file": "packages/frontend/src/components/MkPostForm.vue",
+      "count": 29
+    },
+    {
+      "file": "packages/frontend/src/style.scss",
+      "count": 27
+    },
+    {
+      "file": "packages/backend/assets/misc/error.css",
+      "count": 23
+    }
+  ],
+  "samples": [
+    {
+      "component": "packages/backend/assets/misc/bios.css",
+      "location": "packages/backend/assets/misc/bios.css:12",
+      "entries": [
+        "colour: #ffb4e1 (line 12)",
+        "colour: #dedede (line 16)",
+        "spacing: 16px (line 19)"
+      ]
+    },
+    {
+      "component": "packages/backend/assets/misc/cli.css",
+      "location": "packages/backend/assets/misc/cli.css:12",
+      "entries": [
+        "colour: #ffb4e1 (line 12)",
+        "colour: #dedede (line 16)",
+        "spacing: 16px (line 20)"
+      ]
+    },
+    {
+      "component": "packages/backend/assets/misc/error.css",
+      "location": "packages/backend/assets/misc/error.css:18",
+      "entries": [
+        "colour: #222 (line 18)",
+        "colour: #dfddcc (line 19)",
+        "spacing: 10px (line 22)"
+      ]
+    },
+    {
+      "component": "packages/backend/assets/misc/info-card.css",
+      "location": "packages/backend/assets/misc/info-card.css:6",
+      "entries": [
+        "colour: #fff (line 6)",
+        "spacing: 24px (line 20)",
+        "colour: #fff (line 22)"
+      ]
+    },
+    {
+      "component": "packages/frontend-embed/src/components/EmAvatar.vue",
+      "location": "packages/frontend-embed/src/components/EmAvatar.vue:98",
+      "entries": [
+        "line height: 16px (line 98)",
+        "colour: #df548f (line 150)"
+      ]
+    },
+    {
+      "component": "packages/frontend-embed/src/components/EmError.vue",
+      "location": "packages/frontend-embed/src/components/EmError.vue:23",
+      "entries": [
+        "spacing: 32px (line 23)",
+        "spacing: 16px (line 40)",
+        "radius: 16px (line 41)"
+      ]
+    },
+    {
+      "component": "packages/frontend-embed/src/components/EmInstanceTicker.vue",
+      "location": "packages/frontend-embed/src/components/EmInstanceTicker.vue:53",
+      "entries": [
+        "colour: #fff (line 53)",
+        "shadow: /* .866 ≈ sin(60deg) */ (line 54)",
+        "spacing: 4px (line 80)"
+      ]
+    },
+    {
+      "component": "packages/frontend-embed/src/components/EmLoading.vue",
+      "location": "packages/frontend-embed/src/components/EmLoading.vue:52",
+      "entries": [
+        "spacing: 32px (line 52)",
+        "spacing: 16px (line 69)"
+      ]
+    },
+    {
+      "component": "packages/frontend-embed/src/components/EmMediaBanner.vue",
+      "location": "packages/frontend-embed/src/components/EmMediaBanner.vue:35",
+      "entries": [
+        "spacing: 4px (line 35)"
+      ]
+    },
+    {
+      "component": "packages/frontend-embed/src/components/EmMediaImage.vue",
+      "location": "packages/frontend-embed/src/components/EmMediaImage.vue:96",
+      "entries": [
+        "radius: 6px (line 96)",
+        "font size: 12px (line 99)",
+        "font size: 0.8em (line 111)"
+      ]
+    },
+    {
+      "component": "packages/frontend-embed/src/components/EmMediaList.vue",
+      "location": "packages/frontend-embed/src/components/EmMediaList.vue:56",
+      "entries": [
+        "spacing: 4px (line 56)",
+        "radius: 8px (line 134)"
+      ]
+    },
+    {
+      "component": "packages/frontend-embed/src/components/EmMediaVideo.vue",
+      "location": "packages/frontend-embed/src/components/EmMediaVideo.vue:35",
+      "entries": [
+        "colour: #000 (line 35)",
+        "colour: #fff (line 53)",
+        "spacing: 1rem (line 54)"
+      ]
+    }
+  ],
+  "scanSeconds": 6
+}

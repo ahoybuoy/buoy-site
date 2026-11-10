@@ -1,0 +1,337 @@
+{
+  "repo": "highlight/highlight",
+  "owner": "highlight",
+  "name": "highlight",
+  "description": "highlight.io: The open source, full-stack monitoring platform. Error monitoring, session replay, logging, distributed tracing, and more.",
+  "stars": 9386,
+  "homepage": "https://app.highlight.io",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "3bf002113e555d1ba3d4df648ed44e3503a27e96",
+  "generatedAt": "2026-11-10T00:32:28.122Z",
+  "cliVersion": "0.8.20",
+  "score": 82,
+  "tier": "Great",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 42,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 1394,
+    "tokenCount": 501,
+    "hardcodedValueCount": 125,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 127,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 2,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 6,
+    "topHardcodedColor": {
+      "value": "#6F6E77",
+      "count": 7
+    },
+    "worstFile": {
+      "path": "frontend/src/components/RelatedResources/ResourceTable.tsx",
+      "issueCount": 2
+    },
+    "uniqueSpacingValues": 10,
+    "detectedFrameworkNames": [
+      "react",
+      "storybook",
+      "ariakit"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 125 hardcoded values left to tokenize. frontend/src/components/RelatedResources/ResourceTable.tsx has the most (2)"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 18,
+      "action": "Replace the hardcoded values in 122 of the 125 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+    }
+  ],
+  "noted": {
+    "count": 6,
+    "byKind": {
+      "optical-nudge": 5,
+      "known-debt": 1
+    },
+    "samples": [
+      {
+        "file": "packages/ui/src/components/Modal/Modal.tsx",
+        "line": 64,
+        "value": "rgba(111, 110, 119, 0.48)",
+        "kind": "known-debt",
+        "reason": "TODO: Hard-coding to match mock until scrim variable is updated."
+      },
+      {
+        "file": "frontend/src/components/Header/Header.tsx",
+        "line": 508,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "marginTop: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/src/components/Header/UserDropdown/UserDropdown.module.css",
+        "line": 3,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-bottom: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/src/inkeep.css",
+        "line": 16,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "padding: 3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/src/pages/Player/Toolbar/TimelineIndicators/TimelineBar/TimelineBar.module.css",
+        "line": 19,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/src/pages/Player/Toolbar/TimelineIndicators/TimelineBar/TimelineBar.module.css",
+        "line": 28,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-bottom: 2px is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 127,
+    "critical": 0,
+    "warning": 61,
+    "info": 66
+  },
+  "driftByType": {
+    "hardcoded-value": 125,
+    "repeated-pattern": 2
+  },
+  "topColors": [
+    {
+      "value": "#30294e",
+      "count": 13
+    },
+    {
+      "value": "#6F6E77",
+      "count": 9
+    },
+    {
+      "value": "#DCDBDD",
+      "count": 8
+    },
+    {
+      "value": "#1616180D",
+      "count": 8
+    },
+    {
+      "value": "#1a1523",
+      "count": 7
+    },
+    {
+      "value": "#C8C7CB",
+      "count": 4
+    },
+    {
+      "value": "#ebff5e",
+      "count": 4
+    },
+    {
+      "value": "#6F6E777A",
+      "count": 3
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "4px",
+      "count": 45
+    },
+    {
+      "value": "8px",
+      "count": 31
+    },
+    {
+      "value": "10px",
+      "count": 30
+    },
+    {
+      "value": "20px",
+      "count": 30
+    },
+    {
+      "value": "6px",
+      "count": 22
+    },
+    {
+      "value": "0.5rem",
+      "count": 19
+    },
+    {
+      "value": "12px",
+      "count": 17
+    },
+    {
+      "value": "16px",
+      "count": 15
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "highlight.io/components/Docs/Docs.module.scss",
+      "count": 79
+    },
+    {
+      "file": "highlight.io/components/Pricing/Pricing.module.scss",
+      "count": 74
+    },
+    {
+      "file": "highlight.io/components/Blog/Blog.module.scss",
+      "count": 50
+    },
+    {
+      "file": "highlight.io/styles/globals.scss",
+      "count": 48
+    },
+    {
+      "file": "frontend/src/inkeep.css",
+      "count": 44
+    },
+    {
+      "file": "highlight.io/components/Home/Home.module.scss",
+      "count": 40
+    },
+    {
+      "file": "highlight.io/components/common/Navbar/Navbar.module.scss",
+      "count": 33
+    },
+    {
+      "file": "frontend/src/pages/Player/Toolbar/Toolbar.module.css",
+      "count": 26
+    }
+  ],
+  "samples": [
+    {
+      "component": "CalendlyModal",
+      "location": "frontend/src/components/CalendlyModal/CalendlyButton.tsx:75",
+      "entries": [
+        "backgroundColor: #6F6E777A (line 109)"
+      ]
+    },
+    {
+      "component": "LoadingBar",
+      "location": "frontend/src/components/Loading/Loading.tsx:33",
+      "entries": [
+        "color: #5629c6 (line 46)"
+      ]
+    },
+    {
+      "component": "Modal",
+      "location": "frontend/src/components/Modal/ModalV2.tsx:18",
+      "entries": [
+        "backgroundColor: #6F6E777A (line 61)"
+      ]
+    },
+    {
+      "component": "IconExpanded",
+      "location": "frontend/src/components/RelatedResources/ResourceTable.tsx:364",
+      "entries": [
+        "color: #6F6E77 (line 365)"
+      ]
+    },
+    {
+      "component": "IconCollapsed",
+      "location": "frontend/src/components/RelatedResources/ResourceTable.tsx:368",
+      "entries": [
+        "color: #6F6E77 (line 369)"
+      ]
+    },
+    {
+      "component": "ErrorTags",
+      "location": "frontend/src/pages/ErrorTags/ErrorTags.tsx:26",
+      "entries": [
+        "gap: 0.5rem (line 49)"
+      ]
+    },
+    {
+      "component": "ErrorTagsSearch",
+      "location": "frontend/src/pages/ErrorTags/ErrorTagsSearch.tsx:21",
+      "entries": [
+        "gap: 0.25rem (line 53)",
+        "fontSize: 0.8125rem (line 61)",
+        "marginTop: 0.75rem (line 62)"
+      ]
+    },
+    {
+      "component": "Score",
+      "location": "frontend/src/pages/ErrorTags/ErrorTagsSearch.tsx:119",
+      "entries": [
+        "fontSize: 0.75rem (line 152)"
+      ]
+    },
+    {
+      "component": "InternalPage",
+      "location": "frontend/src/pages/Internal/InternalPage.tsx:8",
+      "entries": [
+        "gap: 8px (line 25)"
+      ]
+    },
+    {
+      "component": "QueryBuilderPage",
+      "location": "frontend/src/pages/Internal/QueryBuilderPage.tsx:74",
+      "entries": [
+        "padding: 10px (line 90)"
+      ]
+    },
+    {
+      "component": "NewProjectPage",
+      "location": "frontend/src/pages/NewProject/NewProjectPage.tsx:27",
+      "entries": [
+        "backgroundColor: #6F6E777A (line 110)",
+        "color: #6F6E77 (line 142)"
+      ]
+    },
+    {
+      "component": "TraceFlameGraphNode",
+      "location": "frontend/src/pages/Traces/TraceFlameGraphNode.tsx:76",
+      "entries": [
+        "fontSize: 12px (line 180)",
+        "marginLeft: 4px (line 181)",
+        "marginRight: 4px (line 182)"
+      ]
+    }
+  ],
+  "scanSeconds": 38
+}

@@ -1,0 +1,339 @@
+{
+  "repo": "windmill-labs/windmill",
+  "owner": "windmill-labs",
+  "name": "windmill",
+  "description": "Code-first platform for workflows, apps and AI agents, on the fastest self-hostable orchestrator (benchmarked against Airflow, Prefect and Temporal). Business teams build with AI, engineers control what ships. Open-source alternative to Lovable, Retool and n8n.",
+  "stars": 18477,
+  "homepage": "https://windmill.dev",
+  "language": "Rust",
+  "defaultBranch": "main",
+  "commit": "3bf486415bd88ffea9787f004874d15bbd433265",
+  "generatedAt": "2026-11-10T00:45:37.929Z",
+  "cliVersion": "0.8.20",
+  "score": 86,
+  "tier": "Great",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 50,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 6,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 2003,
+    "tokenCount": 421,
+    "hardcodedValueCount": 102,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 106,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 4,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 2,
+    "vendoredDriftCount": 0,
+    "notedCount": 18,
+    "topHardcodedColor": {
+      "value": "#fef2f2",
+      "count": 1
+    },
+    "worstFile": {
+      "path": "frontend/src/lib/components/flows/propPicker/OutputPickerInner.svelte",
+      "issueCount": 3
+    },
+    "uniqueSpacingValues": 4,
+    "detectedFrameworkNames": []
+  },
+  "suggestions": [
+    "Nearly there — just 102 hardcoded values left to tokenize. frontend/src/lib/components/flows/propPicker/OutputPickerInner.svelte has the most (3)",
+    "4 deprecated patterns — migrate to current API"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 10,
+      "action": "Replace the hardcoded values in 97 of the 102 findings with tokens or scale steps"
+    },
+    {
+      "pillar": "criticalIssues",
+      "points": 4,
+      "action": "Migrate 4 deprecated patterns"
+    }
+  ],
+  "noted": {
+    "count": 18,
+    "byKind": {
+      "optical-nudge": 18
+    },
+    "samples": [
+      {
+        "file": "frontend/src/lib/components/apps/editor/inlineScriptsPanel/RunButton.svelte",
+        "line": 52,
+        "value": "ml-[3px]",
+        "kind": "optical-nudge",
+        "reason": "ml-[3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/src/lib/components/apps/editor/settingsPanel/DecisionTreeGraphNode.svelte",
+        "line": 84,
+        "value": "mx-[3px]",
+        "kind": "optical-nudge",
+        "reason": "mx-[3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/src/lib/components/common/EditableTextarea.svelte",
+        "line": 167,
+        "value": "pt-[2px]",
+        "kind": "optical-nudge",
+        "reason": "pt-[2px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/src/lib/components/details/BuildChatAppCard.svelte",
+        "line": 70,
+        "value": "ml-[2px]",
+        "kind": "optical-nudge",
+        "reason": "ml-[2px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/src/lib/components/details/DetailPageLayout.svelte",
+        "line": 145,
+        "value": "mt-[-2px]",
+        "kind": "optical-nudge",
+        "reason": "mt-[-2px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/src/lib/components/flows/conversations/FlowConversationsSidebar.svelte",
+        "line": 241,
+        "value": "ml-[2px]",
+        "kind": "optical-nudge",
+        "reason": "ml-[2px] is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 106,
+    "critical": 0,
+    "warning": 30,
+    "info": 76
+  },
+  "driftByType": {
+    "deprecated-pattern": 4,
+    "hardcoded-value": 102
+  },
+  "topColors": [
+    {
+      "value": "#88c0d0",
+      "count": 20
+    },
+    {
+      "value": "#8fbcbb",
+      "count": 15
+    },
+    {
+      "value": "#81a1c1",
+      "count": 8
+    },
+    {
+      "value": "#d08770",
+      "count": 7
+    },
+    {
+      "value": "#d8dee9",
+      "count": 5
+    },
+    {
+      "value": "#d4d4d4",
+      "count": 4
+    },
+    {
+      "value": "#3c3c3c",
+      "count": 4
+    },
+    {
+      "value": "#969696",
+      "count": 4
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "5px",
+      "count": 13
+    },
+    {
+      "value": "4px",
+      "count": 7
+    },
+    {
+      "value": "8px",
+      "count": 4
+    },
+    {
+      "value": "26px",
+      "count": 3
+    },
+    {
+      "value": "13px",
+      "count": 3
+    },
+    {
+      "value": "0.6rem",
+      "count": 3
+    },
+    {
+      "value": "0.45rem",
+      "count": 2
+    },
+    {
+      "value": "30px",
+      "count": 2
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "frontend/static/tailwind_full.css",
+      "count": 204
+    },
+    {
+      "file": "frontend/src/lib/components/HighlightTheme.svelte",
+      "count": 86
+    },
+    {
+      "file": "frontend/src/lib/components/LogViewer.svelte",
+      "count": 64
+    },
+    {
+      "file": "frontend/src/lib/components/workspaceSettings/DeployToHub.svelte",
+      "count": 35
+    },
+    {
+      "file": "frontend/src/lib/components/debug/DebugConsole.svelte",
+      "count": 25
+    },
+    {
+      "file": "frontend/src/lib/components/ScriptEditor.svelte",
+      "count": 9
+    },
+    {
+      "file": "frontend/src/lib/components/apps/editor/settingsPanel/inputEditor/ColorInput.svelte",
+      "count": 9
+    },
+    {
+      "file": "frontend/src/lib/components/debug/MonacoDebugger.svelte",
+      "count": 9
+    }
+  ],
+  "samples": [
+    {
+      "component": "DbtProjectPanel",
+      "location": "frontend/src/lib/components/dbt/DbtProjectPanel.svelte:1",
+      "entries": [
+        "padding-left: 15px (template)"
+      ]
+    },
+    {
+      "component": "RawAppPreview",
+      "location": "frontend/src/lib/components/raw_apps/RawAppPreview.svelte:1",
+      "entries": [
+        "background: #fef2f2 (template)",
+        "color: #991b1b (template)"
+      ]
+    },
+    {
+      "component": "OperatorTour",
+      "location": "frontend/src/lib/components/tutorials/OperatorTour.svelte:1",
+      "entries": [
+        "margin-bottom: 12px (template)",
+        "margin-top: 8px (template)",
+        "margin-top: 12px (template)"
+      ]
+    },
+    {
+      "component": "frontend/src/lib/components/DraftBadge.svelte",
+      "location": "frontend/src/lib/components/DraftBadge.svelte:298",
+      "entries": [
+        "text-[8px] (line 298)",
+        "text-[8px] (line 308)",
+        "text-[9px] (line 375)"
+      ]
+    },
+    {
+      "component": "frontend/src/lib/components/EditableSchemaForm.svelte",
+      "location": "frontend/src/lib/components/EditableSchemaForm.svelte:427",
+      "entries": [
+        "pr-[38px] (line 427)"
+      ]
+    },
+    {
+      "component": "frontend/src/lib/components/FilterSearchbar.svelte",
+      "location": "frontend/src/lib/components/FilterSearchbar.svelte:784",
+      "entries": [
+        "pt-[0.7rem] (line 784)"
+      ]
+    },
+    {
+      "component": "frontend/src/lib/components/GitDiffPreview.svelte",
+      "location": "frontend/src/lib/components/GitDiffPreview.svelte:23",
+      "entries": [
+        "text-[11px] (line 23)"
+      ]
+    },
+    {
+      "component": "frontend/src/lib/components/GitHubAppIntegration.svelte",
+      "location": "frontend/src/lib/components/GitHubAppIntegration.svelte:273",
+      "entries": [
+        "pt-[26px] (line 273)"
+      ]
+    },
+    {
+      "component": "frontend/src/lib/components/Login.svelte",
+      "location": "frontend/src/lib/components/Login.svelte:716",
+      "entries": [
+        "text-[10px] (line 716)"
+      ]
+    },
+    {
+      "component": "frontend/src/lib/components/OnBehalfOfSelector.svelte",
+      "location": "frontend/src/lib/components/OnBehalfOfSelector.svelte:215",
+      "entries": [
+        "text-[10px] (line 215)"
+      ]
+    },
+    {
+      "component": "frontend/src/lib/components/PathNameAutocomplete.svelte",
+      "location": "frontend/src/lib/components/PathNameAutocomplete.svelte:360",
+      "entries": [
+        "text-[10px] (line 360)",
+        "text-[10px] (line 371)"
+      ]
+    },
+    {
+      "component": "frontend/src/lib/components/SummaryPathDisplay.svelte",
+      "location": "frontend/src/lib/components/SummaryPathDisplay.svelte:382",
+      "entries": [
+        "text-[10px] (line 382)"
+      ]
+    }
+  ],
+  "scanSeconds": 50
+}

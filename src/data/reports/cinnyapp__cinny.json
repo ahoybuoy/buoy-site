@@ -1,0 +1,98 @@
+{
+  "repo": "cinnyapp/cinny",
+  "owner": "cinnyapp",
+  "name": "cinny",
+  "description": "Yet another matrix client",
+  "stars": 3979,
+  "homepage": "https://cinny.in",
+  "language": "TypeScript",
+  "defaultBranch": "dev",
+  "commit": "474400cedc438f6fb4db69bc763037b0948bbe48",
+  "generatedAt": "2026-11-10T00:25:34.095Z",
+  "cliVersion": "0.8.20",
+  "score": 100,
+  "tier": "Great",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 60,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 456,
+    "tokenCount": 20,
+    "hardcodedValueCount": 1,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 1,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 0,
+    "detectedFrameworkNames": [
+      "react"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 1 hardcoded value left to tokenize"
+  ],
+  "pathTo100": [],
+  "noted": {
+    "count": 0,
+    "byKind": {},
+    "samples": []
+  },
+  "driftSummary": {
+    "total": 1,
+    "critical": 0,
+    "warning": 0,
+    "info": 1
+  },
+  "driftByType": {
+    "hardcoded-value": 1
+  },
+  "topColors": [],
+  "topSpacing": [],
+  "worstFiles": [
+    {
+      "file": "src/index.css",
+      "count": 2
+    }
+  ],
+  "samples": [
+    {
+      "component": "src/index.css",
+      "location": "src/index.css:51",
+      "entries": [
+        "font size: 16px (line 51)",
+        "font weight: 500 (line 85)"
+      ]
+    }
+  ],
+  "scanSeconds": 7
+}

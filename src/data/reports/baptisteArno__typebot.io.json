@@ -1,0 +1,306 @@
+{
+  "repo": "baptisteArno/typebot.io",
+  "owner": "baptisteArno",
+  "name": "typebot.io",
+  "description": "💬 Typebot is a powerful chatbot builder that you can self-host.",
+  "stars": 10614,
+  "homepage": "https://typebot.io",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "532c83e78cf2ad3c7b86e7db847456609e363213",
+  "generatedAt": "2026-11-10T00:24:24.958Z",
+  "cliVersion": "0.8.20",
+  "score": 94,
+  "tier": "Great",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 54,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 1000,
+    "tokenCount": 377,
+    "hardcodedValueCount": 32,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 32,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 2,
+    "topHardcodedColor": {
+      "value": "#fff",
+      "count": 1
+    },
+    "worstFile": {
+      "path": "apps/builder/src/features/templates/components/TemplatesDialog.tsx",
+      "issueCount": 1
+    },
+    "uniqueSpacingValues": 3,
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "tailwind"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 32 hardcoded values left to tokenize"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 6,
+      "action": "Replace the hardcoded values in 30 of the 32 findings with tokens or scale steps"
+    }
+  ],
+  "noted": {
+    "count": 2,
+    "byKind": {
+      "optical-nudge": 2
+    },
+    "samples": [
+      {
+        "file": "apps/builder/src/features/forge/components/zodLayouts/ZodFieldLayout.tsx",
+        "line": 479,
+        "value": "mt-[-3px]",
+        "kind": "optical-nudge",
+        "reason": "mt-[-3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/landing-page/src/features/homepage/use-cases/UseCases.tsx",
+        "line": 171,
+        "value": "p-[2px]",
+        "kind": "optical-nudge",
+        "reason": "p-[2px] is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 32,
+    "critical": 0,
+    "warning": 9,
+    "info": 23
+  },
+  "driftByType": {
+    "hardcoded-value": 32
+  },
+  "topColors": [
+    {
+      "value": "rgba(",
+      "count": 23
+    },
+    {
+      "value": "#c13eaa",
+      "count": 4
+    },
+    {
+      "value": "#ff491f",
+      "count": 4
+    },
+    {
+      "value": "#282828",
+      "count": 2
+    },
+    {
+      "value": "rgb(56 189 248 / 0.1)",
+      "count": 2
+    },
+    {
+      "value": "rgb(58 58 58)",
+      "count": 2
+    },
+    {
+      "value": "#fff",
+      "count": 1
+    },
+    {
+      "value": "#393939",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "30px",
+      "count": 3
+    },
+    {
+      "value": "24px",
+      "count": 2
+    },
+    {
+      "value": "-0.3rem",
+      "count": 2
+    },
+    {
+      "value": "-0.15rem",
+      "count": 2
+    },
+    {
+      "value": "1rem",
+      "count": 2
+    },
+    {
+      "value": "32px",
+      "count": 1
+    },
+    {
+      "value": "10px",
+      "count": 1
+    },
+    {
+      "value": "60px",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "packages/embeds/js/src/assets/index.css",
+      "count": 27
+    },
+    {
+      "file": "apps/landing-page/src/assets/code-snippet.css",
+      "count": 11
+    },
+    {
+      "file": "apps/landing-page/src/routes/_layout/about.tsx",
+      "count": 8
+    },
+    {
+      "file": "apps/landing-page/src/components/cta/CtaButton.tsx",
+      "count": 7
+    },
+    {
+      "file": "apps/landing-page/src/assets/globals.css",
+      "count": 5
+    },
+    {
+      "file": "packages/ui/src/components/InputGroup.tsx",
+      "count": 4
+    },
+    {
+      "file": "packages/ui/src/fonts.css",
+      "count": 4
+    },
+    {
+      "file": "apps/landing-page/src/components/Header.tsx",
+      "count": 3
+    }
+  ],
+  "samples": [
+    {
+      "component": "NotFound",
+      "location": "apps/viewer/src/app/not-found.tsx:4",
+      "entries": [
+        "fontSize: 32px (line 25)",
+        "fontSize: 24px (line 28)"
+      ]
+    },
+    {
+      "component": "ErrorPage",
+      "location": "apps/viewer/src/components/ErrorPage.tsx:3",
+      "entries": [
+        "fontSize: 30px (line 17)",
+        "fontSize: 24px (line 29)"
+      ]
+    },
+    {
+      "component": "NotFoundPage",
+      "location": "apps/viewer/src/components/NotFoundPage.tsx:3",
+      "entries": [
+        "fontSize: 30px (line 13)"
+      ]
+    },
+    {
+      "component": "RootPage",
+      "location": "apps/viewer/src/components/RootPage.tsx:1",
+      "entries": [
+        "fontSize: 30px (line 12)"
+      ]
+    },
+    {
+      "component": "TemplatesDialog",
+      "location": "apps/builder/src/features/templates/components/TemplatesDialog.tsx:20",
+      "entries": [
+        "backgroundColor: #fff (line 150)"
+      ]
+    },
+    {
+      "component": "packages/ui/src/components/Accordion.tsx",
+      "location": "packages/ui/src/components/Accordion.tsx:38",
+      "entries": [
+        "text-[15px] (line 38)"
+      ]
+    },
+    {
+      "component": "packages/ui/src/components/Badge.tsx",
+      "location": "packages/ui/src/components/Badge.tsx:7",
+      "entries": [
+        "focus-visible:ring-[3px] (line 7)"
+      ]
+    },
+    {
+      "component": "packages/ui/src/components/InputGroup.tsx",
+      "location": "packages/ui/src/components/InputGroup.tsx:27",
+      "entries": [
+        "has-[>button]:ml-[-0.3rem] (line 27)",
+        "has-[>kbd]:ml-[-0.15rem] (line 27)",
+        "has-[>button]:mr-[-0.3rem] (line 29)"
+      ]
+    },
+    {
+      "component": "packages/ui/src/components/Otp.tsx",
+      "location": "packages/ui/src/components/Otp.tsx:50",
+      "entries": [
+        "ring-[3px] (line 50)"
+      ]
+    },
+    {
+      "component": "packages/ui/src/components/Switch.tsx",
+      "location": "packages/ui/src/components/Switch.tsx:8",
+      "entries": [
+        "focus-visible:ring-[3px] (line 8)"
+      ]
+    },
+    {
+      "component": "apps/builder/src/features/collaboration/components/CollaborationList.tsx",
+      "location": "apps/builder/src/features/collaboration/components/CollaborationList.tsx:194",
+      "entries": [
+        "text-[15px] (line 194)"
+      ]
+    },
+    {
+      "component": "apps/builder/src/features/collaboration/components/CollaboratorButton.tsx",
+      "location": "apps/builder/src/features/collaboration/components/CollaboratorButton.tsx:86",
+      "entries": [
+        "text-[15px] (line 86)"
+      ]
+    }
+  ],
+  "scanSeconds": 32
+}

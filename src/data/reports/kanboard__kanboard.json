@@ -1,0 +1,335 @@
+{
+  "repo": "kanboard/kanboard",
+  "owner": "kanboard",
+  "name": "kanboard",
+  "description": "Kanban project management software",
+  "stars": 9950,
+  "homepage": "https://kanboard.org",
+  "language": "PHP",
+  "defaultBranch": "main",
+  "commit": "37ef9101bf45ac7b963d79fe0c117729a891cfdb",
+  "generatedAt": "2026-11-10T00:33:37.093Z",
+  "cliVersion": "0.8.20",
+  "score": null,
+  "tier": "N/A",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 0,
+      "max": 20
+    },
+    "consistency": {
+      "score": 0,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 0,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 0,
+    "tokenCount": 291,
+    "hardcodedValueCount": 47,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 47,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 13,
+    "topHardcodedColor": {
+      "value": "#000",
+      "count": 10
+    },
+    "detectedFrameworkNames": []
+  },
+  "suggestions": [
+    "Only 0 UI components detected, too few to score. If this repo has more, Buoy may not recognise its framework yet."
+  ],
+  "pathTo100": null,
+  "noted": {
+    "count": 13,
+    "byKind": {
+      "optical-nudge": 13
+    },
+    "samples": [
+      {
+        "file": "assets/css/src/avatar.css",
+        "line": 12,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "margin-right: 3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "assets/css/src/bulk_change.css",
+        "line": 12,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "margin-bottom: 3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "assets/css/src/color_picker.css",
+        "line": 20,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "padding-bottom: 3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "assets/css/src/form.css",
+        "line": 118,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-top: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "assets/css/src/form.css",
+        "line": 176,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "padding-right: 3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "assets/css/src/input_addon.css",
+        "line": 61,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "padding: 3px is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 47,
+    "critical": 0,
+    "warning": 33,
+    "info": 14
+  },
+  "driftByType": {
+    "hardcoded-value": 47
+  },
+  "topColors": [
+    {
+      "value": "#000",
+      "count": 21
+    },
+    {
+      "value": "#fff",
+      "count": 11
+    },
+    {
+      "value": "#555",
+      "count": 6
+    },
+    {
+      "value": "#dedede",
+      "count": 5
+    },
+    {
+      "value": "#ccc",
+      "count": 5
+    },
+    {
+      "value": "#ddd",
+      "count": 5
+    },
+    {
+      "value": "#333",
+      "count": 4
+    },
+    {
+      "value": "#b94a48",
+      "count": 3
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "10px",
+      "count": 46
+    },
+    {
+      "value": "5px",
+      "count": 35
+    },
+    {
+      "value": "20px",
+      "count": 16
+    },
+    {
+      "value": "15px",
+      "count": 12
+    },
+    {
+      "value": "8px",
+      "count": 11
+    },
+    {
+      "value": "4px",
+      "count": 6
+    },
+    {
+      "value": "25px",
+      "count": 5
+    },
+    {
+      "value": "55px",
+      "count": 3
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "assets/css/src/table_list.css",
+      "count": 27
+    },
+    {
+      "file": "assets/css/src/form.css",
+      "count": 21
+    },
+    {
+      "file": "assets/css/src/task_icons.css",
+      "count": 17
+    },
+    {
+      "file": "assets/css/src/markdown.css",
+      "count": 16
+    },
+    {
+      "file": "assets/css/src/project.css",
+      "count": 15
+    },
+    {
+      "file": "assets/css/src/thumbnails.css",
+      "count": 14
+    },
+    {
+      "file": "assets/css/src/dropdown.css",
+      "count": 12
+    },
+    {
+      "file": "assets/css/src/task_board.css",
+      "count": 11
+    }
+  ],
+  "samples": [
+    {
+      "component": "assets/css/src/accordion.css",
+      "location": "assets/css/src/accordion.css:2",
+      "entries": [
+        "font size: 1.2em (line 2)",
+        "spacing: 10px (line 4)",
+        "spacing: 15px (line 8)"
+      ]
+    },
+    {
+      "component": "assets/css/src/activity_stream.css",
+      "location": "assets/css/src/activity_stream.css:2",
+      "entries": [
+        "spacing: 15px (line 2)",
+        "spacing: 10px (line 3)",
+        "spacing: 10px (line 15)"
+      ]
+    },
+    {
+      "component": "assets/css/src/alert.css",
+      "location": "assets/css/src/alert.css:3",
+      "entries": [
+        "spacing: 5px (line 3)",
+        "spacing: 5px (line 4)",
+        "radius: 4px (line 8)"
+      ]
+    },
+    {
+      "component": "assets/css/src/avatar.css",
+      "location": "assets/css/src/avatar.css:7",
+      "entries": [
+        "spacing: 10px (line 7)",
+        "radius: 30px (line 17)",
+        "line height: 48px (line 21)"
+      ]
+    },
+    {
+      "component": "assets/css/src/base.css",
+      "location": "assets/css/src/base.css:19",
+      "entries": [
+        "spacing: 10px (line 19)",
+        "font size: 0.8em (line 27)",
+        "colour: rgba(0, 0, 0, 0.1) (line 33)"
+      ]
+    },
+    {
+      "component": "assets/css/src/board.css",
+      "location": "assets/css/src/board.css:2",
+      "entries": [
+        "spacing: 5px (line 2)",
+        "font size: 1.4em (line 98)",
+        "font size: 0.85em (line 110)"
+      ]
+    },
+    {
+      "component": "assets/css/src/bulk_change.css",
+      "location": "assets/css/src/bulk_change.css:7",
+      "entries": [
+        "spacing: 10px (line 7)"
+      ]
+    },
+    {
+      "component": "assets/css/src/button.css",
+      "location": "assets/css/src/button.css:8",
+      "entries": [
+        "font size: 1.2em (line 8)",
+        "radius: 2px (line 12)",
+        "font size: 0.8em (line 60)"
+      ]
+    },
+    {
+      "component": "assets/css/src/color_picker.css",
+      "location": "assets/css/src/color_picker.css:13",
+      "entries": [
+        "spacing: 5px (line 13)",
+        "colour: #000 (line 14)"
+      ]
+    },
+    {
+      "component": "assets/css/src/comment.css",
+      "location": "assets/css/src/comment.css:16",
+      "entries": [
+        "spacing: 5px (line 16)",
+        "spacing: 15px (line 17)",
+        "spacing: 55px (line 22)"
+      ]
+    },
+    {
+      "component": "assets/css/src/dashboard.css",
+      "location": "assets/css/src/dashboard.css:2",
+      "entries": [
+        "spacing: 10px (line 2)",
+        "colour: #000 (line 8)"
+      ]
+    },
+    {
+      "component": "assets/css/src/dropdown.css",
+      "location": "assets/css/src/dropdown.css:15",
+      "entries": [
+        "font size: 0.85em (line 15)",
+        "radius: 3px (line 28)",
+        "shadow: 0 1px 3px rgba(0, 0, 0, 0.15) (line 29)"
+      ]
+    }
+  ],
+  "scanSeconds": 5
+}

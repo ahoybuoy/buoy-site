@@ -1,0 +1,139 @@
+{
+  "repo": "toeverything/AFFiNE",
+  "owner": "toeverything",
+  "name": "AFFiNE",
+  "description": "There can be more than Notion and Miro. AFFiNE(pronounced [ə‘fain]) is a next-gen knowledge base that brings planning, sorting and creating all together. Privacy first, open-source, customizable and ready to use. ",
+  "stars": 74406,
+  "homepage": "https://affine.pro",
+  "language": "TypeScript",
+  "defaultBranch": "canary",
+  "commit": "9c316636e0cb8f1b7f180306c5934e8ec81c71b7",
+  "generatedAt": "2026-11-10T00:44:15.738Z",
+  "cliVersion": "0.8.20",
+  "score": 40,
+  "tier": "OK",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 72,
+    "tokenCount": 91,
+    "hardcodedValueCount": 2,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 67,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 1,
+    "orphanedComponentCount": 64,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 0,
+    "detectedFrameworkNames": [
+      "react",
+      "vue",
+      "lit",
+      "tailwind",
+      "storybook",
+      "emotion",
+      "radix"
+    ]
+  },
+  "suggestions": [
+    "2 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 60,
+      "action": "Replace the hardcoded values in all 2 findings with tokens or scale steps, and remove or reuse 65 unused components and repeated patterns"
+    }
+  ],
+  "noted": {
+    "count": 0,
+    "byKind": {},
+    "samples": []
+  },
+  "driftSummary": {
+    "total": 67,
+    "critical": 0,
+    "warning": 0,
+    "info": 67
+  },
+  "driftByType": {
+    "orphaned-component": 64,
+    "hardcoded-value": 2,
+    "repeated-pattern": 1
+  },
+  "topColors": [],
+  "topSpacing": [
+    {
+      "value": "40px",
+      "count": 2
+    },
+    {
+      "value": "24px",
+      "count": 1
+    },
+    {
+      "value": "10px",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "packages/frontend/component/src/theme/fonts.css",
+      "count": 5
+    },
+    {
+      "file": "packages/frontend/component/src/theme/global.css",
+      "count": 5
+    }
+  ],
+  "samples": [
+    {
+      "component": "packages/frontend/component/src/theme/fonts.css",
+      "location": "packages/frontend/component/src/theme/fonts.css:42",
+      "entries": [
+        "font weight: 300 (line 42)",
+        "font weight: 500 (line 77)",
+        "font weight: 500 (line 85)"
+      ]
+    },
+    {
+      "component": "packages/frontend/component/src/theme/global.css",
+      "location": "packages/frontend/component/src/theme/global.css:243",
+      "entries": [
+        "spacing: 40px (line 243)",
+        "spacing: 40px (line 244)",
+        "spacing: 24px (line 263)"
+      ]
+    }
+  ],
+  "scanSeconds": 41
+}

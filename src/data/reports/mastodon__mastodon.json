@@ -1,0 +1,340 @@
+{
+  "repo": "mastodon/mastodon",
+  "owner": "mastodon",
+  "name": "mastodon",
+  "description": "Your self-hosted, globally interconnected microblogging community",
+  "stars": 50502,
+  "homepage": "https://joinmastodon.org",
+  "language": "Ruby",
+  "defaultBranch": "main",
+  "commit": "5a207bc8f5046e27cffc640a3c64f96504f6afcf",
+  "generatedAt": "2026-11-10T00:38:33.885Z",
+  "cliVersion": "0.8.20",
+  "score": 75,
+  "tier": "Good",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 41,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 14,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 643,
+    "tokenCount": 7,
+    "hardcodedValueCount": 61,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 61,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 18,
+    "detectedFrameworkNames": [
+      "react",
+      "storybook"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 61 hardcoded values left to tokenize"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 19,
+      "action": "Replace the hardcoded values in 60 of the 61 findings with tokens or scale steps"
+    },
+    {
+      "pillar": "tokenHealth",
+      "points": 6,
+      "action": "Define 13 more design tokens (7 of the 20 that earn full credit)"
+    }
+  ],
+  "noted": {
+    "count": 18,
+    "byKind": {
+      "optical-nudge": 17,
+      "explained": 1
+    },
+    "samples": [
+      {
+        "file": "app/javascript/styles/mastodon/components.scss",
+        "line": 1047,
+        "value": "$height + 1px",
+        "kind": "explained",
+        "reason": "to visually center the numbers"
+      },
+      {
+        "file": "app/javascript/mastodon/components/callout/styles.module.css",
+        "line": 18,
+        "value": "-2px",
+        "kind": "optical-nudge",
+        "reason": "margin-block: -2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "app/javascript/mastodon/components/callout/styles.module.css",
+        "line": 50,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "margin-bottom: 3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "app/javascript/mastodon/components/status/content.module.scss",
+        "line": 14,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding-inline: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "app/javascript/mastodon/components/status/styles.module.scss",
+        "line": 123,
+        "value": "-2px",
+        "kind": "optical-nudge",
+        "reason": "margin-inline: -2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "app/javascript/mastodon/components/status/styles.module.scss",
+        "line": 187,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-block: 2px is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 61,
+    "critical": 0,
+    "warning": 4,
+    "info": 57
+  },
+  "driftByType": {
+    "hardcoded-value": 61
+  },
+  "topColors": [
+    {
+      "value": "#fff",
+      "count": 17
+    },
+    {
+      "value": "#746a89",
+      "count": 15
+    },
+    {
+      "value": "#17063b",
+      "count": 14
+    },
+    {
+      "value": "#6364ff",
+      "count": 8
+    },
+    {
+      "value": "#dfdee3",
+      "count": 5
+    },
+    {
+      "value": "#563acc",
+      "count": 5
+    },
+    {
+      "value": "#f3f2f5",
+      "count": 4
+    },
+    {
+      "value": "#1b001f",
+      "count": 3
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "8px",
+      "count": 124
+    },
+    {
+      "value": "16px",
+      "count": 102
+    },
+    {
+      "value": "10px",
+      "count": 89
+    },
+    {
+      "value": "4px",
+      "count": 62
+    },
+    {
+      "value": "20px",
+      "count": 51
+    },
+    {
+      "value": "15px",
+      "count": 51
+    },
+    {
+      "value": "12px",
+      "count": 46
+    },
+    {
+      "value": "5px",
+      "count": 24
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "app/javascript/styles/mastodon/components.scss",
+      "count": 694
+    },
+    {
+      "file": "app/javascript/styles/mastodon/admin.scss",
+      "count": 261
+    },
+    {
+      "file": "app/javascript/styles/entrypoints/mailer.scss",
+      "count": 242
+    },
+    {
+      "file": "app/javascript/mastodon/components/account_header/styles.module.scss",
+      "count": 51
+    },
+    {
+      "file": "app/javascript/mastodon/features/custom_homepage/styles.module.scss",
+      "count": 29
+    },
+    {
+      "file": "app/javascript/mastodon/features/account_edit/modals/styles.module.scss",
+      "count": 20
+    },
+    {
+      "file": "app/javascript/mastodon/features/account_edit/styles.module.scss",
+      "count": 18
+    },
+    {
+      "file": "app/javascript/mastodon/features/account_timeline/modals/styles.module.scss",
+      "count": 18
+    }
+  ],
+  "samples": [
+    {
+      "component": "app/javascript/mastodon/components/account_bio/styles.module.scss",
+      "location": "app/javascript/mastodon/components/account_bio/styles.module.scss:2",
+      "entries": [
+        "font size: 15px (line 2)",
+        "spacing: 20px (line 8)"
+      ]
+    },
+    {
+      "component": "app/javascript/mastodon/components/account_header/styles.module.scss",
+      "location": "app/javascript/mastodon/components/account_header/styles.module.scss:31",
+      "entries": [
+        "spacing: 16px (line 31)",
+        "spacing: -64px (line 36)",
+        "spacing: 8px (line 41)"
+      ]
+    },
+    {
+      "component": "app/javascript/mastodon/components/account_list_item/styles.module.scss",
+      "location": "app/javascript/mastodon/components/account_list_item/styles.module.scss:4",
+      "entries": [
+        "spacing: 12px (line 4)",
+        "spacing: 16px (line 5)"
+      ]
+    },
+    {
+      "component": "app/javascript/mastodon/components/badge/redesign.module.scss",
+      "location": "app/javascript/mastodon/components/badge/redesign.module.scss:6",
+      "entries": [
+        "line height: 1.1 (line 6)"
+      ]
+    },
+    {
+      "component": "app/javascript/mastodon/components/badge/styles.module.scss",
+      "location": "app/javascript/mastodon/components/badge/styles.module.scss:14",
+      "entries": [
+        "font size: 13px (line 14)"
+      ]
+    },
+    {
+      "component": "app/javascript/mastodon/components/callout/styles.module.css",
+      "location": "app/javascript/mastodon/components/callout/styles.module.css:4",
+      "entries": [
+        "spacing: 12px (line 4)",
+        "spacing: 8px (line 5)",
+        "radius: 12px (line 8)"
+      ]
+    },
+    {
+      "component": "app/javascript/mastodon/components/carousel/styles.scss",
+      "location": "app/javascript/mastodon/components/carousel/styles.scss:2",
+      "entries": [
+        "spacing: 16px (line 2)",
+        "spacing: 4px (line 14)"
+      ]
+    },
+    {
+      "component": "app/javascript/mastodon/components/character_counter/styles.module.scss",
+      "location": "app/javascript/mastodon/components/character_counter/styles.module.scss:3",
+      "entries": [
+        "spacing: 4px (line 3)",
+        "font size: 13px (line 4)"
+      ]
+    },
+    {
+      "component": "app/javascript/mastodon/components/details/styles.module.scss",
+      "location": "app/javascript/mastodon/components/details/styles.module.scss:3",
+      "entries": [
+        "font size: 13px (line 3)",
+        "spacing: 8px (line 4)",
+        "font weight: 600 (line 8)"
+      ]
+    },
+    {
+      "component": "app/javascript/mastodon/components/empty_state/empty_state.module.scss",
+      "location": "app/javascript/mastodon/components/empty_state/empty_state.module.scss:7",
+      "entries": [
+        "spacing: 24px (line 7)",
+        "spacing: 16px (line 8)",
+        "spacing: 16px (line 21)"
+      ]
+    },
+    {
+      "component": "app/javascript/mastodon/components/familiar_followers/styles.module.scss",
+      "location": "app/javascript/mastodon/components/familiar_followers/styles.module.scss:4",
+      "entries": [
+        "spacing: 10px (line 4)"
+      ]
+    },
+    {
+      "component": "app/javascript/mastodon/components/form_fields/combobox.module.scss",
+      "location": "app/javascript/mastodon/components/form_fields/combobox.module.scss:18",
+      "entries": [
+        "radius: 4px (line 18)",
+        "font size: 13px (line 36)",
+        "spacing: 4px (line 45)"
+      ]
+    }
+  ],
+  "scanSeconds": 17
+}

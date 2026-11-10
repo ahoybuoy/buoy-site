@@ -1,0 +1,268 @@
+{
+  "repo": "LibreChat-AI/LibreChat",
+  "owner": "LibreChat-AI",
+  "name": "LibreChat",
+  "description": "Enhanced ChatGPT Clone: Features Agents, MCP, Skills, DeepSeek, Anthropic, AWS, OpenAI, Responses API, Azure, Groq, o1, GPT-5, Mistral, OpenRouter, Vertex AI, Gemini, Artifacts, AI model switching, message search, Code Interpreter, langchain, DALL-E-3, OpenAPI Actions, Functions, Secure Multi-User Auth, Presets, open-source for self-hosting. Active",
+  "stars": 46911,
+  "homepage": "https://librechat.ai/",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "f4154b649efa37e1345ccc517a4d8d1ed2178c82",
+  "generatedAt": "2026-11-10T00:21:07.579Z",
+  "cliVersion": "0.8.20",
+  "score": 95,
+  "tier": "Great",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 55,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 1361,
+    "tokenCount": 637,
+    "hardcodedValueCount": 31,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 32,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 1,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 1,
+    "vendoredDriftCount": 0,
+    "notedCount": 2,
+    "worstFile": {
+      "path": "packages/chat/src/components/messages/Feedback.tsx",
+      "issueCount": 3
+    },
+    "uniqueSpacingValues": 2,
+    "detectedFrameworkNames": [
+      "react",
+      "tailwind",
+      "ariakit",
+      "radix"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 31 hardcoded values left to tokenize. packages/chat/src/components/messages/Feedback.tsx has the most (3)"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 5,
+      "action": "Replace the hardcoded values in 28 of the 31 findings with tokens or scale steps, and remove or reuse 1 unused component or repeated pattern"
+    }
+  ],
+  "noted": {
+    "count": 2,
+    "byKind": {
+      "optical-nudge": 1,
+      "explained": 1
+    },
+    "samples": [
+      {
+        "file": "client/src/style.css",
+        "line": 17,
+        "value": "v3 used gray-200, v4 uses currentColor.",
+        "kind": "explained",
+        "reason": "Tailwind v4 changed two preflight defaults this app was built against. Each rule below restores the v3 default rather t…"
+      },
+      {
+        "file": "client/src/components/SidePanel/Parameters/DynamicCheckbox.tsx",
+        "line": 78,
+        "value": "mt-[0.125rem]",
+        "kind": "optical-nudge",
+        "reason": "mt-[0.125rem] is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 32,
+    "critical": 0,
+    "warning": 3,
+    "info": 29
+  },
+  "driftByType": {
+    "hardcoded-value": 31,
+    "repeated-pattern": 1
+  },
+  "topColors": [],
+  "topSpacing": [
+    {
+      "value": "2em",
+      "count": 8
+    },
+    {
+      "value": "0.75em",
+      "count": 6
+    },
+    {
+      "value": "0.5rem",
+      "count": 6
+    },
+    {
+      "value": "1.1875rem",
+      "count": 5
+    },
+    {
+      "value": "0.5em",
+      "count": 5
+    },
+    {
+      "value": "1.25em",
+      "count": 5
+    },
+    {
+      "value": "0.8em",
+      "count": 4
+    },
+    {
+      "value": "0.5714286em",
+      "count": 4
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "client/src/style.css",
+      "count": 124
+    },
+    {
+      "file": "packages/client/src/theme/fonts.css",
+      "count": 5
+    },
+    {
+      "file": "client/src/components/Nav/KeyboardShortcutsDialog.tsx",
+      "count": 4
+    },
+    {
+      "file": "packages/client/src/components/Dropdown.css",
+      "count": 4
+    },
+    {
+      "file": "packages/chat/src/components/messages/Feedback.tsx",
+      "count": 3
+    },
+    {
+      "file": "client/src/components/Nav/ShortcutRecorder.tsx",
+      "count": 3
+    },
+    {
+      "file": "client/src/components/Tools/ToolItem.tsx",
+      "count": 3
+    },
+    {
+      "file": "client/src/components/Artifacts/Artifacts.tsx",
+      "count": 2
+    }
+  ],
+  "samples": [
+    {
+      "component": "HoverButtons",
+      "location": "client/src/components/Chat/Messages/HoverButtons.tsx:94",
+      "entries": [
+        "size: 1.1875rem (line 226)"
+      ]
+    },
+    {
+      "component": "MinimalHoverButtons",
+      "location": "client/src/components/Chat/Messages/MinimalHoverButtons.tsx:22",
+      "entries": [
+        "size: 1.1875rem (line 54)"
+      ]
+    },
+    {
+      "component": "ActionButton",
+      "location": "client/src/components/Messages/Content/ActionButton.tsx:20",
+      "entries": [
+        "size: 1.125rem (line 59)"
+      ]
+    },
+    {
+      "component": "RunCode",
+      "location": "client/src/components/Messages/Content/RunCode.tsx:23",
+      "entries": [
+        "size: 1.125rem (line 125)"
+      ]
+    },
+    {
+      "component": "FeedbackOptionButton",
+      "location": "packages/chat/src/components/messages/Feedback.tsx:49",
+      "entries": [
+        "size: 1.1875rem (line 73)"
+      ]
+    },
+    {
+      "component": "FeedbackButtons",
+      "location": "packages/chat/src/components/messages/Feedback.tsx:79",
+      "entries": [
+        "size: 1.1875rem (line 163)"
+      ]
+    },
+    {
+      "component": "Feedback",
+      "location": "packages/chat/src/components/messages/Feedback.tsx:227",
+      "entries": [
+        "size: 1.1875rem (line 298)"
+      ]
+    },
+    {
+      "component": "MermaidDialog",
+      "location": "client/src/components/Messages/Content/Mermaid/MermaidDialog.tsx:31",
+      "entries": [
+        "size: 1.125rem (line 119)"
+      ]
+    },
+    {
+      "component": "client/src/components/Artifacts/Artifacts.tsx",
+      "location": "client/src/components/Artifacts/Artifacts.tsx:487",
+      "entries": [
+        "rounded-t-[20px] (line 487)"
+      ]
+    },
+    {
+      "component": "client/src/components/Artifacts/Artifacts.tsx",
+      "location": "client/src/components/Artifacts/Artifacts.tsx:486",
+      "entries": [
+        "shadow-[0_-10px_60px_rgba(0,0,0,0.35)] (line 486)"
+      ]
+    },
+    {
+      "component": "client/src/components/Chat/Input/ChatForm.tsx",
+      "location": "client/src/components/Chat/Input/ChatForm.tsx:698",
+      "entries": [
+        "[&:has(textarea:focus)]:shadow-[0_2px_6px_rgba(0,0,0,.05)] (line 698)"
+      ]
+    },
+    {
+      "component": "client/src/components/Chat/Messages/Content/MessageContent.tsx",
+      "location": "client/src/components/Chat/Messages/Content/MessageContent.tsx:25",
+      "entries": [
+        "mb-[0.625rem] (line 25)"
+      ]
+    }
+  ],
+  "scanSeconds": 33
+}

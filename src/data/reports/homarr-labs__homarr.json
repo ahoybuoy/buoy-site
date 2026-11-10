@@ -1,0 +1,334 @@
+{
+  "repo": "homarr-labs/homarr",
+  "owner": "homarr-labs",
+  "name": "homarr",
+  "description": "A modern and easy to use dashboard. 80+ integrations. 20K+ icons built in. Authentication out of the box. No YAML, drag and drop configuration.",
+  "stars": 5321,
+  "homepage": "https://homarr.dev",
+  "language": "TypeScript",
+  "defaultBranch": "dev",
+  "commit": "8fad5e3d8f283a1a48eabdd1a73a8d71f0b45685",
+  "generatedAt": "2026-11-10T00:33:03.515Z",
+  "cliVersion": "0.8.20",
+  "score": 84,
+  "tier": "Great",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 44,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 1387,
+    "tokenCount": 98,
+    "hardcodedValueCount": 108,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 108,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 1,
+    "vendoredDriftCount": 0,
+    "notedCount": 14,
+    "topHardcodedColor": {
+      "value": "#fff",
+      "count": 1
+    },
+    "worstFile": {
+      "path": "packages/widgets/src/notebook/notebook.tsx",
+      "issueCount": 5
+    },
+    "uniqueSpacingValues": 10,
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "tailwind",
+      "mantine"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 108 hardcoded values left to tokenize. packages/widgets/src/notebook/notebook.tsx has the most (5)"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 16,
+      "action": "Replace the hardcoded values in 105 of the 108 findings with tokens or scale steps"
+    }
+  ],
+  "noted": {
+    "count": 14,
+    "byKind": {
+      "optical-nudge": 8,
+      "vendored": 6
+    },
+    "samples": [
+      {
+        "file": "apps/docs/src/components/ui/badge.tsx",
+        "line": 8,
+        "value": "focus-visible:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "apps/docs/src/components/ui/button.tsx",
+        "line": 25,
+        "value": "text-[0.8rem]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "apps/docs/src/components/ui/input-group.tsx",
+        "line": 28,
+        "value": "has-[>button]:ml-[-0.3rem], has-[>kbd]:ml-[-0.15rem], has-[>button]:mr-[-0.3rem], has-[>kbd]:mr-[-0.15rem]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "apps/docs/src/components/ui/toggle.tsx",
+        "line": 9,
+        "value": "focus-visible:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "apps/docs/src/components/ui/toggle.tsx",
+        "line": 18,
+        "value": "text-[0.8rem]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "apps/docs/src/components/ui/tooltip.tsx",
+        "line": 45,
+        "value": "rounded-[2px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 108,
+    "critical": 0,
+    "warning": 13,
+    "info": 95
+  },
+  "driftByType": {
+    "hardcoded-value": 108
+  },
+  "topColors": [
+    {
+      "value": "rgb(",
+      "count": 6
+    },
+    {
+      "value": "#fff",
+      "count": 4
+    },
+    {
+      "value": "#27272a",
+      "count": 2
+    },
+    {
+      "value": "#a51111",
+      "count": 2
+    },
+    {
+      "value": "#000",
+      "count": 2
+    },
+    {
+      "value": "rgb(0 0 0 / 65%)",
+      "count": 1
+    },
+    {
+      "value": "#c92a2a",
+      "count": 1
+    },
+    {
+      "value": "#202020",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "1rem",
+      "count": 51
+    },
+    {
+      "value": "0.25rem",
+      "count": 23
+    },
+    {
+      "value": "0.75rem",
+      "count": 21
+    },
+    {
+      "value": "0.5rem",
+      "count": 20
+    },
+    {
+      "value": "4px",
+      "count": 17
+    },
+    {
+      "value": "8px",
+      "count": 13
+    },
+    {
+      "value": "2px",
+      "count": 13
+    },
+    {
+      "value": "10px",
+      "count": 12
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "apps/nextjs/src/components/assistant/assistant-panel.module.css",
+      "count": 107
+    },
+    {
+      "file": "apps/docs/src/components/pages/core-concepts/technical-diagrams.module.css",
+      "count": 54
+    },
+    {
+      "file": "apps/docs/src/pages/index.module.css",
+      "count": 46
+    },
+    {
+      "file": "apps/docs/src/components/custom-jsx-component-reference.module.css",
+      "count": 44
+    },
+    {
+      "file": "apps/docs/src/components/pages/getting-started/getting-started-overview.module.css",
+      "count": 33
+    },
+    {
+      "file": "apps/docs/src/components/pages/getting-started/concept-flow.module.css",
+      "count": 32
+    },
+    {
+      "file": "tools/v2-showreel/src/style.css",
+      "count": 29
+    },
+    {
+      "file": "apps/docs/src/app/global.css",
+      "count": 28
+    }
+  ],
+  "samples": [
+    {
+      "component": "AccessSelectRow",
+      "location": "packages/forms-collection/src/access/access-table-rows.tsx:20",
+      "entries": [
+        "size: 1rem (line 43)"
+      ]
+    },
+    {
+      "component": "AccessDisplayRow",
+      "location": "packages/forms-collection/src/access/access-table-rows.tsx:84",
+      "entries": [
+        "size: 1rem (line 94)"
+      ]
+    },
+    {
+      "component": "GroupAccessForm",
+      "location": "packages/forms-collection/src/access/group-access-form.tsx:16",
+      "entries": [
+        "size: 1rem (line 76)"
+      ]
+    },
+    {
+      "component": "InlineConfirmActionIcon",
+      "location": "packages/ui/src/components/inline-confirm-action.tsx:159",
+      "entries": [
+        "size: 1rem (line 180)"
+      ]
+    },
+    {
+      "component": "NoResults",
+      "location": "packages/ui/src/components/no-results.tsx:17",
+      "entries": [
+        "size: 2rem (line 21)"
+      ]
+    },
+    {
+      "component": "IntegrationCard",
+      "location": "packages/ui/src/integration-select-grid/integration-select-grid.tsx:91",
+      "entries": [
+        "size: 10px (line 120)"
+      ]
+    },
+    {
+      "component": "GithubMention",
+      "location": "packages/ui/src/markdown/github-mentions.tsx:40",
+      "entries": [
+        "gap: 0.25em (line 42)",
+        "size: 1.25em (line 48)"
+      ]
+    },
+    {
+      "component": "ImportRepositorySelect",
+      "location": "packages/widgets/src/_inputs/widget-multiReleasesRepositories-input.tsx:699",
+      "entries": [
+        "size: 1em (line 784)"
+      ]
+    },
+    {
+      "component": "CalendarEventRows",
+      "location": "packages/widgets/src/calendar/calendar-event-list.tsx:118",
+      "entries": [
+        "size: 1rem (line 180)"
+      ]
+    },
+    {
+      "component": "SystemHealthMonitoring",
+      "location": "packages/widgets/src/health-monitoring/system-health.tsx:64",
+      "entries": [
+        "gap: 10px (line 180)",
+        "size: 1rem (line 245)"
+      ]
+    },
+    {
+      "component": "DiskStatus",
+      "location": "packages/widgets/src/health-monitoring/system-health.tsx:404",
+      "entries": [
+        "size: 1rem (line 434)"
+      ]
+    },
+    {
+      "component": "ColorControl",
+      "location": "packages/widgets/src/notebook/notebook.tsx:687",
+      "entries": [
+        "size: 1rem (line 769)"
+      ]
+    }
+  ],
+  "scanSeconds": 35
+}

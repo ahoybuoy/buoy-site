@@ -1,0 +1,345 @@
+{
+  "repo": "cline/cline",
+  "owner": "cline",
+  "name": "cline",
+  "description": "Autonomous coding agent as an SDK, IDE extension, or CLI assistant.",
+  "stars": 71467,
+  "homepage": "https://cline.bot",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "1e8ae47d60051c5e9a9bd0eed311ef209fdeb347",
+  "generatedAt": "2026-11-10T00:26:00.390Z",
+  "cliVersion": "0.8.20",
+  "score": 77,
+  "tier": "Good",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 37,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 1083,
+    "tokenCount": 826,
+    "hardcodedValueCount": 134,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 134,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 5,
+    "vendoredDriftCount": 7,
+    "notedCount": 10,
+    "topHardcodedColor": {
+      "value": "#176f2c",
+      "count": 2
+    },
+    "worstFile": {
+      "path": "apps/vscode/webview-ui/src/components/chat/chat-view/components/layout/InputSection.tsx",
+      "issueCount": 3
+    },
+    "uniqueSpacingValues": 16,
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "tailwind",
+      "radix"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 127 hardcoded values left to tokenize. apps/vscode/webview-ui/src/components/chat/chat-view/components/layout/InputSection.tsx has the most (3)",
+    "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
+    "16 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 23,
+      "action": "Replace the hardcoded values in 125 of the 127 findings with tokens or scale steps"
+    }
+  ],
+  "noted": {
+    "count": 10,
+    "byKind": {
+      "optical-nudge": 6,
+      "vendored": 4
+    },
+    "samples": [
+      {
+        "file": "apps/vscode/webview-ui/src/components/ui/button.tsx",
+        "line": 24,
+        "value": "border-[#176f2c], hover:bg-[#197f31], hover:border-[#197f31], active:bg-[#156528], active:border-[#156528], bg-[#c42b2b], border-[#c42b2b], hover:bg-[#a82424], hover:border-[#a82424], active:bg-[#8f1f1f], active:border-[#8f1f1f]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "apps/vscode/webview-ui/src/components/ui/hover-card.tsx",
+        "line": 29,
+        "value": "rounded-[2px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "apps/vscode/webview-ui/src/components/ui/item.tsx",
+        "line": 16,
+        "value": "focus-visible:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "apps/vscode/webview-ui/src/components/ui/switch.tsx",
+        "line": 27,
+        "value": "bg-[#8B8B8B]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "apps/cline-hub/src/webview/src/components/ui/tabs.tsx",
+        "line": 27,
+        "value": "p-[3px]",
+        "kind": "optical-nudge",
+        "reason": "p-[3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/vscode/webview-ui/src/components/settings/providers/OcaModelPicker.tsx",
+        "line": 138,
+        "value": "mb-[2px]",
+        "kind": "optical-nudge",
+        "reason": "mb-[2px] is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 134,
+    "critical": 0,
+    "warning": 6,
+    "info": 128
+  },
+  "driftByType": {
+    "hardcoded-value": 134
+  },
+  "topColors": [
+    {
+      "value": "#176f2c",
+      "count": 2
+    },
+    {
+      "value": "#197f31",
+      "count": 2
+    },
+    {
+      "value": "#156528",
+      "count": 2
+    },
+    {
+      "value": "rgba(255, 255, 255, 0.95)",
+      "count": 2
+    },
+    {
+      "value": "rgba(0, 0, 0, 0.2)",
+      "count": 2
+    },
+    {
+      "value": "oklch(0.82 0.006 270)",
+      "count": 1
+    },
+    {
+      "value": "oklch(0.72 0.01 270)",
+      "count": 1
+    },
+    {
+      "value": "oklch(0.75 0.12 165 / 0.25)",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "12px",
+      "count": 35
+    },
+    {
+      "value": "8px",
+      "count": 26
+    },
+    {
+      "value": "5px",
+      "count": 21
+    },
+    {
+      "value": "4px",
+      "count": 13
+    },
+    {
+      "value": "6px",
+      "count": 12
+    },
+    {
+      "value": "10px",
+      "count": 11
+    },
+    {
+      "value": "0.5rem",
+      "count": 10
+    },
+    {
+      "value": "0.25rem",
+      "count": 7
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "sdk/packages/ui/components/agent-ux-verification.css",
+      "count": 38
+    },
+    {
+      "file": "sdk/packages/ui/components/markdown.css",
+      "count": 27
+    },
+    {
+      "file": "sdk/packages/ui/components/agent-chat/agent-chat.css",
+      "count": 21
+    },
+    {
+      "file": "apps/cline-hub/src/webview/src/App.tsx",
+      "count": 19
+    },
+    {
+      "file": "docs/styles.css",
+      "count": 14
+    },
+    {
+      "file": "apps/cline-hub/src/webview/src/components/views/settings/provider-list-view.tsx",
+      "count": 13
+    },
+    {
+      "file": "apps/vscode/webview-ui/src/components/mcp/configuration/tabs/installed/server-row/McpPromptRow.tsx",
+      "count": 9
+    },
+    {
+      "file": "apps/vscode/webview-ui/src/components/mcp/configuration/tabs/installed/server-row/McpToolRow.tsx",
+      "count": 9
+    }
+  ],
+  "samples": [
+    {
+      "component": "BrowserSettingsMenu",
+      "location": "apps/vscode/webview-ui/src/components/browser/BrowserSettingsMenu.tsx:13",
+      "entries": [
+        "marginRight: 4px (line 137)",
+        "fontSize: 14.5px (line 142)"
+      ]
+    },
+    {
+      "component": "BrowserSessionRow",
+      "location": "apps/vscode/webview-ui/src/components/chat/BrowserSessionRow.tsx:107",
+      "entries": [
+        "gap: 4px (line 435)"
+      ]
+    },
+    {
+      "component": "ContextMenu",
+      "location": "apps/vscode/webview-ui/src/components/chat/ContextMenu.tsx:19",
+      "entries": [
+        "fontSize: 0.85em (line 147)",
+        "gap: 8px (line 275)",
+        "fontSize: 14px (line 278)"
+      ]
+    },
+    {
+      "component": "HookMessage",
+      "location": "apps/vscode/webview-ui/src/components/chat/HookMessage.tsx:83",
+      "entries": [
+        "fontSize: 0.9em (line 154)",
+        "gap: 8px (line 181)",
+        "fontSize: 13px (line 199)"
+      ]
+    },
+    {
+      "component": "OptionsButtons",
+      "location": "apps/vscode/webview-ui/src/components/chat/OptionsButtons.tsx:27",
+      "entries": [
+        "gap: 8px (line 60)"
+      ]
+    },
+    {
+      "component": "SearchResultsDisplay",
+      "location": "apps/vscode/webview-ui/src/components/chat/SearchResultsDisplay.tsx:13",
+      "entries": [
+        "marginRight: 8px (line 127)",
+        "padding: 10px (line 140)",
+        "marginBottom: 12px (line 144)"
+      ]
+    },
+    {
+      "component": "ServersToggleModal",
+      "location": "apps/vscode/webview-ui/src/components/chat/ServersToggleModal.tsx:13",
+      "entries": [
+        "fontSize: 12.5px (line 65)"
+      ]
+    },
+    {
+      "component": "ClineRulesToggleModal",
+      "location": "apps/vscode/webview-ui/src/components/cline-rules/ClineRulesToggleModal.tsx:29",
+      "entries": [
+        "fontSize: 12.5px (line 408)",
+        "marginBottom: 10px (line 423)"
+      ]
+    },
+    {
+      "component": "HistoryPreview",
+      "location": "apps/vscode/webview-ui/src/components/history/HistoryPreview.tsx:13",
+      "entries": [
+        "marginRight: 4px (line 125)",
+        "fontSize: 0.85em (line 132)"
+      ]
+    },
+    {
+      "component": "McpManagementPanel",
+      "location": "apps/vscode/webview-ui/src/components/marketplace/MarketplaceView.tsx:755",
+      "entries": [
+        "marginRight: 6px (line 798)"
+      ]
+    },
+    {
+      "component": "StarIcon",
+      "location": "apps/vscode/webview-ui/src/components/settings/ClineModelPicker.tsx:27",
+      "entries": [
+        "marginLeft: 8px (line 37)",
+        "fontSize: 16px (line 38)"
+      ]
+    },
+    {
+      "component": "ClineModelPicker",
+      "location": "apps/vscode/webview-ui/src/components/settings/ClineModelPicker.tsx:112",
+      "entries": [
+        "marginBottom: 6px (line 509)",
+        "fontSize: 12px (line 646)"
+      ]
+    }
+  ],
+  "scanSeconds": 26
+}

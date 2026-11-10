@@ -1,0 +1,194 @@
+{
+  "repo": "shadcn-ui/taxonomy",
+  "owner": "shadcn-ui",
+  "name": "taxonomy",
+  "description": "An open source application built using the new router, server components and everything new in Next.js 13.",
+  "stars": 19289,
+  "homepage": "",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "298a8857c7128a0d121e7f699dfd729f23b3966d",
+  "generatedAt": "2026-11-10T00:42:44.032Z",
+  "cliVersion": "0.8.20",
+  "score": 94,
+  "tier": "Great",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 54,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 222,
+    "tokenCount": 44,
+    "hardcodedValueCount": 7,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 8,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 1,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 1,
+    "notedCount": 0,
+    "worstFile": {
+      "path": "app/(marketing)/blog/[...slug]/page.tsx",
+      "issueCount": 1
+    },
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "tailwind",
+      "radix",
+      "shadcn"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 6 hardcoded values left to tokenize",
+    "1 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 6,
+      "action": "Replace the hardcoded values in all 6 findings with tokens or scale steps, and remove or reuse 1 unused component or repeated pattern"
+    }
+  ],
+  "noted": {
+    "count": 0,
+    "byKind": {},
+    "samples": []
+  },
+  "driftSummary": {
+    "total": 8,
+    "critical": 0,
+    "warning": 0,
+    "info": 8
+  },
+  "driftByType": {
+    "hardcoded-value": 7,
+    "repeated-pattern": 1
+  },
+  "topColors": [],
+  "topSpacing": [
+    {
+      "value": "0.3rem",
+      "count": 1
+    },
+    {
+      "value": "0.2rem",
+      "count": 1
+    },
+    {
+      "value": "1rem",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "app/(marketing)/page.tsx",
+      "count": 2
+    },
+    {
+      "file": "components/mdx-components.tsx",
+      "count": 2
+    },
+    {
+      "file": "app/(marketing)/blog/[...slug]/page.tsx",
+      "count": 1
+    },
+    {
+      "file": "app/(marketing)/pricing/page.tsx",
+      "count": 1
+    },
+    {
+      "file": "components/search.tsx",
+      "count": 1
+    },
+    {
+      "file": "components/ui/calendar.tsx",
+      "count": 1
+    },
+    {
+      "file": "styles/mdx.css",
+      "count": 1
+    }
+  ],
+  "samples": [
+    {
+      "component": "app/(marketing)/blog/[...slug]/page.tsx",
+      "location": "app/(marketing)/blog/[...slug]/page.tsx:139",
+      "entries": [
+        "text-[12px] (line 139)"
+      ]
+    },
+    {
+      "component": "app/(marketing)/page.tsx",
+      "location": "app/(marketing)/page.tsx:76",
+      "entries": [
+        "leading-[1.1] (line 76)",
+        "leading-[1.1] (line 181)"
+      ]
+    },
+    {
+      "component": "app/(marketing)/pricing/page.tsx",
+      "location": "app/(marketing)/pricing/page.tsx:15",
+      "entries": [
+        "leading-[1.1] (line 15)"
+      ]
+    },
+    {
+      "component": "components/mdx-components.tsx",
+      "location": "components/mdx-components.tsx:144",
+      "entries": [
+        "px-[0.3rem] (line 144)",
+        "py-[0.2rem] (line 144)"
+      ]
+    },
+    {
+      "component": "components/search.tsx",
+      "location": "components/search.tsx:32",
+      "entries": [
+        "text-[10px] (line 32)"
+      ]
+    },
+    {
+      "component": "components/ui/calendar.tsx",
+      "location": "components/ui/calendar.tsx:37",
+      "entries": [
+        "text-[0.8rem] (line 37)"
+      ]
+    },
+    {
+      "component": "styles/mdx.css",
+      "location": "styles/mdx.css:14",
+      "entries": [
+        "spacing: 1rem (line 14)"
+      ]
+    }
+  ],
+  "scanSeconds": 5
+}

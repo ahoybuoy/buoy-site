@@ -1,0 +1,97 @@
+{
+  "repo": "ixartz/SaaS-Boilerplate",
+  "owner": "ixartz",
+  "name": "SaaS-Boilerplate",
+  "description": "🚀🎉📚 SaaS Boilerplate built with Next.js + Tailwind CSS + Shadcn UI + TypeScript. ⚡️ Full-stack React application with Auth, Multi-tenancy, Roles & Permissions, i18n, Landing Page, DB, Logging, Testing",
+  "stars": 7483,
+  "homepage": "https://react-saas.com/",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "e3952a7ed5b0ef172ac4363c4644b8c334d1094b",
+  "generatedAt": "2026-11-10T00:33:22.086Z",
+  "cliVersion": "0.8.20",
+  "score": 100,
+  "tier": "Great",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 60,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 68,
+    "tokenCount": 51,
+    "hardcodedValueCount": 0,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 0,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 0,
+    "notedCount": 1,
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "tailwind",
+      "storybook",
+      "radix",
+      "shadcn"
+    ]
+  },
+  "suggestions": [
+    "Perfect design system health — no issues detected"
+  ],
+  "pathTo100": [],
+  "noted": {
+    "count": 1,
+    "byKind": {
+      "vendored": 1
+    },
+    "samples": [
+      {
+        "file": "src/components/ui/accordion.tsx",
+        "line": 43,
+        "value": "focus-visible:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 0,
+    "critical": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "driftByType": {},
+  "topColors": [],
+  "topSpacing": [],
+  "worstFiles": [],
+  "samples": [],
+  "scanSeconds": 4
+}

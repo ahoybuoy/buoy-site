@@ -1,0 +1,340 @@
+{
+  "repo": "open-webui/open-webui",
+  "owner": "open-webui",
+  "name": "open-webui",
+  "description": "User-friendly AI Interface (Supports Ollama, OpenAI API, ...)",
+  "stars": 158235,
+  "homepage": "https://openwebui.com",
+  "language": "Svelte",
+  "defaultBranch": "main",
+  "commit": "b0e6098e940942281d9c83f3529ea117287a3a22",
+  "generatedAt": "2026-11-10T00:39:38.129Z",
+  "cliVersion": "0.8.20",
+  "score": 40,
+  "tier": "OK",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 0,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 714,
+    "tokenCount": 26,
+    "hardcodedValueCount": 316,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 316,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 8,
+    "vendoredDriftCount": 0,
+    "notedCount": 5,
+    "topHardcodedColor": {
+      "value": "#4f7a5a",
+      "count": 3
+    },
+    "worstFile": {
+      "path": "src/lib/components/common/DocxPreview.svelte",
+      "issueCount": 4
+    },
+    "uniqueSpacingValues": 1,
+    "detectedFrameworkNames": [
+      "svelte",
+      "tailwind"
+    ]
+  },
+  "suggestions": [
+    "316 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on src/lib/components/common/DocxPreview.svelte (4 issues)"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 60,
+      "action": "Replace the hardcoded values in 315 of the 316 findings with tokens or scale steps"
+    }
+  ],
+  "noted": {
+    "count": 5,
+    "byKind": {
+      "optical-nudge": 5
+    },
+    "samples": [
+      {
+        "file": "src/lib/components/chat/ChatTabs/Browser.svelte",
+        "line": 301,
+        "value": "py-[3px]",
+        "kind": "optical-nudge",
+        "reason": "py-[3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "src/lib/components/layout/Sidebar/ChannelItem.svelte",
+        "line": 86,
+        "value": "py-[0.1875rem]",
+        "kind": "optical-nudge",
+        "reason": "py-[0.1875rem] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "src/app.css",
+        "line": 754,
+        "value": "0.125rem",
+        "kind": "optical-nudge",
+        "reason": "margin-block: 0.125rem is a 2-3px optical adjustment"
+      },
+      {
+        "file": "src/app.css",
+        "line": 857,
+        "value": "0.125rem",
+        "kind": "optical-nudge",
+        "reason": "padding-left: 0.125rem is a 2-3px optical adjustment"
+      },
+      {
+        "file": "src/app.css",
+        "line": 858,
+        "value": "0.125rem",
+        "kind": "optical-nudge",
+        "reason": "padding-right: 0.125rem is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 316,
+    "critical": 0,
+    "warning": 30,
+    "info": 286
+  },
+  "driftByType": {
+    "hardcoded-value": 316
+  },
+  "topColors": [
+    {
+      "value": "#6b7280",
+      "count": 12
+    },
+    {
+      "value": "#9ca3af",
+      "count": 8
+    },
+    {
+      "value": "rgba(128, 128, 128, 0.15)",
+      "count": 6
+    },
+    {
+      "value": "#374151",
+      "count": 6
+    },
+    {
+      "value": "#d1d5db",
+      "count": 6
+    },
+    {
+      "value": "#fff",
+      "count": 5
+    },
+    {
+      "value": "#4f7a5a",
+      "count": 3
+    },
+    {
+      "value": "#8db395",
+      "count": 3
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "0.0625rem",
+      "count": 14
+    },
+    {
+      "value": "0.375rem",
+      "count": 10
+    },
+    {
+      "value": "1rem",
+      "count": 9
+    },
+    {
+      "value": "0.3125rem",
+      "count": 9
+    },
+    {
+      "value": "0.5rem",
+      "count": 7
+    },
+    {
+      "value": "0.25rem",
+      "count": 6
+    },
+    {
+      "value": "8px",
+      "count": 6
+    },
+    {
+      "value": "11px",
+      "count": 3
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "src/lib/components/chat/FileNav/NotebookView.svelte",
+      "count": 72
+    },
+    {
+      "file": "src/app.css",
+      "count": 72
+    },
+    {
+      "file": "src/lib/components/chat/Messages/DiffBlock.svelte",
+      "count": 37
+    },
+    {
+      "file": "src/lib/components/chat/MessageInput/CallOverlay/BridgeCallOverlay.svelte",
+      "count": 28
+    },
+    {
+      "file": "src/lib/components/chat/ChatTabs/GitBar.svelte",
+      "count": 25
+    },
+    {
+      "file": "src/lib/components/chat/FileNav/FilePreview.svelte",
+      "count": 25
+    },
+    {
+      "file": "src/lib/components/chat/FileNav/SqliteView.svelte",
+      "count": 25
+    },
+    {
+      "file": "src/lib/components/chat/MessageInput/Commands/SlashCommands.svelte",
+      "count": 25
+    }
+  ],
+  "samples": [
+    {
+      "component": "ManageOllama",
+      "location": "src/lib/components/admin/Settings/Models/Manage/ManageOllama.svelte:1",
+      "entries": [
+        "font-size: 0.5rem (template)"
+      ]
+    },
+    {
+      "component": "src/lib/components/ChangelogModal.svelte",
+      "location": "src/lib/components/ChangelogModal.svelte:155",
+      "entries": [
+        "mt-[0.6em] (line 155)"
+      ]
+    },
+    {
+      "component": "src/lib/components/ChangelogModal.svelte",
+      "location": "src/lib/components/ChangelogModal.svelte:129",
+      "entries": [
+        "text-[0.6875rem] (line 129)",
+        "text-[0.6875rem] (line 137)",
+        "text-[0.8125rem] (line 151)"
+      ]
+    },
+    {
+      "component": "src/lib/components/NotificationToast.svelte",
+      "location": "src/lib/components/NotificationToast.svelte:113",
+      "entries": [
+        "text-[0.8125rem] (line 113)"
+      ]
+    },
+    {
+      "component": "src/lib/components/OnBoarding.svelte",
+      "location": "src/lib/components/OnBoarding.svelte:78",
+      "entries": [
+        "text-[0.6875rem] (line 78)",
+        "tracking-[0.18em] (line 78)",
+        "text-[22px] (line 83)"
+      ]
+    },
+    {
+      "component": "src/lib/components/admin/Analytics/ChartLine.svelte",
+      "location": "src/lib/components/admin/Analytics/ChartLine.svelte:96",
+      "entries": [
+        "text-[0.625rem] (line 96)",
+        "text-[0.6875rem] (line 111)",
+        "text-[0.625rem] (line 117)"
+      ]
+    },
+    {
+      "component": "src/lib/components/admin/Analytics/Dashboard.svelte",
+      "location": "src/lib/components/admin/Analytics/Dashboard.svelte:563",
+      "entries": [
+        "text-[0.6875rem] (line 563)",
+        "text-[0.6875rem] (line 796)",
+        "text-[0.6875rem] (line 964)"
+      ]
+    },
+    {
+      "component": "src/lib/components/admin/Analytics/SessionDetail.svelte",
+      "location": "src/lib/components/admin/Analytics/SessionDetail.svelte:213",
+      "entries": [
+        "text-[0.6875rem] (line 213)",
+        "text-[0.6875rem] (line 297)",
+        "text-[0.6875rem] (line 359)"
+      ]
+    },
+    {
+      "component": "src/lib/components/admin/Analytics/SessionExplorer.svelte",
+      "location": "src/lib/components/admin/Analytics/SessionExplorer.svelte:259",
+      "entries": [
+        "text-[0.6875rem] (line 259)",
+        "text-[0.6875rem] (line 311)",
+        "text-[0.6875rem] (line 401)"
+      ]
+    },
+    {
+      "component": "src/lib/components/admin/Analytics/SessionSignals.svelte",
+      "location": "src/lib/components/admin/Analytics/SessionSignals.svelte:32",
+      "entries": [
+        "text-[0.6875rem] (line 32)",
+        "text-[0.6875rem] (line 46)",
+        "text-[0.6875rem] (line 68)"
+      ]
+    },
+    {
+      "component": "src/lib/components/admin/Analytics/SessionUsageChart.svelte",
+      "location": "src/lib/components/admin/Analytics/SessionUsageChart.svelte:67",
+      "entries": [
+        "text-[0.6875rem] (line 67)",
+        "text-[0.6875rem] (line 90)",
+        "text-[0.6875rem] (line 121)"
+      ]
+    },
+    {
+      "component": "src/lib/components/admin/Analytics/SessionWaterfall.svelte",
+      "location": "src/lib/components/admin/Analytics/SessionWaterfall.svelte:46",
+      "entries": [
+        "text-[0.6875rem] (line 46)",
+        "text-[0.625rem] (line 66)",
+        "text-[0.6875rem] (line 83)"
+      ]
+    }
+  ],
+  "scanSeconds": 22
+}

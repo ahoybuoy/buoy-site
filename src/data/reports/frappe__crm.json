@@ -1,0 +1,339 @@
+{
+  "repo": "frappe/crm",
+  "owner": "frappe",
+  "name": "crm",
+  "description": "Fully featured, open source CRM",
+  "stars": 3942,
+  "homepage": "https://frappe.io/crm",
+  "language": "Vue",
+  "defaultBranch": "develop",
+  "commit": "2cecd300c8291d5abe6793e20fafe7e81a77d989",
+  "generatedAt": "2026-11-10T00:30:08.702Z",
+  "cliVersion": "0.8.20",
+  "score": 59,
+  "tier": "OK",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 39,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 0,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 381,
+    "tokenCount": 0,
+    "hardcodedValueCount": 40,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": false,
+    "hasDesignSystemLibrary": false,
+    "totalDriftCount": 40,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 2,
+    "vendoredDriftCount": 0,
+    "notedCount": 7,
+    "topHardcodedColor": {
+      "value": "#FF5F57",
+      "count": 1
+    },
+    "worstFile": {
+      "path": "frontend/src/components/Settings/WorkflowAutomations/WorkflowFlow.vue",
+      "issueCount": 4
+    },
+    "detectedFrameworkNames": []
+  },
+  "suggestions": [
+    "Nearly there — just 40 hardcoded values left to tokenize. frontend/src/components/Settings/WorkflowAutomations/WorkflowFlow.vue has the most (4)",
+    "No design token system detected — add CSS custom properties or a utility framework like Tailwind"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 21,
+      "action": "Replace the hardcoded values in all 40 findings with tokens or scale steps"
+    },
+    {
+      "pillar": "tokenHealth",
+      "points": 20,
+      "action": "Add a token system: CSS custom properties, a tokens file or a Tailwind theme"
+    }
+  ],
+  "noted": {
+    "count": 7,
+    "byKind": {
+      "optical-nudge": 7
+    },
+    "samples": [
+      {
+        "file": "frontend/src/components/Controls/Link.vue",
+        "line": 2,
+        "value": "px-[2px]",
+        "kind": "optical-nudge",
+        "reason": "px-[2px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/src/components/Settings/Settings.vue",
+        "line": 20,
+        "value": "my-[3px]",
+        "kind": "optical-nudge",
+        "reason": "my-[3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/src/components/Settings/ThemeSwitcher.vue",
+        "line": 14,
+        "value": "py-[3px]",
+        "kind": "optical-nudge",
+        "reason": "py-[3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/src/components/Settings/ThemeSwitcher.vue",
+        "line": 62,
+        "value": "py-[3px]",
+        "kind": "optical-nudge",
+        "reason": "py-[3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/src/components/Settings/ThemeSwitcher.vue",
+        "line": 115,
+        "value": "py-[3px]",
+        "kind": "optical-nudge",
+        "reason": "py-[3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/src/components/Settings/ThemeSwitcher.vue",
+        "line": 143,
+        "value": "py-[3px]",
+        "kind": "optical-nudge",
+        "reason": "py-[3px] is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 40,
+    "critical": 0,
+    "warning": 4,
+    "info": 36
+  },
+  "driftByType": {
+    "hardcoded-value": 40
+  },
+  "topColors": [
+    {
+      "value": "#FF5F57",
+      "count": 4
+    },
+    {
+      "value": "#FEBC2D",
+      "count": 4
+    },
+    {
+      "value": "#28C840",
+      "count": 4
+    },
+    {
+      "value": "#fff",
+      "count": 4
+    },
+    {
+      "value": "rgb(237, 237, 237)",
+      "count": 2
+    },
+    {
+      "value": "#171717",
+      "count": 2
+    },
+    {
+      "value": "#c5c2c2",
+      "count": 1
+    },
+    {
+      "value": "#000",
+      "count": 1
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "2rem",
+      "count": 6
+    },
+    {
+      "value": "7px",
+      "count": 5
+    },
+    {
+      "value": "3px",
+      "count": 5
+    },
+    {
+      "value": "22px",
+      "count": 5
+    },
+    {
+      "value": "9px",
+      "count": 4
+    },
+    {
+      "value": "5px",
+      "count": 3
+    },
+    {
+      "value": "15px",
+      "count": 2
+    },
+    {
+      "value": "0.5rem",
+      "count": 2
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "frontend/src/components/Settings/ThemeSwitcher.vue",
+      "count": 22
+    },
+    {
+      "file": "frontend/src/components/Settings/WorkflowAutomations/WorkflowFlow.vue",
+      "count": 9
+    },
+    {
+      "file": "frontend/src/components/Settings/Sla/SlaHolidays.vue",
+      "count": 8
+    },
+    {
+      "file": "frontend/src/components/SidePanelLayout.vue",
+      "count": 6
+    },
+    {
+      "file": "frontend/src/components/Activities/AudioPlayer.vue",
+      "count": 6
+    },
+    {
+      "file": "frontend/src/components/Setup/SetupScene.vue",
+      "count": 4
+    },
+    {
+      "file": "frontend/src/components/Controls/Grid.vue",
+      "count": 3
+    },
+    {
+      "file": "frontend/src/components/Settings/Settings.vue",
+      "count": 3
+    }
+  ],
+  "samples": [
+    {
+      "component": "frontend/src/components/Activities/CommentArea.vue",
+      "location": "frontend/src/components/Activities/CommentArea.vue:31",
+      "entries": [
+        "py-[7.5px] (line 31)"
+      ]
+    },
+    {
+      "component": "frontend/src/components/Controls/Grid.vue",
+      "location": "frontend/src/components/Controls/Grid.vue:13",
+      "entries": [
+        "rounded-t-[7px] (line 13)"
+      ]
+    },
+    {
+      "component": "frontend/src/components/Dashboard/DashboardGrid.vue",
+      "location": "frontend/src/components/Dashboard/DashboardGrid.vue:6",
+      "entries": [
+        "mb-[20rem] (line 6)"
+      ]
+    },
+    {
+      "component": "frontend/src/components/Filter.vue",
+      "location": "frontend/src/components/Filter.vue:12",
+      "entries": [
+        "rounded-[5px] (line 12)"
+      ]
+    },
+    {
+      "component": "frontend/src/components/Kanban/KanbanActivityCounts.vue",
+      "location": "frontend/src/components/Kanban/KanbanActivityCounts.vue:4",
+      "entries": [
+        "leading-[0] (line 4)"
+      ]
+    },
+    {
+      "component": "frontend/src/components/LayoutHeader.vue",
+      "location": "frontend/src/components/LayoutHeader.vue:5",
+      "entries": [
+        "py-[7px] (line 5)"
+      ]
+    },
+    {
+      "component": "frontend/src/components/Notifications.vue",
+      "location": "frontend/src/components/Notifications.vue:16",
+      "entries": [
+        "pt-[15px] (line 16)"
+      ]
+    },
+    {
+      "component": "frontend/src/components/Settings/Settings.vue",
+      "location": "frontend/src/components/Settings/Settings.vue:17",
+      "entries": [
+        "mt-[5px] (line 17)",
+        "py-[7px] (line 20)",
+        "space-y-[3px] (line 24)"
+      ]
+    },
+    {
+      "component": "frontend/src/components/Settings/ThemeSwitcher.vue",
+      "location": "frontend/src/components/Settings/ThemeSwitcher.vue:15",
+      "entries": [
+        "bg-[#FF5F57] (line 15)",
+        "bg-[#FEBC2D] (line 16)",
+        "bg-[#28C840] (line 17)"
+      ]
+    },
+    {
+      "component": "frontend/src/components/Settings/ThemeSwitcher.vue",
+      "location": "frontend/src/components/Settings/ThemeSwitcher.vue:14",
+      "entries": [
+        "gap-[3px] (line 14)",
+        "gap-[5px] (line 31)",
+        "gap-[3px] (line 62)"
+      ]
+    },
+    {
+      "component": "frontend/src/components/Settings/ThemeSwitcher.vue",
+      "location": "frontend/src/components/Settings/ThemeSwitcher.vue:12",
+      "entries": [
+        "rounded-t-[10.5px] (line 12)",
+        "rounded-t-[10.5px] (line 60)",
+        "rounded-tl-[10.5px] (line 112)"
+      ]
+    },
+    {
+      "component": "frontend/src/components/Settings/WorkflowAutomations/WorkflowFlow.vue",
+      "location": "frontend/src/components/Settings/WorkflowAutomations/WorkflowFlow.vue:166",
+      "entries": [
+        "py-[7px] (line 166)"
+      ]
+    }
+  ],
+  "scanSeconds": 10
+}

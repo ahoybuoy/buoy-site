@@ -1,0 +1,274 @@
+{
+  "repo": "openstatusHQ/openstatus",
+  "owner": "openstatusHQ",
+  "name": "openstatus",
+  "description": "Open-source status page, incident response and uptime monitoring",
+  "stars": 9256,
+  "homepage": "https://openstatus.dev",
+  "language": "TypeScript",
+  "defaultBranch": "main",
+  "commit": "bba13ddc9e304695547f039cff849ed7e9826c58",
+  "generatedAt": "2026-11-10T00:40:48.397Z",
+  "cliVersion": "0.8.20",
+  "score": 93,
+  "tier": "Great",
+  "pillars": {
+    "valueDiscipline": {
+      "score": 53,
+      "max": 60
+    },
+    "tokenHealth": {
+      "score": 20,
+      "max": 20
+    },
+    "consistency": {
+      "score": 10,
+      "max": 10
+    },
+    "criticalIssues": {
+      "score": 10,
+      "max": 10
+    }
+  },
+  "metrics": {
+    "componentCount": 1645,
+    "tokenCount": 146,
+    "hardcodedValueCount": 76,
+    "unusedTokenCount": 0,
+    "namingInconsistencyCount": 0,
+    "criticalCount": 0,
+    "accessibilityConflictCount": 0,
+    "colorContrastCount": 0,
+    "hasUtilityFramework": true,
+    "hasDesignSystemLibrary": true,
+    "totalDriftCount": 76,
+    "unusedComponentCount": 0,
+    "repeatedPatternCount": 0,
+    "orphanedComponentCount": 0,
+    "semanticMismatchCount": 0,
+    "deprecatedPatternCount": 0,
+    "orphanedTokenCount": 0,
+    "valueDivergenceCount": 0,
+    "missingDocumentationCount": 0,
+    "frameworkSprawlCount": 0,
+    "highDensityFileCount": 0,
+    "vendoredDriftCount": 15,
+    "notedCount": 3,
+    "worstFile": {
+      "path": "apps/dashboard/src/components/data-table/response-logs/regions/columns.tsx",
+      "issueCount": 2
+    },
+    "detectedFrameworkNames": [
+      "react",
+      "next",
+      "tailwind",
+      "radix"
+    ]
+  },
+  "suggestions": [
+    "Nearly there — just 61 hardcoded values left to tokenize. apps/dashboard/src/components/data-table/response-logs/regions/columns.tsx has the most (2)",
+    "15 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
+  ],
+  "pathTo100": [
+    {
+      "pillar": "valueDiscipline",
+      "points": 7,
+      "action": "Replace the hardcoded values in 57 of the 61 findings with tokens or scale steps"
+    }
+  ],
+  "noted": {
+    "count": 3,
+    "byKind": {
+      "optical-nudge": 3
+    },
+    "samples": [
+      {
+        "file": "apps/dashboard/src/components/chat/chat-tool-part.tsx",
+        "line": 288,
+        "value": "p-[2px]",
+        "kind": "optical-nudge",
+        "reason": "p-[2px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/dashboard/src/components/content/activity-calendar.tsx",
+        "line": 204,
+        "value": "p-[3px]",
+        "kind": "optical-nudge",
+        "reason": "p-[3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/ui/src/components/ui/tabs.tsx",
+        "line": 28,
+        "value": "p-[3px]",
+        "kind": "optical-nudge",
+        "reason": "p-[3px] is a 2-3px optical adjustment"
+      }
+    ]
+  },
+  "driftSummary": {
+    "total": 76,
+    "critical": 0,
+    "warning": 0,
+    "info": 76
+  },
+  "driftByType": {
+    "hardcoded-value": 76
+  },
+  "topColors": [],
+  "topSpacing": [
+    {
+      "value": "-0.45rem",
+      "count": 2
+    },
+    {
+      "value": "-0.35rem",
+      "count": 2
+    },
+    {
+      "value": "9px",
+      "count": 1
+    },
+    {
+      "value": "0.45em",
+      "count": 1
+    },
+    {
+      "value": "125px",
+      "count": 1
+    },
+    {
+      "value": "-1em",
+      "count": 1
+    },
+    {
+      "value": "0.5em",
+      "count": 1
+    }
+  ],
+  "worstFiles": [
+    {
+      "file": "apps/dashboard/src/components/content/activity-calendar.tsx",
+      "count": 5
+    },
+    {
+      "file": "packages/ui/src/components/ui/input-group.tsx",
+      "count": 5
+    },
+    {
+      "file": "apps/dashboard/src/components/content/event-list.tsx",
+      "count": 4
+    },
+    {
+      "file": "apps/dashboard/src/components/forms/components/form-import.tsx",
+      "count": 4
+    },
+    {
+      "file": "apps/dashboard/src/components/content/timeline.tsx",
+      "count": 3
+    },
+    {
+      "file": "apps/status-page/src/app/(public)/client.tsx",
+      "count": 3
+    },
+    {
+      "file": "apps/status-page/src/app/(status-page)/[domain]/[locale]/(public)/monitors/[id]/page.tsx",
+      "count": 3
+    },
+    {
+      "file": "packages/ui/src/components/blocks/status-events.tsx",
+      "count": 3
+    }
+  ],
+  "samples": [
+    {
+      "component": "apps/dashboard/src/app/(dashboard)/monitors/[id]/logs/table-schema.tsx",
+      "location": "apps/dashboard/src/app/(dashboard)/monitors/[id]/logs/table-schema.tsx:54",
+      "entries": [
+        "rounded-[2px] (line 54)",
+        "rounded-[2px] (line 89)"
+      ]
+    },
+    {
+      "component": "apps/dashboard/src/app/login/_components/login-button.tsx",
+      "location": "apps/dashboard/src/app/login/_components/login-button.tsx:44",
+      "entries": [
+        "text-[10px] (line 44)"
+      ]
+    },
+    {
+      "component": "apps/dashboard/src/components/chat/chat-message.tsx",
+      "location": "apps/dashboard/src/components/chat/chat-message.tsx:81",
+      "entries": [
+        "text-[0.9em] (line 81)"
+      ]
+    },
+    {
+      "component": "apps/dashboard/src/components/common/entity-ref/entity-ref.tsx",
+      "location": "apps/dashboard/src/components/common/entity-ref/entity-ref.tsx:64",
+      "entries": [
+        "focus-visible:ring-[3px] (line 64)"
+      ]
+    },
+    {
+      "component": "apps/dashboard/src/components/common/entity-ref/parts.tsx",
+      "location": "apps/dashboard/src/components/common/entity-ref/parts.tsx:43",
+      "entries": [
+        "focus-visible:ring-[3px] (line 43)"
+      ]
+    },
+    {
+      "component": "apps/dashboard/src/components/common/icon-cloud-provider.tsx",
+      "location": "apps/dashboard/src/components/common/icon-cloud-provider.tsx:37",
+      "entries": [
+        "focus-visible:ring-[3px] (line 37)"
+      ]
+    },
+    {
+      "component": "apps/dashboard/src/components/common/pill.tsx",
+      "location": "apps/dashboard/src/components/common/pill.tsx:22",
+      "entries": [
+        "focus-visible:ring-[3px] (line 22)"
+      ]
+    },
+    {
+      "component": "apps/dashboard/src/components/common/user-avatar.tsx",
+      "location": "apps/dashboard/src/components/common/user-avatar.tsx:18",
+      "entries": [
+        "text-[10px] (line 18)"
+      ]
+    },
+    {
+      "component": "apps/dashboard/src/components/content/activity-calendar.tsx",
+      "location": "apps/dashboard/src/components/content/activity-calendar.tsx:66",
+      "entries": [
+        "rounded-[3px] (line 66)",
+        "outline-[1.5px] (line 68)",
+        "outline-offset-[1.5px] (line 68)"
+      ]
+    },
+    {
+      "component": "apps/dashboard/src/components/content/detail.tsx",
+      "location": "apps/dashboard/src/components/content/detail.tsx:237",
+      "entries": [
+        "focus-visible:ring-[3px] (line 237)"
+      ]
+    },
+    {
+      "component": "apps/dashboard/src/components/content/event-list.tsx",
+      "location": "apps/dashboard/src/components/content/event-list.tsx:43",
+      "entries": [
+        "focus-visible:ring-[3px] (line 43)",
+        "ring-[3px] (line 60)",
+        "focus-visible:ring-[3px] (line 89)"
+      ]
+    },
+    {
+      "component": "apps/dashboard/src/components/content/property-list.tsx",
+      "location": "apps/dashboard/src/components/content/property-list.tsx:136",
+      "entries": [
+        "focus-visible:ring-[3px] (line 136)"
+      ]
+    }
+  ],
+  "scanSeconds": 36
+}
