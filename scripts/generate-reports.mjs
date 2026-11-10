@@ -50,6 +50,27 @@ const REPOS = [
   "hoppscotch/hoppscotch", "excalidraw/excalidraw", "plausible/analytics", "umami-software/umami",
   "outline/outline", "n8n-io/n8n", "TryGhost/Ghost", "posthog/posthog", "langfuse/langfuse",
   "triggerdotdev/trigger.dev", "unkeyed/unkey", "vercel/next.js", "shadcn-ui/ui",
+  // Added 2026-11-09 to reach 100 (public product codebases with a UI, 3k+ stars).
+  "AppFlowy-IO/AppFlowy", "ChatGPTNextWeb/NextChat", "Dokploy/dokploy", "Kong/insomnia",
+  "LibreChat-AI/LibreChat", "OpenCut-app/OpenCut", "OpenHands/OpenHands", "Openpanel-dev/openpanel",
+  "SigNoz/signoz", "Stirling-Tools/Stirling-PDF", "TabbyML/tabby", "TandoorRecipes/recipes",
+  "actualbudget/actual", "baptisteArno/typebot.io", "baserow/baserow", "bluesky-social/social-app",
+  "chatwoot/chatwoot", "cinnyapp/cinny", "cline/cline", "coollabsio/coolify",
+  "directus/directus", "drawdb-io/drawdb", "element-hq/element-web", "erxes/erxes",
+  "ever-co/ever-gauzy", "firefly-iii/firefly-iii", "formkit/formkit", "frappe/crm",
+  "frappe/helpdesk", "gethomepage/homepage", "getumbrel/umbrel", "gitroomhq/postiz-app",
+  "glanceapp/glance", "gristlabs/grist-core", "hcengineering/platform", "hedgedoc/hedgedoc",
+  "heyform/heyform", "highlight/highlight", "homarr-labs/homarr", "immich-app/immich",
+  "ixartz/SaaS-Boilerplate", "jellyfin/jellyfin-web", "kanboard/kanboard", "karakeep-app/karakeep",
+  "knadh/listmonk", "laurent22/joplin", "linkwarden/linkwarden", "lobehub/lobehub",
+  "logseq/logseq", "logto-io/logto", "louislam/uptime-kuma", "mastodon/mastodon",
+  "mckaywrigley/chatbot-ui", "mealie-recipes/mealie", "mermaid-js/mermaid-live-editor", "mickasmt/next-saas-stripe-starter",
+  "misskey-dev/misskey", "monicahq/monica", "nextjs/saas-starter", "open-webui/open-webui",
+  "openreplay/openreplay", "openstatusHQ/openstatus", "paperless-ngx/paperless-ngx", "papermark/papermark",
+  "payloadcms/payload", "penpot/penpot", "plankanban/planka", "redwoodjs/graphql",
+  "shadcn-ui/taxonomy", "teableio/teable", "toeverything/AFFiNE", "usebruno/bruno",
+  "usememos/memos", "vercel/chatbot", "vercel/platforms", "windmill-labs/windmill",
+  "xyflow/xyflow", "zitadel/zitadel",
 ];
 
 async function buoy(cwd, args) {
