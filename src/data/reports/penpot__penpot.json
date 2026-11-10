@@ -3,12 +3,12 @@
   "owner": "penpot",
   "name": "penpot",
   "description": "Penpot: The open-source design platform for Product teams that need scalable collaboration.",
-  "stars": 62221,
+  "stars": 62255,
   "homepage": "https://penpot.app",
   "language": "Clojure",
   "defaultBranch": "develop",
-  "commit": "cd1ece4beb55391a428c632b1fe609dc4748cb4e",
-  "generatedAt": "2026-11-10T00:42:19.978Z",
+  "commit": "c39e3e8301368ff02d591d5ffc4e43bf02788d57",
+  "generatedAt": "2026-11-10T16:03:22.966Z",
   "cliVersion": "0.8.20",
   "score": 40,
   "tier": "OK",
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 7,
     "tokenCount": 360,
-    "hardcodedValueCount": 60,
+    "hardcodedValueCount": 61,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 60,
+    "totalDriftCount": 61,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -61,13 +61,13 @@
     "detectedFrameworkNames": []
   },
   "suggestions": [
-    "60 hardcoded values across your components — high density. Most common: #c0c0c2 (1×). Create a design token file (e.g., tokens.css with CSS custom properties)"
+    "61 hardcoded values across your components — high density. Most common: #c0c0c2 (1×). Create a design token file (e.g., tokens.css with CSS custom properties)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in all 60 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in all 61 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -123,13 +123,13 @@
     ]
   },
   "driftSummary": {
-    "total": 60,
+    "total": 61,
     "critical": 0,
     "warning": 18,
-    "info": 42
+    "info": 43
   },
   "driftByType": {
-    "hardcoded-value": 60
+    "hardcoded-value": 61
   },
   "topColors": [
     {
@@ -337,5 +337,5 @@
       ]
     }
   ],
-  "scanSeconds": 15
+  "scanSeconds": 24
 }

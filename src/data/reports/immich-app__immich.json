@@ -3,12 +3,12 @@
   "owner": "immich-app",
   "name": "immich",
   "description": "High performance self-hosted photo and video management solution.",
-  "stars": 118642,
+  "stars": 118689,
   "homepage": "https://immich.app",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "f3de6f242c32b2ea3b3bc065b57c392dc9d557c1",
-  "generatedAt": "2026-11-10T00:33:18.161Z",
+  "commit": "30cf3dc60535d115c29b898a38cf9aef89d6b887",
+  "generatedAt": "2026-11-10T15:51:46.271Z",
   "cliVersion": "0.8.20",
   "score": 81,
   "tier": "Great",
@@ -91,7 +91,7 @@
       },
       {
         "file": "web/src/lib/components/asset-viewer/ActivityViewer.svelte",
-        "line": 277,
+        "line": 275,
         "value": "white",
         "kind": "explained",
         "reason": "Edge 12 -18"
@@ -210,9 +210,9 @@
     },
     {
       "component": "web/src/lib/components/asset-viewer/AssetViewer.svelte",
-      "location": "web/src/lib/components/asset-viewer/AssetViewer.svelte:607",
+      "location": "web/src/lib/components/asset-viewer/AssetViewer.svelte:606",
       "entries": [
-        "drop-shadow-[0_0_1px_rgba(0,0,0,0.4)] (line 607)"
+        "drop-shadow-[0_0_1px_rgba(0,0,0,0.4)] (line 606)"
       ]
     },
     {
@@ -254,9 +254,9 @@
     },
     {
       "component": "web/src/lib/components/shared-components/search-bar/SearchBar.svelte",
-      "location": "web/src/lib/components/shared-components/search-bar/SearchBar.svelte:160",
+      "location": "web/src/lib/components/shared-components/search-bar/SearchBar.svelte:159",
       "entries": [
-        "shadow-[0_8px_20px_rgba(0,0,0,0.12)] (line 160)"
+        "shadow-[0_8px_20px_rgba(0,0,0,0.12)] (line 159)"
       ]
     },
     {
@@ -288,5 +288,5 @@
       ]
     }
   ],
-  "scanSeconds": 14
+  "scanSeconds": 18
 }

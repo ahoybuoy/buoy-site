@@ -3,12 +3,12 @@
   "owner": "Stirling-Tools",
   "name": "Stirling-PDF",
   "description": "#1 PDF Application on GitHub that lets you edit PDFs on any device anywhere",
-  "stars": 96156,
+  "stars": 96207,
   "homepage": "https://stirling.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "0b7d3a44821c047eebd34b6da0f48fe5913f67f5",
-  "generatedAt": "2026-11-10T00:23:14.281Z",
+  "commit": "2ab6362d25b23c1061ad1d43ec99985584f53b1a",
+  "generatedAt": "2026-11-10T15:38:32.296Z",
   "cliVersion": "0.8.20",
   "score": 40,
   "tier": "OK",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 1678,
+    "componentCount": 1680,
     "tokenCount": 690,
     "hardcodedValueCount": 551,
     "unusedTokenCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 8,
     "vendoredDriftCount": 0,
-    "notedCount": 57,
+    "notedCount": 58,
     "topHardcodedColor": {
       "value": "#fff",
       "count": 9
@@ -77,16 +77,16 @@
     }
   ],
   "noted": {
-    "count": 57,
+    "count": 58,
     "byKind": {
       "explained": 7,
-      "optical-nudge": 49,
+      "optical-nudge": 50,
       "known-debt": 1
     },
     "samples": [
       {
         "file": "frontend/src/editor/core/components/viewer/EmbedPdfViewer.tsx",
-        "line": 2040,
+        "line": 2042,
         "value": "0.5rem",
         "kind": "explained",
         "reason": "Gutter matching the workbench rails, so the bar reads as a floating card rather than one welded to the viewport edge."
@@ -178,7 +178,7 @@
     },
     {
       "value": "1rem",
-      "count": 270
+      "count": 271
     },
     {
       "value": "0.75rem",
@@ -336,5 +336,5 @@
       ]
     }
   ],
-  "scanSeconds": 40
+  "scanSeconds": 53
 }

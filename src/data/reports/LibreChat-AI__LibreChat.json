@@ -3,18 +3,18 @@
   "owner": "LibreChat-AI",
   "name": "LibreChat",
   "description": "Enhanced ChatGPT Clone: Features Agents, MCP, Skills, DeepSeek, Anthropic, AWS, OpenAI, Responses API, Azure, Groq, o1, GPT-5, Mistral, OpenRouter, Vertex AI, Gemini, Artifacts, AI model switching, message search, Code Interpreter, langchain, DALL-E-3, OpenAPI Actions, Functions, Secure Multi-User Auth, Presets, open-source for self-hosting. Active",
-  "stars": 46911,
+  "stars": 46934,
   "homepage": "https://librechat.ai/",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "f4154b649efa37e1345ccc517a4d8d1ed2178c82",
-  "generatedAt": "2026-11-10T00:21:07.579Z",
+  "commit": "e6567c7a681ce67869dce31486a21d3a25d6931b",
+  "generatedAt": "2026-11-10T15:35:47.183Z",
   "cliVersion": "0.8.20",
-  "score": 95,
+  "score": 96,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 55,
+      "score": 56,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1361,
-    "tokenCount": 637,
-    "hardcodedValueCount": 31,
+    "componentCount": 1394,
+    "tokenCount": 638,
+    "hardcodedValueCount": 28,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 32,
+    "totalDriftCount": 29,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 1,
     "orphanedComponentCount": 0,
@@ -67,13 +67,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 31 hardcoded values left to tokenize. packages/chat/src/components/messages/Feedback.tsx has the most (3)"
+    "Nearly there — just 28 hardcoded values left to tokenize. packages/chat/src/components/messages/Feedback.tsx has the most (3)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 5,
-      "action": "Replace the hardcoded values in 28 of the 31 findings with tokens or scale steps, and remove or reuse 1 unused component or repeated pattern"
+      "points": 4,
+      "action": "Replace the hardcoded values in 25 of the 28 findings with tokens or scale steps, and remove or reuse 1 unused component or repeated pattern"
     }
   ],
   "noted": {
@@ -100,13 +100,13 @@
     ]
   },
   "driftSummary": {
-    "total": 32,
+    "total": 29,
     "critical": 0,
     "warning": 3,
-    "info": 29
+    "info": 26
   },
   "driftByType": {
-    "hardcoded-value": 31,
+    "hardcoded-value": 28,
     "repeated-pattern": 1
   },
   "topColors": [],
@@ -180,27 +180,6 @@
   ],
   "samples": [
     {
-      "component": "HoverButtons",
-      "location": "client/src/components/Chat/Messages/HoverButtons.tsx:94",
-      "entries": [
-        "size: 1.1875rem (line 226)"
-      ]
-    },
-    {
-      "component": "MinimalHoverButtons",
-      "location": "client/src/components/Chat/Messages/MinimalHoverButtons.tsx:22",
-      "entries": [
-        "size: 1.1875rem (line 54)"
-      ]
-    },
-    {
-      "component": "ActionButton",
-      "location": "client/src/components/Messages/Content/ActionButton.tsx:20",
-      "entries": [
-        "size: 1.125rem (line 59)"
-      ]
-    },
-    {
       "component": "RunCode",
       "location": "client/src/components/Messages/Content/RunCode.tsx:23",
       "entries": [
@@ -209,23 +188,37 @@
     },
     {
       "component": "FeedbackOptionButton",
-      "location": "packages/chat/src/components/messages/Feedback.tsx:49",
+      "location": "packages/chat/src/components/messages/Feedback.tsx:47",
       "entries": [
-        "size: 1.1875rem (line 73)"
+        "size: 1.1875rem (line 62)"
       ]
     },
     {
       "component": "FeedbackButtons",
-      "location": "packages/chat/src/components/messages/Feedback.tsx:79",
+      "location": "packages/chat/src/components/messages/Feedback.tsx:68",
       "entries": [
-        "size: 1.1875rem (line 163)"
+        "size: 1.1875rem (line 151)"
       ]
     },
     {
       "component": "Feedback",
-      "location": "packages/chat/src/components/messages/Feedback.tsx:227",
+      "location": "packages/chat/src/components/messages/Feedback.tsx:211",
       "entries": [
-        "size: 1.1875rem (line 298)"
+        "size: 1.1875rem (line 281)"
+      ]
+    },
+    {
+      "component": "HoverButtons",
+      "location": "packages/chat/src/components/messages/HoverButtons.tsx:89",
+      "entries": [
+        "size: 1.1875rem (line 221)"
+      ]
+    },
+    {
+      "component": "MinimalHoverButtons",
+      "location": "packages/chat/src/components/messages/MinimalHoverButtons.tsx:16",
+      "entries": [
+        "size: 1.1875rem (line 43)"
       ]
     },
     {
@@ -250,19 +243,30 @@
       ]
     },
     {
-      "component": "client/src/components/Chat/Input/ChatForm.tsx",
-      "location": "client/src/components/Chat/Input/ChatForm.tsx:698",
+      "component": "client/src/components/Chat/Messages/Content/MessageContent.tsx",
+      "location": "client/src/components/Chat/Messages/Content/MessageContent.tsx:28",
       "entries": [
-        "[&:has(textarea:focus)]:shadow-[0_2px_6px_rgba(0,0,0,.05)] (line 698)"
+        "mb-[0.625rem] (line 28)"
       ]
     },
     {
-      "component": "client/src/components/Chat/Messages/Content/MessageContent.tsx",
-      "location": "client/src/components/Chat/Messages/Content/MessageContent.tsx:25",
+      "component": "client/src/components/Nav/KeyboardShortcutsDialog.tsx",
+      "location": "client/src/components/Nav/KeyboardShortcutsDialog.tsx:180",
       "entries": [
-        "mb-[0.625rem] (line 25)"
+        "text-[11.5px] (line 180)",
+        "text-[11.5px] (line 291)",
+        "text-[16px] (line 381)"
+      ]
+    },
+    {
+      "component": "client/src/components/Nav/ShortcutRecorder.tsx",
+      "location": "client/src/components/Nav/ShortcutRecorder.tsx:191",
+      "entries": [
+        "text-[11.5px] (line 191)",
+        "text-[11.5px] (line 219)",
+        "text-[11.5px] (line 249)"
       ]
     }
   ],
-  "scanSeconds": 33
+  "scanSeconds": 41
 }

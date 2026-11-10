@@ -3,18 +3,18 @@
   "owner": "usememos",
   "name": "memos",
   "description": "Memos is an open-source, self-hosted note-taking app that brings your everyday thoughts together in a personal timeline. Your data stays yours, and you choose what to keep private or share.",
-  "stars": 64366,
+  "stars": 64378,
   "homepage": "https://usememos.com",
   "language": "Go",
   "defaultBranch": "main",
-  "commit": "e4f3fb2d2d114f6eaea6ec75a10b0a274f57a8a1",
-  "generatedAt": "2026-11-10T00:44:39.360Z",
+  "commit": "66501e9f75ba612374471f115a840a8c177b7031",
+  "generatedAt": "2026-11-10T16:06:32.432Z",
   "cliVersion": "0.8.20",
-  "score": 83,
+  "score": 85,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 43,
+      "score": 45,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 325,
+    "componentCount": 329,
     "tokenCount": 3,
-    "hardcodedValueCount": 27,
+    "hardcodedValueCount": 25,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 27,
+    "totalDriftCount": 25,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -63,13 +63,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 27 hardcoded values left to tokenize. web/src/components/AttachmentLibrary/AttachmentMediaGrid.tsx has the most (2)"
+    "Nearly there — just 25 hardcoded values left to tokenize. web/src/components/AttachmentLibrary/AttachmentMediaGrid.tsx has the most (2)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 17,
-      "action": "Replace the hardcoded values in all 27 findings with tokens or scale steps"
+      "points": 15,
+      "action": "Replace the hardcoded values in all 25 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -103,20 +103,16 @@
     ]
   },
   "driftSummary": {
-    "total": 27,
+    "total": 25,
     "critical": 0,
     "warning": 0,
-    "info": 27
+    "info": 25
   },
   "driftByType": {
-    "hardcoded-value": 27
+    "hardcoded-value": 25
   },
   "topColors": [],
   "topSpacing": [
-    {
-      "value": "0.375rem",
-      "count": 2
-    },
     {
       "value": "5px",
       "count": 1
@@ -144,13 +140,13 @@
     {
       "value": "7px",
       "count": 1
+    },
+    {
+      "value": "22px",
+      "count": 1
     }
   ],
   "worstFiles": [
-    {
-      "file": "web/src/components/MemoEditor/edit/editor.css",
-      "count": 7
-    },
     {
       "file": "web/src/components/MapView/MapCanvas.tsx",
       "count": 5
@@ -178,6 +174,10 @@
     {
       "file": "web/src/components/SpaceMark.tsx",
       "count": 3
+    },
+    {
+      "file": "web/src/components/AttachmentLibrary/AttachmentMediaGrid.tsx",
+      "count": 2
     }
   ],
   "samples": [
@@ -275,5 +275,5 @@
       ]
     }
   ],
-  "scanSeconds": 8
+  "scanSeconds": 11
 }

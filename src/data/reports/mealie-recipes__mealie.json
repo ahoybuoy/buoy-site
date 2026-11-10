@@ -3,12 +3,12 @@
   "owner": "mealie-recipes",
   "name": "mealie",
   "description": "Mealie is a self hosted recipe manager and meal planner with a RestAPI backend and a reactive frontend application built in Vue for a pleasant user experience for the whole family. Easily add recipes into your database by providing the url and mealie will automatically import the relevant data or add a family recipe with the UI editor",
-  "stars": 13864,
+  "stars": 13867,
   "homepage": "https://docs.mealie.io",
   "language": "Python",
   "defaultBranch": "mealie-next",
-  "commit": "60fc3bcfa98402cb6cf3848a93b55a119b91d6b3",
-  "generatedAt": "2026-11-10T00:38:46.377Z",
+  "commit": "b3a6d9899f1eeea5c3c9f4b79f6a05fc7ec655c3",
+  "generatedAt": "2026-11-10T15:58:25.983Z",
   "cliVersion": "0.8.20",
   "score": null,
   "tier": "N/A",
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 0,
     "tokenCount": 18,
-    "hardcodedValueCount": 38,
+    "hardcodedValueCount": 39,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 38,
+    "totalDriftCount": 39,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -99,7 +99,7 @@
       },
       {
         "file": "frontend/app/components/Domain/Recipe/RecipePrintView.vue",
-        "line": 541,
+        "line": 547,
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "padding: 2px is a 2-3px optical adjustment"
@@ -121,13 +121,13 @@
     ]
   },
   "driftSummary": {
-    "total": 38,
+    "total": 39,
     "critical": 0,
     "warning": 8,
-    "info": 30
+    "info": 31
   },
   "driftByType": {
-    "hardcoded-value": 38
+    "hardcoded-value": 39
   },
   "topColors": [
     {
@@ -200,7 +200,7 @@
   "worstFiles": [
     {
       "file": "frontend/app/components/Domain/Recipe/RecipePrintView.vue",
-      "count": 8
+      "count": 9
     },
     {
       "file": "docs/docs/assets/stylesheets/custom.css",
@@ -319,5 +319,5 @@
       ]
     }
   ],
-  "scanSeconds": 5
+  "scanSeconds": 7
 }

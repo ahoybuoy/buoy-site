@@ -3,18 +3,18 @@
   "owner": "mermaid-js",
   "name": "mermaid-live-editor",
   "description": "Edit, preview and share mermaid charts/diagrams. New implementation of the live editor.",
-  "stars": 6899,
+  "stars": 6900,
   "homepage": "https://mermaid.live",
   "language": "TypeScript",
   "defaultBranch": "develop",
-  "commit": "df04db01dc6697d5aa01d5d02bdd39193e22945d",
-  "generatedAt": "2026-11-10T00:38:50.096Z",
+  "commit": "f1e381f23e42cd5a904f583fd05be57903a84331",
+  "generatedAt": "2026-11-10T15:58:30.424Z",
   "cliVersion": "0.8.20",
-  "score": 77,
+  "score": 61,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 37,
+      "score": 21,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 52,
+    "componentCount": 56,
     "tokenCount": 54,
-    "hardcodedValueCount": 6,
+    "hardcodedValueCount": 11,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 6,
+    "totalDriftCount": 11,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -55,12 +55,12 @@
     "vendoredDriftCount": 0,
     "notedCount": 1,
     "topHardcodedColor": {
-      "value": "#261A56",
-      "count": 3
+      "value": "#E0095F",
+      "count": 9
     },
     "worstFile": {
-      "path": "src/lib/components/Navbar.svelte",
-      "issueCount": 1
+      "path": "src/lib/components/V13Tail.svelte",
+      "issueCount": 2
     },
     "detectedFrameworkNames": [
       "svelte",
@@ -68,13 +68,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 6 hardcoded values left to tokenize"
+    "Nearly there — just 11 hardcoded values left to tokenize. src/lib/components/V13Tail.svelte has the most (2)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 23,
-      "action": "Replace the hardcoded values in all 6 findings with tokens or scale steps"
+      "points": 39,
+      "action": "Replace the hardcoded values in all 11 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -93,22 +93,22 @@
     ]
   },
   "driftSummary": {
-    "total": 6,
+    "total": 11,
     "critical": 0,
-    "warning": 6,
+    "warning": 11,
     "info": 0
   },
   "driftByType": {
-    "hardcoded-value": 6
+    "hardcoded-value": 11
   },
   "topColors": [
     {
-      "value": "#261A56",
-      "count": 3
+      "value": "#E0095F",
+      "count": 6
     },
     {
-      "value": "#E0095F",
-      "count": 2
+      "value": "#261A56",
+      "count": 3
     },
     {
       "value": "#1E1A2E",
@@ -120,6 +120,10 @@
     },
     {
       "value": "#2e4d6b",
+      "count": 1
+    },
+    {
+      "value": "#9370db",
       "count": 1
     },
     {
@@ -143,6 +147,10 @@
       "count": 4
     },
     {
+      "file": "src/lib/components/V13Callout.svelte",
+      "count": 3
+    },
+    {
       "file": "src/lib/util/promos/April2025.svelte",
       "count": 3
     },
@@ -151,16 +159,20 @@
       "count": 3
     },
     {
+      "file": "src/lib/components/V13Chip.svelte",
+      "count": 2
+    },
+    {
+      "file": "src/lib/components/V13Tail.svelte",
+      "count": 2
+    },
+    {
       "file": "src/lib/components/AIPromptPopup.svelte",
       "count": 2
     },
     {
       "file": "src/routes/(app)/+layout.svelte",
       "count": 2
-    },
-    {
-      "file": "src/lib/components/Navbar.svelte",
-      "count": 1
     }
   ],
   "samples": [
@@ -169,6 +181,37 @@
       "location": "src/lib/components/Navbar.svelte:71",
       "entries": [
         "hover:text-[#261A56] (line 71)"
+      ]
+    },
+    {
+      "component": "src/lib/components/V13Callout.svelte",
+      "location": "src/lib/components/V13Callout.svelte:19",
+      "entries": [
+        "border-[#E0095F]/30 (line 19)",
+        "bg-[#E0095F]/10 (line 22)",
+        "text-[#E0095F] (line 32)"
+      ]
+    },
+    {
+      "component": "src/lib/components/V13Chip.svelte",
+      "location": "src/lib/components/V13Chip.svelte:21",
+      "entries": [
+        "bg-[#E0095F]/10 (line 21)",
+        "text-[#E0095F] (line 28)"
+      ]
+    },
+    {
+      "component": "src/lib/components/V13Peek.svelte",
+      "location": "src/lib/components/V13Peek.svelte:63",
+      "entries": [
+        "text-[#E0095F] (line 63)"
+      ]
+    },
+    {
+      "component": "src/lib/components/V13Tail.svelte",
+      "location": "src/lib/components/V13Tail.svelte:10",
+      "entries": [
+        "text-[#E0095F] (line 10)"
       ]
     },
     {
@@ -207,6 +250,13 @@
       ]
     },
     {
+      "component": "src/lib/components/V13Tail.svelte",
+      "location": "src/lib/components/V13Tail.svelte:44",
+      "entries": [
+        "colour: #9370db (line 44)"
+      ]
+    },
+    {
       "component": "src/routes/(app)/+layout.svelte",
       "location": "src/routes/(app)/+layout.svelte:59",
       "entries": [
@@ -215,5 +265,5 @@
       ]
     }
   ],
-  "scanSeconds": 3
+  "scanSeconds": 4
 }

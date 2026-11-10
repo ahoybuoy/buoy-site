@@ -3,18 +3,18 @@
   "owner": "homarr-labs",
   "name": "homarr",
   "description": "A modern and easy to use dashboard. 80+ integrations. 20K+ icons built in. Authentication out of the box. No YAML, drag and drop configuration.",
-  "stars": 5321,
+  "stars": 5329,
   "homepage": "https://homarr.dev",
   "language": "TypeScript",
   "defaultBranch": "dev",
-  "commit": "8fad5e3d8f283a1a48eabdd1a73a8d71f0b45685",
-  "generatedAt": "2026-11-10T00:33:03.515Z",
+  "commit": "d1e8c56a15610f828aa70a5e7cc93fd21f608330",
+  "generatedAt": "2026-11-10T15:51:27.742Z",
   "cliVersion": "0.8.20",
-  "score": 84,
+  "score": 85,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 44,
+      "score": 45,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1387,
+    "componentCount": 1529,
     "tokenCount": 98,
-    "hardcodedValueCount": 108,
+    "hardcodedValueCount": 115,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 108,
+    "totalDriftCount": 115,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 1,
     "vendoredDriftCount": 0,
-    "notedCount": 14,
+    "notedCount": 16,
     "topHardcodedColor": {
       "value": "#fff",
       "count": 1
@@ -62,7 +62,7 @@
       "path": "packages/widgets/src/notebook/notebook.tsx",
       "issueCount": 5
     },
-    "uniqueSpacingValues": 10,
+    "uniqueSpacingValues": 11,
     "detectedFrameworkNames": [
       "react",
       "next",
@@ -71,19 +71,19 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 108 hardcoded values left to tokenize. packages/widgets/src/notebook/notebook.tsx has the most (5)"
+    "Nearly there — just 115 hardcoded values left to tokenize. packages/widgets/src/notebook/notebook.tsx has the most (5)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 16,
-      "action": "Replace the hardcoded values in 105 of the 108 findings with tokens or scale steps"
+      "points": 15,
+      "action": "Replace the hardcoded values in 112 of the 115 findings with tokens or scale steps"
     }
   ],
   "noted": {
-    "count": 14,
+    "count": 16,
     "byKind": {
-      "optical-nudge": 8,
+      "optical-nudge": 10,
       "vendored": 6
     },
     "samples": [
@@ -132,22 +132,22 @@
     ]
   },
   "driftSummary": {
-    "total": 108,
+    "total": 115,
     "critical": 0,
-    "warning": 13,
-    "info": 95
+    "warning": 15,
+    "info": 100
   },
   "driftByType": {
-    "hardcoded-value": 108
+    "hardcoded-value": 115
   },
   "topColors": [
     {
-      "value": "rgb(",
-      "count": 6
+      "value": "#fff",
+      "count": 11
     },
     {
-      "value": "#fff",
-      "count": 4
+      "value": "rgb(",
+      "count": 6
     },
     {
       "value": "#27272a",
@@ -155,6 +155,10 @@
     },
     {
       "value": "#a51111",
+      "count": 2
+    },
+    {
+      "value": "rgba(255, 255, 255, 0.22)",
       "count": 2
     },
     {
@@ -168,10 +172,6 @@
     {
       "value": "#c92a2a",
       "count": 1
-    },
-    {
-      "value": "#202020",
-      "count": 1
     }
   ],
   "topSpacing": [
@@ -180,8 +180,20 @@
       "count": 51
     },
     {
+      "value": "8px",
+      "count": 33
+    },
+    {
+      "value": "4px",
+      "count": 28
+    },
+    {
+      "value": "6px",
+      "count": 26
+    },
+    {
       "value": "0.25rem",
-      "count": 23
+      "count": 24
     },
     {
       "value": "0.75rem",
@@ -192,26 +204,22 @@
       "count": 20
     },
     {
-      "value": "4px",
-      "count": 17
-    },
-    {
-      "value": "8px",
-      "count": 13
-    },
-    {
-      "value": "2px",
-      "count": 13
-    },
-    {
       "value": "10px",
-      "count": 12
+      "count": 17
     }
   ],
   "worstFiles": [
     {
+      "file": "packages/widgets/src/smart-home/controls/control-center/styles.module.css",
+      "count": 132
+    },
+    {
       "file": "apps/nextjs/src/components/assistant/assistant-panel.module.css",
       "count": 107
+    },
+    {
+      "file": "packages/widgets/src/smart-home/controls/technical/styles.module.css",
+      "count": 77
     },
     {
       "file": "apps/docs/src/components/pages/core-concepts/technical-diagrams.module.css",
@@ -232,14 +240,6 @@
     {
       "file": "apps/docs/src/components/pages/getting-started/concept-flow.module.css",
       "count": 32
-    },
-    {
-      "file": "tools/v2-showreel/src/style.css",
-      "count": 29
-    },
-    {
-      "file": "apps/docs/src/app/global.css",
-      "count": 28
     }
   ],
   "samples": [
@@ -317,9 +317,9 @@
     },
     {
       "component": "DiskStatus",
-      "location": "packages/widgets/src/health-monitoring/system-health.tsx:404",
+      "location": "packages/widgets/src/health-monitoring/system-health.tsx:408",
       "entries": [
-        "size: 1rem (line 434)"
+        "size: 1rem (line 438)"
       ]
     },
     {
@@ -330,5 +330,5 @@
       ]
     }
   ],
-  "scanSeconds": 35
+  "scanSeconds": 48
 }

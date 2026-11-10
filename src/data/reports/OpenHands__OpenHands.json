@@ -3,18 +3,18 @@
   "owner": "OpenHands",
   "name": "OpenHands",
   "description": "🙌 OpenHands: AI-Driven Development",
-  "stars": 93057,
+  "stars": 93124,
   "homepage": "https://openhands.dev",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "aceb6b1f3ad3c5593c257a2ceed332858d6e5a5a",
-  "generatedAt": "2026-11-10T00:21:29.224Z",
+  "commit": "0c3a1fa58ae00e37dc839039b10faec4f061e75a",
+  "generatedAt": "2026-11-10T15:36:15.393Z",
   "cliVersion": "0.8.20",
-  "score": 93,
+  "score": 94,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 53,
+      "score": 54,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 815,
-    "tokenCount": 333,
-    "hardcodedValueCount": 26,
+    "componentCount": 816,
+    "tokenCount": 334,
+    "hardcodedValueCount": 23,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 28,
+    "totalDriftCount": 25,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -68,13 +68,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 26 hardcoded values left to tokenize"
+    "Nearly there — just 23 hardcoded values left to tokenize"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 7,
-      "action": "Replace the hardcoded values in 24 of the 26 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "points": 6,
+      "action": "Replace the hardcoded values in 21 of the 23 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     }
   ],
   "noted": {
@@ -83,13 +83,13 @@
     "samples": []
   },
   "driftSummary": {
-    "total": 28,
+    "total": 25,
     "critical": 0,
-    "warning": 19,
+    "warning": 16,
     "info": 9
   },
   "driftByType": {
-    "hardcoded-value": 26,
+    "hardcoded-value": 23,
     "repeated-pattern": 2
   },
   "topColors": [
@@ -106,10 +106,6 @@
       "count": 4
     },
     {
-      "value": "rgba(71,74,84,0.50)",
-      "count": 3
-    },
-    {
       "value": "#1E3A5F",
       "count": 3
     },
@@ -123,6 +119,10 @@
     },
     {
       "value": "#4A67BD",
+      "count": 1
+    },
+    {
+      "value": "#597ff4",
       "count": 1
     }
   ],
@@ -234,32 +234,11 @@
       ]
     },
     {
-      "component": "src/components/features/chat/git-control-bar-branch-button.tsx",
-      "location": "src/components/features/chat/git-control-bar-branch-button.tsx:52",
-      "entries": [
-        "dark:border-[rgba(71,74,84,0.50)] (line 52)"
-      ]
-    },
-    {
-      "component": "src/components/features/chat/git-control-bar-repo-button.tsx",
-      "location": "src/components/features/chat/git-control-bar-repo-button.tsx:85",
-      "entries": [
-        "dark:border-[rgba(71,74,84,0.50)] (line 85)"
-      ]
-    },
-    {
       "component": "src/components/features/chat/plan-preview.tsx",
       "location": "src/components/features/chat/plan-preview.tsx:70",
       "entries": [
         "border-[#597FF4] (line 70)",
         "text-[#4a67bd] (line 108)"
-      ]
-    },
-    {
-      "component": "src/components/features/chat/workspace-mode-selector.tsx",
-      "location": "src/components/features/chat/workspace-mode-selector.tsx:76",
-      "entries": [
-        "dark:border-[rgba(71,74,84,0.50)] (line 76)"
       ]
     },
     {
@@ -275,7 +254,28 @@
       "entries": [
         "bg-[#C63143] (line 34)"
       ]
+    },
+    {
+      "component": "src/components/features/conversation/conversation-name-with-status.tsx",
+      "location": "src/components/features/conversation/conversation-name-with-status.tsx:135",
+      "entries": [
+        "ml-[3.5px] (line 135)"
+      ]
+    },
+    {
+      "component": "src/components/features/onboarding/steps/say-hello-step.tsx",
+      "location": "src/components/features/onboarding/steps/say-hello-step.tsx:116",
+      "entries": [
+        "text-[16px] (line 116)"
+      ]
+    },
+    {
+      "component": "src/components/features/settings/acp-credentials-section.tsx",
+      "location": "src/components/features/settings/acp-credentials-section.tsx:49",
+      "entries": [
+        "dark:text-[#717888] (line 49)"
+      ]
     }
   ],
-  "scanSeconds": 19
+  "scanSeconds": 24
 }

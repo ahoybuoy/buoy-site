@@ -3,12 +3,12 @@
   "owner": "triggerdotdev",
   "name": "trigger.dev",
   "description": "Trigger.dev – build and deploy durable AI agents and workflows",
-  "stars": 16736,
+  "stars": 16739,
   "homepage": "https://trigger.dev/changelog",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "41ad1995b30573a9b55cfaab80c3293b7c35c1f8",
-  "generatedAt": "2026-11-09T17:06:45.475Z",
+  "commit": "2ee883d340abd7cb6903cf1d0bb1a5ccdfc05a98",
+  "generatedAt": "2026-11-10T15:31:12.693Z",
   "cliVersion": "0.8.20",
   "score": 91,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1972,
+    "componentCount": 2042,
     "tokenCount": 276,
-    "hardcodedValueCount": 90,
+    "hardcodedValueCount": 95,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 90,
+    "totalDriftCount": 95,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -72,13 +72,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 90 hardcoded values left to tokenize. apps/webapp/app/components/alerts/ChartLegend.tsx has the most (2)"
+    "Nearly there — just 95 hardcoded values left to tokenize. apps/webapp/app/components/alerts/ChartLegend.tsx has the most (2)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 9,
-      "action": "Replace the hardcoded values in 86 of the 90 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 90 of the 95 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -104,7 +104,7 @@
       },
       {
         "file": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.concurrency/route.tsx",
-        "line": 2381,
+        "line": 2322,
         "value": "pb-[3px]",
         "kind": "optical-nudge",
         "reason": "pb-[3px] is a 2-3px optical adjustment"
@@ -112,13 +112,13 @@
     ]
   },
   "driftSummary": {
-    "total": 90,
+    "total": 95,
     "critical": 0,
     "warning": 10,
-    "info": 80
+    "info": 85
   },
   "driftByType": {
-    "hardcoded-value": 90
+    "hardcoded-value": 95
   },
   "topColors": [
     {
@@ -156,12 +156,12 @@
   ],
   "topSpacing": [
     {
-      "value": "0.86rem",
-      "count": 7
+      "value": "0.9rem",
+      "count": 8
     },
     {
-      "value": "0.9rem",
-      "count": 5
+      "value": "0.86rem",
+      "count": 7
     },
     {
       "value": "0.13rem",
@@ -190,6 +190,10 @@
   ],
   "worstFiles": [
     {
+      "file": "apps/webapp/app/routes/admin.data-stores.tsx",
+      "count": 8
+    },
+    {
       "file": "apps/webapp/app/components/navigation/SideMenu.tsx",
       "count": 6
     },
@@ -207,10 +211,6 @@
     },
     {
       "file": "apps/webapp/app/components/runs/v3/ai/AIChatMessages.tsx",
-      "count": 5
-    },
-    {
-      "file": "apps/webapp/app/routes/admin.data-stores.tsx",
       "count": 5
     },
     {
@@ -308,5 +308,5 @@
       ]
     }
   ],
-  "scanSeconds": 52
+  "scanSeconds": 48
 }
