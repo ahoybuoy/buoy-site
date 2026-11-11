@@ -332,6 +332,17 @@ html.light .cursor-blink::after {
   color: var(--color-buoy-dark);
 }
 
+/* The line under the hero buttons sits on the water in light mode, where slate and the accent are too faint to read */
+html.light .hero-scan-line {
+  color: var(--color-light);
+}
+
+html.light .hero-scan-line a {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
 /* Light mode: "design drift" highlight uses the darker brand step for text
    contrast; the underline wash stays on the brand accent. */
 html.light .hero-drift-highlight {
