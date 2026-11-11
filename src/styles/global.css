@@ -321,6 +321,17 @@ html.light .cursor-blink::after {
 }
 
 /* Light mode: darken "design drift" highlight */
+/* The line under the hero buttons sits on the water in light mode, where slate and the accent are too faint to read */
+html.light .hero-scan-line {
+  color: var(--color-light);
+}
+
+html.light .hero-scan-line a {
+  color: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
 html.light .hero-drift-highlight {
   color: #F26419;
 }
