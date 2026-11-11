@@ -170,7 +170,7 @@ export const Scene4Brand: React.FC = () => {
           top: 490,
           width: 600,
           height: 120,
-          background: `radial-gradient(ellipse at center, rgba(249,115,22,0.18) 0%, transparent 70%)`,
+          background: `radial-gradient(ellipse at center, rgba(255,79,0,0.18) 0%, transparent 70%)`,
           opacity: bgOpacity,
         }}
       />
@@ -201,7 +201,7 @@ export const Scene4Brand: React.FC = () => {
           <div
             style={{
               transform: `scale(${ringScale})`,
-              filter: `drop-shadow(0 0 24px rgba(249,115,22,0.6)) drop-shadow(0 0 48px rgba(249,115,22,0.3))`,
+              filter: `drop-shadow(0 0 24px rgba(255,79,0,0.6)) drop-shadow(0 0 48px rgba(255,79,0,0.3))`,
             }}
           >
             <span style={{fontSize: 92, lineHeight: 1}}>🛟</span>
@@ -265,7 +265,7 @@ export const Scene4Brand: React.FC = () => {
               fontSize: 18,
               color: colors.buoy,
               letterSpacing: '0.5px',
-              textShadow: `0 0 ${16 + urlGlow * 12}px rgba(249,115,22,${0.4 + urlGlow * 0.3})`,
+              textShadow: `0 0 ${16 + urlGlow * 12}px rgba(255,79,0,${0.4 + urlGlow * 0.3})`,
             }}
           >
             getbuoy.io

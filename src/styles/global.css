@@ -11,9 +11,9 @@
   --color-navy-light: #243352;
 
   /* Buoy Orange - The Standout */
-  --color-buoy: #F97316;
-  --color-buoy-light: #FB923C;
-  --color-buoy-dark: #EA580C;
+  --color-buoy: #FF4F00;
+  --color-buoy-light: #FF7A3D;
+  --color-buoy-dark: #D94400;
 
   /* Sunrise Warmth */
   --color-sunrise: #F59E0B;
@@ -237,10 +237,10 @@ html.light {
   --color-navy: #F0F4F8;
   --color-navy-light: #CBD5E1;
 
-  /* Orange: bright buoy orange */
-  --color-buoy: #F97316;
-  --color-buoy-light: #FB923C;
-  --color-buoy-dark: #EA580C;
+  /* Orange: international orange, the one brand accent (never a full background) */
+  --color-buoy: #FF4F00;
+  --color-buoy-light: #FF7A3D;
+  --color-buoy-dark: #C23B00;
 
   /* Sunrise: warm amber */
   --color-sunrise: #F59E0B;
@@ -284,6 +284,18 @@ html.light ::selection {
 }
 
 /* Light mode: glows — subtle but warm */
+/* Light theme contrast: #FF4F00 is 3.2:1 on light, so small orange text uses
+   the darker step (5.1:1) and orange buttons use navy labels (5.4:1). */
+html.light .text-buoy,
+html.light .hover\:text-buoy:hover,
+html.light .hover\:text-buoy-light:hover {
+  color: var(--color-buoy-dark);
+}
+html.light .bg-buoy,
+html.light .hover\:bg-buoy-light:hover {
+  color: #0f1829;
+}
+
 html.light .glow-buoy {
   box-shadow: 0 0 40px color-mix(in srgb, var(--color-buoy) 20%, transparent);
 }
@@ -294,7 +306,7 @@ html.light .glow-lavender {
 
 /* Light mode: text gradient — orange to indigo */
 html.light .text-gradient-sunrise {
-  background: linear-gradient(135deg, #F97316, #F59E0B, #6366F1);
+  background: linear-gradient(135deg, #FF4F00, #F59E0B, #6366F1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -307,14 +319,14 @@ html.light .bg-sunrise-gradient {
     #FFFFFF 0%,
     #F0F4F8 25%,
     color-mix(in srgb, #6366F1 6%, #F0F4F8) 55%,
-    color-mix(in srgb, #F97316 4%, #F0F4F8) 80%,
+    color-mix(in srgb, #FF4F00 4%, #F0F4F8) 80%,
     #F0F4F8 100%
   );
 }
 
 /* Light mode: cursor blink */
 html.light .cursor-blink::after {
-  color: #EA580C;
+  color: var(--color-buoy-dark);
 }
 
 /* Light mode: darken "design drift" highlight */
@@ -364,7 +376,7 @@ html.light .prose-buoy blockquote {
 html.light .prose-invert {
   --tw-prose-body: #1A2744;
   --tw-prose-headings: #1A2744;
-  --tw-prose-links: #F97316;
+  --tw-prose-links: #C23B00;
   --tw-prose-bold: #1A2744;
   --tw-prose-counters: #475569;
   --tw-prose-bullets: #475569;
@@ -423,7 +435,7 @@ html.light .wave-background::after {
 }
 
 html.light .wave-background .particle {
-  background: rgba(249, 115, 22, 0.5);
+  background: rgba(255, 79, 0, 0.5);
 }
 
 html.light .wave-background .p2,
@@ -439,7 +451,7 @@ html.light .wave-background .p7 {
 html.light .wave-background .mesh-overlay {
   background:
     radial-gradient(ellipse at 20% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 30%, rgba(249, 115, 22, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 30%, rgba(255, 79, 0, 0.06) 0%, transparent 50%),
     radial-gradient(ellipse at 40% 80%, rgba(99, 102, 241, 0.06) 0%, transparent 40%),
-    radial-gradient(ellipse at 90% 80%, rgba(249, 115, 22, 0.05) 0%, transparent 50%);
+    radial-gradient(ellipse at 90% 80%, rgba(255, 79, 0, 0.05) 0%, transparent 50%);
 }
