@@ -3,12 +3,12 @@
   "owner": "mealie-recipes",
   "name": "mealie",
   "description": "Mealie is a self hosted recipe manager and meal planner with a RestAPI backend and a reactive frontend application built in Vue for a pleasant user experience for the whole family. Easily add recipes into your database by providing the url and mealie will automatically import the relevant data or add a family recipe with the UI editor",
-  "stars": 13867,
+  "stars": 13877,
   "homepage": "https://docs.mealie.io",
   "language": "Python",
   "defaultBranch": "mealie-next",
-  "commit": "b3a6d9899f1eeea5c3c9f4b79f6a05fc7ec655c3",
-  "generatedAt": "2026-11-10T15:58:25.983Z",
+  "commit": "15e3c6ac8730c2f5cd867433a7f0103495dcb9e7",
+  "generatedAt": "2026-11-11T15:15:35.262Z",
   "cliVersion": "0.8.20",
   "score": null,
   "tier": "N/A",
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 0,
     "tokenCount": 18,
-    "hardcodedValueCount": 39,
+    "hardcodedValueCount": 40,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 39,
+    "totalDriftCount": 40,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -85,7 +85,7 @@
       },
       {
         "file": "frontend/app/pages/shopping-lists/[id].vue",
-        "line": 568,
+        "line": 575,
         "value": "0.55",
         "kind": "known-debt",
         "reason": "the row's action icons are secondary to the item text, so they sit back until used"
@@ -106,14 +106,14 @@
       },
       {
         "file": "frontend/app/pages/shopping-lists/[id].vue",
-        "line": 513,
+        "line": 520,
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "margin-bottom: 2px is a 2-3px optical adjustment"
       },
       {
         "file": "frontend/app/pages/shopping-lists/[id].vue",
-        "line": 535,
+        "line": 542,
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "padding-top: 2px is a 2-3px optical adjustment"
@@ -121,13 +121,13 @@
     ]
   },
   "driftSummary": {
-    "total": 39,
+    "total": 40,
     "critical": 0,
     "warning": 8,
-    "info": 31
+    "info": 32
   },
   "driftByType": {
-    "hardcoded-value": 39
+    "hardcoded-value": 40
   },
   "topColors": [
     {
@@ -319,5 +319,5 @@
       ]
     }
   ],
-  "scanSeconds": 7
+  "scanSeconds": 5
 }

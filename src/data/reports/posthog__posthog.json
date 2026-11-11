@@ -3,12 +3,12 @@
   "owner": "posthog",
   "name": "posthog",
   "description": ":hedgehog: PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.",
-  "stars": 40728,
+  "stars": 40740,
   "homepage": "https://posthog.com",
   "language": "Python",
   "defaultBranch": "master",
-  "commit": "ee00f37cef9347e7c433e5c195103b54f283ce8c",
-  "generatedAt": "2026-11-10T15:28:43.187Z",
+  "commit": "f38315492807f791e1178c9a6e332086475b713b",
+  "generatedAt": "2026-11-11T14:53:33.718Z",
   "cliVersion": "0.8.20",
   "score": 79,
   "tier": "Good",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 5720,
+    "componentCount": 5752,
     "tokenCount": 670,
-    "hardcodedValueCount": 366,
+    "hardcodedValueCount": 365,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 2,
@@ -41,7 +41,7 @@
     "colorContrastCount": 2,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 374,
+    "totalDriftCount": 373,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 2,
     "vendoredDriftCount": 0,
-    "notedCount": 85,
+    "notedCount": 86,
     "topHardcodedColor": {
       "value": "#fff",
       "count": 8
@@ -71,7 +71,7 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 366 hardcoded values left to tokenize. frontend/src/lib/KeaDevTools.tsx has the most (6)",
+    "Nearly there — just 365 hardcoded values left to tokenize. frontend/src/lib/KeaDevTools.tsx has the most (6)",
     "2 color contrast issues — fix immediately",
     "4 deprecated patterns — migrate to current API"
   ],
@@ -79,7 +79,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 13,
-      "action": "Replace the hardcoded values in 352 of the 366 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 351 of the 365 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -88,9 +88,9 @@
     }
   ],
   "noted": {
-    "count": 84,
+    "count": 85,
     "byKind": {
-      "optical-nudge": 66,
+      "optical-nudge": 67,
       "explained": 16,
       "known-debt": 2
     },
@@ -132,7 +132,7 @@
       },
       {
         "file": "frontend/src/lib/lemon-ui/LemonMarkdown/LemonMarkdown.scss",
-        "line": 138,
+        "line": 147,
         "value": "0.125rem",
         "kind": "explained",
         "reason": "Slight adjustment to align with text"
@@ -140,13 +140,13 @@
     ]
   },
   "driftSummary": {
-    "total": 366,
+    "total": 365,
     "critical": 0,
     "warning": 251,
-    "info": 115
+    "info": 114
   },
   "driftByType": {
-    "hardcoded-value": 361,
+    "hardcoded-value": 360,
     "deprecated-pattern": 3,
     "repeated-pattern": 2
   },
@@ -187,7 +187,7 @@
   "topSpacing": [
     {
       "value": "0.5rem",
-      "count": 270
+      "count": 268
     },
     {
       "value": "0.25rem",
@@ -199,7 +199,7 @@
     },
     {
       "value": "0.75rem",
-      "count": 93
+      "count": 91
     },
     {
       "value": "1rem",
@@ -211,7 +211,7 @@
     },
     {
       "value": "4px",
-      "count": 35
+      "count": 36
     },
     {
       "value": "0.625rem",
@@ -229,7 +229,7 @@
     },
     {
       "file": "frontend/src/scenes/project-homepage/today/Today.scss",
-      "count": 83
+      "count": 87
     },
     {
       "file": "products/tasks/frontend/infrastructure/infrastructureAdmin.css",
@@ -325,9 +325,9 @@
     },
     {
       "component": "TaxonomicFilterSearchInput",
-      "location": "frontend/src/lib/components/TaxonomicFilter/TaxonomicFilter.tsx:179",
+      "location": "frontend/src/lib/components/TaxonomicFilter/TaxonomicFilter.tsx:181",
       "entries": [
-        "fontSize: 1.2rem (line 252)"
+        "fontSize: 1.2rem (line 254)"
       ]
     },
     {
@@ -345,5 +345,5 @@
       ]
     }
   ],
-  "scanSeconds": 238
+  "scanSeconds": 170
 }

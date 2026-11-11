@@ -3,18 +3,18 @@
   "owner": "novuhq",
   "name": "novu",
   "description": "The open-source communication infrastructure for agents and products",
-  "stars": 40313,
+  "stars": 40321,
   "homepage": "https://go.novu.co/github",
   "language": "TypeScript",
   "defaultBranch": "next",
-  "commit": "032ec897ed9efc29734d53b76333085104707e7c",
-  "generatedAt": "2026-11-10T15:14:41.865Z",
+  "commit": "8b57966892d5aaa5e1ee404582364e3667b13a90",
+  "generatedAt": "2026-11-11T14:43:20.026Z",
   "cliVersion": "0.8.20",
-  "score": 64,
+  "score": 63,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 24,
+      "score": 23,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 3071,
+    "componentCount": 3108,
     "tokenCount": 828,
-    "hardcodedValueCount": 570,
+    "hardcodedValueCount": 596,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 572,
+    "totalDriftCount": 598,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -51,9 +51,9 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 53,
+    "highDensityFileCount": 59,
     "vendoredDriftCount": 18,
-    "notedCount": 39,
+    "notedCount": 42,
     "topHardcodedColor": {
       "value": "#dd2476",
       "count": 8
@@ -72,22 +72,22 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 552 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
+    "Nearly there — just 578 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
     "18 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 36,
-      "action": "Replace the hardcoded values in 545 of the 552 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "points": 37,
+      "action": "Replace the hardcoded values in 571 of the 578 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     }
   ],
   "noted": {
-    "count": 39,
+    "count": 42,
     "byKind": {
       "optical-nudge": 24,
-      "explained": 3,
-      "known-debt": 1,
+      "explained": 4,
+      "known-debt": 3,
       "vendored": 11
     },
     "samples": [
@@ -100,7 +100,7 @@
       },
       {
         "file": "apps/human-dashboard/src/components/connect/host-setup-box.tsx",
-        "line": 603,
+        "line": 615,
         "value": "bg-[#1f1f1f]",
         "kind": "known-debt",
         "reason": "Until the sliding tile has been placed, the chosen tab draws its own."
@@ -120,29 +120,29 @@
         "reason": "On a short screen, such as a phone on its side, it scrolls rather than lose its buttons off the edge."
       },
       {
-        "file": "apps/dashboard/src/components/primitives/chart.tsx",
-        "line": 190,
-        "value": "border-[1.5px]",
-        "kind": "vendored",
-        "reason": "shadcn/ui component (components.json)"
+        "file": "apps/human-dashboard/src/components/public-card/tilt-card.tsx",
+        "line": 31,
+        "value": "rounded-[14px]",
+        "kind": "explained",
+        "reason": "edge. Where it leans, where the glare is and which edge is lit are CSS variables its own frames set, so nothing re-rend…"
       },
       {
-        "file": "apps/dashboard/src/components/primitives/chart.tsx",
-        "line": 159,
-        "value": "text-[12px], text-[12px], text-[11px], text-[11px]",
-        "kind": "vendored",
-        "reason": "shadcn/ui component (components.json)"
+        "file": "apps/human-dashboard/src/components/say-hi/host-screen.tsx",
+        "line": 81,
+        "value": "text-[11px]",
+        "kind": "known-debt",
+        "reason": "Every tile has its border, see-through until picked, inside the design's 12px/9px padding, and keeps room for its name …"
       }
     ]
   },
   "driftSummary": {
-    "total": 572,
+    "total": 598,
     "critical": 0,
-    "warning": 110,
-    "info": 462
+    "warning": 116,
+    "info": 482
   },
   "driftByType": {
-    "hardcoded-value": 570,
+    "hardcoded-value": 596,
     "repeated-pattern": 2
   },
   "topColors": [
@@ -337,5 +337,5 @@
       ]
     }
   ],
-  "scanSeconds": 90
+  "scanSeconds": 72
 }

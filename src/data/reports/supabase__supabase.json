@@ -3,18 +3,18 @@
   "owner": "supabase",
   "name": "supabase",
   "description": "The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications.",
-  "stars": 114744,
+  "stars": 114827,
   "homepage": "https://supabase.com",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "de63769998faac5a2b5687e42a4835530e6cd8a7",
-  "generatedAt": "2026-11-10T15:12:32.285Z",
+  "commit": "701730e3eb039334961d6b66823b354fc8088d79",
+  "generatedAt": "2026-11-11T14:41:38.096Z",
   "cliVersion": "0.8.20",
-  "score": 86,
+  "score": 87,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 48,
+      "score": 49,
       "max": 60
     },
     "tokenHealth": {
@@ -31,8 +31,8 @@
     }
   },
   "metrics": {
-    "componentCount": 4904,
-    "tokenCount": 1126,
+    "componentCount": 4945,
+    "tokenCount": 1128,
     "hardcodedValueCount": 283,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
@@ -81,7 +81,7 @@
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 12,
+      "points": 11,
       "action": "Replace the hardcoded values in 269 of the 281 findings with tokens or scale steps, and remove or reuse 7 unused components and repeated patterns"
     },
     {
@@ -318,7 +318,7 @@
       "component": "ApiSectionClient",
       "location": "apps/www/app/(products)/realtime/_components/ApiSectionClient.tsx:23",
       "entries": [
-        "fontSize: 0.8125rem (line 145)"
+        "fontSize: 0.8125rem (line 152)"
       ]
     },
     {
@@ -344,5 +344,5 @@
       ]
     }
   ],
-  "scanSeconds": 209
+  "scanSeconds": 146
 }

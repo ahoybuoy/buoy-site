@@ -3,18 +3,18 @@
   "owner": "mastodon",
   "name": "mastodon",
   "description": "Your self-hosted, globally interconnected microblogging community",
-  "stars": 50504,
+  "stars": 50549,
   "homepage": "https://joinmastodon.org",
   "language": "Ruby",
   "defaultBranch": "main",
-  "commit": "885e3c208cf435f50e54c527db3e26a1384feb7c",
-  "generatedAt": "2026-11-10T15:58:09.646Z",
+  "commit": "46fe6b9849684818cb7ef07aed6ebf0d58e4d551",
+  "generatedAt": "2026-11-11T15:15:22.980Z",
   "cliVersion": "0.8.20",
-  "score": 75,
+  "score": 74,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 41,
+      "score": 40,
       "max": 60
     },
     "tokenHealth": {
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 643,
+    "componentCount": 624,
     "tokenCount": 7,
     "hardcodedValueCount": 61,
     "unusedTokenCount": 0,
@@ -65,7 +65,7 @@
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 19,
+      "points": 20,
       "action": "Replace the hardcoded values in 60 of the 61 findings with tokens or scale steps"
     },
     {
@@ -171,19 +171,19 @@
   "topSpacing": [
     {
       "value": "8px",
-      "count": 124
+      "count": 117
     },
     {
       "value": "16px",
-      "count": 102
+      "count": 96
     },
     {
       "value": "10px",
-      "count": 89
+      "count": 86
     },
     {
       "value": "4px",
-      "count": 62
+      "count": 61
     },
     {
       "value": "20px",
@@ -191,21 +191,21 @@
     },
     {
       "value": "15px",
-      "count": 51
+      "count": 50
     },
     {
       "value": "12px",
-      "count": 46
+      "count": 41
     },
     {
-      "value": "5px",
-      "count": 24
+      "value": "24px",
+      "count": 22
     }
   ],
   "worstFiles": [
     {
       "file": "app/javascript/styles/mastodon/components.scss",
-      "count": 694
+      "count": 649
     },
     {
       "file": "app/javascript/styles/mastodon/admin.scss",
@@ -336,5 +336,5 @@
       ]
     }
   ],
-  "scanSeconds": 22
+  "scanSeconds": 15
 }

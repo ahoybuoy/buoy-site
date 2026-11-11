@@ -3,12 +3,12 @@
   "owner": "Stirling-Tools",
   "name": "Stirling-PDF",
   "description": "#1 PDF Application on GitHub that lets you edit PDFs on any device anywhere",
-  "stars": 96207,
+  "stars": 96286,
   "homepage": "https://stirling.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "2ab6362d25b23c1061ad1d43ec99985584f53b1a",
-  "generatedAt": "2026-11-10T15:38:32.296Z",
+  "commit": "ea63e6009c6f58b44364ec550eaef9d31e5476fb",
+  "generatedAt": "2026-11-11T15:00:49.753Z",
   "cliVersion": "0.8.20",
   "score": 40,
   "tier": "OK",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1680,
+    "componentCount": 1704,
     "tokenCount": 690,
-    "hardcodedValueCount": 551,
+    "hardcodedValueCount": 552,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 551,
+    "totalDriftCount": 552,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -66,14 +66,14 @@
     "detectedFrameworkNames": []
   },
   "suggestions": [
-    "551 hardcoded values to extract. Focus on frontend/src/editor/core/components/filesPage/FileGrid.tsx (8 issues)",
+    "552 hardcoded values to extract. Focus on frontend/src/editor/core/components/filesPage/FileGrid.tsx (8 issues)",
     "55 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 547 of the 551 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 548 of the 552 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -129,13 +129,13 @@
     ]
   },
   "driftSummary": {
-    "total": 551,
+    "total": 552,
     "critical": 0,
-    "warning": 240,
+    "warning": 241,
     "info": 311
   },
   "driftByType": {
-    "hardcoded-value": 551
+    "hardcoded-value": 552
   },
   "topColors": [
     {
@@ -289,11 +289,11 @@
     },
     {
       "component": "Login",
-      "location": "frontend/src/editor/proprietary/routes/Login.tsx:38",
+      "location": "frontend/src/editor/proprietary/routes/Login.tsx:63",
       "entries": [
-        "padding: 1.5rem (line 415)",
-        "marginTop: 1rem (line 416)",
-        "padding: 1rem (line 458)"
+        "padding: 1.5rem (line 504)",
+        "marginTop: 1rem (line 505)",
+        "padding: 1rem (line 553)"
       ]
     },
     {
@@ -336,5 +336,5 @@
       ]
     }
   ],
-  "scanSeconds": 53
+  "scanSeconds": 40
 }

@@ -3,12 +3,12 @@
   "owner": "gitroomhq",
   "name": "postiz-app",
   "description": "📨 The ultimate agentic social media scheduling tool 🤖",
-  "stars": 41259,
+  "stars": 41355,
   "homepage": "https://postiz.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "85a0246b600733d851ed0927020bd5735db860c8",
-  "generatedAt": "2026-11-10T15:48:19.242Z",
+  "commit": "b31d29fa4132a08aa82f728227df2938ccab7972",
+  "generatedAt": "2026-11-11T15:08:09.584Z",
   "cliVersion": "0.8.20",
   "score": 40,
   "tier": "OK",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 507,
+    "componentCount": 508,
     "tokenCount": 113,
-    "hardcodedValueCount": 483,
+    "hardcodedValueCount": 485,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 483,
+    "totalDriftCount": 485,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -71,14 +71,14 @@
     ]
   },
   "suggestions": [
-    "479 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/frontend/src/components/launches/ai.image.tsx (5 issues)",
+    "481 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/frontend/src/components/launches/ai.image.tsx (5 issues)",
     "4 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 478 of the 479 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 480 of the 481 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -124,7 +124,7 @@
       },
       {
         "file": "apps/frontend/src/components/launches/calendar.tsx",
-        "line": 1023,
+        "line": 1030,
         "value": "pt-[3px]",
         "kind": "optical-nudge",
         "reason": "pt-[3px] is a 2-3px optical adjustment"
@@ -132,13 +132,13 @@
     ]
   },
   "driftSummary": {
-    "total": 483,
+    "total": 485,
     "critical": 0,
     "warning": 62,
-    "info": 421
+    "info": 423
   },
   "driftByType": {
-    "hardcoded-value": 483
+    "hardcoded-value": 485
   },
   "topColors": [
     {
@@ -177,11 +177,11 @@
   "topSpacing": [
     {
       "value": "16px",
-      "count": 290
+      "count": 291
     },
     {
       "value": "8px",
-      "count": 282
+      "count": 283
     },
     {
       "value": "12px",
@@ -189,7 +189,7 @@
     },
     {
       "value": "10px",
-      "count": 231
+      "count": 232
     },
     {
       "value": "20px",
@@ -197,7 +197,7 @@
     },
     {
       "value": "6px",
-      "count": 163
+      "count": 165
     },
     {
       "value": "4px",
@@ -231,7 +231,7 @@
     },
     {
       "file": "apps/frontend/src/components/new-launch/manage.modal.tsx",
-      "count": 102
+      "count": 103
     },
     {
       "file": "apps/frontend/src/components/media/media.component.tsx",
@@ -302,29 +302,29 @@
     },
     {
       "component": "apps/frontend/src/app/(app)/(preview)/p/[id]/page.tsx",
-      "location": "apps/frontend/src/app/(app)/(preview)/p/[id]/page.tsx:56",
-      "entries": [
-        "p-[12px] (line 56)",
-        "gap-[8px] (line 56)",
-        "px-[20px] (line 57)"
-      ]
-    },
-    {
-      "component": "apps/frontend/src/app/(app)/(preview)/p/[id]/page.tsx",
       "location": "apps/frontend/src/app/(app)/(preview)/p/[id]/page.tsx:57",
       "entries": [
-        "rounded-[12px] (line 57)",
-        "rounded-[12px] (line 114)",
-        "rounded-[10px] (line 160)"
+        "p-[12px] (line 57)",
+        "gap-[8px] (line 57)",
+        "px-[20px] (line 58)"
       ]
     },
     {
       "component": "apps/frontend/src/app/(app)/(preview)/p/[id]/page.tsx",
-      "location": "apps/frontend/src/app/(app)/(preview)/p/[id]/page.tsx:45",
+      "location": "apps/frontend/src/app/(app)/(preview)/p/[id]/page.tsx:58",
       "entries": [
-        "text-[20px] (line 45)",
-        "text-[14px] (line 93)",
-        "text-[14px] (line 137)"
+        "rounded-[12px] (line 58)",
+        "rounded-[12px] (line 115)",
+        "rounded-[10px] (line 162)"
+      ]
+    },
+    {
+      "component": "apps/frontend/src/app/(app)/(preview)/p/[id]/page.tsx",
+      "location": "apps/frontend/src/app/(app)/(preview)/p/[id]/page.tsx:46",
+      "entries": [
+        "text-[20px] (line 46)",
+        "text-[14px] (line 94)",
+        "text-[14px] (line 139)"
       ]
     },
     {
@@ -336,5 +336,5 @@
       ]
     }
   ],
-  "scanSeconds": 19
+  "scanSeconds": 14
 }

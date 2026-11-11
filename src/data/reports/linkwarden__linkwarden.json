@@ -3,18 +3,18 @@
   "owner": "linkwarden",
   "name": "linkwarden",
   "description": "⚡️⚡️⚡️ Self-hosted collaborative bookmark manager to collect, read, annotate, and fully preserve what matters, all in one place.",
-  "stars": 20359,
+  "stars": 20382,
   "homepage": "https://linkwarden.app",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "eff7c6b735f6b20a4766745dc86c6bdc52bd9840",
-  "generatedAt": "2026-11-10T15:53:17.815Z",
+  "commit": "24adcc146ba356632859a1e8adb4bffae2874d11",
+  "generatedAt": "2026-11-11T15:11:44.212Z",
   "cliVersion": "0.8.20",
-  "score": 90,
+  "score": 91,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 50,
+      "score": 51,
       "max": 60
     },
     "tokenHealth": {
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 260,
+    "componentCount": 275,
     "tokenCount": 45,
     "hardcodedValueCount": 13,
     "unusedTokenCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 0,
+    "notedCount": 1,
     "topHardcodedColor": {
       "value": "#6B7280",
       "count": 3
@@ -78,14 +78,24 @@
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 10,
+      "points": 9,
       "action": "Replace the hardcoded values in all 13 findings with tokens or scale steps"
     }
   ],
   "noted": {
-    "count": 0,
-    "byKind": {},
-    "samples": []
+    "count": 1,
+    "byKind": {
+      "explained": 1
+    },
+    "samples": [
+      {
+        "file": "apps/web/components/VerificationCodeInput.tsx",
+        "line": 119,
+        "value": "tracking-[-0.5em]",
+        "kind": "explained",
+        "reason": "16px text keeps iOS from zooming in, and the squeezed letters put the caret at the end wherever the boxes are clicked"
+      }
+    ]
   },
   "driftSummary": {
     "total": 13,
@@ -273,5 +283,5 @@
       ]
     }
   ],
-  "scanSeconds": 13
+  "scanSeconds": 10
 }

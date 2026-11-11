@@ -3,12 +3,12 @@
   "owner": "SigNoz",
   "name": "signoz",
   "description": "SigNoz is an open-source, OpenTelemetry-native observability platform for your team and their AI agents. Get logs, metrics, and traces in one tool with features like APM, distributed tracing, log management, infra monitoring, etc. Combined with SigNoz MCP and a native AI teammate (in SigNoz Cloud) it helps you build more resilient apps.",
-  "stars": 32569,
+  "stars": 32590,
   "homepage": "https://signoz.io",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "f1d6c988c9917722d9f468f9eebe7f3fea2adf71",
-  "generatedAt": "2026-11-10T15:37:38.347Z",
+  "commit": "88e9ad73e070c07966634becdf891c5509d33fb6",
+  "generatedAt": "2026-11-11T15:00:08.562Z",
   "cliVersion": "0.8.20",
   "score": 20,
   "tier": "Bad",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1478,
+    "componentCount": 1471,
     "tokenCount": 0,
-    "hardcodedValueCount": 615,
+    "hardcodedValueCount": 610,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 615,
+    "totalDriftCount": 610,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -66,14 +66,14 @@
     "detectedFrameworkNames": []
   },
   "suggestions": [
-    "615 hardcoded values to extract. Focus on frontend/src/components/QueryBuilderV2/QueryV2/QueryAggregation/QueryAggregationSelect.tsx (2 issues)",
+    "610 hardcoded values to extract. Focus on frontend/src/components/QueryBuilderV2/QueryV2/QueryAggregation/QueryAggregationSelect.tsx (2 issues)",
     "No design token system detected — add CSS custom properties or a utility framework like Tailwind"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 612 of the 615 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 607 of the 610 findings with tokens or scale steps"
     },
     {
       "pillar": "tokenHealth",
@@ -134,13 +134,13 @@
     ]
   },
   "driftSummary": {
-    "total": 615,
+    "total": 610,
     "critical": 0,
     "warning": 32,
-    "info": 583
+    "info": 578
   },
   "driftByType": {
-    "hardcoded-value": 615
+    "hardcoded-value": 610
   },
   "topColors": [
     {
@@ -179,19 +179,19 @@
   "topSpacing": [
     {
       "value": "8px",
-      "count": 795
+      "count": 785
     },
     {
       "value": "16px",
-      "count": 370
+      "count": 366
     },
     {
       "value": "12px",
-      "count": 303
+      "count": 300
     },
     {
       "value": "4px",
-      "count": 302
+      "count": 299
     },
     {
       "value": "6px",
@@ -203,11 +203,11 @@
     },
     {
       "value": "24px",
-      "count": 125
+      "count": 124
     },
     {
       "value": "20px",
-      "count": 45
+      "count": 44
     }
   ],
   "worstFiles": [
@@ -268,9 +268,9 @@
     },
     {
       "component": "QuerySection",
-      "location": "frontend/src/container/FormAlertRules/QuerySection.tsx:34",
+      "location": "frontend/src/container/FormAlertRules/QuerySection.tsx:33",
       "entries": [
-        "gap: 1rem (line 235)"
+        "gap: 1rem (line 231)"
       ]
     },
     {
@@ -330,5 +330,5 @@
       ]
     }
   ],
-  "scanSeconds": 41
+  "scanSeconds": 30
 }
