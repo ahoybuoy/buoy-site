@@ -81,7 +81,7 @@ const CodeWindow: React.FC<{
         <span style={{marginLeft: 10, fontFamily: fonts.mono, fontSize: 11, color: '#4b5563'}}>
           {filename}
         </span>
-        <span style={{marginLeft: 'auto', fontSize: 10, color: colors.buoy, fontFamily: fonts.body, fontWeight: 600, backgroundColor: 'rgba(249,115,22,0.1)', padding: '1px 6px', borderRadius: 3}}>
+        <span style={{marginLeft: 'auto', fontSize: 10, color: colors.buoy, fontFamily: fonts.body, fontWeight: 600, backgroundColor: 'rgba(255,79,0,0.1)', padding: '1px 6px', borderRadius: 3}}>
           AI generated
         </span>
       </div>
@@ -283,7 +283,7 @@ const AfterPanel: React.FC<{frame: number}> = ({frame}) => {
   return (
     <div style={{width: 640, height: 720, backgroundColor: colors.navyDark, position: 'relative', overflow: 'hidden', display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '0 32px', boxSizing: 'border-box'}}>
       {/* orange glow top */}
-      <div style={{position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 0%, rgba(249,115,22,0.08) 0%, transparent 55%)', pointerEvents: 'none'}} />
+      <div style={{position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 0%, rgba(255,79,0,0.08) 0%, transparent 55%)', pointerEvents: 'none'}} />
 
       {/* WITH BUOY label */}
       <div style={{marginTop: 36, marginBottom: 20, opacity: labelOpacity, textAlign: 'center', display: 'flex', alignItems: 'center', gap: 8}}>
@@ -467,7 +467,7 @@ const Outro: React.FC<{frame: number}> = ({frame}) => {
       }}
     >
       <div style={{transform: `scale(${logoScale})`, opacity: fadeIn(frame, 5), textAlign: 'center'}}>
-        <div style={{filter: `drop-shadow(0 0 24px rgba(249,115,22,0.6))`, marginBottom: 12}}>
+        <div style={{filter: `drop-shadow(0 0 24px rgba(255,79,0,0.6))`, marginBottom: 12}}>
           <span style={{fontSize: 72, lineHeight: 1}}>🛟</span>
         </div>
         <span style={{fontFamily: fonts.display, fontSize: 56, fontWeight: 800, color: colors.light, letterSpacing: '-1.5px'}}>
@@ -483,7 +483,7 @@ const Outro: React.FC<{frame: number}> = ({frame}) => {
       </div>
 
       <div style={{opacity: urlOpacity, marginTop: 20}}>
-        <span style={{fontFamily: fonts.mono, fontSize: 16, color: colors.buoy, textShadow: `0 0 ${14 + urlGlow * 10}px rgba(249,115,22,${0.4 + urlGlow * 0.3})`}}>
+        <span style={{fontFamily: fonts.mono, fontSize: 16, color: colors.buoy, textShadow: `0 0 ${14 + urlGlow * 10}px rgba(255,79,0,${0.4 + urlGlow * 0.3})`}}>
           getbuoy.io
         </span>
       </div>
@@ -519,8 +519,8 @@ export const BeforeAfterVideo: React.FC = () => {
           bottom: 0,
           left: 639,
           width: 2,
-          background: `linear-gradient(180deg, rgba(239,68,68,${dividerGlow}) 0%, rgba(249,115,22,${dividerGlow + 0.2}) 50%, rgba(16,185,129,${dividerGlow}) 100%)`,
-          boxShadow: `0 0 12px rgba(249,115,22,${dividerGlow * 0.6})`,
+          background: `linear-gradient(180deg, rgba(239,68,68,${dividerGlow}) 0%, rgba(255,79,0,${dividerGlow + 0.2}) 50%, rgba(16,185,129,${dividerGlow}) 100%)`,
+          boxShadow: `0 0 12px rgba(255,79,0,${dividerGlow * 0.6})`,
         }}
       />
 
