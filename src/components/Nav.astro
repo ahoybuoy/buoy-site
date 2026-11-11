@@ -1,4 +1,5 @@
 ---
+import BuoyMark from './BuoyMark.astro'
 import { siteConfig } from '../config'
 const { layout = 'contained', alignment = 'balanced' } = Astro.props
 const containerClass =
@@ -86,8 +87,10 @@ const compareItems = [
     <div class={desktopRowClass}>
       <!-- Logo -->
       <a href="/" class={logoLeftLinksClass}>
-        <span style="font-size: 1.5rem; line-height: 1; flex-shrink: 0">🛟</span>
-        <span class="font-bold font-display text-light" style="font-size: 1.75rem; line-height: 1">Buoy</span>
+        <span style="display:inline-flex;align-items:baseline;gap:0.245rem">
+          <span style="display:inline-block;position:relative;top:0.07rem;line-height:0"><BuoyMark size={22.4} /></span>
+          <span class="text-light" style="font-family:'Raleway',system-ui,sans-serif;font-weight:800;font-size:1.75rem;line-height:1;letter-spacing:-0.03em">Buoy</span>
+        </span>
       </a>
 
       <!-- Desktop Navigation -->

@@ -1,4 +1,5 @@
 ---
+import BuoyMark from '../components/BuoyMark.astro'
 import Layout from '../layouts/Layout.astro'
 import Nav from '../components/Nav.astro'
 import Button from '../components/Button.astro'
@@ -949,7 +950,7 @@ const flagItems = [
           <div class="relative rounded-xl overflow-hidden h-48">
             <WaveBackground />
             <div class="relative z-10 flex items-center justify-center h-full gap-3">
-              <span class="text-2xl">🛟</span>
+              <span style="display:inline-flex;line-height:0"><BuoyMark size={24} /></span>
               <span class="text-light font-semibold font-[Quicksand]">Content renders above via z-index</span>
             </div>
           </div>
@@ -1854,7 +1855,7 @@ const flagItems = [
 
       <!-- Footer CTA -->
       <section class="text-center py-16 border-t border-navy-light/20 mt-8">
-        <div class="text-4xl mb-4">🛟</div>
+        <div class="mb-4"><BuoyMark size={36} /></div>
         <h2 class="text-2xl font-bold text-light font-[Quicksand] mb-2">This page is the test</h2>
         <p class="text-slate mb-6 max-w-2xl mx-auto">This page is built to be checked with Buoy. Point the CLI at the live URL and see Buoy score a real design system.</p>
         <div class="inline-flex flex-col items-start gap-3 px-6 py-5 bg-navy/80 border border-navy-light/30 rounded-xl font-mono text-sm max-w-2xl mx-auto text-left">
