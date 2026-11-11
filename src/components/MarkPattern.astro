@@ -1,0 +1,45 @@
+---
+// A moving field of Buoy marks, used as a section background.
+// Put it inside a `relative overflow-hidden` section, before the content, and keep the content `relative`.
+// It fills the section, never changes its size, and stops animating off screen or under reduced motion.
+interface Props {
+  pattern?: 'swell' | 'field' | 'pulse' | 'tide' | 'scan' | 'wake' | 'rain'
+  /** Cell size in px. Smaller is denser. */
+  cell?: number
+  /** 0 to 1: how many marks take the logo red, and how strong the wave is. */
+  drift?: number
+  seed?: string
+  /** Fade the pattern out at the top and bottom edges. */
+  fade?: boolean
+  class?: string
+}
+const { pattern = 'swell', cell = 28, drift = 0.3, seed = 'buoy', fade = false, class: className = '' } = Astro.props
+---
+
+<canvas
+  class:list={['mark-pattern', fade && 'mark-pattern-fade', className]}
+  data-mark-pattern={pattern}
+  data-cell={cell}
+  data-drift={drift}
+  data-seed={seed}
+  aria-hidden="true"
+></canvas>
+
+<style is:global>
+  .mark-pattern {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  .mark-pattern-fade {
+    mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 70%, transparent);
+  }
+</style>
+
+<script>
+  import { mountAll } from '../scripts/markPatterns.js'
+  mountAll()
+  document.addEventListener('astro:page-load', mountAll)
+</script>
