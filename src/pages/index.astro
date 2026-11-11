@@ -10,6 +10,7 @@ import WaveBackground from '../components/WaveBackground.astro'
 import WaveBoat from '../components/WaveBoat.astro'
 import MarkPattern from '../components/MarkPattern.astro'
 import LeadCaptureSection from '../components/LeadCaptureSection.astro'
+import LockOn from '../components/LockOn.astro'
 import FreeSpots from '../components/FreeSpots.astro'
 import { siteConfig } from '../config'
 
@@ -268,6 +269,9 @@ const steps = [
         <h3 class="text-2xl sm:text-3xl font-bold text-light mb-6 text-center">
           🛟  Buoy plugs the holes.
         </h3>
+        <div class="mb-8">
+          <LockOn />
+        </div>
         <div class="bg-navy/30 border border-buoy/20 rounded-xl p-6">
           <div class="text-sm font-semibold text-buoy mb-4">
             What Buoy catches:

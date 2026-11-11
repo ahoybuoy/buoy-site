@@ -1,0 +1,158 @@
+---
+// Lock-on: the logo's mark leaves the Buoy logo in the top right, travels to a value that has drifted,
+// opens into its four corners around it, fixes it, and folds back. It always goes home to the logo.
+// The mock editor and preview use off-system colours on purpose: they are the drift being caught.
+---
+<div class="lockon" data-order="0,6,1,4,2,5,3" role="img" aria-label="Buoy finds four hardcoded values in a button and replaces each with a design token">
+  <div class="ed">
+    <div class="bar">SaveButton.tsx</div>
+    <pre><span class="k">export function</span> SaveButton() &#123;
+  <span class="k">return</span> (
+    &lt;button style=&#123;&#123;
+      background: <span class="s t" data-to="var(--accent)" data-m="hardcoded colour">'#3b82f6'</span>,
+      padding: <span class="s t" data-to="var(--space-3)" data-m="off-scale spacing">'13px 22px'</span>,
+      borderRadius: <span class="t" data-to="var(--radius-md)" data-m="arbitrary radius">7</span>,
+      fontSize: <span class="t" data-to="var(--text-sm)" data-m="off-scale type">15.5</span>,
+    &#125;&#125;&gt;Save&lt;/button&gt;
+  );
+&#125;</pre>
+  </div>
+  <div class="ui">
+    <div class="bar">preview</div>
+    <div class="card">
+      <h4>Billing <span class="badge t" data-m="off-palette badge">Pro</span></h4>
+      <p>Update your plan and payment method.</p>
+      <div class="field oddr t" data-m="stray radius + colour"></div>
+      <span class="btn t" data-m="button drifts from system">Save</span>
+    </div>
+  </div>
+  <svg class="word" viewBox="980 -750 2320 1010" aria-hidden="true"><g transform="translate(928.9 0)" fill="#f8fafc"><path d="M654.7 -182.3Q654.7 -120.9 622.1 -80.6Q589.5 -40.4 534.6 -20.2Q479.7 0 413.5 0H68.1V-710H462.7Q512.7 -710 549.2 -683.5Q585.7 -657 605.2 -615.1Q624.7 -573.3 624.7 -528.3Q624.7 -478.4 598.9 -432.6Q573.1 -386.7 522.7 -364Q583.7 -346 619.2 -300Q654.7 -253.9 654.7 -182.3ZM488.2 -215.2Q488.2 -237.6 479.3 -255.4Q470.5 -273.2 455.5 -283.8Q440.5 -294.5 420.5 -294.5H232.2V-138.7H413.5Q434.5 -138.7 451.5 -148.6Q468.5 -158.6 478.3 -175.8Q488.2 -193.1 488.2 -215.2ZM232.2 -569.9V-423.2H392.5Q411.1 -423.2 426.8 -431.1Q442.5 -439 452.4 -455.4Q462.3 -471.8 462.3 -496.8Q462.3 -520.9 453.7 -536.8Q445.2 -552.7 430.9 -561.3Q416.5 -569.9 398.5 -569.9H232.2Z" /><path d="M699.8 -188.5V-524.8H859.8V-223.9Q859.8 -176.3 878.9 -150.8Q898.1 -125.3 933.4 -125.3Q954.5 -125.3 975 -132.7Q995.4 -140.1 1014.3 -157.1Q1033.2 -174.1 1048.2 -201.4V-524.8H1208.2V-177.6Q1208.2 -153.9 1215.7 -144.3Q1223.3 -134.6 1241.8 -132.9V0Q1219.8 4.1 1203.1 6Q1186.5 7.9 1173.6 7.9Q1132.4 7.9 1107.3 -9.3Q1082.2 -26.6 1076.3 -59.5L1072.9 -90.8Q1036.8 -39.2 983.5 -14.6Q930.2 10 864.4 10Q784.5 10 742.1 -40.9Q699.8 -91.8 699.8 -188.5Z" /><path d="M1551.6 10Q1484.9 10 1432.6 -11.9Q1380.4 -33.7 1344.4 -71.9Q1308.3 -110.1 1289.6 -159.1Q1271 -208 1271 -262.1Q1271 -316.5 1289.6 -365.8Q1308.3 -415.1 1344.4 -453Q1380.4 -490.8 1432.8 -512.7Q1485.2 -534.5 1551.8 -534.5Q1619.1 -534.5 1671 -512.7Q1722.9 -490.8 1759.1 -453Q1795.3 -415.1 1813.9 -365.8Q1832.6 -316.5 1832.6 -262.1Q1832.6 -208 1813.9 -159.1Q1795.3 -110.1 1759.2 -71.9Q1723.2 -33.7 1671.1 -11.9Q1619.1 10 1551.6 10ZM1435.1 -261.9Q1435.1 -221.2 1450.5 -190.3Q1465.9 -159.3 1492.2 -142.3Q1518.5 -125.3 1551.6 -125.3Q1584.8 -125.3 1611.3 -142.5Q1637.7 -159.6 1653.1 -190.7Q1668.5 -221.8 1668.5 -262.4Q1668.5 -303 1653.1 -333.9Q1637.7 -364.9 1611.2 -382.1Q1584.7 -399.2 1551.6 -399.2Q1518.5 -399.2 1492.1 -381.9Q1465.8 -364.5 1450.4 -333.6Q1435.1 -302.7 1435.1 -261.9Z" /><path d="M1866 79.2Q1886.1 85.1 1903.6 88.7Q1921.2 92.4 1934.6 92.4Q1954.1 92.4 1967.5 83.8Q1980.9 75.3 1990.9 54.7Q2000.8 34.2 2008.9 0L1809.1 -524.8H1974.1L2096.5 -163.8L2200.4 -524.8H2350.9L2150.6 84.8Q2137.3 127.5 2108.2 160.7Q2079.1 193.9 2037.9 212.6Q1996.8 231.4 1947.5 231.4Q1927.2 231.4 1907.1 227.9Q1887.1 224.4 1866 216.5V79.2Z" /></g></svg>
+  <svg class="lk" aria-hidden="true"></svg>
+  <div class="chip"></div>
+</div>
+
+<style>
+  .lockon { position: relative; display: grid; grid-template-columns: 1.25fr 1fr; background: #0b1220; border: 1px solid #1d2840; border-radius: 16px; overflow: hidden; min-height: 360px; color: #c9d3e3; text-align: left; }
+  @media (max-width: 720px) { .lockon { grid-template-columns: minmax(0, 1fr); } }
+  .ed { padding: 0 0 18px; border-right: 1px solid #1d2840; min-width: 0; }
+  .bar { font: 12px 'JetBrains Mono', monospace; color: #94a0b4; padding: 10px 16px; border-bottom: 1px solid #1d2840; }
+  .ed pre { margin: 0; padding: 16px; font: 13.5px/1.9 'JetBrains Mono', monospace; color: #c9d3e3; overflow-x: auto; }
+  .k { color: #f0868a; }
+  .s { color: #9ad1c0; }
+  .t { border-radius: 4px; transition: color 0.3s, background 0.3s; }
+  .ed .t.is-hit { background: rgba(255, 79, 0, 0.18); }
+  .ui .t.is-hit { box-shadow: 0 0 0 3px rgba(255, 79, 0, 0.35); }
+  .ed .t.is-fixed { color: #9ad1c0; }
+  .ui { min-width: 0; }
+  .card { margin: 28px auto; width: min(260px, 80%); background: #f8fafc; border-radius: 14px; padding: 20px; color: #0f1829; font-size: 14px; }
+  .card h4 { margin: 0 0 4px; font-size: 16px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+  .card p { margin: 0 0 16px; color: #5b6676; font-size: 13px; }
+  .badge { font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 99px; background: #a855f7; color: #fff; transition: all 0.3s; }
+  .badge.is-fixed { background: #fbe3e4; color: #c22f35; }
+  .btn { display: inline-block; background: #3b82f6; color: #fff; padding: 13px 22px; border-radius: 7px; font-size: 15.5px; transition: all 0.35s; }
+  .btn.is-fixed { background: #FF4F00; padding: 10px 20px; border-radius: 10px; font-size: 14px; }
+  .field { height: 34px; border: 1px solid #e2e5ea; border-radius: 8px; margin-bottom: 14px; transition: all 0.3s; }
+  .field.oddr { border-radius: 3px; border-color: #f59e0b; }
+  .field.is-fixed { border-radius: 8px; border-color: #e2e5ea; }
+  .word { position: absolute; top: 10.1px; right: 14px; width: 52.3px; height: 22.8px; pointer-events: none; }
+  .lk { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+  .chip { position: absolute; font: 500 12px 'JetBrains Mono', monospace; background: #FF4F00; color: #fff; padding: 4px 9px; border-radius: 7px; white-space: nowrap; opacity: 0; transform: translateY(4px); transition: opacity 0.2s, transform 0.2s; pointer-events: none; }
+  .chip.on { opacity: 1; transform: none; }
+</style>
+
+<script>
+  // The mark's four corners, from the shipped logo (40 unit grid).
+  const QUADS = [
+    'M16 2H14A12 12 0 0 0 2 14V16A1.2 1.2 0 0 0 3.2 17.2H9.87A1.2 1.2 0 0 0 11.058 16.167A6 6 0 0 1 16.167 11.058A1.2 1.2 0 0 0 17.2 9.87V3.2A1.2 1.2 0 0 0 16 2Z',
+    'M24 2H26A12 12 0 0 1 38 14V16A1.2 1.2 0 0 1 36.8 17.2H30.13A1.2 1.2 0 0 1 28.942 16.167A6 6 0 0 0 23.833 11.058A1.2 1.2 0 0 1 22.8 9.87V3.2A1.2 1.2 0 0 1 24 2Z',
+    'M16 38H14A12 12 0 0 1 2 26V24A1.2 1.2 0 0 1 3.2 22.8H9.87A1.2 1.2 0 0 1 11.058 23.833A6 6 0 0 0 16.167 28.942A1.2 1.2 0 0 1 17.2 30.13V36.8A1.2 1.2 0 0 1 16 38Z',
+    'M24 38H26A12 12 0 0 0 38 26V24A1.2 1.2 0 0 0 36.8 22.8H30.13A1.2 1.2 0 0 0 28.942 23.833A6 6 0 0 1 23.833 28.942A1.2 1.2 0 0 0 22.8 30.13V36.8A1.2 1.2 0 0 0 24 38Z',
+  ];
+  const RED = '#FF4F00';
+  const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+  const clamp = (x: number) => (x < 0 ? 0 : x > 1 ? 1 : x);
+  type Pt = { x: number; y: number };
+  type Box = { x0: number; y0: number; x1: number; y1: number };
+
+  function lockOn(st: HTMLElement) {
+    const sv = st.querySelector('svg.lk') as SVGSVGElement;
+    const chip = st.querySelector('.chip') as HTMLElement;
+    const S = 28, k = S / 40, pad = 6;
+    const T = { move: 560, lock: 100, split: 360, hold: 650, fix: 220, after: 450, collapse: 260, over: 16, squash: 0.25 };
+    const NS = 'http://www.w3.org/2000/svg';
+    const FL = document.createElementNS(NS, 'rect');
+    FL.setAttribute('rx', '6'); FL.setAttribute('fill', RED); FL.setAttribute('opacity', '0');
+    sv.appendChild(FL);
+    const Q = QUADS.map((d) => {
+      const g = document.createElementNS(NS, 'g'), p = document.createElementNS(NS, 'path');
+      p.setAttribute('d', d); p.setAttribute('fill', RED); p.setAttribute('transform', `scale(${k})`);
+      g.appendChild(p); sv.appendChild(g); return g;
+    });
+    // Rest scale and place: beside the wordmark, top right, where it never covers the code.
+    const RS = 16 / (S * 0.9);
+    const home = (): Pt => ({ x: st.clientWidth - 14 - 52.3 + 0.4 - 5.6 - 8, y: 19 });
+    let vis = false;
+    new IntersectionObserver((e) => { vis = e[0].isIntersecting; }).observe(st);
+    const E = {
+      io: (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2),
+      out: (t: number) => 1 - Math.pow(1 - t, 4),
+      in: (t: number) => t * t * (2.7 * t - 1.7),
+      in2: (t: number) => t * t * t * t,
+    };
+    const tw = (d: number, f: (t: number) => void) => new Promise<void>((res) => {
+      let e = 0, l = performance.now();
+      const fr = (n: number) => { if (vis && !document.hidden) e += n - l; l = n; const t = Math.min(e / d, 1); f(t); t < 1 ? requestAnimationFrame(fr) : res(); };
+      requestAnimationFrame(fr);
+    });
+    let pos: Pt[] = [], sc = 1;
+    const draw = () => Q.forEach((q, i) => q.setAttribute('transform', `translate(${pos[i].x.toFixed(2)} ${pos[i].y.toFixed(2)}) translate(${S / 2} ${S / 2}) scale(${sc.toFixed(3)}) translate(${-S / 2} ${-S / 2})`));
+    const rest = (c: Pt): Pt[] => [0, 1, 2, 3].map(() => ({ x: c.x - S / 2, y: c.y - S / 2 }));
+    const frame = (b: Box, g = 0): Pt[] => {
+      let { x0, y0, x1, y1 } = b; const mw = S * 1.1;
+      if (x1 - x0 < mw) { const c = (x0 + x1) / 2; x0 = c - mw / 2; x1 = c + mw / 2; }
+      if (y1 - y0 < mw * 0.7) { const c = (y0 + y1) / 2; y0 = c - mw * 0.35; y1 = c + mw * 0.35; }
+      const P = pad + g;
+      return [{ x: x0 - P - 2 * k, y: y0 - P - 2 * k }, { x: x1 + P - 38 * k, y: y0 - P - 2 * k }, { x: x0 - P - 2 * k, y: y1 + P - 38 * k }, { x: x1 + P - 38 * k, y: y1 + P - 38 * k }];
+    };
+    const box = (el: Element): Box => { const r = el.getBoundingClientRect(), s0 = st.getBoundingClientRect(); return { x0: r.left - s0.left, y0: r.top - s0.top, x1: r.right - s0.left, y1: r.bottom - s0.top }; };
+    const go = (to: Pt[], d: number, e: keyof typeof E, s1?: number) => {
+      const fr = pos.map((p) => ({ ...p })), s0 = sc;
+      return tw(d, (t) => { const u = E[e](t); if (s1 != null) sc = lerp(s0, s1, clamp(u)); pos = fr.map((p, i) => ({ x: lerp(p.x, to[i].x, u), y: lerp(p.y, to[i].y, u) })); draw(); });
+    };
+    const placeChip = (b: Box) => { const sw = st.clientWidth; chip.style.left = Math.min(Math.max(4, b.x0 - pad), sw - chip.offsetWidth - 4) + 'px'; chip.style.top = (b.y0 - pad - 30 < 4 ? b.y1 + pad + 8 : b.y0 - pad - 30) + 'px'; };
+    const els = [...st.querySelectorAll<HTMLElement>('.t')];
+    const order = st.dataset.order ? st.dataset.order.split(',').map(Number) : els.map((_, i) => i);
+    const orig = els.map((e) => e.textContent);
+    pos = rest(home()); sc = RS; draw();
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { sc = 1; pos = frame(box(els[order[0]])); draw(); return; }
+    (async () => {
+      for (;;) {
+        for (const i of order) {
+          const e = els[i], b = box(e);
+          await go(rest({ x: (b.x0 + b.x1) / 2, y: (b.y0 + b.y1) / 2 }), T.move, 'io', 1);
+          await tw(T.lock, (t) => { sc = 1 - Math.sin(t * Math.PI) * T.squash; draw(); }); sc = 1;
+          e.classList.add('is-hit');
+          await go(frame(b, T.over), T.split * 0.6, 'out'); await go(frame(b), T.split * 0.4, 'in2');
+          const f0 = frame(b);
+          FL.setAttribute('x', String(f0[0].x + 2)); FL.setAttribute('y', String(f0[0].y + 2));
+          FL.setAttribute('width', String(Math.max(0, f0[3].x - f0[0].x + S - 4))); FL.setAttribute('height', String(Math.max(0, f0[3].y - f0[0].y + S - 4)));
+          tw(380, (t) => FL.setAttribute('opacity', ((1 - t) * 0.35).toFixed(3)));
+          chip.textContent = e.dataset.m || ''; placeChip(b); chip.classList.add('on');
+          await tw(T.hold, () => {});
+          if (e.dataset.to) e.textContent = e.dataset.to;
+          e.classList.remove('is-hit'); e.classList.add('is-fixed');
+          const p0 = pos.map((p) => ({ ...p })), TF = T.fix + 420;
+          await tw(TF, (t) => { const u = E.out(Math.min((t * TF) / T.fix, 1)), bb = box(e), f = frame(bb); pos = p0.map((p, j) => ({ x: lerp(p.x, f[j].x, u), y: lerp(p.y, f[j].y, u) })); draw(); placeChip(bb); });
+          const fb = frame(box(e));
+          await tw(T.after, () => { pos = frame(box(e)); draw(); });
+          chip.classList.remove('on');
+          await go(rest({ x: (fb[0].x + fb[3].x + S) / 2, y: (fb[0].y + fb[3].y + S) / 2 }), T.collapse, 'in');
+        }
+        await go(rest(home()), T.move, 'io', RS); await tw(500, () => {});
+        els.forEach((e, i) => { e.classList.remove('is-fixed'); if (e.dataset.to) e.textContent = orig[i]; });
+        await tw(500, () => {});
+      }
+    })();
+  }
+  document.querySelectorAll<HTMLElement>('.lockon').forEach(lockOn);
+</script>
