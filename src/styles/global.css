@@ -10,10 +10,13 @@
   --color-navy-dark: #0f1829;
   --color-navy-light: #243352;
 
-  /* Buoy Orange - The Standout */
-  --color-buoy: #F97316;
-  --color-buoy-light: #FB923C;
-  --color-buoy-dark: #EA580C;
+  /* Buoy Coral - the UI accent */
+  --color-buoy: #FF7A59;
+  --color-buoy-light: #FF9F87;
+  --color-buoy-dark: #DB694D;
+
+  /* Logo red - the mark and the mark patterns only; UI accents use coral */
+  --color-mark: #e5484d;
 
   /* Sunrise Warmth */
   --color-sunrise: #F59E0B;
@@ -238,9 +241,9 @@ html.light {
   --color-navy-light: #CBD5E1;
 
   /* Orange: bright buoy orange */
-  --color-buoy: #F97316;
-  --color-buoy-light: #FB923C;
-  --color-buoy-dark: #EA580C;
+  --color-buoy: #FF7A59;
+  --color-buoy-light: #FF9F87;
+  --color-buoy-dark: #DB694D;
 
   /* Sunrise: warm amber */
   --color-sunrise: #F59E0B;
@@ -294,7 +297,7 @@ html.light .glow-lavender {
 
 /* Light mode: text gradient — orange to indigo */
 html.light .text-gradient-sunrise {
-  background: linear-gradient(135deg, #F97316, #F59E0B, #6366F1);
+  background: linear-gradient(135deg, #FF7A59, #F59E0B, #6366F1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -307,14 +310,14 @@ html.light .bg-sunrise-gradient {
     #FFFFFF 0%,
     #F0F4F8 25%,
     color-mix(in srgb, #6366F1 6%, #F0F4F8) 55%,
-    color-mix(in srgb, #F97316 4%, #F0F4F8) 80%,
+    color-mix(in srgb, #FF7A59 4%, #F0F4F8) 80%,
     #F0F4F8 100%
   );
 }
 
 /* Light mode: cursor blink */
 html.light .cursor-blink::after {
-  color: #EA580C;
+  color: #DB694D;
 }
 
 /* Light mode: darken "design drift" highlight */
@@ -364,7 +367,7 @@ html.light .prose-buoy blockquote {
 html.light .prose-invert {
   --tw-prose-body: #1A2744;
   --tw-prose-headings: #1A2744;
-  --tw-prose-links: #F97316;
+  --tw-prose-links: #FF7A59;
   --tw-prose-bold: #1A2744;
   --tw-prose-counters: #475569;
   --tw-prose-bullets: #475569;
@@ -423,7 +426,7 @@ html.light .wave-background::after {
 }
 
 html.light .wave-background .particle {
-  background: rgba(249, 115, 22, 0.5);
+  background: rgba(255, 122, 89, 0.5);
 }
 
 html.light .wave-background .p2,
@@ -439,7 +442,7 @@ html.light .wave-background .p7 {
 html.light .wave-background .mesh-overlay {
   background:
     radial-gradient(ellipse at 20% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 30%, rgba(249, 115, 22, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 30%, rgba(255, 122, 89, 0.06) 0%, transparent 50%),
     radial-gradient(ellipse at 40% 80%, rgba(99, 102, 241, 0.06) 0%, transparent 40%),
-    radial-gradient(ellipse at 90% 80%, rgba(249, 115, 22, 0.05) 0%, transparent 50%);
+    radial-gradient(ellipse at 90% 80%, rgba(255, 122, 89, 0.05) 0%, transparent 50%);
 }

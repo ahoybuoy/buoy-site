@@ -2,11 +2,12 @@
 import Layout from '../layouts/Layout.astro'
 import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
+import MarkPattern from '../components/MarkPattern.astro'
 ---
 
 <Layout title="Page not found | Buoy" description="This page does not exist." noindex>
   <Nav />
-  <section class="pt-32 pb-24 bg-navy-dark min-h-[60vh]">
+  <section class="pt-32 bg-navy-dark min-h-[60vh]">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
       <h1 class="text-3xl font-bold text-light">Page not found</h1>
       <p class="text-slate mt-3">Nothing lives at this address.</p>
@@ -16,6 +17,9 @@ import Footer from '../components/Footer.astro'
         <li><a href="/guides" class="text-buoy hover:underline">Guides</a></li>
         <li><a href="/docs" class="text-buoy hover:underline">Docs</a></li>
       </ul>
+    </div>
+    <div class="relative overflow-hidden h-72 mt-16">
+      <MarkPattern pattern="rain" drift={0.8} fade />
     </div>
   </section>
   <Footer />
