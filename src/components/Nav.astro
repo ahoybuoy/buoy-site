@@ -1,4 +1,5 @@
 ---
+import BuoyLogo from './BuoyLogo.astro'
 import { siteConfig } from '../config'
 const { layout = 'contained', alignment = 'balanced' } = Astro.props
 const containerClass =
@@ -86,8 +87,7 @@ const compareItems = [
     <div class={desktopRowClass}>
       <!-- Logo -->
       <a href="/" class={logoLeftLinksClass}>
-        <span style="font-size: 1.5rem; line-height: 1; flex-shrink: 0">🛟</span>
-        <span class="font-bold font-display text-light" style="font-size: 1.75rem; line-height: 1">Buoy</span>
+        <BuoyLogo size="1.75rem" class="text-light" />
       </a>
 
       <!-- Desktop Navigation -->

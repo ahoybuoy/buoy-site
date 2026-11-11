@@ -1,4 +1,5 @@
 ---
+import BuoyMark from '../components/BuoyMark.astro'
 import Layout from '../layouts/Layout.astro'
 import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
@@ -156,7 +157,7 @@ import { siteConfig } from '../config'
       <!-- The solution -->
       <div class="text-center scroll-reveal" style="--delay: 0.4s;">
         <div class="inline-flex items-center gap-3 px-6 py-4 bg-buoy/10 border border-buoy/30 rounded-xl">
-          <span class="text-3xl">🛟</span>
+          <span style="display:inline-flex;line-height:0"><BuoyMark size={30} /></span>
           <div class="text-left">
             <div class="text-buoy font-semibold">Buoy fills the gap</div>
             <div class="text-sm text-slate">Automated enforcement in every PR</div>

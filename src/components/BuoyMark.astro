@@ -1,0 +1,29 @@
+---
+// The Buoy logomark: a squircle life ring with four gaps. Red by default.
+// Size is the visible mark height in px; the svg box is 40/36 larger so the
+// shape lines up with surrounding text.
+const { size = 24, color = '#e5484d', class: className = '', style = '' } = Astro.props
+const box = (size * 40) / 36
+---
+<svg
+  viewBox="0 0 40 40"
+  width={box}
+  height={box}
+  aria-hidden="true"
+  class={className}
+  style={`flex-shrink:0;${style}`}
+>
+  <mask id="buoy-mark-mask" maskUnits="userSpaceOnUse" x="-10" y="-10" width="60" height="60">
+    <rect x="-10" y="-10" width="60" height="60" fill="#fff" />
+    <g fill="#000">
+      <rect x="20" y="17.2" width="26" height="5.6" />
+      <rect x="20" y="17.2" width="26" height="5.6" transform="rotate(90 20 20)" />
+      <rect x="20" y="17.2" width="26" height="5.6" transform="rotate(180 20 20)" />
+      <rect x="20" y="17.2" width="26" height="5.6" transform="rotate(270 20 20)" />
+      <rect x="11" y="11" width="18" height="18" rx="6" />
+    </g>
+  </mask>
+  <g mask="url(#buoy-mark-mask)">
+    <rect x="2" y="2" width="36" height="36" rx="12" fill={color} />
+  </g>
+</svg>
