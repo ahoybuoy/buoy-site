@@ -123,23 +123,13 @@ const demoTerminalLines = [
         </div>
         <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{`# .buoy.yaml
 
-# Your design system source
-tokens:
-  source: "./src/tokens"
-
-# Components to scan
-include:
-  - "src/components/**/*.tsx"
-
-# Patterns to ignore
-ignore:
-  - "**/*.test.tsx"
-  - "**/stories/**"
-
-# Severity thresholds for CI
-thresholds:
-  critical: 0   # Fail on any critical
-  warning: 10   # Allow up to 10 warnings`}</code></pre>
+drift:
+  # Files Buoy should skip
+  ignore:
+    - "**/*.test.tsx"
+    - "**/stories/**"
+  # Fail \`buoy drift check\` only on critical drift
+  failOn: critical`}</code></pre>
       </div>
     </div>
   </section>
