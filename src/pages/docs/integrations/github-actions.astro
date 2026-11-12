@@ -116,16 +116,15 @@ import LeadMagnetCallout from '../../../components/LeadMagnetCallout.astro'
   </p>
 
   <pre><code># .buoy.yaml
-checks:
-  hardcoded-color: error
-  hardcoded-spacing: warning
-  arbitrary-tailwind: error
-  inline-style: warning
-  magic-number: info
+severity:
+  hardcodedColors: error
+  hardcodedSpacing: warning
+  unknownTokens: info
 
-ignore:
-  - "**/*.test.tsx"
-  - "src/legacy/**"</code></pre>
+drift:
+  ignore:
+    - "**/*.test.tsx"
+    - "src/legacy/**"</code></pre>
 
   <h2>CLI Authentication</h2>
 
