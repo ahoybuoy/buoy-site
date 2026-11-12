@@ -872,18 +872,22 @@ const steps = [
       return;
     }
 
-    // Where the boat should land. The wave boat that takes over has a different
-    // line-height and size than this inline emoji, so measure where each one's
-    // glyph actually sits and drop far enough that the two line up exactly.
-    // That way there is no stop-short, no overshoot and no snap at the handoff.
-    const measureCtx = document.createElement('canvas').getContext('2d');
-    function glyphBottom(el, boxTop) {
-      const cs = getComputedStyle(el);
-      measureCtx.font = cs.fontSize + ' ' + cs.fontFamily;
-      const m = measureCtx.measureText('\u26F5');
-      const lh = parseFloat(cs.lineHeight) || parseFloat(cs.fontSize) * 1.2;
-      const baseline = boxTop + (lh - (m.fontBoundingBoxAscent + m.fontBoundingBoxDescent)) / 2 + m.fontBoundingBoxAscent;
-      return baseline + m.actualBoundingBoxDescent;
+    // Where the boat lands, and how big it is when it gets there.
+    // The inline emoji and the wave boat differ in font-size (1.1em of the paragraph
+    // vs the wave boat's 1.4rem) and line-height, and the browser rounds each font's
+    // ascent to whole pixels, so their boxes don't say where the glyph is drawn.
+    // The baseline does: a glyph is drawn from its baseline at the start of its box.
+    // So measure each one's real baseline, and end the fall with the emoji scaled by
+    // the font-size ratio around its baseline, sitting on the wave boat's baseline.
+    // At the swap frame both glyphs are the same size in the same place.
+    function baselineY(el) {
+      // An empty inline-block sits with its bottom edge on the line's baseline
+      const probe = document.createElement('span');
+      probe.style.cssText = 'display:inline-block;width:0;height:0;';
+      el.appendChild(probe);
+      const y = probe.getBoundingClientRect().bottom;
+      probe.remove();
+      return y;
     }
 
     // Measured right before the fall, so the layout (fonts, reveal animations) has settled.
@@ -891,19 +895,33 @@ const steps = [
       const isMobile = window.innerWidth < 768;
       const baseDrop = isMobile ? 30 : 37;
       const startRect = boatEmoji.getBoundingClientRect();
-      let dropDistance = baseDrop;
-      let waveBottomPx = null;
-      if (waveBoat) {
-        const waveParent = waveBoat.offsetParent || waveBoat.parentElement;
-        const parentRect = waveParent.getBoundingClientRect();
-        // Same resting height the wave boat has always had
-        waveBottomPx = parentRect.bottom - (startRect.bottom + baseDrop) - 4;
-        waveBoat.style.bottom = waveBottomPx + 'px';
-        const waveRect = waveBoat.getBoundingClientRect();
-        const extra = glyphBottom(waveBoat, waveRect.top) - glyphBottom(boatEmoji, startRect.top + baseDrop);
-        if (Number.isFinite(extra)) dropDistance = baseDrop + extra;
+      const startBaseline = baselineY(boatEmoji);
+      const origin = `0px ${startBaseline - startRect.top}px`;
+      if (!waveBoat) {
+        return { dx: 0, dy: baseDrop, scale: 1, origin, waveBottomPx: null, waveLeftPct: null };
       }
-      return { dropDistance, waveBottomPx };
+      const waveParent = waveBoat.offsetParent || waveBoat.parentElement;
+      const parentRect = waveParent.getBoundingClientRect();
+      // The wave boat's containing block is the parent's padding box. Its left %
+      // is a percentage of that box's width, not of the window.
+      const cbLeft = parentRect.left + waveParent.clientLeft;
+      const cbWidth = waveParent.clientWidth;
+      // Same resting height the wave boat has always had
+      const waveBottomPx = parentRect.bottom - (startRect.bottom + baseDrop) - 4;
+      // Lands straight down: same left edge as the inline emoji
+      const waveLeftPct = ((startRect.left - cbLeft) / cbWidth) * 100;
+      waveBoat.style.bottom = waveBottomPx + 'px';
+      waveBoat.style.left = waveLeftPct + '%';
+      const waveRect = waveBoat.getBoundingClientRect();
+      const scale = parseFloat(getComputedStyle(waveBoat).fontSize) / parseFloat(getComputedStyle(boatEmoji).fontSize);
+      return {
+        dx: waveRect.left - startRect.left,
+        dy: baselineY(waveBoat) - startBaseline,
+        scale: Number.isFinite(scale) && scale > 0 ? scale : 1,
+        origin,
+        waveBottomPx,
+        waveLeftPct,
+      };
     }
 
     const LIFT_MS = 130;
@@ -923,77 +941,75 @@ const steps = [
       ], { duration: 600, easing: 'ease-in-out' });
 
       wiggle.finished.then(() => {
-        const { dropDistance, waveBottomPx } = measureLanding();
+        const { dx, dy, scale, origin, waveBottomPx, waveLeftPct } = measureLanding();
+        // Scale around the glyph's own origin: the left end of its baseline
+        boatEmoji.style.transformOrigin = origin;
 
-        // Phase 2a: Anticipation — slight lift before the drop
-        boatInline.style.transition = 'transform 120ms ease-out';
-        requestAnimationFrame(() => {
-          boatInline.style.transform = 'translateY(-6px)';
-        });
+        // Phase 2a: Anticipation — slight lift. Phase 2b: fall with gravity (ease-in,
+        // no bounce). Both on one Web Animations timeline, the same clock as
+        // rendering, so nothing downstream can fire before the fall ends.
+        const fall = boatEmoji.animate([
+          { translate: '0 0', easing: 'ease-out' },
+          { translate: '0 -6px', offset: LIFT_MS / (LIFT_MS + DROP_MS), easing: 'cubic-bezier(0.5, 0, 0.9, 0.55)' },
+          { translate: `${dx}px ${dy}px` },
+        ], { duration: LIFT_MS + DROP_MS, fill: 'forwards' });
 
-        // Phase 2b: Fall with gravity (ease-in, no bounce) straight onto the wave boat's spot
-        setTimeout(() => {
-          boatInline.style.transition = `transform ${DROP_MS}ms cubic-bezier(0.5, 0, 0.9, 0.55)`;
-          boatInline.style.transform = `translateY(${dropDistance}px)`;
-        }, LIFT_MS);
+        // Grow to the wave boat's size during the fall. Ease-out, so the growth is
+        // done by the time the boat reaches the water and the last frames are pure fall.
+        const grow = boatEmoji.animate([
+          { scale: '1' },
+          { scale: String(scale) },
+        ], { delay: LIFT_MS, duration: DROP_MS, easing: 'ease-out', fill: 'both' });
 
-        // Impact and handoff on the same frame the fall ends: splash, show the wave
-        // boat, hide the inline one. No pause in between.
-        setTimeout(() => {
+        // Impact and handoff when the fall has actually finished: splash, show the
+        // wave boat and hide the inline one in the same frame.
+        Promise.all([fall.finished, grow.finished]).then(() => {
           const landedRect = boatEmoji.getBoundingClientRect();
           createSplash(
             landedRect.left + landedRect.width / 2,
             landedRect.top + landedRect.height * 0.7 + 6
           );
 
-          if (waveBoat) {
-            // Stored so toss landing can match drop landing on all screen sizes
-            waveBoat.style.bottom = waveBottomPx + 'px';
-            window._buoyBoatBottom = waveBottomPx;
+          boatInline.style.visibility = 'hidden';
+          if (!waveBoat) return;
 
-            const landedLeftPct = ((landedRect.left + 4) / window.innerWidth) * 100;
+          // Stored so toss landing can match drop landing on all screen sizes
+          window._buoyBoatBottom = waveBottomPx;
 
-            // Phase: Launch with ease-in (slow → fast) before steady cruise
-            waveBoat.style.left = landedLeftPct + '%';
-            waveBoat.classList.add('launching');
+          const landedLeftPct = waveLeftPct;
 
-            // Hide inline boat on next frame — zero gap
-            requestAnimationFrame(() => {
-              boatInline.style.visibility = 'hidden';
-            });
+          // Phase: Launch with ease-in (slow → fast) before steady cruise
+          waveBoat.classList.add('launching');
 
-            // Ease-in launch: boat gently accelerates from rest to cruise speed
-            // Cruise speed = 110% / 25s = 4.4%/s
-            // Launch: 13% over 3s = 4.33%/s average, ending at ~4.4%/s
-            const launchDuration = 3000;
-            const launchDistance = 13;
-            const endLeftPct = landedLeftPct + launchDistance;
+          // Ease-in launch: boat gently accelerates from rest to cruise speed
+          // Cruise speed = 110% / 25s = 4.4%/s
+          // Launch: 13% over 3s = 4.33%/s average, ending at ~4.4%/s
+          const launchDuration = 3000;
+          const launchDistance = 13;
+          const endLeftPct = landedLeftPct + launchDistance;
 
-            const launchAnim = waveBoat.animate([
-              { left: landedLeftPct + '%' },
-              { left: endLeftPct + '%' }
-            ], {
-              duration: launchDuration,
-              easing: 'cubic-bezier(0.3, 0, 0.8, 0.8)', // starts at rest, ends at cruise speed
-              fill: 'forwards'
-            });
+          const launchAnim = waveBoat.animate([
+            { left: landedLeftPct + '%' },
+            { left: endLeftPct + '%' }
+          ], {
+            duration: launchDuration,
+            easing: 'cubic-bezier(0.3, 0, 0.8, 0.8)', // starts at rest, ends at cruise speed
+            fill: 'forwards'
+          });
 
-            launchAnim.finished.then(() => {
-              launchAnim.cancel();
+          launchAnim.finished.then(() => {
+            launchAnim.cancel();
 
-              // Switch to steady drift — sync position
-              waveBoat.style.left = '';
-              waveBoat.classList.remove('launching');
-              waveBoat.classList.add('visible');
+            // Switch to steady drift — sync position
+            waveBoat.style.left = '';
+            waveBoat.classList.remove('launching');
+            waveBoat.classList.add('visible');
 
-              const driftProgress = (endLeftPct + 5) / 110;
-              const driftDelay = -(driftProgress * 25);
-              waveBoat.style.animationDelay = `0s, ${driftDelay}s`;
-            });
-          } else {
-            boatInline.style.visibility = 'hidden';
-          }
-        }, LIFT_MS + DROP_MS);
+            const driftProgress = (endLeftPct + 5) / 110;
+            const driftDelay = -(driftProgress * 25);
+            waveBoat.style.animationDelay = `0s, ${driftDelay}s`;
+          });
+        });
       });
     }, 850);
   }
