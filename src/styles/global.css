@@ -329,13 +329,14 @@ html.light .cursor-blink::after {
   color: var(--color-buoy-dark);
 }
 
-/* Light mode: darken "design drift" highlight */
+/* Light mode: "design drift" highlight uses the darker brand step for text
+   contrast; the underline wash stays on the brand accent. */
 html.light .hero-drift-highlight {
-  color: #F26419;
+  color: var(--color-buoy-dark);
 }
 
 html.light .hero-drift-highlight::after {
-  background: color-mix(in srgb, #F26419 18%, transparent);
+  background: color-mix(in srgb, var(--color-buoy) 18%, transparent);
 }
 
 /* ----------------------------------------
@@ -376,7 +377,7 @@ html.light .prose-buoy blockquote {
 html.light .prose-invert {
   --tw-prose-body: #1A2744;
   --tw-prose-headings: #1A2744;
-  --tw-prose-links: #C23B00;
+  --tw-prose-links: var(--color-buoy-dark);
   --tw-prose-bold: #1A2744;
   --tw-prose-counters: #475569;
   --tw-prose-bullets: #475569;
