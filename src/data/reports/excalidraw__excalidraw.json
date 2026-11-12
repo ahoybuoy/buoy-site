@@ -3,18 +3,18 @@
   "owner": "excalidraw",
   "name": "excalidraw",
   "description": "Virtual whiteboard for sketching hand-drawn like diagrams",
-  "stars": 135502,
+  "stars": 135560,
   "homepage": "https://excalidraw.com",
   "language": "TypeScript",
   "defaultBranch": "master",
   "commit": "701b901a0f1ba3d0b390d9cdf63d112e25abac4b",
-  "generatedAt": "2026-11-11T14:48:27.541Z",
-  "cliVersion": "0.8.20",
-  "score": 62,
+  "generatedAt": "2026-11-12T15:42:49.041Z",
+  "cliVersion": "0.8.21",
+  "score": 60,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 22,
+      "score": 20,
       "max": 60
     },
     "tokenHealth": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 429,
     "tokenCount": 123,
-    "hardcodedValueCount": 82,
+    "hardcodedValueCount": 85,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 82,
+    "totalDriftCount": 85,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -56,7 +56,7 @@
     "notedCount": 13,
     "topHardcodedColor": {
       "value": "#fff",
-      "count": 3
+      "count": 5
     },
     "worstFile": {
       "path": "packages/excalidraw/components/PublishLibrary.tsx",
@@ -69,13 +69,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 82 hardcoded values left to tokenize. packages/excalidraw/components/PublishLibrary.tsx has the most (3)"
+    "Nearly there — just 85 hardcoded values left to tokenize. packages/excalidraw/components/PublishLibrary.tsx has the most (3)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 38,
-      "action": "Replace the hardcoded values in 81 of the 82 findings with tokens or scale steps"
+      "points": 40,
+      "action": "Replace the hardcoded values in 84 of the 85 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -130,26 +130,26 @@
     ]
   },
   "driftSummary": {
-    "total": 82,
+    "total": 85,
     "critical": 0,
-    "warning": 48,
-    "info": 34
+    "warning": 50,
+    "info": 35
   },
   "driftByType": {
-    "hardcoded-value": 82
+    "hardcoded-value": 85
   },
   "topColors": [
     {
       "value": "#fff",
-      "count": 20
+      "count": 22
+    },
+    {
+      "value": "#000",
+      "count": 4
     },
     {
       "value": "#0fb884",
       "count": 4
-    },
-    {
-      "value": "#000",
-      "count": 3
     },
     {
       "value": "#ecfdf5",
@@ -175,7 +175,7 @@
   "topSpacing": [
     {
       "value": "0.5rem",
-      "count": 70
+      "count": 71
     },
     {
       "value": "0.25rem",
@@ -257,6 +257,13 @@
       ]
     },
     {
+      "component": "PropertiesPopover",
+      "location": "packages/excalidraw/components/PropertiesPopover.tsx:23",
+      "entries": [
+        "marginLeft: 0.5rem (line 60)"
+      ]
+    },
+    {
       "component": "SingleLibraryItem",
       "location": "packages/excalidraw/components/PublishLibrary.tsx:117",
       "entries": [
@@ -287,6 +294,22 @@
       ]
     },
     {
+      "component": "ColorPickerTrigger",
+      "location": "packages/excalidraw/components/ColorPicker/ColorPicker.tsx:267",
+      "entries": [
+        "color: #fff (line 338)",
+        "color: #111 (line 339)"
+      ]
+    },
+    {
+      "component": "HotkeyLabel",
+      "location": "packages/excalidraw/components/ColorPicker/HotkeyLabel.tsx:9",
+      "entries": [
+        "color: #fff (line 18)",
+        "color: #000 (line 18)"
+      ]
+    },
+    {
       "component": "ShadeList",
       "location": "packages/excalidraw/components/ColorPicker/ShadeList.tsx:30",
       "entries": [
@@ -306,30 +329,7 @@
       "entries": [
         "size: 2rem (line 166)"
       ]
-    },
-    {
-      "component": "ChangeCanvasBackground",
-      "location": "packages/excalidraw/components/main-menu/DefaultItems.tsx:324",
-      "entries": [
-        "marginTop: 0.75rem (line 337)",
-        "fontSize: 0.875rem (line 341)",
-        "marginBottom: 0.25rem (line 342)"
-      ]
-    },
-    {
-      "component": "ChatInterface",
-      "location": "packages/excalidraw/components/TTDDialog/Chat/ChatInterface.tsx:17",
-      "entries": [
-        "size: 1.5em (line 182)"
-      ]
-    },
-    {
-      "component": "ChatMessage",
-      "location": "packages/excalidraw/components/TTDDialog/Chat/ChatMessage.tsx:10",
-      "entries": [
-        "marginTop: 10px (line 83)"
-      ]
     }
   ],
-  "scanSeconds": 9
+  "scanSeconds": 11
 }

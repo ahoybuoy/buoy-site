@@ -3,13 +3,13 @@
   "owner": "usebruno",
   "name": "bruno",
   "description": "Opensource IDE For Exploring and Testing API's (lightweight alternative to Postman/Insomnia)",
-  "stars": 48345,
+  "stars": 48372,
   "homepage": "https://www.usebruno.com/",
   "language": "JavaScript",
   "defaultBranch": "main",
-  "commit": "48a11a1ea327d351fbb40430a15a890b8cc341cd",
-  "generatedAt": "2026-11-11T15:21:13.490Z",
-  "cliVersion": "0.8.20",
+  "commit": "09625f67c9957b8eb8b04fb73756c6b3c7aa7679",
+  "generatedAt": "2026-11-12T16:24:30.603Z",
+  "cliVersion": "0.8.21",
   "score": 40,
   "tier": "OK",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 39,
     "tokenCount": 61,
-    "hardcodedValueCount": 18,
+    "hardcodedValueCount": 20,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 18,
+    "totalDriftCount": 20,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -60,7 +60,7 @@
     },
     "worstFile": {
       "path": "packages/bruno-app/src/themes/DesignSystem/Overview.jsx",
-      "issueCount": 8
+      "issueCount": 10
     },
     "uniqueSpacingValues": 19,
     "detectedFrameworkNames": [
@@ -71,14 +71,14 @@
     ]
   },
   "suggestions": [
-    "18 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on packages/bruno-app/src/themes/DesignSystem/Overview.jsx (8 issues)",
+    "20 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on packages/bruno-app/src/themes/DesignSystem/Overview.jsx (10 issues)",
     "19 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in all 18 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in all 20 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -97,15 +97,19 @@
     ]
   },
   "driftSummary": {
-    "total": 18,
+    "total": 20,
     "critical": 0,
-    "warning": 4,
+    "warning": 6,
     "info": 14
   },
   "driftByType": {
-    "hardcoded-value": 18
+    "hardcoded-value": 20
   },
   "topColors": [
+    {
+      "value": "#ffffff",
+      "count": 3
+    },
     {
       "value": "#3b5998",
       "count": 3
@@ -119,23 +123,19 @@
       "count": 2
     },
     {
-      "value": "rgb(52 52 52)",
+      "value": "#1a1a1a",
       "count": 1
     },
     {
-      "value": "#f1f1f1",
+      "value": "#ff5f57",
       "count": 1
     },
     {
-      "value": "#cdcdcd",
+      "value": "#ffbd2e",
       "count": 1
     },
     {
-      "value": "#ffffff",
-      "count": 1
-    },
-    {
-      "value": "#d6d6d6",
+      "value": "#28c840",
       "count": 1
     }
   ],
@@ -176,7 +176,7 @@
   "worstFiles": [
     {
       "file": "packages/bruno-app/src/themes/DesignSystem/Overview.jsx",
-      "count": 103
+      "count": 109
     },
     {
       "file": "packages/bruno-graphql-docs/src/index.css",
@@ -248,9 +248,26 @@
       "component": "PrimaryColorsRender",
       "location": "packages/bruno-app/src/themes/DesignSystem/Overview.jsx:324",
       "entries": [
+        "color: #1a1a1a (line 472)",
+        "color: #ffffff (line 472)"
+      ]
+    },
+    {
+      "component": "PrimaryColorsRender",
+      "location": "packages/bruno-app/src/themes/DesignSystem/Overview.jsx:324",
+      "entries": [
         "marginBottom: 48px (line 369)",
         "fontSize: 32px (line 370)",
         "marginBottom: 12px (line 370)"
+      ]
+    },
+    {
+      "component": "BackgroundLayersRender",
+      "location": "packages/bruno-app/src/themes/DesignSystem/Overview.jsx:585",
+      "entries": [
+        "backgroundColor: #ff5f57 (line 660)",
+        "backgroundColor: #ffbd2e (line 661)",
+        "backgroundColor: #28c840 (line 662)"
       ]
     },
     {
@@ -297,21 +314,7 @@
         "fontSize: 14px (line 41)",
         "marginBottom: 12px (line 41)"
       ]
-    },
-    {
-      "component": "CollectionRow",
-      "location": "packages/bruno-app/src/components/Sidebar/Collections/Collection/CollectionRow/index.jsx:63",
-      "entries": [
-        "color: rgb(160 160 160) (line 596)"
-      ]
-    },
-    {
-      "component": "CollectionItemRow",
-      "location": "packages/bruno-app/src/components/Sidebar/Collections/Collection/CollectionItem/CollectionItemRow/index.jsx:76",
-      "entries": [
-        "color: rgb(160 160 160) (line 790)"
-      ]
     }
   ],
-  "scanSeconds": 14
+  "scanSeconds": 18
 }

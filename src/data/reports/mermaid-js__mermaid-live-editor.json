@@ -3,18 +3,18 @@
   "owner": "mermaid-js",
   "name": "mermaid-live-editor",
   "description": "Edit, preview and share mermaid charts/diagrams. New implementation of the live editor.",
-  "stars": 6902,
+  "stars": 6904,
   "homepage": "https://mermaid.live",
   "language": "TypeScript",
   "defaultBranch": "develop",
-  "commit": "b16b4cd640ab7458c7a990c919854e3598d24e37",
-  "generatedAt": "2026-11-11T15:15:38.926Z",
-  "cliVersion": "0.8.20",
-  "score": 61,
-  "tier": "Good",
+  "commit": "74e28e101c2aeea130821299923a4b77b2e26f12",
+  "generatedAt": "2026-11-12T16:17:25.298Z",
+  "cliVersion": "0.8.21",
+  "score": 59,
+  "tier": "OK",
   "pillars": {
     "valueDiscipline": {
-      "score": 21,
+      "score": 19,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 56,
+    "componentCount": 59,
     "tokenCount": 54,
-    "hardcodedValueCount": 11,
+    "hardcodedValueCount": 12,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 11,
+    "totalDriftCount": 12,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -68,13 +68,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 11 hardcoded values left to tokenize. src/lib/components/V13Tail.svelte has the most (2)"
+    "Nearly there — just 12 hardcoded values left to tokenize. src/lib/components/V13Tail.svelte has the most (2)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 39,
-      "action": "Replace the hardcoded values in all 11 findings with tokens or scale steps"
+      "points": 41,
+      "action": "Replace the hardcoded values in all 12 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -93,13 +93,13 @@
     ]
   },
   "driftSummary": {
-    "total": 11,
+    "total": 12,
     "critical": 0,
-    "warning": 11,
+    "warning": 12,
     "info": 0
   },
   "driftByType": {
-    "hardcoded-value": 11
+    "hardcoded-value": 12
   },
   "topColors": [
     {
@@ -112,6 +112,10 @@
     },
     {
       "value": "#1E1A2E",
+      "count": 2
+    },
+    {
+      "value": "#ff6154",
       "count": 2
     },
     {
@@ -128,10 +132,6 @@
     },
     {
       "value": "#f3f3f3",
-      "count": 1
-    },
-    {
-      "value": "#6365f1",
       "count": 1
     }
   ],
@@ -167,20 +167,20 @@
       "count": 2
     },
     {
-      "file": "src/lib/components/AIPromptPopup.svelte",
+      "file": "src/lib/util/promos/FlowHunt.svelte",
       "count": 2
     },
     {
-      "file": "src/routes/(app)/+layout.svelte",
+      "file": "src/lib/components/AIPromptPopup.svelte",
       "count": 2
     }
   ],
   "samples": [
     {
       "component": "src/lib/components/Navbar.svelte",
-      "location": "src/lib/components/Navbar.svelte:71",
+      "location": "src/lib/components/Navbar.svelte:97",
       "entries": [
-        "hover:text-[#261A56] (line 71)"
+        "hover:text-[#261A56] (line 97)"
       ]
     },
     {
@@ -221,6 +221,14 @@
         "bg-[#E0095F] (line 73)",
         "bg-[#1E1A2E] (line 88)",
         "hover:bg-[#261A56] (line 88)"
+      ]
+    },
+    {
+      "component": "src/lib/util/promos/FlowHunt.svelte",
+      "location": "src/lib/util/promos/FlowHunt.svelte:26",
+      "entries": [
+        "bg-[#ff6154] (line 26)",
+        "text-[#ff6154] (line 47)"
       ]
     },
     {
@@ -265,5 +273,5 @@
       ]
     }
   ],
-  "scanSeconds": 3
+  "scanSeconds": 4
 }

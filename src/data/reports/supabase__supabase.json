@@ -3,13 +3,13 @@
   "owner": "supabase",
   "name": "supabase",
   "description": "The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications.",
-  "stars": 114827,
+  "stars": 114921,
   "homepage": "https://supabase.com",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "701730e3eb039334961d6b66823b354fc8088d79",
-  "generatedAt": "2026-11-11T14:41:38.096Z",
-  "cliVersion": "0.8.20",
+  "commit": "628557490e10bbaa444b3fb31d9ddb7af7f20c0b",
+  "generatedAt": "2026-11-12T15:34:06.834Z",
+  "cliVersion": "0.8.21",
   "score": 87,
   "tier": "Great",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 4945,
+    "componentCount": 4946,
     "tokenCount": 1128,
-    "hardcodedValueCount": 283,
+    "hardcodedValueCount": 278,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 292,
+    "totalDriftCount": 287,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 7,
     "orphanedComponentCount": 0,
@@ -73,7 +73,7 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 281 hardcoded values left to tokenize. apps/studio/components/interfaces/Database/Policies/PolicyEditorPanel/LockedQuerySection.tsx has the most (3)",
+    "Nearly there — just 276 hardcoded values left to tokenize. apps/studio/components/interfaces/Database/Policies/PolicyEditorPanel/LockedQuerySection.tsx has the most (3)",
     "2 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
     "7 repeated patterns — extract to shared components",
     "2 deprecated patterns — migrate to current API"
@@ -82,7 +82,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 11,
-      "action": "Replace the hardcoded values in 269 of the 281 findings with tokens or scale steps, and remove or reuse 7 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 264 of the 276 findings with tokens or scale steps, and remove or reuse 7 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -142,14 +142,14 @@
     ]
   },
   "driftSummary": {
-    "total": 289,
+    "total": 284,
     "critical": 0,
-    "warning": 65,
-    "info": 224
+    "warning": 67,
+    "info": 217
   },
   "driftByType": {
     "deprecated-pattern": 2,
-    "hardcoded-value": 280,
+    "hardcoded-value": 275,
     "repeated-pattern": 7
   },
   "topColors": [
@@ -188,14 +188,6 @@
   ],
   "topSpacing": [
     {
-      "value": "4px",
-      "count": 14
-    },
-    {
-      "value": "5px",
-      "count": 13
-    },
-    {
       "value": "2px",
       "count": 9
     },
@@ -206,6 +198,14 @@
     {
       "value": "0.8125rem",
       "count": 8
+    },
+    {
+      "value": "4px",
+      "count": 7
+    },
+    {
+      "value": "5px",
+      "count": 6
     },
     {
       "value": "1rem",
@@ -261,6 +261,15 @@
       "entries": [
         "fontSize: 14px (line 76)",
         "marginBottom: 32px (line 77)"
+      ]
+    },
+    {
+      "component": "CustomerStoriesSection",
+      "location": "apps/www/app/(home)/_components/CustomerStoriesSection.tsx:125",
+      "entries": [
+        "color: #111 (line 177)",
+        "color: #888 (line 183)",
+        "color: rgba(255,255,255,0.6) (line 183)"
       ]
     },
     {
@@ -334,15 +343,7 @@
       "entries": [
         "fontSize: 0.8125rem (line 145)"
       ]
-    },
-    {
-      "component": "PartnerCatalogDetail",
-      "location": "apps/www/app/partners/catalog/[slug]/PartnerCatalogDetail.tsx:39",
-      "entries": [
-        "fontSize: 1.5rem (line 251)",
-        "marginBottom: 1rem (line 251)"
-      ]
     }
   ],
-  "scanSeconds": 146
+  "scanSeconds": 182
 }

@@ -3,18 +3,18 @@
   "owner": "vercel",
   "name": "next.js",
   "description": "The React Framework",
-  "stars": 143472,
+  "stars": 143488,
   "homepage": "https://nextjs.org",
   "language": "JavaScript",
   "defaultBranch": "canary",
-  "commit": "0b75c813588940ec968f20ed3d16734e128036be",
-  "generatedAt": "2026-11-11T14:57:00.427Z",
-  "cliVersion": "0.8.20",
-  "score": 89,
+  "commit": "f32d1acd7a61713be9a2b277177d20bf87b4017b",
+  "generatedAt": "2026-11-12T15:53:57.555Z",
+  "cliVersion": "0.8.21",
+  "score": 88,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 51,
+      "score": 50,
       "max": 60
     },
     "tokenHealth": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 374,
     "tokenCount": 303,
-    "hardcodedValueCount": 17,
+    "hardcodedValueCount": 18,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 18,
+    "totalDriftCount": 19,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -54,6 +54,10 @@
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
     "notedCount": 6,
+    "topHardcodedColor": {
+      "value": "#fff",
+      "count": 1
+    },
     "worstFile": {
       "path": "packages/next/src/client/legacy/image.tsx",
       "issueCount": 1
@@ -71,14 +75,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 17 hardcoded values left to tokenize",
+    "Nearly there — just 18 hardcoded values left to tokenize",
     "1 deprecated pattern — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 9,
-      "action": "Replace the hardcoded values in all 17 findings with tokens or scale steps"
+      "points": 10,
+      "action": "Replace the hardcoded values in all 18 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -140,16 +144,20 @@
     ]
   },
   "driftSummary": {
-    "total": 18,
+    "total": 19,
     "critical": 0,
-    "warning": 7,
+    "warning": 8,
     "info": 11
   },
   "driftByType": {
     "deprecated-pattern": 1,
-    "hardcoded-value": 17
+    "hardcoded-value": 18
   },
   "topColors": [
+    {
+      "value": "#fff",
+      "count": 1
+    },
     {
       "value": "#b8cffb",
       "count": 1
@@ -176,10 +184,6 @@
     },
     {
       "value": "#000000",
-      "count": 1
-    },
-    {
-      "value": "#2e2e2e",
       "count": 1
     }
   ],
@@ -257,6 +261,13 @@
       "location": "packages/next/src/next-devtools/dev-overlay/menu/dev-overlay-menu.tsx:85",
       "entries": [
         "padding: 6px (line 254)"
+      ]
+    },
+    {
+      "component": "StatusIndicator",
+      "location": "packages/next/src/next-devtools/dev-overlay/components/devtools-indicator/status-indicator.tsx:42",
+      "entries": [
+        "backgroundColor: #fff (line 178)"
       ]
     },
     {
@@ -342,16 +353,7 @@
         "font weight: 500 (line 18)",
         "line height: 20px (line 22)"
       ]
-    },
-    {
-      "component": "packages/next/src/next-devtools/dev-overlay/components/request-insights/request-insights-panel.css",
-      "location": "packages/next/src/next-devtools/dev-overlay/components/request-insights/request-insights-panel.css:25",
-      "entries": [
-        "line height: 1.5 (line 25)",
-        "spacing: 8px (line 44)",
-        "spacing: 6px (line 57)"
-      ]
     }
   ],
-  "scanSeconds": 91
+  "scanSeconds": 124
 }

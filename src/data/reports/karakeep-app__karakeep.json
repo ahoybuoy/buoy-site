@@ -3,18 +3,18 @@
   "owner": "karakeep-app",
   "name": "karakeep",
   "description": "A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search",
-  "stars": 30456,
+  "stars": 30482,
   "homepage": "https://karakeep.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "88a9ff9cfdfa2b99da4d6a700ea2d0055bd3639d",
-  "generatedAt": "2026-11-11T15:11:12.351Z",
-  "cliVersion": "0.8.20",
-  "score": 77,
+  "commit": "f7119ca01004f4840b8a7189d2899945ea3966a3",
+  "generatedAt": "2026-11-12T16:11:50.885Z",
+  "cliVersion": "0.8.21",
+  "score": 76,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 37,
+      "score": 36,
       "max": 60
     },
     "tokenHealth": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 825,
     "tokenCount": 87,
-    "hardcodedValueCount": 96,
+    "hardcodedValueCount": 102,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 96,
+    "totalDriftCount": 102,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -55,8 +55,8 @@
     "vendoredDriftCount": 2,
     "notedCount": 23,
     "topHardcodedColor": {
-      "value": "#fde047",
-      "count": 2
+      "value": "#000",
+      "count": 3
     },
     "worstFile": {
       "path": "apps/landing/src/Pricing.tsx",
@@ -72,14 +72,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 94 hardcoded values left to tokenize. apps/landing/src/Pricing.tsx has the most (5)",
+    "Nearly there — just 100 hardcoded values left to tokenize. apps/landing/src/Pricing.tsx has the most (5)",
     "2 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 23,
-      "action": "Replace the hardcoded values in 92 of the 94 findings with tokens or scale steps"
+      "points": 24,
+      "action": "Replace the hardcoded values in 98 of the 100 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -134,13 +134,13 @@
     ]
   },
   "driftSummary": {
-    "total": 96,
+    "total": 102,
     "critical": 0,
-    "warning": 15,
+    "warning": 21,
     "info": 81
   },
   "driftByType": {
-    "hardcoded-value": 96
+    "hardcoded-value": 102
   },
   "topColors": [
     {
@@ -154,6 +154,10 @@
     {
       "value": "#ececec",
       "count": 4
+    },
+    {
+      "value": "#000",
+      "count": 3
     },
     {
       "value": "#171717",
@@ -170,10 +174,6 @@
     {
       "value": "#f1f3f5",
       "count": 3
-    },
-    {
-      "value": "#34c759",
-      "count": 1
     }
   ],
   "topSpacing": [
@@ -246,6 +246,13 @@
   ],
   "samples": [
     {
+      "component": "ScrollProgressTracker",
+      "location": "packages/shared-react/components/ScrollProgressTracker.tsx:50",
+      "entries": [
+        "backgroundColor: rgb(249, 115, 22) (line 244)"
+      ]
+    },
+    {
       "component": "TestConnection",
       "location": "apps/mobile/app/test-connection.tsx:17",
       "entries": [
@@ -260,11 +267,49 @@
       ]
     },
     {
+      "component": "BookmarkHtmlHighlighterDom",
+      "location": "apps/mobile/components/bookmarks/BookmarkHtmlHighlighterDom.tsx:14",
+      "entries": [
+        "color: #fff (line 239)",
+        "color: #111 (line 239)",
+        "color: #98989f (line 250)"
+      ]
+    },
+    {
+      "component": "BottomActions",
+      "location": "apps/mobile/components/bookmarks/BottomActions.tsx:516",
+      "entries": [
+        "color: #000 (line 650)"
+      ]
+    },
+    {
       "component": "UsageStatsScreen",
       "location": "apps/mobile/components/settings/UsageStatsScreen.tsx:523",
       "entries": [
         "color: #34C759 (line 682)",
         "color: #AF52DE (line 689)"
+      ]
+    },
+    {
+      "component": "ToolbarSettingsPage",
+      "location": "apps/mobile/app/dashboard/settings/toolbar-settings.tsx:27",
+      "entries": [
+        "color: #000 (line 101)"
+      ]
+    },
+    {
+      "component": "BookmarkView",
+      "location": "apps/mobile/app/dashboard/bookmarks/[slug]/index.tsx:48",
+      "entries": [
+        "color: #fff (line 178)",
+        "color: #000 (line 178)"
+      ]
+    },
+    {
+      "component": "BookmarkActionsSection",
+      "location": "apps/mobile/app/dashboard/bookmarks/[slug]/info.tsx:354",
+      "entries": [
+        "color: #ebb434 (line 405)"
       ]
     },
     {
@@ -287,59 +332,7 @@
       "entries": [
         "text-[10px] (line 172)"
       ]
-    },
-    {
-      "component": "apps/landing/src/Pricing.tsx",
-      "location": "apps/landing/src/Pricing.tsx:153",
-      "entries": [
-        "bg-[#171717] (line 153)",
-        "text-[#fde047] (line 155)",
-        "text-[#a3a3a3] (line 161)"
-      ]
-    },
-    {
-      "component": "apps/landing/src/Pricing.tsx",
-      "location": "apps/landing/src/Pricing.tsx:119",
-      "entries": [
-        "gap-[13px] (line 119)",
-        "lg:gap-[72px] (line 153)",
-        "gap-[18px] (line 154)"
-      ]
-    },
-    {
-      "component": "apps/landing/src/Pricing.tsx",
-      "location": "apps/landing/src/Pricing.tsx:37",
-      "entries": [
-        "rounded-[10px] (line 37)"
-      ]
-    },
-    {
-      "component": "apps/landing/src/Pricing.tsx",
-      "location": "apps/landing/src/Pricing.tsx:27",
-      "entries": [
-        "tracking-[0.14em] (line 27)",
-        "sm:text-[52px] (line 30)",
-        "leading-[1.1] (line 30)"
-      ]
-    },
-    {
-      "component": "apps/landing/src/Pricing.tsx",
-      "location": "apps/landing/src/Pricing.tsx:43",
-      "entries": [
-        "shadow-[0_1px_2px_rgba(15,23,42,0.08)] (line 43)",
-        "shadow-[0_1px_2px_rgba(15,23,42,0.08)] (line 54)",
-        "shadow-[0_1px_2px_rgba(15,23,42,0.04),0_24px_48px_-12px_rgba(15,23,42,0.18),0_16px_40px_-12px_rgba(15,23,42,0.12)] (line 89)"
-      ]
-    },
-    {
-      "component": "apps/landing/src/components/ClosingCta.tsx",
-      "location": "apps/landing/src/components/ClosingCta.tsx:12",
-      "entries": [
-        "sm:text-[44px] (line 12)",
-        "sm:leading-[1.15] (line 12)",
-        "leading-[1.6] (line 18)"
-      ]
     }
   ],
-  "scanSeconds": 20
+  "scanSeconds": 25
 }

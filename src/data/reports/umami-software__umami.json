@@ -3,13 +3,13 @@
   "owner": "umami-software",
   "name": "umami",
   "description": "Umami is a privacy-first web and product analytics platform. Traffic, campaigns, behavior, conversions, and revenue in one place. No cookies, no surveillance, self-hosted or in the cloud.",
-  "stars": 40063,
+  "stars": 40087,
   "homepage": "https://umami.is",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "559e3c607c23d2c72d9bd4f6481bda428255323c",
-  "generatedAt": "2026-11-11T14:48:52.111Z",
-  "cliVersion": "0.8.20",
+  "commit": "d3c62a805beda8643cb468924dda38617fb4c286",
+  "generatedAt": "2026-11-12T15:43:20.294Z",
+  "cliVersion": "0.8.21",
   "score": 87,
   "tier": "Great",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 508,
-    "tokenCount": 11,
-    "hardcodedValueCount": 22,
+    "componentCount": 537,
+    "tokenCount": 12,
+    "hardcodedValueCount": 23,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 22,
+    "totalDriftCount": 23,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 1,
+    "notedCount": 2,
     "topHardcodedColor": {
       "value": "rgba(0, 0, 0, 0.8)",
       "count": 4
@@ -69,29 +69,37 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 22 hardcoded values left to tokenize. src/app/(main)/websites/[websiteId]/settings/SharesTable.tsx has the most (2)"
+    "Nearly there — just 23 hardcoded values left to tokenize. src/app/(main)/websites/[websiteId]/settings/SharesTable.tsx has the most (2)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 9,
-      "action": "Replace the hardcoded values in 21 of the 22 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 22 of the 23 findings with tokens or scale steps"
     },
     {
       "pillar": "tokenHealth",
       "points": 4,
-      "action": "Define 9 more design tokens (11 of the 20 that earn full credit)"
+      "action": "Define 8 more design tokens (12 of the 20 that earn full credit)"
     }
   ],
   "noted": {
-    "count": 1,
+    "count": 2,
     "byKind": {
-      "optical-nudge": 1
+      "optical-nudge": 1,
+      "explained": 1
     },
     "samples": [
       {
+        "file": "src/components/metrics/MetricsBar.module.css",
+        "line": 8,
+        "value": "0 -1px -1px 0",
+        "kind": "explained",
+        "reason": "and the last row's bottom edge. A partially filled last row then reads as a table with empty cells instead of leaving h…"
+      },
+      {
         "file": "src/components/input/WebsiteFilterButton.tsx",
-        "line": 86,
+        "line": 87,
         "value": "3px",
         "kind": "optical-nudge",
         "reason": "marginTop: 3px is a 2-3px optical adjustment"
@@ -99,13 +107,13 @@
     ]
   },
   "driftSummary": {
-    "total": 22,
+    "total": 23,
     "critical": 0,
     "warning": 7,
-    "info": 15
+    "info": 16
   },
   "driftByType": {
-    "hardcoded-value": 22
+    "hardcoded-value": 23
   },
   "topColors": [
     {
@@ -246,14 +254,14 @@
       "component": "FieldFilters",
       "location": "src/components/input/FieldFilters.tsx:34",
       "entries": [
-        "paddingTop: 24px (line 179)"
+        "paddingTop: 24px (line 181)"
       ]
     },
     {
       "component": "FilterBar",
-      "location": "src/components/input/FilterBar.tsx:28",
+      "location": "src/components/input/FilterBar.tsx:20",
       "entries": [
-        "padding: 32px (line 190)"
+        "padding: 32px (line 192)"
       ]
     },
     {
@@ -265,23 +273,23 @@
     },
     {
       "component": "WeeklyTraffic",
-      "location": "src/components/metrics/WeeklyTraffic.tsx:8",
+      "location": "src/components/metrics/WeeklyTraffic.tsx:10",
       "entries": [
-        "backgroundColor: rgba(0,0,0,0.8) (line 110)"
+        "backgroundColor: rgba(0,0,0,0.8) (line 116)"
       ]
     },
     {
       "component": "WorldMap",
-      "location": "src/components/metrics/WorldMap.tsx:21",
+      "location": "src/components/metrics/WorldMap.tsx:22",
       "entries": [
-        "backgroundColor: rgba(0,0,0,0.8) (line 105)"
+        "backgroundColor: rgba(0,0,0,0.8) (line 108)"
       ]
     },
     {
       "component": "PropertyFilters",
       "location": "src/components/property-data/PropertyFilters.tsx:32",
       "entries": [
-        "paddingTop: 24px (line 176)"
+        "paddingTop: 24px (line 178)"
       ]
     },
     {
@@ -301,5 +309,5 @@
       ]
     }
   ],
-  "scanSeconds": 19
+  "scanSeconds": 24
 }

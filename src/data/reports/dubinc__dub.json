@@ -3,13 +3,13 @@
   "owner": "dubinc",
   "name": "dub",
   "description": "The modern link attribution platform. Loved by world-class engineering teams at Twilio, Zillow, Jobber, Vercel, Raycast, and more.",
-  "stars": 25154,
+  "stars": 25158,
   "homepage": "https://dub.link",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "6b463b4bdd9ed2fd9aa416f67b5b77d317b1471e",
-  "generatedAt": "2026-11-11T14:42:07.958Z",
-  "cliVersion": "0.8.20",
+  "generatedAt": "2026-11-12T15:34:44.988Z",
+  "cliVersion": "0.8.21",
   "score": 92,
   "tier": "Great",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 1350,
     "tokenCount": 39,
-    "hardcodedValueCount": 44,
+    "hardcodedValueCount": 46,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 49,
+    "totalDriftCount": 51,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 4,
     "orphanedComponentCount": 0,
@@ -55,7 +55,7 @@
     "vendoredDriftCount": 4,
     "notedCount": 2,
     "topHardcodedColor": {
-      "value": "#F0F7FF",
+      "value": "#000000",
       "count": 1
     },
     "worstFile": {
@@ -70,7 +70,7 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 40 hardcoded values left to tokenize. apps/web/app/[domain]/[key]/inspect/page.tsx has the most (3)",
+    "Nearly there — just 42 hardcoded values left to tokenize. apps/web/app/[domain]/[key]/inspect/page.tsx has the most (3)",
     "4 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
     "1 deprecated pattern — migrate to current API"
   ],
@@ -78,7 +78,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 6,
-      "action": "Replace the hardcoded values in 37 of the 40 findings with tokens or scale steps, and remove or reuse 4 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 39 of the 42 findings with tokens or scale steps, and remove or reuse 4 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -109,14 +109,14 @@
     ]
   },
   "driftSummary": {
-    "total": 49,
+    "total": 51,
     "critical": 0,
-    "warning": 6,
+    "warning": 8,
     "info": 43
   },
   "driftByType": {
+    "hardcoded-value": 46,
     "deprecated-pattern": 1,
-    "hardcoded-value": 44,
     "repeated-pattern": 4
   },
   "topColors": [
@@ -129,6 +129,18 @@
       "count": 2
     },
     {
+      "value": "rgb(from transparent r g b / alpha)",
+      "count": 1
+    },
+    {
+      "value": "rgb(from transparent r g b / 0%)",
+      "count": 1
+    },
+    {
+      "value": "#000000",
+      "count": 1
+    },
+    {
       "value": "#F0F7FF",
       "count": 1
     },
@@ -138,18 +150,6 @@
     },
     {
       "value": "#FFE2E2",
-      "count": 1
-    },
-    {
-      "value": "#0D542B",
-      "count": 1
-    },
-    {
-      "value": "#82181A",
-      "count": 1
-    },
-    {
-      "value": "#0f1419",
       "count": 1
     }
   ],
@@ -202,6 +202,21 @@
     }
   ],
   "samples": [
+    {
+      "component": "ProgressiveBlur",
+      "location": "packages/ui/src/progressive-blur.tsx:18",
+      "entries": [
+        "background: rgb(from transparent r g b / alpha) (line 58)",
+        "background: rgb(from transparent r g b / 0%) (line 59)"
+      ]
+    },
+    {
+      "component": "ColorSelector",
+      "location": "apps/web/ui/shared/color-picker.tsx:142",
+      "entries": [
+        "color: #000000 (line 204)"
+      ]
+    },
     {
       "component": "apps/web/app/(ee)/app.dub.co/invoices/[invoiceId]/domain-renewal-invoice.tsx",
       "location": "apps/web/app/(ee)/app.dub.co/invoices/[invoiceId]/domain-renewal-invoice.tsx:185",
@@ -274,22 +289,7 @@
         "rounded-b-[11px] (line 205)",
         "rounded-b-[12px] (line 366)"
       ]
-    },
-    {
-      "component": "apps/web/app/app.dub.co/(dashboard)/[slug]/(ee)/settings/integrations/[integrationSlug]/page-client.tsx",
-      "location": "apps/web/app/app.dub.co/(dashboard)/[slug]/(ee)/settings/integrations/[integrationSlug]/page-client.tsx:142",
-      "entries": [
-        "bg-[#F0F7FF] (line 142)"
-      ]
-    },
-    {
-      "component": "apps/web/app/app.dub.co/(dashboard)/[slug]/(ee)/settings/integrations/[integrationSlug]/page-client.tsx",
-      "location": "apps/web/app/app.dub.co/(dashboard)/[slug]/(ee)/settings/integrations/[integrationSlug]/page-client.tsx:449",
-      "entries": [
-        "rounded-[6px] (line 449)",
-        "rounded-[5px] (line 462)"
-      ]
     }
   ],
-  "scanSeconds": 28
+  "scanSeconds": 37
 }

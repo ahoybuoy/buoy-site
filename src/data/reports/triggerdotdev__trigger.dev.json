@@ -3,13 +3,13 @@
   "owner": "triggerdotdev",
   "name": "trigger.dev",
   "description": "Trigger.dev – build and deploy durable AI agents and workflows",
-  "stars": 16745,
+  "stars": 16753,
   "homepage": "https://trigger.dev/changelog",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "3e1f63be2e43b73ef03c22b1ae75989535f2f420",
-  "generatedAt": "2026-11-11T14:55:28.227Z",
-  "cliVersion": "0.8.20",
+  "commit": "2fbd5c7cf4e9c8e19b88e2b72a7133795611e33d",
+  "generatedAt": "2026-11-12T15:51:52.331Z",
+  "cliVersion": "0.8.21",
   "score": 91,
   "tier": "Great",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2044,
+    "componentCount": 2050,
     "tokenCount": 276,
-    "hardcodedValueCount": 95,
+    "hardcodedValueCount": 96,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 95,
+    "totalDriftCount": 96,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -72,13 +72,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 95 hardcoded values left to tokenize. apps/webapp/app/components/alerts/ChartLegend.tsx has the most (2)"
+    "Nearly there — just 96 hardcoded values left to tokenize. apps/webapp/app/components/alerts/ChartLegend.tsx has the most (2)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 9,
-      "action": "Replace the hardcoded values in 90 of the 95 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 91 of the 96 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -112,13 +112,13 @@
     ]
   },
   "driftSummary": {
-    "total": 95,
+    "total": 96,
     "critical": 0,
-    "warning": 10,
+    "warning": 11,
     "info": 85
   },
   "driftByType": {
-    "hardcoded-value": 95
+    "hardcoded-value": 96
   },
   "topColors": [
     {
@@ -131,6 +131,10 @@
     },
     {
       "value": "#10B981",
+      "count": 1
+    },
+    {
+      "value": "#6366f1",
       "count": 1
     },
     {
@@ -148,10 +152,6 @@
     {
       "value": "#121317",
       "count": 1
-    },
-    {
-      "value": "#c678dd",
-      "count": 1
     }
   ],
   "topSpacing": [
@@ -168,6 +168,10 @@
       "count": 3
     },
     {
+      "value": "3px",
+      "count": 2
+    },
+    {
       "value": "6px",
       "count": 2
     },
@@ -178,10 +182,6 @@
     {
       "value": "0.15em",
       "count": 2
-    },
-    {
-      "value": "3px",
-      "count": 1
     },
     {
       "value": "2.9rem",
@@ -224,6 +224,13 @@
   ],
   "samples": [
     {
+      "component": "DashboardAgent",
+      "location": "apps/webapp/app/components/dashboard-agent/DashboardAgent.tsx:52",
+      "entries": [
+        "size: 3px (line 364)"
+      ]
+    },
+    {
       "component": "ResizableHandle",
       "location": "apps/webapp/app/components/primitives/Resizable.tsx:39",
       "entries": [
@@ -242,6 +249,13 @@
       "location": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.models._index/route.tsx:1219",
       "entries": [
         "color: #10B981 (line 1409)"
+      ]
+    },
+    {
+      "component": "RadioDot",
+      "location": "apps/webapp/app/routes/_app.orgs.$organizationSlug.settings._index/route.tsx:727",
+      "entries": [
+        "backgroundColor: #6366f1 (line 737)"
       ]
     },
     {
@@ -292,21 +306,7 @@
       "entries": [
         "mr-[6px] (line 16)"
       ]
-    },
-    {
-      "component": "apps/webapp/app/components/code/CodeBlock.tsx",
-      "location": "apps/webapp/app/components/code/CodeBlock.tsx:383",
-      "entries": [
-        "pt-[2.9rem] (line 383)"
-      ]
-    },
-    {
-      "component": "apps/webapp/app/components/dashboard-agent/DashboardAgentComposer.tsx",
-      "location": "apps/webapp/app/components/dashboard-agent/DashboardAgentComposer.tsx:177",
-      "entries": [
-        "leading-[1.5] (line 177)"
-      ]
     }
   ],
-  "scanSeconds": 36
+  "scanSeconds": 46
 }

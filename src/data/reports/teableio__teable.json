@@ -3,13 +3,13 @@
   "owner": "teableio",
   "name": "teable",
   "description": "✨ AI Spreadsheet for Business",
-  "stars": 21975,
+  "stars": 21977,
   "homepage": "https://teable.ai",
   "language": "TypeScript",
   "defaultBranch": "develop",
-  "commit": "fc4126e945a212aa637c4134c373416df69bb982",
-  "generatedAt": "2026-11-11T15:20:16.051Z",
-  "cliVersion": "0.8.20",
+  "commit": "33ffe918e526231263a63baa90b769a47c5e185d",
+  "generatedAt": "2026-11-12T16:23:18.426Z",
+  "cliVersion": "0.8.21",
   "score": 83,
   "tier": "Great",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1788,
+    "componentCount": 1818,
     "tokenCount": 67,
-    "hardcodedValueCount": 149,
+    "hardcodedValueCount": 151,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 149,
+    "totalDriftCount": 151,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -72,13 +72,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 149 hardcoded values left to tokenize. apps/nextjs-app/src/features/app/blocks/base/base-side-bar/BaseSidebarHeaderLeft.tsx has the most (3)"
+    "Nearly there — just 151 hardcoded values left to tokenize. apps/nextjs-app/src/features/app/blocks/base/base-side-bar/BaseSidebarHeaderLeft.tsx has the most (3)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 17,
-      "action": "Replace the hardcoded values in 145 of the 149 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 147 of the 151 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -134,18 +134,22 @@
     ]
   },
   "driftSummary": {
-    "total": 149,
+    "total": 151,
     "critical": 0,
-    "warning": 6,
-    "info": 143
+    "warning": 7,
+    "info": 144
   },
   "driftByType": {
-    "hardcoded-value": 149
+    "hardcoded-value": 151
   },
   "topColors": [
     {
       "value": "#303132",
       "count": 3
+    },
+    {
+      "value": "rgba(0,0,0,0.1)",
+      "count": 1
     },
     {
       "value": "#0A66C2",
@@ -169,10 +173,6 @@
     },
     {
       "value": "#392C1B",
-      "count": 1
-    },
-    {
-      "value": "#0C3026",
       "count": 1
     }
   ],
@@ -245,6 +245,13 @@
     }
   ],
   "samples": [
+    {
+      "component": "LoadingIndicator",
+      "location": "packages/sdk/src/components/grid/components/LoadingIndicator.tsx:15",
+      "entries": [
+        "background: rgba(0,0,0,0.1) (line 67)"
+      ]
+    },
     {
       "component": "BaseErdTableNode",
       "location": "apps/nextjs-app/src/features/app/blocks/erd/BaseErdTableNode.tsx:16",
@@ -321,16 +328,7 @@
       "entries": [
         "size: 0.875rem (line 76)"
       ]
-    },
-    {
-      "component": "apps/nextjs-app/src/components/Guide.tsx",
-      "location": "apps/nextjs-app/src/components/Guide.tsx:74",
-      "entries": [
-        "text-[13px] (line 74)",
-        "text-[13px] (line 88)",
-        "text-[13px] (line 96)"
-      ]
     }
   ],
-  "scanSeconds": 49
+  "scanSeconds": 63
 }

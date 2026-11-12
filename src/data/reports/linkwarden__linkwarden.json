@@ -3,18 +3,18 @@
   "owner": "linkwarden",
   "name": "linkwarden",
   "description": "⚡️⚡️⚡️ Self-hosted collaborative bookmark manager to collect, read, annotate, and fully preserve what matters, all in one place.",
-  "stars": 20382,
+  "stars": 20395,
   "homepage": "https://linkwarden.app",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "24adcc146ba356632859a1e8adb4bffae2874d11",
-  "generatedAt": "2026-11-11T15:11:44.212Z",
-  "cliVersion": "0.8.20",
-  "score": 91,
+  "generatedAt": "2026-11-12T16:12:28.561Z",
+  "cliVersion": "0.8.21",
+  "score": 89,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 51,
+      "score": 49,
       "max": 60
     },
     "tokenHealth": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 275,
     "tokenCount": 45,
-    "hardcodedValueCount": 13,
+    "hardcodedValueCount": 15,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 13,
+    "totalDriftCount": 15,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -55,7 +55,7 @@
     "vendoredDriftCount": 0,
     "notedCount": 1,
     "topHardcodedColor": {
-      "value": "#6B7280",
+      "value": "#FFFFFF",
       "count": 3
     },
     "worstFile": {
@@ -73,13 +73,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 13 hardcoded values left to tokenize. apps/mobile/components/ActionSheets/LinkDetailsSheet.tsx has the most (2)"
+    "Nearly there — just 15 hardcoded values left to tokenize. apps/mobile/components/ActionSheets/LinkDetailsSheet.tsx has the most (2)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 9,
-      "action": "Replace the hardcoded values in all 13 findings with tokens or scale steps"
+      "points": 11,
+      "action": "Replace the hardcoded values in all 15 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -98,21 +98,25 @@
     ]
   },
   "driftSummary": {
-    "total": 13,
+    "total": 15,
     "critical": 0,
-    "warning": 7,
+    "warning": 9,
     "info": 6
   },
   "driftByType": {
-    "hardcoded-value": 13
+    "hardcoded-value": 15
   },
   "topColors": [
+    {
+      "value": "#FFFFFF",
+      "count": 3
+    },
     {
       "value": "#6B7280",
       "count": 3
     },
     {
-      "value": "#FFFFFF",
+      "value": "#0ea5e9",
       "count": 2
     },
     {
@@ -161,7 +165,7 @@
   "worstFiles": [
     {
       "file": "apps/mobile/components/DashboardSection.tsx",
-      "count": 4
+      "count": 5
     },
     {
       "file": "apps/mobile/components/ActionSheets/LinkDetailsSheet.tsx",
@@ -184,11 +188,11 @@
       "count": 1
     },
     {
-      "file": "apps/mobile/components/ActionSheets/ReaderSettingsSheet.tsx",
+      "file": "apps/mobile/components/LinkListing.tsx",
       "count": 1
     },
     {
-      "file": "apps/mobile/components/ActionSheets/SignUpSheet.tsx",
+      "file": "apps/mobile/components/ActionSheets/DeleteAccountSheet.tsx",
       "count": 1
     }
   ],
@@ -207,6 +211,20 @@
         "color: #9c00cc (line 66)",
         "color: #0096cc (line 72)",
         "color: #00cc99 (line 80)"
+      ]
+    },
+    {
+      "component": "LinkListing",
+      "location": "apps/mobile/components/LinkListing.tsx:42",
+      "entries": [
+        "color: #0ea5e9 (line 162)"
+      ]
+    },
+    {
+      "component": "DeleteAccountSheet",
+      "location": "apps/mobile/components/ActionSheets/DeleteAccountSheet.tsx:27",
+      "entries": [
+        "color: #FFFFFF (line 209)"
       ]
     },
     {
@@ -266,22 +284,7 @@
         "rounded-[0.375rem] (line 31)",
         "rounded-[0.375rem] (line 54)"
       ]
-    },
-    {
-      "component": "apps/web/components/Preservation/PreservationPageContent.tsx",
-      "location": "apps/web/components/Preservation/PreservationPageContent.tsx:26",
-      "entries": [
-        "mt-[3.1rem] (line 26)"
-      ]
-    },
-    {
-      "component": "apps/extension/safari/Linkwarden/Linkwarden/Resources/Style.css",
-      "location": "apps/extension/safari/Linkwarden/Linkwarden/Resources/Style.css:45",
-      "entries": [
-        "colour: #d70015 (line 45)",
-        "font size: 1em (line 61)"
-      ]
     }
   ],
-  "scanSeconds": 10
+  "scanSeconds": 13
 }

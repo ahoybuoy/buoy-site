@@ -3,18 +3,18 @@
   "owner": "openreplay",
   "name": "openreplay",
   "description": "Session replay, cobrowsing and product analytics you can self-host. Best for reproducing issues and iterating on your product.",
-  "stars": 13135,
+  "stars": 13138,
   "homepage": "https://openreplay.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "812d5544c5dc6ae8f9cc95c2c163f79d40c26dfa",
-  "generatedAt": "2026-11-11T15:16:55.201Z",
-  "cliVersion": "0.8.20",
-  "score": 68,
+  "commit": "046f5988e130f42d0fe8a0fefe47a7f93a12b6e0",
+  "generatedAt": "2026-11-12T16:19:03.045Z",
+  "cliVersion": "0.8.21",
+  "score": 67,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 28,
+      "score": 27,
       "max": 60
     },
     "tokenHealth": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 1650,
     "tokenCount": 39,
-    "hardcodedValueCount": 263,
+    "hardcodedValueCount": 272,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 263,
+    "totalDriftCount": 272,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -51,30 +51,30 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 3,
+    "highDensityFileCount": 4,
     "vendoredDriftCount": 0,
     "notedCount": 29,
     "topHardcodedColor": {
-      "value": "rgba(217, 219, 238, 0.7)",
-      "count": 4
+      "value": "#394EFF",
+      "count": 5
     },
     "worstFile": {
       "path": "frontend/app/components/Funnels/FunnelWidget/FunnelBar.tsx",
       "issueCount": 3
     },
-    "uniqueSpacingValues": 14,
+    "uniqueSpacingValues": 15,
     "detectedFrameworkNames": [
       "tailwind"
     ]
   },
   "suggestions": [
-    "Nearly there — just 263 hardcoded values left to tokenize. frontend/app/components/Funnels/FunnelWidget/FunnelBar.tsx has the most (3)"
+    "Nearly there — just 272 hardcoded values left to tokenize. frontend/app/components/Funnels/FunnelWidget/FunnelBar.tsx has the most (3)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 32,
-      "action": "Replace the hardcoded values in 259 of the 263 findings with tokens or scale steps"
+      "points": 33,
+      "action": "Replace the hardcoded values in 268 of the 272 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -130,18 +130,22 @@
     ]
   },
   "driftSummary": {
-    "total": 263,
+    "total": 272,
     "critical": 0,
-    "warning": 138,
-    "info": 125
+    "warning": 146,
+    "info": 126
   },
   "driftByType": {
-    "hardcoded-value": 263
+    "hardcoded-value": 272
   },
   "topColors": [
     {
       "value": "rgba(0,0,0,0.1)",
       "count": 14
+    },
+    {
+      "value": "#394EFF",
+      "count": 10
     },
     {
       "value": "#CC0000",
@@ -150,10 +154,6 @@
     {
       "value": "#f6f6f6",
       "count": 9
-    },
-    {
-      "value": "#394EFF",
-      "count": 8
     },
     {
       "value": "#394eff",
@@ -168,7 +168,7 @@
       "count": 6
     },
     {
-      "value": "#ddd",
+      "value": "#FCC100",
       "count": 6
     }
   ],
@@ -183,7 +183,7 @@
     },
     {
       "value": "20px",
-      "count": 41
+      "count": 42
     },
     {
       "value": "15px",
@@ -241,6 +241,13 @@
     }
   ],
   "samples": [
+    {
+      "component": "Layout",
+      "location": "frontend/app/layout/Layout.tsx:20",
+      "entries": [
+        "padding: 20px (line 98)"
+      ]
+    },
     {
       "component": "AlertForm",
       "location": "frontend/app/components/Alerts/AlertForm.tsx:65",
@@ -319,14 +326,7 @@
       "entries": [
         "backgroundColor: #f5f5f5 (line 55)"
       ]
-    },
-    {
-      "component": "FunnelBarData",
-      "location": "frontend/app/components/Funnels/FunnelWidget/FunnelBar.tsx:155",
-      "entries": [
-        "backgroundColor: #f5f5f5 (line 210)"
-      ]
     }
   ],
-  "scanSeconds": 31
+  "scanSeconds": 40
 }

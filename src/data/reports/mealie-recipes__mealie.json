@@ -3,13 +3,13 @@
   "owner": "mealie-recipes",
   "name": "mealie",
   "description": "Mealie is a self hosted recipe manager and meal planner with a RestAPI backend and a reactive frontend application built in Vue for a pleasant user experience for the whole family. Easily add recipes into your database by providing the url and mealie will automatically import the relevant data or add a family recipe with the UI editor",
-  "stars": 13877,
+  "stars": 13883,
   "homepage": "https://docs.mealie.io",
   "language": "Python",
   "defaultBranch": "mealie-next",
-  "commit": "15e3c6ac8730c2f5cd867433a7f0103495dcb9e7",
-  "generatedAt": "2026-11-11T15:15:35.262Z",
-  "cliVersion": "0.8.20",
+  "commit": "02af0b8b25e8da8c52f8bb8d038773a65bf73ce1",
+  "generatedAt": "2026-11-12T16:17:20.875Z",
+  "cliVersion": "0.8.21",
   "score": null,
   "tier": "N/A",
   "pillars": {
@@ -99,7 +99,7 @@
       },
       {
         "file": "frontend/app/components/Domain/Recipe/RecipePrintView.vue",
-        "line": 547,
+        "line": 534,
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "padding: 2px is a 2-3px optical adjustment"
@@ -319,5 +319,5 @@
       ]
     }
   ],
-  "scanSeconds": 5
+  "scanSeconds": 6
 }

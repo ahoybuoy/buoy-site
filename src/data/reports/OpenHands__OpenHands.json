@@ -3,13 +3,13 @@
   "owner": "OpenHands",
   "name": "OpenHands",
   "description": "🙌 OpenHands: AI-Driven Development",
-  "stars": 93223,
+  "stars": 93326,
   "homepage": "https://openhands.dev",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "471e36ee483b0c8c65c692d07c019b8aa6913753",
-  "generatedAt": "2026-11-11T14:59:07.005Z",
-  "cliVersion": "0.8.20",
+  "commit": "754abee4f0869dfc85dbd0acb6457f2e0ad17d4c",
+  "generatedAt": "2026-11-12T15:56:36.658Z",
+  "cliVersion": "0.8.21",
   "score": 94,
   "tier": "Great",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 817,
     "tokenCount": 334,
-    "hardcodedValueCount": 23,
+    "hardcodedValueCount": 24,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 25,
+    "totalDriftCount": 26,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -59,7 +59,7 @@
       "count": 4
     },
     "worstFile": {
-      "path": "src/components/conversation-events/chat/event-message-components/corrective-nudge-message.tsx",
+      "path": "src/components/features/mcp-logo-badge.tsx",
       "issueCount": 1
     },
     "detectedFrameworkNames": [
@@ -68,13 +68,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 23 hardcoded values left to tokenize"
+    "Nearly there — just 24 hardcoded values left to tokenize"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 6,
-      "action": "Replace the hardcoded values in 21 of the 23 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 22 of the 24 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     }
   ],
   "noted": {
@@ -83,13 +83,13 @@
     "samples": []
   },
   "driftSummary": {
-    "total": 25,
+    "total": 26,
     "critical": 0,
-    "warning": 16,
+    "warning": 17,
     "info": 9
   },
   "driftByType": {
-    "hardcoded-value": 23,
+    "hardcoded-value": 24,
     "repeated-pattern": 2
   },
   "topColors": [
@@ -118,11 +118,11 @@
       "count": 2
     },
     {
-      "value": "#4A67BD",
+      "value": "#FFFFFF",
       "count": 1
     },
     {
-      "value": "#597ff4",
+      "value": "#4A67BD",
       "count": 1
     }
   ],
@@ -188,6 +188,13 @@
   ],
   "samples": [
     {
+      "component": "McpLogoBadge",
+      "location": "src/components/features/mcp-logo-badge.tsx:42",
+      "entries": [
+        "color: #FFFFFF (line 75)"
+      ]
+    },
+    {
       "component": "src/components/conversation-events/chat/event-message-components/corrective-nudge-message.tsx",
       "location": "src/components/conversation-events/chat/event-message-components/corrective-nudge-message.tsx:19",
       "entries": [
@@ -243,9 +250,9 @@
     },
     {
       "component": "src/components/features/conversation-panel/cloud-new-conversation-menu.tsx",
-      "location": "src/components/features/conversation-panel/cloud-new-conversation-menu.tsx:333",
+      "location": "src/components/features/conversation-panel/cloud-new-conversation-menu.tsx:347",
       "entries": [
-        "dark:text-[#F87171] (line 333)"
+        "dark:text-[#F87171] (line 347)"
       ]
     },
     {
@@ -268,14 +275,7 @@
       "entries": [
         "text-[16px] (line 116)"
       ]
-    },
-    {
-      "component": "src/components/features/settings/acp-credentials-section.tsx",
-      "location": "src/components/features/settings/acp-credentials-section.tsx:49",
-      "entries": [
-        "dark:text-[#717888] (line 49)"
-      ]
     }
   ],
-  "scanSeconds": 18
+  "scanSeconds": 23
 }

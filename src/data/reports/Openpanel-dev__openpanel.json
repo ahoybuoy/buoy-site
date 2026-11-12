@@ -3,13 +3,13 @@
   "owner": "Openpanel-dev",
   "name": "openpanel",
   "description": "OpenPanel is an open-source web and product analytics platform, an open-source alternative to Mixpanel with optional self-hosting.",
-  "stars": 7286,
+  "stars": 7292,
   "homepage": "https://openpanel.dev",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "a5a6eb7d62c9579620ec5e3fbfd4ce760f3d8073",
-  "generatedAt": "2026-11-11T14:59:38.171Z",
-  "cliVersion": "0.8.20",
+  "generatedAt": "2026-11-12T15:57:16.256Z",
+  "cliVersion": "0.8.21",
   "score": 88,
   "tier": "Great",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 1619,
     "tokenCount": 243,
-    "hardcodedValueCount": 96,
+    "hardcodedValueCount": 98,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 97,
+    "totalDriftCount": 99,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 1,
     "orphanedComponentCount": 0,
@@ -59,8 +59,8 @@
       "count": 4
     },
     "worstFile": {
-      "path": "apps/start/src/components/overview/overview-widget-table.tsx",
-      "issueCount": 3
+      "path": "apps/public/src/components/dashboard-mock/profiles.tsx",
+      "issueCount": 4
     },
     "detectedFrameworkNames": [
       "react",
@@ -71,13 +71,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 96 hardcoded values left to tokenize. apps/start/src/components/overview/overview-widget-table.tsx has the most (3)"
+    "Nearly there — just 98 hardcoded values left to tokenize. apps/public/src/components/dashboard-mock/profiles.tsx has the most (4)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 12,
-      "action": "Replace the hardcoded values in 92 of the 96 findings with tokens or scale steps, and remove or reuse 1 unused component or repeated pattern"
+      "action": "Replace the hardcoded values in 94 of the 98 findings with tokens or scale steps, and remove or reuse 1 unused component or repeated pattern"
     }
   ],
   "noted": {
@@ -132,13 +132,13 @@
     ]
   },
   "driftSummary": {
-    "total": 97,
+    "total": 99,
     "critical": 0,
-    "warning": 12,
+    "warning": 14,
     "info": 85
   },
   "driftByType": {
-    "hardcoded-value": 96,
+    "hardcoded-value": 98,
     "repeated-pattern": 1
   },
   "topColors": [
@@ -171,7 +171,7 @@
       "count": 2
     },
     {
-      "value": "#10b981",
+      "value": "rgba(0,0,0,0.05)",
       "count": 1
     }
   ],
@@ -219,16 +219,20 @@
       "count": 39
     },
     {
-      "file": "apps/public/src/components/dashboard-mock/product-analytics.tsx",
-      "count": 29
+      "file": "apps/public/src/components/dashboard-mock/revenue.tsx",
+      "count": 31
     },
     {
-      "file": "apps/public/src/components/dashboard-mock/revenue.tsx",
+      "file": "apps/public/src/components/dashboard-mock/product-analytics.tsx",
       "count": 29
     },
     {
       "file": "apps/public/src/components/dashboard-mock/manage.tsx",
       "count": 28
+    },
+    {
+      "file": "apps/public/src/components/dashboard-mock/profiles.tsx",
+      "count": 25
     },
     {
       "file": "apps/public/src/components/dashboard-mock/chat.tsx",
@@ -237,13 +241,24 @@
     {
       "file": "apps/public/src/components/dashboard-mock/manage-sharing.tsx",
       "count": 24
-    },
-    {
-      "file": "apps/public/src/components/dashboard-mock/profiles.tsx",
-      "count": 24
     }
   ],
   "samples": [
+    {
+      "component": "ActivityHeatmap",
+      "location": "apps/public/src/components/dashboard-mock/profiles.tsx:57",
+      "entries": [
+        "backgroundColor: rgba(0,0,0,0.05) (line 79)"
+      ]
+    },
+    {
+      "component": "SharePie",
+      "location": "apps/public/src/components/dashboard-mock/revenue.tsx:105",
+      "entries": [
+        "background: #059669 (line 110)",
+        "background: #e5e5e5 (line 110)"
+      ]
+    },
     {
       "component": "OverviewListModal",
       "location": "apps/start/src/components/overview/overview-list-modal.tsx:70",
@@ -315,22 +330,7 @@
         "tracking-[-0.03em] (line 85)",
         "[&_h2]:tracking-[-0.02em] (line 211)"
       ]
-    },
-    {
-      "component": "apps/public/src/app/(content)/articles/[articleSlug]/page.tsx",
-      "location": "apps/public/src/app/(content)/articles/[articleSlug]/page.tsx:122",
-      "entries": [
-        "leading-[1.1] (line 122)"
-      ]
-    },
-    {
-      "component": "apps/public/src/app/(content)/compare/[slug]/_components/compare-overview.tsx",
-      "location": "apps/public/src/app/(content)/compare/[slug]/_components/compare-overview.tsx:15",
-      "entries": [
-        "leading-[1.1] (line 15)",
-        "tracking-[-0.02em] (line 15)"
-      ]
     }
   ],
-  "scanSeconds": 31
+  "scanSeconds": 39
 }

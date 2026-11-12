@@ -3,13 +3,13 @@
   "owner": "gitroomhq",
   "name": "postiz-app",
   "description": "📨 The ultimate agentic social media scheduling tool 🤖",
-  "stars": 41355,
+  "stars": 41445,
   "homepage": "https://postiz.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "b31d29fa4132a08aa82f728227df2938ccab7972",
-  "generatedAt": "2026-11-11T15:08:09.584Z",
-  "cliVersion": "0.8.20",
+  "commit": "4823080b413b9d3dc625d466939eb43b9657c66c",
+  "generatedAt": "2026-11-12T16:08:02.327Z",
+  "cliVersion": "0.8.21",
   "score": 40,
   "tier": "OK",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 508,
+    "componentCount": 514,
     "tokenCount": 113,
-    "hardcodedValueCount": 485,
+    "hardcodedValueCount": 491,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 485,
+    "totalDriftCount": 491,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -51,12 +51,12 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 109,
+    "highDensityFileCount": 110,
     "vendoredDriftCount": 4,
     "notedCount": 62,
     "topHardcodedColor": {
       "value": "#612BD3",
-      "count": 32
+      "count": 34
     },
     "worstFile": {
       "path": "apps/frontend/src/components/launches/ai.image.tsx",
@@ -71,14 +71,14 @@
     ]
   },
   "suggestions": [
-    "481 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/frontend/src/components/launches/ai.image.tsx (5 issues)",
+    "487 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/frontend/src/components/launches/ai.image.tsx (5 issues)",
     "4 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 480 of the 481 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 486 of the 487 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -132,13 +132,13 @@
     ]
   },
   "driftSummary": {
-    "total": 485,
+    "total": 491,
     "critical": 0,
-    "warning": 62,
-    "info": 423
+    "warning": 64,
+    "info": 427
   },
   "driftByType": {
-    "hardcoded-value": 485
+    "hardcoded-value": 491
   },
   "topColors": [
     {
@@ -147,7 +147,7 @@
     },
     {
       "value": "#612BD3",
-      "count": 68
+      "count": 72
     },
     {
       "value": "#5f6b7c",
@@ -177,27 +177,27 @@
   "topSpacing": [
     {
       "value": "16px",
-      "count": 291
+      "count": 293
     },
     {
       "value": "8px",
-      "count": 283
+      "count": 285
     },
     {
       "value": "12px",
-      "count": 275
+      "count": 279
     },
     {
       "value": "10px",
-      "count": 232
+      "count": 239
     },
     {
       "value": "20px",
-      "count": 225
+      "count": 228
     },
     {
       "value": "6px",
-      "count": 165
+      "count": 168
     },
     {
       "value": "4px",
@@ -205,7 +205,7 @@
     },
     {
       "value": "24px",
-      "count": 107
+      "count": 109
     }
   ],
   "worstFiles": [
@@ -215,7 +215,7 @@
     },
     {
       "file": "apps/frontend/src/components/onboarding/onboarding.modal.tsx",
-      "count": 213
+      "count": 214
     },
     {
       "file": "apps/frontend/src/components/public-api/public.component.tsx",
@@ -227,11 +227,11 @@
     },
     {
       "file": "apps/frontend/src/components/billing/main.billing.component.tsx",
-      "count": 115
+      "count": 117
     },
     {
       "file": "apps/frontend/src/components/new-launch/manage.modal.tsx",
-      "count": 103
+      "count": 116
     },
     {
       "file": "apps/frontend/src/components/media/media.component.tsx",
@@ -239,7 +239,7 @@
     },
     {
       "file": "apps/frontend/src/components/launches/calendar.tsx",
-      "count": 92
+      "count": 93
     }
   ],
   "samples": [
@@ -336,5 +336,5 @@
       ]
     }
   ],
-  "scanSeconds": 14
+  "scanSeconds": 19
 }

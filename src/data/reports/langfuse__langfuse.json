@@ -3,13 +3,13 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source AI engineering platform: AI Gateway, agent observability, evals, and prompt/skill management, built on OpenTelemetry. One open platform for every AI call and every agent. Self-host or use Langfuse Cloud.",
-  "stars": 37305,
+  "stars": 37358,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "a8a4c1f2cab460a1eb592894c463b07d6a68b574",
-  "generatedAt": "2026-11-11T14:54:51.479Z",
-  "cliVersion": "0.8.20",
+  "commit": "d890503ba31b6671995b07120c69f9ed156b0568",
+  "generatedAt": "2026-11-12T15:51:05.642Z",
+  "cliVersion": "0.8.21",
   "score": 92,
   "tier": "Great",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2536,
-    "tokenCount": 351,
-    "hardcodedValueCount": 78,
+    "componentCount": 2575,
+    "tokenCount": 352,
+    "hardcodedValueCount": 79,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 79,
+    "totalDriftCount": 80,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -55,11 +55,11 @@
     "vendoredDriftCount": 0,
     "notedCount": 5,
     "topHardcodedColor": {
-      "value": "#6b7280",
-      "count": 1
+      "value": "#e5e7eb",
+      "count": 2
     },
     "worstFile": {
-      "path": "web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx",
+      "path": "web/src/features/traces/components/AdvancedJsonViewer/SimpleMultiSectionViewer.tsx",
       "issueCount": 2
     },
     "uniqueSpacingValues": 8,
@@ -70,14 +70,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 78 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx has the most (2)",
+    "Nearly there — just 79 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/SimpleMultiSectionViewer.tsx has the most (2)",
     "1 deprecated pattern — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 6,
-      "action": "Replace the hardcoded values in 72 of the 78 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 73 of the 79 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -129,16 +129,20 @@
     ]
   },
   "driftSummary": {
-    "total": 79,
+    "total": 80,
     "critical": 0,
-    "warning": 3,
-    "info": 76
+    "warning": 5,
+    "info": 75
   },
   "driftByType": {
     "deprecated-pattern": 1,
-    "hardcoded-value": 78
+    "hardcoded-value": 79
   },
   "topColors": [
+    {
+      "value": "#e5e7eb",
+      "count": 2
+    },
     {
       "value": "#6b7280",
       "count": 1
@@ -224,7 +228,21 @@
       "component": "SimpleMultiSectionViewerInner",
       "location": "web/src/features/traces/components/AdvancedJsonViewer/SimpleMultiSectionViewer.tsx:59",
       "entries": [
+        "borderColor: #e5e7eb (line 400)"
+      ]
+    },
+    {
+      "component": "SimpleMultiSectionViewerInner",
+      "location": "web/src/features/traces/components/AdvancedJsonViewer/SimpleMultiSectionViewer.tsx:59",
+      "entries": [
         "paddingBottom: 0.5rem (line 431)"
+      ]
+    },
+    {
+      "component": "VirtualizedMultiSectionViewerInner",
+      "location": "web/src/features/traces/components/AdvancedJsonViewer/VirtualizedMultiSectionViewer.tsx:66",
+      "entries": [
+        "borderColor: #e5e7eb (line 361)"
       ]
     },
     {
@@ -286,25 +304,7 @@
       "entries": [
         "color: #6b7280 (line 62)"
       ]
-    },
-    {
-      "component": "MultiSectionJsonViewerHeader",
-      "location": "web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx:24",
-      "entries": [
-        "marginRight: 8px (line 44)",
-        "marginLeft: 8px (line 61)",
-        "fontSize: 0.65rem (line 64)"
-      ]
-    },
-    {
-      "component": "web/src/components/ChatMessages/ChatMessageComponent.tsx",
-      "location": "web/src/components/ChatMessages/ChatMessageComponent.tsx:305",
-      "entries": [
-        "text-[9px] (line 305)",
-        "text-[10px] (line 313)",
-        "text-[9px] (line 335)"
-      ]
     }
   ],
-  "scanSeconds": 72
+  "scanSeconds": 95
 }

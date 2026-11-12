@@ -3,13 +3,13 @@
   "owner": "makeplane",
   "name": "plane",
   "description": "🔥🔥🔥 Open-source Jira, Linear, Monday, and ClickUp alternative. Plane is a modern project management platform to manage tasks, sprints, docs, and triage.",
-  "stars": 62293,
+  "stars": 62361,
   "homepage": "http://plane.so",
   "language": "TypeScript",
   "defaultBranch": "preview",
-  "commit": "dbdf6117c279d3b4b93ae2cff00f36d27281d2ab",
-  "generatedAt": "2026-11-11T14:48:05.045Z",
-  "cliVersion": "0.8.20",
+  "commit": "9cefae892c4c28ee60400abca12e4ababe74cf96",
+  "generatedAt": "2026-11-12T15:42:20.501Z",
+  "cliVersion": "0.8.21",
   "score": 94,
   "tier": "Great",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 928,
     "tokenCount": 82,
-    "hardcodedValueCount": 30,
+    "hardcodedValueCount": 33,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 30,
+    "totalDriftCount": 33,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -52,10 +52,10 @@
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
-    "vendoredDriftCount": 3,
+    "vendoredDriftCount": 4,
     "notedCount": 2,
     "topHardcodedColor": {
-      "value": "#3f76ff",
+      "value": "#000000",
       "count": 2
     },
     "worstFile": {
@@ -68,14 +68,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 27 hardcoded values left to tokenize",
-    "3 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
+    "Nearly there — just 29 hardcoded values left to tokenize",
+    "4 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 6,
-      "action": "Replace the hardcoded values in 25 of the 27 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 27 of the 29 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -101,13 +101,13 @@
     ]
   },
   "driftSummary": {
-    "total": 30,
+    "total": 33,
     "critical": 0,
-    "warning": 9,
+    "warning": 12,
     "info": 21
   },
   "driftByType": {
-    "hardcoded-value": 30
+    "hardcoded-value": 33
   },
   "topColors": [
     {
@@ -115,7 +115,15 @@
       "count": 4
     },
     {
+      "value": "#000000",
+      "count": 2
+    },
+    {
       "value": "#ffffff",
+      "count": 1
+    },
+    {
+      "value": "#000",
       "count": 1
     },
     {
@@ -132,14 +140,6 @@
     },
     {
       "value": "#f5f7fe",
-      "count": 1
-    },
-    {
-      "value": "#387ED1",
-      "count": 1
-    },
-    {
-      "value": "#028375",
       "count": 1
     }
   ],
@@ -213,10 +213,31 @@
   ],
   "samples": [
     {
+      "component": "ViewIssueLabel",
+      "location": "apps/web/components/issues/label.tsx:16",
+      "entries": [
+        "backgroundColor: #000000 (line 33)"
+      ]
+    },
+    {
       "component": "PDFDocument",
       "location": "apps/web/components/editor/pdf/document.tsx:221",
       "entries": [
         "backgroundColor: #ffffff (line 229)"
+      ]
+    },
+    {
+      "component": "LabelName",
+      "location": "apps/web/components/labels/label-block/label-name.tsx:15",
+      "entries": [
+        "color: #000 (line 23)"
+      ]
+    },
+    {
+      "component": "LabelActivityChip",
+      "location": "apps/web/components/issues/issue-detail/issue-activity/activity/actions/label-activity-chip.tsx:11",
+      "entries": [
+        "backgroundColor: #000000 (line 19)"
       ]
     },
     {
@@ -277,29 +298,7 @@
       "entries": [
         "shadow-[8px_22px_22px_10px_rgba(0,0,0,0.05)] (line 283)"
       ]
-    },
-    {
-      "component": "apps/web/components/onboarding/tour/root.tsx",
-      "location": "apps/web/components/onboarding/tour/root.tsx:96",
-      "entries": [
-        "rounded-[10px] (line 96)",
-        "rounded-[10px] (line 135)"
-      ]
-    },
-    {
-      "component": "apps/web/components/onboarding/tour/sidebar.tsx",
-      "location": "apps/web/components/onboarding/tour/sidebar.tsx:63",
-      "entries": [
-        "border-l-[3px] (line 63)"
-      ]
-    },
-    {
-      "component": "apps/web/components/pages/editor/ai/menu.tsx",
-      "location": "apps/web/components/pages/editor/ai/menu.tsx:276",
-      "entries": [
-        "pl-[54.8px] (line 276)"
-      ]
     }
   ],
-  "scanSeconds": 31
+  "scanSeconds": 40
 }

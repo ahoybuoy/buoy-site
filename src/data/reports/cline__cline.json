@@ -3,18 +3,18 @@
   "owner": "cline",
   "name": "cline",
   "description": "Autonomous coding agent as an SDK, IDE extension, or CLI assistant.",
-  "stars": 71523,
+  "stars": 71559,
   "homepage": "https://cline.bot",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "c5df41f937c496ce8c8e689ba58776593c703dfa",
-  "generatedAt": "2026-11-11T15:03:30.417Z",
-  "cliVersion": "0.8.20",
-  "score": 77,
+  "commit": "50e77bc1e8f7ab023b7986821e4b5f82ff51b8c4",
+  "generatedAt": "2026-11-12T16:02:06.060Z",
+  "cliVersion": "0.8.21",
+  "score": 76,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 37,
+      "score": 36,
       "max": 60
     },
     "tokenHealth": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 1084,
     "tokenCount": 826,
-    "hardcodedValueCount": 134,
+    "hardcodedValueCount": 137,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 134,
+    "totalDriftCount": 137,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -55,12 +55,12 @@
     "vendoredDriftCount": 7,
     "notedCount": 10,
     "topHardcodedColor": {
-      "value": "#176f2c",
+      "value": "#fff",
       "count": 2
     },
     "worstFile": {
-      "path": "apps/vscode/webview-ui/src/components/chat/chat-view/components/layout/InputSection.tsx",
-      "issueCount": 3
+      "path": "apps/vscode/webview-ui/src/components/settings/providers/OcaModelPicker.tsx",
+      "issueCount": 4
     },
     "uniqueSpacingValues": 16,
     "detectedFrameworkNames": [
@@ -71,15 +71,15 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 127 hardcoded values left to tokenize. apps/vscode/webview-ui/src/components/chat/chat-view/components/layout/InputSection.tsx has the most (3)",
+    "Nearly there — just 130 hardcoded values left to tokenize. apps/vscode/webview-ui/src/components/settings/providers/OcaModelPicker.tsx has the most (4)",
     "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
     "16 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 23,
-      "action": "Replace the hardcoded values in 125 of the 127 findings with tokens or scale steps"
+      "points": 24,
+      "action": "Replace the hardcoded values in 128 of the 130 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -134,15 +134,19 @@
     ]
   },
   "driftSummary": {
-    "total": 134,
+    "total": 137,
     "critical": 0,
-    "warning": 6,
-    "info": 128
+    "warning": 8,
+    "info": 129
   },
   "driftByType": {
-    "hardcoded-value": 134
+    "hardcoded-value": 137
   },
   "topColors": [
+    {
+      "value": "#fff",
+      "count": 3
+    },
     {
       "value": "#176f2c",
       "count": 2
@@ -164,26 +168,22 @@
       "count": 2
     },
     {
-      "value": "oklch(0.82 0.006 270)",
+      "value": "#0e639c",
       "count": 1
     },
     {
-      "value": "oklch(0.72 0.01 270)",
-      "count": 1
-    },
-    {
-      "value": "oklch(0.75 0.12 165 / 0.25)",
+      "value": "#0078d4",
       "count": 1
     }
   ],
   "topSpacing": [
     {
       "value": "12px",
-      "count": 35
+      "count": 36
     },
     {
       "value": "8px",
-      "count": 26
+      "count": 27
     },
     {
       "value": "5px",
@@ -236,11 +236,11 @@
       "count": 13
     },
     {
-      "file": "apps/vscode/webview-ui/src/components/mcp/configuration/tabs/installed/server-row/McpPromptRow.tsx",
-      "count": 9
+      "file": "apps/vscode/webview-ui/src/components/settings/providers/OcaModelPicker.tsx",
+      "count": 11
     },
     {
-      "file": "apps/vscode/webview-ui/src/components/mcp/configuration/tabs/installed/server-row/McpToolRow.tsx",
+      "file": "apps/vscode/webview-ui/src/components/mcp/configuration/tabs/installed/server-row/McpPromptRow.tsx",
       "count": 9
     }
   ],
@@ -341,5 +341,5 @@
       ]
     }
   ],
-  "scanSeconds": 24
+  "scanSeconds": 30
 }

@@ -3,18 +3,18 @@
   "owner": "lobehub",
   "name": "lobehub",
   "description": "🤯 LobeHub - Super-Agents on Your Team. Add super-agents to the chats your team already uses.They take on work by themselves and get better every week.",
-  "stars": 84992,
+  "stars": 85156,
   "homepage": "https://lobehub.com",
   "language": "TypeScript",
   "defaultBranch": "canary",
-  "commit": "b7c15746b94b38327168ebba46637d6320e79101",
-  "generatedAt": "2026-11-11T15:14:01.362Z",
-  "cliVersion": "0.8.20",
-  "score": 99,
+  "commit": "6d52b97abe13765ec2eea81c32ed7c9473ce2cf0",
+  "generatedAt": "2026-11-12T16:15:23.469Z",
+  "cliVersion": "0.8.21",
+  "score": 94,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 59,
+      "score": 58,
       "max": 60
     },
     "tokenHealth": {
@@ -26,22 +26,22 @@
       "max": 10
     },
     "criticalIssues": {
-      "score": 10,
+      "score": 6,
       "max": 10
     }
   },
   "metrics": {
-    "componentCount": 4873,
+    "componentCount": 4895,
     "tokenCount": 7,
-    "hardcodedValueCount": 32,
+    "hardcodedValueCount": 38,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
-    "criticalCount": 0,
+    "criticalCount": 2,
     "accessibilityConflictCount": 0,
-    "colorContrastCount": 0,
+    "colorContrastCount": 2,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 32,
+    "totalDriftCount": 40,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -56,11 +56,11 @@
     "notedCount": 0,
     "topHardcodedColor": {
       "value": "#000",
-      "count": 4
+      "count": 5
     },
     "worstFile": {
-      "path": "src/features/Portal/GroupThread/Body/ThreadChatList.tsx",
-      "issueCount": 2
+      "path": "src/spa/router/authRouter.config.tsx",
+      "issueCount": 3
     },
     "uniqueSpacingValues": 10,
     "detectedFrameworkNames": [
@@ -70,13 +70,19 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 32 hardcoded values left to tokenize. src/features/Portal/GroupThread/Body/ThreadChatList.tsx has the most (2)"
+    "Nearly there — just 38 hardcoded values left to tokenize. src/spa/router/authRouter.config.tsx has the most (3)",
+    "2 color contrast issues — fix immediately"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 1,
-      "action": "Replace the hardcoded values in 20 of the 32 findings with tokens or scale steps"
+      "points": 2,
+      "action": "Replace the hardcoded values in 26 of the 38 findings with tokens or scale steps"
+    },
+    {
+      "pillar": "criticalIssues",
+      "points": 4,
+      "action": "Fix 2 colour contrast failures"
     }
   ],
   "noted": {
@@ -85,45 +91,46 @@
     "samples": []
   },
   "driftSummary": {
-    "total": 24,
-    "critical": 0,
-    "warning": 10,
+    "total": 29,
+    "critical": 2,
+    "warning": 13,
     "info": 14
   },
   "driftByType": {
-    "hardcoded-value": 24
+    "hardcoded-value": 27,
+    "color-contrast": 2
   },
   "topColors": [
     {
       "value": "#000",
-      "count": 4
+      "count": 5
     },
     {
       "value": "#fff",
+      "count": 4
+    },
+    {
+      "value": "rgba(0,0,0,0.4)",
       "count": 2
     },
     {
-      "value": "#f59e0b",
-      "count": 2
+      "value": "#1668dc",
+      "count": 1
+    },
+    {
+      "value": "#f8f8f8",
+      "count": 1
+    },
+    {
+      "value": "#e6e6e6",
+      "count": 1
+    },
+    {
+      "value": "#1a1a1a",
+      "count": 1
     },
     {
       "value": "#5865F2",
-      "count": 1
-    },
-    {
-      "value": "#999",
-      "count": 1
-    },
-    {
-      "value": "rgba(0,0,0,0.9)",
-      "count": 1
-    },
-    {
-      "value": "#9ca3af",
-      "count": 1
-    },
-    {
-      "value": "#374151",
       "count": 1
     }
   ],
@@ -171,8 +178,8 @@
       "count": 15
     },
     {
-      "file": "src/features/Conversation/ChatList/components/AutoScroll/DebugInspector.tsx",
-      "count": 5
+      "file": "src/spa/router/authRouter.config.tsx",
+      "count": 4
     },
     {
       "file": "src/components/404/index.tsx",
@@ -187,11 +194,11 @@
       "count": 3
     },
     {
-      "file": "src/features/WorkspaceSetting/AdminOnly.tsx",
+      "file": "src/features/CommunityWorkspaceSettings/index.tsx",
       "count": 2
     },
     {
-      "file": "src/features/Portal/GroupThread/Body/ThreadChatList.tsx",
+      "file": "src/features/WorkspaceSetting/AdminOnly.tsx",
       "count": 2
     }
   ],
@@ -229,6 +236,21 @@
       ]
     },
     {
+      "component": "UsageTrendChart",
+      "location": "src/features/AgentUsage/UsageTrendChart.tsx:24",
+      "entries": [
+        "color: #1668dc (line 99)"
+      ]
+    },
+    {
+      "component": "CommunityWorkspaceSettings",
+      "location": "src/features/CommunityWorkspaceSettings/index.tsx:243",
+      "entries": [
+        "background: rgba(0,0,0,0.4) (line 617)",
+        "color: #fff (line 633)"
+      ]
+    },
+    {
       "component": "PageExplorerPlaceholder",
       "location": "src/features/PageExplorer/PageExplorerPlaceholder.tsx:82",
       "entries": [
@@ -241,6 +263,15 @@
       "entries": [
         "marginTop: 1em (line 30)",
         "marginBottom: 2em (line 33)"
+      ]
+    },
+    {
+      "component": "AuthErrorBoundary",
+      "location": "src/spa/router/authRouter.config.tsx:29",
+      "entries": [
+        "background: #000 (line 44)",
+        "background: #f8f8f8 (line 44)",
+        "color: #e6e6e6 (line 45)"
       ]
     },
     {
@@ -263,30 +294,7 @@
       "entries": [
         "fontSize: 14px (line 134)"
       ]
-    },
-    {
-      "component": "TraceIdError",
-      "location": "src/features/Conversation/Error/TraceIdError.tsx:24",
-      "entries": [
-        "color: #5865F2 (line 90)"
-      ]
-    },
-    {
-      "component": "List",
-      "location": "src/features/LibraryModal/AssignKnowledgeBase/List.tsx:26",
-      "entries": [
-        "gap: 16px (line 154)"
-      ]
-    },
-    {
-      "component": "TotalScore",
-      "location": "src/features/MCPPluginDetail/Score/TotalScore.tsx:123",
-      "entries": [
-        "fontSize: 14px (line 153)",
-        "marginBottom: 12px (line 153)",
-        "fontSize: 16px (line 288)"
-      ]
     }
   ],
-  "scanSeconds": 136
+  "scanSeconds": 174
 }

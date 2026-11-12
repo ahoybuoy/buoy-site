@@ -3,13 +3,13 @@
   "owner": "directus",
   "name": "directus",
   "description": "The flexible backend for all your projects 🐰 Turn your DB into a headless CMS, admin panels, or apps with a custom UI, instant APIs, auth & more.",
-  "stars": 38693,
+  "stars": 38701,
   "homepage": "https://directus.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "afb324195edb9e17ef59be0aa2c173bec358a5dd",
-  "generatedAt": "2026-11-11T15:03:52.589Z",
-  "cliVersion": "0.8.20",
+  "commit": "33a0f9c60c7b6c96bc93f447bc28d8c664dc188e",
+  "generatedAt": "2026-11-12T16:02:33.447Z",
+  "cliVersion": "0.8.21",
   "score": 34,
   "tier": "Bad",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 586,
+    "componentCount": 592,
     "tokenCount": 38,
-    "hardcodedValueCount": 248,
+    "hardcodedValueCount": 250,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 254,
+    "totalDriftCount": 256,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -63,14 +63,14 @@
     ]
   },
   "suggestions": [
-    "248 hardcoded values to extract. Focus on app/src/components/v-chip.vue (2 issues)",
+    "250 hardcoded values to extract. Focus on app/src/components/v-chip.vue (2 issues)",
     "6 deprecated patterns — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 247 of the 248 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 249 of the 250 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -130,14 +130,14 @@
     ]
   },
   "driftSummary": {
-    "total": 254,
+    "total": 256,
     "critical": 0,
     "warning": 47,
-    "info": 207
+    "info": 209
   },
   "driftByType": {
     "deprecated-pattern": 6,
-    "hardcoded-value": 248
+    "hardcoded-value": 250
   },
   "topColors": [
     {
@@ -188,7 +188,7 @@
     },
     {
       "value": "0.5rem",
-      "count": 33
+      "count": 34
     },
     {
       "value": "0.3125rem",
@@ -343,5 +343,5 @@
       ]
     }
   ],
-  "scanSeconds": 12
+  "scanSeconds": 16
 }

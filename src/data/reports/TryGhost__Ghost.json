@@ -3,18 +3,18 @@
   "owner": "TryGhost",
   "name": "Ghost",
   "description": "Independent technology for modern publishing, memberships, subscriptions and newsletters.",
-  "stars": 55773,
+  "stars": 55793,
   "homepage": "https://ghost.org",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "81655960320c449b178138ab60af8c1036e7519a",
-  "generatedAt": "2026-11-11T14:50:42.692Z",
-  "cliVersion": "0.8.20",
-  "score": 72,
+  "commit": "1217659d00cb1294588e44792e4bb915b48e75a2",
+  "generatedAt": "2026-11-12T15:45:43.747Z",
+  "cliVersion": "0.8.21",
+  "score": 71,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 32,
+      "score": 31,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1959,
-    "tokenCount": 853,
-    "hardcodedValueCount": 277,
+    "componentCount": 1958,
+    "tokenCount": 856,
+    "hardcodedValueCount": 282,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 277,
+    "totalDriftCount": 282,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -51,7 +51,7 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 10,
+    "highDensityFileCount": 12,
     "vendoredDriftCount": 2,
     "notedCount": 36,
     "topHardcodedColor": {
@@ -72,14 +72,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 275 hardcoded values left to tokenize. apps/activitypub/src/views/inbox/components/customizer.tsx has the most (4)",
+    "Nearly there — just 280 hardcoded values left to tokenize. apps/activitypub/src/views/inbox/components/customizer.tsx has the most (4)",
     "2 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 28,
-      "action": "Replace the hardcoded values in 271 of the 275 findings with tokens or scale steps"
+      "points": 29,
+      "action": "Replace the hardcoded values in 276 of the 280 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -135,18 +135,18 @@
     ]
   },
   "driftSummary": {
-    "total": 277,
+    "total": 282,
     "critical": 0,
-    "warning": 55,
+    "warning": 60,
     "info": 222
   },
   "driftByType": {
-    "hardcoded-value": 277
+    "hardcoded-value": 282
   },
   "topColors": [
     {
       "value": "#fff",
-      "count": 37
+      "count": 38
     },
     {
       "value": "#c8ccd3",
@@ -157,15 +157,15 @@
       "count": 8
     },
     {
+      "value": "#ffffff",
+      "count": 7
+    },
+    {
       "value": "#ddd",
       "count": 7
     },
     {
       "value": "#8a8f98",
-      "count": 6
-    },
-    {
-      "value": "#ffffff",
       "count": 6
     },
     {
@@ -247,6 +247,20 @@
   ],
   "samples": [
     {
+      "component": "AddDetailsPopup",
+      "location": "apps/comments-ui/src/components/popups/add-details-popup.tsx:12",
+      "entries": [
+        "backgroundColor: #000000 (line 229)"
+      ]
+    },
+    {
+      "component": "ReportPopup",
+      "location": "apps/comments-ui/src/components/popups/report-popup.tsx:8",
+      "entries": [
+        "backgroundColor: #000000 (line 75)"
+      ]
+    },
+    {
       "component": "RetentionOfferSection",
       "location": "apps/portal/src/components/pages/account-plan-page.jsx:396",
       "entries": [
@@ -260,6 +274,28 @@
       "location": "apps/portal/src/components/pages/newsletter-selection-page.jsx:97",
       "entries": [
         "marginBottom: 20px (line 132)"
+      ]
+    },
+    {
+      "component": "ColorPicker",
+      "location": "koenig/koenig-lexical/src/components/ui/ColorPicker.tsx:11",
+      "entries": [
+        "color: #ffffff (line 82)"
+      ]
+    },
+    {
+      "component": "ProfileCard",
+      "location": "apps/activitypub/src/views/preferences/components/profile.tsx:53",
+      "entries": [
+        "color: rgba(255, 255, 255, 0.2) (line 163)",
+        "color: #fff (line 207)"
+      ]
+    },
+    {
+      "component": "OfficialThemes",
+      "location": "apps/admin/src/settings/site/theme/official-themes.tsx:33",
+      "entries": [
+        "background: #15171a (line 143)"
       ]
     },
     {
@@ -302,46 +338,7 @@
       "entries": [
         "mt-[-7px] (line 56)"
       ]
-    },
-    {
-      "component": "apps/activitypub/src/components/global/suggested-profiles.tsx",
-      "location": "apps/activitypub/src/components/global/suggested-profiles.tsx:102",
-      "entries": [
-        "mb-[-15px] (line 102)"
-      ]
-    },
-    {
-      "component": "apps/activitypub/src/components/layout/error/error.tsx",
-      "location": "apps/activitypub/src/components/layout/error/error.tsx:112",
-      "entries": [
-        "rounded-[20px] (line 112)"
-      ]
-    },
-    {
-      "component": "apps/activitypub/src/components/layout/error/error.tsx",
-      "location": "apps/activitypub/src/components/layout/error/error.tsx:115",
-      "entries": [
-        "text-[2.9rem] (line 115)",
-        "leading-[1.3] (line 115)",
-        "tracking-[-0.021em] (line 115)"
-      ]
-    },
-    {
-      "component": "apps/activitypub/src/components/layout/header/header.tsx",
-      "location": "apps/activitypub/src/components/layout/header/header.tsx:36",
-      "entries": [
-        "mr-[-9px] (line 36)",
-        "max-lg:pr-[15.5px] (line 68)",
-        "max-md:ml-[10px] (line 70)"
-      ]
-    },
-    {
-      "component": "apps/activitypub/src/components/layout/header/header.tsx",
-      "location": "apps/activitypub/src/components/layout/header/header.tsx:30",
-      "entries": [
-        "text-[1.5rem] (line 30)"
-      ]
     }
   ],
-  "scanSeconds": 38
+  "scanSeconds": 49
 }

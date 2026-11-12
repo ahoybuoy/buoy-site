@@ -3,13 +3,13 @@
   "owner": "windmill-labs",
   "name": "windmill",
   "description": "Code-first platform for workflows, apps and AI agents, on the fastest self-hostable orchestrator (benchmarked against Airflow, Prefect and Temporal). Business teams build with AI, engineers control what ships. Open-source alternative to Lovable, Retool and n8n.",
-  "stars": 18528,
+  "stars": 18548,
   "homepage": "https://windmill.dev",
   "language": "Rust",
   "defaultBranch": "main",
-  "commit": "f0288586e3706d1eb5400e7b5433385c4d4b2ea8",
-  "generatedAt": "2026-11-11T15:22:20.826Z",
-  "cliVersion": "0.8.20",
+  "commit": "260b480df6418dede84fbab50a19d12d1bc6f221",
+  "generatedAt": "2026-11-12T16:25:54.926Z",
+  "cliVersion": "0.8.21",
   "score": 86,
   "tier": "Great",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2004,
+    "componentCount": 2009,
     "tokenCount": 421,
-    "hardcodedValueCount": 102,
+    "hardcodedValueCount": 103,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 106,
+    "totalDriftCount": 107,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -66,14 +66,14 @@
     "detectedFrameworkNames": []
   },
   "suggestions": [
-    "Nearly there — just 102 hardcoded values left to tokenize. frontend/src/lib/components/flows/propPicker/OutputPickerInner.svelte has the most (3)",
+    "Nearly there — just 103 hardcoded values left to tokenize. frontend/src/lib/components/flows/propPicker/OutputPickerInner.svelte has the most (3)",
     "4 deprecated patterns — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 10,
-      "action": "Replace the hardcoded values in 97 of the 102 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 98 of the 103 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -132,14 +132,14 @@
     ]
   },
   "driftSummary": {
-    "total": 106,
+    "total": 107,
     "critical": 0,
     "warning": 30,
-    "info": 76
+    "info": 77
   },
   "driftByType": {
     "deprecated-pattern": 4,
-    "hardcoded-value": 102
+    "hardcoded-value": 103
   },
   "topColors": [
     {
@@ -201,11 +201,11 @@
       "count": 3
     },
     {
-      "value": "0.45rem",
-      "count": 2
+      "value": "0.5rem",
+      "count": 3
     },
     {
-      "value": "30px",
+      "value": "0.45rem",
       "count": 2
     }
   ],
@@ -223,6 +223,10 @@
       "count": 64
     },
     {
+      "file": "frontend/src/lib/components/copilot/chat/artifacts/artifactDocument.css",
+      "count": 40
+    },
+    {
       "file": "frontend/src/lib/components/workspaceSettings/DeployToHub.svelte",
       "count": 35
     },
@@ -236,10 +240,6 @@
     },
     {
       "file": "frontend/src/lib/components/apps/editor/settingsPanel/inputEditor/ColorInput.svelte",
-      "count": 9
-    },
-    {
-      "file": "frontend/src/lib/components/debug/MonacoDebugger.svelte",
       "count": 9
     }
   ],
@@ -270,11 +270,11 @@
     },
     {
       "component": "frontend/src/lib/components/DraftBadge.svelte",
-      "location": "frontend/src/lib/components/DraftBadge.svelte:298",
+      "location": "frontend/src/lib/components/DraftBadge.svelte:313",
       "entries": [
-        "text-[8px] (line 298)",
-        "text-[8px] (line 308)",
-        "text-[9px] (line 375)"
+        "text-[8px] (line 313)",
+        "text-[8px] (line 323)",
+        "text-[9px] (line 390)"
       ]
     },
     {
@@ -335,5 +335,5 @@
       ]
     }
   ],
-  "scanSeconds": 49
+  "scanSeconds": 61
 }

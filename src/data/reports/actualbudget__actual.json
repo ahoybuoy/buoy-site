@@ -3,13 +3,13 @@
   "owner": "actualbudget",
   "name": "actual",
   "description": "A local-first personal finance app",
-  "stars": 30162,
+  "stars": 30196,
   "homepage": "https://actualbudget.org",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "ab6a376bd66f50eb45acbe2f05a18da5b0af7d8e",
-  "generatedAt": "2026-11-11T15:01:28.052Z",
-  "cliVersion": "0.8.20",
+  "commit": "27f0dbfc68eb9ec8d1848debeb63d4d05edf0f97",
+  "generatedAt": "2026-11-12T15:59:32.439Z",
+  "cliVersion": "0.8.21",
   "score": 91,
   "tier": "Great",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1346,
+    "componentCount": 1347,
     "tokenCount": 25,
-    "hardcodedValueCount": 59,
+    "hardcodedValueCount": 62,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 59,
+    "totalDriftCount": 62,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -51,7 +51,7 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 0,
+    "highDensityFileCount": 1,
     "vendoredDriftCount": 0,
     "notedCount": 3,
     "topHardcodedColor": {
@@ -59,23 +59,23 @@
       "count": 1
     },
     "worstFile": {
-      "path": "packages/component-library/src/ColorPicker.tsx",
-      "issueCount": 2
+      "path": "packages/desktop-client/src/components/reports/reports/Summary.tsx",
+      "issueCount": 3
     },
-    "uniqueSpacingValues": 26,
+    "uniqueSpacingValues": 30,
     "detectedFrameworkNames": [
       "react"
     ]
   },
   "suggestions": [
-    "Nearly there — just 59 hardcoded values left to tokenize. packages/component-library/src/ColorPicker.tsx has the most (2)",
-    "26 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
+    "Nearly there — just 62 hardcoded values left to tokenize. packages/desktop-client/src/components/reports/reports/Summary.tsx has the most (3)",
+    "30 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 9,
-      "action": "Replace the hardcoded values in 56 of the 59 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 59 of the 62 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -108,13 +108,13 @@
     ]
   },
   "driftSummary": {
-    "total": 59,
+    "total": 62,
     "critical": 0,
     "warning": 8,
-    "info": 51
+    "info": 54
   },
   "driftByType": {
-    "hardcoded-value": 59
+    "hardcoded-value": 62
   },
   "topColors": [
     {
@@ -194,6 +194,10 @@
       "count": 9
     },
     {
+      "file": "packages/desktop-client/src/components/reports/reports/Summary.tsx",
+      "count": 5
+    },
+    {
       "file": "packages/docs/src/components/Button.module.css",
       "count": 5
     },
@@ -211,10 +215,6 @@
     },
     {
       "file": "packages/docs/src/pages/index.jsx",
-      "count": 3
-    },
-    {
-      "file": "packages/desktop-client/src/components/modals/SelectLinkedAccountsModal.tsx",
       "count": 3
     }
   ],
@@ -266,6 +266,13 @@
       ]
     },
     {
+      "component": "Key",
+      "location": "packages/docs/src/components/Key.jsx:36",
+      "entries": [
+        "marginLeft: 0.25rem (line 61)"
+      ]
+    },
+    {
       "component": "Hello",
       "location": "packages/docs/src/pages/index.jsx:10",
       "entries": [
@@ -303,14 +310,7 @@
         "fontSize: 10px (line 896)",
         "fontSize: 11px (line 915)"
       ]
-    },
-    {
-      "component": "FieldMapping",
-      "location": "packages/desktop-client/src/components/banksync/FieldMapping.tsx:45",
-      "entries": [
-        "paddingLeft: 10px (line 111)"
-      ]
     }
   ],
-  "scanSeconds": 20
+  "scanSeconds": 25
 }

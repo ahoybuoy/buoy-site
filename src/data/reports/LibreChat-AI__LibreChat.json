@@ -3,13 +3,13 @@
   "owner": "LibreChat-AI",
   "name": "LibreChat",
   "description": "Enhanced ChatGPT Clone: Features Agents, MCP, Skills, DeepSeek, Anthropic, AWS, OpenAI, Responses API, Azure, Groq, o1, GPT-5, Mistral, OpenRouter, Vertex AI, Gemini, Artifacts, AI model switching, message search, Code Interpreter, langchain, DALL-E-3, OpenAPI Actions, Functions, Secure Multi-User Auth, Presets, open-source for self-hosting. Active",
-  "stars": 46980,
+  "stars": 47045,
   "homepage": "https://librechat.ai/",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "e6567c7a681ce67869dce31486a21d3a25d6931b",
-  "generatedAt": "2026-11-11T14:58:45.861Z",
-  "cliVersion": "0.8.20",
+  "commit": "2e6b23cb08b99b2b682ad83d92148c64e40e53f7",
+  "generatedAt": "2026-11-12T15:56:09.933Z",
+  "cliVersion": "0.8.21",
   "score": 96,
   "tier": "Great",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1394,
+    "componentCount": 1430,
     "tokenCount": 638,
-    "hardcodedValueCount": 28,
+    "hardcodedValueCount": 29,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 29,
+    "totalDriftCount": 30,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 1,
     "orphanedComponentCount": 0,
@@ -58,7 +58,7 @@
       "path": "packages/chat/src/components/messages/Feedback.tsx",
       "issueCount": 3
     },
-    "uniqueSpacingValues": 2,
+    "uniqueSpacingValues": 3,
     "detectedFrameworkNames": [
       "react",
       "tailwind",
@@ -67,13 +67,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 28 hardcoded values left to tokenize. packages/chat/src/components/messages/Feedback.tsx has the most (3)"
+    "Nearly there — just 29 hardcoded values left to tokenize. packages/chat/src/components/messages/Feedback.tsx has the most (3)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 4,
-      "action": "Replace the hardcoded values in 25 of the 28 findings with tokens or scale steps, and remove or reuse 1 unused component or repeated pattern"
+      "action": "Replace the hardcoded values in 26 of the 29 findings with tokens or scale steps, and remove or reuse 1 unused component or repeated pattern"
     }
   ],
   "noted": {
@@ -100,13 +100,13 @@
     ]
   },
   "driftSummary": {
-    "total": 29,
+    "total": 30,
     "critical": 0,
     "warning": 3,
-    "info": 26
+    "info": 27
   },
   "driftByType": {
-    "hardcoded-value": 28,
+    "hardcoded-value": 29,
     "repeated-pattern": 1
   },
   "topColors": [],
@@ -174,7 +174,7 @@
       "count": 3
     },
     {
-      "file": "client/src/components/Artifacts/Artifacts.tsx",
+      "file": "packages/chat/src/components/parts/ActionButton.tsx",
       "count": 2
     }
   ],
@@ -222,6 +222,14 @@
       ]
     },
     {
+      "component": "ActionButton",
+      "location": "packages/chat/src/components/parts/ActionButton.tsx:21",
+      "entries": [
+        "size: 0.875rem (line 68)",
+        "size: 1.125rem (line 68)"
+      ]
+    },
+    {
       "component": "MermaidDialog",
       "location": "client/src/components/Messages/Content/Mermaid/MermaidDialog.tsx:31",
       "entries": [
@@ -257,16 +265,7 @@
         "text-[11.5px] (line 291)",
         "text-[16px] (line 381)"
       ]
-    },
-    {
-      "component": "client/src/components/Nav/ShortcutRecorder.tsx",
-      "location": "client/src/components/Nav/ShortcutRecorder.tsx:191",
-      "entries": [
-        "text-[11.5px] (line 191)",
-        "text-[11.5px] (line 219)",
-        "text-[11.5px] (line 249)"
-      ]
     }
   ],
-  "scanSeconds": 32
+  "scanSeconds": 42
 }

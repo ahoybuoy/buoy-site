@@ -3,18 +3,18 @@
   "owner": "papermark",
   "name": "papermark",
   "description": "Papermark is the open-source DocSend alternative  and secure data rooms with built-in analytics and custom domains.",
-  "stars": 9333,
+  "stars": 9347,
   "homepage": "https://www.papermark.com",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "ed19717ec02a1ac79aecf5569159aa9d2d869312",
-  "generatedAt": "2026-11-11T15:17:59.268Z",
-  "cliVersion": "0.8.20",
-  "score": 86,
+  "generatedAt": "2026-11-12T16:20:23.873Z",
+  "cliVersion": "0.8.21",
+  "score": 85,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 46,
+      "score": 45,
       "max": 60
     },
     "tokenHealth": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 857,
     "tokenCount": 125,
-    "hardcodedValueCount": 60,
+    "hardcodedValueCount": 64,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 60,
+    "totalDriftCount": 64,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -71,13 +71,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 60 hardcoded values left to tokenize. components/settings/og-preview.tsx has the most (4)"
+    "Nearly there — just 64 hardcoded values left to tokenize. components/settings/og-preview.tsx has the most (4)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 14,
-      "action": "Replace the hardcoded values in 58 of the 60 findings with tokens or scale steps"
+      "points": 15,
+      "action": "Replace the hardcoded values in 62 of the 64 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -133,13 +133,13 @@
     ]
   },
   "driftSummary": {
-    "total": 60,
+    "total": 64,
     "critical": 0,
-    "warning": 26,
+    "warning": 30,
     "info": 34
   },
   "driftByType": {
-    "hardcoded-value": 60
+    "hardcoded-value": 64
   },
   "topColors": [
     {
@@ -163,15 +163,15 @@
       "count": 2
     },
     {
+      "value": "#111827",
+      "count": 2
+    },
+    {
       "value": "#3B82F6",
       "count": 2
     },
     {
       "value": "#000000E6",
-      "count": 2
-    },
-    {
-      "value": "#f0f0f0",
       "count": 2
     }
   ],
@@ -219,6 +219,10 @@
       "count": 13
     },
     {
+      "file": "components/folders/folder-color-picker.tsx",
+      "count": 7
+    },
+    {
       "file": "components/shared/logo-cloud.tsx",
       "count": 7
     },
@@ -229,13 +233,18 @@
     {
       "file": "app/(auth)/login/page-client.tsx",
       "count": 5
-    },
-    {
-      "file": "components/links/link-sheet/watermark-panel/watermark-preview.tsx",
-      "count": 5
     }
   ],
   "samples": [
+    {
+      "component": "FolderColorPicker",
+      "location": "components/folders/folder-color-picker.tsx:15",
+      "entries": [
+        "backgroundColor: #6b7280 (line 66)",
+        "backgroundColor: #ef4444 (line 68)",
+        "backgroundColor: #f97316 (line 70)"
+      ]
+    },
     {
       "component": "LogoCloud",
       "location": "components/shared/logo-cloud.tsx:41",
@@ -244,10 +253,31 @@
       ]
     },
     {
+      "component": "Nav",
+      "location": "components/view/nav.tsx:79",
+      "entries": [
+        "backgroundColor: #111827 (line 342)"
+      ]
+    },
+    {
       "component": "Login",
       "location": "app/(auth)/login/page-client.tsx:26",
       "entries": [
         "backgroundColor: #f9fafb (line 256)"
+      ]
+    },
+    {
+      "component": "DataroomTrailingActions",
+      "location": "components/view/dataroom/dataroom-trailing-actions.tsx:32",
+      "entries": [
+        "backgroundColor: #111827 (line 98)"
+      ]
+    },
+    {
+      "component": "AdvancedExcelViewer",
+      "location": "components/view/viewer/advanced-excel-viewer.tsx:12",
+      "entries": [
+        "background: rgb(3, 7, 18) (line 188)"
       ]
     },
     {
@@ -296,39 +326,7 @@
         "text-[#fb7a00] (line 117)",
         "hover:text-[#fb7a00]/90 (line 117)"
       ]
-    },
-    {
-      "component": "components/billing/unlimited-plan-modal.tsx",
-      "location": "components/billing/unlimited-plan-modal.tsx:126",
-      "entries": [
-        "text-[#fb7a00] (line 126)",
-        "text-[#fb7a00] (line 155)"
-      ]
-    },
-    {
-      "component": "components/billing/upgrade-plan-container.tsx",
-      "location": "components/billing/upgrade-plan-container.tsx:201",
-      "entries": [
-        "rounded-[3px] (line 201)"
-      ]
-    },
-    {
-      "component": "components/billing/upgrade-plan-modal-old.tsx",
-      "location": "components/billing/upgrade-plan-modal-old.tsx:156",
-      "entries": [
-        "text-[#fb7a00] (line 156)",
-        "text-[#fb7a00] (line 212)"
-      ]
-    },
-    {
-      "component": "components/billing/upgrade-plan-modal-with-discount.tsx",
-      "location": "components/billing/upgrade-plan-modal-with-discount.tsx:63",
-      "entries": [
-        "text-[#fb7a00] (line 63)",
-        "text-[#fb7a00] (line 90)",
-        "text-[#fb7a00] (line 259)"
-      ]
     }
   ],
-  "scanSeconds": 20
+  "scanSeconds": 27
 }

@@ -3,13 +3,13 @@
   "owner": "baserow",
   "name": "baserow",
   "description": "Build databases, automations, apps & agents with AI — no code.  Open source platform available on cloud and self-hosted. GDPR, HIPAA, SOC 2 compliant. Best Airtable alternative.",
-  "stars": 6320,
+  "stars": 6322,
   "homepage": "https://baserow.io",
   "language": "Python",
   "defaultBranch": "develop",
-  "commit": "2eec18d6133242174335681aecaaec3d4d2853f0",
-  "generatedAt": "2026-11-11T15:02:20.179Z",
-  "cliVersion": "0.8.20",
+  "commit": "cc4f44715604354b0836c8f6e56803e7cfd81ed5",
+  "generatedAt": "2026-11-12T16:00:36.658Z",
+  "cliVersion": "0.8.21",
   "score": null,
   "tier": "N/A",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 0,
     "tokenCount": 56,
-    "hardcodedValueCount": 386,
+    "hardcodedValueCount": 390,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 386,
+    "totalDriftCount": 390,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 62,
+    "notedCount": 63,
     "topHardcodedColor": {
       "value": "#fff",
       "count": 1
@@ -69,9 +69,9 @@
   ],
   "pathTo100": null,
   "noted": {
-    "count": 62,
+    "count": 63,
     "byKind": {
-      "optical-nudge": 55,
+      "optical-nudge": 56,
       "explained": 7
     },
     "samples": [
@@ -84,7 +84,7 @@
       },
       {
         "file": "web-frontend/modules/core/assets/scss/components/agent_application.scss",
-        "line": 559,
+        "line": 612,
         "value": "0 10px 0 36px",
         "kind": "explained",
         "reason": "Align the divider with the text, leaving the leading icon outside it."
@@ -120,13 +120,13 @@
     ]
   },
   "driftSummary": {
-    "total": 386,
+    "total": 390,
     "critical": 0,
-    "warning": 134,
-    "info": 252
+    "warning": 136,
+    "info": 254
   },
   "driftByType": {
-    "hardcoded-value": 386
+    "hardcoded-value": 390
   },
   "topColors": [
     {
@@ -165,15 +165,15 @@
   "topSpacing": [
     {
       "value": "8px",
-      "count": 213
+      "count": 224
     },
     {
       "value": "12px",
-      "count": 157
+      "count": 163
     },
     {
       "value": "16px",
-      "count": 140
+      "count": 144
     },
     {
       "value": "10px",
@@ -185,21 +185,21 @@
     },
     {
       "value": "4px",
-      "count": 119
+      "count": 126
     },
     {
       "value": "6px",
-      "count": 99
+      "count": 102
     },
     {
       "value": "24px",
-      "count": 73
+      "count": 74
     }
   ],
   "worstFiles": [
     {
       "file": "web-frontend/modules/core/assets/scss/components/agent_application.scss",
-      "count": 94
+      "count": 138
     },
     {
       "file": "web-frontend/modules/core/assets/scss/components/views/form.scss",
@@ -334,5 +334,5 @@
       ]
     }
   ],
-  "scanSeconds": 22
+  "scanSeconds": 27
 }

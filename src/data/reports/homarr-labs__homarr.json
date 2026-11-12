@@ -3,18 +3,18 @@
   "owner": "homarr-labs",
   "name": "homarr",
   "description": "A modern and easy to use dashboard. 80+ integrations. 20K+ icons built in. Authentication out of the box. No YAML, drag and drop configuration.",
-  "stars": 5339,
+  "stars": 5349,
   "homepage": "https://homarr.dev",
   "language": "TypeScript",
   "defaultBranch": "dev",
-  "commit": "d2b4c0e22c4bd824ba63d9973fb23382cd3c6c91",
-  "generatedAt": "2026-11-11T15:10:18.265Z",
-  "cliVersion": "0.8.20",
-  "score": 85,
+  "commit": "c7fd130ffe9eb706ca4c5a1b230563ec058d6f21",
+  "generatedAt": "2026-11-12T16:10:44.294Z",
+  "cliVersion": "0.8.21",
+  "score": 84,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 45,
+      "score": 44,
       "max": 60
     },
     "tokenHealth": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 1535,
     "tokenCount": 98,
-    "hardcodedValueCount": 115,
+    "hardcodedValueCount": 121,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 115,
+    "totalDriftCount": 121,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -55,14 +55,14 @@
     "vendoredDriftCount": 0,
     "notedCount": 16,
     "topHardcodedColor": {
-      "value": "#fff",
-      "count": 1
+      "value": "#242424",
+      "count": 2
     },
     "worstFile": {
       "path": "packages/widgets/src/notebook/notebook.tsx",
       "issueCount": 5
     },
-    "uniqueSpacingValues": 11,
+    "uniqueSpacingValues": 14,
     "detectedFrameworkNames": [
       "react",
       "next",
@@ -71,13 +71,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 115 hardcoded values left to tokenize. packages/widgets/src/notebook/notebook.tsx has the most (5)"
+    "Nearly there — just 121 hardcoded values left to tokenize. packages/widgets/src/notebook/notebook.tsx has the most (5)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 15,
-      "action": "Replace the hardcoded values in 112 of the 115 findings with tokens or scale steps"
+      "points": 16,
+      "action": "Replace the hardcoded values in 118 of the 121 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -132,22 +132,26 @@
     ]
   },
   "driftSummary": {
-    "total": 115,
+    "total": 121,
     "critical": 0,
-    "warning": 15,
-    "info": 100
+    "warning": 16,
+    "info": 105
   },
   "driftByType": {
-    "hardcoded-value": 115
+    "hardcoded-value": 121
   },
   "topColors": [
     {
       "value": "#fff",
-      "count": 11
+      "count": 12
     },
     {
       "value": "rgb(",
       "count": 6
+    },
+    {
+      "value": "#242424",
+      "count": 2
     },
     {
       "value": "#27272a",
@@ -168,10 +172,6 @@
     {
       "value": "rgb(0 0 0 / 65%)",
       "count": 1
-    },
-    {
-      "value": "#c92a2a",
-      "count": 1
     }
   ],
   "topSpacing": [
@@ -181,7 +181,7 @@
     },
     {
       "value": "8px",
-      "count": 33
+      "count": 38
     },
     {
       "value": "4px",
@@ -193,15 +193,15 @@
     },
     {
       "value": "0.25rem",
-      "count": 24
+      "count": 25
+    },
+    {
+      "value": "0.5rem",
+      "count": 21
     },
     {
       "value": "0.75rem",
       "count": 21
-    },
-    {
-      "value": "0.5rem",
-      "count": 20
     },
     {
       "value": "10px",
@@ -330,5 +330,5 @@
       ]
     }
   ],
-  "scanSeconds": 38
+  "scanSeconds": 47
 }

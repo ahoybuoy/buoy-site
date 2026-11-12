@@ -3,14 +3,14 @@
   "owner": "midday-ai",
   "name": "midday",
   "description": "Invoicing, Time tracking, File reconciliation, Storage, Financial Overview & your own Assistant made for Freelancers",
-  "stars": 15121,
+  "stars": 15124,
   "homepage": "https://midday.ai",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "51587319f26a0ffaa9dfccab1920373cb65689b7",
-  "generatedAt": "2026-11-11T14:43:52.080Z",
-  "cliVersion": "0.8.20",
-  "score": 38,
+  "generatedAt": "2026-11-12T15:36:54.327Z",
+  "cliVersion": "0.8.21",
+  "score": 30,
   "tier": "Bad",
   "pillars": {
     "valueDiscipline": {
@@ -26,22 +26,22 @@
       "max": 10
     },
     "criticalIssues": {
-      "score": 8,
+      "score": 0,
       "max": 10
     }
   },
   "metrics": {
     "componentCount": 1412,
     "tokenCount": 206,
-    "hardcodedValueCount": 449,
+    "hardcodedValueCount": 454,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
-    "criticalCount": 1,
+    "criticalCount": 9,
     "accessibilityConflictCount": 0,
-    "colorContrastCount": 1,
+    "colorContrastCount": 9,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 453,
+    "totalDriftCount": 466,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 3,
     "orphanedComponentCount": 0,
@@ -51,7 +51,7 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 8,
+    "highDensityFileCount": 9,
     "vendoredDriftCount": 27,
     "notedCount": 49,
     "topHardcodedColor": {
@@ -60,9 +60,9 @@
     },
     "worstFile": {
       "path": "packages/ui/src/components/animations/chat-demo-animation.tsx",
-      "issueCount": 13
+      "issueCount": 25
     },
-    "uniqueSpacingValues": 1,
+    "uniqueSpacingValues": 2,
     "detectedFrameworkNames": [
       "react",
       "next",
@@ -71,20 +71,20 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 422 hardcoded values left to tokenize. packages/ui/src/components/animations/chat-demo-animation.tsx has the most (13)",
+    "427 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on packages/ui/src/components/animations/chat-demo-animation.tsx (25 issues)",
     "27 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
-    "1 color contrast issue — fix immediately"
+    "9 color contrast issues — fix immediately"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 419 of the 422 findings with tokens or scale steps, and remove or reuse 3 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 424 of the 427 findings with tokens or scale steps, and remove or reuse 3 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
-      "points": 2,
-      "action": "Fix 1 colour contrast failure"
+      "points": 10,
+      "action": "Fix 9 colour contrast failures"
     }
   ],
   "noted": {
@@ -139,14 +139,14 @@
     ]
   },
   "driftSummary": {
-    "total": 453,
-    "critical": 1,
-    "warning": 262,
-    "info": 190
+    "total": 466,
+    "critical": 9,
+    "warning": 266,
+    "info": 191
   },
   "driftByType": {
-    "hardcoded-value": 449,
-    "color-contrast": 1,
+    "hardcoded-value": 454,
+    "color-contrast": 9,
     "repeated-pattern": 3
   },
   "topColors": [
@@ -160,7 +160,7 @@
     },
     {
       "value": "#666666",
-      "count": 49
+      "count": 50
     },
     {
       "value": "#666",
@@ -189,6 +189,10 @@
       "count": 4
     },
     {
+      "value": "8px",
+      "count": 3
+    },
+    {
       "value": "5px",
       "count": 3
     },
@@ -202,10 +206,6 @@
     },
     {
       "value": "12px",
-      "count": 2
-    },
-    {
-      "value": "8px",
       "count": 2
     },
     {
@@ -227,6 +227,10 @@
       "count": 76
     },
     {
+      "file": "packages/ui/src/components/animations/chat-demo-animation.tsx",
+      "count": 57
+    },
+    {
       "file": "packages/ui/src/components/animations/receipt-attachment-animation.tsx",
       "count": 50
     },
@@ -245,10 +249,6 @@
     {
       "file": "apps/dashboard/src/components/charts/revenue-forecast-chart.tsx",
       "count": 39
-    },
-    {
-      "file": "packages/ui/src/components/animations/customer-statement-animation.tsx",
-      "count": 38
     }
   ],
   "samples": [
@@ -256,7 +256,9 @@
       "component": "SilentBanner",
       "location": "packages/ui/src/components/iphone-mock.tsx:64",
       "entries": [
-        "backgroundColor: #000 (line 121)"
+        "backgroundColor: #000 (line 121)",
+        "color: #FF3B30 (line 146)",
+        "color: #fff (line 146)"
       ]
     },
     {
@@ -290,6 +292,14 @@
       ]
     },
     {
+      "component": "HomeIndicator",
+      "location": "packages/ui/src/components/animations/chat-demo-animation.tsx:1261",
+      "entries": [
+        "backgroundColor: rgba(0,0,0,0.3) (line 1272)",
+        "backgroundColor: rgba(255,255,255,0.5) (line 1272)"
+      ]
+    },
+    {
       "component": "LockScreen",
       "location": "packages/ui/src/components/animations/chat-demo-animation.tsx:2142",
       "entries": [
@@ -315,6 +325,15 @@
       ]
     },
     {
+      "component": "TypingIndicator",
+      "location": "packages/ui/src/components/animations/chat-demo-animation.tsx:2519",
+      "entries": [
+        "background: #2C2C2E (line 2525)",
+        "background: #E9E9EB (line 2525)",
+        "backgroundColor: #A1A1AA (line 2538)"
+      ]
+    },
+    {
       "component": "ReceiptPreview",
       "location": "packages/ui/src/components/animations/chat-demo-animation.tsx:2558",
       "entries": [
@@ -328,28 +347,10 @@
       "location": "packages/ui/src/components/animations/chat-demo-animation.tsx:2690",
       "entries": [
         "color: #111827 (line 2721)",
-        "color: #6B7280 (line 2781)",
-        "background: #FFFFFF (line 2849)"
-      ]
-    },
-    {
-      "component": "InvoiceOgArtwork",
-      "location": "packages/ui/src/components/animations/chat-demo-animation.tsx:2933",
-      "entries": [
-        "background: #131313 (line 2941)",
-        "background: #FFFFFF (line 2968)",
-        "color: #111111 (line 2980)"
-      ]
-    },
-    {
-      "component": "OgLinkPreview",
-      "location": "packages/ui/src/components/animations/chat-demo-animation.tsx:3110",
-      "entries": [
-        "background: #2B2B2F (line 3116)",
-        "background: #36363A (line 3123)",
-        "color: #FFFFFF (line 3133)"
+        "background: rgba(34,197,94,0.12) (line 2734)",
+        "background: rgba(59,130,246,0.12) (line 2735)"
       ]
     }
   ],
-  "scanSeconds": 30
+  "scanSeconds": 39
 }
