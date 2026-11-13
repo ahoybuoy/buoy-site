@@ -1,0 +1,45 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import Nav from '../../components/Nav.astro'
+import Footer from '../../components/Footer.astro'
+
+// Built from the comparison pages themselves, so a new page shows up here without a second edit.
+const sources = import.meta.glob('./*.astro', { query: '?raw', import: 'default', eager: true }) as Record<string, string>
+const prop = (src: string, name: string) => src.match(new RegExp(`${name}="([^"]+)"`))?.[1] ?? ''
+const comparisons = Object.entries(sources)
+  .filter(([path]) => !path.endsWith('/index.astro'))
+  .map(([path, src]) => ({
+    slug: path.replace('./', '').replace('.astro', ''),
+    title: prop(src, 'title').split(' | ')[0],
+    blurb: prop(src, 'description'),
+  }))
+  .filter((c) => c.title)
+  .sort((a, b) => a.title.localeCompare(b.title))
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'How Buoy compares',
+  url: 'https://buoy.design/compare',
+  hasPart: comparisons.map((c) => ({ '@type': 'WebPage', name: c.title, url: `https://buoy.design/compare/${c.slug}` })),
+}
+---
+
+<Layout title="How Buoy Compares to Code Review, Visual Testing and Linters | Buoy" description="Buoy next to the tools teams already use: AI code review, visual regression testing, ESLint, Figma plugins, Style Dictionary and manual audits." keywords="buoy alternatives, design system tools comparison, design drift detection" jsonLd={jsonLd}>
+  <Nav />
+  <section class="pt-32 pb-16 bg-navy-dark">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl sm:text-4xl font-bold text-light">How Buoy compares</h1>
+      <p class="text-slate mt-3">Buoy next to the tools teams already use, and where each one fits.</p>
+      <ul class="mt-10 space-y-6">
+        {comparisons.map((c) => (
+          <li class="bg-navy/50 border border-navy-light/20 rounded-2xl p-6">
+            <a href={`/compare/${c.slug}`} class="text-xl font-semibold text-light hover:text-buoy">{c.title}</a>
+            <p class="text-slate mt-2">{c.blurb}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+  <Footer />
+</Layout>
