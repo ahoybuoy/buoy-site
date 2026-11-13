@@ -3,13 +3,13 @@
   "owner": "cline",
   "name": "cline",
   "description": "Autonomous coding agent as an SDK, IDE extension, or CLI assistant.",
-  "stars": 71559,
+  "stars": 71586,
   "homepage": "https://cline.bot",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "50e77bc1e8f7ab023b7986821e4b5f82ff51b8c4",
-  "generatedAt": "2026-11-12T16:02:06.060Z",
-  "cliVersion": "0.8.21",
+  "commit": "72b3d7140553a733242126e51a7c2e87efe75c64",
+  "generatedAt": "2026-11-13T15:14:46.341Z",
+  "cliVersion": "0.8.23",
   "score": 76,
   "tier": "Good",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1084,
+    "componentCount": 1083,
     "tokenCount": 826,
-    "hardcodedValueCount": 137,
+    "hardcodedValueCount": 136,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 137,
+    "totalDriftCount": 136,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -71,7 +71,7 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 130 hardcoded values left to tokenize. apps/vscode/webview-ui/src/components/settings/providers/OcaModelPicker.tsx has the most (4)",
+    "Nearly there — just 129 hardcoded values left to tokenize. apps/vscode/webview-ui/src/components/settings/providers/OcaModelPicker.tsx has the most (4)",
     "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
     "16 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
   ],
@@ -79,7 +79,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 24,
-      "action": "Replace the hardcoded values in 128 of the 130 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 127 of the 129 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -134,13 +134,13 @@
     ]
   },
   "driftSummary": {
-    "total": 137,
+    "total": 136,
     "critical": 0,
     "warning": 8,
-    "info": 129
+    "info": 128
   },
   "driftByType": {
-    "hardcoded-value": 137
+    "hardcoded-value": 136
   },
   "topColors": [
     {
@@ -179,7 +179,7 @@
   "topSpacing": [
     {
       "value": "12px",
-      "count": 36
+      "count": 35
     },
     {
       "value": "8px",
@@ -341,5 +341,5 @@
       ]
     }
   ],
-  "scanSeconds": 30
+  "scanSeconds": 25
 }

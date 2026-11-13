@@ -3,13 +3,13 @@
   "owner": "Stirling-Tools",
   "name": "Stirling-PDF",
   "description": "#1 PDF Application on GitHub that lets you edit PDFs on any device anywhere",
-  "stars": 96421,
+  "stars": 96506,
   "homepage": "https://stirling.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "01da4d96a0a250d3bab0417de0ea9b1f2147fc1b",
-  "generatedAt": "2026-11-12T15:58:48.403Z",
-  "cliVersion": "0.8.21",
+  "commit": "2762c84885a8275ec78cecca774766fdfb326292",
+  "generatedAt": "2026-11-13T15:11:58.603Z",
+  "cliVersion": "0.8.23",
   "score": 38,
   "tier": "Bad",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1710,
+    "componentCount": 1720,
     "tokenCount": 690,
-    "hardcodedValueCount": 563,
+    "hardcodedValueCount": 564,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 1,
@@ -41,7 +41,7 @@
     "colorContrastCount": 1,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 564,
+    "totalDriftCount": 565,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 8,
     "vendoredDriftCount": 0,
-    "notedCount": 58,
+    "notedCount": 60,
     "topHardcodedColor": {
       "value": "#fff",
       "count": 9
@@ -66,7 +66,7 @@
     "detectedFrameworkNames": []
   },
   "suggestions": [
-    "563 hardcoded values to extract. Focus on frontend/src/editor/core/components/filesPage/FileGrid.tsx (8 issues)",
+    "564 hardcoded values to extract. Focus on frontend/src/editor/core/components/filesPage/FileGrid.tsx (8 issues)",
     "1 color contrast issue — fix immediately",
     "57 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
   ],
@@ -74,7 +74,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 559 of the 563 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 560 of the 564 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -83,10 +83,10 @@
     }
   ],
   "noted": {
-    "count": 58,
+    "count": 60,
     "byKind": {
       "explained": 7,
-      "optical-nudge": 50,
+      "optical-nudge": 52,
       "known-debt": 1
     },
     "samples": [
@@ -135,13 +135,13 @@
     ]
   },
   "driftSummary": {
-    "total": 564,
+    "total": 565,
     "critical": 1,
-    "warning": 248,
+    "warning": 249,
     "info": 315
   },
   "driftByType": {
-    "hardcoded-value": 563,
+    "hardcoded-value": 564,
     "color-contrast": 1
   },
   "topColors": [
@@ -181,15 +181,15 @@
   "topSpacing": [
     {
       "value": "0.5rem",
-      "count": 303
+      "count": 312
     },
     {
       "value": "1rem",
-      "count": 274
+      "count": 276
     },
     {
       "value": "0.75rem",
-      "count": 218
+      "count": 219
     },
     {
       "value": "0.25rem",
@@ -201,11 +201,11 @@
     },
     {
       "value": "0.375rem",
-      "count": 78
+      "count": 83
     },
     {
       "value": "0.625rem",
-      "count": 75
+      "count": 78
     },
     {
       "value": "12px",
@@ -343,5 +343,5 @@
       ]
     }
   ],
-  "scanSeconds": 51
+  "scanSeconds": 41
 }

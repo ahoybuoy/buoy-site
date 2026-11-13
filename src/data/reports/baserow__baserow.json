@@ -3,13 +3,13 @@
   "owner": "baserow",
   "name": "baserow",
   "description": "Build databases, automations, apps & agents with AI — no code.  Open source platform available on cloud and self-hosted. GDPR, HIPAA, SOC 2 compliant. Best Airtable alternative.",
-  "stars": 6322,
+  "stars": 6330,
   "homepage": "https://baserow.io",
   "language": "Python",
   "defaultBranch": "develop",
-  "commit": "cc4f44715604354b0836c8f6e56803e7cfd81ed5",
-  "generatedAt": "2026-11-12T16:00:36.658Z",
-  "cliVersion": "0.8.21",
+  "commit": "21daad9e63da4ad8bfbe2a76ebd8dbcdd1f52929",
+  "generatedAt": "2026-11-13T15:13:32.601Z",
+  "cliVersion": "0.8.23",
   "score": null,
   "tier": "N/A",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 0,
     "tokenCount": 56,
-    "hardcodedValueCount": 390,
+    "hardcodedValueCount": 391,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 390,
+    "totalDriftCount": 391,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -84,7 +84,7 @@
       },
       {
         "file": "web-frontend/modules/core/assets/scss/components/agent_application.scss",
-        "line": 612,
+        "line": 627,
         "value": "0 10px 0 36px",
         "kind": "explained",
         "reason": "Align the divider with the text, leaving the leading icon outside it."
@@ -120,13 +120,13 @@
     ]
   },
   "driftSummary": {
-    "total": 390,
+    "total": 391,
     "critical": 0,
-    "warning": 136,
+    "warning": 137,
     "info": 254
   },
   "driftByType": {
-    "hardcoded-value": 390
+    "hardcoded-value": 391
   },
   "topColors": [
     {
@@ -165,15 +165,15 @@
   "topSpacing": [
     {
       "value": "8px",
-      "count": 224
+      "count": 232
     },
     {
       "value": "12px",
-      "count": 163
+      "count": 168
     },
     {
       "value": "16px",
-      "count": 144
+      "count": 146
     },
     {
       "value": "10px",
@@ -181,11 +181,11 @@
     },
     {
       "value": "20px",
-      "count": 131
+      "count": 130
     },
     {
       "value": "4px",
-      "count": 126
+      "count": 129
     },
     {
       "value": "6px",
@@ -193,13 +193,13 @@
     },
     {
       "value": "24px",
-      "count": 74
+      "count": 75
     }
   ],
   "worstFiles": [
     {
       "file": "web-frontend/modules/core/assets/scss/components/agent_application.scss",
-      "count": 138
+      "count": 145
     },
     {
       "file": "web-frontend/modules/core/assets/scss/components/views/form.scss",
@@ -334,5 +334,5 @@
       ]
     }
   ],
-  "scanSeconds": 27
+  "scanSeconds": 24
 }

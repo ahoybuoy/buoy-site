@@ -3,18 +3,18 @@
   "owner": "mermaid-js",
   "name": "mermaid-live-editor",
   "description": "Edit, preview and share mermaid charts/diagrams. New implementation of the live editor.",
-  "stars": 6904,
+  "stars": 6906,
   "homepage": "https://mermaid.live",
   "language": "TypeScript",
   "defaultBranch": "develop",
-  "commit": "74e28e101c2aeea130821299923a4b77b2e26f12",
-  "generatedAt": "2026-11-12T16:17:25.298Z",
-  "cliVersion": "0.8.21",
-  "score": 59,
-  "tier": "OK",
+  "commit": "7412771821d690897bd1ff2c8fd5f9e7cc175df8",
+  "generatedAt": "2026-11-13T15:28:10.919Z",
+  "cliVersion": "0.8.23",
+  "score": 68,
+  "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 19,
+      "score": 28,
       "max": 60
     },
     "tokenHealth": {
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 59,
+    "componentCount": 76,
     "tokenCount": 54,
     "hardcodedValueCount": 12,
     "unusedTokenCount": 0,
@@ -73,7 +73,7 @@
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 41,
+      "points": 32,
       "action": "Replace the hardcoded values in all 12 findings with tokens or scale steps"
     }
   ],
@@ -273,5 +273,5 @@
       ]
     }
   ],
-  "scanSeconds": 4
+  "scanSeconds": 3
 }

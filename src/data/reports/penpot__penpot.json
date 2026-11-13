@@ -3,13 +3,13 @@
   "owner": "penpot",
   "name": "penpot",
   "description": "Penpot: The open-source design platform for Product teams that need scalable collaboration.",
-  "stars": 62297,
+  "stars": 62321,
   "homepage": "https://penpot.app",
   "language": "Clojure",
   "defaultBranch": "develop",
-  "commit": "185fef889bea661a60c6abd668505bb5eb608498",
-  "generatedAt": "2026-11-12T16:21:43.086Z",
-  "cliVersion": "0.8.21",
+  "commit": "8715450f535d3cb0da43f8d61ce0d76f1ae081bb",
+  "generatedAt": "2026-11-13T15:31:39.933Z",
+  "cliVersion": "0.8.23",
   "score": 40,
   "tier": "OK",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 7,
     "tokenCount": 360,
-    "hardcodedValueCount": 61,
+    "hardcodedValueCount": 62,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 61,
+    "totalDriftCount": 62,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -61,13 +61,13 @@
     "detectedFrameworkNames": []
   },
   "suggestions": [
-    "61 hardcoded values across your components — high density. Most common: #c0c0c2 (1×). Create a design token file (e.g., tokens.css with CSS custom properties)"
+    "62 hardcoded values across your components — high density. Most common: #c0c0c2 (1×). Create a design token file (e.g., tokens.css with CSS custom properties)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in all 61 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in all 62 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -123,13 +123,13 @@
     ]
   },
   "driftSummary": {
-    "total": 61,
+    "total": 62,
     "critical": 0,
-    "warning": 18,
+    "warning": 19,
     "info": 43
   },
   "driftByType": {
-    "hardcoded-value": 61
+    "hardcoded-value": 62
   },
   "topColors": [
     {
@@ -337,5 +337,5 @@
       ]
     }
   ],
-  "scanSeconds": 17
+  "scanSeconds": 15
 }

@@ -3,18 +3,18 @@
   "owner": "excalidraw",
   "name": "excalidraw",
   "description": "Virtual whiteboard for sketching hand-drawn like diagrams",
-  "stars": 135560,
+  "stars": 135626,
   "homepage": "https://excalidraw.com",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "701b901a0f1ba3d0b390d9cdf63d112e25abac4b",
-  "generatedAt": "2026-11-12T15:42:49.041Z",
-  "cliVersion": "0.8.21",
-  "score": 60,
+  "commit": "82d5847e57dcb6fb5982833ea9ec2137fe0b2bd5",
+  "generatedAt": "2026-11-13T14:58:31.562Z",
+  "cliVersion": "0.8.23",
+  "score": 61,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 20,
+      "score": 21,
       "max": 60
     },
     "tokenHealth": {
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 429,
+    "componentCount": 434,
     "tokenCount": 123,
     "hardcodedValueCount": 85,
     "unusedTokenCount": 0,
@@ -74,7 +74,7 @@
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 40,
+      "points": 39,
       "action": "Replace the hardcoded values in 84 of the 85 findings with tokens or scale steps"
     }
   ],
@@ -320,7 +320,7 @@
       "component": "CommandPaletteInner",
       "location": "packages/excalidraw/components/CommandPalette/CommandPalette.tsx:200",
       "entries": [
-        "marginLeft: 6px (line 924)"
+        "marginLeft: 6px (line 925)"
       ]
     },
     {
@@ -331,5 +331,5 @@
       ]
     }
   ],
-  "scanSeconds": 11
+  "scanSeconds": 9
 }

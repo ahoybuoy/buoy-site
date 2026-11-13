@@ -3,13 +3,13 @@
   "owner": "ever-co",
   "name": "ever-gauzy",
   "description": "Ever® Gauzy™ - Open Business Management Platform (ERP/CRM/HRM/ATS/PM) - https://gauzy.co",
-  "stars": 8796,
+  "stars": 8803,
   "homepage": "https://gauzy.co",
   "language": "TypeScript",
   "defaultBranch": "develop",
-  "commit": "88a917bb97545738bcca9fa4158b8026e202d38d",
-  "generatedAt": "2026-11-12T16:06:47.868Z",
-  "cliVersion": "0.8.21",
+  "commit": "58c34e4acc2eaf51fd2f764de4c14e132b08bfb4",
+  "generatedAt": "2026-11-13T15:19:18.745Z",
+  "cliVersion": "0.8.23",
   "score": 35,
   "tier": "Bad",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 873,
+    "componentCount": 880,
     "tokenCount": 0,
-    "hardcodedValueCount": 719,
+    "hardcodedValueCount": 720,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 720,
+    "totalDriftCount": 721,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -70,14 +70,14 @@
     ]
   },
   "suggestions": [
-    "719 hardcoded values to extract. Focus on packages/ui-react-components/src/lib/components/ColorDots.tsx (1 issues)",
+    "720 hardcoded values to extract. Focus on packages/ui-react-components/src/lib/components/ColorDots.tsx (1 issues)",
     "1 framework sprawl signal — standardize on fewer UI/styling frameworks"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 717 of the 719 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 718 of the 720 findings with tokens or scale steps"
     },
     {
       "pillar": "tokenHealth",
@@ -138,13 +138,13 @@
     ]
   },
   "driftSummary": {
-    "total": 720,
+    "total": 721,
     "critical": 0,
     "warning": 165,
-    "info": 555
+    "info": 556
   },
   "driftByType": {
-    "hardcoded-value": 719,
+    "hardcoded-value": 720,
     "framework-sprawl": 1
   },
   "topColors": [
@@ -184,7 +184,7 @@
   "topSpacing": [
     {
       "value": "0.5rem",
-      "count": 756
+      "count": 759
     },
     {
       "value": "1rem",
@@ -196,7 +196,7 @@
     },
     {
       "value": "0.25rem",
-      "count": 339
+      "count": 340
     },
     {
       "value": "0.375rem",
@@ -338,5 +338,5 @@
       ]
     }
   ],
-  "scanSeconds": 148
+  "scanSeconds": 135
 }

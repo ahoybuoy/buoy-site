@@ -3,13 +3,13 @@
   "owner": "n8n-io",
   "name": "n8n",
   "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
-  "stars": 210300,
+  "stars": 210379,
   "homepage": "https://n8n.io",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "f73c76a47f2b1ae734ecb5be73bbe35bc3a636d8",
-  "generatedAt": "2026-11-12T15:44:52.588Z",
-  "cliVersion": "0.8.21",
+  "commit": "d1c82f89374915df2e2b7816c5b1f4275e8206dc",
+  "generatedAt": "2026-11-13T15:00:14.053Z",
+  "cliVersion": "0.8.23",
   "score": 62,
   "tier": "Good",
   "pillars": {
@@ -31,8 +31,8 @@
     }
   },
   "metrics": {
-    "componentCount": 1420,
-    "tokenCount": 621,
+    "componentCount": 1422,
+    "tokenCount": 669,
     "hardcodedValueCount": 254,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
@@ -41,10 +41,10 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 256,
+    "totalDriftCount": 260,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
-    "orphanedComponentCount": 0,
+    "orphanedComponentCount": 4,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 2,
     "orphanedTokenCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 33,
+    "notedCount": 35,
     "topHardcodedColor": {
       "value": "#fff",
       "count": 2
@@ -66,6 +66,7 @@
     "detectedFrameworkNames": [
       "react",
       "vue",
+      "astro",
       "storybook",
       "element-plus"
     ]
@@ -78,7 +79,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 36,
-      "action": "Replace the hardcoded values in 251 of the 254 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 251 of the 254 findings with tokens or scale steps, and remove or reuse 4 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -87,9 +88,9 @@
     }
   ],
   "noted": {
-    "count": 33,
+    "count": 35,
     "byKind": {
-      "optical-nudge": 29,
+      "optical-nudge": 31,
       "explained": 4
     },
     "samples": [
@@ -122,30 +123,31 @@
         "reason": "Matches the design-system $index-popper tier (var.scss) — sits above vue-flow's elevated selected nodes so the per-node…"
       },
       {
-        "file": "packages/frontend/@n8n/chat/src/components/MessageTyping.vue",
-        "line": 75,
-        "value": "3px",
+        "file": "packages/@n8n/backend-docs-site/src/styles/custom.css",
+        "line": 214,
+        "value": "0.125rem",
         "kind": "optical-nudge",
-        "reason": "margin: 3px is a 2-3px optical adjustment"
+        "reason": "margin-top: 0.125rem is a 2-3px optical adjustment"
       },
       {
-        "file": "packages/frontend/@n8n/design-system/src/components/N8nSelectableList/SelectableList.vue",
-        "line": 146,
-        "value": "3px",
+        "file": "packages/@n8n/backend-docs-site/src/styles/custom.css",
+        "line": 656,
+        "value": "0.125rem",
         "kind": "optical-nudge",
-        "reason": "margin-top: 3px is a 2-3px optical adjustment"
+        "reason": "margin-top: 0.125rem is a 2-3px optical adjustment"
       }
     ]
   },
   "driftSummary": {
-    "total": 256,
+    "total": 260,
     "critical": 0,
-    "warning": 86,
-    "info": 170
+    "warning": 109,
+    "info": 151
   },
   "driftByType": {
     "deprecated-pattern": 2,
-    "hardcoded-value": 254
+    "hardcoded-value": 254,
+    "orphaned-component": 4
   },
   "topColors": [
     {
@@ -217,6 +219,10 @@
   ],
   "worstFiles": [
     {
+      "file": "packages/@n8n/backend-docs-site/src/styles/custom.css",
+      "count": 68
+    },
+    {
       "file": "packages/frontend/@n8n/design-system/src/components/DateRangePicker/DateRangePicker.vue",
       "count": 26
     },
@@ -243,10 +249,6 @@
     {
       "file": "packages/frontend/@n8n/design-system/src/css/date-picker/picker-panel.scss",
       "count": 16
-    },
-    {
-      "file": "packages/frontend/@n8n/design-system/src/css/date-picker/picker.scss",
-      "count": 13
     }
   ],
   "samples": [
@@ -262,6 +264,15 @@
       "location": "packages/frontend/editor-ui/src/features/settings/communityNodes/components/nodeCreator/CommunityNodeDocsLink.vue:1",
       "entries": [
         "margin-right: 5px (template)"
+      ]
+    },
+    {
+      "component": "packages/@n8n/backend-docs-site/src/styles/custom.css",
+      "location": "packages/@n8n/backend-docs-site/src/styles/custom.css:112",
+      "entries": [
+        "spacing: 0.75rem (line 112)",
+        "radius: 1rem (line 114)",
+        "font weight: 600 (line 121)"
       ]
     },
     {
@@ -337,14 +348,7 @@
         "radius: 22px (line 28)",
         "colour: rgba(65, 66, 68, 0.92) (line 30)"
       ]
-    },
-    {
-      "component": "packages/frontend/@n8n/design-system/src/components/CodeDiff/CodeDiff.vue",
-      "location": "packages/frontend/@n8n/design-system/src/components/CodeDiff/CodeDiff.vue:181",
-      "entries": [
-        "line height: 18px (line 181)"
-      ]
     }
   ],
-  "scanSeconds": 77
+  "scanSeconds": 64
 }
