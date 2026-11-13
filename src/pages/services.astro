@@ -4,50 +4,50 @@ import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
 import Button from '../components/Button.astro'
 
-const stages = [
+const offers = [
   {
-    number: '01',
-    name: 'Capture',
-    description: 'Identify the product principles, strongest existing screens, component patterns, and anti-patterns that make the product feel like yours.',
+    name: 'System found',
+    price: '$10,000',
+    period: 'one week',
+    description: 'Dylan finds the design system your code already has and makes it real, so your coding agents stop inventing new values.',
+    items: [
+      'A full Buoy baseline of one frontend codebase',
+      'Your color, spacing and type sprawl consolidated into tokens and a theme',
+      'A DESIGN.md your team and your agents can read',
+      'Agent rules and MCP setup for Cursor, Claude Code or the agent you already use',
+      'A before-and-after report',
+    ],
   },
   {
-    number: '02',
-    name: 'Codify',
-    description: 'Turn that judgment into a Design Contract: rules, examples, rationale, and task-specific context an AI coding agent can use.',
+    name: 'System in place',
+    price: '$20,000',
+    period: 'two weeks',
+    featured: true,
+    description: 'Everything in System found, then the code is moved onto it, so the product looks like one product.',
+    items: [
+      'Everything in System found',
+      'Your worst components migrated, in pull requests your team reviews and merges',
+      'The Buoy GitHub App set up so new drift is caught on every pull request',
+      'A first adoption baseline and a 30-day recheck',
+    ],
   },
   {
-    number: '03',
-    name: 'Calibrate',
-    description: 'Test the contract against real product work and deliver 20 agreed high-confidence fixes through reviewable pull requests.',
+    name: 'Keep it holding',
+    price: '$1,500',
+    period: 'per month, per product',
+    description: 'After a sprint, Dylan keeps watching so the system holds as your agents write more of the code.',
+    items: [
+      'Team plan included',
+      'A monthly adoption report, with agent-written pull requests split out',
+      'A monthly review call with Dylan',
+    ],
   },
-  {
-    number: '04',
-    name: 'Guard',
-    description: 'Install Buoy in GitHub or CI so provable violations are caught automatically and subjective decisions stay human-reviewed.',
-  },
-]
-
-const everyYear = [
-  'Everything in Team for one design system: unlimited repos, contributors, agents and runs',
-  'An org-wide drift record across every repo that uses your design system',
-  'A design-partner relationship with the people building Buoy',
-]
-
-const yearOne = [
-  'One agreed frontend codebase and a complete Buoy baseline',
-  'Three to five exemplary screens or components selected with your team',
-  'Product principles, contextual rules, and explicit anti-patterns',
-  'A human-readable Design Contract for your repository',
-  'Agent context for the AI coding workflow your team already uses',
-  '20 agreed high-confidence fixes delivered through reviewable pull requests',
-  'GitHub App or CI guardrails for supported deterministic rules',
-  'A before-and-after report, team handoff, and 30-day recheck',
 ]
 ---
 
 <Layout
-  title="Organization Plan | Buoy"
-  description="For design-system owners: an org-wide drift record and a design-partner relationship for $5,000 per year, per design system. Calibration is a separate $12,000 engagement."
+  title="Work with Dylan | Buoy"
+  description="System found: $10,000 for one week. System in place: $20,000 for two weeks. Keep it holding: $1,500 a month per product."
 >
   <Nav />
 
@@ -57,13 +57,13 @@ const yearOne = [
       <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-sunrise/10 rounded-full blur-3xl"></div>
       <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sunrise/10 border border-sunrise/30 mb-6">
-          <span class="text-sunrise font-medium text-sm">Organization plan · $5,000 per year · Calibration $12,000</span>
+          <span class="text-sunrise font-medium text-sm">Work with Dylan · from $10,000</span>
         </div>
         <h1 class="text-4xl sm:text-6xl font-bold text-light mb-6">
           Keep AI-generated UI<br />true to your product.
         </h1>
         <p class="text-xl text-slate max-w-3xl mx-auto mb-10">
-          For design-system owners. Buoy keeps an org-wide record of how your system holds up across every repo that uses it. Add calibration and we set it up with you: capture your product's design logic, connect it to your AI coding workflow, repair the clearest violations, and install guardrails that keep generic UI from creeping back in.
+          Dylan uses Buoy to find the design system your code already has, turn it into tokens and rules your coding agents follow, and move your product onto it. One or two weeks, fixed price.
         </p>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Button href="https://cal.com/tarre/rescue" size="lg" external>
@@ -90,66 +90,37 @@ const yearOne = [
       </div>
     </section>
 
-    <section class="py-20 bg-navy-dark">
+    <section id="what-you-get" class="py-20 bg-navy-dark scroll-mt-24">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl mb-12">
-          <p class="text-buoy font-medium mb-3">Calibration · $12,000, one time</p>
-          <h2 class="text-3xl font-bold text-light mb-4">Capture → Codify → Calibrate → Guard</h2>
-          <p class="text-slate text-lg">
-            Calibration gives your coding agents the product context they need before they write code, then holds them to it.
-          </p>
-        </div>
-        <div class="grid md:grid-cols-2 gap-6">
-          {stages.map((stage) => (
-            <article class="bg-navy border border-navy-light/20 rounded-xl p-7">
-              <div class="text-sm font-semibold text-buoy mb-3">{stage.number}</div>
-              <h3 class="text-xl font-semibold text-light mb-2">{stage.name}</h3>
-              <p class="text-slate">{stage.description}</p>
+        <div class="grid md:grid-cols-3 gap-8">
+          {offers.map((offer) => (
+            <article class={`flex flex-col bg-navy/50 border rounded-2xl p-8 ${offer.featured ? 'border-buoy' : 'border-navy-light/20'}`}>
+              <h2 class="text-xl font-bold text-light mb-1">{offer.name}</h2>
+              <div class="flex flex-wrap items-baseline gap-x-2 gap-y-1 mb-4">
+                <span class="text-3xl font-bold text-light">{offer.price}</span>
+                <span class="text-slate text-sm">{offer.period}</span>
+              </div>
+              <p class="text-sm text-slate mb-6">{offer.description}</p>
+              <ul class="space-y-3 text-sm text-slate">
+                {offer.items.map((item) => (
+                  <li class="flex items-start gap-2">
+                    <span class="text-success">✓</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
             </article>
           ))}
         </div>
-      </div>
-    </section>
-
-    <section id="what-you-get" class="py-20 bg-navy scroll-mt-24">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-10 items-start">
-          <div>
-            <p class="text-sunrise font-medium mb-3">What $5,000 a year includes</p>
-            <h2 class="text-3xl font-bold text-light mb-6">Every year</h2>
-            <ul class="space-y-4 text-slate mb-10">
-              {everyYear.map((item) => (
-                <li class="flex items-start gap-3">
-                  <span class="text-success mt-0.5">✓</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-            <h2 class="text-2xl font-bold text-light mb-6">Add calibration: $12,000, one time</h2>
-            <ul class="space-y-4 text-slate">
-              {yearOne.map((item) => (
-                <li class="flex items-start gap-3">
-                  <span class="text-success mt-0.5">✓</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <aside class="bg-navy-dark border border-buoy/30 rounded-2xl p-8">
-            <h3 class="text-xl font-semibold text-light mb-4">What Buoy will—and will not—automate</h3>
-            <ul class="space-y-4 text-sm text-slate">
-              <li>Tokens, components, accessibility, and supported code rules can be enforced deterministically.</li>
-              <li>Hierarchy, mood, and brand expression remain documented guidance until the evidence is strong.</li>
-              <li>Ambiguous findings stay review-required.</li>
-              <li>Fixes land on branches with visible diffs and existing checks.</li>
-              <li>Private code can be scanned locally without uploading it to Buoy Cloud.</li>
-            </ul>
-            <div class="border-t border-navy-light/20 mt-6 pt-6">
-              <p class="text-sm text-slate">Price</p>
-              <p class="text-light font-medium mt-1">$5,000 per year, per design system. Calibration is a separate one-time engagement: $12,000, half to begin and half at handoff.</p>
-              <p class="text-sm text-slate mt-3">Running the GitHub App without the record? See <a href="/pricing" class="text-buoy hover:underline">Team pricing</a>.</p>
-            </div>
-          </aside>
+        <div class="max-w-3xl mx-auto mt-12 bg-navy border border-buoy/30 rounded-2xl p-8">
+          <h3 class="text-xl font-semibold text-light mb-4">What Buoy will—and will not—automate</h3>
+          <ul class="space-y-4 text-sm text-slate">
+            <li>Tokens, components, accessibility, and supported code rules can be enforced deterministically.</li>
+            <li>Hierarchy, mood, and brand expression remain documented guidance until the evidence is strong.</li>
+            <li>Ambiguous findings stay review-required.</li>
+            <li>Fixes land on branches with visible diffs and existing checks.</li>
+          </ul>
+          <p class="text-sm text-slate border-t border-navy-light/20 mt-6 pt-6">Sprints are fixed price: half to begin, half at handoff. Just want the GitHub App? See <a href="/pricing" class="text-buoy hover:underline">pricing</a>.</p>
         </div>
       </div>
     </section>
@@ -168,7 +139,7 @@ const yearOne = [
             <p class="text-slate font-medium mb-3">Not the right plan</p>
             <h2 class="text-xl font-semibold text-light mb-4">You need someone to invent the entire brand from scratch.</h2>
             <p class="text-slate">
-              Calibration puts existing product judgment to work. It is not a replacement for foundational brand strategy or zero-to-one product design.
+              A sprint puts existing product judgment to work. It is not a replacement for foundational brand strategy or zero-to-one product design.
             </p>
           </article>
         </div>
@@ -179,7 +150,7 @@ const yearOne = [
       <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-3xl font-bold text-light mb-4">Start with evidence from your codebase.</h2>
         <p class="text-slate text-lg mb-8">
-          Run Buoy locally or bring one representative UI pull request. We will use the actual product and implementation to decide whether the Organization plan is worthwhile.
+          Run Buoy locally or bring one representative UI pull request. We will use the actual product and implementation to decide which sprint fits, if any.
         </p>
         <div class="bg-navy-dark border border-navy-light/30 rounded-xl p-5 mb-8 text-left">
           <code class="text-buoy">npx ahoybuoy show health</code>

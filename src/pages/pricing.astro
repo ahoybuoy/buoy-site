@@ -41,7 +41,7 @@ const plans = [
       'Dashboard and scan history',
       'Unlimited repos, contributors and agents',
     ],
-    after: 'After the first 100 installs: Team, $49/month per design system. Public repos stay free.',
+    after: 'After the first 100 installs: Free for one private repo (50 reviewed pull requests a month), or Team at $149/month per design system. Public repos stay free.',
     cta: 'Install from GitHub',
     ctaHref: MARKETPLACE_URL,
     external: true,
@@ -50,14 +50,14 @@ const plans = [
   },
   {
     name: 'Organization',
-    price: '$5,000',
-    period: 'per year, per design system',
-    audience: 'For the team that owns a design system used across many teams',
-    description: 'Everything in Team for one design system, plus the record of how it holds up across your organization.',
+    price: 'From $500',
+    period: 'per month',
+    audience: 'For companies with several products or design systems',
+    description: 'Everything in Team, across your products, plus the record of how your system holds up across the organization.',
     features: [
-      'Everything in Team',
+      'Everything in Team, for several products or design systems',
       'Org-wide drift record across every repo that uses your system',
-      'Optional calibration ($12,000, one time): your product rules, codified for agents, with agreed fixes shipped as pull requests',
+      'SSO',
       'Design-partner relationship with the people building Buoy',
     ],
     cta: 'Talk to Dylan',
@@ -65,7 +65,7 @@ const plans = [
     external: true,
     variant: 'secondary',
     secondaryHref: '/services',
-    secondaryLabel: 'What the plan includes',
+    secondaryLabel: 'Hands-on help from Dylan',
   },
 ]
 
@@ -79,7 +79,8 @@ const comparison = [
   { feature: 'Remembers declined suggestions', open: false, app: true, ds: true },
   { feature: 'Dashboard and scan history', open: false, app: true, ds: true },
   { feature: 'Org-wide drift record', open: false, app: false, ds: true },
-  { feature: 'Calibration available ($12,000, one time)', open: false, app: false, ds: true },
+  { feature: 'Several products or design systems', open: false, app: false, ds: true },
+  { feature: 'SSO', open: false, app: false, ds: true },
   { feature: 'Design-partner relationship', open: false, app: false, ds: true },
 ]
 
@@ -90,7 +91,7 @@ const faqs = [
   },
   {
     question: 'What happens after the first 100 installs?',
-    answer: 'New installs use Team: $49 a month per design system, with unlimited repos, contributors, agents and runs. Public repositories stay free on every install. The open source CLI, MCP server and GitHub Action stay free for everyone.',
+    answer: 'New installs get one private repo free, with 50 reviewed pull requests a month. Team is $149 a month per design system, with unlimited repos, contributors, agents and runs. Public repositories stay free on every install. The open source CLI, MCP server and GitHub Action stay free for everyone.',
   },
   {
     question: 'Why no per-seat pricing?',
@@ -110,7 +111,11 @@ const faqs = [
   },
   {
     question: 'What does the Organization plan include?',
-    answer: 'Everything in Team for one design system, plus an org-wide drift record across every repo that uses it, plus optional calibration (we capture your product rules, codify them for your coding agents, ship agreed fixes as reviewable pull requests and set up guardrails), and a design-partner relationship with the people building Buoy, for $5,000 a year per design system. Calibration is a separate one-time engagement for $12,000.',
+    answer: 'Everything in Team across several products or design systems, plus an org-wide drift record across every repo that uses them, SSO, and a design-partner relationship with the people building Buoy. It starts at $500 a month; talk to Dylan for a quote.',
+  },
+  {
+    question: 'Can Dylan do the work for us?',
+    answerHtml: 'Yes. <strong>System found</strong> ($10,000, one week): Dylan consolidates your tokens and theme, and writes DESIGN.md and the agent rules so Cursor or Claude stay on them. <strong>System in place</strong> ($20,000, two weeks): all of that, plus your worst components migrated in merged pull requests and a first adoption baseline. <strong>Keep it holding</strong> ($1,500 a month per product): Team plus a monthly adoption review. <a href="/services" class="text-buoy hover:underline">See services</a>.',
   },
 ]
 import MarkPattern from '../components/MarkPattern.astro'
@@ -118,7 +123,7 @@ import MarkPattern from '../components/MarkPattern.astro'
 
 <Layout
   title="Pricing | Buoy - Design Drift Detection"
-  description="Open source CLI, MCP server and GitHub Action free forever. GitHub App free for life for the first 100 installs, then $49/month per design system. No seats."
+  description="Open source CLI, MCP server and GitHub Action free forever. GitHub App free for life for the first 100 installs, then $149/month per design system. No seats."
   keywords="buoy pricing, design drift tool pricing, design system tool cost"
 >
   <Nav />
@@ -137,8 +142,8 @@ import MarkPattern from '../components/MarkPattern.astro'
       </h1>
       <p class="text-lg text-slate max-w-2xl mx-auto">
         The open source CLI, MCP server and GitHub Action are free forever. The GitHub App is
-        free for life for the first 100 installs. After that, Team is $49 a month per design
-        system, with unlimited repos, contributors and agents.
+        free for life for the first 100 installs. After that, one private repo is free and Team is $149 a
+        month per design system, with unlimited repos, contributors and agents.
       </p>
     </div>
   </section>
@@ -212,7 +217,7 @@ import MarkPattern from '../components/MarkPattern.astro'
             <p class="text-buoy font-medium mb-2">After the first 100 installs</p>
             <h2 class="text-2xl font-bold text-light mb-2">Team</h2>
             <div class="flex flex-wrap items-baseline gap-x-2 gap-y-1 mb-4">
-              <span class="text-3xl font-bold text-light">$49</span>
+              <span class="text-3xl font-bold text-light">$149</span>
               <span class="text-slate text-sm">per month, per design system</span>
             </div>
             <p class="text-slate text-sm">
