@@ -62,6 +62,7 @@ const jsonLd = [
   },
 ]
 const examples = ['formbricks/formbricks', 'twentyhq/twenty', 'calcom/cal.com', 'shadcn-ui/ui']
+import MarkPattern from '../../components/MarkPattern.astro'
 ---
 
 <Layout
@@ -73,6 +74,7 @@ const examples = ['formbricks/formbricks', 'twentyhq/twenty', 'calcom/cal.com', 
   <Nav />
   <section class="relative pt-32 pb-12 overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
+    <MarkPattern pattern="scan" drift={0} fade class="opacity-70" />
     <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h1 class="text-4xl sm:text-5xl font-bold text-light">Scan a design system from a GitHub URL</h1>
       <p class="text-lg text-slate mt-4">

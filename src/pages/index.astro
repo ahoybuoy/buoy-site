@@ -8,6 +8,7 @@ import FeatureCard from '../components/FeatureCard.astro'
 import CodeBlock from '../components/CodeBlock.astro'
 import WaveBackground from '../components/WaveBackground.astro'
 import WaveBoat from '../components/WaveBoat.astro'
+import MarkPattern from '../components/MarkPattern.astro'
 import LeadCaptureSection from '../components/LeadCaptureSection.astro'
 import FreeSpots from '../components/FreeSpots.astro'
 import { siteConfig } from '../config'
@@ -187,7 +188,7 @@ const steps = [
             Try it now — it's free
           </Button>
         </div>
-        <p class="-mt-8 mb-10 text-sm text-slate">
+        <p class="hero-scan-line -mt-8 mb-10 text-sm text-slate">
           Or <a href="/scan" class="text-buoy hover:underline">scan any public GitHub repository</a> for design drift, free, in about a minute.
         </p>
       </div>
@@ -310,6 +311,7 @@ const steps = [
   <!-- Terminal Demo Section: Find -->
   <section class="py-24 bg-navy relative overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
+    <MarkPattern pattern="swell" drift={0.35} fade class="opacity-70" />
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
