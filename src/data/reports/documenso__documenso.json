@@ -3,13 +3,13 @@
   "owner": "documenso",
   "name": "documenso",
   "description": "The Open Source DocuSign Alternative.",
-  "stars": 15755,
+  "stars": 15761,
   "homepage": "https://documenso.com",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "1e2333d534e151578ffb05394428e2a7efea5f50",
-  "generatedAt": "2026-11-13T14:57:36.449Z",
-  "cliVersion": "0.8.23",
+  "generatedAt": "2026-11-14T13:52:20.844Z",
+  "cliVersion": "0.8.25",
   "score": 95,
   "tier": "Great",
   "pillars": {
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 2,
+    "notedCount": 1,
     "topHardcodedColor": {
       "value": "#F1FBEA",
       "count": 2
@@ -81,19 +81,11 @@
     }
   ],
   "noted": {
-    "count": 2,
+    "count": 1,
     "byKind": {
-      "optical-nudge": 1,
-      "explained": 1
+      "optical-nudge": 1
     },
     "samples": [
-      {
-        "file": "packages/ui/styles/theme.css",
-        "line": 279,
-        "value": "10px",
-        "kind": "explained",
-        "reason": ".custom-scrollbar::-webkit-scrollbar-track {"
-      },
       {
         "file": "apps/remix/app/routes/embed+/playground.tsx",
         "line": 380,
@@ -195,11 +187,11 @@
       "count": 8
     },
     {
-      "file": "apps/remix/app/components/general/settings-upsell/branding-upsell.tsx",
-      "count": 4
+      "file": "packages/ui/styles/theme.css",
+      "count": 5
     },
     {
-      "file": "packages/ui/styles/theme.css",
+      "file": "apps/remix/app/components/general/settings-upsell/branding-upsell.tsx",
       "count": 4
     },
     {
@@ -307,5 +299,5 @@
       ]
     }
   ],
-  "scanSeconds": 27
+  "scanSeconds": 24
 }

@@ -3,13 +3,13 @@
   "owner": "ever-co",
   "name": "ever-gauzy",
   "description": "Ever® Gauzy™ - Open Business Management Platform (ERP/CRM/HRM/ATS/PM) - https://gauzy.co",
-  "stars": 8803,
+  "stars": 8823,
   "homepage": "https://gauzy.co",
   "language": "TypeScript",
   "defaultBranch": "develop",
-  "commit": "58c34e4acc2eaf51fd2f764de4c14e132b08bfb4",
-  "generatedAt": "2026-11-13T15:19:18.745Z",
-  "cliVersion": "0.8.23",
+  "commit": "e9e476e0f96992d0044220610d52214294382217",
+  "generatedAt": "2026-11-14T14:10:32.511Z",
+  "cliVersion": "0.8.25",
   "score": 35,
   "tier": "Bad",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 880,
+    "componentCount": 881,
     "tokenCount": 0,
-    "hardcodedValueCount": 720,
+    "hardcodedValueCount": 719,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 721,
+    "totalDriftCount": 720,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 1,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 164,
+    "notedCount": 132,
     "topHardcodedColor": {
       "value": "rgba(255, 61, 113, 0.12)",
       "count": 1
@@ -70,14 +70,14 @@
     ]
   },
   "suggestions": [
-    "720 hardcoded values to extract. Focus on packages/ui-react-components/src/lib/components/ColorDots.tsx (1 issues)",
+    "719 hardcoded values to extract. Focus on packages/ui-react-components/src/lib/components/ColorDots.tsx (1 issues)",
     "1 framework sprawl signal — standardize on fewer UI/styling frameworks"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 718 of the 720 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 717 of the 719 findings with tokens or scale steps"
     },
     {
       "pillar": "tokenHealth",
@@ -86,27 +86,13 @@
     }
   ],
   "noted": {
-    "count": 164,
+    "count": 132,
     "byKind": {
-      "optical-nudge": 115,
-      "explained": 44,
-      "known-debt": 5
+      "optical-nudge": 116,
+      "explained": 15,
+      "known-debt": 1
     },
     "samples": [
-      {
-        "file": "apps/gauzy/src/app/pages/about/about.component.scss",
-        "line": 138,
-        "value": "$hairline",
-        "kind": "explained",
-        "reason": "A hairline so the dark tile keeps its edge on the dark theme's dark card."
-      },
-      {
-        "file": "apps/gauzy/src/app/pages/candidates/manage-candidate-interviews/interview-panel/interview-panel.component.scss",
-        "line": 35,
-        "value": "0.75rem",
-        "kind": "known-debt",
-        "reason": "The checkbox group is a `.btn` (a legacy class name), so Bootstrap gives it button padding and margin that made the row…"
-      },
       {
         "file": "apps/gauzy/src/app/pages/contacts/contact-mutation/contact-mutation.component.scss",
         "line": 53,
@@ -115,36 +101,50 @@
         "reason": "Deliberately a literal, and deliberately NOT a theme token: this is a scrim over the uploaded PHOTO, so what it has to …"
       },
       {
-        "file": "apps/gauzy/src/app/pages/contacts/contact-mutation/contact-mutation.component.scss",
-        "line": 604,
-        "value": "1.25rem",
-        "kind": "explained",
-        "reason": "No rule above: the step panel's own edge already ends the form."
-      },
-      {
-        "file": "apps/gauzy/src/app/pages/dashboard/custom-dashboard/dashboard-canvas.component.scss",
-        "line": 121,
-        "value": "0.45",
-        "kind": "known-debt",
-        "reason": "Visible from the moment edit mode starts. At `opacity: 0` the ONLY affordance for rearranging the canvas was hovering a…"
-      },
-      {
-        "file": "apps/gauzy/src/app/pages/dashboard/dashboard-switcher/dashboard-switcher.component.scss",
+        "file": "apps/gauzy/src/app/pages/organizations/edit-organization/edit-organization-settings/edit-organization-other-settings/edit-organization-other-settings.component.scss",
         "line": 39,
-        "value": "3px",
+        "value": "1rem",
         "kind": "explained",
-        "reason": "the top half is clipped and unreachable — which is how \"Standard\" lost its top edge. The block padding gives the border…"
+        "reason": "frame their panels with `1rem` on all four sides, so this tab was the only one on the page whose content started at a d…"
+      },
+      {
+        "file": "packages/ui-react-components/src/lib/components/ColorDots.tsx",
+        "line": 13,
+        "value": "0.125rem",
+        "kind": "optical-nudge",
+        "reason": "paddingTop: 0.125rem is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/ui-react-components/src/lib/components/WidgetCard.tsx",
+        "line": 57,
+        "value": "0.125rem",
+        "kind": "optical-nudge",
+        "reason": "marginTop: 0.125rem is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/agent/src/assets/styles/_overrides.scss",
+        "line": 541,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "margin: 3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/agent/src/assets/styles/report.scss",
+        "line": 115,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding-top: 2px is a 2-3px optical adjustment"
       }
     ]
   },
   "driftSummary": {
-    "total": 721,
+    "total": 720,
     "critical": 0,
     "warning": 165,
-    "info": 556
+    "info": 555
   },
   "driftByType": {
-    "hardcoded-value": 720,
+    "hardcoded-value": 719,
     "framework-sprawl": 1
   },
   "topColors": [
@@ -184,7 +184,7 @@
   "topSpacing": [
     {
       "value": "0.5rem",
-      "count": 759
+      "count": 763
     },
     {
       "value": "1rem",
@@ -192,15 +192,15 @@
     },
     {
       "value": "0.75rem",
-      "count": 432
+      "count": 433
+    },
+    {
+      "value": "0.375rem",
+      "count": 341
     },
     {
       "value": "0.25rem",
       "count": 340
-    },
-    {
-      "value": "0.375rem",
-      "count": 337
     },
     {
       "value": "10px",
@@ -338,5 +338,5 @@
       ]
     }
   ],
-  "scanSeconds": 135
+  "scanSeconds": 99
 }

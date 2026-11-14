@@ -3,13 +3,13 @@
   "owner": "umami-software",
   "name": "umami",
   "description": "Umami is a privacy-first web and product analytics platform. Traffic, campaigns, behavior, conversions, and revenue in one place. No cookies, no surveillance, self-hosted or in the cloud.",
-  "stars": 40115,
+  "stars": 40139,
   "homepage": "https://umami.is",
   "language": "TypeScript",
   "defaultBranch": "master",
   "commit": "b18d5144dfe7342edeeca6f61d13ba3baabed9ad",
-  "generatedAt": "2026-11-13T14:58:57.575Z",
-  "cliVersion": "0.8.23",
+  "generatedAt": "2026-11-14T13:53:34.788Z",
+  "cliVersion": "0.8.25",
   "score": 87,
   "tier": "Great",
   "pillars": {
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 2,
+    "notedCount": 1,
     "topHardcodedColor": {
       "value": "rgba(0, 0, 0, 0.8)",
       "count": 4
@@ -84,19 +84,11 @@
     }
   ],
   "noted": {
-    "count": 2,
+    "count": 1,
     "byKind": {
-      "optical-nudge": 1,
-      "explained": 1
+      "optical-nudge": 1
     },
     "samples": [
-      {
-        "file": "src/components/metrics/MetricsBar.module.css",
-        "line": 8,
-        "value": "0 -1px -1px 0",
-        "kind": "explained",
-        "reason": "and the last row's bottom edge. A partially filled last row then reads as a table with empty cells instead of leaving h…"
-      },
       {
         "file": "src/components/input/WebsiteFilterButton.tsx",
         "line": 87,
@@ -309,5 +301,5 @@
       ]
     }
   ],
-  "scanSeconds": 20
+  "scanSeconds": 19
 }

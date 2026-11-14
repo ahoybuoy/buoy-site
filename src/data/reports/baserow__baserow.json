@@ -3,13 +3,13 @@
   "owner": "baserow",
   "name": "baserow",
   "description": "Build databases, automations, apps & agents with AI — no code.  Open source platform available on cloud and self-hosted. GDPR, HIPAA, SOC 2 compliant. Best Airtable alternative.",
-  "stars": 6330,
+  "stars": 6337,
   "homepage": "https://baserow.io",
   "language": "Python",
   "defaultBranch": "develop",
-  "commit": "21daad9e63da4ad8bfbe2a76ebd8dbcdd1f52929",
-  "generatedAt": "2026-11-13T15:13:32.601Z",
-  "cliVersion": "0.8.23",
+  "commit": "727772b03c685d78d2c2dbeb17574b022648873c",
+  "generatedAt": "2026-11-14T14:06:14.496Z",
+  "cliVersion": "0.8.25",
   "score": null,
   "tier": "N/A",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 0,
     "tokenCount": 56,
-    "hardcodedValueCount": 391,
+    "hardcodedValueCount": 385,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 391,
+    "totalDriftCount": 385,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 63,
+    "notedCount": 60,
     "topHardcodedColor": {
       "value": "#fff",
       "count": 1
@@ -69,10 +69,10 @@
   ],
   "pathTo100": null,
   "noted": {
-    "count": 63,
+    "count": 60,
     "byKind": {
-      "optical-nudge": 56,
-      "explained": 7
+      "optical-nudge": 55,
+      "explained": 5
     },
     "samples": [
       {
@@ -83,25 +83,11 @@
         "reason": "Must be kept in sync with the timeout of KanbanViewStack.vue::moved"
       },
       {
-        "file": "web-frontend/modules/core/assets/scss/components/agent_application.scss",
-        "line": 627,
-        "value": "0 10px 0 36px",
-        "kind": "explained",
-        "reason": "Align the divider with the text, leaving the leading icon outside it."
-      },
-      {
         "file": "web-frontend/modules/core/assets/scss/components/builder/elements/ab_components/ab_datetime_picker.scss",
         "line": 93,
         "value": "$datepicker-cell-font-size",
         "kind": "explained",
         "reason": "Override vuejs3-datepicker default font size"
-      },
-      {
-        "file": "web-frontend/modules/core/assets/scss/components/builder/elements/forms/property_option_form.scss",
-        "line": 32,
-        "value": "0 auto",
-        "kind": "explained",
-        "reason": "Align the checkbox to the center of the cell."
       },
       {
         "file": "web-frontend/modules/core/assets/scss/components/builder/page_preview.scss",
@@ -116,17 +102,31 @@
         "value": "0 -6px",
         "kind": "explained",
         "reason": "Clickable examples carry their own padding so the hover background can bleed past the snippet. Offset the container by …"
+      },
+      {
+        "file": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/custom_code.scss",
+        "line": 36,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/date_dependency.scss",
+        "line": 44,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding-right: 2px is a 2-3px optical adjustment"
       }
     ]
   },
   "driftSummary": {
-    "total": 391,
+    "total": 385,
     "critical": 0,
-    "warning": 137,
-    "info": 254
+    "warning": 136,
+    "info": 249
   },
   "driftByType": {
-    "hardcoded-value": 391
+    "hardcoded-value": 385
   },
   "topColors": [
     {
@@ -165,11 +165,11 @@
   "topSpacing": [
     {
       "value": "8px",
-      "count": 232
+      "count": 230
     },
     {
       "value": "12px",
-      "count": 168
+      "count": 169
     },
     {
       "value": "16px",
@@ -218,16 +218,16 @@
       "count": 55
     },
     {
+      "file": "web-frontend/modules/core/assets/scss/components/agent_triggers.scss",
+      "count": 52
+    },
+    {
       "file": "web-frontend/modules/core/assets/scss/components/ai_provider_admin.scss",
       "count": 47
     },
     {
       "file": "web-frontend/modules/core/assets/scss/components/workspace_search.scss",
       "count": 46
-    },
-    {
-      "file": "web-frontend/modules/core/assets/scss/components/sidebar.scss",
-      "count": 43
     }
   ],
   "samples": [
@@ -311,13 +311,6 @@
       ]
     },
     {
-      "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/auth_provider_icon.scss",
-      "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/auth_provider_icon.scss:5",
-      "entries": [
-        "spacing: 8px (line 5)"
-      ]
-    },
-    {
       "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/common_oidc_setting_form.scss",
       "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/common_oidc_setting_form.scss:12",
       "entries": [
@@ -332,7 +325,14 @@
         "spacing: 8px (line 12)",
         "spacing: 5px (line 15)"
       ]
+    },
+    {
+      "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/core_code_service_form.scss",
+      "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/core_code_service_form.scss:4",
+      "entries": [
+        "spacing: 6px (line 4)"
+      ]
     }
   ],
-  "scanSeconds": 24
+  "scanSeconds": 21
 }

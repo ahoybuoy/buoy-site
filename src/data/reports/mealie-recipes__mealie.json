@@ -3,13 +3,13 @@
   "owner": "mealie-recipes",
   "name": "mealie",
   "description": "Mealie is a self hosted recipe manager and meal planner with a RestAPI backend and a reactive frontend application built in Vue for a pleasant user experience for the whole family. Easily add recipes into your database by providing the url and mealie will automatically import the relevant data or add a family recipe with the UI editor",
-  "stars": 13888,
+  "stars": 13895,
   "homepage": "https://docs.mealie.io",
   "language": "Python",
   "defaultBranch": "mealie-next",
-  "commit": "1624c22bf70988c7fe404ad586e2f9689f77748d",
-  "generatedAt": "2026-11-13T15:28:07.176Z",
-  "cliVersion": "0.8.23",
+  "commit": "a083a4dd6e46a91d19666399cacac77a923bd32d",
+  "generatedAt": "2026-11-14T14:18:04.738Z",
+  "cliVersion": "0.8.25",
   "score": null,
   "tier": "N/A",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 0,
     "tokenCount": 18,
-    "hardcodedValueCount": 40,
+    "hardcodedValueCount": 41,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 40,
+    "totalDriftCount": 41,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 9,
+    "notedCount": 7,
     "topHardcodedColor": {
       "value": "#ffffff",
       "count": 1
@@ -69,27 +69,11 @@
   ],
   "pathTo100": null,
   "noted": {
-    "count": 9,
+    "count": 7,
     "byKind": {
-      "optical-nudge": 7,
-      "explained": 1,
-      "known-debt": 1
+      "optical-nudge": 7
     },
     "samples": [
-      {
-        "file": "frontend/app/components/Domain/Recipe/RecipeOrganizerSelector.vue",
-        "line": 237,
-        "value": "6px",
-        "kind": "explained",
-        "reason": "This aligns the input with other standard input fields"
-      },
-      {
-        "file": "frontend/app/pages/shopping-lists/[id].vue",
-        "line": 575,
-        "value": "0.55",
-        "kind": "known-debt",
-        "reason": "the row's action icons are secondary to the item text, so they sit back until used"
-      },
       {
         "file": "frontend/app/components/Domain/Recipe/RecipeIngredientListItem.vue",
         "line": 129,
@@ -117,17 +101,31 @@
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "padding-top: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/app/pages/shopping-lists/[id].vue",
+        "line": 543,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding-bottom: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/app/pages/shopping-lists/[id].vue",
+        "line": 548,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "margin-top: 3px is a 2-3px optical adjustment"
       }
     ]
   },
   "driftSummary": {
-    "total": 40,
+    "total": 41,
     "critical": 0,
     "warning": 8,
-    "info": 32
+    "info": 33
   },
   "driftByType": {
-    "hardcoded-value": 40
+    "hardcoded-value": 41
   },
   "topColors": [
     {
@@ -177,16 +175,16 @@
       "count": 3
     },
     {
+      "value": "6px",
+      "count": 3
+    },
+    {
       "value": "2.5rem",
       "count": 3
     },
     {
       "value": "-2.5rem",
       "count": 3
-    },
-    {
-      "value": "6px",
-      "count": 2
     },
     {
       "value": "0.25rem",
@@ -319,5 +317,5 @@
       ]
     }
   ],
-  "scanSeconds": 5
+  "scanSeconds": 4
 }

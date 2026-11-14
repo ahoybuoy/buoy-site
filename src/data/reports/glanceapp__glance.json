@@ -3,13 +3,13 @@
   "owner": "glanceapp",
   "name": "glance",
   "description": "A self-hosted dashboard that puts all your feeds in one place",
-  "stars": 38168,
+  "stars": 38183,
   "homepage": "",
   "language": "Go",
   "defaultBranch": "main",
   "commit": "53aec7f392ca72143870dcb45526ec7c80a68f32",
-  "generatedAt": "2026-11-13T15:20:23.040Z",
-  "cliVersion": "0.8.23",
+  "generatedAt": "2026-11-14T14:11:30.159Z",
+  "cliVersion": "0.8.25",
   "score": null,
   "tier": "N/A",
   "pillars": {
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 7,
+    "notedCount": 5,
     "detectedFrameworkNames": []
   },
   "suggestions": [
@@ -61,26 +61,11 @@
   ],
   "pathTo100": null,
   "noted": {
-    "count": 7,
+    "count": 5,
     "byKind": {
-      "explained": 2,
       "optical-nudge": 5
     },
     "samples": [
-      {
-        "file": "internal/glance/static/css/mobile.css",
-        "line": 157,
-        "value": "16px",
-        "kind": "explained",
-        "reason": "so that iOS Safari does not zoom the page when the input is focused"
-      },
-      {
-        "file": "internal/glance/static/css/site.css",
-        "line": 179,
-        "value": "0.001",
-        "kind": "explained",
-        "reason": "Using 0.001 instead of 0 fixes a random 1s freeze on Chrome on page load when all elements have opacity 0 and are anima…"
-      },
       {
         "file": "internal/glance/static/css/site.css",
         "line": 295,
@@ -108,6 +93,13 @@
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "padding: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "internal/glance/static/css/widget-weather.css",
+        "line": 8,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "padding-top: 3px is a 2-3px optical adjustment"
       }
     ]
   },
@@ -174,7 +166,7 @@
     },
     {
       "file": "internal/glance/static/css/mobile.css",
-      "count": 6
+      "count": 7
     },
     {
       "file": "internal/glance/static/css/widget-weather.css",
@@ -292,5 +284,5 @@
       ]
     }
   ],
-  "scanSeconds": 3
+  "scanSeconds": 2
 }

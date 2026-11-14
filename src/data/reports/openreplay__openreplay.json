@@ -3,13 +3,13 @@
   "owner": "openreplay",
   "name": "openreplay",
   "description": "Session replay, cobrowsing and product analytics you can self-host. Best for reproducing issues and iterating on your product.",
-  "stars": 13141,
+  "stars": 13145,
   "homepage": "https://openreplay.com",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "25119d9b0cc2d833c7ea1bb655b6df1b01e05f66",
-  "generatedAt": "2026-11-13T15:29:27.625Z",
-  "cliVersion": "0.8.23",
+  "generatedAt": "2026-11-14T14:19:15.863Z",
+  "cliVersion": "0.8.25",
   "score": 67,
   "tier": "Good",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 1650,
     "tokenCount": 39,
-    "hardcodedValueCount": 272,
+    "hardcodedValueCount": 273,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 272,
+    "totalDriftCount": 273,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 4,
     "vendoredDriftCount": 0,
-    "notedCount": 29,
+    "notedCount": 26,
     "topHardcodedColor": {
       "value": "#394EFF",
       "count": 5
@@ -68,43 +68,28 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 272 hardcoded values left to tokenize. frontend/app/components/Funnels/FunnelWidget/FunnelBar.tsx has the most (3)"
+    "Nearly there — just 273 hardcoded values left to tokenize. frontend/app/components/Funnels/FunnelWidget/FunnelBar.tsx has the most (3)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 33,
-      "action": "Replace the hardcoded values in 268 of the 272 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 269 of the 273 findings with tokens or scale steps"
     }
   ],
   "noted": {
-    "count": 29,
+    "count": 26,
     "byKind": {
-      "optical-nudge": 26,
-      "explained": 2,
+      "optical-nudge": 25,
       "known-debt": 1
     },
     "samples": [
-      {
-        "file": "frontend/app/components/shared/Filters/FilterList/UnifiedFilterList.tsx",
-        "line": 218,
-        "value": "pt-[4px]",
-        "kind": "explained",
-        "reason": "Align handle visually"
-      },
       {
         "file": "frontend/app/components/shared/Filters/FilterValueDropdown/FilterValueDropdown.module.css",
         "line": 9,
         "value": "3",
         "kind": "known-debt",
         "reason": "z-index: 3; TODO this has to be fixed in clickmaps @Nikita"
-      },
-      {
-        "file": "frontend/app/styles/import/icons.css",
-        "line": 16,
-        "value": "5px",
-        "kind": "explained",
-        "reason": "vertical-align: text-bottom;"
       },
       {
         "file": "frontend/app/components/ui/Avatar/Avatar.jsx",
@@ -126,17 +111,31 @@
         "value": "mt-[3px]",
         "kind": "optical-nudge",
         "reason": "mt-[3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/app/components/shared/Filters/FilterItem/FilterItem.tsx",
+        "line": 248,
+        "value": "mt-[2px]",
+        "kind": "optical-nudge",
+        "reason": "mt-[2px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/app/assets/marvel-device.module.css",
+        "line": 1,
+        "value": "-2px",
+        "kind": "optical-nudge",
+        "reason": "margin-top: -2px is a 2-3px optical adjustment"
       }
     ]
   },
   "driftSummary": {
-    "total": 272,
+    "total": 273,
     "critical": 0,
     "warning": 146,
-    "info": 126
+    "info": 127
   },
   "driftByType": {
-    "hardcoded-value": 272
+    "hardcoded-value": 273
   },
   "topColors": [
     {
@@ -191,7 +190,7 @@
     },
     {
       "value": "4px",
-      "count": 20
+      "count": 21
     },
     {
       "value": "8px",
@@ -328,5 +327,5 @@
       ]
     }
   ],
-  "scanSeconds": 32
+  "scanSeconds": 28
 }

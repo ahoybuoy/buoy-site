@@ -3,18 +3,18 @@
   "owner": "excalidraw",
   "name": "excalidraw",
   "description": "Virtual whiteboard for sketching hand-drawn like diagrams",
-  "stars": 135626,
+  "stars": 135672,
   "homepage": "https://excalidraw.com",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "82d5847e57dcb6fb5982833ea9ec2137fe0b2bd5",
-  "generatedAt": "2026-11-13T14:58:31.562Z",
-  "cliVersion": "0.8.23",
-  "score": 61,
+  "commit": "3a317b55f508815d10a4c12acca99df30f026521",
+  "generatedAt": "2026-11-14T13:53:10.969Z",
+  "cliVersion": "0.8.25",
+  "score": 62,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 21,
+      "score": 22,
       "max": 60
     },
     "tokenHealth": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 434,
     "tokenCount": 123,
-    "hardcodedValueCount": 85,
+    "hardcodedValueCount": 83,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 85,
+    "totalDriftCount": 83,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -69,13 +69,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 85 hardcoded values left to tokenize. packages/excalidraw/components/PublishLibrary.tsx has the most (3)"
+    "Nearly there — just 83 hardcoded values left to tokenize. packages/excalidraw/components/PublishLibrary.tsx has the most (3)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 39,
-      "action": "Replace the hardcoded values in 84 of the 85 findings with tokens or scale steps"
+      "points": 38,
+      "action": "Replace the hardcoded values in 82 of the 83 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -130,13 +130,13 @@
     ]
   },
   "driftSummary": {
-    "total": 85,
+    "total": 83,
     "critical": 0,
     "warning": 50,
-    "info": 35
+    "info": 33
   },
   "driftByType": {
-    "hardcoded-value": 85
+    "hardcoded-value": 83
   },
   "topColors": [
     {
@@ -175,19 +175,19 @@
   "topSpacing": [
     {
       "value": "0.5rem",
-      "count": 71
+      "count": 70
     },
     {
       "value": "0.25rem",
       "count": 31
     },
     {
-      "value": "0.75rem",
+      "value": "1rem",
       "count": 29
     },
     {
-      "value": "1rem",
-      "count": 29
+      "value": "0.75rem",
+      "count": 28
     },
     {
       "value": "2rem",
@@ -331,5 +331,5 @@
       ]
     }
   ],
-  "scanSeconds": 9
+  "scanSeconds": 8
 }

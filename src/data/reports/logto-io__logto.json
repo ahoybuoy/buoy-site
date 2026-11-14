@@ -3,13 +3,13 @@
   "owner": "logto-io",
   "name": "logto",
   "description": "🧑‍🚀 Authentication and authorization infrastructure for SaaS and AI apps, built on OIDC and OAuth 2.1 with multi-tenancy, SSO, and RBAC.",
-  "stars": 14927,
+  "stars": 14933,
   "homepage": "https://logto.io",
   "language": "TypeScript",
   "defaultBranch": "master",
   "commit": "59f7e2782506838fe9df646d5102562c508d8753",
-  "generatedAt": "2026-11-13T15:27:32.530Z",
-  "cliVersion": "0.8.23",
+  "generatedAt": "2026-11-14T14:17:32.614Z",
+  "cliVersion": "0.8.25",
   "score": 58,
   "tier": "OK",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 1011,
     "tokenCount": 17,
-    "hardcodedValueCount": 195,
+    "hardcodedValueCount": 196,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 207,
+    "totalDriftCount": 208,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 11,
@@ -69,14 +69,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 195 hardcoded values left to tokenize",
+    "Nearly there — just 196 hardcoded values left to tokenize",
     "1 deprecated pattern — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 39,
-      "action": "Replace the hardcoded values in 193 of the 195 findings with tokens or scale steps, and remove or reuse 11 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 194 of the 196 findings with tokens or scale steps, and remove or reuse 11 unused components and repeated patterns"
     },
     {
       "pillar": "tokenHealth",
@@ -112,14 +112,14 @@
     ]
   },
   "driftSummary": {
-    "total": 207,
+    "total": 208,
     "critical": 0,
     "warning": 23,
-    "info": 184
+    "info": 185
   },
   "driftByType": {
     "deprecated-pattern": 1,
-    "hardcoded-value": 195,
+    "hardcoded-value": 196,
     "orphaned-component": 11
   },
   "topColors": [
@@ -308,5 +308,5 @@
       ]
     }
   ],
-  "scanSeconds": 52
+  "scanSeconds": 43
 }

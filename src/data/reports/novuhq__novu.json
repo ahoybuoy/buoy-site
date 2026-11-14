@@ -3,13 +3,13 @@
   "owner": "novuhq",
   "name": "novu",
   "description": "The open-source communication infrastructure for agents and products",
-  "stars": 40334,
+  "stars": 40340,
   "homepage": "https://go.novu.co/github",
   "language": "TypeScript",
   "defaultBranch": "next",
-  "commit": "a4c9f615fefbbaccd0153538a7e754a665d68c2a",
-  "generatedAt": "2026-11-13T14:53:04.052Z",
-  "cliVersion": "0.8.23",
+  "commit": "cb5833340c188f318db7c2c604327ce9bf9a5e3c",
+  "generatedAt": "2026-11-14T13:48:18.786Z",
+  "cliVersion": "0.8.25",
   "score": 63,
   "tier": "Good",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 3110,
     "tokenCount": 828,
-    "hardcodedValueCount": 596,
+    "hardcodedValueCount": 599,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 598,
+    "totalDriftCount": 601,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -51,9 +51,9 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 59,
+    "highDensityFileCount": 60,
     "vendoredDriftCount": 18,
-    "notedCount": 42,
+    "notedCount": 35,
     "topHardcodedColor": {
       "value": "#dd2476",
       "count": 8
@@ -72,77 +72,75 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 578 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
+    "Nearly there — just 581 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
     "18 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 37,
-      "action": "Replace the hardcoded values in 571 of the 578 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 574 of the 581 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     }
   ],
   "noted": {
-    "count": 42,
+    "count": 35,
     "byKind": {
       "optical-nudge": 24,
-      "explained": 4,
-      "known-debt": 3,
       "vendored": 11
     },
     "samples": [
       {
-        "file": "apps/dashboard/src/components/auth/auth-side-banner.tsx",
-        "line": 163,
-        "value": "text-[#525866]",
-        "kind": "explained",
-        "reason": "Inline text flow (not flex) so the copy wraps word-by-word and fills each line; inline-flex pills sit mid-line via alig…"
+        "file": "apps/dashboard/src/components/primitives/chart.tsx",
+        "line": 190,
+        "value": "border-[1.5px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
       },
       {
-        "file": "apps/human-dashboard/src/components/connect/host-setup-box.tsx",
-        "line": 615,
-        "value": "bg-[#1f1f1f]",
-        "kind": "known-debt",
-        "reason": "Until the sliding tile has been placed, the chosen tab draws its own."
+        "file": "apps/dashboard/src/components/primitives/chart.tsx",
+        "line": 159,
+        "value": "text-[12px], text-[12px], text-[11px], text-[11px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
       },
       {
-        "file": "apps/human-dashboard/src/components/dashboard/share-dialog.tsx",
-        "line": 50,
-        "value": "rounded-[14px]",
-        "kind": "explained",
-        "reason": "On a short screen, such as a phone on its side, it scrolls rather than lose its buttons off the edge."
+        "file": "apps/dashboard/src/components/primitives/input-group.tsx",
+        "line": 41,
+        "value": "has-[>button]:ml-[-0.45rem], has-[>kbd]:ml-[-0.35rem], has-[>button]:mr-[-0.4rem], has-[>kbd]:mr-[-0.35rem]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
       },
       {
-        "file": "apps/human-dashboard/src/components/dashboard/share-dialog.tsx",
-        "line": 50,
-        "value": "shadow-[0_24px_60px_0_rgb(0_0_0/0.55)]",
-        "kind": "explained",
-        "reason": "On a short screen, such as a phone on its side, it scrolls rather than lose its buttons off the edge."
-      },
-      {
-        "file": "apps/human-dashboard/src/components/public-card/tilt-card.tsx",
+        "file": "apps/dashboard/src/components/primitives/input.tsx",
         "line": 31,
-        "value": "rounded-[14px]",
-        "kind": "explained",
-        "reason": "edge. Where it leans, where the glare is and which edge is lit are CSS variables its own frames set, so nothing re-rend…"
+        "value": "has-[input:focus]:ring-[3px], focus-within:ring-[3px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
       },
       {
-        "file": "apps/human-dashboard/src/components/say-hi/host-screen.tsx",
-        "line": 81,
-        "value": "text-[11px]",
-        "kind": "known-debt",
-        "reason": "Every tile has its border, see-through until picked, inside the design's 12px/9px padding, and keeps room for its name …"
+        "file": "apps/dashboard/src/components/primitives/kbd.tsx",
+        "line": 6,
+        "value": "px-[5px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "apps/dashboard/src/components/primitives/kbd.tsx",
+        "line": 13,
+        "value": "border-b-[1.5px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
       }
     ]
   },
   "driftSummary": {
-    "total": 598,
+    "total": 601,
     "critical": 0,
     "warning": 116,
-    "info": 482
+    "info": 485
   },
   "driftByType": {
-    "hardcoded-value": 596,
+    "hardcoded-value": 599,
     "repeated-pattern": 2
   },
   "topColors": [
@@ -151,11 +149,11 @@
       "count": 22
     },
     {
-      "value": "#dd2476",
-      "count": 20
+      "value": "#525866",
+      "count": 21
     },
     {
-      "value": "#525866",
+      "value": "#dd2476",
       "count": 20
     },
     {
@@ -337,5 +335,5 @@
       ]
     }
   ],
-  "scanSeconds": 71
+  "scanSeconds": 65
 }

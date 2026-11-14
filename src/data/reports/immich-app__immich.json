@@ -3,13 +3,13 @@
   "owner": "immich-app",
   "name": "immich",
   "description": "High performance self-hosted photo and video management solution.",
-  "stars": 119085,
+  "stars": 119158,
   "homepage": "https://immich.app",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "e5d6eb7be67834f59d90e4b7a86f5dec7ac9af86",
-  "generatedAt": "2026-11-13T15:22:45.456Z",
-  "cliVersion": "0.8.23",
+  "generatedAt": "2026-11-14T14:13:36.139Z",
+  "cliVersion": "0.8.25",
   "score": 81,
   "tier": "Great",
   "pillars": {
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 3,
+    "notedCount": 1,
     "topHardcodedColor": {
       "value": "#232932",
       "count": 3
@@ -77,9 +77,9 @@
     }
   ],
   "noted": {
-    "count": 3,
+    "count": 1,
     "byKind": {
-      "explained": 3
+      "explained": 1
     },
     "samples": [
       {
@@ -88,20 +88,6 @@
         "value": "'GoogleSans', sans-serif",
         "kind": "explained",
         "reason": "You can override the default Infima variables here."
-      },
-      {
-        "file": "web/src/lib/components/asset-viewer/ActivityViewer.svelte",
-        "line": 275,
-        "value": "white",
-        "kind": "explained",
-        "reason": "Edge 12 -18"
-      },
-      {
-        "file": "web/src/routes/(user)/albums/[albumId=id]/[[photos=photos]]/[[assetId=id]]/+page.svelte",
-        "line": 565,
-        "value": "white",
-        "kind": "explained",
-        "reason": "Edge 12 -18"
       }
     ]
   },
@@ -288,5 +274,5 @@
       ]
     }
   ],
-  "scanSeconds": 14
+  "scanSeconds": 13
 }

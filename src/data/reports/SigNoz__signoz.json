@@ -3,13 +3,13 @@
   "owner": "SigNoz",
   "name": "signoz",
   "description": "SigNoz is an open-source, OpenTelemetry-native observability platform for your team and their AI agents. Get logs, metrics, and traces in one tool with features like APM, distributed tracing, log management, infra monitoring, etc. Combined with SigNoz MCP and a native AI teammate (in SigNoz Cloud) it helps you build more resilient apps.",
-  "stars": 32619,
+  "stars": 32638,
   "homepage": "https://signoz.io",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "0fbd56058f7ee00bfec98dcc3eaecc00f022d203",
-  "generatedAt": "2026-11-13T15:11:16.655Z",
-  "cliVersion": "0.8.23",
+  "commit": "e010c4fa037e15733e9a722714246211eb9026d4",
+  "generatedAt": "2026-11-14T14:04:22.636Z",
+  "cliVersion": "0.8.25",
   "score": 20,
   "tier": "Bad",
   "pillars": {
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 52,
+    "notedCount": 50,
     "topHardcodedColor": {
       "value": "#1890ff",
       "count": 4
@@ -82,33 +82,26 @@
     }
   ],
   "noted": {
-    "count": 52,
+    "count": 50,
     "byKind": {
       "optical-nudge": 47,
-      "explained": 4,
-      "known-debt": 1
+      "known-debt": 1,
+      "explained": 2
     },
     "samples": [
-      {
-        "file": "frontend/src/container/AIAssistant/components/VirtualizedMessages/VirtualizedMessages.module.scss",
-        "line": 14,
-        "value": "16px 0 64px",
-        "kind": "explained",
-        "reason": "disclaimer / input bar. The scroll-to-bottom effect uses the scroller ref to scroll past this padding (Virtuoso's `alig…"
-      },
-      {
-        "file": "frontend/src/pages/DashboardPage/DashboardContainer/DashboardSettings/Overview/DashboardInfoForm/DashboardInfoForm.module.scss",
-        "line": 31,
-        "value": "2px 0px 0px 2px",
-        "kind": "explained",
-        "reason": "The image-picker owns its size/background; here we only round the left edge so it joins flush with the name input to it…"
-      },
       {
         "file": "frontend/src/pages/DashboardPage/DashboardContainer/PanelEditor/ListColumnsEditor/components/AddColumnDropdown/AddColumnDropdown.module.scss",
         "line": 7,
         "value": "1100",
         "kind": "known-debt",
         "reason": "The dropdown portals to body; lift it above the query builder's antd popups (1050) so it stays clickable, incl. inside …"
+      },
+      {
+        "file": "frontend/src/pages/TraceDetailsV3/SpanDetailsPanel/SpanDetailsPanel.module.scss",
+        "line": 56,
+        "value": "0 12px",
+        "kind": "explained",
+        "reason": "Inset to match panelBody's 12px padding so the border-top aligns with the content edges instead of bleeding to the pane…"
       },
       {
         "file": "frontend/src/pages/TraceDetailsV3/TraceWaterfall/TraceWaterfallStates/Success/Success.module.scss",
@@ -118,18 +111,25 @@
         "reason": "Match timelineHeader's 15px padding so bars align with ticks"
       },
       {
-        "file": "frontend/src/periscope/components/PrettyView/PrettyView.styles.scss",
-        "line": 101,
-        "value": "1.25em",
-        "kind": "explained",
-        "reason": "react-json-tree indents leaf values with a depth-dependent padding-left (2.125em when nested vs 1.25em at top); we inde…"
-      },
-      {
         "file": "frontend/src/components/AppLoading/AppLoading.styles.scss",
         "line": 56,
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "margin: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/src/components/ErrorModal/ErrorModal.styles.scss",
+        "line": 9,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "padding-left: 3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/src/components/ListFilter/FilterZone/FilterZone.module.scss",
+        "line": 33,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-right: 2px is a 2-3px optical adjustment"
       }
     ]
   },
@@ -330,5 +330,5 @@
       ]
     }
   ],
-  "scanSeconds": 31
+  "scanSeconds": 25
 }

@@ -3,13 +3,13 @@
   "owner": "TabbyML",
   "name": "tabby",
   "description": "Self-hosted AI coding assistant",
-  "stars": 33935,
+  "stars": 33937,
   "homepage": "https://tabbyml.com",
   "language": "Rust",
   "defaultBranch": "main",
   "commit": "21b29048d7bcf6b94f9f482f2d0fd05efadfd19f",
-  "generatedAt": "2026-11-13T15:12:10.670Z",
-  "cliVersion": "0.8.23",
+  "generatedAt": "2026-11-14T14:05:07.189Z",
+  "cliVersion": "0.8.25",
   "score": 95,
   "tier": "Great",
   "pillars": {
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 102,
+    "notedCount": 4,
     "detectedFrameworkNames": [
       "react",
       "shadcn"
@@ -70,61 +70,46 @@
     }
   ],
   "noted": {
-    "count": 102,
+    "count": 4,
     "byKind": {
-      "explained": 99,
-      "optical-nudge": 3
+      "optical-nudge": 4
     },
     "samples": [
       {
         "file": "ee/tabby-webserver/ui/_next/static/css/1df4303b470c4ade.css",
         "line": 5,
-        "value": "0 solid #e5e7eb",
-        "kind": "explained",
-        "reason": ",:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:\"\"}html{line-height:1.5;-webki…"
+        "value": ".125rem",
+        "kind": "optical-nudge",
+        "reason": "margin-left: .125rem is a 2-3px optical adjustment"
       },
       {
-        "file": "ee/tabby-webserver/ui/_next/static/css/1df4303b470c4ade.css",
-        "line": 5,
-        "value": "1.5",
-        "kind": "explained",
-        "reason": ",:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:\"\"}html{line-height:1.5;-webki…"
+        "file": "ee/tabby-webserver/ui/_next/static/css/4d92cebb017c1f0c.css",
+        "line": 1,
+        "value": ".125rem",
+        "kind": "optical-nudge",
+        "reason": "margin-left: .125rem is a 2-3px optical adjustment"
       },
       {
-        "file": "ee/tabby-webserver/ui/_next/static/css/1df4303b470c4ade.css",
-        "line": 5,
-        "value": "ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace",
-        "kind": "explained",
-        "reason": ",:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:\"\"}html{line-height:1.5;-webki…"
+        "file": "ee/tabby-webserver/ui/_next/static/css/68f52fface9b0518.css",
+        "line": 1,
+        "value": ".125rem",
+        "kind": "optical-nudge",
+        "reason": "padding-bottom: .125rem is a 2-3px optical adjustment"
       },
       {
-        "file": "ee/tabby-webserver/ui/_next/static/css/1df4303b470c4ade.css",
-        "line": 5,
-        "value": "1em",
-        "kind": "explained",
-        "reason": ",:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:\"\"}html{line-height:1.5;-webki…"
-      },
-      {
-        "file": "ee/tabby-webserver/ui/_next/static/css/1df4303b470c4ade.css",
-        "line": 5,
-        "value": "#9ca3af",
-        "kind": "explained",
-        "reason": ",:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:\"\"}html{line-height:1.5;-webki…"
-      },
-      {
-        "file": "ee/tabby-webserver/ui/_next/static/css/1df4303b470c4ade.css",
-        "line": 5,
-        "value": "2rem",
-        "kind": "explained",
-        "reason": ",:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:\"\"}html{line-height:1.5;-webki…"
+        "file": "ee/tabby-webserver/ui/_next/static/css/ae578fb5bf44c678.css",
+        "line": 1,
+        "value": ".125rem",
+        "kind": "optical-nudge",
+        "reason": "padding-bottom: .125rem is a 2-3px optical adjustment"
       }
     ]
   },
   "driftSummary": {
     "total": 7,
     "critical": 0,
-    "warning": 4,
-    "info": 3
+    "warning": 5,
+    "info": 2
   },
   "driftByType": {
     "hardcoded-value": 7
@@ -132,6 +117,10 @@
   "topColors": [
     {
       "value": "rgba(255, 0, 0, 0.2)",
+      "count": 2
+    },
+    {
+      "value": "rgba(0,0,0,.8)",
       "count": 2
     },
     {
@@ -143,7 +132,11 @@
       "count": 1
     },
     {
-      "value": "rgba(0,0,0,.8)",
+      "value": "#e5e7eb",
+      "count": 1
+    },
+    {
+      "value": "#9ca3af",
       "count": 1
     },
     {
@@ -154,38 +147,42 @@
   "topSpacing": [
     {
       "value": "2rem",
-      "count": 2
-    },
-    {
-      "value": "-6px",
-      "count": 2
-    },
-    {
-      "value": "0.4rem",
-      "count": 1
-    },
-    {
-      "value": "0.2rem",
-      "count": 1
+      "count": 3
     },
     {
       "value": "1.25em",
-      "count": 1
+      "count": 2
     },
     {
       "value": "1.2em",
-      "count": 1
+      "count": 2
     },
     {
       "value": "1.625em",
-      "count": 1
+      "count": 2
     },
     {
       "value": "3em",
-      "count": 1
+      "count": 2
+    },
+    {
+      "value": "1.6em",
+      "count": 2
+    },
+    {
+      "value": "1em",
+      "count": 2
+    },
+    {
+      "value": "2em",
+      "count": 2
     }
   ],
   "worstFiles": [
+    {
+      "file": "ee/tabby-webserver/ui/_next/static/css/1df4303b470c4ade.css",
+      "count": 68
+    },
     {
       "file": "ee/tabby-webserver/ui/_next/static/css/4d92cebb017c1f0c.css",
       "count": 64
@@ -201,10 +198,6 @@
     {
       "file": "ee/tabby-ui/app/files/lib/line-menu-extension/line-menu.css",
       "count": 2
-    },
-    {
-      "file": "ee/tabby-webserver/ui/_next/static/css/1df4303b470c4ade.css",
-      "count": 1
     },
     {
       "file": "ee/tabby-webserver/ui/_next/static/css/a672f7c938d6675d.css",
@@ -237,7 +230,9 @@
       "component": "ee/tabby-webserver/ui/_next/static/css/1df4303b470c4ade.css",
       "location": "ee/tabby-webserver/ui/_next/static/css/1df4303b470c4ade.css:1",
       "entries": [
-        "font weight: 600 (line 1)"
+        "font weight: 600 (line 1)",
+        "colour: #e5e7eb (line 5)",
+        "line height: 1.5 (line 5)"
       ]
     },
     {
@@ -273,5 +268,5 @@
       ]
     }
   ],
-  "scanSeconds": 11
+  "scanSeconds": 9
 }

@@ -3,13 +3,13 @@
   "owner": "TryGhost",
   "name": "Ghost",
   "description": "Independent technology for modern publishing, memberships, subscriptions and newsletters.",
-  "stars": 55807,
+  "stars": 55815,
   "homepage": "https://ghost.org",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "d2b4c6c1d1d19bba53b7202351ae8a82b67d6fd6",
-  "generatedAt": "2026-11-13T15:00:56.685Z",
-  "cliVersion": "0.8.23",
+  "commit": "c2617d08d01ccc96ce88f3f8bd99c9383b518a7b",
+  "generatedAt": "2026-11-14T13:55:25.881Z",
+  "cliVersion": "0.8.25",
   "score": 71,
   "tier": "Good",
   "pillars": {
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 12,
     "vendoredDriftCount": 2,
-    "notedCount": 36,
+    "notedCount": 32,
     "topHardcodedColor": {
       "value": "#6A1AD6",
       "count": 3
@@ -83,41 +83,12 @@
     }
   ],
   "noted": {
-    "count": 36,
+    "count": 32,
     "byKind": {
       "optical-nudge": 26,
-      "explained": 4,
       "vendored": 6
     },
     "samples": [
-      {
-        "file": "apps/admin/src/automations/components/email-modal/email-editor.tsx",
-        "line": 104,
-        "value": "[&_.not-kg-prose>div]:text-[1.6rem]",
-        "kind": "explained",
-        "reason": "Nested-editor (callout, etc.) fixes: align placeholder with text"
-      },
-      {
-        "file": "apps/admin/src/automations/components/email-modal/email-editor.tsx",
-        "line": 104,
-        "value": "[&_.not-kg-prose>div]:leading-[1.6]",
-        "kind": "explained",
-        "reason": "Nested-editor (callout, etc.) fixes: align placeholder with text"
-      },
-      {
-        "file": "apps/admin/src/settings/membership/member-emails/member-email-editor.tsx",
-        "line": 77,
-        "value": "[&_.not-kg-prose>div]:text-[1.6rem]",
-        "kind": "explained",
-        "reason": "Nested-editor (callout, etc.) fixes: align placeholder with text"
-      },
-      {
-        "file": "apps/admin/src/settings/membership/member-emails/member-email-editor.tsx",
-        "line": 77,
-        "value": "[&_.not-kg-prose>div]:leading-[1.6]",
-        "kind": "explained",
-        "reason": "Nested-editor (callout, etc.) fixes: align placeholder with text"
-      },
       {
         "file": "apps/shade/src/components/ui/calendar.tsx",
         "line": 61,
@@ -129,6 +100,34 @@
         "file": "apps/shade/src/components/ui/calendar.tsx",
         "line": 81,
         "value": "text-[0.8rem]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "apps/shade/src/components/ui/chart.tsx",
+        "line": 193,
+        "value": "rounded-[2px], border-[1.5px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "apps/shade/src/components/ui/input-group.tsx",
+        "line": 30,
+        "value": "has-[>button]:ml-[-0.45rem], has-[>kbd]:ml-[-0.35rem], has-[>button]:mr-[-0.4rem], has-[>kbd]:mr-[-0.35rem]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "apps/shade/src/components/ui/skeleton.tsx",
+        "line": 47,
+        "value": "rounded-[2px]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "apps/shade/src/components/ui/tabs.tsx",
+        "line": 274,
+        "value": "leading-[21px]",
         "kind": "vendored",
         "reason": "shadcn/ui component (components.json)"
       }
@@ -340,5 +339,5 @@
       ]
     }
   ],
-  "scanSeconds": 39
+  "scanSeconds": 34
 }

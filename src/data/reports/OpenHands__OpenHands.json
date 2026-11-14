@@ -3,13 +3,13 @@
   "owner": "OpenHands",
   "name": "OpenHands",
   "description": "🙌 OpenHands: AI-Driven Development",
-  "stars": 93402,
+  "stars": 93460,
   "homepage": "https://openhands.dev",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "fd14dc80c78e98b7c6a1a38aa507aae17d3b2f5d",
-  "generatedAt": "2026-11-13T15:10:13.252Z",
-  "cliVersion": "0.8.23",
+  "commit": "830c0459e2f6056ab81e020c22970e782ae1be75",
+  "generatedAt": "2026-11-14T14:03:30.930Z",
+  "cliVersion": "0.8.25",
   "score": 94,
   "tier": "Great",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 817,
     "tokenCount": 334,
-    "hardcodedValueCount": 24,
+    "hardcodedValueCount": 22,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 26,
+    "totalDriftCount": 24,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -68,13 +68,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 24 hardcoded values left to tokenize"
+    "Nearly there — just 22 hardcoded values left to tokenize"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 6,
-      "action": "Replace the hardcoded values in 22 of the 24 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 20 of the 22 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     }
   ],
   "noted": {
@@ -83,13 +83,13 @@
     "samples": []
   },
   "driftSummary": {
-    "total": 26,
+    "total": 24,
     "critical": 0,
-    "warning": 17,
+    "warning": 15,
     "info": 9
   },
   "driftByType": {
-    "hardcoded-value": 24,
+    "hardcoded-value": 22,
     "repeated-pattern": 2
   },
   "topColors": [
@@ -110,10 +110,6 @@
       "count": 3
     },
     {
-      "value": "#ef4444",
-      "count": 2
-    },
-    {
       "value": "#3D4046",
       "count": 2
     },
@@ -123,6 +119,10 @@
     },
     {
       "value": "#4A67BD",
+      "count": 1
+    },
+    {
+      "value": "#597ff4",
       "count": 1
     }
   ],
@@ -170,10 +170,6 @@
       "count": 5
     },
     {
-      "file": "src/components/shared/buttons/circle-plus-check-toggle.tsx",
-      "count": 4
-    },
-    {
       "file": "src/components/features/chat/change-agent-button.tsx",
       "count": 3
     },
@@ -184,6 +180,10 @@
     {
       "file": "src/components/features/settings/agent-canvas-version-modal.tsx",
       "count": 3
+    },
+    {
+      "file": "src/components/features/chat/plan-preview.tsx",
+      "count": 2
     }
   ],
   "samples": [
@@ -277,5 +277,5 @@
       ]
     }
   ],
-  "scanSeconds": 18
+  "scanSeconds": 15
 }

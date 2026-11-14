@@ -3,13 +3,13 @@
   "owner": "n8n-io",
   "name": "n8n",
   "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
-  "stars": 210379,
+  "stars": 210468,
   "homepage": "https://n8n.io",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "d1c82f89374915df2e2b7816c5b1f4275e8206dc",
-  "generatedAt": "2026-11-13T15:00:14.053Z",
-  "cliVersion": "0.8.23",
+  "commit": "251c44bc5e072afcc3daab3c3d1baf525afd8d41",
+  "generatedAt": "2026-11-14T13:54:48.195Z",
+  "cliVersion": "0.8.25",
   "score": 62,
   "tier": "Good",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 1422,
     "tokenCount": 669,
-    "hardcodedValueCount": 254,
+    "hardcodedValueCount": 253,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 260,
+    "totalDriftCount": 259,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 4,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 35,
+    "notedCount": 33,
     "topHardcodedColor": {
       "value": "#fff",
       "count": 2
@@ -72,14 +72,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 254 hardcoded values left to tokenize. packages/frontend/editor-ui/src/features/settings/communityNodes/components/ContactAdministratorToInstall.vue has the most (2)",
+    "Nearly there — just 253 hardcoded values left to tokenize. packages/frontend/editor-ui/src/features/settings/communityNodes/components/ContactAdministratorToInstall.vue has the most (2)",
     "2 deprecated patterns — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 36,
-      "action": "Replace the hardcoded values in 251 of the 254 findings with tokens or scale steps, and remove or reuse 4 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 250 of the 253 findings with tokens or scale steps, and remove or reuse 4 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -88,10 +88,10 @@
     }
   ],
   "noted": {
-    "count": 35,
+    "count": 33,
     "byKind": {
-      "optical-nudge": 31,
-      "explained": 4
+      "optical-nudge": 30,
+      "explained": 3
     },
     "samples": [
       {
@@ -100,13 +100,6 @@
         "value": "60px",
         "kind": "explained",
         "reason": "min-height doesn't work in IE10 and IE11 https://github.com/philipwalton/flexbugs#3-min-height-on-a-flex-container-wont…"
-      },
-      {
-        "file": "packages/frontend/editor-ui/src/features/ai/chatHub/components/ChatSidebarContent.vue",
-        "line": 260,
-        "value": "-4px",
-        "kind": "explained",
-        "reason": "Adjust vertical alignment"
       },
       {
         "file": "packages/frontend/editor-ui/src/features/ai/evaluation.ee/views/EvaluationsView.vue",
@@ -135,18 +128,25 @@
         "value": "0.125rem",
         "kind": "optical-nudge",
         "reason": "margin-top: 0.125rem is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/frontend/@n8n/chat/src/components/MessageTyping.vue",
+        "line": 75,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "margin: 3px is a 2-3px optical adjustment"
       }
     ]
   },
   "driftSummary": {
-    "total": 260,
+    "total": 259,
     "critical": 0,
     "warning": 109,
-    "info": 151
+    "info": 150
   },
   "driftByType": {
     "deprecated-pattern": 2,
-    "hardcoded-value": 254,
+    "hardcoded-value": 253,
     "orphaned-component": 4
   },
   "topColors": [
@@ -185,12 +185,12 @@
   ],
   "topSpacing": [
     {
-      "value": "5px",
-      "count": 36
-    },
-    {
       "value": "10px",
       "count": 35
+    },
+    {
+      "value": "5px",
+      "count": 34
     },
     {
       "value": "8px",
@@ -302,11 +302,11 @@
     },
     {
       "component": "packages/frontend/@n8n/chat/src/components/Input.vue",
-      "location": "packages/frontend/@n8n/chat/src/components/Input.vue:473",
+      "location": "packages/frontend/@n8n/chat/src/components/Input.vue:477",
       "entries": [
-        "font size: 24px (line 473)",
-        "spacing: 8px (line 478)",
-        "spacing: 0.5rem (line 511)"
+        "font size: 24px (line 477)",
+        "spacing: 8px (line 482)",
+        "spacing: 0.5rem (line 515)"
       ]
     },
     {
@@ -350,5 +350,5 @@
       ]
     }
   ],
-  "scanSeconds": 64
+  "scanSeconds": 63
 }

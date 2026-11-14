@@ -3,13 +3,13 @@
   "owner": "laurent22",
   "name": "joplin",
   "description": "Joplin - the privacy-focused note taking app with sync capabilities for Windows, macOS, Linux, Android and iOS.",
-  "stars": 57165,
+  "stars": 57176,
   "homepage": "https://joplinapp.org",
   "language": "TypeScript",
   "defaultBranch": "dev",
-  "commit": "7aeed5a4a955d2b8db1d9e799c98ef54863d304d",
-  "generatedAt": "2026-11-13T15:23:52.882Z",
-  "cliVersion": "0.8.23",
+  "commit": "f1b8a6351cdced9a9525b2c4bbe121d4b6c0dc28",
+  "generatedAt": "2026-11-14T14:14:29.490Z",
+  "cliVersion": "0.8.25",
   "score": 40,
   "tier": "OK",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 159,
     "tokenCount": 35,
-    "hardcodedValueCount": 67,
+    "hardcodedValueCount": 65,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 67,
+    "totalDriftCount": 65,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 7,
+    "notedCount": 6,
     "worstFile": {
       "path": "packages/pdf-viewer/ui/ZoomControls.tsx",
       "issueCount": 1
@@ -65,29 +65,21 @@
     ]
   },
   "suggestions": [
-    "67 hardcoded values to extract. Focus on packages/pdf-viewer/ui/ZoomControls.tsx (1 issues)"
+    "65 hardcoded values to extract. Focus on packages/pdf-viewer/ui/ZoomControls.tsx (1 issues)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in all 67 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in all 65 findings with tokens or scale steps"
     }
   ],
   "noted": {
-    "count": 7,
+    "count": 6,
     "byKind": {
-      "optical-nudge": 6,
-      "explained": 1
+      "optical-nudge": 6
     },
     "samples": [
-      {
-        "file": "Assets/WebsiteAssets/css/site.css",
-        "line": 1009,
-        "value": "1em",
-        "kind": "explained",
-        "reason": "text-align: center;"
-      },
       {
         "file": "Assets/PluginDocTheme/assets/css/main.css",
         "line": 2111,
@@ -122,17 +114,24 @@
         "value": "3px",
         "kind": "optical-nudge",
         "reason": "padding: 3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/renderer/assets/katex/katex.css",
+        "line": 1,
+        "value": "-2px",
+        "kind": "optical-nudge",
+        "reason": "margin-right: -2px is a 2-3px optical adjustment"
       }
     ]
   },
   "driftSummary": {
-    "total": 67,
+    "total": 65,
     "critical": 0,
     "warning": 11,
-    "info": 56
+    "info": 54
   },
   "driftByType": {
-    "hardcoded-value": 67
+    "hardcoded-value": 65
   },
   "topColors": [
     {
@@ -171,7 +170,7 @@
   "topSpacing": [
     {
       "value": "10px",
-      "count": 48
+      "count": 47
     },
     {
       "value": "20px",
@@ -179,7 +178,7 @@
     },
     {
       "value": "5px",
-      "count": 23
+      "count": 21
     },
     {
       "value": "8px",
@@ -205,7 +204,7 @@
   "worstFiles": [
     {
       "file": "Assets/WebsiteAssets/css/site.css",
-      "count": 231
+      "count": 232
     },
     {
       "file": "Assets/PluginDocTheme/assets/css/main.css",
@@ -344,5 +343,5 @@
       ]
     }
   ],
-  "scanSeconds": 24
+  "scanSeconds": 15
 }

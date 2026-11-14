@@ -3,13 +3,13 @@
   "owner": "paperless-ngx",
   "name": "paperless-ngx",
   "description": "A community-supported supercharged document management system: scan, index and archive all your documents",
-  "stars": 48086,
+  "stars": 48108,
   "homepage": "http://docs.paperless-ngx.com/",
   "language": "Python",
   "defaultBranch": "dev",
-  "commit": "bfd5628dcced06c2dd44441f8718ce369c7b6d9f",
-  "generatedAt": "2026-11-13T15:30:10.665Z",
-  "cliVersion": "0.8.23",
+  "commit": "cf2e2bde7122ca81c86a3bb267ff858974e59dae",
+  "generatedAt": "2026-11-14T14:19:53.894Z",
+  "cliVersion": "0.8.25",
   "score": null,
   "tier": "N/A",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 0,
     "tokenCount": 542,
-    "hardcodedValueCount": 32,
+    "hardcodedValueCount": 33,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 32,
+    "totalDriftCount": 33,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 8,
+    "notedCount": 7,
     "topHardcodedColor": {
       "value": "#abb2bf",
       "count": 1
@@ -65,19 +65,11 @@
   ],
   "pathTo100": null,
   "noted": {
-    "count": 8,
+    "count": 7,
     "byKind": {
-      "optical-nudge": 7,
-      "explained": 1
+      "optical-nudge": 7
     },
     "samples": [
-      {
-        "file": "src-ui/src/app/components/app-frame/global-search/global-search.component.scss",
-        "line": 45,
-        "value": "all .3s ease, padding-left 0s ease, background-color 0s ease",
-        "kind": "explained",
-        "reason": "Safari requires all"
-      },
       {
         "file": "src-ui/src/app/components/app-frame/app-frame.component.scss",
         "line": 396,
@@ -112,17 +104,24 @@
         "value": "-3px",
         "kind": "optical-nudge",
         "reason": "margin-top: -3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "src/paperless_mail/templates/output.css",
+        "line": 579,
+        "value": "0.125rem",
+        "kind": "optical-nudge",
+        "reason": "margin-top: 0.125rem is a 2-3px optical adjustment"
       }
     ]
   },
   "driftSummary": {
-    "total": 32,
+    "total": 33,
     "critical": 0,
-    "warning": 25,
+    "warning": 26,
     "info": 7
   },
   "driftByType": {
-    "hardcoded-value": 32
+    "hardcoded-value": 33
   },
   "topColors": [
     {
@@ -161,15 +160,15 @@
   "topSpacing": [
     {
       "value": "0.5rem",
-      "count": 8
+      "count": 9
+    },
+    {
+      "value": "1rem",
+      "count": 6
     },
     {
       "value": "-0.5rem",
       "count": 6
-    },
-    {
-      "value": "1rem",
-      "count": 5
     },
     {
       "value": "0.25rem",
@@ -184,11 +183,11 @@
       "count": 3
     },
     {
-      "value": "12px",
-      "count": 2
+      "value": "0.75rem",
+      "count": 3
     },
     {
-      "value": "0.75rem",
+      "value": "12px",
       "count": 2
     }
   ],
@@ -214,16 +213,16 @@
       "count": 8
     },
     {
+      "file": "src-ui/src/app/components/document-notes/document-notes.component.scss",
+      "count": 7
+    },
+    {
       "file": "src-ui/src/app/components/document-list/document-card-large/document-card-large.component.scss",
       "count": 5
     },
     {
       "file": "src-ui/src/app/components/common/pdf-viewer/pdf-viewer.component.scss",
       "count": 4
-    },
-    {
-      "file": "src-ui/src/app/components/common/dates-dropdown/dates-dropdown.component.scss",
-      "count": 3
     }
   ],
   "samples": [
@@ -325,5 +324,5 @@
       ]
     }
   ],
-  "scanSeconds": 6
+  "scanSeconds": 7
 }

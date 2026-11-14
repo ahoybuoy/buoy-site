@@ -3,18 +3,18 @@
   "owner": "linkwarden",
   "name": "linkwarden",
   "description": "⚡️⚡️⚡️ Self-hosted collaborative bookmark manager to collect, read, annotate, and fully preserve what matters, all in one place.",
-  "stars": 20405,
+  "stars": 20425,
   "homepage": "https://linkwarden.app",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "24adcc146ba356632859a1e8adb4bffae2874d11",
-  "generatedAt": "2026-11-13T15:24:03.198Z",
-  "cliVersion": "0.8.23",
-  "score": 89,
+  "generatedAt": "2026-11-14T14:14:38.761Z",
+  "cliVersion": "0.8.25",
+  "score": 88,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 49,
+      "score": 48,
       "max": 60
     },
     "tokenHealth": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 275,
     "tokenCount": 45,
-    "hardcodedValueCount": 15,
+    "hardcodedValueCount": 16,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 15,
+    "totalDriftCount": 16,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 1,
+    "notedCount": 0,
     "topHardcodedColor": {
       "value": "#FFFFFF",
       "count": 3
@@ -73,38 +73,28 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 15 hardcoded values left to tokenize. apps/mobile/components/ActionSheets/LinkDetailsSheet.tsx has the most (2)"
+    "Nearly there — just 16 hardcoded values left to tokenize. apps/mobile/components/ActionSheets/LinkDetailsSheet.tsx has the most (2)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 11,
-      "action": "Replace the hardcoded values in all 15 findings with tokens or scale steps"
+      "points": 12,
+      "action": "Replace the hardcoded values in all 16 findings with tokens or scale steps"
     }
   ],
   "noted": {
-    "count": 1,
-    "byKind": {
-      "explained": 1
-    },
-    "samples": [
-      {
-        "file": "apps/web/components/VerificationCodeInput.tsx",
-        "line": 119,
-        "value": "tracking-[-0.5em]",
-        "kind": "explained",
-        "reason": "16px text keeps iOS from zooming in, and the squeezed letters put the caret at the end wherever the boxes are clicked"
-      }
-    ]
+    "count": 0,
+    "byKind": {},
+    "samples": []
   },
   "driftSummary": {
-    "total": 15,
+    "total": 16,
     "critical": 0,
     "warning": 9,
-    "info": 6
+    "info": 7
   },
   "driftByType": {
-    "hardcoded-value": 15
+    "hardcoded-value": 16
   },
   "topColors": [
     {
@@ -286,5 +276,5 @@
       ]
     }
   ],
-  "scanSeconds": 10
+  "scanSeconds": 9
 }

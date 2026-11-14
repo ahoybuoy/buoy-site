@@ -3,13 +3,13 @@
   "owner": "formkit",
   "name": "formkit",
   "description": "The form framework for coding agents",
-  "stars": 4786,
+  "stars": 4787,
   "homepage": "https://formkit.com",
   "language": "TypeScript",
   "defaultBranch": "master",
   "commit": "990590a376c965e7a8fbd6f7061bc5b7528528f0",
-  "generatedAt": "2026-11-13T15:19:29.701Z",
-  "cliVersion": "0.8.23",
+  "generatedAt": "2026-11-14T14:10:42.830Z",
+  "cliVersion": "0.8.25",
   "score": null,
   "tier": "N/A",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 0,
     "tokenCount": 265,
-    "hardcodedValueCount": 14,
+    "hardcodedValueCount": 13,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 15,
+    "totalDriftCount": 14,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -84,14 +84,14 @@
     ]
   },
   "driftSummary": {
-    "total": 15,
+    "total": 14,
     "critical": 0,
-    "warning": 7,
+    "warning": 6,
     "info": 8
   },
   "driftByType": {
     "framework-sprawl": 1,
-    "hardcoded-value": 14
+    "hardcoded-value": 13
   },
   "topColors": [
     {
@@ -109,19 +109,15 @@
   ],
   "topSpacing": [
     {
-      "value": "0.5em",
-      "count": 6
-    },
-    {
       "value": "2em",
       "count": 3
     },
     {
-      "value": "0.75em",
-      "count": 3
+      "value": "0.5em",
+      "count": 2
     },
     {
-      "value": "-0.5em",
+      "value": "0.75em",
       "count": 2
     },
     {
@@ -139,16 +135,16 @@
     {
       "value": "0.5rem",
       "count": 1
+    },
+    {
+      "value": "-1em",
+      "count": 1
     }
   ],
   "worstFiles": [
     {
       "file": "packages/addons/src/css/multistep.css",
       "count": 14
-    },
-    {
-      "file": "packages/themes/src/css/genesis/addons/icons.css",
-      "count": 9
     },
     {
       "file": "packages/addons/src/css/maxlengthCountdown.css",
@@ -172,6 +168,10 @@
     },
     {
       "file": "packages/themes/src/css/genesis/inputs/button-and-submit.css",
+      "count": 2
+    },
+    {
+      "file": "packages/themes/src/css/genesis/inputs/file.css",
       "count": 2
     }
   ],
@@ -208,15 +208,6 @@
         "colour: #fff (line 70)",
         "spacing: 0.25rem (line 73)",
         "font size: 0.66rem (line 75)"
-      ]
-    },
-    {
-      "component": "packages/themes/src/css/genesis/addons/icons.css",
-      "location": "packages/themes/src/css/genesis/addons/icons.css:17",
-      "entries": [
-        "shadow: 1px 0 0 0 rgba(0,0,0,0.33) (line 17)",
-        "spacing: 0.75em (line 22)",
-        "font size: 1rem (line 46)"
       ]
     },
     {
@@ -272,6 +263,14 @@
         "radius: 1.28571428em (line 65)",
         "spacing: 0.75em (line 78)",
         "line height: 1.33 (line 103)"
+      ]
+    },
+    {
+      "component": "packages/themes/src/css/genesis/structure.css",
+      "location": "packages/themes/src/css/genesis/structure.css:100",
+      "entries": [
+        "font size: 0.875em (line 100)",
+        "radius: 2em (line 144)"
       ]
     }
   ],

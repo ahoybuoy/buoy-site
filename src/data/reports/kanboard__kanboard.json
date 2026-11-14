@@ -3,13 +3,13 @@
   "owner": "kanboard",
   "name": "kanboard",
   "description": "Kanban project management software",
-  "stars": 9957,
+  "stars": 9962,
   "homepage": "https://kanboard.org",
   "language": "PHP",
   "defaultBranch": "main",
-  "commit": "7d7e86a7f5248140a61936ef401c95208c2ce9e8",
-  "generatedAt": "2026-11-13T15:23:04.957Z",
-  "cliVersion": "0.8.23",
+  "commit": "1937059d13ad4705eeaf7bdf51e60d520b1607a7",
+  "generatedAt": "2026-11-14T14:13:53.208Z",
+  "cliVersion": "0.8.25",
   "score": null,
   "tier": "N/A",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 0,
     "tokenCount": 291,
-    "hardcodedValueCount": 47,
+    "hardcodedValueCount": 44,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 47,
+    "totalDriftCount": 44,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -56,7 +56,7 @@
     "notedCount": 13,
     "topHardcodedColor": {
       "value": "#000",
-      "count": 10
+      "count": 9
     },
     "detectedFrameworkNames": []
   },
@@ -115,18 +115,18 @@
     ]
   },
   "driftSummary": {
-    "total": 47,
+    "total": 44,
     "critical": 0,
-    "warning": 33,
+    "warning": 30,
     "info": 14
   },
   "driftByType": {
-    "hardcoded-value": 47
+    "hardcoded-value": 44
   },
   "topColors": [
     {
       "value": "#000",
-      "count": 21
+      "count": 20
     },
     {
       "value": "#fff",
@@ -154,7 +154,7 @@
     },
     {
       "value": "#b94a48",
-      "count": 3
+      "count": 2
     }
   ],
   "topSpacing": [
@@ -164,7 +164,7 @@
     },
     {
       "value": "5px",
-      "count": 35
+      "count": 34
     },
     {
       "value": "20px",
@@ -179,11 +179,11 @@
       "count": 11
     },
     {
-      "value": "4px",
-      "count": 6
+      "value": "25px",
+      "count": 5
     },
     {
-      "value": "25px",
+      "value": "4px",
       "count": 5
     },
     {
@@ -199,10 +199,6 @@
     {
       "file": "assets/css/src/form.css",
       "count": 21
-    },
-    {
-      "file": "assets/css/src/task_icons.css",
-      "count": 17
     },
     {
       "file": "assets/css/src/markdown.css",
@@ -222,6 +218,10 @@
     },
     {
       "file": "assets/css/src/task_board.css",
+      "count": 11
+    },
+    {
+      "file": "assets/css/src/task_summary.css",
       "count": 11
     }
   ],
@@ -331,5 +331,5 @@
       ]
     }
   ],
-  "scanSeconds": 5
+  "scanSeconds": 4
 }

@@ -3,13 +3,13 @@
   "owner": "misskey-dev",
   "name": "misskey",
   "description": "🌎 A completely free and open interplanetary-microblogging platform 🚀",
-  "stars": 11391,
+  "stars": 11390,
   "homepage": "https://misskey-hub.net/",
   "language": "TypeScript",
   "defaultBranch": "develop",
-  "commit": "c08cecea8fd9af0d1e0e575f059394d1d8b8233f",
-  "generatedAt": "2026-11-13T15:28:23.490Z",
-  "cliVersion": "0.8.23",
+  "commit": "f98f05b250981ddd754d9f02f47bcff124520ab3",
+  "generatedAt": "2026-11-14T14:18:19.960Z",
+  "cliVersion": "0.8.25",
   "score": null,
   "tier": "N/A",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 0,
     "tokenCount": 0,
-    "hardcodedValueCount": 359,
+    "hardcodedValueCount": 360,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 359,
+    "totalDriftCount": 360,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 33,
+    "notedCount": 32,
     "worstFile": {
       "path": "packages/frontend-embed/src/components/EmAvatar.vue",
       "issueCount": 1
@@ -65,10 +65,10 @@
   ],
   "pathTo100": null,
   "noted": {
-    "count": 33,
+    "count": 32,
     "byKind": {
       "optical-nudge": 30,
-      "explained": 3
+      "explained": 2
     },
     "samples": [
       {
@@ -84,13 +84,6 @@
         "value": "black",
         "kind": "explained",
         "reason": "Hardcode to black because either --MI_THEME-bg or --MI_THEME-fg makes it hard to read in dark/light mode"
-      },
-      {
-        "file": "packages/frontend/src/components/grid/MkGrid.vue",
-        "line": 1297,
-        "value": "8px",
-        "kind": "explained",
-        "reason": "firefoxだとスクロールバーがセルに重なって見づらくなってしまうのでスペースを空けておく"
       },
       {
         "file": "packages/frontend-embed/src/components/EmLink.vue",
@@ -112,17 +105,24 @@
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "margin-bottom: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/frontend-embed/src/components/EmNoteSub.vue",
+        "line": 109,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-bottom: 2px is a 2-3px optical adjustment"
       }
     ]
   },
   "driftSummary": {
-    "total": 359,
+    "total": 360,
     "critical": 0,
     "warning": 91,
-    "info": 268
+    "info": 269
   },
   "driftByType": {
-    "hardcoded-value": 359
+    "hardcoded-value": 360
   },
   "topColors": [
     {
@@ -161,7 +161,7 @@
   "topSpacing": [
     {
       "value": "8px",
-      "count": 216
+      "count": 217
     },
     {
       "value": "16px",

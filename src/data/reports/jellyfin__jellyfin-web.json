@@ -3,13 +3,13 @@
   "owner": "jellyfin",
   "name": "jellyfin-web",
   "description": "The Free Software Media System - Official Web Client",
-  "stars": 3985,
+  "stars": 3988,
   "homepage": "https://jellyfin.org",
   "language": "JavaScript",
   "defaultBranch": "master",
-  "commit": "b67d04465ee36680c39acfdc0ca61d908d40c8cc",
-  "generatedAt": "2026-11-13T15:22:59.679Z",
-  "cliVersion": "0.8.23",
+  "commit": "69293efa8709e6db90adbfdd9e706bd0bcb961f1",
+  "generatedAt": "2026-11-14T14:13:48.382Z",
+  "cliVersion": "0.8.25",
   "score": 52,
   "tier": "OK",
   "pillars": {
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 7,
+    "notedCount": 6,
     "worstFile": {
       "path": "src/apps/dashboard/features/devices/components/DeviceNameCell.tsx",
       "issueCount": 1
@@ -76,10 +76,10 @@
     }
   ],
   "noted": {
-    "count": 7,
+    "count": 6,
     "byKind": {
       "optical-nudge": 2,
-      "explained": 4,
+      "explained": 3,
       "known-debt": 1
     },
     "samples": [
@@ -105,13 +105,6 @@
         "reason": "FIXME: 'sliderContainer' is used to wrap slider's pieces"
       },
       {
-        "file": "src/styles/fonts.sized.scss",
-        "line": 13,
-        "value": "27px",
-        "kind": "explained",
-        "reason": "This is supposed to be 1080p, but had to reduce the min height to account for possible browser chrome"
-      },
-      {
         "file": "src/styles/librarybrowser.scss",
         "line": 1155,
         "value": "0.622em 0",
@@ -124,6 +117,13 @@
         "value": "3px",
         "kind": "optical-nudge",
         "reason": "margin-right: 3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "src/styles/videoosd.scss",
+        "line": 195,
+        "value": "0.125rem",
+        "kind": "optical-nudge",
+        "reason": "margin-right: 0.125rem is a 2-3px optical adjustment"
       }
     ]
   },
@@ -335,5 +335,5 @@
       ]
     }
   ],
-  "scanSeconds": 10
+  "scanSeconds": 8
 }

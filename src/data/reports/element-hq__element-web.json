@@ -8,8 +8,8 @@
   "language": "TypeScript",
   "defaultBranch": "develop",
   "commit": "75eaab6ca5ac7ab4bac91a6097c8e77bb469455d",
-  "generatedAt": "2026-11-13T15:15:59.755Z",
-  "cliVersion": "0.8.23",
+  "generatedAt": "2026-11-14T14:07:59.299Z",
+  "cliVersion": "0.8.25",
   "score": 73,
   "tier": "Good",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 774,
     "tokenCount": 0,
-    "hardcodedValueCount": 104,
+    "hardcodedValueCount": 105,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 104,
+    "totalDriftCount": 105,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 1,
     "vendoredDriftCount": 0,
-    "notedCount": 13,
+    "notedCount": 11,
     "worstFile": {
       "path": "apps/web/src/components/views/spaces/SpacePanel.tsx",
       "issueCount": 4
@@ -66,21 +66,20 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 104 hardcoded values left to tokenize. apps/web/src/components/views/spaces/SpacePanel.tsx has the most (4)"
+    "Nearly there — just 105 hardcoded values left to tokenize. apps/web/src/components/views/spaces/SpacePanel.tsx has the most (4)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 27,
-      "action": "Replace the hardcoded values in 103 of the 104 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 104 of the 105 findings with tokens or scale steps"
     }
   ],
   "noted": {
-    "count": 13,
+    "count": 11,
     "byKind": {
       "optical-nudge": 9,
-      "explained": 2,
-      "known-debt": 2
+      "explained": 2
     },
     "samples": [
       {
@@ -98,20 +97,6 @@
         "reason": "add a 1px padding top and bottom because our larger emoji font otherwise gets cropped by anti-zalgo"
       },
       {
-        "file": "packages/shared-components/src/room/timeline/event-tile/EventTileView/TextualEventView/TextualEventView.module.css",
-        "line": 24,
-        "value": "1.125rem",
-        "kind": "known-debt",
-        "reason": "$font-18px equivalent of the legacy --irc-line-height"
-      },
-      {
-        "file": "packages/shared-components/src/room/timeline/event-tile/body/TextualBodyView/TextualBody.module.css",
-        "line": 57,
-        "value": "12px",
-        "kind": "known-debt",
-        "reason": "Match the legacy EventTile edited-marker size"
-      },
-      {
         "file": "packages/shared-components/src/room-list/RoomListHeaderView/menu/SpaceMenuView.tsx",
         "line": 55,
         "value": "2px",
@@ -124,17 +109,31 @@
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "padding: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/shared-components/src/room-list/VirtualizedRoomListView/RoomListItemWrapper/RoomListItemView/RoomListItemMoreOptionsMenu.tsx",
+        "line": 61,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "packages/shared-components/src/room-list/VirtualizedRoomListView/RoomListItemWrapper/RoomListItemView/RoomListItemNotificationMenu.tsx",
+        "line": 54,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding: 2px is a 2-3px optical adjustment"
       }
     ]
   },
   "driftSummary": {
-    "total": 104,
+    "total": 105,
     "critical": 0,
     "warning": 7,
-    "info": 97
+    "info": 98
   },
   "driftByType": {
-    "hardcoded-value": 104
+    "hardcoded-value": 105
   },
   "topColors": [
     {
@@ -327,5 +326,5 @@
       ]
     }
   ],
-  "scanSeconds": 18
+  "scanSeconds": 16
 }

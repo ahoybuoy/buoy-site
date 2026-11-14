@@ -3,13 +3,13 @@
   "owner": "Stirling-Tools",
   "name": "Stirling-PDF",
   "description": "#1 PDF Application on GitHub that lets you edit PDFs on any device anywhere",
-  "stars": 96506,
+  "stars": 96566,
   "homepage": "https://stirling.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "2762c84885a8275ec78cecca774766fdfb326292",
-  "generatedAt": "2026-11-13T15:11:58.603Z",
-  "cliVersion": "0.8.23",
+  "commit": "ad38e38ce9bb59ee6b16cbc2d727b6a54c0fbda0",
+  "generatedAt": "2026-11-14T14:04:57.763Z",
+  "cliVersion": "0.8.25",
   "score": 38,
   "tier": "Bad",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 1720,
     "tokenCount": 690,
-    "hardcodedValueCount": 564,
+    "hardcodedValueCount": 563,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 1,
@@ -41,7 +41,7 @@
     "colorContrastCount": 1,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 565,
+    "totalDriftCount": 564,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 8,
     "vendoredDriftCount": 0,
-    "notedCount": 60,
+    "notedCount": 56,
     "topHardcodedColor": {
       "value": "#fff",
       "count": 9
@@ -66,7 +66,7 @@
     "detectedFrameworkNames": []
   },
   "suggestions": [
-    "564 hardcoded values to extract. Focus on frontend/src/editor/core/components/filesPage/FileGrid.tsx (8 issues)",
+    "563 hardcoded values to extract. Focus on frontend/src/editor/core/components/filesPage/FileGrid.tsx (8 issues)",
     "1 color contrast issue — fix immediately",
     "57 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
   ],
@@ -74,7 +74,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 560 of the 564 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 559 of the 563 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -83,20 +83,13 @@
     }
   ],
   "noted": {
-    "count": 60,
+    "count": 56,
     "byKind": {
-      "explained": 7,
       "optical-nudge": 52,
+      "explained": 3,
       "known-debt": 1
     },
     "samples": [
-      {
-        "file": "frontend/src/editor/core/components/viewer/EmbedPdfViewer.tsx",
-        "line": 2042,
-        "value": "0.5rem",
-        "kind": "explained",
-        "reason": "Gutter matching the workbench rails, so the bar reads as a floating card rather than one welded to the viewport edge."
-      },
       {
         "file": "frontend/src/editor/core/components/toast/ToastRenderer.css",
         "line": 4,
@@ -112,13 +105,6 @@
         "reason": "Bonus: temporarily override red/green to yellow during flash for clarity"
       },
       {
-        "file": "frontend/src/editor/core/components/tools/toolPicker/ToolPicker.css",
-        "line": 33,
-        "value": "1rem",
-        "kind": "explained",
-        "reason": "Align the text with tool labels to account for icon gutter"
-      },
-      {
         "file": "frontend/src/editor/core/ui/Avatar.css",
         "line": 13,
         "value": "1 + centred tracking keeps initials optically centred at small sizes. */",
@@ -131,17 +117,31 @@
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "marginTop: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "app/core/src/main/resources/static/css/fileSelect.css",
+        "line": 265,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "padding-right: 3px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "app/core/src/main/resources/static/css/pipeline.css",
+        "line": 2,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-right: 2px is a 2-3px optical adjustment"
       }
     ]
   },
   "driftSummary": {
-    "total": 565,
+    "total": 564,
     "critical": 1,
     "warning": 249,
-    "info": 315
+    "info": 314
   },
   "driftByType": {
-    "hardcoded-value": 564,
+    "hardcoded-value": 563,
     "color-contrast": 1
   },
   "topColors": [
@@ -185,7 +185,7 @@
     },
     {
       "value": "1rem",
-      "count": 276
+      "count": 277
     },
     {
       "value": "0.75rem",
@@ -235,7 +235,7 @@
     },
     {
       "file": "frontend/src/processor/proprietary/views/Enterprise.css",
-      "count": 99
+      "count": 101
     },
     {
       "file": "frontend/src/editor/proprietary/auth/ui/auth.css",
@@ -343,5 +343,5 @@
       ]
     }
   ],
-  "scanSeconds": 41
+  "scanSeconds": 35
 }

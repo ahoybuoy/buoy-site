@@ -8,8 +8,8 @@
   "language": "TypeScript",
   "defaultBranch": "develop",
   "commit": "b8425f5a60d056205adc456b9e8011ff7d622a29",
-  "generatedAt": "2026-11-13T15:33:00.532Z",
-  "cliVersion": "0.8.23",
+  "generatedAt": "2026-11-14T14:22:16.124Z",
+  "cliVersion": "0.8.25",
   "score": 83,
   "tier": "Great",
   "pillars": {
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 2,
     "vendoredDriftCount": 0,
-    "notedCount": 38,
+    "notedCount": 37,
     "topHardcodedColor": {
       "value": "#303132",
       "count": 3
@@ -82,20 +82,12 @@
     }
   ],
   "noted": {
-    "count": 38,
+    "count": 37,
     "byKind": {
       "optical-nudge": 31,
-      "explained": 1,
       "vendored": 6
     },
     "samples": [
-      {
-        "file": "apps/nextjs-app/src/features/app/components/setting/account/delete-account/DeleteAccountFields.tsx",
-        "line": 52,
-        "value": "sm:text-[13px]",
-        "kind": "explained",
-        "reason": "16px on a phone: anything smaller and iOS Safari zooms the page on focus."
-      },
       {
         "file": "packages/ui-lib/src/shadcn/ui/button.tsx",
         "line": 22,
@@ -128,6 +120,13 @@
         "file": "packages/ui-lib/src/shadcn/ui/form.tsx",
         "line": 121,
         "value": "text-[0.8rem]",
+        "kind": "vendored",
+        "reason": "shadcn/ui component (components.json)"
+      },
+      {
+        "file": "packages/ui-lib/src/shadcn/ui/input-group.tsx",
+        "line": 46,
+        "value": "has-[>button]:ms-[-0.45rem], has-[>kbd]:ms-[-0.35rem], has-[>button]:me-[-0.4rem], has-[>kbd]:me-[-0.35rem]",
         "kind": "vendored",
         "reason": "shadcn/ui component (components.json)"
       }
@@ -330,5 +329,5 @@
       ]
     }
   ],
-  "scanSeconds": 55
+  "scanSeconds": 43
 }

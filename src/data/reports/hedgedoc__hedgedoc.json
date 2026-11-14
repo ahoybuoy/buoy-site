@@ -3,13 +3,13 @@
   "owner": "hedgedoc",
   "name": "hedgedoc",
   "description": "HedgeDoc - Ideas grow better together",
-  "stars": 7511,
+  "stars": 7512,
   "homepage": "https://hedgedoc.org",
   "language": "TypeScript",
   "defaultBranch": "develop",
   "commit": "c937fd26b5d20ca8b2c5fd26e5b467f0a5c03e08",
-  "generatedAt": "2026-11-13T15:21:08.076Z",
-  "cliVersion": "0.8.23",
+  "generatedAt": "2026-11-14T14:12:11.360Z",
+  "cliVersion": "0.8.25",
   "score": 77,
   "tier": "Good",
   "pillars": {
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 8,
+    "notedCount": 7,
     "topHardcodedColor": {
       "value": "#b51f08",
       "count": 1
@@ -81,19 +81,12 @@
     }
   ],
   "noted": {
-    "count": 8,
+    "count": 7,
     "byKind": {
-      "explained": 3,
+      "explained": 2,
       "optical-nudge": 5
     },
     "samples": [
-      {
-        "file": "frontend/global-styles/colors-only-bootstrap/forms/_form-control.scss",
-        "line": 20,
-        "value": "$input-focus-color",
-        "kind": "explained",
-        "reason": "Customize the `:focus` state to imitate native WebKit styles."
-      },
       {
         "file": "frontend/global-styles/colors-only-bootstrap/forms/_form-control.scss",
         "line": 42,
@@ -128,6 +121,13 @@
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "padding: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "frontend/src/components/editor-page/table-of-contents/table-of-contents.module.scss",
+        "line": 55,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-top: 2px is a 2-3px optical adjustment"
       }
     ]
   },
@@ -343,5 +343,5 @@
       ]
     }
   ],
-  "scanSeconds": 19
+  "scanSeconds": 17
 }

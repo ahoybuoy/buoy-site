@@ -3,13 +3,13 @@
   "owner": "triggerdotdev",
   "name": "trigger.dev",
   "description": "Trigger.dev – build and deploy durable AI agents and workflows",
-  "stars": 16757,
+  "stars": 16762,
   "homepage": "https://trigger.dev/changelog",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "2fbd5c7cf4e9c8e19b88e2b72a7133795611e33d",
-  "generatedAt": "2026-11-13T15:06:24.552Z",
-  "cliVersion": "0.8.23",
+  "generatedAt": "2026-11-14T14:00:13.687Z",
+  "cliVersion": "0.8.25",
   "score": 91,
   "tier": "Great",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 2050,
     "tokenCount": 276,
-    "hardcodedValueCount": 96,
+    "hardcodedValueCount": 97,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 96,
+    "totalDriftCount": 97,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 3,
+    "notedCount": 2,
     "topHardcodedColor": {
       "value": "#14B8A6",
       "count": 1
@@ -72,29 +72,21 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 96 hardcoded values left to tokenize. apps/webapp/app/components/alerts/ChartLegend.tsx has the most (2)"
+    "Nearly there — just 97 hardcoded values left to tokenize. apps/webapp/app/components/alerts/ChartLegend.tsx has the most (2)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 9,
-      "action": "Replace the hardcoded values in 91 of the 96 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 92 of the 97 findings with tokens or scale steps"
     }
   ],
   "noted": {
-    "count": 3,
+    "count": 2,
     "byKind": {
-      "explained": 1,
       "optical-nudge": 2
     },
     "samples": [
-      {
-        "file": "apps/webapp/app/components/dashboard-agent/panel-layout.tsx",
-        "line": 348,
-        "value": "light:shadow-[0_0_20px_rgb(0_0_0/0.08),0_0_6px_rgb(0_0_0/0.04)]",
-        "kind": "explained",
-        "reason": "Light themes need far less shadow to lift the panel off the page, and an even one: any offset reads as a heavier bottom…"
-      },
       {
         "file": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.concurrency/route.tsx",
         "line": 1073,
@@ -112,13 +104,13 @@
     ]
   },
   "driftSummary": {
-    "total": 96,
+    "total": 97,
     "critical": 0,
     "warning": 11,
-    "info": 85
+    "info": 86
   },
   "driftByType": {
-    "hardcoded-value": 96
+    "hardcoded-value": 97
   },
   "topColors": [
     {
@@ -308,5 +300,5 @@
       ]
     }
   ],
-  "scanSeconds": 37
+  "scanSeconds": 32
 }

@@ -3,13 +3,13 @@
   "owner": "LibreChat-AI",
   "name": "LibreChat",
   "description": "Enhanced ChatGPT Clone: Features Agents, MCP, Skills, DeepSeek, Anthropic, AWS, OpenAI, Responses API, Azure, Groq, o1, GPT-5, Mistral, OpenRouter, Vertex AI, Gemini, Artifacts, AI model switching, message search, Code Interpreter, langchain, DALL-E-3, OpenAPI Actions, Functions, Secure Multi-User Auth, Presets, open-source for self-hosting. Active",
-  "stars": 47089,
+  "stars": 47119,
   "homepage": "https://librechat.ai/",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "2e6b23cb08b99b2b682ad83d92148c64e40e53f7",
-  "generatedAt": "2026-11-13T15:09:52.482Z",
-  "cliVersion": "0.8.23",
+  "commit": "fad2c51da41bb46c9cdd44a720cea4df0d47876b",
+  "generatedAt": "2026-11-14T14:03:13.463Z",
+  "cliVersion": "0.8.25",
   "score": 96,
   "tier": "Great",
   "pillars": {
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 1430,
+    "componentCount": 1447,
     "tokenCount": 638,
     "hardcodedValueCount": 29,
     "unusedTokenCount": 0,
@@ -197,14 +197,14 @@
       "component": "FeedbackButtons",
       "location": "packages/chat/src/components/messages/Feedback.tsx:68",
       "entries": [
-        "size: 1.1875rem (line 151)"
+        "size: 1.1875rem (line 154)"
       ]
     },
     {
       "component": "Feedback",
-      "location": "packages/chat/src/components/messages/Feedback.tsx:211",
+      "location": "packages/chat/src/components/messages/Feedback.tsx:221",
       "entries": [
-        "size: 1.1875rem (line 281)"
+        "size: 1.1875rem (line 291)"
       ]
     },
     {
@@ -267,5 +267,5 @@
       ]
     }
   ],
-  "scanSeconds": 34
+  "scanSeconds": 28
 }

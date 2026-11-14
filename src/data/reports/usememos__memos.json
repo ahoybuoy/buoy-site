@@ -3,13 +3,13 @@
   "owner": "usememos",
   "name": "memos",
   "description": "Memos is an open-source, self-hosted note-taking app that brings your everyday thoughts together in a personal timeline. Your data stays yours, and you choose what to keep private or share.",
-  "stars": 64439,
+  "stars": 64462,
   "homepage": "https://usememos.com",
   "language": "Go",
   "defaultBranch": "main",
-  "commit": "d0c6e2a7afc6de17220f9b439bb077a5aa12f83f",
-  "generatedAt": "2026-11-13T15:34:09.936Z",
-  "cliVersion": "0.8.23",
+  "commit": "509e41bd1a1b2882404ad804ce2f2954cfad236a",
+  "generatedAt": "2026-11-14T14:23:13.645Z",
+  "cliVersion": "0.8.25",
   "score": 85,
   "tier": "Great",
   "pillars": {
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 329,
+    "componentCount": 328,
     "tokenCount": 3,
     "hardcodedValueCount": 25,
     "unusedTokenCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 3,
+    "notedCount": 2,
     "worstFile": {
       "path": "web/src/components/AttachmentLibrary/AttachmentMediaGrid.tsx",
       "issueCount": 2
@@ -73,19 +73,11 @@
     }
   ],
   "noted": {
-    "count": 3,
+    "count": 2,
     "byKind": {
-      "optical-nudge": 2,
-      "explained": 1
+      "optical-nudge": 2
     },
     "samples": [
-      {
-        "file": "web/src/components/SpaceMark.tsx",
-        "line": 10,
-        "value": "rounded-[6px]",
-        "kind": "explained",
-        "reason": "Primary chrome: kept in step with MemosLogo's header scale."
-      },
       {
         "file": "web/src/components/AppSidebar/SpaceSwitcher.tsx",
         "line": 193,
@@ -156,6 +148,10 @@
       "count": 4
     },
     {
+      "file": "web/src/components/SpaceMark.tsx",
+      "count": 4
+    },
+    {
       "file": "web/src/index.css",
       "count": 4
     },
@@ -169,10 +165,6 @@
     },
     {
       "file": "web/src/components/PreviewImageDialog.tsx",
-      "count": 3
-    },
-    {
-      "file": "web/src/components/SpaceMark.tsx",
       "count": 3
     },
     {
@@ -275,5 +267,5 @@
       ]
     }
   ],
-  "scanSeconds": 9
+  "scanSeconds": 8
 }

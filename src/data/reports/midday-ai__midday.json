@@ -8,8 +8,8 @@
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "51587319f26a0ffaa9dfccab1920373cb65689b7",
-  "generatedAt": "2026-11-13T14:53:37.709Z",
-  "cliVersion": "0.8.23",
+  "generatedAt": "2026-11-14T13:48:47.846Z",
+  "cliVersion": "0.8.25",
   "score": 30,
   "tier": "Bad",
   "pillars": {
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 9,
     "vendoredDriftCount": 27,
-    "notedCount": 49,
+    "notedCount": 48,
     "topHardcodedColor": {
       "value": "#878787",
       "count": 108
@@ -88,19 +88,11 @@
     }
   ],
   "noted": {
-    "count": 49,
+    "count": 48,
     "byKind": {
-      "optical-nudge": 48,
-      "explained": 1
+      "optical-nudge": 48
     },
     "samples": [
-      {
-        "file": "apps/dashboard/src/components/main-menu.tsx",
-        "line": 210,
-        "value": "dark:text-[#666666]",
-        "kind": "explained",
-        "reason": "Icon - always in same position from sidebar edge"
-      },
       {
         "file": "apps/website/src/components/pre-accounting.tsx",
         "line": 271,
@@ -135,6 +127,13 @@
         "value": "py-[3px]",
         "kind": "optical-nudge",
         "reason": "py-[3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/website/src/components/agents.tsx",
+        "line": 199,
+        "value": "py-[3px]",
+        "kind": "optical-nudge",
+        "reason": "py-[3px] is a 2-3px optical adjustment"
       }
     ]
   },
@@ -160,7 +159,7 @@
     },
     {
       "value": "#666666",
-      "count": 50
+      "count": 51
     },
     {
       "value": "#666",
@@ -352,5 +351,5 @@
       ]
     }
   ],
-  "scanSeconds": 32
+  "scanSeconds": 28
 }
