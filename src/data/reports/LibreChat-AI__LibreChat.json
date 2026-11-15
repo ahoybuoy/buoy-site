@@ -3,12 +3,12 @@
   "owner": "LibreChat-AI",
   "name": "LibreChat",
   "description": "Enhanced ChatGPT Clone: Features Agents, MCP, Skills, DeepSeek, Anthropic, AWS, OpenAI, Responses API, Azure, Groq, o1, GPT-5, Mistral, OpenRouter, Vertex AI, Gemini, Artifacts, AI model switching, message search, Code Interpreter, langchain, DALL-E-3, OpenAPI Actions, Functions, Secure Multi-User Auth, Presets, open-source for self-hosting. Active",
-  "stars": 47119,
+  "stars": 47144,
   "homepage": "https://librechat.ai/",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "fad2c51da41bb46c9cdd44a720cea4df0d47876b",
-  "generatedAt": "2026-11-14T14:03:13.463Z",
+  "commit": "5473f91036bbe388cdcdd60f3ecac22e6138cf47",
+  "generatedAt": "2026-11-15T14:33:40.919Z",
   "cliVersion": "0.8.25",
   "score": 96,
   "tier": "Great",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 1447,
+    "componentCount": 1466,
     "tokenCount": 638,
     "hardcodedValueCount": 29,
     "unusedTokenCount": 0,
@@ -124,16 +124,16 @@
       "count": 6
     },
     {
-      "value": "1.1875rem",
-      "count": 5
-    },
-    {
       "value": "0.5em",
       "count": 5
     },
     {
       "value": "1.25em",
       "count": 5
+    },
+    {
+      "value": "1.1875rem",
+      "count": 4
     },
     {
       "value": "0.8em",
@@ -208,13 +208,6 @@
       ]
     },
     {
-      "component": "HoverButtons",
-      "location": "packages/chat/src/components/messages/HoverButtons.tsx:89",
-      "entries": [
-        "size: 1.1875rem (line 221)"
-      ]
-    },
-    {
       "component": "MinimalHoverButtons",
       "location": "packages/chat/src/components/messages/MinimalHoverButtons.tsx:16",
       "entries": [
@@ -265,7 +258,16 @@
         "text-[11.5px] (line 291)",
         "text-[16px] (line 381)"
       ]
+    },
+    {
+      "component": "client/src/components/Nav/ShortcutRecorder.tsx",
+      "location": "client/src/components/Nav/ShortcutRecorder.tsx:191",
+      "entries": [
+        "text-[11.5px] (line 191)",
+        "text-[11.5px] (line 219)",
+        "text-[11.5px] (line 249)"
+      ]
     }
   ],
-  "scanSeconds": 28
+  "scanSeconds": 35
 }

@@ -3,12 +3,12 @@
   "owner": "ever-co",
   "name": "ever-gauzy",
   "description": "Ever® Gauzy™ - Open Business Management Platform (ERP/CRM/HRM/ATS/PM) - https://gauzy.co",
-  "stars": 8823,
+  "stars": 8839,
   "homepage": "https://gauzy.co",
   "language": "TypeScript",
   "defaultBranch": "develop",
-  "commit": "e9e476e0f96992d0044220610d52214294382217",
-  "generatedAt": "2026-11-14T14:10:32.511Z",
+  "commit": "3f38b494b9606a9ece32bd47ab234f598e33cba4",
+  "generatedAt": "2026-11-15T14:42:30.106Z",
   "cliVersion": "0.8.25",
   "score": 35,
   "tier": "Bad",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 881,
+    "componentCount": 882,
     "tokenCount": 0,
-    "hardcodedValueCount": 719,
+    "hardcodedValueCount": 720,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 720,
+    "totalDriftCount": 721,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 1,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 132,
+    "notedCount": 134,
     "topHardcodedColor": {
       "value": "rgba(255, 61, 113, 0.12)",
       "count": 1
@@ -70,14 +70,14 @@
     ]
   },
   "suggestions": [
-    "719 hardcoded values to extract. Focus on packages/ui-react-components/src/lib/components/ColorDots.tsx (1 issues)",
+    "720 hardcoded values to extract. Focus on packages/ui-react-components/src/lib/components/ColorDots.tsx (1 issues)",
     "1 framework sprawl signal — standardize on fewer UI/styling frameworks"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 717 of the 719 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 718 of the 720 findings with tokens or scale steps"
     },
     {
       "pillar": "tokenHealth",
@@ -86,9 +86,9 @@
     }
   ],
   "noted": {
-    "count": 132,
+    "count": 134,
     "byKind": {
-      "optical-nudge": 116,
+      "optical-nudge": 118,
       "explained": 15,
       "known-debt": 1
     },
@@ -138,13 +138,13 @@
     ]
   },
   "driftSummary": {
-    "total": 720,
+    "total": 721,
     "critical": 0,
     "warning": 165,
-    "info": 555
+    "info": 556
   },
   "driftByType": {
-    "hardcoded-value": 719,
+    "hardcoded-value": 720,
     "framework-sprawl": 1
   },
   "topColors": [
@@ -184,35 +184,35 @@
   "topSpacing": [
     {
       "value": "0.5rem",
-      "count": 763
+      "count": 771
     },
     {
       "value": "1rem",
-      "count": 698
+      "count": 699
     },
     {
       "value": "0.75rem",
-      "count": 433
+      "count": 437
     },
     {
       "value": "0.375rem",
-      "count": 341
+      "count": 346
     },
     {
       "value": "0.25rem",
-      "count": 340
+      "count": 344
     },
     {
       "value": "10px",
       "count": 199
     },
     {
-      "value": "8px",
-      "count": 174
+      "value": "1.5rem",
+      "count": 175
     },
     {
-      "value": "1.5rem",
-      "count": 172
+      "value": "8px",
+      "count": 174
     }
   ],
   "worstFiles": [
@@ -233,6 +233,10 @@
       "count": 171
     },
     {
+      "file": "apps/gauzy/src/app/downloads/downloads.component.scss",
+      "count": 151
+    },
+    {
       "file": "apps/gauzy/src/app/pages/projects/components/project-quick-look/project-quick-look.component.scss",
       "count": 139
     },
@@ -243,10 +247,6 @@
     {
       "file": "packages/desktop-ui-lib/src/lib/settings/plugins/component/plugin-marketplace/plugin-marketplace-upload/plugin-marketplace-upload.component.scss",
       "count": 129
-    },
-    {
-      "file": "apps/gauzy/src/app/pages/employees/edit-employee/edit-employee-profile/edit-employee-projects/edit-employee-projects.component.scss",
-      "count": 123
     }
   ],
   "samples": [
@@ -338,5 +338,5 @@
       ]
     }
   ],
-  "scanSeconds": 99
+  "scanSeconds": 121
 }

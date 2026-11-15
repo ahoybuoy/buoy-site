@@ -3,12 +3,12 @@
   "owner": "karakeep-app",
   "name": "karakeep",
   "description": "A self-hostable bookmark-everything app (links, notes and images) with AI-based automatic tagging and full text search",
-  "stars": 30520,
+  "stars": 30549,
   "homepage": "https://karakeep.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "0df61265a14a4b0530e2578c532fdc4be6f603d6",
-  "generatedAt": "2026-11-14T14:14:11.215Z",
+  "commit": "4229148cd100c44b28af2d43e77acefc74ada9e8",
+  "generatedAt": "2026-11-15T14:46:34.212Z",
   "cliVersion": "0.8.25",
   "score": 76,
   "tier": "Good",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 825,
+    "componentCount": 831,
     "tokenCount": 87,
-    "hardcodedValueCount": 102,
+    "hardcodedValueCount": 103,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 102,
+    "totalDriftCount": 103,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -72,14 +72,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 100 hardcoded values left to tokenize. apps/landing/src/Pricing.tsx has the most (5)",
+    "Nearly there — just 101 hardcoded values left to tokenize. apps/landing/src/Pricing.tsx has the most (5)",
     "2 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 24,
-      "action": "Replace the hardcoded values in 98 of the 100 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 99 of the 101 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -134,13 +134,13 @@
     ]
   },
   "driftSummary": {
-    "total": 102,
+    "total": 103,
     "critical": 0,
     "warning": 21,
-    "info": 81
+    "info": 82
   },
   "driftByType": {
-    "hardcoded-value": 102
+    "hardcoded-value": 103
   },
   "topColors": [
     {
@@ -277,17 +277,17 @@
     },
     {
       "component": "BottomActions",
-      "location": "apps/mobile/components/bookmarks/BottomActions.tsx:516",
+      "location": "apps/mobile/components/bookmarks/BottomActions.tsx:512",
       "entries": [
-        "color: #000 (line 650)"
+        "color: #000 (line 649)"
       ]
     },
     {
       "component": "UsageStatsScreen",
-      "location": "apps/mobile/components/settings/UsageStatsScreen.tsx:523",
+      "location": "apps/mobile/components/settings/UsageStatsScreen.tsx:524",
       "entries": [
-        "color: #34C759 (line 682)",
-        "color: #AF52DE (line 689)"
+        "color: #34C759 (line 683)",
+        "color: #AF52DE (line 690)"
       ]
     },
     {
@@ -307,9 +307,9 @@
     },
     {
       "component": "BookmarkActionsSection",
-      "location": "apps/mobile/app/dashboard/bookmarks/[slug]/info.tsx:354",
+      "location": "apps/mobile/app/dashboard/bookmarks/[slug]/info.tsx:356",
       "entries": [
-        "color: #ebb434 (line 405)"
+        "color: #ebb434 (line 407)"
       ]
     },
     {
@@ -334,5 +334,5 @@
       ]
     }
   ],
-  "scanSeconds": 18
+  "scanSeconds": 20
 }
