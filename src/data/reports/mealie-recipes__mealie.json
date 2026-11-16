@@ -3,12 +3,12 @@
   "owner": "mealie-recipes",
   "name": "mealie",
   "description": "Mealie is a self hosted recipe manager and meal planner with a RestAPI backend and a reactive frontend application built in Vue for a pleasant user experience for the whole family. Easily add recipes into your database by providing the url and mealie will automatically import the relevant data or add a family recipe with the UI editor",
-  "stars": 13901,
+  "stars": 13914,
   "homepage": "https://docs.mealie.io",
   "language": "Python",
   "defaultBranch": "mealie-next",
-  "commit": "f3a1c36d511f217667f6fa6929b376cd1258e987",
-  "generatedAt": "2026-11-15T14:51:02.128Z",
+  "commit": "3d639dd5ea8eca729da641f1ddb2f18500d7323a",
+  "generatedAt": "2026-11-16T16:45:55.149Z",
   "cliVersion": "0.8.25",
   "score": null,
   "tier": "N/A",
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 0,
     "tokenCount": 18,
-    "hardcodedValueCount": 41,
+    "hardcodedValueCount": 42,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 41,
+    "totalDriftCount": 42,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -119,13 +119,13 @@
     ]
   },
   "driftSummary": {
-    "total": 41,
+    "total": 42,
     "critical": 0,
     "warning": 8,
-    "info": 33
+    "info": 34
   },
   "driftByType": {
-    "hardcoded-value": 41
+    "hardcoded-value": 42
   },
   "topColors": [
     {
@@ -164,7 +164,7 @@
   "topSpacing": [
     {
       "value": "8px",
-      "count": 11
+      "count": 12
     },
     {
       "value": "0.5rem",
@@ -310,12 +310,12 @@
       ]
     },
     {
-      "component": "frontend/app/components/Domain/Household/HouseholdPreferencesEditor.vue",
-      "location": "frontend/app/components/Domain/Household/HouseholdPreferencesEditor.vue:148",
+      "component": "frontend/app/components/Domain/Announcement/Announcements/2026-11-15_1_enrich-non-ai-imports.vue",
+      "location": "frontend/app/components/Domain/Announcement/Announcements/2026-11-15_1_enrich-non-ai-imports.vue:47",
       "entries": [
-        "spacing: 0.5rem (line 148)"
+        "spacing: 8px (line 47)"
       ]
     }
   ],
-  "scanSeconds": 5
+  "scanSeconds": 4
 }

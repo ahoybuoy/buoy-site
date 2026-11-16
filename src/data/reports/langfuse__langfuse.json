@@ -3,12 +3,12 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source AI engineering platform: AI Gateway, agent observability, evals, and prompt/skill management, built on OpenTelemetry. One open platform for every AI call and every agent. Self-host or use Langfuse Cloud.",
-  "stars": 37451,
+  "stars": 37493,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "691ee0e56b82ee12cf532a5e7b4a31d1c2a1e1b0",
-  "generatedAt": "2026-11-15T14:29:37.763Z",
+  "commit": "f1e38efe36a752c551288292dc6318ce4c11ce1a",
+  "generatedAt": "2026-11-16T16:28:34.590Z",
   "cliVersion": "0.8.25",
   "score": 92,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2616,
+    "componentCount": 2596,
     "tokenCount": 352,
-    "hardcodedValueCount": 79,
+    "hardcodedValueCount": 76,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 80,
+    "totalDriftCount": 77,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -70,14 +70,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 79 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/SimpleMultiSectionViewer.tsx has the most (2)",
+    "Nearly there — just 76 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/SimpleMultiSectionViewer.tsx has the most (2)",
     "1 deprecated pattern — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 6,
-      "action": "Replace the hardcoded values in 73 of the 79 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 70 of the 76 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -129,14 +129,14 @@
     ]
   },
   "driftSummary": {
-    "total": 80,
+    "total": 77,
     "critical": 0,
     "warning": 5,
-    "info": 75
+    "info": 72
   },
   "driftByType": {
     "deprecated-pattern": 1,
-    "hardcoded-value": 79
+    "hardcoded-value": 76
   },
   "topColors": [
     {
@@ -212,7 +212,7 @@
       "count": 4
     },
     {
-      "file": "web/src/features/events/components/outlier-strip/OutlierBarStrip.tsx",
+      "file": "web/src/components/design-system/charts/internal/VisualizationFrame/VisualizationFrame.tsx",
       "count": 4
     }
   ],
@@ -306,5 +306,5 @@
       ]
     }
   ],
-  "scanSeconds": 74
+  "scanSeconds": 57
 }

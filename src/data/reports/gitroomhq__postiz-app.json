@@ -3,12 +3,12 @@
   "owner": "gitroomhq",
   "name": "postiz-app",
   "description": "📨 The ultimate agentic social media scheduling tool 🤖",
-  "stars": 41653,
+  "stars": 41736,
   "homepage": "https://postiz.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "c22451b80a530a4fa2def4623612e43924b225fa",
-  "generatedAt": "2026-11-15T14:43:31.448Z",
+  "commit": "1344effdb9291173695fc624a4783610fbf0ce05",
+  "generatedAt": "2026-11-16T16:39:37.720Z",
   "cliVersion": "0.8.25",
   "score": 40,
   "tier": "OK",
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 514,
     "tokenCount": 113,
-    "hardcodedValueCount": 491,
+    "hardcodedValueCount": 492,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 491,
+    "totalDriftCount": 492,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -71,14 +71,14 @@
     ]
   },
   "suggestions": [
-    "487 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/frontend/src/components/launches/ai.image.tsx (5 issues)",
+    "488 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on apps/frontend/src/components/launches/ai.image.tsx (5 issues)",
     "4 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 486 of the 487 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 487 of the 488 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -124,7 +124,7 @@
       },
       {
         "file": "apps/frontend/src/components/launches/calendar.tsx",
-        "line": 1030,
+        "line": 1027,
         "value": "pt-[3px]",
         "kind": "optical-nudge",
         "reason": "pt-[3px] is a 2-3px optical adjustment"
@@ -132,13 +132,13 @@
     ]
   },
   "driftSummary": {
-    "total": 491,
+    "total": 492,
     "critical": 0,
-    "warning": 64,
+    "warning": 65,
     "info": 427
   },
   "driftByType": {
-    "hardcoded-value": 491
+    "hardcoded-value": 492
   },
   "topColors": [
     {
@@ -197,7 +197,7 @@
     },
     {
       "value": "6px",
-      "count": 168
+      "count": 169
     },
     {
       "value": "4px",
@@ -336,5 +336,5 @@
       ]
     }
   ],
-  "scanSeconds": 15
+  "scanSeconds": 12
 }

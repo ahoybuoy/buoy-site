@@ -3,12 +3,12 @@
   "owner": "mastodon",
   "name": "mastodon",
   "description": "Your self-hosted, globally interconnected microblogging community",
-  "stars": 50610,
+  "stars": 50558,
   "homepage": "https://joinmastodon.org",
   "language": "Ruby",
   "defaultBranch": "main",
-  "commit": "296ca2874f3b7c02e79d2041b54f352a392f17ba",
-  "generatedAt": "2026-11-15T14:50:49.373Z",
+  "commit": "85239dd68c967249d78fa40923d558d3098145a3",
+  "generatedAt": "2026-11-16T16:45:44.749Z",
   "cliVersion": "0.8.25",
   "score": 74,
   "tier": "Good",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 624,
+    "componentCount": 622,
     "tokenCount": 7,
     "hardcodedValueCount": 61,
     "unusedTokenCount": 0,
@@ -179,7 +179,7 @@
     },
     {
       "value": "10px",
-      "count": 86
+      "count": 85
     },
     {
       "value": "4px",
@@ -187,7 +187,7 @@
     },
     {
       "value": "20px",
-      "count": 51
+      "count": 50
     },
     {
       "value": "15px",
@@ -205,11 +205,11 @@
   "worstFiles": [
     {
       "file": "app/javascript/styles/mastodon/components.scss",
-      "count": 647
+      "count": 645
     },
     {
       "file": "app/javascript/styles/mastodon/admin.scss",
-      "count": 261
+      "count": 258
     },
     {
       "file": "app/javascript/styles/entrypoints/mailer.scss",
@@ -221,7 +221,7 @@
     },
     {
       "file": "app/javascript/mastodon/features/custom_homepage/styles.module.scss",
-      "count": 29
+      "count": 28
     },
     {
       "file": "app/javascript/mastodon/features/account_edit/modals/styles.module.scss",
@@ -336,5 +336,5 @@
       ]
     }
   ],
-  "scanSeconds": 16
+  "scanSeconds": 13
 }

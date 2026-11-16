@@ -7,14 +7,14 @@
   "homepage": "https://go.novu.co/github",
   "language": "TypeScript",
   "defaultBranch": "next",
-  "commit": "5630778d94fd1e281506e6dbf9a99cd244dea07d",
-  "generatedAt": "2026-11-15T14:17:38.877Z",
+  "commit": "0cfc48fe2995361f0a64ca328efae8b190ce1ddd",
+  "generatedAt": "2026-11-16T16:19:08.226Z",
   "cliVersion": "0.8.25",
-  "score": 63,
+  "score": 62,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 23,
+      "score": 22,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 3111,
+    "componentCount": 3168,
     "tokenCount": 828,
-    "hardcodedValueCount": 599,
+    "hardcodedValueCount": 626,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 601,
+    "totalDriftCount": 628,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -51,7 +51,7 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 60,
+    "highDensityFileCount": 61,
     "vendoredDriftCount": 18,
     "notedCount": 35,
     "topHardcodedColor": {
@@ -62,7 +62,7 @@
       "path": "apps/dashboard/src/pages/usecase-select-page.tsx",
       "issueCount": 8
     },
-    "uniqueSpacingValues": 3,
+    "uniqueSpacingValues": 1,
     "detectedFrameworkNames": [
       "react",
       "next",
@@ -72,14 +72,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 581 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
+    "Nearly there — just 608 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
     "18 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 37,
-      "action": "Replace the hardcoded values in 574 of the 581 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "points": 38,
+      "action": "Replace the hardcoded values in 601 of the 608 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     }
   ],
   "noted": {
@@ -134,13 +134,13 @@
     ]
   },
   "driftSummary": {
-    "total": 601,
+    "total": 628,
     "critical": 0,
-    "warning": 116,
-    "info": 485
+    "warning": 117,
+    "info": 511
   },
   "driftByType": {
-    "hardcoded-value": 599,
+    "hardcoded-value": 626,
     "repeated-pattern": 2
   },
   "topColors": [
@@ -277,20 +277,6 @@
       ]
     },
     {
-      "component": "LayoutUsageIndicator",
-      "location": "apps/dashboard/src/components/header-navigation/layout-usage-indicator.tsx:12",
-      "entries": [
-        "fontSize: 8px (line 75)"
-      ]
-    },
-    {
-      "component": "WorkflowHoverCard",
-      "location": "apps/dashboard/src/components/header-navigation/workflow-hover-card.tsx:19",
-      "entries": [
-        "fontSize: 10px (line 196)"
-      ]
-    },
-    {
       "component": "StepButton",
       "location": "apps/dashboard/src/components/welcome/framework-guides.tsx:334",
       "entries": [
@@ -333,7 +319,21 @@
         "borderColor: rgba(125,82,244,0.05) (line 202)",
         "backgroundColor: rgba(251,55,72,0.1) (line 213)"
       ]
+    },
+    {
+      "component": "packages/novu/src/commands/connect/templates/web-chat/ts/assistant-ui/elements/approval-card.tsx",
+      "location": "packages/novu/src/commands/connect/templates/web-chat/ts/assistant-ui/elements/approval-card.tsx:49",
+      "entries": [
+        "rounded-[20px] (line 49)"
+      ]
+    },
+    {
+      "component": "packages/novu/src/commands/connect/templates/web-chat/ts/assistant-ui/elements/approval-card.tsx",
+      "location": "packages/novu/src/commands/connect/templates/web-chat/ts/assistant-ui/elements/approval-card.tsx:59",
+      "entries": [
+        "text-[13.5px] (line 59)"
+      ]
     }
   ],
-  "scanSeconds": 70
+  "scanSeconds": 56
 }

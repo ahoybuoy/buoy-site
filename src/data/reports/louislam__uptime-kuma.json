@@ -3,12 +3,12 @@
   "owner": "louislam",
   "name": "uptime-kuma",
   "description": "A fancy self-hosted monitoring tool",
-  "stars": 94401,
+  "stars": 94486,
   "homepage": "https://uptime.kuma.pet",
   "language": "JavaScript",
   "defaultBranch": "master",
-  "commit": "7e5075d12c85f7282f9c7b7d6821d56aa3acc688",
-  "generatedAt": "2026-11-15T14:50:32.880Z",
+  "commit": "e6ea9509e68b31a996f3fdf5c24cfba24340962b",
+  "generatedAt": "2026-11-16T16:45:31.011Z",
   "cliVersion": "0.8.25",
   "score": 35,
   "tier": "Bad",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 184,
+    "componentCount": 185,
     "tokenCount": 0,
-    "hardcodedValueCount": 79,
+    "hardcodedValueCount": 80,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 79,
+    "totalDriftCount": 80,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -65,13 +65,13 @@
     ]
   },
   "suggestions": [
-    "79 hardcoded values to extract. Focus on src/components/settings/APIKeys.vue (2 issues)"
+    "80 hardcoded values to extract. Focus on src/components/settings/APIKeys.vue (2 issues)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in all 79 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in all 80 findings with tokens or scale steps"
     },
     {
       "pillar": "tokenHealth",
@@ -131,13 +131,13 @@
     ]
   },
   "driftSummary": {
-    "total": 79,
+    "total": 80,
     "critical": 0,
     "warning": 22,
-    "info": 57
+    "info": 58
   },
   "driftByType": {
-    "hardcoded-value": 79
+    "hardcoded-value": 80
   },
   "topColors": [
     {
@@ -332,5 +332,5 @@
       ]
     }
   ],
-  "scanSeconds": 5
+  "scanSeconds": 4
 }

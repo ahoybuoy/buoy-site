@@ -3,12 +3,12 @@
   "owner": "LibreChat-AI",
   "name": "LibreChat",
   "description": "Enhanced ChatGPT Clone: Features Agents, MCP, Skills, DeepSeek, Anthropic, AWS, OpenAI, Responses API, Azure, Groq, o1, GPT-5, Mistral, OpenRouter, Vertex AI, Gemini, Artifacts, AI model switching, message search, Code Interpreter, langchain, DALL-E-3, OpenAPI Actions, Functions, Secure Multi-User Auth, Presets, open-source for self-hosting. Active",
-  "stars": 47144,
+  "stars": 47194,
   "homepage": "https://librechat.ai/",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "5473f91036bbe388cdcdd60f3ecac22e6138cf47",
-  "generatedAt": "2026-11-15T14:33:40.919Z",
+  "commit": "9529c99f5ebd5469942feb2c83a785894f48522b",
+  "generatedAt": "2026-11-16T16:31:38.817Z",
   "cliVersion": "0.8.25",
   "score": 96,
   "tier": "Great",
@@ -31,8 +31,8 @@
     }
   },
   "metrics": {
-    "componentCount": 1466,
-    "tokenCount": 638,
+    "componentCount": 1472,
+    "tokenCount": 639,
     "hardcodedValueCount": 29,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
@@ -147,7 +147,7 @@
   "worstFiles": [
     {
       "file": "client/src/style.css",
-      "count": 124
+      "count": 121
     },
     {
       "file": "packages/client/src/theme/fonts.css",
@@ -162,6 +162,10 @@
       "count": 4
     },
     {
+      "file": "packages/client/src/theme/parts.css",
+      "count": 4
+    },
+    {
       "file": "packages/chat/src/components/messages/Feedback.tsx",
       "count": 3
     },
@@ -172,10 +176,6 @@
     {
       "file": "client/src/components/Tools/ToolItem.tsx",
       "count": 3
-    },
-    {
-      "file": "packages/chat/src/components/parts/ActionButton.tsx",
-      "count": 2
     }
   ],
   "samples": [
@@ -269,5 +269,5 @@
       ]
     }
   ],
-  "scanSeconds": 35
+  "scanSeconds": 27
 }
