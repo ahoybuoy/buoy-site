@@ -3,12 +3,12 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source AI engineering platform: AI Gateway, agent observability, evals, and prompt/skill management, built on OpenTelemetry. One open platform for every AI call and every agent. Self-host or use Langfuse Cloud.",
-  "stars": 37493,
+  "stars": 37547,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "f1e38efe36a752c551288292dc6318ce4c11ce1a",
-  "generatedAt": "2026-11-16T16:28:34.590Z",
+  "commit": "53fe3894ae88cb5c03ebc9f7c998470f09a2c36a",
+  "generatedAt": "2026-11-17T16:39:07.493Z",
   "cliVersion": "0.8.25",
   "score": 92,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2596,
-    "tokenCount": 352,
-    "hardcodedValueCount": 76,
+    "componentCount": 2607,
+    "tokenCount": 361,
+    "hardcodedValueCount": 78,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 77,
+    "totalDriftCount": 79,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -70,14 +70,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 76 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/SimpleMultiSectionViewer.tsx has the most (2)",
+    "Nearly there — just 78 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/SimpleMultiSectionViewer.tsx has the most (2)",
     "1 deprecated pattern — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 6,
-      "action": "Replace the hardcoded values in 70 of the 76 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 72 of the 78 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -129,14 +129,14 @@
     ]
   },
   "driftSummary": {
-    "total": 77,
+    "total": 79,
     "critical": 0,
-    "warning": 5,
-    "info": 72
+    "warning": 6,
+    "info": 73
   },
   "driftByType": {
     "deprecated-pattern": 1,
-    "hardcoded-value": 76
+    "hardcoded-value": 78
   },
   "topColors": [
     {
@@ -145,6 +145,10 @@
     },
     {
       "value": "#6b7280",
+      "count": 1
+    },
+    {
+      "value": "#6b6b6b",
       "count": 1
     }
   ],
@@ -306,5 +310,5 @@
       ]
     }
   ],
-  "scanSeconds": 57
+  "scanSeconds": 74
 }

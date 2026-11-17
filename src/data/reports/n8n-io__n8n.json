@@ -3,18 +3,18 @@
   "owner": "n8n-io",
   "name": "n8n",
   "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
-  "stars": 210611,
+  "stars": 210904,
   "homepage": "https://n8n.io",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "081f5b7ce0e3fc58fd23002b235be1d47793a7b0",
-  "generatedAt": "2026-11-16T16:24:49.645Z",
+  "commit": "3e310241cbfc410ee5031b7900dff22d7d1b7e4e",
+  "generatedAt": "2026-11-17T16:33:30.856Z",
   "cliVersion": "0.8.25",
-  "score": 62,
+  "score": 63,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 24,
+      "score": 25,
       "max": 60
     },
     "tokenHealth": {
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 1428,
+    "componentCount": 1439,
     "tokenCount": 669,
     "hardcodedValueCount": 253,
     "unusedTokenCount": 0,
@@ -78,7 +78,7 @@
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 36,
+      "points": 35,
       "action": "Replace the hardcoded values in 250 of the 253 findings with tokens or scale steps, and remove or reuse 4 unused components and repeated patterns"
     },
     {
@@ -350,5 +350,5 @@
       ]
     }
   ],
-  "scanSeconds": 49
+  "scanSeconds": 63
 }

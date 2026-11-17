@@ -3,12 +3,12 @@
   "owner": "Stirling-Tools",
   "name": "Stirling-PDF",
   "description": "#1 PDF Application on GitHub that lets you edit PDFs on any device anywhere",
-  "stars": 96759,
+  "stars": 96846,
   "homepage": "https://stirling.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "004ce45fd741dd99e2ad0b2b8a2a86d95d3939a8",
-  "generatedAt": "2026-11-16T16:33:20.175Z",
+  "commit": "c718a37074b33a81fbef9201fdb693a04a3c257f",
+  "generatedAt": "2026-11-17T16:45:14.606Z",
   "cliVersion": "0.8.25",
   "score": 38,
   "tier": "Bad",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1720,
+    "componentCount": 1731,
     "tokenCount": 690,
-    "hardcodedValueCount": 563,
+    "hardcodedValueCount": 564,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 1,
@@ -41,7 +41,7 @@
     "colorContrastCount": 1,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 564,
+    "totalDriftCount": 565,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -66,7 +66,7 @@
     "detectedFrameworkNames": []
   },
   "suggestions": [
-    "563 hardcoded values to extract. Focus on frontend/src/editor/core/components/filesPage/FileGrid.tsx (8 issues)",
+    "564 hardcoded values to extract. Focus on frontend/src/editor/core/components/filesPage/FileGrid.tsx (8 issues)",
     "1 color contrast issue — fix immediately",
     "57 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
   ],
@@ -74,7 +74,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 559 of the 563 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 560 of the 564 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -135,13 +135,13 @@
     ]
   },
   "driftSummary": {
-    "total": 564,
+    "total": 565,
     "critical": 1,
     "warning": 249,
-    "info": 314
+    "info": 315
   },
   "driftByType": {
-    "hardcoded-value": 563,
+    "hardcoded-value": 564,
     "color-contrast": 1
   },
   "topColors": [
@@ -185,7 +185,7 @@
     },
     {
       "value": "1rem",
-      "count": 277
+      "count": 278
     },
     {
       "value": "0.75rem",
@@ -314,9 +314,9 @@
       "component": "Login",
       "location": "frontend/src/editor/saas/routes/Login.tsx:35",
       "entries": [
-        "gap: 0.75rem (line 319)",
-        "marginBottom: 2.5rem (line 320)",
-        "marginRight: 0.5rem (line 342)"
+        "gap: 0.75rem (line 321)",
+        "marginBottom: 2.5rem (line 322)",
+        "marginRight: 0.5rem (line 344)"
       ]
     },
     {
@@ -343,5 +343,5 @@
       ]
     }
   ],
-  "scanSeconds": 32
+  "scanSeconds": 40
 }

@@ -2,13 +2,13 @@
   "repo": "formbricks/formbricks",
   "owner": "formbricks",
   "name": "formbricks",
-  "description": "Open Source Qualtrics Alternative",
-  "stars": 13247,
+  "description": "The Open Source Qualtrics Alternative",
+  "stars": 13248,
   "homepage": "https://formbricks.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "4d194335e23d8161052a3250883b1c34cb073623",
-  "generatedAt": "2026-11-16T16:22:23.156Z",
+  "commit": "934d0e221eb056b6e331191922f8951e510660f5",
+  "generatedAt": "2026-11-17T16:30:28.371Z",
   "cliVersion": "0.8.25",
   "score": 94,
   "tier": "Great",
@@ -90,7 +90,7 @@
     "samples": [
       {
         "file": "packages/survey-ui/src/components/general/calendar.tsx",
-        "line": 242,
+        "line": 245,
         "value": "day:ring-[3px]",
         "kind": "explained",
         "reason": "(4.19:1 against the card, below AA 4.5, and worse the lighter the survey's brand colour is). A tint this light keeps th…"
@@ -281,17 +281,17 @@
     },
     {
       "component": "packages/survey-ui/src/components/general/calendar.tsx",
-      "location": "packages/survey-ui/src/components/general/calendar.tsx:149",
+      "location": "packages/survey-ui/src/components/general/calendar.tsx:152",
       "entries": [
-        "has-focus:ring-[3px] (line 149)"
+        "has-focus:ring-[3px] (line 152)"
       ]
     },
     {
       "component": "packages/survey-ui/src/components/general/calendar.tsx",
-      "location": "packages/survey-ui/src/components/general/calendar.tsx:163",
+      "location": "packages/survey-ui/src/components/general/calendar.tsx:166",
       "entries": [
-        "text-[0.8rem] (line 163)",
-        "text-[0.8rem] (line 168)"
+        "text-[0.8rem] (line 166)",
+        "text-[0.8rem] (line 171)"
       ]
     },
     {
@@ -331,5 +331,5 @@
       ]
     }
   ],
-  "scanSeconds": 20
+  "scanSeconds": 27
 }

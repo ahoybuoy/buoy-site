@@ -3,12 +3,12 @@
   "owner": "baserow",
   "name": "baserow",
   "description": "Build databases, automations, apps & agents with AI — no code.  Open source platform available on cloud and self-hosted. GDPR, HIPAA, SOC 2 compliant. Best Airtable alternative.",
-  "stars": 6349,
+  "stars": 6354,
   "homepage": "https://baserow.io",
   "language": "Python",
   "defaultBranch": "develop",
-  "commit": "3460fd301fe140406d61421f94eb2f048dfec1c1",
-  "generatedAt": "2026-11-16T16:34:36.184Z",
+  "commit": "b56694105819ed9aeea34cf214964c4b21e4a1d2",
+  "generatedAt": "2026-11-17T16:46:45.979Z",
   "cliVersion": "0.8.25",
   "score": null,
   "tier": "N/A",
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 0,
     "tokenCount": 56,
-    "hardcodedValueCount": 387,
+    "hardcodedValueCount": 391,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 387,
+    "totalDriftCount": 391,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -120,13 +120,13 @@
     ]
   },
   "driftSummary": {
-    "total": 387,
+    "total": 391,
     "critical": 0,
-    "warning": 138,
-    "info": 249
+    "warning": 140,
+    "info": 251
   },
   "driftByType": {
-    "hardcoded-value": 387
+    "hardcoded-value": 391
   },
   "topColors": [
     {
@@ -165,27 +165,27 @@
   "topSpacing": [
     {
       "value": "8px",
-      "count": 235
+      "count": 239
     },
     {
       "value": "12px",
-      "count": 179
+      "count": 178
     },
     {
       "value": "16px",
-      "count": 150
+      "count": 152
     },
     {
       "value": "10px",
       "count": 135
     },
     {
-      "value": "20px",
+      "value": "4px",
       "count": 131
     },
     {
-      "value": "4px",
-      "count": 130
+      "value": "20px",
+      "count": 131
     },
     {
       "value": "6px",
@@ -193,7 +193,7 @@
     },
     {
       "value": "24px",
-      "count": 76
+      "count": 75
     }
   ],
   "worstFiles": [
@@ -219,7 +219,7 @@
     },
     {
       "file": "web-frontend/modules/core/assets/scss/components/agent_triggers.scss",
-      "count": 52
+      "count": 47
     },
     {
       "file": "web-frontend/modules/core/assets/scss/components/ai_provider_admin.scss",
@@ -334,5 +334,5 @@
       ]
     }
   ],
-  "scanSeconds": 19
+  "scanSeconds": 22
 }

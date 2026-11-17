@@ -3,12 +3,12 @@
   "owner": "open-webui",
   "name": "open-webui",
   "description": "User-friendly AI Interface (Supports Ollama, OpenAI API, ...)",
-  "stars": 158822,
+  "stars": 158933,
   "homepage": "https://openwebui.com",
   "language": "Svelte",
   "defaultBranch": "main",
-  "commit": "b0e6098e940942281d9c83f3529ea117287a3a22",
-  "generatedAt": "2026-11-16T16:46:33.699Z",
+  "commit": "0666e59d26a4d056e0bacee41742486badd71cf8",
+  "generatedAt": "2026-11-17T17:01:23.325Z",
   "cliVersion": "0.8.25",
   "score": 40,
   "tier": "OK",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 714,
+    "componentCount": 758,
     "tokenCount": 26,
-    "hardcodedValueCount": 316,
+    "hardcodedValueCount": 333,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 316,
+    "totalDriftCount": 333,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -51,7 +51,7 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 8,
+    "highDensityFileCount": 9,
     "vendoredDriftCount": 0,
     "notedCount": 5,
     "topHardcodedColor": {
@@ -69,13 +69,13 @@
     ]
   },
   "suggestions": [
-    "316 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on src/lib/components/common/DocxPreview.svelte (4 issues)"
+    "333 hardcoded values to extract — extend your tailwind.config theme instead of arbitrary values. Focus on src/lib/components/common/DocxPreview.svelte (4 issues)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 315 of the 316 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 332 of the 333 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -85,8 +85,8 @@
     },
     "samples": [
       {
-        "file": "src/lib/components/chat/ChatTabs/Browser.svelte",
-        "line": 301,
+        "file": "src/lib/components/chat/Tabs/Browser.svelte",
+        "line": 292,
         "value": "py-[3px]",
         "kind": "optical-nudge",
         "reason": "py-[3px] is a 2-3px optical adjustment"
@@ -100,21 +100,21 @@
       },
       {
         "file": "src/app.css",
-        "line": 754,
+        "line": 758,
         "value": "0.125rem",
         "kind": "optical-nudge",
         "reason": "margin-block: 0.125rem is a 2-3px optical adjustment"
       },
       {
         "file": "src/app.css",
-        "line": 857,
+        "line": 861,
         "value": "0.125rem",
         "kind": "optical-nudge",
         "reason": "padding-left: 0.125rem is a 2-3px optical adjustment"
       },
       {
         "file": "src/app.css",
-        "line": 858,
+        "line": 862,
         "value": "0.125rem",
         "kind": "optical-nudge",
         "reason": "padding-right: 0.125rem is a 2-3px optical adjustment"
@@ -122,13 +122,13 @@
     ]
   },
   "driftSummary": {
-    "total": 316,
+    "total": 333,
     "critical": 0,
-    "warning": 30,
-    "info": 286
+    "warning": 29,
+    "info": 304
   },
   "driftByType": {
-    "hardcoded-value": 316
+    "hardcoded-value": 333
   },
   "topColors": [
     {
@@ -170,15 +170,15 @@
       "count": 14
     },
     {
+      "value": "0.3125rem",
+      "count": 11
+    },
+    {
       "value": "0.375rem",
-      "count": 10
+      "count": 11
     },
     {
       "value": "1rem",
-      "count": 9
-    },
-    {
-      "value": "0.3125rem",
       "count": 9
     },
     {
@@ -208,16 +208,16 @@
       "count": 72
     },
     {
-      "file": "src/lib/components/chat/Messages/DiffBlock.svelte",
-      "count": 37
+      "file": "src/lib/components/chat/Tabs/GitPullRequests.svelte",
+      "count": 38
     },
     {
       "file": "src/lib/components/chat/MessageInput/CallOverlay/BridgeCallOverlay.svelte",
       "count": 28
     },
     {
-      "file": "src/lib/components/chat/ChatTabs/GitBar.svelte",
-      "count": 25
+      "file": "src/lib/components/chat/Tabs/GitBar.svelte",
+      "count": 26
     },
     {
       "file": "src/lib/components/chat/FileNav/FilePreview.svelte",
@@ -283,11 +283,11 @@
     },
     {
       "component": "src/lib/components/admin/Analytics/Dashboard.svelte",
-      "location": "src/lib/components/admin/Analytics/Dashboard.svelte:563",
+      "location": "src/lib/components/admin/Analytics/Dashboard.svelte:565",
       "entries": [
-        "text-[0.6875rem] (line 563)",
-        "text-[0.6875rem] (line 796)",
-        "text-[0.6875rem] (line 964)"
+        "text-[0.6875rem] (line 565)",
+        "text-[0.6875rem] (line 798)",
+        "text-[0.6875rem] (line 966)"
       ]
     },
     {
@@ -328,13 +328,13 @@
     },
     {
       "component": "src/lib/components/admin/Analytics/SessionWaterfall.svelte",
-      "location": "src/lib/components/admin/Analytics/SessionWaterfall.svelte:46",
+      "location": "src/lib/components/admin/Analytics/SessionWaterfall.svelte:47",
       "entries": [
-        "text-[0.6875rem] (line 46)",
-        "text-[0.625rem] (line 66)",
-        "text-[0.6875rem] (line 83)"
+        "text-[0.6875rem] (line 47)",
+        "text-[0.625rem] (line 67)",
+        "text-[0.6875rem] (line 85)"
       ]
     }
   ],
-  "scanSeconds": 15
+  "scanSeconds": 26
 }

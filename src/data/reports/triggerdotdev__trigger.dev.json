@@ -3,12 +3,12 @@
   "owner": "triggerdotdev",
   "name": "trigger.dev",
   "description": "Trigger.dev – build and deploy durable AI agents and workflows",
-  "stars": 16772,
+  "stars": 16776,
   "homepage": "https://trigger.dev/changelog",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "2fbd5c7cf4e9c8e19b88e2b72a7133795611e33d",
-  "generatedAt": "2026-11-16T16:29:02.570Z",
+  "commit": "93a146512f8e363043a5759c12e359759551db65",
+  "generatedAt": "2026-11-17T16:39:45.948Z",
   "cliVersion": "0.8.25",
   "score": 91,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2050,
+    "componentCount": 2106,
     "tokenCount": 276,
-    "hardcodedValueCount": 97,
+    "hardcodedValueCount": 99,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 97,
+    "totalDriftCount": 99,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -72,13 +72,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 97 hardcoded values left to tokenize. apps/webapp/app/components/alerts/ChartLegend.tsx has the most (2)"
+    "Nearly there — just 99 hardcoded values left to tokenize. apps/webapp/app/components/alerts/ChartLegend.tsx has the most (2)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 9,
-      "action": "Replace the hardcoded values in 92 of the 97 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 94 of the 99 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -104,13 +104,13 @@
     ]
   },
   "driftSummary": {
-    "total": 97,
+    "total": 99,
     "critical": 0,
-    "warning": 11,
-    "info": 86
+    "warning": 12,
+    "info": 87
   },
   "driftByType": {
-    "hardcoded-value": 97
+    "hardcoded-value": 99
   },
   "topColors": [
     {
@@ -142,7 +142,7 @@
       "count": 1
     },
     {
-      "value": "#121317",
+      "value": "#0089D6",
       "count": 1
     }
   ],
@@ -219,7 +219,7 @@
       "component": "DashboardAgent",
       "location": "apps/webapp/app/components/dashboard-agent/DashboardAgent.tsx:52",
       "entries": [
-        "size: 3px (line 364)"
+        "size: 3px (line 386)"
       ]
     },
     {
@@ -300,5 +300,5 @@
       ]
     }
   ],
-  "scanSeconds": 27
+  "scanSeconds": 37
 }

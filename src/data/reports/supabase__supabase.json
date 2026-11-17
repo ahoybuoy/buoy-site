@@ -3,12 +3,12 @@
   "owner": "supabase",
   "name": "supabase",
   "description": "The Postgres development platform. Supabase gives you a dedicated Postgres database to build your web, mobile, and AI applications.",
-  "stars": 115036,
+  "stars": 115233,
   "homepage": "https://supabase.com",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "39cf54f3c4adf23057e2b7579a044d4576e31272",
-  "generatedAt": "2026-11-16T16:17:46.674Z",
+  "commit": "373633361bf9108c6c6445e5983b131dd50e957d",
+  "generatedAt": "2026-11-17T16:24:34.221Z",
   "cliVersion": "0.8.25",
   "score": 87,
   "tier": "Great",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 4977,
+    "componentCount": 4985,
     "tokenCount": 1131,
     "hardcodedValueCount": 279,
     "unusedTokenCount": 0,
@@ -62,7 +62,7 @@
       "path": "apps/studio/components/interfaces/Database/Policies/PolicyEditorPanel/LockedQuerySection.tsx",
       "issueCount": 3
     },
-    "uniqueSpacingValues": 5,
+    "uniqueSpacingValues": 6,
     "detectedFrameworkNames": [
       "react",
       "next",
@@ -280,6 +280,13 @@
       ]
     },
     {
+      "component": "NotFoundPage",
+      "location": "apps/studio/components/interfaces/App/NotFoundPage.tsx:8",
+      "entries": [
+        "fontSize: 28rem (line 45)"
+      ]
+    },
+    {
       "component": "DiscordCTACard",
       "location": "apps/studio/components/interfaces/Support/DiscordCTACard.tsx:15",
       "entries": [
@@ -336,14 +343,7 @@
       "entries": [
         "fontSize: 0.8125rem (line 147)"
       ]
-    },
-    {
-      "component": "PermissionsSectionClient",
-      "location": "apps/www/app/(products)/storage/_components/PermissionsSectionClient.tsx:17",
-      "entries": [
-        "fontSize: 0.8125rem (line 145)"
-      ]
     }
   ],
-  "scanSeconds": 118
+  "scanSeconds": 148
 }

@@ -3,12 +3,12 @@
   "owner": "posthog",
   "name": "posthog",
   "description": ":hedgehog: PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.",
-  "stars": 40825,
+  "stars": 40852,
   "homepage": "https://posthog.com",
   "language": "Python",
   "defaultBranch": "master",
-  "commit": "e1074b45f1d9bfa01ce7b0d194d62ce3e49cf6b5",
-  "generatedAt": "2026-11-16T16:27:33.838Z",
+  "commit": "06fd69aad60305ee0a8a85cefd1429c4eb037704",
+  "generatedAt": "2026-11-17T16:37:47.487Z",
   "cliVersion": "0.8.25",
   "score": 79,
   "tier": "Good",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 5887,
+    "componentCount": 5907,
     "tokenCount": 671,
     "hardcodedValueCount": 371,
     "unusedTokenCount": 0,
@@ -235,12 +235,12 @@
       "count": 58
     },
     {
-      "file": "products/tasks/frontend/infrastructure/infrastructureAdmin.css",
+      "file": "frontend/src/scenes/notebooks/Notebook/Notebook.scss",
       "count": 58
     },
     {
-      "file": "frontend/src/scenes/notebooks/Notebook/Notebook.scss",
-      "count": 57
+      "file": "products/tasks/frontend/infrastructure/infrastructureAdmin.css",
+      "count": 58
     },
     {
       "file": "products/desktop/packages/ui/src/styles/globals.css",
@@ -326,7 +326,7 @@
       "component": "TaxonomicFilterSearchInput",
       "location": "frontend/src/lib/components/TaxonomicFilter/TaxonomicFilter.tsx:181",
       "entries": [
-        "fontSize: 1.2rem (line 254)"
+        "fontSize: 1.2rem (line 273)"
       ]
     },
     {
@@ -344,5 +344,5 @@
       ]
     }
   ],
-  "scanSeconds": 132
+  "scanSeconds": 210
 }

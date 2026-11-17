@@ -3,18 +3,18 @@
   "owner": "frappe",
   "name": "crm",
   "description": "Fully featured, open source CRM",
-  "stars": 3994,
+  "stars": 4002,
   "homepage": "https://frappe.io/crm",
   "language": "Vue",
   "defaultBranch": "develop",
-  "commit": "eea7e8936723c93e99eadfb6adb9a86395ed9cd2",
-  "generatedAt": "2026-11-16T16:39:04.622Z",
+  "commit": "135867649e253ce5ed2853e430f56a446797b29c",
+  "generatedAt": "2026-11-17T16:52:11.034Z",
   "cliVersion": "0.8.25",
-  "score": 59,
-  "tier": "OK",
+  "score": 61,
+  "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 39,
+      "score": 41,
       "max": 60
     },
     "tokenHealth": {
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 382,
+    "componentCount": 415,
     "tokenCount": 0,
     "hardcodedValueCount": 40,
     "unusedTokenCount": 0,
@@ -71,8 +71,8 @@
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 21,
-      "action": "Replace the hardcoded values in all 40 findings with tokens or scale steps"
+      "points": 19,
+      "action": "Replace the hardcoded values in 39 of the 40 findings with tokens or scale steps"
     },
     {
       "pillar": "tokenHealth",
@@ -265,9 +265,9 @@
     },
     {
       "component": "frontend/src/components/Filter.vue",
-      "location": "frontend/src/components/Filter.vue:12",
+      "location": "frontend/src/components/Filter.vue:13",
       "entries": [
-        "rounded-[5px] (line 12)"
+        "rounded-[5px] (line 13)"
       ]
     },
     {
@@ -286,9 +286,9 @@
     },
     {
       "component": "frontend/src/components/Notifications.vue",
-      "location": "frontend/src/components/Notifications.vue:16",
+      "location": "frontend/src/components/Notifications.vue:15",
       "entries": [
-        "pt-[15px] (line 16)"
+        "pt-[15px] (line 15)"
       ]
     },
     {
@@ -335,5 +335,5 @@
       ]
     }
   ],
-  "scanSeconds": 8
+  "scanSeconds": 9
 }

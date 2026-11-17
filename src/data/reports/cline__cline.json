@@ -3,12 +3,12 @@
   "owner": "cline",
   "name": "cline",
   "description": "Autonomous coding agent as an SDK, IDE extension, or CLI assistant.",
-  "stars": 71680,
+  "stars": 71711,
   "homepage": "https://cline.bot",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "146894b6a42a7a554c6ff37f7bb33fe5122cc33d",
-  "generatedAt": "2026-11-16T16:35:35.713Z",
+  "commit": "eff43e19b267e171f597ab03733bfed25090f72d",
+  "generatedAt": "2026-11-17T16:47:58.287Z",
   "cliVersion": "0.8.25",
   "score": 76,
   "tier": "Good",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1083,
+    "componentCount": 1084,
     "tokenCount": 826,
-    "hardcodedValueCount": 136,
+    "hardcodedValueCount": 137,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 136,
+    "totalDriftCount": 137,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -71,7 +71,7 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 129 hardcoded values left to tokenize. apps/vscode/webview-ui/src/components/settings/providers/OcaModelPicker.tsx has the most (4)",
+    "Nearly there — just 130 hardcoded values left to tokenize. apps/vscode/webview-ui/src/components/settings/providers/OcaModelPicker.tsx has the most (4)",
     "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
     "16 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
   ],
@@ -79,7 +79,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 24,
-      "action": "Replace the hardcoded values in 127 of the 129 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 128 of the 130 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -134,13 +134,13 @@
     ]
   },
   "driftSummary": {
-    "total": 136,
+    "total": 137,
     "critical": 0,
     "warning": 8,
-    "info": 128
+    "info": 129
   },
   "driftByType": {
-    "hardcoded-value": 136
+    "hardcoded-value": 137
   },
   "topColors": [
     {
@@ -240,8 +240,8 @@
       "count": 11
     },
     {
-      "file": "apps/vscode/webview-ui/src/components/mcp/configuration/tabs/installed/server-row/McpPromptRow.tsx",
-      "count": 9
+      "file": "apps/vscode/webview-ui/src/components/mcp/configuration/tabs/installed/server-row/McpToolRow.tsx",
+      "count": 10
     }
   ],
   "samples": [
@@ -341,5 +341,5 @@
       ]
     }
   ],
-  "scanSeconds": 20
+  "scanSeconds": 25
 }
