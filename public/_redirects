@@ -4,3 +4,5 @@
 # /hall-of-shame was renamed on 2026-10-14; astro.config.mjs redirects the bare path.
 /hall-of-shame/ /hardcoded-color-patterns 301
 /downloads/hall-of-shame.pdf /downloads/hardcoded-color-patterns.pdf 301
+# Crawlers often guess /sitemap.xml; Astro emits sitemap-index.xml.
+/sitemap.xml /sitemap-index.xml 301

@@ -135,9 +135,36 @@ const steps = [
     description: 'Track design system health over time.'
   },
 ]
+
+const siteUrl = 'https://buoy.design'
+const homeJsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Buoy',
+    url: siteUrl,
+    logo: `${siteUrl}/og/home.png`,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Buoy',
+    url: siteUrl,
+    applicationCategory: 'DeveloperApplication',
+    operatingSystem: 'Web, macOS, Linux, Windows',
+    description:
+      'Design systems drift over time. Buoy catches it before it ships. Scan your codebase for hardcoded values, duplicate components, and design system violations.',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+      description: 'Open source CLI, MCP server and GitHub Action are free. GitHub App has a free tier.',
+    },
+  },
+]
 ---
 
-<Layout title="Buoy - Design Drift Detection for the AI Era">
+<Layout title="Buoy - Design Drift Detection for the AI Era" jsonLd={homeJsonLd}>
   <Nav />
 
   <!-- Design System Callout -->

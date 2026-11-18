@@ -118,11 +118,26 @@ const faqs = [
     answerHtml: 'Yes. <strong>System found</strong> ($10,000, one week): Dylan consolidates your tokens and theme, and writes DESIGN.md and the agent rules so Cursor or Claude stay on them. <strong>System in place</strong> ($20,000, two weeks): all of that, plus your worst components migrated in merged pull requests and a first adoption baseline. <strong>Keep it holding</strong> ($1,500 a month per product): Team plus a monthly adoption review. <a href="/services" class="text-buoy hover:underline">See services</a>.',
   },
 ]
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: (faq.answer ?? faq.answerHtml ?? '').replace(/<[^>]+>/g, ''),
+    },
+  })),
+}
+
 import MarkPattern from '../components/MarkPattern.astro'
 ---
 
 <Layout
   title="Pricing | Buoy - Design Drift Detection"
+  jsonLd={faqJsonLd}
   description="Open source CLI, MCP server and GitHub Action free forever. GitHub App free for life for the first 100 installs, then $149/month per design system. No seats."
   keywords="buoy pricing, design drift tool pricing, design system tool cost"
 >
