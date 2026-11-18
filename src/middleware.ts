@@ -12,6 +12,15 @@ const FORM_TYPES = new Set(['application/x-www-form-urlencoded', 'multipart/form
 const CROSS_SITE_ALLOWED = new Set(['/api/unsubscribe', '/api/unsubscribe/']);
 
 export const onRequest = defineMiddleware(({ request, url }, next) => {
+  // Prefer a single host. Apex is the canonical (see Layout.astro). This
+  // covers traffic that already reaches the Pages worker; a Cloudflare
+  // bulk redirect is still the belt-and-suspenders fix at the edge.
+  if (url.hostname === 'www.buoy.design') {
+    const target = new URL(url);
+    target.hostname = 'buoy.design';
+    return Response.redirect(target, 301);
+  }
+
   if (UNSAFE_METHODS.has(request.method) && !CROSS_SITE_ALLOWED.has(url.pathname)) {
     const type = (request.headers.get('content-type') ?? '').split(';')[0]!.trim().toLowerCase();
     const formLike = type === '' || FORM_TYPES.has(type);

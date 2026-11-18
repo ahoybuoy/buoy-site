@@ -16,6 +16,8 @@ export default defineConfig({
   redirects: {
     '/pitch': { status: 301, destination: '/' },
     '/hall-of-shame': { status: 301, destination: '/hardcoded-color-patterns' },
+    // Crawlers often guess /sitemap.xml; the generator emits sitemap-index.xml.
+    '/sitemap.xml': { status: 301, destination: '/sitemap-index.xml' },
   },
   integrations: [
     react(),
