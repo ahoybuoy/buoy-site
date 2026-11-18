@@ -21,20 +21,33 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
 
   <p>No Buoy account or sign-up is needed; installing the App is enough. See <a href="/docs/integrations/github-actions">GitHub App docs</a> for details.</p>
 
-  <h2>Coding Agents (Claude Code, Cursor)</h2>
+  <h2>Coding Agents (Claude Code, Cursor, Codex)</h2>
 
   <p>Give your agent the design system while it writes, so it uses tokens instead of hardcoding values.</p>
 
-  <p><strong>Claude Code</strong> — the plugin bundles the MCP server, a post-edit drift check and a design-tokens skill:</p>
+  <p><strong>Claude Code</strong> — the plugin bundles the MCP server, a post-edit drift check, a <code>design-tokens</code> skill and a <code>/buoy:buoy-check</code> command:</p>
 
   <pre><code>/plugin marketplace add ahoybuoy/buoy
 /plugin install buoy@buoy</code></pre>
 
-  <p><strong>Cursor, Codex, Windsurf or any MCP client</strong> — write the config into your repository:</p>
+  <p>
+    <strong>Cursor</strong> — install Buoy from the <a href="https://cursor.com/marketplace">Cursor Marketplace</a>
+    (Customize → Plugins), or from a checkout:
+  </p>
 
-  <pre><code>npx @buoy-design/cli mcp install cursor   # or codex, windsurf, all</code></pre>
+  <pre><code>git clone https://github.com/ahoybuoy/buoy-plugin ~/.cursor/plugins/local/buoy</code></pre>
 
-  <p>See <a href="/docs/integrations/mcp">MCP Server</a> for the tools and the hook.</p>
+  <p>Then reload Cursor (Developer: Reload Window). It needs Cursor 3.13 or later. The plugin ships the MCP server, the <code>design-tokens</code> skill and rule, a <code>/buoy-check</code> command and a <code>postToolUse</code> hook.</p>
+
+  <p><strong>Skill only</strong> (Claude Code, Codex, Cursor, Windsurf, and other agents the <a href="https://github.com/vercel-labs/skills">Skills CLI</a> supports):</p>
+
+  <pre><code>npx skills add ahoybuoy/buoy-plugin</code></pre>
+
+  <p>This installs the <code>design-tokens</code> skill. It does not register the MCP server or the edit hook. For those, use the plugin above, or write the config into the repository:</p>
+
+  <pre><code>npx @buoy-design/cli mcp install claude   # or cursor, codex, windsurf, all</code></pre>
+
+  <p>See <a href="/docs/integrations/mcp">MCP Server</a> for the tools, hooks, skill and command.</p>
 
   <h2>CLI Installation</h2>
 
@@ -98,7 +111,7 @@ npm install --save-dev ahoybuoy</code></pre>
   <h3>Verify Installation</h3>
 
   <pre><code>$ buoy --version
-0.7.5
+0.8.26
 
 $ buoy --help
 Usage: buoy [command] [options]

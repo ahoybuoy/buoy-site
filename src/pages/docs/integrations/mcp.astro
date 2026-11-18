@@ -12,6 +12,19 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
     fix happens before the PR. A hook for Claude Code and Cursor checks each edit as it lands.
   </p>
 
+  <p>The <a href="https://github.com/ahoybuoy/buoy-plugin">plugin repository</a> also ships a skill, a slash command, hooks and a Cursor rule:</p>
+
+  <table>
+    <thead><tr><th></th><th>Name</th><th>What it is</th></tr></thead>
+    <tbody>
+      <tr><td>Skill</td><td><code>design-tokens</code></td><td>Look up tokens before writing styles; check the edited files afterwards</td></tr>
+      <tr><td>Command</td><td><code>/buoy-check</code> (Cursor), <code>/buoy:buoy-check</code> (Claude Code)</td><td>Check the UI files changed on this branch and apply the fixes</td></tr>
+      <tr><td>Hook</td><td>Claude Code <code>PostToolUse</code>, Cursor <code>postToolUse</code></td><td>After each style-file edit, report any drift and the token to use</td></tr>
+      <tr><td>Rule</td><td><code>design-tokens.mdc</code></td><td>The same guidance for Cursor's agent</td></tr>
+      <tr><td>MCP tools</td><td>The five tools below</td><td>Token lookup and line-level drift checks the agent can call while it writes</td></tr>
+    </tbody>
+  </table>
+
   <h2>Setup</h2>
 
   <p><strong>Claude Code plugin</strong> (MCP server, edit hook, a <code>design-tokens</code> skill and a <code>/buoy:buoy-check</code> command in one install):</p>
@@ -28,6 +41,15 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
   <pre><code>git clone https://github.com/ahoybuoy/buoy-plugin ~/.cursor/plugins/local/buoy</code></pre>
 
   <p>Then reload Cursor (Developer: Reload Window). The plugin's source is <a href="https://github.com/ahoybuoy/buoy-plugin">ahoybuoy/buoy-plugin</a>.</p>
+
+  <p>
+    <strong>Skill only</strong> (Claude Code, Codex, Cursor, Windsurf, and other agents the
+    <a href="https://github.com/vercel-labs/skills">Skills CLI</a> supports):
+  </p>
+
+  <pre><code>npx skills add ahoybuoy/buoy-plugin</code></pre>
+
+  <p>This installs the <code>design-tokens</code> skill. It does not register the MCP server or the edit hook; use the plugin above or <code>mcp install</code> below for those.</p>
 
   <p><strong>Any MCP client</strong>, or Claude Code without the plugin system:</p>
 
