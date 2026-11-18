@@ -3,13 +3,13 @@
   "owner": "knadh",
   "name": "listmonk",
   "description": "High performance, self-hosted, newsletter and mailing list manager with a modern dashboard. Single binary app.",
-  "stars": 24353,
+  "stars": 24373,
   "homepage": "https://listmonk.app",
   "language": "Go",
   "defaultBranch": "master",
   "commit": "e735e0b23421192a4c1b18b6221f4708b872fcd5",
-  "generatedAt": "2026-11-17T16:55:57.989Z",
-  "cliVersion": "0.8.25",
+  "generatedAt": "2026-11-18T16:29:46.511Z",
+  "cliVersion": "0.8.26",
   "score": null,
   "tier": "N/A",
   "pillars": {
@@ -163,15 +163,15 @@
     },
     {
       "file": "static/admin/assets/css/richtext.css",
-      "count": 11
+      "count": 10
     },
     {
       "file": "static/admin/assets/css/style.css",
-      "count": 9
+      "count": 6
     },
     {
       "file": "docs/site/static/static/style.css",
-      "count": 3
+      "count": 2
     }
   ],
   "samples": [
@@ -198,7 +198,6 @@
       "location": "docs/site/static/static/style.css:18",
       "entries": [
         "letter spacing: -0.02em (line 18)",
-        "line height: 1.06 (line 80)",
         "shadow: 0 8px 24px -12px rgb(16 42 80 / 0.25), (line 216)"
       ]
     },
@@ -208,7 +207,7 @@
       "entries": [
         "spacing: 0.4rem (line 40)",
         "font size: 15px (line 91)",
-        "line height: 1.5 (line 92)"
+        "colour: #0055d4 (line 116)"
       ]
     },
     {
@@ -217,7 +216,7 @@
       "entries": [
         "font size: 0.6em (line 319)",
         "spacing: 10px (line 565)",
-        "line height: 1.5 (line 705)"
+        "radius: 0.3125rem (line 751)"
       ]
     }
   ],

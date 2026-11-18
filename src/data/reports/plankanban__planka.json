@@ -3,13 +3,13 @@
   "owner": "plankanban",
   "name": "planka",
   "description": "Elegant open source project tracking. Self-hosted Kanban for teams — free Community edition, with PLANKA Pro for organisations.",
-  "stars": 12692,
+  "stars": 12694,
   "homepage": "https://planka.app",
   "language": "JavaScript",
   "defaultBranch": "master",
   "commit": "2cf423824a09f84df7dc3acf0ded9a700292d882",
-  "generatedAt": "2026-11-17T17:04:12.906Z",
-  "cliVersion": "0.8.25",
+  "generatedAt": "2026-11-18T16:38:07.218Z",
+  "cliVersion": "0.8.26",
   "score": 20,
   "tier": "Bad",
   "pillars": {
@@ -204,15 +204,15 @@
   "worstFiles": [
     {
       "file": "client/src/styles.module.scss",
-      "count": 112
+      "count": 110
     },
     {
       "file": "client/src/components/cards/CardModal/StoryContent.module.scss",
-      "count": 70
+      "count": 68
     },
     {
       "file": "client/src/components/cards/CardModal/ProjectContent.module.scss",
-      "count": 65
+      "count": 64
     },
     {
       "file": "client/src/components/common/AdministrationModal/UserEditModal/ProfilePane.module.scss",
@@ -227,12 +227,12 @@
       "count": 23
     },
     {
-      "file": "client/src/components/common/GhostError/GhostError.module.scss",
+      "file": "client/src/components/labels/LabelsStep/LabelsStep.module.scss",
       "count": 22
     },
     {
-      "file": "client/src/components/labels/LabelsStep/LabelsStep.module.scss",
-      "count": 22
+      "file": "client/src/components/common/GhostError/GhostError.module.scss",
+      "count": 21
     }
   ],
   "samples": [
@@ -317,8 +317,7 @@
       "location": "client/src/components/attachments/Attachments/Item.module.scss:25",
       "entries": [
         "colour: #fff (line 25)",
-        "font size: 20px (line 27)",
-        "line height: 1.2 (line 31)"
+        "font size: 20px (line 27)"
       ]
     },
     {

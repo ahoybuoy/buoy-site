@@ -3,13 +3,13 @@
   "owner": "TryGhost",
   "name": "Ghost",
   "description": "Independent technology for modern publishing, memberships, subscriptions and newsletters.",
-  "stars": 55837,
+  "stars": 55850,
   "homepage": "https://ghost.org",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "88a88e741a7735502348ebdb0dc8f586bd84102a",
-  "generatedAt": "2026-11-17T16:34:16.008Z",
-  "cliVersion": "0.8.25",
+  "commit": "73ba05ae8a15186f117c40a586d679bba6835cb6",
+  "generatedAt": "2026-11-18T16:07:29.680Z",
+  "cliVersion": "0.8.26",
   "score": 71,
   "tier": "Good",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1967,
+    "componentCount": 1971,
     "tokenCount": 858,
-    "hardcodedValueCount": 284,
+    "hardcodedValueCount": 285,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 284,
+    "totalDriftCount": 285,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -72,14 +72,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 282 hardcoded values left to tokenize. apps/activitypub/src/views/inbox/components/customizer.tsx has the most (4)",
+    "Nearly there — just 283 hardcoded values left to tokenize. apps/activitypub/src/views/inbox/components/customizer.tsx has the most (4)",
     "2 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 29,
-      "action": "Replace the hardcoded values in 278 of the 282 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 279 of the 283 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -134,13 +134,13 @@
     ]
   },
   "driftSummary": {
-    "total": 284,
+    "total": 285,
     "critical": 0,
     "warning": 60,
-    "info": 224
+    "info": 225
   },
   "driftByType": {
-    "hardcoded-value": 284
+    "hardcoded-value": 285
   },
   "topColors": [
     {
@@ -236,12 +236,12 @@
       "count": 33
     },
     {
-      "file": "ghost/core/frontend/src/cards/css/collection.css",
+      "file": "ghost/core/frontend/src/cards/css/video.css",
       "count": 30
     },
     {
-      "file": "ghost/core/frontend/src/cards/css/video.css",
-      "count": 30
+      "file": "ghost/core/frontend/src/cards/css/collection.css",
+      "count": 29
     }
   ],
   "samples": [

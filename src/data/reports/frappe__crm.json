@@ -3,22 +3,22 @@
   "owner": "frappe",
   "name": "crm",
   "description": "Fully featured, open source CRM",
-  "stars": 4002,
+  "stars": 4006,
   "homepage": "https://frappe.io/crm",
   "language": "Vue",
   "defaultBranch": "develop",
-  "commit": "135867649e253ce5ed2853e430f56a446797b29c",
-  "generatedAt": "2026-11-17T16:52:11.034Z",
-  "cliVersion": "0.8.25",
-  "score": 61,
+  "commit": "78e5be277c4ccd3fb0ca3a487b00478f793d2c87",
+  "generatedAt": "2026-11-18T16:25:57.175Z",
+  "cliVersion": "0.8.26",
+  "score": 79,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 41,
+      "score": 39,
       "max": 60
     },
     "tokenHealth": {
-      "score": 0,
+      "score": 20,
       "max": 20
     },
     "consistency": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 415,
-    "tokenCount": 0,
-    "hardcodedValueCount": 40,
+    "componentCount": 436,
+    "tokenCount": 19,
+    "hardcodedValueCount": 46,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 40,
+    "totalDriftCount": 46,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 2,
     "vendoredDriftCount": 0,
-    "notedCount": 7,
+    "notedCount": 9,
     "topHardcodedColor": {
       "value": "#FF5F57",
       "count": 1
@@ -65,25 +65,19 @@
     "detectedFrameworkNames": []
   },
   "suggestions": [
-    "Nearly there — just 40 hardcoded values left to tokenize. frontend/src/components/Settings/WorkflowAutomations/WorkflowFlow.vue has the most (4)",
-    "No design token system detected — add CSS custom properties or a utility framework like Tailwind"
+    "Nearly there — just 46 hardcoded values left to tokenize. frontend/src/components/Settings/WorkflowAutomations/WorkflowFlow.vue has the most (4)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 19,
-      "action": "Replace the hardcoded values in 39 of the 40 findings with tokens or scale steps"
-    },
-    {
-      "pillar": "tokenHealth",
-      "points": 20,
-      "action": "Add a token system: CSS custom properties, a tokens file or a Tailwind theme"
+      "points": 21,
+      "action": "Replace the hardcoded values in 45 of the 46 findings with tokens or scale steps"
     }
   ],
   "noted": {
-    "count": 7,
+    "count": 9,
     "byKind": {
-      "optical-nudge": 7
+      "optical-nudge": 9
     },
     "samples": [
       {
@@ -131,13 +125,13 @@
     ]
   },
   "driftSummary": {
-    "total": 40,
+    "total": 46,
     "critical": 0,
-    "warning": 4,
-    "info": 36
+    "warning": 5,
+    "info": 41
   },
   "driftByType": {
-    "hardcoded-value": 40
+    "hardcoded-value": 46
   },
   "topColors": [
     {
@@ -157,6 +151,10 @@
       "count": 4
     },
     {
+      "value": "oklch(1 0 0)",
+      "count": 3
+    },
+    {
       "value": "rgb(237, 237, 237)",
       "count": 2
     },
@@ -165,52 +163,60 @@
       "count": 2
     },
     {
-      "value": "#c5c2c2",
-      "count": 1
-    },
-    {
-      "value": "#000",
+      "value": "oklch(0.967 0.045 91.733)",
       "count": 1
     }
   ],
   "topSpacing": [
     {
+      "value": "7px",
+      "count": 12
+    },
+    {
+      "value": "3px",
+      "count": 6
+    },
+    {
+      "value": "8px",
+      "count": 6
+    },
+    {
       "value": "2rem",
       "count": 6
     },
     {
-      "value": "7px",
+      "value": "5px",
       "count": 5
     },
     {
-      "value": "3px",
+      "value": "9px",
+      "count": 5
+    },
+    {
+      "value": "10px",
       "count": 5
     },
     {
       "value": "22px",
       "count": 5
-    },
-    {
-      "value": "9px",
-      "count": 4
-    },
-    {
-      "value": "5px",
-      "count": 3
-    },
-    {
-      "value": "15px",
-      "count": 2
-    },
-    {
-      "value": "0.5rem",
-      "count": 2
     }
   ],
   "worstFiles": [
     {
+      "file": "crm/templates/includes/crm_book.css",
+      "count": 68
+    },
+    {
       "file": "frontend/src/components/Settings/ThemeSwitcher.vue",
       "count": 22
+    },
+    {
+      "file": "crm/templates/includes/crm_public_form.css",
+      "count": 18
+    },
+    {
+      "file": "frontend/src/components/Calendar/CalendarEventPanel.vue",
+      "count": 12
     },
     {
       "file": "frontend/src/components/Settings/WorkflowAutomations/WorkflowFlow.vue",
@@ -227,18 +233,6 @@
     {
       "file": "frontend/src/components/Activities/AudioPlayer.vue",
       "count": 6
-    },
-    {
-      "file": "frontend/src/components/Setup/SetupScene.vue",
-      "count": 4
-    },
-    {
-      "file": "frontend/src/components/Controls/Grid.vue",
-      "count": 3
-    },
-    {
-      "file": "frontend/src/components/Settings/Settings.vue",
-      "count": 3
     }
   ],
   "samples": [
@@ -247,6 +241,24 @@
       "location": "frontend/src/components/Activities/CommentArea.vue:31",
       "entries": [
         "py-[7.5px] (line 31)"
+      ]
+    },
+    {
+      "component": "frontend/src/components/Calendar/CalendarEventPanel.vue",
+      "location": "frontend/src/components/Calendar/CalendarEventPanel.vue:52",
+      "entries": [
+        "my-[5px] (line 52)",
+        "gap-[3px] (line 57)",
+        "py-[7px] (line 323)"
+      ]
+    },
+    {
+      "component": "frontend/src/components/Calendar/CalendarEventPanel.vue",
+      "location": "frontend/src/components/Calendar/CalendarEventPanel.vue:187",
+      "entries": [
+        "text-[8px] (line 187)",
+        "text-[8px] (line 229)",
+        "leading-[1.13rem] (line 405)"
       ]
     },
     {
@@ -261,6 +273,20 @@
       "location": "frontend/src/components/Dashboard/DashboardGrid.vue:6",
       "entries": [
         "mb-[20rem] (line 6)"
+      ]
+    },
+    {
+      "component": "frontend/src/components/EventNotificationsArea.vue",
+      "location": "frontend/src/components/EventNotificationsArea.vue:34",
+      "entries": [
+        "rounded-[8px] (line 34)"
+      ]
+    },
+    {
+      "component": "frontend/src/components/EventNotificationsArea.vue",
+      "location": "frontend/src/components/EventNotificationsArea.vue:37",
+      "entries": [
+        "text-[8px] (line 37)"
       ]
     },
     {
@@ -299,41 +325,7 @@
         "py-[7px] (line 20)",
         "space-y-[3px] (line 24)"
       ]
-    },
-    {
-      "component": "frontend/src/components/Settings/ThemeSwitcher.vue",
-      "location": "frontend/src/components/Settings/ThemeSwitcher.vue:15",
-      "entries": [
-        "bg-[#FF5F57] (line 15)",
-        "bg-[#FEBC2D] (line 16)",
-        "bg-[#28C840] (line 17)"
-      ]
-    },
-    {
-      "component": "frontend/src/components/Settings/ThemeSwitcher.vue",
-      "location": "frontend/src/components/Settings/ThemeSwitcher.vue:14",
-      "entries": [
-        "gap-[3px] (line 14)",
-        "gap-[5px] (line 31)",
-        "gap-[3px] (line 62)"
-      ]
-    },
-    {
-      "component": "frontend/src/components/Settings/ThemeSwitcher.vue",
-      "location": "frontend/src/components/Settings/ThemeSwitcher.vue:12",
-      "entries": [
-        "rounded-t-[10.5px] (line 12)",
-        "rounded-t-[10.5px] (line 60)",
-        "rounded-tl-[10.5px] (line 112)"
-      ]
-    },
-    {
-      "component": "frontend/src/components/Settings/WorkflowAutomations/WorkflowFlow.vue",
-      "location": "frontend/src/components/Settings/WorkflowAutomations/WorkflowFlow.vue:166",
-      "entries": [
-        "py-[7px] (line 166)"
-      ]
     }
   ],
-  "scanSeconds": 9
+  "scanSeconds": 10
 }

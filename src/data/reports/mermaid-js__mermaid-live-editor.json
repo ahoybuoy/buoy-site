@@ -3,18 +3,18 @@
   "owner": "mermaid-js",
   "name": "mermaid-live-editor",
   "description": "Edit, preview and share mermaid charts/diagrams. New implementation of the live editor.",
-  "stars": 6913,
+  "stars": 6914,
   "homepage": "https://mermaid.live",
   "language": "TypeScript",
   "defaultBranch": "develop",
-  "commit": "d3eb1dcdd26d451e4224e16bdc755a10fe10225a",
-  "generatedAt": "2026-11-17T17:00:33.477Z",
-  "cliVersion": "0.8.25",
-  "score": 68,
-  "tier": "Good",
+  "commit": "aa8d9e4a37d6cb2aa3f7e07b729c0312216a7a15",
+  "generatedAt": "2026-11-18T16:34:27.221Z",
+  "cliVersion": "0.8.26",
+  "score": 58,
+  "tier": "OK",
   "pillars": {
     "valueDiscipline": {
-      "score": 28,
+      "score": 18,
       "max": 60
     },
     "tokenHealth": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 76,
     "tokenCount": 54,
-    "hardcodedValueCount": 12,
+    "hardcodedValueCount": 16,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 12,
+    "totalDriftCount": 16,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -51,7 +51,7 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 0,
+    "highDensityFileCount": 1,
     "vendoredDriftCount": 0,
     "notedCount": 1,
     "topHardcodedColor": {
@@ -59,8 +59,8 @@
       "count": 9
     },
     "worstFile": {
-      "path": "src/lib/components/V13Tail.svelte",
-      "issueCount": 2
+      "path": "src/lib/components/migration/EditorChooserModal.svelte",
+      "issueCount": 4
     },
     "detectedFrameworkNames": [
       "svelte",
@@ -68,13 +68,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 12 hardcoded values left to tokenize. src/lib/components/V13Tail.svelte has the most (2)"
+    "Nearly there — just 16 hardcoded values left to tokenize. src/lib/components/migration/EditorChooserModal.svelte has the most (4)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 32,
-      "action": "Replace the hardcoded values in all 12 findings with tokens or scale steps"
+      "points": 42,
+      "action": "Replace the hardcoded values in all 16 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -93,13 +93,13 @@
     ]
   },
   "driftSummary": {
-    "total": 12,
+    "total": 16,
     "critical": 0,
-    "warning": 12,
-    "info": 0
+    "warning": 13,
+    "info": 3
   },
   "driftByType": {
-    "hardcoded-value": 12
+    "hardcoded-value": 16
   },
   "topColors": [
     {
@@ -107,41 +107,53 @@
       "count": 6
     },
     {
+      "value": "#17151f",
+      "count": 4
+    },
+    {
       "value": "#261A56",
       "count": 3
     },
     {
+      "value": "#7c5cff",
+      "count": 3
+    },
+    {
+      "value": "#6b6880",
+      "count": 3
+    },
+    {
+      "value": "#9a98a8",
+      "count": 3
+    },
+    {
+      "value": "rgba(23,21,31,0.08)",
+      "count": 2
+    },
+    {
       "value": "#1E1A2E",
       "count": 2
-    },
-    {
-      "value": "#ff6154",
-      "count": 2
-    },
-    {
-      "value": "#e8eaf9",
-      "count": 1
-    },
-    {
-      "value": "#2e4d6b",
-      "count": 1
-    },
-    {
-      "value": "#9370db",
-      "count": 1
-    },
-    {
-      "value": "#f3f3f3",
-      "count": 1
     }
   ],
   "topSpacing": [
+    {
+      "value": "15px",
+      "count": 3
+    },
+    {
+      "value": "18px",
+      "count": 1
+    },
     {
       "value": "4px",
       "count": 1
     }
   ],
   "worstFiles": [
+    {
+      "file": "src/lib/components/migration/EditorChooserModal.svelte",
+      "count": 53
+    },
     {
       "file": "src/lib/components/DesktopEditor.svelte",
       "count": 4
@@ -168,10 +180,6 @@
     },
     {
       "file": "src/lib/util/promos/FlowHunt.svelte",
-      "count": 2
-    },
-    {
-      "file": "src/lib/components/AIPromptPopup.svelte",
       "count": 2
     }
   ],
@@ -215,6 +223,41 @@
       ]
     },
     {
+      "component": "src/lib/components/migration/EditorChooserModal.svelte",
+      "location": "src/lib/components/migration/EditorChooserModal.svelte:35",
+      "entries": [
+        "text-[#6a4cf0] (line 35)",
+        "dark:text-[#a897ff] (line 35)",
+        "bg-[#7c5cff] (line 41)"
+      ]
+    },
+    {
+      "component": "src/lib/components/migration/EditorChooserModal.svelte",
+      "location": "src/lib/components/migration/EditorChooserModal.svelte:193",
+      "entries": [
+        "sm:px-[15px] (line 193)",
+        "sm:pt-[18px] (line 193)",
+        "sm:pb-[15px] (line 193)"
+      ]
+    },
+    {
+      "component": "src/lib/components/migration/EditorChooserModal.svelte",
+      "location": "src/lib/components/migration/EditorChooserModal.svelte:84",
+      "entries": [
+        "text-[10px] (line 84)",
+        "tracking-[0.5px] (line 84)",
+        "text-[13px] (line 154)"
+      ]
+    },
+    {
+      "component": "src/lib/components/migration/EditorChooserModal.svelte",
+      "location": "src/lib/components/migration/EditorChooserModal.svelte:129",
+      "entries": [
+        "shadow-[0_24px_32px_rgba(15,13,30,0.18)] (line 129)",
+        "dark:shadow-[0_24px_32px_rgba(0,0,0,0.5)] (line 129)"
+      ]
+    },
+    {
       "component": "src/lib/util/promos/April2025.svelte",
       "location": "src/lib/util/promos/April2025.svelte:73",
       "entries": [
@@ -239,39 +282,7 @@
         "bg-[#1E1A2E] (line 25)",
         "hover:bg-[#261A56] (line 25)"
       ]
-    },
-    {
-      "component": "src/lib/components/AIPromptPopup.svelte",
-      "location": "src/lib/components/AIPromptPopup.svelte:130",
-      "entries": [
-        "radius: 12px (line 130)",
-        "radius: 14px (line 137)"
-      ]
-    },
-    {
-      "component": "src/lib/components/DesktopEditor.svelte",
-      "location": "src/lib/components/DesktopEditor.svelte:257",
-      "entries": [
-        "colour: #e8eaf9 (line 257)",
-        "spacing: 4px (line 260)",
-        "radius: 4px (line 265)"
-      ]
-    },
-    {
-      "component": "src/lib/components/V13Tail.svelte",
-      "location": "src/lib/components/V13Tail.svelte:44",
-      "entries": [
-        "colour: #9370db (line 44)"
-      ]
-    },
-    {
-      "component": "src/routes/(app)/+layout.svelte",
-      "location": "src/routes/(app)/+layout.svelte:59",
-      "entries": [
-        "colour: #f3f3f3 (line 59)",
-        "colour: #6365f1 (line 61)"
-      ]
     }
   ],
-  "scanSeconds": 3
+  "scanSeconds": 4
 }

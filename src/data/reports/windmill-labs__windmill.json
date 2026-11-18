@@ -3,13 +3,13 @@
   "owner": "windmill-labs",
   "name": "windmill",
   "description": "Code-first platform for workflows, apps and AI agents, on the fastest self-hostable orchestrator (benchmarked against Airflow, Prefect and Temporal). Business teams build with AI, engineers control what ships. Open-source alternative to Lovable, Retool and n8n.",
-  "stars": 18621,
+  "stars": 18634,
   "homepage": "https://windmill.dev",
   "language": "Rust",
   "defaultBranch": "main",
-  "commit": "a03643adca4170c7ebb39f8b6543b918f0837bfa",
-  "generatedAt": "2026-11-17T17:07:27.167Z",
-  "cliVersion": "0.8.25",
+  "commit": "97b80aef5e82ec94470fb974ee3676ca403065db",
+  "generatedAt": "2026-11-18T16:41:22.699Z",
+  "cliVersion": "0.8.26",
   "score": 86,
   "tier": "Great",
   "pillars": {
@@ -212,7 +212,7 @@
   "worstFiles": [
     {
       "file": "frontend/static/tailwind_full.css",
-      "count": 204
+      "count": 184
     },
     {
       "file": "frontend/src/lib/components/HighlightTheme.svelte",
@@ -223,12 +223,12 @@
       "count": 64
     },
     {
-      "file": "frontend/src/lib/components/copilot/chat/artifacts/artifactDocument.css",
-      "count": 40
-    },
-    {
       "file": "frontend/src/lib/components/workspaceSettings/DeployToHub.svelte",
       "count": 35
+    },
+    {
+      "file": "frontend/src/lib/components/copilot/chat/artifacts/artifactDocument.css",
+      "count": 33
     },
     {
       "file": "frontend/src/lib/components/debug/DebugConsole.svelte",

@@ -3,13 +3,13 @@
   "owner": "glanceapp",
   "name": "glance",
   "description": "A self-hosted dashboard that puts all your feeds in one place",
-  "stars": 38274,
+  "stars": 38292,
   "homepage": "",
   "language": "Go",
   "defaultBranch": "main",
   "commit": "53aec7f392ca72143870dcb45526ec7c80a68f32",
-  "generatedAt": "2026-11-17T16:52:53.370Z",
-  "cliVersion": "0.8.25",
+  "generatedAt": "2026-11-18T16:26:42.576Z",
+  "cliVersion": "0.8.26",
   "score": null,
   "tier": "N/A",
   "pillars": {
@@ -153,12 +153,12 @@
       "count": 42
     },
     {
-      "file": "internal/glance/static/css/site.css",
+      "file": "internal/glance/static/css/widget-server-stats.css",
       "count": 11
     },
     {
-      "file": "internal/glance/static/css/widget-server-stats.css",
-      "count": 11
+      "file": "internal/glance/static/css/site.css",
+      "count": 10
     },
     {
       "file": "internal/glance/static/css/login.css",
@@ -228,8 +228,8 @@
       "location": "internal/glance/static/css/site.css:130",
       "entries": [
         "font size: 1.3rem (line 130)",
-        "line height: 1.6 (line 133)",
-        "font size: 2rem (line 168)"
+        "font size: 2rem (line 168)",
+        "font size: 2rem (line 267)"
       ]
     },
     {
@@ -284,5 +284,5 @@
       ]
     }
   ],
-  "scanSeconds": 2
+  "scanSeconds": 3
 }

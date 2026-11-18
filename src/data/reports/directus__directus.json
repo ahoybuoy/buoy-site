@@ -3,13 +3,13 @@
   "owner": "directus",
   "name": "directus",
   "description": "The flexible backend for all your projects 🐰 Turn your DB into a headless CMS, admin panels, or apps with a custom UI, instant APIs, auth & more.",
-  "stars": 38741,
+  "stars": 38758,
   "homepage": "https://directus.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "bab483f4bb28cab48905ed3c7a7be9949902949d",
-  "generatedAt": "2026-11-17T16:48:25.595Z",
-  "cliVersion": "0.8.25",
+  "commit": "3e3bdddd20bc5f80200452d2b1aad4e3029c95e4",
+  "generatedAt": "2026-11-18T16:22:05.526Z",
+  "cliVersion": "0.8.26",
   "score": 34,
   "tier": "Bad",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 598,
     "tokenCount": 38,
-    "hardcodedValueCount": 252,
+    "hardcodedValueCount": 249,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 258,
+    "totalDriftCount": 255,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -63,14 +63,14 @@
     ]
   },
   "suggestions": [
-    "252 hardcoded values to extract. Focus on app/src/components/v-chip.vue (2 issues)",
+    "249 hardcoded values to extract. Focus on app/src/components/v-chip.vue (2 issues)",
     "6 deprecated patterns — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 251 of the 252 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 248 of the 249 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -130,14 +130,14 @@
     ]
   },
   "driftSummary": {
-    "total": 258,
+    "total": 255,
     "critical": 0,
     "warning": 48,
-    "info": 210
+    "info": 207
   },
   "driftByType": {
     "deprecated-pattern": 6,
-    "hardcoded-value": 252
+    "hardcoded-value": 249
   },
   "topColors": [
     {
@@ -210,27 +210,27 @@
   "worstFiles": [
     {
       "file": "app/src/interfaces/input-block-editor/editorjs-overrides.css",
-      "count": 31
-    },
-    {
-      "file": "app/src/styles/mixins/_markdown.scss",
-      "count": 31
-    },
-    {
-      "file": "app/src/ai/components/parts/ai-message-text.vue",
-      "count": 25
-    },
-    {
-      "file": "app/src/interfaces/input-rich-text-html/input-rich-text-html.vue",
       "count": 24
     },
     {
+      "file": "app/src/interfaces/input-rich-text-html/input-rich-text-html.vue",
+      "count": 23
+    },
+    {
+      "file": "app/src/styles/mixins/_markdown.scss",
+      "count": 20
+    },
+    {
       "file": "app/src/components/v-date-picker/v-date-picker.vue",
-      "count": 22
+      "count": 19
     },
     {
       "file": "app/src/ai/components/parts/ai-ask-user.vue",
-      "count": 21
+      "count": 18
+    },
+    {
+      "file": "app/src/ai/components/parts/ai-message-text.vue",
+      "count": 17
     },
     {
       "file": "app/src/interfaces/translations/translate-modal.vue",
@@ -238,7 +238,7 @@
     },
     {
       "file": "app/src/modules/settings/routes/license/components/license-resolution-dialog.vue",
-      "count": 15
+      "count": 14
     }
   ],
   "samples": [

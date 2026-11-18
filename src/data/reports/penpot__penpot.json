@@ -3,13 +3,13 @@
   "owner": "penpot",
   "name": "penpot",
   "description": "Penpot: The open-source design platform for Product teams that need scalable collaboration.",
-  "stars": 62470,
+  "stars": 62516,
   "homepage": "https://penpot.app",
   "language": "Clojure",
   "defaultBranch": "develop",
-  "commit": "0bfcaa41094fa6e37c9390a45d975642cfc478ed",
-  "generatedAt": "2026-11-17T17:04:05.662Z",
-  "cliVersion": "0.8.25",
+  "commit": "617e56b71ea9b6fd1e27c01a1ca1ad70b99ad8e6",
+  "generatedAt": "2026-11-18T16:37:59.839Z",
+  "cliVersion": "0.8.26",
   "score": 40,
   "tier": "OK",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 7,
     "tokenCount": 360,
-    "hardcodedValueCount": 62,
+    "hardcodedValueCount": 48,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 62,
+    "totalDriftCount": 48,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -61,13 +61,13 @@
     "detectedFrameworkNames": []
   },
   "suggestions": [
-    "62 hardcoded values across your components — high density. Most common: #c0c0c2 (1×). Create a design token file (e.g., tokens.css with CSS custom properties)"
+    "48 hardcoded values across your components — high density. Most common: #c0c0c2 (1×). Create a design token file (e.g., tokens.css with CSS custom properties)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in all 62 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in all 48 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -123,13 +123,13 @@
     ]
   },
   "driftSummary": {
-    "total": 62,
+    "total": 48,
     "critical": 0,
     "warning": 19,
-    "info": 43
+    "info": 29
   },
   "driftByType": {
-    "hardcoded-value": 62
+    "hardcoded-value": 48
   },
   "topColors": [
     {
@@ -202,7 +202,7 @@
   "worstFiles": [
     {
       "file": "docs/css/index.css",
-      "count": 149
+      "count": 142
     },
     {
       "file": "frontend/text-editor/src/fonts.css",
@@ -217,12 +217,12 @@
       "count": 34
     },
     {
-      "file": "docs/css/prism-base16-monokai.dark.css",
+      "file": "frontend/resources/styles/common/dependencies/_hljs-light-theme.scss",
       "count": 19
     },
     {
-      "file": "frontend/resources/styles/common/dependencies/_hljs-light-theme.scss",
-      "count": 19
+      "file": "docs/css/prism-base16-monokai.dark.css",
+      "count": 18
     },
     {
       "file": "frontend/resources/styles/common/dependencies/_hljs-dark-theme.scss",
@@ -254,11 +254,11 @@
     },
     {
       "component": "docs/css/index.css",
-      "location": "docs/css/index.css:74",
+      "location": "docs/css/index.css:77",
       "entries": [
-        "line height: 1.6 (line 74)",
         "spacing: 2rem (line 77)",
-        "spacing: 1rem (line 78)"
+        "spacing: 1rem (line 78)",
+        "spacing: 1rem (line 81)"
       ]
     },
     {
@@ -266,8 +266,8 @@
       "location": "docs/css/prism-base16-monokai.dark.css:4",
       "entries": [
         "font size: 14px (line 4)",
-        "line height: 1.375 (line 5)",
-        "colour: #272822 (line 18)"
+        "colour: #272822 (line 18)",
+        "colour: #f8f8f2 (line 19)"
       ]
     },
     {
@@ -305,15 +305,6 @@
       ]
     },
     {
-      "component": "frontend/resources/styles/common/refactor/mixins.scss",
-      "location": "frontend/resources/styles/common/refactor/mixins.scss:44",
-      "entries": [
-        "line height: 1.2 (line 44)",
-        "line height: 1.2 (line 52)",
-        "line height: 1.2 (line 59)"
-      ]
-    },
-    {
       "component": "frontend/resources/styles/debug.scss",
       "location": "frontend/resources/styles/debug.scss:13",
       "entries": [
@@ -321,21 +312,29 @@
       ]
     },
     {
-      "component": "frontend/src/app/main/ui/alert.scss",
-      "location": "frontend/src/app/main/ui/alert.scss:51",
+      "component": "frontend/src/app/main/ui/auth/login_modal.scss",
+      "location": "frontend/src/app/main/ui/auth/login_modal.scss:78",
       "entries": [
-        "line height: 1.5 (line 51)",
-        "line height: 1.5 (line 62)"
+        "font weight: 500 (line 78)"
       ]
     },
     {
-      "component": "frontend/src/app/main/ui/auth/common.scss",
-      "location": "frontend/src/app/main/ui/auth/common.scss:113",
+      "component": "frontend/src/app/main/ui/comments.scss",
+      "location": "frontend/src/app/main/ui/comments.scss:109",
       "entries": [
-        "line height: 1.2 (line 113)",
-        "line height: 1.2 (line 142)"
+        "font size: 0.75rem (line 109)",
+        "colour: rgb(0 0 0 / 0.5) (line 124)",
+        "font size: 0.75rem (line 457)"
+      ]
+    },
+    {
+      "component": "frontend/src/app/main/ui/components/context_menu_a11y.scss",
+      "location": "frontend/src/app/main/ui/components/context_menu_a11y.scss:72",
+      "entries": [
+        "spacing: 0.5rem (line 72)",
+        "spacing: 1.5rem (line 174)"
       ]
     }
   ],
-  "scanSeconds": 14
+  "scanSeconds": 15
 }

@@ -3,13 +3,13 @@
   "owner": "cline",
   "name": "cline",
   "description": "Autonomous coding agent as an SDK, IDE extension, or CLI assistant.",
-  "stars": 71711,
+  "stars": 71751,
   "homepage": "https://cline.bot",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "eff43e19b267e171f597ab03733bfed25090f72d",
-  "generatedAt": "2026-11-17T16:47:58.287Z",
-  "cliVersion": "0.8.25",
+  "generatedAt": "2026-11-18T16:21:43.277Z",
+  "cliVersion": "0.8.26",
   "score": 76,
   "tier": "Good",
   "pillars": {
@@ -213,18 +213,18 @@
   "worstFiles": [
     {
       "file": "sdk/packages/ui/components/agent-ux-verification.css",
-      "count": 38
+      "count": 35
     },
     {
       "file": "sdk/packages/ui/components/markdown.css",
-      "count": 27
-    },
-    {
-      "file": "sdk/packages/ui/components/agent-chat/agent-chat.css",
-      "count": 21
+      "count": 24
     },
     {
       "file": "apps/cline-hub/src/webview/src/App.tsx",
+      "count": 19
+    },
+    {
+      "file": "sdk/packages/ui/components/agent-chat/agent-chat.css",
       "count": 19
     },
     {
@@ -341,5 +341,5 @@
       ]
     }
   ],
-  "scanSeconds": 25
+  "scanSeconds": 24
 }

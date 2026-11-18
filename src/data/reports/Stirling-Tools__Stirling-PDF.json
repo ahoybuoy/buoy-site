@@ -3,13 +3,13 @@
   "owner": "Stirling-Tools",
   "name": "Stirling-PDF",
   "description": "#1 PDF Application on GitHub that lets you edit PDFs on any device anywhere",
-  "stars": 96846,
+  "stars": 96931,
   "homepage": "https://stirling.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "c718a37074b33a81fbef9201fdb693a04a3c257f",
-  "generatedAt": "2026-11-17T16:45:14.606Z",
-  "cliVersion": "0.8.25",
+  "commit": "35b2aaa2e3d475a46ec8b2b088b9c46b947b337b",
+  "generatedAt": "2026-11-18T16:18:59.766Z",
+  "cliVersion": "0.8.26",
   "score": 38,
   "tier": "Bad",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1731,
+    "componentCount": 1738,
     "tokenCount": 690,
-    "hardcodedValueCount": 564,
+    "hardcodedValueCount": 562,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 1,
@@ -41,7 +41,7 @@
     "colorContrastCount": 1,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 565,
+    "totalDriftCount": 563,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -56,7 +56,7 @@
     "notedCount": 56,
     "topHardcodedColor": {
       "value": "#fff",
-      "count": 9
+      "count": 8
     },
     "worstFile": {
       "path": "frontend/src/editor/core/components/filesPage/FileGrid.tsx",
@@ -66,7 +66,7 @@
     "detectedFrameworkNames": []
   },
   "suggestions": [
-    "564 hardcoded values to extract. Focus on frontend/src/editor/core/components/filesPage/FileGrid.tsx (8 issues)",
+    "562 hardcoded values to extract. Focus on frontend/src/editor/core/components/filesPage/FileGrid.tsx (8 issues)",
     "1 color contrast issue — fix immediately",
     "57 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
   ],
@@ -74,7 +74,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 560 of the 564 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 558 of the 562 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -135,19 +135,19 @@
     ]
   },
   "driftSummary": {
-    "total": 565,
+    "total": 563,
     "critical": 1,
-    "warning": 249,
-    "info": 315
+    "warning": 248,
+    "info": 314
   },
   "driftByType": {
-    "hardcoded-value": 564,
+    "hardcoded-value": 562,
     "color-contrast": 1
   },
   "topColors": [
     {
       "value": "#fff",
-      "count": 21
+      "count": 20
     },
     {
       "value": "#ffffff",
@@ -185,7 +185,7 @@
     },
     {
       "value": "1rem",
-      "count": 278
+      "count": 279
     },
     {
       "value": "0.75rem",
@@ -215,35 +215,35 @@
   "worstFiles": [
     {
       "file": "frontend/src/processor/proprietary/components/billing/billing.css",
-      "count": 236
+      "count": 227
     },
     {
       "file": "frontend/src/processor/proprietary/views/Procurement.css",
-      "count": 169
+      "count": 159
     },
     {
       "file": "frontend/src/editor/core/components/filesPage/FilesPage.css",
-      "count": 153
-    },
-    {
-      "file": "frontend/src/editor/core/components/docs/DeveloperDocs.css",
-      "count": 110
+      "count": 150
     },
     {
       "file": "frontend/src/editor/core/components/shared/signing/signing.css",
-      "count": 105
-    },
-    {
-      "file": "frontend/src/processor/proprietary/views/Enterprise.css",
       "count": 101
     },
     {
-      "file": "frontend/src/editor/proprietary/auth/ui/auth.css",
+      "file": "frontend/src/editor/core/components/docs/DeveloperDocs.css",
+      "count": 99
+    },
+    {
+      "file": "frontend/src/processor/proprietary/views/Enterprise.css",
       "count": 96
     },
     {
+      "file": "frontend/src/editor/proprietary/auth/ui/auth.css",
+      "count": 94
+    },
+    {
       "file": "frontend/src/editor/proprietary/billing/billing-screen.css",
-      "count": 87
+      "count": 84
     }
   ],
   "samples": [

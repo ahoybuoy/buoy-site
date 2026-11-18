@@ -3,18 +3,18 @@
   "owner": "jellyfin",
   "name": "jellyfin-web",
   "description": "The Free Software Media System - Official Web Client",
-  "stars": 3995,
+  "stars": 3998,
   "homepage": "https://jellyfin.org",
   "language": "JavaScript",
   "defaultBranch": "master",
-  "commit": "0a72aeba72778ebeaa59fa82a63f45f06874eca6",
-  "generatedAt": "2026-11-17T16:55:28.017Z",
-  "cliVersion": "0.8.25",
-  "score": 52,
+  "commit": "f34d0ce49d23bd2c9f7696e23fa544afce1781ad",
+  "generatedAt": "2026-11-18T16:29:17.239Z",
+  "cliVersion": "0.8.26",
+  "score": 51,
   "tier": "OK",
   "pillars": {
     "valueDiscipline": {
-      "score": 12,
+      "score": 11,
       "max": 60
     },
     "tokenHealth": {
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 343,
+    "componentCount": 342,
     "tokenCount": 251,
     "hardcodedValueCount": 83,
     "unusedTokenCount": 0,
@@ -71,7 +71,7 @@
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 48,
+      "points": 49,
       "action": "Replace the hardcoded values in all 83 findings with tokens or scale steps"
     }
   ],
@@ -207,7 +207,7 @@
   "worstFiles": [
     {
       "file": "src/styles/librarybrowser.scss",
-      "count": 102
+      "count": 101
     },
     {
       "file": "src/components/cardbuilder/card.scss",

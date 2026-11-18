@@ -3,13 +3,13 @@
   "owner": "novuhq",
   "name": "novu",
   "description": "The open-source communication infrastructure for agents and products",
-  "stars": 40344,
+  "stars": 40352,
   "homepage": "https://go.novu.co/github",
   "language": "TypeScript",
   "defaultBranch": "next",
-  "commit": "e3002c3b4afc44231f712900ba24b691289bd5f7",
-  "generatedAt": "2026-11-17T16:26:19.885Z",
-  "cliVersion": "0.8.25",
+  "commit": "6ee716724459c262b57330a64b403e4b44587eae",
+  "generatedAt": "2026-11-18T15:59:09.239Z",
+  "cliVersion": "0.8.26",
   "score": 62,
   "tier": "Good",
   "pillars": {
@@ -214,11 +214,11 @@
   "worstFiles": [
     {
       "file": "packages/novu/src/commands/init/templates/app-react-email/ts/app/page.module.css",
-      "count": 125
+      "count": 122
     },
     {
       "file": "packages/novu/src/commands/connect/templates/web-chat/ts/globals.css",
-      "count": 106
+      "count": 98
     },
     {
       "file": "apps/human-dashboard/src/styles/home.css",
@@ -234,15 +234,15 @@
     },
     {
       "file": "packages/novu/src/commands/init/templates/app-agent-ai-sdk/ts/app/page.module.css",
-      "count": 32
+      "count": 30
     },
     {
       "file": "packages/novu/src/commands/init/templates/app-agent-langchain/ts/app/page.module.css",
-      "count": 32
+      "count": 30
     },
     {
       "file": "packages/novu/src/commands/init/templates/app-agent/ts/app/page.module.css",
-      "count": 32
+      "count": 30
     }
   ],
   "samples": [
@@ -335,5 +335,5 @@
       ]
     }
   ],
-  "scanSeconds": 74
+  "scanSeconds": 75
 }

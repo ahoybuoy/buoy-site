@@ -3,13 +3,13 @@
   "owner": "hcengineering",
   "name": "platform",
   "description": "Huly — All-in-One Project Management Platform (alternative to Linear, Jira, Slack, Notion, Motion)",
-  "stars": 28136,
+  "stars": 28142,
   "homepage": "https://huly.io",
   "language": "TypeScript",
   "defaultBranch": "develop",
   "commit": "a1dd19d4f7699e8b8d9e0dbeb610c7884b6255bc",
-  "generatedAt": "2026-11-17T16:53:17.691Z",
-  "cliVersion": "0.8.25",
+  "generatedAt": "2026-11-18T16:27:07.302Z",
+  "cliVersion": "0.8.26",
   "score": null,
   "tier": "N/A",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 0,
     "tokenCount": 0,
-    "hardcodedValueCount": 646,
+    "hardcodedValueCount": 645,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 646,
+    "totalDriftCount": 645,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -116,13 +116,13 @@
     ]
   },
   "driftSummary": {
-    "total": 646,
+    "total": 645,
     "critical": 0,
     "warning": 46,
-    "info": 600
+    "info": 599
   },
   "driftByType": {
-    "hardcoded-value": 646
+    "hardcoded-value": 645
   },
   "topColors": [
     {
@@ -199,7 +199,7 @@
     },
     {
       "file": "plugins/tracker-resources/src/components/gantt/GanttView.svelte",
-      "count": 52
+      "count": 51
     },
     {
       "file": "packages/theme/styles/common.scss",
@@ -215,7 +215,7 @@
     },
     {
       "file": "plugins/setting-resources/src/components/ApiDocsSection.svelte",
-      "count": 28
+      "count": 26
     },
     {
       "file": "plugins/tracker-resources/src/components/issues/IssueDependenciesPanel.svelte",

@@ -3,13 +3,13 @@
   "owner": "LibreChat-AI",
   "name": "LibreChat",
   "description": "Enhanced ChatGPT Clone: Features Agents, MCP, Skills, DeepSeek, Anthropic, AWS, OpenAI, Responses API, Azure, Groq, o1, GPT-5, Mistral, OpenRouter, Vertex AI, Gemini, Artifacts, AI model switching, message search, Code Interpreter, langchain, DALL-E-3, OpenAPI Actions, Functions, Secure Multi-User Auth, Presets, open-source for self-hosting. Active",
-  "stars": 47249,
+  "stars": 47321,
   "homepage": "https://librechat.ai/",
   "language": "TypeScript",
   "defaultBranch": "main",
   "commit": "d4e85d2205c78413ee27d631d7e3b7313556f21d",
-  "generatedAt": "2026-11-17T16:43:08.032Z",
-  "cliVersion": "0.8.25",
+  "generatedAt": "2026-11-18T16:16:55.719Z",
+  "cliVersion": "0.8.26",
   "score": 96,
   "tier": "Great",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 1472,
     "tokenCount": 639,
-    "hardcodedValueCount": 29,
+    "hardcodedValueCount": 28,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 30,
+    "totalDriftCount": 29,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 1,
     "orphanedComponentCount": 0,
@@ -67,13 +67,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 29 hardcoded values left to tokenize. packages/chat/src/components/messages/Feedback.tsx has the most (3)"
+    "Nearly there — just 28 hardcoded values left to tokenize. packages/chat/src/components/messages/Feedback.tsx has the most (3)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 4,
-      "action": "Replace the hardcoded values in 26 of the 29 findings with tokens or scale steps, and remove or reuse 1 unused component or repeated pattern"
+      "action": "Replace the hardcoded values in 25 of the 28 findings with tokens or scale steps, and remove or reuse 1 unused component or repeated pattern"
     }
   ],
   "noted": {
@@ -100,13 +100,13 @@
     ]
   },
   "driftSummary": {
-    "total": 30,
+    "total": 29,
     "critical": 0,
     "warning": 3,
-    "info": 27
+    "info": 26
   },
   "driftByType": {
-    "hardcoded-value": 29,
+    "hardcoded-value": 28,
     "repeated-pattern": 1
   },
   "topColors": [],
@@ -147,7 +147,7 @@
   "worstFiles": [
     {
       "file": "client/src/style.css",
-      "count": 121
+      "count": 110
     },
     {
       "file": "packages/client/src/theme/fonts.css",
@@ -162,10 +162,6 @@
       "count": 4
     },
     {
-      "file": "packages/client/src/theme/parts.css",
-      "count": 4
-    },
-    {
       "file": "packages/chat/src/components/messages/Feedback.tsx",
       "count": 3
     },
@@ -175,6 +171,10 @@
     },
     {
       "file": "client/src/components/Tools/ToolItem.tsx",
+      "count": 3
+    },
+    {
+      "file": "packages/client/src/theme/parts.css",
       "count": 3
     }
   ],
@@ -269,5 +269,5 @@
       ]
     }
   ],
-  "scanSeconds": 34
+  "scanSeconds": 35
 }

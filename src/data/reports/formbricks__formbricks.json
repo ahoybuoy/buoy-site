@@ -3,13 +3,13 @@
   "owner": "formbricks",
   "name": "formbricks",
   "description": "The Open Source Qualtrics Alternative",
-  "stars": 13248,
+  "stars": 13254,
   "homepage": "https://formbricks.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "934d0e221eb056b6e331191922f8951e510660f5",
-  "generatedAt": "2026-11-17T16:30:28.371Z",
-  "cliVersion": "0.8.25",
+  "commit": "61785f0becb9d5a1f691202d67e7959b2a2c37ec",
+  "generatedAt": "2026-11-18T16:03:28.793Z",
+  "cliVersion": "0.8.26",
   "score": 94,
   "tier": "Great",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 377,
+    "componentCount": 379,
     "tokenCount": 295,
-    "hardcodedValueCount": 18,
+    "hardcodedValueCount": 19,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 18,
+    "totalDriftCount": 19,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -71,14 +71,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 11 hardcoded values left to tokenize",
+    "Nearly there — just 12 hardcoded values left to tokenize",
     "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 6,
-      "action": "Replace the hardcoded values in all 11 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in all 12 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -90,14 +90,14 @@
     "samples": [
       {
         "file": "packages/survey-ui/src/components/general/calendar.tsx",
-        "line": 245,
+        "line": 244,
         "value": "day:ring-[3px]",
         "kind": "explained",
         "reason": "(4.19:1 against the card, below AA 4.5, and worse the lighter the survey's brand colour is). A tint this light keeps th…"
       },
       {
         "file": "apps/web/app/(app)/workspaces/[workspaceId]/surveys/[surveyId]/(analysis)/summary/components/SummaryDropOffs.tsx",
-        "line": 21,
+        "line": 22,
         "value": "mt-[3px]",
         "kind": "optical-nudge",
         "reason": "mt-[3px] is a 2-3px optical adjustment"
@@ -133,13 +133,13 @@
     ]
   },
   "driftSummary": {
-    "total": 18,
+    "total": 19,
     "critical": 0,
-    "warning": 6,
+    "warning": 7,
     "info": 12
   },
   "driftByType": {
-    "hardcoded-value": 18
+    "hardcoded-value": 19
   },
   "topColors": [
     {
@@ -167,11 +167,11 @@
       "count": 2
     },
     {
-      "value": "#dd4a68",
+      "value": "rgb(0 0 0/0.8)",
       "count": 1
     },
     {
-      "value": "#999",
+      "value": "#dd4a68",
       "count": 1
     }
   ],
@@ -288,10 +288,10 @@
     },
     {
       "component": "packages/survey-ui/src/components/general/calendar.tsx",
-      "location": "packages/survey-ui/src/components/general/calendar.tsx:166",
+      "location": "packages/survey-ui/src/components/general/calendar.tsx:165",
       "entries": [
-        "text-[0.8rem] (line 166)",
-        "text-[0.8rem] (line 171)"
+        "text-[0.8rem] (line 165)",
+        "text-[0.8rem] (line 170)"
       ]
     },
     {
@@ -300,6 +300,13 @@
       "entries": [
         "rounded-[4px] (line 14)",
         "focus-visible:ring-[3px] (line 14)"
+      ]
+    },
+    {
+      "component": "packages/survey-ui/src/components/general/image-lightbox.tsx",
+      "location": "packages/survey-ui/src/components/general/image-lightbox.tsx:99",
+      "entries": [
+        "backdrop:bg-[rgb(0_0_0/0.8)] (line 99)"
       ]
     },
     {
@@ -322,14 +329,7 @@
       "entries": [
         "focus-visible:ring-[3px] (line 17)"
       ]
-    },
-    {
-      "component": "packages/surveys/src/components/general/ending-card.tsx",
-      "location": "packages/surveys/src/components/general/ending-card.tsx:92",
-      "entries": [
-        "mb-[10px] (line 92)"
-      ]
     }
   ],
-  "scanSeconds": 27
+  "scanSeconds": 29
 }

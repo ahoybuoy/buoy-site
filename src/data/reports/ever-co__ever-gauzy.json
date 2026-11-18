@@ -3,13 +3,13 @@
   "owner": "ever-co",
   "name": "ever-gauzy",
   "description": "Ever® Gauzy™ - Open Business Management Platform (ERP/CRM/HRM/ATS/PM) - https://gauzy.co",
-  "stars": 8861,
+  "stars": 8866,
   "homepage": "https://gauzy.co",
   "language": "TypeScript",
   "defaultBranch": "develop",
-  "commit": "4837ff343b7553d0e73ceda8893ef0b4413c92e6",
-  "generatedAt": "2026-11-17T16:51:48.970Z",
-  "cliVersion": "0.8.25",
+  "commit": "13a55a2e2ae1f00dbc5472e852884481d6b49802",
+  "generatedAt": "2026-11-18T16:25:35.469Z",
+  "cliVersion": "0.8.26",
   "score": 35,
   "tier": "Bad",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 886,
+    "componentCount": 887,
     "tokenCount": 0,
-    "hardcodedValueCount": 723,
+    "hardcodedValueCount": 725,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 724,
+    "totalDriftCount": 726,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -70,14 +70,14 @@
     ]
   },
   "suggestions": [
-    "723 hardcoded values to extract. Focus on packages/ui-react-components/src/lib/components/ColorDots.tsx (1 issues)",
+    "725 hardcoded values to extract. Focus on packages/ui-react-components/src/lib/components/ColorDots.tsx (1 issues)",
     "1 framework sprawl signal — standardize on fewer UI/styling frameworks"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 721 of the 723 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 723 of the 725 findings with tokens or scale steps"
     },
     {
       "pillar": "tokenHealth",
@@ -138,13 +138,13 @@
     ]
   },
   "driftSummary": {
-    "total": 724,
+    "total": 726,
     "critical": 0,
     "warning": 165,
-    "info": 559
+    "info": 561
   },
   "driftByType": {
-    "hardcoded-value": 723,
+    "hardcoded-value": 725,
     "framework-sprawl": 1
   },
   "topColors": [
@@ -184,23 +184,23 @@
   "topSpacing": [
     {
       "value": "0.5rem",
-      "count": 791
+      "count": 793
     },
     {
       "value": "1rem",
-      "count": 703
+      "count": 709
     },
     {
       "value": "0.75rem",
-      "count": 445
+      "count": 447
     },
     {
       "value": "0.375rem",
-      "count": 352
+      "count": 353
     },
     {
       "value": "0.25rem",
-      "count": 346
+      "count": 347
     },
     {
       "value": "10px",
@@ -208,7 +208,7 @@
     },
     {
       "value": "1.5rem",
-      "count": 176
+      "count": 177
     },
     {
       "value": "8px",
@@ -218,15 +218,15 @@
   "worstFiles": [
     {
       "file": "packages/plugins/legal-ui/src/lib/components/privacy-policy/privacy-policy.component.scss",
-      "count": 237
+      "count": 230
     },
     {
       "file": "packages/desktop-ui-lib/src/lib/settings/plugins/component/plugin-marketplace/plugin-subscription-plan-selection/plugin-subscription-plan-selection.component.scss",
-      "count": 180
+      "count": 178
     },
     {
       "file": "packages/desktop-ui-lib/src/lib/settings/plugins/component/plugin-marketplace/plugin-subscription-manager/plugin-subscription-manager.component.scss",
-      "count": 175
+      "count": 172
     },
     {
       "file": "packages/plugins/ai-chat-react-ui/src/lib/settings/ai-chat-settings.component.scss",
@@ -234,7 +234,7 @@
     },
     {
       "file": "apps/gauzy/src/app/downloads/downloads.component.scss",
-      "count": 151
+      "count": 150
     },
     {
       "file": "apps/gauzy/src/app/pages/projects/components/project-quick-look/project-quick-look.component.scss",
@@ -246,7 +246,7 @@
     },
     {
       "file": "packages/desktop-ui-lib/src/lib/settings/plugins/component/plugin-marketplace/plugin-marketplace-upload/plugin-marketplace-upload.component.scss",
-      "count": 129
+      "count": 127
     }
   ],
   "samples": [
@@ -338,5 +338,5 @@
       ]
     }
   ],
-  "scanSeconds": 121
+  "scanSeconds": 128
 }

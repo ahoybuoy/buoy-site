@@ -3,13 +3,13 @@
   "owner": "logseq",
   "name": "logseq",
   "description": "A privacy-first, open-source platform for knowledge management and collaboration. Download link:  http://github.com/logseq/logseq/releases. roadmap: https://logseq.io/p/NX4mc_ggEV",
-  "stars": 45630,
+  "stars": 45650,
   "homepage": "https://logseq.com",
   "language": "Clojure",
   "defaultBranch": "master",
-  "commit": "0cb6ab442984cf202321c4798451c9ef518ace3b",
-  "generatedAt": "2026-11-17T16:59:02.914Z",
-  "cliVersion": "0.8.25",
+  "commit": "8ab397fef8b8c8804554a72e9e9d9768dc1317bc",
+  "generatedAt": "2026-11-18T16:32:53.459Z",
+  "cliVersion": "0.8.26",
   "score": null,
   "tier": "N/A",
   "pillars": {
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 40,
+    "notedCount": 39,
     "topHardcodedColor": {
       "value": "#fff",
       "count": 1
@@ -68,9 +68,9 @@
   ],
   "pathTo100": null,
   "noted": {
-    "count": 40,
+    "count": 39,
     "byKind": {
-      "optical-nudge": 40
+      "optical-nudge": 39
     },
     "samples": [
       {
@@ -197,7 +197,7 @@
   "worstFiles": [
     {
       "file": "deps/publish/src/logseq/publish/publish.css",
-      "count": 121
+      "count": 117
     },
     {
       "file": "src/main/frontend/extensions/pdf/pdf.css",
@@ -209,33 +209,33 @@
     },
     {
       "file": "src/main/frontend/extensions/graph.css",
-      "count": 64
-    },
-    {
-      "file": "src/main/frontend/components/block.css",
       "count": 63
     },
     {
       "file": "resources/css/ui.css",
-      "count": 62
+      "count": 61
+    },
+    {
+      "file": "src/main/frontend/components/block.css",
+      "count": 60
     },
     {
       "file": "src/main/frontend/components/plugins.css",
-      "count": 42
+      "count": 41
     },
     {
       "file": "src/main/frontend/common.css",
-      "count": 30
+      "count": 26
     }
   ],
   "samples": [
     {
       "component": "deps/publish/src/logseq/publish/publish.css",
-      "location": "deps/publish/src/logseq/publish/publish.css:71",
+      "location": "deps/publish/src/logseq/publish/publish.css:72",
       "entries": [
-        "line height: 1.65 (line 71)",
         "letter spacing: 0.01em (line 72)",
-        "spacing: 32px (line 83)"
+        "spacing: 32px (line 83)",
+        "radius: 20px (line 101)"
       ]
     },
     {
@@ -270,8 +270,8 @@
       "location": "src/main/frontend/common.css:3",
       "entries": [
         "colour: #002b36 (line 3)",
-        "line height: 1.5 (line 35)",
-        "spacing: 8px (line 48)"
+        "spacing: 8px (line 48)",
+        "colour: rgba(39, 41, 43, 0.15) (line 49)"
       ]
     },
     {
@@ -334,5 +334,5 @@
       ]
     }
   ],
-  "scanSeconds": 8
+  "scanSeconds": 9
 }

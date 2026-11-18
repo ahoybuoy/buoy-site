@@ -3,13 +3,13 @@
   "owner": "laurent22",
   "name": "joplin",
   "description": "Joplin - the privacy-focused note taking app with sync capabilities for Windows, macOS, Linux, Android and iOS.",
-  "stars": 57224,
+  "stars": 57234,
   "homepage": "https://joplinapp.org",
   "language": "TypeScript",
   "defaultBranch": "dev",
-  "commit": "a96f8bd5bc305ae98b647bfca5c687d3211deb30",
-  "generatedAt": "2026-11-17T16:56:16.832Z",
-  "cliVersion": "0.8.25",
+  "commit": "6e684df7350c1daa0c2ded45142af9e8625f87ab",
+  "generatedAt": "2026-11-18T16:30:03.491Z",
+  "cliVersion": "0.8.26",
   "score": 40,
   "tier": "OK",
   "pillars": {
@@ -212,26 +212,26 @@
     },
     {
       "file": "Assets/WebsiteAssets/css/brand.css",
-      "count": 90
+      "count": 83
     },
     {
       "file": "packages/app-desktop/gui/NoteEditor/NoteBody/WhiteboardEditor/style.scss",
-      "count": 60
+      "count": 56
     },
     {
       "file": "packages/renderer/assets/katex/katex.css",
-      "count": 47
+      "count": 46
     },
     {
       "file": "packages/app-desktop/main.scss",
       "count": 23
     },
     {
-      "file": "packages/app-desktop/gui/ChatPanel/style.scss",
-      "count": 22
+      "file": "packages/app-clipper/popup/src/App.css",
+      "count": 20
     },
     {
-      "file": "packages/app-clipper/popup/src/App.css",
+      "file": "packages/renderer/assets/highlight.js/atom-one-dark-reasonable.css",
       "count": 20
     }
   ],
@@ -257,9 +257,9 @@
       "component": "Assets/WebsiteAssets/css/brand.css",
       "location": "Assets/WebsiteAssets/css/brand.css:1",
       "entries": [
-        "line height: 1.15 (line 1)",
         "font size: 2em (line 1)",
-        "font size: 1em (line 1)"
+        "font size: 1em (line 1)",
+        "spacing: 0.7em (line 23)"
       ]
     },
     {
@@ -295,7 +295,7 @@
       "entries": [
         "font weight: 600 (line 23)",
         "font size: 0.8em (line 48)",
-        "line height: 1.3 (line 52)"
+        "spacing: 8px (line 63)"
       ]
     },
     {
@@ -320,8 +320,7 @@
       "location": "packages/app-desktop/gui/ConfigScreen/controls/AiStatus.scss:2",
       "entries": [
         "spacing: 16px (line 2)",
-        "radius: 4px (line 4)",
-        "line height: 1.4 (line 5)"
+        "radius: 4px (line 4)"
       ]
     },
     {
@@ -343,5 +342,5 @@
       ]
     }
   ],
-  "scanSeconds": 19
+  "scanSeconds": 16
 }

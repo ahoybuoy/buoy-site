@@ -3,13 +3,13 @@
   "owner": "baserow",
   "name": "baserow",
   "description": "Build databases, automations, apps & agents with AI — no code.  Open source platform available on cloud and self-hosted. GDPR, HIPAA, SOC 2 compliant. Best Airtable alternative.",
-  "stars": 6354,
+  "stars": 6359,
   "homepage": "https://baserow.io",
   "language": "Python",
   "defaultBranch": "develop",
-  "commit": "b56694105819ed9aeea34cf214964c4b21e4a1d2",
-  "generatedAt": "2026-11-17T16:46:45.979Z",
-  "cliVersion": "0.8.25",
+  "commit": "0a1e6ad46b99dab77476e38ef53f19def900fc48",
+  "generatedAt": "2026-11-18T16:20:30.536Z",
+  "cliVersion": "0.8.26",
   "score": null,
   "tier": "N/A",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 0,
     "tokenCount": 56,
-    "hardcodedValueCount": 391,
+    "hardcodedValueCount": 389,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 391,
+    "totalDriftCount": 389,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 60,
+    "notedCount": 59,
     "topHardcodedColor": {
       "value": "#fff",
       "count": 1
@@ -69,9 +69,9 @@
   ],
   "pathTo100": null,
   "noted": {
-    "count": 60,
+    "count": 59,
     "byKind": {
-      "optical-nudge": 55,
+      "optical-nudge": 54,
       "explained": 5
     },
     "samples": [
@@ -120,13 +120,13 @@
     ]
   },
   "driftSummary": {
-    "total": 391,
+    "total": 389,
     "critical": 0,
-    "warning": 140,
+    "warning": 138,
     "info": 251
   },
   "driftByType": {
-    "hardcoded-value": 391
+    "hardcoded-value": 389
   },
   "topColors": [
     {
@@ -142,10 +142,6 @@
       "count": 4
     },
     {
-      "value": "#6a6b70",
-      "count": 3
-    },
-    {
       "value": "rgba(0, 0, 0, 0.1)",
       "count": 3
     },
@@ -158,22 +154,26 @@
       "count": 2
     },
     {
-      "value": "#ededed",
+      "value": "#4653e5",
+      "count": 2
+    },
+    {
+      "value": "rgba(0, 0, 0, 0.8)",
       "count": 2
     }
   ],
   "topSpacing": [
     {
       "value": "8px",
-      "count": 239
+      "count": 251
     },
     {
       "value": "12px",
-      "count": 178
+      "count": 182
     },
     {
       "value": "16px",
-      "count": 152
+      "count": 159
     },
     {
       "value": "10px",
@@ -181,11 +181,11 @@
     },
     {
       "value": "4px",
-      "count": 131
+      "count": 134
     },
     {
       "value": "20px",
-      "count": 131
+      "count": 130
     },
     {
       "value": "6px",
@@ -193,7 +193,7 @@
     },
     {
       "value": "24px",
-      "count": 75
+      "count": 76
     }
   ],
   "worstFiles": [
@@ -207,11 +207,11 @@
     },
     {
       "file": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/assistant.scss",
-      "count": 66
+      "count": 67
     },
     {
       "file": "web-frontend/modules/core/assets/scss/components/views/grid.scss",
-      "count": 60
+      "count": 58
     },
     {
       "file": "web-frontend/modules/core/assets/scss/components/chat.scss",
@@ -222,22 +222,15 @@
       "count": 47
     },
     {
-      "file": "web-frontend/modules/core/assets/scss/components/ai_provider_admin.scss",
-      "count": 47
+      "file": "web-frontend/modules/core/assets/scss/components/dashboard.scss",
+      "count": 46
     },
     {
       "file": "web-frontend/modules/core/assets/scss/components/workspace_search.scss",
-      "count": 46
+      "count": 45
     }
   ],
   "samples": [
-    {
-      "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/agents.scss",
-      "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/agents.scss:5",
-      "entries": [
-        "spacing: 8px (line 5)"
-      ]
-    },
     {
       "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/ai_onboarding.scss",
       "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/ai_onboarding.scss:2",
@@ -332,7 +325,16 @@
       "entries": [
         "spacing: 6px (line 4)"
       ]
+    },
+    {
+      "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/crud_table_filters.scss",
+      "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/crud_table_filters.scss:4",
+      "entries": [
+        "spacing: 10px (line 4)",
+        "font weight: 600 (line 8)",
+        "line height: 34px (line 14)"
+      ]
     }
   ],
-  "scanSeconds": 22
+  "scanSeconds": 25
 }

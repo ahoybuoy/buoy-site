@@ -3,13 +3,13 @@
   "owner": "twentyhq",
   "name": "twenty",
   "description": "The open alternative to Salesforce, designed for AI.",
-  "stars": 61048,
+  "stars": 61145,
   "homepage": "https://twenty.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "7c51f1439f2fff32ee37e392488f03b8cf140083",
-  "generatedAt": "2026-11-17T16:29:57.153Z",
-  "cliVersion": "0.8.25",
+  "commit": "7646b1802792e01849c5d5c4a3cffb3c277837b3",
+  "generatedAt": "2026-11-18T16:02:56.019Z",
+  "cliVersion": "0.8.26",
   "score": 99,
   "tier": "Great",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 4595,
+    "componentCount": 4607,
     "tokenCount": 76,
-    "hardcodedValueCount": 19,
+    "hardcodedValueCount": 15,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 19,
+    "totalDriftCount": 15,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -73,13 +73,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 19 hardcoded values left to tokenize"
+    "Nearly there — just 15 hardcoded values left to tokenize"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 1,
-      "action": "Replace the hardcoded values in 8 of the 19 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 4 of the 15 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -98,13 +98,13 @@
     ]
   },
   "driftSummary": {
-    "total": 14,
+    "total": 10,
     "critical": 0,
     "warning": 4,
-    "info": 10
+    "info": 6
   },
   "driftByType": {
-    "hardcoded-value": 14
+    "hardcoded-value": 10
   },
   "topColors": [
     {
@@ -169,15 +169,11 @@
   "worstFiles": [
     {
       "file": "packages/twenty-front/src/modules/salesfarce/styles/salesfarce-retro.css",
-      "count": 111
+      "count": 110
     },
     {
       "file": "packages/twenty-docs/custom.css",
       "count": 26
-    },
-    {
-      "file": "packages/twenty-companion/src/renderer/style.css",
-      "count": 9
     },
     {
       "file": "packages/twenty-ui/src/primitives/data-display/Avatar/Avatar.module.scss",
@@ -188,7 +184,7 @@
       "count": 5
     },
     {
-      "file": "packages/twenty-companion/src/renderer/components/OnboardingText.module.scss",
+      "file": "packages/twenty-companion/src/renderer/style.css",
       "count": 2
     },
     {
@@ -196,8 +192,12 @@
       "count": 2
     },
     {
-      "file": "packages/twenty-ui/src/components/feedback/Callout/Callout.module.scss",
+      "file": "packages/twenty-ui/src/testing/ComponentStorybookLayout.module.scss",
       "count": 2
+    },
+    {
+      "file": "packages/twenty-front/src/modules/navigation-menu-item/display/components/NavigationMenuItemIconWithOverlay.tsx",
+      "count": 1
     }
   ],
   "samples": [
@@ -209,20 +209,11 @@
       ]
     },
     {
-      "component": "packages/twenty-companion/src/renderer/components/OnboardingText.module.scss",
-      "location": "packages/twenty-companion/src/renderer/components/OnboardingText.module.scss:6",
-      "entries": [
-        "line height: 1.2 (line 6)",
-        "line height: 1.4 (line 14)"
-      ]
-    },
-    {
       "component": "packages/twenty-companion/src/renderer/style.css",
       "location": "packages/twenty-companion/src/renderer/style.css:6",
       "entries": [
         "font size: 13px (line 6)",
-        "line height: 1.45 (line 8)",
-        "line height: 1.6 (line 33)"
+        "letter spacing: -0.3px (line 50)"
       ]
     },
     {
@@ -261,26 +252,10 @@
       ]
     },
     {
-      "component": "packages/twenty-ui/src/components/feedback/Callout/Callout.module.scss",
-      "location": "packages/twenty-ui/src/components/feedback/Callout/Callout.module.scss:74",
-      "entries": [
-        "line height: 1.4 (line 74)",
-        "line height: 1.4 (line 101)"
-      ]
-    },
-    {
       "component": "packages/twenty-ui/src/components/input/SegmentedControl/SegmentedControl.module.scss",
       "location": "packages/twenty-ui/src/components/input/SegmentedControl/SegmentedControl.module.scss:10",
       "entries": [
-        "spacing: 2px (line 10)",
-        "line height: 1.4 (line 79)"
-      ]
-    },
-    {
-      "component": "packages/twenty-ui/src/components/layout/LabeledSeparator/LabeledSeparator.module.scss",
-      "location": "packages/twenty-ui/src/components/layout/LabeledSeparator/LabeledSeparator.module.scss:39",
-      "entries": [
-        "line height: 1.4 (line 39)"
+        "spacing: 2px (line 10)"
       ]
     },
     {
@@ -298,7 +273,15 @@
       "entries": [
         "line height: 16px (line 16)"
       ]
+    },
+    {
+      "component": "packages/twenty-ui/src/testing/ComponentStorybookLayout.module.scss",
+      "location": "packages/twenty-ui/src/testing/ComponentStorybookLayout.module.scss:4",
+      "entries": [
+        "radius: 5px (line 4)",
+        "spacing: 20px (line 10)"
+      ]
     }
   ],
-  "scanSeconds": 184
+  "scanSeconds": 192
 }

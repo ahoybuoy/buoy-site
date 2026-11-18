@@ -3,13 +3,13 @@
   "owner": "documenso",
   "name": "documenso",
   "description": "The Open Source DocuSign Alternative.",
-  "stars": 15802,
+  "stars": 15820,
   "homepage": "https://documenso.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "209d454491eb30f1b91e01ae6a48316a81716257",
-  "generatedAt": "2026-11-17T16:30:54.350Z",
-  "cliVersion": "0.8.25",
+  "commit": "125ff95097fb10704520cf03ec511a3df188cb4a",
+  "generatedAt": "2026-11-18T16:03:55.655Z",
+  "cliVersion": "0.8.26",
   "score": 95,
   "tier": "Great",
   "pillars": {
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 900,
     "tokenCount": 200,
-    "hardcodedValueCount": 21,
+    "hardcodedValueCount": 20,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 23,
+    "totalDriftCount": 22,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -71,13 +71,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 21 hardcoded values left to tokenize. apps/remix/app/routes/embed+/playground.tsx has the most (2)"
+    "Nearly there — just 20 hardcoded values left to tokenize. apps/remix/app/routes/embed+/playground.tsx has the most (2)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 5,
-      "action": "Replace the hardcoded values in 19 of the 21 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 18 of the 20 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     }
   ],
   "noted": {
@@ -96,13 +96,13 @@
     ]
   },
   "driftSummary": {
-    "total": 23,
+    "total": 22,
     "critical": 0,
     "warning": 5,
-    "info": 18
+    "info": 17
   },
   "driftByType": {
-    "hardcoded-value": 21,
+    "hardcoded-value": 20,
     "repeated-pattern": 2
   },
   "topColors": [
@@ -271,13 +271,6 @@
       ]
     },
     {
-      "component": "apps/remix/app/components/general/app-header.tsx",
-      "location": "apps/remix/app/components/general/app-header.tsx:78",
-      "entries": [
-        "text-[10px] (line 78)"
-      ]
-    },
-    {
       "component": "apps/remix/app/components/general/document-signing/document-signing-field-container.tsx",
       "location": "apps/remix/app/components/general/document-signing/document-signing-field-container.tsx:124",
       "entries": [
@@ -297,7 +290,14 @@
       "entries": [
         "rounded-[2px] (line 283)"
       ]
+    },
+    {
+      "component": "apps/remix/app/components/general/envelope-editor/envelope-editor.tsx",
+      "location": "apps/remix/app/components/general/envelope-editor/envelope-editor.tsx:223",
+      "entries": [
+        "text-[10px] (line 223)"
+      ]
     }
   ],
-  "scanSeconds": 25
+  "scanSeconds": 26
 }

@@ -3,13 +3,13 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source AI engineering platform: AI Gateway, agent observability, evals, and prompt/skill management, built on OpenTelemetry. One open platform for every AI call and every agent. Self-host or use Langfuse Cloud.",
-  "stars": 37547,
+  "stars": 37595,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "53fe3894ae88cb5c03ebc9f7c998470f09a2c36a",
-  "generatedAt": "2026-11-17T16:39:07.493Z",
-  "cliVersion": "0.8.25",
+  "commit": "4a852259c30d72eb26179267c469cfa41a762072",
+  "generatedAt": "2026-11-18T16:12:45.102Z",
+  "cliVersion": "0.8.26",
   "score": 92,
   "tier": "Great",
   "pillars": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2607,
+    "componentCount": 2602,
     "tokenCount": 361,
-    "hardcodedValueCount": 78,
+    "hardcodedValueCount": 76,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 79,
+    "totalDriftCount": 77,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -70,14 +70,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 78 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/SimpleMultiSectionViewer.tsx has the most (2)",
+    "Nearly there — just 76 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/SimpleMultiSectionViewer.tsx has the most (2)",
     "1 deprecated pattern — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 6,
-      "action": "Replace the hardcoded values in 72 of the 78 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 70 of the 76 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -121,7 +121,7 @@
       },
       {
         "file": "web/src/components/table/data-table.tsx",
-        "line": 530,
+        "line": 573,
         "value": "pb-[3px]",
         "kind": "optical-nudge",
         "reason": "pb-[3px] is a 2-3px optical adjustment"
@@ -129,14 +129,14 @@
     ]
   },
   "driftSummary": {
-    "total": 79,
+    "total": 77,
     "critical": 0,
-    "warning": 6,
-    "info": 73
+    "warning": 5,
+    "info": 72
   },
   "driftByType": {
     "deprecated-pattern": 1,
-    "hardcoded-value": 78
+    "hardcoded-value": 76
   },
   "topColors": [
     {
@@ -146,10 +146,6 @@
     {
       "value": "#6b7280",
       "count": 1
-    },
-    {
-      "value": "#6b6b6b",
-      "count": 1
     }
   ],
   "topSpacing": [
@@ -158,19 +154,19 @@
       "count": 5
     },
     {
-      "value": "0.3rem",
-      "count": 4
-    },
-    {
-      "value": "0.2rem",
-      "count": 4
-    },
-    {
       "value": "8px",
       "count": 3
     },
     {
       "value": "5px",
+      "count": 3
+    },
+    {
+      "value": "0.3rem",
+      "count": 3
+    },
+    {
+      "value": "0.2rem",
       "count": 3
     },
     {
@@ -190,10 +186,6 @@
     {
       "file": "web/src/features/sessions/ModernSessionSidebar.tsx",
       "count": 7
-    },
-    {
-      "file": "web/src/features/topics/map/TopicMapExplorer.tsx",
-      "count": 6
     },
     {
       "file": "web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx",
@@ -217,6 +209,10 @@
     },
     {
       "file": "web/src/components/design-system/charts/internal/VisualizationFrame/VisualizationFrame.tsx",
+      "count": 4
+    },
+    {
+      "file": "web/src/features/events/components/outlier-strip/OutlierBarStrip.tsx",
       "count": 4
     }
   ],
@@ -310,5 +306,5 @@
       ]
     }
   ],
-  "scanSeconds": 74
+  "scanSeconds": 76
 }

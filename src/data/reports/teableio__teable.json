@@ -3,18 +3,18 @@
   "owner": "teableio",
   "name": "teable",
   "description": "✨ AI Spreadsheet for Business",
-  "stars": 22000,
+  "stars": 22003,
   "homepage": "https://teable.ai",
   "language": "TypeScript",
   "defaultBranch": "develop",
-  "commit": "b8425f5a60d056205adc456b9e8011ff7d622a29",
-  "generatedAt": "2026-11-17T17:05:23.041Z",
-  "cliVersion": "0.8.25",
-  "score": 83,
+  "commit": "bd8cfc054f521f6f9019f62dec2f9fcb1273ecec",
+  "generatedAt": "2026-11-18T16:39:15.698Z",
+  "cliVersion": "0.8.26",
+  "score": 84,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 43,
+      "score": 44,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1818,
+    "componentCount": 1830,
     "tokenCount": 67,
-    "hardcodedValueCount": 151,
+    "hardcodedValueCount": 149,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 151,
+    "totalDriftCount": 149,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -72,13 +72,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 151 hardcoded values left to tokenize. apps/nextjs-app/src/features/app/blocks/base/base-side-bar/BaseSidebarHeaderLeft.tsx has the most (3)"
+    "Nearly there — just 149 hardcoded values left to tokenize. apps/nextjs-app/src/features/app/blocks/base/base-side-bar/BaseSidebarHeaderLeft.tsx has the most (3)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 17,
-      "action": "Replace the hardcoded values in 147 of the 151 findings with tokens or scale steps"
+      "points": 16,
+      "action": "Replace the hardcoded values in 145 of the 149 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -133,13 +133,13 @@
     ]
   },
   "driftSummary": {
-    "total": 151,
+    "total": 149,
     "critical": 0,
     "warning": 7,
-    "info": 144
+    "info": 142
   },
   "driftByType": {
-    "hardcoded-value": 151
+    "hardcoded-value": 149
   },
   "topColors": [
     {
@@ -212,7 +212,7 @@
   "worstFiles": [
     {
       "file": "packages/sdk/src/components/editor/long-text/milkdown.css",
-      "count": 61
+      "count": 60
     },
     {
       "file": "apps/nextjs-app/src/features/app/components/ShareSelectSpaceDialog.tsx",
@@ -260,9 +260,9 @@
     },
     {
       "component": "BaseItem",
-      "location": "apps/nextjs-app/src/features/app/blocks/space/BaseItem.tsx:43",
+      "location": "apps/nextjs-app/src/features/app/blocks/space/BaseItem.tsx:47",
       "entries": [
-        "size: 1rem (line 143)"
+        "size: 1rem (line 149)"
       ]
     },
     {
@@ -281,23 +281,23 @@
     },
     {
       "component": "BaseNodeTree",
-      "location": "apps/nextjs-app/src/features/app/blocks/base/base-side-bar/BaseNodeTree.tsx:240",
+      "location": "apps/nextjs-app/src/features/app/blocks/base/base-side-bar/BaseNodeTree.tsx:241",
       "entries": [
-        "size: 1rem (line 714)"
+        "size: 1rem (line 716)"
       ]
     },
     {
       "component": "BaseDropdownMenu",
-      "location": "apps/nextjs-app/src/features/app/blocks/base/base-side-bar/BaseSidebarHeaderLeft.tsx:48",
+      "location": "apps/nextjs-app/src/features/app/blocks/base/base-side-bar/BaseSidebarHeaderLeft.tsx:52",
       "entries": [
-        "size: 1rem (line 179)"
+        "size: 1rem (line 196)"
       ]
     },
     {
       "component": "BaseSidebarHeaderLeft",
-      "location": "apps/nextjs-app/src/features/app/blocks/base/base-side-bar/BaseSidebarHeaderLeft.tsx:271",
+      "location": "apps/nextjs-app/src/features/app/blocks/base/base-side-bar/BaseSidebarHeaderLeft.tsx:307",
       "entries": [
-        "size: 1.5rem (line 344)"
+        "size: 1.5rem (line 381)"
       ]
     },
     {
@@ -329,5 +329,5 @@
       ]
     }
   ],
-  "scanSeconds": 52
+  "scanSeconds": 51
 }

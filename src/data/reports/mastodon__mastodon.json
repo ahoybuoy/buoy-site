@@ -3,18 +3,18 @@
   "owner": "mastodon",
   "name": "mastodon",
   "description": "Your self-hosted, globally interconnected microblogging community",
-  "stars": 50732,
+  "stars": 50567,
   "homepage": "https://joinmastodon.org",
   "language": "Ruby",
   "defaultBranch": "main",
-  "commit": "fef433bfe5c808fd0a6a39b7057479038b2b47f7",
-  "generatedAt": "2026-11-17T17:00:16.435Z",
-  "cliVersion": "0.8.25",
-  "score": 74,
+  "commit": "7077abcc308926a52eb562181cbb0ce90e48ac87",
+  "generatedAt": "2026-11-18T16:34:08.361Z",
+  "cliVersion": "0.8.26",
+  "score": 75,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 40,
+      "score": 41,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 624,
+    "componentCount": 630,
     "tokenCount": 7,
-    "hardcodedValueCount": 61,
+    "hardcodedValueCount": 59,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 61,
+    "totalDriftCount": 59,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -60,13 +60,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 61 hardcoded values left to tokenize"
+    "Nearly there — just 59 hardcoded values left to tokenize"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 20,
-      "action": "Replace the hardcoded values in 60 of the 61 findings with tokens or scale steps"
+      "points": 19,
+      "action": "Replace the hardcoded values in 58 of the 59 findings with tokens or scale steps"
     },
     {
       "pillar": "tokenHealth",
@@ -126,13 +126,13 @@
     ]
   },
   "driftSummary": {
-    "total": 61,
+    "total": 59,
     "critical": 0,
     "warning": 4,
-    "info": 57
+    "info": 55
   },
   "driftByType": {
-    "hardcoded-value": 61
+    "hardcoded-value": 59
   },
   "topColors": [
     {
@@ -205,11 +205,11 @@
   "worstFiles": [
     {
       "file": "app/javascript/styles/mastodon/components.scss",
-      "count": 645
+      "count": 639
     },
     {
       "file": "app/javascript/styles/mastodon/admin.scss",
-      "count": 258
+      "count": 256
     },
     {
       "file": "app/javascript/styles/entrypoints/mailer.scss",
@@ -260,13 +260,6 @@
       "entries": [
         "spacing: 12px (line 4)",
         "spacing: 16px (line 5)"
-      ]
-    },
-    {
-      "component": "app/javascript/mastodon/components/badge/redesign.module.scss",
-      "location": "app/javascript/mastodon/components/badge/redesign.module.scss:6",
-      "entries": [
-        "line height: 1.1 (line 6)"
       ]
     },
     {
@@ -334,7 +327,14 @@
         "font size: 13px (line 36)",
         "spacing: 4px (line 45)"
       ]
+    },
+    {
+      "component": "app/javascript/mastodon/components/form_fields/copy_link_field.module.scss",
+      "location": "app/javascript/mastodon/components/form_fields/copy_link_field.module.scss:13",
+      "entries": [
+        "spacing: 7px (line 13)"
+      ]
     }
   ],
-  "scanSeconds": 17
+  "scanSeconds": 16
 }

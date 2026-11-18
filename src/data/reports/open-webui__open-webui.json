@@ -3,13 +3,13 @@
   "owner": "open-webui",
   "name": "open-webui",
   "description": "User-friendly AI Interface (Supports Ollama, OpenAI API, ...)",
-  "stars": 158933,
+  "stars": 159026,
   "homepage": "https://openwebui.com",
   "language": "Svelte",
   "defaultBranch": "main",
   "commit": "0666e59d26a4d056e0bacee41742486badd71cf8",
-  "generatedAt": "2026-11-17T17:01:23.325Z",
-  "cliVersion": "0.8.25",
+  "generatedAt": "2026-11-18T16:35:13.902Z",
+  "cliVersion": "0.8.26",
   "score": 40,
   "tier": "OK",
   "pillars": {
@@ -200,12 +200,12 @@
   ],
   "worstFiles": [
     {
-      "file": "src/lib/components/chat/FileNav/NotebookView.svelte",
-      "count": 72
+      "file": "src/app.css",
+      "count": 67
     },
     {
-      "file": "src/app.css",
-      "count": 72
+      "file": "src/lib/components/chat/FileNav/NotebookView.svelte",
+      "count": 66
     },
     {
       "file": "src/lib/components/chat/Tabs/GitPullRequests.svelte",
@@ -220,16 +220,16 @@
       "count": 26
     },
     {
-      "file": "src/lib/components/chat/FileNav/FilePreview.svelte",
-      "count": 25
-    },
-    {
-      "file": "src/lib/components/chat/FileNav/SqliteView.svelte",
-      "count": 25
-    },
-    {
       "file": "src/lib/components/chat/MessageInput/Commands/SlashCommands.svelte",
       "count": 25
+    },
+    {
+      "file": "src/lib/components/chat/Messages/DiffBlock.svelte",
+      "count": 25
+    },
+    {
+      "file": "src/lib/components/chat/FileNav/FilePreview.svelte",
+      "count": 24
     }
   ],
   "samples": [
@@ -336,5 +336,5 @@
       ]
     }
   ],
-  "scanSeconds": 26
+  "scanSeconds": 23
 }
