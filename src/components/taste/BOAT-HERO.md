@@ -12,3 +12,5 @@
 - z-index: sea 0, boat 5, content 10, glyph 20. The hero clips horizontally (`overflow: hidden`) so the drifting boat never causes horizontal scroll.
 - Reduced motion: as on live. The glyph is hidden and the wave boat starts drifting straight away at its default spot (bottom 42%, left 15% of the sea).
 - Don't edit `WaveBackground`/`WaveBoat`. BoatHero tints them from outside with scoped `:global()` rules.
+- `sea="<id>"` swaps the sea for a wave style from `./waves/registry.ts`. The contract is in `./waves/WAVES.md`. If the sea exposes `.wave-background.buoySurface(x)`, the boat rides the water: it sits on the surface, tilts to the slope and drops onto it, and drag and toss land back on it. The live sea is sampled from its front SVG path. `--boat-hero-draft` (default 3px) sets the hull depth.
+- `<div data-boat-sea-slot></div>` in the content: under 768px, the sea band (240px) sits there in flow, between the parts around it, instead of at the hero bottom. The extra bottom padding is dropped. Desktop ignores it.

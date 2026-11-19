@@ -1,0 +1,687 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import BuoyLogo from '../../components/BuoyLogo.astro'
+import FreeSpots from '../../components/FreeSpots.astro'
+import { siteConfig } from '../../config'
+
+const installUrl = 'https://github.com/marketplace/buoy-design'
+
+const checks = [
+  { name: 'Hardcoded values', what: 'Colors, spacing and fonts that do not use tokens.', level: 'Warning', href: '/features/hardcoded-values' },
+  { name: 'Duplicate components', what: 'Similar components that should be consolidated.', level: 'Warning', href: '/features/duplicate-detection' },
+  { name: 'Naming inconsistency', what: 'Component and prop names that do not match your conventions.', level: 'Info', href: '/features/naming-consistency' },
+  { name: 'Deprecated patterns', what: 'Components marked as deprecated that are still in use.', level: 'Warning' },
+  { name: 'Inline styles', what: 'Inline CSS that should use tokens or classes.', level: 'Warning' },
+  { name: 'Accessibility conflicts', what: 'Missing ARIA labels and focus issues.', level: 'Critical', href: '/features/accessibility-checks' },
+  { name: 'Framework sprawl', what: 'More than one UI framework in the same codebase.', level: 'Warning', href: '/features/framework-sprawl' },
+  { name: 'Orphaned components', what: 'Components that exist in code but not in the design.', level: 'Info' },
+]
+
+const stack = [
+  { name: 'React', href: '/integrations/react' },
+  { name: 'Vue', href: '/integrations/vue' },
+  { name: 'Svelte', href: '/integrations/svelte' },
+  { name: 'Angular', href: '/integrations/angular' },
+  { name: 'Next.js', href: '/integrations/nextjs' },
+  { name: 'Tailwind', href: '/integrations/tailwind' },
+  { name: 'GitHub', href: '/integrations/github' },
+]
+---
+
+<Layout title="Buoy: catch design drift before it ships" noindex>
+  <Fragment slot="head">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </Fragment>
+
+  <div class="t-impeccable">
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="mast">
+      <div class="wrap mast-row">
+        <a class="mast-logo" href="/" aria-label="Buoy home">
+          <BuoyLogo size="1.6rem" />
+        </a>
+        <nav class="mast-nav" aria-label="Main">
+          <a href="/scan">Scan a repo</a>
+          <a href="/docs">Docs</a>
+          <a href="/pricing">Pricing</a>
+          <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
+        <a class="btn btn-ink btn-sm mast-cta" href={installUrl} target="_blank" rel="noopener noreferrer">
+          <span>Install the app</span>
+        </a>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- Hero: headline on paper, then the corrected file at specimen scale -->
+      <section class="hero">
+        <div class="wrap">
+          <h1 class="hero-title">Catch design drift <br />before it ships.</h1>
+          <div class="hero-row">
+            <p class="hero-sub">
+              Buoy checks UI code against your design system. It reviews every pull request and
+              leaves the exact fix inline: the token that already exists for a hardcoded color,
+              spacing value or radius.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-accent" href={installUrl} target="_blank" rel="noopener noreferrer">
+                <span>Install the GitHub App</span>
+              </a>
+              <a class="btn btn-line" href="/scan"><span>Scan a public repo</span></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="plate field">
+          <div class="wrap">
+            <figure class="spec">
+              <div class="spec-head">
+                <span class="spec-file">src/components/Card.tsx</span>
+                <span class="spec-count">3 hardcoded values</span>
+              </div>
+              <ol class="spec-code" aria-label="Card.tsx with three corrections from Buoy">
+                <li><span class="ln">6</span><code class="i0">const Card = () =&gt; (</code></li>
+                <li><span class="ln">7</span><code class="i1">&lt;div style=&#123;&#123;</code></li>
+                <li class="hit hit-a">
+                  <span class="ln">8</span>
+                  <code class="i2">background: <s>"#ffffff"</s>,</code>
+                  <span class="lead" aria-hidden="true"></span>
+                  <span class="fix"><span class="sr">use </span>var(--bg-surface)</span>
+                </li>
+                <li class="hit hit-b">
+                  <span class="ln">9</span>
+                  <code class="i2">padding: <s>"16px"</s>,</code>
+                  <span class="lead" aria-hidden="true"></span>
+                  <span class="fix"><span class="sr">use </span>var(--space-4)</span>
+                </li>
+                <li class="hit hit-c">
+                  <span class="ln">10</span>
+                  <code class="i2">borderRadius: <s>"8px"</s>,</code>
+                  <span class="lead" aria-hidden="true"></span>
+                  <span class="fix"><span class="sr">use </span>var(--radius-md)</span>
+                </li>
+                <li><span class="ln">11</span><code class="i1">&#125;&#125;&gt;</code></li>
+                <li><span class="ln">12</span><code class="i2">&#123;children&#125;</code></li>
+                <li><span class="ln">13</span><code class="i1">&lt;/div&gt;</code></li>
+                <li><span class="ln">14</span><code class="i0">)</code></li>
+              </ol>
+              <figcaption class="spec-cap">
+                An example component as a coding agent wrote it. Agents write a lot of UI now, and
+                they do not know your tokens. Buoy strikes each hardcoded value and names the token
+                your system already has for it.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- What it checks: an index, not cards -->
+      <section class="sec">
+        <div class="wrap split">
+          <div class="split-side">
+            <h2 class="h2">What Buoy checks</h2>
+            <p class="lede">
+              Every finding comes with the file, the line and a suggested fix, sorted by severity so
+              you know what to fix first.
+            </p>
+            <p class="more"><a class="link" href="/features/drift-detection">Read how drift detection works</a></p>
+          </div>
+          <table class="index">
+            <thead>
+              <tr>
+                <th scope="col">Check</th>
+                <th scope="col">What it finds</th>
+                <th scope="col" class="lvl">Severity</th>
+              </tr>
+            </thead>
+            <tbody>
+              {checks.map((c) => (
+                <tr>
+                  <th scope="row">
+                    {c.href ? <a class="link" href={c.href}>{c.name}</a> : c.name}
+                  </th>
+                  <td>{c.what}</td>
+                  <td class="lvl">{c.level}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- The pull request review -->
+      <section class="sec sec-rule">
+        <div class="wrap">
+          <div class="pr-intro">
+            <h2 class="h2">A review on every pull request</h2>
+            <p class="lede">
+              Install the Buoy GitHub App and each pull request gets checked before it merges. Findings
+              arrive as inline comments on the changed lines, with a fix you can commit from the comment.
+            </p>
+          </div>
+
+          <figure class="review">
+            <div class="review-bar">
+              <span class="review-title">feat: add new Card component <span class="quiet">#247</span></span>
+              <span class="review-check">Buoy Design Check: 3 issues found</span>
+            </div>
+            <div class="review-body">
+              <div class="thread">
+                <p class="thread-file">src/components/Card.tsx</p>
+                <ol class="diff" aria-label="Changed line 23 and the suggested replacement">
+                  <li class="del"><span class="ln">23</span><span class="sign">-</span><code>background: "#3b82f6",</code></li>
+                  <li class="add"><span class="ln">23</span><span class="sign">+</span><code>background: var(--color-primary),</code></li>
+                </ol>
+                <div class="note">
+                  <p class="note-who">buoy-design <span class="quiet">commented on line 23</span></p>
+                  <p>Hardcoded color <code>#3b82f6</code>. Use <code>var(--color-primary)</code> instead.</p>
+                </div>
+              </div>
+              <ul class="also">
+                <li>
+                  <span class="also-where">src/components/Card.tsx, line 31</span>
+                  <span>Hardcoded spacing <code>24px</code>. Use <code>var(--spacing-lg)</code> instead.</span>
+                </li>
+                <li>
+                  <span class="also-where">src/components/Modal.tsx, line 8</span>
+                  <span>Hardcoded border radius <code>8px</code>. Use <code>var(--radius-md)</code> instead.</span>
+                </li>
+              </ul>
+            </div>
+            <figcaption class="cap">Example review. The file names and values are illustrative.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- The CLI -->
+      <section class="sec field">
+        <div class="wrap split split-wide">
+          <div class="split-side">
+            <h2 class="h2">The same check from your terminal</h2>
+            <p class="lede">
+              The CLI is open source. Set it up once, then scan any project. No configuration is
+              needed to get a first result.
+            </p>
+            <dl class="cmds">
+              <div>
+                <dt><code>npx ahoybuoy dock</code></dt>
+                <dd>Sets Buoy up in your project.</dd>
+              </div>
+              <div>
+                <dt><code>buoy drift check</code></dt>
+                <dd>Lists every issue with its file, line and suggested fix.</dd>
+              </div>
+              <div>
+                <dt><code>buoy show health</code></dt>
+                <dd>Tracks design system health over time.</dd>
+              </div>
+            </dl>
+            <p class="more"><a class="link" href="/docs">Read the documentation</a></p>
+          </div>
+
+          <figure class="term">
+            <pre class="term-out" tabindex="0" aria-label="Example output of buoy drift check"><code><span class="t-cmd">$ buoy drift check</span>
+
+Scanning for design drift...
+Found <b>23</b> issues in 142 files
+
+<b>CRITICAL (2)</b>
+ Button.tsx:12  Missing aria-label
+ Modal.tsx:45   Focus trap not implemented
+
+<b>HARDCODED VALUES (8)</b>
+ Card.tsx:8     #ffffff  <span class="t-fix">use var(--bg-surface)</span>
+ Badge.tsx:3    8px      <span class="t-fix">use var(--spacing-sm)</span>
+ <span class="t-dim">... and 6 more</span></code></pre>
+            <figcaption class="cap">Example output.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Deterministic -->
+      <section class="sec">
+        <div class="wrap">
+          <h2 class="h2 h2-big">The scanner does not use an LLM.</h2>
+          <div class="det">
+            <p class="lede det-lede">
+              Drift detection is deterministic. It needs no API keys and makes no external calls, so
+              no data leaves your machine and it works offline and air-gapped. It is MIT licensed.
+              That suits teams where AI tools are restricted.
+            </p>
+            <div class="det-cols">
+              <div>
+                <h3 class="h3">Buoy Core: the open source CLI</h3>
+                <ul class="plain">
+                  <li>All scanning and drift detection</li>
+                  <li>Fix suggestions with exact token replacements</li>
+                  <li>No LLMs, no API keys, no external calls</li>
+                  <li>Works offline and air-gapped</li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="h3">Buoy GitHub App: the same engine, hosted</h3>
+                <ul class="plain">
+                  <li>Runs the same open source scanner on every pull request</li>
+                  <li>Inline fix suggestions you can commit</li>
+                  <li>Dashboard with health scores and trends</li>
+                  <li>
+                    Summaries and coaching are written by an LLM through OpenRouter. The findings
+                    stay deterministic. <a class="link" href="/privacy#subprocessors">See what is sent</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <p class="stack">
+            Buoy works with
+            {stack.map((s, i) => (
+              <Fragment>
+                <a class="link" href={s.href}>{s.name}</a>{i < stack.length - 2 ? ', ' : i === stack.length - 2 ? ' and ' : '.'}
+              </Fragment>
+            ))}
+          </p>
+        </div>
+      </section>
+
+      <!-- Close -->
+      <section class="sec field close">
+        <div class="wrap">
+          <h2 class="close-title"><span>Install the GitHub App.</span> <span>Your next pull request gets checked.</span></h2>
+          <div class="close-row">
+            <div class="hero-actions">
+              <a class="btn btn-accent" href={installUrl} target="_blank" rel="noopener noreferrer">
+                <span>Install the GitHub App</span>
+              </a>
+              <a class="btn btn-line" href="/scan"><span>Scan a public repo</span></a>
+            </div>
+            <div class="close-notes">
+              <p class="spots"><FreeSpots /></p>
+              <p>
+                The CLI is open source and free. The public repo scan is free and takes about a
+                minute. <a class="link" href="/pricing">See pricing</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot field">
+      <div class="wrap foot-row">
+        <div class="foot-brand">
+          <BuoyLogo size="1.25rem" />
+          <p>&copy; {new Date().getFullYear()} Buoy. The scanner is open source under MIT.</p>
+        </div>
+        <nav class="foot-nav" aria-label="Footer">
+          <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href={siteConfig.twitterUrl} target="_blank" rel="noopener noreferrer">Twitter</a>
+          <a href={siteConfig.discordUrl} target="_blank" rel="noopener noreferrer">Discord</a>
+          <a href="/scan">Scan a repo</a>
+          <a href="/docs">Docs</a>
+          <a href="/guides">Guides</a>
+          <a href="/reports">Reports</a>
+          <a href="/compare">Compare</a>
+          <a href="/pricing">Pricing</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+          <a href="/support">Support</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+</Layout>
+
+<style is:global>
+  /* Fallback tuned toward Archivo's width so the swap moves as little as possible */
+  @font-face {
+    font-family: 'Archivo Fallback';
+    src: local('Arial'), local('Helvetica Neue'), local('Helvetica');
+    size-adjust: 100%;
+    ascent-override: 88%;
+    descent-override: 21%;
+    line-gap-override: 0%;
+  }
+
+  .t-impeccable {
+    --paper: oklch(0.968 0.006 245);
+    --paper-2: oklch(0.935 0.009 245);
+    --ink: var(--color-navy-dark);
+    --ink-2: color-mix(in oklab, var(--color-navy-dark) 72%, var(--paper));
+    --rule: color-mix(in oklab, var(--color-navy-dark) 16%, var(--paper));
+    --rule-strong: var(--color-navy-dark);
+    --mark: var(--color-buoy);
+    --field: var(--color-navy-dark);
+    --field-2: color-mix(in oklab, var(--color-navy) 70%, var(--color-navy-dark));
+    --on-field: var(--color-light);
+    --on-field-2: color-mix(in oklab, var(--color-light) 70%, var(--color-navy));
+    --field-rule: color-mix(in oklab, var(--color-light) 18%, var(--color-navy-dark));
+    --sans: 'Archivo', 'Archivo Fallback', Arial, sans-serif;
+    --mono: var(--font-mono);
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --gut: clamp(1rem, 4vw, 3.5rem);
+    --sec: clamp(4.5rem, 9vw, 8.5rem);
+
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    font-variation-settings: 'wdth' 100;
+    overflow-x: clip;
+    scrollbar-color: var(--ink-2) var(--paper);
+  }
+  .t-impeccable ::selection { background: var(--ink); color: var(--paper); }
+  .t-impeccable .field ::selection { background: var(--mark); color: var(--field); }
+  .t-impeccable :focus-visible { outline: 2px solid var(--mark); outline-offset: 3px; border-radius: 2px; }
+  .t-impeccable h1, .t-impeccable h2, .t-impeccable h3 { font-family: var(--sans); }
+  .t-impeccable code, .t-impeccable pre { font-family: var(--mono); font-variant-ligatures: none; }
+  .t-impeccable p { text-wrap: pretty; }
+
+  .t-impeccable .wrap { max-width: 82rem; margin-inline: auto; padding-inline: var(--gut); }
+  .t-impeccable .field { background: var(--field); color: var(--on-field); }
+  .t-impeccable .sr {
+    position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+  }
+  .t-impeccable .skip {
+    position: absolute; left: var(--gut); top: -4rem; z-index: 10;
+    background: var(--ink); color: var(--paper); padding: 0.6rem 0.9rem; font-weight: 600;
+  }
+  .t-impeccable .skip:focus { top: 0.75rem; }
+
+  /* Links */
+  .t-impeccable .link {
+    color: inherit; font-weight: 600;
+    text-decoration: underline; text-decoration-color: var(--mark);
+    text-decoration-thickness: 2px; text-underline-offset: 0.22em;
+    transition: text-decoration-thickness 150ms var(--ease), text-underline-offset 150ms var(--ease);
+  }
+  .t-impeccable .link:hover { text-decoration-thickness: 4px; text-underline-offset: 0.26em; }
+
+  /* Buttons: one height, square, labelled by their action */
+  .t-impeccable .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 3.25rem; padding-inline: 1.5rem;
+    font-weight: 700; font-size: 1rem; letter-spacing: 0.005em; white-space: nowrap;
+    border: 2px solid transparent; border-radius: 3px;
+    transition: background-color 160ms var(--ease), color 160ms var(--ease), border-color 160ms var(--ease);
+  }
+  .t-impeccable .btn-sm { height: 2.5rem; padding-inline: 1rem; font-size: 0.9375rem; }
+  .t-impeccable .btn-accent { background: var(--mark); color: var(--color-navy-dark); border-color: var(--mark); }
+  .t-impeccable .btn-accent:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .t-impeccable .field .btn-accent:hover { background: var(--on-field); color: var(--field); border-color: var(--on-field); }
+  .t-impeccable .btn-line { border-color: currentColor; color: inherit; }
+  .t-impeccable .btn-line:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .t-impeccable .field .btn-line:hover { background: var(--on-field); color: var(--field); border-color: var(--on-field); }
+  .t-impeccable .btn-ink { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .t-impeccable .btn-ink:hover { background: var(--mark); color: var(--color-navy-dark); border-color: var(--mark); }
+  .t-impeccable .btn:active { transform: translateY(1px); }
+
+  /* Masthead */
+  .t-impeccable .mast { border-bottom: 2px solid var(--rule-strong); }
+  .t-impeccable .mast-row {
+    display: grid; grid-template-columns: auto 1fr auto; align-items: center;
+    column-gap: 2rem; min-height: 4.5rem;
+  }
+  .t-impeccable .mast-logo { display: inline-flex; color: var(--ink); }
+  .t-impeccable .mast-nav { display: flex; justify-content: flex-end; gap: clamp(1rem, 2.4vw, 2.25rem); }
+  .t-impeccable .mast-nav a, .t-impeccable .foot-nav a {
+    font-weight: 600; font-size: 0.9375rem;
+    text-decoration: underline; text-decoration-color: transparent;
+    text-decoration-thickness: 2px; text-underline-offset: 0.35em;
+    transition: text-decoration-color 150ms var(--ease);
+  }
+  .t-impeccable .mast-nav a:hover, .t-impeccable .foot-nav a:hover { text-decoration-color: var(--mark); }
+
+  /* Hero */
+  .t-impeccable .hero-title {
+    margin: clamp(2rem, 4.2vw, 3.75rem) 0 0;
+    font-size: clamp(2.75rem, 8.6vw, 6rem);
+    font-weight: 800; font-variation-settings: 'wdth' 84;
+    line-height: 0.94; letter-spacing: -0.028em;
+    text-wrap: balance;
+  }
+  .t-impeccable .hero-row {
+    display: grid; grid-template-columns: minmax(0, 37rem) auto; justify-content: space-between;
+    align-items: end; gap: 2rem 3rem;
+    margin-top: clamp(1.75rem, 3vw, 2.75rem);
+    padding-bottom: clamp(2.25rem, 3.6vw, 3.25rem);
+  }
+  .t-impeccable .hero-sub { font-size: clamp(1.0625rem, 1.5vw, 1.25rem); line-height: 1.5; color: var(--ink-2); margin: 0; }
+  .t-impeccable .hero-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+  /* The specimen plate */
+  .t-impeccable .plate { padding-block: clamp(1.5rem, 2.4vw, 2.25rem) clamp(3rem, 6vw, 5rem); }
+  .t-impeccable .spec { margin: 0; }
+  .t-impeccable .spec-head {
+    display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+    padding-bottom: 0.9rem; border-bottom: 1px solid var(--field-rule);
+    font-size: 0.9375rem; color: var(--on-field-2);
+  }
+  .t-impeccable .spec-file { font-family: var(--mono); }
+  .t-impeccable .spec-count { font-weight: 700; color: var(--mark); }
+  .t-impeccable .spec-code {
+    list-style: none; margin: 0; padding: clamp(1.25rem, 2.5vw, 2rem) 0;
+    font-family: var(--mono);
+    font-size: clamp(0.875rem, 2.05vw, 1.75rem); line-height: 1.75;
+    color: var(--on-field-2);
+    font-variant-numeric: tabular-nums;
+  }
+  .t-impeccable .spec-code li {
+    display: grid; grid-template-columns: 2.6ch minmax(0, 27ch) minmax(2ch, 1fr) auto;
+    column-gap: 1.5ch; align-items: center;
+  }
+  .t-impeccable .spec-code .ln { text-align: right; color: color-mix(in oklab, var(--on-field) 38%, var(--field)); user-select: none; }
+  .t-impeccable .spec-code code { white-space: nowrap; font-size: 1em; }
+  .t-impeccable .spec-code .i1 { padding-left: 2ch; }
+  .t-impeccable .spec-code .i2 { padding-left: 4ch; }
+  .t-impeccable .spec-code .hit code { color: var(--on-field); }
+  .t-impeccable .spec-code s {
+    text-decoration: none; position: relative; display: inline-block;
+  }
+  .t-impeccable .spec-code s::after {
+    content: ''; position: absolute; left: -0.25ch; right: -0.25ch; top: 52%;
+    height: max(2px, 0.09em); background: var(--mark);
+    transform-origin: left center;
+  }
+  .t-impeccable .spec-code .lead {
+    height: max(2px, 0.09em); background: var(--mark); transform-origin: left center;
+  }
+  .t-impeccable .spec-code .fix { color: var(--mark); font-weight: 500; white-space: nowrap; }
+  .t-impeccable .spec-cap {
+    max-width: 62ch; padding-top: 1.25rem; border-top: 1px solid var(--field-rule);
+    color: var(--on-field-2); font-size: 1rem; line-height: 1.6;
+  }
+
+  /* The one authored moment: three corrections land in order */
+  @media (prefers-reduced-motion: no-preference) {
+    .t-impeccable .hit s::after { animation: ti-draw 320ms var(--ease) backwards; }
+    .t-impeccable .hit .lead { animation: ti-draw 420ms var(--ease) backwards; }
+    .t-impeccable .hit .fix { animation: ti-wipe 420ms var(--ease) backwards; }
+    .t-impeccable .hit-a s::after { animation-delay: 350ms; }
+    .t-impeccable .hit-a .lead { animation-delay: 560ms; }
+    .t-impeccable .hit-a .fix { animation-delay: 760ms; }
+    .t-impeccable .hit-b s::after { animation-delay: 700ms; }
+    .t-impeccable .hit-b .lead { animation-delay: 910ms; }
+    .t-impeccable .hit-b .fix { animation-delay: 1110ms; }
+    .t-impeccable .hit-c s::after { animation-delay: 1050ms; }
+    .t-impeccable .hit-c .lead { animation-delay: 1260ms; }
+    .t-impeccable .hit-c .fix { animation-delay: 1460ms; }
+  }
+  @keyframes ti-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes ti-wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+
+  /* Sections */
+  .t-impeccable .sec { padding-block: var(--sec); }
+  .t-impeccable .sec-rule { padding-top: 0; }
+  .t-impeccable .h2 {
+    font-size: clamp(1.875rem, 3.6vw, 2.875rem); font-weight: 800;
+    font-variation-settings: 'wdth' 88; line-height: 1.02; letter-spacing: -0.022em;
+    margin: 0; text-wrap: balance; max-width: 16ch;
+  }
+  .t-impeccable .h2-big { font-size: clamp(2.25rem, 6vw, 4.5rem); max-width: 14ch; line-height: 0.96; }
+  .t-impeccable .h3 { font-size: 1.125rem; font-weight: 700; letter-spacing: -0.005em; line-height: 1.3; margin: 0 0 0.9rem; }
+  .t-impeccable .lede { margin: 1.25rem 0 0; color: var(--ink-2); max-width: 46ch; }
+  .t-impeccable .field .lede { color: var(--on-field-2); }
+  .t-impeccable .more { margin: 1.5rem 0 0; }
+  .t-impeccable .quiet { color: var(--ink-2); font-weight: 400; }
+  .t-impeccable .cap { margin-top: 0.9rem; font-size: 0.875rem; color: var(--ink-2); }
+  .t-impeccable .field .cap { color: var(--on-field-2); }
+
+  .t-impeccable .split {
+    display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 8fr);
+    gap: 3rem clamp(2rem, 6vw, 6rem); align-items: start;
+  }
+  .t-impeccable .split-wide { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+
+  /* Index table */
+  .t-impeccable .index { width: 100%; border-collapse: collapse; border-top: 2px solid var(--rule-strong); font-size: 1rem; }
+  .t-impeccable .index thead th {
+    text-align: left; font-weight: 600; font-size: 0.875rem; color: var(--ink-2);
+    padding: 0.7rem 1rem 0.7rem 0; border-bottom: 1px solid var(--rule);
+  }
+  .t-impeccable .index tbody th, .t-impeccable .index tbody td {
+    text-align: left; vertical-align: top; padding: 1rem 1rem 1rem 0; border-bottom: 1px solid var(--rule);
+  }
+  .t-impeccable .index tbody th { font-weight: 700; width: 34%; }
+  .t-impeccable .index tbody td { color: var(--ink-2); }
+  .t-impeccable .index .lvl { width: 6.5rem; padding-right: 0; text-align: right; color: var(--ink); font-weight: 600; }
+  .t-impeccable .index thead .lvl { color: var(--ink-2); }
+  .t-impeccable .index tbody tr { transition: background-color 150ms var(--ease); }
+  .t-impeccable .index tbody tr:hover { background: var(--paper-2); }
+
+  /* Pull request review */
+  .t-impeccable .pr-intro {
+    display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 8fr);
+    gap: 1.5rem clamp(2rem, 6vw, 6rem); align-items: end;
+    padding-top: clamp(3rem, 5vw, 4.5rem); border-top: 2px solid var(--rule-strong);
+  }
+  .t-impeccable .pr-intro .lede { margin: 0; }
+  .t-impeccable .review { margin: clamp(2.5rem, 5vw, 4rem) 0 0; }
+  .t-impeccable .review-bar {
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.4rem 2rem;
+    background: var(--ink); color: var(--paper); padding: 0.9rem clamp(1rem, 2.5vw, 1.75rem);
+    font-size: 1rem;
+  }
+  .t-impeccable .review-title { font-weight: 700; }
+  .t-impeccable .review-bar .quiet { color: var(--on-field-2); }
+  .t-impeccable .review-check { font-weight: 600; color: var(--color-buoy-light); }
+  .t-impeccable .review-body {
+    display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 5fr);
+    border: 2px solid var(--ink); border-top: 0; background: oklch(0.99 0.003 245);
+  }
+  .t-impeccable .thread { padding: clamp(1rem, 2.5vw, 1.75rem); border-right: 1px solid var(--rule); min-width: 0; }
+  .t-impeccable .thread-file { font-family: var(--mono); font-size: 0.875rem; color: var(--ink-2); margin: 0 0 0.75rem; }
+  .t-impeccable .diff {
+    list-style: none; margin: 0; padding: 0; font-family: var(--mono);
+    font-size: clamp(0.8125rem, 1.25vw, 1.0625rem); line-height: 2.1;
+    border: 1px solid var(--rule); overflow-x: auto; font-variant-numeric: tabular-nums;
+  }
+  .t-impeccable .diff li { display: grid; grid-template-columns: 3.5ch 2ch 1fr; min-width: max-content; padding-right: 1rem; }
+  .t-impeccable .diff .ln { text-align: right; color: var(--ink-2); padding-right: 0.5ch; user-select: none; }
+  .t-impeccable .diff .sign { text-align: center; font-weight: 700; }
+  .t-impeccable .diff code { white-space: pre; }
+  .t-impeccable .diff .del { background: color-mix(in oklab, var(--color-critical) 13%, white); }
+  .t-impeccable .diff .add { background: color-mix(in oklab, var(--color-success) 16%, white); }
+  .t-impeccable .note { margin-top: 1.25rem; }
+  .t-impeccable .note p { margin: 0; }
+  .t-impeccable .note-who { font-weight: 700; margin-bottom: 0.3rem !important; }
+  .t-impeccable .note code, .t-impeccable .also code {
+    font-size: 0.9em; background: var(--paper-2); padding: 0.1em 0.35em; border-radius: 2px; white-space: nowrap;
+  }
+  .t-impeccable .also { list-style: none; margin: 0; padding: 0; }
+  .t-impeccable .also li { padding: clamp(1rem, 2.5vw, 1.75rem); display: grid; gap: 0.3rem; }
+  .t-impeccable .also li + li { border-top: 1px solid var(--rule); }
+  .t-impeccable .also-where { font-family: var(--mono); font-size: 0.875rem; color: var(--ink-2); overflow-wrap: anywhere; }
+
+  /* CLI */
+  .t-impeccable .cmds { margin: 2.25rem 0 0; border-top: 1px solid var(--field-rule); }
+  .t-impeccable .cmds > div { padding: 1rem 0; border-bottom: 1px solid var(--field-rule); }
+  .t-impeccable .cmds dt code { color: var(--mark); font-size: 1rem; font-weight: 500; }
+  .t-impeccable .cmds dd { margin: 0.2rem 0 0; color: var(--on-field-2); }
+  .t-impeccable .term { margin: 0; min-width: 0; }
+  .t-impeccable .term-out {
+    margin: 0; padding: clamp(1.25rem, 3vw, 2.25rem);
+    background: var(--field-2); border-top: 2px solid var(--mark);
+    font-size: clamp(0.8125rem, 1.15vw, 1rem); line-height: 1.8;
+    color: var(--on-field-2); overflow-x: auto;
+    scrollbar-color: var(--on-field-2) var(--field-2);
+  }
+  .t-impeccable .term-out b { color: var(--on-field); font-weight: 500; }
+  .t-impeccable .term-out .t-cmd { color: var(--on-field); }
+  .t-impeccable .term-out .t-fix { color: var(--mark); }
+  .t-impeccable .term-out .t-dim { color: color-mix(in oklab, var(--on-field) 50%, var(--field)); }
+
+  /* Deterministic */
+  .t-impeccable .det {
+    display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 8fr);
+    gap: 3rem clamp(2rem, 6vw, 6rem); margin-top: clamp(2.5rem, 5vw, 4rem);
+    padding-top: clamp(2rem, 4vw, 3rem); border-top: 2px solid var(--rule-strong);
+  }
+  .t-impeccable .det-lede { margin: 0; font-size: 1.125rem; color: var(--ink); }
+  .t-impeccable .det-cols { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr; gap: 0 clamp(1.5rem, 3vw, 3rem); }
+  .t-impeccable .det-cols > div { display: grid; grid-row: span 2; grid-template-rows: subgrid; }
+  .t-impeccable .plain { list-style: none; margin: 0; padding: 0; color: var(--ink-2); }
+  .t-impeccable .plain li { padding: 0.7rem 0; border-top: 1px solid var(--rule); }
+  .t-impeccable .stack {
+    margin: clamp(3rem, 6vw, 5rem) 0 0; font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+    font-weight: 500; line-height: 1.45; max-width: 34ch; letter-spacing: -0.01em;
+  }
+
+  /* Close */
+  .t-impeccable .close-title {
+    font-size: clamp(2.25rem, 6vw, 4.5rem); font-weight: 800; font-variation-settings: 'wdth' 84;
+    line-height: 0.96; letter-spacing: -0.026em; margin: 0; text-wrap: balance;
+  }
+  .t-impeccable .close-title span { display: block; }
+  .t-impeccable .close-title span + span { color: var(--on-field-2); }
+  .t-impeccable .close-row {
+    display: grid; grid-template-columns: auto minmax(0, 30rem); justify-content: space-between;
+    align-items: start; gap: 2rem 3rem; margin-top: clamp(2rem, 4vw, 3.5rem);
+  }
+  .t-impeccable .close-notes { color: var(--on-field-2); }
+  .t-impeccable .close-notes p { margin: 0; }
+  .t-impeccable .spots { min-height: 1.55em; margin-bottom: 0.6rem !important; color: var(--on-field); font-weight: 600; }
+
+  /* Footer */
+  .t-impeccable .foot { border-top: 1px solid var(--field-rule); padding-block: 2.5rem 3rem; }
+  .t-impeccable .foot-row { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 8fr); gap: 2rem clamp(2rem, 6vw, 6rem); }
+  .t-impeccable .foot-brand { color: var(--on-field); }
+  .t-impeccable .foot-brand p { margin: 0.9rem 0 0; font-size: 0.875rem; color: var(--on-field-2); }
+  .t-impeccable .foot-nav { display: flex; flex-wrap: wrap; gap: 0.6rem 1.75rem; align-content: start; }
+
+  /* Narrow screens */
+  @media (max-width: 60rem) {
+    .t-impeccable .split, .t-impeccable .split-wide, .t-impeccable .pr-intro,
+    .t-impeccable .det, .t-impeccable .foot-row, .t-impeccable .close-row,
+    .t-impeccable .hero-row, .t-impeccable .review-body { grid-template-columns: minmax(0, 1fr); }
+    .t-impeccable .hero-row, .t-impeccable .pr-intro { align-items: start; }
+    .t-impeccable .thread { border-right: 0; border-bottom: 1px solid var(--rule); }
+  }
+  @media (max-width: 44rem) {
+    .t-impeccable .mast-row { grid-template-columns: 1fr auto; row-gap: 0; padding-top: 0.75rem; }
+    .t-impeccable .mast-nav {
+      grid-column: 1 / -1; grid-row: 2; justify-content: space-between; gap: 0.5rem;
+      padding-block: 0.85rem; margin-top: 0.75rem; border-top: 1px solid var(--rule);
+    }
+    .t-impeccable .hero-actions .btn { flex: 1 1 100%; }
+    .t-impeccable .det-cols { grid-template-columns: minmax(0, 1fr); row-gap: 2.5rem; }
+    .t-impeccable .spec-code { font-size: 0.875rem; line-height: 1.9; }
+    .t-impeccable .spec-code li { grid-template-columns: 2.6ch minmax(0, 1fr); column-gap: 1.25ch; }
+    .t-impeccable .spec-code .hit { grid-template-columns: 2.6ch 4ch minmax(0, 1fr); row-gap: 0; padding-bottom: 0.5rem; }
+    .t-impeccable .spec-code .hit code { grid-column: 2 / -1; }
+    .t-impeccable .spec-code .hit .lead { display: none; }
+    .t-impeccable .spec-code .hit .fix { grid-column: 2 / -1; grid-row: 2; padding-left: 4ch; display: flex; align-items: center; gap: 1ch; }
+    .t-impeccable .spec-code .hit .fix::before { content: ''; width: 3ch; height: 2px; background: var(--mark); }
+    .t-impeccable .det-cols > div { display: block; }
+    .t-impeccable .term-out { font-size: 0.71875rem; padding: 1rem; }
+    .t-impeccable .index thead { display: none; }
+    .t-impeccable .index tbody tr { display: grid; grid-template-columns: 1fr auto; padding: 0.9rem 0; border-bottom: 1px solid var(--rule); }
+    .t-impeccable .index tbody th, .t-impeccable .index tbody td { border: 0; padding: 0; width: auto; }
+    .t-impeccable .index tbody td:not(.lvl) { grid-column: 1 / -1; grid-row: 2; padding-top: 0.25rem; }
+    .t-impeccable .index .lvl { font-size: 0.875rem; }
+  }
+</style>

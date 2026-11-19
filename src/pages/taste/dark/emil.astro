@@ -1,0 +1,893 @@
+---
+import Layout from '../../../layouts/Layout.astro'
+import BuoyLogo from '../../../components/BuoyLogo.astro'
+import BuoyMark from '../../../components/BuoyMark.astro'
+import BoatHero from '../../../components/taste/BoatHero.astro'
+import BoatGlyph from '../../../components/taste/BoatGlyph.astro'
+import { siteConfig } from '../../../config'
+
+const installUrl = 'https://github.com/marketplace/buoy-design'
+
+// Each finding is something the homepage already shows Buoy catching.
+const findings = [
+  {
+    id: 'color',
+    tab: 'Color',
+    file: 'src/components/Card.tsx',
+    lines: [
+      { n: 21, text: '<div' },
+      { n: 22, text: '  style={{' },
+      { n: 23, old: '    background: "#3b82f6",', fix: '    background: "var(--color-primary)",' },
+      { n: 24, text: '    borderRadius: "var(--radius-md)",' },
+      { n: 25, text: '  }}' },
+    ],
+    anchor: 3,
+    message: 'Hardcoded color <code>#3b82f6</code>. Your tokens already have it: use <code>var(--color-primary)</code>.',
+  },
+  {
+    id: 'spacing',
+    tab: 'Spacing',
+    file: 'src/components/Card.tsx',
+    lines: [
+      { n: 29, text: '<section' },
+      { n: 30, text: '  style={{' },
+      { n: 31, old: '    padding: "24px",', fix: '    padding: "var(--spacing-lg)",' },
+      { n: 32, text: '  }}' },
+      { n: 33, text: '>' },
+    ],
+    anchor: 3,
+    message: 'Hardcoded spacing <code>24px</code>. Use <code>var(--spacing-lg)</code> instead.',
+  },
+  {
+    id: 'duplicate',
+    tab: 'Duplicate',
+    file: 'src/components/Modal.tsx',
+    lines: [
+      { n: 7, text: 'return (' },
+      { n: 8, old: '  <div className="card elevated">', fix: '  <Card variant="elevated">' },
+      { n: 9, text: '    {children}' },
+      { n: 10, old: '  </div>', fix: '  </Card>' },
+      { n: 11, text: ')' },
+    ],
+    anchor: 4,
+    message: 'This markup repeats a component you already have. Use <code>&lt;Card&gt;</code> instead.',
+  },
+]
+
+const driftTypes = [
+  { title: 'Hardcoded values', severity: 'Warning', description: 'Colors, spacing and fonts that do not use tokens.', href: '/features/hardcoded-values' },
+  { title: 'Duplicate components', severity: 'Warning', description: 'Similar components that should be consolidated.', href: '/features/duplicate-detection' },
+  { title: 'Naming inconsistency', severity: 'Info', description: 'Component and prop names that do not match your conventions.', href: '/features/naming-consistency' },
+  { title: 'Deprecated patterns', severity: 'Warning', description: 'Components marked as deprecated that are still in use.' },
+  { title: 'Inline styles', severity: 'Warning', description: 'Inline CSS that should use tokens or classes.' },
+  { title: 'Accessibility', severity: 'Critical', description: 'Missing ARIA labels and focus issues.', href: '/features/accessibility-checks' },
+  { title: 'Framework sprawl', severity: 'Warning', description: 'Multiple UI frameworks in the same codebase.', href: '/features/framework-sprawl' },
+  { title: 'Orphaned components', severity: 'Info', description: 'Components in code that are not in the design.' },
+]
+
+const integrations = [
+  { name: 'React', href: '/integrations/react' },
+  { name: 'Vue', href: '/integrations/vue' },
+  { name: 'Svelte', href: '/integrations/svelte' },
+  { name: 'Angular', href: '/integrations/angular' },
+  { name: 'Next.js', href: '/integrations/nextjs' },
+  { name: 'Tailwind', href: '/integrations/tailwind' },
+  { name: 'GitHub', href: '/integrations/github' },
+]
+
+const commands = [
+  { cmd: 'buoy drift check', text: 'Lists every issue with its file, line and suggested fix. No config needed.' },
+  { cmd: 'buoy show health', text: 'Tracks design system health over time.' },
+]
+---
+
+<Layout title="Buoy: catch design drift before it ships" noindex>
+  <div class="t-emil">
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="hd">
+      <div class="wrap hd-row">
+        <a href="/" class="hd-logo" aria-label="Buoy home"><BuoyLogo size="1.5rem" /></a>
+        <nav class="hd-nav" aria-label="Main">
+          <a href="/scan">Scan a repo</a>
+          <a href="/docs">Docs</a>
+          <a href="/pricing">Pricing</a>
+          <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
+        <a class="btn btn-dark btn-sm" href={installUrl} target="_blank" rel="noopener noreferrer">Install</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- Hero -->
+      <BoatHero minHeight="calc(100svh - 68px)" class="t-emil-hero">
+      <div class="wrap hero">
+        <div class="hero-copy">
+          <h1 class="in" style="--d:0ms;--y:14px">Catch design drift before it ships.</h1>
+          <p class="lede in" style="--d:70ms;--y:10px">
+            Buoy checks UI code against your design system. It reviews every pull request and leaves inline comments with the exact fix.
+          </p>
+          <div class="cta in" style="--d:130ms;--y:8px">
+            <a class="btn btn-dark" href={installUrl} target="_blank" rel="noopener noreferrer">Install the GitHub App</a>
+            <a class="btn btn-light" href="/scan">Scan a public repo</a>
+          </div>
+          <p class="fine in in-fade" style="--d:170ms">
+            Open source and MIT licensed. The scanner is deterministic: no LLM, and nothing leaves your machine.<BoatGlyph /></p>
+        </div>
+
+        <!-- Product demo: a Buoy review on a pull request -->
+        <div class="demo in" style="--d:110ms;--y:12px" data-demo data-step="idle" data-tab="0">
+          <div class="demo-top">
+            <div class="demo-pr">
+              <span class="demo-title">feat: add new Card component</span>
+              <span class="demo-num">#247</span>
+            </div>
+            <div class="swap demo-status" aria-hidden="true">
+              <span class="swap-a">Buoy: 1 issue</span>
+              <span class="swap-b">Buoy: no issues</span>
+            </div>
+          </div>
+
+          <div class="tabs" role="tablist" aria-label="Example findings">
+            {findings.map((f, i) => (
+              <button
+                type="button"
+                role="tab"
+                id={`tab-${f.id}`}
+                aria-controls={`panel-${f.id}`}
+                aria-selected={i === 0 ? 'true' : 'false'}
+                tabindex={i === 0 ? 0 : -1}
+              >{f.tab}</button>
+            ))}
+            <div class="tabs-on" aria-hidden="true">
+              {findings.map((f) => <span>{f.tab}</span>)}
+            </div>
+          </div>
+
+          <div class="panels">
+            {findings.map((f, i) => (
+              <div
+                class="panel"
+                role="tabpanel"
+                id={`panel-${f.id}`}
+                aria-labelledby={`tab-${f.id}`}
+                data-on={i === 0 ? '' : undefined}
+              >
+                <div class="file">{f.file}</div>
+                <pre class="code" tabindex="0" aria-label={`Diff of ${f.file}`}>{f.lines.map((l) => (
+                  l.old
+                    ? <span class="ln ln-swap"><span class="ln-n">{l.n}</span><span class="ln-stack"><span class="ln-old"><span class="ln-s">-</span>{l.old}</span><span class="ln-new"><span class="ln-s">+</span>{l.fix}</span></span></span>
+                    : <span class="ln"><span class="ln-n">{l.n}</span><span class="ln-t"><span class="ln-s"> </span>{l.text}</span></span>
+                ))}</pre>
+                <div class="cmt" style={`--anchor:${f.anchor}`}>
+                  <div class="cmt-head">
+                    <span class="cmt-av"><BuoyMark size={18} /></span>
+                    <span class="cmt-name">buoy</span>
+                    <span class="cmt-bot">bot</span>
+                    <span class="cmt-line">on line {f.lines.find((l) => l.old)?.n}</span>
+                  </div>
+                  <p class="cmt-body" set:html={f.message} />
+                  <div class="cmt-foot">
+                    <span class="pill swap">
+                      <span class="swap-a">Commit suggestion</span>
+                      <span class="swap-b">Suggestion committed</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div class="demo-foot">
+            <span>Illustration of a Buoy review comment.</span>
+            <button type="button" class="replay" data-replay>Replay</button>
+          </div>
+        </div>
+      </div>
+      </BoatHero>
+
+      <!-- Why: one plate. What an agent wrote, and what each value already is in your system. -->
+      <section class="wrap sec">
+        <div class="lede-row">
+          <h2>Coding agents do not know your tokens.</h2>
+          <p>Agents write a lot of UI now. They reach for hex codes, pixel values and new markup, even when your design system already has the token or the component. Buoy names the replacement for each one.</p>
+        </div>
+        <div class="plate">
+          <figure class="plate-code">
+            <figcaption>What an agent writes <span>Card.tsx</span></figcaption>
+            <pre><code>const Card = () =&gt; (
+  &lt;div style=&#123;&#123;
+    background: <mark>"#ffffff"</mark>,
+    padding: <mark>"16px"</mark>,
+    borderRadius: "8px",
+  &#125;&#125;&gt;
+    &#123;children&#125;
+  &lt;/div&gt;
+)</code></pre>
+          </figure>
+          <div class="plate-map">
+            <p class="plate-cap">What Buoy catches</p>
+            <ol class="map">
+              <li><span class="map-k">Hardcoded color</span><code class="map-from">#ffffff</code><code class="map-to">var(--bg)</code></li>
+              <li><span class="map-k">Magic number</span><code class="map-from">16px</code><code class="map-to">var(--space-4)</code></li>
+              <li><span class="map-k">Duplicate component</span><code class="map-from">&lt;div&gt;</code><code class="map-to">&lt;Card&gt;</code></li>
+            </ol>
+            <figure class="plate-good">
+              <figcaption>What your system already has</figcaption>
+              <pre><code>import &#123; Card &#125; from "@/components"
+
+&lt;Card variant="elevated"&gt;&#123;children&#125;&lt;/Card&gt;</code></pre>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- CLI: three commands across, then the output full width -->
+      <section class="wrap sec">
+        <div class="lede-row">
+          <h2>The same scanner runs on your machine.</h2>
+          <p>The CLI is open source. Set it up with one command, then scan. Every issue comes with its file, line and suggested fix.</p>
+        </div>
+        <ol class="steps">
+          <li>
+            <span class="step-n">01</span>
+            <div class="cmd">
+              <code><span class="cmd-p">$</span> npx ahoybuoy dock</code>
+              <button type="button" class="copy swap" data-copy="npx ahoybuoy dock">
+                <span class="swap-a">Copy</span>
+                <span class="swap-b">Copied</span>
+              </button>
+              <span class="sr" role="status" data-copy-status></span>
+            </div>
+            <p>Sets Buoy up in a project.</p>
+          </li>
+          <li>
+            <span class="step-n">02</span>
+            <code class="step-c"><span class="cmd-p">$</span> buoy drift check</code>
+            <p>Lists every issue with its file, line and suggested fix. No config needed.</p>
+          </li>
+          <li>
+            <span class="step-n">03</span>
+            <code class="step-c"><span class="cmd-p">$</span> buoy show health</code>
+            <p>Tracks design system health over time.</p>
+          </li>
+        </ol>
+        <div class="term" role="img" aria-label="Terminal output of buoy drift check: 23 issues in 142 files, including hardcoded values with the token to use for each.">
+          <div class="term-bar" aria-hidden="true"><span>buoy drift check</span><span>~/app</span></div>
+          <pre aria-hidden="true"><span class="t-dim">$</span> buoy drift check
+
+Found <span class="t-hi">23</span> issues in <span class="t-hi">142</span> files
+
+<span class="t-head">HARDCODED VALUES (8)</span>
+  Card.tsx:8     <span class="t-bad">#ffffff</span>   <span class="t-dim">use</span> <span class="t-good">var(--bg-surface)</span>
+  Badge.tsx:3    <span class="t-bad">8px</span>       <span class="t-dim">use</span> <span class="t-good">var(--spacing-sm)</span>
+  <span class="t-dim">... and 6 more</span></pre>
+        </div>
+        <a class="more" href="/docs">Read the docs</a>
+      </section>
+
+      <!-- Detects: heading rail on the left, a spec table on the right -->
+      <section class="wrap sec rail">
+        <div class="rail-head">
+          <h2>What Buoy detects</h2>
+          <p>Each finding has a severity, so you can decide what to fix first.</p>
+          <p class="works">Works with {integrations.map((it, i) => (<Fragment>{i === integrations.length - 1 ? ' and ' : (i ? ' ' : '')}<a href={it.href}>{it.name}</a>{i < integrations.length - 2 ? ',' : ''}</Fragment>))}.</p>
+        </div>
+        <table class="spec">
+          <thead><tr><th scope="col">Finding</th><th scope="col">Severity</th></tr></thead>
+          <tbody>
+            {driftTypes.map((d) => (
+              <tr>
+                <th scope="row">
+                  {d.href ? <a href={d.href}>{d.title}</a> : <span>{d.title}</span>}
+                  <span class="spec-d">{d.description}</span>
+                </th>
+                <td><span class={`sev sev-${d.severity.toLowerCase()}`}>{d.severity}</span></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Deterministic: a two-column comparison table -->
+      <section class="wrap sec">
+        <div class="lede-row">
+          <h2>Findings are deterministic.</h2>
+          <p>Core detection uses no LLM and no API keys. It is a good fit for teams where AI tools are restricted.</p>
+        </div>
+        <div class="cmp-wrap">
+          <table class="cmp">
+            <thead>
+              <tr><td></td><th scope="col">Buoy CLI<span>Open source, MIT</span></th><th scope="col">Buoy GitHub App<span>Same scanner, hosted</span></th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Scanning and drift detection</th><td data-col="Buoy CLI">All rules</td><td data-col="GitHub App">The same open-source scanner on every pull request</td></tr>
+              <tr><th scope="row">Fixes</th><td data-col="Buoy CLI">Suggestions with the exact token replacement</td><td data-col="GitHub App">Inline comments with suggestions you can commit</td></tr>
+              <tr><th scope="row">Where it runs</th><td data-col="Buoy CLI">Your machine. Works offline and air-gapped</td><td data-col="GitHub App">On every pull request, with a check status</td></tr>
+              <tr><th scope="row">LLM</th><td data-col="Buoy CLI">None</td><td data-col="GitHub App">Writes summaries and coaching. Findings stay deterministic</td></tr>
+              <tr><th scope="row">Data</th><td data-col="Buoy CLI">Nothing leaves your machine</td><td data-col="GitHub App">Prose is written through OpenRouter. <a href="/privacy#subprocessors">See what is sent</a></td></tr>
+              <tr><th scope="row">Also</th><td data-col="Buoy CLI">Unlimited scans</td><td data-col="GitHub App">Dashboard with health scores and trends</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Final CTA -->
+      <section class="wrap sec end">
+        <div class="end-row">
+          <h2>Install the GitHub App. Every pull request gets checked.</h2>
+          <div class="end-side">
+            <div class="cta">
+              <a class="btn btn-dark" href={installUrl} target="_blank" rel="noopener noreferrer">Install the GitHub App</a>
+              <a class="btn btn-light" href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">View on GitHub</a>
+            </div>
+            <p class="fine">Or <a href="/scan">scan a public repo</a> first. <a href="/pricing">See pricing</a>.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="ft">
+      <div class="wrap ft-row">
+        <div class="ft-brand">
+          <span class="ft-mark"><BuoyMark size={18} /></span>
+          <span>&copy; {new Date().getFullYear()} Buoy. Scanner is open source under MIT.</span>
+        </div>
+        <nav class="ft-nav" aria-label="Footer">
+          <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href={siteConfig.twitterUrl} target="_blank" rel="noopener noreferrer">Twitter</a>
+          <a href={siteConfig.discordUrl} target="_blank" rel="noopener noreferrer">Discord</a>
+          <a href="/scan">Scan a repo</a>
+          <a href="/docs">Docs</a>
+          <a href="/pricing">Pricing</a>
+          <a href="/guides">Guides</a>
+          <a href="/reports">Reports</a>
+          <a href="/compare">Compare</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+          <a href="/support">Support</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+</Layout>
+
+<style is:global>
+  html:has(.t-emil) body { background: #101112; }
+
+  .t-emil {
+    /* Neutrals (the variant's own; brand colours come from the site tokens) */
+    --bg: #101112;
+    --surface: #17181a;
+    --ink: #ededea;
+    --ink-2: #a3a39d;
+    --ink-3: #75756f;
+    --line: rgb(255 255 255 / 0.08);
+    --fill: rgb(255 255 255 / 0.06);
+    --term: #0b0b0c;
+    --accent: var(--color-buoy);
+    --bad: var(--color-critical);
+    --good: var(--color-success);
+
+    /* Motion tokens: the harness's curves, used everywhere below */
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
+    --raised: inset 0 1px 0 rgb(255 255 255 / 0.05), 0 0 0 1px rgb(255 255 255 / 0.07), 0 16px 40px -20px rgb(0 0 0 / 0.7);
+
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.55;
+    min-height: 100vh;
+  }
+
+  .t-emil *, .t-emil *::before, .t-emil *::after { box-sizing: border-box; }
+
+  /* Boat scene, tinted to the graphite ground: low-saturation steel waves, stars dimmed. */
+  .t-emil .t-emil-hero {
+    --boat-hero-bg: #101112;
+    --boat-hero-sky: linear-gradient(180deg, #101112 0%, #12161c 55%, #101112 100%);
+    --boat-hero-wave-1: rgba(120, 150, 190, 0.10);
+    --boat-hero-wave-2: rgba(110, 140, 185, 0.09);
+    --boat-hero-wave-3: rgba(130, 160, 200, 0.08);
+    --boat-hero-stars-opacity: 0.35;
+    --boat-hero-wave-opacity: 0.8;
+  }
+  .t-emil .hd { position: relative; z-index: 30; background: var(--bg); }
+  .t-emil h1, .t-emil h2, .t-emil h3 {
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0;
+    text-wrap: balance;
+  }
+  .t-emil p { margin: 0; text-wrap: pretty; }
+  .t-emil code, .t-emil pre { font-family: var(--font-mono); }
+  .t-emil a { color: inherit; }
+  .t-emil :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  .t-emil .wrap { max-width: 1128px; margin: 0 auto; padding-inline: 24px; }
+  .t-emil .sr, .t-emil .skip:not(:focus) {
+    position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+  }
+  .t-emil .skip:focus {
+    position: absolute; top: 12px; left: 12px; z-index: 10;
+    background: var(--ink); color: var(--bg); padding: 8px 12px; border-radius: 8px; font-size: 14px;
+  }
+
+  /* Header: static. It is on every page view, so nothing in it animates but colour. */
+  .t-emil .hd-row { display: flex; align-items: center; gap: 32px; height: 68px; }
+  .t-emil .hd-logo { display: inline-flex; color: var(--ink); border-radius: 6px; }
+  .t-emil .hd-nav { display: flex; gap: 4px; margin-left: auto; }
+  .t-emil .hd-nav a {
+    font-size: 14px; font-weight: 500; color: var(--ink-2); text-decoration: none;
+    padding: 8px 12px; border-radius: 8px;
+    transition: color 150ms ease, background-color 150ms ease;
+  }
+
+  /* Buttons. Press is feedback: scale(0.97), 160ms, strong ease-out. */
+  .t-emil .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 46px; padding: 0 20px; border-radius: 11px;
+    font-size: 15px; font-weight: 500; text-decoration: none; white-space: nowrap;
+    transition: transform 160ms var(--ease-out), background-color 150ms ease, box-shadow 150ms ease;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+  .t-emil .btn:active { transform: scale(0.97); }
+  .t-emil .btn-dark { background: var(--ink); color: #101112; }
+  .t-emil .btn-light { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.18); }
+  .t-emil .btn-sm { height: 40px; padding: 0 16px; border-radius: 10px; font-size: 14px; }
+
+  /* Hero */
+  .t-emil .hero {
+    display: grid; grid-template-columns: minmax(0, 0.88fr) minmax(0, 1fr);
+    gap: 72px; align-items: center; width: 100%;
+    padding-top: 48px; padding-bottom: 96px;
+  }
+  .t-emil h1 {
+    font-size: clamp(2.5rem, 5.1vw, 4.25rem);
+    line-height: 1.04; letter-spacing: -0.032em;
+  }
+  .t-emil .lede { margin-top: 24px; font-size: 1.1875rem; line-height: 1.5; color: var(--ink-2); max-width: 30em; }
+  .t-emil .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+  .t-emil .fine { margin-top: 28px; font-size: 14px; color: var(--ink-3); max-width: 34em; }
+  .t-emil .fine a { color: var(--ink-2); text-underline-offset: 3px; }
+
+  /* Hero entrance: one wave, seen once per visit. Lead travels furthest,
+     support less, the fine print only fades. Shrinking gaps: 0 / 70 / 110 / 130 / 170. */
+  .t-emil .in {
+    animation: t-emil-in 560ms var(--ease-out) both;
+    animation-delay: var(--d, 0ms);
+  }
+  .t-emil .in-fade { --y: 0px; animation-duration: 400ms; }
+  @keyframes t-emil-in {
+    from { opacity: 0; transform: translateY(var(--y, 0px)); }
+  }
+
+  /* Demo */
+  .t-emil .demo {
+    --surface: #ffffff;
+    --ink: #161615;
+    --ink-2: #5d5d58;
+    --ink-3: #85857f;
+    --line: rgb(0 0 0 / 0.08);
+    --fill: rgb(0 0 0 / 0.045);
+    --raised: 0 0 0 1px rgb(0 0 0 / 0.06), 0 1px 2px rgb(0 0 0 / 0.04), 0 12px 32px -16px rgb(0 0 0 / 0.16);
+    color: var(--ink);
+    position: relative;
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 0.4), 0 2px 4px rgb(0 0 0 / 0.3), 0 32px 64px -24px rgb(0 0 0 / 0.75);
+    background: #ffffff; border-radius: 16px;
+    padding: 16px; min-width: 0;
+  }
+  .t-emil .demo-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 2px 4px 14px; }
+  .t-emil .demo-pr { min-width: 0; display: flex; gap: 6px; font-size: 14px; }
+  .t-emil .demo-title { font-weight: 600; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .t-emil .demo-num { color: var(--ink-3); }
+  .t-emil .demo-status { font-size: 12.5px; font-weight: 500; white-space: nowrap; justify-items: end; }
+  .t-emil .demo-status .swap-a { color: color-mix(in srgb, var(--bad) 80%, var(--ink)); }
+  .t-emil .demo-status .swap-b { color: color-mix(in srgb, var(--good) 62%, var(--ink)); }
+
+  /* Two labels in one grid cell, so the box is always as wide as the longer one
+     and swapping them cannot move anything. Blur bridges the crossfade. */
+  .t-emil .swap { display: inline-grid; }
+  .t-emil .swap > * {
+    grid-area: 1 / 1;
+    transition: opacity 200ms ease, filter 200ms ease;
+  }
+  .t-emil .swap-b { opacity: 0; filter: blur(2px); }
+
+  /* Tabs: a dark copy of the tab row sits on top, clipped to the active tab.
+     Moving the clip gives the label a seamless colour change. */
+  .t-emil .tabs {
+    position: relative; display: grid; grid-template-columns: repeat(3, 1fr);
+    padding: 3px; border-radius: 11px; background: var(--fill);
+  }
+  .t-emil .tabs button, .t-emil .tabs-on span {
+    display: flex; align-items: center; justify-content: center;
+    height: 34px; font: inherit; font-size: 13.5px; font-weight: 500;
+  }
+  .t-emil .tabs button {
+    appearance: none; border: 0; background: none; color: var(--ink-2); cursor: pointer; border-radius: 8px;
+    transition: color 150ms ease;
+  }
+  .t-emil .tabs-on {
+    position: absolute; inset: 3px; display: grid; grid-template-columns: repeat(3, 1fr);
+    background: #161615; color: #fff; border-radius: 8px; pointer-events: none;
+    clip-path: inset(0 66.667% 0 0 round 8px);
+    transition: clip-path 260ms var(--ease-in-out);
+  }
+  .t-emil .demo[data-tab="1"] .tabs-on { clip-path: inset(0 33.333% 0 33.333% round 8px); }
+  .t-emil .demo[data-tab="2"] .tabs-on { clip-path: inset(0 0 0 66.667% round 8px); }
+
+  /* Panels share one grid cell: the tallest sets the height, so switching never shifts layout. */
+  .t-emil .panels { display: grid; margin-top: 12px; }
+  .t-emil .panel {
+    grid-area: 1 / 1; min-width: 0;
+    visibility: hidden; opacity: 0;
+    display: flex; flex-direction: column;
+  }
+  .t-emil .panel[data-on] {
+    visibility: visible; opacity: 1;
+    transition: opacity 200ms var(--ease-out);
+  }
+  .t-emil .file {
+    font-family: var(--font-mono); font-size: 12px; color: var(--ink-2);
+    padding: 9px 12px; background: var(--fill); border-radius: 10px 10px 0 0;
+  }
+  .t-emil .code {
+    margin: 0; padding: 8px 0; font-size: 12.5px; line-height: 24px;
+    background: var(--surface); box-shadow: inset 0 0 0 1px var(--line);
+    border-radius: 0 0 10px 10px; overflow-x: auto;
+    display: grid;
+  }
+  .t-emil .ln { display: grid; grid-template-columns: 40px minmax(max-content, 1fr); }
+  .t-emil .ln-n { text-align: right; padding-right: 12px; color: var(--ink-3); user-select: none; }
+  .t-emil .ln-s { display: inline-block; width: 2ch; user-select: none; }
+  .t-emil .ln-t { padding: 0 12px 0 6px; }
+  .t-emil .ln-stack { display: grid; }
+  .t-emil .ln-old, .t-emil .ln-new {
+    grid-area: 1 / 1; padding: 0 12px 0 6px;
+    transition: opacity 200ms ease, filter 200ms ease;
+  }
+  .t-emil .ln-old { background: color-mix(in srgb, var(--bad) 11%, transparent); }
+  .t-emil .ln-new { background: color-mix(in srgb, var(--good) 13%, transparent); opacity: 0; filter: blur(2px); }
+
+  /* The comment grows out of the line it is about, not from its own centre. */
+  .t-emil .cmt {
+    margin: 10px 0 0 40px; padding: 12px 14px 14px;
+    background: var(--surface); border-radius: 12px; box-shadow: var(--raised);
+    transform-origin: 16px 0;
+    transition: opacity 240ms var(--ease-out), transform 240ms var(--ease-out);
+  }
+  .t-emil .cmt-head { display: flex; align-items: center; gap: 7px; font-size: 13px; }
+  .t-emil .cmt-av { display: inline-flex; line-height: 0; }
+  .t-emil .cmt-name { font-weight: 600; }
+  .t-emil .cmt-bot {
+    font-size: 11px; font-weight: 500; color: var(--ink-2);
+    padding: 0 6px; line-height: 18px; border-radius: 99px; box-shadow: inset 0 0 0 1px var(--line);
+  }
+  .t-emil .cmt-line { color: var(--ink-3); margin-left: auto; font-variant-numeric: tabular-nums; }
+  .t-emil .cmt-body { margin-top: 8px; font-size: 14px; line-height: 1.5; color: var(--ink); }
+  .t-emil .cmt-body code {
+    font-size: 12.5px; padding: 2px 5px; border-radius: 5px; background: var(--fill); white-space: nowrap;
+  }
+  .t-emil .cmt-foot { margin-top: 12px; }
+  .t-emil .pill {
+    height: 30px; padding: 0 12px; align-items: center; justify-items: start;
+    border-radius: 8px; font-size: 13px; font-weight: 500;
+    background: var(--fill); color: var(--ink);
+    transition: transform 160ms var(--ease-out);
+  }
+
+  /* Demo steps. Transitions, not keyframes, so a tab click mid-run retargets cleanly. */
+  .t-emil .demo[data-step="idle"] .cmt { opacity: 0; transform: scale(0.96); }
+  .t-emil .demo[data-step="press"] .pill { transform: scale(0.97); }
+  .t-emil .demo[data-step="fixed"] .ln-old,
+  .t-emil .demo[data-step="fixed"] .swap-a { opacity: 0; filter: blur(2px); }
+  .t-emil .demo[data-step="fixed"] .ln-new,
+  .t-emil .demo[data-step="fixed"] .swap-b { opacity: 1; filter: none; }
+  /* Reset, keyboard use and first paint: no motion at all. */
+  .t-emil .demo[data-instant] * { transition: none !important; }
+
+  .t-emil .demo-foot {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    margin-top: 14px; padding: 0 4px; font-size: 12.5px; color: var(--ink-3);
+  }
+  .t-emil .replay {
+    appearance: none; border: 0; background: none; font: inherit; font-weight: 500; color: var(--ink-2);
+    padding: 6px 10px; margin: -6px -10px -6px 0; border-radius: 8px; cursor: pointer;
+    transition: transform 160ms var(--ease-out), color 150ms ease, background-color 150ms ease;
+  }
+  .t-emil .replay:active { transform: scale(0.97); }
+
+  /* Sections: no scroll reveals. Content is there when you arrive. */
+  .t-emil .sec { padding-top: 128px; }
+  .t-emil h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); line-height: 1.08; letter-spacing: -0.032em; }
+  /* Heading left, paragraph right, sharing one baseline row */
+  .t-emil .lede-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; align-items: end; padding-bottom: 32px; border-bottom: 1px solid var(--line); }
+  .t-emil .lede-row h2 { max-width: 12em; }
+  .t-emil .lede-row p { color: var(--ink-2); font-size: 1.0625rem; max-width: 32em; }
+
+  /* Plate: one raised object, code left, the mapping right */
+  .t-emil .plate {
+    margin-top: 40px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    border-radius: 18px; background: var(--surface); box-shadow: var(--raised); overflow: hidden;
+  }
+  .t-emil .plate figure { margin: 0; }
+  .t-emil .plate figcaption, .t-emil .plate-cap {
+    display: flex; justify-content: space-between; font-size: 13px; font-weight: 500; color: var(--ink-2);
+  }
+  .t-emil .plate figcaption span { font-family: var(--font-mono); font-size: 12px; color: var(--ink-3); font-weight: 400; }
+  .t-emil .plate pre { margin: 14px 0 0; font-size: 13.5px; line-height: 1.75; color: #d6d6d0; overflow-x: auto; }
+  .t-emil .plate-code { padding: 24px 28px 28px; border-right: 1px solid var(--line); }
+  .t-emil .plate mark {
+    background: color-mix(in srgb, var(--color-critical) 18%, transparent); color: #ff9a8f;
+    border-radius: 4px; padding: 1px 3px; box-shadow: inset 0 -1px 0 color-mix(in srgb, var(--color-critical) 70%, transparent);
+  }
+  .t-emil .plate-map { padding: 24px 28px 28px; background: rgb(255 255 255 / 0.015); display: flex; flex-direction: column; }
+  .t-emil .map { list-style: none; margin: 14px 0 0; padding: 0; }
+  .t-emil .map li {
+    display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: baseline; column-gap: 12px;
+    padding: 12px 0; border-top: 1px solid var(--line); font-size: 14.5px;
+  }
+  .t-emil .map-k { color: var(--ink); }
+  .t-emil .map code { font-size: 12.5px; padding: 2px 6px; border-radius: 5px; white-space: nowrap; }
+  .t-emil .map-from { color: #ff9a8f; text-decoration: line-through; text-decoration-color: rgb(255 154 143 / 0.5); background: rgb(255 255 255 / 0.04); }
+  .t-emil .map-to { color: #8fe0b4; background: color-mix(in srgb, var(--color-success) 14%, transparent); }
+  .t-emil .plate-good { margin-top: auto !important; padding-top: 24px; }
+  .t-emil .plate-good pre { padding: 14px 16px; border-radius: 10px; background: rgb(255 255 255 / 0.035); box-shadow: inset 0 0 0 1px var(--line); }
+
+  /* CLI steps */
+  .t-emil .steps { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+  .t-emil .steps li { min-width: 0; display: flex; flex-direction: column; gap: 12px; }
+  .t-emil .step-n { font-family: var(--font-mono); font-size: 12px; color: var(--ink-3); letter-spacing: 0.04em; }
+  .t-emil .steps p { color: var(--ink-2); font-size: 15px; }
+  .t-emil .step-c, .t-emil .cmd {
+    display: flex; align-items: center; height: 48px; padding: 0 16px; border-radius: 12px;
+    background: var(--surface); box-shadow: var(--raised); font-size: 14px; color: var(--ink); white-space: nowrap; overflow: hidden;
+  }
+  .t-emil .cmd { justify-content: space-between; gap: 12px; padding: 0 6px 0 16px; }
+  .t-emil .cmd code { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .t-emil .cmd-p { color: var(--ink-3); user-select: none; margin-right: 6px; }
+  .t-emil .copy {
+    appearance: none; border: 0; font: inherit; font-size: 13px; font-weight: 500; cursor: pointer;
+    height: 36px; padding: 0 12px; border-radius: 8px; background: var(--fill); color: var(--ink);
+    align-items: center; justify-items: center; flex: none;
+    transition: transform 160ms var(--ease-out), background-color 150ms ease;
+  }
+  .t-emil .copy:active { transform: scale(0.97); }
+  .t-emil .copy[data-copied] .swap-a { opacity: 0; filter: blur(2px); }
+  .t-emil .copy[data-copied] .swap-b { opacity: 1; filter: none; }
+
+  /* Terminal: lifted off the ground, high-contrast text */
+  .t-emil .term {
+    margin-top: 40px; border-radius: 16px; background: #1c1d20; color: #ecece6;
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06), 0 0 0 1px rgb(255 255 255 / 0.1), 0 24px 48px -24px rgb(0 0 0 / 0.8);
+    min-width: 0; overflow: hidden;
+  }
+  .t-emil .term-bar { display: flex; justify-content: space-between; padding: 12px 20px; border-bottom: 1px solid rgb(255 255 255 / 0.08); font-family: var(--font-mono); font-size: 12px; color: #9a9a93; }
+  .t-emil .term pre { margin: 0; padding: 20px 24px 24px; font-size: 14px; line-height: 1.8; overflow-x: auto; }
+  .t-emil .t-dim { color: #9a9a93; }
+  .t-emil .t-hi { color: #fff; font-weight: 600; }
+  .t-emil .t-head { color: #f2c46d; font-weight: 500; }
+  .t-emil .t-bad { color: #ff9a8f; }
+  .t-emil .t-good { color: #8fe0b4; }
+  .t-emil .more {
+    display: inline-block; margin-top: 24px; font-size: 15px; font-weight: 500;
+    text-decoration: underline; text-decoration-color: rgb(255 255 255 / 0.3); text-underline-offset: 4px;
+    transition: text-decoration-color 150ms ease;
+  }
+
+  /* Detects: sticky rail + spec table */
+  .t-emil .rail { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 72px; align-items: start; }
+  .t-emil .rail-head { position: sticky; top: 32px; }
+  .t-emil .rail-head p { margin-top: 16px; color: var(--ink-2); font-size: 1.0625rem; max-width: 26em; }
+  .t-emil .rail-head .works { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 15px; }
+  .t-emil .works a, .t-emil .cmp a, .t-emil .end .fine a {
+    color: var(--ink); text-decoration: underline; text-decoration-color: rgb(255 255 255 / 0.28); text-underline-offset: 4px;
+    transition: text-decoration-color 150ms ease;
+  }
+  .t-emil .spec { width: 100%; border-collapse: collapse; }
+  .t-emil .spec thead th { text-align: left; font-size: 12px; font-weight: 500; color: var(--ink-3); padding: 0 0 12px; border-bottom: 1px solid rgb(255 255 255 / 0.14); }
+  .t-emil .spec thead th:last-child, .t-emil .spec td { text-align: right; }
+  .t-emil .spec tbody th, .t-emil .spec td { padding: 18px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .t-emil .spec tbody th { text-align: left; font-weight: 500; font-size: 1.0625rem; color: var(--ink); }
+  .t-emil .spec tbody th a { text-decoration: underline; text-decoration-color: rgb(255 255 255 / 0.25); text-underline-offset: 4px; transition: text-decoration-color 150ms ease; }
+  .t-emil .spec-d { display: block; margin-top: 2px; font-weight: 400; font-size: 15px; color: var(--ink-2); }
+  .t-emil .sev { font-family: var(--font-mono); font-size: 12px; color: var(--ink-2); }
+  .t-emil .sev-critical { color: #ff9a8f; }
+  .t-emil .sev-info { color: var(--ink-3); }
+
+  /* Comparison */
+  .t-emil .cmp-wrap { margin-top: 40px; overflow-x: auto; }
+  .t-emil .cmp { width: 100%; border-collapse: collapse; table-layout: fixed; min-width: 640px; }
+  .t-emil .cmp thead th { text-align: left; font-size: 1.0625rem; font-weight: 600; color: var(--ink); padding: 0 24px 16px 0; }
+  .t-emil .cmp thead th span { display: block; font-size: 13px; font-weight: 400; color: var(--ink-3); margin-top: 2px; }
+  .t-emil .cmp thead td { width: 26%; }
+  .t-emil .cmp tbody th, .t-emil .cmp tbody td { text-align: left; vertical-align: top; padding: 16px 24px 16px 0; border-top: 1px solid var(--line); font-size: 15px; }
+  .t-emil .cmp tbody th { font-weight: 500; color: var(--ink-3); font-size: 14px; }
+  .t-emil .cmp tbody td { color: var(--ink); }
+
+  /* Final CTA: statement left, actions right */
+  .t-emil .end { padding-top: 160px; padding-bottom: 136px; }
+  .t-emil .end-row { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: 72px; align-items: end; padding-top: 40px; border-top: 1px solid var(--line); }
+  .t-emil .end h2 { font-size: clamp(2rem, 4.2vw, 3.25rem); letter-spacing: -0.04em; line-height: 1.04; }
+  .t-emil .end .cta { margin-top: 0; }
+  .t-emil .end .fine { margin-top: 16px; }
+
+  .t-emil .ft { border-top: 1px solid var(--line); }
+  .t-emil .ft-row { display: flex; justify-content: space-between; gap: 32px; padding-top: 28px; padding-bottom: 36px; font-size: 14px; color: var(--ink-2); }
+  .t-emil .ft-brand { display: flex; align-items: center; gap: 8px; flex: none; }
+  .t-emil .ft-mark { display: inline-flex; line-height: 0; }
+  .t-emil .ft-nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px 20px; }
+  .t-emil .ft-nav a { text-decoration: none; transition: color 150ms ease; }
+
+  /* Hover only where there is a real pointer. Touch fires false hovers on tap. */
+  @media (hover: hover) and (pointer: fine) {
+    .t-emil .hd-nav a:hover { color: var(--ink); background: var(--fill); }
+    .t-emil .btn-dark:hover { background: #ffffff; }
+    .t-emil .btn-light:hover { background: rgb(255 255 255 / 0.06); }
+    .t-emil .tabs button:hover { color: var(--ink); }
+    .t-emil .replay:hover { color: var(--ink); background: var(--fill); }
+    .t-emil .copy:hover { background: rgb(255 255 255 / 0.1); }
+    .t-emil .more:hover, .t-emil .spec a:hover, .t-emil .works a:hover, .t-emil .cmp a:hover, .t-emil .end .fine a:hover { text-decoration-color: currentColor; }
+    .t-emil .ft-nav a:hover { color: var(--ink); }
+  }
+
+  @media (max-width: 920px) {
+    .t-emil .hero, .t-emil .split { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+    .t-emil .hero { padding-top: 40px; padding-bottom: 24px; }
+    .t-emil .sec { padding-top: 96px; }
+    .t-emil .lede-row, .t-emil .plate, .t-emil .rail, .t-emil .end-row { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+    .t-emil .rail { gap: 32px; }
+    .t-emil .rail-head { position: static; }
+    .t-emil .plate-code { border-right: 0; border-bottom: 1px solid var(--line); }
+    .t-emil .steps { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+    .t-emil .end-row { gap: 32px; }
+    .t-emil .ft-row { flex-direction: column; gap: 20px; }
+    .t-emil .ft-nav { justify-content: flex-start; }
+    .t-emil .end { padding-top: 112px; padding-bottom: 96px; }
+  }
+  @media (max-width: 640px) {
+    .t-emil .wrap { padding-inline: 16px; }
+    .t-emil .hd-nav { display: none; }
+    .t-emil .hd-row { justify-content: space-between; height: 60px; }
+    .t-emil .cta .btn { flex: 1 1 100%; }
+    .t-emil .demo { padding: 12px; }
+    .t-emil .code { font-size: 12px; }
+    .t-emil .ln { grid-template-columns: 32px minmax(max-content, 1fr); }
+    .t-emil .ln-n { padding-right: 8px; }
+    .t-emil .cmt { margin-left: 0; }
+    .t-emil .cmt-line { display: none; }
+    .t-emil .term pre { padding: 16px; font-size: 12px; }
+    .t-emil .plate-code, .t-emil .plate-map { padding: 20px 16px; }
+    .t-emil .plate pre { font-size: 12.5px; }
+    .t-emil .map li { grid-template-columns: minmax(0, 1fr) auto; row-gap: 6px; }
+    .t-emil .map-k { grid-column: 1 / -1; }
+    .t-emil .map-from { justify-self: start; }
+    .t-emil .cmp { min-width: 0; }
+    .t-emil .cmp thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+    .t-emil .cmp tbody tr { display: grid; grid-template-columns: 1fr 1fr; column-gap: 16px; border-top: 1px solid var(--line); padding: 14px 0; }
+    .t-emil .cmp tbody th { grid-column: 1 / -1; border: 0; padding: 0 0 8px; }
+    .t-emil .cmp tbody td { border: 0; padding: 0; font-size: 14px; }
+    .t-emil .cmp tbody td::before { content: attr(data-col); display: block; font-size: 12px; color: var(--ink-3); margin-bottom: 2px; }
+  }
+
+  /* Reduced motion: keep opacity and colour, drop movement, drop the stagger.
+     The demo jumps between its frames instead of animating between them. */
+  @media (prefers-reduced-motion: reduce) {
+    .t-emil .in { animation: t-emil-fade 200ms ease both; animation-delay: 0ms; }
+    .t-emil .btn, .t-emil .replay, .t-emil .copy, .t-emil .pill { transition-property: background-color, color; }
+    .t-emil .btn:active, .t-emil .replay:active, .t-emil .copy:active,
+    .t-emil .demo[data-step="press"] .pill { transform: none; }
+    .t-emil .demo[data-step="idle"] .cmt { transform: none; }
+    .t-emil .cmt { transition: opacity 200ms ease; }
+    .t-emil .tabs-on { transition: none; }
+    .t-emil .swap > *, .t-emil .ln-old, .t-emil .ln-new { filter: none !important; transition: opacity 200ms ease; }
+  }
+  @keyframes t-emil-fade { from { opacity: 0; } }
+</style>
+
+<script>
+  const demo = document.querySelector<HTMLElement>('[data-demo]')
+  if (demo) {
+    const tabs = Array.from(demo.querySelectorAll<HTMLButtonElement>('[role="tab"]'))
+    const panels = Array.from(demo.querySelectorAll<HTMLElement>('[role="tabpanel"]'))
+    let timers: number[] = []
+
+    const stop = () => { timers.forEach(clearTimeout); timers = [] }
+    const later = (fn: () => void, ms: number) => timers.push(window.setTimeout(fn, ms))
+
+    // Change state with every transition switched off, then switch them back on.
+    const instantly = (fn: () => void) => {
+      demo.setAttribute('data-instant', '')
+      fn()
+      void demo.offsetWidth
+      demo.removeAttribute('data-instant')
+    }
+
+    // The sequence: comment arrives on its line, the suggestion is pressed,
+    // and on release the line, the button label and the check status change together.
+    function play(lead: number) {
+      stop() // a new run always cancels the one in flight
+      instantly(() => { demo.dataset.step = 'idle' })
+      later(() => { demo.dataset.step = 'comment' }, lead)
+      later(() => { demo.dataset.step = 'press' }, lead + 1500)
+      later(() => { demo.dataset.step = 'fixed' }, lead + 1660)
+    }
+
+    function select(i: number, fromKeyboard: boolean) {
+      const show = () => {
+        tabs.forEach((t, j) => {
+          t.setAttribute('aria-selected', String(j === i))
+          t.tabIndex = j === i ? 0 : -1
+        })
+        panels.forEach((p, j) => p.toggleAttribute('data-on', j === i))
+        demo.dataset.tab = String(i)
+      }
+      if (fromKeyboard) {
+        // Keyboard-initiated: no animation. Show the finished review straight away.
+        stop()
+        instantly(() => { show(); demo.dataset.step = 'fixed' })
+      } else {
+        show()
+        play(140) // a repeat run skips the long lead-in
+      }
+    }
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', (e) => select(i, e.detail === 0))
+      tab.addEventListener('keydown', (e) => {
+        const dir = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0
+        if (!dir) return
+        e.preventDefault()
+        const next = (i + dir + tabs.length) % tabs.length
+        tabs[next].focus()
+        select(next, true)
+      })
+    })
+
+    demo.querySelector('[data-replay]')?.addEventListener('click', (e) => {
+      if ((e as MouseEvent).detail === 0) return
+      play(140)
+    })
+
+    // First run: once, when the demo is actually on screen. No loop.
+    // The boat wiggles free at 850ms and lands by about 2.1s. The review waits for it,
+    // so the two motions take turns instead of competing.
+    const firstLead = Math.max(400, 2400 - performance.now())
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some((en) => en.isIntersecting)) {
+        io.disconnect()
+        play(firstLead)
+      }
+    }, { threshold: 0.5 })
+    io.observe(demo)
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((btn) => {
+    const status = btn.parentElement?.querySelector<HTMLElement>('[data-copy-status]')
+    let t = 0
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.copy || '')
+      } catch {
+        return
+      }
+      btn.setAttribute('data-copied', '')
+      if (status) status.textContent = 'Copied'
+      clearTimeout(t)
+      t = window.setTimeout(() => {
+        btn.removeAttribute('data-copied')
+        if (status) status.textContent = ''
+      }, 1600)
+    })
+  })
+</script>

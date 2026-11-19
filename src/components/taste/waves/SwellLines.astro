@@ -1,0 +1,136 @@
+---
+// Realistic: Swell lines (contract: ./WAVES.md).
+// Canvas 2D. A nautical-chart engraving brought to life: many fine parallel strokes,
+// one weight, each a contour of the same swell seen in perspective (dense at the
+// horizon, opening toward the viewer). Nearer lines hide farther ones at the crests,
+// like an etching. The boat rides the contour on the water line.
+---
+
+<div class="wave-background swell-lines" data-swell-lines>
+  <canvas class="swell-lines__canvas"></canvas>
+  <div class="wave-container-1 swell-lines__surface"></div>
+</div>
+
+<style>
+  .swell-lines {
+    --etch-ground: var(--color-bg);
+    --etch-ink: color-mix(in oklab, var(--color-bg) 25%, oklch(0.86 0.04 225));
+    --boat-hero-sink: 0px;
+    --boat-hero-draft: 3;
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+  }
+  .swell-lines__canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .swell-lines__surface { position: absolute; left: 0; right: 0; top: 60%; height: 0; pointer-events: none; }
+</style>
+
+<script>
+  import { mountSea, colorReader, waveHeight, type Wave, type SeaState } from './realistic/kit'
+
+  type Row = { y: number; amp: number; alpha: number; waves: Wave[]; front: boolean }
+
+  function init(root: HTMLElement) {
+    const canvas = root.querySelector('canvas')!
+    const ctx = canvas.getContext('2d')!
+    const waves: Wave[] = [
+      { len: 620, amp: 10, speed: 44, phase: 0.9 },
+      { len: 290, amp: 5, speed: 58, phase: 2.7 },
+      { len: 150, amp: 1.8, speed: 70, phase: 5.2 },
+      { len: 84, amp: 0.6, speed: 82, phase: 3.6 },
+    ]
+    let ink = '', ground = ''
+    let rows: Row[] = []
+
+    // Rows evenly spaced in 1/depth, so they crowd toward the horizon. Each row is the
+    // same swell farther away: smaller, with its phase advanced by its depth so the
+    // swells visibly roll toward the viewer.
+    function setup(s: { w: number; h: number; waterY: number }) {
+      const below = s.h - s.waterY
+      const hz = s.waterY - Math.min(170, below * 0.55)
+      const gap = s.w < 600 ? 5.2 : 6.5 // spacing at the water line, px
+      rows = []
+      const span = s.waterY - hz
+      const mk = (y: number, front = false): Row => {
+        const z = span / Math.max(0.5, y - hz) // 1 at the water line
+        const depth = z - 1
+        return {
+          y,
+          amp: Math.min(1.5, 1 / Math.pow(z, 1.15)),
+          alpha: Math.max(0.1, Math.min(1, 1.15 / Math.pow(z, 0.55))) * (y > s.waterY ? Math.max(0.35, 1 - (y - s.waterY) / (below * 1.3)) : 1),
+          waves: waves.map((w, i) => ({ ...w, phase: w.phase + depth * (0.9 + i * 0.45) })),
+          front,
+        }
+      }
+      // far rows: step in px grows ~ with 1/z^2
+      let y = s.waterY
+      const far: Row[] = []
+      for (let i = 0; i < 400; i++) {
+        const z = span / Math.max(0.5, y - hz)
+        y -= gap / (z * z) + 0.9 * (z > 1.2 ? 1 : 0)
+        if (y <= hz + 1) break
+        far.push(mk(y))
+      }
+      rows.push(...far.reverse(), mk(s.waterY, true))
+      waves.forEach((w, i) => (rows[rows.length - 1].waves[i] = w)) // the boat's line, exact
+      y = s.waterY
+      for (let i = 0; i < 200; i++) {
+        const z = span / Math.max(0.5, y - hz)
+        y += gap / (z * z)
+        if (y > s.h + 20) break
+        rows.push(mk(y))
+      }
+    }
+
+    const STEP = 3
+    function draw(t: number, s: SeaState) {
+      if (!s.w || !ink || !rows.length) return
+      ctx.setTransform(s.dpr, 0, 0, s.dpr, 0, 0)
+      ctx.clearRect(0, 0, s.w, s.h)
+      const n = Math.ceil((s.w + 20) / STEP) + 1
+      const ys = new Float32Array(n)
+      ctx.lineWidth = 1
+      ctx.lineJoin = 'round'
+      for (const r of rows) {
+        const sc = s.scale * r.amp
+        for (let i = 0; i < n; i++) ys[i] = r.y + waveHeight(r.waves, i * STEP - 10, t, sc, s.p)
+        ctx.beginPath()
+        ctx.moveTo(-10, ys[0])
+        for (let i = 1; i < n; i++) ctx.lineTo(i * STEP - 10, ys[i])
+        // Occlude farther strokes beneath this one (the etched look at crests)
+        ctx.globalAlpha = 1
+        ctx.lineTo(s.w + 10, s.h + 30)
+        ctx.lineTo(-10, s.h + 30)
+        ctx.closePath()
+        ctx.fillStyle = ground
+        ctx.fill()
+        ctx.beginPath()
+        ctx.moveTo(-10, ys[0])
+        for (let i = 1; i < n; i++) ctx.lineTo(i * STEP - 10, ys[i])
+        ctx.globalAlpha = r.alpha * 0.6
+        ctx.strokeStyle = ink
+        ctx.stroke()
+      }
+      ctx.globalAlpha = 1
+    }
+
+    mountSea(root, canvas, {
+      waves,
+      readColors: () => {
+        const r = colorReader(root)
+        ink = r.read('--etch-ink', '#c9dbea').css
+        ground = r.read('--etch-ground', '#05080f').css
+        r.done()
+      },
+      setup,
+      draw,
+    })
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-swell-lines]').forEach((root) => {
+    if (root.dataset.init) return
+    root.dataset.init = '1'
+    init(root)
+  })
+</script>

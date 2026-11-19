@@ -20,7 +20,7 @@ The homepage (`src/pages/index.astro`, from `/taste/dark/feel-better`) is the re
 | `--color-lavender-light` | The organization tier only. |
 | `--color-add-bg/ink`, `--color-del-bg/ink` | Diff lines. |
 
-Shadows: `--ring` (the faint white ring used instead of a border), `--ring-hover`, `--ring-lift` (ring plus depth, for floating panels), `--ring-term`. Radii: `--radius-btn` 10, `--radius-inner` 14, `--radius-card` 16, `--radius-tray` 20 (= inner + 6px tray padding), `--radius-cta` 24. Type: `--font-display` Quicksand (all headings), `--font-body` Inter, `--font-mono` JetBrains Mono; `--text-h1`, `--text-h2`, `--text-h3`, `--text-lede`. Easing: `--ease-swap` for icon swaps, `--ease-out-expo`.
+Shadows: `--ring` (the faint white ring used instead of a border), `--ring-hover`, `--ring-lift` (ring plus depth, for floating panels), `--ring-term`. Radii: `--radius-btn` 10, `--radius-inner` 14, `--radius-card` 16, `--radius-tray` 20 (= inner + 6px tray padding), `--radius-cta` 24. Type: `--font-display` Hanken Grotesk (all headings; h1 and h2 at 800, the rest at 700), `--font-body` Inter, `--font-mono` JetBrains Mono; `--text-h1`, `--text-h2`, `--text-h3`, `--text-lede`. Easing: `--ease-swap` for icon swaps, `--ease-out-expo`.
 
 Old names (`--color-navy*`, `--color-light`, `--color-slate*`, `--color-success/warning/critical/info`, `--color-sunrise`) still work and now hold the new values. Prefer the new names in new code.
 
@@ -86,7 +86,7 @@ Long-form
 
 Utilities: `ui-mono`, `ui-tnum` (tabular numbers), `ui-sr` (screen-reader only), `ui-skip` (skip link), `ui-enter` (one-time entrance; set `animation-delay` inline).
 
-Base styles already applied: Quicksand headings with `text-wrap: balance`; `pretty` wrapping on p, li, figcaption, dd and blockquote; mono code; an orange focus-visible ring; `cursor: pointer` on buttons; underline offset on all links. Smooth scrolling is turned off under reduced motion.
+Base styles already applied: Hanken Grotesk headings with `text-wrap: balance`; `pretty` wrapping on p, li, figcaption, dd and blockquote; mono code; an orange focus-visible ring; `cursor: pointer` on buttons; underline offset on all links. Smooth scrolling is turned off under reduced motion.
 
 ## Shared components
 

@@ -1,0 +1,817 @@
+---
+// Variant built with the ui-ux-pro-max harness.
+// Rows used: product #81 Developer Tool / IDE, styles Dark Mode (OLED) +
+// Minimalism & Swiss Style, palette #81 (accent swapped for Buoy's token),
+// type pairing #9 Developer Mono, landing pattern Minimal & Direct + Documentation.
+import Layout from '../../layouts/Layout.astro'
+import BuoyLogo from '../../components/BuoyLogo.astro'
+import { siteConfig } from '../../config'
+
+const installUrl = 'https://github.com/marketplace/buoy-design'
+
+const diffLines = [
+  { n: '22', kind: 'ctx', text: '<div style={{' },
+  { n: '23', kind: 'add', text: "  background: '#3b82f6'," },
+  { n: '24', kind: 'add', text: "  padding: '24px'," },
+  { n: '25', kind: 'ctx', text: '}}>' },
+]
+
+const suggestion = [
+  { kind: 'del', text: "background: '#3b82f6'," },
+  { kind: 'add', text: "background: 'var(--color-primary)'," },
+]
+
+const agentCode = `const Card = () => (
+  <div style={{
+    background: "#ffffff",
+    padding: "16px",
+    borderRadius: "8px",
+  }}>
+    {children}
+  </div>
+)`
+
+const systemCode = `import { Card } from "@/components"
+
+const MyCard = () => (
+  <Card variant="elevated">
+    {children}
+  </Card>
+)`
+
+const scanOutput = [
+  { c: 'dim', t: 'Scanning for design drift...' },
+  { c: '', t: 'Found 23 issues in 142 files' },
+  { c: '', t: '' },
+  { c: 'head', t: 'CRITICAL (2)' },
+  { c: '', t: '  Button.tsx:12  Missing aria-label' },
+  { c: '', t: '  Modal.tsx:45   Focus trap not implemented' },
+  { c: '', t: '' },
+  { c: 'head', t: 'HARDCODED VALUES (8)' },
+  { c: '', t: '  Card.tsx:8   #ffffff → var(--bg-surface)' },
+  { c: '', t: '  Badge.tsx:3  8px → var(--spacing-sm)' },
+  { c: 'dim', t: '  ... and 6 more' },
+]
+
+const esc = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;')
+const scanHtml =
+  '<span class="prompt">$ buoy drift check</span>\n\n' +
+  scanOutput.map((l) => `<span class="${l.c}">${esc(l.t)}</span>`).join('\n')
+
+const steps = [
+  {
+    n: '01',
+    title: 'Set up',
+    command: 'npx ahoybuoy dock',
+    body: 'Run it in your project. Buoy reads the tokens and components you already have.',
+  },
+  {
+    n: '02',
+    title: 'Scan',
+    command: 'buoy drift check',
+    body: 'Every issue comes with the exact file, line and suggested fix.',
+  },
+  {
+    n: '03',
+    title: 'Measure',
+    command: 'buoy show health',
+    body: 'Track the health of your design system over time.',
+  },
+]
+
+const driftTypes = [
+  { title: 'Hardcoded values', severity: 'Warning', description: 'Colors, spacing and fonts that do not use tokens', href: '/features/hardcoded-values' },
+  { title: 'Duplicate components', severity: 'Warning', description: 'Similar components that should be consolidated', href: '/features/duplicate-detection' },
+  { title: 'Naming inconsistency', severity: 'Info', description: 'Component and prop names that do not match conventions', href: '/features/naming-consistency' },
+  { title: 'Deprecated patterns', severity: 'Warning', description: 'Components marked as deprecated that are still in use' },
+  { title: 'Inline styles', severity: 'Warning', description: 'Inline CSS that should use tokens or classes' },
+  { title: 'Accessibility conflict', severity: 'Critical', description: 'Missing ARIA labels and focus issues', href: '/features/accessibility-checks' },
+  { title: 'Framework sprawl', severity: 'Warning', description: 'Multiple UI frameworks in the same codebase', href: '/features/framework-sprawl' },
+  { title: 'Orphaned components', severity: 'Info', description: 'Components in code but not in design' },
+]
+
+const cliList = [
+  'All scanning and drift detection',
+  'Fix suggestions with exact token replacements',
+  'Deterministic, with no LLM',
+  'No data leaves your machine',
+  'Works offline and air-gapped',
+]
+
+const appList = [
+  'Runs the same open-source scanner on every pull request',
+  'Inline comments with fix suggestions you can commit',
+  'Summaries and coaching written by an LLM; findings stay deterministic',
+  'Dashboard with health scores and trends',
+]
+
+const integrations = [
+  { name: 'React', href: '/integrations/react' },
+  { name: 'Vue', href: '/integrations/vue' },
+  { name: 'Svelte', href: '/integrations/svelte' },
+  { name: 'Angular', href: '/integrations/angular' },
+  { name: 'Next.js', href: '/integrations/nextjs' },
+  { name: 'Tailwind', href: '/integrations/tailwind' },
+  { name: 'GitHub', href: '/integrations/github' },
+]
+---
+
+<Layout title="Buoy: catch design drift before it ships" noindex>
+  <Fragment slot="head">
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </Fragment>
+
+  <div class="t-ui-ux-pro-max">
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="wrap header-row">
+        <a href="/" class="logo-link" aria-label="Buoy home">
+          <BuoyLogo size="1.5rem" />
+        </a>
+        <nav aria-label="Main" class="main-nav">
+          <a href="/docs">Docs</a>
+          <a href="/scan">Scan a repo</a>
+          <a href="/pricing">Pricing</a>
+          <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
+        <a class="btn btn-primary btn-sm" href={installUrl} target="_blank" rel="noopener noreferrer">
+          Install<span class="wide-only">&nbsp;the GitHub App</span>
+        </a>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- Hero -->
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
+            <h1 class="in in-1">Catch design drift before it ships.</h1>
+            <p class="lede in in-2">
+              Buoy checks UI code against your design system. Its GitHub App reviews every
+              pull request and leaves inline comments with the exact fix.
+            </p>
+            <div class="btn-row in in-3">
+              <a class="btn btn-primary" href={installUrl} target="_blank" rel="noopener noreferrer">Install the GitHub App</a>
+              <a class="btn btn-secondary" href="/scan">Scan a public repo</a>
+            </div>
+            <p class="hero-cli in in-3">
+              Or set up the open-source CLI: <code>npx ahoybuoy dock</code>
+            </p>
+          </div>
+
+          <figure class="review in in-4" aria-label="Example of a Buoy review comment on a pull request">
+            <div class="review-file">
+              <span>src/components/Card.tsx</span>
+              <span class="muted">Pull request #247</span>
+            </div>
+            <div class="diff" role="presentation">
+              {diffLines.map((l) => (
+                <div class={`diff-line ${l.kind}`}>
+                  <span class="ln">{l.n}</span>
+                  <span class="sign">{l.kind === 'add' ? '+' : ' '}</span>
+                  <span class="code">{l.text}</span>
+                </div>
+              ))}
+            </div>
+            <div class="comment">
+              <p class="comment-meta"><strong>buoy</strong> <span class="tag">bot</span> commented on line 23</p>
+              <p class="comment-body">
+                Hardcoded color <code>#3b82f6</code>. Your design system already has a token
+                for this value. Use <code>var(--color-primary)</code> instead.
+              </p>
+              <div class="suggest">
+                <p class="suggest-head">Suggested change</p>
+                {suggestion.map((l) => (
+                  <div class={`diff-line ${l.kind}`}>
+                    <span class="sign">{l.kind === 'add' ? '+' : '-'}</span>
+                    <span class="code">{l.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Three facts -->
+      <section class="facts" aria-label="How the scanner works">
+        <div class="wrap facts-grid">
+          <div class="fact">
+            <h2>Deterministic</h2>
+            <p>The scanner does not use an LLM. The same code gives the same findings every time.</p>
+          </div>
+          <div class="fact">
+            <h2>Local</h2>
+            <p>The CLI needs no API keys and makes no external calls. No data leaves your machine.</p>
+          </div>
+          <div class="fact">
+            <h2>Open source</h2>
+            <p>The CLI and scanner are MIT licensed. Read the code on <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Problem -->
+      <section class="section">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="num">01</p>
+            <h2>Coding agents write UI without knowing your tokens.</h2>
+            <p>
+              Hardcoded values creep in and the drift compounds. Buoy points each one to the
+              token or component that already exists in your system.
+            </p>
+          </div>
+          <div class="trio">
+            <figure class="panel">
+              <figcaption><span>What AI generates</span><span class="muted">Card.tsx</span></figcaption>
+              <pre tabindex="0"><code>{agentCode}</code></pre>
+            </figure>
+            <figure class="panel">
+              <figcaption><span>What you want</span><span class="muted">Card.tsx</span></figcaption>
+              <pre tabindex="0"><code>{systemCode}</code></pre>
+            </figure>
+            <div>
+              <h3 class="map-head">What Buoy catches</h3>
+              <ul class="map">
+                <li><span>Hardcoded colors</span><code>#ffffff → var(--bg)</code></li>
+                <li><span>Magic numbers</span><code>16px → var(--space-4)</code></li>
+                <li><span>Duplicate components</span><code>Use &lt;Card&gt; instead</code></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick start -->
+      <section class="section" id="quick-start">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="num">02</p>
+            <h2>Find drift with one command.</h2>
+            <p>The CLI is free. It runs every detection rule and suggests the fix.</p>
+          </div>
+          <div class="split">
+            <div>
+              <ol class="steps">
+                {steps.map((s) => (
+                  <li>
+                    <span class="step-n">{s.n}</span>
+                    <div>
+                      <h3>{s.title}</h3>
+                      <code class="cmd">$ {s.command}</code>
+                      <p>{s.body}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+              <a class="text-link" href="/docs">Read the documentation</a>
+            </div>
+            <figure class="panel term">
+              <figcaption><span>Terminal</span><span class="muted">example output</span></figcaption>
+              <pre tabindex="0"><code set:html={scanHtml} /></pre>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- Detects -->
+      <section class="section" id="detects">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="num">03</p>
+            <h2>What Buoy detects.</h2>
+            <p>Each finding has a severity, so you can decide what to fix first.</p>
+          </div>
+          <table class="detects">
+            <thead>
+              <tr><th scope="col">Drift type</th><th scope="col">What it finds</th><th scope="col">Severity</th></tr>
+            </thead>
+            <tbody>
+              {driftTypes.map((d) => (
+                <tr>
+                  <th scope="row">{d.href ? <a href={d.href}>{d.title}</a> : d.title}</th>
+                  <td>{d.description}</td>
+                  <td><span class={`sev sev-${d.severity.toLowerCase()}`}>{d.severity}</span></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <a class="text-link" href="/features/drift-detection">Read more about drift detection</a>
+        </div>
+      </section>
+
+      <!-- CLI and App -->
+      <section class="section">
+        <div class="wrap">
+          <div class="section-head">
+            <p class="num">04</p>
+            <h2>One scanner, two ways to run it.</h2>
+            <p>Start with the CLI on your machine. Add the GitHub App to check every pull request.</p>
+          </div>
+          <div class="two">
+            <div class="col">
+              <h3>Buoy CLI</h3>
+              <p class="col-sub">Open source, runs locally</p>
+              <ul class="list">{cliList.map((i) => <li>{i}</li>)}</ul>
+              <p class="note">No API keys required. No external calls. MIT licensed.</p>
+            </div>
+            <div class="col">
+              <h3>Buoy GitHub App</h3>
+              <p class="col-sub">Same engine, hosted on every pull request</p>
+              <ul class="list">{appList.map((i) => <li>{i}</li>)}</ul>
+              <p class="note">Prose is written through OpenRouter. <a href="/privacy#subprocessors">See what is sent</a>.</p>
+            </div>
+          </div>
+          <div class="stack">
+            <h3>Works with</h3>
+            <ul>
+              {integrations.map((i) => <li><a href={i.href}>{i.name}</a></li>)}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA -->
+      <section class="cta">
+        <div class="wrap cta-row">
+          <div>
+            <h2>Put Buoy on your next pull request.</h2>
+            <p>Install the GitHub App, or scan any public GitHub repository for free in about a minute. <a href="/pricing">See pricing</a>.</p>
+          </div>
+          <div class="btn-row">
+            <a class="btn btn-primary" href={installUrl} target="_blank" rel="noopener noreferrer">Install the GitHub App</a>
+            <a class="btn btn-secondary" href="/scan">Scan a public repo</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-row">
+        <div class="footer-brand">
+          <BuoyLogo size="1.25rem" />
+          <p>&copy; {new Date().getFullYear()} Buoy. Scanner is open source under MIT.</p>
+        </div>
+        <nav aria-label="Footer" class="footer-nav">
+          <a href="/docs">Docs</a>
+          <a href="/scan">Scan a repo</a>
+          <a href="/pricing">Pricing</a>
+          <a href="/guides">Guides</a>
+          <a href="/reports">Reports</a>
+          <a href="/compare">Compare</a>
+          <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href={siteConfig.twitterUrl} target="_blank" rel="noopener noreferrer">Twitter</a>
+          <a href={siteConfig.discordUrl} target="_blank" rel="noopener noreferrer">Discord</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+          <a href="/support">Support</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+</Layout>
+
+<style>
+  /* Semantic tokens. Neutrals from the harness palette (colors.csv #81),
+     accent from Buoy's own tokens. */
+  .t-ui-ux-pro-max {
+    --bg: #0f172a;
+    --surface: #1b2336;
+    --surface-2: #272f42;
+    --fg: #f8fafc;
+    --fg-muted: #a3b1c6;
+    --line: #334155;
+    --line-strong: #475569;
+    --accent: var(--color-buoy);
+    --on-accent: #0f172a;
+    --add: #4ade80;
+    --add-bg: rgb(34 197 94 / 0.12);
+    --del: #fca5a5;
+    --del-bg: rgb(239 68 68 / 0.14);
+    --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+    --sans: 'IBM Plex Sans', system-ui, sans-serif;
+    --fast: 150ms;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    min-height: 100dvh;
+  }
+
+  .wrap {
+    max-width: 75rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--mono);
+    letter-spacing: -0.03em;
+    word-spacing: -0.2em;
+    text-wrap: balance;
+    margin: 0;
+  }
+  p { margin: 0; }
+  code, pre { font-family: var(--mono); }
+  .muted { color: var(--fg-muted); }
+
+  a { color: inherit; }
+  a:focus-visible, pre:focus-visible {
+    outline: 2px solid var(--fg);
+    outline-offset: 3px;
+  }
+
+  .skip {
+    position: absolute;
+    left: 1rem;
+    top: -4rem;
+    z-index: 100;
+    background: var(--fg);
+    color: var(--bg);
+    padding: 0.75rem 1rem;
+  }
+  .skip:focus { top: 1rem; }
+
+  /* Header */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+  .header-row {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    height: 4rem;
+  }
+  .logo-link { display: inline-flex; padding-block: 0.5rem; }
+  .main-nav {
+    display: flex;
+    gap: 0.5rem;
+    margin-left: auto;
+    font-size: 0.875rem;
+  }
+  .main-nav a, .footer-nav a {
+    color: var(--fg-muted);
+    text-decoration: none;
+    padding: 0.75rem;
+    transition: color var(--fast) ease-out;
+  }
+  .main-nav a:hover, .footer-nav a:hover { color: var(--fg); }
+  .main-nav a:not(:first-child) { display: none; }
+  .wide-only { display: none; }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    padding-inline: 1.5rem;
+    font-family: var(--mono);
+    font-size: 0.875rem;
+    font-weight: 600;
+    word-spacing: -0.2em;
+    text-decoration: none;
+    white-space: nowrap;
+    border: 1px solid transparent;
+    transition: background-color var(--fast) ease-out, border-color var(--fast) ease-out, color var(--fast) ease-out;
+  }
+  .btn-sm { height: 2.75rem; padding-inline: 1rem; }
+  .btn-primary { background: var(--accent); color: var(--on-accent); }
+  .btn-primary:hover { background: var(--color-buoy-light); }
+  .btn-secondary { border-color: var(--line-strong); color: var(--fg); }
+  .btn-secondary:hover { border-color: var(--fg); background: var(--surface); }
+  .btn:active { opacity: 0.85; }
+  .btn-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  /* Hero */
+  .hero { padding-block: 3rem 4rem; }
+  .hero-grid {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+  }
+  .hero h1 {
+    font-size: clamp(2.25rem, 1.2rem + 4.6vw, 4rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.05em;
+  }
+  .lede {
+    margin-top: 1.5rem;
+    font-size: 1.125rem;
+    color: var(--fg-muted);
+    max-width: 34rem;
+  }
+  .hero .btn-row { margin-top: 2rem; }
+  .hero-cli {
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--fg-muted);
+  }
+  .hero-cli code {
+    color: var(--fg);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    padding: 0.25rem 0.5rem;
+    white-space: nowrap;
+  }
+
+  /* Review mock */
+  .review {
+    margin: 0;
+    border: 1px solid var(--line-strong);
+    background: var(--surface);
+    font-size: 0.8125rem;
+    min-width: 0;
+  }
+  .review-file {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 0.75rem;
+  }
+  .diff { padding-block: 0.5rem; background: var(--bg); overflow-x: auto; }
+  .diff-line {
+    display: flex;
+    font-family: var(--mono);
+    line-height: 1.75rem;
+    white-space: pre;
+    padding-inline: 1rem;
+  }
+  .diff-line .ln { width: 2rem; color: var(--fg-muted); flex: none; }
+  .diff-line .sign { width: 1.25rem; flex: none; }
+  .diff-line.add { background: var(--add-bg); color: var(--add); }
+  .diff-line.del { background: var(--del-bg); color: var(--del); }
+  .comment {
+    padding: 1rem;
+    border-top: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+  }
+  .comment-meta { font-size: 0.8125rem; color: var(--fg-muted); }
+  .comment-meta strong { color: var(--fg); font-weight: 600; }
+  .tag {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    border: 1px solid var(--line-strong);
+    padding: 0 0.375rem;
+  }
+  .comment-body { margin-top: 0.5rem; font-size: 0.9375rem; line-height: 1.55; }
+  .comment-body code {
+    font-size: 0.8125rem;
+    background: var(--surface-2);
+    padding: 0.125rem 0.375rem;
+    white-space: nowrap;
+  }
+  .suggest {
+    margin-top: 1rem;
+    border: 1px solid var(--line);
+    background: var(--bg);
+    overflow-x: auto;
+  }
+  .suggest-head {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--fg-muted);
+  }
+
+  /* Facts */
+  .facts { border-block: 1px solid var(--line); }
+  .facts-grid { display: grid; }
+  .fact { padding-block: 2rem; border-bottom: 1px solid var(--line); }
+  .fact:last-child { border-bottom: 0; }
+  .fact h2 { font-size: 1.125rem; font-weight: 600; }
+  .fact p { margin-top: 0.5rem; color: var(--fg-muted); max-width: 22rem; }
+  .fact a, .note a, .cta p a { text-decoration: underline; text-underline-offset: 3px; color: var(--fg); }
+
+  /* Sections */
+  .section { padding-block: 4rem; border-bottom: 1px solid var(--line); }
+  .num {
+    font-family: var(--mono);
+    font-size: 0.875rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .section h2, .cta h2 {
+    font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2rem);
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  .section-head p:not(.num), .split-head > p:not(.num) {
+    margin-top: 1rem;
+    color: var(--fg-muted);
+    max-width: 34rem;
+  }
+  .section-head { margin-bottom: 2.5rem; }
+  .split { display: grid; gap: 2.5rem; }
+  .split-body { min-width: 0; }
+
+  .map-head { font-size: 0.75rem; font-weight: 500; letter-spacing: 0; color: var(--fg-muted); padding-block: 0.75rem; }
+  .trio { display: grid; gap: 1rem; }
+  .trio > * { min-width: 0; }
+  .map { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  .map li {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+    padding-block: 0.75rem;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.9375rem;
+  }
+  .map code { font-size: 0.8125rem; color: var(--fg-muted); }
+
+  .pair { display: grid; gap: 1rem; align-content: start; }
+  .panel {
+    margin: 0;
+    border: 1px solid var(--line-strong);
+    background: var(--surface);
+    min-width: 0;
+  }
+  .panel figcaption {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 0.75rem;
+  }
+  .panel pre {
+    margin: 0;
+    padding: 1rem;
+    font-size: 0.8125rem;
+    line-height: 1.8;
+    overflow-x: auto;
+    color: var(--fg);
+  }
+  .term pre { background: var(--bg); padding: 1.5rem 1rem; }
+  .term .prompt { color: var(--accent); }
+  .term .dim { color: var(--fg-muted); }
+  .term .head { font-weight: 700; }
+
+  .steps { list-style: none; margin: 0 0 1.5rem; padding: 0; border-top: 1px solid var(--line); }
+  .steps li {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    padding-block: 1.25rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .step-n { font-family: var(--mono); font-size: 0.875rem; color: var(--fg-muted); padding-top: 0.125rem; }
+  .steps h3 { font-size: 1rem; font-weight: 600; }
+  .cmd { display: block; margin-top: 0.5rem; font-size: 0.875rem; color: var(--accent); }
+  .steps p { margin-top: 0.5rem; font-size: 0.9375rem; color: var(--fg-muted); }
+
+  .text-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    font-family: var(--mono);
+    font-size: 0.875rem;
+    word-spacing: -0.2em;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--accent);
+  }
+  .text-link:hover { color: var(--color-buoy-light); }
+
+  /* Detects table */
+  .detects {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    font-size: 0.9375rem;
+  }
+  .detects thead { display: none; }
+  .detects tr {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.25rem 1rem;
+    padding-block: 1rem;
+    border-top: 1px solid var(--line);
+  }
+  .detects tbody tr:last-child { border-bottom: 1px solid var(--line); }
+  .detects th, .detects td { padding: 0; text-align: left; font-weight: 400; }
+  .detects tbody th { font-family: var(--mono); font-weight: 600; letter-spacing: -0.02em; word-spacing: -0.2em; }
+  .detects tbody th a { text-decoration: underline; text-decoration-color: var(--line-strong); text-underline-offset: 4px; }
+  .detects tbody th a:hover { text-decoration-color: var(--accent); }
+  .detects td:nth-child(2) { grid-column: 1 / -1; grid-row: 2; color: var(--fg-muted); }
+  .sev { font-family: var(--mono); font-size: 0.75rem; color: var(--fg-muted); }
+  .sev-critical { color: var(--fg); font-weight: 700; }
+  .sev-warning { color: var(--fg); }
+
+  /* Two columns */
+  .two { display: grid; border: 1px solid var(--line-strong); }
+  .col { padding: 1.5rem; }
+  .col + .col { border-top: 1px solid var(--line-strong); }
+  .col h3 { font-size: 1.125rem; font-weight: 600; }
+  .col-sub { margin-top: 0.25rem; font-size: 0.875rem; color: var(--fg-muted); }
+  .list { list-style: none; margin: 1.5rem 0; padding: 0; }
+  .list li {
+    padding: 0.625rem 0;
+    border-top: 1px solid var(--line);
+    font-size: 0.9375rem;
+  }
+  .note { font-size: 0.8125rem; color: var(--fg-muted); }
+
+  .stack {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 1.5rem;
+    margin-top: 2.5rem;
+  }
+  .stack h3 { font-size: 0.875rem; font-weight: 500; color: var(--fg-muted); letter-spacing: 0; }
+  .stack ul { display: flex; flex-wrap: wrap; gap: 0 0.5rem; list-style: none; margin: 0; padding: 0; }
+  .stack a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding-inline: 0.5rem;
+    font-family: var(--mono);
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: color var(--fast) ease-out;
+  }
+  .stack a:hover { color: var(--color-buoy-light); }
+
+  /* CTA */
+  .cta { padding-block: 4rem; }
+  .cta-row { display: grid; gap: 2rem; align-items: center; }
+  .cta p { margin-top: 1rem; color: var(--fg-muted); max-width: 34rem; }
+
+  /* Footer */
+  .site-footer { border-top: 1px solid var(--line); padding-block: 2rem; font-size: 0.875rem; }
+  .footer-row { display: grid; gap: 1.5rem; }
+  .footer-brand { display: grid; gap: 0.75rem; color: var(--fg-muted); }
+  .footer-brand :global(svg) { color: var(--fg); }
+  .footer-nav { display: flex; flex-wrap: wrap; margin-inline: -0.75rem; }
+
+  /* Entrance: hero only, one short staggered rise */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: none; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .in { animation: rise 320ms var(--ease) both; }
+    .in-2 { animation-delay: 40ms; }
+    .in-3 { animation-delay: 80ms; }
+    .in-4 { animation-delay: 160ms; }
+  }
+
+  @media (min-width: 480px) {
+    .btn-row { grid-template-columns: repeat(2, max-content); }
+    .wide-only { display: inline; }
+  }
+
+  @media (min-width: 768px) {
+    .wrap { padding-inline: 2rem; }
+    .main-nav a:not(:first-child) { display: inline; }
+    .facts-grid { grid-template-columns: repeat(3, 1fr); }
+    .fact { border-bottom: 0; padding: 2rem 2rem 2rem 0; }
+    .fact + .fact { border-left: 1px solid var(--line); padding-left: 2rem; }
+    .section { padding-block: 6rem; }
+    .cta { padding-block: 6rem; }
+    .two { grid-template-columns: 1fr 1fr; }
+    .col { padding: 2rem; }
+    .col + .col { border-top: 0; border-left: 1px solid var(--line-strong); }
+    .detects thead { display: table-header-group; }
+    .detects tr { grid-template-columns: 16rem 1fr 6rem; padding-block: 0.875rem; align-items: baseline; }
+    .detects thead tr { border-top: 0; }
+    .detects thead th { font-family: var(--mono); font-size: 0.75rem; color: var(--fg-muted); }
+    .detects td:nth-child(2) { grid-column: auto; grid-row: auto; }
+    .footer-row { grid-template-columns: 1fr 1.4fr; }
+    .footer-nav { justify-content: flex-end; }
+  }
+
+  @media (min-width: 1024px) {
+    .hero { padding-block: 6rem; }
+    .hero-grid { grid-template-columns: 7fr 5fr; gap: 4rem; }
+    .split { grid-template-columns: 5fr 7fr; gap: 4rem; }
+    .split { align-items: start; }
+    .trio { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .trio > div { padding-left: 1rem; }
+    .cta-row { grid-template-columns: 1fr auto; }
+  }
+</style>

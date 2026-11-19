@@ -1,0 +1,670 @@
+---
+/*
+  Harness: huashu-design. Direction built: "Review sheet" (Swiss monochrome, light).
+  System, written down before building (content-guidelines.md "Create a system up front"):
+  - Colour: one neutral ramp taken from the brand navy hue (oklch hue 262, chroma 0.01 to 0.04),
+    written as a lightness series. One chromatic colour, the brand orange token. Orange has two
+    jobs only: it underlines a value that has drifted, and it fills the one primary action.
+    Diff red and green are the review UI's own semantics, kept low chroma.
+  - Type: Schibsted Grotesk for display and text (weights 400/600/800), JetBrains Mono for code.
+    Five sizes plus the hero.
+  - Layout: 12 column grid, hairline rules, square corners except the product panels (4px).
+  - Protagonist: the pull request review itself, real and clickable.
+  - Form comes from the content: a review is a sheet with marks in the margin, so sections are
+    ruled like a sheet and the only colour on the sheet is the mark.
+*/
+import Layout from '../../layouts/Layout.astro'
+import BuoyLogo from '../../components/BuoyLogo.astro'
+import BuoyMark from '../../components/BuoyMark.astro'
+import LockOn from '../../components/LockOn.astro'
+import FreeSpots from '../../components/FreeSpots.astro'
+import ScanForm from '../../components/ScanForm.astro'
+import { siteConfig } from '../../config'
+
+const installUrl = 'https://github.com/marketplace/buoy-design'
+
+const fixes = [
+  {
+    id: 'color',
+    line: 23,
+    kind: 'Hardcoded color',
+    from: "'#3b82f6'",
+    to: "'var(--color-primary)'",
+    prop: 'background',
+    bare: '#3b82f6',
+    token: 'var(--color-primary)',
+  },
+  {
+    id: 'spacing',
+    line: 31,
+    kind: 'Hardcoded spacing',
+    from: "'24px'",
+    to: "'var(--spacing-lg)'",
+    prop: 'padding',
+    bare: '24px',
+    token: 'var(--spacing-lg)',
+  },
+  {
+    id: 'radius',
+    line: 8,
+    kind: 'Hardcoded border radius',
+    from: "'8px'",
+    to: "'var(--radius-md)'",
+    prop: 'borderRadius',
+    bare: '8px',
+    token: 'var(--radius-md)',
+  },
+]
+
+const checks = [
+  { name: 'Hardcoded values', level: 'Warning', what: 'Colors, spacing and fonts that do not use tokens.', eg: '#ffffff → var(--bg-surface)', href: '/features/hardcoded-values' },
+  { name: 'Duplicate components', level: 'Warning', what: 'Similar components that should be one.', eg: 'Use <Card> instead', href: '/features/duplicate-detection' },
+  { name: 'Accessibility conflicts', level: 'Critical', what: 'Missing ARIA labels and focus issues.', eg: 'Button.tsx:12 Missing aria-label', href: '/features/accessibility-checks' },
+  { name: 'Inline styles', level: 'Warning', what: 'Inline CSS that should use tokens or classes.' },
+  { name: 'Deprecated patterns', level: 'Warning', what: 'Components marked as deprecated that are still in use.' },
+  { name: 'Framework sprawl', level: 'Warning', what: 'More than one UI framework in the same codebase.', href: '/features/framework-sprawl' },
+  { name: 'Naming inconsistency', level: 'Info', what: 'Component and prop names that do not match your conventions.', href: '/features/naming-consistency' },
+  { name: 'Orphaned components', level: 'Info', what: 'Components that are in code but not in design.' },
+]
+
+const steps = [
+  { cmd: 'npx ahoybuoy dock', what: 'Set up Buoy in your repository.' },
+  { cmd: 'buoy drift check', what: 'Scan. Every issue comes with the exact file, line and suggested fix.' },
+  { cmd: 'buoy show health', what: 'Track design system health over time.' },
+]
+
+const stack = [
+  { name: 'React', href: '/integrations/react' },
+  { name: 'Vue', href: '/integrations/vue' },
+  { name: 'Svelte', href: '/integrations/svelte' },
+  { name: 'Angular', href: '/integrations/angular' },
+  { name: 'Next.js', href: '/integrations/nextjs' },
+  { name: 'Tailwind', href: '/integrations/tailwind' },
+  { name: 'GitHub', href: '/integrations/github' },
+]
+
+const cli = [
+  'All scanning and drift detection',
+  'Fix suggestions with exact token replacements',
+  'Deterministic, no LLMs',
+  'No data leaves your machine',
+  'Works air-gapped and offline',
+  'No API keys. MIT licensed.',
+]
+const app = [
+  'Runs the same open-source scanner on every pull request',
+  'Inline comments with fix suggestions you can commit',
+  'Summaries and coaching are written by an LLM. Findings stay deterministic.',
+  'Dashboard with health scores and trends',
+  'Builder mode coaching for new design systems',
+]
+---
+
+<Layout title="Buoy: catch design drift before it ships" noindex>
+  <Fragment slot="head">
+    <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  </Fragment>
+
+  <div class="t-huashu">
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="hd">
+      <div class="wrap hd-in">
+        <a href="/" class="hd-logo" aria-label="Buoy home"><BuoyLogo size="1.5rem" /></a>
+        <nav class="hd-nav" aria-label="Main">
+          <a href="/scan">Scan a repo</a>
+          <a href="/docs">Docs</a>
+          <a href="/pricing">Pricing</a>
+          <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
+        <a class="btn btn-ink btn-sm" href={installUrl} target="_blank" rel="noopener noreferrer">Install the GitHub App</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- Hero: headline across the sheet, then the review itself -->
+      <section class="hero wrap">
+        <h1>Catch design drift <span class="h1-br">before it ships.</span></h1>
+
+        <div class="hero-grid">
+          <div class="hero-side">
+            <p class="lede">
+              Buoy checks UI code against your design system. It reviews every pull request and leaves an inline comment with the exact fix.
+            </p>
+            <div class="btns">
+              <a class="btn btn-go" href={installUrl} target="_blank" rel="noopener noreferrer">Install the GitHub App</a>
+              <a class="btn btn-line" href="/scan">Scan a public repo</a>
+            </div>
+            <p class="spots"><FreeSpots /></p>
+            <p class="hero-note">
+              On the right is a pull request that adds a Card component. Buoy left three comments on it. The commit buttons work.
+            </p>
+          </div>
+
+          <div class="pr" data-pr>
+            <div class="pr-top">
+              <div class="pr-title"><span class="pr-name">feat: add new Card component</span> <span class="pr-num">#247</span></div>
+              <div class="pr-check" data-pr-status aria-live="polite">Buoy Design Check: 3 to fix</div>
+            </div>
+
+            <div class="pr-file">src/components/Card.tsx</div>
+            <div class="code" role="group" aria-label="Changed lines in Card.tsx">
+              <div class="ln"><span class="no">21</span><span class="sg"> </span><code class="i2">&lt;div</code></div>
+              <div class="ln"><span class="no">22</span><span class="sg"> </span><code class="i3">style=&#123;&#123;</code></div>
+              <div class="ln add"><span class="no">23</span><span class="sg">+</span><code class="i4">background: <span class="val" data-val="color">'#3b82f6'</span>,</code></div>
+            </div>
+            <div class="cm" data-fix="color">
+              <div class="cm-who"><BuoyMark size={15} /><strong>buoy</strong><span class="cm-bot">bot</span><span class="cm-on">on line 23</span></div>
+              <p class="cm-msg">Hardcoded color <code>#3b82f6</code>. Use <code>var(--color-primary)</code>, the token that already exists.</p>
+              <div class="sug">
+                <div class="sug-row del"><span class="sg">-</span><code>background: '#3b82f6',</code></div>
+                <div class="sug-row ins"><span class="sg">+</span><code>background: 'var(--color-primary)',</code></div>
+              </div>
+              <button type="button" class="cm-btn" data-commit="color">Commit suggestion</button>
+            </div>
+
+            <div class="code" role="group" aria-label="More changed lines in Card.tsx">
+              <div class="ln hunk"><span class="no"></span><span class="sg"> </span><code>@@ 24 to 29 unchanged</code></div>
+              <div class="ln"><span class="no">30</span><span class="sg"> </span><code class="i3">&lt;header</code></div>
+              <div class="ln add"><span class="no">31</span><span class="sg">+</span><code class="i4">style=&#123;&#123; padding: <span class="val" data-val="spacing">'24px'</span> &#125;&#125;</code></div>
+            </div>
+            <div class="cm" data-fix="spacing">
+              <div class="cm-who"><BuoyMark size={15} /><strong>buoy</strong><span class="cm-bot">bot</span><span class="cm-on">on line 31</span></div>
+              <p class="cm-msg">Hardcoded spacing <code>24px</code>. Use <code>var(--spacing-lg)</code> instead.</p>
+              <div class="sug">
+                <div class="sug-row del"><span class="sg">-</span><code>style=&#123;&#123; padding: '24px' &#125;&#125;</code></div>
+                <div class="sug-row ins"><span class="sg">+</span><code>style=&#123;&#123; padding: 'var(--spacing-lg)' &#125;&#125;</code></div>
+              </div>
+              <button type="button" class="cm-btn" data-commit="spacing">Commit suggestion</button>
+            </div>
+
+            <div class="pr-file">src/components/Modal.tsx</div>
+            <div class="code" role="group" aria-label="Changed lines in Modal.tsx">
+              <div class="ln"><span class="no">7</span><span class="sg"> </span><code class="i1">const panel = &#123;</code></div>
+              <div class="ln add"><span class="no">8</span><span class="sg">+</span><code class="i2">borderRadius: <span class="val" data-val="radius">'8px'</span>,</code></div>
+            </div>
+            <div class="cm" data-fix="radius">
+              <div class="cm-who"><BuoyMark size={15} /><strong>buoy</strong><span class="cm-bot">bot</span><span class="cm-on">on line 8</span></div>
+              <p class="cm-msg">Hardcoded border radius <code>8px</code>. Use <code>var(--radius-md)</code> instead.</p>
+              <div class="sug">
+                <div class="sug-row del"><span class="sg">-</span><code>borderRadius: '8px',</code></div>
+                <div class="sug-row ins"><span class="sg">+</span><code>borderRadius: 'var(--radius-md)',</code></div>
+              </div>
+              <button type="button" class="cm-btn" data-commit="radius">Commit suggestion</button>
+            </div>
+
+            <div class="pr-foot">
+              <span>Example pull request</span>
+              <button type="button" class="pr-reset" data-reset disabled>Start over</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why now -->
+      <section class="sec wrap">
+        <div class="split">
+          <div class="split-text">
+            <h2>Coding agents write a lot of UI. They do not know your tokens.</h2>
+            <p>
+              An agent will write <code>#3b82f6</code> and <code>13px 22px</code> when your system already has a token for both. Each value looks fine in review. Together they are drift.
+            </p>
+            <p>
+              Buoy finds each hardcoded value and replaces it with the token that already exists.
+            </p>
+          </div>
+          <div class="split-fig">
+            <LockOn />
+          </div>
+        </div>
+      </section>
+
+      <!-- What it checks -->
+      <section class="sec wrap" id="checks">
+        <div class="sec-head">
+          <h2>What Buoy checks</h2>
+          <p>Each finding has a severity, so you know what to fix first.</p>
+        </div>
+        <div class="tbl" role="table" aria-label="Drift types Buoy detects">
+          <div class="tr th" role="row">
+            <span role="columnheader">Check</span>
+            <span role="columnheader">What it finds</span>
+            <span role="columnheader">Severity</span>
+          </div>
+          {checks.map((c) => (
+            <div class="tr" role="row">
+              <span class="td-name" role="cell">{c.href ? <a href={c.href}>{c.name}</a> : c.name}</span>
+              <span class="td-what" role="cell">
+                {c.what}
+                {c.eg && <code class="eg">{c.eg}</code>}
+              </span>
+              <span class="td-lv" role="cell">{c.level}</span>
+            </div>
+          ))}
+        </div>
+        <p class="more"><a href="/features/drift-detection">Read how drift detection works</a></p>
+      </section>
+
+      <!-- CLI -->
+      <section class="sec wrap">
+        <div class="cli">
+          <div class="cli-text">
+            <h2>Three commands on your machine</h2>
+            <p>The CLI is open source. The GitHub App runs the same check on every pull request.</p>
+            <ol class="steps">
+              {steps.map((s) => (
+                <li>
+                  <code>{s.cmd}</code>
+                  <span>{s.what}</span>
+                </li>
+              ))}
+            </ol>
+            <p class="more"><a href="/docs">Read the docs</a></p>
+          </div>
+          <figure class="term">
+            <figcaption>Example output</figcaption>
+            <pre><span class="t-p">$</span> <span class="t-c">buoy drift check</span>
+
+Scanning for design drift...
+
+Found <b>23</b> issues in 142 files
+
+<b class="t-crit">CRITICAL (2)</b>
+├─ Button.tsx:12 Missing aria-label
+└─ Modal.tsx:45 Focus trap not implemented
+
+<b class="t-warn">HARDCODED VALUES (8)</b>
+├─ Card.tsx:8 #ffffff <span class="t-m">→ use var(--bg-surface)</span>
+├─ Badge.tsx:3 8px <span class="t-m">→ use var(--spacing-sm)</span>
+└─ <span class="t-m">... and 6 more</span></pre>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Deterministic -->
+      <section class="sec wrap">
+        <p class="big">
+          <span>No LLM in the scanner.</span>
+          <span>Nothing leaves your machine.</span>
+          <span>MIT licensed.</span>
+        </p>
+        <div class="two">
+          <div>
+            <h3>Open source CLI</h3>
+            <ul>
+              {cli.map((t) => <li>{t}</li>)}
+            </ul>
+            <p class="two-foot"><a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">View the source on GitHub</a></p>
+          </div>
+          <div>
+            <h3>GitHub App</h3>
+            <ul>
+              {app.map((t) => <li>{t}</li>)}
+            </ul>
+            <p class="two-foot">That prose is written through OpenRouter. <a href="/privacy#subprocessors">See what is sent</a>.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stack -->
+      <section class="sec wrap">
+        <div class="stack">
+          <h2>Works with</h2>
+          <ul>
+            {stack.map((s) => <li><a href={s.href}>{s.name}</a></li>)}
+          </ul>
+        </div>
+      </section>
+
+      <!-- Close -->
+      <section class="end">
+        <div class="wrap end-grid">
+          <div>
+            <h2>Scan a public GitHub repository</h2>
+            <p>Free, and it takes about a minute. You get a report of the drift Buoy finds.</p>
+            <div class="end-form"><ScanForm id="huashu-scan" /></div>
+          </div>
+          <div class="end-side">
+            <h3>Or put it on every pull request</h3>
+            <p>The CLI is free and open source. The GitHub App reviews every pull request.</p>
+            <p class="end-spots"><FreeSpots /></p>
+            <div class="btns">
+              <a class="btn btn-go" href={installUrl} target="_blank" rel="noopener noreferrer">Install the GitHub App</a>
+              <a class="btn btn-line-inv" href="/pricing">See pricing</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="ft">
+      <div class="wrap ft-in">
+        <div class="ft-brand">
+          <span class="ft-mark"><BuoyMark size={18} /></span>
+          <span>&copy; {new Date().getFullYear()} Buoy. Scanner is open source under MIT.</span>
+        </div>
+        <nav class="ft-nav" aria-label="Footer">
+          <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href={siteConfig.twitterUrl} target="_blank" rel="noopener noreferrer">Twitter</a>
+          <a href={siteConfig.discordUrl} target="_blank" rel="noopener noreferrer">Discord</a>
+          <a href="/scan">Scan a repo</a>
+          <a href="/docs">Docs</a>
+          <a href="/pricing">Pricing</a>
+          <a href="/guides">Guides</a>
+          <a href="/reports">Reports</a>
+          <a href="/compare">Compare</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+          <a href="/support">Support</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+</Layout>
+
+<script define:vars={{ fixes }}>
+  const pr = document.querySelector('[data-pr]')
+  if (pr) {
+    const status = pr.querySelector('[data-pr-status]')
+    const reset = pr.querySelector('[data-reset]')
+    const done = new Set()
+    const render = () => {
+      for (const f of fixes) {
+        const on = done.has(f.id)
+        const val = pr.querySelector(`[data-val="${f.id}"]`)
+        const cm = pr.querySelector(`[data-fix="${f.id}"]`)
+        const btn = pr.querySelector(`[data-commit="${f.id}"]`)
+        val.textContent = on ? f.to : f.from
+        val.classList.toggle('ok', on)
+        cm.classList.toggle('ok', on)
+        btn.disabled = on
+        btn.textContent = on ? 'Committed' : 'Commit suggestion'
+      }
+      const left = fixes.length - done.size
+      status.textContent = left ? `Buoy Design Check: ${left} to fix` : 'Buoy Design Check: passed'
+      status.classList.toggle('ok', left === 0)
+      reset.disabled = done.size === 0
+    }
+    pr.addEventListener('click', (e) => {
+      const t = e.target.closest('button')
+      if (!t) return
+      if (t.dataset.commit) { done.add(t.dataset.commit); render() }
+      if (t.hasAttribute('data-reset')) {
+        done.clear(); render()
+        pr.querySelector('[data-commit]').focus()
+      }
+    })
+  }
+</script>
+
+<style is:global>
+  body:has(.t-huashu) { background: oklch(0.985 0.003 262); }
+
+  .t-huashu {
+    /* neutral ramp on the brand navy hue */
+    --paper: oklch(0.985 0.003 262);
+    --paper-2: oklch(0.96 0.006 262);
+    --rule: oklch(0.87 0.012 262);
+    --mute: oklch(0.47 0.025 262);
+    --ink: oklch(0.21 0.04 262);
+    --ink-2: oklch(0.27 0.045 262);
+    --on-ink: oklch(0.97 0.005 262);
+    --on-ink-mute: oklch(0.76 0.025 262);
+    --del: oklch(0.94 0.035 25);
+    --del-ink: oklch(0.45 0.14 25);
+    --ins: oklch(0.945 0.045 155);
+    --ins-ink: oklch(0.4 0.1 155);
+    --sans: 'Schibsted Grotesk', 'Helvetica Neue', Arial, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.55;
+    min-height: 100vh;
+    font-synthesis: none;
+  }
+  .t-huashu *, .t-huashu *::before, .t-huashu *::after { box-sizing: border-box; }
+  .t-huashu h1, .t-huashu h2, .t-huashu h3 { font-family: var(--sans); color: var(--ink); margin: 0; text-wrap: balance; }
+  .t-huashu p { margin: 0; text-wrap: pretty; }
+  .t-huashu code, .t-huashu pre { font-family: var(--mono); }
+  .t-huashu a { color: inherit; }
+  .t-huashu :focus-visible { outline: 2px solid var(--color-buoy); outline-offset: 3px; }
+  .t-huashu ::selection { background: var(--ink); color: var(--paper); }
+
+  .t-huashu .wrap { width: 100%; max-width: 1360px; margin-inline: auto; padding-inline: 16px; }
+  @media (min-width: 720px) { .t-huashu .wrap { padding-inline: 40px; } }
+
+  .t-huashu .skip { position: absolute; left: 16px; top: -60px; background: var(--ink); color: var(--on-ink); padding: 10px 14px; z-index: 50; }
+  .t-huashu .skip:focus { top: 12px; }
+
+  /* Header */
+  .t-huashu .hd { border-bottom: 1px solid var(--rule); }
+  .t-huashu .hd-in { display: flex; align-items: center; gap: 24px; height: 68px; }
+  .t-huashu .hd-logo { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
+  .t-huashu .hd-nav { display: none; gap: 4px; margin-left: auto; }
+  .t-huashu .hd-nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; font-size: 15px; text-decoration: none; }
+  .t-huashu .hd-nav a:hover { text-decoration: underline; text-underline-offset: 5px; }
+  .t-huashu .hd .btn { margin-left: auto; }
+  @media (min-width: 900px) {
+    .t-huashu .hd-nav { display: flex; }
+    .t-huashu .hd .btn { margin-left: 12px; }
+  }
+
+  /* Buttons: one size per group */
+  .t-huashu .btn { display: inline-flex; align-items: center; justify-content: center; height: 52px; padding: 0 22px; font-family: var(--sans); font-size: 16px; font-weight: 600; text-decoration: none; border: 1.5px solid var(--ink); border-radius: 2px; white-space: nowrap; transition: background-color .15s ease, color .15s ease, transform .15s ease; }
+  .t-huashu .btn:active { transform: translateY(1px); }
+  .t-huashu .btn-sm { height: 44px; padding: 0 16px; font-size: 15px; }
+  .t-huashu .btn-go { background: var(--color-buoy); color: var(--ink); }
+  .t-huashu .btn-go:hover { background: var(--color-buoy-light); }
+  .t-huashu .btn-ink { background: var(--ink); color: var(--on-ink); }
+  .t-huashu .btn-ink:hover { background: var(--ink-2); }
+  .t-huashu .btn-line { background: transparent; color: var(--ink); }
+  .t-huashu .btn-line:hover { background: var(--ink); color: var(--on-ink); }
+  .t-huashu .btn-line-inv { background: transparent; color: var(--on-ink); border-color: var(--on-ink-mute); }
+  .t-huashu .btn-line-inv:hover { background: var(--on-ink); color: var(--ink); }
+  .t-huashu .btns { display: grid; grid-template-columns: 1fr; gap: 12px; }
+  @media (min-width: 480px) { .t-huashu .btns { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 460px; } }
+
+  /* Hero */
+  .t-huashu .hero { padding-top: 40px; padding-bottom: 72px; }
+  .t-huashu .hero h1 { font-size: clamp(46px, 8.7vw, 128px); font-weight: 800; line-height: 0.94; letter-spacing: -0.045em; }
+  .t-huashu .h1-br { display: inline; }
+  @media (min-width: 900px) {
+    .t-huashu .hero { padding-top: 56px; padding-bottom: 112px; }
+    .t-huashu .h1-br { display: block; }
+  }
+  .t-huashu .hero-grid { display: grid; gap: 40px; margin-top: 32px; }
+  .t-huashu .lede { font-size: 20px; line-height: 1.4; max-width: 30em; }
+  .t-huashu .hero-side .btns { margin-top: 28px; }
+  .t-huashu .spots { margin-top: 16px; font-size: 15px; color: var(--mute); min-height: 3.1em; }
+  @media (min-width: 1000px) { .t-huashu .spots { min-height: 1.6em; } }
+  .t-huashu .hero-note { display: none; }
+  @media (min-width: 1000px) {
+    .t-huashu .hero-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 32px; margin-top: 48px; align-items: start; }
+    .t-huashu .hero-side { grid-column: 1 / span 5; position: sticky; top: 32px; padding-right: 24px; }
+    .t-huashu .hero-grid .pr { grid-column: 6 / -1; }
+    .t-huashu .lede { font-size: 23px; }
+    .t-huashu .hero-note { display: block; margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--rule); font-size: 15px; color: var(--mute); max-width: 26em; }
+  }
+
+  /* The pull request */
+  .t-huashu .pr { background: #fff; border: 1.5px solid var(--ink); border-radius: 4px; overflow: hidden; font-size: 14px; min-width: 0; animation: hs-rise .5s cubic-bezier(.2,.7,.2,1) both; }
+  .t-huashu .pr-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 16px; padding: 12px 16px; border-bottom: 1.5px solid var(--ink); }
+  .t-huashu .pr-name { font-weight: 600; font-size: 15px; }
+  .t-huashu .pr-num { color: var(--mute); font-size: 15px; }
+  .t-huashu .pr-check { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--del-ink); min-width: 23ch; }
+  .t-huashu .pr-check.ok { color: var(--ins-ink); }
+  .t-huashu .pr-file { font-family: var(--mono); font-size: 13px; padding: 9px 16px; background: var(--paper-2); border-bottom: 1px solid var(--rule); border-top: 1px solid var(--rule); }
+  .t-huashu .pr-top + .pr-file { border-top: 0; }
+  .t-huashu .code { overflow-x: auto; }
+  .t-huashu .ln { display: grid; grid-template-columns: 40px 20px minmax(max-content, 1fr); font-family: var(--mono); font-size: 13px; line-height: 26px; white-space: pre; }
+  .t-huashu .ln .no { text-align: right; padding-right: 10px; color: var(--mute); user-select: none; }
+  .t-huashu .ln .sg, .t-huashu .sug-row .sg { text-align: center; color: var(--mute); user-select: none; }
+  .t-huashu .ln.add { background: var(--ins); }
+  .t-huashu .ln.add .no { background: oklch(0.9 0.06 155); color: var(--ins-ink); }
+  .t-huashu .ln.hunk { background: var(--paper-2); color: var(--mute); }
+  .t-huashu .ln code, .t-huashu .sug-row code { font-size: inherit; padding-right: 16px; }
+  .t-huashu .ln code.i1 { padding-left: 2ch; } .t-huashu .ln code.i2 { padding-left: 4ch; } .t-huashu .ln code.i3 { padding-left: 6ch; } .t-huashu .ln code.i4 { padding-left: 8ch; }
+  .t-huashu .val { text-decoration: underline; text-decoration-color: var(--color-buoy); text-decoration-thickness: 2.5px; text-underline-offset: 4px; transition: background-color .3s ease; }
+  .t-huashu .val.ok { text-decoration: none; font-weight: 700; color: var(--ins-ink); }
+
+  .t-huashu .cm { margin: 12px 16px 16px 16px; border: 1px solid var(--rule); border-radius: 4px; padding: 12px 14px 14px; background: #fff; }
+  @media (min-width: 720px) { .t-huashu .cm { margin-left: 60px; } }
+  .t-huashu .cm-who { display: flex; align-items: center; gap: 6px; font-size: 14px; }
+  .t-huashu .cm-who svg { margin-right: 1px; }
+  .t-huashu .cm-bot { font-size: 12px; line-height: 18px; border: 1px solid var(--rule); border-radius: 10px; padding: 0 7px; color: var(--mute); }
+  .t-huashu .cm-on { color: var(--mute); font-size: 13px; margin-left: 2px; }
+  .t-huashu .cm-msg { margin-top: 8px; font-size: 15px; line-height: 1.5; }
+  .t-huashu .cm-msg code { white-space: nowrap; font-size: 13px; background: var(--paper-2); padding: 1px 5px; border-radius: 3px; }
+  .t-huashu .sug { margin-top: 10px; border: 1px solid var(--rule); border-radius: 3px; overflow-x: auto; }
+  .t-huashu .sug-row { display: grid; grid-template-columns: 24px minmax(max-content, 1fr); font-family: var(--mono); font-size: 13px; line-height: 26px; white-space: pre; }
+  .t-huashu .sug-row.del { background: var(--del); }
+  .t-huashu .sug-row.ins { background: var(--ins); }
+  .t-huashu .cm-btn { margin-top: 12px; height: 44px; min-width: 172px; padding: 0 14px; font-family: var(--sans); font-size: 14px; font-weight: 600; color: var(--ink); background: #fff; border: 1.5px solid var(--ink); border-radius: 2px; transition: background-color .15s ease, color .15s ease; }
+  .t-huashu .cm-btn:hover:not(:disabled) { background: var(--ink); color: var(--on-ink); }
+  .t-huashu .cm-btn:disabled { border-color: transparent; background: var(--ins); color: var(--ins-ink); cursor: default; }
+  .t-huashu .cm.ok .sug-row.del code { text-decoration: line-through; }
+  .t-huashu .pr-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 4px 6px 4px 16px; border-top: 1px solid var(--rule); background: var(--paper-2); font-size: 13px; color: var(--mute); }
+  .t-huashu .pr-reset { height: 44px; padding: 0 10px; font-family: var(--sans); font-size: 13px; font-weight: 600; color: var(--ink); background: none; border: 0; text-decoration: underline; text-underline-offset: 4px; }
+  .t-huashu .pr-reset:disabled { color: var(--mute); text-decoration: none; opacity: .55; cursor: default; }
+
+  @keyframes hs-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+  /* Sections */
+  .t-huashu .sec { padding-top: 64px; padding-bottom: 64px; position: relative; }
+  .t-huashu .sec::before { content: ''; position: absolute; top: 0; left: 16px; right: 16px; border-top: 1.5px solid var(--ink); }
+  @media (min-width: 720px) { .t-huashu .sec::before { left: 40px; right: 40px; } }
+  @media (min-width: 900px) { .t-huashu .sec { padding-top: 88px; padding-bottom: 112px; } }
+  .t-huashu h2 { font-size: clamp(30px, 3.9vw, 52px); font-weight: 800; line-height: 1.03; letter-spacing: -0.032em; }
+  .t-huashu h3 { font-size: 21px; font-weight: 700; letter-spacing: -0.012em; line-height: 1.2; }
+  .t-huashu .more { margin-top: 28px; font-size: 16px; font-weight: 600; }
+  .t-huashu .more a, .t-huashu .two-foot a { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 5px; }
+  .t-huashu .more a:hover, .t-huashu .two-foot a:hover { text-decoration-color: var(--color-buoy); }
+
+  .t-huashu .split { display: grid; gap: 36px; }
+  .t-huashu .split-text p { margin-top: 20px; max-width: 32em; color: var(--ink); }
+  .t-huashu .split-text code { font-size: 0.86em; background: var(--paper-2); padding: 1px 5px; border-radius: 3px; }
+  .t-huashu .split-fig { min-width: 0; }
+  .t-huashu .split-fig .lockon { border-radius: 4px; }
+  @media (min-width: 1000px) {
+    .t-huashu .split { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 32px; align-items: start; }
+    .t-huashu .split-text { grid-column: 1 / span 5; padding-right: 24px; }
+    .t-huashu .split-fig { grid-column: 6 / -1; }
+  }
+
+  /* Checks table */
+  .t-huashu .sec-head { display: grid; gap: 12px; margin-bottom: 40px; }
+  .t-huashu .sec-head p { color: var(--mute); max-width: 30em; }
+  @media (min-width: 1000px) {
+    .t-huashu .sec-head { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 32px; align-items: end; margin-bottom: 56px; }
+    .t-huashu .sec-head h2 { grid-column: 1 / span 5; }
+    .t-huashu .sec-head p { grid-column: 6 / -1; }
+  }
+  .t-huashu .tr { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 16px; padding: 16px 0; border-top: 1px solid var(--rule); }
+  .t-huashu .tr.th { display: none; }
+  .t-huashu .td-name { font-size: 22px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.2; }
+  .t-huashu .td-name a { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 5px; text-decoration-color: var(--rule); }
+  .t-huashu .td-name a:hover { text-decoration-color: var(--color-buoy); }
+  .t-huashu .td-what { grid-column: 1 / -1; grid-row: 2; color: var(--mute); font-size: 16px; }
+  .t-huashu .td-lv { font-family: var(--mono); font-size: 13px; align-self: center; }
+  .t-huashu .eg { display: block; margin-top: 4px; font-size: 13px; color: var(--ink); overflow-wrap: anywhere; }
+  .t-huashu .tbl { border-bottom: 1px solid var(--rule); }
+  @media (min-width: 1000px) {
+    .t-huashu .tr, .t-huashu .tr.th { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 32px; align-items: baseline; padding: 18px 0; }
+    .t-huashu .tr.th { font-size: 13px; color: var(--mute); padding: 0 0 10px; border-top: 0; }
+    .t-huashu .tr > :nth-child(1) { grid-column: 1 / span 5; }
+    .t-huashu .tr > :nth-child(2) { grid-column: 6 / span 5; grid-row: auto; }
+    .t-huashu .tr > :nth-child(3) { grid-column: 11 / -1; }
+    .t-huashu .td-name { font-size: 28px; }
+    .t-huashu .td-what { font-size: 17px; }
+    .t-huashu .tr:not(.th):hover { background: var(--paper-2); }
+  }
+
+  /* CLI */
+  .t-huashu .cli { display: grid; gap: 36px; }
+  .t-huashu .cli-text > p:first-of-type { margin-top: 20px; color: var(--mute); max-width: 30em; }
+  .t-huashu .steps { list-style: none; margin: 32px 0 0; padding: 0; counter-reset: s; }
+  .t-huashu .steps li { counter-increment: s; display: grid; grid-template-columns: 28px minmax(0, 1fr); column-gap: 8px; padding: 16px 0; border-top: 1px solid var(--rule); }
+  .t-huashu .steps li:last-child { border-bottom: 1px solid var(--rule); }
+  .t-huashu .steps li::before { content: counter(s); grid-row: 1 / span 2; font-family: var(--mono); font-size: 14px; line-height: 30px; color: var(--mute); }
+  .t-huashu .steps code { font-size: clamp(17px, 1.7vw, 22px); font-weight: 500; line-height: 30px; }
+  .t-huashu .steps span { color: var(--mute); font-size: 16px; }
+  .t-huashu .term { margin: 0; background: var(--ink); color: var(--on-ink); border-radius: 4px; min-width: 0; overflow: hidden; }
+  .t-huashu .term figcaption { padding: 10px 20px; font-size: 13px; color: var(--on-ink-mute); border-bottom: 1px solid oklch(0.34 0.04 262); }
+  .t-huashu .term pre { margin: 0; padding: 22px 20px 26px; font-size: 13.5px; line-height: 1.75; overflow-x: auto; }
+  .t-huashu .term b { font-weight: 700; }
+  .t-huashu .t-p, .t-huashu .t-m { color: var(--on-ink-mute); }
+  .t-huashu .t-crit { color: oklch(0.78 0.13 25); }
+  .t-huashu .t-warn { color: oklch(0.84 0.12 80); }
+  @media (min-width: 1000px) {
+    .t-huashu .cli { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 32px; align-items: start; }
+    .t-huashu .cli-text { grid-column: 1 / span 5; padding-right: 24px; }
+    .t-huashu .term { grid-column: 6 / -1; }
+    .t-huashu .term pre { font-size: 14.5px; padding: 28px 28px 34px; }
+    .t-huashu .term figcaption { padding-inline: 28px; }
+  }
+
+  /* Deterministic */
+  .t-huashu .big { font-size: clamp(34px, 6.3vw, 92px); font-weight: 800; line-height: 1; letter-spacing: -0.04em; }
+  .t-huashu .big span { display: block; }
+  .t-huashu .big span + span { margin-top: 0.08em; }
+  .t-huashu .two { display: grid; gap: 40px; margin-top: 48px; }
+  .t-huashu .two h3 { padding-bottom: 14px; border-bottom: 1.5px solid var(--ink); }
+  .t-huashu .two ul { list-style: none; margin: 0; padding: 0; }
+  .t-huashu .two li { padding: 12px 0; border-bottom: 1px solid var(--rule); font-size: 17px; }
+  .t-huashu .two-foot { margin-top: 16px; font-size: 15px; color: var(--mute); }
+  .t-huashu .two-foot a { color: var(--ink); font-weight: 600; }
+  @media (min-width: 800px) {
+    .t-huashu .two { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; margin-top: 72px; }
+  }
+
+  /* Stack */
+  .t-huashu .stack { display: grid; gap: 20px; }
+  .t-huashu .stack ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 28px; }
+  .t-huashu .stack li a { display: inline-flex; align-items: center; min-height: 48px; font-size: clamp(24px, 3vw, 40px); font-weight: 600; letter-spacing: -0.025em; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 7px; text-decoration-color: var(--rule); }
+  .t-huashu .stack li a:hover { text-decoration-color: var(--color-buoy); }
+  .t-huashu .sec:has(.stack) { padding-bottom: 72px; }
+  @media (min-width: 1000px) {
+    .t-huashu .stack { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 32px; align-items: baseline; }
+    .t-huashu .stack h2 { grid-column: 1 / span 5; }
+    .t-huashu .stack ul { grid-column: 6 / -1; }
+  }
+
+  /* Close */
+  .t-huashu .end { background: var(--ink); color: var(--on-ink); padding: 72px 0; }
+  .t-huashu .end h2, .t-huashu .end h3 { color: var(--on-ink); }
+  .t-huashu .end p { margin-top: 16px; color: var(--on-ink-mute); max-width: 30em; }
+  .t-huashu .end-grid { display: grid; gap: 56px; }
+  .t-huashu .end-form { margin-top: 28px; max-width: 620px; }
+  .t-huashu .end-form input { background: var(--on-ink); color: var(--ink); border: 1.5px solid var(--on-ink); border-radius: 2px; height: 52px; min-width: 0; font-family: var(--mono); font-size: 15px; }
+  .t-huashu .end-form input::placeholder { color: var(--mute); }
+  .t-huashu .end-form button { background: transparent; color: var(--on-ink); border: 1.5px solid var(--on-ink-mute); border-radius: 2px; height: 52px; font-family: var(--sans); font-size: 16px; white-space: nowrap; }
+  .t-huashu .end-form .scan-error { color: oklch(0.8 0.12 25); }
+  .t-huashu .end .end-spots { margin-top: 8px; min-height: 3.1em; color: var(--on-ink); }
+  .t-huashu .end-form button:hover { background: var(--on-ink); color: var(--ink); opacity: 1; }
+  .t-huashu .end-side .btns { margin-top: 12px; }
+  .t-huashu .end-side h3 { font-size: 24px; }
+  @media (min-width: 1000px) {
+    .t-huashu .end { padding: 112px 0; }
+    .t-huashu .end-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 32px; align-items: start; }
+    .t-huashu .end-grid > :first-child { grid-column: 1 / span 7; padding-right: 32px; }
+    .t-huashu .end-side { grid-column: 8 / -1; padding-top: 8px; }
+  }
+
+  /* Footer */
+  .t-huashu .ft { background: var(--ink); color: var(--on-ink-mute); border-top: 1px solid oklch(0.34 0.04 262); font-size: 14px; }
+  .t-huashu .ft-in { display: flex; flex-direction: column; gap: 16px; padding-top: 28px; padding-bottom: 36px; }
+  .t-huashu .ft-brand { display: flex; align-items: center; gap: 8px; }
+  .t-huashu .ft-mark { display: inline-flex; line-height: 0; }
+  .t-huashu .ft-nav { display: flex; flex-wrap: wrap; gap: 0 20px; }
+  .t-huashu .ft-nav a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
+  .t-huashu .ft-nav a:hover { color: var(--on-ink); text-decoration: underline; text-underline-offset: 5px; }
+  @media (min-width: 1100px) { .t-huashu .ft-in { flex-direction: row; justify-content: space-between; align-items: center; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .t-huashu .pr { animation: none; }
+    .t-huashu * { transition: none !important; }
+  }
+</style>

@@ -1,0 +1,196 @@
+---
+// Local-only viewer: try other dark grounds on the real site pages.
+// Each option re-points the dark ground tokens (one hue + chroma + lightness) and the homepage sea,
+// injected into the framed page, so nothing in the site source changes.
+import Layout from '../../layouts/Layout.astro'
+import BuoyLogo from '../../components/BuoyLogo.astro'
+
+const grounds = [
+  { id: 'navy', name: 'Deep ocean (applied)', h: 248, c: 0.045, l: 0.155, note: 'Now the site default on this branch.' },
+  { id: 'oldnavy', name: 'Old navy', h: 258, c: 0.028, l: 0.175, note: 'What buoy.design shows today.' },
+  { id: 'graphite', name: 'Graphite', h: 258, c: 0.005, l: 0.18, note: 'Neutral charcoal with the faintest cool cast.' },
+  { id: 'warm', name: 'Warm black', h: 60, c: 0.01, l: 0.17, note: 'Espresso black; makes the orange feel hotter.' },
+  { id: 'petrol', name: 'Petrol', h: 215, c: 0.03, l: 0.18, note: 'Deep blue-green, like the sea at night.' },
+  { id: 'moss', name: 'Sea moss', h: 168, c: 0.022, l: 0.175, note: 'Dark green-grey; orange reads as a buoy on water.' },
+  { id: 'plum', name: 'Aubergine', h: 318, c: 0.026, l: 0.17, note: 'Dark plum; warmer and less expected.' },
+  { id: 'oled', name: 'Near black', h: 258, c: 0.006, l: 0.135, note: 'Almost black, for maximum contrast.' },
+]
+const fonts = [
+  { id: 'quicksand', name: 'Quicksand (live)', family: 'Quicksand', weight: 700, q: '', g: 'Rounded' },
+  { id: 'nunito', name: 'Nunito', family: 'Nunito', weight: 800, q: 'Nunito:wght@700;800', g: 'Rounded' },
+  { id: 'fredoka', name: 'Fredoka', family: 'Fredoka', weight: 600, q: 'Fredoka:wght@500;600', g: 'Rounded' },
+  { id: 'varela', name: 'Varela Round', family: 'Varela Round', weight: 400, q: 'Varela+Round', g: 'Rounded' },
+  { id: 'mplus', name: 'M PLUS Rounded', family: 'M PLUS Rounded 1c', weight: 800, q: 'M+PLUS+Rounded+1c:wght@700;800', g: 'Rounded' },
+  { id: 'baloo', name: 'Baloo 2', family: 'Baloo 2', weight: 700, q: 'Baloo+2:wght@600;700', g: 'Rounded' },
+  { id: 'sora', name: 'Sora', family: 'Sora', weight: 700, q: 'Sora:wght@500;600;700', g: 'Geometric' },
+  { id: 'outfit', name: 'Outfit', family: 'Outfit', weight: 700, q: 'Outfit:wght@500;600;700', g: 'Geometric' },
+  { id: 'urbanist', name: 'Urbanist', family: 'Urbanist', weight: 800, q: 'Urbanist:wght@700;800', g: 'Geometric' },
+  { id: 'lexend', name: 'Lexend', family: 'Lexend', weight: 700, q: 'Lexend:wght@600;700', g: 'Geometric' },
+  { id: 'jakarta', name: 'Plus Jakarta Sans', family: 'Plus Jakarta Sans', weight: 800, q: 'Plus+Jakarta+Sans:wght@700;800', g: 'Geometric' },
+  { id: 'redhat', name: 'Red Hat Display', family: 'Red Hat Display', weight: 800, q: 'Red+Hat+Display:wght@700;800', g: 'Geometric' },
+  { id: 'gabarito', name: 'Gabarito', family: 'Gabarito', weight: 800, q: 'Gabarito:wght@700;800', g: 'Geometric' },
+  { id: 'albert', name: 'Albert Sans', family: 'Albert Sans', weight: 800, q: 'Albert+Sans:wght@700;800', g: 'Geometric' },
+  { id: 'manrope', name: 'Manrope', family: 'Manrope', weight: 800, q: 'Manrope:wght@600;700;800', g: 'Grotesque' },
+  { id: 'space', name: 'Space Grotesk', family: 'Space Grotesk', weight: 700, q: 'Space+Grotesk:wght@500;600;700', g: 'Grotesque' },
+  { id: 'bricolage', name: 'Bricolage Grotesque', family: 'Bricolage Grotesque', weight: 700, q: 'Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800', g: 'Grotesque' },
+  { id: 'instrument', name: 'Instrument Sans', family: 'Instrument Sans', weight: 700, q: 'Instrument+Sans:wght@500;600;700', g: 'Grotesque' },
+  { id: 'archivo', name: 'Archivo', family: 'Archivo', weight: 800, q: 'Archivo:wght@600;700;800', g: 'Grotesque' },
+  { id: 'schibsted', name: 'Schibsted Grotesk', family: 'Schibsted Grotesk', weight: 800, q: 'Schibsted+Grotesk:wght@700;800', g: 'Grotesque' },
+  { id: 'hanken', name: 'Hanken Grotesk', family: 'Hanken Grotesk', weight: 800, q: 'Hanken+Grotesk:wght@700;800', g: 'Grotesque' },
+  { id: 'familjen', name: 'Familjen Grotesk', family: 'Familjen Grotesk', weight: 700, q: 'Familjen+Grotesk:wght@600;700', g: 'Grotesque' },
+  { id: 'onest', name: 'Onest', family: 'Onest', weight: 800, q: 'Onest:wght@700;800', g: 'Grotesque' },
+  { id: 'dmsans', name: 'DM Sans', family: 'DM Sans', weight: 800, q: 'DM+Sans:opsz,wght@9..40,700;9..40,800', g: 'Grotesque' },
+  { id: 'figtree', name: 'Figtree', family: 'Figtree', weight: 800, q: 'Figtree:wght@700;800', g: 'Grotesque' },
+  { id: 'intertight', name: 'Inter Tight', family: 'Inter Tight', weight: 800, q: 'Inter+Tight:wght@700;800', g: 'Grotesque' },
+  { id: 'epilogue', name: 'Epilogue', family: 'Epilogue', weight: 800, q: 'Epilogue:wght@700;800', g: 'Grotesque' },
+  { id: 'syne', name: 'Syne', family: 'Syne', weight: 800, q: 'Syne:wght@700;800', g: 'Display' },
+  { id: 'unbounded', name: 'Unbounded', family: 'Unbounded', weight: 700, q: 'Unbounded:wght@600;700', g: 'Display' },
+  { id: 'geologica', name: 'Geologica', family: 'Geologica', weight: 700, q: 'Geologica:wght@600;700', g: 'Display' },
+  { id: 'darker', name: 'Darker Grotesque', family: 'Darker Grotesque', weight: 800, q: 'Darker+Grotesque:wght@700;800', g: 'Display' },
+  { id: 'spacemono', name: 'Space Mono', family: 'Space Mono', weight: 700, q: 'Space+Mono:wght@700', g: 'Display' },
+  { id: 'fraunces', name: 'Fraunces', family: 'Fraunces', weight: 700, q: 'Fraunces:opsz,wght@9..144,600;9..144,700', g: 'Serif' },
+  { id: 'dmserif', name: 'DM Serif Display', family: 'DM Serif Display', weight: 400, q: 'DM+Serif+Display', g: 'Serif' },
+  { id: 'instserif', name: 'Instrument Serif', family: 'Instrument Serif', weight: 400, q: 'Instrument+Serif', g: 'Serif' },
+  { id: 'youngserif', name: 'Young Serif', family: 'Young Serif', weight: 400, q: 'Young+Serif', g: 'Serif' },
+  { id: 'newsreader', name: 'Newsreader', family: 'Newsreader', weight: 600, q: 'Newsreader:opsz,wght@6..72,600', g: 'Serif' },
+]
+const pages = [
+  { path: '/', label: 'Home' },
+  { path: '/pricing', label: 'Pricing' },
+  { path: '/features/hardcoded-values', label: 'Feature' },
+  { path: '/docs/quick-start', label: 'Docs' },
+  { path: '/compare/percy', label: 'Compare' },
+  { path: '/reports/formbricks/formbricks', label: 'Report' },
+]
+---
+
+<Layout title="Dark ground options" noindex>
+  <div class="gv">
+    <header class="gv-bar">
+      <a href="/" class="gv-logo" aria-label="Buoy home"><BuoyLogo size="1.15rem" /></a>
+      <div class="gv-group" role="group" aria-label="Ground">
+        {grounds.map((g, i) => (
+          <button type="button" class="gv-btn" data-ground={g.id} aria-pressed={i === 0 ? 'true' : 'false'}>
+            <span class="gv-swatch" style={`background: oklch(${g.l} ${g.c} ${g.h})`}></span>{g.name}
+          </button>
+        ))}
+      </div>
+    </header>
+    <div class="gv-sub">
+      <div class="gv-fonts" role="group" aria-label="Headline font">
+        {[...new Set(fonts.map((f) => f.g))].map((g) => (
+          <div class="gv-fgroup">
+            <span class="gv-glabel">{g}</span>
+            {fonts.filter((f) => f.g === g).map((f) => (
+              <button type="button" class="gv-btn gv-font" data-font={f.id} aria-pressed={f.id === 'quicksand' ? 'true' : 'false'}>{f.name}</button>
+            ))}
+          </div>
+        ))}
+      </div>
+      <p class="gv-note"><strong id="gv-name"></strong> <span id="gv-note"></span></p>
+      <div class="gv-group" role="group" aria-label="Page">
+        {pages.map((p, i) => (
+          <button type="button" class="gv-btn gv-page" data-path={p.path} aria-pressed={i === 0 ? 'true' : 'false'}>{p.label}</button>
+        ))}
+      </div>
+    </div>
+    <iframe id="gv-frame" title="Site preview with the selected dark ground" src="/"></iframe>
+  </div>
+  <script is:inline type="application/json" id="gv-data" set:html={JSON.stringify(grounds)}></script>
+  <script is:inline type="application/json" id="gv-fonts" set:html={JSON.stringify(fonts)}></script>
+</Layout>
+
+<style>
+  .gv { display: grid; grid-template-rows: auto auto 1fr; height: 100dvh; background: #0b0d10; color: #e7e9ee; }
+  .gv-bar, .gv-sub { display: flex; align-items: center; gap: 16px; padding: 10px 16px; border-bottom: 1px solid #ffffff14; }
+  .gv-sub { justify-content: space-between; flex-wrap: wrap; row-gap: 8px; }
+  .gv-logo { color: #fff; flex: none; }
+  .gv-group { display: flex; flex-wrap: wrap; gap: 4px; }
+  .gv-btn {
+    display: inline-flex; align-items: center; gap: 8px; height: 32px; padding: 0 12px;
+    border: 0; border-radius: 8px; background: transparent; color: #a9b0bd;
+    font: 500 13px/1 Inter, system-ui, sans-serif; cursor: pointer;
+    transition: background-color 120ms ease-out, color 120ms ease-out;
+  }
+  .gv-btn:hover { background: #ffffff10; color: #fff; }
+  .gv-btn[aria-pressed='true'] { background: #ffffff1a; color: #fff; box-shadow: inset 0 -2px 0 var(--color-buoy); }
+  .gv-swatch { width: 14px; height: 14px; border-radius: 4px; box-shadow: 0 0 0 1px #ffffff33; }
+  .gv-fonts { display: grid; gap: 4px; width: 100%; }
+  .gv-fgroup { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 4px; }
+  .gv-glabel { width: 80px; font: 600 11px/1 Inter, system-ui, sans-serif; color: #6f7684; }
+  .gv-fonts .gv-btn { height: 26px; padding: 0 9px; font-size: 12px; }
+  .gv-note { margin: 0; font-size: 13px; color: #a9b0bd; }
+  .gv-note strong { color: #fff; margin-right: 6px; }
+  iframe { width: 100%; height: 100%; border: 0; background: #000; }
+</style>
+
+<script>
+  type G = { id: string; name: string; h: number; c: number; l: number; note: string }
+  const grounds: G[] = JSON.parse(document.getElementById('gv-data')!.textContent || '[]')
+  const frame = document.getElementById('gv-frame') as HTMLIFrameElement
+  type F = { id: string; name: string; family: string; weight: number; q: string }
+  const fonts: F[] = JSON.parse(document.getElementById('gv-fonts')!.textContent || '[]')
+  let current = grounds[0]
+  let font = fonts[0]
+
+  // The live palette is navy at chroma 0.028; scale every token's chroma from that base so the
+  // relationships between levels stay the same, and shift lightness by the option's offset.
+  const css = (g: G) => {
+    const k = g.c / 0.028
+    const dl = g.l - 0.175
+    const o = (l: number, c: number, a = '') => `oklch(${(l + dl).toFixed(3)} ${(c * k).toFixed(4)} ${g.h}${a})`
+    const t = (l: number, c: number) => `oklch(${l} ${(c * k).toFixed(4)} ${g.h})` // text levels: hue only
+    const wave = Math.min(0.09, Math.max(0.012, g.c * 3))
+    return `:root:not(.light) {
+  --color-bg: ${o(0.175, 0.028)}; --color-band: ${o(0.198, 0.03)}; --color-surface: ${o(0.215, 0.03)};
+  --color-raised: ${o(0.245, 0.03)}; --color-term: ${o(0.145, 0.024)}; --color-field: ${o(0.15, 0.022)};
+  --color-navy: ${o(0.215, 0.03)}; --color-navy-dark: ${o(0.175, 0.028)}; --color-navy-light: ${o(0.34, 0.032)};
+  --color-ink: ${t(0.965, 0.006)}; --color-body: ${t(0.8, 0.018)}; --color-muted: ${t(0.66, 0.022)};
+}
+:root:not(.light) body { background: var(--color-bg); }
+:root:not(.light) .hp-hero {
+  --boat-hero-bg: var(--color-bg);
+  --boat-hero-sky: linear-gradient(180deg, ${o(0.175, 0.028, ' / 0')} 0%, ${o(0.19, 0.035)} 45%, ${o(0.16, 0.03)} 100%);
+  --boat-hero-wave-1: oklch(0.55 ${wave} ${g.h} / 0.12);
+  --boat-hero-wave-2: oklch(0.6 ${(wave * 0.9).toFixed(3)} ${g.h} / 0.1);
+  --boat-hero-wave-3: oklch(0.5 ${(wave * 0.9).toFixed(3)} ${g.h} / 0.13);
+}`
+  }
+
+  function apply() {
+    const doc = frame.contentDocument
+    if (!doc) return
+    let s = doc.getElementById('gv-ground') as HTMLStyleElement | null
+    if (!s) { s = doc.createElement('style'); s.id = 'gv-ground'; doc.head.appendChild(s) }
+    s.textContent = current.id === 'navy' ? '' : css(current)
+    let link = doc.getElementById('gv-font-link') as HTMLLinkElement | null
+    if (!link) { link = doc.createElement('link'); link.id = 'gv-font-link'; link.rel = 'stylesheet'; doc.head.appendChild(link) }
+    if (font.q) link.href = `https://fonts.googleapis.com/css2?family=${font.q}&display=swap`
+    let fs = doc.getElementById('gv-font') as HTMLStyleElement | null
+    if (!fs) { fs = doc.createElement('style'); fs.id = 'gv-font'; doc.head.appendChild(fs) }
+    fs.textContent = font.q ? `:root { --font-display: '${font.family}', system-ui, sans-serif; }
+h1, h2, h3, h4, h5, h6, .font-display, [class*="font-[Quicksand]"] { font-family: '${font.family}', system-ui, sans-serif !important; font-weight: ${font.weight}; }` : ''
+    document.getElementById('gv-name')!.textContent = current.name
+    document.getElementById('gv-note')!.textContent = current.note
+  }
+  frame.addEventListener('load', apply)
+
+  document.querySelectorAll<HTMLButtonElement>('[data-ground]').forEach((b) => b.addEventListener('click', () => {
+    current = grounds.find((g) => g.id === b.dataset.ground) || grounds[0]
+    document.querySelectorAll('[data-ground]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)))
+    history.replaceState(null, '', '#' + current.id)
+    apply()
+  }))
+  document.querySelectorAll<HTMLButtonElement>('.gv-font').forEach((b) => b.addEventListener('click', () => {
+    font = fonts.find((f) => f.id === b.dataset.font) || fonts[0]
+    document.querySelectorAll('.gv-font').forEach((x) => x.setAttribute('aria-pressed', String(x === b)))
+    apply()
+  }))
+  document.querySelectorAll<HTMLButtonElement>('.gv-page').forEach((b) => b.addEventListener('click', () => {
+    document.querySelectorAll('.gv-page').forEach((x) => x.setAttribute('aria-pressed', String(x === b)))
+    frame.src = b.dataset.path!
+  }))
+  const fromHash = grounds.find((g) => '#' + g.id === location.hash)
+  if (fromHash) (document.querySelector(`[data-ground="${fromHash.id}"]`) as HTMLButtonElement)?.click()
+  apply()
+</script>

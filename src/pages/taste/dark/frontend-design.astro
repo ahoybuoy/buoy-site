@@ -1,0 +1,1260 @@
+---
+import Layout from '../../../layouts/Layout.astro'
+import BoatHero from '../../../components/taste/BoatHero.astro'
+import BoatGlyph from '../../../components/taste/BoatGlyph.astro'
+import BuoyLogo from '../../../components/BuoyLogo.astro'
+import BuoyMark from '../../../components/BuoyMark.astro'
+import { siteConfig } from '../../../config'
+
+const installUrl = 'https://github.com/marketplace/buoy-design'
+
+const checks = [
+  { name: 'Hardcoded values', what: 'Colors, spacing and fonts that do not use tokens', severity: 'Warning', href: '/features/hardcoded-values' },
+  { name: 'Duplicate components', what: 'Similar components that should be consolidated', severity: 'Warning', href: '/features/duplicate-detection' },
+  { name: 'Inline styles', what: 'Inline CSS that should use tokens or classes', severity: 'Warning' },
+  { name: 'Deprecated patterns', what: 'Components marked as deprecated that are still in use', severity: 'Warning' },
+  { name: 'Framework sprawl', what: 'Multiple UI frameworks in the same codebase', severity: 'Warning', href: '/features/framework-sprawl' },
+  { name: 'Accessibility conflicts', what: 'Missing ARIA labels and focus issues', severity: 'Critical', href: '/features/accessibility-checks' },
+  { name: 'Naming inconsistency', what: 'Component and prop names that do not match your conventions', severity: 'Info', href: '/features/naming-consistency' },
+  { name: 'Orphaned components', what: 'Components in code but not in design', severity: 'Info' },
+]
+
+const stack = [
+  { name: 'React', href: '/integrations/react' },
+  { name: 'Vue', href: '/integrations/vue' },
+  { name: 'Svelte', href: '/integrations/svelte' },
+  { name: 'Angular', href: '/integrations/angular' },
+  { name: 'Next.js', href: '/integrations/nextjs' },
+  { name: 'Tailwind', href: '/integrations/tailwind' },
+  { name: 'GitHub', href: '/integrations/github' },
+]
+
+const annotations = [
+  { file: 'src/components/Card.tsx', line: 23, found: 'Hardcoded color', value: '#3b82f6', fix: 'var(--color-primary)' },
+  { file: 'src/components/Card.tsx', line: 31, found: 'Hardcoded spacing', value: '24px', fix: 'var(--spacing-lg)' },
+  { file: 'src/components/Modal.tsx', line: 8, found: 'Hardcoded border radius', value: '8px', fix: 'var(--radius-md)' },
+]
+---
+
+<Layout title="Buoy: catch design drift before it ships (dark)" noindex>
+  <Fragment slot="head">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </Fragment>
+
+  <div class="t-frontend-design t-fd-dark">
+    <a class="fd-skip" href="#main">Skip to content</a>
+
+    <header class="fd-header">
+      <div class="fd-wrap fd-header-row">
+        <a href="/" class="fd-logo" aria-label="Buoy home"><BuoyLogo size="1.6rem" /></a>
+        <nav class="fd-nav" aria-label="Main">
+          <a href="/docs">Docs</a>
+          <a href="/pricing">Pricing</a>
+          <a href="/scan">Scan a repo</a>
+          <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
+        <a class="fd-btn fd-btn-quiet fd-btn-sm" href={installUrl} target="_blank" rel="noopener noreferrer">Install the GitHub App</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- Hero -->
+      <BoatHero class="fd-hero" minHeight="calc(100svh - 4.5rem)">
+        <div class="fd-wrap fd-hero-inner">
+
+          <div class="fd-hero-row">
+            <div class="fd-hero-copy">
+            <h1 class="fd-h1">
+            <span>Catch design drift</span>
+            <span>before it ships.</span>
+          </h1>
+              <p class="fd-lede">
+                Buoy checks UI code against your design system. It reviews every pull request and
+                leaves an inline comment with the exact fix, such as the token that already exists
+                for a hardcoded color.
+              </p>
+              <div class="fd-actions">
+                <a class="fd-btn fd-btn-primary" href={installUrl} target="_blank" rel="noopener noreferrer">Install the GitHub App</a>
+                <a class="fd-btn fd-btn-quiet" href="/scan">Scan a public repo</a>
+              </div>
+              <p class="fd-note">
+                The scanner is open source under MIT. It runs without an LLM, and nothing leaves your machine.<BoatGlyph />
+              </p>
+            </div>
+
+            <figure class="fd-review" aria-label="A Buoy review comment on a pull request">
+              <div class="fd-review-head">
+                <span class="fd-path">src/components/Card.tsx</span>
+                <span class="fd-dim">Pull request #247</span>
+              </div>
+              <pre class="fd-code" tabindex="0"><code><span class="fd-ln"><i>21</i>const Card = () =&gt; (</span>
+<span class="fd-ln"><i>22</i>  &lt;div style=&#123;&#123;</span>
+<span class="fd-ln fd-flagged"><i>23</i>    background: "<b class="fd-drift">#3b82f6</b>",</span>
+</code></pre>
+              <div class="fd-comment">
+                <div class="fd-comment-by">
+                  <span class="fd-avatar"><BuoyMark size={18} /></span>
+                  <strong>buoy-design</strong>
+                  <span class="fd-bot">bot</span>
+                </div>
+                <p>
+                  Hardcoded color <code>#3b82f6</code>. Use <code>var(--color-primary)</code> instead.
+                </p>
+                <div class="fd-suggest">
+                  <div class="fd-suggest-head">Suggested change</div>
+                  <pre class="fd-code fd-code-inset"><code><span class="fd-ln fd-del"><i>-</i>background: "#3b82f6",</span>
+<span class="fd-ln fd-add"><i>+</i>background: "var(--color-primary)",</span>
+</code></pre>
+                </div>
+              </div>
+              <pre class="fd-code fd-code-tail" aria-hidden="true"><code><span class="fd-ln"><i>24</i>    padding: "24px",</span>
+<span class="fd-ln"><i>25</i>    borderRadius: "8px",</span>
+</code></pre>
+            </figure>
+          </div>
+        </div>
+      </BoatHero>
+
+      <!-- Why -->
+      <section class="fd-section">
+        <div class="fd-wrap">
+          <div class="fd-intro fd-intro-wide">
+            <h2 class="fd-h2">Coding agents write a lot of UI. They do not know your tokens.</h2>
+            <p>
+              Hardcoded values creep in, and drift compounds. The first component below is what
+              gets generated. The second is what your design system already provides.
+            </p>
+          </div>
+
+          <div class="fd-pair">
+            <figure class="fd-panel">
+              <figcaption class="fd-panel-head">
+                <span>What gets generated</span>
+                <span class="fd-path">Card.tsx</span>
+              </figcaption>
+              <pre class="fd-code" tabindex="0"><code>const Card = () =&gt; (
+  &lt;div style=&#123;&#123;
+    background: "<b class="fd-drift">#ffffff</b>",
+    padding: "<b class="fd-drift">16px</b>",
+    borderRadius: "<b class="fd-drift">8px</b>",
+    boxShadow: "<b class="fd-drift">0 2px 4px rgba...</b>"
+  &#125;&#125;&gt;
+    &#123;children&#125;
+  &lt;/div&gt;
+)</code></pre>
+            </figure>
+            <figure class="fd-panel">
+              <figcaption class="fd-panel-head">
+                <span>What your system already has</span>
+                <span class="fd-path">Card.tsx</span>
+              </figcaption>
+              <pre class="fd-code" tabindex="0"><code>import &#123; Card &#125; from "@/components"
+
+const MyCard = () =&gt; (
+  <b class="fd-ok">&lt;Card variant="elevated"&gt;</b>
+    &#123;children&#125;
+  <b class="fd-ok">&lt;/Card&gt;</b>
+)</code></pre>
+            </figure>
+          </div>
+          <p class="fd-caption">
+            Buoy underlines each hardcoded value and names the replacement: <code>#ffffff</code> becomes
+            <code>var(--bg)</code>, <code>16px</code> becomes <code>var(--space-4)</code>, and the
+            hand-built div becomes <code>&lt;Card&gt;</code>.
+          </p>
+        </div>
+      </section>
+
+      <!-- What it checks -->
+      <section class="fd-section fd-ruled" id="checks">
+        <div class="fd-wrap fd-split">
+          <div class="fd-intro">
+            <h2 class="fd-h2">What Buoy checks for</h2>
+            <p>Each finding has a severity, so you can decide what to fix first.</p>
+            <p><a class="fd-link" href="/features/drift-detection">Read how drift detection works</a></p>
+          </div>
+          <table class="fd-table">
+            <thead>
+              <tr>
+                <th scope="col">Check</th>
+                <th scope="col">What it finds</th>
+                <th scope="col">Severity</th>
+              </tr>
+            </thead>
+            <tbody>
+              {checks.map((c) => (
+                <tr>
+                  <th scope="row">
+                    {c.href ? <a class="fd-link" href={c.href}>{c.name}</a> : c.name}
+                  </th>
+                  <td>{c.what}</td>
+                  <td class="fd-sev">{c.severity}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Two ways to run it -->
+      <section class="fd-section fd-ruled">
+        <div class="fd-wrap">
+          <div class="fd-intro">
+            <h2 class="fd-h2">Run it in your terminal, or on every pull request</h2>
+          </div>
+
+          <div class="fd-pair fd-pair-top">
+            <div class="fd-way">
+              <figure class="fd-panel" aria-label="Terminal output of buoy drift check">
+                <figcaption class="fd-panel-head">
+                  <span>Terminal</span>
+                </figcaption>
+                <pre class="fd-code" tabindex="0"><code><span class="fd-dim">$</span> buoy drift check
+
+Scanning for design drift...
+Found 23 issues in 142 files
+
+CRITICAL (2)
+  Button.tsx:12  Missing aria-label
+  Modal.tsx:45   Focus trap not implemented
+
+HARDCODED VALUES (8)
+  Card.tsx:8   <b class="fd-drift">#ffffff</b>  <span class="fd-ok">use var(--bg-surface)</span>
+  Badge.tsx:3  <b class="fd-drift">8px</b>      <span class="fd-ok">use var(--spacing-sm)</span>
+  <span class="fd-dim">... and 6 more</span></code></pre>
+              </figure>
+              <h3 class="fd-h3">The command line tool</h3>
+              <p>
+                Set it up with <code>npx ahoybuoy dock</code>, then scan with <code>buoy drift check</code>.
+                Every issue comes with the file, the line and a suggested fix.
+                <code>buoy show health</code> tracks the health of your design system over time.
+              </p>
+              <p><a class="fd-link" href="/docs">Read the docs</a></p>
+            </div>
+
+            <div class="fd-way">
+              <figure class="fd-panel" aria-label="Buoy check result on a pull request">
+                <figcaption class="fd-panel-head">
+                  <span>feat: add new Card component</span>
+                  <span class="fd-dim">#247</span>
+                </figcaption>
+                <div class="fd-check-title">Buoy Design Check: 3 issues found</div>
+                <ul class="fd-annotations">
+                  {annotations.map((a) => (
+                    <li>
+                      <div class="fd-path">{a.file}<span class="fd-dim"> line {a.line}</span></div>
+                      <div>
+                        {a.found} <code class="fd-drift">{a.value}</code>. Use <code class="fd-ok">{a.fix}</code> instead.
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+                <div class="fd-check-foot">Fix these issues to merge</div>
+              </figure>
+              <h3 class="fd-h3">The GitHub App</h3>
+              <p>
+                Install it and every pull request gets checked. Comments are inline, on the line that
+                drifted, with a fix you can commit.
+              </p>
+              <p><a class="fd-link" href={installUrl} target="_blank" rel="noopener noreferrer">Install the GitHub App</a></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Deterministic -->
+      <section class="fd-deep">
+        <div class="fd-wrap fd-split2">
+          <h2 class="fd-h2">
+            The scanner is deterministic. No LLM, no API keys, and no data leaves your machine.
+          </h2>
+          <div class="fd-stacked">
+            <div>
+              <h3 class="fd-h3">Open source CLI</h3>
+              <ul class="fd-list">
+                <li>All scanning and drift detection</li>
+                <li>Fix suggestions with exact token replacements</li>
+                <li>Works offline and air-gapped</li>
+                <li>No external calls. MIT licensed.</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="fd-h3">GitHub App</h3>
+              <ul class="fd-list">
+                <li>Runs the same open-source scanner on every pull request</li>
+                <li>Summaries and coaching are written by an LLM. The findings stay deterministic.</li>
+                <li>Inline fix suggestions you can commit</li>
+                <li>A dashboard with health scores and trends</li>
+              </ul>
+              <p class="fd-small">
+                The written summaries go through OpenRouter.
+                <a class="fd-link" href="/privacy#subprocessors">See what is sent</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stack + cost -->
+      <section class="fd-section">
+        <div class="fd-wrap fd-split2">
+          <div>
+          <p class="fd-stack">
+            Works with
+            {stack.map((s, i) => (
+              <Fragment>
+                <a href={s.href}>{s.name}</a>{i < stack.length - 2 ? ', ' : i === stack.length - 2 ? ' and ' : '.'}
+              </Fragment>
+            ))}
+          </p>
+          <p><a class="fd-link" href="/pricing">See pricing</a></p>
+          </div>
+
+          <div class="fd-tiers fd-rows">
+            <div>
+              <h3 class="fd-h3">CLI</h3>
+              <p class="fd-price">Free and open source</p>
+              <p>Unlimited scans, all detection rules and fix suggestions, in any project.</p>
+            </div>
+            <div>
+              <h3 class="fd-h3">GitHub App</h3>
+              <p class="fd-price">Reviews every pull request</p>
+              <p>Inline pull request comments, a check status and fix suggestions.</p>
+            </div>
+            <div>
+              <h3 class="fd-h3">Organization</h3>
+              <p class="fd-price">For design-system owners</p>
+              <p>An org-wide record of how your system holds up across every repo that uses it.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Close -->
+      <section class="fd-section fd-ruled fd-close">
+        <div class="fd-wrap fd-split2">
+          <h2 class="fd-h2">See what Buoy finds in your code.</h2>
+          <div class="fd-close-act">
+          <p class="fd-lede">
+            Install the GitHub App to have your next pull request reviewed, or scan any public GitHub
+            repository for free in about a minute.
+          </p>
+          <div class="fd-actions">
+            <a class="fd-btn fd-btn-primary" href={installUrl} target="_blank" rel="noopener noreferrer">Install the GitHub App</a>
+            <a class="fd-btn fd-btn-quiet" href="/scan">Scan a public repo</a>
+          </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="fd-footer">
+      <div class="fd-wrap fd-footer-row">
+        <div class="fd-footer-brand">
+          <BuoyLogo size="1.25rem" />
+          <p>&copy; {new Date().getFullYear()} Buoy. The scanner is open source under MIT.</p>
+        </div>
+        <nav class="fd-footer-nav" aria-label="Footer">
+          <a href="/docs">Docs</a>
+          <a href="/pricing">Pricing</a>
+          <a href="/scan">Scan a repo</a>
+          <a href="/guides">Guides</a>
+          <a href="/reports">Reports</a>
+          <a href="/compare">Compare</a>
+          <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href={siteConfig.twitterUrl} target="_blank" rel="noopener noreferrer">Twitter</a>
+          <a href={siteConfig.discordUrl} target="_blank" rel="noopener noreferrer">Discord</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+          <a href="/support">Support</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+</Layout>
+
+<style is:global>
+  html:has(.t-frontend-design) body {
+    background: #071a1f;
+  }
+
+  .t-frontend-design {
+    /* Fog, deck, deep water, tide, line. The orange comes from the brand token. */
+    --fd-fog: #e7eded;
+    --fd-deck: #f5f8f8;
+    --fd-deep: #0b2a32;
+    --fd-deep-2: #12363f;
+    --fd-tide: #44626a;
+    --fd-line: #bccacc;
+    --fd-code: #cfdcde;
+    --fd-code-dim: #86a1a6;
+    --fd-add: #a4e0c4;
+    --fd-del: #f3ada0;
+    --fd-accent: var(--color-buoy);
+
+    --fd-sans: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+    --fd-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+    background: var(--fd-fog);
+    color: var(--fd-deep);
+    font-family: var(--fd-sans);
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    min-height: 100vh;
+    overflow-x: clip;
+  }
+
+  .t-frontend-design ::selection {
+    background: var(--fd-deep);
+    color: var(--fd-fog);
+  }
+
+  .t-frontend-design .fd-wrap {
+    max-width: 82rem;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 4vw, 3rem);
+  }
+
+  .t-frontend-design p {
+    max-width: 62ch;
+  }
+
+  .t-frontend-design code,
+  .t-frontend-design pre {
+    font-family: var(--fd-mono);
+  }
+
+  .t-frontend-design p code {
+    font-size: 0.86em;
+    background: color-mix(in srgb, var(--fd-deep) 9%, transparent);
+    padding: 0.1em 0.35em;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  /* Skip link */
+  .t-frontend-design .fd-skip {
+    position: absolute;
+    left: 1rem;
+    top: -4rem;
+    background: var(--fd-deep);
+    color: var(--fd-fog);
+    padding: 0.5rem 0.9rem;
+    border-radius: 6px;
+    z-index: 10;
+  }
+  .t-frontend-design .fd-skip:focus {
+    top: 1rem;
+  }
+
+  /* Header */
+  .t-frontend-design .fd-header-row {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    height: 4.5rem;
+  }
+  .t-frontend-design .fd-logo {
+    color: var(--fd-deep);
+    border-radius: 4px;
+  }
+  .t-frontend-design .fd-nav {
+    display: flex;
+    gap: 1.75rem;
+    margin-left: auto;
+    font-weight: 500;
+    font-size: 0.98rem;
+  }
+  .t-frontend-design .fd-nav a,
+  .t-frontend-design .fd-footer-nav a {
+    text-decoration: none;
+    border-radius: 3px;
+  }
+  .t-frontend-design .fd-nav a:hover,
+  .t-frontend-design .fd-footer-nav a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--fd-accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.3em;
+  }
+
+  /* Buttons */
+  .t-frontend-design .fd-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 3.25rem;
+    padding-inline: 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.0625rem;
+    font-stretch: 96%;
+    text-decoration: none;
+    border: 2px solid var(--fd-deep);
+    white-space: nowrap;
+    transition: background-color 0.12s ease, color 0.12s ease;
+  }
+  .t-frontend-design .fd-btn-primary {
+    background: var(--fd-accent);
+    color: var(--fd-deep);
+  }
+  .t-frontend-design .fd-btn-primary:hover {
+    background: var(--fd-deep);
+    color: var(--fd-fog);
+  }
+  .t-frontend-design .fd-btn-quiet {
+    background: transparent;
+    color: var(--fd-deep);
+  }
+  .t-frontend-design .fd-btn-quiet:hover {
+    background: var(--fd-deep);
+    color: var(--fd-fog);
+  }
+  .t-frontend-design .fd-btn-sm {
+    height: 2.5rem;
+    padding-inline: 1rem;
+    font-size: 0.95rem;
+  }
+  .t-frontend-design .fd-btn:focus-visible {
+    outline: 3px solid var(--fd-deep);
+    outline-offset: 3px;
+  }
+  .t-frontend-design .fd-deep :focus-visible {
+    outline-color: var(--fd-fog);
+  }
+  .t-frontend-design .fd-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  /* Links */
+  .t-frontend-design .fd-link {
+    color: inherit;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--fd-accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.28em;
+    border-radius: 3px;
+  }
+  .t-frontend-design .fd-link:hover {
+    text-decoration-thickness: 4px;
+  }
+
+  /* Type */
+  .t-frontend-design .fd-h1,
+  .t-frontend-design .fd-h2,
+  .t-frontend-design .fd-h3 {
+    font-family: var(--fd-sans);
+    color: inherit;
+  }
+  .t-frontend-design .fd-h1 {
+    font-stretch: 62%;
+    font-weight: 800;
+    font-size: clamp(3.5rem, 13.4vw, 12.75rem);
+    line-height: 0.86;
+    letter-spacing: -0.012em;
+    margin: 0;
+  }
+  .t-frontend-design .fd-h1 span {
+    display: block;
+  }
+  .t-frontend-design .fd-h2 {
+    font-stretch: 78%;
+    font-weight: 700;
+    font-size: clamp(2rem, 4.1vw, 3.6rem);
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+    max-width: 19ch;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .t-frontend-design .fd-h2-wide {
+    max-width: 24ch;
+  }
+  .t-frontend-design .fd-h3 {
+    font-stretch: 90%;
+    font-weight: 700;
+    font-size: 1.375rem;
+    line-height: 1.2;
+    letter-spacing: 0;
+    margin: 0;
+  }
+  .t-frontend-design .fd-lede {
+    font-size: clamp(1.125rem, 1.5vw, 1.3125rem);
+    line-height: 1.45;
+    max-width: 44ch;
+  }
+  .t-frontend-design .fd-note,
+  .t-frontend-design .fd-small,
+  .t-frontend-design .fd-caption {
+    font-size: 0.95rem;
+    color: var(--fd-tide);
+  }
+
+  /* Hero */
+  .t-frontend-design .fd-hero {
+    padding-block: clamp(1.25rem, 3vw, 2.5rem) clamp(4rem, 8vw, 7rem);
+  }
+  .t-frontend-design .fd-hero-row {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    margin-top: clamp(2rem, 4vw, 3.25rem);
+    align-items: start;
+  }
+  .t-frontend-design .fd-hero-copy {
+    display: grid;
+    gap: 1.5rem;
+  }
+  .t-frontend-design .fd-hero-copy .fd-note {
+    max-width: 40ch;
+  }
+
+  /* Code surfaces */
+  .t-frontend-design .fd-review,
+  .t-frontend-design .fd-panel {
+    background: var(--fd-deep);
+    color: var(--fd-code);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 0;
+    min-width: 0;
+  }
+  .t-frontend-design .fd-review-head,
+  .t-frontend-design .fd-panel-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.8rem 1.25rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--fd-code) 16%, transparent);
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+  .t-frontend-design .fd-path {
+    font-family: var(--fd-mono);
+    font-size: 0.82rem;
+  }
+  .t-frontend-design .fd-dim {
+    color: var(--fd-code-dim);
+  }
+  .t-frontend-design .fd-code {
+    margin: 0;
+    padding: 1rem 1.25rem;
+    font-size: 0.875rem;
+    line-height: 1.75;
+    overflow-x: auto;
+    color: var(--fd-code);
+    tab-size: 2;
+  }
+  .t-frontend-design .fd-code:focus-visible {
+    outline: 2px solid var(--fd-fog);
+    outline-offset: -4px;
+  }
+  .t-frontend-design .fd-code b {
+    font-weight: 400;
+  }
+  /* The one mark Buoy makes: an orange underline on the value that drifted. */
+  .t-frontend-design .fd-drift {
+    color: #fff;
+    text-decoration: underline;
+    text-decoration-color: var(--fd-accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.3em;
+  }
+  .t-frontend-design .fd-ok {
+    color: var(--fd-add);
+  }
+
+  /* Hero review thread */
+  .t-frontend-design .fd-review .fd-code {
+    padding-inline: 0;
+    padding-block: 0.75rem 0.5rem;
+  }
+  .t-frontend-design .fd-review .fd-code-tail {
+    padding-block: 0.5rem 0.9rem;
+    opacity: 0.55;
+  }
+  .t-frontend-design .fd-ln {
+    display: inline-block;
+    min-width: 100%;
+    padding-right: 1.25rem;
+  }
+  .t-frontend-design .fd-ln i {
+    display: inline-block;
+    width: 3.25rem;
+    padding-right: 1rem;
+    text-align: right;
+    font-style: normal;
+    color: var(--fd-code-dim);
+    user-select: none;
+  }
+  .t-frontend-design .fd-flagged {
+    background: color-mix(in srgb, var(--fd-accent) 16%, transparent);
+    box-shadow: inset 3px 0 0 var(--fd-accent);
+  }
+  .t-frontend-design .fd-comment {
+    margin: 0.25rem 1.25rem 0.5rem 3.25rem;
+    padding: 1rem 1.1rem 1.1rem;
+    background: var(--fd-deck);
+    color: var(--fd-deep);
+    border-radius: 8px;
+    font-size: 0.98rem;
+  }
+  .t-frontend-design .fd-comment-by {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.92rem;
+  }
+  .t-frontend-design .fd-avatar {
+    display: inline-flex;
+    line-height: 0;
+  }
+  .t-frontend-design .fd-bot {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--fd-tide);
+    border: 1px solid var(--fd-line);
+    border-radius: 999px;
+    padding: 0 0.45rem;
+  }
+  .t-frontend-design .fd-suggest {
+    margin-top: 0.85rem;
+    border: 1px solid var(--fd-line);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .t-frontend-design .fd-suggest-head {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--fd-tide);
+    border-bottom: 1px solid var(--fd-line);
+  }
+  .t-frontend-design .fd-review .fd-code-inset {
+    background: var(--fd-deep);
+    padding-block: 0.4rem;
+    font-size: 0.82rem;
+  }
+  .t-frontend-design .fd-code-inset .fd-ln i {
+    width: 2rem;
+    padding-right: 0.6rem;
+  }
+  .t-frontend-design .fd-del {
+    background: color-mix(in srgb, var(--fd-del) 16%, transparent);
+    color: var(--fd-del);
+  }
+  .t-frontend-design .fd-add {
+    background: color-mix(in srgb, var(--fd-add) 15%, transparent);
+    color: var(--fd-add);
+  }
+  .t-frontend-design .fd-del i,
+  .t-frontend-design .fd-add i {
+    color: inherit;
+  }
+
+  /* The one load moment: Buoy flags the line, comments, then offers the fix. */
+  @media (prefers-reduced-motion: no-preference) {
+    .t-frontend-design .fd-flagged {
+      animation: fd-flag 0.25s ease-out 0.45s both;
+    }
+    .t-frontend-design .fd-comment {
+      animation: fd-show 0.3s ease-out 0.8s both;
+    }
+    .t-frontend-design .fd-add {
+      animation: fd-wipe 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) 1.25s both;
+    }
+  }
+  @keyframes fd-flag {
+    from {
+      background-color: transparent;
+      box-shadow: inset 0 0 0 var(--fd-accent);
+    }
+  }
+  @keyframes fd-show {
+    from {
+      opacity: 0;
+    }
+  }
+  @keyframes fd-wipe {
+    from {
+      clip-path: inset(0 100% 0 0);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  /* Sections */
+  .t-frontend-design .fd-section {
+    padding-block: clamp(4rem, 8vw, 7.5rem);
+  }
+  .t-frontend-design .fd-ruled > .fd-wrap {
+    position: relative;
+  }
+  .t-frontend-design .fd-ruled {
+    border-top: 1px solid var(--fd-line);
+  }
+  .t-frontend-design .fd-intro {
+    display: grid;
+    gap: 1.25rem;
+    align-content: start;
+  }
+  .t-frontend-design .fd-intro p {
+    max-width: 52ch;
+  }
+  .t-frontend-design .fd-intro-wide {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: end;
+  }
+  .t-frontend-design .fd-split {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+    gap: clamp(2rem, 5vw, 5rem);
+  }
+  .t-frontend-design .fd-pair {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1.25rem, 2.5vw, 2rem);
+    margin-top: clamp(2rem, 4vw, 3.25rem);
+  }
+  .t-frontend-design .fd-pair-top {
+    align-items: start;
+  }
+  .t-frontend-design .fd-caption {
+    margin-top: 1.25rem;
+    max-width: 70ch;
+  }
+  .t-frontend-design .fd-way {
+    display: grid;
+    gap: 0.75rem;
+    min-width: 0;
+  }
+  .t-frontend-design .fd-way .fd-panel {
+    margin-bottom: 1rem;
+  }
+  @media (min-width: 60.01rem) {
+    .t-frontend-design .fd-way .fd-panel {
+      height: 27rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .t-frontend-design .fd-way .fd-check-foot {
+      margin-top: auto;
+    }
+  }
+
+  .t-frontend-design .fd-table .fd-link {
+    text-decoration-color: var(--fd-line);
+  }
+  .t-frontend-design .fd-table .fd-link:hover {
+    text-decoration-color: var(--fd-accent);
+    text-decoration-thickness: 2px;
+  }
+
+  /* Table of checks */
+  .t-frontend-design .fd-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    align-self: start;
+  }
+  .t-frontend-design .fd-table thead th {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--fd-tide);
+    padding: 0 1rem 0.6rem 0;
+    border-bottom: 2px solid var(--fd-deep);
+  }
+  .t-frontend-design .fd-table tbody th,
+  .t-frontend-design .fd-table tbody td {
+    padding: 0.95rem 1rem 0.95rem 0;
+    border-bottom: 1px solid var(--fd-line);
+    vertical-align: baseline;
+  }
+  .t-frontend-design .fd-table tbody th {
+    font-weight: 600;
+    font-stretch: 90%;
+    font-size: 1.125rem;
+    white-space: nowrap;
+  }
+  .t-frontend-design .fd-table td {
+    color: var(--fd-tide);
+  }
+  .t-frontend-design .fd-table .fd-sev {
+    color: var(--fd-deep);
+    font-weight: 500;
+    padding-right: 0;
+    white-space: nowrap;
+  }
+
+  /* PR check */
+  .t-frontend-design .fd-check-title {
+    padding: 1rem 1.25rem 0.25rem;
+    font-weight: 600;
+    color: #fff;
+  }
+  .t-frontend-design .fd-annotations {
+    list-style: none;
+    margin: 0;
+    padding: 0 1.25rem;
+    font-size: 0.95rem;
+  }
+  .t-frontend-design .fd-annotations li {
+    padding: 0.9rem 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--fd-code) 16%, transparent);
+    display: grid;
+    gap: 0.2rem;
+  }
+  .t-frontend-design .fd-annotations li:last-child {
+    border-bottom: 0;
+  }
+  .t-frontend-design .fd-annotations code {
+    font-size: 0.86em;
+  }
+  .t-frontend-design .fd-check-foot {
+    padding: 0.8rem 1.25rem;
+    font-size: 0.9rem;
+    color: var(--fd-code-dim);
+    border-top: 1px solid color-mix(in srgb, var(--fd-code) 16%, transparent);
+  }
+  .t-frontend-design .fd-free {
+    font-weight: 600;
+    min-height: 1.55em;
+  }
+
+  /* Deep band */
+  .t-frontend-design .fd-deep {
+    background: var(--fd-deep);
+    color: var(--fd-fog);
+    padding-block: clamp(4rem, 8vw, 7.5rem);
+  }
+  .t-frontend-design .fd-cols {
+    max-width: 62rem;
+    gap: clamp(2rem, 5vw, 5rem);
+  }
+  .t-frontend-design .fd-list {
+    list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+  }
+  .t-frontend-design .fd-list li {
+    padding: 0.7rem 0;
+    border-top: 1px solid color-mix(in srgb, var(--fd-fog) 20%, transparent);
+  }
+  .t-frontend-design .fd-deep .fd-small {
+    color: var(--fd-code-dim);
+    margin-top: 1rem;
+  }
+  .t-frontend-design .fd-deep .fd-small .fd-link {
+    color: var(--fd-fog);
+  }
+
+  /* Stack sentence + tiers */
+  .t-frontend-design .fd-stack {
+    font-stretch: 78%;
+    font-weight: 700;
+    font-size: clamp(2rem, 4.1vw, 3.6rem);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    max-width: 24ch;
+    text-wrap: balance;
+  }
+  .t-frontend-design .fd-stack a {
+    text-decoration: underline;
+    text-decoration-color: var(--fd-line);
+    text-decoration-thickness: 0.06em;
+    text-underline-offset: 0.14em;
+    border-radius: 4px;
+  }
+  .t-frontend-design .fd-stack a:hover {
+    text-decoration-color: var(--fd-accent);
+  }
+  .t-frontend-design .fd-tiers {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1.5rem, 4vw, 4rem);
+    margin-block: clamp(2.5rem, 5vw, 4.5rem) 2rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--fd-deep);
+  }
+  .t-frontend-design .fd-tiers > div {
+    display: grid;
+    gap: 0.4rem;
+    align-content: start;
+  }
+  .t-frontend-design .fd-tiers p {
+    color: var(--fd-tide);
+  }
+  .t-frontend-design .fd-tiers .fd-price {
+    color: var(--fd-deep);
+    font-weight: 600;
+    min-height: 1.55em;
+    margin-bottom: 0.35rem;
+  }
+  @media (max-width: 75rem) and (min-width: 46.01rem) {
+    .t-frontend-design .fd-tiers .fd-price {
+      min-height: 3.1em;
+    }
+  }
+
+  /* Close */
+  .t-frontend-design .fd-close .fd-wrap {
+    display: grid;
+    gap: 1.5rem;
+  }
+  .t-frontend-design .fd-close .fd-lede {
+    max-width: 52ch;
+  }
+
+  /* Footer */
+  .t-frontend-design .fd-footer {
+    border-top: 1px solid var(--fd-line);
+    padding-block: 2.5rem 3rem;
+    font-size: 0.95rem;
+  }
+  .t-frontend-design .fd-footer-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem 4rem;
+    flex-wrap: wrap;
+  }
+  .t-frontend-design .fd-footer-brand {
+    display: grid;
+    gap: 0.75rem;
+    color: var(--fd-deep);
+  }
+  .t-frontend-design .fd-footer-brand p {
+    color: var(--fd-tide);
+  }
+  .t-frontend-design .fd-footer-nav {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    gap: 0.5rem 2.5rem;
+    align-content: start;
+    font-weight: 500;
+  }
+
+  @media (max-width: 24rem) {
+    .t-frontend-design .fd-free,
+    .t-frontend-design .fd-tiers .fd-free {
+      min-height: 3.1em;
+    }
+  }
+
+  /* Narrow screens */
+  @media (max-width: 60rem) {
+    .t-frontend-design .fd-hero-row,
+    .t-frontend-design .fd-intro-wide,
+    .t-frontend-design .fd-split,
+    .t-frontend-design .fd-pair {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .t-frontend-design .fd-way + .fd-way {
+      margin-top: 1.5rem;
+    }
+  }
+  @media (max-width: 46rem) {
+    .t-frontend-design .fd-nav {
+      display: none;
+    }
+    .t-frontend-design .fd-header-row {
+      justify-content: space-between;
+    }
+    .t-frontend-design .fd-tiers {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .t-frontend-design .fd-review .fd-code-inset {
+      font-size: 0.7rem;
+    }
+    .t-frontend-design .fd-footer-nav {
+      grid-template-columns: repeat(2, auto);
+    }
+    .t-frontend-design .fd-actions .fd-btn {
+      flex: 1 1 100%;
+    }
+    .t-frontend-design .fd-comment {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+    .t-frontend-design .fd-code {
+      font-size: 0.75rem;
+      padding-inline: 1rem;
+    }
+    /* The table becomes a list: name and severity on one line, description below. */
+    .t-frontend-design .fd-table thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+    }
+    .t-frontend-design .fd-table tbody tr {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.15rem 1rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--fd-line);
+    }
+    .t-frontend-design .fd-table tbody th,
+    .t-frontend-design .fd-table tbody td {
+      padding: 0;
+      border: 0;
+    }
+    .t-frontend-design .fd-table tbody th {
+      white-space: normal;
+    }
+    .t-frontend-design .fd-table tbody td:not(.fd-sev) {
+      grid-column: 1 / -1;
+      grid-row: 2;
+    }
+  }
+</style>
+
+<style is:global>
+  /* Dark version: petrol night ground, fog type, and light code plates.
+     The plates are the product; they read like printed proofs on a dark desk. */
+  .t-frontend-design.t-fd-dark {
+    --fd-fog: #071a1f;
+    --fd-deck: #0f2c33;
+    --fd-deep: #e4ecec;
+    --fd-deep-2: #d4e0e1;
+    --fd-tide: #9db5b9;
+    --fd-line: #23444c;
+    --fd-code: #12333b;
+    --fd-code-dim: #64838a;
+    --fd-add: #17633f;
+    --fd-del: #a3301d;
+    --fd-ground-2: #0b232a;
+    color-scheme: dark;
+  }
+  .t-frontend-design.t-fd-dark .fd-header {
+    position: relative;
+    z-index: 20;
+    border-bottom: 1px solid var(--fd-line);
+  }
+  .t-frontend-design.t-fd-dark .fd-btn-primary {
+    color: #071a1f;
+    border-color: var(--color-buoy);
+  }
+  .t-frontend-design.t-fd-dark .fd-btn-primary:hover {
+    background: var(--fd-deep);
+    border-color: var(--fd-deep);
+    color: #071a1f;
+  }
+  .t-frontend-design.t-fd-dark .fd-btn:focus-visible { outline-color: var(--fd-deep); }
+
+  /* Plates */
+  .t-frontend-design.t-fd-dark .fd-review,
+  .t-frontend-design.t-fd-dark .fd-panel {
+    background: var(--fd-deep);
+    color: var(--fd-code);
+  }
+  .t-frontend-design.t-fd-dark .fd-review-head,
+  .t-frontend-design.t-fd-dark .fd-panel-head {
+    border-bottom-color: #c3d1d3;
+  }
+  .t-frontend-design.t-fd-dark .fd-dim { color: var(--fd-code-dim); }
+  .t-frontend-design.t-fd-dark .fd-drift { color: #071a1f; font-weight: 500; }
+  .t-frontend-design.t-fd-dark .fd-check-title { color: #071a1f; }
+  .t-frontend-design.t-fd-dark .fd-annotations li,
+  .t-frontend-design.t-fd-dark .fd-check-foot { border-color: #c3d1d3; }
+  .t-frontend-design.t-fd-dark .fd-code:focus-visible { outline-color: #071a1f; }
+  .t-frontend-design.t-fd-dark .fd-flagged {
+    background: color-mix(in srgb, var(--color-buoy) 14%, var(--fd-deep));
+  }
+  /* The comment sits on the plate as the one dark card: Buoy speaking. */
+  .t-frontend-design.t-fd-dark .fd-comment {
+    background: #071a1f;
+    color: #e4ecec;
+  }
+  .t-frontend-design.t-fd-dark .fd-comment p code { background: #1a3a42; color: #e4ecec; }
+  .t-frontend-design.t-fd-dark .fd-bot { color: #9db5b9; border-color: #34565e; }
+  .t-frontend-design.t-fd-dark .fd-suggest { border-color: #34565e; }
+  .t-frontend-design.t-fd-dark .fd-suggest-head { color: #9db5b9; border-color: #34565e; }
+  .t-frontend-design.t-fd-dark .fd-review .fd-code-inset { background: #0f2c33; color: #cfdcde; }
+  .t-frontend-design.t-fd-dark .fd-code-inset .fd-del { color: #f3ada0; background: color-mix(in srgb, #f3ada0 14%, transparent); }
+  .t-frontend-design.t-fd-dark .fd-code-inset .fd-add { color: #a4e0c4; background: color-mix(in srgb, #a4e0c4 14%, transparent); }
+
+  /* Hero and the sea */
+  .t-frontend-design.t-fd-dark .fd-hero {
+    --boat-hero-bg: #071a1f;
+    --boat-hero-sky: linear-gradient(180deg, #071a1f 0%, #082128 55%, #0a2a31 100%);
+    --boat-hero-wave-1: rgba(120, 185, 190, 0.10);
+    --boat-hero-wave-2: rgba(95, 160, 170, 0.10);
+    --boat-hero-wave-3: rgba(140, 200, 200, 0.09);
+    --boat-hero-stars-opacity: 0.35;
+    padding-block: 0;
+  }
+  .t-frontend-design.t-fd-dark .fd-hero-inner {
+    padding-block: clamp(1.5rem, 4vh, 3rem) clamp(9rem, 26vh, 14rem);
+  }
+  .t-frontend-design.t-fd-dark .fd-h1 {
+    font-size: clamp(3.25rem, 5.7vw, 5.6rem);
+    margin-bottom: 0.5rem;
+    color: var(--fd-deep);
+  }
+  .t-frontend-design.t-fd-dark .fd-hero-row {
+    margin-top: 0;
+    grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+    align-items: center;
+  }
+  .t-frontend-design.t-fd-dark .fd-review .fd-code-tail { display: none; }
+
+  /* Bands */
+  .t-frontend-design.t-fd-dark .fd-deep {
+    background: var(--fd-ground-2);
+    color: var(--fd-deep);
+    border-block: 1px solid var(--fd-line);
+  }
+  .t-frontend-design.t-fd-dark .fd-deep .fd-small { color: var(--fd-tide); }
+  .t-frontend-design.t-fd-dark .fd-list li { border-top-color: var(--fd-line); }
+  .t-frontend-design.t-fd-dark .fd-table thead th { border-bottom-color: var(--fd-deep); }
+
+  .t-frontend-design.t-fd-dark .fd-split2 {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: start;
+  }
+  .t-frontend-design.t-fd-dark .fd-split2 > .fd-h2 { max-width: 14ch; }
+  .t-frontend-design.t-fd-dark .fd-stacked { display: grid; gap: 2.5rem; }
+  .t-frontend-design.t-fd-dark .fd-stacked .fd-list { margin-top: 0.75rem; }
+  .t-frontend-design.t-fd-dark .fd-deep .fd-small .fd-link { color: var(--fd-deep); }
+  .t-frontend-design.t-fd-dark .fd-stack { font-size: clamp(2rem, 3.6vw, 3.25rem); margin-bottom: 1.5rem; }
+  /* Tiers become ruled rows: name, one-line summary, detail */
+  .t-frontend-design.t-fd-dark .fd-rows {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    border-top: 2px solid var(--fd-deep);
+  }
+  .t-frontend-design.t-fd-dark .fd-rows > div {
+    grid-template-columns: 9rem minmax(0, 1fr);
+    column-gap: 1.5rem;
+    padding-block: 1.25rem;
+    border-bottom: 1px solid var(--fd-line);
+  }
+  .t-frontend-design.t-fd-dark .fd-rows .fd-h3 { grid-row: span 2; }
+  .t-frontend-design.t-fd-dark .fd-rows .fd-price { min-height: 0; margin: 0; color: var(--fd-deep); }
+  .t-frontend-design.t-fd-dark .fd-close-act { display: grid; gap: 1.75rem; padding-top: 0.5rem; }
+  @media (max-width: 60rem) {
+    .t-frontend-design.t-fd-dark .fd-hero-row,
+    .t-frontend-design.t-fd-dark .fd-split2 { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 30rem) {
+    .t-frontend-design.t-fd-dark .fd-rows > div { grid-template-columns: minmax(0, 1fr); }
+    .t-frontend-design.t-fd-dark .fd-rows .fd-h3 { grid-row: auto; }
+  }
+  @media (max-width: 767px) {
+    .t-frontend-design.t-fd-dark .fd-hero-inner { padding-bottom: 1rem; }
+  }
+</style>

@@ -1,26 +1,23 @@
 @import "tailwindcss";
-@import "@fontsource/quicksand/500.css";
-@import "@fontsource/quicksand/600.css";
-@import "@fontsource/quicksand/700.css";
 @import "./site.css";
 
 /* Buoy design tokens: the dark "feel better" palette is the site default.
-   Brand navy ink, never black. html.light (below) re-points the same names.
+   Deep ocean ink (hue 248), never black. html.light (below) re-points the same names.
    Shared classes live in site.css; the guide is SITE-STYLE.md. */
 @theme {
   /* Grounds and surfaces (dark) */
-  --color-bg: oklch(0.175 0.028 258);        /* page ground */
-  --color-band: oklch(0.198 0.03 258);       /* banded section ground */
-  --color-surface: oklch(0.215 0.03 258);    /* cards, secondary buttons, panels */
-  --color-raised: oklch(0.245 0.03 258);     /* surface hover, header rows inside panels */
+  --color-bg: oklch(0.155 0.045 248);        /* page ground */
+  --color-band: oklch(0.178 0.048 248);       /* banded section ground */
+  --color-surface: oklch(0.195 0.048 248);    /* cards, secondary buttons, panels */
+  --color-raised: oklch(0.225 0.048 248);     /* surface hover, header rows inside panels */
   --color-sunken: oklch(1 0 0 / 0.045);      /* trays, code chips, hover wash */
-  --color-term: oklch(0.145 0.024 258);      /* terminal ground */
-  --color-field: oklch(0.15 0.022 258);      /* input field ground */
+  --color-term: oklch(0.125 0.039 248);      /* terminal ground */
+  --color-field: oklch(0.13 0.035 248);      /* input field ground */
 
   /* Ink levels */
-  --color-ink: oklch(0.965 0.006 258);       /* headings, strong text */
-  --color-body: oklch(0.8 0.018 258);        /* running text */
-  --color-muted: oklch(0.66 0.022 258);      /* captions, meta, table heads */
+  --color-ink: oklch(0.965 0.01 248);       /* headings, strong text */
+  --color-body: oklch(0.8 0.029 248);        /* running text */
+  --color-muted: oklch(0.66 0.035 248);      /* captions, meta, table heads */
   --color-on-accent: oklch(0.2 0.035 262);   /* label on orange */
 
   /* Lines and rings */
@@ -37,9 +34,9 @@
   --color-del-ink: oklch(0.8 0.12 25);
 
   /* Legacy names, retuned to the new palette so existing pages follow along */
-  --color-navy: oklch(0.215 0.03 258);
-  --color-navy-dark: oklch(0.175 0.028 258);
-  --color-navy-light: oklch(0.34 0.032 258);
+  --color-navy: oklch(0.195 0.048 248);
+  --color-navy-dark: oklch(0.155 0.045 248);
+  --color-navy-light: oklch(0.32 0.051 248);
 
   /* Buoy Orange: the one accent */
   --color-buoy: #FF4F00;
@@ -66,7 +63,7 @@
   --color-info: oklch(0.76 0.1 245);
 
   /* Type */
-  --font-display: 'Quicksand', system-ui, sans-serif;
+  --font-display: 'Hanken Grotesk', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
   --text-h1: 4.125rem;
@@ -139,6 +136,7 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.02em;
   text-wrap: balance;
 }
+h1, h2 { font-weight: 800; }
 p, li, figcaption, dd, blockquote { text-wrap: pretty; }
 
 a { text-underline-offset: 3px; text-decoration-thickness: 1.5px; }

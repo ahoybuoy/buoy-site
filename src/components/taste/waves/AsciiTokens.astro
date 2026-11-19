@@ -1,0 +1,308 @@
+---
+// Digital: ASCII tokens. A fixed monospace grid where every row spells real design-system
+// tokens and values. Characters never move or crop: each is whole in its cell and is
+// either on or off (120ms fade). The swell is which letters are on; the boat's wake and
+// bow wave and the landing splash switch letters on around it.
+---
+
+<div class="wave-background ascii-tokens" data-ascii-tokens>
+  <canvas class="dg-canvas"></canvas>
+  <div class="wave-container-1 dg-surface"></div>
+</div>
+
+<style>
+  .ascii-tokens {
+    --tok-ink: color-mix(in oklab, var(--color-bg) 20%, oklch(0.85 0.06 228));
+    --tok-bright: oklch(0.93 0.035 225);
+    --tok-font: var(--font-mono, 'JetBrains Mono', ui-monospace, monospace);
+    --boat-hero-sink: 0px;
+    /* The sampler returns the top of the lit glyphs; the hull just kisses them */
+    --boat-hero-draft: -1px;
+    /* The letters draw the wake (bow wave, trail), so hide BoatHero's line wake */
+    --boat-hero-wake: transparent;
+    position: absolute; inset: 0; overflow: hidden; z-index: 0;
+  }
+  .dg-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .dg-surface { position: absolute; left: 0; right: 0; top: 60%; height: 0; pointer-events: none; }
+</style>
+
+<script>
+  import { mount, smooth, ampScale, P, type Frame } from './digital/sea'
+  import { waveEnvelope } from './params'
+
+  const TOKENS = [
+    'var(--color-primary)', '--spacing-4', '#3b82f6', '16px', '--radius-md', 'var(--bg-surface)', '1.5rem',
+    '--font-size-sm', '0.875rem', 'var(--space-2)', '#0f172a', '--shadow-lg', '24px', 'rgba(0,0,0,.12)',
+    '--color-border', 'var(--text-muted)', '--line-height-tight', '1.25', '#e2e8f0', '--z-modal', '1000',
+    'var(--radius-full)', '9999px', '--duration-fast', '150ms', '--ease-out', 'cubic-bezier(.16,1,.3,1)',
+    '--color-danger-500', '#ef4444', 'var(--spacing-8)', '2rem', '--font-weight-semibold', '600',
+    '--breakpoint-md', '768px', 'var(--color-accent)', 'oklch(0.62 0.19 255)', '--gap-3', '12px',
+    '--opacity-disabled', '0.4', 'var(--focus-ring)', '--border-width', '1px', '--size-icon', '20px',
+  ]
+  function rowText(r: number, len: number) {
+    let seed = (r * 2654435761 + 7) >>> 0
+    const rnd = () => ((seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296)
+    let s = ''
+    while (s.length < len) s += TOKENS[Math.floor(rnd() * TOKENS.length)] + '  '
+    return s.slice(0, len)
+  }
+  const SPRAY = ["'", '°', '*', ',', '.']
+  const CHARS = Array.from(new Set((TOKENS.join(' ') + SPRAY.join('')).split('')))
+  const IDX = new Map(CHARS.map((c, i) => [c, i]))
+
+  const BUCKETS = 6
+  type Grid = { cols: number; rows: number; top: number; glyph: Int16Array; op: Float32Array; sop: Float32Array; tone: Uint8Array }
+  let atlas: HTMLCanvasElement | null = null
+  let cw = 8, ch = 18, gw = 0, gh = 0
+  let grid: Grid | null = null
+  let capTop = 4                       // glyph cap-top offset inside its cell (px)
+  let edgeV: Float32Array | null = null
+  let colSY = new Float32Array(0)
+  let edgeE: Float32Array | null = null // eased visible edge per column (glyph tops of the top lit row)
+  let lastNow = 0
+  const ripples: { x: number; y: number; t0: number }[] = []
+  // Splash droplets (root.buoySplash): ballistic, drawn as spray glyphs snapped to the grid
+  const drops: { x: number; y: number; vx: number; vy: number; t0: number }[] = []
+  let boatPrevX = NaN, boatVX = 0
+
+  function build(f: Frame) {
+    const root = f.ctx.canvas.parentElement!
+    const font = getComputedStyle(root).getPropertyValue('--tok-font').trim() || 'monospace'
+    const fs = f.mobile ? 10 : 11
+    f.ctx.font = `500 ${fs}px ${font}`
+    // Snap the advance to device pixels so every glyph sits on the same sub-pixel phase
+    cw = Math.round(f.ctx.measureText('M').width * f.dpr) / f.dpr
+    ch = Math.round(fs * 1.3)
+    gw = Math.round(cw * f.dpr); gh = ch * f.dpr
+    atlas = document.createElement('canvas')
+    atlas.width = gw * CHARS.length; atlas.height = gh * 2
+    const a = atlas.getContext('2d')!
+    a.scale(f.dpr, f.dpr)
+    a.font = `500 ${fs}px ${font}`
+    a.textBaseline = 'alphabetic'
+    const base = Math.round(ch * 0.5 + fs * 0.36)
+    capTop = base - fs * 0.73
+    for (const [row, col] of [[0, f.c.ink], [1, f.c.bright]] as const) {
+      a.fillStyle = col
+      CHARS.forEach((c, i) => a.fillText(c, i * cw, row * ch + base))
+    }
+    const hz = Math.round(f.waterY * (f.mobile ? 0.5 : 0.6))
+    const cols = Math.ceil(f.w / cw) + 1, rows = Math.ceil((f.h - hz) / ch) + 1
+    const g: Grid = { cols, rows, top: hz, glyph: new Int16Array(cols * rows), op: new Float32Array(cols * rows), sop: new Float32Array(cols * rows), tone: new Uint8Array(cols * rows) }
+    for (let r = 0; r < rows; r++) {
+      const text = rowText(r, cols)
+      for (let c = 0; c < cols; c++) g.glyph[r * cols + c] = text[c] === ' ' ? -1 : IDX.get(text[c]) ?? -1
+    }
+    grid = g
+  }
+
+
+  // Swell for this style: two travelling trochoidal (Gerstner) waves heading right, with the
+  // boat. Peaked crests, wide flat troughs, crests leaning slightly forward. 2-4 crests across
+  // the desktop width, proportionally more on phones. Returns y offset (px, negative = up).
+  function swellLen(w: number) { return Math.max(150, Math.min(520, w / 3.1)) }
+  function swell(x: number, t: number, w: number) {
+    const L1 = swellLen(w), L2 = L1 * 0.43
+    const A = 40 * ampScale(w) * P.intensity * waveEnvelope(x, t, P.variation)
+    const waves = [[L1, A, 1], [L2, A * 0.22, 1.25]] as const
+    const Q = 0.55 + 0.4 * P.chop
+    const X = (x0: number) => {
+      let dx = 0
+      for (const [L, a, sp] of waves) { const k = 2 * Math.PI / L; const c = 52 * sp * Math.sqrt(L / 400); dx -= Math.min(Q, 0.95 / (k * a + 1e-6)) * a * Math.sin(k * (x0 - c * t)) }
+      return x0 + dx
+    }
+    let x0 = x
+    for (let i = 0; i < 4; i++) x0 += x - X(x0)
+    let y = 0
+    for (const [L, a, sp] of waves) {
+      const k = 2 * Math.PI / L, c = 52 * sp * Math.sqrt(L / 400)
+      const th = k * (x0 - c * t)
+      y -= a * (Math.cos(th) + 0.12 * Math.sin(2 * th))   // small sin(2θ): crest leans forward
+    }
+    return y
+  }
+
+  // Visible edge: the cap-top of the first lit row under the water line (cells whose centre
+  // is below the line are always on), as a step per column
+  function rawEdge(c: number, f: Frame, t: number) {
+    const g = grid!
+    const sy = f.waterY + swell(c * cw + cw / 2, t, f.w)
+    const r = Math.ceil((sy - g.top - ch / 2) / ch)
+    return g.top + r * ch + capTop
+  }
+  // Sampler: a short triangle blur across neighbouring columns, lerped between columns
+  function edgeAt(x: number, f: Frame, t: number) {
+    if (!grid) return f.waterY + swell(x, t, f.w)
+    const live = edgeE && Math.abs(t - f.t) < 0.1
+    const col = (c: number) => {
+      c = Math.max(0, Math.min(grid!.cols - 1, c))
+      return live ? edgeE![c] : rawEdge(c, f, t)
+    }
+    const blur = (c: number, R: number) => { let s = 0, ws = 0; for (let j = -R; j <= R; j++) { const wt = R + 1 - Math.abs(j); s += col(c + j) * wt; ws += wt } return s / ws }
+    const u = x / cw - 0.5, c0 = Math.floor(u), fr = u - c0
+    return blur(c0, 3) * (1 - fr) + blur(c0 + 1, 3) * fr
+  }
+  // Tilt: slope of a much wider blur (13 columns), so it follows the swell, not the row steps
+  function edgeSlope(x: number, f: Frame, t: number) {
+    if (!grid) return 0
+    const live = edgeE && Math.abs(t - f.t) < 0.1
+    const col = (c: number) => { c = Math.max(0, Math.min(grid!.cols - 1, c)); return live ? edgeE![c] : rawEdge(c, f, t) }
+    const blur = (c: number) => { let s = 0, ws = 0; for (let j = -6; j <= 6; j++) { const wt = 7 - Math.abs(j); s += col(c + j) * wt; ws += wt } return s / ws }
+    const u = x / cw - 0.5, c0 = Math.floor(u), fr = u - c0
+    const sl = (c: number) => (blur(c + 1) - blur(c - 1)) / (2 * cw)
+    return sl(c0) * (1 - fr) + sl(c0 + 1) * fr
+  }
+
+  function draw(f: Frame) {
+    if (!atlas || !grid) build(f)
+    const g = grid!
+    const { ctx, w, h, waterY, t, scale } = f
+    const now = performance.now()
+    const dt = lastNow ? Math.min(0.1, (now - lastNow) / 1000) : 1
+    lastNow = now
+    const k = 1 - Math.exp(-dt / 0.12)   // ~120ms fade per character
+    const amp = 24 * scale
+    const root = ctx.canvas.parentElement!
+    const rootBox = root.getBoundingClientRect()
+
+    // Boat: centre and drift speed, for the bow wave and wake
+    const boat = root.closest('[data-boat-hero]')?.querySelector<HTMLElement>('[data-wave-boat]')
+    let bx = NaN, by = NaN
+    if (boat && getComputedStyle(boat).opacity !== '0') {
+      const b = boat.getBoundingClientRect()
+      bx = b.left + b.width / 2 - rootBox.left; by = b.bottom - rootBox.top
+      if (Number.isFinite(boatPrevX) && dt > 0) boatVX += ((bx - boatPrevX) / Math.max(dt, 1e-3) - boatVX) * 0.1
+      boatPrevX = bx
+    }
+    const dir = boatVX >= 0 ? 1 : -1
+    while (ripples.length && now - ripples[0].t0 > 900) ripples.shift()
+
+    const groups: number[][] = Array.from({ length: 2 * BUCKETS }, () => [])
+    if (colSY.length !== g.cols) colSY = new Float32Array(g.cols)
+    const lift = 0.5 * (P.intensity - 1) + 0.3 * P.variation
+    for (let r = 0; r < g.rows; r++) {
+      const y = g.top + r * ch
+      const yc = y + ch / 2
+      for (let c = 0; c < g.cols; c++) {
+        const i = r * g.cols + c
+        if (r === 0) colSY[c] = waterY + swell(c * cw + cw / 2, t, w)
+        // Water presence per cell (spaces too), on the same 120ms fade as the glyphs
+        g.sop[i] += ((y + ch / 2 > colSY[c] ? 1 : 0) - g.sop[i]) * k
+        const gi = g.glyph[i]
+        if (gi < 0) continue
+        const x = c * cw, xc = x + cw / 2
+        const sy = colSY[c]
+        const depth = yc - sy
+        let on = 0, tone = 0
+        if (depth > 0) {
+          // Body: denser near the surface and on the swell's high water, thinning with depth
+          // Bands parallel to the surface (depth is measured from it), drifting slowly down
+          const n = 0.5 + 0.5 * Math.cos((2 * Math.PI * depth) / (ch * 3.2) - t * 1.4)
+          const deep = smooth(0, Math.max(120, (h - waterY) * (0.9 + 0.3 * lift)), depth)
+          on = depth < ch ? 1 : n > 0.25 + 0.6 * deep - 0.15 * lift ? 1 : 0
+          tone = depth < ch * 1.1 ? 1 : 0
+        } else {
+          // Far sea: a few letters on the far crests only
+          const p = smooth(g.top, waterY, yc)
+          // Far sea: crest dashes on the same rhythm, shorter toward the horizon
+          const L = swellLen(w) * (0.45 + 0.55 * p)
+          const n = Math.cos((2 * Math.PI / L) * (xc - 40 * t) + r * 1.9)
+          on = p > 0.35 && n > 0.95 - 0.04 * lift - 0.05 * p ? 1 : 0
+          if (on) tone = 0
+        }
+        // Bow wave and wake: letters switch on around the boat, trailing behind it
+        if (Number.isFinite(bx)) {
+          const dx = (xc - bx) * dir, dy = yc - by
+          const bow = dx > -6 && dx < 26 && depth > 0 && depth < ch * 2.2
+          const wake = dx < 0 && dx > -260 && Math.abs(dy) < ch * (0.6 + -dx / 160) && depth > 0
+            && ((c * 7 + r * 3) % 5) < 5 * (1 + dx / 260)
+          if (bow || wake) { on = 1; tone = 1 }
+        }
+        // Splash ripple: a ring of letters flicking on outward
+        for (const rp of ripples) {
+          const age = (now - rp.t0) / 1000
+          if (age > 0.75) continue
+          const front = 40 + age * 420
+          const d = Math.abs(xc - rp.x)
+          if (Math.abs(d - front) < cw * 2.5 && depth > 0 && depth < ch * 1.6) { on = 1; tone = 1 }
+        }
+        const o = g.op[i] += (on - g.op[i]) * k
+        if (o < 0.04) continue
+        if (on) g.tone[i] = tone
+        const toneNow = g.tone[i]
+        const a = toneNow ? o : o * (0.42 + 0.3 * (1 - smooth(0, h - waterY, depth)))
+        groups[toneNow * BUCKETS + Math.min(BUCKETS - 1, Math.floor(a * BUCKETS))].push(gi, x, y)
+      }
+    }
+    // Visible edge per column: the glyph top of the highest row holding water, lowered by
+    // (1 - its fade) so a row lighting up or dimming moves the surface continuously
+    if (!edgeE || edgeE.length !== g.cols) edgeE = new Float32Array(g.cols)
+    for (let c = 0; c < g.cols; c++) {
+      const R = Math.max(0, Math.ceil((colSY[c] - g.top - ch / 2) / ch))
+      let e = g.top + R * ch + capTop
+      for (const r of [R - 1, R]) {
+        if (r < 0 || r >= g.rows) continue
+        const sv = g.sop[r * g.cols + c]
+        if (sv > 0.01) { e = g.top + r * ch + capTop + (1 - sv) * ch; break }
+      }
+      edgeE[c] = e
+    }
+    // Droplets: whole glyphs on the grid, gone once they fall back into the water
+    const occupied = new Set<number>()
+    const sprayAt = new Map<number, string>()
+    for (let j = drops.length - 1; j >= 0; j--) {
+      const dp = drops[j]
+      const age = (now - dp.t0) / 1000
+      const x = dp.x + dp.vx * age, y = dp.y + dp.vy * age + 900 * age * age
+      const falling = dp.vy + 1800 * age > 0
+      if (age > 0.8 || (falling && y > waterY + swell(x, t, w))) { drops.splice(j, 1); continue }
+      const c = Math.round(x / cw - 0.5), r = Math.round((y - g.top) / ch - 0.5)
+      if (c < 0 || r < 0 || c >= g.cols || occupied.has(r * g.cols + c)) continue
+      occupied.add(r * g.cols + c)
+      // Phase glyphs: big near the apex, small as it falls; never the same as a neighbour
+      const vyNow = dp.vy + 1800 * age
+      const apex = Math.abs(vyNow) < 220
+      const opts = apex ? ['*', '°'] : falling ? (age > 0.4 ? ['.', ','] : [',', "'"]) : ["'", '°']
+      let gch = opts[(j + (apex ? 0 : 1)) % 2]
+      const key = r * g.cols + c
+      if (sprayAt.get(key - 1) === gch || sprayAt.get(key + 1) === gch) gch = opts[1 - opts.indexOf(gch)]
+      sprayAt.set(key, gch)
+      const glyph = IDX.get(gch)!
+      const a = Math.max(0.2, 1 - age * 0.9)
+      groups[BUCKETS + Math.min(BUCKETS - 1, Math.floor(a * BUCKETS))].push(glyph, c * cw, g.top + r * ch)
+    }
+    for (let q = 0; q < groups.length; q++) {
+      const gr = groups[q]
+      if (!gr.length) continue
+      const tone = q >= BUCKETS ? 1 : 0
+      ctx.globalAlpha = ((q % BUCKETS) + 1) / BUCKETS
+      for (let i = 0; i < gr.length; i += 3) ctx.drawImage(atlas!, gr[i] * gw, tone * gh, gw, gh, gr[i + 1], gr[i + 2], cw, ch)
+    }
+    ctx.globalAlpha = 1
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-ascii-tokens]').forEach((root) => {
+    // Own splash (WAVES.md): spray glyphs arcing up and back, letters flicking on outward
+    ;(root as any).buoySplash = (x: number, y: number, info: { kind?: string; strength?: number } = {}) => {
+      const k = Math.max(0.5, Math.min(2, info.strength ?? 1)) * (info.kind === 'toss' ? 0.8 : 1)
+      const t0 = performance.now()
+      ripples.push({ x, y, t0 })
+      // Seeded per splash: varied angles and speeds, biased downwind (right, the boat's heading)
+      let seed = (t0 * 1000) >>> 0 || 1
+      const rnd = () => ((seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296)
+      const n = 9 + Math.round(rnd() * 3)
+      for (let i = 0; i < n; i++) {
+        const ang = -Math.PI / 2 + (rnd() * 2 - 0.75) * 1.05      // mostly up, leaning right
+        const sp = (230 + rnd() * 420) * k
+        drops.push({ x: x + (rnd() * 2 - 0.6) * 10, y: y - 2, vx: Math.cos(ang) * sp * 0.9, vy: Math.sin(ang) * sp, t0: t0 - rnd() * 60 })
+      }
+    }
+    mount(root, {
+      colors: { ink: ['--tok-ink', '#a9c9e6'], bright: ['--tok-bright', '#e6f0fb'] },
+      setup: () => { atlas = null; grid = null; edgeE = null; document.fonts?.ready.then(() => { atlas = null }) },
+      draw,
+      surface: (x, f, t) => edgeAt(x, f, t),
+      slope: (x, f, t) => edgeSlope(x, f, t),
+    })
+  })
+</script>

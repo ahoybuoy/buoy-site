@@ -1,0 +1,116 @@
+---
+// Experimental: Flow field. Thousands of fine particles stream along a curl-noise
+// field that hugs the swell; the water line is where the stream runs densest.
+---
+
+<div class="wave-background flow-field" data-flow-field>
+  <canvas class="xp-canvas"></canvas>
+  <div class="wave-container-1 xp-surface"></div>
+</div>
+
+<style>
+  .flow-field {
+    --ff-line: oklch(0.93 0.03 220);
+    --ff-mid: oklch(0.72 0.1 225);
+    --ff-deep: oklch(0.5 0.1 245);
+    --boat-hero-sink: 0px;
+    position: absolute; inset: 0; overflow: hidden; z-index: 0;
+  }
+  .xp-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .xp-surface { position: absolute; left: 0; right: 0; top: 56%; height: 0; pointer-events: none; }
+</style>
+
+<script>
+  import { run, swellAt, colorReader, rgb, type Swell } from './experimental/kit'
+
+  const WAVES: Swell[] = [[760, 14, 58, 0.4], [330, 6, 74, 2.1], [170, 2.5, 92, 4.0]]
+
+  function init(root: HTMLElement) {
+    const canvas = root.querySelector('canvas')!
+    const ctx = canvas.getContext('2d')!
+    let line = '', mid = '', deep = ''
+    // particle state: x, depth below the surface (px), previous screen x/y, age
+    let N = 0, P = new Float32Array(0)
+    const BUCK = 6
+    const seed = (i: number, w: number, h: number, waterY: number) => {
+      P[i * 6] = Math.random() * w
+      // most particles crowd the line; depth falls off exponentially
+      const r = Math.random()
+      P[i * 6 + 1] = r < 0.06 ? -Math.random() * 10 : -Math.log(1 - Math.random() * 0.995) * Math.max(14, (h - waterY) * 0.18)
+      P[i * 6 + 2] = NaN
+      P[i * 6 + 4] = Math.random() * 4
+    }
+    // curl of psi = sum of drifting sinusoids: smooth, divergence free
+    const curl = (x: number, d: number, t: number) => {
+      const a = 0.011, b = 0.045, c = 0.023, e = 0.09
+      // psi = sin(a x - .7t) cos(b d + .5t) * 1 + .5 sin(c x + 1.1 t + d * e)
+      const s1 = Math.sin(a * x - 0.7 * t), c1 = Math.cos(b * d + 0.5 * t)
+      const dpsi_dd = -s1 * Math.sin(b * d + 0.5 * t) * b + 0.5 * Math.cos(c * x + 1.1 * t + d * e) * e
+      const dpsi_dx = Math.cos(a * x - 0.7 * t) * a * c1 + 0.5 * Math.cos(c * x + 1.1 * t + d * e) * c
+      return [dpsi_dd, -dpsi_dx]
+    }
+    run(root, canvas, {
+      waves: WAVES,
+      colors() { const c = colorReader(root); line = rgb(c('--ff-line', '#e6f3ff')); mid = rgb(c('--ff-mid', '#6fb0de')); deep = rgb(c('--ff-deep', '#3a5fa8')) },
+      resize(H) {
+        N = Math.round(Math.min(4200, Math.max(1400, H.w * 2.6)))
+        P = new Float32Array(N * 6)
+        for (let i = 0; i < N; i++) seed(i, H.w, H.h, H.waterY)
+        ctx.setTransform(H.dpr, 0, 0, H.dpr, 0, 0)
+        ctx.clearRect(0, 0, H.w, H.h)
+      },
+      draw(t, dt, H) {
+        const { w, h, waterY } = H
+        ctx.setTransform(H.dpr, 0, 0, H.dpr, 0, 0)
+        if (dt === 0) {
+          // static frame: settle a few steps without trails
+          ctx.clearRect(0, 0, w, h)
+        } else {
+          // fade trails
+          ctx.globalCompositeOperation = 'destination-out'
+          ctx.fillStyle = `rgba(0,0,0,${Math.min(1, dt * 7)})`
+          ctx.fillRect(0, 0, w, h)
+          ctx.globalCompositeOperation = 'source-over'
+        }
+        const paths: Path2D[] = []
+        for (let b = 0; b < BUCK; b++) paths.push(new Path2D())
+        const S = Math.max(dt, 1 / 60)
+        const span = Math.max(30, (h - waterY))
+        for (let i = 0; i < N; i++) {
+          const o = i * 6
+          let x = P[o], d = P[o + 1]
+          const [vx, vd] = curl(x, d, t * 0.6)
+          // stream right with the swell, faster near the top; field adds eddies
+          const near = Math.exp(-Math.max(0, d) / 40)
+          x += (34 + 70 * near + vx * 900) * S
+          d += vd * 900 * S * (0.25 + 0.75 * Math.min(1, Math.max(0, d) / 30)) - (d < 0 ? 18 * S * -d / 4 : 0)
+          if (d < -12) d = -12
+          P[o + 4] += S
+          let respawn = x > w + 10 || d > span + 10
+          if (respawn) { seed(i, w, h, waterY); P[o] = respawn && x > w + 10 ? -5 : P[o]; continue }
+          P[o] = x; P[o + 1] = d
+          // depth attenuates the swell slightly, so the deep stream is calmer
+          const att = d > 0 ? Math.exp(-d / (span * 0.7)) : 1
+          const y = waterY + swellAt(WAVES, x, t, w, H.p) * att + Math.max(d, 0) + Math.min(d, 0)
+          let px = P[o + 2], py = P[o + 3]
+          if (dt === 0) { px = x - 3; py = y }
+          P[o + 2] = x; P[o + 3] = y
+          if (Number.isNaN(px) || Math.abs(px - x) > 30) continue
+          const lum = d < 0 ? 0.5 : Math.exp(-d / 60)
+          const bk = Math.min(BUCK - 1, Math.floor(lum * BUCK))
+          paths[bk].moveTo(px, py); paths[bk].lineTo(x + 0.01, y)
+        }
+        ctx.lineCap = 'round'
+        for (let b = 0; b < BUCK; b++) {
+          const f = (b + 0.5) / BUCK
+          ctx.strokeStyle = f > 0.35 ? mid : deep
+          ctx.globalAlpha = 0.2 + 0.6 * f
+          ctx.lineWidth = 0.6 + f * 0.7
+          ctx.stroke(paths[b])
+        }
+        ctx.globalAlpha = 1
+      },
+    })
+  }
+  document.querySelectorAll<HTMLElement>('[data-flow-field]').forEach((r) => { if (!r.dataset.init) { r.dataset.init = '1'; init(r) } })
+</script>

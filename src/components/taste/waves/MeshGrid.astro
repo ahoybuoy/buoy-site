@@ -1,0 +1,32 @@
+---
+// Digital: Mesh grid. The Mesh sea wireframe with no highlight lines, grid only;
+// the boat rides the front grid row (z = 0).
+---
+
+<div class="wave-background mesh-sea" data-mesh-grid>
+  <canvas class="dg-canvas"></canvas>
+  <div class="wave-container-1 dg-surface"></div>
+</div>
+
+<style>
+  .mesh-sea {
+    --mesh-line: color-mix(in oklab, var(--color-bg) 25%, oklch(0.82 0.06 230));
+    --mesh-datum: oklch(0.93 0.03 225);
+    --boat-hero-sink: 0px;
+    --boat-hero-draft: 3px;
+    position: absolute; inset: 0; overflow: hidden; z-index: 0;
+  }
+  .dg-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .dg-surface { position: absolute; left: 0; right: 0; top: 60%; height: 0; pointer-events: none; }
+</style>
+
+<script>
+  import { mount, field } from './digital/sea'
+  import { drawMesh } from './digital/mesh'
+
+  document.querySelectorAll<HTMLElement>('[data-mesh-grid]').forEach((root) => mount(root, {
+    colors: { line: ['--mesh-line', '#9fc0de'], datum: ['--mesh-datum', '#e8f2ff'] },
+    draw: (f) => drawMesh(f, false),
+    surface: (x, f, t) => f.waterY + field(x, 0, t, f.scale),
+  }))
+</script>

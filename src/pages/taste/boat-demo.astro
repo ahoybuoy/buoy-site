@@ -1,0 +1,96 @@
+---
+// Test page for BoatHero (not a design).
+import Layout from '../../layouts/Layout.astro'
+import BoatHero from '../../components/taste/BoatHero.astro'
+import BoatGlyph from '../../components/taste/BoatGlyph.astro'
+---
+
+<Layout title="BoatHero demo">
+  <BoatHero class="demo-hero">
+    <div class="demo">
+      <div class="demo__copy">
+        <h1>Catch design drift before it ships.</h1>
+        <p>Buoy reviews every pull request for hardcoded colors and values that skip your tokens.<BoatGlyph /></p>
+        <a class="demo__btn" href="/install">Install Buoy</a>
+      </div>
+      <figure class="card">
+        <div class="card__path">src/components/Button.tsx</div>
+        <pre class="card__diff"><code><span class="card__minus">-  color: var(--color-primary);</span>
+<span class="card__plus">+  color: #3b82f6;</span></code></pre>
+        <figcaption class="card__comment">
+          <strong>buoy</strong> <span>#3b82f6 matches your token. Use <code>var(--color-primary)</code> so it follows the theme.</span>
+        </figcaption>
+      </figure>
+    </div>
+  </BoatHero>
+  <section class="after"><p>Content after the hero.</p></section>
+</Layout>
+
+<style>
+  .demo {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 6rem 1.5rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  h1 {
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    line-height: 1.1;
+    font-weight: 800;
+    color: var(--color-light);
+    margin: 0 0 1.25rem;
+  }
+  .demo__copy p {
+    font-size: 1.125rem;
+    color: var(--color-slate);
+    margin: 0 0 2rem;
+    max-width: 32rem;
+  }
+  .demo__btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    background: var(--color-buoy);
+    color: var(--color-navy-dark);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .card {
+    margin: 0;
+    background: var(--color-navy);
+    border: 1px solid var(--color-navy-light);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    font-size: 0.875rem;
+    min-width: 0;
+  }
+  .card__path {
+    padding: 0.625rem 1rem;
+    color: var(--color-slate);
+    border-bottom: 1px solid var(--color-navy-light);
+    font-family: ui-monospace, monospace;
+  }
+  .card__diff {
+    margin: 0;
+    padding: 0.75rem 1rem;
+    overflow-x: auto;
+    font-family: ui-monospace, monospace;
+  }
+  .card__minus { color: var(--color-critical); }
+  .card__plus { color: var(--color-success); }
+  .card__comment {
+    padding: 0.875rem 1rem;
+    border-top: 1px solid var(--color-navy-light);
+    color: var(--color-light-muted);
+  }
+  .card__comment strong { color: var(--color-buoy); margin-right: 0.25rem; }
+  .card__comment code { color: var(--color-light); }
+  .after { padding: 4rem 1.5rem; color: var(--color-slate); text-align: center; }
+
+  @media (max-width: 767px) {
+    .demo { grid-template-columns: 1fr; gap: 2rem; padding-top: 4rem; }
+  }
+</style>

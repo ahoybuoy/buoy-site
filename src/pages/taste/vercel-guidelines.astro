@@ -1,0 +1,587 @@
+---
+// Variant: Vercel web-design-guidelines (audit-only harness).
+// The current homepage's design, with every audit finding fixed and the brief's hard rules applied.
+import BuoyMark from '../../components/BuoyMark.astro'
+import Layout from '../../layouts/Layout.astro'
+import WaveBackground from '../../components/WaveBackground.astro'
+import MarkPattern from '../../components/MarkPattern.astro'
+import Nav from '../../components/taste/vercel-guidelines/Nav.astro'
+import Button from '../../components/taste/vercel-guidelines/Button.astro'
+import Terminal from '../../components/taste/vercel-guidelines/Terminal.astro'
+import LockOn from '../../components/taste/vercel-guidelines/LockOn.astro'
+import HeroBoat from '../../components/taste/vercel-guidelines/HeroBoat.astro'
+import LeadCapture from '../../components/taste/vercel-guidelines/LeadCapture.astro'
+import { siteConfig } from '../../config'
+
+const appUrl = 'https://github.com/marketplace/buoy-design'
+
+const terminalLines = [
+  { text: 'Scanning for design drift…', delay: 0 },
+  { text: '', delay: 300 },
+  { text: 'Found <span class="text-warning">23</span> issues in <span class="text-slate">142 files</span>', delay: 600 },
+  { text: '', delay: 800 },
+  { text: '<span class="text-critical font-semibold">CRITICAL (2)</span>', delay: 1000 },
+  { text: '├─ Button.tsx:12 Missing aria-label', type: 'critical', delay: 1200 },
+  { text: '└─ Modal.tsx:45 Focus trap not implemented', type: 'critical', delay: 1400 },
+  { text: '', delay: 1600 },
+  { text: '<span class="text-warning font-semibold">HARDCODED VALUES (8)</span>', delay: 1800 },
+  { text: '├─ Card.tsx:8 #ffffff <span class="text-slate">→ use var(--bg-surface)</span>', type: 'warning', delay: 2000 },
+  { text: '├─ Badge.tsx:3 8px <span class="text-slate">→ use var(--spacing-sm)</span>', type: 'warning', delay: 2200 },
+  { text: '└─ … and 6 more', type: 'muted', delay: 2400 },
+  { text: '', delay: 2600 },
+  { text: '<span class="text-buoy font-semibold">Add to CI to catch drift on every PR</span>', delay: 2800 },
+] as const
+
+const driftTypes = [
+  { title: 'Hardcoded Values', severity: 'Warning', description: 'Colors, spacing, fonts not using tokens', href: '/features/hardcoded-values' },
+  { title: 'Duplicate Components', severity: 'Warning', description: 'Similar components that should be consolidated', href: '/features/duplicate-detection' },
+  { title: 'Naming Inconsistency', severity: 'Info', description: 'Component and prop names that don’t match conventions', href: '/features/naming-consistency' },
+  { title: 'Deprecated Patterns', severity: 'Warning', description: 'Components marked as deprecated still in use' },
+  { title: 'Inline Styles', severity: 'Warning', description: 'Inline CSS that should use tokens or classes' },
+  { title: 'Accessibility Conflict', severity: 'Critical', description: 'Missing ARIA labels, focus issues', href: '/features/accessibility-checks' },
+  { title: 'Framework Sprawl', severity: 'Warning', description: 'Multiple UI frameworks in the same codebase', href: '/features/framework-sprawl' },
+  { title: 'Orphaned Components', severity: 'Info', description: 'Components in code but not in design' },
+] as const
+
+const severityBorder = {
+  Critical: 'border-critical/30 hover:border-critical/60',
+  Warning: 'border-warning/30 hover:border-warning/60',
+  Info: 'border-info/30 hover:border-info/60',
+}
+const severityBadge = {
+  Critical: 'bg-critical/20 text-critical',
+  Warning: 'bg-warning/20 text-warning',
+  Info: 'bg-info/20 text-info',
+}
+
+const integrations = [
+  { name: 'React', href: '/integrations/react' },
+  { name: 'Vue', href: '/integrations/vue' },
+  { name: 'Svelte', href: '/integrations/svelte' },
+  { name: 'Angular', href: '/integrations/angular' },
+  { name: 'Next.js', href: '/integrations/nextjs' },
+  { name: 'Tailwind', href: '/integrations/tailwind' },
+  { name: 'GitHub', href: '/integrations/github' },
+]
+
+const steps = [
+  { step: '1', title: 'Detect', command: 'buoy drift check', description: 'Zero config. Every issue with exact file and line.' },
+  { step: '2', title: 'Enforce', command: 'buoy drift check', description: 'Catch drift at the PR, before it reaches main.' },
+  { step: '3', title: 'Measure', command: 'buoy show health', description: 'Track design system health over time.' },
+]
+
+const annotations = [
+  { level: 'error', file: 'src/components/Card.tsx', line: 23, what: 'Hardcoded color', value: '#3b82f6', token: 'var(--color-primary)' },
+  { level: 'error', file: 'src/components/Card.tsx', line: 31, what: 'Hardcoded spacing', value: '24px', token: 'var(--spacing-lg)' },
+  { level: 'warn', file: 'src/components/Modal.tsx', line: 8, what: 'Hardcoded border radius', value: '8px', token: 'var(--radius-md)' },
+]
+
+const journey = [
+  {
+    tag: 'Free', tone: 'success', title: 'Detect Locally',
+    items: ['Unlimited scans', 'All detection rules', 'Fix suggestions'],
+  },
+  {
+    tag: 'GitHub App', tone: 'buoy', title: 'Catch at the PR',
+    body: 'Install the Buoy GitHub App. Every PR gets checked, and drift is blocked before merge.',
+    items: ['Inline PR comments', 'Check status integration', 'Auto-fix suggestions'],
+  },
+  {
+    tag: 'Design System', tone: 'lavender', title: 'Org-Wide Record',
+    body: 'For design-system owners: how your system holds up across every repo that uses it.',
+    items: ['Org-wide drift record', 'Design-partner relationship'],
+  },
+]
+const toneTag = {
+  success: 'bg-success/20 border-success/30 text-success',
+  buoy: 'bg-buoy/20 border-buoy/30 text-buoy',
+  lavender: 'bg-lavender/20 border-lavender/30 text-lavender',
+}
+const toneMarker = { success: 'marker:text-success', buoy: 'marker:text-buoy', lavender: 'marker:text-lavender' }
+
+const core = [
+  'All scanning & drift detection',
+  'Fix suggestions with exact token replacements',
+  'Deterministic: no LLMs',
+  'No data leaves your machine',
+  'Works air-gapped & offline',
+]
+const app = [
+  'Runs the same open-source scanner on every PR',
+  'LLM-written summaries and coaching; findings stay deterministic',
+  'Committable inline fix suggestions',
+  'Dashboard with health scores & trends',
+  'Builder mode coaching for new design systems',
+]
+
+const h2 = 'text-3xl sm:text-4xl font-bold text-light mb-4'
+const textLink = 'text-buoy underline underline-offset-4 decoration-buoy/40 hover:decoration-buoy transition-colors'
+---
+
+<Layout title="Buoy - Design Drift Detection for the AI Era" noindex>
+  <Fragment slot="head">
+    <meta name="theme-color" content="#0f1829" />
+    <style is:inline>
+      html { color-scheme: dark; scroll-padding-top: 5rem; }
+      html.light { color-scheme: light; }
+    </style>
+  </Fragment>
+
+  <div class="t-vercel-guidelines">
+    <a href="#main" class="vg-skip">Skip to Main Content</a>
+    <Nav />
+
+    <main id="main" tabindex="-1">
+      <!-- Design System Callout (cleared from under the fixed nav) -->
+      <div class="relative z-20 mt-16 bg-gradient-to-r from-buoy/10 via-lavender/10 to-buoy/10 border-b border-buoy/20">
+        <a href="/ds" class="group block max-w-7xl mx-auto px-4 py-3 text-center text-sm text-slate hover:text-light transition-colors">
+          Explore <strong class="text-light font-semibold" translate="no">Plumb</strong>, Buoy’s open design system
+          <svg class="inline w-4 h-4 text-buoy transition-transform group-hover:translate-x-0.5" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Hero -->
+      <section class="vg-hero relative flex items-center justify-center overflow-hidden">
+        <WaveBackground />
+        <HeroBoat />
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-16">
+          <div class="text-center max-w-4xl mx-auto">
+            <p class="inline-flex items-center px-4 py-2 rounded-full bg-navy/60 border border-navy-light/30 mb-8 backdrop-blur-sm text-sm text-slate">
+              Open-source CLI and GitHub&nbsp;App
+            </p>
+
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
+              <span class="vg-reveal text-light" style="animation-delay: 0s">Catch</span>
+              <span class="vg-reveal hero-drift-highlight" style="animation-delay: 0.12s">design drift</span>
+              <br />
+              <span class="vg-reveal text-light" style="animation-delay: 0.3s">before it ships.</span>
+            </h1>
+
+            <p class="text-lg sm:text-xl text-slate max-w-2xl mx-auto mb-10">
+              Design systems drift over time. Buoy checks every PR for hardcoded colors, values that skip your tokens, and duplicate components.
+            </p>
+
+            <div class="flex items-center justify-center mb-6">
+              <Button href={appUrl} size="lg" external>Install the GitHub&nbsp;App</Button>
+            </div>
+            <p class="hero-scan-line text-sm text-slate">
+              Or <a href="/scan" class={textLink}>scan any public GitHub repository</a> for design drift, free, in about a minute.
+            </p>
+          </div>
+        </div>
+
+        <button type="button" id="vg-motion-toggle" class="vg-motion-toggle" aria-pressed="false">Pause Motion</button>
+      </section>
+
+      <!-- Problem Statement -->
+      <section class="py-24 bg-navy-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class={h2}>Hardcoded Values Creep In</h2>
+            <p class="text-lg text-slate max-w-2xl mx-auto">
+              Coding agents write a lot of UI and do not know your tokens. Each one-off value adds to the drift.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <figure class="min-w-0 bg-navy/50 border border-critical/30 rounded-xl overflow-hidden">
+              <figcaption class="px-4 py-2 bg-critical/10 border-b border-critical/20 flex items-center justify-between gap-3">
+                <span class="text-sm font-semibold text-critical uppercase tracking-wide">What AI Generates</span>
+                <span class="text-xs text-critical font-mono" translate="no">Card.tsx</span>
+              </figcaption>
+              <pre class="p-4 text-sm overflow-x-auto text-slate" translate="no"><code>const Card = () =&gt; (
+  &lt;div style=&#123;&#123;
+    <span class="text-critical">background: "#ffffff"</span>,
+    <span class="text-critical">padding: "16px"</span>,
+    <span class="text-critical">borderRadius: "8px"</span>,
+    <span class="text-critical">boxShadow: "0 2px 4px rgba…"</span>
+  &#125;&#125;&gt;
+    &#123;children&#125;
+  &lt;/div&gt;
+)</code></pre>
+            </figure>
+
+            <figure class="min-w-0 bg-navy/50 border border-success/30 rounded-xl overflow-hidden">
+              <figcaption class="px-4 py-2 bg-success/10 border-b border-success/20 flex items-center justify-between gap-3">
+                <span class="text-sm font-semibold text-success uppercase tracking-wide">What You Want</span>
+                <span class="text-xs text-success font-mono" translate="no">Card.tsx</span>
+              </figcaption>
+              <pre class="p-4 text-sm overflow-x-auto text-slate" translate="no"><code>import &#123; Card &#125; from "@/components"
+
+const MyCard = () =&gt; (
+  <span class="text-success">&lt;Card variant="elevated"&gt;</span>
+    &#123;children&#125;
+  <span class="text-success">&lt;/Card&gt;</span>
+)</code></pre>
+            </figure>
+          </div>
+
+          <div class="mt-16 max-w-3xl mx-auto">
+            <h3 class="text-2xl sm:text-3xl font-bold text-light mb-6 text-center">
+              Buoy Finds Each One and Names the Token
+            </h3>
+            <div class="mb-8">
+              <LockOn />
+            </div>
+            <div class="bg-navy/30 border border-buoy/20 rounded-xl p-6">
+              <h4 class="text-sm font-semibold text-buoy mb-4">What Buoy Catches</h4>
+              <dl class="grid sm:grid-cols-3 gap-4 text-sm">
+                <div class="min-w-0">
+                  <dt class="text-light font-medium">Hardcoded colors</dt>
+                  <dd class="text-slate font-mono text-xs mt-1 break-words" translate="no">#ffffff → var(--bg)</dd>
+                </div>
+                <div class="min-w-0">
+                  <dt class="text-light font-medium">Magic numbers</dt>
+                  <dd class="text-slate font-mono text-xs mt-1 break-words" translate="no">16px → var(--space-4)</dd>
+                </div>
+                <div class="min-w-0">
+                  <dt class="text-light font-medium">Duplicate components</dt>
+                  <dd class="text-slate font-mono text-xs mt-1 break-words" translate="no">Use &lt;Card&gt; instead</dd>
+                </div>
+              </dl>
+            </div>
+            <p class="mt-6 text-center text-sm">
+              <a href="#features" class={textLink}>See All Drift Types</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <LeadCapture />
+
+      <!-- Terminal Demo -->
+      <section class="py-24 bg-navy relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark" aria-hidden="true"></div>
+        <div class="vg-pattern absolute inset-0" aria-hidden="true">
+          <MarkPattern pattern="swell" drift={0.35} fade class="opacity-70" />
+        </div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <h2 class={h2}>Find Drift in Seconds</h2>
+            <p class="text-lg text-slate">One command. Every issue with exact file, line, and suggestion.</p>
+          </div>
+          <Terminal id="vg-terminal" command="buoy drift check" lines={terminalLines as any} class="max-w-3xl mx-auto" />
+        </div>
+      </section>
+
+      <!-- PR Check -->
+      <section class="py-24 bg-navy-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <h2 class={h2}>Catch Drift at the PR</h2>
+            <p class="text-lg text-slate">Install the Buoy GitHub&nbsp;App. It reviews every pull request and names the exact fix.</p>
+          </div>
+
+          <figure class="max-w-3xl mx-auto" aria-label="Example Buoy check on a pull request">
+            <div class="bg-[#0d1117] border border-[#30363d] rounded-lg overflow-hidden shadow-xl">
+              <div class="px-4 py-3 border-b border-[#30363d] flex items-center gap-3">
+                <svg class="w-5 h-5 shrink-0 text-[#3fb950]" aria-hidden="true" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M7.177 3.073L9.573.677A.25.25 0 0110 .854v4.792a.25.25 0 01-.427.177L7.177 3.427a.25.25 0 010-.354zM3.75 2.5a.75.75 0 100 1.5.75.75 0 000-1.5zm-2.25.75a2.25 2.25 0 113 2.122v5.256a2.251 2.251 0 11-1.5 0V5.372A2.25 2.25 0 011.5 3.25zM11 2.5h-1V4h1a1 1 0 011 1v5.628a2.251 2.251 0 101.5 0V5A2.5 2.5 0 0011 2.5zm1 10.25a.75.75 0 111.5 0 .75.75 0 01-1.5 0zM3.75 12a.75.75 0 100 1.5.75.75 0 000-1.5z"/>
+                </svg>
+                <span class="min-w-0 truncate text-[#c9d1d9] font-semibold">feat: add new Card component</span>
+                <span class="text-[#8b949e] text-sm tabular-nums">#247</span>
+              </div>
+
+              <div class="px-4 py-3 border-b border-[#30363d] flex items-center gap-2">
+                <svg class="w-4 h-4 shrink-0 text-[#f85149]" aria-hidden="true" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"/>
+                </svg>
+                <span class="text-[#f85149] font-medium text-sm">Buoy Design Check: 3 issues found</span>
+              </div>
+
+              <ul class="divide-y divide-[#30363d]">
+                {annotations.map((a) => (
+                  <li class="px-4 py-3 flex items-start gap-3">
+                    <span class={`mt-0.5 w-12 shrink-0 text-center py-0.5 rounded text-xs font-medium border ${a.level === 'error' ? 'bg-[#f8514926] text-[#f85149] border-[#f8514940]' : 'bg-[#d2992226] text-[#d29922] border-[#d2992240]'}`}>
+                      {a.level}
+                    </span>
+                    <div class="flex-1 min-w-0">
+                      <p class="flex flex-wrap items-baseline gap-x-2 mb-1">
+                        <span class="text-[#58a6ff] text-sm font-mono break-all" translate="no">{a.file}</span>
+                        <span class="text-[#8b949e] text-sm tabular-nums">line {a.line}</span>
+                      </p>
+                      <p class="text-[#c9d1d9] text-sm mb-1">{a.what} <code class="px-1.5 py-0.5 bg-[#161b22] rounded text-[#f85149] text-xs" translate="no">{a.value}</code></p>
+                      <p class="text-[#8b949e] text-sm">Use <code class="px-1.5 py-0.5 bg-[#161b22] rounded text-[#7ee787] text-xs" translate="no">{a.token}</code> instead</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+
+              <div class="px-4 py-3 bg-[#161b22] border-t border-[#30363d] flex items-center justify-between gap-3">
+                <span class="text-[#8b949e] text-sm">Fix these issues to merge</span>
+                <span class="flex items-center gap-1.5 text-[#c9d1d9] text-sm font-semibold" translate="no">
+                  <BuoyMark size={14} /> Buoy
+                </span>
+              </div>
+            </div>
+          </figure>
+
+          <div class="mt-10 max-w-2xl mx-auto text-center">
+            <p class="text-sm text-success font-medium mb-6">Free for life for the first 100 installs</p>
+            <Button href={appUrl} size="lg" external>Install the GitHub&nbsp;App</Button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Feature Grid -->
+      <section id="features" class="py-24 bg-navy-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <h2 class={h2}>What Buoy Detects</h2>
+            <p class="text-lg text-slate max-w-2xl mx-auto">Categorized by severity to help you prioritize fixes.</p>
+          </div>
+
+          <ul class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {driftTypes.map((drift) => (
+              <li class={`relative min-w-0 bg-navy/50 border ${severityBorder[drift.severity]} rounded-xl p-5 transition-colors`}>
+                <p class={`inline-block text-xs px-2 py-0.5 rounded-full mb-3 ${severityBadge[drift.severity]}`}>{drift.severity}</p>
+                <h3 class="font-semibold text-light mb-2 break-words">
+                  {'href' in drift ? (
+                    <a href={drift.href} class="vg-card-link hover:text-buoy transition-colors">{drift.title}</a>
+                  ) : drift.title}
+                </h3>
+                <p class="text-sm text-slate">{drift.description}</p>
+              </li>
+            ))}
+          </ul>
+
+          <p class="text-center mt-8 text-sm">
+            <a href="/features/drift-detection" class={textLink}>Read About Drift Detection</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- How It Works -->
+      <section class="py-24 bg-navy">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class={h2}>How It Works</h2>
+            <p class="text-lg text-slate">Find drift, catch it in CI, and track your progress.</p>
+          </div>
+
+          <ol class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            {steps.map((step) => (
+              <li class="text-center min-w-0">
+                <p class="font-mono text-sm text-buoy mb-3 tabular-nums" aria-hidden="true">0{step.step}</p>
+                <h3 class="text-xl font-semibold text-light mb-3">{step.title}</h3>
+                <code class="text-sm text-buoy bg-navy-dark px-3 py-1 rounded-md inline-block mb-3" translate="no">$ {step.command}</code>
+                <p class="text-slate text-sm">{step.description}</p>
+              </li>
+            ))}
+          </ol>
+
+          <div class="text-center mt-12">
+            <Button href="/docs" variant="secondary">Read the Documentation</Button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Integrations -->
+      <section class="py-24 bg-navy-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 class={`${h2} text-center mb-12`}>Works With Your Stack</h2>
+          <ul class="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
+            {integrations.map((integration) => (
+              <li>
+                <a href={integration.href} translate="no" class="block px-4 py-2 text-sm text-slate bg-navy/50 border border-navy-light/20 rounded-lg touch-manipulation hover:text-light hover:border-buoy/40 hover:bg-navy/70 transition-colors">
+                  {integration.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <!-- Journey -->
+      <section class="py-24 bg-navy">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-16">
+            <h2 class={h2}>Start Free, Scale When Ready</h2>
+            <p class="text-lg text-slate">From a first local scan to checks on every pull request.</p>
+          </div>
+
+          <ol class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {journey.map((card) => (
+              <li class="min-w-0 bg-navy-dark border border-navy-light/30 rounded-xl p-6">
+                <p class={`inline-flex px-3 py-1 rounded-full border text-xs font-semibold uppercase tracking-wide mb-4 ${toneTag[card.tone]}`}>{card.tag}</p>
+                <h3 class="text-xl font-semibold text-light mb-2">{card.title}</h3>
+                <p class="text-slate text-sm mb-4">
+                  {card.body ?? (
+                    <Fragment>Run <code class="text-buoy" translate="no">buoy drift check</code> in any project. See every hardcoded value, naming issue, and value that skips a token.</Fragment>
+                  )}
+                </p>
+                <ul class={`list-disc pl-5 space-y-2 text-sm text-slate ${toneMarker[card.tone]}`}>
+                  {card.items.map((item) => <li>{item}</li>)}
+                </ul>
+              </li>
+            ))}
+          </ol>
+
+          <p class="text-center mt-8 text-sm text-slate">
+            Open source (free), then the GitHub&nbsp;App, then Organization. <a href="/pricing" class={textLink}>See Pricing</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Works without AI -->
+      <section class="py-24 bg-navy-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <h2 class={h2}>The Scanner Runs Without AI</h2>
+            <p class="text-lg text-slate max-w-2xl mx-auto">
+              Core drift detection is deterministic. No LLMs, no API keys, no data leaves your machine. It works for teams where AI tools are restricted.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div class="min-w-0 bg-navy-dark border border-success/30 rounded-xl p-6">
+              <h3 class="font-semibold text-light mb-1" translate="no">Buoy Core</h3>
+              <p class="text-xs text-success mb-4">Open-source CLI</p>
+              <ul class="list-disc pl-5 space-y-3 text-sm text-slate marker:text-success">
+                {core.map((item) => <li>{item}</li>)}
+              </ul>
+              <p class="mt-6 pt-4 border-t border-navy-light/20 text-xs text-slate">No API keys required. No external calls. MIT licensed.</p>
+            </div>
+
+            <div class="min-w-0 bg-navy-dark border border-lavender/30 rounded-xl p-6">
+              <h3 class="font-semibold text-light mb-1">Buoy GitHub&nbsp;App</h3>
+              <p class="text-xs text-lavender mb-4">Same engine, hosted on every PR</p>
+              <ul class="list-disc pl-5 space-y-3 text-sm text-slate marker:text-lavender">
+                {app.map((item) => <li>{item}</li>)}
+              </ul>
+              <p class="mt-6 pt-4 border-t border-navy-light/20 text-xs text-slate">
+                No API key needed. Prose is written through OpenRouter; <a href="/privacy#subprocessors" class={textLink}>see what is sent</a>.
+              </p>
+            </div>
+          </div>
+
+          <p class="text-center mt-8 text-sm text-slate">
+            Start with Core. Add the GitHub&nbsp;App when you’re ready. <a href="/features/ci" class={textLink}>Read About CI Setup</a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-navy-light/20 bg-navy-dark">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+        <p class="flex items-center gap-2 text-slate">
+          <BuoyMark size={18} />
+          <span>&copy; {new Date().getFullYear()} <span translate="no">Buoy</span>. Scanner is open source under MIT.</span>
+        </p>
+        <nav aria-label="Footer">
+          <ul class="vg-footer-links flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            <li><a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href={siteConfig.twitterUrl} target="_blank" rel="noopener noreferrer">Twitter</a></li>
+            <li><a href={siteConfig.discordUrl} target="_blank" rel="noopener noreferrer">Discord</a></li>
+            <li><a href="/scan">Scan a Repo</a></li>
+            <li><a href="/guides">Guides</a></li>
+            <li><a href="/reports">Reports</a></li>
+            <li><a href="/compare">Compare</a></li>
+            <li><a href="/privacy">Privacy</a></li>
+            <li><a href="/terms">Terms</a></li>
+            <li><a href="/support">Support</a></li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+  </div>
+</Layout>
+
+<style is:global>
+  .t-vercel-guidelines { -webkit-tap-highlight-color: color-mix(in srgb, var(--color-buoy) 25%, transparent); }
+  .t-vercel-guidelines :is(h1, h2, h3, h4) { text-wrap: balance; }
+  .t-vercel-guidelines p { text-wrap: pretty; }
+  .t-vercel-guidelines [id] { scroll-margin-top: 5rem; }
+  .t-vercel-guidelines main:focus { outline: none; }
+  .t-vercel-guidelines :is(a, button) { touch-action: manipulation; }
+
+  .t-vercel-guidelines .vg-skip {
+    position: fixed; top: 0.5rem; left: 0.5rem; z-index: 60;
+    padding: 0.5rem 0.875rem; border-radius: 0.5rem;
+    background: var(--color-light); color: var(--color-navy-dark); font-size: 0.875rem; font-weight: 600;
+    transform: translateY(-200%);
+  }
+  .t-vercel-guidelines .vg-skip:focus-visible { transform: none; }
+
+  .t-vercel-guidelines .vg-hero { min-height: calc(100svh - 7rem); }
+
+  /* Hero word reveal: transform and opacity only */
+  @keyframes vgReveal {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: none; }
+  }
+  .t-vercel-guidelines .vg-reveal {
+    display: inline-block;
+    animation: vgReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .t-vercel-guidelines .vg-motion-toggle {
+    position: absolute; right: 1rem; bottom: 1rem; z-index: 20;
+    padding: 0.375rem 0.75rem; border-radius: 0.5rem;
+    font-size: 0.75rem; font-weight: 500; color: var(--color-slate);
+    background: color-mix(in srgb, var(--color-navy-dark) 70%, transparent);
+    border: 1px solid color-mix(in srgb, var(--color-navy-light) 60%, transparent);
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .t-vercel-guidelines .vg-motion-toggle:hover { color: var(--color-light); border-color: var(--color-slate-dark); }
+
+  /* Nav dropdowns open for keyboard focus as well as hover */
+  .t-vercel-guidelines nav .group:focus-within > div { opacity: 1; visibility: visible; }
+
+  /* Whole-card link target, with the focus ring on the card */
+  .t-vercel-guidelines .vg-card-link::after { content: ''; position: absolute; inset: 0; border-radius: 0.75rem; }
+  .t-vercel-guidelines .vg-card-link:focus-visible { outline: none; }
+  .t-vercel-guidelines .vg-card-link:focus-visible::after { outline: 2px solid var(--color-buoy); outline-offset: 2px; }
+
+  .t-vercel-guidelines .vg-footer-links a { color: var(--color-slate); transition: color 0.2s; }
+  .t-vercel-guidelines .vg-footer-links a:hover { color: var(--color-light); text-decoration: underline; text-underline-offset: 4px; }
+
+  .t-vercel-guidelines .vg-pattern img { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+  /* Pause control: stops every CSS loop on the page */
+  html[data-motion-paused] .t-vercel-guidelines *,
+  html[data-motion-paused] .t-vercel-guidelines *::before,
+  html[data-motion-paused] .t-vercel-guidelines *::after { animation-play-state: paused !important; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .t-vercel-guidelines .vg-reveal,
+    .t-vercel-guidelines .wave-container,
+    .t-vercel-guidelines .particle,
+    .t-vercel-guidelines .star,
+    .t-vercel-guidelines .grid-lines line,
+    .t-vercel-guidelines .cursor-blink::after { animation: none !important; }
+    .t-vercel-guidelines .particle { display: none; }
+    .t-vercel-guidelines .vg-motion-toggle { display: none; }
+    .t-vercel-guidelines * { transition-duration: 0.01ms !important; }
+  }
+</style>
+
+<script>
+  // Pause / play for the looping motion (waves, boat, terminal scan line, lock-on demo, mark pattern).
+  const toggle = document.getElementById('vg-motion-toggle')
+  const holder = document.querySelector<HTMLElement>('.vg-pattern')
+  toggle?.addEventListener('click', () => {
+    const paused = document.documentElement.toggleAttribute('data-motion-paused')
+    toggle.setAttribute('aria-pressed', String(paused))
+    toggle.textContent = paused ? 'Play Motion' : 'Pause Motion'
+    // The mark pattern is a canvas loop owned by a shared script: swap it for a still while paused.
+    const canvas = holder?.querySelector('canvas')
+    if (!holder || !canvas) return
+    holder.querySelector('img')?.remove()
+    if (paused) {
+      const still = new Image()
+      still.alt = ''
+      still.className = canvas.className
+      still.src = canvas.toDataURL()
+      holder.appendChild(still)
+      canvas.style.display = 'none'
+    } else {
+      canvas.style.display = ''
+    }
+  })
+</script>

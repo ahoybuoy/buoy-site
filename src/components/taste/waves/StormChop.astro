@@ -1,0 +1,217 @@
+---
+// Realistic: Storm chop (contract: ./WAVES.md).
+// Canvas 2D. A wind-driven sea: short, steep waves in three depth layers, wind-blown
+// spray tearing off the crests and long foam streaks dragged across the water.
+// Everything is drawn as strokes (crest foam, streaks, spray), one shape language.
+---
+
+<div class="wave-background storm-chop" data-storm-chop>
+  <canvas class="storm-chop__canvas"></canvas>
+  <div class="wave-container-1 storm-chop__surface"></div>
+</div>
+
+<style>
+  .storm-chop {
+    --storm-crest: color-mix(in oklab, var(--color-bg) 55%, oklch(0.45 0.06 230));
+    --storm-deep: color-mix(in oklab, var(--color-bg) 70%, oklch(0.06 0.02 245));
+    --storm-haze: color-mix(in oklab, var(--color-bg) 65%, oklch(0.36 0.04 235));
+    --storm-foam: oklch(0.95 0.015 225);
+    /* Back layers: a clear haze step toward the sky, farthest lightest */
+    --storm-far: color-mix(in oklab, var(--color-bg) 36%, oklch(0.56 0.025 240));
+    --storm-mid: color-mix(in oklab, var(--color-bg) 48%, oklch(0.44 0.04 236));
+    --boat-hero-sink: 0px;
+    --boat-hero-draft: 3;
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+  }
+  /* Phones: a short sea band, so a bigger tone step between the layers */
+  @media (max-width: 767px) {
+    .storm-chop {
+      --storm-far: color-mix(in oklab, var(--color-bg) 25%, oklch(0.62 0.025 240));
+      --storm-mid: color-mix(in oklab, var(--color-bg) 50%, oklch(0.38 0.035 238));
+    }
+  }
+  .storm-chop__canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .storm-chop__surface { position: absolute; left: 0; right: 0; top: 60%; height: 0; pointer-events: none; }
+</style>
+
+<script>
+  import { mountSea, colorReader, waveHeight, NEUTRAL, type Wave } from './realistic/kit'
+
+  type Layer = { y: number; amp: number; haze: number; waves: Wave[]; tone?: 'far' | 'mid' }
+  type Streak = { x: number; d: number; len: number; a: number; v: number }
+  type Spray = { x: number; y: number; vx: number; vy: number; life: number; max: number; born: number }
+
+  function init(root: HTMLElement) {
+    const canvas = root.querySelector('canvas')!
+    const ctx = canvas.getContext('2d')!
+    const front: Wave[] = [
+      { len: 460, amp: 13, speed: 52, phase: 0.3 },
+      { len: 210, amp: 6.5, speed: 66, phase: 2.6 },
+      { len: 118, amp: 1.8, speed: 80, phase: 4.4 },
+      { len: 71, amp: 0.45, speed: 94, phase: 1.1 },
+    ]
+    const mk = (k: number, ph: number, sp: number): Wave[] => front.map((w, i) => ({ len: w.len * k * (1 + 0.07 * i), amp: w.amp, speed: w.speed * sp, phase: w.phase + ph * (i + 1) }))
+    // back to front; y is a fraction of the sea depth below the water line (negative = farther)
+    const layers: Layer[] = [
+      { y: -0.22, amp: 0.5, haze: 0.6, tone: 'far', waves: mk(0.58, 3.1, 0.55) },
+      { y: -0.12, amp: 0.78, haze: 0.25, tone: 'mid', waves: mk(0.82, 5.3, 0.78) },
+      { y: 0, amp: 1, haze: 0, waves: front },
+    ]
+    let col = { crest: '', deep: '', haze: '', foam: '', far: '', mid: '' }
+    let st = { w: 0, h: 0, dpr: 1, waterY: 0, scale: 1, p: NEUTRAL }
+    const rnd = (a: number, b: number) => a + Math.random() * (b - a)
+
+    // Foam streaks live in sea coordinates: x along the water, d = depth fraction below the line
+    let streaks: Streak[] = []
+    const spray: Spray[] = []
+    let lastT = -1
+
+    const smooth = (a: number, b: number, x: number) => { const u = Math.max(0, Math.min(1, (x - a) / (b - a))); return u * u * (3 - 2 * u) }
+    const STEP = 3
+
+    function draw(t: number, s: typeof st) {
+      st = s
+      if (!s.w || !col.crest) return
+      const { w, h, waterY, scale } = s
+      const dt = lastT < 0 ? 0 : Math.max(0, Math.min(0.05, t - lastT))
+      lastT = t
+      ctx.setTransform(s.dpr, 0, 0, s.dpr, 0, 0)
+      ctx.clearRect(0, 0, w, h)
+      const span = Math.max(h - waterY, 40)
+      const n = Math.ceil((w + 20) / STEP) + 1
+
+      layers.forEach((L, li) => {
+        // Phones: fixed px steps so all three layers fit a short band
+        const base = waterY + (w < 768 ? L.y * 120 : L.y * span)
+        const ys = new Float32Array(n)
+        for (let i = 0; i < n; i++) ys[i] = base + waveHeight(L.waves, i * STEP - 10, t, scale * L.amp, s.p)
+        const g = ctx.createLinearGradient(0, base - 20 * scale, 0, h)
+        const top = L.tone ? col[L.tone] : col.crest
+        g.addColorStop(0, top)
+        g.addColorStop(L.tone ? 0.75 : Math.min(0.5, 60 / Math.max(1, h - base)), top)
+        g.addColorStop(1, col.deep)
+        ctx.beginPath()
+        ctx.moveTo(-10, ys[0])
+        for (let i = 1; i < n; i++) ctx.lineTo(i * STEP - 10, ys[i])
+        ctx.lineTo(w + 10, h)
+        ctx.lineTo(-10, h)
+        ctx.closePath()
+        ctx.globalAlpha = 1
+        ctx.fillStyle = g
+        ctx.fill()
+        if (L.tone) {
+          // a faint light edge along the back silhouettes so they read even where tones meet
+          ctx.globalAlpha = (L.tone === 'far' ? 0.14 : 0.2) + (w < 768 ? 0.14 : 0)
+          ctx.strokeStyle = col.foam
+          ctx.lineWidth = 1
+          ctx.beginPath()
+          ctx.moveTo(-10, ys[0])
+          for (let i = 1; i < n; i++) ctx.lineTo(i * STEP - 10, ys[i])
+          ctx.stroke()
+        }
+
+        // Crest foam: whitecaps where the water is high and steep on its lee side
+        // Butt caps so neighbouring segments join into one crisp cap, no beading
+        ctx.lineCap = 'butt'
+        ctx.strokeStyle = col.foam
+        for (let i = 1; i < n - 1; i++) {
+          const c = smooth(0.3, 0.85, (base - ys[i]) / (L.amp * scale * 22.7))
+          if (c < 0.05) continue
+          const a = c * (0.35 + 0.5 * (1 - L.haze))
+          ctx.globalAlpha = Math.min(1, a * 1.1)
+          ctx.lineWidth = (0.8 + 2.4 * c) * scale * (1 - L.haze * 0.5)
+          ctx.beginPath()
+          ctx.moveTo(i * STEP - 10, ys[i] + 0.4)
+          ctx.lineTo((i + 1) * STEP - 10, ys[i + 1] + 0.4)
+          ctx.stroke()
+          // Spray: torn off the leading face of the highest crests and blown downwind
+          // (+x, the way the waves travel), faster than the crest so it streams ahead and falls
+          if (dt && c > 0.7 && ys[i + 1] > ys[i] && Math.random() < 0.12 * c * (1 - L.haze) * (dt * 60) && spray.length < 260) {
+            spray.push({ x: i * STEP - 10, y: ys[i] - 1, vx: rnd(120, 200) * scale, vy: rnd(-45, -12) * scale * (1 - L.haze * 0.6), life: 0, max: rnd(0.5, 1.1), born: li })
+          }
+        }
+
+        // Foam streaks on the front water, dragged by the wind
+        if (L.haze === 0) {
+          if (!streaks.length) {
+            const count = Math.round(w / 18)
+            streaks = Array.from({ length: count }, () => ({ x: rnd(-40, w + 40), d: Math.pow(Math.random(), 1.4), len: rnd(110, 240), a: rnd(0.06, 0.24), v: rnd(30, 55) }))
+          }
+          ctx.lineWidth = 0.8 * scale
+          for (const sk of streaks) {
+            sk.x += sk.v * scale * (0.55 + sk.d) * dt
+            if (sk.x - sk.len > w + 40) { sk.x = -40 - rnd(0, 60); sk.d = Math.pow(Math.random(), 1.4) }
+            // A contour of the water at this depth: it bends with the surface above it
+            // (crests up, troughs down), the motion fading with depth
+            const follow = Math.exp(-sk.d * 1.1)
+            const off = 6 + sk.d * (h - waterY - 6)
+            const L2 = sk.len * scale * (0.7 + sk.d)
+            const xa = Math.max(-10, sk.x - L2), xb = Math.min(w + 10, sk.x)
+            if (xb <= xa || waterY + off > h) continue
+            ctx.globalAlpha = sk.a * (1 - sk.d * 0.6)
+            ctx.strokeStyle = col.foam
+            ctx.beginPath()
+            for (let xx = xa, first = true; xx <= xb + 0.01; xx += STEP, first = false) {
+              const f = (xx + 10) / STEP, i = Math.min(n - 2, Math.floor(f)), u = f - i
+              const sy = ys[i] * (1 - u) + ys[i + 1] * u
+              const yy = waterY + off + (sy - waterY) * follow
+              first ? ctx.moveTo(xx, yy) : ctx.lineTo(xx, yy)
+            }
+            ctx.stroke()
+          }
+        }
+      })
+
+      // Spray: short streaks along their flight, falling back as they fade
+      ctx.strokeStyle = col.foam
+      ctx.lineCap = 'round'
+      for (let i = spray.length - 1; i >= 0; i--) {
+        const p = spray[i]
+        p.life += dt
+        p.vy += 160 * scale * dt
+        p.vx *= 1 - 0.15 * dt
+        p.x += p.vx * dt
+        p.y += p.vy * dt
+        // Spray dies where it falls back onto the front water (never drawn below the line)
+        const surfY = waterY + waveHeight(front, p.x, t, scale, s.p)
+        if (p.life > p.max || (p.vy > 0 && p.y > surfY)) { spray.splice(i, 1); continue }
+        const k = p.life / p.max
+        ctx.globalAlpha = (1 - k) * 0.55 * (p.born === 3 ? 1 : 0.6)
+        ctx.lineWidth = (p.born === 3 ? 1.1 : 0.8) * scale
+        ctx.beginPath()
+        ctx.moveTo(p.x, p.y)
+        ctx.lineTo(p.x - p.vx * 0.04, p.y - p.vy * 0.04)
+        ctx.stroke()
+      }
+      ctx.globalAlpha = 1
+    }
+
+    mountSea(root, canvas, {
+      waves: front,
+      readColors,
+      setup: () => { streaks = []; readColors() },
+      draw,
+    })
+    function readColors() {
+        const r = colorReader(root)
+        col = {
+          crest: r.read('--storm-crest', '#2a4a66').css,
+          deep: r.read('--storm-deep', '#04080f').css,
+          haze: r.read('--storm-haze', '#223548').css,
+          foam: r.read('--storm-foam', '#eef4fa').css,
+          far: r.read('--storm-far', '#3a4c5c').css,
+          mid: r.read('--storm-mid', '#24394a').css,
+        }
+        r.done()
+    }
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-storm-chop]').forEach((root) => {
+    if (root.dataset.init) return
+    root.dataset.init = '1'
+    init(root)
+  })
+</script>

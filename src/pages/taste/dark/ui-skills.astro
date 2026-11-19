@@ -1,0 +1,1032 @@
+---
+import Layout from '../../../layouts/Layout.astro'
+import BoatHero from '../../../components/taste/BoatHero.astro'
+import BoatGlyph from '../../../components/taste/BoatGlyph.astro'
+import BuoyLogo from '../../../components/BuoyLogo.astro'
+import BuoyMark from '../../../components/BuoyMark.astro'
+import Button from '../../../components/Button.astro'
+import Footer from '../../../components/Footer.astro'
+import { siteConfig } from '../../../config'
+
+const installUrl = 'https://github.com/marketplace/buoy-design'
+
+// The live Button carries a glow and a hover scale. Both are switched off here
+// so the button reads as a flat control and both buttons in a group match.
+const flat = 'u-btn'
+const flatSecondary = 'u-btn u-btn-secondary'
+
+const navLinks = [
+  { label: 'Docs', href: '/docs' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'Scan a repo', href: '/scan' },
+  { label: 'GitHub', href: siteConfig.githubUrl },
+]
+
+const driftTypes = [
+  { title: 'Hardcoded values', severity: 'Warning', description: 'Colors, spacing and fonts that do not use tokens.', href: '/features/hardcoded-values' },
+  { title: 'Duplicate components', severity: 'Warning', description: 'Similar components that should be consolidated.', href: '/features/duplicate-detection' },
+  { title: 'Naming inconsistency', severity: 'Info', description: 'Component and prop names that do not match your conventions.', href: '/features/naming-consistency' },
+  { title: 'Deprecated patterns', severity: 'Warning', description: 'Components marked as deprecated that are still in use.' },
+  { title: 'Inline styles', severity: 'Warning', description: 'Inline CSS that should use tokens or classes.' },
+  { title: 'Accessibility conflict', severity: 'Critical', description: 'Missing ARIA labels and focus issues.', href: '/features/accessibility-checks' },
+  { title: 'Framework sprawl', severity: 'Warning', description: 'More than one UI framework in the same codebase.', href: '/features/framework-sprawl' },
+  { title: 'Orphaned components', severity: 'Info', description: 'Components that exist in code but not in design.' },
+]
+
+const integrations = [
+  { name: 'React', href: '/integrations/react' },
+  { name: 'Vue', href: '/integrations/vue' },
+  { name: 'Svelte', href: '/integrations/svelte' },
+  { name: 'Angular', href: '/integrations/angular' },
+  { name: 'Next.js', href: '/integrations/nextjs' },
+  { name: 'Tailwind', href: '/integrations/tailwind' },
+  { name: 'GitHub', href: '/integrations/github' },
+]
+
+const plans = [
+  {
+    name: 'Open source CLI',
+    note: 'Free',
+    body: 'Run buoy drift check in any project. It lists every hardcoded value and naming issue with the file and line.',
+    items: ['Unlimited scans', 'All detection rules', 'Fix suggestions'],
+  },
+  {
+    name: 'GitHub App',
+    note: 'Every pull request',
+    body: 'Install the app and every pull request gets checked. The same open-source scanner runs on each one.',
+    items: ['Inline PR comments', 'Check status on the PR', 'Committable fix suggestions'],
+  },
+  {
+    name: 'Organization',
+    note: 'For design-system owners',
+    body: 'See how your system holds up across every repo that uses it.',
+    items: ['Org-wide drift record', 'Dashboard with health scores and trends', 'Design-partner relationship'],
+  },
+]
+
+const scannerFacts = [
+  { term: 'No LLM in the scanner', detail: 'Core drift detection is deterministic. The same code gives the same findings every time.' },
+  { term: 'Nothing leaves your machine', detail: 'The CLI needs no API keys and makes no external calls. It works offline and air-gapped.' },
+  { term: 'MIT licensed', detail: 'The scanner is open source. The GitHub App runs the same engine on every pull request.' },
+  { term: 'AI is optional', detail: 'The GitHub App adds LLM-written summaries and coaching. The findings stay deterministic.' },
+]
+---
+
+<Layout title="Buoy: catch design drift before it ships" noindex>
+  <div class="t-uis-dark">
+    <a href="#main" class="u-skip">
+      Skip to content
+    </a>
+
+    <header class="u-header">
+      <div class="u-wrap u-header-row">
+        <a href="/" aria-label="Buoy home">
+          <BuoyLogo size="1.5rem" />
+        </a>
+        <nav aria-label="Main" class="u-nav">
+          {navLinks.map((link) => (
+            <a href={link.href} class="u-nav-link">
+              {link.label}
+            </a>
+          ))}
+          <Button href={installUrl} size="sm" external class="u-btn-sm">
+            Install the GitHub App
+          </Button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- Hero -->
+      <BoatHero minHeight="calc(100svh - 4rem)" class="u-boat">
+      <div class="u-wrap u-split u-hero">
+        <div class="u-lead">
+          <h1 class="u-h1">
+            Catch design drift before it ships.
+          </h1>
+          <p class="u-sub">
+            Buoy checks UI code against your design system. It reviews every pull request and leaves an inline comment with the exact fix, such as the token that already exists for a hardcoded color.<BoatGlyph />
+          </p>
+          <div class="u-actions">
+            <Button href={installUrl} size="lg" external class={flat}>
+              Install the GitHub App
+            </Button>
+            <Button href="/scan" size="lg" variant="secondary" class={flatSecondary}>
+              Scan a public repo
+            </Button>
+          </div>
+          <p class="u-note">
+            The scanner is open source under MIT and runs without an LLM. The public repo scan is free and takes about a minute.
+          </p>
+        </div>
+
+        <!-- A Buoy review comment on a pull request -->
+        <div class="u-main">
+          <figure class="u-panel u-panel-raised u-plate">
+            <figcaption class="u-panel-head">
+              <span class="u-strong">feat: add new Card component <span class="u-muted u-num">#247</span></span>
+              <span class="u-muted">Buoy Design Check: 3 issues found</span>
+            </figcaption>
+
+            <div class="u-file u-mono-xs">
+              src/components/Card.tsx
+            </div>
+            <pre class="u-code u-code-lines"><code><span class="u-line"><span class="u-ln">21</span>const Card = () =&gt; (</span><span class="u-line"><span class="u-ln">22</span>  &lt;div style=&#123;&#123;</span><span class="u-line u-line-hit"><span class="u-ln">23</span>    background: "#3b82f6",</span></code></pre>
+
+            <div class="u-comment">
+              <div class="u-comment-by">
+                <span class="u-mark"><BuoyMark size={16} /></span>
+                <span class="u-strong">buoy</span>
+                <span class="u-muted">commented on line 23</span>
+              </div>
+              <p class="u-comment-text">
+                Hardcoded color <code>#3b82f6</code>. Your design system already has a token for this value. Use <code>var(--color-primary)</code> instead.
+              </p>
+              <div class="u-suggest">
+                <div class="u-suggest-head">Suggested change</div>
+                <pre class="u-code u-diff"><code><span class="u-del"><span class="u-sign">-</span>background: "#3b82f6",</span><span class="u-add"><span class="u-sign">+</span>background: "var(--color-primary)",</span></code></pre>
+              </div>
+            </div>
+          </figure>
+        </div>
+      </div>
+      </BoatHero>
+
+      <!-- Problem -->
+      <section class="u-section">
+        <div class="u-wrap u-split u-stacked">
+          <div class="u-lead">
+            <h2 class="u-h2">Coding agents do not know your tokens.</h2>
+            <p class="u-body">
+              Agents write a lot of UI now. They reach for hardcoded colors, magic spacing numbers and a new component where one already exists. Each one is small, and they add up. Buoy finds each case and names the replacement.
+            </p>
+          </div>
+
+          <figure class="u-main u-panel u-plate u-compare">
+            <div class="u-compare-grid">
+              <div class="u-compare-pane">
+                <div class="u-panel-head">
+                  <span class="u-strong">What the agent writes</span>
+                  <span class="u-mono-xs">Card.tsx</span>
+                </div>
+                <pre class="u-code u-code-pad"><code>const Card = () =&gt; (
+  &lt;div style=&#123;&#123;
+    <span class="u-flag">background: "#ffffff"</span>,
+    <span class="u-flag">padding: "16px"</span>,
+    <span class="u-flag">borderRadius: "8px"</span>,
+  &#125;&#125;&gt;
+    &#123;children&#125;
+  &lt;/div&gt;
+)</code></pre>
+              </div>
+              <div class="u-compare-pane">
+                <div class="u-panel-head">
+                  <span class="u-strong">What your system already has</span>
+                  <span class="u-mono-xs">Card.tsx</span>
+                </div>
+                <pre class="u-code u-code-pad"><code>import &#123; Card &#125; from "@/components"
+
+const MyCard = () =&gt; (
+  <span class="u-good">&lt;Card variant="elevated"&gt;</span>
+    &#123;children&#125;
+  <span class="u-good">&lt;/Card&gt;</span>
+)</code></pre>
+              </div>
+            </div>
+            <figcaption class="u-catches">
+              <div>
+                <span class="u-strong">Hardcoded colors</span>
+                <span class="u-mono-xs">#ffffff → var(--bg)</span>
+              </div>
+              <div>
+                <span class="u-strong">Magic numbers</span>
+                <span class="u-mono-xs">16px → var(--space-4)</span>
+              </div>
+              <div>
+                <span class="u-strong">Duplicate components</span>
+                <span class="u-mono-xs">Use &lt;Card&gt; instead</span>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- CLI -->
+      <section class="u-section">
+        <div class="u-wrap u-split u-rev">
+          <div class="u-lead">
+            <h2 class="u-h2">One command scans the whole project.</h2>
+            <p class="u-body">
+              The CLI needs no config. It reports every issue with the exact file, line and suggested replacement.
+            </p>
+            <dl class="u-commands">
+              <div>
+                <dt>Set up</dt>
+                <dd>npx ahoybuoy dock</dd>
+              </div>
+              <div>
+                <dt>Scan</dt>
+                <dd>buoy drift check</dd>
+              </div>
+              <div>
+                <dt>Track health over time</dt>
+                <dd>buoy show health</dd>
+              </div>
+            </dl>
+            <p class="u-more">
+              <a href="/docs" class="u-link">Read the documentation</a>
+            </p>
+          </div>
+
+          <div class="u-main">
+            <figure class="u-panel u-panel-raised">
+              <figcaption class="u-panel-head u-mono-xs">
+                Terminal output
+              </figcaption>
+              <pre class="u-code u-code-pad u-num u-term"><code><span class="u-hi">$ buoy drift check</span>
+
+Scanning for design drift...
+
+Found <span class="u-hi">23</span> issues in <span class="u-hi">142</span> files
+
+<span class="u-crit">CRITICAL (2)</span>
+├─ <span class="u-hi">Button.tsx:12</span>  Missing aria-label
+└─ <span class="u-hi">Modal.tsx:45</span>   Focus trap not implemented
+
+<span class="u-warn">HARDCODED VALUES (8)</span>
+├─ <span class="u-hi">Card.tsx:8</span>     #ffffff → use var(--bg-surface)
+├─ <span class="u-hi">Badge.tsx:3</span>    8px → use var(--spacing-sm)
+└─ ... and 6 more</code></pre>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- What it detects -->
+      <section id="features" class="u-section">
+        <div class="u-wrap u-split u-stacked">
+          <div class="u-lead">
+            <h2 class="u-h2">What Buoy detects</h2>
+            <p class="u-body">
+              Each finding has a severity, so you can decide what to fix first.
+            </p>
+            <p class="u-more">
+              <a href="/features/drift-detection" class="u-link">More on drift detection</a>
+            </p>
+          </div>
+
+          <ul class="u-main u-rows">
+            <li class="u-rows-head" aria-hidden="true">
+              <span>Type</span>
+              <span>What it finds</span>
+              <span>Severity</span>
+            </li>
+            {driftTypes.map((drift) => (
+              <li>
+                <h3>
+                  {drift.href ? (
+                    <a href={drift.href}>
+                      {drift.title}
+                    </a>
+                  ) : drift.title}
+                </h3>
+                <p class="u-row-desc">{drift.description}</p>
+                <p class="u-row-sev u-mono-xs">{drift.severity}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <!-- Deterministic scanner -->
+      <section class="u-section">
+        <div class="u-wrap u-split u-stacked">
+          <div class="u-lead">
+            <h2 class="u-h2">The scanner is deterministic.</h2>
+            <p class="u-body">
+              Buoy works for teams where AI tools are restricted. The prose in the GitHub App is written through OpenRouter, and you can <a href="/privacy#subprocessors" class="u-link">see what is sent</a>.
+            </p>
+          </div>
+
+          <dl class="u-main u-facts">
+            {scannerFacts.map((fact) => (
+              <div>
+                <dt>{fact.term}</dt>
+                <dd>{fact.detail}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      <!-- Ways to run it -->
+      <section class="u-section">
+        <div class="u-wrap u-stack">
+          <div class="u-narrow">
+            <h2 class="u-h2">Start with the CLI. Add the GitHub App when you want every pull request checked.</h2>
+          </div>
+
+          <div class="u-plans">
+            {plans.map((plan) => (
+              <div class="u-plan">
+                <p class="u-plan-note">{plan.note}</p>
+                <h3>{plan.name}</h3>
+                <p class="u-plan-body">{plan.body}</p>
+                <ul>
+                  {plan.items.map((item) => <li>{item}</li>)}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <div class="u-stackline">
+            <p>
+              <a href="/pricing" class="u-link">See pricing</a>
+            </p>
+            <div>
+              <h3>Works with your stack</h3>
+              <ul>
+                {integrations.map((integration) => (
+                  <li>
+                    <a href={integration.href} class="u-quiet-link">
+                      {integration.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Closing action -->
+      <section class="u-section">
+        <div class="u-wrap u-close">
+          <div class="u-close-text">
+            <h2 class="u-h2">Put Buoy on your next pull request.</h2>
+            <p class="u-body">
+              Install the GitHub App and the next pull request gets reviewed. Or scan any public GitHub repository first, free, in about a minute.
+            </p>
+          </div>
+          <div class="u-actions u-actions-end">
+            <Button href={installUrl} size="lg" external class={flat}>
+              Install the GitHub App
+            </Button>
+            <Button href="/scan" size="lg" variant="secondary" class={flatSecondary}>
+              Scan a public repo
+            </Button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </div>
+</Layout>
+
+<!--
+  Plain CSS on Tailwind's default scale (spacing in 0.25rem steps, default type
+  sizes, rounded-lg, shadow-lg, sm/md/lg breakpoints) and the site tokens.
+  No gradients, no glow, no letter-spacing changes, no animation beyond
+  150ms colour feedback on links and buttons.
+-->
+<style is:global>
+  .t-uis-dark {
+    /* Tailwind stone, dark. Warm neutrals instead of navy or blue-black. */
+    --k-bg: #0c0a09;
+    --k-surface: #1c1917;
+    --k-line: #292524;
+    --k-faint: #78716c;
+    --k-muted: #a8a29e;
+    --k-soft: #d6d3d1;
+    --k-text: #fafaf9;
+    --u-line: var(--k-line);
+    --u-surface: var(--k-surface);
+    background: var(--k-bg);
+    color: var(--k-text);
+  }
+  .t-uis-dark h1,
+  .t-uis-dark h2,
+  .t-uis-dark h3 { text-wrap: balance; }
+  .t-uis-dark p,
+  .t-uis-dark dd,
+  .t-uis-dark li { text-wrap: pretty; }
+  .t-uis-dark code { color: var(--k-text); }
+
+  .t-uis-dark .u-skip {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    z-index: 50;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background: var(--k-text);
+    color: var(--k-bg);
+    transform: translateY(-200%);
+  }
+  .t-uis-dark .u-skip:focus { transform: none; }
+
+  .t-uis-dark .u-wrap {
+    max-width: 72rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+  .t-uis-dark .u-header { border-bottom: 1px solid var(--u-line); }
+  .t-uis-dark .u-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    height: 4rem;
+  }
+  .t-uis-dark .u-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+  .t-uis-dark .u-nav-link {
+    display: none;
+    color: var(--k-muted);
+    transition: color 150ms ease-out;
+  }
+  .t-uis-dark .u-nav-link:hover { color: var(--k-text); }
+
+  /* The live Button, with its glow and hover scale switched off */
+  .t-uis-dark .u-btn,
+  .t-uis-dark .u-btn-sm {
+    box-shadow: none;
+    scale: 1;
+    transform: none;
+    transition: background-color 150ms ease-out, border-color 150ms ease-out;
+  }
+  .t-uis-dark .u-btn {
+    height: 3rem;
+    width: 100%;
+    white-space: nowrap;
+  }
+  .t-uis-dark .u-btn-secondary {
+    background: transparent;
+    border-color: var(--k-faint);
+  }
+  .t-uis-dark .u-btn-secondary:hover {
+    background: var(--u-surface);
+    border-color: var(--k-muted);
+  }
+
+  .t-uis-dark .u-section { border-top: 1px solid var(--u-line); }
+  .t-uis-dark .u-split,
+  .t-uis-dark .u-stack,
+  .t-uis-dark .u-close {
+    padding-block: 4rem;
+  }
+  .t-uis-dark .u-split,
+  .t-uis-dark .u-close {
+    display: grid;
+    gap: 2.5rem;
+  }
+  .t-uis-dark .u-lead,
+  .t-uis-dark .u-main,
+  .t-uis-dark .u-panel { min-width: 0; }
+
+  .t-uis-dark .u-h1 {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+  .t-uis-dark .u-h2 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+  .t-uis-dark .u-sub {
+    margin-top: 1.5rem;
+    max-width: 28rem;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    color: var(--k-muted);
+  }
+  .t-uis-dark .u-body {
+    margin-top: 1rem;
+    max-width: 32rem;
+    color: var(--k-muted);
+  }
+  .t-uis-dark .u-note {
+    margin-top: 1.5rem;
+    max-width: 28rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--k-muted);
+  }
+  .t-uis-dark .u-more {
+    margin-top: 2rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+  .t-uis-dark .u-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+  .t-uis-dark .u-link {
+    color: var(--k-text);
+    text-decoration: underline;
+    text-decoration-color: var(--color-buoy);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    transition: color 150ms ease-out;
+  }
+  .t-uis-dark .u-link:hover { color: var(--color-buoy-light); }
+  .t-uis-dark .u-quiet-link {
+    text-decoration: underline;
+    text-decoration-color: var(--k-faint);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    transition: color 150ms ease-out, text-decoration-color 150ms ease-out;
+  }
+  .t-uis-dark .u-quiet-link:hover {
+    color: var(--k-text);
+    text-decoration-color: var(--color-buoy);
+  }
+
+  .t-uis-dark .u-strong { font-weight: 500; color: var(--k-text); }
+  .t-uis-dark .u-muted { font-weight: 400; color: var(--k-muted); }
+  .t-uis-dark .u-num { font-variant-numeric: tabular-nums; }
+  .t-uis-dark .u-mono-xs {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: var(--k-muted);
+  }
+
+  /* Panels: PR comment, code samples, terminal */
+  .t-uis-dark .u-panel {
+    overflow: hidden;
+    border: 1px solid var(--u-line);
+    border-radius: 0.5rem;
+    background: var(--u-surface);
+  }
+  .t-uis-dark .u-panel-raised {
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+  .t-uis-dark .u-panel-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.25rem 1rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--u-line);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+  .t-uis-dark .u-panel-head.u-mono-xs { font-size: 0.75rem; line-height: 1rem; }
+  .t-uis-dark .u-file {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--u-line);
+  }
+  .t-uis-dark .u-code {
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    color: var(--k-muted);
+  }
+  .t-uis-dark .u-code code { color: inherit; }
+  .t-uis-dark .u-code-pad { padding: 1rem; }
+  .t-uis-dark .u-term { font-size: 0.75rem; }
+  .t-uis-dark .u-code-lines {
+    padding-block: 0.75rem;
+    border-bottom: 1px solid var(--u-line);
+  }
+  .t-uis-dark .u-line,
+  .t-uis-dark .u-del,
+  .t-uis-dark .u-add {
+    display: block;
+    min-width: max-content;
+    padding-inline: 1rem;
+  }
+  .t-uis-dark .u-line-hit {
+    background: color-mix(in srgb, var(--color-buoy) 12%, transparent);
+    color: var(--k-text);
+  }
+  .t-uis-dark .u-ln {
+    display: inline-block;
+    width: 1.5rem;
+    margin-right: 1rem;
+    text-align: right;
+    color: var(--k-faint);
+    font-variant-numeric: tabular-nums;
+    user-select: none;
+  }
+  .t-uis-dark .u-line-hit .u-ln { color: var(--k-muted); }
+  .t-uis-dark .u-comment { padding: 1rem; }
+  .t-uis-dark .u-comment-by {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+  .t-uis-dark .u-mark { display: inline-flex; line-height: 0; }
+  .t-uis-dark .u-comment-text {
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    color: var(--k-soft);
+  }
+  .t-uis-dark .u-suggest {
+    margin-top: 1rem;
+    overflow: hidden;
+    border: 1px solid var(--u-line);
+    border-radius: 0.5rem;
+  }
+  .t-uis-dark .u-suggest-head {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--u-line);
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: var(--k-muted);
+  }
+  .t-uis-dark .u-diff {
+    background: var(--k-bg);
+    font-size: 0.75rem;
+    line-height: 1.5rem;
+  }
+  .t-uis-dark .u-comment-text code { white-space: nowrap; }
+  .t-uis-dark .u-del {
+    background: color-mix(in srgb, var(--color-critical) 12%, transparent);
+    color: var(--k-soft);
+  }
+  .t-uis-dark .u-add {
+    background: color-mix(in srgb, var(--color-success) 12%, transparent);
+    color: var(--k-text);
+  }
+  .t-uis-dark .u-sign { margin-right: 0.75rem; user-select: none; }
+  .t-uis-dark .u-del .u-sign { color: var(--color-critical); }
+  .t-uis-dark .u-add .u-sign { color: var(--color-success); }
+  .t-uis-dark .u-hi { color: var(--k-text); }
+  .t-uis-dark .u-flag {
+    color: var(--k-text);
+    text-decoration: underline;
+    text-decoration-color: var(--color-buoy);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+  .t-uis-dark .u-crit { font-weight: 500; color: var(--color-critical); }
+  .t-uis-dark .u-warn { font-weight: 500; color: var(--color-warning); }
+
+  .t-uis-dark .u-pair {
+    display: grid;
+    gap: 1.5rem;
+  }
+  .t-uis-dark .u-pair .u-code-pad { padding: 1rem; }
+  .t-uis-dark .u-catches {
+    display: grid;
+    gap: 1rem 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--u-line);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+  .t-uis-dark .u-catches dt { font-weight: 500; }
+  .t-uis-dark .u-catches dd { margin-top: 0.25rem; }
+
+  .t-uis-dark .u-commands {
+    display: grid;
+    gap: 1rem;
+    margin-top: 2rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+  .t-uis-dark .u-commands dt { color: var(--k-muted); }
+  .t-uis-dark .u-commands dd {
+    margin-top: 0.25rem;
+    font-family: var(--font-mono);
+    color: var(--k-text);
+  }
+
+  /* Detection rows */
+  .t-uis-dark .u-rows { border-bottom: 1px solid var(--u-line); }
+  .t-uis-dark .u-rows li {
+    display: grid;
+    gap: 0.25rem 1.5rem;
+    padding-block: 1rem;
+    border-top: 1px solid var(--u-line);
+  }
+  .t-uis-dark .u-rows h3 {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 500;
+    letter-spacing: normal;
+  }
+  .t-uis-dark .u-rows h3 a { transition: color 150ms ease-out; }
+  .t-uis-dark .u-rows h3 a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--color-buoy);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+  .t-uis-dark .u-row-desc {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--k-muted);
+  }
+
+  .t-uis-dark .u-facts {
+    display: grid;
+    gap: 2rem;
+    align-content: start;
+  }
+  .t-uis-dark .u-facts > div {
+    padding-top: 1rem;
+    border-top: 1px solid var(--u-line);
+  }
+  .t-uis-dark .u-facts dt {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+  }
+  .t-uis-dark .u-facts dd {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--k-muted);
+  }
+
+  .t-uis-dark .u-narrow { max-width: 40rem; }
+  .t-uis-dark .u-plans {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .t-uis-dark .u-plan {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    border: 1px solid var(--u-line);
+    border-radius: 0.5rem;
+    background: var(--u-surface);
+  }
+  .t-uis-dark .u-plan-note {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--k-muted);
+  }
+  .t-uis-dark .u-plan h3 {
+    margin-top: 0.25rem;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+  .t-uis-dark .u-plan-body {
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--k-muted);
+  }
+  .t-uis-dark .u-plan ul {
+    display: grid;
+    gap: 0.5rem;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--u-line);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--k-soft);
+  }
+  .t-uis-dark .u-plan-body { margin-bottom: 1.5rem; }
+
+  .t-uis-dark .u-stackline {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--u-line);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--k-muted);
+  }
+  .t-uis-dark .u-stackline h3 {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 500;
+    letter-spacing: normal;
+    color: var(--k-text);
+  }
+  .t-uis-dark .u-stackline ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin-top: 0.75rem;
+  }
+  .t-uis-dark .u-close-text { min-width: 0; }
+
+  @media (min-width: 40rem) {
+    .t-uis-dark .u-wrap { padding-inline: 1.5rem; }
+    .t-uis-dark .u-h1 { font-size: 3rem; line-height: 1; }
+    .t-uis-dark .u-actions { flex-direction: row; }
+    .t-uis-dark .u-btn { width: auto; }
+    .t-uis-dark .u-code-pad { padding: 1.5rem; }
+    .t-uis-dark .u-diff { font-size: 0.875rem; }
+    .t-uis-dark .u-term { font-size: 0.875rem; }
+    .t-uis-dark .u-catches { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .t-uis-dark .u-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .t-uis-dark .u-rows li {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      align-items: baseline;
+    }
+    .t-uis-dark .u-rows h3 { grid-column: span 4; }
+    .t-uis-dark .u-rows h3 a { transition: color 150ms ease-out; }
+  .t-uis-dark .u-rows h3 a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--color-buoy);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+  .t-uis-dark .u-row-desc { grid-column: span 6; }
+    .t-uis-dark .u-row-sev { grid-column: span 2; text-align: right; }
+  }
+  @media (min-width: 48rem) {
+    .t-uis-dark .u-nav-link { display: inline; }
+    .t-uis-dark .u-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .t-uis-dark .u-catches { grid-column: span 2; }
+    .t-uis-dark .u-plans { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .t-uis-dark .u-stackline { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+    .t-uis-dark .u-stackline > p { grid-column: span 4; }
+    .t-uis-dark .u-stackline > div { grid-column: span 8; }
+  }
+  @media (min-width: 64rem) {
+    .t-uis-dark .u-split,
+    .t-uis-dark .u-stack,
+    .t-uis-dark .u-close { padding-block: 6rem; }
+    .t-uis-dark .u-split,
+    .t-uis-dark .u-close {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 2rem;
+    }
+    .t-uis-dark .u-lead { grid-column: span 4; }
+    .t-uis-dark .u-main { grid-column: span 8; }
+    .t-uis-dark .u-hero { align-items: center; }
+    .t-uis-dark .u-hero .u-lead { grid-column: span 5; }
+    .t-uis-dark .u-hero .u-main { grid-column: span 7; }
+    .t-uis-dark .u-close { align-items: end; }
+    .t-uis-dark .u-close-text { grid-column: span 7; }
+    .t-uis-dark .u-actions-end { grid-column: span 5; justify-content: flex-end; margin-top: 0; }
+  }
+  /* Round 3: boat hero. Flat sky (no gradient), waves in warm stone. */
+  .t-uis-dark .u-boat.boat-hero {
+    --boat-hero-bg: var(--k-bg);
+    --boat-hero-sky: var(--k-bg);
+    --boat-hero-wave-1: #171412;
+    --boat-hero-wave-2: #1c1917;
+    --boat-hero-wave-3: #221f1d;
+    --boat-hero-stars-opacity: 0.25;
+    border-bottom: 1px solid var(--u-line);
+  }
+  .t-uis-dark .u-hero {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  /* baseline-ui: no multicolour gradients. Flatten the scene's colour mesh
+     and give the particles the same warm grey as the waves. */
+  .t-uis-dark .u-boat .mesh-overlay { background: none; }
+  /* The wave crests carry a blue drop-shadow filter; drop it so the sea stays one warm grey */
+  .t-uis-dark .u-boat .wave-container svg,
+  .t-uis-dark .u-boat .wave-container path,
+  .t-uis-dark .u-boat .wave-container g { filter: none; }
+  .t-uis-dark .u-boat .particle { background: rgb(168 162 158 / 0.4); }
+
+  /* The product example is a light plate: GitHub light, readable at a glance */
+  .t-uis-dark .u-plate {
+    --p-bg: #fafaf9;
+    --p-bg-2: #f5f5f4;
+    --p-line: #e7e5e4;
+    --p-text: #1c1917;
+    --p-muted: #57534e;
+    border-color: var(--p-line);
+    background: var(--p-bg);
+    color: var(--p-text);
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.5);
+  }
+  .t-uis-dark .u-plate .u-panel-head,
+  .t-uis-dark .u-plate .u-file,
+  .t-uis-dark .u-plate .u-code-lines,
+  .t-uis-dark .u-plate .u-suggest,
+  .t-uis-dark .u-plate .u-suggest-head { border-color: var(--p-line); }
+  .t-uis-dark .u-plate .u-panel-head { background: var(--p-bg-2); }
+  .t-uis-dark .u-plate .u-strong,
+  .t-uis-dark .u-plate code { color: var(--p-text); }
+  .t-uis-dark .u-plate .u-muted,
+  .t-uis-dark .u-plate .u-mono-xs,
+  .t-uis-dark .u-plate .u-suggest-head,
+  .t-uis-dark .u-plate .u-code { color: var(--p-muted); }
+  .t-uis-dark .u-plate .u-ln { color: #a8a29e; }
+  .t-uis-dark .u-plate .u-line-hit { color: var(--p-text); background: #fee2e2; }
+  .t-uis-dark .u-plate .u-line-hit .u-ln { color: var(--p-muted); }
+  .t-uis-dark .u-plate .u-comment-text { color: #292524; }
+  .t-uis-dark .u-plate .u-comment-text code {
+    padding: 0.0625rem 0.3125rem;
+    border: 1px solid var(--p-line);
+    border-radius: 0.25rem;
+    background: var(--p-bg-2);
+  }
+  .t-uis-dark .u-plate .u-diff { background: #fff; }
+  .t-uis-dark .u-plate .u-del { background: #fef2f2; color: #991b1b; }
+  .t-uis-dark .u-plate .u-add { background: #f0fdf4; color: #166534; }
+  .t-uis-dark .u-plate .u-del .u-sign { color: #b91c1c; }
+  .t-uis-dark .u-plate .u-add .u-sign { color: #15803d; }
+
+  /* Primary button: ink label on the accent; secondary stays outline */
+  .t-uis-dark .u-btn:not(.u-btn-secondary),
+  .t-uis-dark .u-btn-sm { color: var(--k-bg); }
+
+  /* Plans: columns divided by rules, not a row of filled cards */
+  .t-uis-dark .u-plans { gap: 0; }
+  .t-uis-dark .u-plan {
+    padding: 1.5rem 0;
+    border: 0;
+    border-top: 1px solid var(--u-line);
+    border-radius: 0;
+    background: none;
+  }
+  @media (min-width: 48rem) {
+    .t-uis-dark .u-plan { padding: 1.5rem 2rem 0 0; }
+    .t-uis-dark .u-plan + .u-plan { padding-left: 2rem; border-left: 1px solid var(--u-line); }
+  }
+  .t-uis-dark .u-plan ul { border-top: 0; padding-top: 0; }
+  .t-uis-dark .u-plan ul li::before { content: none; }
+
+  /* The sea is a band under the content, so the boat lands and drifts in
+     open water instead of behind the example plate */
+  @media (min-width: 48rem) {
+    .t-uis-dark .u-boat.boat-hero { --boat-hero-sea-height: 15rem; }
+    .t-uis-dark .u-hero { padding-bottom: 12rem; }
+  }
+  .t-uis-dark footer { background: var(--k-bg); border-color: var(--u-line); }
+  .t-uis-dark footer span,
+  .t-uis-dark footer a { color: var(--k-muted); }
+  .t-uis-dark footer a:hover { color: var(--k-text); }
+
+  /* Round 3 sections: alternate the 4/8 split with stacked blocks */
+  .t-uis-dark .u-stacked .u-lead { max-width: 40rem; }
+  @media (min-width: 64rem) {
+    .t-uis-dark .u-stacked .u-lead,
+    .t-uis-dark .u-stacked .u-main { grid-column: 1 / -1; }
+    .t-uis-dark .u-stacked { row-gap: 3rem; }
+    .t-uis-dark .u-rev .u-lead { grid-column: 9 / span 4; grid-row: 1; }
+    .t-uis-dark .u-rev .u-main { grid-column: 1 / span 8; grid-row: 1; }
+    .t-uis-dark .u-stacked .u-facts { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  }
+
+  /* Comparison plate */
+  .t-uis-dark .u-compare-grid { display: grid; }
+  @media (min-width: 48rem) {
+    .t-uis-dark .u-compare-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .t-uis-dark .u-compare-pane + .u-compare-pane { border-left: 1px solid var(--p-line); }
+  }
+  .t-uis-dark .u-compare-pane { min-width: 0; }
+  .t-uis-dark .u-compare-pane + .u-compare-pane { border-top: 1px solid var(--p-line); }
+  @media (min-width: 48rem) {
+    .t-uis-dark .u-compare-pane + .u-compare-pane { border-top: 0; }
+  }
+  .t-uis-dark .u-plate .u-flag {
+    color: #991b1b;
+    background: #fef2f2;
+    text-decoration-color: #dc2626;
+    text-decoration-thickness: 1px;
+  }
+  .t-uis-dark .u-plate .u-good { color: #166534; background: #f0fdf4; }
+  .t-uis-dark .u-plate .u-catches {
+    margin: 0;
+    padding: 1rem;
+    border-top: 1px solid var(--p-line);
+    background: var(--p-bg-2);
+  }
+  .t-uis-dark .u-plate .u-catches > div { display: grid; gap: 0.25rem; }
+  .t-uis-dark .u-plate .u-code-pad { color: #44403c; }
+  .t-uis-dark .u-compare .u-panel-head { background: var(--p-bg-2); }
+
+  /* Detection table */
+  .t-uis-dark .u-rows .u-rows-head {
+    padding-block: 0 0.75rem;
+    border-top: 0;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--k-faint);
+  }
+  .t-uis-dark .u-rows .u-rows-head span:last-child { text-align: right; }
+  @media (max-width: 39.99rem) {
+    .t-uis-dark .u-rows .u-rows-head { display: none; }
+  }
+  @media (min-width: 40rem) {
+    .t-uis-dark .u-rows-head span:nth-child(1) { grid-column: span 4; }
+    .t-uis-dark .u-rows-head span:nth-child(2) { grid-column: span 6; }
+    .t-uis-dark .u-rows-head span:nth-child(3) { grid-column: span 2; }
+  }
+  .t-uis-dark .u-row-sev { color: var(--k-muted); }
+
+</style>

@@ -1,0 +1,909 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import BuoyLogo from '../../components/BuoyLogo.astro'
+import BuoyMark from '../../components/BuoyMark.astro'
+import { siteConfig } from '../../config'
+
+const APP_URL = 'https://github.com/marketplace/buoy-design'
+
+const headline = ['Catch', 'design', 'drift', 'before', 'it', 'ships.']
+
+const catches = [
+  { title: 'Hardcoded colors', from: '#ffffff', to: 'var(--bg)' },
+  { title: 'Magic numbers', from: '16px', to: 'var(--space-4)' },
+  { title: 'Duplicate components', from: 'a second Card', to: '<Card>' },
+]
+
+const steps = [
+  { title: 'Set up', command: 'npx ahoybuoy dock', description: 'Sets Buoy up in your project.' },
+  { title: 'Detect', command: 'buoy drift check', description: 'Lists every issue with the exact file and line.' },
+  { title: 'Measure', command: 'buoy show health', description: 'Tracks design system health over time.' },
+]
+
+const driftTypes = [
+  { title: 'Hardcoded values', severity: 'Warning', description: 'Colors, spacing and fonts that do not use tokens.', href: '/features/hardcoded-values' },
+  { title: 'Duplicate components', severity: 'Warning', description: 'Similar components that should be consolidated.', href: '/features/duplicate-detection' },
+  { title: 'Naming inconsistency', severity: 'Info', description: 'Component and prop names that do not match your conventions.', href: '/features/naming-consistency' },
+  { title: 'Deprecated patterns', severity: 'Warning', description: 'Components marked as deprecated that are still in use.' },
+  { title: 'Inline styles', severity: 'Warning', description: 'Inline CSS that should use tokens or classes.' },
+  { title: 'Accessibility conflicts', severity: 'Critical', description: 'Missing ARIA labels and focus issues.', href: '/features/accessibility-checks' },
+  { title: 'Framework sprawl', severity: 'Warning', description: 'Multiple UI frameworks in the same codebase.', href: '/features/framework-sprawl' },
+  { title: 'Orphaned components', severity: 'Info', description: 'Components that are in code but not in design.' },
+]
+
+const core = [
+  'All scanning and drift detection',
+  'Fix suggestions with exact token replacements',
+  'Deterministic, with no LLM',
+  'No data leaves your machine',
+  'Works air-gapped and offline',
+]
+
+const app = [
+  'Runs the same open-source scanner on every pull request',
+  'Inline fix suggestions you can commit',
+  'LLM-written summaries and coaching. Findings stay deterministic',
+  'Dashboard with health scores and trends',
+  'Builder mode coaching for new design systems',
+]
+
+const integrations = [
+  { name: 'React', href: '/integrations/react' },
+  { name: 'Vue', href: '/integrations/vue' },
+  { name: 'Svelte', href: '/integrations/svelte' },
+  { name: 'Angular', href: '/integrations/angular' },
+  { name: 'Next.js', href: '/integrations/nextjs' },
+  { name: 'Tailwind', href: '/integrations/tailwind' },
+  { name: 'GitHub', href: '/integrations/github' },
+]
+
+const navLinks = [
+  { label: 'Scan a repo', href: '/scan' },
+  { label: 'Docs', href: '/docs' },
+  { label: 'Pricing', href: '/pricing' },
+]
+---
+
+<Layout title="Buoy: catch design drift before it ships" noindex>
+  <div class="t-feel-better">
+    <a href="#fb-main" class="fb-skip">Skip to content</a>
+
+    <header class="fb-header">
+      <div class="fb-wrap fb-header-row">
+        <a href="/" class="fb-logo" aria-label="Buoy home">
+          <BuoyLogo size="1.5rem" />
+        </a>
+
+        <nav class="fb-nav" aria-label="Main">
+          {navLinks.map((l) => <a href={l.href} class="fb-navlink">{l.label}</a>)}
+          <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer" class="fb-navlink">GitHub</a>
+        </nav>
+
+        <div class="fb-header-actions">
+          <a href={APP_URL} target="_blank" rel="noopener noreferrer" class="fb-btn fb-btn-primary fb-btn-sm">Install the app</a>
+          <button type="button" class="fb-menu-btn" id="fb-menu-btn" aria-expanded="false" aria-controls="fb-menu" aria-label="Menu">
+            <span class="fb-swap" aria-hidden="true">
+              <svg class="fb-swap-a" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3.5 6.5h13M3.5 13.5h13"/></svg>
+              <svg class="fb-swap-b" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5l10 10M15 5L5 15"/></svg>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <div class="fb-menu" id="fb-menu">
+        <nav class="fb-wrap fb-menu-list" aria-label="Menu">
+          {navLinks.map((l) => <a href={l.href}>{l.label}</a>)}
+          <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="fb-main">
+      <!-- Hero -->
+      <section class="fb-hero">
+        <div class="fb-wrap fb-hero-grid">
+          <div class="fb-hero-copy">
+            <h1 class="fb-h1">
+              {headline.map((word, i) => (
+                <><span class="fb-word" style={`animation-delay:${i * 80}ms`}>{word}</span>{' '}</>
+              ))}
+            </h1>
+            <p class="fb-lede fb-enter" style="animation-delay:480ms">
+              Buoy checks UI code against your design system. It reviews every pull request and leaves an inline comment with the exact fix, such as the token that already exists for a hardcoded color.
+            </p>
+            <div class="fb-actions fb-enter" style="animation-delay:580ms">
+              <a href={APP_URL} target="_blank" rel="noopener noreferrer" class="fb-btn fb-btn-primary fb-btn-icon">
+                <span>Install the GitHub App</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+              <a href="/scan" class="fb-btn fb-btn-secondary">Scan a public repo</a>
+            </div>
+            <p class="fb-note fb-enter" style="animation-delay:680ms">
+              The scanner is open source under MIT. It is deterministic: no LLM, no API key, and the CLI runs entirely on your machine.
+            </p>
+          </div>
+
+          <figure class="fb-figure fb-enter" style="animation-delay:380ms">
+            <div class="fb-tray">
+              <div class="fb-pr">
+                <div class="fb-pr-file">
+                  <span class="fb-mono">src/components/Card.tsx</span>
+                </div>
+                <div class="fb-diff fb-mono" role="img" aria-label="Diff of Card.tsx. Line 23 adds a hardcoded background color, #3b82f6.">
+                  <div class="fb-line"><span class="fb-ln">21</span><span class="fb-sign"></span><span class="fb-code">{"const Card = ({ children }) => ("}</span></div>
+                  <div class="fb-line"><span class="fb-ln">22</span><span class="fb-sign"></span><span class="fb-code">{"  <div style={{"}</span></div>
+                  <div class="fb-line fb-add"><span class="fb-ln">23</span><span class="fb-sign">+</span><span class="fb-code">{'    background: "#3b82f6",'}</span></div>
+                </div>
+                <div class="fb-comment-row">
+                  <div class="fb-comment">
+                    <div class="fb-comment-head">
+                      <span class="fb-avatar"><BuoyMark size={16} /></span>
+                      <span class="fb-comment-author">buoy-design</span>
+                      <span class="fb-tag">bot</span>
+                      <span class="fb-comment-meta">commented on line <span class="fb-tnum">23</span></span>
+                    </div>
+                    <p class="fb-comment-body">
+                      Hardcoded color <code>#3b82f6</code>. Use <code>var(--color-primary)</code> instead.
+                    </p>
+                    <div class="fb-suggest">
+                      <div class="fb-suggest-label">Suggested change</div>
+                      <div class="fb-diff fb-mono">
+                        <div class="fb-line fb-del"><span class="fb-ln">23</span><span class="fb-sign">-</span><span class="fb-code">background: "#3b82f6",</span></div>
+                        <div class="fb-line fb-add"><span class="fb-ln">23</span><span class="fb-sign">+</span><span class="fb-code">background: "var(--color-primary)",</span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="fb-diff fb-mono" aria-hidden="true">
+                  <div class="fb-line fb-add"><span class="fb-ln">24</span><span class="fb-sign">+</span><span class="fb-code">{'    padding: "24px",'}</span></div>
+                  <div class="fb-line"><span class="fb-ln">25</span><span class="fb-sign"></span><span class="fb-code">{"  }}>"}</span></div>
+                </div>
+              </div>
+            </div>
+            <figcaption>What a Buoy review comment looks like on a pull request.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Why -->
+      <section class="fb-section">
+        <div class="fb-wrap">
+          <div class="fb-head">
+            <h2>Coding agents write a lot of UI. They do not know your tokens.</h2>
+            <p>
+              Hardcoded values creep in, and the drift compounds. Buoy compares each change with the tokens and components your team already has.
+            </p>
+          </div>
+
+          <div class="fb-compare">
+            <figure class="fb-card fb-codecard">
+              <figcaption><span>What an agent writes</span><span class="fb-mono">Card.tsx</span></figcaption>
+<pre class="fb-mono"><code>const Card = () =&gt; (
+  &lt;div style=&#123;&#123;
+    <mark>background: "#ffffff"</mark>,
+    <mark>padding: "16px"</mark>,
+    <mark>borderRadius: "8px"</mark>,
+  &#125;&#125;&gt;
+    &#123;children&#125;
+  &lt;/div&gt;
+)</code></pre>
+            </figure>
+            <figure class="fb-card fb-codecard">
+              <figcaption><span>What your design system already has</span><span class="fb-mono">Card.tsx</span></figcaption>
+<pre class="fb-mono"><code>import &#123; Card &#125; from "@/components"
+
+const MyCard = () =&gt; (
+  <ins>&lt;Card variant="elevated"&gt;</ins>
+    &#123;children&#125;
+  <ins>&lt;/Card&gt;</ins>
+)</code></pre>
+            </figure>
+          </div>
+
+          <dl class="fb-catches">
+            {catches.map((c) => (
+              <div>
+                <dt>{c.title}</dt>
+                <dd class="fb-mono">
+                  <span>{c.from}</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="becomes"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  <span class="fb-to">{c.to}</span>
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      <!-- CLI -->
+      <section class="fb-section">
+        <div class="fb-wrap fb-split">
+          <div>
+            <div class="fb-head">
+              <h2>Find drift from the command line.</h2>
+              <p>
+                The CLI is free and open source. It reports every issue with the exact file, line and suggested fix.
+              </p>
+            </div>
+            <ol class="fb-steps">
+              {steps.map((s, i) => (
+                <li>
+                  <span class="fb-step-n fb-tnum" aria-hidden="true">{i + 1}</span>
+                  <div>
+                    <h3>{s.title}</h3>
+                    <p>{s.description}</p>
+                    <code class="fb-cmd fb-mono">{s.command}</code>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <a href="/docs" class="fb-btn fb-btn-secondary">Read the docs</a>
+          </div>
+
+          <figure class="fb-figure">
+            <div class="fb-tray">
+              <div class="fb-term fb-mono" role="img" aria-label="Terminal output of buoy drift check: 23 issues found in 142 files, each with a file, a line and a suggested token.">
+                <div class="fb-term-bar">Terminal</div>
+<pre><span class="t-dim">$</span> <span class="t-hi">buoy drift check</span>
+
+Scanning for design drift...
+
+Found <span class="t-warn">23</span> issues in 142 files
+
+<span class="t-crit">CRITICAL (2)</span>
+<span class="t-dim">├─</span> Button.tsx:12 Missing aria-label
+<span class="t-dim">└─</span> Modal.tsx:45 Focus trap not implemented
+
+<span class="t-warn">HARDCODED VALUES (8)</span>
+<span class="t-dim">├─</span> Card.tsx:8 #ffffff <span class="t-dim">→ use</span> var(--bg-surface)
+<span class="t-dim">├─</span> Badge.tsx:3 8px <span class="t-dim">→ use</span> var(--spacing-sm)
+<span class="t-dim">└─ ... and 6 more</span></pre>
+              </div>
+            </div>
+            <figcaption>Example output of <span class="fb-mono">buoy drift check</span>.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Detects -->
+      <section class="fb-section" id="detects">
+        <div class="fb-wrap">
+          <div class="fb-head">
+            <h2>What Buoy detects</h2>
+            <p>Each finding has a severity, so you can decide what to fix first.</p>
+          </div>
+          <ul class="fb-types">
+            {driftTypes.map((d) => (
+              <li>
+                {d.href ? (
+                  <a href={d.href} class="fb-type">
+                    <span class="fb-type-title">{d.title}</span>
+                    <span class="fb-type-desc">{d.description}</span>
+                    <span class="fb-type-sev">{d.severity}</span>
+                  </a>
+                ) : (
+                  <div class="fb-type">
+                    <span class="fb-type-title">{d.title}</span>
+                    <span class="fb-type-desc">{d.description}</span>
+                    <span class="fb-type-sev">{d.severity}</span>
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+          <p class="fb-after">
+            Buoy works with
+            {integrations.map((it, i) => (
+              <>{i === integrations.length - 1 ? ' and ' : ' '}<a href={it.href} class="fb-link">{it.name}</a>{i < integrations.length - 2 ? ',' : ''}</>
+            ))}.
+          </p>
+        </div>
+      </section>
+
+      <!-- Deterministic -->
+      <section class="fb-section">
+        <div class="fb-wrap">
+          <div class="fb-head">
+            <h2>The scanner works without AI.</h2>
+            <p>
+              Core drift detection is deterministic. There are no LLMs and no API keys, and no data leaves your machine, so it suits teams where AI tools are restricted.
+            </p>
+          </div>
+          <div class="fb-two">
+            <article class="fb-card fb-plan">
+              <h3>Buoy Core</h3>
+              <p class="fb-plan-sub">Open-source CLI</p>
+              <ul>{core.map((x) => <li>{x}</li>)}</ul>
+              <p class="fb-plan-foot">No API keys required. No external calls. MIT licensed.</p>
+            </article>
+            <article class="fb-card fb-plan">
+              <h3>Buoy GitHub App</h3>
+              <p class="fb-plan-sub">The same engine, hosted on every pull request</p>
+              <ul>{app.map((x) => <li>{x}</li>)}</ul>
+              <p class="fb-plan-foot">
+                No API key needed. Prose is written through OpenRouter. <a href="/privacy#subprocessors" class="fb-link">See what is sent</a>.
+              </p>
+            </article>
+          </div>
+          <p class="fb-after">
+            The CLI is free. <a href="/pricing" class="fb-link">See pricing</a> for the GitHub App and for organizations.
+          </p>
+        </div>
+      </section>
+
+      <!-- Scan -->
+      <section class="fb-section fb-section-last">
+        <div class="fb-wrap">
+          <div class="fb-card fb-cta">
+            <div class="fb-head">
+              <h2>See what Buoy finds in a public repo.</h2>
+              <p>Paste a GitHub repository URL. The scan is free and takes about a minute.</p>
+            </div>
+            <div class="fb-cta-form">
+              <form action="/scan" method="get" class="fb-scan">
+                <label for="fb-scan-url" class="fb-sr">GitHub repository URL</label>
+                <input id="fb-scan-url" name="url" type="text" required autocomplete="off" spellcheck="false" placeholder="https://github.com/owner/repo" />
+                <button type="submit" class="fb-btn fb-btn-primary">Scan repository</button>
+              </form>
+              <p class="fb-note">
+                Or <a href={APP_URL} target="_blank" rel="noopener noreferrer" class="fb-link">install the GitHub App</a> to have every pull request reviewed.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="fb-footer">
+      <div class="fb-wrap fb-footer-row">
+        <p class="fb-footer-brand">
+          <BuoyMark size={18} />
+          <span>&copy; {new Date().getFullYear()} Buoy. Scanner is open source under MIT.</span>
+        </p>
+        <nav class="fb-footer-links" aria-label="Footer">
+          <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href={siteConfig.twitterUrl} target="_blank" rel="noopener noreferrer">Twitter</a>
+          <a href={siteConfig.discordUrl} target="_blank" rel="noopener noreferrer">Discord</a>
+          <a href="/scan">Scan a repo</a>
+          <a href="/docs">Docs</a>
+          <a href="/pricing">Pricing</a>
+          <a href="/guides">Guides</a>
+          <a href="/reports">Reports</a>
+          <a href="/compare">Compare</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+          <a href="/support">Support</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+</Layout>
+
+<script>
+  const btn = document.getElementById('fb-menu-btn')
+  const menu = document.getElementById('fb-menu')
+  const setOpen = (open: boolean) => {
+    btn?.setAttribute('aria-expanded', String(open))
+    menu?.classList.toggle('is-open', open)
+  }
+  btn?.addEventListener('click', () => setOpen(btn.getAttribute('aria-expanded') !== 'true'))
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && btn?.getAttribute('aria-expanded') === 'true') {
+      setOpen(false)
+      btn.focus()
+    }
+  })
+  menu?.addEventListener('click', (e) => {
+    if ((e.target as HTMLElement).closest('a')) setOpen(false)
+  })
+</script>
+
+<style is:global>
+  body:has(.t-feel-better) {
+    background: oklch(0.985 0.003 260);
+  }
+
+  .t-feel-better {
+    /* Neutrals (the brand accent comes from the site tokens) */
+    --fb-bg: oklch(0.985 0.003 260);
+    --fb-surface: oklch(1 0 0);
+    --fb-sunken: oklch(0 0 0 / 0.035);
+    --fb-ink: oklch(0.22 0.035 262);
+    --fb-body: oklch(0.42 0.025 262);
+    --fb-muted: oklch(0.54 0.02 262);
+    --fb-line: oklch(0 0 0 / 0.08);
+    --fb-accent: var(--color-buoy);
+    --fb-accent-text: color-mix(in oklab, var(--color-buoy) 76%, black);
+    --fb-on-accent: oklch(0.2 0.035 262);
+
+    --fb-add-bg: oklch(0.95 0.05 155);
+    --fb-add-ink: oklch(0.42 0.11 155);
+    --fb-del-bg: oklch(0.95 0.035 25);
+    --fb-del-ink: oklch(0.5 0.17 25);
+
+    /* Shadows instead of borders for anything whose edge only signals depth */
+    --fb-shadow: 0 0 0 1px oklch(0 0 0 / 0.06), 0 1px 2px -1px oklch(0 0 0 / 0.06), 0 2px 4px 0 oklch(0 0 0 / 0.04);
+    --fb-shadow-hover: 0 0 0 1px oklch(0 0 0 / 0.1), 0 1px 2px -1px oklch(0 0 0 / 0.08), 0 2px 4px 0 oklch(0 0 0 / 0.06);
+    --fb-shadow-lift: 0 0 0 1px oklch(0 0 0 / 0.06), 0 1px 2px -1px oklch(0 0 0 / 0.06), 0 8px 24px -8px oklch(0 0 0 / 0.12);
+
+    /* Concentric radii: tray = inner + padding */
+    --fb-r-inner: 14px;
+    --fb-tray-pad: 6px;
+    --fb-r-tray: calc(var(--fb-r-inner) + var(--fb-tray-pad));
+    --fb-r-btn: 10px;
+
+    --fb-gutter: 24px;
+
+    min-height: 100vh;
+    background: var(--fb-bg);
+    color: var(--fb-body);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .t-feel-better ::selection {
+    background: color-mix(in oklab, var(--color-buoy) 28%, white);
+    color: var(--fb-ink);
+  }
+
+  .t-feel-better h1,
+  .t-feel-better h2,
+  .t-feel-better h3 {
+    color: var(--fb-ink);
+    text-wrap: balance;
+    margin: 0;
+  }
+  .t-feel-better p,
+  .t-feel-better li,
+  .t-feel-better figcaption,
+  .t-feel-better dd {
+    text-wrap: pretty;
+  }
+  .t-feel-better p { margin: 0; }
+  .t-feel-better .fb-mono,
+  .t-feel-better code,
+  .t-feel-better pre { font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-variant-ligatures: none; }
+  .t-feel-better .fb-tnum,
+  .t-feel-better .fb-ln { font-variant-numeric: tabular-nums; }
+
+  .t-feel-better .fb-wrap {
+    width: 100%;
+    max-width: calc(1120px + var(--fb-gutter) * 2);
+    margin-inline: auto;
+    padding-inline: var(--fb-gutter);
+  }
+
+  .t-feel-better .fb-sr {
+    position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+  }
+  .t-feel-better .fb-skip {
+    position: absolute; left: 16px; top: -64px; z-index: 60;
+    padding: 10px 14px; border-radius: var(--fb-r-btn);
+    background: var(--fb-surface); color: var(--fb-ink); box-shadow: var(--fb-shadow-lift);
+    font-size: 14px; font-weight: 500;
+  }
+  .t-feel-better .fb-skip:focus-visible { top: 12px; }
+
+  /* ---------- Links ---------- */
+  .t-feel-better .fb-link {
+    color: var(--fb-ink);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: var(--fb-accent);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+    border-radius: 3px;
+    transition: color 120ms ease-out;
+  }
+  .t-feel-better .fb-link:hover { color: var(--fb-accent-text); }
+
+  /* ---------- Buttons ---------- */
+  .t-feel-better .fb-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    height: 44px; padding-inline: 18px;
+    border: 0; border-radius: var(--fb-r-btn);
+    font-family: var(--font-body); font-size: 15px; font-weight: 600; line-height: 1; white-space: nowrap;
+    cursor: pointer; user-select: none;
+    transition-property: scale, background-color, box-shadow;
+    transition-duration: 150ms;
+    transition-timing-function: ease-out;
+  }
+  .t-feel-better .fb-btn:active { scale: 0.96; }
+  /* Optical alignment: the icon side gets 2px less padding than the text side */
+  .t-feel-better .fb-btn-icon { padding-inline: 18px 16px; }
+  .t-feel-better .fb-btn svg { flex: none; }
+  .t-feel-better .fb-btn-sm { height: 40px; padding-inline: 14px; font-size: 14px; }
+
+  .t-feel-better .fb-btn-primary {
+    background: var(--fb-accent);
+    color: var(--fb-on-accent);
+    box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.22), 0 0 0 1px oklch(0 0 0 / 0.1), 0 1px 2px 0 oklch(0 0 0 / 0.16);
+  }
+  .t-feel-better .fb-btn-primary:hover { background: var(--color-buoy-light); }
+  .t-feel-better .fb-btn-secondary {
+    background: var(--fb-surface);
+    color: var(--fb-ink);
+    box-shadow: var(--fb-shadow);
+  }
+  .t-feel-better .fb-btn-secondary:hover { box-shadow: var(--fb-shadow-hover); background: oklch(0.99 0.002 260); }
+  .t-feel-better .fb-btn:focus-visible { outline: 2px solid var(--fb-ink); outline-offset: 2px; }
+
+  /* ---------- Header ---------- */
+  .t-feel-better .fb-header {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in oklab, var(--fb-bg) 86%, transparent);
+    backdrop-filter: saturate(1.4) blur(12px);
+    -webkit-backdrop-filter: saturate(1.4) blur(12px);
+    border-bottom: 1px solid var(--fb-line); /* structural divider, stays a border */
+  }
+  .t-feel-better .fb-header-row { display: flex; align-items: center; height: 64px; gap: 24px; }
+  .t-feel-better .fb-logo {
+    display: inline-flex; align-items: center; height: 44px; color: var(--fb-ink); border-radius: 8px;
+  }
+  .t-feel-better .fb-nav { display: flex; align-items: center; gap: 4px; margin-left: 8px; margin-right: auto; }
+  .t-feel-better .fb-navlink {
+    display: inline-flex; align-items: center; height: 40px; padding-inline: 12px;
+    border-radius: 8px; font-size: 14px; font-weight: 500; color: var(--fb-body);
+    transition: color 120ms ease-out, background-color 120ms ease-out;
+  }
+  .t-feel-better .fb-navlink:hover { color: var(--fb-ink); background: var(--fb-sunken); }
+  .t-feel-better .fb-header-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+
+  .t-feel-better .fb-menu-btn {
+    display: none; align-items: center; justify-content: center;
+    width: 44px; height: 44px; margin-right: -12px;
+    border: 0; background: transparent; color: var(--fb-ink); border-radius: 10px;
+    transition: scale 150ms ease-out, background-color 120ms ease-out;
+  }
+  .t-feel-better .fb-menu-btn:hover { background: var(--fb-sunken); }
+  .t-feel-better .fb-menu-btn:active { scale: 0.96; }
+
+  /* Contextual icon swap: both icons stay in the DOM and cross-fade */
+  .t-feel-better .fb-swap { position: relative; display: block; width: 20px; height: 20px; }
+  .t-feel-better .fb-swap svg {
+    position: absolute; inset: 0; display: block;
+    transition-property: opacity, filter, scale;
+    transition-duration: 300ms;
+    transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+  }
+  .t-feel-better .fb-swap-b { opacity: 0; scale: 0.25; filter: blur(4px); }
+  .t-feel-better .fb-menu-btn[aria-expanded='true'] .fb-swap-a { opacity: 0; scale: 0.25; filter: blur(4px); }
+  .t-feel-better .fb-menu-btn[aria-expanded='true'] .fb-swap-b { opacity: 1; scale: 1; filter: blur(0); }
+
+  .t-feel-better .fb-menu {
+    display: none;
+    position: absolute; left: 0; right: 0; top: 100%;
+    background: var(--fb-bg);
+    border-bottom: 1px solid var(--fb-line);
+    box-shadow: 0 16px 24px -16px oklch(0 0 0 / 0.14);
+    /* Exit: shorter and softer than the enter */
+    opacity: 0; translate: 0 -8px; visibility: hidden;
+    transition: opacity 150ms ease-out, translate 150ms ease-out, visibility 0s linear 150ms;
+  }
+  .t-feel-better .fb-menu.is-open {
+    opacity: 1; translate: 0 0; visibility: visible;
+    transition: opacity 200ms ease-out, translate 200ms ease-out, visibility 0s;
+  }
+  .t-feel-better .fb-menu-list { display: grid; padding-block: 8px 12px; }
+  .t-feel-better .fb-menu-list a {
+    display: flex; align-items: center; min-height: 48px;
+    font-size: 16px; font-weight: 500; color: var(--fb-ink);
+    border-bottom: 1px solid var(--fb-line);
+  }
+  .t-feel-better .fb-menu-list a:last-child { border-bottom: 0; }
+
+  /* ---------- Hero ---------- */
+  .t-feel-better .fb-hero { padding-block: 88px 104px; }
+  .t-feel-better .fb-hero-grid {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.02fr); gap: 72px; align-items: center;
+  }
+  .t-feel-better .fb-h1 {
+    font-size: clamp(2.5rem, 1.4rem + 3.9vw, 4.125rem);
+    line-height: 1.02; letter-spacing: -0.03em; font-weight: 700;
+    max-width: 11ch;
+  }
+  .t-feel-better .fb-word { display: inline-block; }
+  .t-feel-better .fb-lede {
+    margin-top: 24px; max-width: 34em;
+    font-size: 1.1875rem; line-height: 1.55; color: var(--fb-body);
+  }
+  .t-feel-better .fb-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+  .t-feel-better .fb-note { margin-top: 20px; max-width: 38em; font-size: 14px; line-height: 1.55; color: var(--fb-muted); }
+
+  /* Staged entrance, runs once on load: opacity + blur + small translate */
+  @keyframes fb-enter {
+    from { opacity: 0; transform: translateY(12px); filter: blur(4px); }
+    to { opacity: 1; transform: translateY(0); filter: blur(0); }
+  }
+  .t-feel-better .fb-word,
+  .t-feel-better .fb-enter { animation: fb-enter 400ms ease-out both; }
+
+  /* ---------- Figures / product surfaces ---------- */
+  .t-feel-better .fb-figure { margin: 0; min-width: 0; }
+  .t-feel-better .fb-figure figcaption { margin-top: 12px; padding-left: var(--fb-tray-pad); font-size: 13px; color: var(--fb-muted); }
+  .t-feel-better .fb-tray {
+    padding: var(--fb-tray-pad);
+    border-radius: var(--fb-r-tray);
+    background: var(--fb-sunken);
+    box-shadow: inset 0 0 0 1px oklch(0 0 0 / 0.04);
+  }
+  .t-feel-better .fb-pr {
+    border-radius: var(--fb-r-inner);
+    background: var(--fb-surface);
+    box-shadow: var(--fb-shadow-lift);
+    overflow: hidden;
+    color: var(--fb-ink);
+  }
+  .t-feel-better .fb-pr-file {
+    display: flex; align-items: center; height: 44px; padding-inline: 16px;
+    border-bottom: 1px solid var(--fb-line);
+    font-size: 13px; color: var(--fb-body);
+    background: oklch(0.985 0.003 260);
+  }
+  .t-feel-better .fb-diff { font-size: 13px; line-height: 26px; overflow-x: auto; }
+  .t-feel-better .fb-line { display: grid; grid-template-columns: 44px 20px minmax(0, 1fr); min-width: max-content; }
+  .t-feel-better .fb-ln { text-align: right; padding-right: 10px; color: var(--fb-muted); user-select: none; }
+  .t-feel-better .fb-sign { text-align: center; user-select: none; }
+  .t-feel-better .fb-code { white-space: pre; padding-right: 16px; }
+  .t-feel-better .fb-add { background: var(--fb-add-bg); }
+  .t-feel-better .fb-add .fb-sign { color: var(--fb-add-ink); }
+  .t-feel-better .fb-del { background: var(--fb-del-bg); }
+  .t-feel-better .fb-del .fb-sign { color: var(--fb-del-ink); }
+
+  .t-feel-better .fb-comment-row {
+    padding: 8px;
+    border-block: 1px solid var(--fb-line);
+    background: oklch(0.985 0.003 260);
+  }
+  .t-feel-better .fb-comment {
+    border-radius: 8px;
+    background: var(--fb-surface);
+    box-shadow: var(--fb-shadow);
+    overflow: hidden;
+  }
+  .t-feel-better .fb-comment-head {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 4px 8px;
+    padding: 12px 14px 0;
+    font-size: 13px;
+  }
+  .t-feel-better .fb-avatar {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 24px; height: 24px; border-radius: 6px;
+    background: var(--fb-surface);
+    box-shadow: 0 0 0 1px oklch(0 0 0 / 0.1);
+  }
+  .t-feel-better .fb-comment-author { font-weight: 600; }
+  .t-feel-better .fb-tag {
+    padding: 1px 6px; border-radius: 999px; font-size: 11px; font-weight: 500; line-height: 16px; color: var(--fb-body);
+    box-shadow: 0 0 0 1px oklch(0 0 0 / 0.12);
+  }
+  .t-feel-better .fb-comment-meta { color: var(--fb-muted); }
+  .t-feel-better .fb-comment-body { padding: 8px 14px 14px; font-size: 14px; line-height: 1.55; color: var(--fb-ink); }
+  .t-feel-better .fb-comment-body code {
+    padding: 1px 4px; border-radius: 4px; font-size: 12.5px; white-space: nowrap;
+    background: var(--fb-sunken);
+  }
+  .t-feel-better .fb-suggest { border-top: 1px solid var(--fb-line); }
+  .t-feel-better .fb-suggest-label {
+    padding: 8px 14px; font-size: 12px; font-weight: 500; color: var(--fb-body);
+    border-bottom: 1px solid var(--fb-line);
+  }
+
+  /* Terminal */
+  .t-feel-better .fb-term {
+    border-radius: var(--fb-r-inner);
+    background: oklch(0.21 0.03 262);
+    color: oklch(0.9 0.012 262);
+    box-shadow: 0 0 0 1px oklch(0 0 0 / 0.2), 0 8px 24px -8px oklch(0 0 0 / 0.25);
+    overflow: hidden;
+  }
+  .t-feel-better .fb-term-bar {
+    display: flex; align-items: center; height: 40px; padding-inline: 18px;
+    font-family: var(--font-body); font-size: 12px; font-weight: 500; color: oklch(0.72 0.02 262);
+    border-bottom: 1px solid oklch(1 0 0 / 0.08);
+  }
+  .t-feel-better .fb-term pre {
+    margin: 0; padding: 18px; overflow-x: auto;
+    font-size: 13px; line-height: 1.7;
+  }
+  .t-feel-better .t-dim { color: oklch(0.66 0.025 262); }
+  .t-feel-better .t-hi { color: oklch(1 0 0); font-weight: 500; }
+  .t-feel-better .t-warn { color: oklch(0.84 0.13 82); font-weight: 500; }
+  .t-feel-better .t-crit { color: oklch(0.76 0.14 25); font-weight: 500; }
+
+  /* ---------- Sections ---------- */
+  .t-feel-better .fb-section { padding-block: 104px; border-top: 1px solid var(--fb-line); }
+  .t-feel-better .fb-section-last { padding-bottom: 120px; }
+  .t-feel-better .fb-head { max-width: 640px; }
+  .t-feel-better .fb-head h2 {
+    font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.375rem);
+    line-height: 1.1; letter-spacing: -0.025em; font-weight: 700;
+  }
+  .t-feel-better .fb-head p { margin-top: 16px; font-size: 1.0625rem; line-height: 1.6; }
+  .t-feel-better .fb-after { margin-top: 32px; font-size: 15px; color: var(--fb-body); }
+
+  .t-feel-better .fb-card {
+    background: var(--fb-surface);
+    border-radius: 16px;
+    box-shadow: var(--fb-shadow);
+  }
+
+  /* Compare */
+  .t-feel-better .fb-compare { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 48px; }
+  .t-feel-better .fb-codecard { margin: 0; overflow: hidden; }
+  .t-feel-better .fb-codecard figcaption {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    min-height: 48px; padding: 8px 20px;
+    border-bottom: 1px solid var(--fb-line);
+    font-size: 14px; font-weight: 600; color: var(--fb-ink);
+  }
+  .t-feel-better .fb-codecard figcaption .fb-mono { font-size: 12px; font-weight: 400; color: var(--fb-muted); }
+  .t-feel-better .fb-codecard pre {
+    margin: 0; padding: 20px; overflow-x: auto;
+    font-size: 13px; line-height: 1.75; color: var(--fb-body);
+  }
+  .t-feel-better .fb-codecard mark,
+  .t-feel-better .fb-codecard ins {
+    padding: 2px 4px; margin-inline: -4px; border-radius: 4px; text-decoration: none; color: var(--fb-ink);
+  }
+  .t-feel-better .fb-codecard mark { background: var(--fb-del-bg); }
+  .t-feel-better .fb-codecard ins { background: var(--fb-add-bg); }
+
+  .t-feel-better .fb-catches {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin: 40px 0 0; border-top: 1px solid var(--fb-line);
+  }
+  .t-feel-better .fb-catches > div { padding: 20px 24px 0 0; }
+  .t-feel-better .fb-catches > div + div { padding-left: 24px; border-left: 1px solid var(--fb-line); }
+  .t-feel-better .fb-catches dt { font-size: 15px; font-weight: 600; color: var(--fb-ink); }
+  .t-feel-better .fb-catches dd {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 4px 8px;
+    margin: 6px 0 0; font-size: 13px; color: var(--fb-muted);
+  }
+  .t-feel-better .fb-catches dd svg { flex: none; }
+  .t-feel-better .fb-catches .fb-to { color: var(--fb-ink); }
+
+  /* CLI split */
+  .t-feel-better .fb-split { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 72px; align-items: start; }
+  .t-feel-better .fb-steps { list-style: none; margin: 36px 0 32px; padding: 0; border-top: 1px solid var(--fb-line); }
+  .t-feel-better .fb-steps li {
+    display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 12px;
+    padding-block: 18px; border-bottom: 1px solid var(--fb-line);
+  }
+  .t-feel-better .fb-step-n { font-family: var(--font-mono); font-size: 13px; line-height: 24px; color: var(--fb-muted); }
+  .t-feel-better .fb-steps h3 { font-family: var(--font-body); font-size: 16px; line-height: 24px; font-weight: 600; letter-spacing: -0.005em; }
+  .t-feel-better .fb-steps p { margin-top: 2px; font-size: 15px; }
+  .t-feel-better .fb-cmd {
+    display: inline-block; margin-top: 10px; padding: 4px 8px; border-radius: 6px;
+    font-size: 13px; color: var(--fb-ink);
+    background: var(--fb-sunken);
+  }
+
+  /* Detects */
+  .t-feel-better .fb-types {
+    list-style: none; margin: 44px 0 0; padding: 0;
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 56px;
+    border-top: 1px solid var(--fb-line);
+  }
+  .t-feel-better .fb-types li { border-bottom: 1px solid var(--fb-line); }
+  .t-feel-better .fb-type {
+    display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 16px;
+    padding: 16px 12px; margin-inline: -12px; min-height: 76px;
+  }
+  .t-feel-better a.fb-type { transition: background-color 100ms ease-out; }
+  .t-feel-better a.fb-type:hover { background: var(--fb-sunken); }
+  .t-feel-better a.fb-type:hover .fb-type-title { text-decoration-color: var(--fb-accent); }
+  .t-feel-better .fb-type-title { font-size: 16px; font-weight: 600; color: var(--fb-ink); }
+  .t-feel-better a.fb-type .fb-type-title {
+    justify-self: start;
+    text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 3px;
+    text-decoration-color: oklch(0 0 0 / 0.18);
+    transition: text-decoration-color 100ms ease-out;
+  }
+  .t-feel-better .fb-type-desc { grid-column: 1; font-size: 14.5px; color: var(--fb-body); }
+  .t-feel-better .fb-type-sev {
+    grid-column: 2; grid-row: 1; align-self: center;
+    font-family: var(--font-mono); font-size: 12px; color: var(--fb-muted);
+  }
+
+  /* Plans */
+  .t-feel-better .fb-two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 48px; }
+  .t-feel-better .fb-plan { padding: 28px; display: flex; flex-direction: column; }
+  .t-feel-better .fb-plan h3 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.015em; }
+  .t-feel-better .fb-plan-sub { margin-top: 4px; font-size: 14px; color: var(--fb-muted); }
+  .t-feel-better .fb-plan ul { list-style: none; margin: 20px 0 0; padding: 0; border-top: 1px solid var(--fb-line); }
+  .t-feel-better .fb-plan li { padding-block: 11px; border-bottom: 1px solid var(--fb-line); font-size: 15px; color: var(--fb-ink); }
+  .t-feel-better .fb-plan-foot { margin-top: auto; padding-top: 18px; font-size: 13.5px; color: var(--fb-muted); }
+
+  /* Scan CTA */
+  .t-feel-better .fb-cta {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: center;
+    padding: 48px;
+    border-radius: 24px;
+    box-shadow: var(--fb-shadow-lift);
+  }
+  .t-feel-better .fb-cta .fb-note { margin-top: 14px; padding-left: 5px; }
+  /* Field: 1px border + 4px padding around a 10px button, so the outer radius is 15px */
+  .t-feel-better .fb-scan {
+    display: flex; gap: 4px; padding: 4px;
+    border: 1px solid oklch(0 0 0 / 0.16); border-radius: 15px;
+    background: var(--fb-surface);
+    transition: border-color 120ms ease-out, box-shadow 120ms ease-out;
+  }
+  .t-feel-better .fb-scan:focus-within {
+    border-color: var(--fb-ink);
+    box-shadow: 0 0 0 3px oklch(0.22 0.035 262 / 0.12);
+  }
+  .t-feel-better .fb-scan input {
+    flex: 1; min-width: 0; height: 44px; padding-inline: 12px;
+    border: 0; border-radius: var(--fb-r-btn); background: transparent; outline: none;
+    font-family: var(--font-body); font-size: 16px; color: var(--fb-ink);
+  }
+  .t-feel-better .fb-scan input::placeholder { color: var(--fb-muted); }
+
+  /* ---------- Footer ---------- */
+  .t-feel-better .fb-footer { border-top: 1px solid var(--fb-line); }
+  .t-feel-better .fb-footer-row {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px 40px; flex-wrap: wrap;
+    padding-block: 28px;
+  }
+  .t-feel-better .fb-footer-brand { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--fb-muted); }
+  .t-feel-better .fb-footer-links { display: flex; flex-wrap: wrap; margin-inline: -10px; }
+  .t-feel-better .fb-footer-links a {
+    display: inline-flex; align-items: center; height: 40px; padding-inline: 10px; border-radius: 8px;
+    font-size: 14px; color: var(--fb-body);
+    transition: color 120ms ease-out;
+  }
+  .t-feel-better .fb-footer-links a:hover { color: var(--fb-ink); }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 960px) {
+    .t-feel-better .fb-hero { padding-block: 56px 72px; }
+    .t-feel-better .fb-hero-grid,
+    .t-feel-better .fb-split,
+    .t-feel-better .fb-cta { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+    .t-feel-better .fb-cta { gap: 28px; }
+    .t-feel-better .fb-section { padding-block: 72px; }
+    .t-feel-better .fb-section-last { padding-bottom: 88px; }
+    .t-feel-better .fb-h1 { max-width: 14ch; }
+  }
+  @media (max-width: 760px) {
+    .t-feel-better { --fb-gutter: 16px; }
+    .t-feel-better .fb-nav { display: none; }
+    .t-feel-better .fb-menu-btn { display: inline-flex; }
+    .t-feel-better .fb-menu { display: block; }
+    .t-feel-better .fb-compare,
+    .t-feel-better .fb-two,
+    .t-feel-better .fb-types { grid-template-columns: minmax(0, 1fr); }
+    .t-feel-better .fb-compare, .t-feel-better .fb-two { gap: 16px; margin-top: 36px; }
+    .t-feel-better .fb-catches { grid-template-columns: minmax(0, 1fr); }
+    .t-feel-better .fb-catches > div { padding: 16px 0; border-bottom: 1px solid var(--fb-line); }
+    .t-feel-better .fb-catches > div + div { padding-left: 0; border-left: 0; }
+    .t-feel-better .fb-lede { font-size: 1.0625rem; }
+    .t-feel-better .fb-actions .fb-btn { flex: 1 1 100%; height: 48px; }
+    .t-feel-better .fb-plan { padding: 22px; }
+    .t-feel-better .fb-cta { padding: 28px 20px; border-radius: 20px; }
+    .t-feel-better .fb-scan { flex-direction: column; }
+    .t-feel-better .fb-scan .fb-btn { height: 48px; }
+    .t-feel-better .fb-diff, .t-feel-better .fb-term pre, .t-feel-better .fb-codecard pre { font-size: 12px; }
+    .t-feel-better .fb-term pre { padding: 14px; }
+    .t-feel-better .fb-term-bar { padding-inline: 14px; }
+    .t-feel-better .fb-line { grid-template-columns: 36px 16px minmax(0, 1fr); }
+    .t-feel-better .fb-footer-links a { height: 44px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .t-feel-better .fb-word,
+    .t-feel-better .fb-enter { animation: none; }
+    .t-feel-better .fb-btn,
+    .t-feel-better .fb-menu-btn,
+    .t-feel-better .fb-swap svg,
+    .t-feel-better .fb-menu,
+    .t-feel-better .fb-menu.is-open { transition-duration: 0s; transition-delay: 0s; }
+    .t-feel-better .fb-btn:active,
+    .t-feel-better .fb-menu-btn:active { scale: 1; }
+    .t-feel-better .fb-swap-b,
+    .t-feel-better .fb-menu-btn[aria-expanded='true'] .fb-swap-a { scale: 1; filter: none; }
+  }
+</style>

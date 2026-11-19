@@ -1,0 +1,578 @@
+---
+/*
+  Harness: huashu-design. Round 3 direction: "Proof on the light table"
+  (web style library no. 19 Swiss Monochrome, set in its night edition).
+  - Ground: one night ramp on the brand navy hue (oklch H 262), never neutral black.
+    Every section is night; product UI sits on it as white paper proofs, square-cornered.
+  - One chromatic: the brand orange token. It marks drifted values (underline) and fills
+    the primary action. No glow, no gradients on content, no glass.
+  - Type: Schibsted Grotesk (display + text), JetBrains Mono (code, captions).
+  - Shape language: rectangles and hairlines only. The sea keeps its waves (the live boat).
+  - Form comes from the content: a review is a printed proof with marks on it.
+*/
+import Layout from '../../../layouts/Layout.astro'
+import BuoyLogo from '../../../components/BuoyLogo.astro'
+import BuoyMark from '../../../components/BuoyMark.astro'
+import LockOn from '../../../components/LockOn.astro'
+import ScanForm from '../../../components/ScanForm.astro'
+import BoatHero from '../../../components/taste/BoatHero.astro'
+import BoatGlyph from '../../../components/taste/BoatGlyph.astro'
+import { siteConfig } from '../../../config'
+
+const installUrl = 'https://github.com/marketplace/buoy-design'
+
+const fixes = [
+  { id: 'color', from: "'#3b82f6'", to: "'var(--color-primary)'" },
+  { id: 'spacing', from: "'24px'", to: "'var(--spacing-lg)'" },
+]
+
+const checks = [
+  { name: 'Hardcoded values', level: 'Warning', what: 'Colors, spacing and fonts that do not use tokens.', eg: '#ffffff → var(--bg-surface)', href: '/features/hardcoded-values' },
+  { name: 'Duplicate components', level: 'Warning', what: 'Similar components that should be one.', eg: 'Use <Card> instead', href: '/features/duplicate-detection' },
+  { name: 'Accessibility conflicts', level: 'Critical', what: 'Missing ARIA labels and focus issues.', eg: 'Button.tsx:12 Missing aria-label', href: '/features/accessibility-checks' },
+  { name: 'Inline styles', level: 'Warning', what: 'Inline CSS that should use tokens or classes.' },
+  { name: 'Deprecated patterns', level: 'Warning', what: 'Components marked as deprecated that are still in use.' },
+  { name: 'Framework sprawl', level: 'Warning', what: 'More than one UI framework in the same codebase.', href: '/features/framework-sprawl' },
+  { name: 'Naming inconsistency', level: 'Info', what: 'Component and prop names that do not match your conventions.', href: '/features/naming-consistency' },
+  { name: 'Orphaned components', level: 'Info', what: 'Components that are in code but not in design.' },
+]
+
+const steps = [
+  { cmd: 'npx ahoybuoy dock', what: 'Set up Buoy in your repository.' },
+  { cmd: 'buoy drift check', what: 'Scan. Every issue comes with the exact file, line and suggested fix.' },
+  { cmd: 'buoy show health', what: 'Track design system health over time.' },
+]
+
+const stack = [
+  { name: 'React', href: '/integrations/react' },
+  { name: 'Vue', href: '/integrations/vue' },
+  { name: 'Svelte', href: '/integrations/svelte' },
+  { name: 'Angular', href: '/integrations/angular' },
+  { name: 'Next.js', href: '/integrations/nextjs' },
+  { name: 'Tailwind', href: '/integrations/tailwind' },
+  { name: 'GitHub', href: '/integrations/github' },
+]
+
+const cli = [
+  'All scanning and drift detection',
+  'Fix suggestions with exact token replacements',
+  'Deterministic, no LLMs',
+  'No data leaves your machine',
+  'Works air-gapped and offline',
+  'No API keys. MIT licensed.',
+]
+const app = [
+  'Runs the same open-source scanner on every pull request',
+  'Inline comments with fix suggestions you can commit',
+  'Summaries and coaching are written by an LLM. Findings stay deterministic.',
+  'Dashboard with health scores and trends',
+  'Builder mode coaching for new design systems',
+]
+---
+
+<Layout title="Buoy: catch design drift before it ships" noindex>
+  <Fragment slot="head">
+    <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  </Fragment>
+
+  <div class="t-hsd">
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="hd">
+      <div class="wrap hd-in">
+        <a href="/" class="hd-logo" aria-label="Buoy home"><BuoyLogo size="1.5rem" /></a>
+        <nav class="hd-nav" aria-label="Main">
+          <a href="/scan">Scan a repo</a>
+          <a href="/docs">Docs</a>
+          <a href="/pricing">Pricing</a>
+          <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
+        <a class="btn btn-paper btn-sm" href={installUrl} target="_blank" rel="noopener noreferrer">Install the GitHub App</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <BoatHero minHeight="calc(100svh - 69px)" class="hsd-hero">
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
+            <h1>Catch design drift before it ships.</h1>
+            <p class="lede">Buoy checks UI code against your design system. It reviews every pull request and leaves an inline comment with the exact fix.</p>
+            <div class="btns">
+              <a class="btn btn-go" href={installUrl} target="_blank" rel="noopener noreferrer">Install the GitHub App</a>
+              <a class="btn btn-line" href="/scan">Scan a public repo</a>
+            </div>
+            <p class="hero-foot">The scanner is deterministic and MIT licensed.<BoatGlyph /></p>
+          </div>
+
+          <div class="pr" data-pr>
+            <div class="pr-top">
+              <span class="pr-name">feat: add new Card component <span class="pr-num">#247</span></span>
+              <span class="pr-check" data-pr-status aria-live="polite">Buoy Design Check: 2 to fix</span>
+            </div>
+            <div class="pr-file">src/components/Card.tsx</div>
+            <div class="code" role="group" aria-label="Changed lines in Card.tsx">
+              <div class="ln"><span class="no">22</span><span class="sg"> </span><code class="i3">style=&#123;&#123;</code></div>
+              <div class="ln add"><span class="no">23</span><span class="sg">+</span><code class="i4">background: <span class="val" data-val="color">'#3b82f6'</span>,</code></div>
+            </div>
+            <div class="cm" data-fix="color">
+              <div class="cm-who"><BuoyMark size={14} /><strong>buoy</strong><span class="cm-bot">bot</span><span class="cm-on">on line 23</span></div>
+              <p class="cm-msg">Hardcoded color <code>#3b82f6</code>. Use <code>var(--color-primary)</code>, the token that already exists.</p>
+              <div class="sug">
+                <div class="sug-row del"><span class="sg">-</span><code>background: '#3b82f6',</code></div>
+                <div class="sug-row ins"><span class="sg">+</span><code>background: 'var(--color-primary)',</code></div>
+              </div>
+              <button type="button" class="cm-btn" data-commit="color">Commit suggestion</button>
+            </div>
+            <div class="code" role="group" aria-label="More changed lines in Card.tsx">
+              <div class="ln"><span class="no">30</span><span class="sg"> </span><code class="i3">&lt;header</code></div>
+              <div class="ln add"><span class="no">31</span><span class="sg">+</span><code class="i4">style=&#123;&#123; padding: <span class="val" data-val="spacing">'24px'</span> &#125;&#125;</code></div>
+            </div>
+            <div class="cm" data-fix="spacing">
+              <div class="cm-who"><BuoyMark size={14} /><strong>buoy</strong><span class="cm-bot">bot</span><span class="cm-on">on line 31</span></div>
+              <p class="cm-msg">Hardcoded spacing <code>24px</code>. Use <code>var(--spacing-lg)</code> instead.</p>
+              <div class="sug">
+                <div class="sug-row ins"><span class="sg">+</span><code>style=&#123;&#123; padding: 'var(--spacing-lg)' &#125;&#125;</code></div>
+              </div>
+              <button type="button" class="cm-btn" data-commit="spacing">Commit suggestion</button>
+            </div>
+            <div class="pr-foot">
+              <span>Example pull request. The buttons work.</span>
+              <button type="button" class="pr-reset" data-reset disabled>Start over</button>
+            </div>
+          </div>
+        </div>
+      </BoatHero>
+
+      <!-- Why now -->
+      <section class="sec">
+        <div class="wrap split">
+          <div class="split-text">
+            <h2>Coding agents write a lot of UI. They do not know your tokens.</h2>
+            <p>An agent will write <code>#3b82f6</code> and <code>13px 22px</code> when your system already has a token for both. Each value looks fine in review. Together they are drift.</p>
+            <p>Buoy finds each hardcoded value and replaces it with the token that already exists.</p>
+          </div>
+          <div class="split-fig"><LockOn /></div>
+        </div>
+      </section>
+
+      <!-- What it checks -->
+      <section class="sec" id="checks">
+        <div class="wrap">
+          <div class="sec-head">
+            <h2>What Buoy checks</h2>
+            <p>Each finding has a severity, so you know what to fix first.</p>
+          </div>
+          <div class="tbl" role="table" aria-label="Drift types Buoy detects">
+            <div class="tr th" role="row">
+              <span role="columnheader">Check</span>
+              <span role="columnheader">What it finds</span>
+              <span role="columnheader">Severity</span>
+            </div>
+            {checks.map((c) => (
+              <div class="tr" role="row">
+                <span class="td-name" role="cell">{c.href ? <a href={c.href}>{c.name}</a> : c.name}</span>
+                <span class="td-what" role="cell">{c.what}{c.eg && <code class="eg">{c.eg}</code>}</span>
+                <span class:list={['td-lv', c.level === 'Critical' && 'crit']} role="cell">{c.level}</span>
+              </div>
+            ))}
+          </div>
+          <p class="more"><a href="/features/drift-detection">Read how drift detection works</a></p>
+        </div>
+      </section>
+
+      <!-- CLI -->
+      <section class="sec">
+        <div class="wrap cli">
+          <div class="cli-text">
+            <h2>Three commands on your machine</h2>
+            <p>The CLI is open source. The GitHub App runs the same check on every pull request.</p>
+            <ol class="steps">
+              {steps.map((s) => (<li><code>{s.cmd}</code><span>{s.what}</span></li>))}
+            </ol>
+            <p class="more"><a href="/docs">Read the docs</a></p>
+          </div>
+          <figure class="term">
+            <figcaption>Example output</figcaption>
+            <pre><span class="t-m">$</span> buoy drift check
+
+Scanning for design drift...
+
+Found <b>23</b> issues in 142 files
+
+<b class="t-crit">CRITICAL (2)</b>
+├─ Button.tsx:12 Missing aria-label
+└─ Modal.tsx:45 Focus trap not implemented
+
+<b class="t-warn">HARDCODED VALUES (8)</b>
+├─ Card.tsx:8 <span class="t-bad">#ffffff</span> <span class="t-m">→ use var(--bg-surface)</span>
+├─ Badge.tsx:3 <span class="t-bad">8px</span> <span class="t-m">→ use var(--spacing-sm)</span>
+└─ <span class="t-m">... and 6 more</span></pre>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Deterministic -->
+      <section class="sec">
+        <div class="wrap">
+          <p class="big"><span>No LLM in the scanner.</span><span>Nothing leaves your machine.</span><span>MIT licensed.</span></p>
+          <div class="two">
+            <div>
+              <h3>Open source CLI</h3>
+              <ul>{cli.map((t) => <li>{t}</li>)}</ul>
+              <p class="two-foot"><a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">View the source on GitHub</a></p>
+            </div>
+            <div>
+              <h3>GitHub App</h3>
+              <ul>{app.map((t) => <li>{t}</li>)}</ul>
+              <p class="two-foot">That prose is written through OpenRouter. <a href="/privacy#subprocessors">See what is sent</a>.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stack -->
+      <section class="sec sec-tight">
+        <div class="wrap stack">
+          <h2>Works with</h2>
+          <ul>{stack.map((s) => <li><a href={s.href}>{s.name}</a></li>)}</ul>
+        </div>
+      </section>
+
+      <!-- Close: a paper proof on the night ground -->
+      <section class="sec end">
+        <div class="wrap">
+          <div class="sheet">
+            <div class="sheet-main">
+              <h2>Scan a public GitHub repository</h2>
+              <p>Free, and it takes about a minute. You get a report of the drift Buoy finds.</p>
+              <div class="end-form"><ScanForm id="hsd-scan" /></div>
+            </div>
+            <div class="sheet-side">
+              <h3>Or put it on every pull request</h3>
+              <p>The CLI is free and open source. The GitHub App reviews every pull request.</p>
+              <div class="btns">
+                <a class="btn btn-go" href={installUrl} target="_blank" rel="noopener noreferrer">Install the GitHub App</a>
+                <a class="btn btn-ink-line" href="/pricing">See pricing</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="ft">
+      <div class="wrap ft-in">
+        <div class="ft-brand">
+          <span class="ft-mark"><BuoyMark size={18} /></span>
+          <span>&copy; {new Date().getFullYear()} Buoy. Scanner is open source under MIT.</span>
+        </div>
+        <nav class="ft-nav" aria-label="Footer">
+          <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href={siteConfig.twitterUrl} target="_blank" rel="noopener noreferrer">Twitter</a>
+          <a href={siteConfig.discordUrl} target="_blank" rel="noopener noreferrer">Discord</a>
+          <a href="/scan">Scan a repo</a>
+          <a href="/docs">Docs</a>
+          <a href="/pricing">Pricing</a>
+          <a href="/guides">Guides</a>
+          <a href="/reports">Reports</a>
+          <a href="/compare">Compare</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+          <a href="/support">Support</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+</Layout>
+
+<script define:vars={{ fixes }}>
+  const pr = document.querySelector('[data-pr]')
+  if (pr) {
+    const status = pr.querySelector('[data-pr-status]')
+    const reset = pr.querySelector('[data-reset]')
+    const done = new Set()
+    const render = () => {
+      for (const f of fixes) {
+        const on = done.has(f.id)
+        const val = pr.querySelector(`[data-val="${f.id}"]`)
+        const cm = pr.querySelector(`[data-fix="${f.id}"]`)
+        const btn = pr.querySelector(`[data-commit="${f.id}"]`)
+        val.textContent = on ? f.to : f.from
+        val.classList.toggle('ok', on)
+        cm.classList.toggle('ok', on)
+        btn.disabled = on
+        btn.textContent = on ? 'Committed' : 'Commit suggestion'
+      }
+      const left = fixes.length - done.size
+      status.textContent = left ? `Buoy Design Check: ${left} to fix` : 'Buoy Design Check: passed'
+      status.classList.toggle('ok', left === 0)
+      reset.disabled = done.size === 0
+    }
+    pr.addEventListener('click', (e) => {
+      const t = e.target.closest('button')
+      if (!t) return
+      if (t.dataset.commit) { done.add(t.dataset.commit); render() }
+      if (t.hasAttribute('data-reset')) { done.clear(); render(); pr.querySelector('[data-commit]').focus() }
+    })
+  }
+</script>
+
+<style is:global>
+  body:has(.t-hsd) { background: oklch(0.18 0.035 262); }
+
+  .t-hsd {
+    --night: oklch(0.18 0.035 262);
+    --night-2: oklch(0.215 0.04 262);
+    --night-rule: oklch(0.33 0.035 262);
+    --night-rule-2: oklch(0.45 0.035 262);
+    --moon: oklch(0.96 0.006 262);
+    --moon-2: oklch(0.78 0.025 262);
+    --moon-3: oklch(0.66 0.025 262);
+    --paper: oklch(0.975 0.004 262);
+    --paper-2: oklch(0.945 0.008 262);
+    --paper-rule: oklch(0.86 0.012 262);
+    --ink: oklch(0.19 0.04 262);
+    --ink-2: oklch(0.43 0.03 262);
+    --del: oklch(0.94 0.035 25);
+    --ins: oklch(0.945 0.045 155);
+    --ins-2: oklch(0.89 0.07 155);
+    --ins-ink: oklch(0.4 0.1 155);
+    --crit: oklch(0.76 0.13 27);
+    --sans: 'Schibsted Grotesk', 'Helvetica Neue', Arial, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+    background: var(--night);
+    color: var(--moon);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.55;
+    font-synthesis: none;
+    min-height: 100vh;
+  }
+  .t-hsd *, .t-hsd *::before, .t-hsd *::after { box-sizing: border-box; }
+  .t-hsd h1, .t-hsd h2, .t-hsd h3 { font-family: var(--sans); color: inherit; margin: 0; text-wrap: balance; }
+  .t-hsd p { margin: 0; text-wrap: pretty; }
+  .t-hsd code, .t-hsd pre { font-family: var(--mono); }
+  .t-hsd a { color: inherit; }
+  .t-hsd :focus-visible { outline: 2px solid var(--color-buoy); outline-offset: 3px; }
+  .t-hsd ::selection { background: var(--moon); color: var(--night); }
+
+  .t-hsd .wrap { width: 100%; max-width: 1360px; margin-inline: auto; padding-inline: 16px; }
+  @media (min-width: 720px) { .t-hsd .wrap { padding-inline: 40px; } }
+  .t-hsd .skip { position: absolute; left: 16px; top: -60px; background: var(--moon); color: var(--night); padding: 10px 14px; z-index: 60; }
+  .t-hsd .skip:focus { top: 12px; }
+
+  /* Header */
+  .t-hsd .hd { border-bottom: 1px solid var(--night-rule); background: var(--night); position: relative; z-index: 20; }
+  .t-hsd .hd-in { display: flex; align-items: center; gap: 24px; height: 68px; }
+  .t-hsd .hd-logo { display: inline-flex; align-items: center; min-height: 44px; color: var(--moon); }
+  .t-hsd .hd-nav { display: none; gap: 4px; margin-left: auto; }
+  .t-hsd .hd-nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; font-size: 15px; text-decoration: none; color: var(--moon-2); }
+  .t-hsd .hd-nav a:hover { color: var(--moon); text-decoration: underline; text-underline-offset: 5px; }
+  .t-hsd .hd .btn { margin-left: auto; }
+  @media (min-width: 900px) { .t-hsd .hd-nav { display: flex; } .t-hsd .hd .btn { margin-left: 12px; } }
+
+  /* Buttons: one size per group, square */
+  .t-hsd .btn { display: inline-flex; align-items: center; justify-content: center; height: 52px; padding: 0 22px; font-family: var(--sans); font-size: 16px; font-weight: 600; text-decoration: none; border: 1.5px solid var(--moon); border-radius: 2px; white-space: nowrap; transition: background-color .15s ease, color .15s ease, border-color .15s ease; }
+  .t-hsd .btn:active { transform: translateY(1px); }
+  .t-hsd .btn-sm { height: 44px; padding: 0 16px; font-size: 15px; }
+  .t-hsd .btn-go { background: var(--color-buoy); border-color: var(--color-buoy); color: var(--ink); }
+  .t-hsd .btn-go:hover { background: var(--color-buoy-light); border-color: var(--color-buoy-light); }
+  .t-hsd .btn-paper { background: var(--paper); border-color: var(--paper); color: var(--ink); }
+  .t-hsd .btn-paper:hover { background: var(--moon-2); border-color: var(--moon-2); }
+  .t-hsd .btn-line { background: var(--night); color: var(--moon); border-color: var(--moon-2); }
+  .t-hsd .btn-line:hover { background: var(--moon); color: var(--night); }
+  .t-hsd .btn-ink-line { background: transparent; color: var(--ink); border-color: var(--ink); }
+  .t-hsd .btn-ink-line:hover { background: var(--ink); color: var(--paper); }
+  .t-hsd .btns { display: grid; grid-template-columns: 1fr; gap: 12px; }
+  @media (min-width: 480px) { .t-hsd .btns { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 460px; } }
+
+  /* Hero: the live sea, tinted to the night ramp */
+  .t-hsd .hsd-hero {
+    --boat-hero-bg: oklch(0.18 0.035 262);
+    --boat-hero-sky: linear-gradient(180deg, oklch(0.18 0.035 262) 0%, oklch(0.18 0.035 262) 45%, oklch(0.205 0.045 258) 100%);
+    --boat-hero-wave-1: oklch(0.42 0.07 258 / 0.22);
+    --boat-hero-wave-2: oklch(0.5 0.07 258 / 0.16);
+    --boat-hero-wave-3: oklch(0.36 0.06 258 / 0.3);
+    --boat-hero-stars-opacity: 0.18;
+  }
+  .t-hsd .hero-grid { display: grid; gap: 36px; padding-top: 40px; padding-bottom: 24px; }
+  .t-hsd .hero-copy h1 { font-size: clamp(46px, 6.1vw, 90px); font-weight: 800; line-height: 0.94; letter-spacing: -0.048em; color: var(--moon); }
+  .t-hsd .lede { margin-top: 24px; font-size: 20px; line-height: 1.42; color: var(--moon-2); max-width: 30em; }
+  .t-hsd .hero-copy .btns { margin-top: 32px; }
+  .t-hsd .hero-foot { margin-top: 20px; font-size: 15px; color: var(--moon-3); }
+  @media (min-width: 1000px) {
+    .t-hsd .hero-grid { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 32px; align-items: start; padding-top: 48px; padding-bottom: 150px; }
+    .t-hsd .hero-grid { align-items: stretch; }
+    .t-hsd .hero-copy { grid-column: 1 / span 5; padding-top: 8px; display: flex; flex-direction: column; }
+    .t-hsd .hero-foot { margin-top: auto; padding-top: 24px; }
+    .t-hsd .hero-grid .pr { grid-column: 6 / -1; }
+    .t-hsd .lede { font-size: 21px; }
+  }
+
+  /* PR proof: white paper on the night */
+  .t-hsd .pr { background: var(--paper); color: var(--ink); border-radius: 2px; overflow: hidden; font-size: 14px; min-width: 0; box-shadow: 0 0 0 1px var(--night-rule-2); animation: hsd-rise .5s cubic-bezier(.2,.7,.2,1) .15s both; }
+  .t-hsd .pr-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 16px; padding: 11px 16px; border-bottom: 1.5px solid var(--ink); }
+  .t-hsd .pr-name { font-weight: 600; font-size: 15px; }
+  .t-hsd .pr-num { color: var(--ink-2); font-weight: 400; }
+  .t-hsd .pr-check { font-family: var(--mono); font-size: 13px; font-weight: 500; color: oklch(0.48 0.16 27); min-width: 26ch; text-align: right; }
+  .t-hsd .pr-check.ok { color: var(--ins-ink); }
+  .t-hsd .pr-file { font-family: var(--mono); font-size: 13px; padding: 7px 16px; background: var(--paper-2); border-bottom: 1px solid var(--paper-rule); }
+  .t-hsd .code { overflow-x: auto; }
+  .t-hsd .ln { display: grid; grid-template-columns: 40px 20px minmax(max-content, 1fr); font-family: var(--mono); font-size: 13px; line-height: 25px; white-space: pre; }
+  .t-hsd .ln .no { text-align: right; padding-right: 10px; color: var(--ink-2); user-select: none; }
+  .t-hsd .ln .sg, .t-hsd .sug-row .sg { text-align: center; color: var(--ink-2); user-select: none; }
+  .t-hsd .ln.add { background: var(--ins); }
+  .t-hsd .ln.add .no { background: var(--ins-2); color: var(--ins-ink); }
+  .t-hsd .ln code, .t-hsd .sug-row code { font-size: inherit; padding-right: 16px; }
+  .t-hsd .ln code.i3 { padding-left: 6ch; } .t-hsd .ln code.i4 { padding-left: 8ch; }
+  .t-hsd .val { text-decoration: underline; text-decoration-color: var(--color-buoy); text-decoration-thickness: 2.5px; text-underline-offset: 4px; }
+  .t-hsd .val.ok { text-decoration: none; font-weight: 700; color: var(--ins-ink); }
+  .t-hsd .cm { margin: 8px 16px 10px; border: 1px solid var(--paper-rule); padding: 10px 14px 12px; background: #fff; }
+  @media (min-width: 720px) { .t-hsd .cm { margin-left: 60px; } }
+  .t-hsd .cm-who { display: flex; align-items: center; gap: 6px; font-size: 14px; }
+  .t-hsd .cm-bot { font-size: 12px; line-height: 18px; border: 1px solid var(--paper-rule); border-radius: 10px; padding: 0 7px; color: var(--ink-2); }
+  .t-hsd .cm-on { color: var(--ink-2); font-size: 13px; margin-left: 2px; }
+  .t-hsd .cm-msg { margin-top: 6px; font-size: 15px; line-height: 1.45; }
+  .t-hsd .cm-msg code { white-space: nowrap; font-size: 13px; background: var(--paper-2); padding: 1px 5px; }
+  .t-hsd .sug { margin-top: 8px; border: 1px solid var(--paper-rule); overflow-x: auto; }
+  .t-hsd .sug-row { display: grid; grid-template-columns: 24px minmax(max-content, 1fr); font-family: var(--mono); font-size: 13px; line-height: 25px; white-space: pre; }
+  .t-hsd .sug-row.del { background: var(--del); }
+  .t-hsd .sug-row.ins { background: var(--ins); }
+  .t-hsd .cm.ok .sug-row.del code { text-decoration: line-through; }
+  .t-hsd .cm-btn { margin-top: 10px; height: 44px; min-width: 172px; padding: 0 14px; font-family: var(--sans); font-size: 14px; font-weight: 600; color: var(--ink); background: #fff; border: 1.5px solid var(--ink); border-radius: 2px; transition: background-color .15s ease, color .15s ease; }
+  .t-hsd .cm-btn:hover:not(:disabled) { background: var(--ink); color: var(--paper); }
+  .t-hsd .cm-btn:disabled { border-color: transparent; background: var(--ins); color: var(--ins-ink); cursor: default; }
+  .t-hsd .pr-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 6px 0 16px; border-top: 1px solid var(--paper-rule); background: var(--paper-2); font-size: 13px; color: var(--ink-2); }
+  .t-hsd .pr-reset { height: 44px; padding: 0 10px; font-family: var(--sans); font-size: 13px; font-weight: 600; color: var(--ink); background: none; border: 0; text-decoration: underline; text-underline-offset: 4px; }
+  .t-hsd .pr-reset:disabled { color: var(--ink-2); text-decoration: none; opacity: .6; cursor: default; }
+  @keyframes hsd-rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+
+  /* Sections: night ground, full-width hairline between */
+  .t-hsd .sec { padding-top: 64px; padding-bottom: 64px; border-top: 1px solid var(--night-rule); background: var(--night); }
+  @media (min-width: 900px) { .t-hsd .sec { padding-top: 96px; padding-bottom: 112px; } }
+  .t-hsd .sec-tight { padding-bottom: 72px; }
+  .t-hsd h2 { font-size: clamp(30px, 3.9vw, 54px); font-weight: 800; line-height: 1.02; letter-spacing: -0.035em; }
+  .t-hsd h3 { font-size: 21px; font-weight: 700; letter-spacing: -0.012em; line-height: 1.2; }
+  .t-hsd .more { margin-top: 28px; font-size: 16px; font-weight: 600; }
+  .t-hsd .more a, .t-hsd .two-foot a { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 5px; text-decoration-color: var(--moon-3); }
+  .t-hsd .more a:hover, .t-hsd .two-foot a:hover { text-decoration-color: var(--color-buoy); }
+  .t-hsd .split { display: grid; gap: 36px; }
+  .t-hsd .split-text p { margin-top: 20px; max-width: 32em; color: var(--moon-2); }
+  .t-hsd .split-text code, .t-hsd .td-what code { color: var(--moon); }
+  .t-hsd .split-text code { font-size: 0.86em; border-bottom: 2px solid var(--color-buoy); }
+  .t-hsd .split-fig { min-width: 0; }
+  .t-hsd .split-fig .lockon { border-radius: 2px; }
+  @media (min-width: 1000px) {
+    .t-hsd .split { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 32px; align-items: center; }
+    .t-hsd .split-text { grid-column: 1 / span 5; padding-right: 24px; }
+    .t-hsd .split-fig { grid-column: 6 / -1; }
+  }
+
+  .t-hsd .sec-head { display: grid; gap: 12px; margin-bottom: 40px; }
+  .t-hsd .sec-head p { color: var(--moon-2); max-width: 30em; }
+  @media (min-width: 1000px) {
+    .t-hsd .sec-head { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 32px; align-items: end; margin-bottom: 56px; }
+    .t-hsd .sec-head h2 { grid-column: 1 / span 5; }
+    .t-hsd .sec-head p { grid-column: 6 / -1; }
+  }
+  .t-hsd .tbl { border-bottom: 1px solid var(--night-rule); }
+  .t-hsd .tr { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 16px; padding: 16px 0; border-top: 1px solid var(--night-rule); }
+  .t-hsd .tr.th { display: none; }
+  .t-hsd .td-name { font-size: 22px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.2; }
+  .t-hsd .td-name a { text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 5px; text-decoration-color: var(--night-rule-2); }
+  .t-hsd .td-name a:hover { text-decoration-color: var(--color-buoy); }
+  .t-hsd .td-what { grid-column: 1 / -1; grid-row: 2; color: var(--moon-2); font-size: 16px; }
+  .t-hsd .td-lv { font-family: var(--mono); font-size: 13px; align-self: center; color: var(--moon-2); }
+  .t-hsd .td-lv.crit { color: var(--crit); }
+  .t-hsd .eg { display: block; margin-top: 4px; font-size: 13px; overflow-wrap: anywhere; }
+  @media (min-width: 1000px) {
+    .t-hsd .tr, .t-hsd .tr.th { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 32px; align-items: baseline; padding: 18px 0; }
+    .t-hsd .tr.th { font-size: 13px; color: var(--moon-3); padding: 0 0 10px; border-top: 0; }
+    .t-hsd .tr > :nth-child(1) { grid-column: 1 / span 5; }
+    .t-hsd .tr > :nth-child(2) { grid-column: 6 / span 5; grid-row: auto; }
+    .t-hsd .tr > :nth-child(3) { grid-column: 11 / -1; }
+    .t-hsd .td-name { font-size: 28px; }
+    .t-hsd .td-what { font-size: 17px; }
+    .t-hsd .tr:not(.th):hover { background: var(--night-2); }
+  }
+
+  .t-hsd .cli { display: grid; gap: 36px; }
+  .t-hsd .cli-text > p:first-of-type { margin-top: 20px; color: var(--moon-2); max-width: 30em; }
+  .t-hsd .steps { list-style: none; margin: 32px 0 0; padding: 0; counter-reset: s; }
+  .t-hsd .steps li { counter-increment: s; display: grid; grid-template-columns: 28px minmax(0, 1fr); column-gap: 8px; padding: 16px 0; border-top: 1px solid var(--night-rule); }
+  .t-hsd .steps li:last-child { border-bottom: 1px solid var(--night-rule); }
+  .t-hsd .steps li::before { content: counter(s); grid-row: 1 / span 2; font-family: var(--mono); font-size: 14px; line-height: 30px; color: var(--moon-3); }
+  .t-hsd .steps code { font-size: clamp(17px, 1.7vw, 22px); font-weight: 500; line-height: 30px; }
+  .t-hsd .steps span { color: var(--moon-2); font-size: 16px; }
+  /* Terminal: printed on paper too, so every product surface is one family */
+  .t-hsd .term { margin: 0; background: var(--paper); color: var(--ink); border-radius: 2px; min-width: 0; overflow: hidden; }
+  .t-hsd .term figcaption { padding: 10px 20px; font-size: 13px; color: var(--ink-2); border-bottom: 1.5px solid var(--ink); font-family: var(--mono); }
+  .t-hsd .term pre { margin: 0; padding: 22px 20px 26px; font-size: 13.5px; line-height: 1.75; overflow-x: auto; }
+  .t-hsd .term b { font-weight: 700; }
+  .t-hsd .t-m { color: var(--ink-2); }
+  .t-hsd .t-crit { color: oklch(0.48 0.16 27); }
+  .t-hsd .t-warn { color: oklch(0.5 0.11 70); }
+  .t-hsd .t-bad { text-decoration: underline; text-decoration-color: var(--color-buoy); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+  @media (min-width: 1000px) {
+    .t-hsd .cli { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 32px; align-items: start; }
+    .t-hsd .cli-text { grid-column: 1 / span 5; padding-right: 24px; }
+    .t-hsd .term { grid-column: 6 / -1; }
+    .t-hsd .term pre { font-size: 14.5px; padding: 28px 28px 34px; }
+    .t-hsd .term figcaption { padding-inline: 28px; }
+  }
+
+  .t-hsd .big { font-size: clamp(34px, 6.3vw, 92px); font-weight: 800; line-height: 1; letter-spacing: -0.045em; }
+  .t-hsd .big span { display: block; }
+  .t-hsd .big span + span { margin-top: 0.08em; color: var(--moon-2); }
+  .t-hsd .big span + span + span { color: var(--moon-3); }
+  .t-hsd .two { display: grid; gap: 40px; margin-top: 48px; }
+  .t-hsd .two h3 { padding-bottom: 14px; border-bottom: 1.5px solid var(--moon); }
+  .t-hsd .two ul { list-style: none; margin: 0; padding: 0; }
+  .t-hsd .two li { padding: 12px 0; border-bottom: 1px solid var(--night-rule); font-size: 17px; color: var(--moon-2); }
+  .t-hsd .two-foot { margin-top: 16px; font-size: 15px; color: var(--moon-3); }
+  .t-hsd .two-foot a { color: var(--moon); font-weight: 600; }
+  @media (min-width: 800px) { .t-hsd .two { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; margin-top: 72px; } }
+
+  .t-hsd .stack { display: grid; gap: 20px; }
+  .t-hsd .stack ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 28px; }
+  .t-hsd .stack li a { display: inline-flex; align-items: center; min-height: 48px; font-size: clamp(24px, 3vw, 40px); font-weight: 600; letter-spacing: -0.025em; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 7px; text-decoration-color: var(--night-rule-2); }
+  .t-hsd .stack li a:hover { text-decoration-color: var(--color-buoy); }
+  @media (min-width: 1000px) {
+    .t-hsd .stack { grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 32px; align-items: baseline; }
+    .t-hsd .stack h2 { grid-column: 1 / span 5; }
+    .t-hsd .stack ul { grid-column: 6 / -1; }
+  }
+
+  /* Closing proof sheet */
+  .t-hsd .sheet { background: var(--paper); color: var(--ink); border-radius: 2px; display: grid; }
+  .t-hsd .sheet-main, .t-hsd .sheet-side { padding: 32px 20px; }
+  .t-hsd .sheet-side { border-top: 1px solid var(--paper-rule); }
+  .t-hsd .sheet p { margin-top: 14px; color: var(--ink-2); max-width: 30em; }
+  .t-hsd .sheet .btns { margin-top: 24px; }
+  .t-hsd .end-form { margin-top: 24px; max-width: 620px; }
+  .t-hsd .end-form input { background: #fff; color: var(--ink); border: 1.5px solid var(--ink); border-radius: 2px; height: 52px; min-width: 0; font-family: var(--mono); font-size: 15px; }
+  .t-hsd .end-form input::placeholder { color: var(--ink-2); }
+  .t-hsd .end-form input:focus { border-color: var(--ink); box-shadow: inset 0 -3px 0 var(--color-buoy); }
+  .t-hsd .end-form button { background: var(--ink); color: var(--paper); border-radius: 2px; height: 52px; font-family: var(--sans); font-size: 16px; white-space: nowrap; }
+  .t-hsd .end-form .scan-error { color: oklch(0.48 0.16 27); }
+  @media (min-width: 1000px) {
+    .t-hsd .sheet { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+    .t-hsd .sheet-main { grid-column: 1 / span 7; padding: 56px 48px; }
+    .t-hsd .sheet-side { grid-column: 8 / -1; padding: 56px 48px; border-top: 0; border-left: 1px solid var(--paper-rule); }
+  }
+
+  .t-hsd .ft { border-top: 1px solid var(--night-rule); color: var(--moon-3); font-size: 14px; }
+  .t-hsd .ft-in { display: flex; flex-direction: column; gap: 16px; padding-top: 28px; padding-bottom: 36px; }
+  .t-hsd .ft-brand { display: flex; align-items: center; gap: 8px; }
+  .t-hsd .ft-mark { display: inline-flex; line-height: 0; }
+  .t-hsd .ft-nav { display: flex; flex-wrap: wrap; gap: 0 20px; }
+  .t-hsd .ft-nav a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
+  .t-hsd .ft-nav a:hover { color: var(--moon); text-decoration: underline; text-underline-offset: 5px; }
+  @media (min-width: 1100px) { .t-hsd .ft-in { flex-direction: row; justify-content: space-between; align-items: center; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .t-hsd .pr { animation: none; }
+    .t-hsd * { transition: none !important; }
+  }
+</style>

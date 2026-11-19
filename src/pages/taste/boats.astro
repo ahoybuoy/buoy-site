@@ -1,0 +1,73 @@
+---
+// Sailboat glyph options to replace the ⛵ emoji. Comparison page, not linked.
+import Layout from '../../layouts/Layout.astro'
+const files = import.meta.glob('../../components/taste/boat/options/*.svg', { query: '?url', import: 'default', eager: true }) as Record<string, string>
+const names: Record<string, string> = {
+  classic: 'Classic', brand: 'Brand', geo: 'Geometric', sloop: 'Sloop', catboat: 'Catboat', spinnaker: 'Spinnaker',
+  glossy: 'Glossy', paper: 'Paper boat', toy: 'Toy boat', racer: 'Racing yacht', dhow: 'Lateen / dhow', schooner: 'Schooner', orange: 'Orange solid', buoyhull: 'Buoy hull',
+  sunset: 'Sunset stripes', clay: 'Clay 3D', iso: 'Isometric', gradsail: 'Gradient sail', vintage: 'Vintage', sticker: 'Bold sticker', night: 'Night sail', fullwind: 'Full wind',
+}
+const boats = Object.entries(files).map(([p, url]) => {
+  const m = p.match(/boat-(\d+)-([a-z]+)\.svg$/)!
+  return { n: m[1], name: names[m[2]] ?? m[2], url }
+}).sort((a, b) => +a.n - +b.n)
+const wave = 'M0 30 Q 25 18 50 30 T 100 30 T 150 30 T 200 30 T 250 30 T 300 30 V60 H0Z'
+---
+<Layout title="Boat options">
+  <meta slot="head" name="robots" content="noindex" />
+  <main class="bp">
+    <h1>Sailboat options</h1>
+    <section class="row" id="inline-row">
+      <div class="cell">
+        <div class="lab">Current · ⛵ emoji</div>
+        <p class="sent">…off-token values and rogue components.&nbsp;<span class="emo">⛵</span></p>
+      </div>
+      {boats.map(b => (
+        <div class="cell">
+          <div class="lab">{b.n} · {b.name}</div>
+          <p class="sent">…off-token values and rogue components.&nbsp;<img class="ib" src={b.url} alt="" /></p>
+        </div>
+      ))}
+    </section>
+    <section class="grid">
+      <article class="card">
+        <div class="lab">Current · ⛵ emoji</div>
+        <div class="sea"><span class="emo44">⛵</span><svg viewBox="0 0 300 60" preserveAspectRatio="none"><path d={wave} fill="oklch(0.3 0.07 245)"/></svg></div>
+        <div class="big"><span class="emo96">⛵</span></div>
+      </article>
+      {boats.map(b => (
+        <article class="card">
+          <div class="lab">{b.n} · {b.name}</div>
+          <div class="sea"><img class="b44" src={b.url} alt="" /><svg viewBox="0 0 300 60" preserveAspectRatio="none"><path d={wave} fill="oklch(0.3 0.07 245)"/></svg></div>
+          <div class="big"><img class="b96" src={b.url} alt="" /></div>
+          <div class="tilts">
+            {[-14, 0, 14].map(a => <img class="b44" src={b.url} alt="" style={`transform:rotate(${a}deg)`} />)}
+          </div>
+        </article>
+      ))}
+    </section>
+  </main>
+</Layout>
+
+<style>
+  :global(body) { background: oklch(0.155 0.045 248); }
+  .bp { max-width: 1200px; margin: 0 auto; padding: 32px 16px 64px; color: #E6EBF2; font-family: var(--font-body); }
+  h1 { font-family: var(--font-display); font-size: 28px; margin: 0 0 24px; }
+  .lab { font: 600 12px/1 var(--font-mono); color: #FF7A3D; margin-bottom: 8px; }
+  .row { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px 32px; margin-bottom: 40px; }
+  .sent { font-size: 18px; line-height: 1.6; margin: 0; color: #C9D3E0; }
+  .ib { height: 1.3em; width: 1.3em; vertical-align: -0.28em; display: inline-block; }
+  .emo { font-size: 1.1em; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+  .card { background: oklch(0.19 0.05 248); border-radius: 16px; padding: 16px; }
+  .sea { position: relative; height: 80px; overflow: hidden; border-radius: 10px; background: oklch(0.155 0.045 248); }
+  .sea svg { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 40px; }
+  .sea .b44, .sea .emo44 { position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); z-index: 1; }
+  .b44 { width: 44px; height: 44px; }
+  .emo44 { font-size: 40px; line-height: 1; }
+  .big { display: flex; justify-content: center; padding: 12px 0; }
+  .b96 { width: 96px; height: 96px; }
+  .emo96 { font-size: 86px; line-height: 1; }
+  .tilts { display: flex; justify-content: space-around; padding-top: 8px; }
+  .tilts img { transform-origin: 50% 84%; }
+</style>

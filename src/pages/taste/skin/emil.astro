@@ -1,0 +1,39 @@
+---
+import HomeBase from '../../../components/taste/same-layout/HomeBase.astro'
+import '../../../components/taste/same-layout/skins/emil.css'
+---
+<HomeBase skin="emil">
+  <Fragment slot="head"></Fragment>
+  <script>
+    const root = document.querySelector<HTMLElement>('.sl.sl-emil')
+    if (root) {
+      // Header hairline appears only once content scrolls under it (colour change, 200ms ease).
+      const onScroll = () => root.toggleAttribute('data-scrolled', window.scrollY > 8)
+      onScroll()
+      window.addEventListener('scroll', onScroll, { passive: true })
+
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+      // Explanation: terminal output lines print in, once, the way a CLI writes them.
+      // Web Animations API, opacity only, 24ms between lines, whole block under 500ms.
+      const out = root.querySelector<HTMLElement>('.sl-terminal__out')
+      if (out && !reduce && 'IntersectionObserver' in window && out.getBoundingClientRect().top > window.innerHeight) {
+        const lines = Array.from(out.children) as HTMLElement[]
+        lines.forEach((l) => (l.style.opacity = '0'))
+        const io = new IntersectionObserver((entries) => {
+          if (!entries.some((e) => e.isIntersecting)) return
+          io.disconnect()
+          lines.forEach((l, i) => {
+            l.animate([{ opacity: 0 }, { opacity: 1 }], {
+              duration: 180,
+              delay: i * 24,
+              easing: 'cubic-bezier(0.23, 1, 0.32, 1)',
+              fill: 'both',
+            }).finished.then(() => (l.style.opacity = ''))
+          })
+        }, { threshold: 0.3 })
+        io.observe(out)
+      }
+    }
+  </script>
+</HomeBase>

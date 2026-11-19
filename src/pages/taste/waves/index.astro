@@ -1,0 +1,155 @@
+---
+// Local-only viewer: try wave styles in the homepage hero. Each frame is /taste/waves/<id>.
+// Add styles in src/components/taste/waves/registry.ts (contract: WAVES.md there).
+import Layout from '../../../layouts/Layout.astro'
+import BuoyLogo from '../../../components/BuoyLogo.astro'
+import { waveStyles, waveGroups } from '../../../components/taste/waves/registry'
+
+const styles = Object.entries(waveStyles).map(([id, s]) => ({ id, name: s.name, group: s.group, note: s.note }))
+---
+
+<Layout title="Wave styles" noindex>
+  <div class="wv">
+    <header class="wv-bar">
+      <a href="/" class="wv-logo" aria-label="Buoy home"><BuoyLogo size="1.15rem" /></a>
+      <div class="wv-groups">
+        {waveGroups.filter((g) => styles.some((s) => s.group === g)).map((g) => (
+          <div class="wv-fgroup" role="group" aria-label={g}>
+            <span class="wv-glabel">{g}</span>
+            {styles.filter((s) => s.group === g).map((s) => (
+              <button type="button" class="wv-btn" data-style={s.id} aria-pressed={s.id === 'current' ? 'true' : 'false'}>{s.name}</button>
+            ))}
+          </div>
+        ))}
+      </div>
+    </header>
+    <div class="wv-sub">
+      <p class="wv-note"><strong id="wv-name"></strong> <span id="wv-note"></span></p>
+      <div class="wv-tools">
+        <div class="wv-group" role="group" aria-label="Width">
+          <button type="button" class="wv-btn wv-width" data-width="" aria-pressed="true">Desktop</button>
+          <button type="button" class="wv-btn wv-width" data-width="390" aria-pressed="false">Phone</button>
+        </div>
+        <button type="button" class="wv-btn" id="wv-replay">Replay</button>
+        <a class="wv-btn" id="wv-open" href="/taste/waves/current" target="_blank" rel="noopener">Open</a>
+      </div>
+    </div>
+    <div class="wv-params" role="group" aria-label="Wave action">
+      <div class="wv-group">
+        <button type="button" class="wv-btn wv-preset" data-preset="calm">Calm</button>
+        <button type="button" class="wv-btn wv-preset" data-preset="breezy">Breezy</button>
+        <button type="button" class="wv-btn wv-preset" data-preset="rough">Rough</button>
+        <button type="button" class="wv-btn wv-preset" data-preset="storm">Storm</button>
+        <button type="button" class="wv-btn" id="wv-reset">Reset</button>
+      </div>
+      <label class="wv-slider">Intensity <input type="range" data-param="intensity" min="0" max="2" step="0.05" value="1" /><output></output></label>
+      <label class="wv-slider">Speed <input type="range" data-param="speed" min="0.25" max="2.5" step="0.05" value="1" /><output></output></label>
+      <label class="wv-slider">Chop <input type="range" data-param="chop" min="0" max="1" step="0.05" value="0.3" /><output></output></label>
+      <label class="wv-slider">Variation <input type="range" data-param="variation" min="0" max="1" step="0.05" value="0.3" /><output></output></label>
+    </div>
+    <div class="wv-stage">
+      <iframe id="wv-frame" title="Homepage hero with the selected wave style" src="/taste/waves/current"></iframe>
+    </div>
+  </div>
+  <script is:inline type="application/json" id="wv-data" set:html={JSON.stringify(styles)}></script>
+</Layout>
+
+<style>
+  .wv { display: grid; grid-template-rows: auto auto auto 1fr; height: 100dvh; background: #0b0d10; color: #e7e9ee; }
+  .wv-bar, .wv-sub { display: flex; align-items: center; gap: 16px; padding: 10px 16px; border-bottom: 1px solid #ffffff14; }
+  .wv-sub { justify-content: space-between; flex-wrap: wrap; row-gap: 8px; }
+  .wv-logo { color: #fff; flex: none; }
+  .wv-groups { display: grid; gap: 4px; width: 100%; }
+  .wv-fgroup, .wv-group, .wv-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 4px; }
+  .wv-tools { gap: 12px; }
+  .wv-glabel { width: 90px; font: 600 11px/1 Inter, system-ui, sans-serif; color: #6f7684; }
+  .wv-btn {
+    display: inline-flex; align-items: center; gap: 8px; height: 28px; padding: 0 10px;
+    border: 0; border-radius: 8px; background: transparent; color: #a9b0bd; text-decoration: none;
+    font: 500 12.5px/1 Inter, system-ui, sans-serif; cursor: pointer;
+    transition: background-color 120ms ease-out, color 120ms ease-out;
+  }
+  .wv-btn:hover { background: #ffffff10; color: #fff; }
+  .wv-btn[aria-pressed='true'] { background: #ffffff1a; color: #fff; box-shadow: inset 0 -2px 0 var(--color-buoy); }
+  .wv-note { margin: 0; font-size: 13px; color: #a9b0bd; }
+  .wv-note strong { color: #fff; margin-right: 6px; }
+  .wv-params { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; padding: 8px 16px; border-bottom: 1px solid #ffffff14; }
+  .wv-slider { display: inline-flex; align-items: center; gap: 8px; font: 500 12px/1 Inter, system-ui, sans-serif; color: #a9b0bd; }
+  .wv-slider input { width: 120px; accent-color: var(--color-buoy); }
+  .wv-slider output { min-width: 42px; font-variant-numeric: tabular-nums; color: #fff; }
+  .wv-stage { min-height: 0; display: flex; justify-content: center; background: #000; }
+  iframe { width: 100%; height: 100%; border: 0; background: #000; }
+  .wv-stage.is-phone iframe { width: 390px; max-width: 100%; box-shadow: 0 0 0 1px #ffffff22; }
+</style>
+
+<script>
+  type S = { id: string; name: string; group: string; note: string }
+  const styles: S[] = JSON.parse(document.getElementById('wv-data')!.textContent || '[]')
+  const frame = document.getElementById('wv-frame') as HTMLIFrameElement
+  const stage = document.querySelector('.wv-stage')!
+  const open = document.getElementById('wv-open') as HTMLAnchorElement
+  // Wave action params (contract: src/components/taste/waves/params.ts). Unset = the style's default.
+  type K = 'intensity' | 'speed' | 'chop' | 'variation'
+  const KEYS: K[] = ['intensity', 'speed', 'chop', 'variation']
+  const SHOWN: Record<K, number> = { intensity: 1, speed: 1, chop: 0.3, variation: 0.3 }
+  const PRESETS: Record<string, Record<K, number>> = {
+    calm: { intensity: 0.5, speed: 0.7, chop: 0.1, variation: 0.2 },
+    breezy: { intensity: 0.9, speed: 1, chop: 0.35, variation: 0.35 },
+    rough: { intensity: 1.35, speed: 1.3, chop: 0.6, variation: 0.55 },
+    storm: { intensity: 1.85, speed: 1.7, chop: 0.85, variation: 0.8 },
+  }
+  let params: Partial<Record<K, number>> = {}
+
+  // Hash: #<style>?intensity=1.2&speed=1 ...
+  const [hashId, hashQuery] = location.hash.slice(1).split('?')
+  let current = styles.find((s) => s.id === hashId) || styles[0]
+  new URLSearchParams(hashQuery || '').forEach((v, k) => { if ((KEYS as string[]).includes(k) && Number.isFinite(+v)) params[k as K] = +v })
+
+  function writeHash() {
+    const q = new URLSearchParams()
+    for (const k of KEYS) if (params[k] != null) q.set(k, String(params[k]))
+    history.replaceState(null, '', '#' + current.id + (q.toString() ? '?' + q : ''))
+  }
+  function applyParams() {
+    const root = frame.contentDocument?.documentElement
+    if (root) for (const k of KEYS) params[k] == null ? root.style.removeProperty('--wave-' + k) : root.style.setProperty('--wave-' + k, String(params[k]))
+    document.querySelectorAll<HTMLInputElement>('[data-param]').forEach((inp) => {
+      const k = inp.dataset.param as K
+      inp.value = String(params[k] ?? SHOWN[k])
+      inp.nextElementSibling!.textContent = params[k] == null ? (k === 'chop' || k === 'variation' ? 'style' : '1') : Number(params[k]).toFixed(2)
+    })
+    writeHash()
+  }
+  frame.addEventListener('load', applyParams)
+  document.querySelectorAll<HTMLInputElement>('[data-param]').forEach((inp) => inp.addEventListener('input', () => {
+    params[inp.dataset.param as K] = +inp.value
+    applyParams()
+  }))
+  document.querySelectorAll<HTMLButtonElement>('.wv-preset').forEach((b) => b.addEventListener('click', () => {
+    params = { ...PRESETS[b.dataset.preset!] }
+    applyParams()
+  }))
+  document.getElementById('wv-reset')!.addEventListener('click', () => { params = {}; applyParams() })
+
+  function show() {
+    const url = `/taste/waves/${current.id}`
+    frame.src = url
+    open.href = url
+    document.querySelectorAll('[data-style]').forEach((x) => x.setAttribute('aria-pressed', String((x as HTMLElement).dataset.style === current.id)))
+    document.getElementById('wv-name')!.textContent = current.name
+    document.getElementById('wv-note')!.textContent = current.note
+    writeHash()
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('[data-style]').forEach((b) => b.addEventListener('click', () => {
+    current = styles.find((s) => s.id === b.dataset.style) || styles[0]
+    show()
+  }))
+  document.querySelectorAll<HTMLButtonElement>('.wv-width').forEach((b) => b.addEventListener('click', () => {
+    document.querySelectorAll('.wv-width').forEach((x) => x.setAttribute('aria-pressed', String(x === b)))
+    stage.classList.toggle('is-phone', !!b.dataset.width)
+    frame.contentWindow?.location.reload()
+  }))
+  document.getElementById('wv-replay')!.addEventListener('click', () => frame.contentWindow?.location.reload())
+  show()
+</script>

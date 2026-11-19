@@ -1,0 +1,865 @@
+---
+/*
+  Variant built with the taste-skill harness (design-taste-frontend 2.5).
+  kind: software (developer tool)
+  deal: hero collage · nav-split · footer-columns · close-type · rhythm dark-band (one inverse section)
+        · buttons pill · radius sharp · palette graphite + the client's own orange · type Geist / Geist Mono
+        · moment word-highlight (the statement section)
+*/
+import Layout from '../../layouts/Layout.astro'
+import BuoyLogo from '../../components/BuoyLogo.astro'
+import BuoyMark from '../../components/BuoyMark.astro'
+import FreeSpots from '../../components/FreeSpots.astro'
+import { siteConfig } from '../../config'
+
+const APP = 'https://github.com/marketplace/buoy-design'
+
+const h1Words = ['Catch', 'design', 'drift', 'before', 'it', 'ships.']
+
+const comments = [
+  { file: 'src/components/Card.tsx', line: 23, what: 'Hardcoded color', bad: '#3b82f6', good: 'var(--color-primary)', del: 'background: "#3b82f6",', add: 'background: "var(--color-primary)",' },
+  { file: 'src/components/Card.tsx', line: 31, what: 'Hardcoded spacing', bad: '24px', good: 'var(--spacing-lg)', del: 'padding: "24px",', add: 'padding: "var(--spacing-lg)",' },
+  { file: 'src/components/Modal.tsx', line: 8, what: 'Hardcoded border radius', bad: '8px', good: 'var(--radius-md)', del: 'borderRadius: "8px",', add: 'borderRadius: "var(--radius-md)",' },
+]
+
+const diffTop = [
+  [18, 'import type { ReactNode } from "react"'],
+  [19, ''],
+  [20, 'export function Card({ children }: { children: ReactNode }) {'],
+  [21, '  return ('],
+  [22, '    <div style={{'],
+  [23, '      background: "#3b82f6",'],
+]
+const diffBottom = [
+  [24, '      borderRadius: "var(--radius-md)",'],
+  [25, '    }}>'],
+  [26, '      <div className="card-body" style={{'],
+  [27, '        display: "grid",'],
+  [28, '        gap: "var(--spacing-sm)",'],
+  [29, '      }}>'],
+  [30, '        <div style={{'],
+  [31, '          padding: "24px",'],
+  [32, '        }}>'],
+  [33, '          {children}'],
+  [34, '        </div>'],
+  [35, '      </div>'],
+  [36, '    </div>'],
+]
+
+const statement =
+  'Coding agents now write a lot of UI, and they do not know your tokens. Buoy checks every pull request against your design system and comments with the token that already exists.'.split(' ')
+
+const driftTypes = [
+  { title: 'Hardcoded values', severity: 'Warning', text: 'Hardcoded colors, spacing and fonts.' },
+  { title: 'Duplicate components', severity: 'Warning', text: 'Similar components that should be one.' },
+  { title: 'Naming inconsistency', severity: 'Info', text: 'Names that break your conventions.' },
+  { title: 'Deprecated patterns', severity: 'Warning', text: 'Deprecated components still in use.' },
+  { title: 'Inline styles', severity: 'Warning', text: 'Inline CSS where a token belongs.' },
+  { title: 'Accessibility conflicts', severity: 'Critical', text: 'Missing ARIA labels and focus issues.' },
+  { title: 'Framework sprawl', severity: 'Warning', text: 'Several UI frameworks in one codebase.' },
+  { title: 'Orphaned components', severity: 'Info', text: 'In code but not in the design.' },
+]
+
+const agentCode = [
+  ['', 'const Card = () => ('],
+  ['', '  <div style={{'],
+  ['bad', '    background: "#ffffff",'],
+  ['bad', '    padding: "16px",'],
+  ['bad', '    borderRadius: "8px",'],
+  ['bad', '    boxShadow: "0 2px 4px rgba..."'],
+  ['', '  }}>'],
+  ['', '    {children}'],
+  ['', '  </div>'],
+  ['', ')'],
+]
+const systemCode = [
+  ['', 'import { Card } from "@/components"'],
+  ['', ''],
+  ['', 'const MyCard = () => ('],
+  ['good', '  <Card variant="elevated">'],
+  ['', '    {children}'],
+  ['good', '  </Card>'],
+  ['', ')'],
+]
+
+const stack = [
+  ['React', '/integrations/react'],
+  ['Vue', '/integrations/vue'],
+  ['Svelte', '/integrations/svelte'],
+  ['Angular', '/integrations/angular'],
+  ['Next.js', '/integrations/nextjs'],
+  ['Tailwind', '/integrations/tailwind'],
+]
+
+const year = new Date().getFullYear()
+---
+
+<Layout title="Buoy: catch design drift before it ships" noindex>
+  <Fragment slot="head">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  </Fragment>
+
+  <div class="t-taste-skill">
+    <header class="nav">
+      <div class="wrap nav__in">
+        <a class="skip-link" href="#top">Skip to content</a>
+        <nav class="nav__words" aria-label="Main">
+          <a href="/scan">Scan a repo</a>
+          <a href="/docs">Docs</a>
+          <a href="/pricing">Pricing</a>
+          <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
+        <a class="nav__logo" href="/" aria-label="Buoy home"><BuoyLogo size="1.5rem" /></a>
+        <div class="nav__end">
+          <a class="btn btn--primary nav__cta" href={APP} target="_blank" rel="noopener noreferrer">Install the GitHub App</a>
+          <button class="nav__menu" type="button" aria-expanded="false" aria-controls="ts-menu">Menu</button>
+        </div>
+      </div>
+      <div class="menu" id="ts-menu" hidden>
+        <div class="wrap menu__in">
+          <a href="/scan">Scan a repo</a>
+          <a href="/docs">Docs</a>
+          <a href="/pricing">Pricing</a>
+          <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a class="btn btn--primary" href={APP} target="_blank" rel="noopener noreferrer">Install the GitHub App</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- 1. Hero: collage -->
+      <section class="hero" data-enter>
+        <div class="wrap grid hero__grid">
+          <div class="hero__text">
+            <h1 aria-label="Catch design drift before it ships.">
+              {h1Words.map((w, i) => (
+                <span class="mask" aria-hidden="true"><span class="mask__w" style={`--i:${i}`}>{w}</span></span>
+              ))}
+            </h1>
+            <p class="lead rise" style="--n:0">
+              Buoy checks UI code against your design system. Its GitHub App reviews every pull request and leaves an inline comment with the exact fix.
+            </p>
+            <div class="btn-row rise" style="--n:1">
+              <a class="btn btn--primary" href={APP} target="_blank" rel="noopener noreferrer">Install the GitHub App</a>
+              <a class="btn btn--secondary" href="/scan">Scan a public repo</a>
+            </div>
+            <p class="small rise" style="--n:2">Open source under MIT. The scanner is deterministic and runs without an LLM.</p>
+          </div>
+
+          <div class="frame hero__frame">
+            <div class="win term settle" role="img" aria-label="Terminal output of buoy drift check: 23 issues in 142 files, with the file, line and suggested token for each hardcoded value.">
+              <div class="win__bar"><span class="win__title">Terminal</span></div>
+              <div class="term__body" aria-hidden="true">
+                <div class="t-row"><span class="t-dim">$</span> buoy drift check</div>
+                <div class="t-row t-dim">Scanning for design drift...</div>
+                <div class="t-gap"></div>
+                <div class="t-row">Found <b class="t-warn">23</b> issues in 142 files</div>
+                <div class="t-gap"></div>
+                <div class="t-row t-crit"><b>CRITICAL (2)</b></div>
+                <div class="t-row"><span class="t-dim">├─</span> Button.tsx:12 <span class="t-soft">Missing aria-label</span></div>
+                <div class="t-row"><span class="t-dim">└─</span> Modal.tsx:45 <span class="t-soft">Focus trap not implemented</span></div>
+                <div class="t-gap"></div>
+                <div class="t-row t-warn"><b>HARDCODED VALUES (8)</b></div>
+                <div class="t-row"><span class="t-dim">├─</span> Card.tsx:8 #ffffff <span class="t-soft">→ use var(--bg-surface)</span></div>
+                <div class="t-row"><span class="t-dim">├─</span> Badge.tsx:3 8px <span class="t-soft">→ use var(--spacing-sm)</span></div>
+                <div class="t-row t-dim">└─ ... and 6 more</div>
+              </div>
+            </div>
+
+            <div class="float" data-loop role="img" aria-label="Buoy's pull request comments: each names the hardcoded value and suggests the token to use instead.">
+              <div class="float__stack" aria-hidden="true">
+                {comments.map((c, i) => (
+                  <div class={`cmt ${i === 0 ? 'is-on' : ''}`}>
+                    <div class="cmt__head">
+                      <span class="cmt__mark"><BuoyMark size={16} /></span>
+                      <span class="cmt__who">buoy-design</span>
+                      <span class="cmt__meta">{c.file.split('/').pop()}, line {c.line}</span>
+                    </div>
+                    <p class="cmt__text">{c.what} <code>{c.bad}</code>. Use <code>{c.good}</code> instead.</p>
+                    <div class="sug">
+                      <div class="sug__l sug__l--del"><span>-</span>{c.del}</div>
+                      <div class="sug__l sug__l--add"><span>+</span>{c.add}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. app-frame, on the one inverse band -->
+      <section class="section ground-inverse" id="review">
+        <div class="wrap">
+          <div class="grid head">
+            <h2 class="head__h">A design review on every pull request</h2>
+            <p class="head__p">
+              The GitHub App runs the same open-source scanner on each pull request. It comments on the changed line, names the token that already exists, and offers the fix as a suggestion you can commit.
+              <a class="link link--own" href="/features/ci">See how the check works</a>
+            </p>
+          </div>
+
+          <div class="win app" role="img" aria-label="A GitHub pull request, number 247. The Buoy design check found 3 issues. The open file, Card.tsx, shows Buoy's inline comment on line 23: hardcoded color #3b82f6, use var(--color-primary) instead, with a suggested change.">
+            <div class="app__list" aria-hidden="true">
+              <div class="app__pr">
+                <span class="app__prt">feat: add new Card component</span>
+                <span class="app__prn">#247</span>
+              </div>
+              <div class="app__check">Buoy Design Check <span>3 issues found</span></div>
+              {comments.map((c, i) => (
+                <div class={`find ${i === 0 ? 'is-open' : ''}`}>
+                  <span class="find__file">{c.file}</span>
+                  <span class="find__line">line {c.line}</span>
+                  <span class="find__msg">{c.what} <code>{c.bad}</code></span>
+                  <span class="find__fix">Use <code>{c.good}</code></span>
+                </div>
+              ))}
+              <div class="app__foot">Fix these issues to merge</div>
+            </div>
+            <div class="app__open" aria-hidden="true">
+              <div class="app__file">src/components/Card.tsx</div>
+              <div class="diff">
+                {diffTop.map(([n, t]) => (
+                  <div class="dl"><span class="dl__n">{n}</span><span class="dl__s">+</span><span class="dl__c">{t}</span></div>
+                ))}
+                <div class="thread">
+                  <div class="cmt cmt--thread">
+                    <div class="cmt__head">
+                      <span class="cmt__mark"><BuoyMark size={16} /></span>
+                      <span class="cmt__who">buoy-design</span>
+                      <span class="cmt__bot">bot</span>
+                    </div>
+                    <p class="cmt__text">Hardcoded color <code>#3b82f6</code>. Use <code>var(--color-primary)</code> instead.</p>
+                    <div class="sug">
+                      <div class="sug__cap">Suggested change</div>
+                      <div class="sug__l sug__l--del"><span>-</span>background: "#3b82f6",</div>
+                      <div class="sug__l sug__l--add"><span>+</span>background: "var(--color-primary)",</div>
+                    </div>
+                    <span class="cmt__commit">Commit suggestion</span>
+                  </div>
+                </div>
+                {diffBottom.map(([n, t], i) => (
+                  <div class={`dl ${i > 2 ? 'dl--more' : ''}`}><span class="dl__n">{n}</span><span class="dl__s">+</span><span class="dl__c">{t}</span></div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. The moment: word-highlight statement -->
+      <section class="section statement" id="why" data-moment="word-highlight">
+        <div class="wrap">
+          <h2 class="statement__h">
+            {statement.map((w) => (<><span class="sw">{w}</span>{' '}</>))}
+          </h2>
+        </div>
+      </section>
+
+      <!-- 4. What it detects: split, list left, code right -->
+      <section class="section" id="detects">
+        <div class="wrap">
+          <div class="grid head">
+            <h2 class="head__h">Eight kinds of drift, sorted by severity</h2>
+            <p class="head__p">
+              Each finding comes with the file, the line and a suggested fix.
+              <a class="link link--own" href="/features/drift-detection">Read how drift detection works</a>
+            </p>
+          </div>
+          <div class="grid split">
+            <ul class="rows">
+              {driftTypes.map((d) => (
+                <li class="row">
+                  <span class="row__t">{d.title}</span>
+                  <span class="row__d">{d.text}</span>
+                  <span class="row__s">{d.severity}</span>
+                </li>
+              ))}
+            </ul>
+            <div class="codes" role="img" aria-label="Two versions of Card.tsx. The first, written by an agent, hardcodes background, padding, border radius and shadow. The second uses the Card component the design system already has.">
+              <div class="win code" aria-hidden="true">
+                <div class="win__bar"><span class="win__title">Card.tsx, as an agent writes it</span></div>
+                <div class="code__body">
+                  {agentCode.map(([k, t]) => (<div class={`cl ${k ? 'cl--' + k : ''}`}>{t || ' '}</div>))}
+                </div>
+              </div>
+              <div class="win code" aria-hidden="true">
+                <div class="win__bar"><span class="win__title">Card.tsx, with the component you already have</span></div>
+                <div class="code__body">
+                  {systemCode.map(([k, t]) => (<div class={`cl ${k ? 'cl--' + k : ''}`}>{t || ' '}</div>))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Steps -->
+      <section class="section" id="start">
+        <div class="wrap">
+          <div class="grid head">
+            <h2 class="head__h">Set up Buoy in 3 steps</h2>
+            <p class="head__p">
+              The CLI needs no configuration to run its first scan. Buoy works with
+              {stack.map(([name, href], i) => (
+                <>{i === stack.length - 1 ? ' and ' : ' '}<a class="link" href={href}>{name}</a>{i < stack.length - 2 ? ',' : ''}</>
+              ))}.
+            </p>
+          </div>
+          <div class="grid steps">
+            <article class="card">
+              <span class="card__n">1</span>
+              <h3 class="card__t">Scan the codebase</h3>
+              <p class="card__p">Run the setup command, then the check. Every issue comes with its exact file and line.</p>
+              <div class="panel" role="img" aria-label="Terminal: npx ahoybuoy dock, then buoy drift check, which finds 23 issues in 142 files.">
+                <div aria-hidden="true">
+                  <div class="t-row"><span class="t-dim">$</span> npx ahoybuoy dock</div>
+                  <div class="t-row"><span class="t-dim">$</span> buoy drift check</div>
+                  <div class="t-gap"></div>
+                  <div class="t-row">Found <b class="t-warn">23</b> issues in 142 files</div>
+                  <div class="t-gap"></div>
+                  <div class="t-row">Card.tsx:8 #ffffff <span class="t-soft">→ use var(--bg-surface)</span></div>
+                  <div class="t-row">Badge.tsx:3 8px <span class="t-soft">→ use var(--spacing-sm)</span></div>
+                </div>
+              </div>
+            </article>
+            <article class="card">
+              <span class="card__n">2</span>
+              <h3 class="card__t">Review every pull request</h3>
+              <p class="card__p">Install the GitHub App. New drift gets an inline comment before the pull request merges.</p>
+              <div class="panel" role="img" aria-label="Pull request 247: Buoy Design Check, 3 issues found, each with the token to use instead.">
+                <div aria-hidden="true">
+                  <div class="t-row">feat: add new Card component <span class="t-dim">#247</span></div>
+                  <div class="t-gap"></div>
+                  <div class="t-row t-crit"><b>Buoy Design Check</b></div>
+                  <div class="t-row">3 issues found</div>
+                  <div class="t-gap"></div>
+                  <div class="t-row">Card.tsx:23 #3b82f6 <span class="t-soft">→ var(--color-primary)</span></div>
+                  <div class="t-row">Card.tsx:31 24px <span class="t-soft">→ var(--spacing-lg)</span></div>
+                  <div class="t-row">Modal.tsx:8 8px <span class="t-soft">→ var(--radius-md)</span></div>
+                </div>
+              </div>
+            </article>
+            <article class="card">
+              <span class="card__n">3</span>
+              <h3 class="card__t">Measure system health</h3>
+              <p class="card__p">Track how well the codebase matches the design system over time.</p>
+              <div class="panel" role="img" aria-label="Terminal: buoy show health reports component alignment, 46 of 46 components, 100% aligned.">
+                <div aria-hidden="true">
+                  <div class="t-row"><span class="t-dim">$</span> buoy show health</div>
+                  <div class="t-gap"></div>
+                  <div class="t-row"><b>Component Alignment</b></div>
+                  <div class="t-row t-good">46/46 components · 100% aligned</div>
+                  <div class="t-gap"></div>
+                  <div class="t-row t-soft">46 components discovered.</div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. The calm section: what runs where -->
+      <section class="section" id="plans">
+        <div class="wrap">
+          <div class="grid head">
+            <h2 class="head__h">The scanner is open source. The App hosts it.</h2>
+            <p class="head__p">
+              Drift detection is deterministic: no LLM, no API key, and no data leaves your machine. That suits teams where AI tools are restricted.
+            </p>
+          </div>
+          <div class="grid plans">
+            <div class="plan">
+              <h3 class="plan__t">Buoy CLI</h3>
+              <p class="plan__k">Free and open source, MIT licensed</p>
+              <ul class="plan__l">
+                <li>All scanning and drift detection</li>
+                <li>Fix suggestions with exact token replacements</li>
+                <li>Unlimited scans, all detection rules</li>
+                <li>Works offline and air-gapped</li>
+              </ul>
+              <a class="link" href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">Get the code on GitHub</a>
+            </div>
+            <div class="plan">
+              <h3 class="plan__t">Buoy GitHub App</h3>
+              <p class="plan__k"><FreeSpots /></p>
+              <ul class="plan__l">
+                <li>The same scanner, run on every pull request</li>
+                <li>Inline comments with committable fixes</li>
+                <li>Dashboard with health scores and trends</li>
+                <li>Summaries are written by an LLM. Findings stay deterministic.</li>
+              </ul>
+              <a class="link" href="/privacy#subprocessors">See what the App sends</a>
+            </div>
+            <div class="plan">
+              <h3 class="plan__t">Organization</h3>
+              <p class="plan__k">For design-system owners</p>
+              <ul class="plan__l">
+                <li>How your system holds up in every repo that uses it</li>
+                <li>Org-wide drift record</li>
+                <li>Design-partner relationship</li>
+              </ul>
+              <a class="link" href="/pricing">See pricing</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 7. Close (close-type) and footer (footer-columns), one section -->
+    <footer class="closing" id="contact">
+      <div class="wrap closing__in">
+        <div class="close">
+          <h2 class="close__h">Install Buoy on your repositories</h2>
+          <p class="small">Installing the App is the whole setup. Reviews start on your next pull request.</p>
+          <a class="btn btn--primary btn--xl" href={APP} target="_blank" rel="noopener noreferrer">
+            Install the GitHub App
+            <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"/></svg>
+          </a>
+        </div>
+        <div class="foot">
+          <div class="grid foot__grid">
+            <div class="foot__brand">
+              <BuoyLogo size="1.5rem" />
+              <p class="foot__lede">Design system checks for UI code.</p>
+            </div>
+            <nav class="foot__col" aria-label="Product">
+              <h3>Product</h3>
+              <a href="/scan">Scan a repo</a>
+              <a href="/docs">Docs</a>
+              <a href="/pricing">Pricing</a>
+              <a href="/reports">Reports</a>
+            </nav>
+            <nav class="foot__col" aria-label="Learn">
+              <h3>Learn</h3>
+              <a href="/guides">Guides</a>
+              <a href="/compare">Compare</a>
+              <a href="/support">Support</a>
+            </nav>
+            <nav class="foot__col" aria-label="Community">
+              <h3>Community</h3>
+              <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href={siteConfig.twitterUrl} target="_blank" rel="noopener noreferrer">Twitter</a>
+              <a href={siteConfig.discordUrl} target="_blank" rel="noopener noreferrer">Discord</a>
+            </nav>
+            <nav class="foot__col" aria-label="Legal">
+              <h3>Legal</h3>
+              <a href="/privacy">Privacy</a>
+              <a href="/terms">Terms</a>
+            </nav>
+          </div>
+          <p class="foot__legal">&copy; {year} Buoy. The scanner is open source under MIT.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+</Layout>
+
+<style is:global>
+  .t-taste-skill {
+    --g: #18191b;
+    --surface: #222427;
+    --surface-2: #2b2d31;
+    --ink: #eff0f1;
+    --soft: #c6c8cc;
+    --muted: #9c9ea3;
+    --line: color-mix(in srgb, var(--ink) 14%, transparent);
+    --action: var(--color-buoy);
+    --on-action: #18191b;
+    --bad: var(--color-critical);
+    --good: var(--color-success);
+    --warn: var(--color-warning);
+    --display: 'Geist', 'Helvetica Neue', Arial, sans-serif;
+    --mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+    --nav: 72px;
+    --padt: 120px;
+    --padb: 72px;
+    --gut: 80px;
+    --r-lg: 8px;
+    --r-md: 6px;
+    --r-sm: 4px;
+    --ease: cubic-bezier(.2, .8, .2, 1);
+    --ease-enter: cubic-bezier(.22, 1, .36, 1);
+    background: var(--g);
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: 16px;
+    line-height: 1.6;
+    font-feature-settings: 'ss01' 0;
+  }
+  .t-taste-skill *, .t-taste-skill *::before, .t-taste-skill *::after { box-sizing: border-box; }
+  .t-taste-skill h1, .t-taste-skill h2, .t-taste-skill h3 {
+    font-family: var(--display);
+    font-weight: 500;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .t-taste-skill p, .t-taste-skill ul { margin: 0; padding: 0; }
+  .t-taste-skill ul { list-style: none; }
+  .t-taste-skill code, .t-taste-skill .win, .t-taste-skill .panel, .t-taste-skill .float { font-family: var(--mono); }
+  .t-taste-skill a { color: inherit; text-decoration: none; }
+  .t-taste-skill :focus-visible { outline: 2px solid var(--action); outline-offset: 3px; border-radius: 2px; }
+  .t-taste-skill ::selection { background: var(--ink); color: var(--g); }
+
+  .t-taste-skill .wrap { width: min(100% - 2 * var(--gut), 1280px); margin-inline: auto; }
+  .t-taste-skill .grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; }
+
+  /* ---------- nav (nav-split) ---------- */
+  .t-taste-skill .nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 10;
+    height: var(--nav);
+    background: var(--g);
+    border-bottom: 1px solid var(--line);
+  }
+  .t-taste-skill .nav__in { height: 100%; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; position: relative; }
+  .t-taste-skill .nav__words { display: flex; gap: 32px; font-size: 15px; }
+  .t-taste-skill .nav__words a, .t-taste-skill .foot__col a {
+    color: var(--soft);
+    background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+    padding-bottom: 4px;
+    transition: color 150ms var(--ease), background-size 150ms var(--ease);
+  }
+  .t-taste-skill .nav__words a:hover, .t-taste-skill .foot__col a:hover { color: var(--ink); background-size: 100% 1px; }
+  .t-taste-skill .nav__logo { color: var(--ink); display: block; }
+  .t-taste-skill .nav__end { display: flex; justify-content: flex-end; align-items: center; gap: 12px; }
+  .t-taste-skill .nav__menu {
+    display: none; height: 44px; padding: 0 16px; border-radius: 999px;
+    border: 1px solid color-mix(in srgb, var(--ink) 30%, transparent);
+    background: none; color: var(--ink); font: 500 15px var(--display);
+  }
+  .t-taste-skill .menu { position: fixed; inset: var(--nav) 0 0 0; background: var(--g); z-index: 9; }
+  .t-taste-skill .menu[hidden] { display: none; }
+  .t-taste-skill .menu__in { display: flex; flex-direction: column; padding-top: 24px; }
+  .t-taste-skill .menu__in a:not(.btn) { font-size: 28px; font-weight: 500; letter-spacing: -0.03em; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .t-taste-skill .menu__in .btn { margin-top: 32px; }
+  .t-taste-skill .skip-link {
+    position: absolute; left: 0; top: 14px; z-index: 2;
+    height: 44px; padding: 0 16px; display: inline-flex; align-items: center;
+    background: var(--ink); color: var(--g); border-radius: 999px; font-weight: 500;
+    transform: translateY(-200%);
+  }
+  .t-taste-skill .skip-link:focus { transform: none; }
+
+  /* ---------- buttons (pill) ---------- */
+  .t-taste-skill .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+    height: 44px; padding: 0 24px; border-radius: 999px;
+    font: 500 16px/1 var(--display); letter-spacing: -0.01em; white-space: nowrap;
+    border: 1px solid transparent;
+    transition: transform 150ms var(--ease), background-color 150ms var(--ease), border-color 150ms var(--ease);
+  }
+  .t-taste-skill .btn--primary { background: var(--action); color: var(--on-action); }
+  .t-taste-skill .btn--secondary { border-color: color-mix(in srgb, var(--ink) 30%, transparent); color: var(--ink); }
+  .t-taste-skill .btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .t-taste-skill .btn--xl { width: 100%; height: 88px; font-size: 32px; letter-spacing: -0.035em; justify-content: space-between; padding: 0 40px; }
+  .t-taste-skill .arrow { width: 32px; height: 32px; transition: transform 150ms var(--ease); }
+  @media (hover: hover) and (pointer: fine) {
+    .t-taste-skill .btn:hover { transform: translateY(-1px); }
+    .t-taste-skill .btn--xl:hover { transform: translateY(-2px); }
+    .t-taste-skill .btn--primary:hover { background: color-mix(in srgb, var(--action) 86%, var(--ink)); }
+    .t-taste-skill .btn--secondary:hover { background: color-mix(in srgb, var(--ink) 8%, transparent); border-color: color-mix(in srgb, var(--ink) 55%, transparent); }
+    .t-taste-skill .btn:hover .arrow { transform: translateX(3px); }
+  }
+  .t-taste-skill .btn:active { transform: translateY(1px) scale(.985); transition-duration: 90ms; }
+
+  /* ---------- links ---------- */
+  .t-taste-skill .link {
+    color: var(--ink);
+    background:
+      linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat,
+      linear-gradient(var(--line-strong, color-mix(in srgb, currentColor 35%, transparent)), var(--line-strong, color-mix(in srgb, currentColor 35%, transparent))) 0 100% / 100% 1px no-repeat;
+    padding-bottom: 2px;
+    transition: background-size 150ms var(--ease);
+  }
+  .t-taste-skill .link:hover { background-size: 100% 1px, 100% 1px; }
+  .t-taste-skill .link--own { display: table; margin-top: 14px; }
+
+  /* ---------- sections ---------- */
+  .t-taste-skill .section, .t-taste-skill .hero, .t-taste-skill .closing {
+    padding: var(--padt) 0 var(--padb);
+    position: relative;
+  }
+  .t-taste-skill .ground-inverse {
+    background: var(--ink); color: var(--g);
+    --ink: #18191b; --soft: #3c3e43; --muted: #5d6066; --g: #eff0f1;
+    --line: color-mix(in srgb, #18191b 14%, transparent);
+  }
+  .t-taste-skill .ground-inverse { background: #eff0f1; color: #18191b; }
+  .t-taste-skill .head { margin-bottom: 48px; align-items: start; }
+  .t-taste-skill .head__h { grid-column: 1 / span 6; font-size: 48px; line-height: 1.06; letter-spacing: -0.04em; }
+  .t-taste-skill .head__p { grid-column: 7 / span 6; font-size: 18px; line-height: 1.55; color: var(--soft); max-width: 58ch; padding-top: 6px; }
+  .t-taste-skill .small { font-size: 14px; color: var(--muted); }
+
+  /* ---------- hero ---------- */
+  .t-taste-skill .hero { padding-bottom: 64px; }
+  .t-taste-skill .hero__grid { align-items: stretch; }
+  .t-taste-skill .hero__text { grid-column: 1 / span 5; padding-top: 8px; display: flex; flex-direction: column; align-items: flex-start; }
+  .t-taste-skill h1 { font-size: clamp(52px, 5vw, 72px); line-height: 1.02; letter-spacing: -0.045em; }
+  .t-taste-skill .mask { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .14em; margin-bottom: -.14em; margin-right: .22em; }
+  .t-taste-skill .mask__w { display: inline-block; }
+  .t-taste-skill .lead { font-size: 20px; line-height: 1.5; color: var(--soft); margin-top: 28px; max-width: 30em; letter-spacing: -0.01em; }
+  .t-taste-skill .hero .btn-row { margin-top: 32px; }
+  .t-taste-skill .hero .small { margin-top: auto; padding-top: 32px; max-width: 30em; }
+
+  .t-taste-skill .frame {
+    grid-column: 7 / span 6;
+    position: relative;
+    border-radius: var(--r-lg);
+    background: linear-gradient(180deg, #2a2c30 0%, #1f2124 100%);
+    padding: 48px 48px 0 96px;
+    overflow: hidden;
+    min-height: 600px;
+  }
+  .t-taste-skill .win {
+    background: #121315;
+    border: 1px solid color-mix(in srgb, #eff0f1 14%, transparent);
+    border-radius: var(--r-lg);
+    color: #eff0f1;
+    font-size: 13px; line-height: 24px;
+    overflow: hidden;
+  }
+  .t-taste-skill .win__bar { height: 40px; display: flex; align-items: center; padding: 0 16px; border-bottom: 1px solid color-mix(in srgb, #eff0f1 10%, transparent); }
+  .t-taste-skill .win__title { font-family: var(--display); font-size: 13px; font-weight: 500; color: #9c9ea3; }
+  .t-taste-skill .term__body { padding: 20px 24px 64px; font-size: 14px; line-height: 26px; }
+  .t-taste-skill .t-gap { height: 14px; }
+  .t-taste-skill .t-row { display: flex; flex-wrap: wrap; column-gap: 1ch; }
+  .t-taste-skill .t-row .t-soft { white-space: nowrap; }
+  .t-taste-skill .t-row b { font-weight: 500; }
+  .t-taste-skill .t-dim { color: #7d8086; }
+  .t-taste-skill .t-soft { color: #a9abb0; }
+  .t-taste-skill .t-warn { color: var(--warn); }
+  .t-taste-skill .t-crit { color: var(--bad); }
+  .t-taste-skill .t-good { color: var(--good); }
+
+  .t-taste-skill .float {
+    position: absolute; left: 32px; bottom: 32px; width: min(440px, calc(100% - 64px));
+    background: #2b2d31;
+    border: 1px solid color-mix(in srgb, #eff0f1 18%, transparent);
+    border-radius: var(--r-lg);
+    box-shadow: 0 24px 48px -16px rgb(0 0 0 / .55);
+    color: #eff0f1;
+  }
+  .t-taste-skill .float__stack { display: grid; }
+  .t-taste-skill .float__stack > .cmt { grid-area: 1 / 1; opacity: 0; transition: opacity 200ms var(--ease); }
+  .t-taste-skill .float__stack > .cmt.is-on { opacity: 1; }
+  .t-taste-skill .cmt { padding: 16px; font-family: var(--display); }
+  .t-taste-skill .cmt__head { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+  .t-taste-skill .cmt__mark { display: inline-flex; line-height: 0; }
+  .t-taste-skill .cmt__who { font-weight: 500; }
+  .t-taste-skill .cmt__meta, .t-taste-skill .cmt__bot { color: #9c9ea3; }
+  .t-taste-skill .cmt__bot { border: 1px solid color-mix(in srgb, #eff0f1 22%, transparent); border-radius: 999px; padding: 0 8px; line-height: 18px; font-size: 13px; }
+  .t-taste-skill .cmt__text { font-size: 15px; line-height: 1.5; margin-top: 10px; }
+  .t-taste-skill .cmt code, .t-taste-skill .find code { font-size: 13px; background: color-mix(in srgb, #eff0f1 10%, transparent); padding: 1px 5px; border-radius: 3px; white-space: nowrap; }
+  .t-taste-skill .sug { margin-top: 12px; border: 1px solid color-mix(in srgb, #eff0f1 14%, transparent); border-radius: var(--r-sm); overflow: hidden; font-family: var(--mono); font-size: 13px; line-height: 26px; }
+  .t-taste-skill .sug__cap { font-family: var(--display); color: #9c9ea3; padding: 2px 12px; border-bottom: 1px solid color-mix(in srgb, #eff0f1 10%, transparent); }
+  .t-taste-skill .sug__l { padding: 0 12px; display: flex; gap: 10px; overflow-wrap: anywhere; }
+  .t-taste-skill .sug__l span { color: #9c9ea3; flex: none; }
+  .t-taste-skill .sug__l--del { background: color-mix(in srgb, var(--bad) 18%, transparent); }
+  .t-taste-skill .sug__l--add { background: color-mix(in srgb, var(--good) 18%, transparent); }
+  .t-taste-skill .cmt__commit { display: inline-flex; align-items: center; height: 30px; margin-top: 12px; padding: 0 12px; font-size: 13px; font-weight: 500; border: 1px solid color-mix(in srgb, #eff0f1 26%, transparent); border-radius: var(--r-sm); }
+
+  /* ---------- app-frame ---------- */
+  .t-taste-skill .app { display: grid; grid-template-columns: 360px minmax(0, 1fr); height: 500px; position: relative; font-family: var(--display); box-shadow: 0 32px 64px -32px rgb(0 0 0 / .45); }
+  .t-taste-skill .app::after { content: ''; position: absolute; inset: auto 0 0 360px; height: 96px; background: linear-gradient(transparent, #121315); pointer-events: none; }
+  .t-taste-skill .app__list { border-right: 1px solid color-mix(in srgb, #eff0f1 10%, transparent); display: flex; flex-direction: column; font-size: 14px; }
+  .t-taste-skill .app__pr { padding: 16px 20px 4px; display: flex; gap: 8px; font-weight: 500; font-size: 15px; }
+  .t-taste-skill .app__prn { color: #9c9ea3; font-weight: 400; }
+  .t-taste-skill .app__check { padding: 0 20px 16px; color: var(--bad); border-bottom: 1px solid color-mix(in srgb, #eff0f1 10%, transparent); }
+  .t-taste-skill .app__check span { color: #a9abb0; }
+  .t-taste-skill .find { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; padding: 14px 20px; border-bottom: 1px solid color-mix(in srgb, #eff0f1 10%, transparent); line-height: 22px; }
+  .t-taste-skill .find.is-open { background: #222427; box-shadow: inset 2px 0 0 #eff0f1; }
+  .t-taste-skill .find__file { font-family: var(--mono); font-size: 13px; overflow-wrap: anywhere; }
+  .t-taste-skill .find__line { color: #9c9ea3; font-size: 13px; }
+  .t-taste-skill .find__msg, .t-taste-skill .find__fix { grid-column: 1 / -1; color: #c6c8cc; }
+  .t-taste-skill .app__foot { margin-top: auto; padding: 14px 20px; color: #9c9ea3; font-size: 13px; }
+  .t-taste-skill .app__open { min-width: 0; }
+  .t-taste-skill .app__file { height: 44px; display: flex; align-items: center; padding: 0 20px; font-family: var(--mono); font-size: 13px; border-bottom: 1px solid color-mix(in srgb, #eff0f1 10%, transparent); }
+  .t-taste-skill .diff { font-family: var(--mono); font-size: 13px; line-height: 24px; padding-top: 8px; }
+  .t-taste-skill .dl { display: grid; grid-template-columns: 52px 20px minmax(0, 1fr); background: color-mix(in srgb, var(--good) 9%, transparent); }
+  .t-taste-skill .dl__n { text-align: right; padding-right: 12px; color: #7d8086; }
+  .t-taste-skill .dl__s { color: #7d8086; }
+  .t-taste-skill .dl__c { white-space: pre-wrap; overflow-wrap: anywhere; }
+  .t-taste-skill .thread { padding: 12px 20px 12px 72px; background: #18191b; border-block: 1px solid color-mix(in srgb, #eff0f1 10%, transparent); }
+  .t-taste-skill .cmt--thread { background: #222427; border: 1px solid color-mix(in srgb, #eff0f1 14%, transparent); border-radius: var(--r-md); max-width: 620px; }
+
+  /* ---------- statement moment ---------- */
+  .t-taste-skill .statement__h { font-size: clamp(30px, 4.6vw, 66px); line-height: 1.08; letter-spacing: -0.045em; max-width: 19em; text-wrap: pretty; }
+  .t-taste-skill .statement.is-live .sw { color: color-mix(in srgb, var(--ink) 26%, transparent); transition: color 200ms linear; }
+  .t-taste-skill .statement.is-live .sw.on { color: var(--ink); }
+
+  /* ---------- detects ---------- */
+  .t-taste-skill .split { align-items: start; }
+  .t-taste-skill .rows { grid-column: 1 / span 6; }
+  .t-taste-skill .row { display: grid; grid-template-columns: 210px minmax(0, 1fr) auto; gap: 16px; align-items: baseline; padding: 17px 0; border-bottom: 1px solid var(--line); }
+  .t-taste-skill .row:first-child { border-top: 1px solid var(--line); }
+  .t-taste-skill .row__t { font-weight: 500; letter-spacing: -0.01em; }
+  .t-taste-skill .row__d { color: var(--soft); }
+  .t-taste-skill .row__s { font-size: 13px; font-weight: 500; color: var(--muted); min-width: 56px; text-align: right; }
+  .t-taste-skill .codes { grid-column: 7 / span 6; display: grid; gap: 24px; }
+  .t-taste-skill .code__body { padding: 14px 0; }
+  .t-taste-skill .cl { padding: 0 20px; white-space: pre-wrap; overflow-wrap: anywhere; line-height: 23px; }
+  .t-taste-skill .cl--bad { background: color-mix(in srgb, var(--bad) 16%, transparent); }
+  .t-taste-skill .cl--good { background: color-mix(in srgb, var(--good) 16%, transparent); }
+
+  /* ---------- steps ---------- */
+  .t-taste-skill .card { grid-column: span 4; background: var(--surface); border-radius: var(--r-lg); padding: 32px 32px 32px; display: flex; flex-direction: column; }
+  .t-taste-skill .card__n { font-size: 13px; font-weight: 500; color: var(--muted); }
+  .t-taste-skill .card__t { font-size: 28px; line-height: 1.2; letter-spacing: -0.03em; margin-top: 12px; }
+  .t-taste-skill .card__p { color: var(--soft); margin-top: 10px; min-height: 3.2em; }
+  .t-taste-skill .panel { margin-top: 24px; background: #121315; border-radius: var(--r-md); padding: 24px; font-size: 14px; line-height: 26px; min-height: 232px; flex: 1; }
+
+  /* ---------- plans ---------- */
+  .t-taste-skill .plan { grid-column: span 4; border-top: 1px solid var(--line); padding-top: 24px; display: flex; flex-direction: column; align-items: flex-start; }
+  .t-taste-skill .plan__t { font-size: 28px; letter-spacing: -0.03em; line-height: 1.2; }
+  .t-taste-skill .plan__k { font-size: 14px; color: var(--muted); margin-top: 6px; min-height: 44px; }
+  .t-taste-skill .plan__l { margin: 12px 0 28px; width: 100%; }
+  .t-taste-skill .plan__l li { padding: 11px 0; border-bottom: 1px solid var(--line); color: var(--soft); }
+  .t-taste-skill .plan .link { margin-top: auto; }
+
+  /* ---------- close + footer ---------- */
+  .t-taste-skill .closing { padding-bottom: 40px; }
+  .t-taste-skill .closing__in { display: flex; flex-direction: column; height: 100%; }
+  .t-taste-skill .close__h { font-size: 48px; line-height: 1.06; letter-spacing: -0.04em; }
+  .t-taste-skill .close .small { margin-top: 14px; font-size: 16px; }
+  .t-taste-skill .close .btn--xl { margin-top: 40px; }
+  .t-taste-skill .foot { margin-top: 96px; }
+  .t-taste-skill .foot__brand { grid-column: 1 / span 4; color: var(--ink); }
+  .t-taste-skill .foot__lede { font-size: 24px; line-height: 1.2; letter-spacing: -0.03em; margin-top: 20px; max-width: 12em; }
+  .t-taste-skill .foot__col { grid-column: span 2; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; font-size: 15px; }
+  .t-taste-skill .foot__col h3 { font-size: 13px; font-weight: 500; color: var(--muted); letter-spacing: 0; margin-bottom: 8px; }
+  .t-taste-skill .foot__legal { margin-top: 64px; font-size: 13px; color: var(--muted); }
+
+  /* ---------- one section per screen (desktop) ---------- */
+  @media (min-width: 1024px) and (min-height: 760px) {
+    .t-taste-skill .section, .t-taste-skill .hero, .t-taste-skill .closing { min-height: 100svh; }
+    .t-taste-skill .frame { min-height: calc(100svh - var(--padt) - 64px); }
+    .t-taste-skill .statement { display: flex; align-items: center; padding-top: var(--nav); padding-bottom: 0; }
+    .t-taste-skill .closing__in { min-height: calc(100svh - var(--padt) - 40px); }
+    .t-taste-skill .foot { margin-top: auto; padding-top: 96px; }
+  }
+
+  /* ---------- hero entrance, once ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    .t-taste-skill [data-enter] .mask__w { animation: ts-rise 700ms var(--ease-enter) both; animation-delay: calc(var(--i) * 40ms); }
+    .t-taste-skill [data-enter] .rise { animation: ts-up 520ms var(--ease-enter) both; animation-delay: calc(420ms + var(--n) * 60ms); }
+    .t-taste-skill [data-enter] .settle { animation: ts-settle 900ms var(--ease-enter) both; transform-origin: 50% 0; }
+  }
+  @keyframes ts-rise { from { transform: translateY(110%); } to { transform: none; } }
+  @keyframes ts-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+  @keyframes ts-settle { from { transform: scale(.98); } to { transform: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    .t-taste-skill *, .t-taste-skill *::before, .t-taste-skill *::after { transition: none !important; animation: none !important; }
+  }
+
+  /* ---------- tablet ---------- */
+  @media (max-width: 1023px) {
+    .t-taste-skill { --gut: 48px; --padt: 104px; }
+    .t-taste-skill h1 { font-size: clamp(38px, 7.4vw, 64px); }
+    .t-taste-skill .hero .small { padding-top: 24px; }
+    .t-taste-skill .term__body { padding-bottom: 24px; }
+    .t-taste-skill .nav__words { display: none; }
+    .t-taste-skill .nav__in { grid-template-columns: auto 1fr; }
+    .t-taste-skill .nav__menu { display: inline-flex; align-items: center; }
+    .t-taste-skill .hero__text, .t-taste-skill .frame, .t-taste-skill .head__h, .t-taste-skill .head__p,
+    .t-taste-skill .rows, .t-taste-skill .codes, .t-taste-skill .foot__brand { grid-column: 1 / -1; }
+    .t-taste-skill .head__p { margin-top: 16px; padding-top: 0; }
+    .t-taste-skill .frame { margin-top: 48px; min-height: 0; padding: 32px 32px 32px; display: grid; gap: 16px; }
+    .t-taste-skill .float { position: static; width: auto; box-shadow: none; }
+    .t-taste-skill .codes { margin-top: 32px; }
+    .t-taste-skill .card, .t-taste-skill .plan { grid-column: span 6; }
+    .t-taste-skill .card:last-child, .t-taste-skill .plan:last-child { grid-column: 1 / -1; }
+    .t-taste-skill .grid.steps, .t-taste-skill .grid.plans { row-gap: 24px; }
+    .t-taste-skill .card__p, .t-taste-skill .plan__k { min-height: 0; }
+    .t-taste-skill .app { grid-template-columns: 1fr; height: auto; }
+    .t-taste-skill .app::after { display: none; }
+    .t-taste-skill .app__list { border-right: 0; border-bottom: 1px solid color-mix(in srgb, #eff0f1 10%, transparent); }
+    .t-taste-skill .foot__col { grid-column: span 3; margin-top: 40px; }
+    .t-taste-skill .statement { padding-bottom: 104px; }
+  }
+
+  /* ---------- phone ---------- */
+  @media (max-width: 639px) {
+    .t-taste-skill { --gut: 24px; --nav: 56px; --padt: 96px; --padb: 48px; }
+    .t-taste-skill .grid { column-gap: 12px; }
+    .t-taste-skill .nav__cta { display: none; }
+    .t-taste-skill .head { margin-bottom: 32px; }
+    .t-taste-skill .head__h, .t-taste-skill .close__h { font-size: 30px; letter-spacing: -0.035em; }
+    .t-taste-skill .head__p, .t-taste-skill .lead { font-size: 18px; }
+    .t-taste-skill .lead { margin-top: 20px; }
+    .t-taste-skill .btn-row { flex-direction: column; }
+    .t-taste-skill .btn-row .btn { width: 100%; }
+    .t-taste-skill .frame { margin-top: 40px; padding: 12px; }
+    .t-taste-skill .term__body { font-size: 13px; line-height: 24px; padding: 16px; }
+    .t-taste-skill .dl--more { display: none; }
+    .t-taste-skill .thread { padding: 12px; }
+    .t-taste-skill .dl { grid-template-columns: 34px 14px minmax(0, 1fr); }
+    .t-taste-skill .row { grid-template-columns: minmax(0, 1fr) auto; gap: 2px 12px; }
+    .t-taste-skill .row__d { grid-column: 1 / -1; grid-row: 2; }
+    .t-taste-skill .card, .t-taste-skill .plan { grid-column: 1 / -1; }
+    .t-taste-skill .card { padding: 24px 20px 20px; }
+    .t-taste-skill .btn--xl { height: 56px; font-size: 18px; letter-spacing: -0.01em; padding: 0 24px; }
+    .t-taste-skill .arrow { width: 22px; height: 22px; }
+    .t-taste-skill .foot { margin-top: 72px; }
+    .t-taste-skill .foot__col { grid-column: span 6; }
+    .t-taste-skill .foot__col a { padding: 6px 0; }
+  }
+</style>
+
+<script>
+  const root = document.querySelector('.t-taste-skill')
+  if (root) {
+    const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    // Phone menu
+    const btn = root.querySelector<HTMLButtonElement>('.nav__menu')
+    const menu = root.querySelector<HTMLElement>('#ts-menu')
+    if (btn && menu) {
+      const set = (open: boolean) => {
+        menu.hidden = !open
+        btn.setAttribute('aria-expanded', String(open))
+        btn.textContent = open ? 'Close' : 'Menu'
+      }
+      btn.addEventListener('click', () => set(menu.hidden))
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !menu.hidden) { set(false); btn.focus() } })
+      window.matchMedia('(min-width: 1024px)').addEventListener('change', () => set(false))
+    }
+
+    // Hero result card: three comments, two rounds, then it rests. Hover runs it again.
+    const float = root.querySelector<HTMLElement>('[data-loop]')
+    if (float && !still && window.matchMedia('(min-width: 1024px)').matches) {
+      const cards = [...float.querySelectorAll<HTMLElement>('.float__stack > .cmt')]
+      let timer = 0
+      const run = () => {
+        if (timer) return
+        let step = 0
+        timer = window.setInterval(() => {
+          step += 1
+          cards.forEach((c, i) => c.classList.toggle('is-on', i === step % cards.length))
+          if (step >= cards.length * 2) { window.clearInterval(timer); timer = 0 }
+        }, 3200)
+      }
+      run()
+      float.addEventListener('mouseenter', run)
+    }
+
+    // The moment: the statement lights up word by word as its section passes.
+    const sec = root.querySelector<HTMLElement>('[data-moment="word-highlight"]')
+    if (sec && !still) {
+      const words = [...sec.querySelectorAll<HTMLElement>('.sw')]
+      sec.classList.add('is-live')
+      let queued = false
+      const paint = () => {
+        queued = false
+        const r = sec.querySelector('.statement__h')!.getBoundingClientRect()
+        const vh = window.innerHeight
+        const p = Math.min(1, Math.max(0, (vh * 0.85 - r.top) / (r.height + vh * 0.35)))
+        const lit = Math.round(p * words.length)
+        words.forEach((w, i) => w.classList.toggle('on', i < lit))
+      }
+      const ask = () => { if (!queued) { queued = true; requestAnimationFrame(paint) } }
+      window.addEventListener('scroll', ask, { passive: true })
+      window.addEventListener('resize', ask)
+      paint()
+    }
+  }
+</script>

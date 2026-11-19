@@ -1,0 +1,104 @@
+---
+// Digital: Halftone. The sea as a printed dot screen: dot area follows the swell
+// height, a fine far field toward the horizon, a crisp-edged body under the front
+// surface the boat rides. One tone, circles only.
+---
+
+<div class="wave-background halftone-sea" data-halftone-sea>
+  <canvas class="dg-canvas"></canvas>
+  <div class="wave-container-1 dg-surface"></div>
+</div>
+
+<style>
+  .halftone-sea {
+    --ht-ink: color-mix(in oklab, var(--color-bg) 18%, oklch(0.84 0.06 228));
+    --boat-hero-sink: 0px;
+    --boat-hero-draft: 3px;
+    position: absolute; inset: 0; overflow: hidden; z-index: 0;
+  }
+  .dg-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .dg-surface { position: absolute; left: 0; right: 0; top: 60%; height: 0; pointer-events: none; }
+</style>
+
+<script>
+  import { mount, field, smooth, type Frame } from './digital/sea'
+
+  const TAU = Math.PI * 2
+  function draw(f: Frame) {
+    const { ctx, w, h, waterY, t, scale } = f
+    const P = f.mobile ? 7 : 9
+    const R = P * 0.42
+    const amp = 24 * scale
+    const hz = waterY * (f.mobile ? 0.5 : 0.6)
+    const surf = (x: number) => waterY + field(x, 0, t, scale)
+    ctx.fillStyle = f.c.ink
+
+    // Surface line samples, reused for clipping
+    const S = 4
+    const line: number[] = []
+    for (let x = -S; x <= w + S; x += S) line.push(surf(x))
+    const sAt = (x: number) => { const i = (x + S) / S, i0 = Math.max(0, Math.min(line.length - 2, Math.floor(i))); return line[i0] + (line[i0 + 1] - line[i0]) * (i - i0) }
+
+    // Far field: dots shrink toward the horizon, swell bands roll through them
+    ctx.save()
+    ctx.beginPath()
+    ctx.moveTo(-S, 0)
+    for (let i = 0; i < line.length; i++) ctx.lineTo(-S + i * S, line[i])
+    ctx.lineTo(w + S, 0)
+    ctx.closePath()
+    ctx.clip()
+    for (let pass = 0; pass < 3; pass++) {
+      ctx.globalAlpha = [0.18, 0.3, 0.45][pass]
+      ctx.beginPath()
+      for (let row = 0, y = waterY + 2 * amp; y > hz; row++, y -= P * 0.866) {
+        const persp = smooth(hz, waterY + amp, y)
+        if (Math.min(2, Math.floor(persp * 3)) !== pass) continue
+        const zw = (1 - persp) * 2600
+        const off = row % 2 ? P / 2 : 0
+        for (let x = off; x < w + P; x += P) {
+          if (y < sAt(x) - 1 - 2 * P && false) continue
+          const n = 0.5 - field(x, zw, t, scale) / amp / 2
+          const r = R * Math.pow(persp, 0.6) * (0.25 + 0.75 * Math.max(0, Math.min(1, n)))
+          if (r < 0.35) continue
+          ctx.moveTo(x + r, y); ctx.arc(x, y, r, 0, TAU)
+        }
+      }
+      ctx.fill()
+    }
+    ctx.restore()
+
+    // Body: full-ink dots just under the surface, opening up with depth
+    ctx.save()
+    ctx.beginPath()
+    ctx.moveTo(-S, h)
+    for (let i = 0; i < line.length; i++) ctx.lineTo(-S + i * S, line[i])
+    ctx.lineTo(w + S, h)
+    ctx.closePath()
+    ctx.clip()
+    ctx.globalAlpha = 0.8
+    ctx.beginPath()
+    const top = waterY - amp - P
+    for (let row = 0, y = top; y < h + P; row++, y += P * 0.866) {
+      const off = row % 2 ? P / 2 : 0
+      for (let x = off; x < w + P; x += P) {
+        const depth = Math.max(0, y - sAt(x))
+        const fall = 1 - smooth(0, Math.max(90, (h - waterY) * 0.9), depth)
+        const n = 0.5 - field(x * 1.6, 40 + depth * 5, t * 1.3, scale) / amp / 2
+        const r0 = R * (0.15 + 0.85 * Math.max(0, Math.min(1, n))) * (0.25 + 0.75 * fall)
+        const rim = R * 0.8 * (1 - smooth(0, P * 1.6, depth))
+        const r = Math.max(r0, rim)
+        if (r < 0.35) continue
+        ctx.moveTo(x + Math.min(r, R), y); ctx.arc(x, y, Math.min(r, R), 0, TAU)
+      }
+    }
+    ctx.fill()
+    ctx.restore()
+    ctx.globalAlpha = 1
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-halftone-sea]').forEach((root) => mount(root, {
+    colors: { ink: ['--ht-ink', '#a9c9e6'] },
+    draw,
+    surface: (x, f, t) => f.waterY + field(x, 0, t, f.scale),
+  }))
+</script>

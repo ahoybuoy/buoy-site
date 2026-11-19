@@ -1,0 +1,777 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import BuoyLogo from '../../components/BuoyLogo.astro'
+import BuoyMark from '../../components/BuoyMark.astro'
+import FreeSpots from '../../components/FreeSpots.astro'
+import { siteConfig } from '../../config'
+
+const installUrl = 'https://github.com/marketplace/buoy-design'
+
+const driftTypes = [
+  { title: 'Hardcoded values', severity: 'Warning', description: 'Colors, spacing and fonts not using tokens', href: '/features/hardcoded-values' },
+  { title: 'Duplicate components', severity: 'Warning', description: 'Similar components that should be consolidated', href: '/features/duplicate-detection' },
+  { title: 'Naming inconsistency', severity: 'Info', description: 'Component and prop names that do not match conventions', href: '/features/naming-consistency' },
+  { title: 'Deprecated patterns', severity: 'Warning', description: 'Components marked as deprecated that are still in use' },
+  { title: 'Inline styles', severity: 'Warning', description: 'Inline CSS that should use tokens or classes' },
+  { title: 'Accessibility conflict', severity: 'Critical', description: 'Missing ARIA labels, focus issues', href: '/features/accessibility-checks' },
+  { title: 'Framework sprawl', severity: 'Warning', description: 'Multiple UI frameworks in the same codebase', href: '/features/framework-sprawl' },
+  { title: 'Orphaned components', severity: 'Info', description: 'Components in code but not in design' },
+]
+
+const steps = [
+  { title: 'Detect', command: 'buoy drift check', description: 'Zero config. Every issue with exact file and line.' },
+  { title: 'Enforce', command: '', description: 'Install the GitHub App to catch drift at the pull request, before it reaches main.' },
+  { title: 'Measure', command: 'buoy show health', description: 'Track design system health over time.' },
+]
+
+const integrations = [
+  { name: 'React', href: '/integrations/react' },
+  { name: 'Vue', href: '/integrations/vue' },
+  { name: 'Svelte', href: '/integrations/svelte' },
+  { name: 'Angular', href: '/integrations/angular' },
+  { name: 'Next.js', href: '/integrations/nextjs' },
+  { name: 'Tailwind', href: '/integrations/tailwind' },
+  { name: 'GitHub', href: '/integrations/github' },
+]
+
+const year = new Date().getFullYear()
+---
+
+<Layout title="Buoy: catch design drift before it ships" noindex>
+  <Fragment slot="head">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  </Fragment>
+
+  <div class="t-ui-wiki">
+    <script is:inline>document.currentScript.parentElement.dataset.js = ''</script>
+    <a class="uw-skip" href="#uw-main">Skip to content</a>
+
+    <header class="uw-header">
+      <div class="uw-wrap uw-header-row">
+        <a href="/" class="uw-logo" aria-label="Buoy home"><BuoyLogo size="1.5rem" /></a>
+        <nav class="uw-nav" aria-label="Main">
+          <a href="/scan">Scan a repo</a>
+          <a href="/docs">Docs</a>
+          <a href="/pricing">Pricing</a>
+          <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
+        <a class="uw-btn uw-btn-secondary uw-btn-sm" href={installUrl} target="_blank" rel="noopener noreferrer">Install</a>
+      </div>
+    </header>
+
+    <main id="uw-main">
+      <!-- Hero -->
+      <section class="uw-hero">
+        <div class="uw-wrap uw-hero-grid">
+          <div class="uw-hero-copy">
+            <h1 class="uw-enter" style="--i:0">Catch design drift before it ships.</h1>
+            <p class="uw-lede uw-enter" style="--i:1">
+              Buoy checks UI code against your design system. It reviews every pull request and leaves inline comments with the exact fix: the token that already exists, in place of the hardcoded value.
+            </p>
+            <div class="uw-actions uw-enter" style="--i:2">
+              <a class="uw-btn uw-btn-primary" href={installUrl} target="_blank" rel="noopener noreferrer">Install the GitHub App</a>
+              <a class="uw-btn uw-btn-secondary" href="/scan">Scan a public repo</a>
+            </div>
+            <p class="uw-note uw-enter" style="--i:3">
+              Open source under MIT. The scanner is deterministic and uses no LLM.
+            </p>
+          </div>
+
+          <!-- Pull request review, the thing Buoy actually posts -->
+          <figure class="uw-pr uw-enter" style="--i:2" aria-label="Example of a Buoy review on a pull request">
+            <div class="uw-pr-head">
+              <span class="uw-pr-title">feat: add new Card component</span>
+              <span class="uw-pr-num">#247</span>
+            </div>
+            <div class="uw-pr-file">src/components/Card.tsx</div>
+            <pre class="uw-diff"><code><span class="uw-ln"><i>21</i>  const Card = () =&gt; (</span>
+<span class="uw-ln"><i>22</i>    &lt;div style=&#123;&#123;</span>
+<span class="uw-ln uw-add"><i>23</i>+     background: <mark>"#3b82f6"</mark>,</span></code></pre>
+            <div class="uw-comment-slot">
+              <div class="uw-comment">
+                <div class="uw-comment-by">
+                  <span class="uw-avatar"><BuoyMark size={16} /></span>
+                  <strong>buoy</strong>
+                  <span class="uw-bot">bot</span>
+                  <span class="uw-comment-line">commented on line 23</span>
+                </div>
+                <p>Hardcoded color <code>#3b82f6</code>. Use <code>var(--color-primary)</code> instead.</p>
+                <pre class="uw-suggest"><code><span class="uw-del">- background: "#3b82f6",</span>
+<span class="uw-add">+ background: "var(--color-primary)",</span></code></pre>
+              </div>
+            </div>
+            <dl class="uw-pr-more">
+              <div>
+                <dt>Card.tsx, line 31</dt>
+                <dd>Hardcoded spacing <code>24px</code>. Use <code>var(--spacing-lg)</code></dd>
+              </div>
+              <div>
+                <dt>Modal.tsx, line 8</dt>
+                <dd>Hardcoded border radius <code>8px</code>. Use <code>var(--radius-md)</code></dd>
+              </div>
+            </dl>
+            <figcaption class="uw-pr-foot">Buoy Design Check: 3 issues found</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Why -->
+      <section class="uw-section">
+        <div class="uw-wrap">
+          <div class="uw-section-head">
+            <h2>Coding agents write UI without knowing your tokens.</h2>
+            <p>Hardcoded values creep in and drift compounds. Buoy finds each one and names the token or component that should be there.</p>
+          </div>
+
+          <div class="uw-compare">
+            <div class="uw-demo">
+              <div class="uw-seg" role="radiogroup" aria-label="Code sample">
+                <input type="radio" name="uw-sample" id="uw-sample-a" checked />
+                <label for="uw-sample-a">What AI generates</label>
+                <input type="radio" name="uw-sample" id="uw-sample-b" />
+                <label for="uw-sample-b">What you want</label>
+              </div>
+              <div class="uw-panes">
+                <pre class="uw-pane uw-pane-a"><code><span class="uw-file">Card.tsx</span>const Card = () =&gt; (
+  &lt;div style=&#123;&#123;
+    <mark>background: "#ffffff"</mark>,
+    <mark>padding: "16px"</mark>,
+    <mark>borderRadius: "8px"</mark>,
+    <mark>boxShadow: "0 2px 4px rgba..."</mark>
+  &#125;&#125;&gt;
+    &#123;children&#125;
+  &lt;/div&gt;
+)</code></pre>
+                <pre class="uw-pane uw-pane-b"><code><span class="uw-file">Card.tsx</span>import &#123; Card &#125; from "@/components"
+
+const MyCard = () =&gt; (
+  <b>&lt;Card variant="elevated"&gt;</b>
+    &#123;children&#125;
+  <b>&lt;/Card&gt;</b>
+)</code></pre>
+              </div>
+            </div>
+
+            <div class="uw-catches">
+              <h3>What Buoy catches</h3>
+              <dl>
+                <div>
+                  <dt>Hardcoded colors</dt>
+                  <dd><code>#ffffff</code> <span aria-hidden="true">→</span><span class="uw-sr">becomes</span> <code>var(--bg)</code></dd>
+                </div>
+                <div>
+                  <dt>Magic numbers</dt>
+                  <dd><code>16px</code> <span aria-hidden="true">→</span><span class="uw-sr">becomes</span> <code>var(--space-4)</code></dd>
+                </div>
+                <div>
+                  <dt>Duplicate components</dt>
+                  <dd>Use <code>&lt;Card&gt;</code> instead</dd>
+                </div>
+              </dl>
+              <a class="uw-link" href="#detects">See all drift types</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CLI -->
+      <section class="uw-section uw-section-tint">
+        <div class="uw-wrap uw-cli">
+          <div class="uw-cli-copy">
+            <div class="uw-section-head">
+              <h2>Find drift from the command line.</h2>
+              <p>Set up with <code>npx ahoybuoy dock</code>, then run one command. Every issue comes with the exact file, line and suggestion.</p>
+            </div>
+            <ol class="uw-steps">
+              {steps.map((s, i) => (
+                <li>
+                  <span class="uw-step-n">{i + 1}</span>
+                  <div>
+                    <h3>{s.title}</h3>
+                    <p>{s.description}</p>
+                    {s.command && <code>{s.command}</code>}
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <a class="uw-link" href="/docs">Read the documentation</a>
+          </div>
+
+          <figure class="uw-term" aria-label="Output of buoy drift check" data-uw-reveal>
+            <div class="uw-term-bar">Terminal</div>
+            <pre><code><span class="uw-tl"><span class="uw-dim">$</span> buoy drift check</span>
+<span class="uw-tl"> </span>
+<span class="uw-tl">Scanning for design drift...</span>
+<span class="uw-tl"> </span>
+<span class="uw-tl">Found <b>23</b> issues in <span class="uw-dim">142 files</span></span>
+<span class="uw-tl"> </span>
+<span class="uw-tl"><b>CRITICAL (2)</b></span>
+<span class="uw-tl">├─ Button.tsx:12 Missing aria-label</span>
+<span class="uw-tl">└─ Modal.tsx:45 Focus trap not implemented</span>
+<span class="uw-tl"> </span>
+<span class="uw-tl"><b>HARDCODED VALUES (8)</b></span>
+<span class="uw-tl">├─ Card.tsx:8 #ffffff <span class="uw-fix">→ use var(--bg-surface)</span></span>
+<span class="uw-tl">├─ Badge.tsx:3 8px <span class="uw-fix">→ use var(--spacing-sm)</span></span>
+<span class="uw-tl">└─ <span class="uw-dim">... and 6 more</span></span></code></pre>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Detects -->
+      <section class="uw-section" id="detects">
+        <div class="uw-wrap uw-detects">
+          <div class="uw-section-head">
+            <h2>What Buoy detects</h2>
+            <p>Categorized by severity to help you prioritize fixes.</p>
+            <a class="uw-link" href="/features/drift-detection">Read more about drift detection</a>
+          </div>
+          <ul class="uw-table">
+            {driftTypes.map((d) => (
+              <li>
+                <span class="uw-t-name">{d.href ? <a href={d.href}>{d.title}</a> : d.title}</span>
+                <span class="uw-t-desc">{d.description}</span>
+                <span class="uw-t-sev" data-sev={d.severity}>{d.severity}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <!-- Core + App + Org -->
+      <section class="uw-section uw-section-tint">
+        <div class="uw-wrap">
+          <div class="uw-section-head">
+            <h2>Scanning is deterministic. AI is optional.</h2>
+            <p>Core drift detection uses no LLMs and no API keys, and no data leaves your machine. That suits teams where AI tools are restricted.</p>
+          </div>
+
+          <div class="uw-plans">
+            <article class="uw-card">
+              <p class="uw-kicker">Open source CLI, free</p>
+              <h3>Buoy Core</h3>
+              <ul>
+                <li>All scanning and drift detection</li>
+                <li>Fix suggestions with exact token replacements</li>
+                <li>Unlimited scans, all detection rules</li>
+                <li>Works air-gapped and offline</li>
+              </ul>
+              <p class="uw-card-foot">No API keys required. No external calls. MIT licensed.</p>
+            </article>
+
+            <article class="uw-card">
+              <p class="uw-kicker">Same engine, hosted on every PR</p>
+              <h3>Buoy GitHub App</h3>
+              <ul>
+                <li>Runs the same open source scanner on every PR</li>
+                <li>Committable inline fix suggestions</li>
+                <li>LLM-written summaries and coaching; findings stay deterministic</li>
+                <li>Dashboard with health scores and trends</li>
+              </ul>
+              <p class="uw-card-foot">
+                <FreeSpots class="uw-spots" /><br />
+                Prose is written through OpenRouter; <a href="/privacy#subprocessors">see what is sent</a>.
+              </p>
+            </article>
+
+            <article class="uw-card">
+              <p class="uw-kicker">For design-system owners</p>
+              <h3>Organization</h3>
+              <ul>
+                <li>How your system holds up across every repo that uses it</li>
+                <li>Org-wide drift record</li>
+                <li>Design-partner relationship</li>
+              </ul>
+              <p class="uw-card-foot"><a href="/pricing">See pricing</a></p>
+            </article>
+          </div>
+
+          <p class="uw-stack">
+            Works with
+            {integrations.map((it, i) => (
+              <Fragment><a href={it.href}>{it.name}</a>{i < integrations.length - 2 ? ', ' : i === integrations.length - 2 ? ' and ' : '.'}</Fragment>
+            ))}
+          </p>
+        </div>
+      </section>
+
+      <!-- Close -->
+      <section class="uw-section uw-close">
+        <div class="uw-wrap uw-close-inner">
+          <h2>Install the GitHub App. Every PR gets checked.</h2>
+          <p>Or scan any public GitHub repository for design drift, free, in about a minute.</p>
+          <div class="uw-actions">
+            <a class="uw-btn uw-btn-primary" href={installUrl} target="_blank" rel="noopener noreferrer">Install the GitHub App</a>
+            <a class="uw-btn uw-btn-secondary" href="/scan">Scan a public repo</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="uw-footer">
+      <div class="uw-wrap uw-footer-row">
+        <p class="uw-footer-brand">
+          <BuoyMark size={18} />
+          <span>&copy; {year} Buoy. Scanner is open source under MIT.</span>
+        </p>
+        <nav class="uw-footer-nav" aria-label="Footer">
+          <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href={siteConfig.twitterUrl} target="_blank" rel="noopener noreferrer">Twitter</a>
+          <a href={siteConfig.discordUrl} target="_blank" rel="noopener noreferrer">Discord</a>
+          <a href="/scan">Scan a repo</a>
+          <a href="/docs">Docs</a>
+          <a href="/guides">Guides</a>
+          <a href="/reports">Reports</a>
+          <a href="/compare">Compare</a>
+          <a href="/pricing">Pricing</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+          <a href="/support">Support</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
+</Layout>
+
+<script>
+  // Terminal lines arrive once, when the terminal scrolls into view.
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  for (const el of document.querySelectorAll<HTMLElement>('[data-uw-reveal]')) {
+    const lines = [...el.querySelectorAll<HTMLElement>('.uw-tl')]
+    const show = () => lines.forEach((l) => { l.style.opacity = '1' })
+    if (reduce || !('IntersectionObserver' in window)) { show(); continue }
+    const io = new IntersectionObserver((entries) => {
+      if (!entries.some((e) => e.isIntersecting)) return
+      io.disconnect()
+      lines.forEach((l, i) => {
+        l.animate(
+          [{ opacity: 0, transform: 'translateY(4px)' }, { opacity: 1, transform: 'none' }],
+          { duration: 200, delay: i * 30, easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)', fill: 'backwards' },
+        )
+        l.style.opacity = '1'
+      })
+    }, { threshold: 0, rootMargin: '0px 0px -12% 0px' })
+    io.observe(el)
+  }
+</script>
+
+<style is:global>
+  /* Metric-matched fallback so swapping to Inter does not move anything. */
+  @font-face {
+    font-family: 'UW Inter Fallback';
+    src: local('Arial');
+    ascent-override: 90.49%;
+    descent-override: 22.56%;
+    line-gap-override: 0%;
+    size-adjust: 107.06%;
+  }
+
+  .t-ui-wiki {
+    /* neutrals */
+    --g1: #fcfcfc;
+    --g2: #f7f7f6;
+    --g3: #efefed;
+    --g9: #8b8b86;
+    --g11: #5f5f5a;
+    --g12: #1d1d1b;
+    --ga3: rgba(29, 29, 27, 0.05);
+    --ga4: rgba(29, 29, 27, 0.09);
+    --ga6: rgba(29, 29, 27, 0.16);
+    --surface: #ffffff;
+    --accent: var(--color-buoy);
+    --accent-wash: color-mix(in srgb, var(--color-buoy) 12%, transparent);
+    --add: #1a7f47;
+    --add-wash: rgba(26, 127, 71, 0.1);
+    --del: #b3261e;
+    --del-wash: rgba(179, 38, 30, 0.08);
+
+    /* spacing scale */
+    --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px;
+    --s6: 32px; --s7: 48px; --s8: 64px; --s9: 96px; --s10: 128px;
+
+    /* elevation: one light source, straight down, neutral ink */
+    --shadow-1: 0 0 0 1px var(--ga4), 0 1px 2px rgba(29, 29, 27, 0.04);
+    --shadow-2: 0 0 0 1px var(--ga4), 0 1px 2px rgba(29, 29, 27, 0.05), 0 4px 8px rgba(29, 29, 27, 0.04), 0 12px 24px rgba(29, 29, 27, 0.04);
+    --shadow-3: 0 0 0 1px var(--ga4), 0 2px 4px rgba(29, 29, 27, 0.05), 0 8px 16px rgba(29, 29, 27, 0.05), 0 24px 48px rgba(29, 29, 27, 0.07);
+
+    /* motion */
+    --ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+    --ease-in: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    --ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+    --t-press: 150ms;
+    --t-state: 200ms;
+
+    --sans: 'Inter', 'UW Inter Fallback', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+    min-height: 100vh;
+    background: var(--g1);
+    color: var(--g12);
+    font-family: var(--sans);
+    font-size: 16px;
+    font-weight: 410;
+    line-height: 1.55;
+    font-optical-sizing: auto;
+    font-synthesis: none;
+    font-feature-settings: 'calt' 1, 'ss02' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .t-ui-wiki ::selection { background: var(--accent-wash); color: var(--g12); }
+  .t-ui-wiki :focus-visible { outline: 2px solid var(--g12); outline-offset: 3px; border-radius: 4px; }
+
+  .t-ui-wiki h1, .t-ui-wiki h2, .t-ui-wiki h3 {
+    font-family: var(--sans);
+    color: var(--g12);
+    text-wrap: balance;
+    margin: 0;
+  }
+  .t-ui-wiki h1 { font-size: clamp(2.5rem, 1.6rem + 3.4vw, 4rem); font-weight: 640; letter-spacing: -0.032em; line-height: 1.04; }
+  .t-ui-wiki h2 { font-size: clamp(1.625rem, 1.3rem + 1.3vw, 2.25rem); font-weight: 620; letter-spacing: -0.024em; line-height: 1.14; }
+  .t-ui-wiki h3 { font-size: 1rem; font-weight: 620; letter-spacing: -0.01em; line-height: 1.3; }
+  .t-ui-wiki p { margin: 0; text-wrap: pretty; }
+  .t-ui-wiki code, .t-ui-wiki pre {
+    font-family: var(--mono);
+    font-variant-numeric: slashed-zero tabular-nums;
+    font-feature-settings: 'zero' 1;
+  }
+  .t-ui-wiki p code, .t-ui-wiki dd code {
+    font-size: 0.8125em;
+    padding: 2px 5px;
+    border-radius: 5px;
+    background: var(--ga3);
+    box-shadow: inset 0 0 0 1px var(--ga3);
+    white-space: nowrap;
+  }
+  .t-ui-wiki a { color: inherit; }
+
+  .uw-wrap { width: 100%; max-width: 1136px; margin-inline: auto; padding-inline: var(--s5); }
+  .uw-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .uw-skip { position: absolute; left: var(--s4); top: -64px; z-index: 10; padding: var(--s2) var(--s3); background: var(--g12); color: var(--g1) !important; border-radius: 8px; font-size: 14px; }
+  .uw-skip:focus { top: var(--s4); }
+
+  /* Links: underline sits below descenders */
+  .uw-link, .uw-card-foot a, .uw-stack a, .uw-t-name a {
+    text-decoration: underline;
+    text-decoration-color: var(--ga6);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    text-decoration-skip-ink: auto;
+    transition: text-decoration-color var(--t-press) var(--ease-out);
+  }
+  .uw-link:hover, .uw-card-foot a:hover, .uw-stack a:hover, .uw-t-name a:hover { text-decoration-color: var(--accent); }
+  .uw-link { display: inline-block; position: relative; font-size: 15px; font-weight: 520; }
+  .uw-link::before { content: ''; position: absolute; inset: -10px -8px; }
+
+  /* Header */
+  .uw-header-row { display: flex; align-items: center; gap: var(--s6); height: 72px; }
+  .uw-logo { display: block; color: var(--g12); border-radius: 6px; }
+  .uw-nav { display: flex; gap: var(--s5); margin-left: auto; font-size: 14px; font-weight: 510; }
+  .uw-nav a { position: relative; color: var(--g11); text-decoration: none; transition: color var(--t-press) var(--ease-out); }
+  .uw-nav a::before { content: ''; position: absolute; inset: -12px -12px; }
+  .uw-nav a:hover { color: var(--g12); }
+
+  /* Buttons: cut line, inner highlights, layered depth, barely-there gradient */
+  .uw-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    min-width: 208px;
+    padding: 0 var(--s5);
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 560;
+    letter-spacing: -0.005em;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: transform var(--t-press) var(--ease-out);
+  }
+  .uw-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--t-press) var(--ease-out);
+  }
+  .uw-btn:hover::after { opacity: 1; }
+  .uw-btn:active { transform: scale(0.98); }
+  .uw-btn-primary {
+    color: var(--g12) !important;
+    background: linear-gradient(to bottom, color-mix(in srgb, var(--accent) 94%, white), var(--accent));
+    box-shadow:
+      0 0 0 0.5px color-mix(in srgb, var(--accent) 60%, #1d1d1b),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.28),
+      0 1px 2px rgba(29, 29, 27, 0.14),
+      0 2px 4px rgba(29, 29, 27, 0.08),
+      0 4px 8px rgba(29, 29, 27, 0.05);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.22);
+  }
+  .uw-btn-primary::after { box-shadow: 0 2px 4px rgba(29, 29, 27, 0.1), 0 6px 12px rgba(29, 29, 27, 0.1), 0 12px 24px rgba(29, 29, 27, 0.08); }
+  .uw-btn-secondary {
+    color: var(--g12) !important;
+    background: linear-gradient(to bottom, #ffffff, #fafaf9);
+    box-shadow:
+      0 0 0 0.5px rgba(29, 29, 27, 0.22),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.6),
+      inset 0 1px 0 #ffffff,
+      0 1px 2px rgba(29, 29, 27, 0.07),
+      0 2px 4px rgba(29, 29, 27, 0.04),
+      0 4px 8px rgba(29, 29, 27, 0.03);
+  }
+  .uw-btn-secondary::after { box-shadow: 0 2px 4px rgba(29, 29, 27, 0.06), 0 6px 12px rgba(29, 29, 27, 0.06), 0 12px 24px rgba(29, 29, 27, 0.05); }
+  .uw-btn-sm { height: 36px; min-width: 0; padding: 0 var(--s4); font-size: 14px; border-radius: 8px; }
+  .uw-actions { display: flex; flex-wrap: wrap; gap: var(--s3); }
+
+  /* Hero */
+  .uw-hero { padding: var(--s8) 0 var(--s9); }
+  .uw-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.02fr); gap: var(--s8); align-items: center; }
+  .uw-lede { margin-top: var(--s5) !important; max-width: 34em; font-size: 1.125rem; line-height: 1.55; color: var(--g11); }
+  .uw-hero .uw-actions { margin-top: var(--s6); }
+  .uw-note { margin-top: var(--s4) !important; font-size: 14px; color: var(--g11); }
+
+  @keyframes uw-enter { from { opacity: 0; transform: translateY(8px); } }
+  @keyframes uw-comment { from { opacity: 0; transform: translateY(-6px) scale(0.98); } }
+  .uw-enter { animation: uw-enter 280ms var(--ease-out) both; animation-delay: calc(var(--i) * 40ms); }
+
+  /* PR mock */
+  .uw-pr {
+    --pad: var(--s2);
+    --inner-r: 10px;
+    margin: 0;
+    padding: var(--pad);
+    border-radius: calc(var(--inner-r) + var(--pad));
+    background: var(--surface);
+    box-shadow: var(--shadow-3);
+    font-size: 14px;
+    min-width: 0;
+  }
+  .uw-pr-head { display: flex; align-items: baseline; gap: var(--s2); padding: var(--s3) var(--s3) var(--s2); }
+  .uw-pr-title { font-weight: 610; letter-spacing: -0.01em; }
+  .uw-pr-num { color: var(--g9); font-variant-numeric: tabular-nums; }
+  .uw-pr-file { padding: var(--s2) var(--s3); font-family: var(--mono); font-size: 12px; color: var(--g11); background: var(--g2); border-radius: var(--inner-r) var(--inner-r) 0 0; box-shadow: inset 0 0 0 1px var(--ga3); }
+  .uw-pr pre { margin: 0; font-size: 12.5px; line-height: 1.7; overflow-x: auto; }
+  .uw-diff { padding: var(--s2) 0; background: var(--surface); box-shadow: inset 1px 0 0 var(--ga3), inset -1px 0 0 var(--ga3); }
+  .uw-ln { display: inline-block; min-width: 100%; padding-right: var(--s3); }
+  .uw-ln i { display: inline-block; width: 40px; padding-right: var(--s3); text-align: right; font-style: normal; color: var(--g9); user-select: none; }
+  .uw-diff .uw-add { background: var(--add-wash); }
+  .uw-diff mark { background: var(--accent-wash); color: inherit; border-radius: 3px; box-shadow: 0 0 0 2px var(--accent-wash); }
+  .uw-comment-slot { padding: var(--s3); background: var(--g2); border-radius: 0 0 var(--inner-r) var(--inner-r); box-shadow: inset 0 0 0 1px var(--ga3); }
+  .uw-comment {
+    --pad: var(--s3);
+    padding: var(--pad);
+    border-radius: 8px;
+    background: var(--surface);
+    box-shadow: var(--shadow-1);
+    transform-origin: 24px 0;
+    animation: uw-comment 260ms var(--ease-out) 420ms both;
+  }
+  .uw-comment-by strong { font-weight: 610; }
+  .uw-comment-by { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; font-size: 13px; }
+  .uw-avatar { display: inline-flex; line-height: 0; }
+  .uw-bot { padding: 0 6px; border-radius: 999px; box-shadow: inset 0 0 0 1px var(--ga6); font-size: 11px; line-height: 18px; color: var(--g11); }
+  .uw-comment-line { color: var(--g9); }
+  .uw-comment p { margin-top: var(--s2) !important; color: var(--g12); }
+  .uw-suggest { margin-top: var(--s3) !important; border-radius: 5px; box-shadow: inset 0 0 0 1px var(--ga4); }
+  .uw-suggest span { display: inline-block; min-width: 100%; padding: 1px var(--s3); }
+  .uw-suggest .uw-del { background: var(--del-wash); color: var(--del); }
+  .uw-suggest .uw-add { background: var(--add-wash); color: var(--add); }
+  .uw-pr-more { margin: 0; padding: var(--s2) var(--s3) 0; }
+  .uw-pr-more > div { display: grid; grid-template-columns: 136px minmax(0, 1fr); gap: var(--s3); padding: var(--s2) 0; font-size: 13px; }
+  .uw-pr-more > div + div { box-shadow: inset 0 1px 0 var(--ga3); }
+  .uw-pr-more dt { font-family: var(--mono); font-size: 12px; line-height: 20px; color: var(--g11); font-variant-numeric: slashed-zero tabular-nums; }
+  .uw-pr-more dd { margin: 0; color: var(--g12); }
+  .uw-pr-foot { margin-top: var(--s2); padding: var(--s3); font-size: 13px; font-weight: 560; color: var(--g12); box-shadow: inset 0 1px 0 var(--ga4); font-variant-numeric: tabular-nums; }
+
+  /* Sections */
+  .uw-section { padding: var(--s9) 0; }
+  .uw-section-tint { background: var(--g2); box-shadow: inset 0 1px 0 var(--ga3), inset 0 -1px 0 var(--ga3); }
+  .uw-section-head { max-width: 640px; }
+  .uw-section-head p { margin-top: var(--s4) !important; font-size: 1.0625rem; color: var(--g11); }
+  .uw-section-head .uw-link { margin-top: var(--s5); }
+
+  /* Compare */
+  .uw-compare { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: var(--s8); align-items: start; margin-top: var(--s7); }
+  .uw-demo {
+    --pad: var(--s2);
+    --inner-r: 10px;
+    padding: var(--pad);
+    border-radius: calc(var(--inner-r) + var(--pad));
+    background: var(--surface);
+    box-shadow: var(--shadow-2);
+    min-width: 0;
+  }
+  .uw-seg { position: relative; display: grid; grid-template-columns: 1fr 1fr; padding: 3px; border-radius: var(--inner-r); background: var(--g3); }
+  .uw-seg::before {
+    content: '';
+    position: absolute;
+    top: 3px; bottom: 3px; left: 3px;
+    width: calc(50% - 3px);
+    border-radius: calc(var(--inner-r) - 3px);
+    background: var(--surface);
+    box-shadow: var(--shadow-1);
+    transition: transform var(--t-state) var(--ease-in-out);
+  }
+  .uw-seg:has(#uw-sample-b:checked)::before { transform: translateX(100%); }
+  .uw-seg input { position: absolute; opacity: 0; pointer-events: none; }
+  .uw-seg label {
+    position: relative;
+    z-index: 1;
+    display: flex; align-items: center; justify-content: center;
+    height: 36px;
+    font-size: 14px; font-weight: 540;
+    color: var(--g11);
+    cursor: pointer;
+    border-radius: calc(var(--inner-r) - 3px);
+    transition: color var(--t-press) var(--ease-out);
+  }
+  .uw-seg input:checked + label { color: var(--g12); }
+  .uw-seg input:focus-visible + label { outline: 2px solid var(--g12); outline-offset: -2px; }
+  .uw-panes { display: grid; margin-top: var(--pad); border-radius: var(--inner-r); background: var(--g2); box-shadow: inset 0 0 0 1px var(--ga3); overflow: hidden; }
+  .uw-pane {
+    grid-area: 1 / 1;
+    margin: 0;
+    padding: var(--s4) var(--s5) var(--s5);
+    font-size: 13.5px;
+    line-height: 1.8;
+    overflow-x: auto;
+    color: var(--g12);
+    transition: opacity var(--t-state) var(--ease-out), visibility 0s;
+  }
+  .uw-file { display: block; margin-bottom: var(--s2); font-size: 12px; color: var(--g9); }
+  .uw-pane mark { background: var(--accent-wash); color: inherit; border-radius: 3px; box-shadow: 0 0 0 2px var(--accent-wash); }
+  .uw-pane b { font-weight: 510; background: var(--add-wash); color: var(--add); border-radius: 3px; box-shadow: 0 0 0 2px var(--add-wash); }
+  .uw-pane-b,
+  .uw-demo:has(#uw-sample-b:checked) .uw-pane-a {
+    opacity: 0; visibility: hidden;
+    transition: opacity 120ms var(--ease-in), visibility 0s 120ms;
+  }
+  .uw-demo:has(#uw-sample-b:checked) .uw-pane-b {
+    opacity: 1; visibility: visible;
+    transition: opacity var(--t-state) var(--ease-out), visibility 0s;
+  }
+
+  .uw-catches h3 { font-size: 13px; font-weight: 560; color: var(--g11); text-transform: uppercase; letter-spacing: 0.06em; }
+  .uw-catches dl { margin: var(--s3) 0 var(--s5); }
+  .uw-catches dl > div { padding: var(--s4) 0; box-shadow: inset 0 -1px 0 var(--ga4); }
+  .uw-catches dt { font-weight: 610; letter-spacing: -0.01em; }
+  .uw-catches dd { margin: var(--s1) 0 0; font-size: 15px; color: var(--g11); }
+
+  /* CLI */
+  .uw-cli { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: var(--s8); align-items: center; }
+  .uw-steps { list-style: none; margin: var(--s6) 0 var(--s5); padding: 0; position: relative; }
+  .uw-steps::before { content: ''; position: absolute; left: 11.5px; top: var(--s5); bottom: var(--s8); width: 1px; background: var(--ga6); }
+  .uw-steps li { position: relative; display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: var(--s4); padding-bottom: var(--s5); }
+  .uw-step-n {
+    position: relative; z-index: 1;
+    height: 24px; line-height: 24px; text-align: center;
+    font-size: 13px; font-weight: 610; font-variant-numeric: tabular-nums lining-nums;
+    color: var(--g11);
+    background: var(--g2);
+  }
+  .uw-steps p { margin-top: 2px !important; font-size: 15px; color: var(--g11); }
+  .uw-steps code { display: inline-block; margin-top: var(--s2); font-size: 12.5px; padding: 2px 6px; border-radius: 5px; background: var(--surface); box-shadow: var(--shadow-1); }
+
+  .uw-term {
+    --pad: var(--s2);
+    --inner-r: 10px;
+    margin: 0;
+    padding: var(--pad);
+    border-radius: calc(var(--inner-r) + var(--pad));
+    background: #1d1d1b;
+    color: #ededeb;
+    box-shadow: 0 0 0 1px rgba(29, 29, 27, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 2px 4px rgba(29, 29, 27, 0.08), 0 8px 16px rgba(29, 29, 27, 0.08), 0 24px 48px rgba(29, 29, 27, 0.12);
+    min-width: 0;
+  }
+  .uw-term-bar { padding: var(--s1) var(--s3) var(--s3); font-size: 12px; font-weight: 520; color: rgba(237, 237, 235, 0.55); }
+  .uw-term pre { margin: 0; padding: var(--s4) var(--s5) var(--s5); border-radius: var(--inner-r); background: rgba(255, 255, 255, 0.04); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06); font-size: 13px; line-height: 1.75; overflow-x: auto; }
+  .uw-tl { display: inline-block; min-width: 100%; }
+  .t-ui-wiki[data-js] .uw-tl { opacity: 0; }
+  .uw-term b { font-weight: 510; color: #ffffff; }
+  .uw-dim { color: rgba(237, 237, 235, 0.5); }
+  .uw-fix { color: color-mix(in srgb, var(--color-buoy) 70%, white); }
+
+  /* Detects */
+  .uw-detects { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.9fr); gap: var(--s8); align-items: start; }
+  .uw-table { list-style: none; margin: 0; padding: 0; box-shadow: inset 0 1px 0 var(--ga4); }
+  .uw-table li {
+    display: grid;
+    grid-template-columns: 200px minmax(0, 1fr) 72px;
+    gap: var(--s5);
+    align-items: baseline;
+    padding: var(--s4) var(--s3);
+    box-shadow: inset 0 -1px 0 var(--ga4);
+    font-size: 15px;
+    transition: background-color var(--t-press) var(--ease-out);
+  }
+  .uw-table li:hover { background: var(--ga3); }
+  .uw-t-name { font-weight: 610; letter-spacing: -0.01em; }
+  .uw-t-desc { color: var(--g11); }
+  .uw-t-sev { font-size: 12px; font-weight: 560; text-transform: uppercase; letter-spacing: 0.06em; color: var(--g9); text-align: right; }
+  .uw-t-sev[data-sev='Critical'] { color: var(--g12); }
+  .uw-t-sev[data-sev='Warning'] { color: var(--g11); }
+
+  /* Plans */
+  .uw-plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s5); margin-top: var(--s7); }
+  .uw-card { display: flex; flex-direction: column; padding: var(--s5); border-radius: 14px; background: var(--surface); box-shadow: var(--shadow-2); }
+  .uw-kicker { font-size: 12px; font-weight: 560; text-transform: uppercase; letter-spacing: 0.06em; color: var(--g11); }
+  .uw-card h3 { margin-top: var(--s2); font-size: 1.25rem; letter-spacing: -0.02em; }
+  .uw-card ul { margin: var(--s4) 0 var(--s5); padding-left: 18px; font-size: 15px; color: var(--g12); }
+  .uw-card li { padding: 3px 0 3px 4px; }
+  .uw-card li::marker { content: '+'; color: var(--g9); font-family: var(--mono); font-size: 0.9em; }
+  .uw-card-foot { margin-top: auto !important; padding-top: var(--s4); box-shadow: inset 0 1px 0 var(--ga4); font-size: 13px; color: var(--g11); min-height: 76px; }
+  .uw-spots { color: var(--g12); font-weight: 560; font-variant-numeric: tabular-nums; }
+  .uw-stack { margin-top: var(--s6) !important; font-size: 15px; color: var(--g11); }
+  .uw-stack a { color: var(--g12); }
+
+  /* Close */
+  .uw-close-inner { display: flex; flex-direction: column; align-items: flex-start; }
+  .uw-close h2 { max-width: 16em; }
+  .uw-close p { margin-top: var(--s4) !important; font-size: 1.0625rem; color: var(--g11); }
+  .uw-close .uw-actions { margin-top: var(--s6); }
+
+  /* Footer */
+  .uw-footer { box-shadow: inset 0 1px 0 var(--ga4); font-size: 14px; color: var(--g11); }
+  .uw-footer-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s4) var(--s7); padding-block: var(--s6); }
+  .uw-footer-brand { display: flex; align-items: center; gap: var(--s2); }
+  .uw-footer-nav { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s5); }
+  .uw-footer-nav a { position: relative; text-decoration: none; transition: color var(--t-press) var(--ease-out); }
+  .uw-footer-nav a::before { content: ''; position: absolute; inset: -8px -10px; }
+  .uw-footer-nav a:hover { color: var(--g12); }
+
+  @media (max-width: 960px) {
+    .uw-hero-grid, .uw-compare, .uw-cli, .uw-detects { grid-template-columns: minmax(0, 1fr); gap: var(--s7); }
+    .uw-plans { grid-template-columns: minmax(0, 1fr); }
+    .uw-hero { padding: var(--s6) 0 var(--s8); }
+    .uw-section { padding: var(--s8) 0; }
+    .uw-card-foot { min-height: 0; }
+    .uw-card-foot:has(.uw-spots) { min-height: 84px; }
+  }
+  @media (max-width: 640px) {
+    .uw-wrap { padding-inline: var(--s4); }
+    .uw-header-row { gap: var(--s4); height: 64px; }
+    .uw-nav { gap: var(--s4); }
+    .uw-nav a:nth-child(n + 3) { display: none; }
+    .uw-actions { flex-direction: column; align-items: stretch; width: 100%; }
+    .uw-btn { min-width: 0; }
+    .uw-btn-sm { flex: none; }
+    .uw-pr-more > div { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .uw-pane { padding-inline: var(--s4); font-size: 12.5px; }
+    .uw-pr pre { font-size: 11.5px; }
+    .uw-ln i { width: 28px; padding-right: var(--s2); }
+    .uw-term pre { padding-inline: var(--s4); font-size: 12px; }
+    .uw-table li { grid-template-columns: minmax(0, 1fr) auto; gap: var(--s1) var(--s4); }
+    .uw-t-name { grid-column: 1; }
+    .uw-t-sev { grid-column: 2; grid-row: 1; }
+    .uw-t-desc { grid-column: 1 / -1; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .t-ui-wiki *, .t-ui-wiki *::before, .t-ui-wiki *::after { animation: none !important; transition: none !important; }
+    .t-ui-wiki[data-js] .uw-tl { opacity: 1; }
+  }
+</style>
