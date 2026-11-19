@@ -3,12 +3,12 @@
   "owner": "ever-co",
   "name": "ever-gauzy",
   "description": "Ever® Gauzy™ - Open Business Management Platform (ERP/CRM/HRM/ATS/PM) - https://gauzy.co",
-  "stars": 8866,
+  "stars": 8867,
   "homepage": "https://gauzy.co",
   "language": "TypeScript",
   "defaultBranch": "develop",
-  "commit": "13a55a2e2ae1f00dbc5472e852884481d6b49802",
-  "generatedAt": "2026-11-18T16:25:35.469Z",
+  "commit": "ea784207126fa3e43a318e4789653a3cd184e401",
+  "generatedAt": "2026-11-19T16:36:08.260Z",
   "cliVersion": "0.8.26",
   "score": 35,
   "tier": "Bad",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 887,
+    "componentCount": 889,
     "tokenCount": 0,
-    "hardcodedValueCount": 725,
+    "hardcodedValueCount": 727,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 726,
+    "totalDriftCount": 728,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -70,14 +70,14 @@
     ]
   },
   "suggestions": [
-    "725 hardcoded values to extract. Focus on packages/ui-react-components/src/lib/components/ColorDots.tsx (1 issues)",
+    "727 hardcoded values to extract. Focus on packages/ui-react-components/src/lib/components/ColorDots.tsx (1 issues)",
     "1 framework sprawl signal — standardize on fewer UI/styling frameworks"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 723 of the 725 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 725 of the 727 findings with tokens or scale steps"
     },
     {
       "pillar": "tokenHealth",
@@ -138,13 +138,13 @@
     ]
   },
   "driftSummary": {
-    "total": 726,
+    "total": 728,
     "critical": 0,
     "warning": 165,
-    "info": 561
+    "info": 563
   },
   "driftByType": {
-    "hardcoded-value": 725,
+    "hardcoded-value": 727,
     "framework-sprawl": 1
   },
   "topColors": [
@@ -184,7 +184,7 @@
   "topSpacing": [
     {
       "value": "0.5rem",
-      "count": 793
+      "count": 794
     },
     {
       "value": "1rem",
@@ -192,7 +192,7 @@
     },
     {
       "value": "0.75rem",
-      "count": 447
+      "count": 450
     },
     {
       "value": "0.375rem",
@@ -338,5 +338,5 @@
       ]
     }
   ],
-  "scanSeconds": 128
+  "scanSeconds": 157
 }

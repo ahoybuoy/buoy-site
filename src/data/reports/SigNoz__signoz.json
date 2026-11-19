@@ -3,12 +3,12 @@
   "owner": "SigNoz",
   "name": "signoz",
   "description": "SigNoz is an open-source, OpenTelemetry-native observability platform for your team and their AI agents. Get logs, metrics, and traces in one tool with features like APM, distributed tracing, log management, infra monitoring, etc. Combined with SigNoz MCP and a native AI teammate (in SigNoz Cloud) it helps you build more resilient apps.",
-  "stars": 32675,
+  "stars": 32682,
   "homepage": "https://signoz.io",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "824315b093a089d9f1b0b2e37c96bb5e3e9a2208",
-  "generatedAt": "2026-11-18T16:18:18.857Z",
+  "commit": "a79ff07e77c8deea4360ad0868e15bc07430766f",
+  "generatedAt": "2026-11-19T16:26:52.345Z",
   "cliVersion": "0.8.26",
   "score": 20,
   "tier": "Bad",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1511,
+    "componentCount": 1555,
     "tokenCount": 0,
-    "hardcodedValueCount": 621,
+    "hardcodedValueCount": 625,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 621,
+    "totalDriftCount": 625,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 50,
+    "notedCount": 49,
     "topHardcodedColor": {
       "value": "#1890ff",
       "count": 4
@@ -66,14 +66,14 @@
     "detectedFrameworkNames": []
   },
   "suggestions": [
-    "621 hardcoded values to extract. Focus on frontend/src/components/QueryBuilderV2/QueryV2/QueryAggregation/QueryAggregationSelect.tsx (2 issues)",
+    "625 hardcoded values to extract. Focus on frontend/src/components/QueryBuilderV2/QueryV2/QueryAggregation/QueryAggregationSelect.tsx (2 issues)",
     "No design token system detected — add CSS custom properties or a utility framework like Tailwind"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 618 of the 621 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 622 of the 625 findings with tokens or scale steps"
     },
     {
       "pillar": "tokenHealth",
@@ -82,9 +82,9 @@
     }
   ],
   "noted": {
-    "count": 50,
+    "count": 49,
     "byKind": {
-      "optical-nudge": 47,
+      "optical-nudge": 46,
       "known-debt": 1,
       "explained": 2
     },
@@ -134,13 +134,13 @@
     ]
   },
   "driftSummary": {
-    "total": 621,
+    "total": 625,
     "critical": 0,
     "warning": 33,
-    "info": 588
+    "info": 592
   },
   "driftByType": {
-    "hardcoded-value": 621
+    "hardcoded-value": 625
   },
   "topColors": [
     {
@@ -179,7 +179,7 @@
   "topSpacing": [
     {
       "value": "8px",
-      "count": 794
+      "count": 786
     },
     {
       "value": "16px",
@@ -191,11 +191,11 @@
     },
     {
       "value": "12px",
-      "count": 302
+      "count": 301
     },
     {
       "value": "6px",
-      "count": 211
+      "count": 208
     },
     {
       "value": "10px",
@@ -203,10 +203,10 @@
     },
     {
       "value": "24px",
-      "count": 124
+      "count": 125
     },
     {
-      "value": "2px",
+      "value": "20px",
       "count": 45
     }
   ],
@@ -247,23 +247,23 @@
   "samples": [
     {
       "component": "Badges",
-      "location": "frontend/src/components/Badges/Badges.tsx:9",
+      "location": "frontend/src/components/Badges/Badges.tsx:10",
       "entries": [
-        "fontSize: 11px (line 97)"
+        "fontSize: 11px (line 98)"
       ]
     },
     {
       "component": "ChangelogModal",
-      "location": "frontend/src/components/ChangelogModal/ChangelogModal.tsx:23",
+      "location": "frontend/src/components/ChangelogModal/ChangelogModal.tsx:24",
       "entries": [
-        "gap: 4px (line 119)"
+        "gap: 4px (line 120)"
       ]
     },
     {
       "component": "BillingContainer",
-      "location": "frontend/src/container/BillingContainer/BillingContainer.tsx:140",
+      "location": "frontend/src/container/BillingContainer/BillingContainer.tsx:135",
       "entries": [
-        "marginTop: 10px (line 293)"
+        "marginTop: 10px (line 288)"
       ]
     },
     {
@@ -275,16 +275,16 @@
     },
     {
       "component": "StatusMessage",
-      "location": "frontend/src/container/GeneralSettings/StatusMessage.tsx:10",
+      "location": "frontend/src/container/GeneralSettings/StatusMessage.tsx:11",
       "entries": [
-        "gap: 1rem (line 55)"
+        "gap: 1rem (line 56)"
       ]
     },
     {
       "component": "OptionsMenu",
-      "location": "frontend/src/container/OptionsMenu/index.tsx:19",
+      "location": "frontend/src/container/OptionsMenu/index.tsx:20",
       "entries": [
-        "gap: 4px (line 41)"
+        "gap: 4px (line 42)"
       ]
     },
     {
@@ -296,9 +296,9 @@
     },
     {
       "component": "QueryHeader",
-      "location": "frontend/src/container/QueryBuilder/rawQueryEditors/QueryHeader.tsx:24",
+      "location": "frontend/src/container/QueryBuilder/rawQueryEditors/QueryHeader.tsx:25",
       "entries": [
-        "marginBottom: 0.4rem (line 35)"
+        "marginBottom: 0.4rem (line 36)"
       ]
     },
     {
@@ -330,5 +330,5 @@
       ]
     }
   ],
-  "scanSeconds": 31
+  "scanSeconds": 41
 }

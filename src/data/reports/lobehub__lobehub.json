@@ -3,12 +3,12 @@
   "owner": "lobehub",
   "name": "lobehub",
   "description": "🤯 LobeHub - Super-Agents on Your Team. Add super-agents to the chats your team already uses.They take on work by themselves and get better every week.",
-  "stars": 85783,
+  "stars": 85855,
   "homepage": "https://lobehub.com",
   "language": "TypeScript",
   "defaultBranch": "canary",
-  "commit": "7f0f687ce7c949573b5f0e8a062cda7fc2b141e5",
-  "generatedAt": "2026-11-18T16:32:41.971Z",
+  "commit": "a0aa905b45714039a8b145ff43fd9d1983bf7687",
+  "generatedAt": "2026-11-19T16:45:03.250Z",
   "cliVersion": "0.8.26",
   "score": 95,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 5126,
-    "tokenCount": 7,
-    "hardcodedValueCount": 38,
+    "componentCount": 5151,
+    "tokenCount": 10,
+    "hardcodedValueCount": 36,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 2,
@@ -41,7 +41,7 @@
     "colorContrastCount": 2,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 40,
+    "totalDriftCount": 38,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,9 +53,9 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 0,
+    "notedCount": 1,
     "topHardcodedColor": {
-      "value": "#000",
+      "value": "#fff",
       "count": 5
     },
     "worstFile": {
@@ -70,14 +70,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 38 hardcoded values left to tokenize. src/spa/router/authRouter.config.tsx has the most (3)",
+    "Nearly there — just 36 hardcoded values left to tokenize. src/spa/router/authRouter.config.tsx has the most (3)",
     "2 color contrast issues — fix immediately"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 1,
-      "action": "Replace the hardcoded values in 26 of the 38 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 24 of the 36 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -86,27 +86,37 @@
     }
   ],
   "noted": {
-    "count": 0,
-    "byKind": {},
-    "samples": []
+    "count": 1,
+    "byKind": {
+      "optical-nudge": 1
+    },
+    "samples": [
+      {
+        "file": "src/styles/global.css",
+        "line": 196,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding-block: 2px is a 2-3px optical adjustment"
+      }
+    ]
   },
   "driftSummary": {
-    "total": 29,
+    "total": 27,
     "critical": 2,
-    "warning": 13,
-    "info": 14
+    "warning": 14,
+    "info": 11
   },
   "driftByType": {
-    "hardcoded-value": 27,
+    "hardcoded-value": 25,
     "color-contrast": 2
   },
   "topColors": [
     {
-      "value": "#000",
-      "count": 5
+      "value": "#fff",
+      "count": 4
     },
     {
-      "value": "#fff",
+      "value": "#000",
       "count": 4
     },
     {
@@ -136,15 +146,23 @@
   ],
   "topSpacing": [
     {
+      "value": "8px",
+      "count": 7
+    },
+    {
       "value": "12px",
       "count": 5
     },
     {
-      "value": "16px",
+      "value": "6px",
       "count": 5
     },
     {
       "value": "1em",
+      "count": 4
+    },
+    {
+      "value": "16px",
       "count": 4
     },
     {
@@ -156,16 +174,8 @@
       "count": 3
     },
     {
-      "value": "8px",
-      "count": 3
-    },
-    {
       "value": "10px",
-      "count": 2
-    },
-    {
-      "value": "24px",
-      "count": 2
+      "count": 3
     }
   ],
   "worstFiles": [
@@ -176,6 +186,10 @@
     {
       "file": "packages/canvas-runtime/src/base.css",
       "count": 14
+    },
+    {
+      "file": "src/styles/global.css",
+      "count": 12
     },
     {
       "file": "src/spa/router/authRouter.config.tsx",
@@ -195,10 +209,6 @@
     },
     {
       "file": "src/features/CommunityWorkspaceSettings/index.tsx",
-      "count": 2
-    },
-    {
-      "file": "src/features/WorkspaceSetting/AdminOnly.tsx",
       "count": 2
     }
   ],
@@ -226,13 +236,6 @@
       "location": "src/components/KeyValueEditor/index.tsx:43",
       "entries": [
         "fontSize: 12px (line 165)"
-      ]
-    },
-    {
-      "component": "SkillAvatar",
-      "location": "src/components/SkillAvatar/index.tsx:13",
-      "entries": [
-        "color: #000 (line 20)"
       ]
     },
     {
@@ -294,7 +297,14 @@
       "entries": [
         "fontSize: 14px (line 134)"
       ]
+    },
+    {
+      "component": "TraceIdError",
+      "location": "src/features/Conversation/Error/TraceIdError.tsx:24",
+      "entries": [
+        "color: #5865F2 (line 90)"
+      ]
     }
   ],
-  "scanSeconds": 148
+  "scanSeconds": 188
 }

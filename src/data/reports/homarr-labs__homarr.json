@@ -3,12 +3,12 @@
   "owner": "homarr-labs",
   "name": "homarr",
   "description": "A modern and easy to use dashboard. 80+ integrations. 20K+ icons built in. Authentication out of the box. No YAML, drag and drop configuration.",
-  "stars": 5401,
+  "stars": 5405,
   "homepage": "https://homarr.dev",
   "language": "TypeScript",
   "defaultBranch": "dev",
-  "commit": "b440fdd574c9daa229f5cf64f7b2532770799664",
-  "generatedAt": "2026-11-18T16:28:48.691Z",
+  "commit": "87193f0aaa168efea259aba6b9a6f531e1956d89",
+  "generatedAt": "2026-11-19T16:40:10.794Z",
   "cliVersion": "0.8.26",
   "score": 84,
   "tier": "Great",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 1538,
+    "componentCount": 1545,
     "tokenCount": 98,
     "hardcodedValueCount": 121,
     "unusedTokenCount": 0,
@@ -309,17 +309,17 @@
     },
     {
       "component": "SystemHealthMonitoring",
-      "location": "packages/widgets/src/health-monitoring/system-health.tsx:64",
+      "location": "packages/widgets/src/health-monitoring/system-health.tsx:66",
       "entries": [
-        "gap: 10px (line 180)",
-        "size: 1rem (line 245)"
+        "gap: 10px (line 187)",
+        "size: 1rem (line 252)"
       ]
     },
     {
       "component": "DiskStatus",
-      "location": "packages/widgets/src/health-monitoring/system-health.tsx:408",
+      "location": "packages/widgets/src/health-monitoring/system-health.tsx:415",
       "entries": [
-        "size: 1rem (line 438)"
+        "size: 1rem (line 445)"
       ]
     },
     {
@@ -330,5 +330,5 @@
       ]
     }
   ],
-  "scanSeconds": 37
+  "scanSeconds": 46
 }

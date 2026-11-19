@@ -3,12 +3,12 @@
   "owner": "Stirling-Tools",
   "name": "Stirling-PDF",
   "description": "#1 PDF Application on GitHub that lets you edit PDFs on any device anywhere",
-  "stars": 96931,
+  "stars": 97015,
   "homepage": "https://stirling.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "35b2aaa2e3d475a46ec8b2b088b9c46b947b337b",
-  "generatedAt": "2026-11-18T16:18:59.766Z",
+  "commit": "c544e2c3457f52d05675b36dffacc44a4479149e",
+  "generatedAt": "2026-11-19T16:27:45.026Z",
   "cliVersion": "0.8.26",
   "score": 38,
   "tier": "Bad",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1738,
+    "componentCount": 1745,
     "tokenCount": 690,
-    "hardcodedValueCount": 562,
+    "hardcodedValueCount": 564,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 1,
@@ -41,7 +41,7 @@
     "colorContrastCount": 1,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 563,
+    "totalDriftCount": 565,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 8,
     "vendoredDriftCount": 0,
-    "notedCount": 56,
+    "notedCount": 55,
     "topHardcodedColor": {
       "value": "#fff",
       "count": 8
@@ -66,7 +66,7 @@
     "detectedFrameworkNames": []
   },
   "suggestions": [
-    "562 hardcoded values to extract. Focus on frontend/src/editor/core/components/filesPage/FileGrid.tsx (8 issues)",
+    "564 hardcoded values to extract. Focus on frontend/src/editor/core/components/filesPage/FileGrid.tsx (8 issues)",
     "1 color contrast issue — fix immediately",
     "57 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
   ],
@@ -74,7 +74,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 558 of the 562 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 560 of the 564 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -83,10 +83,10 @@
     }
   ],
   "noted": {
-    "count": 56,
+    "count": 55,
     "byKind": {
       "optical-nudge": 52,
-      "explained": 3,
+      "explained": 2,
       "known-debt": 1
     },
     "samples": [
@@ -103,13 +103,6 @@
         "value": "color-mix(",
         "kind": "known-debt",
         "reason": "Bonus: temporarily override red/green to yellow during flash for clarity"
-      },
-      {
-        "file": "frontend/src/editor/core/ui/Avatar.css",
-        "line": 13,
-        "value": "1 + centred tracking keeps initials optically centred at small sizes. */",
-        "kind": "explained",
-        "reason": "line-height:1 + centred tracking keeps initials optically centred at small sizes."
       },
       {
         "file": "frontend/src/editor/core/components/tools/toolPicker/ToolSearch.tsx",
@@ -131,17 +124,24 @@
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "margin-right: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "app/core/src/main/resources/static/css/redact.css",
+        "line": 44,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "padding: 2px is a 2-3px optical adjustment"
       }
     ]
   },
   "driftSummary": {
-    "total": 563,
+    "total": 565,
     "critical": 1,
-    "warning": 248,
+    "warning": 250,
     "info": 314
   },
   "driftByType": {
-    "hardcoded-value": 562,
+    "hardcoded-value": 564,
     "color-contrast": 1
   },
   "topColors": [
@@ -185,7 +185,7 @@
     },
     {
       "value": "1rem",
-      "count": 279
+      "count": 280
     },
     {
       "value": "0.75rem",
@@ -343,5 +343,5 @@
       ]
     }
   ],
-  "scanSeconds": 40
+  "scanSeconds": 52
 }

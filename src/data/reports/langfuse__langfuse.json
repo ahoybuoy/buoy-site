@@ -3,14 +3,14 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source AI engineering platform: AI Gateway, agent observability, evals, and prompt/skill management, built on OpenTelemetry. One open platform for every AI call and every agent. Self-host or use Langfuse Cloud.",
-  "stars": 37595,
+  "stars": 37635,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "4a852259c30d72eb26179267c469cfa41a762072",
-  "generatedAt": "2026-11-18T16:12:45.102Z",
+  "commit": "41bb4d2195eb3e6f40a095b01b418df8f08a7498",
+  "generatedAt": "2026-11-19T16:19:53.523Z",
   "cliVersion": "0.8.26",
-  "score": 92,
+  "score": 94,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
@@ -26,12 +26,12 @@
       "max": 10
     },
     "criticalIssues": {
-      "score": 8,
+      "score": 10,
       "max": 10
     }
   },
   "metrics": {
-    "componentCount": 2602,
+    "componentCount": 2637,
     "tokenCount": 361,
     "hardcodedValueCount": 76,
     "unusedTokenCount": 0,
@@ -41,12 +41,12 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 77,
+    "totalDriftCount": 76,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
-    "deprecatedPatternCount": 1,
+    "deprecatedPatternCount": 0,
     "orphanedTokenCount": 0,
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
@@ -70,19 +70,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 76 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/SimpleMultiSectionViewer.tsx has the most (2)",
-    "1 deprecated pattern — migrate to current API"
+    "Nearly there — just 76 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/SimpleMultiSectionViewer.tsx has the most (2)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 6,
       "action": "Replace the hardcoded values in 70 of the 76 findings with tokens or scale steps"
-    },
-    {
-      "pillar": "criticalIssues",
-      "points": 2,
-      "action": "Migrate 1 deprecated pattern"
     }
   ],
   "noted": {
@@ -129,13 +123,12 @@
     ]
   },
   "driftSummary": {
-    "total": 77,
+    "total": 76,
     "critical": 0,
-    "warning": 5,
+    "warning": 4,
     "info": 72
   },
   "driftByType": {
-    "deprecated-pattern": 1,
     "hardcoded-value": 76
   },
   "topColors": [
@@ -306,5 +299,5 @@
       ]
     }
   ],
-  "scanSeconds": 76
+  "scanSeconds": 96
 }

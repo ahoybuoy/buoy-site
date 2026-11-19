@@ -3,12 +3,12 @@
   "owner": "posthog",
   "name": "posthog",
   "description": ":hedgehog: PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.",
-  "stars": 40908,
+  "stars": 40968,
   "homepage": "https://posthog.com",
   "language": "Python",
   "defaultBranch": "master",
-  "commit": "cfa69d4d903b0ac5f51e6be45d2cf6170d90048d",
-  "generatedAt": "2026-11-18T16:11:23.285Z",
+  "commit": "baa735e3e6177384cbb6ff5d3cb54495ef5e9011",
+  "generatedAt": "2026-11-19T16:18:14.444Z",
   "cliVersion": "0.8.26",
   "score": 79,
   "tier": "Good",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 5935,
+    "componentCount": 5973,
     "tokenCount": 684,
-    "hardcodedValueCount": 373,
+    "hardcodedValueCount": 374,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 2,
@@ -41,7 +41,7 @@
     "colorContrastCount": 2,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 381,
+    "totalDriftCount": 382,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 2,
     "vendoredDriftCount": 0,
-    "notedCount": 79,
+    "notedCount": 80,
     "topHardcodedColor": {
       "value": "#fff",
       "count": 8
@@ -62,7 +62,7 @@
       "path": "frontend/src/lib/KeaDevTools.tsx",
       "issueCount": 6
     },
-    "uniqueSpacingValues": 4,
+    "uniqueSpacingValues": 5,
     "detectedFrameworkNames": [
       "react",
       "tailwind",
@@ -71,7 +71,7 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 373 hardcoded values left to tokenize. frontend/src/lib/KeaDevTools.tsx has the most (6)",
+    "Nearly there — just 374 hardcoded values left to tokenize. frontend/src/lib/KeaDevTools.tsx has the most (6)",
     "2 color contrast issues — fix immediately",
     "4 deprecated patterns — migrate to current API"
   ],
@@ -79,7 +79,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 13,
-      "action": "Replace the hardcoded values in 359 of the 373 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 360 of the 374 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -88,10 +88,10 @@
     }
   ],
   "noted": {
-    "count": 78,
+    "count": 79,
     "byKind": {
       "optical-nudge": 67,
-      "explained": 11
+      "explained": 12
     },
     "samples": [
       {
@@ -110,7 +110,7 @@
       },
       {
         "file": "frontend/src/layout/today/TodayShell.scss",
-        "line": 246,
+        "line": 252,
         "value": "1rem",
         "kind": "explained",
         "reason": "Inputs are 16px on a phone, because iOS Safari zooms the page when an input under 16px gets focus. `data-compact` is fo…"
@@ -141,8 +141,8 @@
   "driftSummary": {
     "total": 373,
     "critical": 0,
-    "warning": 258,
-    "info": 115
+    "warning": 259,
+    "info": 114
   },
   "driftByType": {
     "hardcoded-value": 368,
@@ -202,11 +202,11 @@
     },
     {
       "value": "1rem",
-      "count": 91
+      "count": 93
     },
     {
       "value": "8px",
-      "count": 47
+      "count": 46
     },
     {
       "value": "4px",
@@ -228,7 +228,7 @@
     },
     {
       "file": "frontend/src/scenes/project-homepage/today/Today.scss",
-      "count": 88
+      "count": 93
     },
     {
       "file": "frontend/src/lib/components/DotMatrix/DotMatrix.scss",
@@ -252,6 +252,21 @@
     }
   ],
   "samples": [
+    {
+      "component": "GlobalShortcuts",
+      "location": "frontend/src/layout/GlobalShortcuts.tsx:26",
+      "entries": [
+        "backgroundColor: rgba(255,255,255,0.15) (line 186)",
+        "color: #5dde5d (line 202)"
+      ]
+    },
+    {
+      "component": "GlobalShortcuts",
+      "location": "frontend/src/layout/GlobalShortcuts.tsx:26",
+      "entries": [
+        "fontSize: 0.8125rem (line 203)"
+      ]
+    },
     {
       "component": "KeyAndProps",
       "location": "frontend/src/lib/KeaDevTools.tsx:470",
@@ -328,21 +343,7 @@
       "entries": [
         "fontSize: 1.2rem (line 273)"
       ]
-    },
-    {
-      "component": "ChoosePathStep",
-      "location": "frontend/src/scenes/onboarding/productSelection/ProductSelection.tsx:34",
-      "entries": [
-        "color: rgb(100, 116, 139) (line 77)"
-      ]
-    },
-    {
-      "component": "EmbedNodeView",
-      "location": "frontend/src/scenes/product-tours/editor/EmbedExtension.tsx:58",
-      "entries": [
-        "backgroundColor: #000 (line 74)"
-      ]
     }
   ],
-  "scanSeconds": 232
+  "scanSeconds": 262
 }

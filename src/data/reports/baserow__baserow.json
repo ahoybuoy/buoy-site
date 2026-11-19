@@ -3,12 +3,12 @@
   "owner": "baserow",
   "name": "baserow",
   "description": "Build databases, automations, apps & agents with AI — no code.  Open source platform available on cloud and self-hosted. GDPR, HIPAA, SOC 2 compliant. Best Airtable alternative.",
-  "stars": 6359,
+  "stars": 6369,
   "homepage": "https://baserow.io",
   "language": "Python",
   "defaultBranch": "develop",
-  "commit": "0a1e6ad46b99dab77476e38ef53f19def900fc48",
-  "generatedAt": "2026-11-18T16:20:30.536Z",
+  "commit": "f39b526db697bbcba9c6e5883de342bafd8436c6",
+  "generatedAt": "2026-11-19T16:29:39.662Z",
   "cliVersion": "0.8.26",
   "score": null,
   "tier": "N/A",
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 0,
     "tokenCount": 56,
-    "hardcodedValueCount": 389,
+    "hardcodedValueCount": 390,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 389,
+    "totalDriftCount": 390,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -120,13 +120,13 @@
     ]
   },
   "driftSummary": {
-    "total": 389,
+    "total": 390,
     "critical": 0,
     "warning": 138,
-    "info": 251
+    "info": 252
   },
   "driftByType": {
-    "hardcoded-value": 389
+    "hardcoded-value": 390
   },
   "topColors": [
     {
@@ -165,7 +165,7 @@
   "topSpacing": [
     {
       "value": "8px",
-      "count": 251
+      "count": 253
     },
     {
       "value": "12px",
@@ -199,11 +199,11 @@
   "worstFiles": [
     {
       "file": "web-frontend/modules/core/assets/scss/components/agent_application.scss",
-      "count": 145
+      "count": 146
     },
     {
       "file": "web-frontend/modules/core/assets/scss/components/views/form.scss",
-      "count": 88
+      "count": 89
     },
     {
       "file": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/assistant.scss",
@@ -222,12 +222,12 @@
       "count": 47
     },
     {
-      "file": "web-frontend/modules/core/assets/scss/components/dashboard.scss",
-      "count": 46
+      "file": "web-frontend/modules/core/assets/scss/components/ai_provider_admin.scss",
+      "count": 47
     },
     {
-      "file": "web-frontend/modules/core/assets/scss/components/workspace_search.scss",
-      "count": 45
+      "file": "web-frontend/modules/core/assets/scss/components/dashboard.scss",
+      "count": 46
     }
   ],
   "samples": [
@@ -336,5 +336,5 @@
       ]
     }
   ],
-  "scanSeconds": 25
+  "scanSeconds": 28
 }
