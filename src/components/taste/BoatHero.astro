@@ -155,6 +155,7 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
 <script>
   import { svgPathSurface, driveSvgSea, type Surface } from './waves/surface';
   import boatSrc from './boat/options/boat-52-editorial.svg?url';
+  import boatLightSrc from './boat/boat-52-light.svg?url';
   // The boat SVG: 64x64, hull bottom centre at (32, 54)
   const HULL_Y = 54 / 64;
   const HULL_BELOW = 1 - HULL_Y;
@@ -353,7 +354,8 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
     size();
     new ResizeObserver(size).observe(el);
     let lastX = NaN, vx = 0, strength = 0, burst = 0, wasActive = false, dir = 1, drawn = false, age = 0;
-    let bubbles: { x: number; y: number; r: number; w: number; pop: number }[] = [], bubbleT = 0;
+    let dimmed = false;
+    let bubbles: { x: number; y: number; r: number; w: number; pop: number }[] = [], bubbleT = 0, subPrevX = NaN;
     const hash = (i: number) => { const v = Math.sin(i * 127.1 + 311.7) * 43758.5453; return v - Math.floor(v); };
 
     function line(xa: number, xb: number, off: (d: number) => number, alpha: (d: number) => number, lw: number) {
@@ -392,12 +394,21 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
         const hullY = boat.offsetTop + boat.offsetHeight * HULL_Y;
         const surfY = surf.fn(x).y;
         const depth = held ? hullY - surfY : 0;
-        const under = depth > 1;
-        if (under) { strength = 0; burst = 0; }
+        const under = depth > draftOf(el) + 2; // deeper than it rides
+        // Held, falling or bobbing up (the physics owns the boat): no surface wake at all
+        if (!active) { strength = 0; burst = 0; }
         const k = under ? Math.min(0.6, depth / 200) : 0;
         // Dim and desaturate with depth and let the water show through a little (tints toward the sea)
-        boat.style.filter = k > 0.01 ? `brightness(${(1 - 0.3 * k).toFixed(3)}) saturate(${(1 - 0.6 * k).toFixed(3)})` : '';
-        boat.style.opacity = k > 0.01 ? (1 - 0.3 * k).toFixed(3) : '';
+        if (k > 0.01) {
+          boat.style.filter = `brightness(${(1 - 0.3 * k).toFixed(3)}) saturate(${(1 - 0.6 * k).toFixed(3)})`;
+          boat.style.opacity = (1 - 0.3 * k).toFixed(3);
+          dimmed = true;
+        } else if (dimmed) {
+          // The physics keeps an inline opacity of 1 while it owns the boat
+          boat.style.filter = '';
+          boat.style.opacity = '1';
+          dimmed = false;
+        }
         const s = Math.min(1.8, strength + burst * 0.9);
         ctx.setTransform(1, 0, 0, 1, 0, 0);
         if (drawn) ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -413,15 +424,7 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
               // Displacement: a gentle swell and two soft rings right above the boat
               const a = Math.min(2.6, 0.8 + depth * 0.015) * (1 - Math.min(0.6, depth / 400));
               const ph = age * 5;
-              ctx.globalAlpha = 0.35;
-              ctx.lineWidth = 1;
-              ctx.beginPath();
-              for (let px = x - 26, first = true; px <= x + 26; px += 2, first = false) {
-                const g = Math.exp(-(((px - x) / 12) ** 2));
-                const py = surf.fn(px).y - a * g * (0.6 + 0.4 * Math.sin(ph)) - 0.5;
-                first ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
-              }
-              ctx.stroke();
+              void a; void ph; // no surface line while under: it read as a wake
               for (const side of [-1, 1]) {
                 const rx = x + side * (10 + 8 * ((age * 0.9) % 1));
                 ctx.globalAlpha = 0.25 * (1 - ((age * 0.9) % 1));
@@ -452,6 +455,8 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
                   ctx.stroke();
                   continue;
                 }
+                // Rising bubbles move with the dragged boat, a column above it, never a trail
+                if (held && Number.isFinite(subPrevX) && Math.abs(x - subPrevX) < 60) b.x += x - subPrevX;
                 b.y -= (32 + b.r * 14) * dt;
                 b.w += dt * 7;
                 const bx = b.x + Math.sin(b.w) * 1.4;
@@ -465,6 +470,7 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
               }
             }
             bubbles = bubbles.filter((b) => b.pop < 0.25);
+            subPrevX = x;
             ctx.globalAlpha = 1;
           }
           if (under) return;
@@ -523,7 +529,6 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
     const sea = boat.offsetParent as HTMLElement | null;
     let following = false, offset = 0, offsetV = 0, tilt = 0, tiltV = 0, lastT = 0, visible = true, prevGoal = NaN;
     let landing: { tilt: number; vy: number } | null = null;
-    const debug: any[] = ((window as any).__boatTrace = []);
     new IntersectionObserver((e) => { visible = e.some((x) => x.isIntersecting); }).observe(hero);
 
     const wake = createWake(surf, boat);
@@ -581,7 +586,6 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
         tilt += tiltV * (dt / n);
       }
       boat.style.rotate = tilt.toFixed(2) + 'deg';
-      if (debug.length < 2000) debug.push({ t: Math.round(now), x: Math.round(x), hull: h - (target + offset) - HULL_BELOW * boat.offsetHeight, surface: s.y, draft: draftOf(surf.el), tilt, goal });
     };
     requestAnimationFrame(frame);
 
@@ -605,12 +609,19 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
     // The wave boat shows the SVG boat instead of the emoji
     if (waveBoat && !waveBoat.querySelector('img')) {
       const img = new Image(64, 64);
-      img.src = boatSrc;
       img.alt = '';
       img.decoding = 'sync';
       waveBoat.textContent = '';
       waveBoat.appendChild(img);
     }
+    // Light mode: the cream sail and hull become the dark brand blue; follow theme toggles
+    const boatImgs = () => hero.querySelectorAll<HTMLImageElement>('[data-wave-boat] img, [data-boat-src]');
+    const syncBoatTheme = () => {
+      const light = document.documentElement.classList.contains('light');
+      boatImgs().forEach((im) => { const want = light ? boatLightSrc : boatSrc; if (im.getAttribute('src') !== want) im.src = want; });
+    };
+    syncBoatTheme();
+    new MutationObserver(syncBoatTheme).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
     const follow = waveBoat ? followSurface(hero, waveBoat) : undefined;
 
     // No glyph on the page: just sail

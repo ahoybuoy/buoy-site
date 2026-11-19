@@ -70,6 +70,9 @@ Every style uses one mechanism, `params.ts`. Every style must support all four, 
   - `x` and `y` are in px within the root, at the hull on the water.
   - `info` is `{ kind: 'drop' | 'toss', strength }`. `strength` is 1 for now.
   - Keep it on the water: sample `buoySurface`. Keep it short (under about 1s). Draw nothing under reduced motion (BoatHero does not call it then).
+- **Submerged boat.** While the boat is held, or released, with its hull below the sampled surface, BoatHero turns the wake off. It draws a displacement ripple above the boat and bubbles that rise and pop at the surface, and it dims the boat with depth.
+  - **Custom version (optional):** set `root.buoySubmerged = (x, depth, { hullY, surfaceY }) => {}`. BoatHero calls it every frame while the boat is under, with `x` and `hullY` in root px and `depth` in px below the water. BoatHero then skips its own ripple and bubbles; the dimming stays.
+  - **Release under water:** the boat bobs up with a small overshoot and a splash, then resumes riding. The drag physics asks `window._buoySurfaceAt(x)`, which BoatHero provides from your sampler.
 - **Off** under reduced motion.
 
 ## The boat

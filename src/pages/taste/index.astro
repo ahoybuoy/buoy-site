@@ -1,0 +1,249 @@
+---
+// Viewer for the homepage variants, one per design harness.
+// The variant names are the toggles; the page under them swaps in place.
+import Layout from '../../layouts/Layout.astro'
+import BuoyLogo from '../../components/BuoyLogo.astro'
+
+// One line per skin, filled in as each one is checked.
+const darkNotes: Record<string, string> = {
+  'emil': 'Graphite with one white PR card that commits its own fix after the boat lands. Motion takes turns; everything below is still.',
+  'hallmark': 'Rim night theme: warm black, Switzer, square hairlines. Found values orange, fixes blue. No card grids; the boat is the only motion.',
+  'ui-ux-pro-max': 'Dark Swiss documentation page: slate, zero radius, mono headings, numbered sections each with its own composition.',
+  'ui-wiki': 'Warm graphite with cream text and hairlines, layered dark shadows, sub-300ms motion. Waves recoloured cream, all blue removed.',
+  'ui-skills': 'Warm stone greys, flat, no gradients or glow. Light GitHub-style plates on a dark desk; the boat is the only motion.',
+  'frontend-design': 'Petrol night ground, condensed Archivo, light printed review plate. Sea tinted teal. Orange only as the reviewer\'s mark.',
+  'huashu': 'Proofs on a light table: deep navy ground, white paper PR proof you can commit, orange underlines on drifted values. No card grids.',
+  'taste-skill': 'Graphite instead of navy, Geist 500, sharp windows, orange only on pill buttons. Sea tinted to graphite; sections parted by ground only.',
+  'feel-better': 'Brand navy ink, never black. Surfaces edged with a faint white ring, no glow, concentric radii, alternating ink bands.',
+  'impeccable': 'Ink board from the navy tokens, narrow heavy Archivo, paper review plate beside the headline. Drift types as a ruled table.',
+}
+
+const skinNotes: Record<string, string> = {
+  'ui-wiki': 'Warm neutral light page in variable Inter: layered shadows instead of borders, nested radii, sub-300ms motion.',
+  'emil': 'Quiet near-white with Inter 600 and ink buttons. Motion carries it: one headline wave, an underline wipe, a terminal that prints once.',
+  'impeccable': 'Standards manual: cool paper alternating with navy fields, narrow heavy Archivo, square 2px rules. Drifted values struck in orange.',
+  'huashu': 'Swiss Monochrome: light paper, 120px Geist headline, square hairline surfaces. An orange underline marks every drifted value.',
+  'taste-skill': 'Flat graphite with Geist 500 headings, pill buttons, square windows. The PR check is the one light band. Orange only on buttons.',
+  'hallmark': 'Rim theme: warm black, Switzer 500 headings, square hairline surfaces, no glow. Found values in orange, fixes in blue.',
+  'ui-ux-pro-max': 'Dark Swiss minimal from its database: zero radius, no shadows, 1px rules, JetBrains Mono headings, faint grid in the hero.',
+  'ui-skills': 'Light zinc greys with Tailwind defaults: Inter 600, small radii, no gradients, glow or motion. Orange only on buttons and underlines.',
+  'feel-better': 'Quiet light theme: shadows instead of borders, concentric radii, press feedback, staggered headline. Keeps Quicksand. Decorations hidden.',
+  'frontend-design': 'Cool fog ground, petrol ink code surfaces, condensed Archivo headline. Orange only as the reviewer\'s mark. Waves, boat and pattern hidden.',
+}
+
+const variants = [
+  { slug: 'current', src: '/', name: 'Current', by: 'Live homepage', note: 'The homepage as it is on main today, for comparison.' },
+  { slug: 'impeccable', name: 'Impeccable', by: 'Paul Bakaus', note: "Standards-manual plate: Card.tsx at display scale, each hardcoded value struck and ruled to its token. Light paper, navy fields, Archivo." },
+  { slug: 'taste-skill', name: 'taste-skill', by: 'Leonxlnx', note: "One section per screen. Graphite ground, Geist, terminal plus a looping result card in the hero, one light band for the PR review." },
+  { slug: 'frontend-design', name: 'frontend-design', by: 'Anthropic', note: "Very large condensed Archivo headline over a real review thread. Cool fog page, petrol code panels, drift types as a table." },
+  { slug: 'hallmark', name: 'Hallmark', by: 'Nutlope', note: "Its Rim theme: warm black, square hairline surfaces, no motion. Found value in orange, suggested token in blue." },
+  { slug: 'huashu', name: 'huashu-design', by: 'alchaincyf', note: "Proposed three directions and built Review sheet: Swiss 12-column grid, Schibsted Grotesk, a working PR review you can commit." },
+  { slug: 'ui-ux-pro-max', name: 'ui-ux-pro-max', by: 'nextlevelbuilder', note: "Picked from its database: developer tool, dark Swiss minimal, JetBrains Mono headings, square corners." },
+  { slug: 'emil', name: 'Emil Kowalski', by: 'emilkowalski/skills', note: "Quiet light page; the craft is in the motion. Hero demo commits a suggestion with origin-aware, interruptible transitions." },
+  { slug: 'feel-better', name: 'make-interfaces-feel-better', by: 'Jakub Krehel', note: "Craft details on a plain light layout: concentric radii, layered shadows, optical alignment, press states." },
+  { slug: 'ui-wiki', name: 'userinterface-wiki', by: 'Raphael Salaja', note: "Rule library applied to a light Inter page: button shadow anatomy, variable weights, tabular numbers, short eased motion." },
+  { slug: 'ui-skills', name: 'UI Skills', by: 'ibelick', note: "Deslop baseline: the existing navy look with gradients, glow, extra accents and animation removed." },
+  { slug: 'vercel-guidelines', name: 'Vercel guidelines', by: 'Vercel', note: "Audit only. The current homepage with about 70 accessibility, motion and form findings fixed." },
+].map((v) => ({
+  ...v,
+  src: v.src ?? `/taste/${v.slug}`,
+  // Same-layout mode: each harness restyles the current homepage's structure.
+  skin: v.slug === 'current' ? '/taste/skin/base' : v.slug === 'vercel-guidelines' ? '' : `/taste/skin/${v.slug}`,
+  dark: v.slug === 'current' ? '/' : v.slug === 'vercel-guidelines' ? '' : `/taste/dark/${v.slug}`,
+  darkNote: v.slug === 'current' ? 'The live homepage: dark, with the boat.' : (darkNotes[v.slug] ?? ''),
+  skinNote: v.slug === 'current' ? 'The current homepage rebuilt on the shared structure every skin restyles.' : (skinNotes[v.slug] ?? ''),
+}))
+---
+
+<Layout title="Homepage variants by design harness" noindex>
+  <div class="viewer">
+    <header class="bar">
+      <a href="/" class="logo" aria-label="Buoy home"><BuoyLogo size="1.25rem" /></a>
+      <div class="tabs" role="tablist" aria-label="Homepage variant">
+        {variants.map((v, i) => (
+          <button
+            role="tab"
+            type="button"
+            class="tab"
+            id={`tab-${v.slug}`}
+            aria-selected={i === 1 ? 'true' : 'false'}
+            aria-controls="frame"
+            tabindex={i === 1 ? 0 : -1}
+            data-src={v.src}
+            data-slug={v.slug}
+            data-by={v.by}
+            data-note={v.note}
+            data-skin={v.skin}
+            data-skin-note={v.skinNote}
+            data-dark={v.dark}
+            data-dark-note={v.darkNote}
+          >{v.name}</button>
+        ))}
+      </div>
+      <div class="sizes" role="group" aria-label="Layout">
+        <button type="button" class="mode" data-mode="new" aria-pressed="true">New layout</button>
+        <button type="button" class="mode" data-mode="same" aria-pressed="false">Same layout</button>
+        <button type="button" class="mode" data-mode="dark" aria-pressed="false">Dark + boat</button>
+      </div>
+      <div class="sizes" role="group" aria-label="Preview width">
+        <button type="button" class="size" data-w="" aria-pressed="true">Desktop</button>
+        <button type="button" class="size" data-w="390" aria-pressed="false">Phone</button>
+      </div>
+    </header>
+
+    <div class="meta">
+      <p class="meta-text"><span id="by"></span><span id="note"></span></p>
+      <a id="open" class="open" href="#" target="_blank" rel="noopener">Open full page</a>
+    </div>
+
+    <div class="stage">
+      <iframe id="frame" title="Homepage variant preview" role="tabpanel"></iframe>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .viewer {
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    height: 100dvh;
+    background: var(--color-navy-dark);
+    color: var(--color-light);
+  }
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 16px;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-navy-light) 60%, transparent);
+  }
+  .logo { flex: none; color: var(--color-light); }
+  .tabs {
+    display: flex;
+    gap: 4px;
+    flex: 1;
+    min-width: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab, .size, .mode {
+    flex: none;
+    height: 32px;
+    padding: 0 12px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--color-slate);
+    font: 500 13px/1 var(--font-body);
+    white-space: nowrap;
+    transition: background-color 120ms ease-out, color 120ms ease-out;
+  }
+  .tab:hover, .size:hover, .mode:hover { color: var(--color-light); background: color-mix(in srgb, var(--color-navy-light) 50%, transparent); }
+  .tab[aria-selected='true'], .size[aria-pressed='true'], .mode[aria-pressed='true'] {
+    color: var(--color-light);
+    background: var(--color-navy-light);
+  }
+  .tab[hidden] { display: none; }
+  .tab[aria-selected='true'] { box-shadow: inset 0 -2px 0 var(--color-buoy); }
+  .sizes { display: flex; gap: 4px; flex: none; }
+  .meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 40px;
+    padding: 8px 16px;
+    font-size: 13px;
+    color: var(--color-slate);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-navy-light) 60%, transparent);
+  }
+  .meta-text { margin: 0; min-width: 0; }
+  #by { color: var(--color-light); font-weight: 500; margin-right: 10px; }
+  .open { flex: none; color: var(--color-buoy); white-space: nowrap; }
+  .open:hover { text-decoration: underline; }
+  .stage {
+    min-height: 0;
+    display: flex;
+    justify-content: center;
+    background: color-mix(in srgb, var(--color-navy-dark) 70%, black);
+  }
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: white;
+  }
+  .stage.phone { padding: 16px 0; }
+  .stage.phone iframe { width: 390px; border-radius: 12px; }
+  @media (max-width: 720px) {
+    .sizes { display: none; }
+    .meta-text #note { display: none; }
+  }
+</style>
+
+<script>
+  const tabs = [...document.querySelectorAll<HTMLButtonElement>('.tab')]
+  const frame = document.getElementById('frame') as HTMLIFrameElement
+  const by = document.getElementById('by')!
+  const note = document.getElementById('note')!
+  const open = document.getElementById('open') as HTMLAnchorElement
+  const stage = document.querySelector('.stage')!
+
+  type Mode = 'new' | 'same' | 'dark'
+  let mode: Mode = location.hash.startsWith('#same-') ? 'same' : location.hash.startsWith('#dark-') ? 'dark' : 'new'
+  const slugOf = () => location.hash.replace(/^#((same|dark)-)?/, '')
+  const srcFor = (t: HTMLButtonElement) => mode === 'same' ? t.dataset.skin! : mode === 'dark' ? t.dataset.dark! : t.dataset.src!
+  const noteFor = (t: HTMLButtonElement) => mode === 'same' ? t.dataset.skinNote! : mode === 'dark' ? t.dataset.darkNote! : t.dataset.note!
+
+  function visibleTabs() { return tabs.filter((t) => !t.hidden) }
+
+  function select(tab: HTMLButtonElement, focus = false) {
+    tabs.forEach((t) => {
+      const on = t === tab
+      t.setAttribute('aria-selected', String(on))
+      t.tabIndex = on ? 0 : -1
+    })
+    const src = srcFor(tab)
+    frame.src = src
+    by.textContent = tab.dataset.by!
+    note.textContent = noteFor(tab)
+    open.href = src
+    history.replaceState(null, '', '#' + (mode === 'new' ? '' : mode + '-') + tab.dataset.slug)
+    tab.scrollIntoView({ block: 'nearest', inline: 'nearest' })
+    if (focus) tab.focus()
+  }
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => select(tab))
+    tab.addEventListener('keydown', (e) => {
+      const d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0
+      if (!d) return
+      e.preventDefault()
+      const vis = visibleTabs()
+      const i = vis.indexOf(tab)
+      select(vis[(i + d + vis.length) % vis.length], true)
+    })
+  })
+
+  const modeBtns = [...document.querySelectorAll<HTMLButtonElement>('.mode')]
+  function setMode(m: Mode) {
+    mode = m
+    modeBtns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.mode === m)))
+    tabs.forEach((t) => { t.hidden = m !== 'new' && !srcFor(t) })
+    const current = tabs.find((t) => t.getAttribute('aria-selected') === 'true')
+    select(current && !current.hidden ? current : visibleTabs()[1])
+  }
+  modeBtns.forEach((b) => b.addEventListener('click', () => setMode(b.dataset.mode as Mode)))
+
+  document.querySelectorAll<HTMLButtonElement>('.size').forEach((b) => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('.size').forEach((s) => s.setAttribute('aria-pressed', String(s === b)))
+      stage.classList.toggle('phone', b.dataset.w === '390')
+    })
+  })
+
+  const initial = tabs.find((t) => t.dataset.slug === slugOf()) ?? tabs[1]
+  tabs.forEach((t) => t.setAttribute('aria-selected', String(t === initial)))
+  setMode(mode)
+</script>

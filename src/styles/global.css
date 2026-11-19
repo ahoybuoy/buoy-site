@@ -296,14 +296,14 @@ html.light {
   --color-term: oklch(0.2 0.03 258);
   --color-field: #FFFFFF;
   --color-ink: #1A2744;
-  --color-body: #3A4763;
-  --color-muted: #5B6680;
+  --color-body: #27324D;
+  --color-muted: #47526B;
   --color-on-accent: #0f1829;
   --color-line: rgb(26 39 68 / 0.1);
   --color-line-strong: rgb(26 39 68 / 0.2);
   --color-ok: #047857;
   --color-crit: #C2261D;
-  --color-warn: #A15C00;
+  --color-warn: #8A4B00;
   --color-add-bg: rgb(16 185 129 / 0.14);
   --color-add-ink: #047857;
   --color-del-bg: rgb(239 68 68 / 0.12);
@@ -419,11 +419,11 @@ html.light .hero-scan-line a {
 /* Light mode: "design drift" highlight uses the darker brand step for text
    contrast; the underline wash stays on the brand accent. */
 html.light .hero-drift-highlight {
-  color: var(--color-buoy-dark);
+  color: var(--color-buoy);
 }
 
 html.light .hero-drift-highlight::after {
-  background: color-mix(in srgb, var(--color-buoy) 18%, transparent);
+  background: color-mix(in srgb, var(--color-buoy) 12%, transparent);
 }
 
 /* ----------------------------------------

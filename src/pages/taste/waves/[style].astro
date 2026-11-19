@@ -57,10 +57,10 @@ const APP_URL = 'https://github.com/marketplace/buoy-design'
               <div class="ui-panel-head">
                 <span class="ui-mono">src/components/Card.tsx</span>
               </div>
-              <div class="hp-diff ui-mono" role="img" aria-label="Diff of Card.tsx. Line 23 adds a hardcoded background color, #3b82f6.">
+              <div class="hp-diff ui-mono" role="img" aria-label="Card.tsx. Line 23 sets a hardcoded background color, #3b82f6.">
                 <div class="hp-line"><span class="hp-ln">21</span><span class="hp-sign"></span><span class="hp-code">{"const Card = ({ children }) => ("}</span></div>
                 <div class="hp-line"><span class="hp-ln">22</span><span class="hp-sign"></span><span class="hp-code">{"  <div style={{"}</span></div>
-                <div class="hp-line hp-add"><span class="hp-ln">23</span><span class="hp-sign">+</span><span class="hp-code">{'    background: "#3b82f6",'}</span></div>
+                <div class="hp-line hp-flag"><span class="hp-ln">23</span><span class="hp-sign"></span><span class="hp-code">{'    background: "#3b82f6",'}</span></div>
               </div>
               <div class="hp-comment-row">
                 <div class="hp-comment">
@@ -83,7 +83,7 @@ const APP_URL = 'https://github.com/marketplace/buoy-design'
                 </div>
               </div>
               <div class="hp-diff ui-mono" aria-hidden="true">
-                <div class="hp-line hp-add"><span class="hp-ln">24</span><span class="hp-sign">+</span><span class="hp-code">{'    padding: "24px",'}</span></div>
+                <div class="hp-line hp-flag"><span class="hp-ln">24</span><span class="hp-sign"></span><span class="hp-code">{'    padding: "24px",'}</span></div>
                 <div class="hp-line"><span class="hp-ln">25</span><span class="hp-sign"></span><span class="hp-code">{"  }}>"}</span></div>
               </div>
               <p class="hp-panel-foot">What a Buoy review comment looks like on a pull request.</p>
@@ -167,6 +167,8 @@ const APP_URL = 'https://github.com/marketplace/buoy-design'
   .hp-comment-body { margin: 0; padding: 8px 14px 14px; font-size: 14px; line-height: 1.55; color: var(--color-ink); }
   .hp-comment-body code { padding: 1px 4px; border-radius: 4px; font-size: 12.5px; white-space: nowrap; background: var(--color-sunken); }
   .hp-suggest { border-top: 1px solid var(--color-line); }
+  /* Flagged lines: hardcoded values Buoy catches (amber = warning; green stays for the fix). */
+  .hp-flag { background: color-mix(in oklab, var(--color-warn) 9%, transparent); box-shadow: inset 2px 0 0 color-mix(in oklab, var(--color-warn) 80%, transparent); }
   .hp-panel-foot { margin: 0; padding: 10px 14px; border-top: 1px solid var(--color-line); font-size: 12px; line-height: 1.4; color: var(--color-muted); }
   .hp-suggest-label { padding: 8px 14px; font-size: 12px; font-weight: 500; color: var(--color-body); border-bottom: 1px solid var(--color-line); }
   @media (max-width: 960px) {

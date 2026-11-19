@@ -14,13 +14,6 @@ import MeshHalftone from './MeshHalftone.astro'
 import Halftone from './Halftone.astro'
 import AsciiOcean from './AsciiOcean.astro'
 import AsciiTokens from './AsciiTokens.astro'
-import AsciiTokensV1 from './AsciiTokensV1.astro'
-import AsciiTokensV2 from './AsciiTokensV2.astro'
-import AsciiTokensV2a from './AsciiTokensV2a.astro'
-import AsciiTokensV2b from './AsciiTokensV2b.astro'
-import AsciiTokensV2c from './AsciiTokensV2c.astro'
-import AsciiTokensV3 from './AsciiTokensV3.astro'
-import AsciiTokensV3m from './AsciiTokensV3m.astro'
 import Oscilloscope from './Oscilloscope.astro'
 import ContourFlow from './ContourFlow.astro'
 
@@ -108,53 +101,11 @@ export const waveStyles: Record<string, WaveStyle> = {
     component: AsciiOcean,
     note: 'The sea as a grid of JetBrains Mono characters whose density follows the swell; the top glyph of each column sits at the exact surface.',
   },
-  'ascii-tokens-v1': {
-    name: 'ASCII tokens v1: original',
-    group: 'Digital',
-    component: AsciiTokensV1,
-    note: 'Frozen. Tokens drift along each row; the swell is per-character brightness, clipped at the surface line.',
-  },
-  'ascii-tokens-v2': {
-    name: 'ASCII tokens v2: whole letters',
-    group: 'Digital',
-    component: AsciiTokensV2,
-    note: 'Frozen. Whole letters fixed in the grid, switched on or off; bow wave, wake and an ASCII splash light them.',
-  },
-  'ascii-tokens-v2a': {
-    name: 'ASCII tokens v2a: organic splash',
-    group: 'Digital',
-    component: AsciiTokensV2a,
-    note: 'Frozen. v2 plus a seeded, downwind splash: varied droplet angles and speeds, apex and falling glyphs, no two neighbours alike.',
-  },
-  'ascii-tokens-v2b': {
-    name: 'ASCII tokens v2b: boat on letters',
-    group: 'Digital',
-    component: AsciiTokensV2b,
-    note: 'Frozen. v2a plus the boat riding the top of the lit letters (5-column blur, 120ms ease, 1px draft); wake letters only in the water.',
-  },
-  'ascii-tokens-v2c': {
-    name: 'ASCII tokens v2c: row glide',
-    group: 'Digital',
-    component: AsciiTokensV2c,
-    note: 'Frozen. v2b plus a critically damped glide when the edge changes rows, and a wider 7-column blur.',
-  },
-  'ascii-tokens-v3': {
-    name: 'ASCII tokens v3: edge-following',
-    group: 'Digital',
-    component: AsciiTokensV3,
-    note: 'Frozen. Trochoid swells, smaller rows, and the boat riding the top of the lit letters.',
-  },
-  'ascii-tokens-v3m': {
-    name: 'ASCII tokens v3m: compact, like v3 on phones',
-    group: 'Digital',
-    component: AsciiTokensV3m,
-    note: 'Frozen. v3 as it renders on phones, on desktop too: a compact band of small letters around the water line, no far-sea rows.',
-  },
   'ascii-tokens': {
-    name: 'ASCII tokens v4',
+    name: 'ASCII tokens',
     group: 'Digital',
     component: AsciiTokens,
-    note: 'The ASCII grid spelled out in real design tokens and values drifting along each row; the swell lives in per-character brightness.',
+    note: 'Whole letters of real design tokens draw the sea in three layers: back waves, a compact band the boat rides, and sparse front waves.',
   },
   oscilloscope: {
     name: 'Oscilloscope',

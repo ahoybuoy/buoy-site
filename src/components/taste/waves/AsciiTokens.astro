@@ -1,8 +1,10 @@
 ---
-// Digital: ASCII tokens. A fixed monospace grid where every row spells real design-system
-// tokens and values. Characters never move or crop: each is whole in its cell and is
-// either on or off (120ms fade). The swell is which letters are on; the boat's wake and
-// bow wave and the landing splash switch letters on around it.
+// Digital: ASCII tokens. A fixed monospace grid whose rows spell real design-system tokens;
+// whole letters switch on and off (120ms fade) to draw the sea in three layers: sparse back
+// waves toward the horizon, a compact main band on trochoid swells that the boat rides (the
+// sampler follows the top of the lit letters), and sparse front waves low in the sea. The
+// boat's bow wave, wake and an ASCII splash light letters around it. Phones raise the water
+// line so the band sits between the buttons and the PR card.
 ---
 
 <div class="wave-background ascii-tokens" data-ascii-tokens>
@@ -22,8 +24,16 @@
     --boat-hero-wake: transparent;
     position: absolute; inset: 0; overflow: hidden; z-index: 0;
   }
+  /* Light mode: the pale dark-mode inks vanish on white; use sea blues dark enough to read */
+  :global(html.light) .ascii-tokens {
+    --tok-ink: oklch(0.6 0.09 240);
+    --tok-bright: oklch(0.42 0.12 250);
+  }
   .dg-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
   .dg-surface { position: absolute; left: 0; right: 0; top: 60%; height: 0; pointer-events: none; }
+  /* Phones: the sea slot sits between the buttons and the PR card; raise the water so the
+     back rows start just under the buttons and the front rows end above the card */
+  @media (max-width: 767px) { .dg-surface { top: 37%; } }
 </style>
 
 <script>
@@ -46,7 +56,7 @@
     while (s.length < len) s += TOKENS[Math.floor(rnd() * TOKENS.length)] + '  '
     return s.slice(0, len)
   }
-  const SPRAY = ["'", '°', '*', ',', '.']
+  const SPRAY = ["'", '°', '*', ',', '.', 'o']
   const CHARS = Array.from(new Set((TOKENS.join(' ') + SPRAY.join('')).split('')))
   const IDX = new Map(CHARS.map((c, i) => [c, i]))
 
@@ -63,12 +73,16 @@
   const ripples: { x: number; y: number; t0: number }[] = []
   // Splash droplets (root.buoySplash): ballistic, drawn as spray glyphs snapped to the grid
   const drops: { x: number; y: number; vx: number; vy: number; t0: number }[] = []
+  // Submerged boat (root.buoySubmerged): last report, rising glyph bubbles, and when it ended
+  const sub = { x: 0, hullY: 0, surfaceY: 0, depth: 0, last: -1e9, lastBubble: 0 }
+  const bubbles: { x: number; y: number; vy: number; wob: number; t0: number }[] = []
+  let calmUntil = 0
   let boatPrevX = NaN, boatVX = 0
 
   function build(f: Frame) {
     const root = f.ctx.canvas.parentElement!
     const font = getComputedStyle(root).getPropertyValue('--tok-font').trim() || 'monospace'
-    const fs = f.mobile ? 10 : 11
+    const fs = 10
     f.ctx.font = `500 ${fs}px ${font}`
     // Snap the advance to device pixels so every glyph sits on the same sub-pixel phase
     cw = Math.round(f.ctx.measureText('M').width * f.dpr) / f.dpr
@@ -100,10 +114,10 @@
   // Swell for this style: two travelling trochoidal (Gerstner) waves heading right, with the
   // boat. Peaked crests, wide flat troughs, crests leaning slightly forward. 2-4 crests across
   // the desktop width, proportionally more on phones. Returns y offset (px, negative = up).
-  function swellLen(w: number) { return Math.max(150, Math.min(520, w / 3.1)) }
+  function swellLen(w: number) { return w < 768 ? w / 1.75 : w / 2.6 }
   function swell(x: number, t: number, w: number) {
     const L1 = swellLen(w), L2 = L1 * 0.43
-    const A = 40 * ampScale(w) * P.intensity * waveEnvelope(x, t, P.variation)
+    const A = (w < 768 ? 14 : 24) * P.intensity * waveEnvelope(x, t, P.variation)
     const waves = [[L1, A, 1], [L2, A * 0.22, 1.25]] as const
     const Q = 0.55 + 0.4 * P.chop
     const X = (x0: number) => {
@@ -177,6 +191,15 @@
     const dir = boatVX >= 0 ? 1 : -1
     while (ripples.length && now - ripples[0].t0 > 900) ripples.shift()
 
+    // Under water or held: no bow wave or wake until it has been riding again for a moment
+    const held = !!boat && boat.style.top !== ''
+    const under = now - sub.last < 150
+    if (under || held) calmUntil = now + 450
+    const quiet = now < calmUntil
+    if (under && now - sub.lastBubble > 110) {
+      sub.lastBubble = now
+      bubbles.push({ x: sub.x + (Math.random() * 2 - 1) * 10, y: sub.hullY - 6, vy: -(55 + Math.random() * 45), wob: Math.random() * 6, t0: now })
+    }
     const groups: number[][] = Array.from({ length: 2 * BUCKETS }, () => [])
     if (colSY.length !== g.cols) colSY = new Float32Array(g.cols)
     const lift = 0.5 * (P.intensity - 1) + 0.3 * P.variation
@@ -193,25 +216,40 @@
         const x = c * cw, xc = x + cw / 2
         const sy = colSY[c]
         const depth = yc - sy
-        let on = 0, tone = 0
+        let on = 0, tone = 0, front = 0
         if (depth > 0) {
           // Body: denser near the surface and on the swell's high water, thinning with depth
           // Bands parallel to the surface (depth is measured from it), drifting slowly down
           const n = 0.5 + 0.5 * Math.cos((2 * Math.PI * depth) / (ch * 3.2) - t * 1.4)
-          const deep = smooth(0, Math.max(120, (h - waterY) * (0.9 + 0.3 * lift)), depth)
+          const deep = smooth(0, f.mobile ? Math.max(120, (h - waterY) * (0.9 + 0.3 * lift)) : 120, depth)
           on = depth < ch ? 1 : n > 0.25 + 0.6 * deep - 0.15 * lift ? 1 : 0
           tone = depth < ch * 1.1 ? 1 : 0
+          {
+            // Calm band (desktop 5-6 rows, phones 4-5), ~5-6 visible rows: sparser and gone by 5 rows down
+            const NB = f.mobile ? 4 : 5
+            const dd = smooth(0, ch * NB, depth)
+            on = depth < ch ? 1 : depth < ch * NB && n > 0.45 + 0.45 * dd - 0.15 * lift && ((c * 5 + r * 3) % 4) !== 0 ? 1 : 0
+            // Front waves: a sparse near layer low in the sea on its own longer, quicker swell,
+            // a touch brighter than the back rows. Well below the hull, never part of the surface.
+            if (!on && depth > ch * (NB + (f.mobile ? 0.6 : 1.5))) {
+              const Lf = w / 1.9
+              const yf = waterY + ch * (f.mobile ? 5 : 6.2) - (f.mobile ? 6 : 12) * Math.cos((2 * Math.PI / Lf) * (xc - 70 * t) + 0.4) * P.intensity
+              const df = yc - yf
+              const nf = Math.cos((2 * Math.PI / (Lf * 0.6)) * (xc - 85 * t) + r * 1.3)
+              if (df > 0 && df < ch * 1.6 && nf > 0.55 - 0.1 * lift && ((c * 3 + r * 7) % 3) !== 0) { on = 1; front = 1 }
+            }
+          }
         } else {
           // Far sea: a few letters on the far crests only
           const p = smooth(g.top, waterY, yc)
           // Far sea: crest dashes on the same rhythm, shorter toward the horizon
-          const L = swellLen(w) * (0.45 + 0.55 * p)
+          const L = Math.max(150, Math.min(520, w / 3.1)) * (0.45 + 0.55 * p)   // v3's far-sea rhythm
           const n = Math.cos((2 * Math.PI / L) * (xc - 40 * t) + r * 1.9)
           on = p > 0.35 && n > 0.95 - 0.04 * lift - 0.05 * p ? 1 : 0
           if (on) tone = 0
         }
         // Bow wave and wake: letters switch on around the boat, trailing behind it
-        if (Number.isFinite(bx)) {
+        if (Number.isFinite(bx) && !quiet) {
           const dx = (xc - bx) * dir, dy = yc - by
           const bow = dx > -6 && dx < 26 && depth > 0 && depth < ch * 2.2
           const wake = dx < 0 && dx > -260 && Math.abs(dy) < ch * (0.6 + -dx / 160) && depth > 0
@@ -226,11 +264,19 @@
           const d = Math.abs(xc - rp.x)
           if (Math.abs(d - front) < cw * 2.5 && depth > 0 && depth < ch * 1.6) { on = 1; tone = 1 }
         }
+        // Displacement above a submerged boat: the top rows over it flicker on
+        let dim = 1
+        if (under) {
+          const ddx = Math.abs(xc - sub.x)
+          if (ddx < cw * 3.5 && depth > 0 && depth < ch * 1.3 && ((c + Math.floor(now / 90)) % 3) !== 0) { on = 1; tone = 1 }
+          // Seen through water: letters around the hull dim
+          dim = 0.3 + 0.7 * smooth(18, 70, Math.hypot(xc - sub.x, (yc - sub.hullY) * 1.3))
+        }
         const o = g.op[i] += (on - g.op[i]) * k
         if (o < 0.04) continue
         if (on) g.tone[i] = tone
         const toneNow = g.tone[i]
-        const a = toneNow ? o : o * (0.42 + 0.3 * (1 - smooth(0, h - waterY, depth)))
+        const a = dim * (toneNow ? o : depth <= 0 ? o * 0.72 : front ? o * 0.5 : o * (0.12 + 0.4 * (1 - smooth(ch, ch * (f.mobile ? 4 : 5), depth))))
         groups[toneNow * BUCKETS + Math.min(BUCKETS - 1, Math.floor(a * BUCKETS))].push(gi, x, y)
       }
     }
@@ -271,6 +317,19 @@
       const a = Math.max(0.2, 1 - age * 0.9)
       groups[BUCKETS + Math.min(BUCKETS - 1, Math.floor(a * BUCKETS))].push(glyph, c * cw, g.top + r * ch)
     }
+    // Bubbles: o / ° / . rising from the hull, popping at the surface
+    for (let j = bubbles.length - 1; j >= 0; j--) {
+      const bb = bubbles[j]
+      const age = (now - bb.t0) / 1000
+      const x = bb.x + Math.sin(age * 9 + bb.wob) * 3, y = bb.y + bb.vy * age
+      if (y < sub.surfaceY + 2 || age > 2.5) { bubbles.splice(j, 1); continue }
+      const c = Math.round(x / cw - 0.5), r = Math.round((y - g.top) / ch - 0.5)
+      if (c < 0 || r < 0 || c >= g.cols || r >= g.rows || occupied.has(r * g.cols + c)) continue
+      occupied.add(r * g.cols + c)
+      const left = y - sub.surfaceY
+      const gch = left < ch * 1.2 ? '°' : (j % 3 === 0 ? '.' : 'o')
+      groups[BUCKETS + BUCKETS - 2].push(IDX.get(gch)!, c * cw, g.top + r * ch)
+    }
     for (let q = 0; q < groups.length; q++) {
       const gr = groups[q]
       if (!gr.length) continue
@@ -283,6 +342,9 @@
 
   document.querySelectorAll<HTMLElement>('[data-ascii-tokens]').forEach((root) => {
     // Own splash (WAVES.md): spray glyphs arcing up and back, letters flicking on outward
+    ;(root as any).buoySubmerged = (x: number, depth: number, info: { hullY: number; surfaceY: number }) => {
+      sub.x = x; sub.depth = depth; sub.hullY = info.hullY; sub.surfaceY = info.surfaceY; sub.last = performance.now()
+    }
     ;(root as any).buoySplash = (x: number, y: number, info: { kind?: string; strength?: number } = {}) => {
       const k = Math.max(0.5, Math.min(2, info.strength ?? 1)) * (info.kind === 'toss' ? 0.8 : 1)
       const t0 = performance.now()
