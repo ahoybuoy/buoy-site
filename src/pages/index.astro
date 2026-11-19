@@ -130,16 +130,19 @@ const homeJsonLd = [
           </div>
         </div>
 
+        <!-- Phones: the sea band sits here, between the copy and the review card -->
+        <div data-boat-sea-slot aria-hidden="true"></div>
+
         <figure class="ui-figure ui-enter" style="animation-delay:1200ms">
           <div class="ui-tray">
             <div class="ui-panel">
               <div class="ui-panel-head">
                 <span class="ui-mono">src/components/Card.tsx</span>
               </div>
-              <div class="hp-diff ui-mono" role="img" aria-label="Diff of Card.tsx. Line 23 adds a hardcoded background color, #3b82f6.">
+              <div class="hp-diff ui-mono" role="img" aria-label="Card.tsx. Line 23 sets a hardcoded background color, #3b82f6.">
                 <div class="hp-line"><span class="hp-ln">21</span><span class="hp-sign"></span><span class="hp-code">{"const Card = ({ children }) => ("}</span></div>
                 <div class="hp-line"><span class="hp-ln">22</span><span class="hp-sign"></span><span class="hp-code">{"  <div style={{"}</span></div>
-                <div class="hp-line hp-add"><span class="hp-ln">23</span><span class="hp-sign">+</span><span class="hp-code">{'    background: "#3b82f6",'}</span></div>
+                <div class="hp-line hp-flag"><span class="hp-ln">23</span><span class="hp-sign"></span><span class="hp-code">{'    background: "#3b82f6",'}</span></div>
               </div>
               <div class="hp-comment-row">
                 <div class="hp-comment">
@@ -162,12 +165,12 @@ const homeJsonLd = [
                 </div>
               </div>
               <div class="hp-diff ui-mono" aria-hidden="true">
-                <div class="hp-line hp-add"><span class="hp-ln">24</span><span class="hp-sign">+</span><span class="hp-code">{'    padding: "24px",'}</span></div>
+                <div class="hp-line hp-flag"><span class="hp-ln">24</span><span class="hp-sign"></span><span class="hp-code">{'    padding: "24px",'}</span></div>
                 <div class="hp-line"><span class="hp-ln">25</span><span class="hp-sign"></span><span class="hp-code">{"  }}>"}</span></div>
               </div>
+              <p class="hp-panel-foot">What a Buoy review comment looks like on a pull request.</p>
             </div>
           </div>
-          <figcaption>What a Buoy review comment looks like on a pull request.</figcaption>
         </figure>
       </div>
     </BoatHero>
@@ -372,10 +375,10 @@ Found <span class="ui-t-warn">23</span> issues in 142 files
   /* ---------- Hero ---------- */
   .hp :global(.hp-hero) {
     --boat-hero-bg: var(--color-bg);
-    --boat-hero-sky: linear-gradient(180deg, oklch(0.175 0.028 258 / 0) 0%, oklch(0.19 0.035 255) 45%, oklch(0.16 0.03 255) 100%);
-    --boat-hero-wave-1: oklch(0.55 0.09 250 / 0.12);
-    --boat-hero-wave-2: oklch(0.6 0.08 245 / 0.1);
-    --boat-hero-wave-3: oklch(0.5 0.08 255 / 0.13);
+    --boat-hero-sky: linear-gradient(180deg, oklch(0.155 0.045 248 / 0) 0%, oklch(0.17 0.056 248) 45%, oklch(0.14 0.048 248) 100%);
+    --boat-hero-wave-1: oklch(0.55 0.09 248 / 0.12);
+    --boat-hero-wave-2: oklch(0.6 0.081 248 / 0.1);
+    --boat-hero-wave-3: oklch(0.5 0.081 248 / 0.13);
     --boat-hero-stars-opacity: 0.35;
   }
   :global(html.light) .hp :global(.hp-hero) {
@@ -431,6 +434,9 @@ Found <span class="ui-t-warn">23</span> issues in 142 files
   .hp-comment-body { margin: 0; padding: 8px 14px 14px; font-size: 14px; line-height: 1.55; color: var(--color-ink); }
   .hp-comment-body code { padding: 1px 4px; border-radius: 4px; font-size: 12.5px; white-space: nowrap; background: var(--color-sunken); }
   .hp-suggest { border-top: 1px solid var(--color-line); }
+  /* Flagged lines: hardcoded values Buoy catches (amber = warning; green stays for the fix). */
+  .hp-flag { background: color-mix(in oklab, var(--color-warn) 9%, transparent); box-shadow: inset 2px 0 0 color-mix(in oklab, var(--color-warn) 80%, transparent); }
+  .hp-panel-foot { margin: 0; padding: 10px 14px; border-top: 1px solid var(--color-line); font-size: 12px; line-height: 1.4; color: var(--color-muted); }
   .hp-suggest-label { padding: 8px 14px; font-size: 12px; font-weight: 500; color: var(--color-body); border-bottom: 1px solid var(--color-line); }
 
   /* ---------- Sections ---------- */

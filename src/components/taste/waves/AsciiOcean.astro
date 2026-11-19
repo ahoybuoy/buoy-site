@@ -1,0 +1,113 @@
+---
+// Digital: ASCII ocean. The sea as a grid of monospace characters whose density follows
+// the swell height: sparse dots toward the horizon, denser marks rolling through the body,
+// with the top glyph of each column set at the exact surface height the boat rides.
+---
+
+<div class="wave-background ascii-ocean" data-ascii-ocean>
+  <canvas class="dg-canvas"></canvas>
+  <div class="wave-container-1 dg-surface"></div>
+</div>
+
+<style>
+  .ascii-ocean {
+    --ascii-ink: color-mix(in oklab, var(--color-bg) 22%, oklch(0.84 0.06 228));
+    --ascii-font: var(--font-mono, 'JetBrains Mono', ui-monospace, monospace);
+    --boat-hero-sink: 0px;
+    --boat-hero-draft: 4px;
+    position: absolute; inset: 0; overflow: hidden; z-index: 0;
+  }
+  .dg-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .dg-surface { position: absolute; left: 0; right: 0; top: 60%; height: 0; pointer-events: none; }
+</style>
+
+<script>
+  import { mount, field, smooth, type Frame } from './digital/sea'
+
+  const RAMP = ['.', '·', '-', '~', '=', '≈']
+  const BUCKETS = 6
+  let atlas: HTMLCanvasElement | null = null
+  let cw = 8, ch = 15, fs = 12, gw = 0, gh = 0, font = 'monospace'
+
+  function setup(f: Frame) {
+    const root = f.ctx.canvas.parentElement!
+    font = getComputedStyle(root).getPropertyValue('--ascii-font').trim() || 'monospace'
+    fs = f.mobile ? 12 : 15
+    const m = f.ctx
+    m.font = `400 ${fs}px ${font}`
+    cw = Math.ceil(m.measureText('M').width * 1.15)
+    ch = Math.round(fs * 1.3)
+    // Glyph atlas: RAMP in ink, then the crest glyph, at device pixels
+    gw = cw * f.dpr; gh = ch * f.dpr
+    atlas = document.createElement('canvas')
+    atlas.width = gw * (RAMP.length + 1); atlas.height = gh
+    const a = atlas.getContext('2d')!
+    a.scale(f.dpr, f.dpr)
+    a.font = `400 ${fs}px ${font}`
+    a.textAlign = 'center'; a.textBaseline = 'middle'
+    RAMP.forEach((c, i) => { a.fillStyle = f.c.ink; a.fillText(c, i * cw + cw / 2, ch / 2) })
+    a.fillStyle = f.c.ink
+    a.fillText('≈', RAMP.length * cw + cw / 2, ch / 2)
+  }
+
+  function draw(f: Frame) {
+    if (!atlas) setup(f)
+    const { ctx, w, h, waterY, t, scale } = f
+    const amp = 24 * scale
+    const hz = waterY * (f.mobile ? 0.5 : 0.6)
+    const surf = (x: number) => waterY + field(x, 0, t, scale)
+    const cols = Math.ceil(w / cw) + 1
+    const groups: number[][] = Array.from({ length: (RAMP.length + 1) * BUCKETS }, () => [])
+    const put = (gi: number, alpha: number, x: number, y: number) => {
+      const b = Math.max(0, Math.min(BUCKETS - 1, Math.floor(alpha * BUCKETS)))
+      if (alpha < 0.04) return
+      groups[gi * BUCKETS + b].push(x, y)
+    }
+    const surfs = new Float32Array(cols)
+    for (let c = 0; c < cols; c++) surfs[c] = surf(c * cw + cw / 2)
+
+    for (let y = hz; y < h + ch; y += ch) {
+      for (let c = 0; c < cols; c++) {
+        const x = c * cw + cw / 2
+        const sy = surfs[c]
+        if (Math.abs(y - sy) < ch * 0.75) continue
+        if (y < sy) {
+          // Far sea: sparse and faint toward the horizon
+          const p = smooth(hz, waterY, y)
+          const n = 0.5 - field(x, (1 - p) * 2400, t, scale) / amp / 2
+          const v = n * (0.35 + 0.65 * p)
+          if (v < 0.3) continue
+          put(Math.min(3, Math.floor((v - 0.3) * 6)), 0.15 + 0.5 * p * v, x, y)
+        } else {
+          const depth = y - sy
+          const fall = 1 - smooth(0, Math.max(100, (h - waterY) * 0.95), depth)
+          const n = Math.max(0, Math.min(1, 0.5 - field(x * 2.4 + depth * 0.8, 30 + depth * 5, t * 1.4, scale) / amp / 2))
+          const v = n * n * (0.5 + 0.7 * fall) + 0.15 * (1 - smooth(0, ch * 3, depth))
+          if (v < 0.18) continue
+          put(Math.min(RAMP.length - 1, Math.floor(v * RAMP.length)), 0.25 + 0.65 * fall * (0.5 + 0.5 * n), x, y)
+        }
+      }
+    }
+    // Crest row: one glyph per column at the exact surface height, in the body tone (no emphasised line)
+    for (let c = 0; c < cols; c++) put(RAMP.length, 0.62, c * cw + cw / 2, surfs[c])
+
+    ctx.imageSmoothingEnabled = false
+    for (let gi = 0; gi < groups.length; gi++) {
+      const pts = groups[gi]
+      if (!pts.length) continue
+      const glyph = Math.floor(gi / BUCKETS), b = gi % BUCKETS
+      ctx.globalAlpha = (b + 0.5) / BUCKETS
+      for (let i = 0; i < pts.length; i += 2) {
+        ctx.drawImage(atlas!, glyph * gw, 0, gw, gh, Math.round((pts[i] - cw / 2) * f.dpr) / f.dpr, Math.round((pts[i + 1] - ch / 2) * f.dpr) / f.dpr, cw, ch)
+      }
+    }
+    ctx.globalAlpha = 1
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-ascii-ocean]').forEach((root) => mount(root, {
+    colors: { ink: ['--ascii-ink', '#a9c9e6'] },
+    setup: (f) => { atlas = null; if (document.fonts) document.fonts.ready.then(() => { atlas = null }) },
+    draw,
+    surface: (x, f, t) => f.waterY + field(x, 0, t, f.scale),
+  }))
+</script>

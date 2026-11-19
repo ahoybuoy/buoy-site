@@ -1,0 +1,155 @@
+---
+// Realistic: Glass water (contract: ./WAVES.md).
+// WebGL. Calm, glassy water seen close: long slow swells whose normals bend the
+// reflected sky gradient (fresnel: mirror-like toward the horizon, clear and dark
+// toward the viewer), with soft refracted light under the near swell the boat rides.
+---
+
+<div class="wave-background glass-water" data-glass-water>
+  <canvas class="glass-water__canvas"></canvas>
+  <div class="wave-container-1 glass-water__surface"></div>
+</div>
+
+<style>
+  .glass-water {
+    --glass-deep: color-mix(in oklab, var(--color-bg) 70%, oklch(0.08 0.03 240));
+    --glass-sky-low: color-mix(in oklab, var(--color-bg) 22%, oklch(0.68 0.08 222));
+    --glass-sky-high: color-mix(in oklab, var(--color-bg) 70%, oklch(0.28 0.06 250));
+    --glass-light: oklch(0.95 0.03 210);
+    --boat-hero-sink: 0px;
+    --boat-hero-draft: 3;
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+  }
+  .glass-water__canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .glass-water__surface { position: absolute; left: 0; right: 0; top: 60%; height: 0; pointer-events: none; }
+</style>
+
+<script>
+  import { mountSea, glQuad, colorReader, glSea, GLSL_HEIGHT, GLSL_COMMON, type Wave } from './realistic/kit'
+
+  const FRAG = GLSL_COMMON + GLSL_HEIGHT + /* glsl */ `
+uniform float u_hz;
+uniform vec3 c_deep, c_low, c_high, c_light;
+
+// Long swells on the sea plane; returns d(height)/d(z) and d/dx
+vec2 slope(vec2 q, float fade) {
+  vec2 d = vec2(0.0);
+  // (freq z, freq x, speed, amp)
+  vec4 W[4];
+  W[0] = vec4(5.0, 0.9, 0.8, 0.6);
+  W[1] = vec4(8.5, -1.7, 1.1, 0.3);
+  W[2] = vec4(14.0, 2.6, 1.15, 0.12 * fade);
+  W[3] = vec4(23.0, -4.1, 1.6, 0.05 * fade);
+  for (int i = 0; i < 4; i++) {
+    float c = cos(q.y * W[i].x + q.x * W[i].y + u_t * W[i].z);
+    d += W[i].w * c * vec2(W[i].y, W[i].x);
+  }
+  return d / 6.0;
+}
+
+vec3 sky(float e) {
+  e = clamp(e, 0.0, 1.0);
+  return mix(c_low, c_high, smoothstep(0.0, 0.85, e));
+}
+
+void main() {
+  vec2 p = cssPx();
+  float x = p.x, y = p.y;
+  float sy = u_water + seaH(x);
+
+  if (y < u_hz) {
+    // A soft band of sky light just above the horizon, fading into the page ground
+    float g = exp(-(u_hz - y) / 26.0);
+    gl_FragColor = vec4(c_low * g * 0.35, g * 0.35);
+    return;
+  }
+
+  float span = max(u_water - u_hz, 10.0);
+  float dd = max(y - u_hz, 0.6);
+  float z = span / dd;
+  vec2 q = vec2((x - u_res.x * 0.5) * z / 520.0, z);
+  // fewer fine ripples far away (they would alias) and on the near swell
+  float fade = smoothstep(9.0, 2.0, z);
+  vec2 s = slope(q, fade) * mix(1.0, 0.25, smoothstep(6.0, 20.0, z));
+
+  // View elevation of the reflected ray: grazing at the horizon, steeper toward us
+  float base = clamp(0.9 / (z + 0.6), 0.0, 1.0);
+  float e = base + s.y * 0.9 + s.x * 0.15;
+  float fres = 0.04 + 0.96 * pow(1.0 - base, 5.0);
+  fres = clamp(fres + 0.25 * smoothstep(1.4, 0.4, base), 0.0, 1.0);
+  vec3 refl = sky(e * 1.4);
+  // Seen through: dark body with light bent into soft bands
+  float bent = smoothstep(0.02, 0.12, s.y + 0.04) * (1.0 - fres);
+  vec3 body = c_deep + c_low * 0.32 * bent;
+  vec3 col = mix(body, refl, fres);
+  // Specular: a soft highlight on the swell faces turned up toward the sky
+  col += c_light * pow(clamp(1.0 - abs(e - 0.18) * 7.0, 0.0, 1.0), 3.0) * 0.34 * (1.0 - fade * 0.3);
+
+  // The near swell: clearer, deeper water with a glassy meniscus at the line
+  float below = smoothstep(sy - 0.75, sy + 0.75, y);
+  float dpt = max(y - sy, 0.0);
+  vec3 near = mix(col * 0.75 + c_deep * 0.25, c_deep, smoothstep(0.0, 160.0, dpt));
+  // light refracted through the swell, slowly moving
+  float ref = 0.5 + 0.5 * sin(x * 0.012 + seaH(x) * 0.25 + u_t * 0.35 + sin(x * 0.004 - u_t * 0.2) * 2.0);
+  near += c_low * 0.18 * ref * exp(-dpt / 40.0);
+  // Long refracted bands of sky light below the swell, bending with it
+  float bendY = dpt + seaH(x) * 1.6 + 14.0 * sin(x * 0.0035 + u_t * 0.25);
+  float bands = 0.5 + 0.5 * sin(bendY * 0.055 - u_t * 0.9 + sin(x * 0.006 - u_t * 0.3) * 1.5);
+  near += mix(c_low, c_light, 0.15) * 0.4 * pow(bands, 3.0) * exp(-dpt / 110.0);
+  col = mix(col, near, below);
+  float slp = seaH(x + 1.0) - seaH(x - 1.0);
+  col += c_light * exp(-pow((y - sy) / 0.85, 2.0)) * clamp(-slp, 0.0, 1.0) * 0.25;
+  col += c_low * below * exp(-dpt / 7.0) * 0.18;
+  // horizon haze line
+  col = mix(col, c_low * 0.8, exp(-(y - u_hz) / 3.0) * 0.6);
+  gl_FragColor = vec4(col, 1.0);
+}
+`
+
+  function init(root: HTMLElement) {
+    const canvas = root.querySelector('canvas')!
+    const q = glQuad(canvas, FRAG)
+    if (!q) return
+    const waves: Wave[] = [
+      { len: 1100, amp: 11, speed: 42, phase: 1.2 },
+      { len: 520, amp: 4.5, speed: 30, phase: 3.3 },
+      { len: 260, amp: 1.2, speed: 34, phase: 0.4 },
+      { len: 140, amp: 0.4, speed: 40, phase: 2.2 },
+    ]
+    let C: Record<string, number[]> = {}
+    mountSea(root, canvas, {
+      waves,
+      readColors: () => {
+        const r = colorReader(root)
+        C = {
+          c_deep: r.read('--glass-deep', '#040a14').rgb,
+          c_low: r.read('--glass-sky-low', '#4d7590').rgb,
+          c_high: r.read('--glass-sky-high', '#13203a').rgb,
+          c_light: r.read('--glass-light', '#eaf6ff').rgb,
+        }
+        r.done()
+      },
+      renderScale: 0.8,
+      setup: () => {},
+      draw: (t, s) => {
+        q.f1('u_t', t)
+        q.f2('u_res', s.w, s.h)
+        q.f1('u_dpr', s.dpr)
+        q.f1('u_water', s.waterY)
+        q.f1('u_hz', s.waterY - Math.min(150, (s.h - s.waterY) * 0.45))
+        glSea(q, waves, s)
+        for (const k in C) q.f3(k, C[k])
+        q.draw()
+      },
+    })
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-glass-water]').forEach((root) => {
+    if (root.dataset.init) return
+    root.dataset.init = '1'
+    init(root)
+  })
+</script>

@@ -1,0 +1,127 @@
+---
+// Experimental: Code sea. Rows of real design-system code drift in mono type; the
+// rows bend with the swell and the top row is the water line. Hardcoded values near
+// the boat resolve into tokens as it passes.
+---
+
+<div class="wave-background code-sea" data-code-sea>
+  <canvas class="xp-canvas"></canvas>
+  <div class="wave-container-1 xp-surface"></div>
+</div>
+
+<style>
+  .code-sea {
+    --cs-ink: oklch(0.72 0.05 235);
+    --cs-raw: oklch(0.62 0.03 240);
+    --cs-token: oklch(0.85 0.09 190);
+    --cs-flash: var(--color-buoy);
+    --boat-hero-sink: 0px;
+    --boat-hero-draft: 6px;
+    position: absolute; inset: 0; overflow: hidden; z-index: 0;
+  }
+  .xp-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .xp-surface { position: absolute; left: 0; right: 0; top: 56%; height: 0; pointer-events: none; }
+</style>
+
+<script>
+  import { run, swellAt, colorReader, rgb, type Swell } from './experimental/kit'
+
+  const WAVES: Swell[] = [[800, 13, 50, 1.1], [350, 5.5, 64, 3.0], [180, 2, 80, 0.2]]
+
+  // [hardcoded, token] pairs; plain tokens/syntax have no raw form
+  const PAIRS: [string, string][] = [
+    ['#3b82f6', 'var(--color-primary)'], ['16px', 'var(--spacing-4)'], ['#0f172a', 'var(--color-ink)'],
+    ['8px', 'var(--radius-md)'], ['rgba(0,0,0,.12)', 'var(--shadow-sm)'], ['14px', 'var(--text-sm)'],
+    ['#ef4444', 'var(--color-danger)'], ['24px', 'var(--spacing-6)'], ['600', 'var(--font-semibold)'],
+    ['#f8fafc', 'var(--color-surface)'], ['1.5', 'var(--leading-normal)'], ['4px', 'var(--spacing-1)'],
+    ['#10b981', 'var(--color-success)'], ['200ms', 'var(--duration-fast)'], ['32px', 'var(--spacing-8)'],
+  ]
+  const PLAIN = ['--spacing-4', 'padding:', 'color:', 'gap:', 'border-radius:', '}', '{', 'font-size:', '--color-primary',
+    'margin:', '.card', 'var(--color-bg)', ';', 'box-shadow:', 'line-height:', '--radius-lg', 'calc(', ')', 'theme.colors.blue[500]',
+    'tokens.space[2]', 'background:', '--font-mono', 'transition:', '.btn', 'z-index:', 'var(--z-modal)']
+
+  type Tok = { raw: string; tok: string; slot: number; fixed: number; plain: boolean }
+
+  function init(root: HTMLElement) {
+    const canvas = root.querySelector('canvas')!
+    const ctx = canvas.getContext('2d')!
+    const boatEl = () => root.parentElement?.querySelector<HTMLElement>('[data-wave-boat]')
+    let ink: number[] = [], raw: number[] = [], tokc: number[] = [], flash: number[] = []
+    let rows: { toks: Tok[]; width: number; speed: number; off: number }[] = []
+    let fs = 12, lh = 18, cw = 7.2
+    const font = () => `${fs}px ui-monospace, "SF Mono", Menlo, monospace`
+
+    function build(w: number, h: number, waterY: number) {
+      fs = w < 600 ? 10.5 : 12
+      lh = Math.round(fs * 1.55)
+      ctx.font = font()
+      cw = ctx.measureText('0').width
+      const n = Math.ceil((h - waterY) / lh) + 1
+      rows = []
+      for (let r = 0; r < n; r++) {
+        const toks: Tok[] = []
+        let width = 0
+        while (width < w + 600) {
+          const plain = Math.random() < 0.55
+          let rawS: string, tokS: string
+          if (plain) { rawS = tokS = PLAIN[(Math.random() * PLAIN.length) | 0] }
+          else { [rawS, tokS] = PAIRS[(Math.random() * PAIRS.length) | 0] }
+          const slot = (Math.max(rawS.length, tokS.length) + 2) * cw
+          toks.push({ raw: rawS, tok: tokS, slot, fixed: plain ? 1 : 0, plain })
+          width += slot
+        }
+        rows.push({ toks, width, speed: (22 + r * 2.5) * (r % 2 ? 1 : 0.8), off: Math.random() * width })
+      }
+    }
+
+    run(root, canvas, {
+      waves: WAVES,
+      colors() { const c = colorReader(root); ink = c('--cs-ink', '#8fa6c4'); raw = c('--cs-raw', '#7d8899'); tokc = c('--cs-token', '#7ee0d6'); flash = c('--cs-flash', '#ff4f00') },
+      resize(H) { build(H.w, H.h, H.waterY) },
+      draw(t, dt, H) {
+        const { w, h, waterY } = H
+        ctx.setTransform(H.dpr, 0, 0, H.dpr, 0, 0)
+        ctx.clearRect(0, 0, w, h)
+        ctx.font = font()
+        ctx.textBaseline = 'alphabetic'
+        const b = boatEl()
+        const br = b && b.offsetParent ? b.offsetLeft + b.offsetWidth / 2 : -9999
+        const span = h - waterY
+        rows.forEach((row, ri) => {
+          const depth = ri * lh
+          const att = Math.exp(-depth / (span * 0.8))
+          const fade = ri === 0 ? 1 : Math.max(0.12, 0.8 - ri * 0.06)
+          let x = -((row.off + row.speed * t) % row.width)
+          for (const tk of row.toks) {
+            if (x > w + 20) break
+            const cx = x + tk.slot / 2
+            // off the left edge it comes round again later as a raw value
+            if (x + tk.slot <= -20 && !tk.plain) tk.fixed = 0
+            if (x + tk.slot > -20) {
+              // resolve near the boat, top rows only, and keep it
+              if (!tk.plain && ri < 4 && dt > 0 && Math.abs(cx - br) < 70 - ri * 10) tk.fixed = Math.min(1, tk.fixed + dt * 1.6)
+              const f = tk.fixed
+              const y0 = waterY + depth + swellAt(WAVES, cx, t, w, H.p) * att
+              const slope = (swellAt(WAVES, cx + 2, t, w, H.p) - swellAt(WAVES, cx - 2, t, w, H.p)) / 4 * att
+              ctx.save()
+              ctx.translate(cx, y0 + (ri === 0 ? fs * 0.78 : fs * 0.78))
+              ctx.rotate(Math.atan(slope))
+              const draw = (s: string, c: number[], a: number) => { if (a > 0.01) { ctx.fillStyle = rgb(c, a); ctx.fillText(s, -s.length * cw / 2, 0) } }
+              if (tk.plain) draw(tk.raw, ink, fade * 0.75)
+              else if (f <= 0) draw(tk.raw, raw, fade * 0.6)
+              else {
+                draw(tk.raw, raw, fade * 0.6 * (1 - Math.min(1, f * 2)))
+                const fl = Math.max(0, 1 - Math.abs(f - 0.45) * 3)
+                const c = [0, 1, 2].map((i) => tokc[i] + (flash[i] - tokc[i]) * fl)
+                draw(tk.tok, c, fade * Math.min(1, f * 1.6))
+              }
+              ctx.restore()
+            }
+            x += tk.slot
+          }
+        })
+      },
+    })
+  }
+  document.querySelectorAll<HTMLElement>('[data-code-sea]').forEach((r) => { if (!r.dataset.init) { r.dataset.init = '1'; init(r) } })
+</script>

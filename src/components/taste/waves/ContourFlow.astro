@@ -1,0 +1,102 @@
+---
+// Digital: Contour flow. A live depth chart: marching-squares isolines of a moving
+// height field under the surface line, one stroke weight throughout. The surface is
+// implied where the contours begin (clip edge); the boat rides it.
+---
+
+<div class="wave-background contour-flow" data-contour-flow>
+  <canvas class="dg-canvas"></canvas>
+  <div class="wave-container-1 dg-surface"></div>
+</div>
+
+<style>
+  .contour-flow {
+    --contour-line: color-mix(in oklab, var(--color-bg) 20%, oklch(0.84 0.07 220));
+    --boat-hero-sink: 0px;
+    --boat-hero-draft: 3px;
+    position: absolute; inset: 0; overflow: hidden; z-index: 0;
+  }
+  .dg-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .dg-surface { position: absolute; left: 0; right: 0; top: 60%; height: 0; pointer-events: none; }
+</style>
+
+<script>
+  import { mount, field, type Frame } from './digital/sea'
+
+  let grid = new Float32Array(0)
+  function draw(f: Frame) {
+    const { ctx, w, h, waterY, t, scale } = f
+    const amp = 24 * scale
+    const G = f.mobile ? 8 : 11
+    const top = waterY - amp * 1.2
+    const cols = Math.ceil(w / G) + 2, rows = Math.ceil((h - top) / G) + 2
+    if (grid.length !== cols * rows) grid = new Float32Array(cols * rows)
+    const depthScale = Math.max(90, (h - waterY) * 0.55)
+    // Height field: bathymetry deepening away from the surface, warped by the moving swells
+    for (let r = 0; r < rows; r++) {
+      const y = top + r * G
+      for (let c = 0; c < cols; c++) {
+        const x = c * G
+        const sy = waterY + field(x, 0, t, scale)
+        const d = (y - sy) / depthScale
+        const yy = y - waterY
+        const warp = 0.55 * Math.sin(x / 170 - t * 0.55 + Math.sin(yy / 60 + t * 0.3)) * Math.cos(yy / 75 + t * 0.4)
+          + 0.35 * Math.sin((x + yy * 1.4) / 115 + t * 0.85)
+          + field(x * 0.8 + 300, 200 + yy * 3, t * 0.7, scale) / amp * 0.25
+        grid[r * cols + c] = d * 0.45 + 0.6 * warp * Math.min(1, Math.max(0, d * 2.5))
+      }
+    }
+    const STEP = f.mobile ? 0.14 : 0.11
+    ctx.lineWidth = 1
+    ctx.lineCap = 'round'
+    ctx.strokeStyle = f.c.line
+    // Clip below the surface so contours start under the line
+    const S = 4
+    ctx.save()
+    ctx.beginPath()
+    ctx.moveTo(-S, h)
+    for (let x = -S; x <= w + S; x += S) ctx.lineTo(x, waterY + field(x, 0, t, scale))
+    ctx.lineTo(w + S, h)
+    ctx.closePath()
+    ctx.clip()
+    const LEVELS = Math.ceil(1.9 / STEP)
+    for (let L = 1; L <= LEVELS; L++) {
+      const iso = L * STEP
+      ctx.globalAlpha = Math.max(0.14, 0.6 - L * 0.035)
+      ctx.beginPath()
+      for (let r = 0; r < rows - 1; r++) {
+        for (let c = 0; c < cols - 1; c++) {
+          const a = grid[r * cols + c], b = grid[r * cols + c + 1]
+          const d = grid[(r + 1) * cols + c], e = grid[(r + 1) * cols + c + 1]
+          const idx = (a > iso ? 8 : 0) | (b > iso ? 4 : 0) | (e > iso ? 2 : 0) | (d > iso ? 1 : 0)
+          if (idx === 0 || idx === 15) continue
+          const x0 = c * G, y0 = top + r * G
+          const T = () => [x0 + G * (iso - a) / (b - a), y0] as const
+          const R = () => [x0 + G, y0 + G * (iso - b) / (e - b)] as const
+          const B = () => [x0 + G * (iso - d) / (e - d), y0 + G] as const
+          const Lf = () => [x0, y0 + G * (iso - a) / (d - a)] as const
+          const seg = (p: readonly [number, number], q: readonly [number, number]) => { ctx.moveTo(p[0], p[1]); ctx.lineTo(q[0], q[1]) }
+          switch (idx) {
+            case 1: case 14: seg(Lf(), B()); break
+            case 2: case 13: seg(B(), R()); break
+            case 3: case 12: seg(Lf(), R()); break
+            case 4: case 11: seg(T(), R()); break
+            case 6: case 9: seg(T(), B()); break
+            case 7: case 8: seg(Lf(), T()); break
+            case 5: seg(Lf(), T()); seg(B(), R()); break
+            case 10: seg(T(), R()); seg(Lf(), B()); break
+          }
+        }
+      }
+      ctx.stroke()
+    }
+    ctx.restore()
+    ctx.globalAlpha = 1
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-contour-flow]').forEach((root) => mount(root, {
+    colors: { line: ['--contour-line', '#a2c8e4'] },
+    draw,
+    surface: (x, f, t) => f.waterY + field(x, 0, t, f.scale),
+  }))
+</script>

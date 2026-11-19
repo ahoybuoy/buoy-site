@@ -2,8 +2,10 @@
 // The inline sailboat that sits at the end of a hero sentence inside <BoatHero>.
 // BoatHero's script finds it, wiggles it free and drops it into the waves.
 // Same markup as the live homepage (hero-boat-inline / hero-boat-emoji).
+// The boat is the owner's pick, "52 · editorial" (64x64, hull bottom centre at 32,54).
+import boatSrc from './boat/options/boat-52-editorial.svg?url'
 ---
-<span class="hero-boat-inline" data-boat-glyph aria-hidden="true">&nbsp;<span class="hero-boat-emoji" data-boat-glyph-emoji>⛵</span></span>
+<span class="hero-boat-inline" data-boat-glyph aria-hidden="true">&nbsp;<span class="hero-boat-emoji" data-boat-glyph-emoji><img src={boatSrc} alt="" width="64" height="64" decoding="sync" data-boat-src /></span></span>
 
 <style>
   .hero-boat-inline {
@@ -16,8 +18,13 @@
 
   .hero-boat-emoji {
     display: inline-block;
-    font-size: 1.1em;
     cursor: default;
+  }
+  .hero-boat-emoji img {
+    display: inline-block;
+    width: 1.3em;
+    height: 1.3em;
+    vertical-align: -0.28em;
   }
 
   /* Reduced motion: no escape, the wave boat is shown directly (as live) */

@@ -1,0 +1,78 @@
+---
+// Digital: Oscilloscope. Stacked waveform traces like a scope or audio display, packed
+// toward the horizon; the front trace is the surface the boat rides, with a few dim
+// echoes below it. A barely-there phosphor bloom under each line.
+---
+
+<div class="wave-background oscilloscope-sea" data-oscilloscope-sea>
+  <canvas class="dg-canvas"></canvas>
+  <div class="wave-container-1 dg-surface"></div>
+</div>
+
+<style>
+  .oscilloscope-sea {
+    --scope-trace: color-mix(in oklab, var(--color-bg) 20%, oklch(0.86 0.07 210));
+    --boat-hero-sink: 0px;
+    --boat-hero-draft: 3px;
+    position: absolute; inset: 0; overflow: hidden; z-index: 0;
+  }
+  .dg-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .dg-surface { position: absolute; left: 0; right: 0; top: 60%; height: 0; pointer-events: none; }
+</style>
+
+<script>
+  import { mount, field, P, type Frame } from './digital/sea'
+
+  // Signal of trace i (0 = front): the swell plus a travelling carrier packet
+  function signal(x: number, i: number, t: number, scale: number) {
+    const gain = 1 / (1 + i * 0.16)
+    const sw = field(x + i * 41, i * 70, t, scale)
+    const pk = Math.exp(-Math.pow(((x * 0.0011 - t * 0.09 + i * 0.13) % 1.4 + 1.4) % 1.4 - 0.7, 2) * 40)
+    const carrier = Math.sin(x * 0.075 - t * 6.5 + i * 0.9) * 6 * scale * pk * P.intensity * (0.7 + 0.6 * P.chop)
+    return (sw + carrier) * gain
+  }
+
+  function draw(f: Frame) {
+    const { ctx, w, h, waterY, t, scale } = f
+    const hz = waterY * (f.mobile ? 0.5 : 0.6)
+    const N = f.mobile ? 9 : 14
+    const STEP = 2
+    const line = (base: number, i: number, k = 1) => {
+      ctx.beginPath()
+      for (let x = -STEP; x <= w + STEP; x += STEP) {
+        const y = base + signal(x, i, t, scale) * k
+        x === -STEP ? ctx.moveTo(x, y) : ctx.lineTo(x, y)
+      }
+    }
+    ctx.lineJoin = 'round'
+    // Back to front; spacing tightens toward the horizon
+    for (let i = N - 1; i >= 1; i--) {
+      const u = i / N
+      const base = waterY - (waterY - hz) * (1 - Math.pow(1 - u, 1.7))
+      const a = 0.12 + 0.5 * Math.pow(1 - u, 1.4)
+      line(base, i, 1 - u * 0.55)
+      ctx.strokeStyle = f.c.trace
+      ctx.globalAlpha = a * 0.12; ctx.lineWidth = 4; ctx.stroke()
+      ctx.globalAlpha = a; ctx.lineWidth = 1; ctx.stroke()
+    }
+    // Echoes under the front trace
+    const gap = Math.max(14, (h - waterY) / (f.mobile ? 5 : 6))
+    for (let e = 1; e <= 4; e++) {
+      line(waterY + e * gap, 0, 1 - e * 0.18)
+      ctx.strokeStyle = f.c.trace
+      ctx.globalAlpha = 0.28 / e; ctx.lineWidth = 1; ctx.stroke()
+    }
+    // Front trace: the surface, drawn like the others (a touch brighter as the nearest)
+    line(waterY, 0)
+    ctx.strokeStyle = f.c.trace
+    ctx.globalAlpha = 0.08; ctx.lineWidth = 4; ctx.stroke()
+    ctx.globalAlpha = 0.72; ctx.lineWidth = 1; ctx.stroke()
+    ctx.globalAlpha = 1
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-oscilloscope-sea]').forEach((root) => mount(root, {
+    colors: { trace: ['--scope-trace', '#9fd0e6'] },
+    draw,
+    surface: (x, f, t) => f.waterY + signal(x, 0, t, f.scale),
+  }))
+</script>
