@@ -1,11 +1,11 @@
 ---
 import FeatureLayout from '../../layouts/FeatureLayout.astro'
 import Terminal from '../../components/Terminal.astro'
-import FeatureCard from '../../components/FeatureCard.astro'
+import BuoyMark from '../../components/BuoyMark.astro'
 
 const terminalLines = [
   { text: '', delay: 600 },
-  { text: '<span class="text-buoy">⚓</span> Scanning for duplicate components...', type: 'output', delay: 800 },
+  { text: '<span class="text-slate">Scanning for duplicate components...</span>', type: 'output', delay: 800 },
   { text: '', delay: 1200 },
   { text: '<span class="text-warning">⚠</span> Found <span class="text-light">3</span> duplicate component patterns', type: 'warning', delay: 1400 },
   { text: '', delay: 1600 },
@@ -24,44 +24,22 @@ const terminalLines = [
 ]
 
 const duplicateTypes = [
-  {
-    title: 'Component Clones',
-    description: 'Multiple implementations of the same UI pattern (buttons, cards, modals)',
-    severity: 'critical'
-  },
-  {
-    title: 'Style Duplicates',
-    description: 'Same styles defined in multiple places instead of shared tokens',
-    severity: 'warning'
-  },
-  {
-    title: 'Utility Overlap',
-    description: 'Helper functions that do the same thing with different names',
-    severity: 'info'
-  },
-  {
-    title: 'Pattern Similarity',
-    description: 'Components that could be consolidated with props/variants',
-    severity: 'info'
-  },
+  { title: 'Component Clones', description: 'Multiple implementations of the same UI pattern (buttons, cards, modals)', severity: 'critical' },
+  { title: 'Style Duplicates', description: 'Same styles defined in multiple places instead of shared tokens', severity: 'warning' },
+  { title: 'Utility Overlap', description: 'Helper functions that do the same thing with different names', severity: 'info' },
+  { title: 'Pattern Similarity', description: 'Components that could be consolidated with props/variants', severity: 'info' },
+]
+
+const how = [
+  { title: 'AST Analysis', text: 'Parses component structure, not just text matching' },
+  { title: 'Pattern Matching', text: 'Identifies similar prop signatures and render patterns' },
+  { title: 'Similarity Score', text: 'Ranks duplicates by how similar they are (80%+ = likely duplicate)' },
 ]
 
 const relatedFeatures = [
-  {
-    title: 'Drift Detection',
-    description: 'Find all design inconsistencies',
-    href: '/features/drift-detection'
-  },
-  {
-    title: 'Naming Consistency',
-    description: 'Enforce naming conventions',
-    href: '/features/naming-consistency'
-  },
-  {
-    title: 'Coverage',
-    description: 'Measure component adoption',
-    href: '/features/coverage'
-  },
+  { title: 'Drift Detection', description: 'Find all design inconsistencies', href: '/features/drift-detection' },
+  { title: 'Naming Consistency', description: 'Enforce naming conventions', href: '/features/naming-consistency' },
+  { title: 'Coverage', description: 'Measure component adoption', href: '/features/coverage' },
 ]
 ---
 
@@ -71,137 +49,94 @@ const relatedFeatures = [
   keywords="detect duplicate components, find redundant code, component consolidation"
   heroTitle="Find duplicate components"
   heroDescription="Three different button implementations? Two modal components? Buoy finds them all."
+  exampleCaption="A new button that already exists, caught at the PR."
+  related={relatedFeatures}
+  pattern="wake"
+  ctaPattern="field"
 >
-  <!-- Problem Statement -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">The Duplication Problem</h2>
+  <div slot="example" class="ui-tray">
+    <div class="ui-panel">
+      <div class="ui-panel-head"><span class="ui-mono">src/features/auth/LoginButton.tsx</span></div>
+      <div class="fx-diff" role="img" aria-label="Diff adding a new LoginButton component that duplicates Button.">
+        <div class="fx-line fx-add"><span class="fx-ln">1</span><span class="fx-sign">+</span><span class="fx-code">{"export function LoginButton({ children }) {"}</span></div>
+        <div class="fx-line fx-add"><span class="fx-ln">2</span><span class="fx-sign">+</span><span class="fx-code">{"  return <button className=\"btn btn-primary\">"}</span></div>
+      </div>
+      <div class="fx-comment-row">
+        <div class="fx-comment">
+          <div class="fx-comment-head">
+            <span class="fx-avatar"><BuoyMark size={16} /></span>
+            <span class="fx-author">buoy-design</span><span class="fx-tag">bot</span>
+            <span class="fx-meta">commented on line <span class="ui-tnum">1</span></span>
+          </div>
+          <p class="fx-body">Duplicate component. <code class="fx-was">LoginButton</code> matches <code>src/components/Button.tsx</code>. Use <code class="fx-fix">{'<Button>'}</code> instead.</p>
+          <div class="fx-suggest">
+            <div class="fx-suggest-label">Suggested change</div>
+            <div class="fx-diff">
+              <div class="fx-line fx-del"><span class="fx-ln">12</span><span class="fx-sign">-</span><span class="fx-code">{"<LoginButton>Sign in</LoginButton>"}</span></div>
+              <div class="fx-line fx-add"><span class="fx-ln">12</span><span class="fx-sign">+</span><span class="fx-code">{"<Button variant=\"primary\">Sign in</Button>"}</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-navy/50 border border-critical/30 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-4">How it happens</h3>
-          <ul class="space-y-2 text-sm text-slate">
-            <li class="flex items-start gap-2">
-              <span class="text-critical">•</span>
-              <span>New dev doesn't know Button exists, creates LoginButton</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-critical">•</span>
-              <span>Feature team copies component instead of importing</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-critical">•</span>
-              <span>Legacy code kept "just in case" alongside new version</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-critical">•</span>
-              <span>AI generates new component instead of using existing</span>
-            </li>
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>The duplication problem</h2></div>
+      <div class="ui-cols fx-vs">
+        <div class="ui-col">
+          <h3>How it happens</h3>
+          <ul class="ui-ruled">
+            <li>New dev doesn't know Button exists, creates LoginButton</li>
+            <li>Feature team copies component instead of importing</li>
+            <li>Legacy code kept "just in case" alongside new version</li>
+            <li>AI generates new component instead of using existing</li>
           </ul>
         </div>
-
-        <div class="bg-navy/50 border border-success/30 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-4">Why it matters</h3>
-          <ul class="space-y-2 text-sm text-slate">
-            <li class="flex items-start gap-2">
-              <span class="text-success">✓</span>
-              <span>Larger bundle size = slower load times</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-success">✓</span>
-              <span>More components = more maintenance</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-success">✓</span>
-              <span>Inconsistent behavior confuses users</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-success">✓</span>
-              <span>Design changes need N updates instead of 1</span>
-            </li>
+        <div class="ui-col">
+          <h3>Why it matters</h3>
+          <ul class="ui-ruled">
+            <li>Larger bundle size = slower load times</li>
+            <li>More components = more maintenance</li>
+            <li>Inconsistent behavior confuses users</li>
+            <li>Design changes need N updates instead of 1</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Terminal Demo -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">See it in action</h2>
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap ui-split">
+      <div class="ui-head"><h2>See it in action</h2><p>Every clone, grouped with the files that implement it.</p></div>
       <Terminal command="buoy drift check" lines={terminalLines} />
     </div>
   </section>
 
-  <!-- What We Detect -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">What We Detect</h2>
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>What we detect</h2></div>
+      <table class="ui-table ui-table--stack fx-block">
+        <caption class="ui-sr">Duplicate types and severity</caption>
+        <thead><tr><th scope="col">Type</th><th scope="col">What it catches</th><th scope="col" class="ui-end">Severity</th></tr></thead>
+        <tbody>
+          {duplicateTypes.map((t) => (
+            <tr><th scope="row">{t.title}</th><td>{t.description}</td><td class="ui-end"><span class={`ui-sev ui-sev-${t.severity}`}>{t.severity[0].toUpperCase() + t.severity.slice(1)}</span></td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
 
-      <div class="grid sm:grid-cols-2 gap-6">
-        {duplicateTypes.map((type) => (
-          <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
-            <div class="flex items-center gap-2 mb-2">
-              <span class={`w-2 h-2 rounded-full ${
-                type.severity === 'critical' ? 'bg-critical' :
-                type.severity === 'warning' ? 'bg-warning' : 'bg-info'
-              }`}></span>
-              <h3 class="font-semibold text-light">{type.title}</h3>
-            </div>
-            <p class="text-sm text-slate">{type.description}</p>
-          </div>
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>How detection works</h2></div>
+      <ol class="ui-steps fx-block">
+        {how.map((s, i) => (
+          <li><span class="ui-step-n" aria-hidden="true">{i + 1}</span><div><h3>{s.title}</h3><p>{s.text}</p></div></li>
         ))}
-      </div>
+      </ol>
     </div>
   </section>
-
-  <!-- How Detection Works -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">How Detection Works</h2>
-
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="text-center">
-          <div class="w-12 h-12 rounded-full bg-buoy/20 border-2 border-buoy flex items-center justify-center mx-auto mb-4 text-buoy font-bold">
-            1
-          </div>
-          <h3 class="font-semibold text-light mb-2">AST Analysis</h3>
-          <p class="text-sm text-slate">
-            Parses component structure, not just text matching
-          </p>
-        </div>
-
-        <div class="text-center">
-          <div class="w-12 h-12 rounded-full bg-buoy/20 border-2 border-buoy flex items-center justify-center mx-auto mb-4 text-buoy font-bold">
-            2
-          </div>
-          <h3 class="font-semibold text-light mb-2">Pattern Matching</h3>
-          <p class="text-sm text-slate">
-            Identifies similar prop signatures and render patterns
-          </p>
-        </div>
-
-        <div class="text-center">
-          <div class="w-12 h-12 rounded-full bg-buoy/20 border-2 border-buoy flex items-center justify-center mx-auto mb-4 text-buoy font-bold">
-            3
-          </div>
-          <h3 class="font-semibold text-light mb-2">Similarity Score</h3>
-          <p class="text-sm text-slate">
-            Ranks duplicates by how similar they are (80%+ = likely duplicate)
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Related Features -->
-  <div slot="related" class="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-    {relatedFeatures.map((feature) => (
-      <FeatureCard
-        title={feature.title}
-        description={feature.description}
-        href={feature.href}
-      />
-    ))}
-  </div>
 </FeatureLayout>

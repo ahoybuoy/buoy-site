@@ -10,20 +10,23 @@ import Footer from '../../components/Footer.astro'
 
 <Layout title="Compare two sites as ridgelines | Buoy" description="Two websites side by side as ridgelines: rhythm, density, and how many button looks each one uses.">
   <Nav />
-  <section class="pt-28 pb-20 bg-navy-dark">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <a href="/ridgeline" class="text-sm text-slate hover:text-light">← All ridgelines</a>
-      <h1 class="text-3xl sm:text-4xl font-bold text-light mt-3">Compare two sites</h1>
-      <form id="cmp" class="flex flex-col sm:flex-row gap-3 mt-6">
-        <label for="cmp-a" class="sr-only">First site</label>
-        <input id="cmp-a" name="a" placeholder="stripe.com" autocomplete="off" class="flex-1 rounded-lg bg-navy-dark border border-navy-light/40 px-4 py-3 text-light placeholder:text-slate/60 focus:outline-none focus:border-buoy" />
-        <label for="cmp-b" class="sr-only">Second site</label>
-        <input id="cmp-b" name="b" placeholder="linear.app" autocomplete="off" class="flex-1 rounded-lg bg-navy-dark border border-navy-light/40 px-4 py-3 text-light placeholder:text-slate/60 focus:outline-none focus:border-buoy" />
-        <button class="rounded-lg bg-buoy px-6 py-3 font-semibold text-navy-dark hover:opacity-90">Compare</button>
+  <main class="ui-nav-offset">
+  <section class="ui-section ui-section--first ui-section--last !pt-12">
+    <div class="ui-wrap">
+      <a href="/ridgeline" class="ui-rowlink text-sm">← All ridgelines</a>
+      <h1 class="mt-5 text-[length:var(--text-h1)] leading-[1.05]">Compare two sites</h1>
+      <form id="cmp" class="ui-scan mt-8 max-w-[760px]">
+        <label for="cmp-a" class="ui-sr">First site</label>
+        <input id="cmp-a" name="a" placeholder="stripe.com" autocomplete="off" />
+        <span aria-hidden="true" class="hidden sm:block self-center text-[var(--color-muted)] text-sm px-1">vs</span>
+        <label for="cmp-b" class="ui-sr">Second site</label>
+        <input id="cmp-b" name="b" placeholder="linear.app" autocomplete="off" />
+        <button class="ui-btn ui-btn--primary">Compare</button>
       </form>
       <div id="cmp-out" class="grid gap-4 mt-8" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))"></div>
     </div>
   </section>
+  </main>
   <Footer />
 </Layout>
 
@@ -40,10 +43,9 @@ import Footer from '../../components/Footer.astro'
 
   async function card(site: string): Promise<HTMLElement> {
     const box = document.createElement('figure')
-    box.className = 'rounded-2xl border border-navy-light/30 p-3 m-0'
-    box.style.background = '#050506'
+    box.className = 'rounded-[var(--radius-card)] bg-[var(--color-term)] shadow-[var(--ring-term)] p-3 m-0'
     const cap = document.createElement('figcaption')
-    cap.className = 'flex justify-between gap-2 text-sm text-slate pt-3'
+    cap.className = 'flex justify-between gap-2 text-sm text-[var(--color-muted)] pt-3 ui-tnum'
     try {
       const res = await fetch(`${API}/public/ridgeline?url=${encodeURIComponent(site)}`)
       if (!res.ok) throw new Error('none')
@@ -56,7 +58,7 @@ import Footer from '../../components/Footer.astro'
       draw(cv, d, prepare(d, 80), { components: true })
       const link = document.createElement('a')
       link.href = `/ridgeline/${d.host}`
-      link.className = 'text-light hover:underline'
+      link.className = 'ui-rowlink'
       link.textContent = d.host
       const n = document.createElement('span')
       n.textContent = `${d.looks} button looks · ${d.rare} used once`
@@ -64,11 +66,11 @@ import Footer from '../../components/Footer.astro'
       box.append(cv, cap)
     } catch {
       const p = document.createElement('p')
-      p.className = 'text-slate text-sm p-6'
+      p.className = 'text-sm text-[var(--color-muted)] p-6'
       p.append(`${site} has no ridgeline yet. `)
       const make = document.createElement('a')
       make.href = `/ridgeline/${site.replace(/^https?:\/\//, '').replace(/\/$/, '')}`
-      make.className = 'text-buoy hover:underline'
+      make.className = 'ui-link'
       make.textContent = 'Make one'
       p.append(make)
       box.append(p)

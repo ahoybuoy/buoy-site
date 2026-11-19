@@ -1,12 +1,11 @@
 ---
 import CompareLayout from '../../layouts/CompareLayout.astro'
-import Button from '../../components/Button.astro'
 
 const comparison = [
   { aspect: 'Focus', coderabbit: 'Code quality, bugs, security', buoy: 'Design system compliance' },
-  { aspect: 'Knows', coderabbit: 'General best practices', buoy: 'Your specific tokens & patterns' },
+  { aspect: 'Knows', coderabbit: 'General best practices', buoy: 'Your specific tokens and patterns' },
   { aspect: 'Catches', coderabbit: 'Logic errors, security issues', buoy: '#3b82f6 instead of --color-primary' },
-  { aspect: 'Output', coderabbit: 'PR comments', buoy: 'PR comments + token suggestions' },
+  { aspect: 'Output', coderabbit: 'PR comments', buoy: 'PR comments with token suggestions' },
   { aspect: 'Learning', coderabbit: 'General code patterns', buoy: 'Your design system rules' },
   { aspect: 'Integration', coderabbit: 'Standalone', buoy: 'Exports rules to CodeRabbit' },
 ]
@@ -20,157 +19,109 @@ const comparison = [
   heroDescription="CodeRabbit reviews your code. Buoy teaches it your design system."
   competitor="CodeRabbit"
 >
-  <!-- Key Difference -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-navy/50 border border-buoy/30 rounded-xl p-8 text-center">
-        <h2 class="text-xl font-bold text-light mb-4">The Key Difference</h2>
-        <p class="text-lg text-slate">
-          CodeRabbit knows: <span class="text-warning">"This code has issues"</span>
-        </p>
-        <p class="text-lg text-slate mt-2">
-          Buoy knows: <span class="text-buoy">"#3b82f6 should be var(--color-primary) in YOUR codebase"</span>
-        </p>
+  <div slot="hero" class="ui-tray"><div class="ui-panel">
+    <div class="ui-panel-head">Button.tsx</div>
+    <pre class="hf-code"><code>const styles = {'{'}
+  color: <span class="ui-old">'#3b82f6'</span>,
+{'}'}</code></pre>
+    <dl class="hf-rows">
+      <div><dt>CodeRabbit</dt><dd class="hf-them">Knows: "This code has issues."</dd></div>
+      <div><dt class="ui-c-buoy">Buoy</dt><dd>Knows: <span class="ui-old">#3b82f6</span> should be <span class="ui-token">var(--color-primary)</span> in YOUR codebase.</dd></div>
+    </dl>
+  </div></div>
+
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head">
+        <h2>Feature comparison</h2>
+        <p>CodeRabbit reviews code in general. Buoy brings your specific tokens and patterns.</p>
       </div>
+      <table class="ui-table cmp-table mt-10">
+        <thead><tr><th scope="col">Aspect</th><th scope="col">CodeRabbit</th><th scope="col" class="cmp-buoy">Buoy</th></tr></thead>
+        <tbody>
+          {comparison.map((row) => (
+            <tr><th scope="row">{row.aspect}</th><td class="cmp-them">{row.coderabbit}</td><td class="cmp-buoy">{row.buoy}</td></tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   </section>
 
-  <!-- Comparison Table -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Feature Comparison</h2>
-
-      <div class="bg-navy-dark border border-navy-light/30 rounded-xl overflow-hidden">
-        <div class="grid grid-cols-3 bg-navy border-b border-navy-light/20">
-          <div class="p-4 font-semibold text-slate">Feature</div>
-          <div class="p-4 font-semibold text-slate border-l border-navy-light/20">CodeRabbit</div>
-          <div class="p-4 font-semibold text-buoy border-l border-navy-light/20">Buoy</div>
-        </div>
-
-        {comparison.map((row, index) => (
-          <div class={`grid grid-cols-3 ${index % 2 === 0 ? 'bg-navy/30' : ''}`}>
-            <div class="p-4 text-light">{row.aspect}</div>
-            <div class="p-4 text-slate border-l border-navy-light/20">{row.coderabbit}</div>
-            <div class="p-4 text-success border-l border-navy-light/20">{row.buoy}</div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- What Each Tool Catches -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">What Each Tool Catches</h2>
-
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-4">CodeRabbit catches:</h3>
-          <ul class="space-y-2 text-slate">
-            <li class="flex items-start gap-2">
-              <span class="text-slate">•</span>
-              Unused variables
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-slate">•</span>
-              Security vulnerabilities
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-slate">•</span>
-              Performance issues
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-slate">•</span>
-              Code style violations
-            </li>
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>What each tool catches</h2></div>
+      <div class="ui-cols">
+        <article class="ui-col">
+          <h3>CodeRabbit catches</h3>
+          <ul class="ui-ruled">
+            <li>Unused variables</li>
+            <li>Security vulnerabilities</li>
+            <li>Performance issues</li>
+            <li>Code style issues</li>
           </ul>
-        </div>
-
-        <div class="bg-navy/50 border border-buoy/30 rounded-xl p-6">
-          <h3 class="font-semibold text-buoy mb-4">Buoy catches:</h3>
-          <ul class="space-y-2 text-slate">
-            <li class="flex items-start gap-2">
-              <span class="text-buoy">•</span>
-              Hardcoded colors <span class="text-slate/60">(#ff0000 → var(--color-error))</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-buoy">•</span>
-              Magic numbers <span class="text-slate/60">(padding: 17px → var(--spacing-4))</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-buoy">•</span>
-              Tailwind arbitrary values <span class="text-slate/60">(p-[13px] → p-4)</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-buoy">•</span>
-              Component naming drift
-            </li>
+        </article>
+        <article class="ui-col">
+          <h3 class="ui-c-buoy">Buoy catches</h3>
+          <ul class="ui-ruled">
+            <li>Hardcoded colors: <span class="ui-old">#ff0000</span> <span class="ui-token">var(--color-error)</span></li>
+            <li>Magic numbers: <span class="ui-old">padding: 17px</span> <span class="ui-token">var(--spacing-4)</span></li>
+            <li>Tailwind arbitrary values: <span class="ui-old">p-[13px]</span> <span class="ui-token">p-4</span></li>
+            <li>Component naming drift</li>
           </ul>
-        </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- Better Together -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-4 text-center">Better Together</h2>
-      <p class="text-slate mb-8 text-center max-w-2xl mx-auto">
-        CodeRabbit is great at code review. But it doesn't know that <code class="text-warning bg-navy-dark px-2 py-1 rounded">#3b82f6</code> should be <code class="text-buoy bg-navy-dark px-2 py-1 rounded">var(--color-primary)</code> in YOUR codebase.
-      </p>
-
-      <div class="bg-navy-dark border border-navy-light/30 rounded-xl p-6">
-        <h3 class="font-semibold text-light mb-4">Export your design system rules to CodeRabbit:</h3>
-        <pre class="text-sm font-mono bg-navy p-4 rounded-lg overflow-x-auto"><code class="text-slate"># Export rules in CodeRabbit format
-buoy show health --format json
-
-# This generates .coderabbit.yaml rules that teach
-# CodeRabbit your design tokens</code></pre>
+  <section class="ui-section">
+    <div class="ui-wrap ui-split">
+      <div class="ui-head">
+        <h2>Better together</h2>
+        <p>CodeRabbit is great at code review. Export your design system rules to it and it reviews against your tokens too.</p>
       </div>
+      <div class="ui-tray"><div class="ui-term">
+        <div class="ui-term-bar">Terminal</div>
+        <pre><code><span class="ui-t-dim"># Export rules in CodeRabbit format</span>
+<span class="ui-t-prompt">$</span> buoy show health --format json
+
+<span class="ui-t-dim"># This generates .coderabbit.yaml rules that teach</span>
+<span class="ui-t-dim"># CodeRabbit your design tokens</span></code></pre>
+      </div></div>
     </div>
   </section>
 
-  <!-- How It Works -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">How It Works</h2>
-
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6 text-center">
-          <div class="text-3xl font-bold text-buoy mb-2">1</div>
-          <h3 class="font-semibold text-light mb-2">Buoy scans</h3>
-          <p class="text-slate text-sm">Your design system (tokens, components, patterns)</p>
-        </div>
-
-        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6 text-center">
-          <div class="text-3xl font-bold text-buoy mb-2">2</div>
-          <h3 class="font-semibold text-light mb-2">Buoy exports</h3>
-          <p class="text-slate text-sm">Rules in CodeRabbit's format</p>
-        </div>
-
-        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6 text-center">
-          <div class="text-3xl font-bold text-buoy mb-2">3</div>
-          <h3 class="font-semibold text-light mb-2">CodeRabbit enforces</h3>
-          <p class="text-slate text-sm">Your design system in every PR</p>
-        </div>
-      </div>
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>How it works</h2></div>
+      <ol class="ui-steps">
+        <li><span class="ui-step-n">1</span><div><h3>Buoy scans</h3><p>Your design system (tokens, components, patterns)</p></div></li>
+        <li><span class="ui-step-n">2</span><div><h3>Buoy exports</h3><p>Rules in CodeRabbit's format</p></div></li>
+        <li><span class="ui-step-n">3</span><div><h3>CodeRabbit enforces</h3><p>Your design system in every PR</p></div></li>
+      </ol>
     </div>
   </section>
 
-  <!-- Get Started -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-2xl font-bold text-light mb-4">Already using CodeRabbit?</h2>
-      <p class="text-slate mb-8">Add Buoy in 2 minutes:</p>
-
-      <div class="bg-navy-dark border border-navy-light/30 rounded-xl p-6 inline-block mb-8">
-        <pre class="text-sm font-mono text-left"><code class="text-slate">npx ahoybuoy dock
-buoy show health --format json</code></pre>
+  <section class="ui-section">
+    <div class="ui-wrap ui-split">
+      <div class="ui-head">
+        <h2>Already using CodeRabbit?</h2>
+        <p>Add Buoy in 2 minutes. Your design system is now part of every code review.</p>
       </div>
-
-      <p class="text-slate">
-        Your design system is now part of every code review.
-      </p>
+      <div class="ui-tray"><div class="ui-term">
+        <div class="ui-term-bar">Terminal</div>
+        <pre><code><span class="ui-t-prompt">$</span> npx ahoybuoy dock
+<span class="ui-t-prompt">$</span> buoy show health --format json</code></pre>
+      </div></div>
     </div>
   </section>
 </CompareLayout>
+
+<style is:global>
+  .hf-code { margin: 0; padding: 18px 20px; font-size: 13px; line-height: 1.7; background: var(--color-term); color: var(--color-body); }
+  .hf-rows { margin: 0; border-top: 1px solid var(--color-line); }
+  .hf-rows > div { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; padding: 13px 20px; border-bottom: 1px solid var(--color-line); font-size: 14px; line-height: 1.5; }
+  .hf-rows > div:last-child { border-bottom: 0; }
+  .hf-rows dt { font-weight: 600; color: var(--color-ink); }
+  .hf-rows dd { margin: 0; color: var(--color-ink); }
+  .hf-rows dd.hf-them { color: var(--color-muted); }
+</style>

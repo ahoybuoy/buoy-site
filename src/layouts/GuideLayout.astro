@@ -8,6 +8,7 @@
 import Layout from './Layout.astro'
 import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
+import MarkPattern from '../components/MarkPattern.astro'
 
 export interface Faq { q: string; a: string }
 
@@ -72,70 +73,89 @@ const guides = [
 
 <Layout title={seoTitle} description={description} keywords={keywords} jsonLd={jsonLd}>
   <Nav />
-  <article class="pt-32 pb-16 bg-navy-dark">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <nav class="text-sm text-slate"><a href="/guides" class="hover:text-buoy">Guides</a> <span>/</span></nav>
-      <h1 class="text-3xl sm:text-4xl font-bold text-light mt-3">{title}</h1>
-      <p class="text-sm text-slate/70 mt-2">Updated <time datetime={updated}>{updated}</time> · Buoy</p>
+  <main id="main" class="ui-nav-offset">
+    <article class="ui-section ui-section--first gl">
+      <div class="ui-wrap">
+        <div class="gl-col">
+          <nav class="gl-crumb" aria-label="Breadcrumb"><a href="/guides" class="ui-rowlink">Guides</a> <span aria-hidden="true">/</span></nav>
+          <h1 class="gl-h1">{title}</h1>
+          <p class="gl-meta">Updated <time datetime={updated} class="ui-tnum">{updated}</time> · Buoy</p>
 
-      <div class="mt-8 bg-navy/50 border border-buoy/40 rounded-2xl p-6">
-        <p class="text-xs uppercase tracking-wide text-buoy font-semibold">Short answer</p>
-        <p class="text-light mt-2 leading-relaxed">{answer}</p>
+          <aside class="gl-answer" aria-label="Short answer">
+            <p class="gl-answer-label">Short answer</p>
+            <p>{answer}</p>
+          </aside>
+
+          <div class="ui-prose gl-body">
+            <slot />
+          </div>
+
+          {faqs.length > 0 && (
+            <section class="gl-faq">
+              <h2>Frequently asked questions</h2>
+              <dl>
+                {faqs.map((f) => (
+                  <div>
+                    <dt>{f.q}</dt>
+                    <dd>{f.a}</dd>
+                  </div>
+                ))}
+              </dl>
+            </section>
+          )}
+
+          <section class="gl-more">
+            <h2>More guides</h2>
+            <ul class="ui-ruled ui-ruled--top">
+              {guides.map((g) => <li><a href={`/guides/${g.slug}`} class="ui-rowlink">{g.title}</a></li>)}
+            </ul>
+          </section>
+        </div>
       </div>
+    </article>
 
-      <div class="guide-body mt-10 text-slate leading-relaxed">
-        <slot />
+    <section class="ui-section ui-section--last ui-section--band ui-section--patterned">
+      <MarkPattern pattern="tide" drift={0.3} fade class="ui-pattern" />
+      <div class="ui-wrap">
+        <div class="ui-cta">
+          <div class="ui-head">
+            <h2>Scan a repository now</h2>
+            <p>Paste a public GitHub URL and get a design health report in under a minute: score, the hardcoded values to fix first, and the path to 100.</p>
+          </div>
+          <div>
+            <form action="/scan" method="get" class="ui-scan">
+              <label for="guide-scan-url" class="ui-sr">GitHub repository URL</label>
+              <input id="guide-scan-url" name="url" type="text" required autocomplete="off" spellcheck="false" placeholder="https://github.com/owner/repo" />
+              <button type="submit" class="ui-btn ui-btn--primary">Scan</button>
+            </form>
+          </div>
+        </div>
       </div>
-
-      <div class="mt-12 bg-navy/50 border border-navy-light/30 rounded-2xl p-6">
-        <h2 class="text-xl font-bold text-light">Scan a repository now</h2>
-        <p class="text-slate mt-2">Paste a public GitHub URL and get a design health report in under a minute: score, the hardcoded values to fix first, and the path to 100.</p>
-        <form action="/scan" method="get" class="mt-4 flex flex-col sm:flex-row gap-3">
-          <label for="guide-scan-url" class="sr-only">GitHub repository URL</label>
-          <input id="guide-scan-url" name="url" type="text" required placeholder="https://github.com/owner/repo"
-            class="flex-1 rounded-lg bg-navy-dark border border-navy-light/40 px-4 py-2.5 text-light placeholder:text-slate/60 focus:outline-none focus:border-buoy" />
-          <button type="submit" class="rounded-lg bg-buoy px-5 py-2.5 font-semibold text-navy-dark hover:opacity-90">Scan</button>
-        </form>
-      </div>
-
-      {faqs.length > 0 && (
-        <section class="mt-12">
-          <h2 class="text-2xl font-bold text-light">Frequently asked questions</h2>
-          <dl class="mt-6 space-y-6">
-            {faqs.map((f) => (
-              <div>
-                <dt class="text-light font-semibold">{f.q}</dt>
-                <dd class="text-slate mt-2 leading-relaxed">{f.a}</dd>
-              </div>
-            ))}
-          </dl>
-        </section>
-      )}
-
-      <section class="mt-12">
-        <h2 class="text-lg font-semibold text-light">More guides</h2>
-        <ul class="mt-3 space-y-2">
-          {guides.map((g) => <li><a href={`/guides/${g.slug}`} class="text-buoy hover:underline">{g.title}</a></li>)}
-        </ul>
-      </section>
-    </div>
-  </article>
+    </section>
+  </main>
   <Footer />
 </Layout>
 
-<style is:global>
-  .guide-body h2 { color: var(--color-light, #e8eef5); font-size: 1.5rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 0.75rem; }
-  .guide-body h3 { color: var(--color-light, #e8eef5); font-size: 1.15rem; font-weight: 600; margin-top: 1.75rem; margin-bottom: 0.5rem; }
-  .guide-body p { margin-top: 0.9rem; }
-  .guide-body ul, .guide-body ol { margin-top: 0.9rem; padding-left: 1.25rem; }
-  .guide-body ul { list-style: disc; }
-  .guide-body ol { list-style: decimal; }
-  .guide-body li { margin-top: 0.4rem; }
-  .guide-body a { color: var(--color-buoy, #4fd1c5); }
-  .guide-body a:hover { text-decoration: underline; }
-  .guide-body code { color: var(--color-light, #e8eef5); font-size: 0.9em; }
-  .guide-body pre { margin-top: 1rem; background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.08); border-radius: 0.75rem; padding: 1rem; overflow-x: auto; font-size: 0.85rem; }
-  .guide-body table { margin-top: 1rem; width: 100%; font-size: 0.9rem; border-collapse: collapse; }
-  .guide-body th, .guide-body td { border-bottom: 1px solid rgba(255,255,255,0.08); padding: 0.5rem 0.75rem 0.5rem 0; text-align: left; }
-  .guide-body th { color: var(--color-light, #e8eef5); font-weight: 600; }
+<style>
+  .gl-col { max-width: 72ch; }
+  .gl-crumb { font-size: 14px; color: var(--color-muted); }
+  .gl-h1 { margin: 14px 0 0; font-size: clamp(2.1rem, 1.6rem + 2vw, 3rem); line-height: 1.08; letter-spacing: -0.03em; color: var(--color-ink); }
+  .gl-meta { margin: 12px 0 0; font-size: 14px; color: var(--color-muted); }
+  .gl-answer { margin-top: 36px; padding: 22px 24px; border-radius: var(--radius-card); background: var(--color-surface); box-shadow: var(--ring); }
+  .gl-answer-label { margin: 0; font-size: 14px; font-weight: 600; color: var(--color-buoy-light); }
+  .gl-answer p + p { margin-top: 8px; color: var(--color-ink); font-size: 17px; line-height: 1.6; }
+  .gl-body { margin-top: 40px; }
+  .gl-faq, .gl-more { margin-top: 64px; padding-top: 28px; border-top: 1px solid var(--color-line-strong); }
+  .gl-faq h2, .gl-more h2 { margin: 0; font-size: 1.5rem; color: var(--color-ink); }
+  .gl-faq dl { margin: 20px 0 0; }
+  .gl-faq dl > div { padding: 18px 0; border-bottom: 1px solid var(--color-line); }
+  .gl-faq dt { font-weight: 600; color: var(--color-ink); }
+  .gl-faq dd { margin: 8px 0 0; color: var(--color-body); line-height: 1.65; }
+  .gl-more h2 { font-size: 1.25rem; }
+  .gl-body :global(.gl-pull) { margin: 2.2em 0; padding: 4px 0 4px 22px; border-left: 2px solid var(--color-buoy); font-family: var(--font-display); font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem); line-height: 1.35; font-weight: 600; color: var(--color-ink); text-wrap: balance; }
+  .gl-body :global(.gl-pull p) { margin: 0; }
+  .gl-body :global(.gl-diff) { margin-top: 1.4em; }
+  .gl-body :global(.gl-diff figcaption), .gl-body :global(.gl-cap) { margin-top: 10px; font-size: 14px; color: var(--color-muted); }
+  .gl-body :global(.gl-bar) { display: inline-block; height: 8px; border-radius: 2px; background: var(--color-buoy); vertical-align: middle; }
+  .gl-body :global(td.gl-num), .gl-body :global(th.gl-num) { white-space: nowrap; font-variant-numeric: tabular-nums; }
 </style>

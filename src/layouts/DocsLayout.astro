@@ -9,7 +9,7 @@ interface Props {
   section?: string
 }
 
-const { title, description, section } = Astro.props
+const { title, description } = Astro.props
 
 interface DocItem {
   label: string
@@ -84,110 +84,151 @@ const docsSections: { title: string; items: DocItem[] }[] = [
   },
 ]
 
-const currentPath = Astro.url.pathname
+const norm = (p: string) => p.replace(/\/$/, '') || '/'
+const currentPath = norm(Astro.url.pathname)
+const isActive = (href: string) => norm(href.split('#')[0]) === currentPath
+
+// Prev / next across the top-level pages
+const flat = docsSections.flatMap((s) => s.items.filter((i) => !i.indent).map((i) => ({ ...i, section: s.title })))
+const idx = flat.findIndex((i) => isActive(i.href))
+const prev = idx > 0 ? flat[idx - 1] : null
+const next = idx >= 0 && idx < flat.length - 1 ? flat[idx + 1] : null
+const currentSection = idx >= 0 ? flat[idx].section : 'Docs'
+
+// Render the page, then: give every h2 an id, collect them for the
+// on-page nav, and colour plain <pre><code> blocks like a terminal.
+let html = await Astro.slots.render('default')
+
+const slugify = (s: string) =>
+  s.replace(/<[^>]+>/g, '').replace(/&[a-z#0-9]+;/gi, '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+const strip = (s: string) => s.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&#39;/g, "'").replace(/&quot;/g, '"').trim()
+
+const toc: { id: string; label: string }[] = []
+const used = new Set<string>()
+html = html.replace(/<h2([^>]*)>([\s\S]*?)<\/h2>/g, (m, attrs: string, inner: string) => {
+  const idMatch = attrs.match(/\bid="([^"]+)"/)
+  let id = idMatch ? idMatch[1] : slugify(inner)
+  if (!idMatch) {
+    let base = id || 'section', n = 2
+    id = base
+    while (used.has(id)) id = `${base}-${n++}`
+    attrs = `${attrs} id="${id}"`
+  }
+  used.add(id)
+  toc.push({ id, label: strip(inner) })
+  return `<h2${attrs}>${inner}</h2>`
+})
+
+const paintLine = (line: string) => {
+  const t = line.trim()
+  if (!t) return line
+  if (/^(#|\/\/)/.test(t) && !/^#[0-9a-f]{3,8}\b/i.test(t)) return `<span class="ui-t-dim">${line}</span>`
+  if (/^\$ /.test(t)) return line.replace(/\$ (.*)$/, '<span class="ui-t-prompt">$</span> <span class="ui-t-hi">$1</span>')
+  if (/[✓✔]|\bPASS(ED)?\b/.test(t)) return `<span class="ui-t-ok">${line}</span>`
+  if (/[✗✖]|\b(critical|CRITICAL|error|ERROR|FAIL(ED)?)\b/.test(t)) return `<span class="ui-t-crit">${line}</span>`
+  if (/⚠|\b(warning|WARNING)\b/.test(t)) return `<span class="ui-t-warn">${line}</span>`
+  if (/^[A-Z][A-Z &/-]{3,}(\s*\(\d+\))?:?$/.test(t)) return `<span class="ui-t-hi">${line}</span>`
+  let out = line.replace(/(→|-&gt;)\s(.*)$/, '$1 <span class="ui-t-ok">$2</span>')
+  out = out.replace(/^(\s*-?\s*)([A-Za-z_][\w.-]*)(:)(\s|$)/, '$1<span class="ui-t-info">$2</span>$3$4')
+  return out
+}
+const CMD = /^(npx|npm|pnpm|yarn|buoy|git|claude|\/plugin)\b/
+html = html.replace(/<pre><code>([\s\S]*?)<\/code><\/pre>/g, (_m, body: string) => {
+  let lines = body.replace(/\n+$/, '').split('\n')
+  // A first line like "# .buoy.yaml" becomes the file title bar
+  let file = ''
+  const fm = lines[0].match(/^#\s+(\.?[\w./-]+\.(?:ya?ml|json|js|ts|sh|md)|\.husky\/[\w-]+|\.[\w-]+rc)\s*$/)
+  if (fm && lines.length > 1) { file = fm[1]; lines = lines.slice(1); while (lines[0] === '') lines.shift() }
+  const isCmds = lines.every((l) => !l.trim() || /^#/.test(l.trim()) || CMD.test(l.trim()))
+  const painted = lines.map((l) => (isCmds && CMD.test(l.trim()) ? `<span class="ui-t-prompt">$</span> <span class="ui-t-hi">${l}</span>` : paintLine(l))).join('\n')
+  const bar = `<div class="ui-term-bar"><span>${file || (isCmds ? 'Terminal' : 'Output')}</span></div>`
+  const copy = isCmds ? lines.filter((l) => CMD.test(l.trim())).join('\n') : ''
+  const attr = copy ? ' data-copy="' + copy.replace(/"/g, '&quot;') + '"' : ''
+  return `<div class="ui-term docs-code"${attr}>${bar}<pre class="docs-pre"><code>${painted}</code></pre></div>`
+})
+
+// "Step 1: Title" headings get an orange step number
+html = html.replace(/(<h2[^>]*>)Step (\d+): /g, '$1<span class="docs-stepn">$2</span>')
 ---
 
 <Layout title={`${title} | Buoy Docs`} description={description}>
   <Nav />
 
-  <div class="pt-16 min-h-screen">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex gap-8 py-8">
-        <!-- Sidebar -->
-        <aside class="hidden lg:block w-64 shrink-0">
-          <div class="sticky top-24 space-y-6">
+  <div class="docs-shell ui-nav-offset">
+    <div class="docs-grid">
+      <aside class="docs-side" aria-label="Documentation">
+        <nav class="docs-side-inner">
+          {docsSections.map((section) => (
+            <div class="docs-group">
+              <p class="docs-group-title">{section.title}</p>
+              <ul>
+                {section.items.map((item) => (
+                  <li>
+                    <a
+                      href={item.href}
+                      class:list={['docs-link', item.indent && 'docs-link--sub', !item.indent && isActive(item.href) && 'is-active']}
+                      aria-current={!item.indent && isActive(item.href) ? 'page' : undefined}
+                    >{item.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </nav>
+      </aside>
+
+      <main class="docs-main" id="main">
+        <details class="docs-mobile-nav">
+          <summary>
+            <span><span class="docs-mobile-section">{currentSection}</span> / {title}</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <nav class="docs-mobile-list" aria-label="Documentation">
             {docsSections.map((section) => (
-              <div>
-                <h3 class="text-xs font-semibold text-slate uppercase tracking-wide mb-2">
-                  {section.title}
-                </h3>
-                <ul class="space-y-1">
-                  {section.items.map((item) => {
-                    const basePath = item.href.split('#')[0]
-                    const isActive = currentPath === basePath || currentPath === basePath + '/'
-                    return (
-                      <li>
-                        <a
-                          href={item.href}
-                          class:list={[
-                            'block py-1 text-sm rounded-lg transition-colors',
-                            item.indent ? 'pl-6 pr-3 text-xs' : 'px-3 py-1.5',
-                            isActive && !item.indent
-                              ? 'bg-buoy/20 text-buoy font-medium'
-                              : item.indent
-                                ? 'text-slate/70 hover:text-light hover:bg-navy-light/10'
-                                : 'text-slate hover:text-light hover:bg-navy-light/20'
-                          ]}
-                        >
-                          {item.label}
-                        </a>
-                      </li>
-                    )
-                  })}
+              <div class="docs-group">
+                <p class="docs-group-title">{section.title}</p>
+                <ul>
+                  {section.items.filter((i) => !i.indent).map((item) => (
+                    <li><a href={item.href} class:list={['docs-link', isActive(item.href) && 'is-active']}>{item.label}</a></li>
+                  ))}
                 </ul>
               </div>
             ))}
-          </div>
-        </aside>
+          </nav>
+        </details>
 
-        <!-- Mobile sidebar toggle -->
-        <button
-          id="docs-sidebar-toggle"
-          class="lg:hidden fixed bottom-4 right-4 z-50 p-3 bg-buoy text-navy-dark rounded-full shadow-lg"
-          aria-label="Toggle documentation menu"
-        >
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-        </button>
+        <article class="ui-prose docs-article" set:html={html} />
 
-        <!-- Mobile sidebar -->
-        <div id="docs-mobile-sidebar" class="hidden lg:hidden fixed inset-0 z-40">
-          <div class="absolute inset-0 bg-navy-dark/80" id="docs-sidebar-backdrop"></div>
-          <aside class="absolute right-0 top-0 bottom-0 w-72 bg-navy-dark border-l border-navy-light/20 p-6 overflow-y-auto">
-            <div class="space-y-6">
-              {docsSections.map((section) => (
-                <div>
-                  <h3 class="text-xs font-semibold text-slate uppercase tracking-wide mb-2">
-                    {section.title}
-                  </h3>
-                  <ul class="space-y-1">
-                    {section.items.map((item) => {
-                      const basePath = item.href.split('#')[0]
-                      const isActive = currentPath === basePath || currentPath === basePath + '/'
-                      return (
-                        <li>
-                          <a
-                            href={item.href}
-                            class:list={[
-                              'block py-1 text-sm rounded-lg transition-colors',
-                              item.indent ? 'pl-6 pr-3 text-xs' : 'px-3 py-1.5',
-                              isActive && !item.indent
-                                ? 'bg-buoy/20 text-buoy font-medium'
-                                : item.indent
-                                  ? 'text-slate/70 hover:text-light hover:bg-navy-light/10'
-                                  : 'text-slate hover:text-light hover:bg-navy-light/20'
-                            ]}
-                          >
-                            {item.label}
-                          </a>
-                        </li>
-                      )
-                    })}
-                  </ul>
-                </div>
+        {(prev || next) && (
+          <nav class="docs-pager" aria-label="Previous and next page">
+            {prev ? (
+              <a href={prev.href} class="docs-pager-link">
+                <span class="docs-pager-dir">Previous</span>
+                <span class="docs-pager-title">{prev.label === 'Overview' ? prev.section : prev.label}</span>
+              </a>
+            ) : <span />}
+            {next && (
+              <a href={next.href} class="docs-pager-link docs-pager-next">
+                <span class="docs-pager-dir">Next</span>
+                <span class="docs-pager-title">{next.label === 'Overview' ? next.section : next.label}</span>
+              </a>
+            )}
+          </nav>
+        )}
+      </main>
+
+      <aside class="docs-toc" aria-label="On this page">
+        {toc.length > 1 && (
+          <div class="docs-toc-inner">
+            <p class="docs-group-title">On this page</p>
+            <ul>
+              {toc.map((t) => (
+                <li><a href={`#${t.id}`} class="docs-toc-link" data-toc={t.id}>{t.label}</a></li>
               ))}
-            </div>
-          </aside>
-        </div>
-
-        <!-- Main content -->
-        <main class="flex-1 min-w-0">
-          <article class="prose prose-invert prose-buoy max-w-none">
-            <slot />
-          </article>
-        </main>
-      </div>
+            </ul>
+          </div>
+        )}
+      </aside>
     </div>
   </div>
 
@@ -195,122 +236,185 @@ const currentPath = Astro.url.pathname
 </Layout>
 
 <style is:global>
-  /* Prose styling for docs */
-  .prose-buoy {
-    color: var(--color-slate);
+  .docs-shell { min-height: 100vh; }
+  .docs-grid {
+    max-width: 1320px; margin-inline: auto; padding: 40px 24px 104px;
+    display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px;
+  }
+  @media (min-width: 1024px) { .docs-grid { grid-template-columns: 220px minmax(0, 1fr); } }
+  @media (min-width: 1280px) { .docs-grid { grid-template-columns: 220px minmax(0, 1fr) 200px; } }
+  @media (max-width: 640px) { .docs-grid { padding: 24px 16px 80px; gap: 24px; } }
+
+  /* Sidebar */
+  .docs-side { display: none; }
+  @media (min-width: 1024px) { .docs-side { display: block; } }
+  .docs-side-inner {
+    position: sticky; top: calc(var(--header-h) + 32px);
+    max-height: calc(100vh - var(--header-h) - 48px); overflow-y: auto;
+    padding-right: 8px; display: grid; gap: 28px; scrollbar-width: thin;
+  }
+  .docs-group-title {
+    font-family: var(--font-display); font-weight: 700; font-size: 14px;
+    color: var(--color-ink); margin-bottom: 8px;
+  }
+  .docs-group ul { display: grid; gap: 1px; }
+  .docs-link {
+    display: block; padding: 5px 10px; margin-left: -10px; border-radius: 8px;
+    font-size: 14px; line-height: 1.4; color: var(--color-muted);
+    transition: color 150ms ease, background-color 150ms ease;
+  }
+  .docs-link:hover { color: var(--color-ink); background: var(--color-sunken); }
+  .docs-link--sub { padding-left: 22px; font-size: 13px; font-family: var(--font-mono); font-variant-ligatures: none; }
+  .docs-link.is-active { color: var(--color-ink); background: var(--color-surface); box-shadow: var(--ring); font-weight: 500; }
+  .docs-link.is-active::before { content: ''; }
+
+  /* Mobile docs menu */
+  .docs-mobile-nav { margin-bottom: 28px; border-radius: var(--radius-inner); background: var(--color-surface); box-shadow: var(--ring); }
+  @media (min-width: 1024px) { .docs-mobile-nav { display: none; } }
+  .docs-mobile-nav summary {
+    list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 12px 16px; font-size: 14px; color: var(--color-ink); min-height: 44px;
+  }
+  .docs-mobile-nav summary::-webkit-details-marker { display: none; }
+  .docs-mobile-nav summary svg { color: var(--color-muted); transition: rotate 200ms var(--ease-out-expo); }
+  .docs-mobile-nav[open] summary svg { rotate: 180deg; }
+  .docs-mobile-section { color: var(--color-muted); }
+  .docs-mobile-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 20px; padding: 8px 16px 18px; border-top: 1px solid var(--color-line); }
+  .docs-mobile-list .docs-group-title { margin-top: 10px; }
+
+  /* Article */
+  .docs-main { min-width: 0; }
+  .docs-article { max-width: 760px; }
+  .docs-article h1 {
+    font-size: var(--text-h1); font-size: clamp(2.25rem, 4vw, 3rem); line-height: 1.08; letter-spacing: -0.03em;
+    color: var(--color-ink); margin-bottom: 4px;
+  }
+  .docs-article h1 + p { font-size: 1.125rem; color: var(--color-body); }
+  .docs-article h2[id], .docs-article h3[id] { scroll-margin-top: calc(var(--header-h) + 24px); }
+  .docs-article .ui-term, .docs-article .doc-terminal { margin-top: 1.4em; }
+  .docs-article table { font-variant-numeric: tabular-nums; }
+  .docs-article table code { white-space: nowrap; }
+  .docs-article td strong:only-child { font-weight: 600; }
+
+  /* Docs index hero: pattern on the right, never under the copy */
+  .docs-hero > * { max-width: 600px; }
+  .docs-hero p { font-size: 1.125rem; }
+  .docs-hero-fig {
+    position: relative; isolation: isolate; overflow: hidden; margin-top: 40px !important;
+    padding: 40px 40px 0; border-radius: var(--radius-cta); background: var(--color-band); box-shadow: var(--ring);
+  }
+  .docs-hero-fig .docs-hero-pattern { z-index: -1; opacity: 0.5; }
+  .docs-hero-fig .docs-code { margin: 0; border-radius: var(--radius-inner) var(--radius-inner) 0 0; box-shadow: var(--ring-lift); }
+  .docs-hero-fig figcaption { position: relative; padding: 12px 0 14px; font-size: 13px; color: var(--color-muted); background: var(--color-band); margin-inline: -40px; padding-inline: 40px; border-top: 1px solid var(--color-line); }
+  @media (max-width: 640px) { .docs-hero-fig { padding: 20px 16px 0; } .docs-hero-fig figcaption { margin-inline: -16px; padding-inline: 16px; } }
+  .docs-article .ui-actions { margin-top: 24px; }
+  .docs-article .ui-btn { text-decoration: none; font-weight: 500; }
+  .docs-article .ui-btn--primary, .docs-article .ui-btn--primary:hover { color: var(--color-on-accent); }
+  .docs-article .ui-btn--secondary:hover { color: var(--color-ink); }
+
+  .docs-article ol.ui-steps { list-style: none; padding-left: 0; }
+  .docs-article .ui-steps h3 { margin-top: 0; }
+  .docs-article .ui-steps li + li { margin-top: 0; }
+  .docs-article td code + code { margin-left: 4px; }
+  .docs-article td br + code { margin-top: 6px; display: inline-block; }
+
+  .docs-article .docs-code { margin-top: 1.4em; }
+  .docs-article .docs-code pre { margin: 0; border-radius: 0; box-shadow: none; background: none; }
+  .docs-article .ui-term-bar .ui-icon-btn { width: 28px; height: 28px; display: grid; place-items: center; }
+  .docs-stepn {
+    display: inline-block; min-width: 1.6em; margin-right: 10px;
+    font-family: var(--font-mono); font-size: 0.8em; font-weight: 600; color: var(--color-buoy-light);
+    font-variant-numeric: tabular-nums;
+  }
+  .docs-article ol:not(.ui-steps) li::marker { color: var(--color-buoy-light); font-family: var(--font-mono); font-weight: 600; }
+
+  /* Terminal colours in plain <pre> blocks */
+  .docs-pre .ui-t-info { color: var(--color-info); }
+
+  /* Flags component as a ruled two-column list */
+  .docs-article .flags-list { display: grid; gap: 0; margin: 1.2em 0 0; border-top: 1px solid var(--color-line-strong); }
+  .docs-article .flags-list > div {
+    display: grid; grid-template-columns: minmax(140px, max-content) 1fr; gap: 6px 24px;
+    padding: 12px 0; margin: 0; border: 0; border-radius: 0; background: none;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .docs-article .flags-list > div > code {
+    padding: 0; background: none; box-shadow: none; border-radius: 0;
+    color: var(--color-ok); font-size: 14px; white-space: nowrap;
+  }
+  .docs-article .flags-list > div > span { padding-top: 0; font-size: 15px; color: var(--color-body); }
+  .docs-article .flags-list > div > span > span:first-of-type[class*="critical"] {
+    background: none; padding: 0; color: var(--color-crit); font-weight: 600;
+  }
+  .docs-article .flags-list > div > span > span { color: var(--color-muted); }
+  @media (max-width: 560px) {
+    .docs-article .flags-list > div { grid-template-columns: 1fr; }
   }
 
-  .prose-buoy h1 {
-    font-size: 1.875rem;
-    font-weight: 700;
-    font-family: 'Satoshi', system-ui, sans-serif;
-    margin-bottom: 1rem;
-    color: var(--color-light);
+  /* Pager */
+  .docs-pager { max-width: 760px; margin-top: 72px; padding-top: 24px; border-top: 1px solid var(--color-line-strong); display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .docs-pager-link {
+    display: grid; gap: 4px; padding: 16px 18px; border-radius: var(--radius-card);
+    background: var(--color-surface); box-shadow: var(--ring);
+    transition: box-shadow 150ms ease, background-color 150ms ease;
   }
+  .docs-pager-link:hover { box-shadow: var(--ring-hover); background: var(--color-raised); }
+  .docs-pager-next { text-align: right; }
+  .docs-pager-dir { font-size: 13px; color: var(--color-muted); }
+  .docs-pager-title { font-family: var(--font-display); font-weight: 700; font-size: 17px; color: var(--color-ink); }
+  .docs-pager-link:hover .docs-pager-title { color: var(--color-buoy-light); }
+  @media (max-width: 560px) { .docs-pager { grid-template-columns: 1fr; } .docs-pager-next { text-align: left; } }
 
-  .prose-buoy h2 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    font-family: 'Satoshi', system-ui, sans-serif;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgb(36 51 82 / 0.2);
-    color: var(--color-light);
+  /* On this page */
+  .docs-toc { display: none; }
+  @media (min-width: 1280px) { .docs-toc { display: block; } }
+  .docs-toc-inner { position: sticky; top: calc(var(--header-h) + 32px); max-height: calc(100vh - var(--header-h) - 48px); overflow-y: auto; }
+  .docs-toc ul { display: grid; gap: 2px; border-left: 1px solid var(--color-line); }
+  .docs-toc-link {
+    display: block; padding: 4px 0 4px 14px; margin-left: -1px; border-left: 1px solid transparent;
+    font-size: 13px; line-height: 1.4; color: var(--color-muted);
+    transition: color 150ms ease, border-color 200ms ease;
   }
+  .docs-toc-link:hover { color: var(--color-ink); }
+  .docs-toc-link.is-current { color: var(--color-ink); border-left-color: var(--color-buoy); }
 
-  .prose-buoy h3 {
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
-    color: var(--color-light);
-  }
-
-  .prose-buoy p {
-    margin-bottom: 1rem;
-    line-height: 1.625;
-  }
-
-  .prose-buoy ul, .prose-buoy ol {
-    margin-bottom: 1rem;
-    padding-left: 1.5rem;
-  }
-
-  .prose-buoy li {
-    margin-bottom: 0.5rem;
-  }
-
-  .prose-buoy code:not(pre code) {
-    padding: 0.125rem 0.375rem;
-    background: rgb(36 51 82 / 0.3);
-    border-radius: 0.25rem;
-    font-size: 0.875rem;
-    font-family: var(--font-mono);
-    color: var(--color-lavender);
-  }
-
-  .prose-buoy pre {
-    background: var(--color-navy);
-    border: 1px solid rgb(36 51 82 / 0.2);
-    border-radius: 0.5rem;
-    padding: 1rem;
-    overflow-x: auto;
-    margin-bottom: 1rem;
-  }
-
-  .prose-buoy pre code {
-    font-size: 0.875rem;
-    font-family: var(--font-mono);
-    color: var(--color-slate);
-  }
-
-  .prose-buoy a {
-    color: var(--color-buoy);
-    text-decoration: underline;
-    text-underline-offset: 2px;
-  }
-
-  .prose-buoy a:hover {
-    color: var(--color-buoy-light);
-  }
-
-  .prose-buoy blockquote {
-    border-left: 4px solid rgb(249 115 22 / 0.5);
-    padding-left: 1rem;
-    font-style: italic;
-    color: var(--color-slate);
-  }
-
-  .prose-buoy table {
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-
-  .prose-buoy th {
-    text-align: left;
-    padding: 0.5rem 1rem;
-    background: rgb(36 51 82 / 0.2);
-    color: var(--color-light);
-    font-weight: 500;
-  }
-
-  .prose-buoy td {
-    padding: 0.5rem 1rem;
-    border-bottom: 1px solid rgb(36 51 82 / 0.2);
+  @media (prefers-reduced-motion: reduce) {
+    .docs-link, .docs-toc-link, .docs-pager-link, .docs-mobile-nav summary svg { transition: none; }
   }
 </style>
 
 <script>
-  const toggle = document.getElementById('docs-sidebar-toggle')
-  const sidebar = document.getElementById('docs-mobile-sidebar')
-  const backdrop = document.getElementById('docs-sidebar-backdrop')
-
-  toggle?.addEventListener('click', () => {
-    sidebar?.classList.toggle('hidden')
+  // Copy buttons on plain command blocks (the bar already reserves the height)
+  document.querySelectorAll<HTMLElement>('.docs-code[data-copy]').forEach((block) => {
+    const bar = block.querySelector('.ui-term-bar')
+    if (!bar) return
+    const btn = document.createElement('button')
+    btn.type = 'button'
+    btn.className = 'ui-icon-btn'
+    btn.setAttribute('aria-label', 'Copy command')
+    const copyIcon = '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>'
+    btn.innerHTML = copyIcon
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(block.dataset.copy || '')
+        btn.innerHTML = '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>'
+        setTimeout(() => { btn.innerHTML = copyIcon }, 1500)
+      } catch {}
+    })
+    bar.appendChild(btn)
   })
 
-  backdrop?.addEventListener('click', () => {
-    sidebar?.classList.add('hidden')
-  })
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('.docs-toc-link'))
+  if (links.length && 'IntersectionObserver' in window) {
+    const byId = new Map(links.map((l) => [l.dataset.toc!, l]))
+    const heads = Array.from(byId.keys()).map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[]
+    const visible = new Set<string>()
+    const set = (id: string) => links.forEach((l) => l.classList.toggle('is-current', l.dataset.toc === id))
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => (e.isIntersecting ? visible.add(e.target.id) : visible.delete(e.target.id)))
+      const first = heads.find((h) => visible.has(h.id))
+      if (first) set(first.id)
+    }, { rootMargin: '-80px 0px -60% 0px' })
+    heads.forEach((h) => io.observe(h))
+  }
 </script>

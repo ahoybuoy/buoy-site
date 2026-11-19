@@ -203,12 +203,12 @@ import LeadMagnetCallout from '../../../components/LeadMagnetCallout.astro'
   <p>Phases:</p>
 
   <ol>
-    <li><strong>Discovery</strong> — Find repos using design systems on GitHub</li>
-    <li><strong>Scanning</strong> — Run Buoy to detect drift</li>
-    <li><strong>Analysis</strong> — Use agents to assess fixability</li>
-    <li><strong>Triage</strong> — Classify as slam-dunk, review, or skip</li>
-    <li><strong>Generation</strong> — Create PR with full context</li>
-    <li><strong>Review</strong> — Human approval before submission</li>
+    <li><strong>Discovery</strong>: Find repos using design systems on GitHub</li>
+    <li><strong>Scanning</strong>: Run Buoy to detect drift</li>
+    <li><strong>Analysis</strong>: Use agents to assess fixability</li>
+    <li><strong>Triage</strong>: Classify as slam-dunk, review, or skip</li>
+    <li><strong>Generation</strong>: Create PR with full context</li>
+    <li><strong>Review</strong>: Human approval before submission</li>
   </ol>
 
   <h3>Example Output</h3>
@@ -235,8 +235,8 @@ import LeadMagnetCallout from '../../../components/LeadMagnetCallout.astro'
   <h3>Commands vs Skills</h3>
 
   <p>
-    <strong>Commands</strong> are user-invocable — you type <code>/contribution-loop</code>
-    in Claude Code to trigger them. <strong>Skills</strong> are AI-invocable — Claude
+    <strong>Commands</strong> are user-invocable: you type <code>/contribution-loop</code>
+    in Claude Code to trigger them. <strong>Skills</strong> are AI-invocable, Claude
     automatically loads them when relevant.
   </p>
 
@@ -296,9 +296,9 @@ import LeadMagnetCallout from '../../../components/LeadMagnetCallout.astro'
     { text: "Recommended Plugins" },
     { text: "───────────────────" },
     { text: "Plugin               Why" },
-    { text: "@buoy/tailwind       Tailwind detected — scan utility classes for drift" },
-    { text: "@buoy/react          React detected — parse JSX for component patterns" },
-    { text: "@buoy/storybook      Storybook detected — validate stories against tokens" },
+    { text: "@buoy/tailwind       Tailwind detected: scan utility classes for drift" },
+    { text: "@buoy/react          React detected: parse JSX for component patterns" },
+    { text: "@buoy/storybook      Storybook detected: validate stories against tokens" },
     { text: "" },
     { text: "Install all recommended plugins?" },
     { text: "  buoy dock -y", type: "info" },
@@ -548,19 +548,19 @@ import LeadMagnetCallout from '../../../components/LeadMagnetCallout.astro'
   <h2>Generated Files</h2>
 
   <ul>
-    <li><strong>.buoy.yaml</strong> — Main configuration file</li>
-    <li><strong>.claude/skills/</strong> — Buoy skills for Claude Code</li>
-    <li><strong>.claude/agents/</strong> — AI agent definitions</li>
-    <li><strong>.claude/commands/</strong> — Slash commands for Claude Code</li>
-    <li><strong>CLAUDE.md</strong> — Design system context for AI tools</li>
+    <li><strong>.buoy.yaml</strong>: Main configuration file</li>
+    <li><strong>.claude/skills/</strong>: Buoy skills for Claude Code</li>
+    <li><strong>.claude/agents/</strong>: AI agent definitions</li>
+    <li><strong>.claude/commands/</strong>: Slash commands for Claude Code</li>
+    <li><strong>CLAUDE.md</strong>: Design system context for AI tools</li>
   </ul>
 
   <h2>Related</h2>
 
   <ul>
-    <li><a href="/docs/cli/show">buoy show</a> — View what's configured</li>
-    <li><a href="/docs/cli/drift">buoy drift</a> — Detect and fix drift</li>
-    <li><a href="/docs/integrations/claude-code">Claude Code</a> — AI integration details</li>
-    <li><a href="/docs/features/ai-guardrails">AI Guardrails</a> — Full guide</li>
+    <li><a href="/docs/cli/show">buoy show</a>: View what's configured</li>
+    <li><a href="/docs/cli/drift">buoy drift</a>: Detect and fix drift</li>
+    <li><a href="/docs/integrations/claude-code">Claude Code</a>: AI integration details</li>
+    <li><a href="/docs/features/ai-guardrails">AI Guardrails</a>: Full guide</li>
   </ul>
 </DocsLayout>

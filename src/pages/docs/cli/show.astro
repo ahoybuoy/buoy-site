@@ -5,7 +5,7 @@ import Flags from '../../../components/Flags.astro'
 import CodeBlock from '../../../components/CodeBlock.astro'
 ---
 
-<DocsLayout title="buoy show" description="Display design system status — components, tokens, drift, config, and setup state">
+<DocsLayout title="buoy show" description="Display design system status, components, tokens, drift, config, and setup state">
   <h1>buoy show</h1>
 
   <p>
@@ -171,10 +171,10 @@ import CodeBlock from '../../../components/CodeBlock.astro'
   <h3>Score Ranges</h3>
 
   <Flags items={[
-    { name: "80-100", description: "Good — Design system is well adopted" },
-    { name: "50-79", description: "Fair — Some drift, worth addressing" },
-    { name: "30-49", description: "Needs Work — Significant drift detected" },
-    { name: "0-29", description: "Poor — Major drift, prioritize fixes" },
+    { name: "80-100", description: "Good. Design system is well adopted" },
+    { name: "50-79", description: "Fair. Some drift, worth addressing" },
+    { name: "30-49", description: "Needs Work. Significant drift detected" },
+    { name: "0-29", description: "Poor. Major drift, prioritize fixes" },
   ]} />
 
   <!-- ─────────────────────────────────────────── -->
@@ -223,7 +223,7 @@ import CodeBlock from '../../../components/CodeBlock.astro'
   <h2 id="config">buoy show config</h2>
 
   <p>
-    Show the current <code>.buoy.yaml</code> configuration — project name, enabled sources,
+    Show the current <code>.buoy.yaml</code> configuration, project name, enabled sources,
     patterns, and output settings.
   </p>
 
@@ -331,7 +331,7 @@ import CodeBlock from '../../../components/CodeBlock.astro'
   <h2 id="hooks">buoy show hooks</h2>
 
   <p>
-    Show configured hooks — both git pre-commit hooks and Claude Code hooks.
+    Show configured hooks: both git pre-commit hooks and Claude Code hooks.
   </p>
 
   <DocTerminal command="buoy show hooks" lines={[
@@ -375,7 +375,7 @@ import CodeBlock from '../../../components/CodeBlock.astro'
   <h2 id="graph">buoy show graph</h2>
 
   <p>
-    Show knowledge graph statistics — node and edge counts by type.
+    Show knowledge graph statistics: node and edge counts by type.
   </p>
 
   <DocTerminal command="buoy show graph" lines={[
@@ -403,16 +403,16 @@ import CodeBlock from '../../../components/CodeBlock.astro'
 
   <p>
     Show built-in scanners, detected frameworks, and optional plugins.
-    This always shows data — plugins are built-in and don't require setup.
+    This always shows data. Plugins are built-in and don't require setup.
   </p>
 
   <DocTerminal command="buoy show plugins" lines={[
     { text: "" },
     { text: "Built-in Scanners" },
     { text: "" },
-    { text: "  ✓ Color — Detect hardcoded color values", type: "success" },
-    { text: "  ✓ Spacing — Detect hardcoded spacing values", type: "success" },
-    { text: "  ✓ Typography — Detect hardcoded font sizes", type: "success" },
+    { text: "  ✓ Color: detect hardcoded color values", type: "success" },
+    { text: "  ✓ Spacing: detect hardcoded spacing values", type: "success" },
+    { text: "  ✓ Typography: detect hardcoded font sizes", type: "success" },
     { text: "" },
     { text: "Detected Frameworks" },
     { text: "" },
@@ -429,7 +429,7 @@ import CodeBlock from '../../../components/CodeBlock.astro'
   <h2 id="all">buoy show all</h2>
 
   <p>
-    Show everything — components, tokens, drift, health, and setup status.
+    Show everything: components, tokens, drift, health, and setup status.
     Outputs JSON with a <code>setup</code> section showing which tools are configured.
   </p>
 
@@ -455,8 +455,8 @@ import CodeBlock from '../../../components/CodeBlock.astro'
   <h2>Related</h2>
 
   <ul>
-    <li><a href="/docs/cli/drift">buoy drift</a> — Scan, check, fix, and manage ignore rules</li>
-    <li><a href="/docs/cli/dock">buoy dock</a> — Setup tokens, graph, and project config</li>
-    <li><a href="/docs/cli/dock">buoy dock</a> — Set up everything that <code>show</code> displays</li>
+    <li><a href="/docs/cli/drift">buoy drift</a>: Scan, check, fix, and manage ignore rules</li>
+    <li><a href="/docs/cli/dock">buoy dock</a>: Setup tokens, graph, and project config</li>
+    <li><a href="/docs/cli/dock">buoy dock</a>: Set up everything that <code>show</code> displays</li>
   </ul>
 </DocsLayout>

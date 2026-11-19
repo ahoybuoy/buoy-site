@@ -1,588 +1,164 @@
 ---
-import BuoyMark from '../components/BuoyMark.astro'
 import Layout from '../layouts/Layout.astro'
 import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
-import Button from '../components/Button.astro'
+import DocTerminal from '../components/DocTerminal.astro'
+import MarkPattern from '../components/MarkPattern.astro'
 import { siteConfig } from '../config'
----
 
-<Layout title="CI Enforcement - Block Drift at the PR | Buoy">
-  <Nav />
-
-  <!-- Hero -->
-  <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-navy-dark">
-    <!-- Animated gradient orbs - enforcement theme uses more structured pattern -->
-    <div class="absolute inset-0 overflow-hidden">
-      <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-success/15 rounded-full blur-[120px] animate-float"></div>
-      <div class="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-buoy/20 rounded-full blur-[100px] animate-float" style="animation-delay: -2s;"></div>
-    </div>
-
-    <!-- Shield pattern overlay -->
-    <div class="absolute inset-0 opacity-[0.02]" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;80&quot; height=&quot;80&quot; viewBox=&quot;0 0 80 80&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cpath d=&quot;M40 5 L70 20 L70 45 C70 60 55 72 40 75 C25 72 10 60 10 45 L10 20 Z&quot; stroke=&quot;%23ffffff&quot; stroke-width=&quot;1&quot; fill=&quot;none&quot;/%3E%3C/svg%3E');"></div>
-
-    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 text-center">
-      <!-- Badge -->
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-success/10 border border-success/30 mb-8 animate-fade-in-up">
-        <svg class="w-4 h-4 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-        </svg>
-        <span class="text-sm text-success font-medium">Design System Enforcement</span>
-      </div>
-
-      <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold mb-8 leading-tight animate-fade-in-up" style="animation-delay: 0.1s;">
-        <span class="text-light">Your design system has rules.</span>
-        <br />
-        <span class="text-gradient-sunrise">Now they're enforceable.</span>
-      </h1>
-
-      <p class="text-xl sm:text-2xl text-slate max-w-3xl mx-auto mb-12 leading-relaxed animate-fade-in-up" style="animation-delay: 0.2s;">
-        You spent months defining tokens, components, and patterns.
-        <br class="hidden sm:block" />
-        <span class="text-light">It's time they actually get used.</span>
-      </p>
-
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style="animation-delay: 0.3s;">
-        <Button href={siteConfig.githubUrl} size="lg" external>
-          Start enforcing now
-        </Button>
-        <Button href="#the-gap" variant="secondary" size="lg">
-          See the gap
-        </Button>
-      </div>
-    </div>
-
-    <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-      <svg class="w-6 h-6 text-slate" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-      </svg>
-    </div>
-  </section>
-
-  <!-- Section 2: The Enforcement Gap -->
-  <section id="the-gap" class="py-32 bg-navy relative overflow-hidden">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 scroll-reveal">
-        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
-          Rules without enforcement are just suggestions.
-        </h2>
-        <p class="text-xl text-slate max-w-2xl mx-auto">
-          Your design system documentation is beautiful. But documentation doesn't stop bad code from shipping.
-        </p>
-      </div>
-
-      <!-- The gap visualization -->
-      <div class="max-w-4xl mx-auto mb-16">
-        <div class="grid md:grid-cols-3 gap-6 items-stretch">
-          <!-- What you have -->
-          <div class="scroll-reveal" style="--delay: 0.1s;">
-            <div class="bg-navy-dark border border-success/30 rounded-xl p-6 h-full">
-              <div class="text-success text-sm font-semibold uppercase tracking-wide mb-4">What you have</div>
-              <ul class="space-y-3 text-sm text-slate">
-                <li class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-success shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                  </svg>
-                  Design tokens defined
-                </li>
-                <li class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-success shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                  </svg>
-                  Component library built
-                </li>
-                <li class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-success shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                  </svg>
-                  Documentation published
-                </li>
-                <li class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-success shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                  </svg>
-                  Naming conventions set
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- The gap -->
-          <div class="scroll-reveal flex items-center justify-center" style="--delay: 0.2s;">
-            <div class="text-center">
-              <div class="w-20 h-20 rounded-full bg-warning/20 border-2 border-warning flex items-center justify-center mx-auto mb-4 gap-pulse">
-                <span class="text-3xl">🕳️</span>
-              </div>
-              <div class="text-warning font-semibold">THE GAP</div>
-              <div class="text-xs text-slate-dark mt-1">No enforcement layer</div>
-            </div>
-          </div>
-
-          <!-- What happens -->
-          <div class="scroll-reveal" style="--delay: 0.3s;">
-            <div class="bg-navy-dark border border-critical/30 rounded-xl p-6 h-full">
-              <div class="text-critical text-sm font-semibold uppercase tracking-wide mb-4">What happens</div>
-              <ul class="space-y-3 text-sm text-slate">
-                <li class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-critical shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                  </svg>
-                  Hardcoded colors slip through
-                </li>
-                <li class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-critical shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                  </svg>
-                  Duplicate components multiply
-                </li>
-                <li class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-critical shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                  </svg>
-                  AI ignores your system
-                </li>
-                <li class="flex items-center gap-2">
-                  <svg class="w-4 h-4 text-critical shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                  </svg>
-                  Drift compounds daily
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- The solution -->
-      <div class="text-center scroll-reveal" style="--delay: 0.4s;">
-        <div class="inline-flex items-center gap-3 px-6 py-4 bg-buoy/10 border border-buoy/30 rounded-xl">
-          <span style="display:inline-flex;line-height:0"><BuoyMark size={30} /></span>
-          <div class="text-left">
-            <div class="text-buoy font-semibold">Buoy fills the gap</div>
-            <div class="text-sm text-slate">Automated enforcement in every PR</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 3: Enforcement in Action -->
-  <section class="py-32 bg-navy-dark relative overflow-hidden">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 scroll-reveal">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-buoy/10 border border-buoy/30 mb-6">
-          <span class="text-buoy font-semibold">Enforcement in Action</span>
-        </div>
-        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
-          Every violation. Caught automatically.
-        </h2>
-        <p class="text-xl text-slate max-w-2xl mx-auto">
-          Buoy scans every PR and flags violations before they merge. You set the threshold.
-        </p>
-      </div>
-
-      <!-- PR Check visualization -->
-      <div class="max-w-3xl mx-auto scroll-reveal" style="--delay: 0.1s;">
-        <div class="bg-navy border border-navy-light/30 rounded-xl overflow-hidden">
-          <!-- PR Header -->
-          <div class="px-6 py-4 bg-navy-light/10 border-b border-navy-light/20 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <div class="w-8 h-8 rounded-full bg-lavender/20 flex items-center justify-center">
-                <span class="text-sm">PR</span>
-              </div>
-              <div>
-                <div class="text-light font-medium">feat: Add new checkout flow</div>
-                <div class="text-xs text-slate-dark">#247 opened by @developer</div>
-              </div>
-            </div>
-            <div class="px-3 py-1 rounded-full bg-warning/20 text-warning text-xs font-medium">
-              Changes requested
-            </div>
-          </div>
-
-          <!-- Checks -->
-          <div class="p-6 space-y-4">
-            <div class="flex items-center gap-3 text-sm">
-              <svg class="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-              <span class="text-slate">Tests passed</span>
-            </div>
-            <div class="flex items-center gap-3 text-sm">
-              <svg class="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-              <span class="text-slate">Build succeeded</span>
-            </div>
-            <div class="flex items-center gap-3 text-sm">
-              <svg class="w-5 h-5 text-critical" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-              </svg>
-              <span class="text-light font-medium">Buoy Design Check — 3 violations found</span>
-            </div>
-
-            <!-- Violations detail -->
-            <div class="ml-8 p-4 bg-navy-dark rounded-lg border border-critical/20 space-y-3">
-              <div class="flex items-start gap-2 text-sm">
-                <span class="text-critical font-mono text-xs bg-critical/20 px-2 py-0.5 rounded">CRITICAL</span>
-                <div>
-                  <span class="text-light">checkout/PaymentForm.tsx:24</span>
-                  <span class="text-slate-dark ml-2">Hardcoded color #3B82F6 → use var(--color-primary)</span>
-                </div>
-              </div>
-              <div class="flex items-start gap-2 text-sm">
-                <span class="text-critical font-mono text-xs bg-critical/20 px-2 py-0.5 rounded">CRITICAL</span>
-                <div>
-                  <span class="text-light">checkout/CartItem.tsx:15</span>
-                  <span class="text-slate-dark ml-2">Magic number 14px → use var(--spacing-sm)</span>
-                </div>
-              </div>
-              <div class="flex items-start gap-2 text-sm">
-                <span class="text-warning font-mono text-xs bg-warning/20 px-2 py-0.5 rounded">WARNING</span>
-                <div>
-                  <span class="text-light">checkout/Button.tsx:8</span>
-                  <span class="text-slate-dark ml-2">Consider using &lt;Button&gt; component</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Config snippet -->
-          <div class="mt-6 mx-6 max-w-xl bg-navy-dark border border-navy-light/20 rounded-lg overflow-hidden">
-            <div class="px-4 py-2 bg-navy border-b border-navy-light/20">
-              <span class="text-xs text-slate font-mono">.buoy.yaml</span>
-            </div>
-            <pre class="p-4 text-xs font-mono overflow-x-auto"><code class="text-slate">{`drift:
+const have = ['Design tokens defined', 'Component library built', 'Documentation published', 'Naming conventions set']
+const happens = ['Hardcoded colors slip through', 'Duplicate components multiply', 'AI ignores your system', 'Drift compounds daily']
+const findings = [
+  { sev: 'critical', file: 'checkout/PaymentForm.tsx:24', old: '#3B82F6', token: 'var(--color-primary)', msg: 'Hardcoded color' },
+  { sev: 'critical', file: 'checkout/CartItem.tsx:15', old: '14px', token: 'var(--spacing-sm)', msg: 'Magic number' },
+  { sev: 'warning', file: 'checkout/Button.tsx:8', old: '', token: '', msg: 'Consider using <Button> component' },
+]
+const enforced = [
+  { t: 'Color Enforcement', d: 'Every hex code, RGB value, and color name checked against your palette.' },
+  { t: 'Spacing Enforcement', d: 'No more random pixel values. Every margin and padding validated.' },
+  { t: 'Component Enforcement', d: 'New custom components flagged when existing ones should be used.' },
+  { t: 'Typography Enforcement', d: 'Font sizes, weights, and families locked to your type scale.' },
+  { t: 'Naming Enforcement', d: 'Consistent naming conventions across all files and components.' },
+  { t: 'Pattern Enforcement', d: 'Deprecated patterns caught, accessibility issues flagged.' },
+]
+const before = ['"I hope the devs read the docs"', '"I\'ll catch it in the next audit"', '"Maybe code review will spot it"', '"We\'ll fix it in the refactor"']
+const after = ['"I see exactly what needs attention before review"', '"Every PR is automatically checked"', '"Critical issues are flagged immediately"', '"Drift is stopped at the source"']
+const yaml = `drift:
   enforce:
     - type: close-match
       reason: "Typos must be fixed"
     - file: "src/checkout/**"
       type: hardcoded-color
-      reason: "Checkout uses tokens only"`}</code></pre>
-          </div>
-          <p class="text-xs text-slate-dark mt-3 mb-6 text-center">
-            Enforcement rules are configurable in <a href="/docs/configuration" class="text-buoy hover:text-buoy-light">.buoy.yaml</a>
-          </p>
+      reason: "Checkout uses tokens only"`
+---
+
+<Layout title="CI Enforcement - Block Drift at the PR | Buoy">
+  <Nav />
+  <main id="main" class="ui-nav-offset">
+    <section class="ui-section ui-section--first ui-section--patterned">
+      <MarkPattern pattern="scan" drift={0.3} fade class="ui-pattern" />
+      <div class="ui-wrap lp-hero">
+        <p class="ui-eyebrow">Design system enforcement</p>
+        <div class="ui-head"><h1>Your design system has rules.<br /><span class="ui-c-buoy">Now they're enforceable.</span></h1></div>
+        <p class="ui-lede">You spent months defining tokens, components, and patterns. It's time they actually get used.</p>
+        <div class="ui-actions">
+          <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer" class="ui-btn ui-btn--primary ui-btn--lg">Start enforcing now</a>
+          <a href="#the-gap" class="ui-btn ui-btn--secondary ui-btn--lg">See the gap</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Section 4: What Gets Enforced -->
-  <section class="py-32 bg-navy relative">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 scroll-reveal">
-        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
-          Every rule you set. Every line of code.
-        </h2>
-        <p class="text-xl text-slate max-w-2xl mx-auto">
-          Buoy enforces your entire design system specification automatically.
-        </p>
+    <section id="the-gap" class="ui-section ui-section--band">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>Rules without enforcement are just suggestions.</h2><p>Your design system documentation is beautiful. But documentation doesn't stop bad code from shipping.</p></div>
+        <div class="ui-cols ui-cols--3">
+          <article class="ui-col"><h3>What you have</h3><ul class="ui-ruled">{have.map((h) => <li>{h}</li>)}</ul></article>
+          <article class="ui-col"><h3 class="ui-c-crit">The gap</h3><p class="lp-muted">No enforcement layer. So:</p><ul class="ui-ruled">{happens.map((h) => <li>{h}</li>)}</ul></article>
+          <article class="ui-col"><h3 class="ui-c-ok">Buoy fills the gap</h3><p class="lp-muted">Automated enforcement in every PR.</p></article>
+        </div>
       </div>
+    </section>
 
-      <!-- Enforcement grid -->
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="scroll-reveal" style="--delay: 0.1s;">
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 h-full hover:border-success/30 transition-all group">
-            <div class="w-12 h-12 rounded-lg bg-success/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-              <span class="text-2xl">🎨</span>
+    <section class="ui-section">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>Every problem. Caught automatically.</h2><p>Buoy scans every PR and flags issues before they merge. You set the threshold.</p></div>
+        <div class="ui-split lp-split">
+          <div class="ui-tray">
+            <div class="ui-panel">
+              <div class="ui-panel-head"><span><strong class="lp-ink">feat: Add new checkout flow</strong> <span class="lp-muted">#247 opened by a developer</span></span><span class="ui-c-crit lp-small">Changes requested</span></div>
+              <ul class="lp-checks">
+                <li><span class="ui-c-ok">Passed</span> Tests</li>
+                <li><span class="ui-c-ok">Passed</span> Build</li>
+                <li><span class="ui-c-crit">Failed</span> Buoy Design Check: 3 issues found</li>
+              </ul>
+              <ul class="lp-findings">
+                {findings.map((f) => (
+                  <li>
+                    <span class={`ui-sev ui-sev-${f.sev}`}>{f.sev === 'critical' ? 'Critical' : 'Warning'}</span>
+                    <span class="ui-mono lp-file">{f.file}</span>
+                    <span class="lp-msg">{f.msg}{f.old && <> <span class="ui-old ui-mono">{f.old}</span> <span class="ui-token ui-mono">{f.token}</span></>}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <h3 class="text-lg font-semibold text-light mb-2">Color Enforcement</h3>
-            <p class="text-sm text-slate">Every hex code, RGB value, and color name checked against your palette.</p>
           </div>
-        </div>
-
-        <div class="scroll-reveal" style="--delay: 0.15s;">
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 h-full hover:border-success/30 transition-all group">
-            <div class="w-12 h-12 rounded-lg bg-success/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-              <span class="text-2xl">📏</span>
+          <div>
+            <div class="ui-term">
+              <div class="ui-term-bar"><span>.buoy.yaml</span></div>
+              <pre>{yaml}</pre>
             </div>
-            <h3 class="text-lg font-semibold text-light mb-2">Spacing Enforcement</h3>
-            <p class="text-sm text-slate">No more random pixel values. Every margin and padding validated.</p>
-          </div>
-        </div>
-
-        <div class="scroll-reveal" style="--delay: 0.2s;">
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 h-full hover:border-success/30 transition-all group">
-            <div class="w-12 h-12 rounded-lg bg-success/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-              <span class="text-2xl">📦</span>
-            </div>
-            <h3 class="text-lg font-semibold text-light mb-2">Component Enforcement</h3>
-            <p class="text-sm text-slate">New custom components flagged when existing ones should be used.</p>
-          </div>
-        </div>
-
-        <div class="scroll-reveal" style="--delay: 0.25s;">
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 h-full hover:border-success/30 transition-all group">
-            <div class="w-12 h-12 rounded-lg bg-success/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-              <span class="text-2xl">🔤</span>
-            </div>
-            <h3 class="text-lg font-semibold text-light mb-2">Typography Enforcement</h3>
-            <p class="text-sm text-slate">Font sizes, weights, and families locked to your type scale.</p>
-          </div>
-        </div>
-
-        <div class="scroll-reveal" style="--delay: 0.3s;">
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 h-full hover:border-success/30 transition-all group">
-            <div class="w-12 h-12 rounded-lg bg-success/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-              <span class="text-2xl">🏷️</span>
-            </div>
-            <h3 class="text-lg font-semibold text-light mb-2">Naming Enforcement</h3>
-            <p class="text-sm text-slate">Consistent naming conventions across all files and components.</p>
-          </div>
-        </div>
-
-        <div class="scroll-reveal" style="--delay: 0.35s;">
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 h-full hover:border-success/30 transition-all group">
-            <div class="w-12 h-12 rounded-lg bg-success/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-              <span class="text-2xl">⚡</span>
-            </div>
-            <h3 class="text-lg font-semibold text-light mb-2">Pattern Enforcement</h3>
-            <p class="text-sm text-slate">Deprecated patterns caught, accessibility issues flagged.</p>
+            <p class="ui-note">Enforcement rules are configurable in <a href="/docs/configuration" class="ui-link">.buoy.yaml</a>.</p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Section 5: Before & After -->
-  <section class="py-32 bg-navy-dark relative overflow-hidden">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 scroll-reveal">
-        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
-          From hoping to knowing.
-        </h2>
+    <section class="ui-section ui-section--band">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>Every rule you set. Every line of code.</h2><p>Buoy enforces your entire design system specification automatically.</p></div>
+        <table class="ui-table lp-table"><tbody>{enforced.map((e) => <tr><th scope="row">{e.t}</th><td>{e.d}</td></tr>)}</tbody></table>
       </div>
+    </section>
 
-      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <!-- Before -->
-        <div class="scroll-reveal" style="--delay: 0.1s;">
-          <div class="bg-navy border border-navy-light/30 rounded-xl p-6 h-full">
-            <div class="text-slate-dark text-sm font-semibold uppercase tracking-wide mb-6">Before Buoy</div>
-            <ul class="space-y-4">
-              <li class="flex items-start gap-3">
-                <span class="text-critical mt-1">😰</span>
-                <span class="text-slate">"I hope the devs read the docs"</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-critical mt-1">😰</span>
-                <span class="text-slate">"I'll catch it in the next audit"</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-critical mt-1">😰</span>
-                <span class="text-slate">"Maybe code review will spot it"</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-critical mt-1">😰</span>
-                <span class="text-slate">"We'll fix it in the refactor"</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- After -->
-        <div class="scroll-reveal" style="--delay: 0.2s;">
-          <div class="bg-navy border border-success/30 rounded-xl p-6 h-full">
-            <div class="text-success text-sm font-semibold uppercase tracking-wide mb-6">After Buoy</div>
-            <ul class="space-y-4">
-              <li class="flex items-start gap-3">
-                <span class="text-success mt-1">✓</span>
-                <span class="text-light">"I see exactly what needs attention before review"</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-success mt-1">✓</span>
-                <span class="text-light">"Every PR is automatically checked"</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-success mt-1">✓</span>
-                <span class="text-light">"Critical issues are flagged immediately"</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <span class="text-success mt-1">✓</span>
-                <span class="text-light">"Drift is stopped at the source"</span>
-              </li>
-            </ul>
-          </div>
+    <section class="ui-section">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>From hoping to knowing.</h2></div>
+        <div class="ui-cols">
+          <article class="ui-col"><h3 class="ui-c-crit">Before Buoy</h3><ul class="ui-ruled">{before.map((l) => <li>{l}</li>)}</ul></article>
+          <article class="ui-col"><h3 class="ui-c-ok">After Buoy</h3><ul class="ui-ruled">{after.map((l) => <li>{l}</li>)}</ul></article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Section 6: Confidence -->
-  <section class="py-32 bg-navy relative overflow-hidden">
-    <div class="absolute bottom-0 left-0 right-0 h-64 opacity-20">
-      <svg class="w-full h-full" viewBox="0 0 1440 320" preserveAspectRatio="none">
-        <path class="wave-path" fill="#10B981" fill-opacity="0.3" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,138.7C672,128,768,160,864,181.3C960,203,1056,213,1152,197.3C1248,181,1344,139,1392,117.3L1440,96L1440,320L0,320Z"/>
-      </svg>
-    </div>
-
-    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="scroll-reveal">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-success/10 border border-success/30 mb-6">
-          <span class="text-success font-semibold">Total Confidence</span>
-        </div>
-        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
-          Your rules. Actually followed.
-        </h2>
-        <p class="text-xl text-slate max-w-2xl mx-auto mb-12">
-          No more hoping. No more auditing. No more fixing drift after the fact.
-          <br /><span class="text-light">Just clean, consistent code that follows your design system.</span>
-        </p>
+    <section class="ui-section ui-section--band">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>Your rules. Actually followed.</h2><p>No more hoping. No more auditing. No more fixing drift after the fact. Just clean, consistent code that follows your design system.</p></div>
+        <dl class="lp-stats">
+          <div><dt>% of PRs enforced</dt><dd class="ui-tnum">100</dd></div>
+          <div><dt>issues shipped</dt><dd class="ui-tnum ui-c-ok">0</dd></div>
+          <div><dt>peace of mind</dt><dd>∞</dd></div>
+        </dl>
       </div>
+    </section>
 
-      <!-- Stats -->
-      <div class="grid sm:grid-cols-3 gap-8 mb-12">
-        <div class="scroll-reveal" style="--delay: 0.1s;">
-          <div class="text-4xl font-bold text-success mb-2 counter" data-target="100">0</div>
-          <div class="text-slate">% of PRs enforced</div>
+    <section class="ui-section ui-section--last ui-section--patterned">
+      <MarkPattern pattern="wake" drift={0.3} fade class="ui-pattern" />
+
+      <div class="ui-wrap ui-split lp-cta">
+        <div class="ui-head">
+          <h2>Start enforcing in 30 seconds.</h2>
+          <p>Free. Open source. No signup required. Your rules deserve to be followed.</p>
+          <div class="ui-actions"><a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer" class="ui-btn ui-btn--secondary">View on GitHub</a></div>
         </div>
-        <div class="scroll-reveal" style="--delay: 0.2s;">
-          <div class="text-4xl font-bold text-success mb-2 counter" data-target="0">0</div>
-          <div class="text-slate">violations shipped</div>
-        </div>
-        <div class="scroll-reveal" style="--delay: 0.3s;">
-          <div class="text-4xl font-bold text-success mb-2">∞</div>
-          <div class="text-slate">peace of mind</div>
+        <div>
+          <DocTerminal command="npx ahoybuoy show health" />
+          <p class="ui-note">The Code Control layer that design has been missing.</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Final CTA Section -->
-  <section class="py-32 bg-gradient-to-b from-navy to-navy-dark relative overflow-hidden">
-    <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-success/10 rounded-full blur-3xl"></div>
-    <div class="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-buoy/10 rounded-full blur-3xl"></div>
-
-    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="scroll-reveal">
-        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
-          Start enforcing in 30 seconds.
-        </h2>
-        <p class="text-xl text-slate mb-8 max-w-2xl mx-auto">
-          Free. Open source. No signup required.
-          <br />Your rules deserve to be followed.
-        </p>
-
-        <div class="inline-flex flex-col sm:flex-row items-center gap-4 p-6 bg-navy/80 border border-navy-light/30 rounded-xl backdrop-blur-sm mb-8 copy-command" data-command="npx ahoybuoy show health">
-          <code class="text-lg font-mono text-light">npx ahoybuoy show health</code>
-          <div class="flex items-center gap-3">
-            <button class="copy-btn px-4 py-2 bg-navy-light/30 hover:bg-navy-light/50 text-slate hover:text-light rounded-lg transition-colors text-sm flex items-center gap-2">
-              <span class="copy-text">Copy</span>
-              <svg class="copy-icon w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-              </svg>
-              <svg class="check-icon w-4 h-4 hidden text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-            </button>
-            <Button href={siteConfig.githubUrl} external>
-              View on GitHub
-            </Button>
-          </div>
-        </div>
-
-        <p class="text-slate text-sm">
-          The Code Control layer that design has been missing.
-        </p>
-      </div>
-    </div>
-  </section>
-
+    </section>
+  </main>
   <Footer />
 </Layout>
 
 <style>
-  @keyframes fade-in-up {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-20px) scale(1.05); }
-  }
-
-  @keyframes gap-pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.4); }
-    50% { box-shadow: 0 0 0 20px rgba(251, 191, 36, 0); }
-  }
-
-  @keyframes wave {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-
-  .animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
-  .animate-float { animation: float 6s ease-in-out infinite; }
-  .gap-pulse { animation: gap-pulse 2s ease-in-out infinite; }
-  /* Wave animation removed - was causing overflow issues */
-
-  .scroll-reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    transition-delay: var(--delay, 0s);
-  }
-
-  .scroll-reveal.revealed {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .lp-hero { padding-block: 32px 24px; }
+  .lp-split { margin-top: 40px; }
+  .lp-muted { color: var(--color-muted); font-size: 15px; }
+  .lp-ink { color: var(--color-ink); }
+  .lp-small { font-size: 13px; white-space: nowrap; }
+  .lp-checks, .lp-findings { list-style: none; margin: 0; padding: 0; }
+  .lp-checks li { padding: 10px 18px; border-top: 1px solid var(--color-line); font-size: 14px; color: var(--color-ink); }
+  .lp-checks li span { display: inline-block; width: 64px; font-size: 13px; font-weight: 600; }
+  .lp-findings { background: var(--color-sunken); }
+  .lp-findings li { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 2px 12px; padding: 12px 18px; border-top: 1px solid var(--color-line); font-size: 14px; }
+  .lp-file { color: var(--color-muted); font-size: 12.5px; }
+  .lp-msg { grid-column: 2; color: var(--color-ink); }
+  .lp-table { margin-top: 32px; }
+  .ui-col h3 { font-size: 1.2rem; }
+  .ui-col p { margin-top: 8px; }
+  .lp-stats { margin: 40px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--color-line-strong); }
+  .lp-stats > div { padding-top: 20px; display: flex; flex-direction: column-reverse; gap: 6px; }
+  .lp-stats dd { margin: 0; font-family: var(--font-display); font-size: 3rem; font-weight: 700; line-height: 1; color: var(--color-ink); }
+  .lp-stats dt { color: var(--color-muted); font-size: 15px; }
+  .lp-cta { align-items: center; }
 </style>
-
-<script>
-  const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-
-        const counters = entry.target.querySelectorAll('.counter');
-        counters.forEach(counter => {
-          const target = parseInt(counter.getAttribute('data-target') || '0');
-          const duration = 2000;
-          const start = performance.now();
-
-          function updateCounter(currentTime: number) {
-            const elapsed = currentTime - start;
-            const progress = Math.min(elapsed / duration, 1);
-            const easeOut = 1 - Math.pow(1 - progress, 3);
-            counter.textContent = Math.floor(target * easeOut).toString();
-            if (progress < 1) requestAnimationFrame(updateCounter);
-          }
-          requestAnimationFrame(updateCounter);
-        });
-      }
-    });
-  }, observerOptions);
-
-  document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
-
-  document.querySelectorAll('.copy-command').forEach(container => {
-    const btn = container.querySelector('.copy-btn');
-    const command = container.getAttribute('data-command');
-
-    btn?.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(command || '');
-        const copyIcon = btn.querySelector('.copy-icon');
-        const checkIcon = btn.querySelector('.check-icon');
-        const copyText = btn.querySelector('.copy-text');
-
-        copyIcon?.classList.add('hidden');
-        checkIcon?.classList.remove('hidden');
-        if (copyText) copyText.textContent = 'Copied!';
-
-        setTimeout(() => {
-          copyIcon?.classList.remove('hidden');
-          checkIcon?.classList.add('hidden');
-          if (copyText) copyText.textContent = 'Copy';
-        }, 2000);
-      } catch (err) {
-        console.error('Failed to copy:', err);
-      }
-    });
-  });
-</script>

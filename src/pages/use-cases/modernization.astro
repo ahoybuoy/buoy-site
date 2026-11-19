@@ -1,43 +1,30 @@
 ---
 import UseCaseLayout from '../../layouts/UseCaseLayout.astro'
-import Terminal from '../../components/Terminal.astro'
 import LeadMagnetCallout from '../../components/LeadMagnetCallout.astro'
 
 const phases = [
   {
     phase: 'Assess',
     description: 'Scan your legacy codebase to understand the current state. How many hardcoded values? How many duplicate components?',
-    icon: '📊'
   },
   {
     phase: 'Track',
     description: 'As you migrate, track progress with real metrics. See adoption grow week over week, sprint over sprint.',
-    icon: '📈'
   },
   {
     phase: 'Enforce',
     description: 'Once migrated, enforce the new patterns. Block PRs that introduce new legacy patterns.',
-    icon: '🛡️'
   },
   {
     phase: 'Report',
     description: 'Show leadership exactly how much is done, what\'s left, and the trend. No more "we think 60%".',
-    icon: '📋'
   },
 ]
 
-const terminalLines = [
-  { text: '', delay: 600 },
-  { text: '<span class="text-light font-semibold">Migration Progress</span>', type: 'output', delay: 800 },
-  { text: '═══════════════════════════════════════', type: 'muted', delay: 1000 },
-  { text: '', delay: 1200 },
-  { text: '<span class="text-slate">Legacy Code:</span>      <span class="text-critical">38%</span> ███████░░░░░░░░░░░', type: 'output', delay: 1400 },
-  { text: '<span class="text-slate">In Progress:</span>      <span class="text-warning">15%</span> ███░░░░░░░░░░░░░░░', type: 'output', delay: 1600 },
-  { text: '<span class="text-slate">Migrated:</span>         <span class="text-success">47%</span> █████████░░░░░░░░░', type: 'output', delay: 1800 },
-  { text: '', delay: 2000 },
-  { text: '<span class="text-slate">This sprint:</span> +8% migrated', type: 'success', delay: 2200 },
-  { text: '<span class="text-slate">Velocity:</span>   ~12% per sprint', type: 'info', delay: 2400 },
-  { text: '<span class="text-slate">ETA:</span>        3 more sprints to 100%', type: 'info', delay: 2600 },
+const progress = [
+  { label: 'Migrated', value: 47, cls: 'ok' },
+  { label: 'In progress', value: 15, cls: 'warn' },
+  { label: 'Legacy code', value: 38, cls: 'crit' },
 ]
 ---
 
@@ -46,124 +33,97 @@ const terminalLines = [
   description="Track your frontend migration from legacy to modern design system. Know what's migrated, what's legacy, and what's drifting."
   keywords="legacy modernization tracking, frontend migration, legacy code migration"
   heroTitle="Modernization Tracking"
-  heroDescription="Track your migration from legacy to modern with data, not guesswork. Leadership asks 'how much is done?' — now you'll know."
-  icon="🔄"
+  heroDescription="Track your migration from legacy to modern with data, not guesswork. Leadership asks 'how much is done?' Now you'll know."
 >
-  <!-- The Problem -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-navy/50 border border-warning/30 rounded-xl p-8 text-center">
-        <div class="text-4xl mb-4">😰</div>
-        <h2 class="text-xl font-bold text-light mb-4">The Modernization Question</h2>
-        <p class="text-lg text-slate mb-4">
-          Leadership asks: "How much of the legacy code is migrated?"
-        </p>
-        <p class="text-xl text-warning font-mono">
-          You say: "We think... maybe 60%?"
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Migration Phases -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Migration Phases with Buoy</h2>
-
-      <div class="grid sm:grid-cols-2 gap-6">
-        {phases.map((phase, index) => (
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-8 h-8 rounded-full bg-buoy/20 border border-buoy flex items-center justify-center text-buoy font-bold text-sm">
-                {index + 1}
-              </div>
-              <span class="text-2xl">{phase.icon}</span>
-              <h3 class="text-lg font-semibold text-light">{phase.phase}</h3>
-            </div>
-            <p class="text-sm text-slate">{phase.description}</p>
+  <div slot="hero">
+    <div class="ui-tray">
+      <div class="ui-panel">
+        <div class="ui-panel-head">Migration progress · buoy show health</div>
+        <div class="mod-body">
+          <div class="mod-bar" role="img" aria-label="47% migrated, 15% in progress, 38% legacy">
+            {progress.map((p) => <span class={`mod-seg mod-${p.cls}`} style={`flex-basis:${p.value}%`}></span>)}
           </div>
+          <ul class="mod-legend">
+            {progress.map((p) => (
+              <li><span class={`mod-pct ui-tnum ui-c-${p.cls}`}>{p.value}%</span><span>{p.label}</span></li>
+            ))}
+          </ul>
+          <dl class="mod-facts">
+            <div><dt>This sprint</dt><dd class="ui-c-ok">+8% migrated</dd></div>
+            <div><dt>Velocity</dt><dd>~12% per sprint</dd></div>
+            <div><dt>ETA</dt><dd class="ui-c-info">3 more sprints to 100%</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="ui-section">
+    <div class="ui-wrap ui-split mod-split">
+      <div class="ui-head"><h2>The modernization question</h2><p>The answer on the right is what Buoy replaces it with.</p></div>
+      <blockquote class="mod-q">
+        <p>Leadership asks: "How much of the legacy code is migrated?"</p>
+        <p class="mod-answer ui-mono ui-c-warn">You say: "We think... maybe 60%?"</p>
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>Migration phases with Buoy</h2></div>
+      <ol class="ui-steps mt-10">
+        {phases.map((p, i) => (
+          <li><span class="ui-step-n">{i + 1}</span><div><h3>{p.phase}</h3><p>{p.description}</p></div></li>
         ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="ui-section">
+    <div class="ui-wrap ui-split mod-split">
+      <div>
+        <div class="ui-head"><h2>Configuration for migrations</h2><p>Tell Buoy what legacy means in your codebase, and it tracks the rest.</p></div>
+        <ul class="ui-ruled ui-ruled--top mt-8">
+          <li><strong>Exact numbers.</strong> Not "we think 60%" but "<span class="ui-c-ok">47.3% migrated</span>, up 8% from last sprint"</li>
+          <li><strong>Velocity tracking.</strong> Know your migration velocity and estimate completion dates</li>
+          <li><strong>Prevent regression.</strong> Block PRs that add new legacy code to migrated areas</li>
+        </ul>
       </div>
-    </div>
-  </section>
-
-  <!-- Terminal Demo -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Track Progress with Real Data</h2>
-      <Terminal command="buoy show health" lines={terminalLines} />
-    </div>
-  </section>
-
-  <!-- Configuration -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Configuration for Migrations</h2>
-
-      <div class="bg-navy-dark border border-navy-light/30 rounded-xl overflow-hidden">
-        <div class="px-4 py-3 bg-navy border-b border-navy-light/20">
-          <span class="text-sm text-slate font-mono">.buoy.yaml</span>
-        </div>
-        <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{`# .buoy.yaml
-
-# Define what "legacy" means
+      <div class="ui-tray">
+        <div class="ui-panel">
+          <div class="ui-panel-head">.buoy.yaml</div>
+          <pre class="mod-pre"><code><span class="ui-t-dim"># Define what "legacy" means</span>
 legacy:
-  # Legacy directories to track
+  <span class="ui-t-dim"># Legacy directories to track</span>
   directories:
-    - "src/legacy/"
-    - "src/old-components/"
+    - <span class="ui-t-ok">"src/legacy/"</span>
+    - <span class="ui-t-ok">"src/old-components/"</span>
 
-  # Legacy patterns to detect
+  <span class="ui-t-dim"># Legacy patterns to detect</span>
   patterns:
-    - 'className="legacy-*"'
-    - "import.*from.*@old-design-system"
+    - <span class="ui-t-ok">'className="legacy-*"'</span>
+    - <span class="ui-t-ok">"import.*from.*@old-design-system"</span>
 
-  # Mark files with this comment as legacy
+  <span class="ui-t-dim"># Mark files with this comment as legacy</span>
   markers:
-    - "@legacy"
-    - "deprecated-marker"
+    - <span class="ui-t-ok">"@legacy"</span>
+    - <span class="ui-t-ok">"deprecated-marker"</span>
 
-# Modern design system reference
+<span class="ui-t-dim"># Modern design system reference</span>
 tokens:
-  source: "./src/tokens"
+  source: <span class="ui-t-ok">"./src/tokens"</span>
 
-# Track migration progress
+<span class="ui-t-dim"># Track migration progress</span>
 migration:
-  enabled: true
-  trackBy: directory  # or file or component`}</code></pre>
-      </div>
-    </div>
-  </section>
-
-  <!-- Value Props -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">What You Get</h2>
-
-      <div class="grid sm:grid-cols-3 gap-6">
-        <div class="text-center">
-          <div class="text-4xl mb-4">📊</div>
-          <h3 class="font-semibold text-light mb-2">Exact Numbers</h3>
-          <p class="text-sm text-slate">Not "we think 60%" but "47.3% migrated, up 8% from last sprint"</p>
-        </div>
-
-        <div class="text-center">
-          <div class="text-4xl mb-4">📈</div>
-          <h3 class="font-semibold text-light mb-2">Velocity Tracking</h3>
-          <p class="text-sm text-slate">Know your migration velocity and estimate completion dates</p>
-        </div>
-
-        <div class="text-center">
-          <div class="text-4xl mb-4">🛡️</div>
-          <h3 class="font-semibold text-light mb-2">Prevent Regression</h3>
-          <p class="text-sm text-slate">Block PRs that add new legacy code to migrated areas</p>
+  enabled: <span class="ui-t-info">true</span>
+  trackBy: directory  <span class="ui-t-dim"># or file or component</span></code></pre>
         </div>
       </div>
     </div>
   </section>
-  <!-- Lead Magnet: Token Migration Playbook -->
-  <section class="py-12">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
       <LeadMagnetCallout
         leadMagnet="token-migration"
         headline="Planning a token migration?"
@@ -173,3 +133,26 @@ migration:
     </div>
   </section>
 </UseCaseLayout>
+
+<style>
+  .mod-body { padding: 24px; }
+  .mod-bar { display: flex; gap: 3px; height: 14px; border-radius: 7px; overflow: hidden; }
+  .mod-seg { display: block; flex-grow: 0; flex-shrink: 1; }
+  .mod-ok { background: var(--color-ok); }
+  .mod-warn { background: var(--color-warn); }
+  .mod-crit { background: var(--color-crit); opacity: .8; }
+  .mod-legend { list-style: none; margin: 20px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .mod-legend li { display: flex; flex-direction: column; gap: 4px; font-size: .8125rem; color: var(--color-muted); }
+  .mod-legend li + li { border-left: 1px solid var(--color-line); padding-left: 16px; }
+  .mod-pct { font-family: var(--font-display); font-weight: 700; font-size: 2.25rem; line-height: 1; }
+  .mod-facts { margin: 20px 0 0; font-size: .875rem; }
+  .mod-facts > div { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-top: 1px solid var(--color-line); }
+  .mod-facts dt { color: var(--color-muted); }
+  .mod-facts dd { margin: 0; color: var(--color-ink); text-align: right; }
+  .mod-split { align-items: center; }
+  .mod-q { margin: 0; padding: 0 0 0 24px; border-left: 2px solid var(--color-line-strong); font-size: 1.125rem; }
+  .mod-q p { margin: 0; }
+  .mod-answer { font-size: 1.25rem; margin-top: 12px !important; }
+  .mod-pre { margin: 0; padding: 1.25rem 1.5rem; font-size: .8125rem; line-height: 1.6; color: var(--color-body); white-space: pre-wrap; word-break: break-word; }
+  @media (max-width: 420px) { .mod-body { padding: 16px; } .mod-pct { font-size: 1.75rem; } .mod-pre { padding: 1rem; } }
+</style>

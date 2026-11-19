@@ -31,15 +31,15 @@ const features = [
 
 const terminalLines = [
   { text: '', delay: 600 },
-  { text: '<span class="text-buoy">⚓</span> Scanning React components...', type: 'output', delay: 800 },
+  { text: '<span class="ui-t-prompt">›</span> Scanning React components...', type: 'output', delay: 800 },
   { text: '', delay: 1200 },
-  { text: 'Found <span class="text-light">89</span> React components', type: 'output', delay: 1400 },
-  { text: 'Found <span class="text-light">12</span> styled-components', type: 'output', delay: 1600 },
-  { text: 'Found <span class="text-light">34</span> Emotion components', type: 'output', delay: 1800 },
+  { text: 'Found <span class="ui-t-hi">89</span> React components', type: 'output', delay: 1400 },
+  { text: 'Found <span class="ui-t-hi">12</span> styled-components', type: 'output', delay: 1600 },
+  { text: 'Found <span class="ui-t-hi">34</span> Emotion components', type: 'output', delay: 1800 },
   { text: '', delay: 2000 },
-  { text: '<span class="text-warning">WARNING</span> 23 hardcoded values in JSX', type: 'warning', delay: 2200 },
-  { text: '<span class="text-warning">WARNING</span> 5 duplicate Button implementations', type: 'warning', delay: 2400 },
-  { text: '<span class="text-info">INFO</span> 8 naming inconsistencies', type: 'info', delay: 2600 },
+  { text: '<span class="ui-t-warn">WARNING</span> 23 hardcoded values in JSX', type: 'warning', delay: 2200 },
+  { text: '<span class="ui-t-warn">WARNING</span> 5 duplicate Button implementations', type: 'warning', delay: 2400 },
+  { text: '<span class="ui-t-info">INFO</span> 8 naming inconsistencies', type: 'info', delay: 2600 },
 ]
 
 const configExample = `# .buoy.yaml
@@ -57,6 +57,14 @@ cssInJs:
 
 tokens:
   source: auto`
+
+const heroCode = `const Button = styled.button\`
+  background: <span class="ui-old">#3b82f6</span> <span class="ui-token">var(--color-primary)</span>;
+  padding: <span class="ui-old">12px 20px</span> <span class="ui-token">var(--space-3) var(--space-5)</span>;
+  border-radius: <span class="ui-old">6px</span> <span class="ui-token">var(--radius-md)</span>;
+\`;
+
+&lt;Card style={{ gap: <span class="ui-old">'24px'</span> <span class="ui-token">'var(--spacing-lg)'</span> }}&gt;`
 ---
 
 <IntegrationLayout
@@ -65,59 +73,37 @@ tokens:
   keywords="react design system, react component audit, react code consistency"
   heroTitle="React Component Drift Detection"
   heroDescription="Scan your React codebase for design drift. Detect hardcoded styles in JSX, styled-components, and Emotion. Find duplicate components and prop inconsistencies."
-  icon="⚛️"
-  iconBg="bg-sky-500/20"
 >
-  <!-- Features Grid -->
-  <section class="py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">React-Specific Features</h2>
+  <div slot="hero">
+    <div class="ui-tray"><div class="ui-panel"><div class="ui-panel-head">src/components/Button.tsx</div><pre class="p-5 text-sm" set:html={heroCode} /></div></div>
+  </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {features.map((feature) => (
-          <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
-            <h3 class="font-semibold text-light mb-2">{feature.title}</h3>
-            <p class="text-sm text-slate">{feature.description}</p>
-          </div>
-        ))}
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head mb-8"><h2>React-specific features</h2><p>Buoy reads React the way your team writes it: JSX, hooks, and whichever CSS-in-JS library you picked.</p></div>
+      <table class="ui-table">
+        <tbody>
+          {features.map((f) => (
+            <tr><th scope="row">{f.title}</th><td>{f.description}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
+      <div class="ui-head mb-8"><h2>Run it, then tune it</h2><p>One command finds the drift. A short .buoy.yaml points it at the right folders and libraries.</p></div>
+      <div class="ui-split items-start">
+        <div><Terminal command="buoy drift check --framework react" lines={terminalLines} /></div>
+        <div><div class="ui-tray"><div class="ui-panel"><div class="ui-panel-head">.buoy.yaml</div><pre class="p-5 text-sm">{configExample}</pre></div></div></div>
       </div>
     </div>
   </section>
 
-  <!-- Terminal Demo -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">See it in action</h2>
-      <Terminal command="buoy drift check --framework react" lines={terminalLines} />
-    </div>
-  </section>
-
-  <!-- Configuration -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Configuration Example</h2>
-
-      <div class="bg-navy border border-navy-light/30 rounded-xl overflow-hidden">
-        <div class="px-4 py-3 bg-navy-dark border-b border-navy-light/20">
-          <span class="text-sm text-slate font-mono">.buoy.yaml</span>
-        </div>
-        <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{configExample}</code></pre>
-      </div>
-    </div>
-  </section>
-
-  <!-- Supported Libraries -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Supported React Libraries</h2>
-
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        {['styled-components', 'Emotion', 'CSS Modules', 'Tailwind CSS', 'Chakra UI', 'Material UI', 'Ant Design', 'shadcn/ui'].map((lib) => (
-          <div class="bg-navy-dark/50 border border-navy-light/20 rounded-lg p-4 text-center">
-            <span class="text-sm text-slate">{lib}</span>
-          </div>
-        ))}
-      </div>
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head mb-8"><h2>Supported React libraries</h2><p>styled-components, Emotion, CSS Modules, Tailwind CSS, Chakra UI, Material UI, Ant Design and shadcn/ui.</p></div>
     </div>
   </section>
 </IntegrationLayout>

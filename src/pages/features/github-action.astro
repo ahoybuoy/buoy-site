@@ -1,52 +1,23 @@
 ---
 import BuoyMark from '../../components/BuoyMark.astro'
 import FeatureLayout from '../../layouts/FeatureLayout.astro'
-import FeatureCard from '../../components/FeatureCard.astro'
 import LeadMagnetCallout from '../../components/LeadMagnetCallout.astro'
 
+const APP_URL = 'https://github.com/marketplace/buoy-design'
+
 const features = [
-  {
-    title: 'One-Click Install',
-    description: 'Install from the GitHub Marketplace. No workflow files, no configuration, no API keys.'
-  },
-  {
-    title: 'PR Reviews',
-    description: 'Automatic drift reviews posted on every pull request with a deterministic issues table.'
-  },
-  {
-    title: 'Inline Suggestions',
-    description: 'Committable inline fix suggestions you can apply with one click in the GitHub UI.'
-  },
-  {
-    title: 'Check Runs',
-    description: 'Pass or fail based on drift severity. Block merges on critical drift.'
-  },
-  {
-    title: 'Builder Mode',
-    description: 'Coaching tone for early-stage design systems. Helps teams build tokens from repeated patterns.'
-  },
-  {
-    title: 'Same Scanner',
-    description: 'Runs the same open-source scanner engine as the CLI. Same detection, same accuracy.'
-  },
+  { title: 'One-Click Install', description: 'Install from the GitHub Marketplace. No workflow files, no configuration, no API keys.' },
+  { title: 'PR Reviews', description: 'Automatic drift reviews posted on every pull request with a deterministic issues table.' },
+  { title: 'Inline Suggestions', description: 'Committable inline fix suggestions you can apply with one click in the GitHub UI.' },
+  { title: 'Check Runs', description: 'Pass or fail based on drift severity. Block merges on critical drift.' },
+  { title: 'Builder Mode', description: 'Coaching tone for early-stage design systems. Helps teams build tokens from repeated patterns.' },
+  { title: 'Same Scanner', description: 'Runs the same open-source scanner engine as the CLI. Same detection, same accuracy.' },
 ]
 
 const relatedFeatures = [
-  {
-    title: 'CI Integration',
-    description: 'CLI-based CI for any pipeline',
-    href: '/features/ci'
-  },
-  {
-    title: 'Drift Detection',
-    description: 'What the scanner catches',
-    href: '/features/drift-detection'
-  },
-  {
-    title: 'GitHub Integration',
-    description: 'Full GitHub integration overview',
-    href: '/integrations/github'
-  },
+  { title: 'CI Integration', description: 'CLI-based CI for any pipeline', href: '/features/ci' },
+  { title: 'Drift Detection', description: 'What the scanner catches', href: '/features/drift-detection' },
+  { title: 'GitHub Integration', description: 'Full GitHub integration overview', href: '/integrations/github' },
 ]
 ---
 
@@ -56,131 +27,80 @@ const relatedFeatures = [
   keywords="github app design system, design system pr checks, design drift github"
   heroTitle="Catch design drift in every PR"
   heroDescription="Install the GitHub App. Get drift reviews on every pull request. No workflow files, no API keys."
+  exampleCaption="The review the Buoy GitHub App posts on a pull request."
+  related={relatedFeatures}
+  pattern="swell"
+  ctaPattern="scan"
 >
-  <!-- One Scanner Badge -->
-  <div slot="hero-extra" class="flex justify-center mt-8">
-    <div class="inline-flex items-center gap-3 px-5 py-3 bg-navy border border-buoy/30 rounded-xl">
-      <div class="flex items-center gap-2">
-        <span style="display:inline-flex;line-height:0"><BuoyMark size={18} /></span>
-        <span class="text-buoy font-semibold">Same scanner as the CLI</span>
+  <p slot="hero-extra" class="fx-hero-note"><span class="ui-c-buoy">Same scanner as the CLI.</span> Deterministic scanning plus AI summaries and coaching.</p>
+
+  <div slot="example" class="ui-tray">
+    <div class="ui-panel">
+      <div class="ui-panel-head gh-pr-head"><span>Add pricing card</span><span class="fx-meta ui-mono">feature/pricing → main</span></div>
+      <div class="fx-check fx-check-fail">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"/></svg>
+        <span>Buoy Design Check</span><span class="fx-meta">3 issues</span>
       </div>
-      <span class="text-slate-dark">|</span>
-      <span class="text-slate text-sm">Deterministic scanning + AI summaries &amp; coaching</span>
+      <div class="fx-comment-row gh-review">
+        <div class="fx-comment">
+          <div class="fx-comment-head">
+            <span class="fx-avatar"><BuoyMark size={16} /></span>
+            <span class="fx-author">buoy-design</span><span class="fx-tag">bot</span>
+            <span class="fx-meta">reviewed just now</span>
+          </div>
+          <p class="fx-body"><strong>Buoy Design Review</strong><br /><span class="fx-meta">3 design drift issues found in this PR.</span></p>
+          <div class="fx-suggest fx-scroll">
+            <table class="fx-mini">
+              <thead><tr><th>File</th><th>Line</th><th>Issue</th><th>Fix</th></tr></thead>
+              <tbody>
+                <tr><td class="ui-mono">Card.tsx</td><td class="ui-tnum">12</td><td>Hardcoded color <code class="ui-c-crit">#3b82f6</code></td><td><code class="ui-c-ok">var(--color-primary)</code></td></tr>
+                <tr><td class="ui-mono">Card.tsx</td><td class="ui-tnum">31</td><td>Hardcoded spacing <code class="ui-c-crit">24px</code></td><td><code class="ui-c-ok">var(--spacing-lg)</code></td></tr>
+                <tr><td class="ui-mono">Modal.tsx</td><td class="ui-tnum">8</td><td>Hardcoded radius <code class="ui-c-warn">8px</code></td><td><code class="ui-c-ok">var(--radius-md)</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="ui-panel-head gh-file"><span class="ui-mono">src/components/Card.tsx</span></div>
+      <div class="fx-diff" role="img" aria-label="Inline suggestion on Card.tsx line 12: replace #3b82f6 with var(--color-primary).">
+        <div class="fx-line fx-del"><span class="fx-ln">12</span><span class="fx-sign">-</span><span class="fx-code">{'  color: "#3b82f6",'}</span></div>
+        <div class="fx-line fx-add"><span class="fx-ln">12</span><span class="fx-sign">+</span><span class="fx-code">{'  color: "var(--color-primary)",'}</span></div>
+      </div>
+      <div class="gh-commit"><span class="gh-commit-btn">Commit suggestion</span><span class="fx-meta">Inline fix, one click</span></div>
     </div>
   </div>
 
-  <!-- Quick Setup -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Setup in 30 Seconds</h2>
-
-      <div class="max-w-2xl mx-auto">
-        <div class="space-y-6">
-          <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-full bg-buoy/20 border-2 border-buoy flex items-center justify-center text-buoy font-bold shrink-0">1</div>
-            <div>
-              <h3 class="font-semibold text-light">Install from GitHub Marketplace</h3>
-              <p class="text-sm text-slate mt-1">Visit <a href="https://github.com/marketplace/buoy-design" class="text-buoy hover:underline">github.com/marketplace/buoy-design</a> and install the app.</p>
-            </div>
-          </div>
-          <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-full bg-buoy/20 border-2 border-buoy flex items-center justify-center text-buoy font-bold shrink-0">2</div>
-            <div>
-              <h3 class="font-semibold text-light">Select your repositories</h3>
-              <p class="text-sm text-slate mt-1">Choose which repos Buoy should monitor.</p>
-            </div>
-          </div>
-          <div class="flex items-start gap-4">
-            <div class="w-10 h-10 rounded-full bg-buoy/20 border-2 border-buoy flex items-center justify-center text-buoy font-bold shrink-0">3</div>
-            <div>
-              <h3 class="font-semibold text-light">Open a PR</h3>
-              <p class="text-sm text-slate mt-1">Buoy scans automatically and posts a design review.</p>
-            </div>
-          </div>
+  <section class="ui-section">
+    <div class="ui-wrap ui-split">
+      <div class="ui-head">
+        <h2>Setup in 30 seconds</h2>
+        <p>That's it. No workflow files. No API keys. No configuration needed.</p>
+        <div class="ui-actions fx-mt">
+          <a href={APP_URL} target="_blank" rel="noopener noreferrer" class="ui-btn ui-btn--primary">Install the GitHub App</a>
         </div>
       </div>
-
-      <p class="text-center text-slate mt-8">
-        That's it. No workflow files. No API keys. No configuration needed.
-      </p>
+      <ol class="ui-steps">
+        <li><span class="ui-step-n" aria-hidden="true">1</span><div><h3>Install from GitHub Marketplace</h3><p>Visit <a href={APP_URL} class="ui-link">github.com/marketplace/buoy-design</a> and install the app.</p></div></li>
+        <li><span class="ui-step-n" aria-hidden="true">2</span><div><h3>Select your repositories</h3><p>Choose which repos Buoy should monitor.</p></div></li>
+        <li><span class="ui-step-n" aria-hidden="true">3</span><div><h3>Open a PR</h3><p>Buoy scans automatically and posts a design review.</p></div></li>
+      </ol>
     </div>
   </section>
 
-  <!-- PR Review Preview -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">What You'll See</h2>
-
-      <div class="bg-[#0d1117] border border-[#30363d] rounded-lg overflow-hidden shadow-xl">
-        <div class="px-4 py-3 border-b border-[#30363d] flex items-center gap-2">
-          <div class="w-8 h-8 rounded-full bg-buoy/20 flex items-center justify-center text-sm">🛟</div>
-          <div>
-            <span class="text-sm text-[#c9d1d9] font-medium">buoy-design[bot]</span>
-            <span class="text-xs text-[#8b949e] ml-2">reviewed just now</span>
-          </div>
-        </div>
-        <div class="p-4">
-          <h3 class="text-[#c9d1d9] font-semibold mb-3">🛟 Buoy Design Review</h3>
-          <p class="text-[#8b949e] text-sm mb-4">3 design drift issues found in this PR.</p>
-          <details class="mb-4" open>
-            <summary class="text-[#58a6ff] text-sm cursor-pointer mb-2">Issues Table</summary>
-            <div class="overflow-x-auto">
-              <table class="w-full text-sm">
-                <thead>
-                  <tr class="text-[#8b949e] border-b border-[#30363d]">
-                    <th class="text-left py-2 px-3">File</th>
-                    <th class="text-left py-2 px-3">Line</th>
-                    <th class="text-left py-2 px-3">Issue</th>
-                    <th class="text-left py-2 px-3">Fix</th>
-                  </tr>
-                </thead>
-                <tbody class="text-[#c9d1d9]">
-                  <tr class="border-b border-[#30363d]">
-                    <td class="py-2 px-3 text-[#58a6ff]">Card.tsx</td>
-                    <td class="py-2 px-3">12</td>
-                    <td class="py-2 px-3">Hardcoded color <code class="text-[#f85149]">#3b82f6</code></td>
-                    <td class="py-2 px-3"><code class="text-[#7ee787]">var(--color-primary)</code></td>
-                  </tr>
-                  <tr class="border-b border-[#30363d]">
-                    <td class="py-2 px-3 text-[#58a6ff]">Card.tsx</td>
-                    <td class="py-2 px-3">31</td>
-                    <td class="py-2 px-3">Hardcoded spacing <code class="text-[#f85149]">24px</code></td>
-                    <td class="py-2 px-3"><code class="text-[#7ee787]">var(--spacing-lg)</code></td>
-                  </tr>
-                  <tr>
-                    <td class="py-2 px-3 text-[#58a6ff]">Modal.tsx</td>
-                    <td class="py-2 px-3">8</td>
-                    <td class="py-2 px-3">Hardcoded radius <code class="text-[#d29922]">8px</code></td>
-                    <td class="py-2 px-3"><code class="text-[#7ee787]">var(--radius-md)</code></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </details>
-        </div>
-      </div>
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>Why teams love it</h2></div>
+      <table class="ui-table fx-block">
+        <caption class="ui-sr">What the GitHub App does</caption>
+        <tbody>
+          {features.map((f) => <tr><th scope="row">{f.title}</th><td>{f.description}</td></tr>)}
+        </tbody>
+      </table>
     </div>
   </section>
 
-  <!-- Features -->
-  <section class="py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Why Teams Love It</h2>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {features.map((feature) => (
-          <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
-            <h3 class="font-semibold text-light mb-2">{feature.title}</h3>
-            <p class="text-sm text-slate">{feature.description}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Lead Magnet -->
-  <section class="py-12">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="ui-section">
+    <div class="ui-wrap fx-narrow">
       <LeadMagnetCallout
         leadMagnet="pr-review-cheatsheet"
         headline="Never miss drift in code review again"
@@ -189,15 +109,13 @@ const relatedFeatures = [
       />
     </div>
   </section>
-
-  <!-- Related Features -->
-  <div slot="related" class="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-    {relatedFeatures.map((feature) => (
-      <FeatureCard
-        title={feature.title}
-        description={feature.description}
-        href={feature.href}
-      />
-    ))}
-  </div>
 </FeatureLayout>
+
+<style>
+  .gh-review { border-bottom: 0; }
+  .gh-pr-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-weight: 600; color: var(--color-ink); }
+  .gh-file { border-top: 1px solid var(--color-line); }
+  .gh-commit { display: flex; align-items: center; gap: 12px; padding: 10px 14px; font-size: 13px; border-top: 1px solid var(--color-line); }
+  /* A picture of GitHub's button inside the mock, not a control on this page. */
+  .gh-commit-btn { padding: 4px 10px; border-radius: 6px; font-weight: 500; color: var(--color-ink); background: var(--color-raised); box-shadow: 0 0 0 1px var(--color-line-strong); }
+</style>

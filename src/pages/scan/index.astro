@@ -9,7 +9,7 @@ const s = reportStats()
 const faqs = [
   {
     q: 'How do I scan a design system?',
-    a: 'Paste a public GitHub repository URL above. Buoy clones it, finds its design tokens and components, and lists the hardcoded colors, spacing and font sizes that bypass them, with a 0–100 design health score and the changes that would raise it. For a private repository, run `npx @buoy-design/cli show health` in a checkout.',
+    a: 'Paste a public GitHub repository URL above. Buoy clones it, finds its design tokens and components, and lists the hardcoded colors, spacing and font sizes that bypass them, with a 0 to 100 design health score and the changes that would raise it. For a private repository, run `npx @buoy-design/cli show health` in a checkout.',
   },
   {
     q: 'What does the scan check?',
@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     q: 'What does it leave alone?',
-    a: 'Icons and logos, email templates, Open Graph images, tests and stories, example and demo apps, layout math such as calc() and 100dvh, 1px hairlines, and values the code marks as deliberate with a comment or a 2–3px optical nudge.',
+    a: 'Icons and logos, email templates, Open Graph images, tests and stories, example and demo apps, layout math such as calc() and 100dvh, 1px hairlines, and values the code marks as deliberate with a comment or a 2 to 3px optical nudge.',
   },
   {
     q: 'Is it free, and what happens to my code?',
@@ -72,70 +72,86 @@ import MarkPattern from '../../components/MarkPattern.astro'
   jsonLd={jsonLd}
 >
   <Nav />
-  <section class="relative pt-32 pb-12 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
-    <MarkPattern pattern="scan" drift={0} fade class="opacity-70" />
-    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h1 class="text-4xl sm:text-5xl font-bold text-light">Scan a design system from a GitHub URL</h1>
-      <p class="text-lg text-slate mt-4">
-        Find the hardcoded colors, spacing and font sizes that bypass the design system, get a design health score,
-        and see exactly what it would take to reach 100. Free, for any public repository.
-      </p>
-      <div class="mt-8 text-left">
+  <main class="ui-nav-offset">
+  <section class="ui-section ui-section--first ui-section--patterned">
+    <MarkPattern pattern="scan" drift={0.3} fade class="ui-pattern" />
+    <div class="ui-wrap">
+      <div class="ui-head">
+        <h1>Scan a design system from a GitHub URL</h1>
+        <p class="ui-lede">
+          Find the hardcoded colors, spacing and font sizes that bypass the design system, get a design health score,
+          and see exactly what it would take to reach 100. Free, for any public repository.
+        </p>
+      </div>
+      <div class="mt-8 max-w-[640px]">
         <ScanForm autofocus />
-      </div>
-      <p class="text-sm text-slate/80 mt-4">
-        Try {examples.map((e, i) => <>{i > 0 && ', '}<a href={`/reports/${e}`} class="text-buoy hover:underline">{e}</a></>)}
-      </p>
-    </div>
-  </section>
-
-  <section class="py-12 bg-navy-dark">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-6">
-      <div class="bg-navy/50 border border-navy-light/20 rounded-2xl p-6">
-        <h2 class="text-lg font-semibold text-light">What it finds</h2>
-        <p class="text-slate mt-2 text-sm">Literal colors, spacing, font sizes, radii and shadows where a token belongs, in React, Vue, Svelte, Angular, Tailwind, CSS and Sass, each with the existing token to use when there is one.</p>
-      </div>
-      <div class="bg-navy/50 border border-navy-light/20 rounded-2xl p-6">
-        <h2 class="text-lg font-semibold text-light">What it leaves alone</h2>
-        <p class="text-slate mt-2 text-sm">Icons, email templates, tests, demo apps, layout math, and values the code marks as deliberate with a comment. A scan that flags correct code gets ignored.</p>
-      </div>
-      <div class="bg-navy/50 border border-navy-light/20 rounded-2xl p-6">
-        <h2 class="text-lg font-semibold text-light">What you get</h2>
-        <p class="text-slate mt-2 text-sm">A 0–100 <a href="/guides/design-system-health-score" class="text-buoy hover:underline">design health score</a>, the most repeated literals, the worst files, and the path to 100: every point missing and the change that earns it.</p>
+        <p class="ui-note mt-4">
+          Try {examples.map((e, i) => <>{i > 0 && ', '}<a href={`/reports/${e}`} class="ui-rowlink">{e}</a></>)}
+        </p>
       </div>
     </div>
   </section>
 
-  <section class="py-12 bg-navy-dark">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light">Scanned so far</h2>
-      <p class="text-slate mt-3">
-        {s.scoredCount} well-known open-source codebases, {s.components.toLocaleString()} components:
-        median design health {s.medianScore}/100, {s.findings.toLocaleString()} hardcoded-value findings, and
-        {s.noted.toLocaleString()} values left alone as deliberate. <a href="/reports" class="text-buoy hover:underline">See every report</a>.
-      </p>
-
-      <h2 class="text-2xl font-bold text-light mt-12">Private repository?</h2>
-      <p class="text-slate mt-3">Run the same scan locally. Nothing leaves your machine.</p>
-      <pre class="mt-4 bg-black/30 border border-navy-light/20 rounded-xl p-4 text-sm text-light overflow-x-auto"><code>npx @buoy-design/cli show health</code></pre>
-
-      <h2 class="text-2xl font-bold text-light mt-12">Frequently asked questions</h2>
-      <dl class="mt-6 space-y-6">
-        {faqs.map((f) => (
-          <div>
-            <dt class="text-light font-semibold">{f.q}</dt>
-            <dd class="text-slate mt-2 leading-relaxed">{f.a}</dd>
-          </div>
-        ))}
-      </dl>
-
-      <p class="text-slate mt-12">
-        Guides: <a href="/guides/how-to-audit-a-design-system" class="text-buoy hover:underline">how to audit a design system</a> ·
-        <a href="/guides/find-hardcoded-colors-and-spacing" class="text-buoy hover:underline">find hardcoded colors and spacing</a> ·
-        <a href="/guides/what-is-design-drift" class="text-buoy hover:underline">what is design drift</a>
-      </p>
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
+      <div class="ui-cols ui-cols--3 !mt-0">
+        <article class="ui-col">
+          <h2 class="text-[length:var(--text-h3)]">What it finds</h2>
+          <p class="ui-col-sub !text-[var(--color-crit)]">Literals where a token belongs</p>
+          <p>Literal colors, spacing, font sizes, radii and shadows where a token belongs, in React, Vue, Svelte, Angular, Tailwind, CSS and Sass, each with the existing token to use when there is one.</p>
+        </article>
+        <article class="ui-col">
+          <h2 class="text-[length:var(--text-h3)]">What it leaves alone</h2>
+          <p class="ui-col-sub !text-[var(--color-info)]">Deliberate values stay</p>
+          <p>Icons, email templates, tests, demo apps, layout math, and values the code marks as deliberate with a comment. A scan that flags correct code gets ignored.</p>
+        </article>
+        <article class="ui-col">
+          <h2 class="text-[length:var(--text-h3)]">What you get</h2>
+          <p class="ui-col-sub ui-c-ok">A score and the path to 100</p>
+          <p>A 0 to 100 <a href="/guides/design-system-health-score" class="ui-link">design health score</a>, the most repeated literals, the worst files, and the path to 100: every point missing and the change that earns it.</p>
+        </article>
+      </div>
     </div>
   </section>
+
+  <section class="ui-section ui-section--last">
+    <div class="ui-wrap grid gap-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)]">
+      <div>
+        <div class="ui-head">
+          <h2>Scanned so far</h2>
+          <p>
+            <span class="ui-tnum text-[var(--color-ink)]">{s.scoredCount}</span> well-known open-source codebases, <span class="ui-tnum">{s.components.toLocaleString()}</span> components:
+            median design health <span class="ui-tnum ui-c-ok">{s.medianScore}/100</span>, <span class="ui-tnum ui-c-crit">{s.findings.toLocaleString()}</span> hardcoded-value findings, and
+            <span class="ui-tnum">{s.noted.toLocaleString()}</span> values left alone as deliberate. <a href="/reports" class="ui-link">See every report</a>.
+          </p>
+        </div>
+        <div class="ui-head mt-14">
+          <h2>Private repository?</h2>
+          <p>Run the same scan locally. Nothing leaves your machine.</p>
+        </div>
+        <div class="ui-term mt-6">
+          <div class="ui-term-bar">Terminal</div>
+          <pre><span class="ui-t-prompt">$</span> npx @buoy-design/cli show health</pre>
+        </div>
+        <p class="ui-note mt-10">
+          Guides: <a href="/guides/how-to-audit-a-design-system" class="ui-rowlink">how to audit a design system</a> ·
+          <a href="/guides/find-hardcoded-colors-and-spacing" class="ui-rowlink">find hardcoded colors and spacing</a> ·
+          <a href="/guides/what-is-design-drift" class="ui-rowlink">what is design drift</a>
+        </p>
+      </div>
+      <div>
+        <div class="ui-head"><h2>Frequently asked questions</h2></div>
+        <dl class="mt-6 border-t border-[var(--color-line-strong)]">
+          {faqs.map((f) => (
+            <div class="py-5 border-b border-[var(--color-line)]">
+              <dt class="font-semibold text-[var(--color-ink)]">{f.q}</dt>
+              <dd class="mt-2 leading-relaxed">{f.a}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </div>
+  </section>
+  </main>
   <Footer />
 </Layout>

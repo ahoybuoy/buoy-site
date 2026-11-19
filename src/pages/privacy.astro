@@ -84,6 +84,7 @@ const subprocessors = [
     data: 'Email address, the download or list you signed up for; for support, your name and message',
   },
 ]
+const toc = [{id: 'the-short-version', label: 'The short version'}, {id: 'open-source-tools', label: 'Open source tools'}, {id: 'github-app', label: 'GitHub App'}, {id: 'llm', label: 'Where an LLM is used'}, {id: 'website', label: 'Website'}, {id: 'how-we-use-your-information', label: 'How we use your information'}, {id: 'subprocessors', label: 'Subprocessors'}, {id: 'sharing', label: 'Sharing'}, {id: 'security', label: 'Security'}, {id: 'retention', label: 'Retention'}, {id: 'your-rights', label: 'Your rights'}, {id: 'children-s-privacy', label: "Children's privacy"}, {id: 'changes-to-this-policy', label: 'Changes to this policy'}, {id: 'contact-us', label: 'Contact us'}]
 ---
 
 <Layout
@@ -92,45 +93,41 @@ const subprocessors = [
 >
   <Nav />
 
-  <section class="relative pt-32 pb-16">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-
-      <div class="mb-12">
-        <h1 class="text-3xl sm:text-4xl font-bold text-light mb-4">Privacy Policy</h1>
-        <p class="text-slate">Last updated: {lastUpdated}</p>
-      </div>
-
-      <div class="prose prose-invert max-w-none space-y-10">
-
-        <section>
-          <h2 class="text-xl font-semibold text-light mb-4">The short version</h2>
-          <ul class="list-disc list-inside text-slate space-y-2">
+  <main id="main" class="ui-nav-offset">
+    <section class="ui-section ui-section--first ui-section--last">
+      <div class="ui-wrap">
+        <div class="ui-head">
+          <h1>Privacy Policy</h1>
+          <p>Last updated: {lastUpdated}</p>
+        </div>
+        <div class="lg-layout">
+          <nav class="lg-toc" aria-label="On this page">
+            <p>On this page</p>
+            <ol>{toc.map((t) => <li><a href={`#${t.id}`}>{t.label}</a></li>)}</ol>
+          </nav>
+          <article class="ui-prose lg-prose">
+          <h2 id="the-short-version">The short version</h2>
+          <ul>
             <li>The open source CLI, MCP server and GitHub Action run on your machine or in your CI. They send nothing to Buoy unless you turn on telemetry or sign in to sync.</li>
             <li>The GitHub App reads your pull requests and repository files through GitHub and scans them on Cloudflare.</li>
             <li>We store findings, not files: the file path, line and flagged value, plus the original and suggested line for each fix Buoy posts.</li>
-            <li>Findings are deterministic. Some review prose is written by an LLM through OpenRouter, which receives diff excerpts and file history. <a href="#llm" class="text-buoy hover:underline">Details</a>.</li>
-            <li>We do not sell your data or use it to train models. Every company that processes it for us is in the <a href="#subprocessors" class="text-buoy hover:underline">subprocessor list</a>.</li>
+            <li>Findings are deterministic. Some review prose is written by an LLM through OpenRouter, which receives diff excerpts and file history. <a href="#llm">Details</a>.</li>
+            <li>We do not sell your data or use it to train models. Every company that processes it for us is in the <a href="#subprocessors">subprocessor list</a>.</li>
           </ul>
-          <p class="text-slate mt-4">
+          <p>
             This policy is from Buoy Design, Inc. ("Buoy," "we," "us") and covers the open source tools, the GitHub App, the dashboard and buoy.design.
           </p>
-        </section>
-
-        <section>
-          <h2 class="text-xl font-semibold text-light mb-4">Open source tools</h2>
-          <ul class="list-disc list-inside text-slate space-y-2">
-            <li><strong class="text-light">CLI and MCP server:</strong> scan and answer locally. By default they make no network calls to Buoy.</li>
-            <li><strong class="text-light">Telemetry, opt-in:</strong> the CLI asks once, in an interactive terminal. If you say yes, it sends an event name, whole-number counts (such as drift totals and file counts), the CLI version, your OS platform and a random anonymous ID. No file paths, repository names, tokens or account details. It never sends in CI or when <code>BUOY_TELEMETRY=0</code> or <code>DO_NOT_TRACK=1</code> is set. <code>buoy ahoy telemetry</code> shows the payload and turns it on or off.</li>
-            <li><strong class="text-light">Signing in:</strong> if you run <code>buoy ahoy login</code> and sync, the CLI uploads scan results (findings with file paths, lines and flagged values) to your Buoy account.</li>
-            <li><strong class="text-light">GitHub Action:</strong> runs in your CI with your token and posts to your pull requests. If you give it your own LLM API key, those calls go straight from your CI to that provider under your account. Buoy does not receive them.</li>
+          <h2 id="open-source-tools">Open source tools</h2>
+          <ul>
+            <li><strong>CLI and MCP server:</strong> scan and answer locally. By default they make no network calls to Buoy.</li>
+            <li><strong>Telemetry, opt-in:</strong> the CLI asks once, in an interactive terminal. If you say yes, it sends an event name, whole-number counts (such as drift totals and file counts), the CLI version, your OS platform and a random anonymous ID. No file paths, repository names, tokens or account details. It never sends in CI or when <code>BUOY_TELEMETRY=0</code> or <code>DO_NOT_TRACK=1</code> is set. <code>buoy ahoy telemetry</code> shows the payload and turns it on or off.</li>
+            <li><strong>Signing in:</strong> if you run <code>buoy ahoy login</code> and sync, the CLI uploads scan results (findings with file paths, lines and flagged values) to your Buoy account.</li>
+            <li><strong>GitHub Action:</strong> runs in your CI with your token and posts to your pull requests. If you give it your own LLM API key, those calls go straight from your CI to that provider under your account. Buoy does not receive them.</li>
           </ul>
-        </section>
+          <h2 id="github-app">GitHub App</h2>
 
-        <section>
-          <h2 class="text-xl font-semibold text-light mb-4">GitHub App</h2>
-
-          <h3 class="text-lg font-medium text-light mb-3">What it reads, through GitHub</h3>
-          <ul class="list-disc list-inside text-slate space-y-2 mb-6">
+          <h3>What it reads, through GitHub</h3>
+          <ul>
             <li>Pull request details, the changed files and their diffs</li>
             <li>Files it needs for a review, such as <code>.buoy.yaml</code>, token and theme files, and <code>DESIGN.md</code></li>
             <li>For a first or baseline scan, a full clone of the repository</li>
@@ -138,63 +135,53 @@ const subprocessors = [
             <li>Pull request comments that mention @ahoybuoy or reply to Buoy</li>
           </ul>
 
-          <h3 class="text-lg font-medium text-light mb-3">Where it is processed</h3>
-          <p class="text-slate mb-6">
+          <h3>Where it is processed</h3>
+          <p>
             On Cloudflare Workers, Queues and Containers. Full clones go into a temporary directory inside a Cloudflare Container and are deleted when the scan ends.
           </p>
 
-          <h3 class="text-lg font-medium text-light mb-3">What we store</h3>
-          <ul class="list-disc list-inside text-slate space-y-2 mb-4">
-            <li><strong class="text-light">Account:</strong> name, email address, GitHub login and avatar. GitHub access tokens are encrypted before we store them.</li>
-            <li><strong class="text-light">Installations and repositories:</strong> which organizations and repos use Buoy, and pull request numbers</li>
-            <li><strong class="text-light">Findings:</strong> type, file path, line, the flagged value (such as <code>#3b82f6</code>), the message, the suggested token, and the commit author when git provides one</li>
-            <li><strong class="text-light">Suggested fixes:</strong> for each fix Buoy posts, the original line and the suggested replacement, so we can tell whether it was adopted</li>
-            <li><strong class="text-light">Your design system:</strong> token names, values and source files, component names and paths, and your <code>DESIGN.md</code> if you use the dashboard editor</li>
-            <li><strong class="text-light">Conversations:</strong> @ahoybuoy threads, and replies where your team explains or declines a suggestion</li>
-            <li><strong class="text-light">Usage:</strong> review counts and health scores, product events, feedback you send, and the IP address and browser of requests to our API and dashboard</li>
+          <h3>What we store</h3>
+          <ul>
+            <li><strong>Account:</strong> name, email address, GitHub login and avatar. GitHub access tokens are encrypted before we store them.</li>
+            <li><strong>Installations and repositories:</strong> which organizations and repos use Buoy, and pull request numbers</li>
+            <li><strong>Findings:</strong> type, file path, line, the flagged value (such as <code>#3b82f6</code>), the message, the suggested token, and the commit author when git provides one</li>
+            <li><strong>Suggested fixes:</strong> for each fix Buoy posts, the original line and the suggested replacement, so we can tell whether it was adopted</li>
+            <li><strong>Your design system:</strong> token names, values and source files, component names and paths, and your <code>DESIGN.md</code> if you use the dashboard editor</li>
+            <li><strong>Conversations:</strong> @ahoybuoy threads, and replies where your team explains or declines a suggestion</li>
+            <li><strong>Usage:</strong> review counts and health scores, product events, feedback you send, and the IP address and browser of requests to our API and dashboard</li>
           </ul>
-          <p class="text-slate">
+          <p>
             We do not store your source files or full diffs in our database.
           </p>
-        </section>
-
-        <section id="llm" class="scroll-mt-24">
-          <h2 class="text-xl font-semibold text-light mb-4">Where an LLM is used</h2>
-          <p class="text-slate mb-4">
+        <h2 id="llm">Where an LLM is used</h2>
+          <p>
             Findings come from deterministic rules. A model never decides whether something is a finding. An LLM only writes prose, in these places. Requests go through OpenRouter, which routes each one to a provider that hosts the model.
           </p>
-          <div class="space-y-4 mb-4">
+          <dl class="lg-uses">
             {llmUses.map((use) => (
-              <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-5">
-                <h3 class="font-semibold text-light mb-1">{use.feature}</h3>
-                <p class="text-sm text-slate-dark mb-3">{use.when}</p>
-                <p class="text-sm text-slate mb-2"><strong class="text-light">Sent:</strong> {use.sent}</p>
-                <p class="text-sm text-slate"><strong class="text-light">Model:</strong> {use.model}</p>
+              <div><dt>{use.feature}</dt>
+                <dd class="lg-when">{use.when}</dd>
+                <dd><strong>Sent:</strong> {use.sent}</dd>
+                <dd><strong>Model:</strong> {use.model}</dd>
               </div>
             ))}
-          </div>
-          <p class="text-slate mb-4">
+          </dl>
+          <p>
             As of {lastUpdated}, OpenRouter serves Devstral 2 from Mistral AI, GPT-4o-mini from OpenAI or Microsoft Azure, and Qwen3.5-Flash from Alibaba Cloud. How long OpenRouter and those providers keep requests is set by their own policies.
           </p>
-          <p class="text-slate">
+          <p>
             There is no per-repo switch to turn LLM prose off yet. If you need deterministic findings with no LLM at all, the open source GitHub Action gives you the same findings in your own CI.
           </p>
-        </section>
-
-        <section>
-          <h2 class="text-xl font-semibold text-light mb-4">Website</h2>
-          <ul class="list-disc list-inside text-slate space-y-2">
-            <li><strong class="text-light">Page views:</strong> Cloudflare Web Analytics counts visits, referrers and browsers without cookies.</li>
-            <li><strong class="text-light">Events:</strong> a few actions, such as form sign-ups, are recorded in Cloudflare Analytics Engine with an anonymous visitor ID cookie (<code>buoy_vid</code>, one year). Fields that look like emails or tokens are dropped.</li>
-            <li><strong class="text-light">Repository scanner:</strong> when you scan a public repository at <a href="/scan" class="text-buoy hover:underline">/scan</a>, we clone it on Cloudflare, publish the report, and use your IP address for rate limiting.</li>
-            <li><strong class="text-light">Forms:</strong> download and update sign-ups are stored by Buoy (on Cloudflare) along with what you asked for, and the emails go out through Mailgun. Every email has an unsubscribe link. The support form emails your name, address and message to us through Mailgun.</li>
-            <li><strong class="text-light">Your browser:</strong> your theme choice and a page-layout test variant are kept in local storage.</li>
+          <h2 id="website">Website</h2>
+          <ul>
+            <li><strong>Page views:</strong> Cloudflare Web Analytics counts visits, referrers and browsers without cookies.</li>
+            <li><strong>Events:</strong> a few actions, such as form sign-ups, are recorded in Cloudflare Analytics Engine with an anonymous visitor ID cookie (<code>buoy_vid</code>, one year). Fields that look like emails or tokens are dropped.</li>
+            <li><strong>Repository scanner:</strong> when you scan a public repository at <a href="/scan">/scan</a>, we clone it on Cloudflare, publish the report, and use your IP address for rate limiting.</li>
+            <li><strong>Forms:</strong> download and update sign-ups are stored by Buoy (on Cloudflare) along with what you asked for, and the emails go out through Mailgun. Every email has an unsubscribe link. The support form emails your name, address and message to us through Mailgun.</li>
+            <li><strong>Your browser:</strong> your theme choice and a page-layout test variant are kept in local storage.</li>
           </ul>
-        </section>
-
-        <section>
-          <h2 class="text-xl font-semibold text-light mb-4">How we use your information</h2>
-          <ul class="list-disc list-inside text-slate space-y-2">
+          <h2 id="how-we-use-your-information">How we use your information</h2>
+          <ul>
             <li>Run the reviews, dashboard and website</li>
             <li>Remember what your team declined or explained, so Buoy does not repeat itself</li>
             <li>Send product email to GitHub App users, with an unsubscribe link in every message</li>
@@ -202,112 +189,101 @@ const subprocessors = [
             <li>Find and fix bugs, and measure whether reviews are useful</li>
             <li>Meet legal obligations</li>
           </ul>
-        </section>
-
-        <section id="subprocessors" class="scroll-mt-24">
-          <h2 class="text-xl font-semibold text-light mb-4">Subprocessors</h2>
-          <p class="text-slate mb-4">
+        <h2 id="subprocessors">Subprocessors</h2>
+          <p>
             These companies process data for us. We will update this list when it changes.
           </p>
-          <div class="sm:hidden space-y-3">
-            {subprocessors.map((sp) => (
-              <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-4 text-sm">
-                <h3 class="font-semibold text-light mb-1">{sp.name}</h3>
-                <p class="text-slate mb-2">{sp.purpose}</p>
-                <p class="text-slate"><strong class="text-light">Data:</strong> {sp.data}</p>
-              </div>
-            ))}
-          </div>
-          <div class="hidden sm:block overflow-x-auto border border-navy-light/20 rounded-xl">
-            <table class="w-full text-sm text-left">
-              <thead class="bg-navy">
+          <table class="ui-table ui-table--stack">
+              <thead>
                 <tr>
-                  <th scope="col" class="p-3 font-semibold text-light">Subprocessor</th>
-                  <th scope="col" class="p-3 font-semibold text-light">What for</th>
-                  <th scope="col" class="p-3 font-semibold text-light">Data</th>
+                  <th scope="col">Subprocessor</th>
+                  <th scope="col">What for</th>
+                  <th scope="col">Data</th>
                 </tr>
               </thead>
               <tbody>
                 {subprocessors.map((sp, index) => (
-                  <tr class={`border-t border-navy-light/20 align-top ${index % 2 === 0 ? 'bg-navy/30' : ''}`}>
-                    <td class="p-3 text-light font-medium">{sp.name}</td>
-                    <td class="p-3 text-slate">{sp.purpose}</td>
-                    <td class="p-3 text-slate">{sp.data}</td>
+                  <tr>
+                    <td>{sp.name}</td>
+                    <td>{sp.purpose}</td>
+                    <td>{sp.data}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
-          </div>
-        </section>
-
-        <section>
-          <h2 class="text-xl font-semibold text-light mb-4">Sharing</h2>
-          <p class="text-slate mb-4">
+          <h2 id="sharing">Sharing</h2>
+          <p>
             We do not sell your personal information. Beyond the subprocessors above, we share data only:
           </p>
-          <ul class="list-disc list-inside text-slate space-y-2">
+          <ul>
             <li>When the law requires it, or to protect our rights or someone's safety</li>
             <li>As part of a merger or acquisition, under this policy</li>
           </ul>
-        </section>
-
-        <section>
-          <h2 class="text-xl font-semibold text-light mb-4">Security</h2>
-          <p class="text-slate">
-            Data is encrypted in transit with TLS, and Cloudflare encrypts the data we store at rest. We also encrypt GitHub access tokens ourselves. Access to production data is limited to the people who run Buoy. No system is perfectly secure, so please email <a href="mailto:privacy@buoy.design" class="text-buoy hover:underline">privacy@buoy.design</a> if you find a problem.
+          <h2 id="security">Security</h2>
+          <p>
+            Data is encrypted in transit with TLS, and Cloudflare encrypts the data we store at rest. We also encrypt GitHub access tokens ourselves. Access to production data is limited to the people who run Buoy. No system is perfectly secure, so please email <a href="mailto:privacy@buoy.design">privacy@buoy.design</a> if you find a problem.
           </p>
-        </section>
-
-        <section>
-          <h2 class="text-xl font-semibold text-light mb-4">Retention</h2>
-          <ul class="list-disc list-inside text-slate space-y-2">
+          <h2 id="retention">Retention</h2>
+          <ul>
             <li>Temporary repository clones are deleted when each scan ends.</li>
             <li>Cloudflare Workers Logs are kept for 7 days.</li>
             <li>Uninstalling the GitHub App removes the installation and the repositories and scan history tied to it. Your account and some review records, such as suggestion history and remembered declines, stay until you ask us to delete them.</li>
-            <li>Everything else is kept while you use Buoy. Email <a href="mailto:privacy@buoy.design" class="text-buoy hover:underline">privacy@buoy.design</a> and we will delete your data.</li>
+            <li>Everything else is kept while you use Buoy. Email <a href="mailto:privacy@buoy.design">privacy@buoy.design</a> and we will delete your data.</li>
           </ul>
-        </section>
-
-        <section>
-          <h2 class="text-xl font-semibold text-light mb-4">Your rights</h2>
-          <p class="text-slate mb-4">
+          <h2 id="your-rights">Your rights</h2>
+          <p>
             Depending on where you live, you may have the right to:
           </p>
-          <ul class="list-disc list-inside text-slate space-y-2">
+          <ul>
             <li>Access the personal data we hold about you</li>
             <li>Correct inaccurate data</li>
             <li>Delete your data</li>
             <li>Export your data in a portable format</li>
             <li>Opt out of marketing email</li>
           </ul>
-        </section>
-
-        <section>
-          <h2 class="text-xl font-semibold text-light mb-4">Children's privacy</h2>
-          <p class="text-slate">
+          <h2 id="children-s-privacy">Children's privacy</h2>
+          <p>
             Our services are not intended for children under 13. We do not knowingly collect personal information from children under 13.
           </p>
-        </section>
-
-        <section>
-          <h2 class="text-xl font-semibold text-light mb-4">Changes to this policy</h2>
-          <p class="text-slate">
+          <h2 id="changes-to-this-policy">Changes to this policy</h2>
+          <p>
             When this policy changes, we will post the new version here and update the date at the top.
           </p>
-        </section>
-
-        <section>
-          <h2 class="text-xl font-semibold text-light mb-4">Contact us</h2>
-          <ul class="list-none text-slate space-y-1">
-            <li>Email: <a href="mailto:privacy@buoy.design" class="text-buoy hover:underline">privacy@buoy.design</a></li>
-            <li>Support: <a href="/support" class="text-buoy hover:underline">buoy.design/support</a></li>
+          <h2 id="contact-us">Contact us</h2>
+          <ul>
+            <li>Email: <a href="mailto:privacy@buoy.design">privacy@buoy.design</a></li>
+            <li>Support: <a href="/support">buoy.design/support</a></li>
           </ul>
-        </section>
-
       </div>
-
-    </div>
-  </section>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <Footer />
 </Layout>
+
+<style>
+  .lg-layout { margin-top: 56px; display: grid; grid-template-columns: 220px minmax(0, 68ch); gap: 72px; align-items: start; }
+  .lg-prose { max-width: 68ch; }
+  .lg-prose > h2:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+  .lg-toc { position: sticky; top: 96px; font-size: 14px; }
+  .lg-toc p { margin: 0 0 12px; font-weight: 600; color: var(--color-ink); }
+  .lg-toc ol { margin: 0; padding: 0; list-style: none; border-left: 1px solid var(--color-line); }
+  .lg-toc a { display: block; padding: 6px 0 6px 14px; margin-left: -1px; border-left: 1px solid transparent; color: var(--color-muted); text-decoration: none; transition: color 150ms ease, border-color 150ms ease; }
+  .lg-toc a:hover { color: var(--color-ink); border-left-color: var(--color-buoy); }
+  @media (max-width: 960px) {
+    .lg-layout { grid-template-columns: minmax(0, 1fr); gap: 32px; margin-top: 40px; }
+    .lg-toc { position: static; padding: 16px 18px; border-radius: var(--radius-card); box-shadow: var(--ring); background: var(--color-surface); }
+    .lg-toc ol { columns: 2; column-gap: 20px; border-left: 0; }
+    .lg-toc a { padding: 5px 0; border-left: 0; margin: 0; }
+  }
+  @media (max-width: 480px) { .lg-toc ol { columns: 1; } }
+  .lg-prose h2 { scroll-margin-top: 88px; }
+  .lg-uses { display: grid; gap: 0; margin-top: 1.1em; border-top: 1px solid var(--color-line-strong); }
+  .lg-uses > div { padding: 18px 0; border-bottom: 1px solid var(--color-line); }
+  .lg-uses dt { font-weight: 600; color: var(--color-ink); }
+  .lg-uses dd { margin: 6px 0 0; font-size: 15px; }
+  .lg-uses .lg-when { color: var(--color-muted); font-size: 14px; }
+</style>

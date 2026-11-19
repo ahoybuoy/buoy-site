@@ -1,11 +1,10 @@
 ---
 import FeatureLayout from '../../layouts/FeatureLayout.astro'
 import Terminal from '../../components/Terminal.astro'
-import FeatureCard from '../../components/FeatureCard.astro'
 
 const terminalLines = [
   { text: '', delay: 600 },
-  { text: '<span class="text-buoy">⚓</span> Checking naming conventions...', type: 'output', delay: 800 },
+  { text: '<span class="text-slate">Checking naming conventions...</span>', type: 'output', delay: 800 },
   { text: '', delay: 1200 },
   { text: '<span class="text-warning">⚠</span> Found <span class="text-light">5</span> naming inconsistencies', type: 'warning', delay: 1400 },
   { text: '', delay: 1600 },
@@ -22,56 +21,24 @@ const terminalLines = [
 ]
 
 const conventions = [
-  {
-    category: 'Components',
-    rules: [
-      'PascalCase file names (Button.tsx, not button.tsx)',
-      'Match file name to default export',
-      'Suffix patterns (Button, ButtonGroup, ButtonIcon)',
-    ]
-  },
-  {
-    category: 'Tokens',
-    rules: [
-      'Consistent prefix (--color-*, --spacing-*, --font-*)',
-      'kebab-case naming',
-      'Semantic names (--color-primary, not --blue-500)',
-    ]
-  },
-  {
-    category: 'Props',
-    rules: [
-      'Boolean props: is*, has*, should* prefix',
-      'Handler props: on* prefix',
-      'Consistent across similar components',
-    ]
-  },
-  {
-    category: 'Files & Folders',
-    rules: [
-      'components/ for shared components',
-      'features/ for feature-specific code',
-      'Consistent index exports',
-    ]
-  },
+  { category: 'Components', rules: ['PascalCase file names (Button.tsx, not button.tsx)', 'Match file name to default export', 'Suffix patterns (Button, ButtonGroup, ButtonIcon)'] },
+  { category: 'Tokens', rules: ['Consistent prefix (--color-*, --spacing-*, --font-*)', 'kebab-case naming', 'Semantic names (--color-primary, not --blue-500)'] },
+  { category: 'Props', rules: ['Boolean props: is*, has*, should* prefix', 'Handler props: on* prefix', 'Consistent across similar components'] },
+  { category: 'Files & Folders', rules: ['components/ for shared components', 'features/ for feature-specific code', 'Consistent index exports'] },
+]
+
+const renames = [
+  { from: 'loginBtn.tsx', to: 'LoginButton.tsx' },
+  { from: 'SubmitBTN.tsx', to: 'SubmitButton.tsx' },
+  { from: 'cta-button.tsx', to: 'CtaButton.tsx' },
+  { from: '--primary-clr', to: '--color-primary' },
+  { from: '--txtColor', to: '--color-text' },
 ]
 
 const relatedFeatures = [
-  {
-    title: 'Prop Consistency',
-    description: 'Ensure consistent prop patterns',
-    href: '/features/prop-consistency'
-  },
-  {
-    title: 'Duplicate Detection',
-    description: 'Find component clones',
-    href: '/features/duplicate-detection'
-  },
-  {
-    title: 'Drift Detection',
-    description: 'All consistency checks',
-    href: '/features/drift-detection'
-  },
+  { title: 'Prop Consistency', description: 'Ensure consistent prop patterns', href: '/features/prop-consistency' },
+  { title: 'Duplicate Detection', description: 'Find component clones', href: '/features/duplicate-detection' },
+  { title: 'Drift Detection', description: 'All consistency checks', href: '/features/drift-detection' },
 ]
 ---
 
@@ -81,123 +48,117 @@ const relatedFeatures = [
   keywords="naming conventions, component naming, design token naming"
   heroTitle="Consistent naming everywhere"
   heroDescription="LoginBtn or LoginButton? --primary-color or --color-primary? Pick once, enforce forever."
+  exampleCaption="Names that drifted, and the convention Buoy expects."
+  related={relatedFeatures}
+  pattern="scan"
+  ctaPattern="wake"
 >
-  <!-- Why Naming Matters -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Why Naming Matters</h2>
+  <div slot="example" class="ui-tray">
+    <div class="ui-panel">
+      <div class="ui-panel-head"><span class="ui-mono">Naming check</span></div>
+      <table class="fx-mini naming-mini">
+        <thead><tr><th>Found</th><th>Expected</th></tr></thead>
+        <tbody>
+          {renames.map((r) => <tr><td><code class="ui-old">{r.from}</code></td><td><code class="ui-token">{r.to}</code></td></tr>)}
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-navy/50 border border-critical/30 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-4">Without Conventions</h3>
-          <ul class="space-y-2 text-sm font-mono text-slate">
-            <li class="text-critical">Button.tsx</li>
-            <li class="text-critical">loginBtn.tsx</li>
-            <li class="text-critical">SubmitBTN.tsx</li>
-            <li class="text-critical">cta-button.tsx</li>
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>Why naming matters</h2></div>
+      <div class="ui-cols fx-vs">
+        <div class="ui-col">
+          <h3>Without conventions</h3>
+          <ul class="ui-ruled ui-mono">
+            <li class="ui-c-crit">Button.tsx</li>
+            <li class="ui-c-crit">loginBtn.tsx</li>
+            <li class="ui-c-crit">SubmitBTN.tsx</li>
+            <li class="ui-c-crit">cta-button.tsx</li>
           </ul>
-          <p class="text-sm text-slate mt-4">
-            Nobody can find anything. Imports break. Autocomplete fails.
-          </p>
+          <p class="ui-col-foot">Nobody can find anything. Imports break. Autocomplete fails.</p>
         </div>
-
-        <div class="bg-navy/50 border border-success/30 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-4">With Buoy</h3>
-          <ul class="space-y-2 text-sm font-mono text-slate">
-            <li class="text-success">Button.tsx</li>
-            <li class="text-success">LoginButton.tsx</li>
-            <li class="text-success">SubmitButton.tsx</li>
-            <li class="text-success">CtaButton.tsx</li>
+        <div class="ui-col">
+          <h3>With Buoy</h3>
+          <ul class="ui-ruled ui-mono">
+            <li class="ui-c-ok">Button.tsx</li>
+            <li class="ui-c-ok">LoginButton.tsx</li>
+            <li class="ui-c-ok">SubmitButton.tsx</li>
+            <li class="ui-c-ok">CtaButton.tsx</li>
           </ul>
-          <p class="text-sm text-slate mt-4">
-            Predictable, searchable, and consistent everywhere.
-          </p>
+          <p class="ui-col-foot">Predictable, searchable, and consistent everywhere.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Terminal Demo -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">See it in action</h2>
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap ui-split">
+      <div class="ui-head"><h2>See it in action</h2><p>Components, tokens and props, each with the name it should have.</p></div>
       <Terminal command="buoy drift check" lines={terminalLines} />
     </div>
   </section>
 
-  <!-- Convention Types -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">What We Check</h2>
-
-      <div class="grid sm:grid-cols-2 gap-6">
-        {conventions.map((conv) => (
-          <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
-            <h3 class="font-semibold text-light mb-4">{conv.category}</h3>
-            <ul class="space-y-2">
-              {conv.rules.map((rule) => (
-                <li class="flex items-start gap-2 text-sm text-slate">
-                  <span class="text-buoy">•</span>
-                  <span>{rule}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>What we check</h2></div>
+      <table class="ui-table fx-block">
+        <caption class="ui-sr">Naming conventions Buoy checks</caption>
+        <tbody>
+          {conventions.map((c) => (
+            <tr><th scope="row">{c.category}</th><td><ul class="ui-ruled naming-rules">{c.rules.map((r) => <li>{r}</li>)}</ul></td></tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   </section>
 
-  <!-- Configuration -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Customize Your Conventions</h2>
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>Customize your conventions</h2></div>
+      <div class="ui-tray fx-block">
+        <div class="ui-panel">
+          <div class="ui-panel-head"><span class="ui-mono">.buoy.yaml</span></div>
+          <pre class="fx-pre"><span class="c"># .buoy.yaml</span>{`
+`}<span class="k">naming:</span>{`
+  `}<span class="k">components:</span>{`
+    `}<span class="c"># File naming</span>{`
+    fileCase: `}<span class="s">PascalCase</span>{`      `}<span class="c"># PascalCase, camelCase, kebab-case</span>{`
+    matchExport: `}<span class="s">true</span>{`          `}<span class="c"># File name must match default export</span>{`
 
-      <div class="bg-navy-dark border border-navy-light/30 rounded-xl overflow-hidden">
-        <div class="px-4 py-3 bg-navy border-b border-navy-light/20">
-          <span class="text-sm text-slate font-mono">.buoy.yaml</span>
-        </div>
-        <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{`# .buoy.yaml
-naming:
-  components:
-    # File naming
-    fileCase: PascalCase      # PascalCase, camelCase, kebab-case
-    matchExport: true          # File name must match default export
-
-    # Suffixes
+    `}<span class="c"># Suffixes</span>{`
     requiredSuffixes:
       Button:
         - Button
-        - Btn                  # Allow both
+        - Btn                  `}<span class="c"># Allow both</span>{`
       Icon:
         - Icon
 
-  tokens:
-    prefix: "--ds-"            # Token prefix
+  `}<span class="k">tokens:</span>{`
+    prefix: `}<span class="s">"--ds-"</span>{`            `}<span class="c"># Token prefix</span>{`
     categories:
       - color
       - spacing
       - font
       - radius
       - shadow
-    casing: kebab-case
+    casing: `}<span class="s">kebab-case</span>{`
 
-  props:
-    booleans: "is*"            # isDisabled, isLoading
-    handlers: "on*"            # onClick, onChange
-    refs: "*Ref"               # buttonRef, inputRef`}</code></pre>
+  `}<span class="k">props:</span>{`
+    booleans: `}<span class="s">"is*"</span>{`            `}<span class="c"># isDisabled, isLoading</span>{`
+    handlers: `}<span class="s">"on*"</span>{`            `}<span class="c"># onClick, onChange</span>{`
+    refs: `}<span class="s">"*Ref"</span>{`               `}<span class="c"># buttonRef, inputRef</span></pre>
+        </div>
       </div>
     </div>
   </section>
-
-  <!-- Related Features -->
-  <div slot="related" class="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-    {relatedFeatures.map((feature) => (
-      <FeatureCard
-        title={feature.title}
-        description={feature.description}
-        href={feature.href}
-      />
-    ))}
-  </div>
 </FeatureLayout>
+
+<style>
+  .naming-mini td { padding-block: 11px; }
+  .naming-mini code { font-size: 13px; }
+  .naming-rules { margin: 0; }
+  .naming-rules li { padding-block: 6px; font-size: 15px; color: var(--color-body); }
+  .naming-rules li:last-child { border-bottom: 0; }
+</style>

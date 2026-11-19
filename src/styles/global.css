@@ -2,98 +2,157 @@
 @import "@fontsource/quicksand/500.css";
 @import "@fontsource/quicksand/600.css";
 @import "@fontsource/quicksand/700.css";
+@import "./site.css";
 
-/* Buoy Design Tokens - Morning Sky Nautical */
+/* Buoy design tokens: the dark "feel better" palette is the site default.
+   Brand navy ink, never black. html.light (below) re-points the same names.
+   Shared classes live in site.css; the guide is SITE-STYLE.md. */
 @theme {
-  /* Primary Colors */
-  --color-navy: #1a2744;
-  --color-navy-dark: #0f1829;
-  --color-navy-light: #243352;
+  /* Grounds and surfaces (dark) */
+  --color-bg: oklch(0.175 0.028 258);        /* page ground */
+  --color-band: oklch(0.198 0.03 258);       /* banded section ground */
+  --color-surface: oklch(0.215 0.03 258);    /* cards, secondary buttons, panels */
+  --color-raised: oklch(0.245 0.03 258);     /* surface hover, header rows inside panels */
+  --color-sunken: oklch(1 0 0 / 0.045);      /* trays, code chips, hover wash */
+  --color-term: oklch(0.145 0.024 258);      /* terminal ground */
+  --color-field: oklch(0.15 0.022 258);      /* input field ground */
 
-  /* Buoy Orange - The Standout */
+  /* Ink levels */
+  --color-ink: oklch(0.965 0.006 258);       /* headings, strong text */
+  --color-body: oklch(0.8 0.018 258);        /* running text */
+  --color-muted: oklch(0.66 0.022 258);      /* captions, meta, table heads */
+  --color-on-accent: oklch(0.2 0.035 262);   /* label on orange */
+
+  /* Lines and rings */
+  --color-line: oklch(1 0 0 / 0.08);         /* hairline rules, row dividers */
+  --color-line-strong: oklch(1 0 0 / 0.16);  /* the top rule of a table or column set */
+
+  /* Content colours (carried by words, never by tinted cards) */
+  --color-ok: oklch(0.78 0.14 158);
+  --color-crit: oklch(0.72 0.16 25);
+  --color-warn: oklch(0.82 0.13 80);
+  --color-add-bg: oklch(0.36 0.075 155 / 0.45);
+  --color-add-ink: oklch(0.8 0.13 155);
+  --color-del-bg: oklch(0.38 0.09 25 / 0.45);
+  --color-del-ink: oklch(0.8 0.12 25);
+
+  /* Legacy names, retuned to the new palette so existing pages follow along */
+  --color-navy: oklch(0.215 0.03 258);
+  --color-navy-dark: oklch(0.175 0.028 258);
+  --color-navy-light: oklch(0.34 0.032 258);
+
+  /* Buoy Orange: the one accent */
   --color-buoy: #FF4F00;
   --color-buoy-light: #FF7A3D;
   --color-buoy-dark: #D94400;
-
-  /* The mark and the mark patterns */
   --color-mark: #FF4F00;
 
-  /* Sunrise Warmth */
-  --color-sunrise: #F59E0B;
-  --color-sunrise-light: #FBBF24;
+  --color-sunrise: oklch(0.82 0.13 80);
+  --color-sunrise-light: oklch(0.87 0.12 85);
 
-  /* Lavender/Purple Accents */
+  /* Lavender: the organization tier only */
   --color-lavender: #8B5CF6;
   --color-lavender-light: #A78BFA;
   --color-sky-purple: #6366F1;
 
-  /* Neutrals */
-  --color-light: #F8FAFC;
-  --color-light-muted: #E2E8F0;
-  --color-slate: #94A3B8;
-  --color-slate-dark: #64748B;
+  --color-light: oklch(0.965 0.006 258);
+  --color-light-muted: oklch(0.8 0.018 258);
+  --color-slate: oklch(0.8 0.018 258);
+  --color-slate-dark: oklch(0.66 0.022 258);
 
-  /* Semantic Colors */
-  --color-success: #10B981;
-  --color-warning: #F59E0B;
-  --color-critical: #EF4444;
-  --color-info: #3B82F6;
+  --color-success: oklch(0.78 0.14 158);
+  --color-warning: oklch(0.82 0.13 80);
+  --color-critical: oklch(0.72 0.16 25);
+  --color-info: oklch(0.76 0.1 245);
 
-  /* Typography Scale */
+  /* Type */
   --font-display: 'Quicksand', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --text-h1: 4.125rem;
+  --text-h2: clamp(1.75rem, 1.3rem + 1.6vw, 2.375rem);
+  --text-h3: 1.25rem;
+  --text-lede: 1.1875rem;
+  --text-head-p: 1.0625rem;
+
+  /* Radii: concentric, tray = inner + tray padding */
+  --radius-btn: 10px;
+  --radius-inner: 14px;
+  --radius-card: 16px;
+  --radius-tray: 20px;
+  --radius-cta: 24px;
 
   /* Spacing */
-  --spacing-section: 6rem;
-  --spacing-section-sm: 4rem;
+  --spacing-section: 6.5rem;
+  --spacing-section-sm: 4.5rem;
 
-  /* Animations */
+  /* Easing */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out-expo: cubic-bezier(0.87, 0, 0.13, 1);
+  --ease-swap: cubic-bezier(0.2, 0, 0, 1);
 }
 
+/* Non-colour tokens (not Tailwind utilities) */
+:root {
+  --tray-pad: 6px;
+  --gutter: 24px;
+  --wrap: 1120px;
+  /* Shadow-as-ring: a faint white ring plus a top highlight instead of a border */
+  --ring: inset 0 1px 0 oklch(1 0 0 / 0.05), 0 0 0 1px oklch(1 0 0 / 0.08);
+  --ring-hover: inset 0 1px 0 oklch(1 0 0 / 0.07), 0 0 0 1px oklch(1 0 0 / 0.13);
+  --ring-lift: inset 0 1px 0 oklch(1 0 0 / 0.06), 0 0 0 1px oklch(1 0 0 / 0.1), 0 24px 48px -16px oklch(0.05 0.02 258 / 0.7);
+  --ring-term: inset 0 1px 0 oklch(1 0 0 / 0.05), 0 0 0 1px oklch(1 0 0 / 0.1), 0 24px 48px -16px oklch(0.05 0.02 258 / 0.7);
+  --ring-tray: inset 0 0 0 1px oklch(1 0 0 / 0.04);
+  --ring-primary: inset 0 1px 0 oklch(1 0 0 / 0.25), 0 0 0 1px oklch(0 0 0 / 0.3), 0 1px 2px 0 oklch(0 0 0 / 0.4);
+  --tray-band: oklch(0 0 0 / 0.18);
+  --term-ink: oklch(0.9 0.012 262);
+  --term-dim: oklch(0.66 0.025 262);
+  --term-bar: oklch(0.72 0.02 262);
+  --header-h: 65px;
+}
+@media (max-width: 760px) { :root { --gutter: 16px; } }
 
 /* Base Styles */
 html {
   scroll-behavior: smooth;
 }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 body {
   font-family: var(--font-body);
-  background: var(--color-navy-dark);
+  background: var(--color-bg);
   color: var(--color-light);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Selection */
 ::selection {
-  background: var(--color-buoy);
-  color: var(--color-navy-dark);
+  background: color-mix(in oklab, var(--color-buoy) 45%, oklch(0.2 0.03 258));
+  color: var(--color-ink);
 }
 
-/* Headings */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
+  text-wrap: balance;
 }
+p, li, figcaption, dd, blockquote { text-wrap: pretty; }
 
-/* Code */
-code, pre {
+a { text-underline-offset: 3px; text-decoration-thickness: 1.5px; }
+
+code, pre, kbd, samp {
   font-family: var(--font-mono);
+  font-variant-ligatures: none;
 }
 
-/* Focus States */
 :focus-visible {
   outline: 2px solid var(--color-buoy);
   outline-offset: 2px;
 }
 
-/* Button cursors */
 button:not(:disabled) {
   cursor: pointer;
 }
@@ -134,13 +193,8 @@ button:disabled {
 }
 
 /* Glow Effects */
-.glow-buoy {
-  box-shadow: 0 0 30px color-mix(in srgb, var(--color-buoy) 40%, transparent);
-}
-
-.glow-lavender {
-  box-shadow: 0 0 30px color-mix(in srgb, var(--color-lavender) 30%, transparent);
-}
+/* Glows were rejected ("vibe coded"); the classes stay so old markup does not break. */
+.glow-buoy, .glow-lavender { box-shadow: none; }
 
 /* Text Gradient */
 .text-gradient-sunrise {
@@ -235,6 +289,33 @@ button:disabled {
    ======================================== */
 
 html.light {
+  /* New tokens, light */
+  --color-bg: #FFFFFF;
+  --color-band: #F4F7FA;
+  --color-surface: #FFFFFF;
+  --color-raised: #F4F7FA;
+  --color-sunken: rgb(26 39 68 / 0.045);
+  --color-term: oklch(0.2 0.03 258);
+  --color-field: #FFFFFF;
+  --color-ink: #1A2744;
+  --color-body: #3A4763;
+  --color-muted: #5B6680;
+  --color-on-accent: #0f1829;
+  --color-line: rgb(26 39 68 / 0.1);
+  --color-line-strong: rgb(26 39 68 / 0.2);
+  --color-ok: #047857;
+  --color-crit: #C2261D;
+  --color-warn: #A15C00;
+  --color-add-bg: rgb(16 185 129 / 0.14);
+  --color-add-ink: #047857;
+  --color-del-bg: rgb(239 68 68 / 0.12);
+  --color-del-ink: #B91C1C;
+  --ring: 0 0 0 1px rgb(26 39 68 / 0.1), 0 1px 2px rgb(26 39 68 / 0.05);
+  --ring-hover: 0 0 0 1px rgb(26 39 68 / 0.18), 0 1px 2px rgb(26 39 68 / 0.06);
+  --ring-lift: 0 0 0 1px rgb(26 39 68 / 0.1), 0 24px 48px -20px rgb(26 39 68 / 0.25);
+  --ring-tray: inset 0 0 0 1px rgb(26 39 68 / 0.06);
+  --tray-band: rgb(26 39 68 / 0.05);
+
   /* Backgrounds: cool blue-tinted whites */
   --color-navy-dark: #FFFFFF;
   --color-navy: #F0F4F8;
@@ -282,8 +363,8 @@ html.light ::-webkit-scrollbar-thumb:hover {
 
 /* Light mode: selection */
 html.light ::selection {
-  background: var(--color-buoy);
-  color: #FFFFFF;
+  background: color-mix(in srgb, var(--color-buoy) 30%, #fff);
+  color: #1A2744;
 }
 
 /* Light mode: glows — subtle but warm */
@@ -299,13 +380,7 @@ html.light .hover\:bg-buoy-light:hover {
   color: #0f1829;
 }
 
-html.light .glow-buoy {
-  box-shadow: 0 0 40px color-mix(in srgb, var(--color-buoy) 20%, transparent);
-}
 
-html.light .glow-lavender {
-  box-shadow: 0 0 40px color-mix(in srgb, var(--color-lavender) 15%, transparent);
-}
 
 /* Light mode: text gradient — orange to indigo */
 html.light .text-gradient-sunrise {

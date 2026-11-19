@@ -3,6 +3,32 @@ import Layout from '../layouts/Layout.astro'
 import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
 import LeadMagnetForm from '../components/LeadMagnetForm.astro'
+import MarkPattern from '../components/MarkPattern.astro'
+
+const preview = [
+  'Hardcoded hex values instead of tokens',
+  'Arbitrary pixel values outside your scale',
+  'Inline styles overriding components',
+  '!important used to force changes',
+]
+const stats = [
+  { n: '20', label: 'Warning signs to check' },
+  { n: '5', label: 'Categories covered' },
+  { n: '1', label: 'Page, print-friendly' },
+  { n: '0', label: 'Cost to download' },
+]
+const cats = [
+  { title: 'Colors', desc: 'Hardcoded values, opacity hacks, slight variations' },
+  { title: 'Spacing', desc: 'Magic numbers, arbitrary values, mixed units' },
+  { title: 'Typography', desc: 'Font sizes, weights, line heights off-scale' },
+  { title: 'Components', desc: 'Inline overrides, duplicates, wrappers' },
+  { title: 'Code Smells', desc: 'Growing CSS, multiple patterns, confusion' },
+]
+const who = [
+  { title: 'Frontend Developers', desc: 'Catch drift in your own PRs before reviewers do' },
+  { title: 'Engineering Leads', desc: 'Standardize what your team looks for in reviews' },
+  { title: 'Design System Teams', desc: 'Audit adoption and identify common problems' },
+]
 ---
 
 <Layout
@@ -10,164 +36,92 @@ import LeadMagnetForm from '../components/LeadMagnetForm.astro'
   description="20 warning signs your codebase is drifting from your design system. Download the free checklist for code review."
 >
   <Nav />
-
-  <!-- Hero -->
-  <section class="relative pt-32 pb-16 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
-
-    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <!-- Left: Copy -->
+  <main id="main" class="ui-nav-offset">
+    <section class="ui-section ui-section--first ui-section--patterned">
+      <MarkPattern pattern="field" drift={0.3} fade class="ui-pattern" />
+      <div class="ui-wrap ui-split lm-hero">
         <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 bg-buoy/10 border border-buoy/30 rounded-full text-buoy text-sm mb-6">
-            Free PDF Download
+          <p class="ui-eyebrow">Free PDF</p>
+          <div class="ui-head"><h1>Is Your Codebase Betraying Your Design System?</h1></div>
+          <p class="ui-lede">20 warning signs of design drift. Use this checklist during code review to catch hardcoded colors, arbitrary spacing, and rogue components before they spread.</p>
+          <div class="lm-form"><LeadMagnetForm leadMagnet="drift-checklist" buttonText="Get the Checklist" successMessage="Check your email! The checklist is on its way." /></div>
+          <p class="ui-note">No spam. Unsubscribe anytime.</p>
+        </div>
+        <figure class="ui-figure ui-enter dc-fig" style="animation-delay:150ms">
+          <div class="dc-sheet">
+            <p class="dc-file ui-mono">drift-checklist.pdf</p>
+            <p class="dc-title">Design drift checklist</p>
+            <p class="dc-cat">Colors</p>
+            <ul class="lm-check">
+              {preview.map((p) => <li><span class="lm-box" aria-hidden="true"></span>{p}</li>)}
+              <li class="lm-more">+16 more warning signs</li>
+            </ul>
           </div>
+          <figcaption>One page, print-friendly. Keep it next to your review queue.</figcaption>
+        </figure>
+      </div>
+    </section>
 
-          <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6 leading-tight">
-            Is Your Codebase Betraying Your Design System?
-          </h1>
+    <section class="ui-section ui-section--band">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>What's inside</h2></div>
+        <dl class="lm-stats">
+          {stats.map((s) => <div><dt>{s.label}</dt><dd class="ui-tnum">{s.n}</dd></div>)}
+        </dl>
+      </div>
+    </section>
 
-          <p class="text-lg text-slate mb-8">
-            20 warning signs of design drift. Use this checklist during code review to catch hardcoded colors, arbitrary spacing, and rogue components before they spread.
-          </p>
+    <section class="ui-section">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>Categories covered</h2></div>
+        <table class="ui-table lm-table"><tbody>{cats.map((c) => <tr><th scope="row">{c.title}</th><td>{c.desc}</td></tr>)}</tbody></table>
+      </div>
+    </section>
 
-          <LeadMagnetForm
-            leadMagnet="drift-checklist"
-            buttonText="Get the Checklist"
-            successMessage="Check your email! The checklist is on its way."
-          />
-
-          <p class="text-sm text-slate/70 mt-4">
-            No spam. Unsubscribe anytime.
-          </p>
-        </div>
-
-        <!-- Right: Preview -->
-        <div class="hidden lg:block">
-          <div class="bg-navy border border-navy-light/30 rounded-xl p-6 shadow-2xl transform rotate-1 hover:rotate-0 transition-transform">
-            <div class="flex items-center gap-2 mb-4 pb-4 border-b border-navy-light/20">
-              <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
-              <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-              <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
-              <span class="text-xs text-slate ml-2">drift-checklist.pdf</span>
-            </div>
-
-            <div class="space-y-3 text-sm">
-              <div class="flex items-start gap-3">
-                <div class="w-4 h-4 border border-slate/50 rounded mt-0.5"></div>
-                <span class="text-slate">Hardcoded hex values instead of tokens</span>
-              </div>
-              <div class="flex items-start gap-3">
-                <div class="w-4 h-4 border border-slate/50 rounded mt-0.5"></div>
-                <span class="text-slate">Arbitrary pixel values outside your scale</span>
-              </div>
-              <div class="flex items-start gap-3">
-                <div class="w-4 h-4 border border-slate/50 rounded mt-0.5"></div>
-                <span class="text-slate">Inline styles overriding components</span>
-              </div>
-              <div class="flex items-start gap-3">
-                <div class="w-4 h-4 border border-slate/50 rounded mt-0.5"></div>
-                <span class="text-slate">!important used to force changes</span>
-              </div>
-              <div class="flex items-start gap-3 opacity-50">
-                <div class="w-4 h-4 border border-slate/50 rounded mt-0.5"></div>
-                <span class="text-slate">+16 more warning signs...</span>
-              </div>
-            </div>
-          </div>
+    <section class="ui-section ui-section--band">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>Who this is for</h2></div>
+        <div class="ui-cols ui-cols--3">
+          {who.map((w) => <article class="ui-col"><h3>{w.title}</h3><p>{w.desc}</p></article>)}
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- What's Inside -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">What's Inside</h2>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="text-center">
-          <div class="text-3xl font-bold text-buoy mb-2">20</div>
-          <p class="text-sm text-slate">Warning signs to check</p>
-        </div>
-        <div class="text-center">
-          <div class="text-3xl font-bold text-buoy mb-2">5</div>
-          <p class="text-sm text-slate">Categories covered</p>
-        </div>
-        <div class="text-center">
-          <div class="text-3xl font-bold text-buoy mb-2">1</div>
-          <p class="text-sm text-slate">Page, print-friendly</p>
-        </div>
-        <div class="text-center">
-          <div class="text-3xl font-bold text-buoy mb-2">0</div>
-          <p class="text-sm text-slate">Cost to download</p>
+    <section class="ui-section ui-section--last ui-section--patterned">
+      <MarkPattern pattern="tide" drift={0.3} fade class="ui-pattern" />
+      <div class="ui-wrap">
+        <div class="ui-cta">
+          <div class="ui-head"><h2>Get the checklist</h2><p>Free. No spam. Immediate download.</p></div>
+          <div><LeadMagnetForm leadMagnet="drift-checklist" idSuffix="end" buttonText="Send It to Me" successMessage="Done! Check your inbox." /><p class="ui-note">No spam. Unsubscribe anytime.</p></div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Categories -->
-  <section class="py-16 bg-navy-dark">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Categories Covered</h2>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {[
-          { icon: '🎨', title: 'Colors', desc: 'Hardcoded values, opacity hacks, slight variations' },
-          { icon: '📏', title: 'Spacing', desc: 'Magic numbers, arbitrary values, mixed units' },
-          { icon: '🔤', title: 'Typography', desc: 'Font sizes, weights, line heights off-scale' },
-          { icon: '🧩', title: 'Components', desc: 'Inline overrides, duplicates, wrappers' },
-          { icon: '🚨', title: 'Code Smells', desc: 'Growing CSS, multiple patterns, confusion' },
-        ].map((cat) => (
-          <div class="bg-navy border border-navy-light/20 rounded-lg p-4">
-            <div class="text-2xl mb-2">{cat.icon}</div>
-            <h3 class="font-medium text-light mb-1">{cat.title}</h3>
-            <p class="text-sm text-slate">{cat.desc}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Who It's For -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Who This Is For</h2>
-
-      <div class="grid sm:grid-cols-3 gap-6">
-        <div class="text-center">
-          <div class="text-4xl mb-4">👩‍💻</div>
-          <h3 class="font-medium text-light mb-2">Frontend Developers</h3>
-          <p class="text-sm text-slate">Catch drift in your own PRs before reviewers do</p>
-        </div>
-        <div class="text-center">
-          <div class="text-4xl mb-4">👨‍💼</div>
-          <h3 class="font-medium text-light mb-2">Engineering Leads</h3>
-          <p class="text-sm text-slate">Standardize what your team looks for in reviews</p>
-        </div>
-        <div class="text-center">
-          <div class="text-4xl mb-4">🎨</div>
-          <h3 class="font-medium text-light mb-2">Design System Teams</h3>
-          <p class="text-sm text-slate">Audit adoption and identify common violations</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Final CTA -->
-  <section class="py-16 bg-navy-dark">
-    <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-2xl font-bold text-light mb-4">Get the Checklist</h2>
-      <p class="text-slate mb-8">Free. No spam. Immediate download.</p>
-
-      <LeadMagnetForm
-        leadMagnet="drift-checklist"
-        buttonText="Send It to Me"
-        successMessage="Done! Check your inbox."
-        class="max-w-md mx-auto"
-      />
-    </div>
-  </section>
-
+    </section>
+  </main>
   <Footer />
 </Layout>
+
+<style>
+  .lm-hero { align-items: center; }
+  .lm-form { margin-top: 32px; max-width: 480px; }
+  .lm-check { list-style: none; margin: 0; padding: 0; }
+  .lm-check li { display: flex; gap: 12px; align-items: center; padding: 12px 18px; border-top: 1px solid var(--color-line); color: var(--color-ink); font-size: 15px; }
+  .lm-check li:first-child { border-top: 0; }
+  .lm-box { width: 14px; height: 14px; flex: none; border-radius: 4px; box-shadow: inset 0 0 0 1.5px var(--color-line-strong); }
+  .lm-more { color: var(--color-muted) !important; }
+  .lm-stats { margin: 32px 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--color-line-strong); }
+  .lm-stats > div { padding: 20px 24px 0 0; display: flex; flex-direction: column-reverse; gap: 6px; }
+  .lm-stats dd { margin: 0; font-family: var(--font-display); font-size: 2.5rem; font-weight: 700; line-height: 1; color: var(--color-buoy-light); }
+  .lm-stats dt { color: var(--color-body); font-size: 15px; }
+  .lm-table { margin-top: 32px; }
+  .ui-col p { margin-top: 8px; font-size: 15px; color: var(--color-body); }
+  @media (max-width: 760px) { .lm-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 20px; } }
+  .dc-fig { max-width: 440px; justify-self: center; }
+  .dc-sheet { padding: 28px 28px 20px; border-radius: 6px; background: var(--color-ink); color: var(--color-bg); box-shadow: var(--ring-lift); }
+  .dc-file { margin: 0; font-size: 12px; opacity: 0.6; }
+  .dc-title { margin: 10px 0 0; font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; }
+  .dc-cat { margin: 18px 0 4px; font-size: 13px; font-weight: 600; color: var(--color-crit); }
+  .dc-sheet .lm-check li { padding: 10px 0; color: var(--color-bg); border-top-color: color-mix(in oklab, var(--color-bg) 15%, transparent); }
+  .dc-sheet .lm-check li:first-child { border-top: 0; }
+  .dc-sheet .lm-box { box-shadow: inset 0 0 0 1.5px color-mix(in oklab, var(--color-bg) 45%, transparent); }
+  .dc-sheet .lm-more { color: color-mix(in oklab, var(--color-bg) 55%, transparent) !important; }
+</style>

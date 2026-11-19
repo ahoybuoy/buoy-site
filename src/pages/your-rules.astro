@@ -2,568 +2,169 @@
 import Layout from '../layouts/Layout.astro'
 import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
-import Button from '../components/Button.astro'
+import DocTerminal from '../components/DocTerminal.astro'
+import MarkPattern from '../components/MarkPattern.astro'
 import { siteConfig } from '../config'
+
+const reality = [
+  { t: "AI doesn't read your docs", d: 'It generates generic solutions', sev: 'warning' },
+  { t: "AI doesn't know your tokens", d: 'It hardcodes values instead', sev: 'warning' },
+  { t: "AI doesn't use your components", d: 'It rebuilds from scratch', sev: 'warning' },
+  { t: 'And developers accept it', d: 'Because the code works', sev: 'critical' },
+]
+const sources = [
+  { who: 'Copilot', what: 'AI suggestions' },
+  { who: 'Claude/GPT', what: 'Generated code' },
+  { who: 'Developers', what: 'Manual code' },
+]
+const rules = [
+  { rule: '"Only use our color tokens"', d: "Any hex code, RGB, or named color that's not in your palette? Flagged with a suggested fix." },
+  { rule: '"Use our components, not custom divs"', d: 'Building a button from scratch when <Button> exists? Detected and suggested.' },
+  { rule: '"Spacing must follow our 4px grid"', d: '14px padding when you use multiples of 4? Caught immediately.' },
+  { rule: '"Follow our naming conventions"', d: 'Mixed naming patterns like "btn" vs "button"? Detected and suggested.' },
+]
+const oldWay = ['You: "Please use our design tokens"', 'Dev: "Sure, next time"', 'You: "This PR has hardcoded colors..."', 'Dev: "We\'re on a deadline"']
+const newWay = ['Dev: "Buoy caught some issues"', 'Buoy: "3 issues. Here\'s how to fix."', 'Dev: "Fixed. PR passing now."', "You: Don't even need to be involved"]
+const power = [
+  { t: 'You set the standards', d: 'Define what quality means' },
+  { t: 'You control the gate', d: 'See everything before it ships' },
+  { t: 'You see the metrics', d: 'Track adoption in real-time' },
+]
 ---
 
 <Layout title="AI Governance - Control What AI Ships | Buoy">
   <Nav />
-
-  <!-- Hero -->
-  <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-navy-dark">
-    <!-- Animated gradient orbs - power theme uses bold contrast -->
-    <div class="absolute inset-0 overflow-hidden">
-      <div class="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-sunrise-start/20 rounded-full blur-[150px] animate-float"></div>
-      <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-buoy/15 rounded-full blur-[120px] animate-float" style="animation-delay: -3s;"></div>
-    </div>
-
-    <!-- Power grid overlay -->
-    <div class="absolute inset-0 opacity-[0.04]" style="background-image: linear-gradient(90deg, white 1px, transparent 1px), linear-gradient(180deg, white 1px, transparent 1px); background-size: 50px 50px;"></div>
-
-    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 text-center">
-      <!-- Badge -->
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sunrise-start/10 border border-sunrise-start/30 mb-8 animate-fade-in-up">
-        <span class="text-2xl">👑</span>
-        <span class="text-sm text-sunrise-start font-medium">You're In Charge</span>
-      </div>
-
-      <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold mb-8 leading-tight animate-fade-in-up" style="animation-delay: 0.1s;">
-        <span class="text-light">AI writes code.</span>
-        <br />
-        <span class="text-gradient-sunrise">You write the rules.</span>
-      </h1>
-
-      <p class="text-xl sm:text-2xl text-slate max-w-3xl mx-auto mb-12 leading-relaxed animate-fade-in-up" style="animation-delay: 0.2s;">
-        Copilot, Claude, GPT — they're all writing code for your product.
-        <br class="hidden sm:block" />
-        <span class="text-light">Now you decide what's allowed to ship.</span>
-      </p>
-
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style="animation-delay: 0.3s;">
-        <Button href={siteConfig.githubUrl} size="lg" external>
-          Write your rules
-        </Button>
-        <Button href="#the-shift" variant="secondary" size="lg">
-          See the power shift
-        </Button>
-      </div>
-    </div>
-
-    <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-      <svg class="w-6 h-6 text-slate" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-      </svg>
-    </div>
-  </section>
-
-  <!-- Section 2: The AI Reality -->
-  <section id="the-shift" class="py-32 bg-navy relative overflow-hidden">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 scroll-reveal">
-        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
-          AI doesn't know your design system exists.
-        </h2>
-        <p class="text-xl text-slate max-w-2xl mx-auto">
-          It was trained on the internet, not your Figma files. And it's writing code for you anyway.
-        </p>
-      </div>
-
-      <!-- AI output showcase -->
-      <div class="max-w-4xl mx-auto mb-16">
-        <div class="grid md:grid-cols-2 gap-8">
-          <!-- What AI generates -->
-          <div class="scroll-reveal" style="--delay: 0.1s;">
-            <div class="bg-navy-dark border border-navy-light/30 rounded-xl overflow-hidden">
-              <div class="px-4 py-3 bg-navy-light/10 border-b border-navy-light/20 flex items-center gap-2">
-                <span class="text-lg">🤖</span>
-                <span class="text-sm text-slate">AI-generated code</span>
-              </div>
-              <div class="p-4 font-mono text-sm">
-                <pre class="text-slate overflow-x-auto"><code><span class="text-light">const Card = () => (</span>
-  <span class="text-light">&lt;div</span>
-    <span class="text-light">style=&#123;&#123;</span>
-      <span class="text-warning">background: '#ffffff'</span>,
-      <span class="text-warning">padding: '20px'</span>,
-      <span class="text-warning">borderRadius: '8px'</span>,
-      <span class="text-warning">boxShadow: '0 2px 8px...'</span>
-    <span class="text-light">&#125;&#125;</span>
-  <span class="text-light">&gt;</span>
-    <span class="text-slate-dark">// AI doesn't know about</span>
-    <span class="text-slate-dark">// your &lt;Card&gt; component</span>
-  <span class="text-light">&lt;/div&gt;</span>
-<span class="text-light">)</span></code></pre>
-              </div>
-            </div>
-          </div>
-
-          <!-- The reality -->
-          <div class="scroll-reveal flex flex-col justify-center" style="--delay: 0.2s;">
-            <div class="space-y-4">
-              <div class="flex items-start gap-3">
-                <span class="text-warning text-xl mt-1">⚠️</span>
-                <div>
-                  <div class="text-light font-medium">AI doesn't read your docs</div>
-                  <div class="text-sm text-slate">It generates generic solutions</div>
-                </div>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="text-warning text-xl mt-1">⚠️</span>
-                <div>
-                  <div class="text-light font-medium">AI doesn't know your tokens</div>
-                  <div class="text-sm text-slate">It hardcodes values instead</div>
-                </div>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="text-warning text-xl mt-1">⚠️</span>
-                <div>
-                  <div class="text-light font-medium">AI doesn't use your components</div>
-                  <div class="text-sm text-slate">It rebuilds from scratch</div>
-                </div>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="text-critical text-xl mt-1">🚨</span>
-                <div>
-                  <div class="text-light font-medium">And developers accept it</div>
-                  <div class="text-sm text-slate">Because the code works</div>
-                </div>
-              </div>
-            </div>
-          </div>
+  <main id="main" class="ui-nav-offset">
+    <section class="ui-section ui-section--first ui-section--patterned">
+      <MarkPattern pattern="swell" drift={0.3} fade class="ui-pattern" />
+      <div class="ui-wrap lp-hero">
+        <p class="ui-eyebrow">You're in charge</p>
+        <div class="ui-head"><h1>AI writes code.<br /><span class="ui-c-buoy">You write the rules.</span></h1></div>
+        <p class="ui-lede">Copilot, Claude, GPT: they're all writing code for your product. Now you decide what's allowed to ship.</p>
+        <div class="ui-actions">
+          <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer" class="ui-btn ui-btn--primary ui-btn--lg">Write your rules</a>
+          <a href="#the-shift" class="ui-btn ui-btn--secondary ui-btn--lg">See the power shift</a>
         </div>
       </div>
+    </section>
 
-      <!-- The choice -->
-      <div class="text-center scroll-reveal" style="--delay: 0.3s;">
-        <p class="text-lg text-slate mb-6">You have a choice:</p>
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <div class="px-6 py-4 bg-navy-dark border border-slate-dark/30 rounded-xl text-slate opacity-60">
-            Let AI run wild
+    <section id="the-shift" class="ui-section ui-section--band">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>AI doesn't know your design system exists.</h2><p>It was trained on the internet, not your Figma files. And it's writing code for you anyway.</p></div>
+        <div class="ui-split lp-split">
+          <div class="ui-term">
+            <div class="ui-term-bar"><span>AI-generated code</span></div>
+<pre>const Card = () =&gt; (
+  &lt;div
+    style=&#123;&#123;
+      background: <span class="ui-old">'#ffffff'</span>,
+      padding: <span class="ui-old">'20px'</span>,
+      borderRadius: <span class="ui-old">'8px'</span>,
+      boxShadow: <span class="ui-old">'0 2px 8px...'</span>
+    &#125;&#125;
+  &gt;
+    <span class="ui-t-dim">// AI doesn't know about</span>
+    <span class="ui-t-dim">// your &lt;Card&gt; component</span>
+  &lt;/div&gt;
+)</pre>
           </div>
-          <span class="text-slate-dark">or</span>
-          <div class="px-6 py-4 bg-buoy/10 border-2 border-buoy rounded-xl text-buoy font-semibold power-glow">
-            Put yourself in control
-          </div>
+          <table class="ui-table">
+            <tbody>
+              {reality.map((r) => <tr><th scope="row" class={`ui-sev ui-sev-${r.sev}`}>{r.t}</th><td>{r.d}</td></tr>)}
+            </tbody>
+          </table>
+        </div>
+        <p class="ui-after">You have a choice: let AI run wild, or <strong class="ui-c-buoy">put yourself in control</strong>.</p>
+      </div>
+    </section>
+
+    <section class="ui-section">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>You're the gatekeeper now.</h2><p>See exactly what's drifting from your rules. From developers. From AI. All visible before merge.</p></div>
+        <div class="lp-flow">
+          <ul class="ui-ruled ui-ruled--top">
+            {sources.map((s) => <li><strong>{s.who}</strong> <span class="lp-muted">{s.what}</span></li>)}
+          </ul>
+          <span class="lp-arrow" aria-hidden="true">→</span>
+          <div class="ui-card ui-card--pad lp-gate"><p class="ui-c-buoy lp-k">You + Buoy</p><h3>The Gatekeeper</h3><p class="lp-muted">Your rules. Your call.</p></div>
+          <span class="lp-arrow" aria-hidden="true">→</span>
+          <div class="lp-out"><h3 class="ui-c-ok">Clean Code</h3><p class="lp-muted">Follows your system</p></div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Section 3: You're the Gatekeeper -->
-  <section class="py-32 bg-navy-dark relative overflow-hidden">
-    <!-- Power lines animation -->
-    <div class="absolute inset-0 opacity-10">
-      <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <line class="power-line" x1="0" y1="50" x2="100" y2="50" stroke="#FF4F00" stroke-width="0.3"/>
-        <line class="power-line" x1="50" y1="0" x2="50" y2="100" stroke="#FF4F00" stroke-width="0.3" style="animation-delay: 0.5s;"/>
-      </svg>
-    </div>
-
-    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 scroll-reveal">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sunrise-start/10 border border-sunrise-start/30 mb-6">
-          <span class="text-sunrise-start font-semibold">The Power Position</span>
-        </div>
-        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
-          You're the gatekeeper now.
-        </h2>
-        <p class="text-xl text-slate max-w-2xl mx-auto">
-          See exactly what's drifting from your rules. From developers. From AI. All visible before merge.
-        </p>
+    <section class="ui-section ui-section--band">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>Define what's allowed. Block what's not.</h2><p>You decide the rules. Buoy enforces them on every line of code.</p></div>
+        <table class="ui-table ui-table--stack lp-table">
+          <thead><tr><th scope="col">Your rule</th><th scope="col">What Buoy does</th><th scope="col" class="ui-end">Status</th></tr></thead>
+          <tbody>{rules.map((r) => <tr><th scope="row">{r.rule}</th><td>{r.d}</td><td class="ui-end ui-c-ok ui-mono lp-status">Enforced</td></tr>)}</tbody>
+        </table>
       </div>
+    </section>
 
-      <!-- Gatekeeper visualization -->
-      <div class="relative max-w-4xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-7 gap-4 items-center">
-          <!-- Sources -->
-          <div class="md:col-span-2 scroll-reveal" style="--delay: 0.1s;">
-            <div class="space-y-3">
-              <div class="bg-navy border border-navy-light/30 rounded-lg p-3 flex items-center gap-3">
-                <span class="text-xl">🤖</span>
-                <div class="text-sm">
-                  <div class="text-light">Copilot</div>
-                  <div class="text-xs text-slate-dark">AI suggestions</div>
-                </div>
-              </div>
-              <div class="bg-navy border border-navy-light/30 rounded-lg p-3 flex items-center gap-3">
-                <span class="text-xl">💬</span>
-                <div class="text-sm">
-                  <div class="text-light">Claude/GPT</div>
-                  <div class="text-xs text-slate-dark">Generated code</div>
-                </div>
-              </div>
-              <div class="bg-navy border border-navy-light/30 rounded-lg p-3 flex items-center gap-3">
-                <span class="text-xl">👨‍💻</span>
-                <div class="text-sm">
-                  <div class="text-light">Developers</div>
-                  <div class="text-xs text-slate-dark">Manual code</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Arrow -->
-          <div class="hidden md:flex items-center justify-center scroll-reveal" style="--delay: 0.2s;">
-            <svg class="w-8 h-8 text-slate-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-            </svg>
-          </div>
-
-          <!-- YOU - The Gatekeeper -->
-          <div class="md:col-span-2 scroll-reveal" style="--delay: 0.3s;">
-            <div class="bg-gradient-to-br from-sunrise-start/20 to-sunrise-end/20 border-2 border-sunrise-start rounded-xl p-6 text-center relative gatekeeper-glow">
-              <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-buoy text-navy-dark text-sm font-bold rounded-full whitespace-nowrap shadow-lg">
-                YOU + BUOY
-              </div>
-              <div class="text-4xl mb-2">👑</div>
-              <div class="text-light font-semibold mb-1">The Gatekeeper</div>
-              <div class="text-xs text-slate">Your rules. Your call.</div>
-            </div>
-          </div>
-
-          <!-- Arrow -->
-          <div class="hidden md:flex items-center justify-center scroll-reveal" style="--delay: 0.4s;">
-            <svg class="w-8 h-8 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-            </svg>
-          </div>
-
-          <!-- Output -->
-          <div class="scroll-reveal" style="--delay: 0.5s;">
-            <div class="bg-navy border border-success/30 rounded-xl p-4 text-center">
-              <div class="text-3xl mb-2">✨</div>
-              <div class="text-success font-semibold">Clean Code</div>
-              <div class="text-xs text-slate">Follows your system</div>
-            </div>
-          </div>
+    <section class="ui-section">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>A new dynamic with your team.</h2><p>You're not policing anymore. The system does it for you.</p></div>
+        <div class="ui-cols">
+          <article class="ui-col">
+            <h3 class="ui-c-crit">The old dynamic</h3>
+            <ul class="ui-ruled">{oldWay.map((l) => <li>{l}</li>)}</ul>
+            <p class="ui-col-foot lp-muted">Friction. Politics. Exhaustion.</p>
+          </article>
+          <article class="ui-col">
+            <h3 class="ui-c-ok">The new dynamic</h3>
+            <ul class="ui-ruled">{newWay.map((l) => <li>{l}</li>)}</ul>
+            <p class="ui-col-foot lp-muted">Automated. Objective. Effortless.</p>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Section 4: Your Rules, Your Way -->
-  <section class="py-32 bg-navy relative">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 scroll-reveal">
-        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
-          Define what's allowed. Block what's not.
-        </h2>
-        <p class="text-xl text-slate max-w-2xl mx-auto">
-          You decide the rules. Buoy enforces them on every line of code.
-        </p>
-      </div>
-
-      <!-- Rule examples -->
-      <div class="max-w-4xl mx-auto space-y-6">
-        <div class="scroll-reveal" style="--delay: 0.1s;">
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 flex items-center gap-6 hover:border-buoy/30 transition-colors">
-            <div class="w-16 h-16 rounded-xl bg-buoy/20 flex items-center justify-center shrink-0">
-              <span class="text-3xl">🎨</span>
-            </div>
-            <div class="flex-1">
-              <h3 class="text-lg font-semibold text-light mb-1">"Only use our color tokens"</h3>
-              <p class="text-sm text-slate">Any hex code, RGB, or named color that's not in your palette? Flagged with a suggested fix.</p>
-            </div>
-            <div class="text-xs font-mono text-success bg-success/10 px-3 py-1 rounded-full">ENFORCED</div>
-          </div>
-        </div>
-
-        <div class="scroll-reveal" style="--delay: 0.15s;">
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 flex items-center gap-6 hover:border-buoy/30 transition-colors">
-            <div class="w-16 h-16 rounded-xl bg-buoy/20 flex items-center justify-center shrink-0">
-              <span class="text-3xl">📦</span>
-            </div>
-            <div class="flex-1">
-              <h3 class="text-lg font-semibold text-light mb-1">"Use our components, not custom divs"</h3>
-              <p class="text-sm text-slate">Building a button from scratch when &lt;Button&gt; exists? Detected and suggested.</p>
-            </div>
-            <div class="text-xs font-mono text-success bg-success/10 px-3 py-1 rounded-full">ENFORCED</div>
-          </div>
-        </div>
-
-        <div class="scroll-reveal" style="--delay: 0.2s;">
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 flex items-center gap-6 hover:border-buoy/30 transition-colors">
-            <div class="w-16 h-16 rounded-xl bg-buoy/20 flex items-center justify-center shrink-0">
-              <span class="text-3xl">📏</span>
-            </div>
-            <div class="flex-1">
-              <h3 class="text-lg font-semibold text-light mb-1">"Spacing must follow our 4px grid"</h3>
-              <p class="text-sm text-slate">14px padding when you use multiples of 4? Caught immediately.</p>
-            </div>
-            <div class="text-xs font-mono text-success bg-success/10 px-3 py-1 rounded-full">ENFORCED</div>
-          </div>
-        </div>
-
-        <div class="scroll-reveal" style="--delay: 0.25s;">
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 flex items-center gap-6 hover:border-buoy/30 transition-colors">
-            <div class="w-16 h-16 rounded-xl bg-buoy/20 flex items-center justify-center shrink-0">
-              <span class="text-3xl">🏷️</span>
-            </div>
-            <div class="flex-1">
-              <h3 class="text-lg font-semibold text-light mb-1">"Follow our naming conventions"</h3>
-              <p class="text-sm text-slate">Mixed naming patterns like "btn" vs "button"? Detected and suggested.</p>
-            </div>
-            <div class="text-xs font-mono text-success bg-success/10 px-3 py-1 rounded-full">ENFORCED</div>
-          </div>
+    <section class="ui-section ui-section--band ui-section--patterned">
+      <MarkPattern pattern="field" drift={0.25} fade class="ui-pattern" />
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>AI is a tool. You're the operator.</h2><p>Stop being scared of AI-generated code. Start controlling it.</p></div>
+        <div class="ui-cols ui-cols--3">
+          {power.map((p) => <article class="ui-col"><h3>{p.t}</h3><p class="lp-muted">{p.d}</p></article>)}
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Section 5: The New Dynamic -->
-  <section class="py-32 bg-navy-dark relative overflow-hidden">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 scroll-reveal">
-        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
-          A new dynamic with your team.
-        </h2>
-        <p class="text-xl text-slate max-w-2xl mx-auto">
-          You're not policing anymore. The system does it for you.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <!-- Old way -->
-        <div class="scroll-reveal" style="--delay: 0.1s;">
-          <div class="bg-navy border border-navy-light/30 rounded-xl p-6 h-full">
-            <div class="text-slate-dark text-sm font-semibold uppercase tracking-wide mb-6">The old dynamic</div>
-            <div class="space-y-4 text-sm">
-              <div class="flex items-start gap-3 text-slate">
-                <span class="text-critical">→</span>
-                <span>You: "Please use our design tokens"</span>
-              </div>
-              <div class="flex items-start gap-3 text-slate">
-                <span class="text-critical">→</span>
-                <span>Dev: "Sure, next time"</span>
-              </div>
-              <div class="flex items-start gap-3 text-slate">
-                <span class="text-critical">→</span>
-                <span>You: "This PR has hardcoded colors..."</span>
-              </div>
-              <div class="flex items-start gap-3 text-slate">
-                <span class="text-critical">→</span>
-                <span>Dev: "We're on a deadline"</span>
-              </div>
-              <div class="flex items-start gap-3 text-slate italic">
-                <span class="text-critical">😤</span>
-                <span>Friction. Politics. Exhaustion.</span>
-              </div>
-            </div>
-          </div>
+    <section class="ui-section ui-section--last">
+      <div class="ui-wrap ui-split lp-cta">
+        <div class="ui-head">
+          <h2>Write your rules in 30 seconds.</h2>
+          <p>Free. Open source. No signup required. AI writes code. You're in charge of what ships.</p>
+          <div class="ui-actions"><a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer" class="ui-btn ui-btn--secondary">View on GitHub</a></div>
         </div>
-
-        <!-- New way -->
-        <div class="scroll-reveal" style="--delay: 0.2s;">
-          <div class="bg-navy border border-success/30 rounded-xl p-6 h-full">
-            <div class="text-success text-sm font-semibold uppercase tracking-wide mb-6">The new dynamic</div>
-            <div class="space-y-4 text-sm">
-              <div class="flex items-start gap-3 text-light">
-                <span class="text-success">→</span>
-                <span>Dev: "Buoy caught some issues"</span>
-              </div>
-              <div class="flex items-start gap-3 text-light">
-                <span class="text-success">→</span>
-                <span>Buoy: "3 violations. Here's how to fix."</span>
-              </div>
-              <div class="flex items-start gap-3 text-light">
-                <span class="text-success">→</span>
-                <span>Dev: "Fixed. PR passing now."</span>
-              </div>
-              <div class="flex items-start gap-3 text-light">
-                <span class="text-success">→</span>
-                <span>You: Don't even need to be involved</span>
-              </div>
-              <div class="flex items-start gap-3 text-light italic">
-                <span class="text-success">😌</span>
-                <span>Automated. Objective. Effortless.</span>
-              </div>
-            </div>
-          </div>
+        <div>
+          <DocTerminal command="npx ahoybuoy show health" />
+          <p class="ui-note">The Code Control layer that design has been missing.</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Section 6: Your Power -->
-  <section class="py-32 bg-navy relative overflow-hidden">
-    <div class="absolute bottom-0 left-0 right-0 h-64 opacity-20">
-      <svg class="w-full h-full" viewBox="0 0 1440 320" preserveAspectRatio="none">
-        <path class="wave-path" fill="#FF4F00" fill-opacity="0.3" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,138.7C672,128,768,160,864,181.3C960,203,1056,213,1152,197.3C1248,181,1344,139,1392,117.3L1440,96L1440,320L0,320Z"/>
-      </svg>
-    </div>
-
-    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="scroll-reveal">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-sunrise-start/10 border border-sunrise-start/30 mb-6">
-          <span class="text-sunrise-start font-semibold">Your Power</span>
-        </div>
-        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
-          AI is a tool. You're the operator.
-        </h2>
-        <p class="text-xl text-slate max-w-2xl mx-auto mb-12">
-          Stop being scared of AI-generated code.
-          <br /><span class="text-light">Start controlling it.</span>
-        </p>
-      </div>
-
-      <!-- Power statements -->
-      <div class="grid sm:grid-cols-3 gap-6 mb-12">
-        <div class="scroll-reveal" style="--delay: 0.1s;">
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6">
-            <div class="text-3xl mb-3">🎯</div>
-            <div class="text-light font-semibold mb-1">You set the standards</div>
-            <div class="text-sm text-slate">Define what quality means</div>
-          </div>
-        </div>
-        <div class="scroll-reveal" style="--delay: 0.2s;">
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6">
-            <div class="text-3xl mb-3">🔒</div>
-            <div class="text-light font-semibold mb-1">You control the gate</div>
-            <div class="text-sm text-slate">See everything before it ships</div>
-          </div>
-        </div>
-        <div class="scroll-reveal" style="--delay: 0.3s;">
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6">
-            <div class="text-3xl mb-3">📈</div>
-            <div class="text-light font-semibold mb-1">You see the metrics</div>
-            <div class="text-sm text-slate">Track adoption in real-time</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Final CTA Section -->
-  <section class="py-32 bg-gradient-to-b from-navy to-navy-dark relative overflow-hidden">
-    <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-sunrise-start/10 rounded-full blur-3xl"></div>
-    <div class="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-buoy/10 rounded-full blur-3xl"></div>
-
-    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="scroll-reveal">
-        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
-          Write your rules in 30 seconds.
-        </h2>
-        <p class="text-xl text-slate mb-8 max-w-2xl mx-auto">
-          Free. Open source. No signup required.
-          <br />AI writes code. You're in charge of what ships.
-        </p>
-
-        <div class="inline-flex flex-col sm:flex-row items-center gap-4 p-6 bg-navy/80 border border-navy-light/30 rounded-xl backdrop-blur-sm mb-8 copy-command" data-command="npx ahoybuoy show health">
-          <code class="text-lg font-mono text-light">npx ahoybuoy show health</code>
-          <div class="flex items-center gap-3">
-            <button class="copy-btn px-4 py-2 bg-navy-light/30 hover:bg-navy-light/50 text-slate hover:text-light rounded-lg transition-colors text-sm flex items-center gap-2">
-              <span class="copy-text">Copy</span>
-              <svg class="copy-icon w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-              </svg>
-              <svg class="check-icon w-4 h-4 hidden text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-            </button>
-            <Button href={siteConfig.githubUrl} external>
-              View on GitHub
-            </Button>
-          </div>
-        </div>
-
-        <p class="text-slate text-sm">
-          The Code Control layer that design has been missing.
-        </p>
-      </div>
-    </div>
-  </section>
-
+    </section>
+  </main>
   <Footer />
 </Layout>
 
 <style>
-  @keyframes fade-in-up {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-20px) scale(1.05); }
-  }
-
-  @keyframes power-glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 170, 0.3); }
-    50% { box-shadow: 0 0 40px rgba(0, 212, 170, 0.5); }
-  }
-
-  @keyframes gatekeeper-glow {
-    0%, 100% { box-shadow: 0 0 30px rgba(255, 79, 0, 0.2); }
-    50% { box-shadow: 0 0 60px rgba(255, 79, 0, 0.4); }
-  }
-
-  @keyframes power-line {
-    0% { stroke-dashoffset: 200; opacity: 0; }
-    50% { opacity: 1; }
-    100% { stroke-dashoffset: 0; opacity: 0; }
-  }
-
-  @keyframes wave {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-
-  .animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
-  .animate-float { animation: float 6s ease-in-out infinite; }
-  .power-glow { animation: power-glow 2s ease-in-out infinite; }
-  .gatekeeper-glow { animation: gatekeeper-glow 2s ease-in-out infinite; }
-  .power-line { stroke-dasharray: 200; animation: power-line 3s linear infinite; }
-  /* Wave animation removed - was causing overflow issues */
-
-  .scroll-reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    transition-delay: var(--delay, 0s);
-  }
-
-  .scroll-reveal.revealed {
-    opacity: 1;
-    transform: translateY(0);
+  .lp-hero { padding-block: 32px 24px; }
+  .lp-split { margin-top: 40px; align-items: center; }
+  .lp-muted { color: var(--color-muted); font-size: 15px; }
+  .lp-flow { margin-top: 40px; display: grid; grid-template-columns: minmax(0, 1.2fr) auto minmax(0, 1fr) auto minmax(0, 0.8fr); gap: 24px; align-items: center; }
+  .lp-flow .ui-ruled { margin: 0; }
+  .lp-flow strong { color: var(--color-ink); font-weight: 600; }
+  .lp-arrow { color: var(--color-muted); font-size: 22px; }
+  .lp-gate h3, .lp-out h3 { margin: 4px 0 0; font-size: 1.25rem; }
+  .lp-k { margin: 0; font-size: 14px; font-weight: 600; }
+  .lp-table { margin-top: 32px; }
+  .lp-status { font-size: 13px; }
+  .ui-col h3 { font-size: 1.2rem; }
+  .ui-col p { margin-top: 8px; }
+  .lp-cta { align-items: center; }
+  @media (max-width: 960px) {
+    .lp-flow { grid-template-columns: minmax(0, 1fr); }
+    .lp-arrow { transform: rotate(90deg); justify-self: start; }
   }
 </style>
-
-<script>
-  const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-      }
-    });
-  }, observerOptions);
-
-  document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
-
-  document.querySelectorAll('.copy-command').forEach(container => {
-    const btn = container.querySelector('.copy-btn');
-    const command = container.getAttribute('data-command');
-
-    btn?.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(command || '');
-        const copyIcon = btn.querySelector('.copy-icon');
-        const checkIcon = btn.querySelector('.check-icon');
-        const copyText = btn.querySelector('.copy-text');
-
-        copyIcon?.classList.add('hidden');
-        checkIcon?.classList.remove('hidden');
-        if (copyText) copyText.textContent = 'Copied!';
-
-        setTimeout(() => {
-          copyIcon?.classList.remove('hidden');
-          checkIcon?.classList.add('hidden');
-          if (copyText) copyText.textContent = 'Copy';
-        }, 2000);
-      } catch (err) {
-        console.error('Failed to copy:', err);
-      }
-    });
-  });
-</script>

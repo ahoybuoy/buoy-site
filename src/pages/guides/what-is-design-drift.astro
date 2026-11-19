@@ -35,8 +35,8 @@ const faqs = [
 >
   <h2>What it looks like</h2>
   <ul>
-    <li><strong>Hardcoded values.</strong> <code>color: #2563eb</code> where <code>var(--color-primary)</code> exists, or <code>p-[13px]</code> between <code>p-3</code> and <code>p-4</code>.</li>
-    <li><strong>Token regressions.</strong> A pull request replaces <code>var(--space-4)</code> with <code>16px</code>. It renders identically today and stops following the scale tomorrow.</li>
+    <li><strong>Hardcoded values.</strong> <code>color: <span class="ui-old">#2563eb</span></code> where <code><span class="ui-token">var(--color-primary)</span></code> exists, or <code><span class="ui-old">p-[13px]</span></code> between <code><span class="ui-token">p-3</span></code> and <code><span class="ui-token">p-4</span></code>.</li>
+    <li><strong>Token regressions.</strong> A pull request replaces <code><span class="ui-token">var(--space-4)</span></code> with <code><span class="ui-old">16px</span></code>. It renders identically today and stops following the scale tomorrow.</li>
     <li><strong>Near-duplicate components.</strong> <code>PrimaryButton</code>, <code>ButtonPrimary</code> and <code>CTAButton</code>, each edited separately.</li>
     <li><strong>Repeated one-offs.</strong> The same gray in forty files, which is a missing token rather than forty mistakes.</li>
   </ul>
@@ -45,6 +45,13 @@ const faqs = [
     {s.findings.toLocaleString()} hardcoded-value findings in {s.components.toLocaleString()} components
     (<a href="/reports">reports</a>).
   </p>
+
+  <figure class="gl-diff">
+    <pre><code><span class="ui-t-dim">// A token regression: renders the same today</span>
+<span class="ui-t-crit">- padding: var(--space-4);</span>
+<span class="ui-t-warn">+ padding: 16px;</span></code></pre>
+    <figcaption>The pull request looks harmless. The value stops following the scale.</figcaption>
+  </figure>
 
   <h2>Why it happens</h2>
   <ul>
@@ -63,9 +70,9 @@ const faqs = [
   <h2>What is not drift</h2>
   <p>
     Not every literal is a problem. SVG icons, email templates, tests, layout math such as <code>calc()</code>,
-    and deliberate choices a comment explains are correct as they are. Flagging them is how drift tools lose the
-    team's trust.
+    and deliberate choices a comment explains are correct as they are.
   </p>
+  <blockquote class="gl-pull"><p>Flagging them is how drift tools lose the team's trust.</p></blockquote>
 
   <h2>Detect and prevent it</h2>
   <ol>

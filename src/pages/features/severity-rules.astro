@@ -1,172 +1,104 @@
 ---
 import FeatureLayout from '../../layouts/FeatureLayout.astro'
 import Terminal from '../../components/Terminal.astro'
-import FeatureCard from '../../components/FeatureCard.astro'
 import CodeBlock from '../../components/CodeBlock.astro'
-
-const promoteTerminalLines = [
-  { text: '', delay: 600 },
-  { text: '<span class="text-buoy">⚓</span> Running drift check...', type: 'output', delay: 800 },
-  { text: '', delay: 1200 },
-  { text: 'Severity Rules Applied:', type: 'output', delay: 1400 },
-  { text: '  <span class="text-warning">warning</span> → <span class="text-critical">critical</span>  hardcoded-color in <span class="text-lavender">src/checkout/**</span>', type: 'output', delay: 1800 },
-  { text: '', delay: 2200 },
-  { text: '<span class="text-critical">✗ CRITICAL</span>  Hardcoded color <span class="text-slate-dark">#3b82f6</span> in checkout/PaymentForm.tsx:24', type: 'critical', delay: 2600 },
-  { text: '  <span class="text-slate-dark">Promoted from warning — matches rule: hardcoded-color in src/checkout/**</span>', type: 'muted', delay: 3000 },
-]
 
 const enforceTerminalLines = [
   { text: '', delay: 600 },
-  { text: '<span class="text-buoy">⚓</span> Running drift check...', type: 'output', delay: 800 },
+  { text: '<span class="text-slate">Running drift check...</span>', type: 'output', delay: 800 },
   { text: '', delay: 1200 },
   { text: 'Enforcement Rules Applied:', type: 'output', delay: 1400 },
   { text: '  <span class="text-critical">enforced</span>  close-match → <span class="text-critical">critical</span> <span class="text-slate-dark">(no negotiation)</span>', type: 'output', delay: 1800 },
   { text: '', delay: 2200 },
   { text: '<span class="text-critical">✗ CRITICAL</span>  Close match <span class="text-slate-dark">#3b83f6</span> ≈ <span class="text-slate-dark">#3b82f6</span> in Button.tsx:28', type: 'critical', delay: 2600 },
-  { text: '  <span class="text-slate-dark">Enforced — close-match drift is always critical</span>', type: 'muted', delay: 3000 },
+  { text: '  <span class="text-slate-dark">Enforced: close-match drift is always critical</span>', type: 'muted', delay: 3000 },
   { text: '', delay: 3400 },
   { text: '<span class="text-critical">✗ 2 critical issues found. Exiting with code 1.</span>', type: 'critical', delay: 3800 },
 ]
 
 const filterFields = [
-  {
-    title: 'type',
-    description: 'Match drift by type. Targets specific categories like hardcoded-color or close-match.',
-    icon: '🏷️',
-    examples: ['hardcoded-color', 'hardcoded-spacing', 'close-match'],
-  },
-  {
-    title: 'severity',
-    description: 'Match drift by current severity before promotion. Only available in promote rules.',
-    icon: '⚡',
-    examples: ['error', 'warning', 'info'],
-  },
-  {
-    title: 'file',
-    description: 'Match drift by file path using glob patterns. Target specific directories or file types.',
-    icon: '📁',
-    examples: ['src/checkout/**', '**/*.legacy.tsx'],
-  },
-  {
-    title: 'component',
-    description: 'Match drift by component name using regex. Target specific components or patterns.',
-    icon: '📦',
-    examples: ['PaymentForm', 'Legacy.*'],
-  },
-  {
-    title: 'token',
-    description: 'Match drift by token name using regex. Target specific token references.',
-    icon: '🎨',
-    examples: ['color-primary', 'spacing-.*'],
-  },
-  {
-    title: 'value',
-    description: 'Match drift by the hardcoded value using regex. Target specific values across the codebase.',
-    icon: '🎯',
-    examples: ['#3b82f6', '\\d+px'],
-  },
+  { title: 'type', description: 'Match drift by type. Targets specific categories like hardcoded-color or close-match.', examples: ['hardcoded-color', 'hardcoded-spacing', 'close-match'] },
+  { title: 'severity', description: 'Match drift by current severity before promotion. Only available in promote rules.', examples: ['error', 'warning', 'info'] },
+  { title: 'file', description: 'Match drift by file path using glob patterns. Target specific directories or file types.', examples: ['src/checkout/**', '**/*.legacy.tsx'] },
+  { title: 'component', description: 'Match drift by component name using regex. Target specific components or patterns.', examples: ['PaymentForm', 'Legacy.*'] },
+  { title: 'token', description: 'Match drift by token name using regex. Target specific token references.', examples: ['color-primary', 'spacing-.*'] },
+  { title: 'value', description: 'Match drift by the hardcoded value using regex. Target specific values across the codebase.', examples: ['#3b82f6', '\\d+px'] },
+]
+
+const pipeline = [
+  { title: 'Promote', tone: 'ui-c-warn', text: 'Conditional upgrades. Elevate severity based on filters like file path, type, or component.' },
+  { title: 'Enforce', tone: 'ui-c-crit', text: 'Unconditional critical. Overrides any promote result. If enforce matches, it\'s critical.' },
+  { title: 'Ignore', tone: 'ui-c-buoy', text: 'The escape hatch. Ignored drift is excluded entirely, even if enforced. Use sparingly.' },
 ]
 
 const relatedFeatures = [
-  {
-    title: 'Drift Detection',
-    description: 'Find every inconsistency across your codebase',
-    href: '/features/drift-detection'
-  },
-  {
-    title: 'CI Integration',
-    description: 'Add drift checks to your CI pipeline',
-    href: '/features/ci'
-  },
-  {
-    title: 'Ignore Rules',
-    description: 'Intentional exceptions for known drift',
-    href: '/features/ignore'
-  },
+  { title: 'Drift Detection', description: 'Find every inconsistency across your codebase', href: '/features/drift-detection' },
+  { title: 'CI Integration', description: 'Add drift checks to your CI pipeline', href: '/features/ci' },
+  { title: 'Ignore Rules', description: 'Intentional exceptions for known drift', href: '/features/ignore' },
 ]
 ---
 
 <FeatureLayout
-  title="Severity Rules — Promote & Enforce Drift Severity | Buoy"
+  title="Severity Rules: Promote & Enforce Drift Severity | Buoy"
   description="Promote warnings to critical. Enforce zero-tolerance on specific drift types. Configure severity rules in .buoy.yaml to match your team's standards."
   keywords="design drift severity, promote drift, enforce drift, severity rules, buoy config"
   heroTitle="Promote warnings. Enforce zero-tolerance. Your severity, your rules."
   heroDescription="Not all drift is equal. Checkout hardcoded colors matter more than test utility spacing. Severity rules let you set the weight."
+  exampleCaption="A warning in checkout code, promoted to critical by a rule."
+  related={relatedFeatures}
+  pattern="pulse"
+  ctaPattern="tide"
 >
+  <div slot="example" class="ui-term fx-term">
+    <div class="ui-term-bar"><span>Terminal</span></div>
+    <pre><span class="ui-t-prompt">$</span> <span class="ui-t-hi">buoy drift check</span>
+<span class="ui-t-dim">Running drift check...</span>
 
-  <!-- Problem Section -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-4 text-center">The Problem with Flat Severity</h2>
-      <p class="text-slate text-center mb-8 max-w-2xl mx-auto">
-        Without severity rules, all drift is treated equally. A hardcoded color in your checkout flow
-        gets the same weight as a spacing value in a test utility. That's not how your team thinks about risk.
-      </p>
+Severity Rules Applied:
+  <span class="ui-t-warn">warning</span> → <span class="ui-t-crit">critical</span>  hardcoded-color in <span class="ui-t-info">src/checkout/**</span>
 
-      <div class="grid sm:grid-cols-2 gap-6">
-        <div class="bg-navy/50 border border-critical/30 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-3">Without Severity Rules</h3>
-          <ul class="space-y-2 text-sm text-slate">
-            <li class="flex items-start gap-2">
-              <span class="text-critical">✗</span>
-              <span>All drift is "warning" — nothing stands out</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-critical">✗</span>
-              <span>Checkout drift and test utility drift look the same</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-critical">✗</span>
-              <span>Close-match typos don't block the build</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-critical">✗</span>
-              <span>CI thresholds are all-or-nothing</span>
-            </li>
+<span class="ui-t-crit">✗ CRITICAL</span>  Hardcoded color <span class="ui-t-dim">#3b82f6</span>
+            in checkout/PaymentForm.tsx:24
+  <span class="ui-t-dim">Promoted from warning, matches rule:</span>
+  <span class="ui-t-dim">hardcoded-color in src/checkout/**</span></pre>
+  </div>
+
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head">
+        <h2>The problem with flat severity</h2>
+        <p>Without severity rules, all drift is treated equally. A hardcoded color in your checkout flow gets the same weight as a spacing value in a test utility. That's not how your team thinks about risk.</p>
+      </div>
+      <div class="ui-cols fx-vs">
+        <div class="ui-col">
+          <h3>Without severity rules</h3>
+          <ul class="ui-ruled">
+            <li>All drift is <span class="ui-sev ui-sev-warning">warning</span>, nothing stands out</li>
+            <li>Checkout drift and test utility drift look the same</li>
+            <li>Close-match typos don't block the build</li>
+            <li>CI thresholds are all-or-nothing</li>
           </ul>
         </div>
-
-        <div class="bg-navy/50 border border-success/30 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-3">With Severity Rules</h3>
-          <ul class="space-y-2 text-sm text-slate">
-            <li class="flex items-start gap-2">
-              <span class="text-success">✓</span>
-              <span>Checkout drift promoted to critical</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-success">✓</span>
-              <span>Close-match typos enforced as critical — always</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-success">✓</span>
-              <span>Test utilities stay at warning</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-success">✓</span>
-              <span>CI fails only on what matters to your team</span>
-            </li>
+        <div class="ui-col">
+          <h3>With severity rules</h3>
+          <ul class="ui-ruled">
+            <li>Checkout drift promoted to <span class="ui-sev ui-sev-critical">critical</span></li>
+            <li>Close-match typos enforced as <span class="ui-sev ui-sev-critical">critical</span>, always</li>
+            <li>Test utilities stay at <span class="ui-sev ui-sev-warning">warning</span></li>
+            <li>CI fails only on what matters to your team</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Promote Section -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-4 text-center">drift.promote</h2>
-      <p class="text-slate text-center mb-8 max-w-2xl mx-auto">
-        Elevate drift severity based on where it appears and what it is.
-        A warning in the wrong place becomes a critical.
-      </p>
-
-      <Terminal
-        command="buoy drift check"
-        lines={promoteTerminalLines}
-      />
-
-      <div class="mt-8">
-        <CodeBlock code={`# .buoy.yaml
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap ui-split">
+      <div class="ui-head">
+        <h2 class="ui-mono">drift.promote</h2>
+        <p>Elevate drift severity based on where it appears and what it is. A warning in the wrong place becomes a critical.</p>
+      </div>
+      <CodeBlock code={`# .buoy.yaml
 drift:
   promote:
     # Hardcoded colors in checkout are critical
@@ -181,41 +113,36 @@ drift:
       severity: warning
       to: critical
       reason: "Shared components set the standard"`} language="yaml" filename=".buoy.yaml" />
-      </div>
     </div>
   </section>
 
-  <!-- Filter Fields -->
-  <section class="py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-4 text-center">Filter Fields</h2>
-      <p class="text-slate text-center mb-12 max-w-2xl mx-auto">
-        Six fields to target exactly the drift you care about. Multiple fields in a single rule combine with AND logic. Multiple rules use first-match-wins.
-      </p>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-        {filterFields.map((filter) => (
-          <FeatureCard {...filter} />
-        ))}
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head">
+        <h2>Filter fields</h2>
+        <p>Six fields to target exactly the drift you care about. Multiple fields in a single rule combine with AND logic. Multiple rules use first-match-wins.</p>
       </div>
+      <table class="ui-table fx-block fx-table">
+        <caption class="ui-sr">Severity rule filter fields</caption>
+        <thead><tr><th scope="col">Field</th><th scope="col">Matches</th></tr></thead>
+        <tbody>
+          {filterFields.map((f) => (
+            <tr><th scope="row" class="ui-mono ui-c-buoy">{f.title}</th><td>{f.description}<br /><span class="ui-mono fx-ex">{f.examples.join(', ')}</span></td></tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   </section>
 
-  <!-- Enforce Section -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-4 text-center">drift.enforce</h2>
-      <p class="text-slate text-center mb-8 max-w-2xl mx-auto">
-        Zero-tolerance rules. No <code class="text-xs text-lavender bg-navy-dark/50 px-1.5 py-0.5 rounded">severity</code> filter, no <code class="text-xs text-lavender bg-navy-dark/50 px-1.5 py-0.5 rounded">to</code> field. Matching drift is always set to critical. No negotiation.
-      </p>
-
-      <Terminal
-        command="buoy drift check"
-        lines={enforceTerminalLines}
-      />
-
-      <div class="mt-8">
-        <CodeBlock code={`# .buoy.yaml
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap ui-split">
+      <div>
+        <div class="ui-head">
+          <h2 class="ui-mono">drift.enforce</h2>
+          <p>Zero-tolerance rules. No <code class="ui-code">severity</code> filter, no <code class="ui-code">to</code> field. Matching drift is always set to critical. No negotiation.</p>
+        </div>
+        <div class="fx-block">
+          <CodeBlock code={`# .buoy.yaml
 drift:
   enforce:
     # Close-match typos are always critical
@@ -225,67 +152,39 @@ drift:
     # Any drift in the design system package is critical
     - file: "packages/design-system/**"
       reason: "The design system itself must be clean"`} language="yaml" filename=".buoy.yaml" />
+        </div>
+      </div>
+      <Terminal command="buoy drift check" lines={enforceTerminalLines} />
+    </div>
+  </section>
+
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head">
+        <h2>Severity pipeline</h2>
+        <p>Rules are applied in a fixed order. Enforce trumps promote. Ignore is the escape hatch.</p>
+      </div>
+      <div class="ui-cols ui-cols--3">
+        {pipeline.map((p, i) => (
+          <div class="ui-col"><p class={`ui-col-sub ui-tnum ${p.tone}`}>{i + 1}</p><h3 class={p.tone}>{p.title}</h3><p>{p.text}</p></div>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Pipeline Order -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Severity Pipeline</h2>
-      <p class="text-slate text-center mb-12 max-w-2xl mx-auto">
-        Rules are applied in a fixed order. Enforce trumps promote. Ignore is the escape hatch.
-      </p>
-
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="text-center">
-          <div class="w-12 h-12 rounded-full bg-warning/20 border-2 border-warning flex items-center justify-center mx-auto mb-4 text-warning font-bold">
-            1
-          </div>
-          <h3 class="font-semibold text-light mb-2">Promote</h3>
-          <p class="text-sm text-slate">
-            Conditional upgrades. Elevate severity based on filters like file path, type, or component.
-          </p>
-        </div>
-
-        <div class="text-center">
-          <div class="w-12 h-12 rounded-full bg-critical/20 border-2 border-critical flex items-center justify-center mx-auto mb-4 text-critical font-bold">
-            2
-          </div>
-          <h3 class="font-semibold text-light mb-2">Enforce</h3>
-          <p class="text-sm text-slate">
-            Unconditional critical. Overrides any promote result. If enforce matches, it's critical.
-          </p>
-        </div>
-
-        <div class="text-center">
-          <div class="w-12 h-12 rounded-full bg-buoy/20 border-2 border-buoy flex items-center justify-center mx-auto mb-4 text-buoy font-bold">
-            3
-          </div>
-          <h3 class="font-semibold text-light mb-2">Ignore</h3>
-          <p class="text-sm text-slate">
-            The escape hatch. Ignored drift is excluded entirely — even if enforced. Use sparingly.
-          </p>
-        </div>
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap ui-split">
+      <div class="ui-head">
+        <h2 class="ui-mono">health.failBelow</h2>
+        <p>Set a minimum health score in your config. When <code class="ui-code">buoy drift check</code> runs, it exits with code 1 if the score drops below your threshold.</p>
+        <p>Pairs with <code class="ui-code">--fail-on</code> CLI flags. The health gate is config-based, so there's no need to pass flags in CI.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- Health Gate -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-4 text-center">health.failBelow</h2>
-      <p class="text-slate text-center mb-8 max-w-2xl mx-auto">
-        Set a minimum health score in your config. When <code class="text-xs text-lavender bg-navy-dark/50 px-1.5 py-0.5 rounded">buoy drift check</code> runs,
-        it exits with code 1 if the score drops below your threshold.
-      </p>
-
-      <CodeBlock code={`# .buoy.yaml
+      <div>
+        <CodeBlock code={`# .buoy.yaml
 health:
   failBelow: 70    # Exit code 1 if health score < 70`} language="yaml" filename=".buoy.yaml" />
-
-      <div class="mt-8">
-        <CodeBlock code={`# buoy drift check --json output includes health data
+        <div class="fx-mt">
+          <CodeBlock code={`# buoy drift check --json output includes health data
 {
   "drifts": [...],
   "health": {
@@ -294,22 +193,8 @@ health:
     "passed": false
   }
 }`} language="json" filename="--json output" />
+        </div>
       </div>
-
-      <p class="text-slate text-sm text-center mt-6">
-        Pairs with <code class="text-xs text-lavender bg-navy-dark/50 px-1.5 py-0.5 rounded">--fail-on</code> CLI flags. The health gate is config-based — no need to pass flags in CI.
-      </p>
     </div>
   </section>
-
-  <!-- Related Features Slot -->
-  <div slot="related" class="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-    {relatedFeatures.map((feature) => (
-      <FeatureCard
-        title={feature.title}
-        description={feature.description}
-        href={feature.href}
-      />
-    ))}
-  </div>
 </FeatureLayout>

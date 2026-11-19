@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro'
 import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
 import Button from '../components/Button.astro'
+import MarkPattern from '../components/MarkPattern.astro'
 import { siteConfig } from '../config'
 
 const contactOptions = [
@@ -11,21 +12,18 @@ const contactOptions = [
     description: 'Report bugs, request features, or ask questions',
     action: 'Open an issue',
     href: `${siteConfig.githubUrl}/issues`,
-    icon: '🐙'
   },
   {
     title: 'GitHub Discussions',
     description: 'Join the community for general discussion and help',
     action: 'Start a discussion',
     href: `${siteConfig.githubUrl}/discussions`,
-    icon: '💬'
   },
   {
     title: 'Twitter/X',
     description: 'Follow for updates, tips, and design system content',
     action: '@buoy_dev',
-    href: 'https://twitter.com/buoy_dev',
-    icon: '🐦'
+    href: 'https://twitter.com/buoy_dev'
   },
 ]
 ---
@@ -36,129 +34,99 @@ const contactOptions = [
 >
   <Nav />
 
-  <!-- Hero -->
-  <section class="relative pt-32 pb-16 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
-
-    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6">
-        Get in touch
-      </h1>
-      <p class="text-lg text-slate max-w-2xl mx-auto">
-        Questions, feedback, or just want to say hi? Here's how to reach us.
-      </p>
-    </div>
-  </section>
-
-  <!-- Contact Options -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid md:grid-cols-3 gap-6">
-        {contactOptions.map((option) => (
-          <a
-            href={option.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="bg-navy-dark border border-navy-light/20 hover:border-buoy/30 rounded-xl p-6 transition-colors group"
-          >
-            <div class="text-3xl mb-4">{option.icon}</div>
-            <h3 class="font-semibold text-light mb-2 group-hover:text-buoy transition-colors">
-              {option.title}
-            </h3>
-            <p class="text-sm text-slate mb-4">{option.description}</p>
-            <span class="text-sm text-buoy">{option.action} →</span>
-          </a>
-        ))}
+  <main id="main" class="ui-nav-offset">
+    <section class="ui-section ui-section--first">
+      <div class="ui-wrap">
+        <div class="ui-head">
+          <h1>Get in touch</h1>
+          <p class="ui-lede">Questions, feedback, or just want to say hi? Here's how to reach us.</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Enterprise Contact -->
-  <section class="py-16 bg-navy-dark">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-navy border border-lavender/30 rounded-xl p-8 text-center">
-        <div class="text-4xl mb-4">🏢</div>
-        <h2 class="text-2xl font-bold text-light mb-4">Enterprise Inquiries</h2>
-        <p class="text-slate mb-6">
-          Evaluating Buoy across several repositories or working through a security review?
-          Let's talk about how Buoy can work for your organization.
+    <section class="ui-section ui-section--first ct-top">
+      <div class="ui-wrap">
+        <table class="ui-table ui-table--hover ui-table--stack ct-table">
+          <thead><tr><th scope="col">Channel</th><th scope="col">For</th><th scope="col" class="ui-end">Link</th></tr></thead>
+          <tbody>
+            {contactOptions.map((option) => (
+              <tr>
+                <th scope="row">{option.title}</th>
+                <td>{option.description}</td>
+                <td class="ui-end"><a href={option.href} target="_blank" rel="noopener noreferrer" class="ui-rowlink">{option.action}</a></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="ui-section ui-section--band ui-section--patterned">
+      <MarkPattern pattern="field" drift={0.3} fade class="ui-pattern" />
+      <div class="ui-wrap">
+        <div class="ui-cta">
+          <div class="ui-head">
+            <p class="ui-tier-name ui-tier-org">Organizations</p>
+            <h2>Enterprise inquiries</h2>
+            <p>
+              Evaluating Buoy across several repositories or working through a security review?
+              Let's talk about how Buoy can work for your organization.
+            </p>
+          </div>
+          <div class="ct-ent">
+            <Button href="mailto:enterprise@buoy.design" size="lg">Contact Sales</Button>
+            <p class="ui-note">Enterprise inquiries receive priority response within 1 business day.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ui-section ui-section--last">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>Quick help</h2></div>
+        <div class="ct-help">
+          <article>
+            <h3>Installation issues?</h3>
+            <p>Make sure you have Node.js 18+ installed. Then run:</p>
+            <p><code class="ui-code">npx ahoybuoy drift scan</code></p>
+          </article>
+          <article>
+            <h3>Configuration questions?</h3>
+            <p>Check out our documentation for detailed setup guides.</p>
+            <p><a href="/demo" class="ui-link">Read the docs</a></p>
+          </article>
+          <article>
+            <h3>Feature request?</h3>
+            <p>We love hearing what features would help your team.</p>
+            <p><a href={`${siteConfig.githubUrl}/issues/new?template=feature_request.md`} target="_blank" rel="noopener noreferrer" class="ui-link">Request a feature</a></p>
+          </article>
+          <article>
+            <h3>Found a bug?</h3>
+            <p>Help us fix it! Include your config and error output.</p>
+            <p><a href={`${siteConfig.githubUrl}/issues/new?template=bug_report.md`} target="_blank" rel="noopener noreferrer" class="ui-link">Report a bug</a></p>
+          </article>
+        </div>
+        <p class="ui-after">
+          We typically respond to GitHub issues within 24-48 hours.
         </p>
-        <Button href="mailto:enterprise@buoy.design">
-          Contact Sales
-        </Button>
       </div>
-    </div>
-  </section>
-
-  <!-- Quick Help -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Quick Help</h2>
-
-      <div class="grid sm:grid-cols-2 gap-6">
-        <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-2">Installation Issues?</h3>
-          <p class="text-sm text-slate mb-4">
-            Make sure you have Node.js 18+ installed. Then run:
-          </p>
-          <code class="text-sm text-buoy bg-navy px-3 py-2 rounded block">
-            npx ahoybuoy drift scan
-          </code>
-        </div>
-
-        <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-2">Configuration Questions?</h3>
-          <p class="text-sm text-slate mb-4">
-            Check out our documentation for detailed setup guides.
-          </p>
-          <Button href="/demo" variant="secondary" class="w-full justify-center">
-            Read the docs
-          </Button>
-        </div>
-
-        <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-2">Feature Request?</h3>
-          <p class="text-sm text-slate mb-4">
-            We love hearing what features would help your team.
-          </p>
-          <Button
-            href={`${siteConfig.githubUrl}/issues/new?template=feature_request.md`}
-            variant="secondary"
-            class="w-full justify-center"
-            external
-          >
-            Request a feature
-          </Button>
-        </div>
-
-        <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-2">Found a Bug?</h3>
-          <p class="text-sm text-slate mb-4">
-            Help us fix it! Include your config and error output.
-          </p>
-          <Button
-            href={`${siteConfig.githubUrl}/issues/new?template=bug_report.md`}
-            variant="secondary"
-            class="w-full justify-center"
-            external
-          >
-            Report a bug
-          </Button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Response Time -->
-  <section class="py-16 bg-navy-dark">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <p class="text-slate">
-        We typically respond to GitHub issues within 24-48 hours.
-        <br />
-        Enterprise inquiries receive priority response within 1 business day.
-      </p>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <Footer />
 </Layout>
+
+<style>
+  .ct-table { margin-top: 0; }
+  .ct-hero { padding-bottom: 48px; }
+  .ct-top { padding-top: 0; }
+  .ct-table th[scope="row"] { color: var(--color-ink); font-weight: 600; text-transform: none; letter-spacing: 0; font-size: 15px; }
+  .ct-ent { align-self: center; }
+  .ct-h2 { margin: 6px 0 0; font-size: var(--text-h2); color: var(--color-ink); }
+  .ct-mt { margin-top: 24px; }
+  .ct-help { margin-top: 40px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 48px; border-top: 1px solid var(--color-line-strong); }
+  .ct-help article { padding: 22px 0; border-bottom: 1px solid var(--color-line); }
+  .ct-help h3 { margin: 0; font-size: 19px; color: var(--color-ink); }
+  .ct-help p { margin: 8px 0 0; }
+  @media (max-width: 760px) { .ct-help { grid-template-columns: minmax(0, 1fr); } }
+</style>

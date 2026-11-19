@@ -10,6 +10,7 @@ import Layout from '../../../layouts/Layout.astro'
 import Nav from '../../../components/Nav.astro'
 import Footer from '../../../components/Footer.astro'
 import ReportView from '../../../components/ReportView.astro'
+import MarkPattern from '../../../components/MarkPattern.astro'
 import ScanForm from '../../../components/ScanForm.astro'
 import { allReports, type Report } from '../../../utils/reports'
 
@@ -52,85 +53,103 @@ const description = report
   <Nav />
 
   {!valid && (
-    <section class="pt-32 pb-16 bg-navy-dark">
-      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-bold text-light">That is not a GitHub repository name</h1>
-        <p class="text-slate mt-3">Paste a repository URL like https://github.com/owner/repo.</p>
-        <div class="mt-6"><ScanForm id="scan-invalid" /></div>
-      </div>
-    </section>
+    <main class="ui-nav-offset">
+      <section class="ui-section ui-section--first ui-section--last">
+        <div class="ui-wrap max-w-[760px]">
+          <div class="ui-head"><h1>That is not a GitHub repository name</h1><p class="ui-lede">Paste a repository URL like https://github.com/owner/repo.</p></div>
+          <div class="mt-8"><ScanForm id="scan-invalid" /></div>
+        </div>
+      </section>
+    </main>
   )}
 
   {valid && report && (
-    <>
+    <ReportView report={report} backHref="/scan" backLabel="← Scan another repository">
       {pending && (
-        <div class="pt-24 bg-navy-dark">
-          <p class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-slate" data-scan-poll={fullName}>
-            A fresh scan is running; this page updates when it finishes.
-          </p>
+        <div slot="after-score" class="ui-wrap pt-8">
+          <p class="ui-note" data-scan-poll={fullName}>A fresh scan is running; this page updates when it finishes.</p>
         </div>
       )}
-      <ReportView report={report} backHref="/scan" backLabel="← Scan another repository">
-        <InlineVisualizers slot="after-score" repo={report.repo} />
-      </ReportView>
-      {!(report as Report & { hasSnapshot?: boolean }).hasSnapshot && (report as Report & { hasMap?: boolean }).hasMap && (
-        <section class="pb-8 bg-navy-dark">
-          <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <a href={`/scan/${report.repo}/map`} class="block bg-navy/50 border border-navy-light/30 hover:border-buoy rounded-2xl p-6">
-              <h2 class="text-xl font-bold text-light">See how {report.repo}'s UI is wired →</h2>
-              <p class="text-slate mt-2">Tokens, components and pages, and which pages each one reaches.</p>
+      <InlineVisualizers slot="after-score" repo={report.repo} />
+      <section slot="after" class="ui-section ui-section--last !pt-0">
+        <div class="ui-wrap max-w-3xl grid gap-4 !mx-0 lg:!mx-auto">
+          {!(report as Report & { hasSnapshot?: boolean }).hasSnapshot && (report as Report & { hasMap?: boolean }).hasMap && (
+            <a href={`/scan/${report.repo}/map`} class="ui-card ui-card--pad block transition-shadow hover:shadow-[var(--ring-hover)]">
+              <h2 class="text-[length:var(--text-h3)]">See how {report.repo}'s UI is wired →</h2>
+              <p class="mt-2">Tokens, components and pages, and which pages each one reaches.</p>
             </a>
-          </div>
-        </section>
-      )}
-      <section class="pb-16 bg-navy-dark">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="bg-navy/50 border border-navy-light/30 rounded-2xl p-6">
-            <h2 class="text-xl font-bold text-light">Keep it from drifting back</h2>
-            <p class="text-slate mt-2">
-              Install the <a href="https://github.com/marketplace/buoy-design" class="text-buoy hover:underline">Buoy GitHub App</a> to get
+          )}
+          <div class="ui-card ui-card--pad">
+            <h2 class="text-[length:var(--text-h3)]">Keep it from drifting back</h2>
+            <p class="mt-2">
+              Install the <a href="https://github.com/marketplace/buoy-design" class="ui-link">Buoy GitHub App</a> to get
               these checks on every pull request, limited to the lines a PR adds and with a one-click fix when a token exists.
-              Or run <code class="text-light">npx @buoy-design/cli drift check --staged</code> before each commit.
+              Or run <code class="ui-code">npx @buoy-design/cli drift check --staged</code> before each commit.
             </p>
-            {curated && <p class="text-slate mt-3 text-sm">This repository also has a <a href={`/reports/${curated.repo}`} class="text-buoy hover:underline">curated report</a>, refreshed daily.</p>}
+            {curated && <p class="ui-note mt-3">This repository also has a <a href={`/reports/${curated.repo}`} class="ui-rowlink">curated report</a>, refreshed daily.</p>}
           </div>
         </div>
       </section>
-    </>
+    </ReportView>
   )}
 
   {valid && !report && (
-    <section class="pt-32 pb-24 bg-navy-dark min-h-[60vh]">
-      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <a href="/scan" class="text-sm text-slate hover:text-buoy">← Scan another repository</a>
-        <h1 class="text-3xl sm:text-4xl font-bold text-light mt-4">{fullName}</h1>
-        {view.status === 'failed' ? (
-          <div class="mt-6">
-            <p class="text-light">The scan did not finish.</p>
-            <p class="text-slate mt-2 text-sm">{view.error}</p>
-            <p class="text-slate mt-4">Try again, or run it locally in a checkout:</p>
-            <pre class="mt-3 bg-black/30 border border-navy-light/20 rounded-xl p-4 text-sm text-light overflow-x-auto"><code>npx @buoy-design/cli show health</code></pre>
-            <div class="mt-6"><ScanForm id="scan-retry" /></div>
-          </div>
-        ) : apiDown ? (
-          <div class="mt-6">
-            <p class="text-slate">The scanner is not answering right now. Try again in a minute, or run it locally with <code class="text-light">npx @buoy-design/cli show health</code>.</p>
-          </div>
-        ) : (
-          <div class="mt-6" data-scan-poll={fullName} data-scan-start={view.status === 'none' ? 'true' : undefined}>
-            <div class="flex items-center gap-3">
-              <span class="inline-block w-3 h-3 rounded-full bg-buoy animate-pulse"></span>
-              <p class="text-light" data-scan-status>{view.status === 'none' ? 'Starting the scan…' : 'Scanning…'}</p>
+    <main class="ui-nav-offset">
+      <section class="ui-section ui-section--first ui-section--last ui-section--patterned">
+        <MarkPattern pattern="scan" drift={0.3} fade class="ui-pattern !opacity-[0.14]" />
+        <div class="ui-wrap">
+          <a href="/scan" class="ui-rowlink text-sm">← Scan another repository</a>
+          <div class="ui-split items-start mt-6 !gap-14">
+            <div class="min-w-0">
+              <h1 class="text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.08] [overflow-wrap:anywhere]">{fullName}</h1>
+              {view.status === 'failed' ? (
+                <>
+                  <p class="ui-lede mt-4"><span class="ui-c-crit">The scan did not finish.</span> Try again, or run it locally in a checkout.</p>
+                  <div class="mt-8"><ScanForm id="scan-retry" /></div>
+                </>
+              ) : apiDown ? (
+                <>
+                  <p class="ui-lede mt-4">The scanner is <span class="ui-c-warn">not answering</span> right now. Try again in a minute, or run the same scan locally.</p>
+                  <div class="ui-actions mt-8">
+                    <a href={`/scan/${fullName}`} class="ui-btn ui-btn--primary">Try again</a>
+                    <a href="/reports" class="ui-btn ui-btn--secondary">Browse reports</a>
+                  </div>
+                </>
+              ) : (
+                <div data-scan-poll={fullName} data-scan-start={view.status === 'none' ? 'true' : undefined}>
+                  <p class="ui-lede mt-4 flex items-center gap-3">
+                    <span class="inline-block w-2.5 h-2.5 rounded-full bg-[var(--color-buoy)] motion-safe:animate-pulse shrink-0"></span>
+                    <span class="text-[var(--color-ink)] font-medium" data-scan-status>{view.status === 'none' ? 'Starting the scan…' : 'Scanning…'}</span>
+                  </p>
+                  <p class="mt-3 max-w-xl">
+                    Buoy is cloning the default branch and running its open-source CLI. Most repositories take under a minute;
+                    large monorepos take a few. This page updates by itself.
+                  </p>
+                  <p class="ui-msg ui-msg--err hidden" role="alert" data-scan-poll-error></p>
+                  <p class="ui-note mt-8">While you wait: <a href="/reports" class="ui-rowlink">browse reports</a> for well-known open-source codebases.</p>
+                </div>
+              )}
             </div>
-            <p class="text-slate mt-3 text-sm">
-              Buoy is cloning the default branch and running its open-source CLI. Most repositories take under a minute;
-              large monorepos take a few. This page updates by itself.
-            </p>
-            <p class="text-red-400 text-sm mt-3 hidden" role="alert" data-scan-poll-error></p>
+            <div class="ui-term min-w-0">
+              <div class="ui-term-bar">{view.status === 'failed' || apiDown ? 'Run it locally' : 'buoy.design scanner'}</div>
+              {view.status === 'failed' ? (
+                <pre class="whitespace-pre-wrap"><span class="ui-t-prompt">$</span> npx @buoy-design/cli show health
+<span class="ui-t-dim"># the hosted scan stopped with:</span>
+<span class="ui-t-crit">{view.error ?? 'unknown error'}</span></pre>
+              ) : apiDown ? (
+                <pre class="whitespace-pre-wrap"><span class="ui-t-prompt">$</span> npx @buoy-design/cli show health
+<span class="ui-t-dim"># same scan, nothing leaves your machine</span></pre>
+              ) : (
+                <pre class="whitespace-pre-wrap scan-steps"><span class="ui-t-prompt">$</span> scan {fullName}
+<span class="ui-t-info">›</span> Cloning the default branch
+<span class="ui-t-info">›</span> Running the open-source CLI
+<span class="ui-t-info">›</span> Scoring design health<span class="scan-caret ui-t-hi">▍</span></pre>
+              )}
+            </div>
           </div>
-        )}
-      </div>
-    </section>
+        </div>
+      </section>
+    </main>
   )}
 
   <Footer />
@@ -177,3 +196,10 @@ const description = report
     else if (el.dataset.scanStart !== 'true') poll()
   }
 </script>
+
+<style>
+  @media (prefers-reduced-motion: no-preference) {
+    .scan-caret { animation: scan-blink 1s steps(1) infinite; }
+    @keyframes scan-blink { 50% { opacity: 0; } }
+  }
+</style>

@@ -78,26 +78,40 @@ const howTo = {
     belongs. <code>color: #2563eb</code> in a repository that defines <code>--color-primary: #2563eb</code> works
     today and drifts the day the brand color changes.
   </p>
+  <figure class="gl-diff">
+    <pre><code><span class="ui-t-dim">/* tokens.css */</span>
+--color-primary: #2563eb;
+
+<span class="ui-t-dim">/* Button.css */</span>
+color: <span class="ui-old">#2563eb</span> <span class="ui-t-ok">var(--color-primary)</span>;</code></pre>
+    <figcaption>Same color today. Only the token follows the next brand change.</figcaption>
+  </figure>
   <p>Just as important is what not to count. A useful audit skips values that are correct as literals:</p>
-  <ul>
-    <li>Icons, logos and illustrations: SVG paint is artwork, not theming</li>
-    <li>Email templates: most email clients do not support CSS variables</li>
-    <li>Open Graph and social images, tests, stories and fixtures</li>
-    <li>Layout math: <code>calc()</code>, <code>100dvh</code>, grid templates, 1px hairlines</li>
-    <li>Deliberate choices: a 2–3px optical nudge, or a value with a comment explaining why it differs</li>
-  </ul>
+  <table>
+    <thead><tr><th>Skip</th><th>Why the literal is correct</th></tr></thead>
+    <tbody>
+      <tr><td>Icons, logos and illustrations</td><td>SVG paint is artwork, not theming</td></tr>
+      <tr><td>Email templates</td><td>Most email clients do not support CSS variables</td></tr>
+      <tr><td>Open Graph and social images, tests, stories and fixtures</td><td>They hold values on purpose</td></tr>
+      <tr><td>Layout math</td><td><code>calc()</code>, <code>100dvh</code>, grid templates, 1px hairlines</td></tr>
+      <tr><td>Deliberate choices</td><td>A 2 to 3px optical nudge, or a value with a comment explaining why it differs</td></tr>
+    </tbody>
+  </table>
+  <blockquote class="gl-pull"><p>Skipping these is not leniency. An audit that flags a brand logo's fill color teaches the team to ignore the audit.</p></blockquote>
   <p>
-    Skipping these is not leniency. An audit that flags a brand logo's fill color teaches the team to ignore the
-    audit. Across the {s.scoredCount} open-source codebases in <a href="/reports">Buoy's public reports</a>,
+    Across the {s.scoredCount} open-source codebases in <a href="/reports">Buoy's public reports</a>,
     {s.noted.toLocaleString()} values were left alone because the code marked them as deliberate.
   </p>
 
   <h2>4. Rank the fixes by payoff</h2>
-  <ol>
-    <li><strong>Exact token matches.</strong> A literal that equals an existing token is a one-line, zero-risk swap.</li>
-    <li><strong>Repeated values.</strong> The same literal in five files is a missing token. Add it once and replace all five.</li>
-    <li><strong>One-offs.</strong> A single unusual value may be deliberate. Check before changing it.</li>
-  </ol>
+  <table>
+    <thead><tr><th class="gl-num">Order</th><th>Finding</th><th>What to do</th></tr></thead>
+    <tbody>
+      <tr><td class="gl-num ui-c-ok">1</td><td><strong>Exact token matches</strong></td><td>A literal that equals an existing token is a one-line, zero-risk swap.</td></tr>
+      <tr><td class="gl-num ui-c-warn">2</td><td><strong>Repeated values</strong></td><td>The same literal in five files is a missing token. Add it once and replace all five.</td></tr>
+      <tr><td class="gl-num ui-c-info">3</td><td><strong>One-offs</strong></td><td>A single unusual value may be deliberate. Check before changing it.</td></tr>
+    </tbody>
+  </table>
 
   <h2>5. Score it, so progress is visible</h2>
   <p>
@@ -117,7 +131,7 @@ const howTo = {
 
   <h2>Run the audit</h2>
   <p>On any public GitHub repository, use <a href="/scan">buoy.design/scan</a>. In a private checkout:</p>
-  <pre><code>npx @buoy-design/cli show health     # score, pillars and the path to 100
-npx @buoy-design/cli drift check     # every finding, with the token to use
-npx @buoy-design/cli show tokens     # the token inventory</code></pre>
+  <pre><code>npx @buoy-design/cli show health<span class="ui-t-dim">     # score, pillars and the path to 100</span>
+npx @buoy-design/cli drift check<span class="ui-t-dim">     # every finding, with the token to use</span>
+npx @buoy-design/cli show tokens<span class="ui-t-dim">     # the token inventory</span></code></pre>
 </GuideLayout>

@@ -7,20 +7,43 @@ import MarkPattern from '../components/MarkPattern.astro'
 
 <Layout title="Page not found | Buoy" description="This page does not exist." noindex>
   <Nav />
-  <section class="pt-32 bg-navy-dark min-h-[60vh]">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 class="text-3xl font-bold text-light">Page not found</h1>
-      <p class="text-slate mt-3">Nothing lives at this address.</p>
-      <ul class="mt-6 space-y-2">
-        <li><a href="/scan" class="text-buoy hover:underline">Scan a GitHub repository for design drift</a></li>
-        <li><a href="/reports" class="text-buoy hover:underline">Design health reports for open-source codebases</a></li>
-        <li><a href="/guides" class="text-buoy hover:underline">Guides</a></li>
-        <li><a href="/docs" class="text-buoy hover:underline">Docs</a></li>
-      </ul>
-    </div>
-    <div class="relative overflow-hidden h-72 mt-16">
+  <main id="main" class="ui-nav-offset">
+    <section class="ui-section ui-section--first nf">
+      <div class="ui-wrap nf-grid">
+        <div class="ui-head">
+          <p class="ui-eyebrow ui-mono ui-c-buoy">404</p>
+          <h1>Page not found</h1>
+          <p class="ui-lede">Nothing lives at this address. This page drifted off.</p>
+          <div class="ui-term nf-term">
+            <div class="ui-term-bar">Terminal</div>
+            <pre><span class="ui-t-dim">$</span> <span class="ui-t-hi">buoy find</span> <span class="ui-old">this-page</span>
+<span class="ui-t-crit">not found</span> <span class="ui-t-dim">try one of these instead</span></pre>
+          </div>
+        </div>
+        <nav aria-label="Popular pages">
+          <ul class="ui-ruled ui-ruled--top nf-links">
+            <li><a href="/scan" class="ui-rowlink">Scan a GitHub repository for design drift</a></li>
+            <li><a href="/reports" class="ui-rowlink">Design health reports for open-source codebases</a></li>
+            <li><a href="/guides" class="ui-rowlink">Guides</a></li>
+            <li><a href="/docs" class="ui-rowlink">Docs</a></li>
+            <li><a href="/" class="ui-rowlink">Home</a></li>
+          </ul>
+        </nav>
+      </div>
+    </section>
+    <div class="nf-strip" aria-hidden="true">
       <MarkPattern pattern="rain" drift={0.8} fade />
     </div>
-  </section>
+  </main>
   <Footer />
 </Layout>
+
+<style>
+  .nf { padding-bottom: 56px; }
+  .nf-strip { position: relative; height: 240px; overflow: hidden; opacity: 0.55; }
+  .nf-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 64px; align-items: end; }
+  @media (max-width: 960px) { .nf-grid { grid-template-columns: minmax(0, 1fr); gap: 36px; } }
+  .nf h1 { font-size: clamp(44px, 7vw, 76px); }
+  .nf-term { margin-top: 28px; }
+  .nf-links { margin: 0; font-size: 17px; }
+</style>

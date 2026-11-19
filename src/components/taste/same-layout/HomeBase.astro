@@ -1,0 +1,861 @@
+---
+// Skinnable copy of the homepage. Same sections, same order, same composition as
+// src/pages/index.astro, but every element carries a semantic `sl-` class and all
+// of the look lives in base.css (LAYOUT + DEFAULT SKIN). A skin is one stylesheet
+// scoped to `.sl-<skin>`. Contract: SKINNING.md in this folder.
+import Layout from '../../../layouts/Layout.astro'
+import BuoyLogo from '../../BuoyLogo.astro'
+import BuoyMark from '../../BuoyMark.astro'
+import FreeSpots from '../../FreeSpots.astro'
+import LockOn from '../../LockOn.astro'
+import MarkPattern from '../../MarkPattern.astro'
+import WaveBackground from '../../WaveBackground.astro'
+import WaveBoat from '../../WaveBoat.astro'
+import { siteConfig } from '../../../config'
+import './base.css'
+
+interface Props {
+  skin: string
+}
+const { skin } = Astro.props
+
+const installUrl = 'https://github.com/marketplace/buoy-design'
+
+const navLinks = [
+  { label: 'Docs', href: '/docs' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'Scan a repo', href: '/scan' },
+  { label: 'GitHub', href: siteConfig.githubUrl, external: true },
+]
+
+// The live terminal's final output, shown in full (no typing animation in the base).
+const terminalLines = [
+  { text: '' },
+  { text: 'Scanning for design drift...' },
+  { text: '' },
+  { text: 'Found <span class="sl-t sl-t--warning">23</span> issues in <span class="sl-t sl-t--muted">142 files</span>' },
+  { text: '' },
+  { text: '<span class="sl-t sl-t--critical sl-t--strong">CRITICAL (2)</span>' },
+  { text: '├─ Button.tsx:12 Missing aria-label', type: 'critical' },
+  { text: '└─ Modal.tsx:45 Focus trap not implemented', type: 'critical' },
+  { text: '' },
+  { text: '<span class="sl-t sl-t--warning sl-t--strong">HARDCODED VALUES (8)</span>' },
+  { text: '├─ Card.tsx:8 #ffffff <span class="sl-t sl-t--muted">→ use var(--bg-surface)</span>', type: 'warning' },
+  { text: '├─ Badge.tsx:3 8px <span class="sl-t sl-t--muted">→ use var(--spacing-sm)</span>', type: 'warning' },
+  { text: '└─ <span class="sl-t sl-t--faint">... and 6 more</span>', type: 'faint' },
+  { text: '' },
+  { text: '<span class="sl-t sl-t--accent sl-t--strong">Add to CI to catch drift on every PR</span>' },
+]
+
+const prAnnotations = [
+  { level: 'error', file: 'src/components/Card.tsx', line: 23, what: 'Hardcoded color', value: '#3b82f6', fix: 'var(--color-primary)' },
+  { level: 'error', file: 'src/components/Card.tsx', line: 31, what: 'Hardcoded spacing', value: '24px', fix: 'var(--spacing-lg)' },
+  { level: 'warn', file: 'src/components/Modal.tsx', line: 8, what: 'Hardcoded border radius', value: '8px', fix: 'var(--radius-md)' },
+]
+
+const catches = [
+  { title: 'Hardcoded colors', detail: '#ffffff → var(--bg)' },
+  { title: 'Magic numbers', detail: '16px → var(--space-4)' },
+  { title: 'Duplicate components', detail: 'Use <Card> instead' },
+]
+
+const driftTypes = [
+  { title: 'Hardcoded Values', severity: 'Warning', description: 'Colors, spacing, fonts not using tokens', icon: 'palette', href: '/features/hardcoded-values' },
+  { title: 'Duplicate Components', severity: 'Warning', description: 'Similar components that should be consolidated', icon: 'package', href: '/features/duplicate-detection' },
+  { title: 'Naming Inconsistency', severity: 'Info', description: "Component/prop names that don't match conventions", icon: 'tag', href: '/features/naming-consistency' },
+  { title: 'Deprecated Patterns', severity: 'Warning', description: 'Components marked as deprecated still in use', icon: 'alert' },
+  { title: 'Inline Styles', severity: 'Warning', description: 'Inline CSS that should use tokens or classes', icon: 'wrench' },
+  { title: 'Accessibility Conflict', severity: 'Critical', description: 'Missing ARIA labels, focus issues', icon: 'accessibility', href: '/features/accessibility-checks' },
+  { title: 'Framework Sprawl', severity: 'Warning', description: 'Multiple UI frameworks in same codebase', icon: 'globe', href: '/features/framework-sprawl' },
+  { title: 'Orphaned Components', severity: 'Info', description: 'Components in code but not in design', icon: 'ghost' },
+]
+
+const steps = [
+  { step: '1', title: 'Detect', command: 'buoy drift check', description: 'Zero config. Every issue with exact file and line.' },
+  { step: '2', title: 'Enforce', command: 'buoy drift check', description: 'Catch drift at PR. Nothing bad reaches main.' },
+  { step: '3', title: 'Measure', command: 'buoy show health', description: 'Track design system health over time.' },
+]
+
+const integrations = [
+  { name: 'React', icon: 'react', href: '/integrations/react' },
+  { name: 'Vue', icon: 'vue', href: '/integrations/vue' },
+  { name: 'Svelte', icon: 'svelte', href: '/integrations/svelte' },
+  { name: 'Angular', icon: 'angular', href: '/integrations/angular' },
+  { name: 'Next.js', icon: 'nextjs', href: '/integrations/nextjs' },
+  { name: 'Tailwind', icon: 'tailwind', href: '/integrations/tailwind' },
+  { name: 'GitHub', icon: 'github', href: '/integrations/github' },
+]
+
+const footerLinks = [
+  { label: 'Scan a repo', href: '/scan' },
+  { label: 'Guides', href: '/guides' },
+  { label: 'Reports', href: '/reports' },
+  { label: 'Compare', href: '/compare' },
+  { label: 'Privacy', href: '/privacy' },
+  { label: 'Terms', href: '/terms' },
+  { label: 'Support', href: '/support' },
+]
+---
+
+<Layout
+  title="Buoy - Design Drift Detection for the AI Era"
+  description="Design systems drift over time. Buoy catches it before it ships. Scan your codebase for hardcoded values, duplicate components, and values that skip your tokens."
+  noindex
+>
+  <slot name="head" slot="head" />
+
+  <div class={`sl sl-${skin}`}>
+    <!-- Header -->
+    <header class="sl-header">
+      <div class="sl-container sl-header__inner">
+        <a href="/" class="sl-header__logo" aria-label="Buoy home">
+          <BuoyLogo size="1.75rem" class="sl-logo" />
+        </a>
+        <nav class="sl-header__nav" aria-label="Main">
+          {navLinks.map((link) => (
+            <a
+              href={link.href}
+              class="sl-header__link"
+              target={link.external ? '_blank' : undefined}
+              rel={link.external ? 'noopener noreferrer' : undefined}
+            >{link.label}</a>
+          ))}
+        </nav>
+        <div class="sl-header__actions">
+          <a href={installUrl} target="_blank" rel="noopener noreferrer" class="sl-btn sl-btn--primary sl-btn--sm">Install App</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Design system callout -->
+    <div class="sl-callout">
+      <a href="/ds" class="sl-callout__link">
+        <span class="sl-callout__pill">P</span>
+        <span class="sl-callout__text">Explore <strong>Plumb</strong>, our open design system</span>
+        <svg class="sl-callout__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+
+    <!-- Hero -->
+    <section class="sl-hero">
+      <div class="sl-decor sl-decor--waves" aria-hidden="true">
+        <WaveBackground />
+        <WaveBoat id="waveBoat" containerSelector=".wave-background" mode="hero" />
+      </div>
+
+      <div class="sl-container sl-hero__content">
+        <div class="sl-hero__inner">
+          <div class="sl-hero__badge">
+            <span>The control and visibility layer design has been missing</span>
+          </div>
+
+          <h1 class="sl-hero__title">
+            <span class="sl-hero__word">Catch</span>
+            <span class="sl-hero__word sl-hero__highlight">design drift</span>
+            <br />
+            <span class="sl-hero__word">before</span>
+            <span class="sl-hero__word">it</span>
+            <span class="sl-hero__word">ships.</span>
+          </h1>
+
+          <p class="sl-hero__sub">
+            Design systems drift over time. Buoy watches every PR for hardcoded colors, values that skip your tokens, and rogue components.<span class="sl-hero__boat" id="heroBoatInline" aria-hidden="true">&nbsp;<span class="sl-hero__boat-glyph" id="heroBoatEmoji">⛵</span></span>
+          </p>
+
+          <div class="sl-hero__ctas">
+            <a href={installUrl} target="_blank" rel="noopener noreferrer" class="sl-btn sl-btn--primary sl-btn--lg">Try it now, it's free</a>
+          </div>
+
+          <p class="sl-hero__scan">
+            Or <a href="/scan" class="sl-link">scan any public GitHub repository</a> for design drift, free, in about a minute.
+          </p>
+        </div>
+      </div>
+
+      <div class="sl-hero__scroll" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </div>
+    </section>
+
+    <!-- Problem: before / after -->
+    <section class="sl-section sl-problem">
+      <div class="sl-container">
+        <div class="sl-section__head sl-section__head--lg">
+          <h2 class="sl-section__title">Design systems leak.</h2>
+          <p class="sl-section__lead">Hardcoded values creep in. Drift compounds.</p>
+        </div>
+
+        <div class="sl-grid sl-grid--2 sl-problem__pair">
+          <div class="sl-code sl-code--bad">
+            <div class="sl-code__bar">
+              <span class="sl-code__label">What AI generates</span>
+              <span class="sl-code__file">Card.tsx</span>
+            </div>
+            <div class="sl-code__body">
+              <pre class="sl-code__pre"><code><span class="sl-tok">const Card = () =&gt; (</span>
+  <span class="sl-tok">&lt;div style=&#123;&#123;</span>
+    <span class="sl-tok sl-tok--bad">background: "#ffffff"</span><span class="sl-tok sl-tok--dim">,</span>
+    <span class="sl-tok sl-tok--bad">padding: "16px"</span><span class="sl-tok sl-tok--dim">,</span>
+    <span class="sl-tok sl-tok--bad">borderRadius: "8px"</span><span class="sl-tok sl-tok--dim">,</span>
+    <span class="sl-tok sl-tok--bad">boxShadow: "0 2px 4px rgba..."</span>
+  <span class="sl-tok">&#125;&#125;&gt;</span>
+    <span class="sl-tok">&#123;children&#125;</span>
+  <span class="sl-tok">&lt;/div&gt;</span>
+<span class="sl-tok">)</span></code></pre>
+            </div>
+          </div>
+
+          <div class="sl-code sl-code--good">
+            <div class="sl-code__bar">
+              <span class="sl-code__label">What you want</span>
+              <span class="sl-code__file">Card.tsx</span>
+            </div>
+            <div class="sl-code__body">
+              <pre class="sl-code__pre"><code><span class="sl-tok">import &#123; Card &#125; from "@/components"</span>
+
+<span class="sl-tok">const MyCard = () =&gt; (</span>
+  <span class="sl-tok sl-tok--good">&lt;Card variant="elevated"&gt;</span>
+    <span class="sl-tok">&#123;children&#125;</span>
+  <span class="sl-tok sl-tok--good">&lt;/Card&gt;</span>
+<span class="sl-tok">)</span>
+</code></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="sl-catch">
+          <h3 class="sl-catch__title">Buoy plugs the holes.</h3>
+          <div class="sl-catch__demo">
+            <LockOn />
+          </div>
+          <div class="sl-catch__box">
+            <div class="sl-catch__label">What Buoy catches:</div>
+            <div class="sl-grid sl-grid--3 sl-catch__list">
+              {catches.map((item) => (
+                <div class="sl-catch__item">
+                  <span class="sl-catch__mark" aria-hidden="true"></span>
+                  <div class="sl-catch__copy">
+                    <div class="sl-catch__name">{item.title}</div>
+                    <div class="sl-catch__detail">{item.detail}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div class="sl-more">
+            <a href="#features" class="sl-link sl-link--strong">See all drift types →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lead capture -->
+    <section class="sl-section sl-section--alt sl-lead">
+      <div class="sl-container sl-container--md">
+        <div class="sl-lead__grid">
+          <div class="sl-lead__copy">
+            <div class="sl-pill sl-pill--accent sl-lead__tag">Free PDF</div>
+            <h2 class="sl-lead__title">Got drift?</h2>
+            <p class="sl-lead__sub">Get the checklist. 20 warning signs to spot in your next code review.</p>
+
+            <form class="sl-form" id="sl-lead-form" data-lead-magnet="drift-checklist">
+              <input class="sl-input" type="email" name="email" placeholder="you@company.com" aria-label="Email address" autocomplete="email" required />
+              <button class="sl-btn sl-btn--primary sl-btn--lg" type="submit" data-label="Get the Checklist" data-loading="Sending...">Get the Checklist</button>
+            </form>
+            <div class="sl-form__msg sl-form__msg--success" id="sl-lead-success" role="status" hidden>Check your email! The checklist is on its way.</div>
+            <div class="sl-form__msg sl-form__msg--error" id="sl-lead-error" role="alert" hidden>Something went wrong. Please try again.</div>
+
+            <p class="sl-lead__note">No spam. Unsubscribe anytime.</p>
+          </div>
+
+          <div class="sl-lead__preview">
+            <div class="sl-doc">
+              <div class="sl-doc__bar">
+                <span class="sl-dot sl-dot--critical"></span>
+                <span class="sl-dot sl-dot--warning"></span>
+                <span class="sl-dot sl-dot--success"></span>
+                <span class="sl-doc__name">drift-checklist.pdf</span>
+              </div>
+              <ul class="sl-doc__list">
+                <li class="sl-doc__item"><span class="sl-doc__box" aria-hidden="true"></span><span>Hardcoded hex values instead of tokens</span></li>
+                <li class="sl-doc__item"><span class="sl-doc__box" aria-hidden="true"></span><span>Arbitrary pixel values outside your scale</span></li>
+                <li class="sl-doc__item"><span class="sl-doc__box" aria-hidden="true"></span><span>Inline styles overriding components</span></li>
+                <li class="sl-doc__item"><span class="sl-doc__box" aria-hidden="true"></span><span>!important used to force changes</span></li>
+                <li class="sl-doc__item sl-doc__item--more"><span class="sl-doc__box" aria-hidden="true"></span><span>+16 more...</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Terminal demo -->
+    <section class="sl-section sl-section--alt sl-demo">
+      <div class="sl-decor sl-decor--pattern" aria-hidden="true">
+        <MarkPattern pattern="swell" drift={0.35} fade />
+      </div>
+
+      <div class="sl-container sl-demo__content">
+        <div class="sl-section__head">
+          <h2 class="sl-section__title">Find drift in seconds</h2>
+          <p class="sl-section__lead">One command. Every issue with exact file, line, and suggestion.</p>
+        </div>
+
+        <div class="sl-terminal">
+          <div class="sl-terminal__bar">
+            <div class="sl-terminal__dots">
+              <span class="sl-dot sl-dot--critical"></span>
+              <span class="sl-dot sl-dot--warning"></span>
+              <span class="sl-dot sl-dot--success"></span>
+            </div>
+            <span class="sl-terminal__name">buoy-cli</span>
+            <span class="sl-terminal__spacer"></span>
+          </div>
+          <div class="sl-terminal__body">
+            <div class="sl-terminal__cmd">
+              <span class="sl-terminal__prompt">$</span>
+              <span class="sl-terminal__input">buoy drift check</span>
+            </div>
+            <div class="sl-terminal__out">
+              {terminalLines.map((line) =>
+                line.text === ''
+                  ? <div class="sl-terminal__gap"></div>
+                  : <div class={`sl-terminal__line${line.type ? ` sl-terminal__line--${line.type}` : ''}`} set:html={line.text} />
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PR check -->
+    <section class="sl-section sl-check">
+      <div class="sl-container">
+        <div class="sl-section__head">
+          <h2 class="sl-section__title">Catch drift at the PR</h2>
+          <p class="sl-section__lead">Install the Buoy GitHub App. Drift never reaches main.</p>
+        </div>
+
+        <div class="sl-pr">
+          <div class="sl-pr__head">
+            <div class="sl-pr__title">
+              <svg class="sl-pr__icon sl-pr__icon--open" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M7.177 3.073L9.573.677A.25.25 0 0110 .854v4.792a.25.25 0 01-.427.177L7.177 3.427a.25.25 0 010-.354zM3.75 2.5a.75.75 0 100 1.5.75.75 0 000-1.5zm-2.25.75a2.25 2.25 0 113 2.122v5.256a2.251 2.251 0 11-1.5 0V5.372A2.25 2.25 0 011.5 3.25zM11 2.5h-1V4h1a1 1 0 011 1v5.628a2.251 2.251 0 101.5 0V5A2.5 2.5 0 0011 2.5zm1 10.25a.75.75 0 111.5 0 .75.75 0 01-1.5 0zM3.75 12a.75.75 0 100 1.5.75.75 0 000-1.5z" />
+              </svg>
+              <span class="sl-pr__name">feat: add new Card component</span>
+            </div>
+            <span class="sl-pr__num">#247</span>
+          </div>
+
+          <div class="sl-pr__status">
+            <svg class="sl-pr__icon sl-pr__icon--fail" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+              <path d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z" />
+            </svg>
+            <span class="sl-pr__status-text">Buoy Design Check: 3 issues found</span>
+          </div>
+
+          <div class="sl-pr__rows">
+            {prAnnotations.map((a) => (
+              <div class="sl-pr__row">
+                <span class={`sl-pr__level sl-pr__level--${a.level}`}>{a.level}</span>
+                <div class="sl-pr__detail">
+                  <div class="sl-pr__loc">
+                    <span class="sl-pr__file">{a.file}</span>
+                    <span class="sl-pr__line">line {a.line}</span>
+                  </div>
+                  <p class="sl-pr__msg">{a.what} <code class={`sl-pr__code sl-pr__code--${a.level}`}>{a.value}</code></p>
+                  <p class="sl-pr__fix">Use <code class="sl-pr__code sl-pr__code--fix">{a.fix}</code> instead</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div class="sl-pr__foot">
+            <span class="sl-pr__foot-note">Fix these issues to merge</span>
+            <div class="sl-pr__by">
+              <span class="sl-pr__by-label">Powered by</span>
+              <span class="sl-pr__by-name"><BuoyMark size={14} /> Buoy</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sl-check__cta">
+          <div class="sl-pill sl-pill--success">
+            <FreeSpots class="sl-pill__text" />
+          </div>
+          <div class="sl-check__actions">
+            <a href={installUrl} target="_blank" rel="noopener noreferrer" class="sl-btn sl-btn--primary sl-btn--lg">Install GitHub App</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Drift types -->
+    <section id="features" class="sl-section sl-features">
+      <div class="sl-container">
+        <div class="sl-section__head">
+          <h2 class="sl-section__title">What Buoy Detects</h2>
+          <p class="sl-section__lead">Categorized by severity to help you prioritize fixes</p>
+        </div>
+
+        <div class="sl-grid sl-grid--4 sl-features__grid">
+          {driftTypes.map((drift) => (
+            <div class={`sl-card sl-card--drift sl-card--${drift.severity.toLowerCase()}`}>
+              <div class="sl-card__top">
+                <span class="sl-card__icon" aria-hidden="true" data-icon={drift.icon}></span>
+                <span class={`sl-badge sl-badge--${drift.severity.toLowerCase()}`}>{drift.severity}</span>
+              </div>
+              <h3 class="sl-card__title">
+                {drift.href ? <a href={drift.href} class="sl-card__link">{drift.title}</a> : drift.title}
+              </h3>
+              <p class="sl-card__text">{drift.description}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="sl-more">
+          <a href="/features/drift-detection" class="sl-link">Read More →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Steps -->
+    <section class="sl-section sl-section--alt sl-steps">
+      <div class="sl-container">
+        <div class="sl-section__head sl-section__head--lg">
+          <h2 class="sl-section__title">Detect. Enforce. Measure.</h2>
+          <p class="sl-section__lead">Find drift, catch it at CI, and track your progress.</p>
+        </div>
+
+        <div class="sl-grid sl-grid--3 sl-steps__grid">
+          {steps.map((step) => (
+            <div class="sl-step">
+              <div class="sl-step__num">{step.step}</div>
+              <h3 class="sl-step__title">{step.title}</h3>
+              <code class="sl-step__cmd">$ {step.command}</code>
+              <p class="sl-step__text">{step.description}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="sl-more sl-more--lg">
+          <a href="/docs" class="sl-btn sl-btn--secondary">See full documentation →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Integrations -->
+    <section class="sl-section sl-integrations">
+      <div class="sl-container">
+        <div class="sl-section__head">
+          <h2 class="sl-section__title">Works with your stack</h2>
+        </div>
+
+        <div class="sl-integrations__row">
+          {integrations.map((integration) => (
+            <a href={integration.href} class="sl-chip">
+              <span class="sl-card__icon sl-chip__icon" aria-hidden="true" data-icon={integration.icon}></span>
+              <span class="sl-chip__name">{integration.name}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Journey -->
+    <section class="sl-section sl-section--alt sl-journey">
+      <div class="sl-container">
+        <div class="sl-section__head sl-section__head--lg">
+          <h2 class="sl-section__title">Start free, scale when ready</h2>
+          <p class="sl-section__lead">Your journey from first scan to team-wide enforcement</p>
+        </div>
+
+        <div class="sl-journey__wrap">
+          <div class="sl-grid sl-grid--3 sl-journey__grid">
+            <div class="sl-card sl-card--journey sl-card--free">
+              <span class="sl-tag sl-tag--success">FREE</span>
+              <div class="sl-card__body">
+                <span class="sl-card__icon" aria-hidden="true" data-icon="search"></span>
+                <h3 class="sl-card__title">Detect Locally</h3>
+                <p class="sl-card__text">
+                  Run <code class="sl-inline-code">buoy drift check</code> in any project. See every hardcoded value, naming issue, and value that skips a token.
+                </p>
+                <ul class="sl-list sl-list--check">
+                  <li class="sl-list__item">Unlimited scans</li>
+                  <li class="sl-list__item">All detection rules</li>
+                  <li class="sl-list__item">Fix suggestions</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="sl-card sl-card--journey sl-card--app">
+              <span class="sl-tag sl-tag--accent">GITHUB APP</span>
+              <div class="sl-card__body">
+                <span class="sl-card__icon" aria-hidden="true" data-icon="traffic-light"></span>
+                <h3 class="sl-card__title">Catch at PR</h3>
+                <p class="sl-card__text">
+                  Install the Buoy GitHub App. Every PR gets checked. Drift blocked before merge.
+                </p>
+                <ul class="sl-list sl-list--check">
+                  <li class="sl-list__item">Inline PR comments</li>
+                  <li class="sl-list__item">Check status integration</li>
+                  <li class="sl-list__item">Auto-fix suggestions</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="sl-card sl-card--journey sl-card--org">
+              <span class="sl-tag sl-tag--accent-2">DESIGN SYSTEM</span>
+              <div class="sl-card__body">
+                <span class="sl-card__icon" aria-hidden="true" data-icon="chart"></span>
+                <h3 class="sl-card__title">Own the Record</h3>
+                <p class="sl-card__text">
+                  For design-system owners: how your system holds up across every repo that uses it.
+                </p>
+                <ul class="sl-list sl-list--plus">
+                  <li class="sl-list__item">Org-wide drift record</li>
+                  <li class="sl-list__item">Design-partner relationship</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <p class="sl-journey__path">
+            <span class="sl-journey__stage sl-journey__stage--free">Open source (free)</span> → <span class="sl-journey__stage sl-journey__stage--app">GitHub App</span> → <span class="sl-journey__stage sl-journey__stage--org">Organization</span> · <a href="/pricing" class="sl-link">Pricing</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI is optional -->
+    <section class="sl-section sl-ai">
+      <div class="sl-container">
+        <div class="sl-section__head">
+          <div class="sl-pill sl-pill--success sl-ai__pill">
+            <span class="sl-card__icon sl-pill__icon" aria-hidden="true" data-icon="lock"></span>
+            <span class="sl-pill__text">Works without AI</span>
+          </div>
+          <h2 class="sl-section__title">AI is optional. Scanning isn't.</h2>
+          <p class="sl-section__lead">
+            Core drift detection is 100% deterministic. No LLMs, no API keys, no data leaves your machine.
+            Perfect for teams where AI tools are restricted.
+          </p>
+        </div>
+
+        <div class="sl-grid sl-grid--2 sl-ai__pair">
+          <div class="sl-card sl-card--plan sl-card--core">
+            <div class="sl-card__head">
+              <span class="sl-card__icon" aria-hidden="true" data-icon="lock"></span>
+              <div class="sl-card__heading">
+                <h3 class="sl-card__title">Buoy Core</h3>
+                <span class="sl-card__kicker">Open Source CLI</span>
+              </div>
+            </div>
+            <ul class="sl-list sl-list--check sl-list--lg">
+              <li class="sl-list__item">All scanning & drift detection</li>
+              <li class="sl-list__item">Fix suggestions with exact token replacements</li>
+              <li class="sl-list__item">100% deterministic, no LLMs</li>
+              <li class="sl-list__item">No data leaves your machine</li>
+              <li class="sl-list__item">Works air-gapped & offline</li>
+            </ul>
+            <div class="sl-card__foot">No API keys required. No external calls. MIT licensed.</div>
+          </div>
+
+          <div class="sl-card sl-card--plan sl-card--hosted">
+            <div class="sl-card__head">
+              <span class="sl-card__icon" aria-hidden="true" data-icon="sparkles"></span>
+              <div class="sl-card__heading">
+                <h3 class="sl-card__title">Buoy GitHub App</h3>
+                <span class="sl-card__kicker">Same engine, hosted on every PR</span>
+              </div>
+            </div>
+            <ul class="sl-list sl-list--plus sl-list--lg">
+              <li class="sl-list__item">Runs the same open-source scanner on every PR</li>
+              <li class="sl-list__item">LLM-written summaries and coaching; findings stay deterministic</li>
+              <li class="sl-list__item">Committable inline fix suggestions</li>
+              <li class="sl-list__item">Dashboard with health scores & trends</li>
+              <li class="sl-list__item">Builder mode coaching for new design systems</li>
+            </ul>
+            <div class="sl-card__foot">No API key needed. Prose is written through OpenRouter; <a href="/privacy#subprocessors" class="sl-link">see what is sent</a>.</div>
+          </div>
+        </div>
+
+        <div class="sl-more">
+          <p class="sl-ai__note">
+            Start with Core. Add AI when you're ready. <a href="/features/ci" class="sl-link">Learn more →</a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="sl-footer">
+      <div class="sl-container sl-footer__inner">
+        <div class="sl-footer__brand">
+          <span class="sl-footer__mark"><BuoyMark size={18} /></span>
+          <span class="sl-footer__copy">&copy; {new Date().getFullYear()} Buoy. Scanner is open source under MIT.</span>
+        </div>
+        <div class="sl-footer__links">
+          <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer" class="sl-footer__link">GitHub</a>
+          <a href={siteConfig.twitterUrl} target="_blank" rel="noopener noreferrer" class="sl-footer__link">Twitter</a>
+          <a href={siteConfig.discordUrl} target="_blank" rel="noopener noreferrer" class="sl-footer__link">Discord</a>
+          <span class="sl-footer__sep" aria-hidden="true">|</span>
+          {footerLinks.map((link) => <a href={link.href} class="sl-footer__link">{link.label}</a>)}
+        </div>
+      </div>
+    </footer>
+
+    <slot />
+  </div>
+</Layout>
+
+<script>
+  // Lead capture: same endpoint and payload as LeadMagnetForm.astro.
+  const form = document.getElementById('sl-lead-form') as HTMLFormElement | null;
+  const success = document.getElementById('sl-lead-success');
+  const error = document.getElementById('sl-lead-error');
+  if (form && success && error) {
+    const leadMagnet = form.dataset.leadMagnet || 'drift-checklist';
+    const button = form.querySelector('button') as HTMLButtonElement;
+    const email = form.querySelector('input[name="email"]') as HTMLInputElement;
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      button.disabled = true;
+      button.textContent = button.dataset.loading || 'Sending...';
+      success.hidden = true;
+      error.hidden = true;
+      try {
+        const response = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email.value, leadMagnet }),
+        });
+        const data = await response.json();
+        if (response.ok) {
+          success.hidden = false;
+          form.hidden = true;
+          fetch('/api/track', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ event: 'lead_magnet_download', properties: { lead_magnet: leadMagnet } }),
+            keepalive: true,
+          }).catch(() => {});
+        } else {
+          error.textContent = data.message || 'Something went wrong. Please try again.';
+          error.hidden = false;
+        }
+      } catch {
+        error.hidden = false;
+      } finally {
+        button.disabled = false;
+        button.textContent = button.dataset.label || 'Get the Checklist';
+      }
+    });
+  }
+</script>
+
+<script>
+  // Hero boat escape, copied from src/pages/index.astro: the boat wiggles free
+  // from the end of the hero sentence and drops into the waves. It does nothing
+  // (and removes the inline boat) when a skin hides the wave decor.
+  function initHeroBoatAnimation() {
+    const boatInline = document.getElementById('heroBoatInline');
+    const boatEmoji = document.getElementById('heroBoatEmoji');
+    const waveBoat = document.getElementById('waveBoat');
+
+    if (!boatInline || !boatEmoji) return;
+
+    const decor = document.querySelector('.sl-decor--waves');
+    const decorHidden = !decor || getComputedStyle(decor).display === 'none' || getComputedStyle(decor).visibility === 'hidden';
+    if (decorHidden || getComputedStyle(boatInline).display === 'none') {
+      boatInline.hidden = true;
+      return;
+    }
+
+    // Reduced motion: just show the wave boat
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      if (waveBoat) waveBoat.classList.add('visible');
+      return;
+    }
+
+    // An empty inline-block sits with its bottom edge on the line's baseline.
+    function baselineY(el: HTMLElement) {
+      const probe = document.createElement('span');
+      probe.style.cssText = 'display:inline-block;width:0;height:0;';
+      el.appendChild(probe);
+      const y = probe.getBoundingClientRect().bottom;
+      probe.remove();
+      return y;
+    }
+
+    // Measured right before the fall, so the layout (fonts, reveal animations) has settled.
+    function measureLanding() {
+      const isMobile = window.innerWidth < 768;
+      const baseDrop = isMobile ? 30 : 37;
+      const startRect = boatEmoji!.getBoundingClientRect();
+      const startBaseline = baselineY(boatEmoji!);
+      const origin = `0px ${startBaseline - startRect.top}px`;
+      if (!waveBoat) {
+        return { dx: 0, dy: baseDrop, scale: 1, origin, waveBottomPx: null, waveLeftPct: null };
+      }
+      const waveParent = (waveBoat.offsetParent || waveBoat.parentElement) as HTMLElement;
+      const parentRect = waveParent.getBoundingClientRect();
+      const cbLeft = parentRect.left + waveParent.clientLeft;
+      const cbWidth = waveParent.clientWidth;
+      const waveBottomPx = parentRect.bottom - (startRect.bottom + baseDrop) - 4;
+      const waveLeftPct = ((startRect.left - cbLeft) / cbWidth) * 100;
+      waveBoat.style.bottom = waveBottomPx + 'px';
+      waveBoat.style.left = waveLeftPct + '%';
+      const waveRect = waveBoat.getBoundingClientRect();
+      const scale = parseFloat(getComputedStyle(waveBoat).fontSize) / parseFloat(getComputedStyle(boatEmoji!).fontSize);
+      return {
+        dx: waveRect.left - startRect.left,
+        dy: baselineY(waveBoat) - startBaseline,
+        scale: Number.isFinite(scale) && scale > 0 ? scale : 1,
+        origin,
+        waveBottomPx,
+        waveLeftPct,
+      };
+    }
+
+    const LIFT_MS = 130;
+    const DROP_MS = 500;
+
+    setTimeout(() => {
+      const wiggle = boatEmoji.animate([
+        { transform: 'rotate(0deg)', offset: 0 },
+        { transform: 'rotate(8deg) translateX(1px)', offset: 0.15 },
+        { transform: 'rotate(-7deg) translateX(-1px)', offset: 0.30 },
+        { transform: 'rotate(12deg) translateX(2px) translateY(-2px)', offset: 0.50 },
+        { transform: 'rotate(-10deg) translateX(-2px)', offset: 0.65 },
+        { transform: 'rotate(5deg) translateX(1px)', offset: 0.80 },
+        { transform: 'rotate(-2deg)', offset: 0.92 },
+        { transform: 'rotate(0deg)', offset: 1 },
+      ], { duration: 600, easing: 'ease-in-out' });
+
+      wiggle.finished.then(() => {
+        const { dx, dy, scale, origin, waveBottomPx, waveLeftPct } = measureLanding();
+        boatEmoji.style.transformOrigin = origin;
+
+        const fall = boatEmoji.animate([
+          { translate: '0 0', easing: 'ease-out' },
+          { translate: '0 -6px', offset: LIFT_MS / (LIFT_MS + DROP_MS), easing: 'cubic-bezier(0.5, 0, 0.9, 0.55)' },
+          { translate: `${dx}px ${dy}px` },
+        ], { duration: LIFT_MS + DROP_MS, fill: 'forwards' });
+
+        const grow = boatEmoji.animate([
+          { scale: '1' },
+          { scale: String(scale) },
+        ], { delay: LIFT_MS, duration: DROP_MS, easing: 'ease-out', fill: 'both' });
+
+        Promise.all([fall.finished, grow.finished]).then(() => {
+          const landedRect = boatEmoji.getBoundingClientRect();
+          createSplash(
+            landedRect.left + landedRect.width / 2,
+            landedRect.top + landedRect.height * 0.7 + 6
+          );
+
+          boatInline.style.visibility = 'hidden';
+          if (!waveBoat || waveLeftPct == null) return;
+
+          // Stored so toss landing can match drop landing on all screen sizes
+          (window as any)._buoyBoatBottom = waveBottomPx;
+
+          const landedLeftPct = waveLeftPct;
+          waveBoat.classList.add('launching');
+
+          const launchDuration = 3000;
+          const launchDistance = 13;
+          const endLeftPct = landedLeftPct + launchDistance;
+
+          const launchAnim = waveBoat.animate([
+            { left: landedLeftPct + '%' },
+            { left: endLeftPct + '%' }
+          ], {
+            duration: launchDuration,
+            easing: 'cubic-bezier(0.3, 0, 0.8, 0.8)',
+            fill: 'forwards'
+          });
+
+          launchAnim.finished.then(() => {
+            launchAnim.cancel();
+            waveBoat.style.left = '';
+            waveBoat.classList.remove('launching');
+            waveBoat.classList.add('visible');
+
+            const driftProgress = (endLeftPct + 5) / 110;
+            const driftDelay = -(driftProgress * 25);
+            waveBoat.style.animationDelay = `0s, ${driftDelay}s`;
+          });
+        });
+      });
+    }, 850);
+  }
+
+  function createSplash(x: number, y: number) {
+    const waveBg = document.querySelector('.sl-decor--waves .wave-background');
+    if (!waveBg) return;
+    const bgRect = waveBg.getBoundingClientRect();
+
+    const container = document.createElement('div');
+    Object.assign(container.style, {
+      position: 'absolute',
+      left: (x - bgRect.left) + 'px',
+      top: (y - bgRect.top) + 'px',
+      zIndex: '1',
+      pointerEvents: 'none',
+    });
+
+    const isLight = document.documentElement.classList.contains('light');
+    for (let i = 0; i < 10; i++) {
+      const drop = document.createElement('div');
+      const angle = (-150 + (120 * i / 9)) * (Math.PI / 180);
+      const speed = 18 + Math.random() * 28;
+      const dx = Math.cos(angle) * speed;
+      const dy = Math.sin(angle) * speed;
+      const size = 3 + Math.random() * 4;
+      const alpha = (0.65 + Math.random() * 0.3).toFixed(2);
+      const dropColor = isLight
+        ? `rgba(255, 255, 255, ${alpha})`
+        : `rgba(${60 + Math.random() * 60 | 0}, ${140 + Math.random() * 60 | 0}, 255, ${(0.5 + Math.random() * 0.3).toFixed(2)})`;
+
+      Object.assign(drop.style, {
+        position: 'absolute',
+        width: size + 'px',
+        height: size + 'px',
+        borderRadius: '50%',
+        background: dropColor,
+        left: '-2px',
+        top: '-2px',
+      });
+      drop.style.setProperty('--dx', dx + 'px');
+      drop.style.setProperty('--dy', dy + 'px');
+      drop.style.animation = `sl-splash-drop ${(0.4 + Math.random() * 0.3).toFixed(2)}s ease-out ${(Math.random() * 0.08).toFixed(3)}s forwards`;
+      container.appendChild(drop);
+    }
+
+    const ring = document.createElement('div');
+    Object.assign(ring.style, {
+      position: 'absolute',
+      width: '20px',
+      height: '8px',
+      border: isLight ? '2px solid rgba(255, 255, 255, 0.75)' : '2px solid rgba(100, 180, 255, 0.5)',
+      borderRadius: '50%',
+      left: '0',
+      top: '0',
+      animation: 'sl-splash-ring 0.7s ease-out forwards',
+    });
+    container.appendChild(ring);
+
+    waveBg.appendChild(container);
+    setTimeout(() => container.remove(), 1200);
+  }
+
+  initHeroBoatAnimation();
+  // Expose splash so the boat drag script can call it
+  (window as any)._buoySplash = createSplash;
+</script>

@@ -39,10 +39,12 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c')
 </div>
 
 <style>
-  .ridge { background: #050506; border: 1px solid #25272d; border-radius: 1rem; padding: 1rem; color: #f1efe8; }
+  .ridge { background: var(--color-term); box-shadow: var(--ring-term); border-radius: var(--radius-card); padding: 1rem; color: #f1efe8; }
   .ridge-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-bottom: 0.75rem; }
-  .ridge-chip { font: 500 0.7rem ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: 0.05em; text-transform: uppercase; background: transparent; color: #8c9099; border: 1px solid #25272d; border-radius: 99px; padding: 0.4rem 0.75rem; cursor: pointer; text-decoration: none; }
-  .ridge-chip[aria-pressed="true"] { color: #050506; background: #f1efe8; border-color: #f1efe8; }
+  .ridge-chip { display: inline-flex; align-items: center; height: 34px; font: 500 13px var(--font-body); background: transparent; color: #a3acbd; border: 0; box-shadow: inset 0 0 0 1px oklch(1 0 0 / 0.12); border-radius: var(--radius-btn); padding: 0 12px; cursor: pointer; text-decoration: none; transition: color 120ms ease-out, background-color 120ms ease-out; }
+  .ridge-chip:hover { color: #f1efe8; }
+  .ridge-chip:active { transform: scale(0.97); }
+  .ridge-chip[aria-pressed="true"] { color: #f1efe8; background: oklch(1 0 0 / 0.1); box-shadow: inset 0 0 0 1px oklch(1 0 0 / 0.22); }
   .ridge-chip:focus-visible { outline: 2px solid #43b0f1; outline-offset: 2px; }
   .ridge-copied { font-size: 0.75rem; color: #2fbf8f; }
   .ridge-stage { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 320px); gap: 1rem; }
@@ -50,13 +52,13 @@ const json = JSON.stringify(data).replace(/</g, '\\u003c')
   canvas { width: 100%; height: auto; aspect-ratio: 5 / 6; display: block; cursor: crosshair; touch-action: none; }
   .ridge-side { display: flex; flex-direction: column; gap: 0.75rem; min-width: 0; }
   .ridge-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; }
-  :global(.ridge-stat) { background: #0e0f12; border: 1px solid #25272d; border-radius: 0.6rem; padding: 0.5rem 0.65rem; }
-  :global(.ridge-stat-v) { font-weight: 700; font-size: 1.5rem; font-variant-numeric: tabular-nums; }
-  :global(.ridge-stat-l) { font-size: 0.65rem; letter-spacing: 0.05em; text-transform: uppercase; color: #8c9099; }
-  .ridge-key { display: flex; flex-wrap: wrap; gap: 0.6rem; font-size: 0.7rem; color: #8c9099; }
+  :global(.ridge-stat) { background: oklch(1 0 0 / 0.04); box-shadow: inset 0 0 0 1px oklch(1 0 0 / 0.08); border-radius: 10px; padding: 0.5rem 0.65rem; }
+  :global(.ridge-stat-v) { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; font-variant-numeric: tabular-nums; }
+  :global(.ridge-stat-l) { font-size: 12px; color: #a3acbd; }
+  .ridge-key { display: flex; flex-wrap: wrap; gap: 0.6rem; font-size: 12px; color: #a3acbd; }
   .ridge-key i { display: inline-block; width: 0.9rem; height: 3px; border-radius: 2px; vertical-align: middle; margin-right: 0.3rem; }
-  .ridge-slice { width: 100%; height: 6rem; border-radius: 0.5rem; border: 1px solid #25272d; background-color: #111; background-repeat: no-repeat; }
-  .ridge-info { font-size: 0.8rem; line-height: 1.55; color: #8c9099; margin: 0; }
+  .ridge-slice { width: 100%; height: 6rem; border-radius: 10px; box-shadow: inset 0 0 0 1px oklch(1 0 0 / 0.1); background-color: #111; background-repeat: no-repeat; }
+  .ridge-info { font-size: 13px; line-height: 1.55; color: #a3acbd; margin: 0; }
   .ridge-info :global(strong) { color: #f1efe8; font-weight: 500; }
 </style>
 

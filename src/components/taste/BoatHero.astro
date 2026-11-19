@@ -1,0 +1,326 @@
+---
+// Reusable homepage hero: the live WaveBackground + WaveBoat behind a content
+// layer, plus the boat-escape animation (wiggle, fall, splash, launch, drift)
+// ported from src/pages/index.astro so the inline <BoatGlyph /> can sit anywhere.
+// Usage guide: ./BOAT-HERO.md
+import WaveBackground from '../WaveBackground.astro'
+import WaveBoat from '../WaveBoat.astro'
+
+interface Props {
+  minHeight?: string
+  class?: string
+}
+
+const { minHeight = '100svh', class: className } = Astro.props
+const uid = 'bh' + Math.random().toString(36).slice(2, 8)
+---
+
+<section class:list={['boat-hero', className]} style={`--boat-hero-min-h:${minHeight}`} data-boat-hero>
+  <div class="boat-hero__sea" id={`${uid}-sea`} aria-hidden="true">
+    <WaveBackground />
+    <WaveBoat id={`${uid}-boat`} containerSelector={`#${uid}-sea .wave-background`} mode="hero" />
+  </div>
+  <div class="boat-hero__content">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .boat-hero {
+    /* Tint hooks (defaults = live homepage) */
+    --boat-hero-bg: #0a1628;
+    --boat-hero-sky: linear-gradient(180deg, #0a1628 0%, #0d1f35 30%, #0a1628 70%, #061018 100%);
+    --boat-hero-wave-1: rgba(30, 100, 200, 0.15);
+    --boat-hero-wave-2: rgba(50, 90, 210, 0.14);
+    --boat-hero-wave-3: rgba(40, 110, 195, 0.13);
+    --boat-hero-wave-opacity: 1;
+    --boat-hero-stars-opacity: 1;
+    --boat-hero-sea-height: 100%;
+
+    position: relative;
+    min-height: var(--boat-hero-min-h, 100svh);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: var(--boat-hero-bg);
+    isolation: isolate;
+  }
+
+  /* No z-index here: the sea must not form a stacking context, so the boat
+     (z-index 5) and the content layer (z-index 10) stack exactly as live. */
+  .boat-hero__sea {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: var(--boat-hero-sea-height);
+    pointer-events: none;
+  }
+
+  .boat-hero__sea :global(.wave-background) {
+    background: var(--boat-hero-sky);
+  }
+  .boat-hero__sea :global(.wave-container) {
+    opacity: var(--boat-hero-wave-opacity);
+  }
+  .boat-hero__sea :global(.wave-container-1 path) { fill: var(--boat-hero-wave-1); }
+  .boat-hero__sea :global(.wave-container-2 path) { fill: var(--boat-hero-wave-2); }
+  .boat-hero__sea :global(.wave-container-3 path) { fill: var(--boat-hero-wave-3); }
+  .boat-hero__sea :global(.wave-svg-static) {
+    opacity: var(--boat-hero-stars-opacity);
+  }
+  /* The boat itself can be dragged */
+  .boat-hero__sea :global(.boat[data-wave-boat]) {
+    pointer-events: none;
+  }
+
+  .boat-hero__content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    pointer-events: none;
+  }
+  /* Text and controls take the pointer; empty space passes it to the boat */
+  .boat-hero__content :global(:where(a, button, input, select, textarea, label, summary, [role="button"], [tabindex], h1, h2, h3, h4, h5, h6, p, li, pre, code, blockquote, figcaption, dt, dd, span)) {
+    pointer-events: auto;
+  }
+  .boat-hero__content :global([data-boat-glyph]),
+  .boat-hero__content :global([data-boat-glyph] *) {
+    pointer-events: none;
+  }
+
+  /* Narrow screens: the waves are a band at the bottom of the hero and the
+     content keeps clear of it, so the boat never lands on text. */
+  @media (max-width: 767px) {
+    .boat-hero {
+      --boat-hero-sea-height: 240px;
+      align-items: flex-start;
+    }
+    .boat-hero__content {
+      padding-bottom: calc(var(--boat-hero-sea-height) * 0.72);
+    }
+  }
+</style>
+
+<style is:global>
+  @keyframes boatHeroSplashDrop {
+    0% { transform: translate(0, 0) scale(1); opacity: 0.8; }
+    100% { transform: translate(var(--dx), var(--dy)) scale(0.2); opacity: 0; }
+  }
+  @keyframes boatHeroSplashRing {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0.6; }
+    100% { transform: translate(-50%, -50%) scale(4, 2); opacity: 0; }
+  }
+</style>
+
+<script>
+  // Ported from the hero script in src/pages/index.astro. Differences:
+  // - scoped to each .boat-hero (no ids), so the glyph can live anywhere in it
+  // - the landing is never above the water: it is the lower of "37px under the
+  //   glyph" (live) and the front wave's surface under the glyph's column
+  // - the hand-off to the steady drift seeks the drift animation to the exact
+  //   position the launch ended on (same frame, same containing block)
+  const DRIFT_MS = 25000;
+
+  function baselineY(el: HTMLElement) {
+    // An empty inline-block sits with its bottom edge on the line's baseline
+    const probe = document.createElement('span');
+    probe.style.cssText = 'display:inline-block;width:0;height:0;';
+    el.appendChild(probe);
+    const y = probe.getBoundingClientRect().bottom;
+    probe.remove();
+    return y;
+  }
+
+  function createSplash(hero: Element | null, x: number, y: number) {
+    const waveBg = hero?.querySelector('.wave-background');
+    if (!waveBg) return;
+    const bgRect = waveBg.getBoundingClientRect();
+    const container = document.createElement('div');
+    Object.assign(container.style, {
+      position: 'absolute',
+      left: (x - bgRect.left) + 'px',
+      top: (y - bgRect.top) + 'px',
+      zIndex: '1',
+      pointerEvents: 'none',
+    });
+    const isLight = document.documentElement.classList.contains('light');
+    for (let i = 0; i < 10; i++) {
+      const drop = document.createElement('div');
+      const angle = (-150 + (120 * i / 9)) * (Math.PI / 180);
+      const speed = 18 + Math.random() * 28;
+      const size = 3 + Math.random() * 4;
+      const alpha = (0.65 + Math.random() * 0.3).toFixed(2);
+      const dropColor = isLight
+        ? `rgba(255, 255, 255, ${alpha})`
+        : `rgba(${60 + Math.random() * 60 | 0}, ${140 + Math.random() * 60 | 0}, 255, ${(0.5 + Math.random() * 0.3).toFixed(2)})`;
+      Object.assign(drop.style, {
+        position: 'absolute', width: size + 'px', height: size + 'px',
+        borderRadius: '50%', background: dropColor, left: '-2px', top: '-2px',
+      });
+      drop.style.setProperty('--dx', Math.cos(angle) * speed + 'px');
+      drop.style.setProperty('--dy', Math.sin(angle) * speed + 'px');
+      drop.style.animation = `boatHeroSplashDrop ${(0.4 + Math.random() * 0.3).toFixed(2)}s ease-out ${(Math.random() * 0.08).toFixed(3)}s forwards`;
+      container.appendChild(drop);
+    }
+    const ring = document.createElement('div');
+    Object.assign(ring.style, {
+      position: 'absolute', width: '20px', height: '8px',
+      border: isLight ? '2px solid rgba(255, 255, 255, 0.75)' : '2px solid rgba(100, 180, 255, 0.5)',
+      borderRadius: '50%', left: '0', top: '0',
+      animation: 'boatHeroSplashRing 0.7s ease-out forwards',
+    });
+    container.appendChild(ring);
+    waveBg.appendChild(container);
+    setTimeout(() => container.remove(), 1200);
+  }
+
+  function heroAt(y: number) {
+    const heroes = Array.from(document.querySelectorAll('[data-boat-hero]'));
+    return heroes.find((h) => { const r = h.getBoundingClientRect(); return y >= r.top && y <= r.bottom; }) || heroes[0] || null;
+  }
+
+  function initBoatHero(hero: HTMLElement) {
+    const boatInline = hero.querySelector<HTMLElement>('[data-boat-glyph]');
+    const boatEmoji = hero.querySelector<HTMLElement>('[data-boat-glyph-emoji]');
+    const waveBoat = hero.querySelector<HTMLElement>('[data-wave-boat]');
+    const sea = hero.querySelector<HTMLElement>('.boat-hero__sea');
+
+    // No glyph on the page: just sail
+    if (!boatInline || !boatEmoji) {
+      waveBoat?.classList.add('visible');
+      return;
+    }
+
+    // Reduced motion: just show the wave boat (live behaviour)
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      if (waveBoat) waveBoat.classList.add('visible');
+      return;
+    }
+
+    function measureLanding() {
+      const isMobile = window.innerWidth < 768;
+      const baseDrop = isMobile ? 30 : 37;
+      const startRect = boatEmoji!.getBoundingClientRect();
+      const startBaseline = baselineY(boatEmoji!);
+      const origin = `0px ${startBaseline - startRect.top}px`;
+      if (!waveBoat) {
+        return { dx: 0, dy: baseDrop, scale: 1, origin, waveBottomPx: null, waveLeftPct: null };
+      }
+      // The wave boat's containing block is the sea (its padding box)
+      const cb = (waveBoat.offsetParent || waveBoat.parentElement) as HTMLElement;
+      const cbRect = cb.getBoundingClientRect();
+      const cbLeft = cbRect.left + cb.clientLeft;
+      const cbWidth = cb.clientWidth;
+      // Live: rest 37px (30 mobile) under the glyph
+      const underGlyph = cbRect.bottom - (startRect.bottom + baseDrop) - 4;
+      // But never above the front wave's surface (path y=400 of 800)
+      const front = cb.querySelector('.wave-container-1');
+      const surfaceY = front ? front.getBoundingClientRect().top + front.getBoundingClientRect().height * 0.5 : cbRect.top + cbRect.height * 0.5;
+      const onWater = cbRect.bottom - surfaceY - 4;
+      // Optional extra depth below that point (CSS var --boat-hero-sink on the hero, default 0)
+      const sink = parseFloat(getComputedStyle(hero).getPropertyValue('--boat-hero-sink')) || 0;
+      const waveBottomPx = Math.max(8, Math.min(underGlyph, onWater) - sink);
+      // Lands straight down: same left edge as the inline emoji
+      const waveLeftPct = ((startRect.left - cbLeft) / cbWidth) * 100;
+      waveBoat.style.bottom = waveBottomPx + 'px';
+      waveBoat.style.left = waveLeftPct + '%';
+      const waveRect = waveBoat.getBoundingClientRect();
+      const scale = parseFloat(getComputedStyle(waveBoat).fontSize) / parseFloat(getComputedStyle(boatEmoji!).fontSize);
+      return {
+        dx: waveRect.left - startRect.left,
+        dy: baselineY(waveBoat) - startBaseline,
+        scale: Number.isFinite(scale) && scale > 0 ? scale : 1,
+        origin,
+        waveBottomPx,
+        waveLeftPct,
+      };
+    }
+
+    const LIFT_MS = 130;
+    const DROP_MS = 500;
+
+    setTimeout(() => {
+      // Phase 1: wiggle
+      const wiggle = boatEmoji.animate([
+        { transform: 'rotate(0deg)', offset: 0 },
+        { transform: 'rotate(8deg) translateX(1px)', offset: 0.15 },
+        { transform: 'rotate(-7deg) translateX(-1px)', offset: 0.30 },
+        { transform: 'rotate(12deg) translateX(2px) translateY(-2px)', offset: 0.50 },
+        { transform: 'rotate(-10deg) translateX(-2px)', offset: 0.65 },
+        { transform: 'rotate(5deg) translateX(1px)', offset: 0.80 },
+        { transform: 'rotate(-2deg)', offset: 0.92 },
+        { transform: 'rotate(0deg)', offset: 1 },
+      ], { duration: 600, easing: 'ease-in-out' });
+
+      wiggle.finished.then(() => {
+        const { dx, dy, scale, origin, waveBottomPx, waveLeftPct } = measureLanding();
+        boatEmoji.style.transformOrigin = origin;
+
+        // Phase 2: lift, then fall with gravity
+        const fall = boatEmoji.animate([
+          { translate: '0 0', easing: 'ease-out' },
+          { translate: '0 -6px', offset: LIFT_MS / (LIFT_MS + DROP_MS), easing: 'cubic-bezier(0.5, 0, 0.9, 0.55)' },
+          { translate: `${dx}px ${dy}px` },
+        ], { duration: LIFT_MS + DROP_MS, fill: 'forwards' });
+
+        const grow = boatEmoji.animate([
+          { scale: '1' },
+          { scale: String(scale) },
+        ], { delay: LIFT_MS, duration: DROP_MS, easing: 'ease-out', fill: 'both' });
+
+        Promise.all([fall.finished, grow.finished]).then(() => {
+          const landedRect = boatEmoji.getBoundingClientRect();
+          createSplash(hero, landedRect.left + landedRect.width / 2, landedRect.top + landedRect.height * 0.7 + 6);
+
+          boatInline.style.visibility = 'hidden';
+          if (!waveBoat || waveLeftPct == null) return;
+
+          // So toss landings match the drop landing
+          (window as any)._buoyBoatBottom = waveBottomPx;
+
+          // Phase 3: ease-in launch, 13% over 3s, ending at cruise speed
+          waveBoat.classList.add('launching');
+          const endLeftPct = waveLeftPct + 13;
+          const launchAnim = waveBoat.animate([
+            { left: waveLeftPct + '%' },
+            { left: endLeftPct + '%' },
+          ], { duration: 3000, easing: 'cubic-bezier(0.3, 0, 0.8, 0.8)', fill: 'forwards' });
+
+          launchAnim.finished.then(() => {
+            // Phase 4: steady drift. Everything below happens in one task, so no
+            // frame renders between the launch's last position and the drift's
+            // first. The drift is seeked by currentTime (not a negative
+            // animation-delay, whose start time resolves a frame later) to the
+            // exact left the launch ended on.
+            waveBoat.style.left = '';
+            waveBoat.classList.remove('launching');
+            waveBoat.classList.add('visible');
+            const progress = (((endLeftPct + 5) / 110) % 1 + 1) % 1;
+            const drift = waveBoat.getAnimations().find((a) => (a as CSSAnimation).animationName === 'boatDrift');
+            // Anchor the drift on the timeline at the moment the launch ended
+            // (startTime, not currentTime: a seek leaves the animation pending
+            // for a frame, which shows as a one-frame stall).
+            const launchEnd = (launchAnim.startTime as number | null) != null ? (launchAnim.startTime as number) + 3000 : null;
+            if (drift && launchEnd != null) {
+              drift.startTime = launchEnd - progress * DRIFT_MS;
+            } else if (drift) {
+              drift.currentTime = progress * DRIFT_MS;
+            } else {
+              waveBoat.style.animationDelay = `0s, ${-(progress * DRIFT_MS / 1000)}s`;
+            }
+            launchAnim.cancel();
+          });
+        });
+      });
+    }, 850);
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-boat-hero]').forEach((hero) => {
+    if (hero.dataset.boatHeroInit === '1') return;
+    hero.dataset.boatHeroInit = '1';
+    initBoatHero(hero);
+  });
+  // WaveBoat's drag/toss physics calls this for hero boats
+  (window as any)._buoySplash = (x: number, y: number) => createSplash(heroAt(y), x, y);
+</script>

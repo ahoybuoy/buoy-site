@@ -4,6 +4,7 @@
  * the most repeated literals and worst files. Shared by the curated reports
  * (/reports/owner/repo) and on-demand scans (/scan/owner/repo).
  */
+import MarkPattern from './MarkPattern.astro'
 import { fileUrl, formatStars, mergeColors, scoreBg, scoreColor, tierLabel, type Report } from '../utils/reports'
 
 interface Props {
@@ -42,61 +43,71 @@ const typeLabels: Record<string, string> = {
 }
 ---
 
-  <section class="relative pt-32 pb-12 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
-    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <a href={backHref} class="text-sm text-slate hover:text-buoy">{backLabel}</a>
-      <div class="mt-4 flex flex-wrap items-start justify-between gap-6">
-        <div>
-          <h1 class="text-3xl sm:text-4xl font-bold text-light">
-            <a href={`https://github.com/${r.repo}`} class="hover:text-buoy">{r.repo}</a>
+<main class="ui-nav-offset">
+  <section class="ui-section ui-section--first ui-section--patterned !pb-14">
+    <MarkPattern pattern="field" drift={0.2} fade class="ui-pattern !opacity-[0.16]" />
+    <div class="ui-wrap">
+      <a href={backHref} class="ui-rowlink text-sm">{backLabel}</a>
+      <div class="mt-6 flex flex-wrap items-end justify-between gap-8">
+        <div class="min-w-0 max-w-2xl">
+          <h1 class="text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.08] [overflow-wrap:anywhere]">
+            <a href={`https://github.com/${r.repo}`} class="hover:text-[var(--color-buoy-light)] transition-colors">{r.repo}</a>
           </h1>
-          {r.description && <p class="text-slate mt-2 max-w-2xl">{r.description}</p>}
-          <p class="text-sm text-slate/70 mt-2">
-            ★ {formatStars(r.stars)} · {r.metrics.detectedFrameworkNames.join(', ') || r.language} · scanned {r.generatedAt.slice(0, 10)} at <code>{r.commit.slice(0, 7)}</code>
+          {r.description && <p class="ui-lede mt-3">{r.description}</p>}
+          <p class="ui-note mt-3">
+            ★ <span class="ui-tnum">{formatStars(r.stars)}</span> · {r.metrics.detectedFrameworkNames.join(', ') || r.language} · scanned <span class="ui-tnum">{r.generatedAt.slice(0, 10)}</span> at <code class="ui-code">{r.commit.slice(0, 7)}</code>
           </p>
         </div>
-        <div class="text-center">
-          <div class={`text-6xl font-bold ${scoreColor(r.score)}`}>{r.score}</div>
-          <div class="text-sm text-slate">design health · {tierLabel(r.score)}</div>
-          <a href="/guides/design-system-health-score" class="text-xs text-slate/70 hover:text-buoy">How this is scored{r.cliVersion && ` · CLI ${r.cliVersion}`}</a>
+        <div class="ui-card flex items-center gap-5 p-5 pr-7 shrink-0">
+          <div class="relative w-[104px] h-[104px] shrink-0">
+            <svg viewBox="0 0 100 100" class="w-full h-full -rotate-90" aria-hidden="true">
+              <circle cx="50" cy="50" r="44" fill="none" stroke="var(--color-sunken)" stroke-width="8" />
+              <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round"
+                pathLength="100" stroke-dasharray={`${r.score ?? 0} 100`} class={`report-arc ${scoreColor(r.score)}`} />
+            </svg>
+            <div class={`absolute inset-0 grid place-items-center font-[family-name:var(--font-display)] text-[40px] font-bold leading-none ui-tnum ${scoreColor(r.score)}`}>{r.score}</div>
+          </div>
+          <div>
+            <div class="text-sm text-[var(--color-muted)]">Design health</div>
+            <div class="text-lg font-semibold text-[var(--color-ink)] mt-0.5">{tierLabel(r.score)}</div>
+            <a href="/guides/design-system-health-score" class="ui-rowlink text-xs text-[var(--color-muted)] mt-2 inline-block">How this is scored{r.cliVersion && ` · CLI ${r.cliVersion}`}</a>
+          </div>
         </div>
+      </div>
+
+      <div class="ui-cols !grid-cols-2 lg:!grid-cols-4 mt-12">
+        {Object.entries(r.pillars).map(([key, p]) => (
+          <div class="ui-col !p-0 !border-l-0 py-5 pr-6">
+            <div class="text-sm text-[var(--color-muted)] pt-5">{pillarLabels[key] ?? key}</div>
+            <div class="text-2xl font-semibold text-[var(--color-ink)] ui-tnum mt-1">{p.score}<span class="text-[var(--color-muted)] text-base">/{p.max}</span></div>
+            <div class="h-1 bg-[var(--color-sunken)] rounded mt-3 mr-6 mb-5"><div class={`h-1 rounded ${scoreBg(Math.round((p.score / p.max) * 100))}`} style={`width:${Math.round((p.score / p.max) * 100)}%`}></div></div>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <section class="py-10 bg-navy-dark">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-4 gap-4">
-      {Object.entries(r.pillars).map(([key, p]) => (
-        <div class="bg-navy/50 border border-navy-light/20 rounded-2xl p-5">
-          <div class="text-sm text-slate">{pillarLabels[key] ?? key}</div>
-          <div class="text-2xl font-bold text-light mt-1">{p.score}<span class="text-slate text-base">/{p.max}</span></div>
-          <div class="h-1.5 bg-navy-light/30 rounded mt-3"><div class={`h-1.5 rounded ${scoreBg(Math.round((p.score / p.max) * 100))}`} style={`width:${Math.round((p.score / p.max) * 100)}%`}></div></div>
-        </div>
-      ))}
-    </div>
-  </section>
-
   {r.pathTo100 && r.score !== null && (
-    <section class="py-6 bg-navy-dark">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="bg-navy/50 border border-buoy/40 rounded-2xl p-6">
-          <h2 class="text-xl font-bold text-light">
-            {r.pathTo100.length === 0 ? 'A perfect 100' : `The path to 100: ${100 - r.score} points`}
-          </h2>
-          {r.pathTo100.length === 0 ? (
-            <p class="text-slate mt-2">Every pillar is at full marks.</p>
-          ) : (
-            <ul class="mt-4 space-y-3">
-              {r.pathTo100.map((step) => (
-                <li class="flex gap-4 items-baseline">
-                  <span class="text-buoy font-bold w-12 shrink-0 text-right">+{step.points}</span>
-                  <span class="text-light">{step.action}<span class="text-slate text-sm"> · {pathLabels[step.pillar] ?? step.pillar}</span></span>
-                </li>
-              ))}
-            </ul>
-          )}
+    <section class="ui-section ui-section--band !py-16">
+      <div class="ui-wrap">
+        <div class="ui-head">
+          {r.pathTo100.length === 0 ? <h2>A perfect 100</h2> : <h2>The path to 100: <span class="ui-c-buoy ui-tnum">{100 - r.score!}</span> points</h2>}
+          {r.pathTo100.length === 0 && <p>Every pillar is at full marks.</p>}
         </div>
+        {r.pathTo100.length > 0 && (
+          <table class="ui-table mt-8">
+            <thead><tr><th class="w-20">Points</th><th>Change</th><th class="ui-end">Pillar</th></tr></thead>
+            <tbody>
+              {r.pathTo100.map((step) => (
+                <tr>
+                  <th class="ui-c-ok ui-tnum">+{step.points}</th>
+                  <td class="!text-[var(--color-ink)]">{step.action}</td>
+                  <td class="ui-end text-[var(--color-muted)] whitespace-nowrap">{pathLabels[step.pillar] ?? step.pillar}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
       </div>
     </section>
   )}
@@ -104,100 +115,114 @@ const typeLabels: Record<string, string> = {
   {/* Right under the score: e.g. the inline visualizers on /scan/<repo> */}
   <slot name="after-score" />
 
-  {r.noted && r.noted.count > 0 && (
-    <section class="py-2 bg-navy-dark">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <details class="bg-navy/40 border border-navy-light/20 rounded-2xl p-5">
-          <summary class="cursor-pointer text-light">
-            Left alone: {r.noted.count} value{r.noted.count === 1 ? '' : 's'} the code marks as deliberate
-            <span class="text-slate text-sm"> · not counted in the score</span>
+  <section class="ui-section !py-16">
+    <div class="ui-wrap">
+      <div class="ui-cols ui-cols--3 !mt-0">
+        <div class="ui-col"><div class="text-4xl font-semibold ui-tnum ui-c-crit">{ownHardcoded.toLocaleString()}</div><p>hardcoded-value findings</p>{vendored > 0 && <p class="ui-note">plus {vendored} in vendored shadcn/ui files, not scored</p>}</div>
+        <div class="ui-col"><div class="text-4xl font-semibold ui-tnum ui-c-ok">{r.metrics.tokenCount}</div><p>design tokens found</p></div>
+        <div class="ui-col"><div class="text-4xl font-semibold ui-tnum text-[var(--color-ink)]">{r.metrics.componentCount.toLocaleString()}</div><p>components</p></div>
+      </div>
+
+      {r.noted && r.noted.count > 0 && (
+        <details class="ui-card ui-card--pad mt-12 group">
+          <summary class="cursor-pointer text-[var(--color-ink)] font-medium">
+            Left alone: <span class="ui-c-info ui-tnum">{r.noted.count}</span> value{r.noted.count === 1 ? '' : 's'} the code marks as deliberate
+            <span class="text-[var(--color-muted)] text-sm font-normal"> · not counted in the score</span>
           </summary>
-          <p class="text-sm text-slate mt-3">
-            Buoy skips a value when a comment explains it or marks it as known debt, when it is a 2–3px optical nudge,
+          <p class="text-sm mt-3">
+            Buoy skips a value when a comment explains it or marks it as known debt, when it is a 2 to 3px optical nudge,
             or when the commit that added it says it was deliberate.
             {Object.entries(r.noted.byKind).map(([kind, n]) => `${n} ${notedLabels[kind] ?? kind}`).join(' · ')}.
           </p>
-          <ul class="mt-3 space-y-2 text-sm">
+          <ul class="ui-ruled">
             {r.noted.samples.map((n) => (
-              <li class="text-slate">
-                <a href={fileUrl(r, `${n.file}:${n.line}`)} class="text-light hover:text-buoy"><code>{n.value}</code> in {n.file.split('/').pop()}:{n.line}</a>
-                <span> — {n.reason}</span>
+              <li class="!text-sm">
+                <a href={fileUrl(r, `${n.file}:${n.line}`)} class="ui-rowlink"><code class="ui-c-info">{n.value}</code> in {n.file.split('/').pop()}:{n.line}</a>
+                <span class="text-[var(--color-body)]">: {n.reason}</span>
               </li>
             ))}
           </ul>
         </details>
-      </div>
-    </section>
-  )}
-
-  <section class="py-6 bg-navy-dark">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-4 text-center">
-      <div class="bg-navy/50 border border-navy-light/20 rounded-2xl p-5"><div class="text-3xl font-bold text-light">{ownHardcoded.toLocaleString()}</div><div class="text-sm text-slate">hardcoded-value findings</div>{vendored > 0 && <div class="text-xs text-slate/70 mt-1">plus {vendored} in vendored shadcn/ui files, not scored</div>}</div>
-      <div class="bg-navy/50 border border-navy-light/20 rounded-2xl p-5"><div class="text-3xl font-bold text-light">{r.metrics.tokenCount}</div><div class="text-sm text-slate">design tokens found</div></div>
-      <div class="bg-navy/50 border border-navy-light/20 rounded-2xl p-5"><div class="text-3xl font-bold text-light">{r.metrics.componentCount.toLocaleString()}</div><div class="text-sm text-slate">components</div></div>
+      )}
     </div>
   </section>
 
-  <section class="py-10 bg-navy-dark">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-8">
+  <section class="ui-section !py-16">
+    <div class="ui-wrap grid lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] gap-14">
       <div>
-        <h2 class="text-xl font-bold text-light mb-4">Most repeated literal colours</h2>
+        <h2 class="text-[length:var(--text-h3)]">Most repeated literal colours</h2>
+        <p class="text-sm mt-1 text-[var(--color-muted)]">Written by hand instead of through a token.</p>
         {topColors.length ? (
-          <ul class="space-y-2">
+          <ul class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-6 list-none p-0">
             {topColors.map((c) => (
-              <li class="flex items-center gap-3 text-sm">
-                <span class="w-5 h-5 rounded border border-navy-light/40 flex-shrink-0" style={`background:${c.value}`}></span>
-                <code class="text-light">{c.value}</code>
-                <span class="text-slate ml-auto">{c.count}×</span>
+              <li class="ui-card overflow-hidden">
+                <div class="h-14 shadow-[inset_0_-1px_0_var(--color-line)]" style={`background:${c.value}`}></div>
+                <div class="flex items-baseline justify-between gap-2 px-3 py-2.5">
+                  <code class="ui-old text-[13px] truncate">{c.value}</code>
+                  <span class="text-xs text-[var(--color-muted)] ui-tnum shrink-0">{c.count}×</span>
+                </div>
               </li>
             ))}
           </ul>
-        ) : <p class="text-slate text-sm">No repeated literal colours.</p>}
+        ) : <p class="ui-note mt-4">No repeated literal colours.</p>}
       </div>
       <div>
-        <h2 class="text-xl font-bold text-light mb-4">Most repeated literal spacing</h2>
+        <h2 class="text-[length:var(--text-h3)]">Most repeated literal spacing</h2>
+        <p class="text-sm mt-1 text-[var(--color-muted)]">Pixel values outside the spacing scale.</p>
         {r.topSpacing.length ? (
-          <ul class="space-y-2">
-            {r.topSpacing.map((s) => (
-              <li class="flex items-center gap-3 text-sm"><code class="text-light">{s.value}</code><span class="text-slate ml-auto">{s.count}×</span></li>
-            ))}
+          <ul class="mt-6 list-none p-0 border-t border-[var(--color-line-strong)]">
+            {r.topSpacing.map((sp) => {
+              const max = Math.max(...r.topSpacing.map((x) => x.count))
+              return (
+                <li class="grid grid-cols-[72px_minmax(0,1fr)_40px] items-center gap-3 py-2.5 border-b border-[var(--color-line)]">
+                  <code class="ui-c-warn text-[13px]">{sp.value}</code>
+                  <span class="h-1.5 rounded-full bg-[var(--color-sunken)]"><span class="block h-full rounded-full bg-[var(--color-warn)] opacity-80" style={`width:${Math.max(6, Math.round((sp.count / max) * 100))}%`}></span></span>
+                  <span class="text-right text-sm ui-tnum">{sp.count}×</span>
+                </li>
+              )
+            })}
           </ul>
-        ) : <p class="text-slate text-sm">No repeated literal spacing.</p>}
+        ) : <p class="ui-note mt-4">No repeated literal spacing.</p>}
       </div>
     </div>
   </section>
 
-  <section class="py-10 bg-navy-dark">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-8">
-      <div>
-        <h2 class="text-xl font-bold text-light mb-4">Files with the most drift</h2>
-        <ul class="space-y-2 text-sm">
-          {r.worstFiles.map((f) => (
-            <li class="flex gap-3"><a href={fileUrl(r, f.file)} class="text-buoy hover:underline truncate">{f.file}</a><span class="text-slate ml-auto flex-shrink-0">{f.count}</span></li>
-          ))}
-        </ul>
+  <section class="ui-section ui-section--band !py-16">
+    <div class="ui-wrap grid lg:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] gap-12">
+      <div class="min-w-0">
+        <h2 class="text-[length:var(--text-h3)]">Files with the most drift</h2>
+        <table class="ui-table mt-5 table-fixed">
+          <thead><tr><th>File</th><th class="ui-end w-20">Findings</th></tr></thead>
+          <tbody>
+            {r.worstFiles.map((f) => (
+              <tr><td class="truncate"><a href={fileUrl(r, f.file)} class="ui-rowlink font-[family-name:var(--font-mono)] text-[13px]">{f.file}</a></td><td class="ui-end ui-tnum">{f.count}</td></tr>
+            ))}
+          </tbody>
+        </table>
       </div>
       <div>
-        <h2 class="text-xl font-bold text-light mb-4">Drift by type</h2>
-        <ul class="space-y-2 text-sm">
-          {Object.entries(r.driftByType).sort((a, b) => b[1] - a[1]).map(([type, n]) => (
-            <li class="flex gap-3"><span class="text-light">{typeLabels[type] ?? type}</span><span class="text-slate ml-auto">{n.toLocaleString()}</span></li>
-          ))}
-        </ul>
+        <h2 class="text-[length:var(--text-h3)]">Drift by type</h2>
+        <table class="ui-table mt-5">
+          <thead><tr><th>Type</th><th class="ui-end">Count</th></tr></thead>
+          <tbody>
+            {Object.entries(r.driftByType).sort((a, b) => b[1] - a[1]).map(([type, n]) => (
+              <tr><td class="!text-[var(--color-ink)]">{typeLabels[type] ?? type}</td><td class="ui-end ui-tnum">{n.toLocaleString()}</td></tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
 
   {r.samples.length > 0 && (
-    <section class="py-10 bg-navy-dark">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-xl font-bold text-light mb-4">Examples</h2>
-        <div class="grid md:grid-cols-2 gap-4">
+    <section class="ui-section !py-16">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>Examples</h2><p>Hardcoded values as they appear in the code, each linked to its line on GitHub.</p></div>
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4 mt-8">
           {r.samples.map((s) => (
-            <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-4 text-sm">
-              <a href={fileUrl(r, s.location)} class="text-buoy hover:underline">{s.location}</a>
-              <div class="text-slate mt-1">{s.component}</div>
-              <ul class="mt-2 space-y-1">{s.entries.map((e) => <li><code class="text-light">{e}</code></li>)}</ul>
+            <div class="ui-term min-w-0">
+              <div class="ui-term-bar truncate" dir="rtl"><a href={fileUrl(r, s.location)} class="hover:text-[var(--color-ink)]" dir="ltr">{s.location}</a></div>
+              <div class="ui-term-body font-[family-name:var(--font-mono)] text-[13px] leading-[1.7] break-all">{!s.location.startsWith(s.component) && <span class="ui-t-dim block">{`// ${s.component}`}</span>}{s.entries.map((e) => <span class="ui-t-crit block">{e}</span>)}</div>
             </div>
           ))}
         </div>
@@ -205,17 +230,26 @@ const typeLabels: Record<string, string> = {
     </section>
   )}
 
-  <section class="py-10 bg-navy-dark">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-xl font-bold text-light mb-4">What Buoy would do about it</h2>
-      <ul class="space-y-2 text-sm text-slate list-disc pl-5">{r.suggestions.map((s) => <li>{s}</li>)}</ul>
-      <div class="mt-8 bg-navy/50 border border-buoy/40 rounded-2xl p-6">
-        <p class="text-light">Maintainers: this scan used the MIT-licensed CLI at commit <code>{r.commit.slice(0, 7)}</code>. Run it yourself with
-          <code class="text-buoy">npx @buoy-design/cli show health</code>, or <a href="https://github.com/marketplace/buoy-design" class="text-buoy">install the GitHub App</a>
-          to get the fix suggested on every PR. If anything here is wrong, <a href="https://github.com/ahoybuoy/buoy/issues" class="text-buoy">open an issue</a> and we will correct the page.
-          If you would rather this report not be public, email <a href={`mailto:support@buoy.design?subject=${encodeURIComponent(`Remove report: ${r.repo}`)}`} class="text-buoy">support@buoy.design</a> and we will take it down.</p>
-        <p class="text-sm text-slate mt-3">The score describes how much of the UI goes through design tokens, not the quality of the product or the team.
-          Scores can shift between CLI versions as detection improves; {r.cliVersion && `this one was produced by CLI ${r.cliVersion}.`} <a href="/guides/design-system-health-score" class="text-buoy">How the score works</a>.</p>
+  <section class="ui-section ui-section--last !pt-16">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>What Buoy would do about it</h2></div>
+      <ul class="ui-ruled ui-ruled--top max-w-3xl">{r.suggestions.map((s) => <li>{s}</li>)}</ul>
+      <div class="ui-card ui-card--pad mt-12 max-w-3xl">
+        <p class="text-[var(--color-ink)]">Maintainers: this scan used the MIT-licensed CLI at commit <code class="ui-code">{r.commit.slice(0, 7)}</code>. Run it yourself with
+          <code class="ui-code">npx @buoy-design/cli show health</code>, or <a href="https://github.com/marketplace/buoy-design" class="ui-link">install the GitHub App</a>
+          to get the fix suggested on every PR. If anything here is wrong, <a href="https://github.com/ahoybuoy/buoy/issues" class="ui-link">open an issue</a> and we will correct the page.
+          If you would rather this report not be public, email <a href={`mailto:support@buoy.design?subject=${encodeURIComponent(`Remove report: ${r.repo}`)}`} class="ui-link">support@buoy.design</a> and we will take it down.</p>
+        <p class="ui-note mt-3">The score describes how much of the UI goes through design tokens, not the quality of the product or the team.
+          Scores can shift between CLI versions as detection improves; {r.cliVersion && `this one was produced by CLI ${r.cliVersion}.`} <a href="/guides/design-system-health-score" class="ui-rowlink">How the score works</a>.</p>
       </div>
     </div>
   </section>
+  <slot name="after" />
+</main>
+
+<style>
+  @media (prefers-reduced-motion: no-preference) {
+    .report-arc { animation: report-arc 900ms var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)) both; }
+    @keyframes report-arc { from { stroke-dasharray: 0 100; } }
+  }
+</style>

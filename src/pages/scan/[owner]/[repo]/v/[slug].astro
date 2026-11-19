@@ -42,40 +42,40 @@ const description = current ? `${current.name} for ${fullName}. ${current.descri
 
 <Layout title={title} description={description}>
   <Nav />
-  <section class="pt-28 pb-16 bg-navy-dark min-h-[60vh]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <a href={`/scan/${fullName}`} class="text-sm text-slate hover:text-buoy">← Design health report</a>
-      <h1 class="text-3xl sm:text-4xl font-bold text-light mt-3">See inside {fullName}</h1>
-      <p class="text-slate mt-2 max-w-3xl">Buoy maps every token, component and page in the code. Each view draws that map a different way. Click anything to dig in.</p>
+  <main class="ui-nav-offset"><section class="ui-section ui-section--first ui-section--last !pt-12 min-h-[60vh]">
+    <div class="ui-wrap !max-w-[1280px]">
+      <a href={`/scan/${fullName}`} class="ui-rowlink text-sm">← Design health report</a>
+      <h1 class="mt-5 text-[length:var(--text-h1)] leading-[1.05] break-words">See inside {fullName}</h1>
+      <p class="ui-lede mt-3 max-w-3xl">Buoy maps every token, component and page in the code. Each view draws that map a different way. Click anything to dig in.</p>
 
       {list.length > 0 && (
-        <nav class="grid gap-3 mt-6" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))" aria-label="Visualizers">
+        <nav class="grid gap-3 mt-8" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))" aria-label="Visualizers">
           {list.map((v) => (
             <a href={`/scan/${fullName}/v/${v.slug}`} aria-current={v.slug === slug ? 'page' : undefined}
-              class={`block rounded-xl border p-4 ${v.slug === slug ? 'border-buoy' : 'border-navy-light/30 hover:border-navy-light'}`}>
-              <span class="block font-semibold text-light">{v.name}</span>
-              <span class="block text-sm text-slate mt-1">{v.description}</span>
+              class={`block rounded-[var(--radius-inner)] p-4 transition-shadow ${v.slug === slug ? 'bg-[var(--color-raised)] shadow-[inset_0_0_0_1.5px_var(--color-buoy)]' : 'bg-[var(--color-surface)] shadow-[var(--ring)] hover:shadow-[var(--ring-hover)]'}`}>
+              <span class="block font-semibold text-[var(--color-ink)]">{v.name}</span>
+              <span class="block text-sm mt-1">{v.description}</span>
             </a>
           ))}
         </nav>
       )}
 
       {!valid || (list.length > 0 && !current) ? (
-        <p class="text-slate mt-8">There is no visualizer at this address. Pick one above, or <a class="text-buoy hover:underline" href="/visualizers">browse the library</a>.</p>
+        <p class="mt-8">There is no visualizer at this address. Pick one above, or <a class="ui-link" href="/visualizers">browse the library</a>.</p>
       ) : list.length === 0 ? (
-        <p class="text-slate mt-8">Visualizers are unavailable right now. Try again in a minute.</p>
+        <p class="mt-8">Visualizers are unavailable right now. Try again in a minute.</p>
       ) : (
         <div class="mt-6" data-viz-host data-repo={fullName} data-src={current!.url} data-name={current!.name}>
-          <p class="text-slate" data-viz-status>Loading {fullName}…</p>
-          <div class="rounded-2xl overflow-hidden border border-navy-light/30" data-viz-frame hidden></div>
+          <p class="ui-note" data-viz-status>Loading {fullName}…</p>
+          <div class="ui-tray" data-viz-frame hidden></div>
         </div>
       )}
 
-      <p class="text-slate text-sm mt-6">
-        Map your own repo: <code class="text-light">npx @buoy-design/cli show snapshot</code>, or <a href={`/scan`} class="text-buoy hover:underline">scan a public repository</a>. Install the <a href="/install?src=visualize" class="text-buoy hover:underline">Buoy GitHub App</a> to see these for private repos and catch drift on every pull request.
+      <p class="ui-note mt-8">
+        Map your own repo: <code class="ui-code">npx @buoy-design/cli show snapshot</code>, or <a href={`/scan`} class="ui-link">scan a public repository</a>. Install the <a href="/install?src=visualize" class="ui-link">Buoy GitHub App</a> to see these for private repos and catch drift on every pull request.
       </p>
     </div>
-  </section>
+  </section></main>
   <Footer />
 </Layout>
 
@@ -87,7 +87,7 @@ const description = current ? `${current.name} for ${fullName}. ${current.descri
     const holder = host.querySelector<HTMLElement>('[data-viz-frame]')!
     const showStatus = (html: string) => { status.innerHTML = html; status.hidden = false }
     fetch(`https://api.buoy.design/public/snapshots/${repo}`).then(async (res) => {
-      if (res.status === 404) return showStatus(`${repo} has no map yet. <a class="text-buoy hover:underline" href="/scan/${repo}">Scan it</a>; maps come with each scan.`)
+      if (res.status === 404) return showStatus(`${repo} has no map yet. <a class="ui-link" href="/scan/${repo}">Scan it</a>; maps come with each scan.`)
       if (!res.ok) return showStatus('The map is unavailable right now. Try again in a minute.')
       const found = await res.json() as { repo: string; commit: string | null; snapshot: { components?: Array<{ id: string; path: string; line?: number }>; tokens?: Array<{ id: string; path?: string }> } }
       const frame = document.createElement('iframe')

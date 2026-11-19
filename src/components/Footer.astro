@@ -1,29 +1,50 @@
 ---
 import BuoyMark from './BuoyMark.astro'
 import { siteConfig } from '../config'
+
+const links = [
+  { label: 'GitHub', href: siteConfig.githubUrl, external: true },
+  { label: 'Twitter', href: siteConfig.twitterUrl, external: true },
+  { label: 'Discord', href: siteConfig.discordUrl, external: true },
+  { label: 'Scan a repo', href: '/scan' },
+  { label: 'Docs', href: '/docs' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'Guides', href: '/guides' },
+  { label: 'Reports', href: '/reports' },
+  { label: 'Compare', href: '/compare' },
+  { label: 'Privacy', href: '/privacy' },
+  { label: 'Terms', href: '/terms' },
+  { label: 'Support', href: '/support' },
+]
 ---
 
-<footer class="border-t border-navy-light/20 bg-navy-dark">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
-    <!-- Brand + Copyright -->
-    <div class="flex items-center gap-2">
-      <span style="display:inline-flex;line-height:0"><BuoyMark size={20} /></span>
-      <span class="text-slate">&copy; {new Date().getFullYear()} Buoy. Scanner is open source under MIT.</span>
-    </div>
-
-    <!-- Links -->
-    <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-      <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer" class="text-slate hover:text-light transition-colors">GitHub</a>
-      <a href={siteConfig.twitterUrl} target="_blank" rel="noopener noreferrer" class="text-slate hover:text-light transition-colors">Twitter</a>
-      <a href={siteConfig.discordUrl} target="_blank" rel="noopener noreferrer" class="text-slate hover:text-light transition-colors">Discord</a>
-      <span class="text-navy-light hidden sm:inline">|</span>
-      <a href="/scan" class="text-slate hover:text-light transition-colors whitespace-nowrap">Scan a repo</a>
-      <a href="/guides" class="text-slate hover:text-light transition-colors">Guides</a>
-      <a href="/reports" class="text-slate hover:text-light transition-colors">Reports</a>
-      <a href="/compare" class="text-slate hover:text-light transition-colors">Compare</a>
-      <a href="/privacy" class="text-slate hover:text-light transition-colors">Privacy</a>
-      <a href="/terms" class="text-slate hover:text-light transition-colors">Terms</a>
-      <a href="/support" class="text-slate hover:text-light transition-colors">Support</a>
-    </div>
+<footer class="site-footer">
+  <div class="ui-wrap site-footer-row">
+    <p class="site-footer-brand">
+      <BuoyMark size={18} />
+      <span>&copy; {new Date().getFullYear()} Buoy. Scanner is open source under MIT.</span>
+    </p>
+    <nav class="site-footer-links" aria-label="Footer">
+      {links.map((l) => l.external
+        ? <a href={l.href} target="_blank" rel="noopener noreferrer">{l.label}</a>
+        : <a href={l.href}>{l.label}</a>)}
+    </nav>
   </div>
 </footer>
+
+<style>
+  .site-footer { border-top: 1px solid var(--color-line); background: var(--color-bg); }
+  .site-footer-row {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px 40px; flex-wrap: wrap;
+    padding-block: 28px;
+  }
+  .site-footer-brand { display: flex; align-items: center; gap: 8px; margin: 0; font-size: 14px; color: var(--color-muted); }
+  .site-footer-links { display: flex; flex-wrap: wrap; margin-inline: -10px; }
+  .site-footer-links a {
+    display: inline-flex; align-items: center; height: 40px; padding-inline: 10px; border-radius: 8px;
+    font-size: 14px; color: var(--color-body);
+    transition: color 120ms ease-out;
+  }
+  .site-footer-links a:hover { color: var(--color-ink); }
+  @media (max-width: 760px) { .site-footer-links a { height: 44px; } }
+</style>

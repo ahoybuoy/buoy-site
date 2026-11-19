@@ -1,901 +1,220 @@
 ---
-import BuoyMark from '../components/BuoyMark.astro'
 import Layout from '../layouts/Layout.astro'
 import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
-import Button from '../components/Button.astro'
+import DocTerminal from '../components/DocTerminal.astro'
+import MarkPattern from '../components/MarkPattern.astro'
 import { siteConfig } from '../config'
+
+const builtVsShipped = [
+  { prop: '--color-primary', built: '#00D4AA', shipped: 'background: "#10B981"' },
+  { prop: '--spacing-md', built: '16px', shipped: 'padding: "14px"' },
+  { prop: '--radius-lg', built: '12px', shipped: 'borderRadius: "8px"' },
+  { prop: '<Button>', built: 'component', shipped: '<div style=...' },
+]
+const culprits = ["AI that doesn't know your tokens exist", 'Developers in a hurry', 'Copy-pasted Stack Overflow code']
+const caught = [
+  { t: 'Hardcoded values', d: 'Caught & flagged' },
+  { t: 'Duplicate components', d: 'Identified & linked' },
+  { t: 'Naming drift', d: 'Detected & suggested' },
+]
+const steps = [
+  { t: 'Check Status', cmd: 'npx ahoybuoy show health', d: 'Run it in your codebase. In seconds, see every place your design system is being bypassed. Zero config needed.' },
+  { t: 'Review', cmd: 'buoy drift check', d: "Get a clear report: what's wrong, where it is, and exactly how to fix it. No guesswork." },
+  { t: 'Enforce', cmd: 'buoy drift check --fail-on critical', d: "Add to CI/CD. See what's drifting before it ships. Critical issues get flagged. You decide the threshold." },
+]
+const rules = [
+  { t: 'Color Tokens', d: 'No more #FF5733 when you defined --color-warning. Every color maps to your palette.', old: '#FF5733', token: 'var(--color-warning)' },
+  { t: 'Spacing Scale', d: "14px padding? That's not in your 4px grid. Buoy catches it, suggests the fix.", old: '14px', token: 'var(--spacing-md)' },
+  { t: 'Typography', d: 'font-size: 13px? You use a type scale. Buoy knows and enforces it.', old: '13px', token: 'var(--text-sm)' },
+  { t: 'Components', d: 'Someone built a new button? You already have <Button>. Buoy shows them.', old: '<div className="btn">', token: '<Button>' },
+  { t: 'Naming', d: 'You use "primary". They wrote "main". Buoy catches naming drift instantly.', old: '--main-color', token: '--color-primary' },
+  { t: 'Dark Mode', d: 'Hardcoded white backgrounds break dark mode. Buoy ensures tokens are used.', old: '#FFFFFF', token: 'var(--bg-surface)' },
+]
+const newYou = [
+  { t: 'Join the conversation', d: 'When developers discuss "technical debt," you can point to the Buoy report and say "here\'s exactly where it is."' },
+  { t: 'Prove your impact', d: '"Design system adoption: 47% → 89%." Real metrics that show leadership the value of your work.' },
+  { t: 'Bridge the gap', d: 'Developers respect you more when you understand their world. Buoy gives you that understanding without the learning curve.' },
+  { t: 'Focus on what matters', d: 'Stop policing code manually. Let Buoy handle enforcement while you focus on designing the next great experience.' },
+]
+const ladder = [
+  { t: 'Detect', d: "See what's drifting", c: 'ui-c-info' },
+  { t: 'Warn', d: 'Flag in PRs', c: 'ui-c-warn' },
+  { t: 'Enforce', d: 'Fail on critical', c: 'ui-c-crit' },
+]
 ---
 
 <Layout title="Take Control - Design Tokens Were Step One | Buoy">
   <Nav />
-
-  <!-- Hero -->
-  <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-navy-dark">
-    <!-- Animated gradient orbs -->
-    <div class="absolute inset-0 overflow-hidden">
-      <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-buoy/20 rounded-full blur-[120px] animate-float"></div>
-      <div class="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-lavender/15 rounded-full blur-[100px] animate-float" style="animation-delay: -2s;"></div>
-      <div class="absolute top-1/2 right-1/3 w-[300px] h-[300px] bg-sunrise-start/10 rounded-full blur-[80px] animate-float" style="animation-delay: -4s;"></div>
-    </div>
-
-    <!-- Grid pattern overlay -->
-    <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%23ffffff&quot; fill-opacity=&quot;1&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-
-    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 text-center">
-      <!-- Badge -->
-      <div class="inline-flex items-center px-4 py-2 rounded-full bg-lavender/10 border border-lavender/30 mb-8 animate-fade-in-up">
-        <span class="text-sm text-lavender font-medium">The Code Control Layer</span>
-      </div>
-
-      <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold mb-8 leading-tight animate-fade-in-up" style="animation-delay: 0.1s;">
-        <span class="text-light">Design tokens were step one.</span>
-        <br />
-        <span class="text-gradient-sunrise">Code Control is step two.</span>
-      </h1>
-
-      <p class="text-xl sm:text-2xl text-slate max-w-3xl mx-auto mb-12 leading-relaxed animate-fade-in-up" style="animation-delay: 0.2s;">
-        You built the design system. You defined the tokens.
-        <br class="hidden sm:block" />
-        <span class="text-light">Now take control of how they're used in code.</span>
-      </p>
-
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style="animation-delay: 0.3s;">
-        <Button href={siteConfig.githubUrl} size="lg" external>
-          Take control now
-        </Button>
-        <Button href="#the-problem" variant="secondary" size="lg">
-          See how it works
-        </Button>
-      </div>
-    </div>
-
-    <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-      <svg class="w-6 h-6 text-slate" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-      </svg>
-    </div>
-  </section>
-
-  <!-- Section 2: The Problem -->
-  <section id="the-problem" class="py-32 bg-navy relative overflow-hidden">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 scroll-reveal">
-        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
-          You did everything right.
-        </h2>
-        <p class="text-xl text-slate max-w-2xl mx-auto">
-          You built the design system. You documented every token. You created the components.
-        </p>
-      </div>
-
-      <!-- The disconnect visualization -->
-      <div class="relative max-w-4xl mx-auto mb-16">
-        <div class="grid md:grid-cols-2 gap-8 items-center">
-          <!-- What you built -->
-          <div class="scroll-reveal" style="--delay: 0.1s;">
-            <div class="bg-navy-dark border border-success/30 rounded-xl p-6">
-              <div class="flex items-center gap-3 mb-4">
-                <div class="w-10 h-10 rounded-lg bg-success/20 flex items-center justify-center">
-                  <svg class="w-5 h-5 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                  </svg>
-                </div>
-                <span class="text-success font-semibold">What you built</span>
-              </div>
-              <div class="space-y-3 font-mono text-sm">
-                <div class="flex items-center gap-2 text-slate">
-                  <span class="text-success">--color-primary:</span> #00D4AA
-                </div>
-                <div class="flex items-center gap-2 text-slate">
-                  <span class="text-success">--spacing-md:</span> 16px
-                </div>
-                <div class="flex items-center gap-2 text-slate">
-                  <span class="text-success">--radius-lg:</span> 12px
-                </div>
-                <div class="flex items-center gap-2 text-slate">
-                  <span class="text-success">&lt;Button&gt;</span> component
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- The broken connection -->
-          <div class="hidden md:flex items-center justify-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-            <div class="w-16 h-16 rounded-full bg-navy border-2 border-warning flex items-center justify-center disconnect-pulse">
-              <svg class="w-8 h-8 text-warning" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/>
-              </svg>
-            </div>
-          </div>
-
-          <!-- What gets shipped -->
-          <div class="scroll-reveal" style="--delay: 0.2s;">
-            <div class="bg-navy-dark border border-critical/30 rounded-xl p-6">
-              <div class="flex items-center gap-3 mb-4">
-                <div class="w-10 h-10 rounded-lg bg-critical/20 flex items-center justify-center">
-                  <svg class="w-5 h-5 text-critical" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                  </svg>
-                </div>
-                <span class="text-critical font-semibold">What gets shipped</span>
-              </div>
-              <div class="space-y-3 font-mono text-sm">
-                <div class="flex items-center gap-2 text-slate">
-                  <span class="text-critical">background:</span> "#10B981"
-                </div>
-                <div class="flex items-center gap-2 text-slate">
-                  <span class="text-critical">padding:</span> "14px"
-                </div>
-                <div class="flex items-center gap-2 text-slate">
-                  <span class="text-critical">borderRadius:</span> "8px"
-                </div>
-                <div class="flex items-center gap-2 text-slate">
-                  <span class="text-critical">&lt;div style=...</span>
-                </div>
-              </div>
-            </div>
-          </div>
+  <main id="main" class="ui-nav-offset">
+    <section class="ui-section ui-section--first ui-section--patterned">
+      <MarkPattern pattern="tide" drift={0.3} fade class="ui-pattern" />
+      <div class="ui-wrap lp-hero">
+        <p class="ui-eyebrow">The Code Control layer</p>
+        <div class="ui-head"><h1>Design tokens were step one.<br /><span class="ui-c-buoy">Code Control is step two.</span></h1></div>
+        <p class="ui-lede">You built the design system. You defined the tokens. Now take control of how they're used in code.</p>
+        <div class="ui-actions">
+          <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer" class="ui-btn ui-btn--primary ui-btn--lg">Take control now</a>
+          <a href="#the-problem" class="ui-btn ui-btn--secondary ui-btn--lg">See how it works</a>
         </div>
       </div>
+    </section>
 
-      <!-- The culprits -->
-      <div class="text-center scroll-reveal" style="--delay: 0.3s;">
-        <p class="text-lg text-slate mb-8">And the culprits?</p>
-        <div class="flex flex-wrap items-center justify-center gap-4">
-          <div class="px-6 py-3 bg-navy-dark border border-navy-light/30 rounded-full flex items-center gap-3 culprit-tag">
-            <span class="text-2xl">🤖</span>
-            <span class="text-light">AI that doesn't know your tokens exist</span>
+    <section id="the-problem" class="ui-section ui-section--band">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>You did everything right.</h2><p>You built the design system. You documented every token. You created the components.</p></div>
+        <table class="ui-table ui-table--stack lp-table">
+          <thead><tr><th scope="col">What you built</th><th scope="col">Value</th><th scope="col">What gets shipped</th></tr></thead>
+          <tbody>
+            {builtVsShipped.map((r) => <tr><th scope="row" class="ui-mono ui-c-ok">{r.prop}</th><td class="ui-mono">{r.built}</td><td class="ui-mono"><span class="ui-old">{r.shipped}</span></td></tr>)}
+          </tbody>
+        </table>
+        <p class="ui-after">And the culprits? {culprits.join('. ')}.</p>
+      </div>
+    </section>
+
+    <section class="ui-section ui-section--patterned">
+      <MarkPattern pattern="wake" drift={0.25} fade class="ui-pattern" />
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>Insert design into the pipeline.</h2><p>Every pull request. Every commit. Every line of AI-generated code. Now it answers to you.</p></div>
+        <ol class="tc-pipe">
+          <li><h3>Developer</h3><p class="lp-muted">+ AI Assistant</p></li>
+          <li class="tc-buoy"><p class="ui-c-buoy tc-k">Design is here</p><h3>Buoy</h3><p class="lp-muted">Design's Control Layer</p></li>
+          <li><h3 class="ui-c-ok">Production</h3><p class="lp-muted">Clean & Consistent</p></li>
+        </ol>
+        <table class="ui-table lp-table"><tbody>{caught.map((c) => <tr><th scope="row">{c.t}</th><td class="ui-end ui-c-ok">{c.d}</td></tr>)}</tbody></table>
+      </div>
+    </section>
+
+    <section class="ui-section ui-section--band">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>Zero config. Instant visibility.</h2><p>No setup required. Run it, see results. Enforce when you're ready.</p></div>
+        <ol class="ui-steps lp-steps">
+          {steps.map((s, i) => <li><span class="ui-step-n">{i + 1}</span><div><h3>{s.t}</h3><p><code class="ui-code">{s.cmd}</code></p><p>{s.d}</p></div></li>)}
+        </ol>
+      </div>
+    </section>
+
+    <section class="ui-section">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>Your rules. Automatically detected.</h2><p>Every decision you made in your design system? Now it's visible and measurable.</p></div>
+        <table class="ui-table ui-table--stack lp-table">
+          <thead><tr><th scope="col">Rule</th><th scope="col">What Buoy checks</th><th scope="col" class="ui-end">Fix</th></tr></thead>
+          <tbody>{rules.map((r) => <tr><th scope="row">{r.t}</th><td>{r.d}</td><td class="ui-end ui-mono tc-fix"><del>{r.old}</del> <ins>{r.token}</ins></td></tr>)}</tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="ui-section ui-section--band">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>Sleep well tonight.</h2><p>Every PR is checked. Every commit is scanned. Every AI suggestion is validated. Your design system is protected 24/7.</p></div>
+        <dl class="lp-stats">
+          <div><dt>% of PRs checked</dt><dd class="ui-tnum">100</dd></div>
+          <div><dt>manual audits needed</dt><dd class="ui-tnum ui-c-ok">0</dd></div>
+          <div><dt>/7 protection</dt><dd class="ui-tnum">24</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="ui-section">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>Speak code. Stay designer.</h2><p>You don't need to become a developer. But now you can see what they see, catch what they miss, and speak their language when it matters.</p></div>
+        <table class="ui-table lp-table"><tbody>{newYou.map((n) => <tr><th scope="row">{n.t}</th><td>{n.d}</td></tr>)}</tbody></table>
+      </div>
+    </section>
+
+    <section class="ui-section ui-section--band">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>Start where you are.</h2><p>Don't have a design system yet? Buoy can extract tokens from your existing code. Already have one? Start with visibility, add enforcement when ready.</p></div>
+        <div class="ui-split lp-split">
+          <div>
+            <ul class="ui-ruled ui-ruled--top tc-start">
+              <li><h3>Extract tokens from code</h3><p><code class="ui-code">buoy tokens</code></p><p>No design tokens yet? Buoy scans your existing code and extracts colors, spacing, and typography into a starting token file.</p></li>
+              <li><h3>Visual coverage grid</h3><p><code class="ui-code">buoy show health</code></p><p>See a visual grid of your design system coverage across files. Track improvements over time.</p></li>
+            </ul>
+            <h3 class="tc-ladder-h">Progressive enforcement ladder</h3>
+            <p class="lp-muted">Start informing, enforce when you're ready</p>
+            <ol class="tc-ladder">{ladder.map((l) => <li><strong class={l.c}>{l.t}</strong><span class="lp-muted">{l.d}</span></li>)}</ol>
           </div>
-          <div class="px-6 py-3 bg-navy-dark border border-navy-light/30 rounded-full flex items-center gap-3 culprit-tag" style="animation-delay: 0.1s;">
-            <span class="text-2xl">👨‍💻</span>
-            <span class="text-light">Developers in a hurry</span>
-          </div>
-          <div class="px-6 py-3 bg-navy-dark border border-navy-light/30 rounded-full flex items-center gap-3 culprit-tag" style="animation-delay: 0.2s;">
-            <span class="text-2xl">📦</span>
-            <span class="text-light">Copy-pasted Stack Overflow code</span>
-          </div>
+          <figure class="ui-figure">
+            <div class="ui-term">
+              <div class="ui-term-bar"><span>terminal</span><span class="ui-t-dim">proposed CLI score format</span></div>
+<pre><span class="ui-t-prompt">$</span> <span class="ui-t-hi">buoy show health</span>
+
+<span class="ui-t-hi">Buoy Health Score</span>
+<span class="ui-t-dim">────────────────</span>
+
+Score        <span class="ui-t-ok">88/100   Great</span>
+Threshold    <span class="ui-t-ok">PASS</span> <span class="ui-t-dim">(failBelow: 70)</span>
+Trend        <span class="ui-t-ok">+4</span> since last scan
+
+Meter        <span class="ui-t-ok">[██████████████████░░]</span> 88
+
+<span class="ui-t-hi">Pillars (weighted)</span>
+  valueDiscipline  60/60  <span class="ui-t-ok">████████████████████</span>
+  tokenHealth       8/20  <span class="ui-t-warn">████████</span><span class="ui-t-dim">░░░░░░░░░░░░</span>
+  consistency      10/10  <span class="ui-t-ok">████████████████████</span>
+  criticalIssues   10/10  <span class="ui-t-ok">████████████████████</span>
+
+<span class="ui-t-info">Suggestion</span>
+  Tailwind detected but token coverage is low
+  - extend your theme config with custom values</pre>
+            </div>
+            <figcaption>Human-readable score output that still maps directly to the real <code class="ui-code">buoy show health --json</code> fields.</figcaption>
+          </figure>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Section 3: The Power Shift -->
-  <section class="py-32 bg-navy-dark relative overflow-hidden">
-    <!-- Animated circuit lines -->
-    <div class="absolute inset-0 opacity-10">
-      <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <path class="circuit-path" d="M0,50 L30,50 L35,30 L65,30 L70,50 L100,50" stroke="url(#circuit-gradient)" stroke-width="0.2" fill="none"/>
-        <path class="circuit-path" d="M0,70 L20,70 L25,60 L75,60 L80,70 L100,70" stroke="url(#circuit-gradient)" stroke-width="0.2" fill="none" style="animation-delay: 0.5s;"/>
-        <defs>
-          <linearGradient id="circuit-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#00D4AA" stop-opacity="0"/>
-            <stop offset="50%" stop-color="#00D4AA" stop-opacity="1"/>
-            <stop offset="100%" stop-color="#00D4AA" stop-opacity="0"/>
-          </linearGradient>
-        </defs>
-      </svg>
-    </div>
-
-    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 scroll-reveal">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-buoy/10 border border-buoy/30 mb-6">
-          <span class="text-buoy font-semibold">The Power Shift</span>
+    <section class="ui-section ui-section--last ui-section--patterned">
+      <MarkPattern pattern="swell" drift={0.3} fade class="ui-pattern" />
+      <div class="ui-wrap ui-split lp-cta">
+        <div class="ui-head">
+          <h2>Take control in 30 seconds.</h2>
+          <p>Free. Open source. No signup required. Just run the command and see what you've been missing.</p>
+          <div class="ui-actions"><a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer" class="ui-btn ui-btn--secondary">View on GitHub</a></div>
         </div>
-        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
-          Insert design into the pipeline.
-        </h2>
-        <p class="text-xl text-slate max-w-2xl mx-auto">
-          Every pull request. Every commit. Every line of AI-generated code.
-          <br /><span class="text-light font-semibold">Now it answers to you.</span>
-        </p>
-      </div>
-
-      <!-- The pipeline visualization -->
-      <div class="relative max-w-4xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-5 gap-4 items-center">
-          <!-- Developer/AI -->
-          <div class="scroll-reveal pipeline-node" style="--delay: 0.1s;">
-            <div class="bg-navy border border-navy-light/30 rounded-xl p-4 text-center">
-              <div class="text-3xl mb-2">👨‍💻</div>
-              <div class="text-sm text-slate">Developer</div>
-              <div class="text-xs text-slate-dark">+ AI Assistant</div>
-            </div>
-          </div>
-
-          <!-- Arrow -->
-          <div class="hidden md:flex items-center justify-center scroll-reveal" style="--delay: 0.2s;">
-            <svg class="w-8 h-8 text-slate-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-            </svg>
-          </div>
-
-          <!-- BUOY - The Control Point -->
-          <div class="scroll-reveal pipeline-node" style="--delay: 0.3s;">
-            <div class="bg-buoy/10 border-2 border-buoy rounded-xl p-4 text-center relative control-point-glow">
-              <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-buoy text-navy-dark text-xs font-bold rounded-full">
-                DESIGN IS HERE
-              </div>
-              <div class="mb-2"><BuoyMark size={30} /></div>
-              <div class="text-sm text-buoy font-semibold">Buoy</div>
-              <div class="text-xs text-slate">Design's Control Layer</div>
-            </div>
-          </div>
-
-          <!-- Arrow -->
-          <div class="hidden md:flex items-center justify-center scroll-reveal" style="--delay: 0.4s;">
-            <svg class="w-8 h-8 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-            </svg>
-          </div>
-
-          <!-- Production -->
-          <div class="scroll-reveal pipeline-node" style="--delay: 0.5s;">
-            <div class="bg-navy border border-success/30 rounded-xl p-4 text-center">
-              <div class="text-3xl mb-2">🚀</div>
-              <div class="text-sm text-success">Production</div>
-              <div class="text-xs text-slate-dark">Clean & Consistent</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- What Buoy catches -->
-        <div class="mt-12 grid sm:grid-cols-3 gap-4 scroll-reveal" style="--delay: 0.6s;">
-          <div class="bg-navy border border-navy-light/20 rounded-lg p-4 text-center hover:border-buoy/50 transition-colors">
-            <div class="text-warning text-2xl mb-2">⚠️</div>
-            <div class="text-light font-medium mb-1">Hardcoded values</div>
-            <div class="text-xs text-slate">Caught & flagged</div>
-          </div>
-          <div class="bg-navy border border-navy-light/20 rounded-lg p-4 text-center hover:border-buoy/50 transition-colors">
-            <div class="text-warning text-2xl mb-2">📦</div>
-            <div class="text-light font-medium mb-1">Duplicate components</div>
-            <div class="text-xs text-slate">Identified & linked</div>
-          </div>
-          <div class="bg-navy border border-navy-light/20 rounded-lg p-4 text-center hover:border-buoy/50 transition-colors">
-            <div class="text-warning text-2xl mb-2">🏷️</div>
-            <div class="text-light font-medium mb-1">Naming violations</div>
-            <div class="text-xs text-slate">Detected & suggested</div>
-          </div>
+        <div>
+          <DocTerminal command="npx ahoybuoy show health" />
+          <p class="ui-note">The Code Control layer that design has been missing.</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Section 4: How It Works -->
-  <section class="py-32 bg-navy relative">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 scroll-reveal">
-        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
-          Zero config. Instant visibility.
-        </h2>
-        <p class="text-xl text-slate max-w-2xl mx-auto">
-          No setup required. Run it, see results. Enforce when you're ready.
-        </p>
-      </div>
-
-      <!-- Steps -->
-      <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        <!-- Step 1 -->
-        <div class="scroll-reveal" style="--delay: 0.1s;">
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 h-full hover:border-buoy/30 transition-all hover:-translate-y-1">
-            <div class="w-12 h-12 rounded-full bg-buoy/20 border-2 border-buoy text-buoy font-bold flex items-center justify-center mb-4 text-xl">
-              1
-            </div>
-            <h3 class="text-xl font-semibold text-light mb-2">Check Status</h3>
-            <div class="bg-navy rounded-lg p-3 font-mono text-sm mb-4">
-              <span class="text-slate">$</span> <span class="text-buoy">npx ahoybuoy show health</span>
-            </div>
-            <p class="text-slate text-sm">
-              Run it in your codebase. In seconds, see every place your design system is being bypassed. Zero config needed.
-            </p>
-          </div>
-        </div>
-
-        <!-- Step 2 -->
-        <div class="scroll-reveal" style="--delay: 0.2s;">
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 h-full hover:border-buoy/30 transition-all hover:-translate-y-1">
-            <div class="w-12 h-12 rounded-full bg-buoy/20 border-2 border-buoy text-buoy font-bold flex items-center justify-center mb-4 text-xl">
-              2
-            </div>
-            <h3 class="text-xl font-semibold text-light mb-2">Review</h3>
-            <div class="bg-navy rounded-lg p-3 font-mono text-sm mb-4">
-              <span class="text-slate">$</span> <span class="text-buoy">buoy drift check</span>
-            </div>
-            <p class="text-slate text-sm">
-              Get a clear report: what's wrong, where it is, and exactly how to fix it. No guesswork.
-            </p>
-          </div>
-        </div>
-
-        <!-- Step 3 -->
-        <div class="scroll-reveal" style="--delay: 0.3s;">
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 h-full hover:border-buoy/30 transition-all hover:-translate-y-1">
-            <div class="w-12 h-12 rounded-full bg-buoy/20 border-2 border-buoy text-buoy font-bold flex items-center justify-center mb-4 text-xl">
-              3
-            </div>
-            <h3 class="text-xl font-semibold text-light mb-2">Enforce</h3>
-            <div class="bg-navy rounded-lg p-3 font-mono text-sm mb-4">
-              <span class="text-slate">$</span> <span class="text-buoy">buoy drift check --fail-on critical</span>
-            </div>
-            <p class="text-slate text-sm">
-              Add to CI/CD. See what's drifting before it ships. Critical issues get flagged. You decide the threshold.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 5: What You Can Enforce -->
-  <section class="py-32 bg-navy-dark relative overflow-hidden">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 scroll-reveal">
-        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
-          Your rules. Automatically detected.
-        </h2>
-        <p class="text-xl text-slate max-w-2xl mx-auto">
-          Every decision you made in your design system? Now it's visible and measurable.
-        </p>
-      </div>
-
-      <!-- Enforcement cards -->
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="scroll-reveal enforcement-card" style="--delay: 0.1s;">
-          <div class="bg-navy border border-navy-light/20 rounded-xl p-6 h-full hover:border-buoy/30 transition-all group">
-            <div class="text-4xl mb-4 group-hover:scale-110 transition-transform">🎨</div>
-            <h3 class="text-lg font-semibold text-light mb-2">Color Tokens</h3>
-            <p class="text-sm text-slate mb-4">No more #FF5733 when you defined --color-warning. Every color maps to your palette.</p>
-            <div class="text-xs font-mono text-slate-dark">
-              <span class="text-critical">#FF5733</span> → <span class="text-success">var(--color-warning)</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="scroll-reveal enforcement-card" style="--delay: 0.15s;">
-          <div class="bg-navy border border-navy-light/20 rounded-xl p-6 h-full hover:border-buoy/30 transition-all group">
-            <div class="text-4xl mb-4 group-hover:scale-110 transition-transform">📏</div>
-            <h3 class="text-lg font-semibold text-light mb-2">Spacing Scale</h3>
-            <p class="text-sm text-slate mb-4">14px padding? That's not in your 4px grid. Buoy catches it, suggests the fix.</p>
-            <div class="text-xs font-mono text-slate-dark">
-              <span class="text-critical">14px</span> → <span class="text-success">var(--spacing-md)</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="scroll-reveal enforcement-card" style="--delay: 0.2s;">
-          <div class="bg-navy border border-navy-light/20 rounded-xl p-6 h-full hover:border-buoy/30 transition-all group">
-            <div class="text-4xl mb-4 group-hover:scale-110 transition-transform">🔤</div>
-            <h3 class="text-lg font-semibold text-light mb-2">Typography</h3>
-            <p class="text-sm text-slate mb-4">font-size: 13px? You use a type scale. Buoy knows and enforces it.</p>
-            <div class="text-xs font-mono text-slate-dark">
-              <span class="text-critical">13px</span> → <span class="text-success">var(--text-sm)</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="scroll-reveal enforcement-card" style="--delay: 0.25s;">
-          <div class="bg-navy border border-navy-light/20 rounded-xl p-6 h-full hover:border-buoy/30 transition-all group">
-            <div class="text-4xl mb-4 group-hover:scale-110 transition-transform">📦</div>
-            <h3 class="text-lg font-semibold text-light mb-2">Components</h3>
-            <p class="text-sm text-slate mb-4">Someone built a new button? You already have &lt;Button&gt;. Buoy shows them.</p>
-            <div class="text-xs font-mono text-slate-dark">
-              <span class="text-critical">&lt;div className="btn"&gt;</span> → <span class="text-success">&lt;Button&gt;</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="scroll-reveal enforcement-card" style="--delay: 0.3s;">
-          <div class="bg-navy border border-navy-light/20 rounded-xl p-6 h-full hover:border-buoy/30 transition-all group">
-            <div class="text-4xl mb-4 group-hover:scale-110 transition-transform">🏷️</div>
-            <h3 class="text-lg font-semibold text-light mb-2">Naming</h3>
-            <p class="text-sm text-slate mb-4">You use "primary". They wrote "main". Buoy catches naming drift instantly.</p>
-            <div class="text-xs font-mono text-slate-dark">
-              <span class="text-critical">--main-color</span> → <span class="text-success">--color-primary</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="scroll-reveal enforcement-card" style="--delay: 0.35s;">
-          <div class="bg-navy border border-navy-light/20 rounded-xl p-6 h-full hover:border-buoy/30 transition-all group">
-            <div class="text-4xl mb-4 group-hover:scale-110 transition-transform">🌗</div>
-            <h3 class="text-lg font-semibold text-light mb-2">Dark Mode</h3>
-            <p class="text-sm text-slate mb-4">Hardcoded white backgrounds break dark mode. Buoy ensures tokens are used.</p>
-            <div class="text-xs font-mono text-slate-dark">
-              <span class="text-critical">#FFFFFF</span> → <span class="text-success">var(--bg-surface)</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 6: Relief -->
-  <section class="py-32 bg-navy relative overflow-hidden">
-    <!-- Calming wave animation -->
-    <div class="absolute bottom-0 left-0 right-0 h-64 opacity-20 overflow-hidden">
-      <svg class="wave-svg h-full" viewBox="0 0 2880 320" preserveAspectRatio="none">
-        <path class="wave-path" fill="#00D4AA" fill-opacity="0.3" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,138.7C672,128,768,160,864,181.3C960,203,1056,213,1152,197.3C1248,181,1344,139,1392,117.3L1440,96L1488,176C1536,192,1632,224,1728,213.3C1824,203,1920,149,2016,138.7C2112,128,2208,160,2304,181.3C2400,203,2496,213,2592,197.3C2688,181,2784,139,2832,117.3L2880,96L2880,320L0,320Z"/>
-      </svg>
-    </div>
-
-    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="scroll-reveal">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-success/10 border border-success/30 mb-6">
-          <span class="text-success font-semibold">The Relief</span>
-        </div>
-        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
-          Sleep well tonight.
-        </h2>
-        <p class="text-xl text-slate max-w-2xl mx-auto mb-12">
-          Every PR is checked. Every commit is scanned. Every AI suggestion is validated.
-          <br /><span class="text-light">Your design system is protected 24/7.</span>
-        </p>
-      </div>
-
-      <!-- Relief stats -->
-      <div class="grid sm:grid-cols-3 gap-8 mb-12">
-        <div class="scroll-reveal" style="--delay: 0.1s;">
-          <div class="text-4xl font-bold text-success mb-2 counter" data-target="100">0</div>
-          <div class="text-slate">% of PRs checked</div>
-        </div>
-        <div class="scroll-reveal" style="--delay: 0.2s;">
-          <div class="text-4xl font-bold text-success mb-2"><span class="counter" data-target="0">0</span></div>
-          <div class="text-slate">manual audits needed</div>
-        </div>
-        <div class="scroll-reveal" style="--delay: 0.3s;">
-          <div class="text-4xl font-bold text-success mb-2 counter" data-target="24">0</div>
-          <div class="text-slate">/7 protection</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Section 7: The New You -->
-  <section class="py-32 bg-navy-dark relative overflow-hidden">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 scroll-reveal">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-lavender/10 border border-lavender/30 mb-6">
-          <span class="text-lavender font-semibold">The New You</span>
-        </div>
-        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
-          Speak code. Stay designer.
-        </h2>
-        <p class="text-xl text-slate max-w-2xl mx-auto">
-          You don't need to become a developer. But now you can see what they see,
-          catch what they miss, and speak their language when it matters.
-        </p>
-      </div>
-
-      <!-- Capability cards -->
-      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <div class="scroll-reveal" style="--delay: 0.1s;">
-          <div class="bg-navy border border-navy-light/20 rounded-xl p-6 h-full">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-xl bg-lavender/20 flex items-center justify-center shrink-0">
-                <span class="text-2xl">💬</span>
-              </div>
-              <div>
-                <h3 class="text-lg font-semibold text-light mb-2">Join the conversation</h3>
-                <p class="text-slate text-sm">
-                  When developers discuss "technical debt," you can point to the Buoy report and say "here's exactly where it is."
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="scroll-reveal" style="--delay: 0.15s;">
-          <div class="bg-navy border border-navy-light/20 rounded-xl p-6 h-full">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-xl bg-lavender/20 flex items-center justify-center shrink-0">
-                <span class="text-2xl">📊</span>
-              </div>
-              <div>
-                <h3 class="text-lg font-semibold text-light mb-2">Prove your impact</h3>
-                <p class="text-slate text-sm">
-                  "Design system adoption: 47% → 89%." Real metrics that show leadership the value of your work.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="scroll-reveal" style="--delay: 0.2s;">
-          <div class="bg-navy border border-navy-light/20 rounded-xl p-6 h-full">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-xl bg-lavender/20 flex items-center justify-center shrink-0">
-                <span class="text-2xl">🤝</span>
-              </div>
-              <div>
-                <h3 class="text-lg font-semibold text-light mb-2">Bridge the gap</h3>
-                <p class="text-slate text-sm">
-                  Developers respect you more when you understand their world. Buoy gives you that understanding without the learning curve.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="scroll-reveal" style="--delay: 0.25s;">
-          <div class="bg-navy border border-navy-light/20 rounded-xl p-6 h-full">
-            <div class="flex items-start gap-4">
-              <div class="w-12 h-12 rounded-xl bg-lavender/20 flex items-center justify-center shrink-0">
-                <span class="text-2xl">🎯</span>
-              </div>
-              <div>
-                <h3 class="text-lg font-semibold text-light mb-2">Focus on what matters</h3>
-                <p class="text-slate text-sm">
-                  Stop policing code manually. Let Buoy handle enforcement while you focus on designing the next great experience.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 8: Progressive Enforcement -->
-  <section class="py-32 bg-navy relative overflow-hidden">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 scroll-reveal">
-        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
-          Start where you are.
-        </h2>
-        <p class="text-xl text-slate max-w-2xl mx-auto">
-          Don't have a design system yet? Buoy can extract tokens from your existing code.
-          Already have one? Start with visibility, add enforcement when ready.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <!-- Token Extraction -->
-        <div class="scroll-reveal" style="--delay: 0.1s;">
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 h-full hover:border-buoy/30 transition-all">
-            <div class="text-3xl mb-4">🎯</div>
-            <h3 class="text-xl font-semibold text-light mb-2">Extract tokens from code</h3>
-            <div class="bg-navy rounded-lg p-3 font-mono text-sm mb-4">
-              <span class="text-slate">$</span> <span class="text-buoy">buoy tokens</span>
-            </div>
-            <p class="text-slate text-sm">
-              No design tokens yet? Buoy scans your existing code and extracts colors, spacing, and typography into a starting token file.
-            </p>
-          </div>
-        </div>
-
-        <!-- Visual Status -->
-        <div class="scroll-reveal" style="--delay: 0.15s;">
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 h-full hover:border-buoy/30 transition-all">
-            <div class="text-3xl mb-4">📊</div>
-            <h3 class="text-xl font-semibold text-light mb-2">Visual coverage grid</h3>
-            <div class="bg-navy rounded-lg p-3 font-mono text-sm mb-4">
-              <span class="text-slate">$</span> <span class="text-buoy">buoy show health</span>
-            </div>
-            <p class="text-slate text-sm">
-              See a visual grid of your design system coverage across files. Track improvements over time.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Score CLI preview -->
-      <div class="mt-12 max-w-4xl mx-auto scroll-reveal" style="--delay: 0.18s;">
-        <div class="bg-navy-dark border border-navy-light/30 rounded-2xl overflow-hidden">
-          <div class="flex items-center gap-2 px-4 py-2.5 bg-navy border-b border-navy-light/20">
-            <div class="flex items-center gap-1.5">
-              <div class="w-2.5 h-2.5 rounded-full bg-critical/80"></div>
-              <div class="w-2.5 h-2.5 rounded-full bg-warning/80"></div>
-              <div class="w-2.5 h-2.5 rounded-full bg-success/80"></div>
-            </div>
-            <div class="flex-1 text-center">
-              <span class="text-xs text-slate-dark font-mono">terminal</span>
-            </div>
-            <span class="text-xs text-slate-dark font-mono hidden sm:inline">proposed CLI score format</span>
-          </div>
-
-          <div class="p-4 sm:p-5 font-mono text-xs sm:text-sm leading-relaxed overflow-x-auto">
-            <div class="flex items-start gap-2 mb-2">
-              <span class="text-buoy select-none shrink-0">$</span>
-              <span class="text-light">buoy show health</span>
-            </div>
-
-            <div class="space-y-0.5 min-w-[38rem]">
-              <div class="text-slate"></div>
-              <div class="text-light">Buoy Health Score</div>
-              <div class="text-slate-dark">────────────────</div>
-              <div class="text-slate"></div>
-              <div class="text-success">Score        88/100   Great</div>
-              <div class="text-success">Threshold    PASS (failBelow: 70)</div>
-              <div class="text-info">Trend        +4 since last scan</div>
-              <div class="text-slate"></div>
-              <div class="text-light">Meter        <span class="text-buoy">[██████████████████░░]</span> 88</div>
-              <div class="text-slate"></div>
-              <div class="text-light">Pillars (weighted)</div>
-              <div class="text-success">  valueDiscipline  60/60  ████████████████████</div>
-              <div class="text-warning">  tokenHealth       8/20  ████████░░░░░░░░░░░░</div>
-              <div class="text-success">  consistency      10/10  ████████████████████</div>
-              <div class="text-success">  criticalIssues   10/10  ████████████████████</div>
-              <div class="text-slate"></div>
-              <div class="text-light">Suggestion</div>
-              <div class="text-info">  Tailwind detected but token coverage is low</div>
-              <div class="text-info">  - extend your theme config with custom values</div>
-            </div>
-          </div>
-        </div>
-        <p class="text-sm text-slate text-center mt-4">
-          Human-readable score output that still maps directly to the real <code class="text-xs text-lavender bg-navy-dark/60 px-1.5 py-0.5 rounded">buoy show health --json</code> fields.
-        </p>
-      </div>
-
-      <!-- Progressive ladder -->
-      <div class="mt-16 max-w-3xl mx-auto scroll-reveal" style="--delay: 0.2s;">
-        <div class="text-center mb-8">
-          <h3 class="text-xl font-semibold text-light">Progressive enforcement ladder</h3>
-          <p class="text-sm text-slate mt-2">Start informing, enforce when you're ready</p>
-        </div>
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <div class="flex-1 bg-navy-dark border border-navy-light/20 rounded-xl p-4 text-center">
-            <div class="text-warning text-2xl mb-2">👁️</div>
-            <div class="text-light font-medium">Detect</div>
-            <div class="text-xs text-slate mt-1">See what's drifting</div>
-          </div>
-          <svg class="w-6 h-6 text-slate-dark shrink-0 rotate-90 sm:rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-          </svg>
-          <div class="flex-1 bg-navy-dark border border-warning/30 rounded-xl p-4 text-center">
-            <div class="text-warning text-2xl mb-2">⚠️</div>
-            <div class="text-light font-medium">Warn</div>
-            <div class="text-xs text-slate mt-1">Flag in PRs</div>
-          </div>
-          <svg class="w-6 h-6 text-slate-dark shrink-0 rotate-90 sm:rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-          </svg>
-          <div class="flex-1 bg-navy-dark border border-success/30 rounded-xl p-4 text-center">
-            <div class="text-success text-2xl mb-2">✓</div>
-            <div class="text-light font-medium">Enforce</div>
-            <div class="text-xs text-slate mt-1">Fail on critical</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Final CTA Section -->
-  <section class="py-32 bg-gradient-to-b from-navy to-navy-dark relative overflow-hidden">
-    <!-- Decorative elements -->
-    <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-buoy/10 rounded-full blur-3xl"></div>
-    <div class="absolute top-1/2 right-1/4 -translate-y-1/2 w-96 h-96 bg-lavender/10 rounded-full blur-3xl"></div>
-
-    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="scroll-reveal">
-        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
-          Take control in 30 seconds.
-        </h2>
-        <p class="text-xl text-slate mb-8 max-w-2xl mx-auto">
-          Free. Open source. No signup required.
-          <br />Just run the command and see what you've been missing.
-        </p>
-
-        <div class="inline-flex flex-col sm:flex-row items-center gap-4 p-6 bg-navy/80 border border-navy-light/30 rounded-xl backdrop-blur-sm mb-8 copy-command" data-command="npx ahoybuoy show health">
-          <code class="text-lg font-mono text-light">npx ahoybuoy show health</code>
-          <div class="flex items-center gap-3">
-            <button class="copy-btn px-4 py-2 bg-navy-light/30 hover:bg-navy-light/50 text-slate hover:text-light rounded-lg transition-colors text-sm flex items-center gap-2">
-              <span class="copy-text">Copy</span>
-              <svg class="copy-icon w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-              </svg>
-              <svg class="check-icon w-4 h-4 hidden text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-            </button>
-            <Button href={siteConfig.githubUrl} external>
-              View on GitHub
-            </Button>
-          </div>
-        </div>
-
-        <p class="text-slate text-sm">
-          The Code Control layer that design has been missing.
-        </p>
-      </div>
-    </div>
-  </section>
-
+    </section>
+  </main>
   <Footer />
 </Layout>
 
 <style>
-  /* Animations */
-  @keyframes fade-in-up {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0) scale(1);
-    }
-    50% {
-      transform: translateY(-20px) scale(1.05);
-    }
-  }
-
-  @keyframes disconnect-pulse {
-    0%, 100% {
-      box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.4);
-    }
-    50% {
-      box-shadow: 0 0 0 20px rgba(251, 191, 36, 0);
-    }
-  }
-
-  @keyframes circuit-flow {
-    0% {
-      stroke-dashoffset: 200;
-    }
-    100% {
-      stroke-dashoffset: 0;
-    }
-  }
-
-  @keyframes control-point-glow {
-    0%, 100% {
-      box-shadow: 0 0 20px rgba(0, 212, 170, 0.3);
-    }
-    50% {
-      box-shadow: 0 0 40px rgba(0, 212, 170, 0.5);
-    }
-  }
-
-  @keyframes wave-scroll {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-
-  .animate-fade-in-up {
-    animation: fade-in-up 0.6s ease-out forwards;
-  }
-
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  .disconnect-pulse {
-    animation: disconnect-pulse 2s ease-in-out infinite;
-  }
-
-  .circuit-path {
-    stroke-dasharray: 200;
-    animation: circuit-flow 3s linear infinite;
-  }
-
-  .control-point-glow {
-    animation: control-point-glow 2s ease-in-out infinite;
-  }
-
-  .wave-svg {
-    width: 200%;
-    animation: wave-scroll 10s linear infinite;
-  }
-
-  /* Scroll reveal */
-  .scroll-reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    transition-delay: var(--delay, 0s);
-  }
-
-  .scroll-reveal.revealed {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* Culprit tags */
-  .culprit-tag {
-    opacity: 0;
-    transform: translateY(10px);
-    animation: fade-in-up 0.5s ease-out forwards;
-    animation-delay: var(--delay, 0s);
-  }
-
-  .scroll-reveal.revealed .culprit-tag {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* Pipeline nodes */
-  .pipeline-node {
-    transition: transform 0.3s ease;
-  }
-
-  .pipeline-node:hover {
-    transform: scale(1.05);
-  }
-
-  /* Enforcement cards */
-  .enforcement-card {
-    transition: transform 0.3s ease;
+  .lp-hero { padding-block: 32px 24px; }
+  .lp-split { margin-top: 40px; }
+  .lp-muted { color: var(--color-muted); font-size: 15px; }
+  .lp-table { margin-top: 32px; }
+  .lp-steps { margin-top: 32px; }
+  .lp-steps p { margin-top: 8px; }
+  .lp-cta { align-items: center; }
+  .ui-col h3 { font-size: 1.2rem; }
+  .ui-col p { margin-top: 8px; }
+  .tc-fix { white-space: nowrap; font-size: 13px; }
+  .tc-pipe { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .tc-pipe li { padding: 22px 24px; border-radius: var(--radius-card); background: var(--color-surface); box-shadow: var(--ring); position: relative; }
+  .tc-pipe li + li::before { content: '→'; position: absolute; left: -14px; top: 50%; transform: translate(-50%, -50%); color: var(--color-muted); }
+  .tc-pipe .tc-buoy { box-shadow: var(--ring-lift); }
+  .tc-pipe h3 { margin: 0; font-size: 1.25rem; }
+  .tc-pipe p { margin: 4px 0 0; }
+  .tc-k { font-size: 14px; font-weight: 600; margin: 0 0 4px !important; }
+  .tc-start h3 { margin: 0; font-size: 1.1rem; }
+  .tc-start p { margin: 8px 0 0; color: var(--color-body); font-size: 15px; }
+  .tc-start li { padding-block: 18px; }
+  .tc-ladder-h { margin: 40px 0 0; font-size: 1.1rem; }
+  .tc-ladder { list-style: none; margin: 16px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--color-line-strong); }
+  .tc-ladder li { padding: 14px 12px 0 0; display: flex; flex-direction: column; gap: 4px; }
+  .lp-stats { margin: 40px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--color-line-strong); }
+  .lp-stats > div { padding-top: 20px; display: flex; flex-direction: column-reverse; gap: 6px; }
+  .lp-stats dd { margin: 0; font-family: var(--font-display); font-size: 3rem; font-weight: 700; line-height: 1; color: var(--color-ink); }
+  .lp-stats dt { color: var(--color-muted); font-size: 15px; }
+  @media (max-width: 760px) {
+    .tc-pipe { grid-template-columns: minmax(0, 1fr); }
+    .tc-pipe li + li::before { content: none; }
+    .tc-fix { white-space: normal; }
   }
 </style>
-
-<script>
-  // Scroll reveal animation
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-
-        // Animate counters if present
-        const counters = entry.target.querySelectorAll('.counter');
-        counters.forEach(counter => {
-          const target = parseInt(counter.getAttribute('data-target') || '0');
-          const duration = 2000;
-          const start = performance.now();
-
-          function updateCounter(currentTime: number) {
-            const elapsed = currentTime - start;
-            const progress = Math.min(elapsed / duration, 1);
-            const easeOut = 1 - Math.pow(1 - progress, 3);
-            counter.textContent = Math.floor(target * easeOut).toString();
-
-            if (progress < 1) {
-              requestAnimationFrame(updateCounter);
-            }
-          }
-
-          requestAnimationFrame(updateCounter);
-        });
-      }
-    });
-  }, observerOptions);
-
-  document.querySelectorAll('.scroll-reveal').forEach(el => {
-    observer.observe(el);
-  });
-
-  // Copy command functionality
-  document.querySelectorAll('.copy-command').forEach(container => {
-    const btn = container.querySelector('.copy-btn');
-    const command = container.getAttribute('data-command');
-
-    btn?.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(command || '');
-
-        const copyIcon = btn.querySelector('.copy-icon');
-        const checkIcon = btn.querySelector('.check-icon');
-        const copyText = btn.querySelector('.copy-text');
-
-        copyIcon?.classList.add('hidden');
-        checkIcon?.classList.remove('hidden');
-        if (copyText) copyText.textContent = 'Copied!';
-
-        setTimeout(() => {
-          copyIcon?.classList.remove('hidden');
-          checkIcon?.classList.add('hidden');
-          if (copyText) copyText.textContent = 'Copy';
-        }, 2000);
-      } catch (err) {
-        console.error('Failed to copy:', err);
-      }
-    });
-  });
-</script>

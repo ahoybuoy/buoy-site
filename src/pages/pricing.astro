@@ -11,6 +11,7 @@ const BOOKING_URL = 'https://cal.com/tarre/rescue'
 const plans = [
   {
     name: 'Open source',
+    tier: 'free',
     price: '$0',
     period: 'forever',
     audience: 'For anyone, in any repo',
@@ -47,9 +48,11 @@ const plans = [
     external: true,
     variant: 'primary',
     featured: true,
+    tier: 'app',
   },
   {
     name: 'Organization',
+    tier: 'org',
     price: 'From $500',
     period: 'per month',
     audience: 'For companies with several products or design systems',
@@ -107,7 +110,7 @@ const faqs = [
   },
   {
     question: 'What data leaves my repo?',
-    answerHtml: 'The CLI, MCP server and Action run on your machine or in your CI and send nothing to Buoy. The GitHub App reads pull request diffs and files through GitHub and scans them on Cloudflare. Some review prose, such as builder-mode coaching and @ahoybuoy answers, is written by an LLM through OpenRouter, which receives diff excerpts and file history. Findings are always deterministic; models never decide them. <a href="/privacy#subprocessors" class="text-buoy hover:underline">See exactly what is sent where</a>.',
+    answerHtml: 'The CLI, MCP server and Action run on your machine or in your CI and send nothing to Buoy. The GitHub App reads pull request diffs and files through GitHub and scans them on Cloudflare. Some review prose, such as builder-mode coaching and @ahoybuoy answers, is written by an LLM through OpenRouter, which receives diff excerpts and file history. Findings are always deterministic; models never decide them. <a href="/privacy#subprocessors" class="ui-link">See exactly what is sent where</a>.',
   },
   {
     question: 'What does the Organization plan include?',
@@ -115,7 +118,7 @@ const faqs = [
   },
   {
     question: 'Can Dylan do the work for us?',
-    answerHtml: 'Yes. <strong>System found</strong> ($10,000, one week): Dylan consolidates your tokens and theme, and writes DESIGN.md and the agent rules so Cursor or Claude stay on them. <strong>System in place</strong> ($20,000, two weeks): all of that, plus your worst components migrated in merged pull requests and a first adoption baseline. <strong>Keep it holding</strong> ($1,500 a month per product): Team plus a monthly adoption review. <a href="/services" class="text-buoy hover:underline">See services</a>.',
+    answerHtml: 'Yes. <strong>System found</strong> ($10,000, one week): Dylan consolidates your tokens and theme, and writes DESIGN.md and the agent rules so Cursor or Claude stay on them. <strong>System in place</strong> ($20,000, two weeks): all of that, plus your worst components migrated in merged pull requests and a first adoption baseline. <strong>Keep it holding</strong> ($1,500 a month per product): Team plus a monthly adoption review. <a href="/services" class="ui-link">See services</a>.',
   },
 ]
 
@@ -143,167 +146,166 @@ import MarkPattern from '../components/MarkPattern.astro'
 >
   <Nav />
 
-  <!-- Hero -->
-  <section class="relative pt-32 pb-16 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
-    <MarkPattern pattern="tide" drift={0} fade class="opacity-60" />
-
-    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-success/10 border border-success/30 mb-6">
-        <FreeSpots class="text-success font-medium text-sm" />
-      </div>
-      <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6">
-        One price per design system. No seats.
-      </h1>
-      <p class="text-lg text-slate max-w-2xl mx-auto">
-        The open source CLI, MCP server and GitHub Action are free forever. The GitHub App is
-        free for life for the first 100 installs. After that, one private repo is free and Team is $149 a
-        month per design system, with unlimited repos, contributors and agents.
-      </p>
-    </div>
-  </section>
-
-  <!-- Pricing Cards -->
-  <section class="py-16 bg-navy-dark">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid md:grid-cols-3 gap-8">
-        {plans.map((plan) => (
-          <div class={`relative flex flex-col bg-navy/50 border rounded-2xl p-8 ${plan.featured ? 'border-buoy' : 'border-navy-light/20'}`}>
-            {plan.featured && (
-              <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-sunrise text-navy-dark text-xs font-semibold rounded-full whitespace-nowrap">
-                First 100 installs
-              </div>
-            )}
-
-            <div class="text-center mb-6">
-              <h2 class="text-xl font-bold text-light mb-1">{plan.name}</h2>
-              <p class="text-xs text-slate mb-4">{plan.audience}</p>
-              <div class="flex flex-wrap items-baseline justify-center gap-x-2 gap-y-1">
-                <span class="text-4xl font-bold text-light">{plan.price}</span>
-                <span class="text-slate text-sm">{plan.period}</span>
-              </div>
-              <p class="text-sm text-slate mt-3">{plan.description}</p>
-            </div>
-
-            <ul class="space-y-3 mb-6">
-              {plan.features.map((feature) => (
-                <li class="flex items-start gap-2 text-sm text-slate">
-                  <svg class="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                  </svg>
-                  {feature}
-                </li>
-              ))}
-            </ul>
-
-            {plan.after && (
-              <p class="text-sm text-light bg-navy-dark border border-navy-light/30 rounded-lg p-3 mb-6">
-                {plan.after}
-              </p>
-            )}
-
-            <div class="mt-auto space-y-3">
-              <Button
-                href={plan.ctaHref}
-                variant={plan.variant as 'primary' | 'secondary'}
-                external={plan.external}
-                class="w-full justify-center"
-              >
-                {plan.cta}
-              </Button>
-              {plan.secondaryHref && (
-                <a href={plan.secondaryHref} class="block text-center text-sm text-buoy hover:underline">
-                  {plan.secondaryLabel} →
-                </a>
-              )}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Team -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-navy-dark border border-navy-light/30 rounded-2xl p-8">
-        <div class="grid md:grid-cols-2 gap-8 items-start">
-          <div>
-            <p class="text-buoy font-medium mb-2">After the first 100 installs</p>
-            <h2 class="text-2xl font-bold text-light mb-2">Team</h2>
-            <div class="flex flex-wrap items-baseline gap-x-2 gap-y-1 mb-4">
-              <span class="text-3xl font-bold text-light">$149</span>
-              <span class="text-slate text-sm">per month, per design system</span>
-            </div>
-            <p class="text-slate text-sm">
-              The GitHub App for new installs once the 100 free-for-life spots are gone.
-              Installs that got a spot keep it free for life.
-            </p>
-          </div>
-          <ul class="space-y-3 text-sm text-slate">
-            <li class="flex items-start gap-2"><span class="text-success">✓</span> Unlimited repos, contributors, agents and runs</li>
-            <li class="flex items-start gap-2"><span class="text-success">✓</span> No seats: agents write the code, and every pull request gets the same check</li>
-            <li class="flex items-start gap-2"><span class="text-success">✓</span> Public repos are always free</li>
-            <li class="flex items-start gap-2"><span class="text-success">✓</span> Everything in the GitHub App column above</li>
-          </ul>
+  <main id="main" class="ui-nav-offset">
+    <section class="ui-section ui-section--first ui-section--patterned pr-hero">
+      <MarkPattern pattern="tide" drift={0.3} fade class="ui-pattern" />
+      <div class="ui-wrap">
+        <div class="ui-head">
+          <p class="ui-eyebrow"><FreeSpots class="ui-c-ok ui-tnum" /></p>
+          <h1>One price per design system. No seats.</h1>
+          <p class="ui-lede">
+            The open source CLI, MCP server and GitHub Action are free forever. The GitHub App is
+            free for life for the first 100 installs. After that, one private repo is free and Team is $149 a
+            month per design system, with unlimited repos, contributors and agents.
+          </p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Feature Comparison -->
-  <section class="py-16 bg-navy-dark">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Feature comparison</h2>
-
-      <div class="overflow-x-auto">
-        <div class="min-w-xl bg-navy-dark border border-navy-light/30 rounded-xl overflow-hidden">
-          <div class="grid grid-cols-4 bg-navy border-b border-navy-light/20 text-sm">
-            <div class="p-4 font-semibold text-slate">Feature</div>
-            <div class="p-4 font-semibold text-slate text-center border-l border-navy-light/20">Open source</div>
-            <div class="p-4 font-semibold text-buoy text-center border-l border-navy-light/20">GitHub App / Team</div>
-            <div class="p-4 font-semibold text-slate text-center border-l border-navy-light/20">Organization</div>
-          </div>
-
-          {comparison.map((row, index) => (
-            <div class={`grid grid-cols-4 text-sm ${index % 2 === 0 ? 'bg-navy/30' : ''}`}>
-              <div class="p-4 text-light">{row.feature}</div>
-              {[row.open, row.app, row.ds].map((included) => (
-                <div class="p-4 text-center border-l border-navy-light/20">
-                  {included
-                    ? <span class="text-success" aria-label="Included">✓</span>
-                    : <span class="text-slate-dark" aria-label="Not included">—</span>}
-                </div>
-              ))}
-            </div>
+    <section class="ui-section ui-section--first pr-plans-sec">
+      <div class="ui-wrap">
+        <div class="ui-cols ui-cols--3 pr-plans">
+          {plans.map((plan) => (
+            <article class="ui-col">
+              <p class={`ui-tier-name ui-tier-${plan.tier}`}>{plan.audience}</p>
+              <h2 class="pr-name">{plan.name}</h2>
+              <p class="pr-price"><span class="ui-tnum">{plan.price}</span> <span>{plan.period}</span></p>
+              <p>{plan.description}</p>
+              <ul class="ui-ruled ui-ruled--tight">
+                {plan.features.map((feature) => <li>{feature}</li>)}
+              </ul>
+              {plan.after && <p class="pr-after">{plan.after}</p>}
+              <div class="pr-cta">
+                <Button
+                  href={plan.ctaHref}
+                  variant={plan.variant as 'primary' | 'secondary'}
+                  external={plan.external}
+                  class="ui-btn--block"
+                >
+                  {plan.cta}
+                </Button>
+                {plan.secondaryHref && (
+                  <a href={plan.secondaryHref} class="ui-rowlink pr-sub">{plan.secondaryLabel}</a>
+                )}
+              </div>
+            </article>
           ))}
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FAQ -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Frequently asked questions</h2>
-
-      <div class="space-y-4">
-        {faqs.map((faq) => (
-          <details class="group bg-navy-dark/50 border border-navy-light/20 rounded-xl">
-            <summary class="flex items-center justify-between gap-4 p-4 cursor-pointer list-none">
-              <span class="font-medium text-light">{faq.question}</span>
-              <svg class="w-5 h-5 text-slate flex-shrink-0 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-              </svg>
-            </summary>
-            <div class="px-4 pb-4 text-slate">
-              {faq.answerHtml ? <Fragment set:html={faq.answerHtml} /> : faq.answer}
-            </div>
-          </details>
-        ))}
+    <section class="ui-section ui-section--band">
+      <div class="ui-wrap pr-team">
+        <div>
+          <p class="ui-tier-name ui-tier-app">After the first 100 installs</p>
+          <h2>Team</h2>
+          <p class="pr-price"><span class="ui-tnum">$149</span> <span>per month, per design system</span></p>
+          <p>
+            The GitHub App for new installs once the 100 free-for-life spots are gone.
+            Installs that got a spot keep it free for life.
+          </p>
+        </div>
+        <ul class="ui-ruled ui-ruled--top">
+          <li>Unlimited repos, contributors, agents and runs</li>
+          <li>No seats: agents write the code, and every pull request gets the same check</li>
+          <li>Public repos are always free</li>
+          <li>Everything in the GitHub App column above</li>
+        </ul>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <section class="ui-section">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>Feature comparison</h2></div>
+        <div class="pr-scroll">
+          <table class="ui-table ui-table--hover pr-table">
+            <thead>
+              <tr>
+                <th scope="col">Feature</th>
+                <th scope="col"><span class="ui-tier-free"><span class="pr-long">Open source</span><span class="pr-short">Open</span></span></th>
+                <th scope="col"><span class="ui-tier-app"><span class="pr-long">GitHub App / Team</span><span class="pr-short">App</span></span></th>
+                <th scope="col"><span class="ui-tier-org"><span class="pr-long">Organization</span><span class="pr-short">Org</span></span></th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparison.map((row) => (
+                <tr>
+                  <th scope="row">{row.feature}</th>
+                  {[row.open, row.app, row.ds].map((included) => (
+                    <td>
+                      {included
+                        ? <span class="pr-yes"><span class="pr-long">Included</span><span class="pr-short" aria-hidden="true">✓</span><span class="pr-short ui-sr">Included</span></span>
+                        : <span class="pr-no"><span class="pr-long">Not included</span><span class="pr-short" aria-hidden="true">–</span><span class="pr-short ui-sr">Not included</span></span>}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="ui-section ui-section--band ui-section--last">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>Frequently asked questions</h2></div>
+        <div class="pr-faq">
+          {faqs.map((faq) => (
+            <details>
+              <summary>
+                <span>{faq.question}</span>
+                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </summary>
+              <div class="pr-answer">
+                {faq.answerHtml ? <Fragment set:html={faq.answerHtml} /> : faq.answer}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
 
   <Footer />
 </Layout>
+
+<style>
+  .pr-plans { margin-top: 0; }
+  .pr-plans-sec { padding-top: 0; }
+  .pr-name { margin: 6px 0 0; font-size: var(--text-h3); color: var(--color-ink); }
+  .pr-price { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; margin: 14px 0 4px; }
+  .pr-price > span:first-child { font-family: var(--font-display); font-size: 40px; font-weight: 700; line-height: 1; color: var(--color-ink); letter-spacing: -0.02em; }
+  .pr-price > span + span { font-size: 14px; color: var(--color-muted); }
+  .pr-plans .ui-ruled { margin-top: 20px; font-size: 14.5px; }
+  .pr-after { margin-top: 18px !important; padding-top: 14px; border-top: 1px solid var(--color-line); font-size: 13.5px !important; color: var(--color-muted); }
+  .pr-cta { margin-top: auto; padding-top: 24px; display: grid; gap: 12px; }
+  .pr-sub { justify-self: center; font-size: 14px; }
+  .pr-team { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: start; }
+  .pr-team h2 { margin: 6px 0 0; font-size: var(--text-h2); color: var(--color-ink); }
+  .pr-team .ui-ruled { margin: 0; }
+  @media (max-width: 860px) { .pr-team { grid-template-columns: minmax(0, 1fr); gap: 28px; } }
+  .pr-scroll { margin-top: 40px; }
+  .pr-table { width: 100%; }
+  .pr-short { display: none; }
+  @media (max-width: 640px) {
+    .pr-long { display: none; }
+    .pr-short:not(.ui-sr) { display: inline; }
+    .pr-table thead th:not(:first-child), .pr-table td { width: 52px; padding-left: 4px; padding-right: 4px; }
+    .pr-table th[scope="row"] { font-size: 14.5px; padding-right: 8px; }
+    .pr-yes, .pr-no { font-size: 16px; }
+  }
+  .pr-table th[scope="row"] { font-weight: 400; color: var(--color-ink); text-align: left; text-transform: none; letter-spacing: 0; font-size: 15px; }
+  .pr-table thead th:not(:first-child), .pr-table td { text-align: center; width: 18%; }
+  .pr-yes { color: var(--color-ok); font-size: 14px; font-weight: 500; }
+  .pr-no { color: var(--color-muted); font-size: 14px; opacity: 0.7; }
+  .pr-faq { margin-top: 40px; max-width: 760px; border-top: 1px solid var(--color-line-strong); }
+  .pr-faq details { border-bottom: 1px solid var(--color-line); }
+  .pr-faq summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 0; cursor: pointer; list-style: none; font-weight: 500; color: var(--color-ink); }
+  .pr-faq summary::-webkit-details-marker { display: none; }
+  .pr-faq summary svg { flex-shrink: 0; color: var(--color-muted); transition: transform 200ms var(--ease-out-expo); }
+  .pr-faq details[open] summary svg { transform: rotate(180deg); }
+  .pr-answer { padding: 0 0 22px; color: var(--color-body); max-width: 68ch; }
+  @media (prefers-reduced-motion: reduce) { .pr-faq summary svg { transition: none; } }
+</style>

@@ -45,20 +45,33 @@ const faqs = [
 
   <h2>The four pillars</h2>
   <table>
-    <thead><tr><th>Pillar</th><th>Points</th><th>What it measures</th></tr></thead>
+    <thead><tr><th>Pillar</th><th class="gl-num">Points</th><th>What it measures</th></tr></thead>
     <tbody>
-      <tr><td>Value discipline</td><td>60</td><td>Hardcoded colors, spacing, font sizes, radii and shadows per component. Every finding costs a little; about one per three components empties the pillar.</td></tr>
-      <tr><td>Token health</td><td>20</td><td>Half for having a token system (your own tokens, full credit at 20, or Tailwind's theme), half for tokens actually being used rather than left stale.</td></tr>
-      <tr><td>Consistency</td><td>10</td><td>Naming and semantic conflicts, for example two components named for the same role with different APIs.</td></tr>
-      <tr><td>Critical issues</td><td>10</td><td>Color contrast failures between text and background on the same element, accessibility conflicts and deprecated patterns.</td></tr>
+      <tr><td><strong>Value discipline</strong></td><td class="gl-num"><span class="gl-bar" style="width:60px"></span> 60</td><td>Hardcoded colors, spacing, font sizes, radii and shadows per component. Every finding costs a little; about one per three components empties the pillar.</td></tr>
+      <tr><td><strong>Token health</strong></td><td class="gl-num"><span class="gl-bar" style="width:20px"></span> 20</td><td>Half for having a token system (your own tokens, full credit at 20, or Tailwind's theme), half for tokens actually being used rather than left stale.</td></tr>
+      <tr><td><strong>Consistency</strong></td><td class="gl-num"><span class="gl-bar" style="width:10px"></span> 10</td><td>Naming and semantic conflicts, for example two components named for the same role with different APIs.</td></tr>
+      <tr><td><strong>Critical issues</strong></td><td class="gl-num"><span class="gl-bar" style="width:10px"></span> 10</td><td>Color contrast failures between text and background on the same element, accessibility conflicts and deprecated patterns.</td></tr>
     </tbody>
   </table>
-  <p>Labels: 80–100 mostly tokenized, 60–79 largely tokenized, 40–59 partly tokenized, 20–39 often hardcoded, under 20 mostly hardcoded. They describe how much of the UI goes through tokens, not the quality of the product or the team. (The CLI prints Great, Good, OK, Bad and Terrible for the same bands.)</p>
+  <table>
+    <thead><tr><th class="gl-num">Score</th><th>Label</th><th>CLI prints</th></tr></thead>
+    <tbody>
+      <tr><td class="gl-num">80 to 100</td><td class="ui-c-ok">Mostly tokenized</td><td>Great</td></tr>
+      <tr><td class="gl-num">60 to 79</td><td class="ui-c-ok">Largely tokenized</td><td>Good</td></tr>
+      <tr><td class="gl-num">40 to 59</td><td class="ui-c-warn">Partly tokenized</td><td>OK</td></tr>
+      <tr><td class="gl-num">20 to 39</td><td class="ui-c-crit">Often hardcoded</td><td>Bad</td></tr>
+      <tr><td class="gl-num">Under 20</td><td class="ui-c-crit">Mostly hardcoded</td><td>Terrible</td></tr>
+    </tbody>
+  </table>
+  <p>The labels describe how much of the UI goes through tokens, not the quality of the product or the team. (The CLI prints Great, Good, OK, Bad and Terrible for the same bands.)</p>
 
   <h2>Why density, not totals</h2>
   <p>
     A large product has more code, so it has more literals. Counting findings per component keeps a 4,000-component
-    monorepo comparable with a 300-component app. Earlier versions of the score capped every large codebase at the
+    monorepo comparable with a 300-component app.
+  </p>
+  <blockquote class="gl-pull"><p>Counting findings per component keeps a 4,000-component monorepo comparable with a 300-component app.</p></blockquote>
+  <p>Earlier versions of the score capped every large codebase at the
     same number; density fixed that.
   </p>
 
@@ -80,10 +93,13 @@ const faqs = [
   <h2>Real scores</h2>
   <p>
     {s.scoredCount} well-known open-source codebases, scanned with the same CLI: median {s.medianScore}, range
-    {s.minScore}–{s.maxScore}. The highest right now:
+    {s.minScore} to {s.maxScore}. The highest right now:
   </p>
-  <ul>
-    {s.best.map((r) => <li><a href={`/reports/${r.repo}`}>{r.repo}</a>: {r.score}/100</li>)}
-  </ul>
+  <table>
+    <thead><tr><th>Repository</th><th class="gl-num">Score</th></tr></thead>
+    <tbody>
+      {s.best.map((r) => <tr><td><a href={`/reports/${r.repo}`}>{r.repo}</a></td><td class="gl-num"><span class="gl-bar" style={`width:${r.score}px`}></span> {r.score}/100</td></tr>)}
+    </tbody>
+  </table>
   <p>All of them are on the <a href="/reports">reports page</a>, and any public repository can be scored at <a href="/scan">buoy.design/scan</a>.</p>
 </GuideLayout>

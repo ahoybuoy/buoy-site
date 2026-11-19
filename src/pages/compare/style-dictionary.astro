@@ -2,13 +2,13 @@
 import CompareLayout from '../../layouts/CompareLayout.astro'
 
 const comparison = [
-  { aspect: 'Primary purpose', sd: 'Transform & export tokens', buoy: 'Detect drift & measure adoption' },
-  { aspect: 'Direction', sd: 'Tokens → Code', buoy: 'Code → Analysis' },
+  { aspect: 'Primary purpose', sd: 'Transform and export tokens', buoy: 'Detect drift and measure adoption' },
+  { aspect: 'Direction', sd: 'Tokens to code', buoy: 'Code to analysis' },
   { aspect: 'Detects hardcoded values', sd: 'No', buoy: 'Yes' },
   { aspect: 'Detects duplicates', sd: 'No', buoy: 'Yes' },
   { aspect: 'Adoption metrics', sd: 'No', buoy: 'Yes' },
   { aspect: 'CI enforcement', sd: 'No', buoy: 'Yes' },
-  { aspect: 'Use together?', sd: '—', buoy: 'Yes! Perfect pairing' },
+  { aspect: 'Use together?', sd: 'Yes', buoy: 'Yes, a perfect pairing' },
 ]
 ---
 
@@ -20,118 +20,112 @@ const comparison = [
   heroDescription="Style Dictionary transforms and exports tokens. Buoy ensures those tokens are actually being used."
   competitor="Style Dictionary"
 >
-  <!-- Key Difference -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-4">Style Dictionary Does:</h3>
-          <ul class="space-y-2 text-sm text-slate">
-            <li>• Transform tokens from one format to another</li>
-            <li>• Export to CSS, SCSS, JS, iOS, Android</li>
-            <li>• Single source of truth for token values</li>
-            <li>• Great build tool for design systems</li>
-          </ul>
-        </div>
+  <div slot="hero" class="ui-tray"><div class="ui-panel">
+    <div class="ui-panel-head">build/tokens.css, then Button.tsx</div>
+    <pre class="hf-code"><code><span class="ui-t-dim">/* exported by Style Dictionary */</span>
+--color-primary: #3b82f6;
 
-        <div class="bg-navy/50 border border-buoy/30 rounded-xl p-6">
-          <h3 class="font-semibold text-buoy mb-4">Buoy Does:</h3>
-          <ul class="space-y-2 text-sm text-slate">
-            <li>• Find where tokens aren't being used</li>
-            <li>• Detect hardcoded values that bypass tokens</li>
-            <li>• Measure token adoption across codebase</li>
-            <li>• Enforce token usage in CI/CD</li>
+<span class="ui-t-dim">// written by Copilot</span>
+color: <span class="ui-old">#3b82f6</span>;</code></pre>
+    <dl class="hf-rows">
+      <div><dt>Style Dictionary</dt><dd class="hf-them">Token built and exported. Job done.</dd></div>
+      <div><dt class="ui-c-buoy">Buoy</dt><dd>Token exists but isn't used: should be <span class="ui-token">var(--color-primary)</span></dd></div>
+    </dl>
+  </div></div>
+
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-cols">
+        <article class="ui-col">
+          <h3>Style Dictionary does</h3>
+          <ul class="ui-ruled">
+            <li>Transform tokens from one format to another</li>
+            <li>Export to CSS, SCSS, JS, iOS, Android</li>
+            <li>Single source of truth for token values</li>
+            <li>Great build tool for design systems</li>
           </ul>
-        </div>
+        </article>
+        <article class="ui-col">
+          <h3 class="ui-c-buoy">Buoy does</h3>
+          <ul class="ui-ruled">
+            <li>Find where tokens aren't being used</li>
+            <li>Detect hardcoded values that bypass tokens</li>
+            <li>Measure token adoption across codebase</li>
+            <li>Enforce token usage in CI/CD</li>
+          </ul>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- Comparison Table -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Feature Comparison</h2>
-
-      <div class="bg-navy-dark border border-navy-light/30 rounded-xl overflow-hidden">
-        <div class="grid grid-cols-3 bg-navy border-b border-navy-light/20">
-          <div class="p-4 font-semibold text-slate">Feature</div>
-          <div class="p-4 font-semibold text-slate border-l border-navy-light/20">Style Dictionary</div>
-          <div class="p-4 font-semibold text-buoy border-l border-navy-light/20">Buoy</div>
-        </div>
-
-        {comparison.map((row, index) => (
-          <div class={`grid grid-cols-3 ${index % 2 === 0 ? 'bg-navy/30' : ''}`}>
-            <div class="p-4 text-light">{row.aspect}</div>
-            <div class="p-4 text-slate border-l border-navy-light/20">{row.sd}</div>
-            <div class="p-4 text-success border-l border-navy-light/20">{row.buoy}</div>
-          </div>
-        ))}
-      </div>
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>Feature comparison</h2></div>
+      <table class="ui-table cmp-table mt-10">
+        <thead><tr><th scope="col">Aspect</th><th scope="col">Style Dictionary</th><th scope="col" class="cmp-buoy">Buoy</th></tr></thead>
+        <tbody>
+          {comparison.map((row) => (
+            <tr><th scope="row">{row.aspect}</th><td class="cmp-them">{row.sd}</td><td class="cmp-buoy">{row.buoy}</td></tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   </section>
 
-  <!-- The Gap -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">The Gap Style Dictionary Doesn't Fill</h2>
-
-      <div class="bg-navy/50 border border-warning/30 rounded-xl p-6 mb-6">
-        <h3 class="font-semibold text-light mb-4">The Scenario:</h3>
-        <ol class="space-y-3 text-slate">
-          <li>1. You set up Style Dictionary beautifully</li>
-          <li>2. Tokens export to <code class="text-buoy">var(--color-primary)</code></li>
-          <li>3. Developer asks Copilot to build a button</li>
-          <li>4. Copilot writes <code class="text-warning">color: #3b82f6</code></li>
-          <li>5. Code review misses it, PR merges</li>
-          <li class="text-warning font-semibold">6. Your token exists but isn't being used</li>
+  <section class="ui-section">
+    <div class="ui-wrap ui-split">
+      <div>
+        <div class="ui-head"><h2>The gap Style Dictionary doesn't fill</h2></div>
+        <ol class="ui-steps">
+          <li><span class="ui-step-n">1</span><div><p>You set up Style Dictionary beautifully</p></div></li>
+          <li><span class="ui-step-n">2</span><div><p>Tokens export to <code class="ui-token">var(--color-primary)</code></p></div></li>
+          <li><span class="ui-step-n">3</span><div><p>Developer asks Copilot to build a button</p></div></li>
+          <li><span class="ui-step-n">4</span><div><p>Copilot writes <code class="ui-old">color: #3b82f6</code></p></div></li>
+          <li><span class="ui-step-n">5</span><div><p>Code review misses it, PR merges</p></div></li>
+          <li><span class="ui-step-n">6</span><div><p class="ui-c-warn">Your token exists but isn't being used</p></div></li>
         </ol>
       </div>
-
-      <div class="bg-navy/50 border border-success/30 rounded-xl p-6">
-        <h3 class="font-semibold text-light mb-4">With Buoy:</h3>
-        <p class="text-slate">
-          Buoy scans the codebase and reports: "Found hardcoded color #3b82f6 — should use var(--color-primary)".
-          The token exists. Now you know it's not being used.
-        </p>
+      <div class="ui-card ui-card--pad sd-with">
+        <h3 class="cmp-sub">With Buoy</h3>
+        <p>Buoy scans the codebase and reports the hardcoded <code class="ui-old">#3b82f6</code> with the token it should be, <code class="ui-token">var(--color-primary)</code>. The token exists. Now you know it's not being used.</p>
       </div>
     </div>
   </section>
 
-  <!-- Perfect Pairing -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-2xl font-bold text-light mb-4">The Perfect Pairing</h2>
-      <p class="text-slate mb-8 max-w-2xl mx-auto">
-        Style Dictionary creates and transforms your tokens.
-        Buoy ensures they're actually being used.
-      </p>
-
-      <div class="inline-flex flex-col sm:flex-row gap-4 items-center">
-        <div class="bg-navy-dark border border-navy-light/20 rounded-lg p-4 text-center">
-          <div class="text-2xl mb-2">📖</div>
-          <div class="text-sm text-light">Style Dictionary</div>
-          <div class="text-xs text-slate-dark">Create tokens</div>
-        </div>
-        <div class="text-2xl text-slate">→</div>
-        <div class="bg-navy-dark border border-navy-light/20 rounded-lg p-4 text-center">
-          <div class="text-2xl mb-2">💻</div>
-          <div class="text-sm text-light">Codebase</div>
-          <div class="text-xs text-slate-dark">Use tokens</div>
-        </div>
-        <div class="text-2xl text-slate">→</div>
-        <div class="bg-navy-dark border border-buoy/30 rounded-lg p-4 text-center">
-          <div class="text-2xl mb-2">⚓</div>
-          <div class="text-sm text-buoy">Buoy</div>
-          <div class="text-xs text-slate-dark">Verify usage</div>
-        </div>
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
+      <div class="ui-head">
+        <h2>The perfect pairing</h2>
+        <p>Style Dictionary creates and transforms your tokens. Buoy ensures they're actually being used.</p>
       </div>
-
-      <div class="mt-8 bg-navy-dark border border-navy-light/30 rounded-xl p-4 inline-block">
-        <pre class="text-sm font-mono text-left"><code class="text-slate">{`# .buoy.yaml
-# Point Buoy at your Style Dictionary output
+      <ol class="ui-steps">
+        <li><span class="ui-step-n">1</span><div><h3>Style Dictionary</h3><p>Create tokens</p></div></li>
+        <li><span class="ui-step-n">2</span><div><h3>Codebase</h3><p>Use tokens</p></div></li>
+        <li><span class="ui-step-n">3</span><div><h3 class="ui-c-buoy">Buoy</h3><p>Verify usage</p></div></li>
+      </ol>
+      <div class="ui-tray cmp-narrow"><div class="ui-panel">
+        <div class="ui-panel-head">.buoy.yaml</div>
+        <pre class="cmp-code"><code><span class="ui-t-dim"># Point Buoy at your Style Dictionary output</span>
 tokens:
-  source: "./build/tokens.json"`}</code></pre>
-      </div>
+  source: <span class="ui-t-ok">"./build/tokens.json"</span></code></pre>
+      </div></div>
     </div>
   </section>
 </CompareLayout>
+
+<style>
+  .cmp-sub { margin: 0 0 16px; font-size: var(--text-h3); color: var(--color-ink); }
+  .sd-with { align-self: center; }
+  .cmp-narrow { max-width: 560px; }
+  .cmp-code { margin: 0; padding: 18px 20px; font-size: 13px; line-height: 1.7; background: var(--color-term); color: var(--color-body); }
+</style>
+
+<style is:global>
+  .hf-code { margin: 0; padding: 18px 20px; font-size: 13px; line-height: 1.7; background: var(--color-term); color: var(--color-body); }
+  .hf-rows { margin: 0; border-top: 1px solid var(--color-line); }
+  .hf-rows > div { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; padding: 13px 20px; border-bottom: 1px solid var(--color-line); font-size: 14px; line-height: 1.5; }
+  .hf-rows > div:last-child { border-bottom: 0; }
+  .hf-rows dt { font-weight: 600; color: var(--color-ink); }
+  .hf-rows dd { margin: 0; color: var(--color-ink); }
+  .hf-rows dd.hf-them { color: var(--color-muted); }
+</style>

@@ -7,14 +7,14 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
 
   <p>
     Turn Claude Code into a self-validating agent. When Claude edits a UI component,
-    Buoy automatically checks for design drift and feeds corrections back—creating
+    Buoy automatically checks for design drift and feeds corrections back, creating
     a closed loop where the AI catches and fixes its own mistakes.
   </p>
 
   <h2>How It Works</h2>
 
   <p>
-    Claude Code supports <a href="https://docs.anthropic.com/en/docs/claude-code/hooks">hooks</a>—shell
+    Claude Code supports <a href="https://docs.anthropic.com/en/docs/claude-code/hooks">hooks</a>, shell
     commands that run at specific points in the AI's workflow. Buoy uses the <code>PostToolUse</code>
     hook to validate files after Claude writes them:
   </p>
@@ -50,8 +50,8 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
   <p>This creates two files:</p>
 
   <ul>
-    <li><code>.claude/hooks/buoy-validate.js</code> — The validation script</li>
-    <li><code>.claude/settings.local.json</code> — Hook configuration</li>
+    <li><code>.claude/hooks/buoy-validate.js</code>: The validation script</li>
+    <li><code>.claude/settings.local.json</code>: Hook configuration</li>
   </ul>
 
   <h2>What Gets Checked</h2>
@@ -59,10 +59,10 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
   <p>The hook validates these file types:</p>
 
   <ul>
-    <li><code>.tsx</code>, <code>.jsx</code> — React components</li>
-    <li><code>.vue</code> — Vue components</li>
-    <li><code>.svelte</code> — Svelte components</li>
-    <li><code>.component.ts</code>, <code>.component.html</code> — Angular components</li>
+    <li><code>.tsx</code>, <code>.jsx</code>: React components</li>
+    <li><code>.vue</code>: Vue components</li>
+    <li><code>.svelte</code>: Svelte components</li>
+    <li><code>.component.ts</code>, <code>.component.html</code>: Angular components</li>
   </ul>
 
   <p>It skips test files, stories, config files, and type definitions.</p>
@@ -131,9 +131,9 @@ Run `buoy show drift` for full details.</code></pre>
   <p>The Buoy hook works alongside other Claude Code hooks. For example, you might have:</p>
 
   <ul>
-    <li><code>SessionStart</code> — Load design system context</li>
-    <li><code>PostToolUse</code> — Buoy validation (this hook)</li>
-    <li><code>PreToolUse</code> — Custom approval workflows</li>
+    <li><code>SessionStart</code>: Load design system context</li>
+    <li><code>PostToolUse</code>: Buoy validation (this hook)</li>
+    <li><code>PreToolUse</code>: Custom approval workflows</li>
   </ul>
 
   <h2>Troubleshooting</h2>
@@ -168,15 +168,15 @@ Run `buoy show drift` for full details.</code></pre>
     <li>Returns structured feedback via <code>hookSpecificOutput.additionalContext</code></li>
   </ol>
 
-  <p>The script always exits with code 0—it provides feedback without blocking Claude's workflow.</p>
+  <p>The script always exits with code 0. It provides feedback without blocking Claude's workflow.</p>
 
   <h2>Related</h2>
 
   <ul>
-    <li><a href="/docs/integrations/mcp">MCP Server</a> — Tokens and drift checks inside the agent loop</li>
-    <li><a href="/docs/cli/drift">buoy drift check</a> — The command that powers the hook</li>
-    <li><a href="/docs/cli/dock">buoy dock</a> — Project setup including hooks</li>
-    <li><a href="/docs/features/ai-guardrails">AI Guardrails</a> — Broader AI integration strategy</li>
-    <li><a href="/docs/integrations/github-actions">GitHub App</a> — CI/CD integration</li>
+    <li><a href="/docs/integrations/mcp">MCP Server</a>: Tokens and drift checks inside the agent loop</li>
+    <li><a href="/docs/cli/drift">buoy drift check</a>: The command that powers the hook</li>
+    <li><a href="/docs/cli/dock">buoy dock</a>: Project setup including hooks</li>
+    <li><a href="/docs/features/ai-guardrails">AI Guardrails</a>: Broader AI integration strategy</li>
+    <li><a href="/docs/integrations/github-actions">GitHub App</a>: CI/CD integration</li>
   </ul>
 </DocsLayout>

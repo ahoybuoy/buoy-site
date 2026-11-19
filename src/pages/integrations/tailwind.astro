@@ -32,18 +32,28 @@ const features = [
 
 const terminalLines = [
   { text: '', delay: 600 },
-  { text: '<span class="text-buoy">⚓</span> Scanning Tailwind usage...', type: 'output', delay: 800 },
+  { text: '<span class="ui-t-prompt">›</span> Scanning Tailwind usage...', type: 'output', delay: 800 },
   { text: '', delay: 1200 },
-  { text: 'Found <span class="text-light">2,847</span> Tailwind class usages', type: 'output', delay: 1400 },
-  { text: 'Found <span class="text-light">156</span> unique utility classes', type: 'output', delay: 1600 },
+  { text: 'Found <span class="ui-t-hi">2,847</span> Tailwind class usages', type: 'output', delay: 1400 },
+  { text: 'Found <span class="ui-t-hi">156</span> unique utility classes', type: 'output', delay: 1600 },
   { text: '', delay: 1800 },
-  { text: '<span class="text-warning">WARNING</span> 23 arbitrary values detected', type: 'warning', delay: 2000 },
-  { text: '├─ bg-[#3b82f6] → use bg-primary', type: 'warning', delay: 2200 },
-  { text: '├─ p-[14px] → use p-3.5', type: 'warning', delay: 2400 },
-  { text: '└─ text-[13px] → use text-sm', type: 'warning', delay: 2600 },
+  { text: '<span class="ui-t-warn">WARNING</span> 23 arbitrary values detected', type: 'warning', delay: 2000 },
+  { text: '├─ <span class="ui-t-crit">bg-[#3b82f6]</span> → use <span class="ui-t-ok">bg-primary</span>', type: 'warning', delay: 2200 },
+  { text: '├─ <span class="ui-t-crit">p-[14px]</span> → use <span class="ui-t-ok">p-3.5</span>', type: 'warning', delay: 2400 },
+  { text: '└─ <span class="ui-t-crit">text-[13px]</span> → use <span class="ui-t-ok">text-sm</span>', type: 'warning', delay: 2600 },
   { text: '', delay: 2800 },
-  { text: '<span class="text-info">INFO</span> 8 classes could use theme values', type: 'info', delay: 3000 },
+  { text: '<span class="ui-t-info">INFO</span> 8 classes could use theme values', type: 'info', delay: 3000 },
 ]
+
+const heroCode = `&lt;section className="
+  <span class="ui-old">bg-[#3b82f6]</span> <span class="ui-token">bg-primary</span>
+  <span class="ui-old">p-[14px]</span> <span class="ui-token">p-3.5</span>
+  <span class="ui-old">text-[13px]</span> <span class="ui-token">text-sm</span>
+  rounded-lg"&gt;
+  &lt;h1 className="<span class="ui-old">tracking-[-0.02em]</span> <span class="ui-token">tracking-tight</span>"&gt;
+    Ship faster
+  &lt;/h1&gt;
+&lt;/section&gt;`
 ---
 
 <IntegrationLayout
@@ -52,43 +62,30 @@ const terminalLines = [
   keywords="tailwind design tokens, tailwind config extraction, tailwind consistency"
   heroTitle="Tailwind CSS Design Token Extraction"
   heroDescription="Keep your Tailwind usage consistent. Detect arbitrary values, extract tokens from your config, and ensure developers use your theme."
-  icon="🌊"
-  iconBg="bg-cyan-500/20"
 >
-  <!-- Features Grid -->
-  <section class="py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Tailwind Integration Features</h2>
+  <div slot="hero">
+    <div class="ui-tray"><div class="ui-panel"><div class="ui-panel-head">src/components/Hero.tsx</div><pre class="p-5 text-sm" set:html={heroCode} /></div></div>
+  </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {features.map((feature) => (
-          <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
-            <h3 class="font-semibold text-light mb-2">{feature.title}</h3>
-            <p class="text-sm text-slate">{feature.description}</p>
-          </div>
-        ))}
-      </div>
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head mb-8"><h2>Tailwind integration features</h2></div>
+      <table class="ui-table">
+        <tbody>
+          {features.map((f) => (
+            <tr><th scope="row">{f.title}</th><td>{f.description}</td></tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   </section>
 
-  <!-- Terminal Demo -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">See it in action</h2>
-      <Terminal command="buoy drift check --tailwind" lines={terminalLines} />
-    </div>
-  </section>
-
-  <!-- Configuration -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Configuration Example</h2>
-
-      <div class="bg-navy border border-navy-light/30 rounded-xl overflow-hidden">
-        <div class="px-4 py-3 bg-navy-dark border-b border-navy-light/20">
-          <span class="text-sm text-slate font-mono">.buoy.yaml</span>
-        </div>
-        <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{`# .buoy.yaml
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
+      <div class="ui-head mb-8"><h2>Catch them in a scan</h2><p>Buoy reads your theme, then flags every arbitrary value that has a theme equivalent. The allow list keeps intentional ones quiet.</p></div>
+      <div class="ui-split items-start">
+        <div><Terminal command="buoy drift check --tailwind" lines={terminalLines} /></div>
+        <div><div class="ui-tray"><div class="ui-panel"><div class="ui-panel-head">.buoy.yaml</div><pre class="p-5 text-sm">{`# .buoy.yaml
 
 # Path to your Tailwind config
 tailwind: "./tailwind.config.ts"
@@ -107,44 +104,15 @@ tailwindOptions:
   extractTheme: true
 
 include:
-  - "src/**/*.tsx"`}</code></pre>
+  - "src/**/*.tsx"`}</pre></div></div></div>
       </div>
     </div>
   </section>
 
-  <!-- Before/After -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Arbitrary Values → Theme Values</h2>
 
-      <div class="grid md:grid-cols-2 gap-8">
-        <div>
-          <h3 class="text-lg font-semibold text-light mb-4 flex items-center gap-2">
-            <span class="text-critical">✗</span> Before
-          </h3>
-          <div class="bg-navy-dark border border-navy-light/30 rounded-xl p-4 font-mono text-sm">
-            <code class="text-slate">{`<div class="bg-[#3b82f6] p-[14px] text-[13px]">
-  Content
-</div>`}</code>
-          </div>
-        </div>
 
-        <div>
-          <h3 class="text-lg font-semibold text-light mb-4 flex items-center gap-2">
-            <span class="text-success">✓</span> After
-          </h3>
-          <div class="bg-navy-dark border border-success/30 rounded-xl p-4 font-mono text-sm">
-            <code class="text-slate">{`<div class="bg-primary p-3.5 text-sm">
-  Content
-</div>`}</code>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Lead Magnet: Token Migration -->
-  <section class="py-12">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="ui-section">
+    <div class="ui-wrap">
       <LeadMagnetCallout
         leadMagnet="token-migration"
         headline="Migrating from arbitrary values to theme tokens?"

@@ -8,14 +8,13 @@ interface Props { id?: string; autofocus?: boolean }
 const { id = 'scan', autofocus = false } = Astro.props
 ---
 
-<form id={`${id}-form`} action="/scan" method="get" class="scan-form flex flex-col sm:flex-row gap-3" data-scan-form>
-  <label for={`${id}-url`} class="sr-only">GitHub repository URL</label>
+<form id={`${id}-form`} action="/scan" method="get" class="ui-scan scan-form" data-scan-form>
+  <label for={`${id}-url`} class="ui-sr">GitHub repository URL</label>
   <input id={`${id}-url`} name="url" type="text" required autocomplete="off" spellcheck="false" autofocus={autofocus}
-    placeholder="https://github.com/owner/repo"
-    class="flex-1 rounded-lg bg-navy-dark border border-navy-light/40 px-4 py-3 text-light placeholder:text-slate/60 focus:outline-none focus:border-buoy" />
-  <button type="submit" class="rounded-lg bg-buoy px-6 py-3 font-semibold text-navy-dark hover:opacity-90 disabled:opacity-60">Scan repository</button>
+    placeholder="https://github.com/owner/repo" />
+  <button type="submit" class="ui-btn ui-btn--primary disabled:opacity-60">Scan repository</button>
 </form>
-<p class="scan-error text-sm text-red-400 mt-3 hidden" role="alert" data-scan-error></p>
+<p class="scan-error ui-msg ui-msg--err hidden" role="alert" data-scan-error></p>
 
 <script>
   const API = 'https://api.buoy.design'

@@ -3,6 +3,14 @@ import Layout from '../layouts/Layout.astro'
 import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
 import FreeSpots from '../components/FreeSpots.astro'
+import MarkPattern from '../components/MarkPattern.astro'
+
+const benefits = [
+  { title: 'Smart GitHub PR comments', text: 'Automatic drift detection on every pull request.' },
+  { title: 'Cloud history & trends', text: 'Track your design system health over time.' },
+  { title: 'Committable inline suggestions', text: 'One-click fix suggestions on every PR.' },
+  { title: 'Help shape review quality', text: 'Contextual feedback helps Buoy become useful without becoming noisy.' },
+]
 ---
 
 <Layout
@@ -11,132 +19,89 @@ import FreeSpots from '../components/FreeSpots.astro'
 >
   <Nav />
 
-  <!-- Hero -->
-  <section class="relative pt-32 pb-16 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
-
-    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="inline-flex items-center gap-2 px-3 py-1 bg-success/20 border border-success/30 rounded-full text-success text-sm mb-6">
-        <FreeSpots />
-      </div>
-      <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6">
-        Free for life for the first 100 installs
-      </h1>
-      <p class="text-xl text-slate max-w-2xl mx-auto">
-        Install the Buoy GitHub App while spots remain and your organization keeps it free for life:
-        every repo, contributor and agent. No card required.
-      </p>
-    </div>
-  </section>
-
-  <!-- Main Content -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-12 items-start">
-
-        <!-- Left: Benefits -->
-        <div>
-          <h2 class="text-2xl font-bold text-light mb-6">What you get</h2>
-
-          <div class="space-y-4 mb-8">
-            <div class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-              <div>
-                <h3 class="font-semibold text-light">Smart GitHub PR comments</h3>
-                <p class="text-sm text-slate">Automatic drift detection on every pull request.</p>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-              <div>
-                <h3 class="font-semibold text-light">Cloud history & trends</h3>
-                <p class="text-sm text-slate">Track your design system health over time.</p>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-              <div>
-                <h3 class="font-semibold text-light">Committable inline suggestions</h3>
-                <p class="text-sm text-slate">One-click fix suggestions on every PR.</p>
-              </div>
-            </div>
-
-            <div class="flex items-start gap-3">
-              <svg class="w-6 h-6 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-              <div>
-                <h3 class="font-semibold text-light">Help shape review quality</h3>
-                <p class="text-sm text-slate">Contextual feedback helps Buoy become useful without becoming noisy.</p>
-              </div>
+  <main id="main" class="ui-nav-offset">
+    <section class="ui-section ui-section--first ui-section--patterned">
+      <MarkPattern pattern="swell" drift={0.3} fade class="ui-pattern" />
+      <div class="ui-wrap fm-hero">
+        <div class="ui-head">
+          <p class="ui-eyebrow"><FreeSpots class="ui-c-ok ui-tnum" /></p>
+          <h1>Free for life for the first 100 installs</h1>
+          <p class="ui-lede">
+            Install the Buoy GitHub App while spots remain and your organization keeps it free for life:
+            every repo, contributor and agent. No card required.
+          </p>
+        </div>
+        <div class="ui-tray fm-install">
+          <div class="ui-panel">
+            <div class="ui-panel-head">GitHub Marketplace</div>
+            <div class="fm-install-body">
+              <h2>Install from GitHub Marketplace</h2>
+              <p>One click to install for public or private repositories. No credit card.</p>
+              <a href="https://github.com/marketplace/buoy-design" class="ui-btn ui-btn--primary ui-btn--lg ui-btn--block">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                Install Free
+              </a>
+              <p class="ui-note">Free for life for the first 100 installs, on public and private repos.</p>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="bg-navy-dark border border-buoy/30 rounded-xl p-4">
-            <h3 class="font-semibold text-light mb-2 flex items-center gap-2">
-              <span class="text-buoy">*</span> What free for life means
-            </h3>
-            <p class="text-sm text-slate">
+    <section class="ui-section ui-section--band">
+      <div class="ui-wrap">
+        <div class="ui-cols">
+          <article class="ui-col">
+            <p class="ui-tier-name ui-tier-app">GitHub App</p>
+            <h2 class="fm-h">What you get</h2>
+            <ul class="ui-ruled fm-list">
+              {benefits.map((b) => (
+                <li><strong>{b.title}</strong><span>{b.text}</span></li>
+              ))}
+            </ul>
+          </article>
+          <article class="ui-col">
+            <p class="ui-tier-name ui-tier-free">The fine print</p>
+            <h2 class="fm-h">What free for life means</h2>
+            <p>
               The GitHub organization or account that installs among the first 100 keeps the GitHub App free
               for as long as Buoy runs it, including what we add to Team later. It stays with that organization
               and does not transfer. After the first 100, new installs get one private repo free or pay $149 a month per design system, and
-              public repos stay free. <a href="/pricing" class="text-buoy hover:underline">See pricing</a>.
+              public repos stay free. <a href="/pricing" class="ui-link">See pricing</a>.
             </p>
-          </div>
+          </article>
         </div>
-
-        <!-- Right: CTA -->
-        <div class="bg-navy-dark border border-buoy/30 rounded-2xl p-8 text-center">
-          <h2 class="text-xl font-bold text-light mb-4">Install from GitHub Marketplace</h2>
-          <p class="text-slate mb-6">
-            One click to install for public or private repositories. No credit card.
-          </p>
-
-          <a
-            href="https://github.com/marketplace/buoy-design"
-            class="inline-flex items-center justify-center gap-2 w-full py-3 px-6 bg-buoy text-navy-dark font-semibold rounded-lg hover:bg-buoy/90 transition-colors"
-          >
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-            </svg>
-            Install Free
-          </a>
-
-          <p class="text-xs text-slate/70 mt-4">
-            Free for life for the first 100 installs, on public and private repos.
-          </p>
-        </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CLI Section -->
-  <section class="py-16 bg-navy-dark">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-2xl font-bold text-light mb-4">Prefer the CLI?</h2>
-      <p class="text-slate mb-8">
-        The open source CLI has full drift detection and works standalone, no GitHub integration required.
-      </p>
-      <a
-        href="https://github.com/ahoybuoy/buoy"
-        class="inline-flex items-center gap-2 px-6 py-3 bg-navy border border-navy-light/30 text-light rounded-lg hover:border-buoy/50 transition-colors"
-      >
-        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-        </svg>
-        View CLI on GitHub
-      </a>
-    </div>
-  </section>
+    <section class="ui-section ui-section--last">
+      <div class="ui-wrap">
+        <div class="ui-head ui-head--center">
+          <h2>Prefer the CLI?</h2>
+          <p>The open source CLI has full drift detection and works standalone, no GitHub integration required.</p>
+        </div>
+        <div class="ui-actions fm-center">
+          <a href="https://github.com/ahoybuoy/buoy" class="ui-btn ui-btn--secondary">View CLI on GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <Footer />
 </Layout>
+
+<style>
+  .fm-hero { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 56px; align-items: center; }
+  @media (max-width: 960px) { .fm-hero { grid-template-columns: minmax(0, 1fr); gap: 36px; } }
+  .fm-install-body { padding: 28px; }
+  .fm-install-body h2 { margin: 0; font-size: var(--text-h3); color: var(--color-ink); }
+  .fm-install-body > p:not(.ui-note) { margin: 8px 0 22px; }
+  .fm-h { margin: 6px 0 0; font-size: var(--text-h3); color: var(--color-ink); }
+  .fm-list { margin-top: 16px; }
+  .fm-list li { display: grid; gap: 2px; }
+  .fm-list strong { color: var(--color-ink); font-weight: 600; }
+  .fm-list span { font-size: 14.5px; color: var(--color-muted); }
+  .fm-center { justify-content: center; margin-top: 28px; }
+</style>

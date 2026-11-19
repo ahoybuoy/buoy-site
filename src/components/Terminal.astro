@@ -15,81 +15,45 @@ const { command, lines, autoplay = true, class: className = '' } = Astro.props
 const terminalId = `terminal-${Math.random().toString(36).substr(2, 9)}`
 ---
 
-<div class={`terminal-container relative ${className}`}>
-  <!-- Glow effect behind terminal -->
-  <div class="absolute -inset-1 bg-gradient-to-b from-lavender/20 via-buoy/10 to-transparent rounded-xl blur-xl opacity-50"></div>
-
-  <!-- Terminal window -->
-  <div class="relative bg-navy-dark border border-navy-light/30 rounded-xl overflow-hidden shadow-2xl">
-    <!-- Title bar -->
-    <div class="flex items-center gap-2 px-4 py-3 bg-navy border-b border-navy-light/20">
-      <div class="flex items-center gap-1.5">
-        <div class="w-3 h-3 rounded-full bg-critical/80"></div>
-        <div class="w-3 h-3 rounded-full bg-warning/80"></div>
-        <div class="w-3 h-3 rounded-full bg-success/80"></div>
+<div class={`terminal-container ui-term ${className}`}>
+  <div class="ui-term-bar"><span>Terminal</span></div>
+  <div class="ui-term-body terminal-body" id={terminalId}>
+    {command && (
+      <div class="terminal-cmd">
+        <span class="ui-t-prompt">$</span>
+        <span class="terminal-command ui-t-hi" data-text={command}></span>
+        <span class="cursor-blink opacity-0" id={`${terminalId}-cursor`}></span>
       </div>
-      <div class="flex-1 text-center">
-        <span class="text-xs text-slate font-mono">buoy-cli</span>
-      </div>
-      <div class="w-12"></div>
-    </div>
+    )}
 
-    <!-- Terminal content -->
-    <div class="p-4 sm:p-6 font-mono text-sm leading-relaxed min-h-[300px]" id={terminalId}>
-      {command && (
-        <div class="flex items-center gap-2 mb-4">
-          <span class="text-buoy">$</span>
-          <span class="terminal-command text-light" data-text={command}></span>
-          <span class="cursor-blink opacity-0" id={`${terminalId}-cursor`}></span>
-        </div>
-      )}
+    <div class="terminal-output">
+      {lines.map((line, index) => {
+        const colorClass = {
+          command: 'ui-t-hi',
+          output: '',
+          success: 'ui-t-ok',
+          warning: 'ui-t-warn',
+          critical: 'ui-t-crit',
+          info: 'ui-t-info',
+          muted: 'ui-t-dim',
+        }[line.type || 'output']
 
-      <div class="terminal-output space-y-1">
-        {lines.map((line, index) => {
-          const colorClass = {
-            command: 'text-light',
-            output: 'text-slate',
-            success: 'text-success',
-            warning: 'text-warning',
-            critical: 'text-critical',
-            info: 'text-info',
-            muted: 'text-slate-dark',
-          }[line.type || 'output']
-
-          return (
-            <div
-              class={`terminal-line ${colorClass} opacity-0`}
-              data-delay={line.delay || (index * 100)}
-              set:html={line.text}
-            />
-          )
-        })}
-      </div>
-    </div>
-
-    <!-- Scan line effect -->
-    <div class="absolute inset-0 pointer-events-none overflow-hidden rounded-xl">
-      <div class="scan-line absolute w-full h-px bg-gradient-to-r from-transparent via-buoy/30 to-transparent"></div>
+        return (
+          <div
+            class={`terminal-line ${colorClass} opacity-0`}
+            data-delay={line.delay || (index * 100)}
+            set:html={line.text}
+          />
+        )
+      })}
     </div>
   </div>
 </div>
 
 <style>
-  @keyframes scanline {
-    0% { transform: translateY(-100%); opacity: 0; }
-    50% { opacity: 1; }
-    100% { transform: translateY(400px); opacity: 0; }
-  }
-
-  .scan-line {
-    animation: scanline 4s ease-in-out infinite;
-    animation-delay: 2s;
-  }
-
-  @keyframes typewriter {
-    from { width: 0; }
-    to { width: 100%; }
-  }
+  /* Reserve the output height so nothing shifts while lines fade in */
+  .terminal-body { min-height: 300px; white-space: pre-wrap; }
+  .terminal-cmd { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
 
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(4px); }
@@ -98,6 +62,9 @@ const terminalId = `terminal-${Math.random().toString(36).substr(2, 9)}`
 
   .terminal-line.visible {
     animation: fadeIn 0.3s ease-out forwards;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .terminal-line.visible { animation: none; opacity: 1; }
   }
 </style>
 

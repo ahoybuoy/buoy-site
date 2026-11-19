@@ -22,21 +22,21 @@ list = ORDER.map((slug) => list.find((v) => v.slug === slug)).filter((v): v is V
 ---
 
 {list.length > 0 && (
-  <section class="py-8 bg-navy-dark" data-inline-viz data-repo={repo} hidden>
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="ui-section !py-16" data-inline-viz data-repo={repo} hidden>
+    <div class="ui-wrap">
       <div class="flex flex-wrap items-baseline justify-between gap-2">
-        <h2 class="text-2xl font-bold text-light">Inside {repo}</h2>
-        <a data-viz-full href={`/scan/${repo}/v/${list[0].slug}`} class="text-sm text-buoy hover:underline">Open full page →</a>
+        <h2 class="text-[length:var(--text-h2)]">Inside {repo}</h2>
+        <a data-viz-full href={`/scan/${repo}/v/${list[0].slug}`} class="ui-link text-sm">Open full page →</a>
       </div>
-      <div class="flex flex-wrap gap-2 mt-4" role="tablist" aria-label="Views">
+      <div class="flex flex-wrap gap-x-6 gap-y-1 mt-6 border-b border-[var(--color-line)]" role="tablist" aria-label="Views">
         {list.map((v, i) => (
           <button type="button" role="tab" aria-selected={i === 0 ? 'true' : 'false'} data-viz-tab={v.slug} data-viz-url={v.url} data-viz-name={v.name} title={v.description}
-            class="rounded-full border px-4 py-1.5 text-sm font-medium border-navy-light/40 text-slate aria-selected:border-buoy aria-selected:text-light hover:text-light">
+            class="cursor-pointer -mb-px border-b-2 border-transparent py-2.5 text-sm font-medium text-[var(--color-muted)] transition-colors hover:text-[var(--color-ink)] aria-selected:border-[var(--color-buoy)] aria-selected:text-[var(--color-ink)]">
             {v.name}
           </button>
         ))}
       </div>
-      <div class="mt-4 rounded-2xl overflow-hidden border border-navy-light/30 bg-navy/40" data-viz-holder></div>
+      <div class="ui-tray mt-6"><div class="ui-panel overflow-hidden min-h-[320px]" data-viz-holder></div></div>
     </div>
   </section>
 )}

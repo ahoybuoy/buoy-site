@@ -12,7 +12,7 @@ interface Props {
 const { class: className = '' } = Astro.props
 ---
 
-<span class={className} data-free-spots>Free for life for the first 100 installs</span>
+<span class={`free-spots ${className}`} data-free-spots>Free for life for the first 100 installs</span>
 
 <script>
   async function updateFreeSpots() {

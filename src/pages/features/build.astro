@@ -1,46 +1,11 @@
 ---
 import FeatureLayout from '../../layouts/FeatureLayout.astro'
-import Terminal from '../../components/Terminal.astro'
-import FeatureCard from '../../components/FeatureCard.astro'
-
-const terminalLines = [
-  { text: '', delay: 600 },
-  { text: '<span class="text-buoy">⚓</span> Reading design tokens from Figma...', type: 'output', delay: 800 },
-  { text: '', delay: 1200 },
-  { text: '<span class="text-success">✓</span> Found 24 color tokens', type: 'success', delay: 1400 },
-  { text: '<span class="text-success">✓</span> Found 8 spacing tokens', type: 'success', delay: 1600 },
-  { text: '<span class="text-success">✓</span> Found 6 typography tokens', type: 'success', delay: 1800 },
-  { text: '', delay: 2000 },
-  { text: '<span class="text-buoy">⚓</span> Generating token files...', type: 'output', delay: 2200 },
-  { text: '', delay: 2400 },
-  { text: '<span class="text-success">✓</span> Created tokens.css', type: 'success', delay: 2600 },
-  { text: '<span class="text-success">✓</span> Created tokens.json', type: 'success', delay: 2800 },
-  { text: '<span class="text-success">✓</span> Created tailwind.config.js extension', type: 'success', delay: 3000 },
-  { text: '', delay: 3200 },
-  { text: '<span class="text-light">Build complete!</span> <span class="text-slate">3 files generated</span>', type: 'output', delay: 3400 },
-]
 
 const sources = [
-  {
-    name: 'Figma Variables',
-    description: 'Import tokens directly from Figma Variables API',
-    icon: '🎨'
-  },
-  {
-    name: 'Style Dictionary',
-    description: 'Convert Style Dictionary JSON to any output format',
-    icon: '📖'
-  },
-  {
-    name: 'Tokens Studio',
-    description: 'Sync with Tokens Studio for Figma',
-    icon: '🎯'
-  },
-  {
-    name: 'Custom JSON',
-    description: 'Define tokens in a simple JSON format',
-    icon: '📝'
-  },
+  { name: 'Figma Variables', description: 'Import tokens directly from Figma Variables API' },
+  { name: 'Style Dictionary', description: 'Convert Style Dictionary JSON to any output format' },
+  { name: 'Tokens Studio', description: 'Sync with Tokens Studio for Figma' },
+  { name: 'Custom JSON', description: 'Define tokens in a simple JSON format' },
 ]
 
 const outputs = [
@@ -55,21 +20,9 @@ const outputs = [
 ]
 
 const relatedFeatures = [
-  {
-    title: 'Bootstrap',
-    description: 'Extract tokens from existing code',
-    href: '/features/bootstrap'
-  },
-  {
-    title: 'Figma Integration',
-    description: 'Sync tokens with Figma',
-    href: '/integrations/figma'
-  },
-  {
-    title: 'Drift Detection',
-    description: 'Ensure code uses generated tokens',
-    href: '/features/drift-detection'
-  },
+  { title: 'Bootstrap', description: 'Extract tokens from existing code', href: '/features/bootstrap' },
+  { title: 'Figma Integration', description: 'Sync tokens with Figma', href: '/integrations/figma' },
+  { title: 'Drift Detection', description: 'Ensure code uses generated tokens', href: '/features/drift-detection' },
 ]
 ---
 
@@ -79,93 +32,85 @@ const relatedFeatures = [
   keywords="generate design tokens, figma to css variables, style dictionary alternative"
   heroTitle="Build tokens from any source"
   heroDescription="Import from Figma, Style Dictionary, or define your own. Generate outputs for every platform."
+  related={relatedFeatures}
+  pattern="scan"
+  ctaPattern="swell"
 >
-  <!-- Sources -->`
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Import From Anywhere</h2>
+  <div slot="example" class="ui-term fx-term">
+    <div class="ui-term-bar"><span>Terminal</span></div>
+    <pre><span class="ui-t-prompt">$</span> <span class="ui-t-hi">buoy import design-tokens.json</span>
+<span class="ui-t-dim">Reading design tokens from Figma...</span>
 
-      <div class="grid sm:grid-cols-2 gap-6">
-        {sources.map((source) => (
-          <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
-            <div class="text-3xl mb-4">{source.icon}</div>
-            <h3 class="font-semibold text-light mb-2">{source.name}</h3>
-            <p class="text-sm text-slate">{source.description}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+<span class="ui-t-ok">✓</span> Found 24 color tokens
+<span class="ui-t-ok">✓</span> Found 8 spacing tokens
+<span class="ui-t-ok">✓</span> Found 6 typography tokens
 
-  <!-- Terminal Demo -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">See it in action</h2>
-      <Terminal command="buoy import design-tokens.json" lines={terminalLines} />
-    </div>
-  </section>
+<span class="ui-t-dim">Generating token files...</span>
 
-  <!-- Output Formats -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Output to Any Platform</h2>
+<span class="ui-t-ok">✓</span> Created tokens.css
+<span class="ui-t-ok">✓</span> Created tokens.json
+<span class="ui-t-ok">✓</span> Created tailwind.config.js extension
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {outputs.map((output) => (
-          <div class="bg-navy/50 border border-navy-light/20 rounded-lg p-4 flex items-center justify-between">
-            <span class="text-light text-sm">{output.name}</span>
-            <code class="text-xs text-slate-dark">{output.file}</code>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Config Example -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Simple Configuration</h2>
-
-      <div class="bg-navy-dark border border-navy-light/30 rounded-xl overflow-hidden">
-        <div class="px-4 py-3 bg-navy border-b border-navy-light/20">
-          <span class="text-sm text-slate font-mono">.buoy.yaml</span>
-        </div>
-        <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{`# .buoy.yaml
-build:
-  # Token source
-  source:
-    type: figma
-    fileKey: your-figma-file-key
-    # Or use Style Dictionary
-    # type: style-dictionary
-    # path: "./tokens.json"
-
-  # Output formats
-  outputs:
-    - format: css
-      path: "./src/tokens.css"
-    - format: tailwind
-      path: "./tailwind.tokens.js"
-    - format: json
-      path: "./tokens.json"
-
-  # Transform options
-  transforms:
-    colorFormat: hsl    # rgb, hsl, hex
-    spacingUnit: rem    # px, rem, em
-    prefix: "--ds-"     # CSS variable prefix`}</code></pre>
-      </div>
-    </div>
-  </section>
-
-  <!-- Related Features -->
-  <div slot="related" class="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-    {relatedFeatures.map((feature) => (
-      <FeatureCard
-        title={feature.title}
-        description={feature.description}
-        href={feature.href}
-      />
-    ))}
+<span class="ui-t-hi">Build complete.</span> <span class="ui-t-dim">3 files generated</span></pre>
   </div>
+
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>Import from anywhere</h2></div>
+      <table class="ui-table fx-block">
+        <caption class="ui-sr">Token sources</caption>
+        <thead><tr><th scope="col">Source</th><th scope="col">What it does</th></tr></thead>
+        <tbody>
+          {sources.map((s) => <tr><th scope="row">{s.name}</th><td>{s.description}</td></tr>)}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap ui-split">
+      <div>
+        <div class="ui-head"><h2>Output to any platform</h2><p>One source, eight targets.</p></div>
+        <table class="ui-table fx-block">
+          <caption class="ui-sr">Output formats</caption>
+          <thead><tr><th scope="col">Format</th><th scope="col" class="ui-end">File</th></tr></thead>
+          <tbody>
+            {outputs.map((o) => <tr><th scope="row">{o.name}</th><td class="ui-end ui-mono">{o.file}</td></tr>)}
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div class="ui-head"><h2>Simple configuration</h2></div>
+        <div class="ui-tray fx-block">
+          <div class="ui-panel">
+            <div class="ui-panel-head"><span class="ui-mono">.buoy.yaml</span></div>
+            <pre class="fx-pre"><span class="c"># .buoy.yaml</span>{`
+`}<span class="k">build:</span>{`
+  `}<span class="c"># Token source</span>{`
+  `}<span class="k">source:</span>{`
+    type: `}<span class="s">figma</span>{`
+    fileKey: `}<span class="s">your-figma-file-key</span>{`
+    `}<span class="c"># Or use Style Dictionary</span>{`
+    `}<span class="c"># type: style-dictionary</span>{`
+    `}<span class="c"># path: "./tokens.json"</span>{`
+
+  `}<span class="c"># Output formats</span>{`
+  `}<span class="k">outputs:</span>{`
+    - format: `}<span class="s">css</span>{`
+      path: `}<span class="s">"./src/tokens.css"</span>{`
+    - format: `}<span class="s">tailwind</span>{`
+      path: `}<span class="s">"./tailwind.tokens.js"</span>{`
+    - format: `}<span class="s">json</span>{`
+      path: `}<span class="s">"./tokens.json"</span>{`
+
+  `}<span class="c"># Transform options</span>{`
+  `}<span class="k">transforms:</span>{`
+    colorFormat: `}<span class="s">hsl</span>{`    `}<span class="c"># rgb, hsl, hex</span>{`
+    spacingUnit: `}<span class="s">rem</span>{`    `}<span class="c"># px, rem, em</span>{`
+    prefix: `}<span class="s">"--ds-"</span>{`     `}<span class="c"># CSS variable prefix</span></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </FeatureLayout>
