@@ -67,6 +67,7 @@ export function initBoatDragPhysics(options = {}) {
     const x = rect.left - parentRect.left;
     const y = rect.top - parentRect.top;
 
+    delete boat.dataset.skim;
     boat.classList.remove(...resetAnimatedClasses);
     boat.getAnimations().forEach((a) => a.cancel());
     if (clearAnimationDelay) boat.style.animationDelay = '';
@@ -126,6 +127,7 @@ export function initBoatDragPhysics(options = {}) {
 
     boat.style.left = startLeftPx + 'px';
     boat.style.transform = '';
+    delete boat.dataset.skim; // the wake hands over to the riding wake right here (top is cleared below)
     if (clearAnimationDelay) boat.style.animationDelay = '';
     boat.style.opacity = '1';
     const currentRect = boat.getBoundingClientRect();
@@ -183,7 +185,25 @@ export function initBoatDragPhysics(options = {}) {
     });
   }
 
+  // Tilt the boat was last drawn at (deg), from its inline transform
+  function currentTilt() {
+    const m = /rotate\((-?[\d.]+)deg\)/.exec(boat.style.transform || '');
+    return m ? parseFloat(m[1]) : 0;
+  }
+  // Right the boat from `from` deg to level without a snap: eases out, optionally swinging a little
+  // past level and settling (a righting boat does not stop dead on the angle)
+  function rightBoat(from, ms, swing) {
+    if (Math.abs(from) < 0.3) { boat.style.transform = ''; return null; }
+    const frames = swing
+      ? [{ transform: `rotate(${from}deg)` }, { transform: `rotate(${-from * swing}deg)`, offset: 0.5 }, { transform: 'rotate(0deg)' }]
+      : [{ transform: `rotate(${from}deg)` }, { transform: 'rotate(0deg)' }];
+    const a = boat.animate(frames, { duration: ms, easing: 'cubic-bezier(0.33, 0, 0.2, 1)', fill: 'forwards' });
+    a.finished.then(() => { a.cancel(); boat.style.transform = ''; }).catch(() => {});
+    return a;
+  }
+
   function bobberPop(startX, startY) {
+    const tilt0 = currentTilt();
     const bgRect = container.getBoundingClientRect();
     const waveY = getWaveY();
     const targetBottom = resolveBottom(bgRect, waveY);
@@ -206,6 +226,8 @@ export function initBoatDragPhysics(options = {}) {
         );
       }
     }, 295);
+
+    rightBoat(tilt0, 650, 0.22);
 
     popAnim.finished.then(() => {
       boat.style.top = surfaceY + 'px';
@@ -231,17 +253,22 @@ export function initBoatDragPhysics(options = {}) {
       return;
     }
 
+    // Tilt follows the sideways speed through a smoothing spring, starting from the drag's angle
+    let ang = currentTilt();
+    let skips = 0;
+    let gliding = false;
     function step() {
       if (!physicsActive) return;
 
-      vy += gravity;
-      vx *= 0.99;
+      vy += gliding ? 0 : gravity;
+      vx *= gliding ? 0.965 : 0.99;
       x += vx;
       y += vy;
 
       const bgRect = container.getBoundingClientRect();
       const waveY = getWaveY();
-      boat.style.transform = `rotate(${Math.max(-20, Math.min(20, vx * 1.5))}deg)`;
+      ang += (Math.max(-20, Math.min(20, vx * 1.5)) - ang) * 0.16;
+      boat.style.transform = `rotate(${ang.toFixed(2)}deg)`;
 
       if (y > bgRect.height + boat.offsetHeight) {
         y = -boat.offsetHeight;
@@ -253,13 +280,47 @@ export function initBoatDragPhysics(options = {}) {
 
       const landingBottom = resolveBottom(bgRect, waveY);
       const landingY = bgRect.height - landingBottom - boat.offsetHeight;
+      // Gliding rides the water: follow it down into troughs as well as up (else it hangs in the air)
+      if (gliding) y = landingY;
       const boatBottom = y + boat.offsetHeight;
-      if (boatBottom >= bgRect.height - landingBottom && vy > 0) {
+      if (boatBottom >= bgRect.height - landingBottom && (vy > 0 || gliding)) {
+        // Tossed flat and fast: skip off the water like a stone. Each hop keeps about half the
+        // drop speed and loses a little forward speed, so the hops get shorter until it settles.
+        const speed = Math.abs(vx);
+        if (!gliding && skips < 5 && speed > 3 && vy < speed * 0.9 + 1.5) {
+          skips++;
+          boat.dataset.skim = '1'; // BoatHero keeps the wake on while skimming
+          y = landingY;
+          const dirX = vx >= 0 ? 1 : -1;
+          vy = -Math.max(1.7, vy * 0.42 + speed * 0.065);
+          vx *= 0.88; // a skimming stone keeps most of its forward speed
+          ang -= dirX * 6; // bow lifts off the water
+          if (typeof createSplash === 'function') {
+            createSplash(
+              bgRect.left + x + boat.offsetWidth / 2,
+              bgRect.top + bgRect.height - landingBottom - Math.round(boat.offsetHeight * 0.25) + 2
+            );
+          }
+          boat.style.left = x + 'px';
+          boat.style.top = y + 'px';
+          physicsRaf = requestAnimationFrame(step);
+          return;
+        }
+        // Out of hops but still moving: slide on along the water, friction wearing the speed down
+        if (Math.abs(vx) > (gliding ? 0.7 : 1.2) && skips > 0) {
+          gliding = true;
+          vy = 0;
+          y = landingY;
+          boat.style.left = x + 'px';
+          boat.style.top = y + 'px';
+          physicsRaf = requestAnimationFrame(step);
+          return;
+        }
         physicsActive = false;
         y = landingY;
         boat.style.left = x + 'px';
         boat.style.top = y + 'px';
-        boat.style.transform = '';
+        rightBoat(ang, 380, 0.15);
 
         if (typeof createSplash === 'function') {
           createSplash(

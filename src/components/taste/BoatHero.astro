@@ -11,19 +11,24 @@ interface Props {
   class?: string
   /** Wave style id from ./waves/registry.ts. Default 'current' (the live WaveBackground). Contract: ./waves/WAVES.md */
   sea?: string
+  /** A second sea (registry id) revealed with a radial wipe while the pointer is over `altTrigger` (a selector inside the hero) */
+  altSea?: string
+  altTrigger?: string
 }
 
-const { minHeight = '100svh', class: className, sea = 'current' } = Astro.props
+const { minHeight = '100svh', class: className, sea = 'current', altSea, altTrigger } = Astro.props
 const seaId = waveStyles[sea] ? sea : 'current'
 const Sea = waveStyles[seaId].component
+const Alt = altSea && waveStyles[altSea] ? waveStyles[altSea].component : null
 const uid = 'bh' + Math.random().toString(36).slice(2, 8)
 ---
 
-<section class:list={['boat-hero', className]} style={`--boat-hero-min-h:${minHeight}`} data-boat-hero>
+<section class:list={['boat-hero', className]} style={`--boat-hero-min-h:${minHeight}`} data-boat-hero data-alt-trigger={Alt ? altTrigger : undefined}>
   <div class="boat-hero__sea" id={`${uid}-sea`} data-sea={seaId} aria-hidden="true">
     <Sea />
     <WaveBoat id={`${uid}-boat`} containerSelector={`#${uid}-sea .wave-background`} mode="hero" />
   </div>
+  {Alt && <div class="boat-hero__alt" aria-hidden="true"><Alt /></div>}
   <div class="boat-hero__content">
     <slot />
   </div>
@@ -60,6 +65,20 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
     height: var(--boat-hero-sea-height);
     pointer-events: none;
   }
+
+  /* Second sea: revealed by a soft radial wipe from the trigger (--sea-r grows from 0). Hidden
+     (display none) while idle so its canvas loop is paused. Not on phones. */
+  .boat-hero__alt {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    height: var(--boat-hero-sea-height);
+    z-index: 1; pointer-events: none; display: none;
+    --sea-r: 0px; --sea-x: 50%; --sea-y: 80%;
+    -webkit-mask-image: radial-gradient(circle at var(--sea-x) var(--sea-y), #000 calc(var(--sea-r) - 140px), transparent var(--sea-r));
+    mask-image: radial-gradient(circle at var(--sea-x) var(--sea-y), #000 calc(var(--sea-r) - 140px), transparent var(--sea-r));
+  }
+  .boat-hero[data-alt-on] .boat-hero__alt { display: block; }
+  .boat-hero__alt :global(.wave-background) { background: transparent; }
+  @media (max-width: 767px) { .boat-hero .boat-hero__alt { display: none !important; } }
 
   /* Tints apply to the live WaveBackground only; other sea styles colour themselves */
   .boat-hero__sea[data-sea="current"] :global(.wave-background) {
@@ -183,7 +202,8 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
   // Colour: --boat-hero-splash on the style root, else a pale sea blue (white in light mode).
   function createSplash(hero: Element | null, x: number, y: number, kind: 'drop' | 'toss' = 'drop', strength = 1) {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const waveBg = hero?.querySelector<HTMLElement>('.boat-hero__sea .wave-background') || hero?.querySelector<HTMLElement>('.wave-background');
+    const altBg = hero && ((hero as any).__seaMix || 0) > 0.5 ? hero.querySelector<HTMLElement>('.boat-hero__alt .wave-background') : null;
+    const waveBg = altBg || hero?.querySelector<HTMLElement>('.boat-hero__sea .wave-background') || hero?.querySelector<HTMLElement>('.wave-background');
     if (!waveBg) return;
     const bgRect = waveBg.getBoundingClientRect();
     // A style can draw its own splash (WAVES.md): root.buoySplash(x, y, { kind, strength }) in root px
@@ -316,7 +336,22 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
       const amp = driveSvgSea(el);
       el.buoySurface = svgPathSurface(el, '.wave-container-3', amp) || undefined;
     }
-    return typeof el.buoySurface === 'function' ? { el: el as HTMLElement, fn: el.buoySurface as Surface } : null;
+    if (typeof el.buoySurface !== 'function') return null;
+    const alt = hero.querySelector<HTMLElement>('.boat-hero__alt .wave-background') as any;
+    if (!alt) return { el: el as HTMLElement, fn: el.buoySurface as Surface, draft: () => draftOf(el) };
+    // Two seas: the boat rides a blend of both, weighted by the wipe progress (hero.__seaMix)
+    const mix = () => (hero as any).__seaMix || 0;
+    return {
+      get el() { return (mix() > 0.5 ? alt : el) as HTMLElement; },
+      fn: ((x: number, ahead?: number) => {
+        const a = el.buoySurface(x, ahead), m = mix();
+        if (m < 0.002 || typeof alt.buoySurface !== 'function') return a;
+        const b = alt.buoySurface(x, ahead);
+        if (!Number.isFinite(b.y) || !Number.isFinite(b.slope)) return a;
+        return { y: a.y + (b.y - a.y) * m, slope: a.slope + (b.slope - a.slope) * m };
+      }) as Surface,
+      draft: () => { const m = mix(); const d0 = draftOf(el); return m < 0.002 ? d0 : d0 + (draftOf(alt) - d0) * m; },
+    };
   }
   // How deep the hull sits below the sampled line (px). Not --boat-hero-sink: that
   // offsets the legacy .wave-container-1 landing (70px on the homepage).
@@ -330,7 +365,7 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
   // behind (a side-on Kelvin wake), soft foam at the stern. Strength follows the boat's
   // speed, fades over ~1s when it stops (drag), and bursts when a toss lands.
   // Colour: --boat-hero-wake, else --boat-hero-splash, else a pale sea blue.
-  function createWake(surf: { el: HTMLElement; fn: Surface }, boat: HTMLElement) {
+  function createWake(surf: { el: HTMLElement; fn: Surface; draft: () => number }, boat: HTMLElement) {
     const el = surf.el;
     const canvas = document.createElement('canvas');
     Object.assign(canvas.style, { position: 'absolute', left: '0', top: '0', zIndex: '1', pointerEvents: 'none' });
@@ -375,7 +410,7 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
     }
 
     return {
-      step(dt: number, active: boolean, following: boolean) {
+      step(dt: number, active: boolean, following: boolean, minStrength = 0) {
         age += dt;
         const x = boat.offsetLeft + (parseFloat(boat.style.translate) || 0) + boat.offsetWidth / 2;
         if (active && following && Number.isFinite(lastX) && dt > 0) {
@@ -386,7 +421,7 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
         if (active && !wasActive) burst = 1;
         wasActive = active;
         burst *= Math.exp(-dt * 2.2);
-        const target = active ? Math.min(1.6, Math.abs(vx) / 60) : 0;
+        const target = active ? Math.max(minStrength, Math.min(1.6, Math.abs(vx) / 60)) : 0;
         strength += (target - strength) * (1 - Math.exp(-dt * (target > strength ? 4 : 3)));
         // Submerged (held or released below the water): no surface wake; a displacement
         // ripple above the boat, bubbles rising and popping, the boat dimmed with depth
@@ -394,7 +429,7 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
         const hullY = boat.offsetTop + boat.offsetHeight * HULL_Y;
         const surfY = surf.fn(x).y;
         const depth = held ? hullY - surfY : 0;
-        const under = depth > draftOf(el) + 2; // deeper than it rides
+        const under = depth > surf.draft() + 2; // deeper than it rides
         // Held, falling or bobbing up (the physics owns the boat): no surface wake at all
         if (!active) { strength = 0; burst = 0; }
         const k = under ? Math.min(0.6, depth / 200) : 0;
@@ -413,7 +448,7 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
         ctx.setTransform(1, 0, 0, 1, 0, 0);
         if (drawn) ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawn = false;
-        const own = (el as any).buoySubmerged;
+        const own = (surf.el as any).buoySubmerged;
         if (under && typeof own === 'function') own(x, depth, { hullY, surfaceY: surfY });
         if (under || bubbles.length) {
           if (W) {
@@ -538,7 +573,9 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
       lastT = now;
       if (!visible || document.hidden || !sea) return;
       const active = (boat.classList.contains('visible') || boat.classList.contains('launching')) && boat.style.top === '';
-      wake.step(dt, active, following);
+      // A tossed boat skimming the water keeps its wake (the drag physics sets data-skim), fading with its speed
+      const skim = boat.dataset.skim === '1';
+      wake.step(dt, active || skim, following || skim, skim ? 0.55 : 0);
       if (!active) {
         if (following) { following = false; boat.style.rotate = ''; boat.style.transformOrigin = ''; boat.style.translate = ''; }
         return;
@@ -552,7 +589,7 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
       boat.style.translate = ex ? `${ex.toFixed(2)}px 0` : '';
       const x = boat.offsetLeft + ex + boat.offsetWidth / 2;
       const s = surf.fn(x);
-      const target = h - (s.y + draftOf(surf.el) + HULL_BELOW * boat.offsetHeight);
+      const target = h - (s.y + surf.draft() + HULL_BELOW * boat.offsetHeight);
       if (!following) {
         // Start from where the boat is now and settle onto the water: no pop. After the
         // drop, carry the fall's angle and some of its speed into one damped dip.
@@ -595,10 +632,63 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
     // Drag/toss lands on the water under the boat's current x
     Object.defineProperty(window, '_buoyBoatBottom', {
       configurable: true,
-      get: () => sea ? sea.clientHeight - (surf.fn(boat.offsetLeft + (parseFloat(boat.style.translate) || 0) + boat.offsetWidth / 2).y + draftOf(surf.el) + HULL_BELOW * boat.offsetHeight) : undefined,
+      get: () => sea ? sea.clientHeight - (surf.fn(boat.offsetLeft + (parseFloat(boat.style.translate) || 0) + boat.offsetWidth / 2).y + surf.draft() + HULL_BELOW * boat.offsetHeight) : undefined,
       set: () => {},
     });
     return { land(tiltDeg: number, vy: number) { landing = { tilt: tiltDeg, vy }; } };
+  }
+
+  // Second sea: pointer (or focus) on the trigger wipes the alt sea in from the trigger's
+  // position; leaving wipes it back out. hero.__seaMix (0..1) eases toward the target and
+  // drives the mask radius, the base sea's fade and the boat's blended surface.
+  function initAltSea(hero: HTMLElement) {
+    const sel = hero.dataset.altTrigger;
+    const alt = hero.querySelector<HTMLElement>('.boat-hero__alt');
+    if (!sel || !alt) return;
+    const triggers = Array.from(hero.querySelectorAll<HTMLElement>(sel));
+    if (!triggers.length) return;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const base = hero.querySelector<HTMLElement>('.boat-hero__sea .wave-background');
+    let target = 0, mix = 0, raf = 0, last = 0, hovering = 0;
+    const setOrigin = (t: HTMLElement) => {
+      const hr = hero.getBoundingClientRect(), tr = t.getBoundingClientRect();
+      const cx = tr.left + tr.width / 2 - hr.left, cy = tr.top + tr.height / 2 - hr.top;
+      alt.style.setProperty('--sea-x', cx.toFixed(0) + 'px');
+      alt.style.setProperty('--sea-y', (cy - (hr.height - alt.clientHeight)).toFixed(0) + 'px');
+      const ar = alt.getBoundingClientRect();
+      const ox = cx, oy = tr.top + tr.height / 2 - ar.top;
+      const far = Math.hypot(Math.max(ox, ar.width - ox), Math.max(oy, ar.height - oy));
+      alt.dataset.maxR = String(Math.round(far + 160));
+    };
+    const ease = (u: number) => 1 - Math.pow(1 - u, 3);
+    const frame = (now: number) => {
+      const dt = Math.min(0.05, last ? (now - last) / 1000 : 0.016); last = now;
+      // Out is a touch quicker than in
+      mix += Math.sign(target - mix) * Math.min(Math.abs(target - mix), dt / (target > mix ? 0.9 : 0.6));
+      (hero as any).__seaMix = ease(mix);
+      const m = ease(mix);
+      alt.style.setProperty('--sea-r', (m * Number(alt.dataset.maxR || 1600)).toFixed(0) + 'px');
+      // The base waves (not the boat that rides on them) give way once the wipe has passed
+      if (base) base.style.opacity = String(1 - 0.92 * Math.max(0, (m - 0.25) / 0.75));
+      if (mix === target) {
+        raf = 0; last = 0;
+        if (target === 0) hero.removeAttribute('data-alt-on');
+        return;
+      }
+      raf = requestAnimationFrame(frame);
+    };
+    const go = (t: number) => {
+      if (reduced.matches || window.matchMedia('(max-width: 767px)').matches) return;
+      target = t;
+      if (t === 1) hero.setAttribute('data-alt-on', '');
+      if (!raf) raf = requestAnimationFrame(frame);
+    };
+    for (const t of triggers) {
+      t.addEventListener('pointerenter', (e) => { if ((e as PointerEvent).pointerType === 'touch') return; hovering++; setOrigin(t); go(1); });
+      t.addEventListener('pointerleave', () => { hovering = Math.max(0, hovering - 1); if (!hovering) go(0); });
+      t.addEventListener('focus', () => { setOrigin(t); go(1); });
+      t.addEventListener('blur', () => { if (!hovering) go(0); });
+    }
   }
 
   function initBoatHero(hero: HTMLElement) {
@@ -622,6 +712,7 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
     };
     syncBoatTheme();
     new MutationObserver(syncBoatTheme).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    initAltSea(hero);
     const follow = waveBoat ? followSurface(hero, waveBoat) : undefined;
 
     // No glyph on the page: just sail
@@ -671,7 +762,7 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
       const landS = surf ? surf.fn(hullIn.x - cbLeft, LIFT_MS + DROP_MS) : null;
       const landTilt = landS ? Math.max(-14, Math.min(14, Math.atan(landS.slope) * 180 / Math.PI)) : 0;
       const waveBottomPx = surf
-        ? cb.clientHeight - (surf.fn(hullIn.x - cbLeft, LIFT_MS + DROP_MS).y + draftOf(surf.el) + HULL_BELOW * waveBoat.offsetHeight)
+        ? cb.clientHeight - (surf.fn(hullIn.x - cbLeft, LIFT_MS + DROP_MS).y + surf.draft() + HULL_BELOW * waveBoat.offsetHeight)
         : Math.max(8, Math.min(underGlyph, onWater) - sink);
       waveBoat.style.bottom = waveBottomPx + 'px';
       waveBoat.style.left = waveLeftPct + '%';
