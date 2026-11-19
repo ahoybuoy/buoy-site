@@ -1,8 +1,13 @@
 ---
+// Feature pages. Hero = copy on the left, a real example of the drift and the fix
+// on the right (slot "example": a PR comment, a terminal or a diff). Shared mock
+// and FAQ styles for the pages live here as global `fx-*` classes.
 import Layout from './Layout.astro'
 import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
-import Button from '../components/Button.astro'
+import MarkPattern from '../components/MarkPattern.astro'
+
+type Pattern = 'swell' | 'field' | 'pulse' | 'tide' | 'scan' | 'wake' | 'rain'
 
 interface Props {
   title: string
@@ -10,79 +15,252 @@ interface Props {
   keywords?: string
   heroTitle: string
   heroDescription: string
+  /** Caption under the hero example. */
+  exampleCaption?: string
+  related?: { title: string; description: string; href: string }[]
+  pattern?: Pattern
+  ctaPattern?: Pattern
 }
 
-const { title, description, keywords, heroTitle, heroDescription } = Astro.props
+const {
+  title,
+  description,
+  keywords,
+  heroTitle,
+  heroDescription,
+  exampleCaption,
+  related = [],
+  pattern = 'field',
+  ctaPattern = 'swell',
+} = Astro.props
+const hasExample = Astro.slots.has('example')
 ---
 
 <Layout title={title} description={description} keywords={keywords}>
+  <a href="#main" class="ui-skip">Skip to content</a>
   <Nav />
 
-  <!-- Hero Section -->
-  <section class="relative pt-32 pb-16 overflow-hidden">
-    <!-- Background gradient -->
-    <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
+  <main id="main" class="fx ui-nav-offset">
+    <section class="ui-section ui-section--first ui-section--patterned fx-hero">
+      <MarkPattern pattern={pattern} drift={0.28} fade class="ui-pattern fx-hero-pattern" />
+      <div class:list={['ui-wrap', hasExample ? 'fx-hero-grid' : 'fx-hero-solo']}>
+        <div class="fx-hero-copy">
+          <nav aria-label="Breadcrumb">
+            <ol class="fx-crumbs">
+              <li><a href="/">Home</a></li>
+              <li aria-hidden="true">/</li>
+              <li><a href="/features/drift-detection">Features</a></li>
+            </ol>
+          </nav>
+          <h1 class="fx-h1">{heroTitle}</h1>
+          <p class="ui-lede">{heroDescription}</p>
+          <div class="ui-actions">
+            <a href="/demo" class="ui-btn ui-btn--primary ui-btn--lg">Get started free</a>
+            <a href="/docs" class="ui-btn ui-btn--secondary ui-btn--lg">Read the docs</a>
+          </div>
+          <slot name="hero-extra" />
+        </div>
 
-    <!-- Decorative glow -->
-    <div class="absolute top-1/3 left-1/4 w-96 h-96 bg-buoy/10 rounded-full blur-3xl"></div>
-    <div class="absolute top-1/2 right-1/4 w-64 h-64 bg-lavender/10 rounded-full blur-3xl"></div>
-
-    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <!-- Breadcrumb -->
-      <nav class="mb-8" aria-label="Breadcrumb">
-        <ol class="flex items-center justify-center gap-2 text-sm text-slate">
-          <li><a href="/" class="hover:text-buoy transition-colors">Home</a></li>
-          <li>/</li>
-          <li><a href="/features/drift-detection" class="hover:text-buoy transition-colors">Features</a></li>
-          <li>/</li>
-          <li class="text-light">{heroTitle}</li>
-        </ol>
-      </nav>
-
-      <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6 leading-tight">
-        {heroTitle}
-      </h1>
-
-      <p class="text-lg sm:text-xl text-slate max-w-2xl mx-auto mb-8">
-        {heroDescription}
-      </p>
-
-      <Button href="/demo" size="lg">
-        Get started free
-      </Button>
-
-      <slot name="hero-extra" />
-    </div>
-  </section>
-
-  <!-- Main Content -->
-  <main class="bg-navy-dark">
-    <slot />
-  </main>
-
-  <!-- CTA Section -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-2xl font-bold text-light mb-4">
-        Ready to catch design drift?
-      </h2>
-      <p class="text-slate mb-6">
-        Free. Open source. No signup required.
-      </p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <Button href="/demo">Get your first scan</Button>
-        <Button href="/docs" variant="secondary">Read the docs</Button>
+        {hasExample && (
+          <figure class="ui-figure fx-hero-fig ui-enter" style="animation-delay: 120ms">
+            <slot name="example" />
+            {exampleCaption && <figcaption>{exampleCaption}</figcaption>}
+          </figure>
+        )}
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Related Features -->
-  <section class="py-16 bg-navy-dark border-t border-navy-light/20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h3 class="text-xl font-semibold text-light mb-8 text-center">Related Features</h3>
-      <slot name="related" />
-    </div>
-  </section>
+    <slot />
+
+    <section class="ui-section ui-section--band ui-section--patterned fx-cta">
+      <MarkPattern pattern={ctaPattern} drift={0.35} class="ui-pattern fx-cta-pattern" />
+      <div class="ui-wrap">
+        <div class="ui-head ui-head--center">
+          <h2>Ready to catch design drift?</h2>
+          <p>Free. Open source. No signup required.</p>
+        </div>
+        <div class="ui-actions fx-cta-actions">
+          <a href="/demo" class="ui-btn ui-btn--primary ui-btn--lg">Get your first scan</a>
+          <a href="/docs" class="ui-btn ui-btn--secondary ui-btn--lg">Read the docs</a>
+        </div>
+      </div>
+    </section>
+
+    {related.length > 0 && (
+      <section class="ui-section ui-section--last">
+        <div class="ui-wrap">
+          <div class="ui-head"><h2>Related features</h2></div>
+          <ul class="fx-related">
+            {related.map((r) => (
+              <li>
+                <a href={r.href} class="fx-related-link">
+                  <span class="fx-related-title">{r.title}</span>
+                  <span class="fx-related-desc">{r.description}</span>
+                  <svg class="fx-related-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )}
+  </main>
 
   <Footer />
 </Layout>
+
+<style is:global>
+  .fx { color: var(--color-body); font-size: 16px; line-height: 1.6; }
+  .fx h1, .fx h2, .fx h3 { color: var(--color-ink); }
+
+  /* ---------- Hero ---------- */
+  .fx-hero { padding-block: 56px 96px; }
+  .fx-hero-pattern {
+    -webkit-mask-image: linear-gradient(to right, transparent 35%, #000 75%);
+    mask-image: linear-gradient(to right, transparent 35%, #000 75%);
+  }
+  .fx-hero-grid { display: grid; grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr); gap: 64px; align-items: center; }
+  .fx-hero-solo { max-width: 760px; }
+  .fx-crumbs { list-style: none; margin: 0 0 20px; padding: 0; display: flex; gap: 8px; font-size: 14px; color: var(--color-muted); }
+  .fx-crumbs a { color: var(--color-muted); text-decoration: none; transition: color 150ms ease-out; }
+  .fx-crumbs a:hover { color: var(--color-ink); }
+  .fx-h1 {
+    margin: 0;
+    font-size: clamp(2.25rem, 1.5rem + 2.6vw, 3.4rem);
+    line-height: 1.05; letter-spacing: -0.03em; font-weight: 700;
+  }
+  .fx-hero-copy .ui-lede { margin-top: 20px; }
+  .fx-hero-copy .ui-actions { margin-top: 32px; }
+  .fx-hero-fig { margin: 0; min-width: 0; }
+  .fx-hero-note { margin: 24px 0 0; font-size: 14px; color: var(--color-muted); }
+  .fx-hero-note strong { color: var(--color-ok); font-weight: 600; }
+  @media (max-width: 960px) {
+    .fx-hero { padding-block: 32px 72px; }
+    .fx-hero-grid { grid-template-columns: minmax(0, 1fr); gap: 48px; }
+    .fx-hero-pattern { -webkit-mask-image: none; mask-image: none; opacity: 0.18; }
+  }
+
+  /* ---------- Closing CTA and related ---------- */
+  .fx-cta-actions { justify-content: center; margin-top: 32px; }
+  /* Marks frame the CTA at the sides and stay off the words. */
+  .fx-cta-pattern {
+    -webkit-mask-image: linear-gradient(to right, #000 0%, transparent 30%, transparent 70%, #000 100%);
+    mask-image: linear-gradient(to right, #000 0%, transparent 30%, transparent 70%, #000 100%);
+  }
+  @media (max-width: 640px) {
+    .fx-cta-pattern {
+      -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 28%, transparent 78%, #000 100%);
+      mask-image: linear-gradient(to bottom, #000 0%, transparent 28%, transparent 78%, #000 100%);
+    }
+  }
+  /* Feature pages run long: a slightly tighter beat than the homepage. */
+  .fx > .ui-section:not(.fx-hero) { padding-block: 88px; }
+  @media (max-width: 760px) { .fx > .ui-section:not(.fx-hero) { padding-block: 64px; } }
+  .fx-related { list-style: none; margin: 32px 0 0; padding: 0; border-top: 1px solid var(--color-line-strong); }
+  .fx-related li { border-bottom: 1px solid var(--color-line); }
+  .fx-related-link {
+    display: grid; grid-template-columns: minmax(0, 14rem) minmax(0, 1fr) auto; gap: 8px 24px; align-items: baseline;
+    padding: 18px 4px; text-decoration: none; color: inherit; transition: background-color 120ms ease-out;
+  }
+  .fx-related-link:hover { background: var(--color-sunken); }
+  .fx-related-title { font-family: var(--font-display); font-weight: 700; font-size: 1.125rem; color: var(--color-ink); }
+  .fx-related-desc { color: var(--color-body); font-size: 15px; }
+  .fx-related-arrow { align-self: center; color: var(--color-buoy-light); transition: transform 160ms var(--ease-out-expo); }
+  .fx-related-link:hover .fx-related-arrow { transform: translateX(3px); }
+  @media (max-width: 640px) {
+    .fx-related-link { grid-template-columns: minmax(0, 1fr) auto; }
+    .fx-related-desc { grid-column: 1; grid-row: 2; }
+    .fx-related-arrow { grid-column: 2; grid-row: 1 / span 2; }
+  }
+
+  /* ---------- Page helpers ---------- */
+  .fx-block { margin-top: 40px; }
+  .fx-narrow { max-width: 820px; }
+  .fx-mt { margin-top: 20px; }
+  .fx-big { margin-top: 4px !important; font-size: clamp(2.5rem, 2rem + 2vw, 3.25rem) !important; line-height: 1; }
+  .fx-body-first { padding-top: 12px; }
+  .fx-table td, .fx-table th { font-size: 15px; }
+  .fx-table .ui-mono, .fx-table code { font-size: 13.5px; }
+  .fx-table td code { font-family: var(--font-mono); color: var(--color-ink); }
+  .fx-scroll { overflow-x: auto; }
+  .fx-ex { display: inline-block; margin-top: 4px; font-size: 13px; color: var(--color-muted); }
+  .fx-ex.ui-c-crit { color: var(--color-crit); }
+
+  /* Before / after ruled columns */
+  .fx-vs .ui-col h3 { font-size: 1.25rem; }
+  .fx-vs .ui-ruled { margin-top: 12px; }
+  .fx-vs .ui-ruled li { font-size: 15px; color: var(--color-body); }
+
+  /* Code panel (file head + pre) */
+  .fx-pre { margin: 0; padding: 16px 18px; font-family: var(--font-mono); font-size: 13px; line-height: 1.7; color: var(--color-body); overflow-x: auto; white-space: pre; }
+  .fx-pre .c { color: var(--color-muted); }
+  .fx-pre .k { color: var(--color-info); }
+  .fx-pre .s { color: var(--color-ok); }
+  .fx-pre del { color: var(--color-crit); text-decoration-thickness: 1.5px; }
+  .fx-pre ins { color: var(--color-ok); text-decoration: none; }
+
+  /* Pull-request mock (same as the homepage) */
+  .fx-diff { font-family: var(--font-mono); font-size: 13px; line-height: 26px; overflow-x: auto; }
+  .fx-line { display: grid; grid-template-columns: 44px 20px minmax(0, 1fr); min-width: max-content; }
+  .fx-ln { text-align: right; padding-right: 10px; color: var(--color-muted); user-select: none; font-variant-numeric: tabular-nums; }
+  .fx-sign { text-align: center; user-select: none; }
+  .fx-code { white-space: pre; padding-right: 16px; }
+  .fx-add { background: var(--color-add-bg); }
+  .fx-add .fx-sign { color: var(--color-add-ink); }
+  .fx-del { background: var(--color-del-bg); }
+  .fx-del .fx-sign { color: var(--color-del-ink); }
+  .fx-comment-row { padding: 8px; border-block: 1px solid var(--color-line); background: var(--color-raised); }
+  .fx-comment-row:last-child { border-bottom: 0; }
+  .fx-comment { border-radius: 8px; background: var(--color-surface); box-shadow: var(--ring); overflow: hidden; }
+  .fx-comment-head { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 8px; padding: 12px 14px 0; font-size: 13px; }
+  .fx-avatar {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 24px; height: 24px; border-radius: 6px;
+    background: var(--color-surface); box-shadow: 0 0 0 1px var(--color-line-strong);
+  }
+  .fx-author { font-weight: 600; color: var(--color-ink); }
+  /* GitHub's own "bot" label, reproduced in the mock */
+  .fx-tag { padding: 1px 6px; border-radius: 999px; font-size: 11px; font-weight: 500; line-height: 16px; color: var(--color-body); box-shadow: 0 0 0 1px var(--color-line-strong); }
+  .fx-meta { color: var(--color-muted); }
+  .fx-body { margin: 0; padding: 8px 14px 14px; font-size: 14px; line-height: 1.55; color: var(--color-ink); }
+  .fx-body code { padding: 1px 4px; border-radius: 4px; font-family: var(--font-mono); font-size: 12.5px; white-space: nowrap; background: var(--color-sunken); }
+  .fx-body code.fx-was { color: var(--color-crit); }
+  .fx-body code.fx-fix { color: var(--color-ok); }
+  .fx-suggest { border-top: 1px solid var(--color-line); }
+  .fx-suggest-label { padding: 8px 14px; font-size: 12px; font-weight: 500; color: var(--color-body); border-bottom: 1px solid var(--color-line); }
+  .fx-check { display: flex; align-items: center; gap: 10px; padding: 12px 16px; font-size: 14px; color: var(--color-ink); border-bottom: 1px solid var(--color-line); }
+  .fx-check svg { flex: none; }
+  .fx-check-fail { color: var(--color-crit); }
+  .fx-check-pass { color: var(--color-ok); }
+  .fx-check .fx-meta { margin-left: auto; font-size: 13px; }
+  .fx-mini { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .fx-mini th { padding: 8px 14px 6px 0; text-align: left; font-weight: 500; font-size: 12px; color: var(--color-muted); border-bottom: 1px solid var(--color-line); }
+  .fx-mini td { padding: 8px 14px 8px 0; border-bottom: 1px solid var(--color-line); color: var(--color-body); white-space: nowrap; }
+  .fx-mini tr:last-child td { border-bottom: 0; }
+  .fx-mini th:first-child, .fx-mini td:first-child { padding-left: 14px; }
+  .fx-mini code { font-family: var(--font-mono); font-size: 12px; }
+
+  /* Static terminal in the hero: ui-term with a pre */
+  .fx-term pre { margin: 0; white-space: pre; overflow-x: auto; }
+
+  /* FAQ: ruled disclosure list */
+  .fx-faq { margin-top: 32px; border-top: 1px solid var(--color-line-strong); }
+  .fx-faq details { border-bottom: 1px solid var(--color-line); }
+  .fx-faq summary {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 18px 0; cursor: pointer; list-style: none; font-weight: 600; color: var(--color-ink);
+  }
+  .fx-faq summary::-webkit-details-marker { display: none; }
+  .fx-faq summary svg { flex: none; color: var(--color-muted); transition: transform 200ms var(--ease-out-expo); }
+  .fx-faq details[open] summary svg { transform: rotate(180deg); }
+  .fx-faq details p { margin: 0 0 20px; max-width: 680px; }
+
+  @media (max-width: 760px) {
+    .fx-diff { font-size: 12px; }
+    .fx-line { grid-template-columns: 36px 16px minmax(0, 1fr); }
+    .fx-pre { font-size: 12px; padding: 14px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fx-related-arrow, .fx-faq summary svg { transition: none; }
+  }
+</style>

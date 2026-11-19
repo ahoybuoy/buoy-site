@@ -1,0 +1,265 @@
+/* Hallmark · shape: kept (same-layout skin) · genre: modern-minimal · theme: Rim (night, accent anchored to --color-buoy)
+ * hero: kept · nav: kept · footer: kept · imagery: the product as given (code pair, LockOn, terminal, PR card) · signature: the found value in orange beside the token in sky blue, everywhere code appears
+ * axes: kept|kept|Hairline|Solid|None|None · contrast: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H3 E4 S4 R5 V3 · weakest: H, the frozen centred layout keeps every head on one axis; answered with scale steps, hairline seams and one weight */
+/* Hallmark · waive 47b · one terminal and one PR card, both with real Buoy output · frozen markup supplies them; the terminal's three dots are recoloured to rule squares rather than traffic lights */
+
+.sl.sl-hallmark {
+  /* Rim night: warm black paper, warm off-white ink */
+  --hm-paper: oklch(9% 0.008 75);
+  --hm-paper-2: oklch(12.5% 0.009 75);
+  --hm-paper-3: oklch(6.5% 0.007 75);
+  --hm-ink: oklch(94% 0.010 80);
+  --hm-ink-2: oklch(84% 0.011 80);
+  --hm-muted: oklch(68% 0.012 80);
+  --hm-muted-2: oklch(52% 0.010 80);
+  --hm-rule: oklch(25% 0.010 78);
+  --hm-rule-2: oklch(17% 0.009 78);
+  --hm-sky: oklch(74% 0.12 250);
+  --hm-sky-ink: oklch(84% 0.08 250);
+  --hm-amber: oklch(80% 0.11 80);
+
+  --sl-bg: var(--hm-paper);
+  --sl-bg-alt: var(--hm-paper-2);
+  --sl-surface: var(--hm-paper-2);
+  --sl-surface-2: var(--hm-paper-3);
+  --sl-border: var(--hm-rule);
+  --sl-text: var(--hm-ink);
+  --sl-text-muted: var(--hm-ink-2);
+  --sl-text-faint: var(--hm-muted);
+  --sl-accent: var(--color-buoy);
+  --sl-accent-hover: var(--color-buoy-light);
+  --sl-accent-contrast: oklch(10% 0.02 45);
+  --sl-accent-2: var(--hm-sky);
+  --sl-success: var(--hm-sky);
+  --sl-warning: var(--hm-ink-2);
+  --sl-critical: var(--color-buoy);
+  --sl-info: var(--hm-muted);
+  --sl-code-bg: var(--hm-paper-3);
+  --sl-code-text: var(--hm-ink-2);
+
+  --sl-font-display: 'Switzer', ui-sans-serif, system-ui, sans-serif;
+  --sl-font-body: 'Switzer', ui-sans-serif, system-ui, sans-serif;
+  --sl-font-mono: 'Geist Mono', ui-monospace, monospace;
+  --sl-h1-size: clamp(2.75rem, 5vw + 1rem, 5.25rem);
+  --sl-h2-size: clamp(2rem, 2.5vw + 1rem, 3.25rem);
+  --sl-h3-size: clamp(1.25rem, 0.75vw + 0.875rem, 1.5rem);
+  --sl-body-size: 1rem;
+  --sl-lead-size: clamp(1.125rem, 0.35vw + 1rem, 1.3125rem);
+  --sl-small-size: 0.875rem;
+  --sl-heading-weight: 500;
+  --sl-heading-tracking: -0.035em;
+  --sl-heading-leading: 1.02;
+  --sl-leading: 1.55;
+
+  --sl-radius-sm: 0;
+  --sl-radius-md: 0;
+  --sl-radius-lg: 0;
+  --sl-btn-radius: 0;
+  --sl-btn-height: 3rem;
+  --sl-shadow-sm: none;
+  --sl-shadow-md: none;
+  --sl-shadow-lg: none;
+
+  --sl-section-pad: 9rem;
+  --sl-gap: 2rem;
+  --sl-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --sl-duration: 220ms;
+
+  --sl-pr-bg: var(--hm-paper-2);
+  --sl-pr-bg-2: var(--hm-paper-3);
+  --sl-pr-border: var(--hm-rule);
+  --sl-pr-text: var(--hm-ink);
+  --sl-pr-muted: var(--hm-muted);
+  --sl-pr-link: var(--hm-ink-2);
+  --sl-pr-open: var(--hm-sky);
+  --sl-pr-error: var(--color-buoy);
+  --sl-pr-warn: var(--hm-amber);
+  --sl-pr-fix: var(--hm-sky);
+
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  caret-color: var(--sl-accent);
+}
+.sl.sl-hallmark ::selection { background: color-mix(in oklab, var(--color-buoy) 35%, transparent); color: var(--hm-ink); }
+.sl.sl-hallmark :focus-visible { outline: 2px solid var(--color-buoy-light); outline-offset: 2px; }
+.sl.sl-hallmark h1, .sl.sl-hallmark h2, .sl.sl-hallmark h3 { overflow-wrap: break-word; min-width: 0; text-wrap: balance; }
+.sl.sl-hallmark p { text-wrap: pretty; }
+.sl.sl-hallmark .sl-card__title, .sl.sl-hallmark .sl-step__title { letter-spacing: -0.02em; font-weight: 500; line-height: 1.2; }
+
+/* Links: ink, underlined, orange only on hover */
+.sl.sl-hallmark .sl-link { color: var(--hm-ink); text-decoration: underline; text-decoration-color: var(--hm-muted-2); text-decoration-thickness: 1px; text-underline-offset: 0.22em; transition: text-decoration-color var(--sl-duration) var(--sl-ease); }
+.sl.sl-hallmark .sl-link:hover { text-decoration-color: var(--color-buoy); }
+.sl.sl-hallmark .sl-callout__arrow, .sl.sl-hallmark .sl-check__cta .sl-link svg { color: var(--hm-muted); }
+
+/* Header: a solid bar on a hairline, no blur */
+.sl.sl-hallmark .sl-header { background: var(--hm-paper); border-bottom: 1px solid var(--hm-rule-2); -webkit-backdrop-filter: none; backdrop-filter: none; }
+.sl.sl-hallmark .sl-header__link { font-weight: 500; color: var(--hm-muted); }
+.sl.sl-hallmark .sl-header__link:hover { color: var(--hm-ink); }
+
+/* Callout: a paper-2 strip edged by hairlines, no gradient */
+.sl.sl-hallmark .sl-callout { background: var(--hm-paper-2); border-bottom: 1px solid var(--hm-rule); }
+.sl.sl-hallmark .sl-callout__link { color: var(--hm-muted); }
+.sl.sl-hallmark .sl-callout__pill { border-radius: 0; background: transparent; border: 1px solid var(--hm-rule); color: var(--hm-ink-2); font-weight: 500; font-family: var(--sl-font-mono); }
+
+/* Buttons: square, solid orange primary, hairline secondary, no glow, no scale */
+.sl.sl-hallmark .sl-btn { font-weight: 500; border-color: var(--hm-rule); transition: background-color var(--sl-duration) var(--sl-ease), border-color var(--sl-duration) var(--sl-ease), transform 120ms var(--sl-ease); }
+.sl.sl-hallmark .sl-btn:active { transform: translateY(1px); }
+.sl.sl-hallmark .sl-btn--primary { background: var(--color-buoy); border-color: var(--color-buoy); color: var(--sl-accent-contrast); box-shadow: none; }
+.sl.sl-hallmark .sl-btn--primary:hover { background: var(--color-buoy-light); border-color: var(--color-buoy-light); transform: none; }
+.sl.sl-hallmark .sl-btn--primary:active { transform: translateY(1px); }
+.sl.sl-hallmark .sl-btn--secondary { background: transparent; border-color: var(--hm-rule); color: var(--hm-ink); }
+.sl.sl-hallmark .sl-btn--secondary:hover { background: var(--hm-paper-2); border-color: var(--hm-muted-2); }
+
+/* Hero: no waves, no boat, one head in one colour, no blur reveal */
+.sl.sl-hallmark .sl-decor--waves, .sl.sl-hallmark .sl-hero__boat { display: none; }
+.sl.sl-hallmark .sl-hero { background: var(--hm-paper); border-bottom: 1px solid var(--hm-rule); }
+.sl.sl-hallmark .sl-hero__badge { border-radius: 0; border-color: var(--hm-rule); background: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; color: var(--hm-muted); }
+.sl.sl-hallmark .sl-hero__title { line-height: 1.02; letter-spacing: -0.045em; }
+.sl.sl-hallmark .sl-hero__word { opacity: 1; animation: hm-settle 480ms var(--sl-ease) both; }
+.sl.sl-hallmark .sl-hero__word:nth-of-type(2) { animation-delay: 40ms; }
+.sl.sl-hallmark .sl-hero__word:nth-of-type(3) { animation-delay: 80ms; }
+.sl.sl-hallmark .sl-hero__word:nth-of-type(4) { animation-delay: 120ms; }
+.sl.sl-hallmark .sl-hero__word:nth-of-type(5) { animation-delay: 160ms; }
+.sl.sl-hallmark .sl-hero__highlight { color: var(--hm-ink); }
+.sl.sl-hallmark .sl-hero__highlight::after { content: none; }
+.sl.sl-hallmark .sl-hero__sub { color: var(--hm-ink-2); text-shadow: none; }
+.sl.sl-hallmark .sl-hero__scan { color: var(--hm-muted); }
+.sl.sl-hallmark .sl-hero__scroll { color: var(--hm-muted-2); animation: none; }
+
+/* Sections: flat grounds parted by hairlines, overlays dropped */
+.sl.sl-hallmark .sl-lead::before, .sl.sl-hallmark .sl-demo::before { background: none; }
+.sl.sl-hallmark .sl-decor--pattern { display: none; }
+.sl.sl-hallmark .sl-section { border-top: 1px solid var(--hm-rule-2); }
+.sl.sl-hallmark .sl-section--alt { background: var(--hm-paper-2); border-top-color: var(--hm-rule); border-bottom: 1px solid var(--hm-rule); }
+.sl.sl-hallmark .sl-section__lead { color: var(--hm-muted); }
+.sl.sl-hallmark .sl-section__head { padding-top: 0; }
+
+/* Code pair: square wells, labels in sentence case, orange for what was found, sky for the fix */
+.sl.sl-hallmark .sl-code { border: 1px solid var(--hm-rule); background: var(--hm-paper-3); }
+.sl.sl-hallmark .sl-code__bar { background: var(--hm-paper-2); border-bottom: 1px solid var(--hm-rule); }
+.sl.sl-hallmark .sl-code__label { text-transform: none; letter-spacing: 0; font-weight: 500; }
+.sl.sl-hallmark .sl-code--bad .sl-code__label { color: var(--color-buoy); }
+.sl.sl-hallmark .sl-code--good .sl-code__label { color: var(--hm-sky); }
+.sl.sl-hallmark .sl-code__file { color: var(--hm-muted); font-family: var(--sl-font-mono); }
+.sl.sl-hallmark .sl-code__body { padding: 1.25rem 1.5rem; line-height: 1.7; }
+.sl.sl-hallmark .sl-tok--bad { color: var(--color-buoy); }
+.sl.sl-hallmark .sl-tok--good { color: var(--hm-sky); }
+
+/* What Buoy catches */
+.sl.sl-hallmark .sl-catch__title { font-size: var(--sl-h2-size); }
+.sl.sl-hallmark .sl-catch__demo { outline: 1px solid var(--hm-rule); outline-offset: 0; }
+.sl.sl-hallmark .sl-catch__box { border: 0; border-top: 1px solid var(--hm-rule); border-bottom: 1px solid var(--hm-rule); background: transparent; padding: 1.5rem 0; }
+.sl.sl-hallmark .sl-catch__label { color: var(--hm-muted); font-weight: 500; }
+.sl.sl-hallmark .sl-catch__mark { width: 0.5rem; height: 0.5rem; border-radius: 0; background: var(--color-buoy); margin-top: 0.5rem; }
+.sl.sl-hallmark .sl-catch__detail { font-family: var(--sl-font-mono); font-size: 0.8125rem; color: var(--hm-muted); }
+
+/* Lead capture */
+.sl.sl-hallmark .sl-lead__title { font-size: var(--sl-h2-size); line-height: 1.02; }
+.sl.sl-hallmark .sl-lead__note { color: var(--hm-muted); }
+.sl.sl-hallmark .sl-input { border: 1px solid var(--hm-muted-2); background: var(--hm-paper); color: var(--hm-ink); transition: border-color var(--sl-duration) var(--sl-ease); }
+.sl.sl-hallmark .sl-input::placeholder { color: var(--hm-muted); }
+.sl.sl-hallmark .sl-input:focus { outline: none; box-shadow: none; }
+.sl.sl-hallmark .sl-input:focus-visible { outline: 2px solid var(--color-buoy-light); outline-offset: -2px; border-color: var(--hm-muted-2); }
+.sl.sl-hallmark .sl-form__msg { border-radius: 0; }
+.sl.sl-hallmark .sl-doc { transform: none; border: 1px solid var(--hm-rule); background: var(--hm-paper-3); }
+.sl.sl-hallmark .sl-doc:hover { transform: none; }
+.sl.sl-hallmark .sl-doc__name { font-family: var(--sl-font-mono); }
+.sl.sl-hallmark .sl-doc__box { border-radius: 0; border-color: var(--hm-muted-2); }
+.sl.sl-hallmark .sl-dot { border-radius: 0; width: 0.5rem; height: 0.5rem; background: var(--hm-rule); }
+.sl.sl-hallmark .sl-dot--critical, .sl.sl-hallmark .sl-dot--warning, .sl.sl-hallmark .sl-dot--success { background: var(--hm-rule); }
+.sl.sl-hallmark .sl-doc .sl-dot { opacity: 1; }
+
+/* Terminal: a sunk paper-3 well, no glow, mono as material */
+.sl.sl-hallmark .sl-terminal { border: 1px solid var(--hm-rule); background: var(--hm-paper-3); box-shadow: none; }
+.sl.sl-hallmark .sl-terminal__bar { background: var(--hm-paper-2); border-bottom: 1px solid var(--hm-rule); }
+.sl.sl-hallmark .sl-terminal__name { color: var(--hm-muted); }
+.sl.sl-hallmark .sl-terminal__body { padding: 2rem; line-height: 1.7; color: var(--hm-ink-2); }
+.sl.sl-hallmark .sl-terminal__prompt { color: var(--hm-muted); }
+.sl.sl-hallmark .sl-terminal__line--critical, .sl.sl-hallmark .sl-t--critical { color: var(--color-buoy); }
+.sl.sl-hallmark .sl-terminal__line--warning, .sl.sl-hallmark .sl-t--warning { color: var(--hm-ink); }
+.sl.sl-hallmark .sl-t--accent { color: var(--hm-sky); }
+.sl.sl-hallmark .sl-t--muted { color: var(--hm-sky); }
+.sl.sl-hallmark .sl-t--faint, .sl.sl-hallmark .sl-terminal__line--faint { color: var(--hm-muted); }
+.sl.sl-hallmark .sl-t--strong { font-weight: 500; }
+
+/* PR card: the same paper and rules as the page, orange for found, sky for the fix */
+.sl.sl-hallmark .sl-pr { border-radius: 0; box-shadow: none; }
+.sl.sl-hallmark .sl-pr__head { background: var(--hm-paper-2); }
+.sl.sl-hallmark .sl-pr__name { font-weight: 500; }
+.sl.sl-hallmark .sl-pr__head, .sl.sl-hallmark .sl-pr__status, .sl.sl-hallmark .sl-pr__row, .sl.sl-hallmark .sl-pr__foot { padding: 1rem 1.5rem; }
+.sl.sl-hallmark .sl-pr__rows { background: var(--hm-paper); }
+.sl.sl-hallmark .sl-pr__level { border-radius: 0; background: transparent; border-color: var(--color-buoy); color: var(--color-buoy); font-family: var(--sl-font-mono); font-weight: 400; }
+.sl.sl-hallmark .sl-pr__level--warn { background: transparent; border-color: var(--hm-amber); color: var(--hm-amber); }
+.sl.sl-hallmark .sl-pr__code { border-radius: 0; background: var(--hm-paper-3); font-size: 0.8125rem; padding: 0.125rem 0.375rem; }
+.sl.sl-hallmark .sl-pr__msg { color: var(--hm-ink); }
+
+/* Pills, badges, tags: square, outlined, no tinted fills */
+.sl.sl-hallmark .sl-pill { border-radius: 0; background: transparent; border-color: var(--hm-rule); color: var(--hm-ink-2); font-weight: 500; }
+.sl.sl-hallmark .sl-pill--accent { color: var(--hm-ink-2); }
+.sl.sl-hallmark .sl-badge { border-radius: 0; background: transparent; padding: 0; font-size: 0.8125rem; font-weight: 500; color: var(--hm-muted); }
+.sl.sl-hallmark .sl-badge--critical { color: var(--color-buoy); }
+.sl.sl-hallmark .sl-badge--warning { color: var(--hm-ink-2); }
+.sl.sl-hallmark .sl-tag { border-radius: 0; border-color: var(--hm-rule); background: var(--hm-paper-3); color: var(--hm-ink-2); font-weight: 500; }
+.sl.sl-hallmark .sl-tag--accent { color: var(--color-buoy); border-color: var(--color-buoy); }
+.sl.sl-hallmark .sl-tag--accent-2 { color: var(--hm-sky); }
+
+/* Cards: hairline wells, tone only in the top rule */
+.sl.sl-hallmark .sl-card { border: 1px solid var(--hm-rule); background: var(--hm-paper-2); transition: border-color var(--sl-duration) var(--sl-ease), background-color var(--sl-duration) var(--sl-ease); }
+.sl.sl-hallmark .sl-card--drift { padding: 1.5rem; border-top: 1px solid var(--hm-muted-2); }
+.sl.sl-hallmark .sl-card--critical { border-top-color: var(--color-buoy); }
+.sl.sl-hallmark .sl-card--drift:hover { --sl-card-tone: var(--hm-rule); background: var(--hm-paper-3); }
+.sl.sl-hallmark .sl-card--drift .sl-card__title { font-size: 1.125rem; letter-spacing: -0.02em; }
+.sl.sl-hallmark .sl-card__text { color: var(--hm-muted); }
+.sl.sl-hallmark .sl-card__link { text-decoration: underline; text-decoration-color: var(--hm-rule); text-decoration-thickness: 1px; text-underline-offset: 0.2em; transition: text-decoration-color var(--sl-duration) var(--sl-ease); }
+.sl.sl-hallmark .sl-card__link:hover { color: var(--hm-ink); text-decoration-color: var(--color-buoy); }
+.sl.sl-hallmark .sl-card--journey, .sl.sl-hallmark .sl-card--plan { background: var(--hm-paper); padding: 2rem; }
+.sl.sl-hallmark .sl-card--journey:hover, .sl.sl-hallmark .sl-card--org:hover { --sl-card-tone: var(--hm-rule); border-color: var(--hm-muted-2); }
+.sl.sl-hallmark .sl-card--core, .sl.sl-hallmark .sl-card--hosted { border-color: var(--hm-rule); }
+.sl.sl-hallmark .sl-card--core .sl-card__kicker { color: var(--hm-muted); }
+.sl.sl-hallmark .sl-card--hosted .sl-card__kicker { color: var(--hm-muted); }
+.sl.sl-hallmark .sl-card__kicker { font-size: 0.8125rem; }
+.sl.sl-hallmark .sl-card__foot { border-top-color: var(--hm-rule); color: var(--hm-muted); }
+.sl.sl-hallmark .sl-inline-code { color: var(--hm-ink); font-size: 0.9em; }
+
+/* Lists: square markers instead of ticks */
+.sl.sl-hallmark .sl-list { color: var(--hm-muted); }
+.sl.sl-hallmark .sl-list--lg { color: var(--hm-ink-2); }
+.sl.sl-hallmark .sl-list--check .sl-list__item::before,
+.sl.sl-hallmark .sl-list--plus .sl-list__item::before { content: ''; width: 0.375rem; height: 0.375rem; margin-top: 0.55em; background: var(--hm-muted-2); }
+.sl.sl-hallmark .sl-card--core .sl-list__item::before { background: var(--hm-sky); }
+
+/* Steps: a square numeral in mono, ruled */
+.sl.sl-hallmark .sl-step__num { border: 1px solid var(--hm-rule); border-radius: 0; background: transparent; color: var(--hm-ink); font-family: var(--sl-font-mono); font-size: 1rem; font-weight: 400; }
+.sl.sl-hallmark .sl-step__cmd { border: 1px solid var(--hm-rule); background: var(--hm-paper-3); color: var(--hm-ink); padding: 0.375rem 0.75rem; }
+.sl.sl-hallmark .sl-step__text { color: var(--hm-muted); }
+
+/* Integrations: square hairline chips */
+.sl.sl-hallmark .sl-chip { border: 1px solid var(--hm-rule); background: transparent; color: var(--hm-ink-2); padding: 0.625rem 1.125rem; font-weight: 500; }
+.sl.sl-hallmark .sl-chip:hover { border-color: var(--hm-muted-2); background: var(--hm-paper-2); }
+
+/* Journey path and AI note */
+.sl.sl-hallmark .sl-journey__path { color: var(--hm-muted); }
+.sl.sl-hallmark .sl-journey__stage--free, .sl.sl-hallmark .sl-journey__stage--org { color: var(--hm-ink-2); }
+.sl.sl-hallmark .sl-journey__stage--app { color: var(--color-buoy); }
+.sl.sl-hallmark .sl-ai__note { color: var(--hm-muted); }
+
+/* Footer */
+.sl.sl-hallmark .sl-footer { background: var(--hm-paper-3); border-top: 1px solid var(--hm-rule); color: var(--hm-muted); }
+.sl.sl-hallmark .sl-footer__link:hover { color: var(--hm-ink); }
+.sl.sl-hallmark .sl-footer__sep { color: var(--hm-rule); }
+
+/* Terminal dots: three rule squares, not traffic lights */
+.sl.sl-hallmark .sl-terminal__dots > * { border-radius: 0; background: var(--hm-rule); width: 0.5rem; height: 0.5rem; }
+
+@keyframes hm-settle { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .sl.sl-hallmark .sl-hero__word { animation: none; opacity: 1; }
+  .sl.sl-hallmark .sl-btn, .sl.sl-hallmark .sl-card, .sl.sl-hallmark .sl-chip, .sl.sl-hallmark .sl-link, .sl.sl-hallmark .sl-card__link { transition: none; }
+  .sl.sl-hallmark .sl-btn:active { transform: none; }
+}
+
+/* Round 2 fixes: tracked-caps tags read as sentence case (gate 67); LockOn framed on the page's paper */
+.sl.sl-hallmark .sl-tag { text-transform: lowercase; letter-spacing: 0; font-size: 0.8125rem; }
+.sl.sl-hallmark .sl-tag::first-letter { text-transform: uppercase; }
+.sl.sl-hallmark .sl-catch__demo { padding: 1px; background: var(--hm-rule); }

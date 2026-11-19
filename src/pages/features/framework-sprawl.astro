@@ -1,66 +1,30 @@
 ---
 import FeatureLayout from '../../layouts/FeatureLayout.astro'
-import Terminal from '../../components/Terminal.astro'
-import FeatureCard from '../../components/FeatureCard.astro'
-
-const terminalLines = [
-  { text: '', delay: 600 },
-  { text: '<span class="text-buoy">⚓</span> Analyzing framework usage...', type: 'output', delay: 800 },
-  { text: '', delay: 1200 },
-  { text: '<span class="text-warning">⚠</span> Found <span class="text-light">3</span> UI libraries in use', type: 'warning', delay: 1400 },
-  { text: '', delay: 1600 },
-  { text: '<span class="text-slate">Libraries detected:</span>', type: 'output', delay: 1800 },
-  { text: '  ├─ @radix-ui/react-*     <span class="text-success">47 imports</span> (primary)', type: 'output', delay: 2000 },
-  { text: '  ├─ @chakra-ui/react      <span class="text-warning">12 imports</span> (secondary)', type: 'output', delay: 2200 },
-  { text: '  └─ @mui/material         <span class="text-critical">3 imports</span> (legacy?)', type: 'output', delay: 2400 },
-  { text: '', delay: 2600 },
-  { text: '<span class="text-slate">Component overlap:</span>', type: 'output', delay: 2800 },
-  { text: '  ├─ Button: 3 implementations (Radix, Chakra, MUI)', type: 'output', delay: 3000 },
-  { text: '  ├─ Modal: 2 implementations (Radix, Chakra)', type: 'output', delay: 3200 },
-  { text: '  └─ Select: 2 implementations (Radix, MUI)', type: 'output', delay: 3400 },
-  { text: '', delay: 3600 },
-  { text: '<span class="text-buoy">Recommendation:</span> Consolidate to Radix UI', type: 'output', delay: 3800 },
-]
 
 const sprawlTypes = [
-  {
-    title: 'Multiple UI Libraries',
-    description: 'Using Radix AND Chakra AND MUI in the same project',
-    impact: 'Massive bundle bloat, inconsistent UX'
-  },
-  {
-    title: 'Framework Mixing',
-    description: 'React components alongside jQuery or vanilla JS',
-    impact: 'Hydration issues, maintenance nightmare'
-  },
-  {
-    title: 'CSS-in-JS Sprawl',
-    description: 'Styled-components, Emotion, AND Tailwind together',
-    impact: 'Conflicting styles, specificity wars'
-  },
-  {
-    title: 'State Management Chaos',
-    description: 'Redux + MobX + Zustand + Context in one app',
-    impact: 'Unpredictable state, debugging hell'
-  },
+  { title: 'Multiple UI Libraries', description: 'Using Radix AND Chakra AND MUI in the same project', impact: 'Massive bundle bloat, inconsistent UX' },
+  { title: 'Framework Mixing', description: 'React components alongside jQuery or vanilla JS', impact: 'Hydration issues, maintenance nightmare' },
+  { title: 'CSS-in-JS Sprawl', description: 'Styled-components, Emotion, AND Tailwind together', impact: 'Conflicting styles, specificity wars' },
+  { title: 'State Management Chaos', description: 'Redux + MobX + Zustand + Context in one app', impact: 'Unpredictable state, debugging hell' },
+]
+
+const history = [
+  { year: 'Year 1', quote: '"We\'ll use Material UI, it has everything."' },
+  { year: 'Year 2', quote: '"This new feature needs Radix for the dropdown."' },
+  { year: 'Year 3', quote: '"The contractor used Chakra, we\'ll migrate later."' },
+  { year: 'Year 4', quote: '"Why is our bundle 2MB?"' },
+]
+
+const bundles = [
+  { name: '@radix-ui (headless)', size: '~45KB gzipped', pct: 15, tone: 'ok' },
+  { name: '@chakra-ui/react', size: '~120KB gzipped', pct: 40, tone: 'warn' },
+  { name: '@mui/material', size: '~300KB gzipped', pct: 100, tone: 'crit' },
 ]
 
 const relatedFeatures = [
-  {
-    title: 'Duplicate Detection',
-    description: 'Find component duplicates',
-    href: '/features/duplicate-detection'
-  },
-  {
-    title: 'Coverage',
-    description: 'Track library adoption',
-    href: '/features/coverage'
-  },
-  {
-    title: 'React Integration',
-    description: 'React-specific checks',
-    href: '/integrations/react'
-  },
+  { title: 'Duplicate Detection', description: 'Find component duplicates', href: '/features/duplicate-detection' },
+  { title: 'Coverage', description: 'Track library adoption', href: '/features/coverage' },
+  { title: 'React Integration', description: 'React-specific checks', href: '/integrations/react' },
 ]
 ---
 
@@ -70,155 +34,113 @@ const relatedFeatures = [
   keywords="framework sprawl, multiple ui libraries, bundle size optimization"
   heroTitle="Detect framework sprawl"
   heroDescription="Using three UI libraries at once? Buoy finds the overlap so you can consolidate."
+  exampleCaption="Three UI libraries, the overlap between them, and where to consolidate."
+  related={relatedFeatures}
+  pattern="swell"
+  ctaPattern="rain"
 >
-  <!-- The Problem -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">How Framework Sprawl Happens</h2>
+  <div slot="example" class="ui-term fx-term">
+    <div class="ui-term-bar"><span>Terminal</span></div>
+    <pre><span class="ui-t-prompt">$</span> <span class="ui-t-hi">buoy drift check</span>
+<span class="ui-t-dim">Analyzing framework usage...</span>
 
-      <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
-        <div class="space-y-4 text-sm text-slate">
-          <p class="flex items-start gap-3">
-            <span class="text-buoy font-mono">Year 1:</span>
-            <span>"We'll use Material UI, it has everything."</span>
-          </p>
-          <p class="flex items-start gap-3">
-            <span class="text-buoy font-mono">Year 2:</span>
-            <span>"This new feature needs Radix for the dropdown."</span>
-          </p>
-          <p class="flex items-start gap-3">
-            <span class="text-buoy font-mono">Year 3:</span>
-            <span>"The contractor used Chakra, we'll migrate later."</span>
-          </p>
-          <p class="flex items-start gap-3">
-            <span class="text-buoy font-mono">Year 4:</span>
-            <span>"Why is our bundle 2MB?"</span>
-          </p>
-        </div>
-      </div>
+<span class="ui-t-warn">⚠</span> Found <span class="ui-t-hi">3</span> UI libraries in use
+
+<span class="ui-t-dim">Libraries detected:</span>
+  ├─ @radix-ui/react-*     <span class="ui-t-ok">47 imports</span> (primary)
+  ├─ @chakra-ui/react      <span class="ui-t-warn">12 imports</span> (secondary)
+  └─ @mui/material         <span class="ui-t-crit">3 imports</span> (legacy?)
+
+<span class="ui-t-dim">Component overlap:</span>
+  ├─ Button: 3 implementations (Radix, Chakra, MUI)
+  ├─ Modal: 2 implementations (Radix, Chakra)
+  └─ Select: 2 implementations (Radix, MUI)
+
+<span class="ui-t-prompt">Recommendation:</span> Consolidate to <span class="ui-t-ok">Radix UI</span></pre>
+  </div>
+
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>How framework sprawl happens</h2></div>
+      <table class="ui-table fx-block fx-narrow">
+        <caption class="ui-sr">How sprawl builds up over four years</caption>
+        <tbody>
+          {history.map((h) => <tr><th scope="row" class="ui-c-buoy ui-mono">{h.year}</th><td>{h.quote}</td></tr>)}
+        </tbody>
+      </table>
     </div>
   </section>
 
-  <!-- Terminal Demo -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">See it in action</h2>
-      <Terminal command="buoy drift check" lines={terminalLines} />
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>Types of sprawl we detect</h2></div>
+      <table class="ui-table fx-block">
+        <caption class="ui-sr">Types of sprawl and their impact</caption>
+        <thead><tr><th scope="col">Type</th><th scope="col">Looks like, and the impact</th></tr></thead>
+        <tbody>
+          {sprawlTypes.map((t) => <tr><th scope="row">{t.title}</th><td>{t.description}<br /><span class="ui-c-crit">{t.impact}</span></td></tr>)}
+        </tbody>
+      </table>
     </div>
   </section>
 
-  <!-- Types of Sprawl -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Types of Sprawl We Detect</h2>
-
-      <div class="grid sm:grid-cols-2 gap-6">
-        {sprawlTypes.map((type) => (
-          <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
-            <h3 class="font-semibold text-light mb-2">{type.title}</h3>
-            <p class="text-sm text-slate mb-4">{type.description}</p>
-            <p class="text-xs text-critical">
-              Impact: {type.impact}
-            </p>
-          </div>
+  <section class="ui-section">
+    <div class="ui-wrap fx-narrow">
+      <div class="ui-head"><h2>The bundle size impact</h2></div>
+      <ul class="ui-ruled ui-ruled--top sprawl-bars">
+        {bundles.map((b) => (
+          <li>
+            <div class="sprawl-row"><span>{b.name}</span><span class="ui-tnum sprawl-size">{b.size}</span></div>
+            <div class="sprawl-track"><div class={`sprawl-fill sprawl-${b.tone}`} style={`--w:${b.pct}%`}></div></div>
+          </li>
         ))}
-      </div>
+      </ul>
+      <p class="ui-after">Using all three = <span class="ui-c-crit">~465KB</span> just for UI components. Pick one = <span class="ui-c-ok">~45-120KB</span> depending on choice.</p>
     </div>
   </section>
 
-  <!-- Bundle Impact -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">The Bundle Size Impact</h2>
-
-      <div class="bg-navy-dark border border-navy-light/30 rounded-xl p-6">
-        <div class="space-y-4">
-          <div>
-            <div class="flex justify-between text-sm mb-2">
-              <span class="text-light">@radix-ui (headless)</span>
-              <span class="text-slate">~45KB gzipped</span>
-            </div>
-            <div class="h-3 bg-navy rounded-full overflow-hidden">
-              <div class="h-full bg-success w-[15%]"></div>
-            </div>
-          </div>
-
-          <div>
-            <div class="flex justify-between text-sm mb-2">
-              <span class="text-light">@chakra-ui/react</span>
-              <span class="text-slate">~120KB gzipped</span>
-            </div>
-            <div class="h-3 bg-navy rounded-full overflow-hidden">
-              <div class="h-full bg-warning w-[40%]"></div>
-            </div>
-          </div>
-
-          <div>
-            <div class="flex justify-between text-sm mb-2">
-              <span class="text-light">@mui/material</span>
-              <span class="text-slate">~300KB gzipped</span>
-            </div>
-            <div class="h-3 bg-navy rounded-full overflow-hidden">
-              <div class="h-full bg-critical w-[100%]"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="mt-6 pt-6 border-t border-navy-light/20">
-          <p class="text-sm text-slate text-center">
-            Using all three = <span class="text-critical font-semibold">~465KB</span> just for UI components.
-            <br />
-            Pick one = <span class="text-success font-semibold">~45-120KB</span> depending on choice.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Migration Path -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Plan Your Migration</h2>
-
-      <div class="bg-navy border border-navy-light/30 rounded-xl overflow-hidden">
-        <div class="px-4 py-3 bg-navy-dark border-b border-navy-light/20">
-          <span class="text-sm text-slate font-mono">buoy sprawl report --output json</span>
-        </div>
-        <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{`{
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>Plan your migration</h2></div>
+      <div class="ui-tray fx-block">
+        <div class="ui-panel">
+          <div class="ui-panel-head"><span class="ui-mono">buoy sprawl report --output json</span></div>
+          <pre class="fx-pre">{`{
   "primary": {
-    "library": "@radix-ui",
+    "library": `}<span class="s">"@radix-ui"</span>{`,
     "imports": 47,
-    "recommendation": "Keep as primary"
+    "recommendation": `}<span class="s">"Keep as primary"</span>{`
   },
   "secondary": [
     {
-      "library": "@chakra-ui/react",
+      "library": `}<del>"@chakra-ui/react"</del>{`,
       "imports": 12,
       "components": ["Button", "Modal", "Toast"],
       "migrationEffort": "medium",
-      "recommendation": "Replace with Radix equivalents"
+      "recommendation": `}<span class="s">"Replace with Radix equivalents"</span>{`
     },
     {
-      "library": "@mui/material",
+      "library": `}<del>"@mui/material"</del>{`,
       "imports": 3,
       "components": ["DataGrid"],
       "migrationEffort": "low",
-      "recommendation": "Replace with @tanstack/table + Radix"
+      "recommendation": `}<span class="s">"Replace with @tanstack/table + Radix"</span>{`
     }
   ]
-}`}</code></pre>
+}`}</pre>
+        </div>
       </div>
     </div>
   </section>
-
-  <!-- Related Features -->
-  <div slot="related" class="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-    {relatedFeatures.map((feature) => (
-      <FeatureCard
-        title={feature.title}
-        description={feature.description}
-        href={feature.href}
-      />
-    ))}
-  </div>
 </FeatureLayout>
+
+<style>
+  .sprawl-bars li { padding-block: 16px; }
+  .sprawl-row { display: flex; justify-content: space-between; gap: 16px; font-size: 15px; }
+  .sprawl-size { color: var(--color-muted); }
+  .sprawl-track { margin-top: 10px; height: 8px; border-radius: 99px; background: var(--color-sunken); overflow: hidden; }
+  .sprawl-fill { height: 100%; width: var(--w); border-radius: inherit; }
+  .sprawl-ok { background: var(--color-ok); }
+  .sprawl-warn { background: var(--color-warn); }
+  .sprawl-crit { background: var(--color-crit); }
+</style>

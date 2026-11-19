@@ -1,14 +1,40 @@
 ---
 import DocsLayout from '../../layouts/DocsLayout.astro'
+import MarkPattern from '../../components/MarkPattern.astro'
 ---
 
 <DocsLayout title="Introduction" description="What design drift is, how Buoy catches hardcoded values and duplicate components, and how to start a scan in your repo.">
-  <h1>Introduction to Buoy</h1>
-
-  <p>
+  <header class="docs-hero">
+    <h1>Introduction to Buoy</h1>
+    <p>
     Buoy is an open-source design drift scanner (CLI) and a GitHub App that catches drift on every PR. It scans your codebase to catch when developers
     (especially AI tools like Copilot and Claude) diverge from design system patterns before code ships.
   </p>
+    <div class="ui-actions">
+      <a href="/docs/quick-start" class="ui-btn ui-btn--primary">Quick start</a>
+      <a href="/docs/installation" class="ui-btn ui-btn--secondary">Installation</a>
+    </div>
+  </header>
+
+  <figure class="docs-hero-fig">
+    <MarkPattern pattern="tide" drift={0.45} class="docs-hero-pattern" />
+    <pre><code>$ npx ahoybuoy drift
+
+🛟 Scanning for design drift...
+
+Found 23 issues in 142 files
+
+HARDCODED VALUES (8)
+├─ Card.tsx:8 #ffffff → use var(--bg-surface)
+├─ Badge.tsx:3 8px → use var(--spacing-sm)
+└─ ... and 6 more
+
+ACCESSIBILITY (2)
+├─ Button.tsx:12 Missing aria-label
+└─ Modal.tsx:45 Focus trap not implemented
+</code></pre>
+    <figcaption>Example output of <code>npx ahoybuoy drift</code>.</figcaption>
+  </figure>
 
   <h2>The Missing Feedback Loop</h2>
 
@@ -24,7 +50,7 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
   </p>
 
   <p>
-    <strong>Buoy is that missing feedback loop.</strong> It's the linter for your design system—a
+    <strong>Buoy is that missing feedback loop.</strong> It's the design-system check that was missing, a
     source of truth that tells AI and developers alike: "This doesn't match the system."
   </p>
 
@@ -46,45 +72,27 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
     before it ships.
   </p>
 
-  <h2>Quick Example</h2>
-
-  <pre><code>$ npx ahoybuoy drift
-
-🛟 Scanning for design drift...
-
-Found 23 issues in 142 files
-
-HARDCODED VALUES (8)
-├─ Card.tsx:8 #ffffff → use var(--bg-surface)
-├─ Badge.tsx:3 8px → use var(--spacing-sm)
-└─ ... and 6 more
-
-ACCESSIBILITY (2)
-├─ Button.tsx:12 Missing aria-label
-└─ Modal.tsx:45 Focus trap not implemented
-</code></pre>
-
   <h2>Key Features</h2>
 
   <ul>
-    <li><strong>Zero Config</strong> — Auto-detects React, Vue, Svelte, Angular, Next.js, Tailwind, and 50+ frameworks</li>
-    <li><strong>Drift Detection</strong> — Finds hardcoded colors, spacing, typography, arbitrary Tailwind, inline styles with error/warning/info severity levels</li>
-    <li><strong>Smart Fix Column</strong> — Shows &#x1F3AF; for exact token matches, &#x2248; for the nearest token when the value differs, and &#x1F4A1; for suggested new tokens, so you know what's safe to apply</li>
-    <li><strong>Token Regressions</strong> — Flags a PR that replaces a token reference with its literal value, with a one-click fix that restores the token</li>
-    <li><strong>Auto-Fix</strong> — Suggests and applies token replacements with <code>buoy drift fix --apply</code></li>
-    <li><strong>Health Scoring</strong> — 0-100 score from a single source of truth (the scanner), showing your design system health via <code>buoy show health</code></li>
-    <li><strong>Token Detection</strong> — Auto-detects tokens from CSS custom properties, JS theme objects, and Tailwind config</li>
-    <li><strong>Coding Agents</strong> — An <a href="/docs/integrations/mcp">MCP server and Claude Code plugin</a> give agents your tokens while they write and check each edit for drift</li>
-    <li><strong>Ignore Rules</strong> — Ignore existing drift from CLI or dashboard so you only see new issues</li>
+    <li><strong>Zero Config</strong>: Auto-detects React, Vue, Svelte, Angular, Next.js, Tailwind, and 50+ frameworks</li>
+    <li><strong>Drift Detection</strong>: Finds hardcoded colors, spacing, typography, arbitrary Tailwind, inline styles with error/warning/info severity levels</li>
+    <li><strong>Smart Fix Column</strong>: Shows &#x1F3AF; for exact token matches, &#x2248; for the nearest token when the value differs, and &#x1F4A1; for suggested new tokens, so you know what's safe to apply</li>
+    <li><strong>Token Regressions</strong>: Flags a PR that replaces a token reference with its literal value, with a one-click fix that restores the token</li>
+    <li><strong>Auto-Fix</strong>: Suggests and applies token replacements with <code>buoy drift fix --apply</code></li>
+    <li><strong>Health Scoring</strong>: 0-100 score from a single source of truth (the scanner), showing your design system health via <code>buoy show health</code></li>
+    <li><strong>Token Detection</strong>: Auto-detects tokens from CSS custom properties, JS theme objects, and Tailwind config</li>
+    <li><strong>Coding Agents</strong>: An <a href="/docs/integrations/mcp">MCP server and Claude Code plugin</a> give agents your tokens while they write and check each edit for drift</li>
+    <li><strong>Ignore Rules</strong>: Ignore existing drift from CLI or dashboard so you only see new issues</li>
   </ul>
 
   <h2>Next Steps</h2>
 
   <ul>
-    <li><a href="/docs/installation">Installation</a> — Install Buoy in your project</li>
-    <li><a href="/docs/quick-start">Quick Start</a> — Run your first scan</li>
-    <li><a href="/docs/integrations/mcp">MCP Server</a> — Connect Claude Code, Cursor or Codex</li>
-    <li><a href="/docs/cli/dock">buoy dock</a> — Interactive setup wizard</li>
-    <li><a href="/docs/cli/show">buoy show health</a> — Generate a health report</li>
+    <li><a href="/docs/installation">Installation</a>: Install Buoy in your project</li>
+    <li><a href="/docs/quick-start">Quick Start</a>: Run your first scan</li>
+    <li><a href="/docs/integrations/mcp">MCP Server</a>: Connect Claude Code, Cursor or Codex</li>
+    <li><a href="/docs/cli/dock">buoy dock</a>: Interactive setup wizard</li>
+    <li><a href="/docs/cli/show">buoy show health</a>: Generate a health report</li>
   </ul>
 </DocsLayout>

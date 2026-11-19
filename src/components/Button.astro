@@ -1,10 +1,13 @@
 ---
+// Thin wrapper over the ui-btn classes in src/styles/site.css.
+// primary = orange, secondary = ring-edged surface, ghost = plain. sm 40px, md 44px, lg 48px.
 interface Props {
   href?: string
   variant?: 'primary' | 'secondary' | 'ghost'
   size?: 'sm' | 'md' | 'lg'
   external?: boolean
   class?: string
+  type?: 'button' | 'submit' | 'reset'
 }
 
 const {
@@ -12,33 +15,25 @@ const {
   variant = 'primary',
   size = 'md',
   external = false,
-  class: className = ''
+  class: className = '',
+  type = 'button',
 } = Astro.props
 
-const baseStyles = 'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-buoy focus-visible:ring-offset-2 focus-visible:ring-offset-navy-dark'
-
-const variants = {
-  primary: 'bg-buoy text-navy-dark hover:bg-buoy-light glow-buoy hover:scale-105',
-  secondary: 'bg-navy-light/50 text-light border border-navy-light/50 hover:bg-navy-light hover:border-lavender/50',
-  ghost: 'text-slate hover:text-light hover:bg-navy-light/30',
-}
-
-const sizes = {
-  sm: 'px-3 py-1.5 text-sm gap-1.5',
-  md: 'px-5 py-2.5 text-sm gap-2',
-  lg: 'px-6 py-3 text-base gap-2',
-}
-
-const classes = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`
-
-const Tag = href ? 'a' : 'button'
+const sizes = { sm: 'ui-btn--sm', md: '', lg: 'ui-btn--lg' }
+const classes = ['ui-btn', `ui-btn--${variant}`, sizes[size], className].filter(Boolean).join(' ')
 ---
 
-<Tag
-  href={href}
-  class={classes}
-  target={external ? '_blank' : undefined}
-  rel={external ? 'noopener noreferrer' : undefined}
->
-  <slot />
-</Tag>
+{href ? (
+  <a
+    href={href}
+    class={classes}
+    target={external ? '_blank' : undefined}
+    rel={external ? 'noopener noreferrer' : undefined}
+  >
+    <slot />
+  </a>
+) : (
+  <button type={type} class={classes}>
+    <slot />
+  </button>
+)}

@@ -1,20 +1,5 @@
 ---
 import FeatureLayout from '../../layouts/FeatureLayout.astro'
-import Terminal from '../../components/Terminal.astro'
-import FeatureCard from '../../components/FeatureCard.astro'
-
-const terminalLines = [
-  { text: '', delay: 600 },
-  { text: '<span class="text-buoy">⚓</span> Scanning codebase for style values...', type: 'output', delay: 800 },
-  { text: '', delay: 1200 },
-  { text: 'Found <span class="text-light">47</span> unique colors', type: 'output', delay: 1400 },
-  { text: 'Found <span class="text-light">12</span> unique spacing values', type: 'output', delay: 1600 },
-  { text: 'Found <span class="text-light">8</span> unique font sizes', type: 'output', delay: 1800 },
-  { text: '', delay: 2000 },
-  { text: '<span class="text-success">✓</span> Generated tokens.css', type: 'success', delay: 2200 },
-  { text: '<span class="text-success">✓</span> Generated tokens.json', type: 'success', delay: 2400 },
-  { text: '<span class="text-success">✓</span> Generated tailwind.config.js extension', type: 'success', delay: 2600 },
-]
 
 const outputFormats = [
   { name: 'CSS Variables', file: 'tokens.css' },
@@ -25,22 +10,16 @@ const outputFormats = [
   { name: 'Style Dictionary', file: 'tokens.sd.json' },
 ]
 
+const steps = [
+  { title: 'Scan', text: 'Buoy scans your codebase for all hardcoded style values' },
+  { title: 'Dedupe', text: 'Groups similar values and suggests consolidation' },
+  { title: 'Generate', text: 'Outputs token files in your preferred format' },
+]
+
 const relatedFeatures = [
-  {
-    title: 'Token Generation',
-    description: 'Generate tokens with AI',
-    href: '/features/token-generation'
-  },
-  {
-    title: 'Hardcoded Values',
-    description: 'Find values to tokenize',
-    href: '/features/hardcoded-values'
-  },
-  {
-    title: 'Coverage',
-    description: 'Measure token adoption',
-    href: '/features/coverage'
-  },
+  { title: 'Token Generation', description: 'Generate tokens with AI', href: '/features/token-generation' },
+  { title: 'Hardcoded Values', description: 'Find values to tokenize', href: '/features/hardcoded-values' },
+  { title: 'Coverage', description: 'Measure token adoption', href: '/features/coverage' },
 ]
 ---
 
@@ -50,107 +29,78 @@ const relatedFeatures = [
   keywords="extract design tokens, create design tokens cli, hardcoded to design tokens"
   heroTitle="Turn hardcoded values into design tokens"
   heroDescription="You have colors and spacing scattered everywhere. Buoy extracts them into a token file in seconds."
+  exampleCaption="Values found in the code become named tokens."
+  related={relatedFeatures}
+  pattern="rain"
+  ctaPattern="field"
 >
-  <!-- How It Works -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">How It Works</h2>
+  <div slot="example" class="ui-term fx-term">
+    <div class="ui-term-bar"><span>Terminal</span></div>
+    <pre><span class="ui-t-prompt">$</span> <span class="ui-t-hi">buoy anchor</span>
+<span class="ui-t-dim">Scanning codebase for style values...</span>
 
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="text-center">
-          <div class="w-12 h-12 rounded-full bg-buoy/20 border-2 border-buoy flex items-center justify-center mx-auto mb-4 text-buoy font-bold">
-            1
-          </div>
-          <h3 class="font-semibold text-light mb-2">Scan</h3>
-          <p class="text-sm text-slate">
-            Buoy scans your codebase for all hardcoded style values
-          </p>
-        </div>
+Found <span class="ui-t-hi">47</span> unique colors
+Found <span class="ui-t-hi">12</span> unique spacing values
+Found <span class="ui-t-hi">8</span> unique font sizes
 
-        <div class="text-center">
-          <div class="w-12 h-12 rounded-full bg-buoy/20 border-2 border-buoy flex items-center justify-center mx-auto mb-4 text-buoy font-bold">
-            2
-          </div>
-          <h3 class="font-semibold text-light mb-2">Dedupe</h3>
-          <p class="text-sm text-slate">
-            Groups similar values and suggests consolidation
-          </p>
-        </div>
-
-        <div class="text-center">
-          <div class="w-12 h-12 rounded-full bg-buoy/20 border-2 border-buoy flex items-center justify-center mx-auto mb-4 text-buoy font-bold">
-            3
-          </div>
-          <h3 class="font-semibold text-light mb-2">Generate</h3>
-          <p class="text-sm text-slate">
-            Outputs token files in your preferred format
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Terminal Demo -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">See it in action</h2>
-      <Terminal command="buoy anchor" lines={terminalLines} />
-    </div>
-  </section>
-
-  <!-- Output Formats -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Output Formats</h2>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {outputFormats.map((format) => (
-          <div class="bg-navy/50 border border-navy-light/20 rounded-lg p-4 flex items-center justify-between">
-            <span class="text-light">{format.name}</span>
-            <code class="text-sm text-slate-dark">{format.file}</code>
-          </div>
-        ))}
-      </div>
-
-      <div class="mt-8 bg-navy border border-navy-light/30 rounded-xl overflow-hidden">
-        <div class="px-4 py-3 bg-navy-dark border-b border-navy-light/20">
-          <span class="text-sm text-slate font-mono">Example: tokens.css output</span>
-        </div>
-        <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{`:root {
-  /* Colors - extracted from codebase */
-  --color-primary: #3b82f6;
-  --color-primary-dark: #2563eb;
-  --color-secondary: #10b981;
-  --color-text: #1f2937;
-  --color-text-muted: #6b7280;
-  --color-bg: #ffffff;
-  --color-bg-secondary: #f3f4f6;
-
-  /* Spacing */
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 32px;
-
-  /* Typography */
-  --font-size-sm: 14px;
-  --font-size-base: 16px;
-  --font-size-lg: 18px;
-  --font-size-xl: 24px;
-}`}</code></pre>
-      </div>
-    </div>
-  </section>
-
-  <!-- Related Features -->
-  <div slot="related" class="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-    {relatedFeatures.map((feature) => (
-      <FeatureCard
-        title={feature.title}
-        description={feature.description}
-        href={feature.href}
-      />
-    ))}
+<span class="ui-t-ok">✓</span> Generated tokens.css
+<span class="ui-t-ok">✓</span> Generated tokens.json
+<span class="ui-t-ok">✓</span> Generated tailwind.config.js extension</pre>
   </div>
+
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>How it works</h2></div>
+      <ol class="ui-steps fx-block">
+        {steps.map((s, i) => (
+          <li><span class="ui-step-n" aria-hidden="true">{i + 1}</span><div><h3>{s.title}</h3><p>{s.text}</p></div></li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap ui-split">
+      <div>
+        <div class="ui-head"><h2>Output formats</h2><p>Pick the files your stack reads.</p></div>
+        <table class="ui-table fx-block">
+          <caption class="ui-sr">Output formats and file names</caption>
+          <thead><tr><th scope="col">Format</th><th scope="col" class="ui-end">File</th></tr></thead>
+          <tbody>
+            {outputFormats.map((f) => (
+              <tr><th scope="row">{f.name}</th><td class="ui-end ui-mono">{f.file}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="ui-tray">
+        <div class="ui-panel">
+          <div class="ui-panel-head"><span class="ui-mono">Example: tokens.css output</span></div>
+          <pre class="fx-pre">{`:root {
+  `}<span class="c">/* Colors - extracted from codebase */</span>{`
+  `}<ins>--color-primary</ins>{`: #3b82f6;
+  `}<ins>--color-primary-dark</ins>{`: #2563eb;
+  `}<ins>--color-secondary</ins>{`: #10b981;
+  `}<ins>--color-text</ins>{`: #1f2937;
+  `}<ins>--color-text-muted</ins>{`: #6b7280;
+  `}<ins>--color-bg</ins>{`: #ffffff;
+  `}<ins>--color-bg-secondary</ins>{`: #f3f4f6;
+
+  `}<span class="c">/* Spacing */</span>{`
+  `}<ins>--spacing-xs</ins>{`: 4px;
+  `}<ins>--spacing-sm</ins>{`: 8px;
+  `}<ins>--spacing-md</ins>{`: 16px;
+  `}<ins>--spacing-lg</ins>{`: 24px;
+  `}<ins>--spacing-xl</ins>{`: 32px;
+
+  `}<span class="c">/* Typography */</span>{`
+  `}<ins>--font-size-sm</ins>{`: 14px;
+  `}<ins>--font-size-base</ins>{`: 16px;
+  `}<ins>--font-size-lg</ins>{`: 18px;
+  `}<ins>--font-size-xl</ins>{`: 24px;
+}`}</pre>
+        </div>
+      </div>
+    </div>
+  </section>
 </FeatureLayout>

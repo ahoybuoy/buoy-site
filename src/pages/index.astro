@@ -1,139 +1,71 @@
 ---
-import BuoyMark from '../components/BuoyMark.astro'
+// Homepage. Built from the chosen design at /taste/dark/feel-better, on the shared
+// Nav/Footer and the ui-* classes (src/styles/site.css). Only the hero and the
+// pull-request mock are styled on this page.
 import Layout from '../layouts/Layout.astro'
 import Nav from '../components/Nav.astro'
-import Terminal from '../components/Terminal.astro'
-import Button from '../components/Button.astro'
-import FeatureCard from '../components/FeatureCard.astro'
-import CodeBlock from '../components/CodeBlock.astro'
-import WaveBackground from '../components/WaveBackground.astro'
-import WaveBoat from '../components/WaveBoat.astro'
+import Footer from '../components/Footer.astro'
+import BuoyMark from '../components/BuoyMark.astro'
+import BoatHero from '../components/taste/BoatHero.astro'
+import BoatGlyph from '../components/taste/BoatGlyph.astro'
+import LockOn from '../components/taste/dark/feel-better/LockOnAligned.astro'
 import MarkPattern from '../components/MarkPattern.astro'
-import LeadCaptureSection from '../components/LeadCaptureSection.astro'
-import LockOn from '../components/LockOn.astro'
-import FreeSpots from '../components/FreeSpots.astro'
-import { siteConfig } from '../config'
 
-const terminalLines = [
-  { text: '', type: 'output', delay: 600 },
-  { text: '<span class="text-buoy">🛟</span> Scanning for design drift...', type: 'output', delay: 800 },
-  { text: '', type: 'output', delay: 1200 },
-  { text: 'Found <span class="text-warning">23</span> issues in <span class="text-slate">142 files</span>', type: 'output', delay: 1400 },
-  { text: '', type: 'output', delay: 1600 },
-  { text: '<span class="text-critical font-semibold">CRITICAL (2)</span>', type: 'output', delay: 1800 },
-  { text: '├─ Button.tsx:12 Missing aria-label', type: 'critical', delay: 2000 },
-  { text: '└─ Modal.tsx:45 Focus trap not implemented', type: 'critical', delay: 2200 },
-  { text: '', type: 'output', delay: 2400 },
-  { text: '<span class="text-warning font-semibold">HARDCODED VALUES (8)</span>', type: 'output', delay: 2600 },
-  { text: '├─ Card.tsx:8 #ffffff <span class="text-slate">→ use var(--bg-surface)</span>', type: 'warning', delay: 2800 },
-  { text: '├─ Badge.tsx:3 8px <span class="text-slate">→ use var(--spacing-sm)</span>', type: 'warning', delay: 3000 },
-  { text: '└─ <span class="text-slate-dark">... and 6 more</span>', type: 'muted', delay: 3200 },
-  { text: '', type: 'output', delay: 3400 },
-  { text: '<span class="text-buoy font-semibold">Add to CI to catch drift on every PR</span>', type: 'output', delay: 3600 },
-]
+const APP_URL = 'https://github.com/marketplace/buoy-design'
 
-const ciTerminalLines = [
-  { text: '', type: 'output', delay: 600 },
-  { text: '<span class="text-buoy">🛟</span> Buoy CI — checking PR #247...', type: 'output', delay: 800 },
-  { text: '', type: 'output', delay: 1200 },
-  { text: '<span class="text-critical font-semibold">✗ BLOCKED</span> — 3 new drift issues found', type: 'critical', delay: 1400 },
-  { text: '', type: 'output', delay: 1600 },
-  { text: '├─ src/components/Card.tsx:23', type: 'output', delay: 1800 },
-  { text: '│  <span class="text-warning">Hardcoded color #3b82f6</span>', type: 'warning', delay: 2000 },
-  { text: '│  <span class="text-slate">→ use var(--color-primary)</span>', type: 'output', delay: 2200 },
-  { text: '', type: 'output', delay: 2400 },
-  { text: '├─ src/components/Modal.tsx:8', type: 'output', delay: 2600 },
-  { text: '│  <span class="text-warning">Hardcoded spacing 24px</span>', type: 'warning', delay: 2800 },
-  { text: '│  <span class="text-slate">→ use var(--spacing-lg)</span>', type: 'output', delay: 3000 },
-  { text: '', type: 'output', delay: 3200 },
-  { text: '<span class="text-slate">Fix these issues to merge this PR</span>', type: 'output', delay: 3400 },
-]
-
-const driftTypes = [
-  {
-    title: 'Hardcoded Values',
-    severity: 'Warning',
-    description: 'Colors, spacing, fonts not using tokens',
-    icon: '🎨',
-    href: '/features/hardcoded-values'
-  },
-  {
-    title: 'Duplicate Components',
-    severity: 'Warning',
-    description: 'Similar components that should be consolidated',
-    icon: '📦',
-    href: '/features/duplicate-detection'
-  },
-  {
-    title: 'Naming Inconsistency',
-    severity: 'Info',
-    description: 'Component/prop names that don\'t match conventions',
-    icon: '🏷️',
-    href: '/features/naming-consistency'
-  },
-  {
-    title: 'Deprecated Patterns',
-    severity: 'Warning',
-    description: 'Components marked as deprecated still in use',
-    icon: '⚠️',
-  },
-  {
-    title: 'Inline Styles',
-    severity: 'Warning',
-    description: 'Inline CSS that should use tokens or classes',
-    icon: '🔧',
-  },
-  {
-    title: 'Accessibility Conflict',
-    severity: 'Critical',
-    description: 'Missing ARIA labels, focus issues',
-    icon: '♿',
-    href: '/features/accessibility-checks'
-  },
-  {
-    title: 'Framework Sprawl',
-    severity: 'Warning',
-    description: 'Multiple UI frameworks in same codebase',
-    icon: '🌐',
-    href: '/features/framework-sprawl'
-  },
-  {
-    title: 'Orphaned Components',
-    severity: 'Info',
-    description: 'Components in code but not in design',
-    icon: '👻',
-  },
-]
-
-const integrations = [
-  { name: 'React', icon: '⚛️', href: '/integrations/react' },
-  { name: 'Vue', icon: '💚', href: '/integrations/vue' },
-  { name: 'Svelte', icon: '🔶', href: '/integrations/svelte' },
-  { name: 'Angular', icon: '🔺', href: '/integrations/angular' },
-  { name: 'Next.js', icon: '▲', href: '/integrations/nextjs' },
-  { name: 'Tailwind', icon: '🌊', href: '/integrations/tailwind' },
-  { name: 'GitHub', icon: '🐙', href: '/integrations/github' },
+const catches = [
+  { title: 'Hardcoded colors', from: '#ffffff', to: 'var(--bg)' },
+  { title: 'Magic numbers', from: '16px', to: 'var(--space-4)' },
+  { title: 'Duplicate components', from: 'a second Card', to: '<Card>' },
 ]
 
 const steps = [
-  {
-    step: '1',
-    title: 'Detect',
-    command: 'buoy drift check',
-    description: 'Zero config. Every issue with exact file and line.'
-  },
-  {
-    step: '2',
-    title: 'Enforce',
-    command: 'buoy drift check',
-    description: 'Catch drift at PR. Nothing bad reaches main.'
-  },
-  {
-    step: '3',
-    title: 'Measure',
-    command: 'buoy show health',
-    description: 'Track design system health over time.'
-  },
+  { title: 'Set up', command: 'npx ahoybuoy dock', description: 'Sets Buoy up in your project.' },
+  { title: 'Detect', command: 'buoy drift check', description: 'Lists every issue with the exact file and line.' },
+  { title: 'Measure', command: 'buoy show health', description: 'Tracks design system health over time.' },
+]
+
+const driftTypes = [
+  { title: 'Hardcoded values', severity: 'Warning', description: 'Colors, spacing and fonts that do not use tokens.', href: '/features/hardcoded-values' },
+  { title: 'Duplicate components', severity: 'Warning', description: 'Similar components that should be consolidated.', href: '/features/duplicate-detection' },
+  { title: 'Naming inconsistency', severity: 'Info', description: 'Component and prop names that do not match your conventions.', href: '/features/naming-consistency' },
+  { title: 'Deprecated patterns', severity: 'Warning', description: 'Components marked as deprecated that are still in use.' },
+  { title: 'Inline styles', severity: 'Warning', description: 'Inline CSS that should use tokens or classes.' },
+  { title: 'Accessibility conflicts', severity: 'Critical', description: 'Missing ARIA labels and focus issues.', href: '/features/accessibility-checks' },
+  { title: 'Framework sprawl', severity: 'Warning', description: 'Multiple UI frameworks in the same codebase.', href: '/features/framework-sprawl' },
+  { title: 'Orphaned components', severity: 'Info', description: 'Components that are in code but not in design.' },
+]
+
+const core = [
+  'All scanning and drift detection',
+  'Fix suggestions with exact token replacements',
+  'Deterministic, with no LLM',
+  'No data leaves your machine',
+  'Works air-gapped and offline',
+]
+
+const app = [
+  'Runs the same open-source scanner on every pull request',
+  'Inline fix suggestions you can commit',
+  'LLM-written summaries and coaching. Findings stay deterministic',
+  'Dashboard with health scores and trends',
+  'Builder mode coaching for new design systems',
+]
+
+const tiers = [
+  { tier: 'free', tag: 'Open source, free', title: 'Detect locally', text: 'Run buoy drift check in any project. See every hardcoded value and naming issue.', items: ['Unlimited scans', 'All detection rules', 'Fix suggestions'] },
+  { tier: 'app', tag: 'GitHub App', title: 'Catch it at the PR', text: 'Install the Buoy GitHub App and every pull request gets checked before merge.', items: ['Inline PR comments', 'Check status integration', 'Committable fix suggestions'] },
+  { tier: 'org', tag: 'Organization', title: 'Own the record', text: 'For design-system owners: how your system holds up across every repo that uses it.', items: ['Org-wide drift record', 'Design-partner relationship'] },
+]
+
+const integrations = [
+  { name: 'React', href: '/integrations/react' },
+  { name: 'Vue', href: '/integrations/vue' },
+  { name: 'Svelte', href: '/integrations/svelte' },
+  { name: 'Angular', href: '/integrations/angular' },
+  { name: 'Next.js', href: '/integrations/nextjs' },
+  { name: 'Tailwind', href: '/integrations/tailwind' },
+  { name: 'GitHub', href: '/integrations/github' },
 ]
 
 const siteUrl = 'https://buoy.design'
@@ -153,7 +85,7 @@ const homeJsonLd = [
     applicationCategory: 'DeveloperApplication',
     operatingSystem: 'Web, macOS, Linux, Windows',
     description:
-      'Design systems drift over time. Buoy catches it before it ships. Scan your codebase for hardcoded values, duplicate components, and design system violations.',
+      'Design systems drift over time. Buoy catches it before it ships. Scan your codebase for hardcoded values, duplicate components, and values that skip your design tokens.',
     offers: {
       '@type': 'Offer',
       price: '0',
@@ -164,986 +96,449 @@ const homeJsonLd = [
 ]
 ---
 
-<Layout title="Buoy - Design Drift Detection for the AI Era" jsonLd={homeJsonLd}>
+<Layout
+  jsonLd={homeJsonLd}
+  title="Buoy: catch design drift before it ships"
+  description="On every pull request, Buoy comments the exact fix for hardcoded colors, off-token values and rogue components. Free open-source CLI, GitHub App for PR review."
+>
+  <a href="#main" class="ui-skip">Skip to content</a>
   <Nav />
 
-  <!-- Design System Callout -->
-  <div class="relative z-20 bg-gradient-to-r from-buoy/10 via-lavender/10 to-buoy/10 border-b border-buoy/20">
-    <a href="/ds" class="block max-w-7xl mx-auto px-4 py-3 text-center group">
-      <span class="inline-flex items-center gap-2 text-sm text-slate group-hover:text-light transition-colors">
-        <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-buoy/20 text-buoy text-xs font-bold">P</span>
-        <span>Explore <strong class="text-light font-semibold">Plumb</strong> — our open design system</span>
-        <svg class="w-4 h-4 text-buoy group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-        </svg>
-      </span>
-    </a>
-  </div>
-
-  <!-- Hero Section -->
-  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
-    <!-- Digital wave background -->
-    <WaveBackground />
-
-    <!-- Wave boat — lives outside wave-background so z-index can exceed the z-10 content div -->
-    <WaveBoat id="waveBoat" containerSelector=".wave-background" mode="hero" />
-
-    <div class="relative z-10 hero-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
-      <div class="text-center max-w-4xl mx-auto">
-        <!-- Tagline badge -->
-        <div class="inline-flex items-center px-4 py-2 rounded-full bg-navy/60 border border-navy-light/30 mb-8 backdrop-blur-sm">
-          <span class="text-sm text-slate">The control and visibility layer design has been missing</span>
+  <main id="main" class="hp ui-nav-offset">
+    <!-- Hero -->
+    <BoatHero minHeight="calc(100svh - 65px)" class="hp-hero">
+      <div class="ui-wrap hp-hero-grid">
+        <div class="hp-hero-copy">
+          <!-- "before it ships." lands as the boat wiggles free (850ms). -->
+          <h1 class="hp-h1">
+            <span class="hero-reveal" style="animation-delay: 0s">Catch</span>
+            <span class="hero-reveal hero-drift-highlight" style="animation-delay: 0.22s">design drift</span>
+            <br />
+            <span class="hero-reveal" style="animation-delay: 0.82s">before</span>
+            <span class="hero-reveal" style="animation-delay: 0.93s">it</span>
+            <span class="hero-reveal" style="animation-delay: 1.04s">ships.</span>
+          </h1>
+          <p class="ui-lede">
+            On every pull request, Buoy comments the exact fix for hardcoded colors, off-token values and rogue components.<BoatGlyph />
+          </p>
+          <div class="ui-actions">
+            <a href={APP_URL} target="_blank" rel="noopener noreferrer" class="ui-btn ui-btn--primary ui-btn--icon">
+              <span>Install the GitHub App</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="/scan" class="ui-btn ui-btn--secondary">Scan a public repo</a>
+          </div>
         </div>
 
-        <!-- Main headline -->
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight font-[Quicksand]">
-          <span class="hero-reveal text-light" style="animation-delay: 0s">Catch</span>
-          <span class="hero-reveal hero-drift-highlight" style="animation-delay: 0.22s">design drift</span>
-          <br />
-          <span class="hero-reveal text-light" style="animation-delay: 0.82s">before</span>
-          <span class="hero-reveal text-light" style="animation-delay: 0.93s">it</span>
-          <span class="hero-reveal text-light" style="animation-delay: 1.04s">ships.</span>
-        </h1>
-
-        <!-- Subheadline -->
-        <p class="text-lg sm:text-xl text-slate max-w-2xl mx-auto mb-10" style="text-shadow: 0 1px 3px rgba(0,0,0,0.2)">
-          Design systems drift over time. Buoy watches every PR for hardcoded colors, token violations, and rogue components.<span class="hero-boat-inline" id="heroBoatInline">&nbsp;<span class="hero-boat-emoji" id="heroBoatEmoji">⛵</span></span>
-        </p>
-
-        <!-- CTAs -->
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-          <Button href="https://github.com/marketplace/buoy-design" size="lg" external>
-            Try it now — it's free
-          </Button>
-        </div>
-        <p class="hero-scan-line -mt-8 mb-10 text-sm text-slate">
-          Or <a href="/scan" class="text-buoy hover:underline">scan any public GitHub repository</a> for design drift, free, in about a minute.
-        </p>
+        <figure class="ui-figure ui-enter" style="animation-delay:1200ms">
+          <div class="ui-tray">
+            <div class="ui-panel">
+              <div class="ui-panel-head">
+                <span class="ui-mono">src/components/Card.tsx</span>
+              </div>
+              <div class="hp-diff ui-mono" role="img" aria-label="Diff of Card.tsx. Line 23 adds a hardcoded background color, #3b82f6.">
+                <div class="hp-line"><span class="hp-ln">21</span><span class="hp-sign"></span><span class="hp-code">{"const Card = ({ children }) => ("}</span></div>
+                <div class="hp-line"><span class="hp-ln">22</span><span class="hp-sign"></span><span class="hp-code">{"  <div style={{"}</span></div>
+                <div class="hp-line hp-add"><span class="hp-ln">23</span><span class="hp-sign">+</span><span class="hp-code">{'    background: "#3b82f6",'}</span></div>
+              </div>
+              <div class="hp-comment-row">
+                <div class="hp-comment">
+                  <div class="hp-comment-head">
+                    <span class="hp-avatar"><BuoyMark size={16} /></span>
+                    <span class="hp-comment-author">buoy-design</span>
+                    <span class="hp-tag">bot</span>
+                    <span class="hp-comment-meta">commented on line <span class="ui-tnum">23</span></span>
+                  </div>
+                  <p class="hp-comment-body">
+                    Hardcoded color <code>#3b82f6</code>. Use <code>var(--color-primary)</code> instead.
+                  </p>
+                  <div class="hp-suggest">
+                    <div class="hp-suggest-label">Suggested change</div>
+                    <div class="hp-diff ui-mono">
+                      <div class="hp-line hp-del"><span class="hp-ln">23</span><span class="hp-sign">-</span><span class="hp-code">background: "#3b82f6",</span></div>
+                      <div class="hp-line hp-add"><span class="hp-ln">23</span><span class="hp-sign">+</span><span class="hp-code">background: "var(--color-primary)",</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="hp-diff ui-mono" aria-hidden="true">
+                <div class="hp-line hp-add"><span class="hp-ln">24</span><span class="hp-sign">+</span><span class="hp-code">{'    padding: "24px",'}</span></div>
+                <div class="hp-line"><span class="hp-ln">25</span><span class="hp-sign"></span><span class="hp-code">{"  }}>"}</span></div>
+              </div>
+            </div>
+          </div>
+          <figcaption>What a Buoy review comment looks like on a pull request.</figcaption>
+        </figure>
       </div>
-    </div>
+    </BoatHero>
 
-    <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-      <svg class="w-6 h-6 text-light-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-      </svg>
-    </div>
-  </section>
-
-  <!-- Wave divider -->
-  <div class="relative h-24 bg-navy-dark -mt-1">
-    <svg class="absolute top-0 left-0 w-full h-full" viewBox="0 0 1440 96" preserveAspectRatio="none">
-      <path d="M0,0 Q360,96 720,48 T1440,96 L1440,96 L0,96 Z" fill="#0d1829"/>
-    </svg>
-  </div>
-
-  <!-- Problem Statement Section -->
-  <section class="py-24 bg-navy-dark relative -mt-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl sm:text-4xl font-bold text-light mb-4">
-          💧 Design systems leak.
-        </h2>
-        <p class="text-lg text-slate max-w-2xl mx-auto">
-          Hardcoded values creep in. Drift compounds.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <!-- What AI generates -->
-        <div class="bg-navy/50 border border-critical/30 rounded-xl overflow-hidden">
-          <div class="px-4 py-2 bg-critical/10 border-b border-critical/20 flex items-center justify-between">
-            <span class="text-sm font-semibold text-critical uppercase tracking-wide">What AI generates</span>
-            <span class="text-xs text-critical/70">Card.tsx</span>
-          </div>
-          <div class="p-4 font-mono text-sm">
-            <pre class="text-slate-dark"><code><span class="text-slate">const Card = () =&gt; (</span>
-  <span class="text-slate">&lt;div style=&#123;&#123;</span>
-    <span class="text-critical">background: "#ffffff"</span><span class="text-slate-dark">,</span>
-    <span class="text-critical">padding: "16px"</span><span class="text-slate-dark">,</span>
-    <span class="text-critical">borderRadius: "8px"</span><span class="text-slate-dark">,</span>
-    <span class="text-critical">boxShadow: "0 2px 4px rgba..."</span>
-  <span class="text-slate">&#125;&#125;&gt;</span>
-    <span class="text-slate">&#123;children&#125;</span>
-  <span class="text-slate">&lt;/div&gt;</span>
-<span class="text-slate">)</span></code></pre>
-          </div>
+    <!-- Why -->
+    <section class="ui-section">
+      <div class="ui-wrap">
+        <div class="ui-head">
+          <h2>Coding agents write a lot of UI. They do not know your tokens.</h2>
+          <p>
+            Hardcoded values creep in, and the drift compounds. Buoy compares each change with the tokens and components your team already has.
+          </p>
         </div>
 
-        <!-- What you want -->
-        <div class="bg-navy/50 border border-success/30 rounded-xl overflow-hidden">
-          <div class="px-4 py-2 bg-success/10 border-b border-success/20 flex items-center justify-between">
-            <span class="text-sm font-semibold text-success uppercase tracking-wide">What you want</span>
-            <span class="text-xs text-success/70">Card.tsx</span>
-          </div>
-          <div class="p-4 font-mono text-sm">
-            <pre class="text-slate-dark"><code><span class="text-slate">import &#123; Card &#125; from "@/components"</span>
-
-<span class="text-slate">const MyCard = () =&gt; (</span>
-  <span class="text-success">&lt;Card variant="elevated"&gt;</span>
-    <span class="text-slate">&#123;children&#125;</span>
-  <span class="text-success">&lt;/Card&gt;</span>
-<span class="text-slate">)</span>
-
-
-</code></pre>
-          </div>
-        </div>
-      </div>
-
-      <!-- What Buoy catches -->
-      <div class="mt-12 max-w-3xl mx-auto">
-        <h3 class="text-2xl sm:text-3xl font-bold text-light mb-6 text-center">
-          🛟  Buoy plugs the holes.
-        </h3>
-        <div class="mb-8">
+        <div class="hp-lockon">
           <LockOn />
         </div>
-        <div class="bg-navy/30 border border-buoy/20 rounded-xl p-6">
-          <div class="text-sm font-semibold text-buoy mb-4">
-            What Buoy catches:
-          </div>
-          <div class="grid sm:grid-cols-3 gap-4 text-sm">
-            <div class="flex items-start gap-2">
-              <span class="text-warning mt-0.5">⚠</span>
-              <div>
-                <div class="text-light font-medium">Hardcoded colors</div>
-                <div class="text-slate-dark">#ffffff → var(--bg)</div>
-              </div>
-            </div>
-            <div class="flex items-start gap-2">
-              <span class="text-warning mt-0.5">⚠</span>
-              <div>
-                <div class="text-light font-medium">Magic numbers</div>
-                <div class="text-slate-dark">16px → var(--space-4)</div>
-              </div>
-            </div>
-            <div class="flex items-start gap-2">
-              <span class="text-warning mt-0.5">⚠</span>
-              <div>
-                <div class="text-light font-medium">Duplicate components</div>
-                <div class="text-slate-dark">Use &lt;Card&gt; instead</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="mt-6 text-center">
-          <a href="#features" class="text-buoy hover:text-buoy-light text-sm font-medium transition-colors">
-            See all drift types →
-          </a>
-        </div>
+
+        <table class="ui-table hp-fixes">
+          <caption class="ui-sr">What Buoy catches, and the fix it suggests</caption>
+          <thead><tr><th scope="col">Catch</th><th scope="col">Found</th><th scope="col">Suggested</th></tr></thead>
+          <tbody>
+            {catches.map((c) => (
+              <tr>
+                <th scope="row">{c.title}</th>
+                <td class="ui-mono">{c.from.startsWith('a ') ? <span class="hp-plain">{c.from}</span> : <del>{c.from}</del>}</td>
+                <td class="ui-mono"><ins>{c.to}</ins></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Lead Capture Section -->
-  <LeadCaptureSection />
-
-  <!-- Terminal Demo Section: Find -->
-  <section class="py-24 bg-navy relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
-    <MarkPattern pattern="swell" drift={0.35} fade class="opacity-70" />
-
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl sm:text-4xl font-bold text-light mb-4">
-          Find drift in seconds
-        </h2>
-        <p class="text-lg text-slate">
-          One command. Every issue with exact file, line, and suggestion.
-        </p>
-      </div>
-
-      <Terminal
-        command="buoy drift check"
-        lines={terminalLines}
-        class="max-w-3xl mx-auto"
-      />
-    </div>
-  </section>
-
-  <!-- CI Enforcement Section: GitHub PR Style -->
-  <section class="py-24 bg-navy-dark relative overflow-hidden">
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl sm:text-4xl font-bold text-light mb-4">
-          Catch drift at the PR
-        </h2>
-        <p class="text-lg text-slate">
-          Install the Buoy GitHub App. Drift never reaches main.
-        </p>
-      </div>
-
-      <!-- GitHub PR Check Style Card -->
-      <div class="max-w-3xl mx-auto">
-        <div class="bg-[#0d1117] border border-[#30363d] rounded-lg overflow-hidden shadow-xl">
-          <!-- PR Header -->
-          <div class="px-4 py-3 border-b border-[#30363d] flex items-center gap-3">
-            <div class="flex items-center gap-2">
-              <svg class="w-5 h-5 text-[#3fb950]" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M7.177 3.073L9.573.677A.25.25 0 0110 .854v4.792a.25.25 0 01-.427.177L7.177 3.427a.25.25 0 010-.354zM3.75 2.5a.75.75 0 100 1.5.75.75 0 000-1.5zm-2.25.75a2.25 2.25 0 113 2.122v5.256a2.251 2.251 0 11-1.5 0V5.372A2.25 2.25 0 011.5 3.25zM11 2.5h-1V4h1a1 1 0 011 1v5.628a2.251 2.251 0 101.5 0V5A2.5 2.5 0 0011 2.5zm1 10.25a.75.75 0 111.5 0 .75.75 0 01-1.5 0zM3.75 12a.75.75 0 100 1.5.75.75 0 000-1.5z"/>
-              </svg>
-              <span class="text-[#c9d1d9] font-semibold">feat: add new Card component</span>
-            </div>
-            <span class="text-[#8b949e] text-sm">#247</span>
+    <!-- CLI -->
+    <section class="ui-section ui-section--band ui-section--patterned">
+      <MarkPattern pattern="swell" drift={0.35} fade class="ui-pattern" />
+      <div class="ui-wrap ui-split hp-cli">
+        <div>
+          <div class="ui-head">
+            <h2>Find drift from the command line.</h2>
+            <p>
+              The CLI is free and open source. It reports every issue with the exact file, line and suggested fix.
+            </p>
           </div>
-
-          <!-- Checks Section -->
-          <div class="px-4 py-3 border-b border-[#30363d]">
-            <div class="flex items-center gap-2 mb-3">
-              <svg class="w-4 h-4 text-[#f85149]" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"/>
-              </svg>
-              <span class="text-[#f85149] font-medium text-sm">Buoy Design Check — 3 issues found</span>
-            </div>
-          </div>
-
-          <!-- Annotations -->
-          <div class="divide-y divide-[#30363d]">
-            <!-- Annotation 1 -->
-            <div class="px-4 py-3">
-              <div class="flex items-start gap-3">
-                <div class="mt-0.5">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-[#f8514926] text-[#f85149] border border-[#f8514940]">
-                    error
-                  </span>
+          <ol class="ui-steps">
+            {steps.map((s, i) => (
+              <li>
+                <span class="ui-step-n" aria-hidden="true">{i + 1}</span>
+                <div>
+                  <h3>{s.title}</h3>
+                  <p>{s.description}</p>
+                  <code class="ui-code">{s.command}</code>
                 </div>
-                <div class="flex-1 min-w-0">
-                  <div class="flex items-center gap-2 mb-1">
-                    <span class="text-[#58a6ff] text-sm font-mono hover:underline cursor-pointer">src/components/Card.tsx</span>
-                    <span class="text-[#8b949e] text-sm">line 23</span>
-                  </div>
-                  <p class="text-[#c9d1d9] text-sm mb-1">Hardcoded color <code class="px-1.5 py-0.5 bg-[#161b22] rounded text-[#f85149] text-xs">#3b82f6</code></p>
-                  <p class="text-[#8b949e] text-sm">Use <code class="px-1.5 py-0.5 bg-[#161b22] rounded text-[#7ee787] text-xs">var(--color-primary)</code> instead</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Annotation 2 -->
-            <div class="px-4 py-3">
-              <div class="flex items-start gap-3">
-                <div class="mt-0.5">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-[#f8514926] text-[#f85149] border border-[#f8514940]">
-                    error
-                  </span>
-                </div>
-                <div class="flex-1 min-w-0">
-                  <div class="flex items-center gap-2 mb-1">
-                    <span class="text-[#58a6ff] text-sm font-mono hover:underline cursor-pointer">src/components/Card.tsx</span>
-                    <span class="text-[#8b949e] text-sm">line 31</span>
-                  </div>
-                  <p class="text-[#c9d1d9] text-sm mb-1">Hardcoded spacing <code class="px-1.5 py-0.5 bg-[#161b22] rounded text-[#f85149] text-xs">24px</code></p>
-                  <p class="text-[#8b949e] text-sm">Use <code class="px-1.5 py-0.5 bg-[#161b22] rounded text-[#7ee787] text-xs">var(--spacing-lg)</code> instead</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Annotation 3 -->
-            <div class="px-4 py-3">
-              <div class="flex items-start gap-3">
-                <div class="mt-0.5">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-[#d29922] text-[#0d1117] border border-[#d2992240]">
-                    warn
-                  </span>
-                </div>
-                <div class="flex-1 min-w-0">
-                  <div class="flex items-center gap-2 mb-1">
-                    <span class="text-[#58a6ff] text-sm font-mono hover:underline cursor-pointer">src/components/Modal.tsx</span>
-                    <span class="text-[#8b949e] text-sm">line 8</span>
-                  </div>
-                  <p class="text-[#c9d1d9] text-sm mb-1">Hardcoded border radius <code class="px-1.5 py-0.5 bg-[#161b22] rounded text-[#d29922] text-xs">8px</code></p>
-                  <p class="text-[#8b949e] text-sm">Use <code class="px-1.5 py-0.5 bg-[#161b22] rounded text-[#7ee787] text-xs">var(--radius-md)</code> instead</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Footer -->
-          <div class="px-4 py-3 bg-[#161b22] border-t border-[#30363d] flex items-center justify-between">
-            <span class="text-[#8b949e] text-sm">Fix these issues to merge</span>
-            <div class="flex items-center gap-2">
-              <span class="text-[#8b949e] text-xs">Powered by</span>
-              <span class="text-[#c9d1d9] text-sm font-semibold">🛟 Buoy</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Free tier badge + CTA -->
-      <div class="mt-10 max-w-2xl mx-auto text-center">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-success/10 border border-success/30 mb-6">
-          <span class="text-success">✓</span>
-          <FreeSpots class="text-sm text-success font-medium" />
-        </div>
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button href="https://github.com/marketplace/buoy-design" size="lg" external>
-            Install GitHub App
-          </Button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Feature Grid Section -->
-  <section id="features" class="py-24 bg-navy-dark">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl sm:text-4xl font-bold text-light mb-4">
-          What Buoy Detects
-        </h2>
-        <p class="text-lg text-slate max-w-2xl mx-auto">
-          Categorized by severity to help you prioritize fixes
-        </p>
-      </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {driftTypes.map((drift) => {
-          const severityColors = {
-            Critical: 'border-critical/30 hover:border-critical/50',
-            Warning: 'border-warning/30 hover:border-warning/50',
-            Info: 'border-info/30 hover:border-info/50',
-          }
-          const severityBadge = {
-            Critical: 'bg-critical/20 text-critical',
-            Warning: 'bg-warning/20 text-warning',
-            Info: 'bg-info/20 text-info',
-          }
-
-          return (
-            <div class={`bg-navy/50 border ${severityColors[drift.severity]} rounded-xl p-5 transition-colors`}>
-              <div class="flex items-start justify-between mb-3">
-                <span class="text-2xl">{drift.icon}</span>
-                <span class={`text-xs px-2 py-0.5 rounded-full ${severityBadge[drift.severity]}`}>
-                  {drift.severity}
-                </span>
-              </div>
-              <h3 class="font-semibold text-light mb-2">
-                {drift.href ? (
-                  <a href={drift.href} class="hover:text-buoy transition-colors">
-                    {drift.title}
-                  </a>
-                ) : drift.title}
-              </h3>
-              <p class="text-sm text-slate">{drift.description}</p>
-            </div>
-          )
-        })}
-      </div>
-
-      <div class="text-center mt-8">
-        <a href="/features/drift-detection" class="text-buoy hover:underline text-sm">
-          Read More →
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- How It Works Section -->
-  <section class="py-24 bg-navy">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl sm:text-4xl font-bold text-light mb-4">
-          Detect. Enforce. Measure.
-        </h2>
-        <p class="text-lg text-slate">
-          Find drift, catch it at CI, and track your progress.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-        {steps.map((step) => (
-          <div class="text-center">
-            <div class="w-12 h-12 rounded-full bg-buoy/20 border-2 border-buoy text-buoy font-bold flex items-center justify-center mx-auto mb-4 text-xl">
-              {step.step}
-            </div>
-            <h3 class="text-xl font-semibold text-light mb-2">{step.title}</h3>
-            <code class="text-sm text-buoy bg-navy-dark px-3 py-1 rounded-md font-mono inline-block mb-3">
-              $ {step.command}
-            </code>
-            <p class="text-slate text-sm">{step.description}</p>
-          </div>
-        ))}
-      </div>
-
-      <div class="text-center mt-12">
-        <Button href="/docs" variant="secondary">
-          See full documentation →
-        </Button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Integrations Section -->
-  <section class="py-24 bg-navy-dark">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl sm:text-4xl font-bold text-light mb-4">
-          Works with your stack
-        </h2>
-      </div>
-
-      <div class="flex flex-wrap justify-center gap-4 max-w-3xl mx-auto">
-        {integrations.map((integration) => (
-          <a href={integration.href} class="flex items-center gap-2 px-4 py-2 bg-navy/50 border border-navy-light/20 rounded-lg hover:border-buoy/30 hover:bg-navy/70 transition-colors">
-            <span class="text-xl">{integration.icon}</span>
-            <span class="text-sm text-slate">{integration.name}</span>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Journey Section: Start Free → PR Comments → Dashboard -->
-  <section class="py-24 bg-navy">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h2 class="text-3xl sm:text-4xl font-bold text-light mb-4">
-          Start free, scale when ready
-        </h2>
-        <p class="text-lg text-slate">
-          Your journey from first scan to team-wide enforcement
-        </p>
-      </div>
-
-      <div class="max-w-5xl mx-auto">
-        <div class="grid md:grid-cols-3 gap-6">
-          <!-- Step 1: Start Free -->
-          <div class="relative bg-navy-dark border border-navy-light/30 rounded-xl p-6 hover:border-buoy/30 transition-colors">
-            <div class="absolute -top-3 left-6">
-              <span class="inline-flex items-center px-3 py-1 rounded-full bg-success/20 border border-success/30 text-xs font-semibold text-success">
-                FREE
-              </span>
-            </div>
-            <div class="pt-4">
-              <div class="text-4xl mb-4">🔍</div>
-              <h3 class="text-xl font-semibold text-light mb-2">Detect Locally</h3>
-              <p class="text-slate text-sm mb-4">
-                Run <code class="text-buoy">buoy drift check</code> in any project. See every hardcoded value, naming issue, and token violation.
-              </p>
-              <ul class="space-y-2 text-sm text-slate-dark">
-                <li class="flex items-center gap-2">
-                  <span class="text-success">✓</span> Unlimited scans
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="text-success">✓</span> All detection rules
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="text-success">✓</span> Fix suggestions
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Step 2: PR Comments -->
-          <div class="relative bg-navy-dark border border-navy-light/30 rounded-xl p-6 hover:border-buoy/30 transition-colors">
-            <div class="absolute -top-3 left-6">
-              <span class="inline-flex items-center px-3 py-1 rounded-full bg-buoy/20 border border-buoy/30 text-xs font-semibold text-buoy">
-                GITHUB APP
-              </span>
-            </div>
-            <div class="pt-4">
-              <div class="text-4xl mb-4">🚦</div>
-              <h3 class="text-xl font-semibold text-light mb-2">Catch at PR</h3>
-              <p class="text-slate text-sm mb-4">
-                Install the Buoy GitHub App. Every PR gets checked. Drift blocked before merge.
-              </p>
-              <ul class="space-y-2 text-sm text-slate-dark">
-                <li class="flex items-center gap-2">
-                  <span class="text-success">✓</span> Inline PR comments
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="text-success">✓</span> Check status integration
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="text-success">✓</span> Auto-fix suggestions
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Step 3: Team Dashboard -->
-          <div class="relative bg-navy-dark border border-navy-light/30 rounded-xl p-6 hover:border-lavender/30 transition-colors">
-            <div class="absolute -top-3 left-6">
-              <span class="inline-flex items-center px-3 py-1 rounded-full bg-lavender/20 border border-lavender/30 text-xs font-semibold text-lavender">
-                DESIGN SYSTEM
-              </span>
-            </div>
-            <div class="pt-4">
-              <div class="text-4xl mb-4">📊</div>
-              <h3 class="text-xl font-semibold text-light mb-2">Own the Record</h3>
-              <p class="text-slate text-sm mb-4">
-                For design-system owners: how your system holds up across every repo that uses it.
-              </p>
-              <ul class="space-y-2 text-sm text-slate-dark">
-                <li class="flex items-center gap-2">
-                  <span class="text-lavender">+</span> Org-wide drift record
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="text-lavender">+</span> Sprints with Dylan from $10,000
-                </li>
-                <li class="flex items-center gap-2">
-                  <span class="text-lavender">+</span> Design-partner relationship
-                </li>
-              </ul>
-            </div>
-          </div>
+              </li>
+            ))}
+          </ol>
+          <a href="/docs" class="ui-btn ui-btn--secondary">Read the docs</a>
         </div>
 
-        <!-- Journey arrows (mobile: vertical, desktop: horizontal) -->
-        <div class="flex justify-center mt-8 gap-4">
-          <div class="text-slate-dark text-sm">
-            <span class="text-success">Open source (free)</span> → <span class="text-buoy">GitHub App</span> → <span class="text-lavender">Organization</span> · <a href="/pricing" class="text-buoy hover:underline">Pricing</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        <figure class="ui-figure">
+          <div class="ui-tray">
+            <div class="ui-term hp-term" data-type-on-view role="img" aria-label="Terminal output of buoy drift check: 23 issues found in 142 files, each with a file, a line and a suggested token.">
+              <div class="ui-term-bar">Terminal</div>
+<pre><span class="ui-t-dim">$</span> <span class="ui-t-hi">buoy drift check</span>
 
-  <!-- AI-Free Section -->
-  <section class="py-24 bg-navy-dark">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-success/10 border border-success/30 mb-6">
-          <span class="text-success">🔒</span>
-          <span class="text-sm text-success font-medium">Works without AI</span>
-        </div>
-        <h2 class="text-3xl sm:text-4xl font-bold text-light mb-4">
-          AI is optional. Scanning isn't.
-        </h2>
-        <p class="text-lg text-slate max-w-2xl mx-auto">
-          Core drift detection is 100% deterministic. No LLMs, no API keys, no data leaves your machine.
-          Perfect for teams where AI tools are restricted.
-        </p>
-      </div>
+Scanning for design drift...
 
-      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <!-- Buoy Scanner (Open Source) -->
-        <div class="bg-navy-dark border border-success/30 rounded-xl p-6">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 rounded-lg bg-success/20 flex items-center justify-center">
-              <span class="text-success text-xl">🔒</span>
-            </div>
-            <div>
-              <h3 class="font-semibold text-light">Buoy Core</h3>
-              <span class="text-xs text-success">Open Source CLI</span>
+Found <span class="ui-t-warn">23</span> issues in 142 files
+
+<span class="ui-t-crit">CRITICAL (2)</span>
+<span class="ui-t-dim">├─</span> Button.tsx:12 Missing aria-label
+<span class="ui-t-dim">└─</span> Modal.tsx:45 Focus trap not implemented
+
+<span class="ui-t-warn">HARDCODED VALUES (8)</span>
+<span class="ui-t-dim">├─</span> Card.tsx:8 #ffffff <span class="ui-t-dim">→ use</span> var(--bg-surface)
+<span class="ui-t-dim">├─</span> Badge.tsx:3 8px <span class="ui-t-dim">→ use</span> var(--spacing-sm)
+<span class="ui-t-dim">└─ ... and 6 more</span></pre>
             </div>
           </div>
-          <ul class="space-y-3 text-sm">
-            <li class="flex items-start gap-2">
-              <span class="text-success mt-0.5">✓</span>
-              <span class="text-slate">All scanning & drift detection</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-success mt-0.5">✓</span>
-              <span class="text-slate">Fix suggestions with exact token replacements</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-success mt-0.5">✓</span>
-              <span class="text-slate">100% deterministic — no LLMs</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-success mt-0.5">✓</span>
-              <span class="text-slate">No data leaves your machine</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-success mt-0.5">✓</span>
-              <span class="text-slate">Works air-gapped & offline</span>
-            </li>
+          <figcaption>Example output of <span class="ui-mono">buoy drift check</span>.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Detects -->
+    <section class="ui-section ui-section--patterned" id="detects">
+      <MarkPattern pattern="field" drift={0.25} fade class="ui-pattern" />
+      <div class="ui-wrap">
+        <div class="ui-head">
+          <h2>What Buoy detects</h2>
+          <p>Each finding has a severity, so you can decide what to fix first.</p>
+        </div>
+        <table class="ui-table ui-table--hover ui-table--stack hp-table">
+          <caption class="ui-sr">Drift types Buoy detects, with severity</caption>
+          <thead><tr><th scope="col">Drift type</th><th scope="col">What it finds</th><th scope="col" class="ui-end">Severity</th></tr></thead>
+          <tbody>
+            {driftTypes.map((d) => (
+              <tr>
+                <th scope="row">{d.href ? <a href={d.href} class="ui-rowlink">{d.title}</a> : d.title}</th>
+                <td>{d.description}</td>
+                <td class={`ui-end ui-sev ui-sev-${d.severity.toLowerCase()}`}>{d.severity}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <div class="hp-stack">
+          <p>Works with your stack</p>
+          <ul>
+            {integrations.map((it) => <li><a href={it.href} class="ui-chip">{it.name}</a></li>)}
           </ul>
-          <div class="mt-6 pt-4 border-t border-navy-light/20">
-            <span class="text-xs text-slate-dark">No API keys required. No external calls. MIT licensed.</span>
-          </div>
-        </div>
-
-        <!-- Buoy GitHub App -->
-        <div class="bg-navy-dark border border-lavender/30 rounded-xl p-6">
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-10 h-10 rounded-lg bg-lavender/20 flex items-center justify-center">
-              <span class="text-lavender text-xl">✨</span>
-            </div>
-            <div>
-              <h3 class="font-semibold text-light">Buoy GitHub App</h3>
-              <span class="text-xs text-lavender">Same engine, hosted on every PR</span>
-            </div>
-          </div>
-          <ul class="space-y-3 text-sm">
-            <li class="flex items-start gap-2">
-              <span class="text-lavender mt-0.5">+</span>
-              <span class="text-slate">Runs the same open-source scanner on every PR</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-lavender mt-0.5">+</span>
-              <span class="text-slate">LLM-written summaries and coaching; findings stay deterministic</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-lavender mt-0.5">+</span>
-              <span class="text-slate">Committable inline fix suggestions</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-lavender mt-0.5">+</span>
-              <span class="text-slate">Dashboard with health scores & trends</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-lavender mt-0.5">+</span>
-              <span class="text-slate">Builder mode coaching for new design systems</span>
-            </li>
-          </ul>
-          <div class="mt-6 pt-4 border-t border-navy-light/20">
-            <span class="text-xs text-slate-dark">No API key needed. Prose is written through OpenRouter; <a href="/privacy#subprocessors" class="text-buoy hover:underline">see what is sent</a>.</span>
-          </div>
         </div>
       </div>
+    </section>
 
-      <div class="text-center mt-8">
-        <p class="text-sm text-slate">
-          Start with Core. Add AI when you're ready. <a href="/features/ci" class="text-buoy hover:underline">Learn more →</a>
+    <!-- Journey -->
+    <section class="ui-section">
+      <div class="ui-wrap">
+        <div class="ui-head">
+          <h2>Start free, scale when ready.</h2>
+          <p>From a first local scan to review on every pull request, to a record of how your design system holds up.</p>
+        </div>
+        <ol class="ui-cols ui-cols--3 hp-tiers">
+          {tiers.map((t) => (
+            <li class="ui-col">
+              <p class={`ui-tier-name ui-tier-${t.tier}`}>{t.tag}</p>
+              <h3>{t.title}</h3>
+              <p>{t.text}</p>
+              <ul class="ui-ruled ui-ruled--tight">{t.items.map((x) => <li>{x}</li>)}</ul>
+            </li>
+          ))}
+        </ol>
+        <p class="ui-after">
+          <span class="hp-path"><span class="ui-tier-free">Open source (free)</span> <span aria-hidden="true">→</span> <span class="ui-tier-app">GitHub App</span> <span aria-hidden="true">→</span> <span class="ui-tier-org">Organization</span></span>
+          <a href="/pricing" class="ui-link">See pricing</a>
         </p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer class="border-t border-navy-light/20 bg-navy-dark">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
-      <!-- Brand + Copyright -->
-      <div class="flex items-center gap-2">
-        <span style="display:inline-flex;line-height:0"><BuoyMark size={18} /></span>
-        <span class="text-slate">&copy; {new Date().getFullYear()} Buoy. Scanner is open source under MIT.</span>
+    <!-- Deterministic -->
+    <section class="ui-section ui-section--band">
+      <div class="ui-wrap">
+        <div class="ui-head">
+          <h2>The scanner works without AI.</h2>
+          <p>
+            Core drift detection is deterministic. There are no LLMs and no API keys, and no data leaves your machine, so it suits teams where AI tools are restricted.
+          </p>
+        </div>
+        <div class="ui-cols">
+          <article class="ui-col">
+            <h3>Buoy Core</h3>
+            <p class="ui-col-sub ui-c-ok">Open-source CLI</p>
+            <ul class="ui-ruled">{core.map((x) => <li>{x}</li>)}</ul>
+            <p class="ui-col-foot">No API keys required. No external calls. MIT licensed.</p>
+          </article>
+          <article class="ui-col">
+            <h3>Buoy GitHub App</h3>
+            <p class="ui-col-sub ui-c-buoy">The same engine, hosted on every pull request</p>
+            <ul class="ui-ruled">{app.map((x) => <li>{x}</li>)}</ul>
+            <p class="ui-col-foot">
+              No API key needed. Prose is written through OpenRouter. <a href="/privacy#subprocessors" class="ui-link">See what is sent</a>.
+            </p>
+          </article>
+        </div>
+        <p class="ui-after">
+          The CLI is free. <a href="/pricing" class="ui-link">See pricing</a> for the GitHub App and for organizations.
+        </p>
       </div>
+    </section>
 
-      <!-- Links -->
-      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-        <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer" class="text-slate hover:text-light transition-colors">GitHub</a>
-        <a href={siteConfig.twitterUrl} target="_blank" rel="noopener noreferrer" class="text-slate hover:text-light transition-colors">Twitter</a>
-        <a href={siteConfig.discordUrl} target="_blank" rel="noopener noreferrer" class="text-slate hover:text-light transition-colors">Discord</a>
-        <span class="text-navy-light hidden sm:inline">|</span>
-        <a href="/scan" class="text-slate hover:text-light transition-colors whitespace-nowrap">Scan a repo</a>
-        <a href="/guides" class="text-slate hover:text-light transition-colors">Guides</a>
-        <a href="/reports" class="text-slate hover:text-light transition-colors">Reports</a>
-        <a href="/compare" class="text-slate hover:text-light transition-colors">Compare</a>
-        <a href="/privacy" class="text-slate hover:text-light transition-colors">Privacy</a>
-        <a href="/terms" class="text-slate hover:text-light transition-colors">Terms</a>
-        <a href="/support" class="text-slate hover:text-light transition-colors">Support</a>
+    <!-- Scan -->
+    <section class="ui-section ui-section--last ui-section--band ui-section--patterned">
+      <MarkPattern pattern="tide" drift={0.3} fade class="ui-pattern" />
+      <div class="ui-wrap">
+        <div class="ui-cta">
+          <div class="ui-head">
+            <h2>See what Buoy finds in a public repo.</h2>
+            <p>Paste a GitHub repository URL. The scan is free and takes about a minute.</p>
+          </div>
+          <div>
+            <form action="/scan" method="get" class="ui-scan">
+              <label for="hp-scan-url" class="ui-sr">GitHub repository URL</label>
+              <input id="hp-scan-url" name="url" type="text" required autocomplete="off" spellcheck="false" placeholder="https://github.com/owner/repo" />
+              <button type="submit" class="ui-btn ui-btn--primary">Scan repository</button>
+            </form>
+            <p class="ui-note">
+              Or <a href={APP_URL} target="_blank" rel="noopener noreferrer" class="ui-link">install the GitHub App</a> to have every pull request reviewed.
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
-  </footer>
+    </section>
+  </main>
+
+  <Footer />
 </Layout>
 
 <style>
-  /* Hero content passes pointer events through to boat underneath,
-     but restores them on interactive elements.
-     Use :global() on descendant selectors so Astro's CSS scoping doesn't
-     add its own data-astro-cid attribute requirement to child component elements
-     (e.g. Button.astro's <a> tags have a different scope hash than index.astro). */
-  .hero-content {
-    pointer-events: none;
-  }
-  .hero-content :global(a),
-  .hero-content :global(button),
-  .hero-content :global([role="button"]),
-  .hero-content h1,
-  .hero-content p {
-    pointer-events: auto;
-  }
+  .hp { color: var(--color-body); font-size: 16px; line-height: 1.6; }
+  .hp h1, .hp h2, .hp h3 { color: var(--color-ink); }
 
-  /* Hero boat inline at end of text */
-  .hero-boat-inline {
-    display: inline-block;
-    position: relative;
-    z-index: 20;
+  /* ---------- Hero ---------- */
+  .hp :global(.hp-hero) {
+    --boat-hero-bg: var(--color-bg);
+    --boat-hero-sky: linear-gradient(180deg, oklch(0.175 0.028 258 / 0) 0%, oklch(0.19 0.035 255) 45%, oklch(0.16 0.03 255) 100%);
+    --boat-hero-wave-1: oklch(0.55 0.09 250 / 0.12);
+    --boat-hero-wave-2: oklch(0.6 0.08 245 / 0.1);
+    --boat-hero-wave-3: oklch(0.5 0.08 255 / 0.13);
+    --boat-hero-stars-opacity: 0.35;
+  }
+  :global(html.light) .hp :global(.hp-hero) {
+    --boat-hero-sky: linear-gradient(180deg, #fff0 0%, #EEF3F8 45%, #E6EDF5 100%);
+    --boat-hero-wave-1: rgb(26 39 68 / 0.06);
+    --boat-hero-wave-2: rgb(99 102 241 / 0.05);
+    --boat-hero-wave-3: rgb(26 39 68 / 0.07);
+    --boat-hero-stars-opacity: 0;
+  }
+  /* Desktop: the sea starts at the hero sentence, so the boat drops past the buttons into open water. */
+  @media (min-width: 768px) {
+    .hp :global(.hp-hero) { --boat-hero-sea-height: 62%; --boat-hero-sink: 70px; }
+    .hp :global(.hp-hero .wave-background) {
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%);
+      mask-image: linear-gradient(to bottom, transparent 0%, #000 22%);
+    }
+  }
+  .hp-hero-grid {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.02fr); gap: 72px; align-items: center;
+    padding-block: 24px 200px;
+  }
+  /* The headline keeps two lines: "Catch design drift" is about 8.1em wide, so size it from the column. */
+  .hp-hero-copy { container-type: inline-size; }
+  .hp-h1 {
+    margin: 0;
+    font-size: min(var(--text-h1), calc(100cqi / 8.4));
     white-space: nowrap;
+    line-height: 1.02; letter-spacing: -0.03em; font-weight: 700;
   }
 
-  .hero-boat-emoji {
-    display: inline-block;
-    font-size: 1.1em;
-    cursor: default;
+  /* ---------- Pull-request mock ---------- */
+  .hp-diff { font-size: 13px; line-height: 26px; overflow-x: auto; }
+  .hp-line { display: grid; grid-template-columns: 44px 20px minmax(0, 1fr); min-width: max-content; }
+  .hp-ln { text-align: right; padding-right: 10px; color: var(--color-muted); user-select: none; font-variant-numeric: tabular-nums; }
+  .hp-sign { text-align: center; user-select: none; }
+  .hp-code { white-space: pre; padding-right: 16px; }
+  .hp-add { background: var(--color-add-bg); }
+  .hp-add .hp-sign { color: var(--color-add-ink); }
+  .hp-del { background: var(--color-del-bg); }
+  .hp-del .hp-sign { color: var(--color-del-ink); }
+  .hp-comment-row { padding: 8px; border-block: 1px solid var(--color-line); background: var(--color-raised); }
+  .hp-comment { border-radius: 8px; background: var(--color-surface); box-shadow: var(--ring); overflow: hidden; }
+  .hp-comment-head { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 8px; padding: 12px 14px 0; font-size: 13px; }
+  .hp-avatar {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 24px; height: 24px; border-radius: 6px;
+    background: var(--color-surface); box-shadow: 0 0 0 1px var(--color-line-strong);
+  }
+  .hp-comment-author { font-weight: 600; }
+  /* GitHub's own "bot" label, reproduced in the mock; not a site badge pattern */
+  .hp-tag { padding: 1px 6px; border-radius: 999px; font-size: 11px; font-weight: 500; line-height: 16px; color: var(--color-body); box-shadow: 0 0 0 1px var(--color-line-strong); }
+  .hp-comment-meta { color: var(--color-muted); }
+  .hp-comment-body { margin: 0; padding: 8px 14px 14px; font-size: 14px; line-height: 1.55; color: var(--color-ink); }
+  .hp-comment-body code { padding: 1px 4px; border-radius: 4px; font-size: 12.5px; white-space: nowrap; background: var(--color-sunken); }
+  .hp-suggest { border-top: 1px solid var(--color-line); }
+  .hp-suggest-label { padding: 8px 14px; font-size: 12px; font-weight: 500; color: var(--color-body); border-bottom: 1px solid var(--color-line); }
+
+  /* ---------- Sections ---------- */
+  .hp-lockon { margin-top: 48px; }
+  .hp-fixes { margin-top: 40px; }
+  .hp-fixes td { font-size: 14px; }
+  .hp-fixes thead th:nth-child(1) { width: 34%; }
+  .hp-fixes thead th:nth-child(2) { width: 28%; }
+  .hp-plain { color: var(--color-muted); }
+  /* Detects table on a slightly raised panel so it separates from the pattern behind it. */
+  .hp-table {
+    margin-top: 44px;
+    background: color-mix(in oklab, var(--color-surface) 88%, transparent);
+    border-collapse: separate; border-spacing: 0;
+    border-radius: var(--radius-card);
+    box-shadow: var(--ring), 0 18px 40px -24px oklch(0 0 0 / 0.6);
+    overflow: hidden;
+  }
+  .hp-table :is(th, td):first-child { padding-left: 24px; }
+  .hp-table :is(th, td):last-child { padding-right: 24px; }
+  .hp-table thead th { padding-top: 16px; }
+  .hp-table tbody tr:last-child :is(th, td) { border-bottom: 0; }
+  @media (max-width: 720px) {
+    .hp-table :is(th, td):first-child { padding-left: 16px; }
+    .hp-table :is(th, td):last-child { padding-right: 16px; }
   }
 
-  /* Splash droplet + ripple styles (created dynamically by JS) */
-  @keyframes splashDroplet {
-    0% {
-      transform: translate(0, 0) scale(1);
-      opacity: 0.8;
-    }
-    100% {
-      transform: translate(var(--dx), var(--dy)) scale(0.2);
-      opacity: 0;
-    }
+  /* CLI section: the terminal runs the full height of the copy beside it. */
+  @media (min-width: 961px) {
+    .hp-cli { align-items: stretch; }
+    .hp-cli > .ui-figure { display: flex; flex-direction: column; position: relative; }
+    .hp-cli > .ui-figure > figcaption { position: absolute; top: 100%; left: 0; right: 0; }
+    .hp-cli > .ui-figure > .ui-tray { flex: 1; display: flex; }
+    .hp-cli .hp-term { flex: 1; display: flex; flex-direction: column; }
+    .hp-cli .hp-term pre { flex: 1; }
+  }
+  /* Typing on view: lines keep their space (no shift) and appear in turn. */
+  .hp-term .hp-ln { transition: opacity 120ms ease-out; }
+  .hp-term .hp-ln.is-off { opacity: 0; }
+  .hp-term .hp-caret { display: inline-block; width: 0.55em; height: 1.1em; vertical-align: -0.2em; background: currentColor; opacity: 0.7; animation: hp-blink 1s steps(1) infinite; }
+  @keyframes hp-blink { 50% { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .hp-term .hp-caret { display: none; } }
+  .ui-section--band .hp-term {
+    box-shadow: var(--ring-term), 0 0 80px -28px color-mix(in oklab, var(--color-lavender) 45%, transparent);
   }
 
-  @keyframes splashRing {
-    0% {
-      transform: translate(-50%, -50%) scale(0.5);
-      opacity: 0.6;
-    }
-    100% {
-      transform: translate(-50%, -50%) scale(4, 2);
-      opacity: 0;
-    }
-  }
+  .hp-stack { margin-top: 36px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+  .hp-stack p { margin: 0; font-size: 14px; color: var(--color-muted); }
+  .hp-stack ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
 
-  /* Reduced motion: skip animation, show wave boat directly */
+  .hp-tiers .ui-tier-name { margin: 0; }
+  .hp-tiers h3 { margin-top: 6px; line-height: 1.1; }
+  .hp-tiers .ui-ruled { margin-top: 18px; }
+  .hp-path { margin-right: 12px; font-size: 14px; color: var(--color-muted); }
+
+  @media (max-width: 960px) {
+    .hp-hero-grid { grid-template-columns: minmax(0, 1fr); gap: 48px; padding-block: 40px 0; }
+  }
+  @media (max-width: 760px) {
+    .hp-diff { font-size: 12px; }
+    .hp-line { grid-template-columns: 36px 16px minmax(0, 1fr); }
+  }
   @media (prefers-reduced-motion: reduce) {
-    .hero-boat-inline {
-      display: none !important;
-    }
+    .hp-h1 :global(.hero-reveal) { animation: none; opacity: 1; }
   }
 </style>
 
 <script>
-  // Hero boat escape animation — boat wiggles free from text, drops into the waves
-  function initHeroBoatAnimation() {
-    const boatInline = document.getElementById('heroBoatInline');
-    const boatEmoji = document.getElementById('heroBoatEmoji');
-    const waveBoat = document.getElementById('waveBoat');
-
-    if (!boatInline || !boatEmoji) return;
-
-    // Reduced motion: just show the wave boat
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      if (waveBoat) waveBoat.classList.add('visible');
-      return;
-    }
-
-    // Where the boat lands, and how big it is when it gets there.
-    // The inline emoji and the wave boat differ in font-size (1.1em of the paragraph
-    // vs the wave boat's 1.4rem) and line-height, and the browser rounds each font's
-    // ascent to whole pixels, so their boxes don't say where the glyph is drawn.
-    // The baseline does: a glyph is drawn from its baseline at the start of its box.
-    // So measure each one's real baseline, and end the fall with the emoji scaled by
-    // the font-size ratio around its baseline, sitting on the wave boat's baseline.
-    // At the swap frame both glyphs are the same size in the same place.
-    function baselineY(el) {
-      // An empty inline-block sits with its bottom edge on the line's baseline
-      const probe = document.createElement('span');
-      probe.style.cssText = 'display:inline-block;width:0;height:0;';
-      el.appendChild(probe);
-      const y = probe.getBoundingClientRect().bottom;
-      probe.remove();
-      return y;
-    }
-
-    // Measured right before the fall, so the layout (fonts, reveal animations) has settled.
-    function measureLanding() {
-      const isMobile = window.innerWidth < 768;
-      const baseDrop = isMobile ? 30 : 37;
-      const startRect = boatEmoji.getBoundingClientRect();
-      const startBaseline = baselineY(boatEmoji);
-      const origin = `0px ${startBaseline - startRect.top}px`;
-      if (!waveBoat) {
-        return { dx: 0, dy: baseDrop, scale: 1, origin, waveBottomPx: null, waveLeftPct: null };
+  // Type the CLI terminal out once when it scrolls into view, like the old homepage terminal:
+  // the command types character by character, then each output line appears in turn.
+  // The full text is already in the page, so the box never changes size.
+  function typeTerminal(term: HTMLElement) {
+    const pre = term.querySelector('pre')
+    if (!pre) return
+    const lines = pre.innerHTML.split('\n')
+    pre.innerHTML = lines.map((l) => `<span class="hp-ln is-off">${l || ' '}</span>`).join('\n')
+    const spans = [...pre.querySelectorAll<HTMLElement>('.hp-ln')]
+    const cmdLine = spans[0]
+    const cmd = cmdLine.querySelector<HTMLElement>('.ui-t-hi')
+    const full = cmd?.textContent ?? ''
+    if (cmd) cmd.textContent = ''
+    const caret = document.createElement('span')
+    caret.className = 'hp-caret'
+    caret.setAttribute('aria-hidden', 'true')
+    let started = false
+    const run = () => {
+      if (started) return
+      started = true
+      cmdLine.classList.remove('is-off')
+      cmdLine.appendChild(caret)
+      let i = 0
+      const typeNext = () => {
+        if (!cmd) return showLines()
+        cmd.textContent = full.slice(0, ++i)
+        if (i < full.length) setTimeout(typeNext, 45 + Math.random() * 35)
+        else setTimeout(showLines, 380)
       }
-      const waveParent = waveBoat.offsetParent || waveBoat.parentElement;
-      const parentRect = waveParent.getBoundingClientRect();
-      // The wave boat's containing block is the parent's padding box. Its left %
-      // is a percentage of that box's width, not of the window.
-      const cbLeft = parentRect.left + waveParent.clientLeft;
-      const cbWidth = waveParent.clientWidth;
-      // Same resting height the wave boat has always had
-      const waveBottomPx = parentRect.bottom - (startRect.bottom + baseDrop) - 4;
-      // Lands straight down: same left edge as the inline emoji
-      const waveLeftPct = ((startRect.left - cbLeft) / cbWidth) * 100;
-      waveBoat.style.bottom = waveBottomPx + 'px';
-      waveBoat.style.left = waveLeftPct + '%';
-      const waveRect = waveBoat.getBoundingClientRect();
-      const scale = parseFloat(getComputedStyle(waveBoat).fontSize) / parseFloat(getComputedStyle(boatEmoji).fontSize);
-      return {
-        dx: waveRect.left - startRect.left,
-        dy: baselineY(waveBoat) - startBaseline,
-        scale: Number.isFinite(scale) && scale > 0 ? scale : 1,
-        origin,
-        waveBottomPx,
-        waveLeftPct,
-      };
-    }
-
-    const LIFT_MS = 130;
-    const DROP_MS = 500;
-
-    // Phase 1: Wiggle (anticipation — building tension before the break)
-    setTimeout(() => {
-      const wiggle = boatEmoji.animate([
-        { transform: 'rotate(0deg)', offset: 0 },
-        { transform: 'rotate(8deg) translateX(1px)', offset: 0.15 },
-        { transform: 'rotate(-7deg) translateX(-1px)', offset: 0.30 },
-        { transform: 'rotate(12deg) translateX(2px) translateY(-2px)', offset: 0.50 },
-        { transform: 'rotate(-10deg) translateX(-2px)', offset: 0.65 },
-        { transform: 'rotate(5deg) translateX(1px)', offset: 0.80 },
-        { transform: 'rotate(-2deg)', offset: 0.92 },
-        { transform: 'rotate(0deg)', offset: 1 },
-      ], { duration: 600, easing: 'ease-in-out' });
-
-      wiggle.finished.then(() => {
-        const { dx, dy, scale, origin, waveBottomPx, waveLeftPct } = measureLanding();
-        // Scale around the glyph's own origin: the left end of its baseline
-        boatEmoji.style.transformOrigin = origin;
-
-        // Phase 2a: Anticipation — slight lift. Phase 2b: fall with gravity (ease-in,
-        // no bounce). Both on one Web Animations timeline, the same clock as
-        // rendering, so nothing downstream can fire before the fall ends.
-        const fall = boatEmoji.animate([
-          { translate: '0 0', easing: 'ease-out' },
-          { translate: '0 -6px', offset: LIFT_MS / (LIFT_MS + DROP_MS), easing: 'cubic-bezier(0.5, 0, 0.9, 0.55)' },
-          { translate: `${dx}px ${dy}px` },
-        ], { duration: LIFT_MS + DROP_MS, fill: 'forwards' });
-
-        // Grow to the wave boat's size during the fall. Ease-out, so the growth is
-        // done by the time the boat reaches the water and the last frames are pure fall.
-        const grow = boatEmoji.animate([
-          { scale: '1' },
-          { scale: String(scale) },
-        ], { delay: LIFT_MS, duration: DROP_MS, easing: 'ease-out', fill: 'both' });
-
-        // Impact and handoff when the fall has actually finished: splash, show the
-        // wave boat and hide the inline one in the same frame.
-        Promise.all([fall.finished, grow.finished]).then(() => {
-          const landedRect = boatEmoji.getBoundingClientRect();
-          createSplash(
-            landedRect.left + landedRect.width / 2,
-            landedRect.top + landedRect.height * 0.7 + 6
-          );
-
-          boatInline.style.visibility = 'hidden';
-          if (!waveBoat) return;
-
-          // Stored so toss landing can match drop landing on all screen sizes
-          window._buoyBoatBottom = waveBottomPx;
-
-          const landedLeftPct = waveLeftPct;
-
-          // Phase: Launch with ease-in (slow → fast) before steady cruise
-          waveBoat.classList.add('launching');
-
-          // Ease-in launch: boat gently accelerates from rest to cruise speed
-          // Cruise speed = 110% / 25s = 4.4%/s
-          // Launch: 13% over 3s = 4.33%/s average, ending at ~4.4%/s
-          const launchDuration = 3000;
-          const launchDistance = 13;
-          const endLeftPct = landedLeftPct + launchDistance;
-
-          const launchAnim = waveBoat.animate([
-            { left: landedLeftPct + '%' },
-            { left: endLeftPct + '%' }
-          ], {
-            duration: launchDuration,
-            easing: 'cubic-bezier(0.3, 0, 0.8, 0.8)', // starts at rest, ends at cruise speed
-            fill: 'forwards'
-          });
-
-          launchAnim.finished.then(() => {
-            launchAnim.cancel();
-
-            // Switch to steady drift — sync position
-            waveBoat.style.left = '';
-            waveBoat.classList.remove('launching');
-            waveBoat.classList.add('visible');
-
-            const driftProgress = (endLeftPct + 5) / 110;
-            const driftDelay = -(driftProgress * 25);
-            waveBoat.style.animationDelay = `0s, ${driftDelay}s`;
-          });
-        });
-      });
-    }, 850);
-  }
-
-  function createSplash(x, y) {
-    const waveBg = document.querySelector('.wave-background');
-    if (!waveBg) return;
-    const bgRect = waveBg.getBoundingClientRect();
-
-    const container = document.createElement('div');
-    Object.assign(container.style, {
-      position: 'absolute',
-      left: (x - bgRect.left) + 'px',
-      top: (y - bgRect.top) + 'px',
-      zIndex: '1',
-      pointerEvents: 'none',
-    });
-
-    // Water droplets shooting upward in a fan
-    const isLight = document.documentElement.classList.contains('light');
-    for (let i = 0; i < 10; i++) {
-      const drop = document.createElement('div');
-      const angle = (-150 + (120 * i / 9)) * (Math.PI / 180);
-      const speed = 18 + Math.random() * 28;
-      const dx = Math.cos(angle) * speed;
-      const dy = Math.sin(angle) * speed;
-      const size = 3 + Math.random() * 4;
-      const alpha = (0.65 + Math.random() * 0.3).toFixed(2);
-      const dropColor = isLight
-        ? `rgba(255, 255, 255, ${alpha})`
-        : `rgba(${60 + Math.random() * 60 | 0}, ${140 + Math.random() * 60 | 0}, 255, ${(0.5 + Math.random() * 0.3).toFixed(2)})`;
-
-      Object.assign(drop.style, {
-        position: 'absolute',
-        width: size + 'px',
-        height: size + 'px',
-        borderRadius: '50%',
-        background: dropColor,
-        left: '-2px',
-        top: '-2px',
-      });
-      drop.style.setProperty('--dx', dx + 'px');
-      drop.style.setProperty('--dy', dy + 'px');
-      drop.style.animation = `splashDroplet ${(0.4 + Math.random() * 0.3).toFixed(2)}s ease-out ${(Math.random() * 0.08).toFixed(3)}s forwards`;
-      container.appendChild(drop);
-    }
-
-    // Ripple ring on the water surface
-    const isLight2 = document.documentElement.classList.contains('light');
-    const ring = document.createElement('div');
-    Object.assign(ring.style, {
-      position: 'absolute',
-      width: '20px',
-      height: '8px',
-      border: isLight2 ? '2px solid rgba(255, 255, 255, 0.75)' : '2px solid rgba(100, 180, 255, 0.5)',
-      borderRadius: '50%',
-      left: '0',
-      top: '0',
-      animation: 'splashRing 0.7s ease-out forwards',
-    });
-    container.appendChild(ring);
-
-
-    waveBg.appendChild(container);
-    setTimeout(() => container.remove(), 1200);
-  }
-
-  initHeroBoatAnimation();
-  // Expose splash so drag script can call it
-  window._buoySplash = createSplash;
-</script>
-
-<script>
-  // Copy command functionality
-  document.querySelectorAll('.copy-command').forEach(container => {
-    const btn = container.querySelector('.copy-btn');
-    const command = container.dataset.command;
-
-    btn?.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(command);
-
-        // Show success state
-        const copyIcon = btn.querySelector('.copy-icon');
-        const checkIcon = btn.querySelector('.check-icon');
-        const copyText = btn.querySelector('.copy-text');
-
-        copyIcon?.classList.add('hidden');
-        checkIcon?.classList.remove('hidden');
-        if (copyText) copyText.textContent = 'Copied!';
-
-        // Reset after 2 seconds
-        setTimeout(() => {
-          copyIcon?.classList.remove('hidden');
-          checkIcon?.classList.add('hidden');
-          if (copyText) copyText.textContent = 'Copy';
-        }, 2000);
-      } catch (err) {
-        console.error('Failed to copy:', err);
+      const showLines = () => {
+        caret.remove()
+        spans.slice(1).forEach((s, n) => setTimeout(() => s.classList.remove('is-off'), 160 * (n + 1)))
       }
-    });
-  });
+      setTimeout(typeNext, 250)
+    }
+    new IntersectionObserver((entries, io) => {
+      if (entries.some((e) => e.isIntersecting)) { io.disconnect(); run() }
+    }, { threshold: 0.4 }).observe(term)
+  }
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll<HTMLElement>('[data-type-on-view]').forEach(typeTerminal)
+  }
 </script>

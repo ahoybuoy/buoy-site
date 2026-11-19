@@ -31,14 +31,14 @@ const features = [
 
 const terminalLines = [
   { text: '', delay: 600 },
-  { text: '<span class="text-buoy">⚓</span> Scanning Angular components...', type: 'output', delay: 800 },
+  { text: '<span class="ui-t-prompt">›</span> Scanning Angular components...', type: 'output', delay: 800 },
   { text: '', delay: 1200 },
-  { text: 'Found <span class="text-light">78</span> Angular components', type: 'output', delay: 1400 },
-  { text: 'Found <span class="text-light">8</span> NgModules', type: 'output', delay: 1600 },
+  { text: 'Found <span class="ui-t-hi">78</span> Angular components', type: 'output', delay: 1400 },
+  { text: 'Found <span class="ui-t-hi">8</span> NgModules', type: 'output', delay: 1600 },
   { text: '', delay: 1800 },
-  { text: '<span class="text-warning">WARNING</span> 19 hardcoded values in component styles', type: 'warning', delay: 2000 },
-  { text: '<span class="text-warning">WARNING</span> 4 Angular Material theme overrides', type: 'warning', delay: 2200 },
-  { text: '<span class="text-info">INFO</span> 7 @Input type inconsistencies', type: 'info', delay: 2400 },
+  { text: '<span class="ui-t-warn">WARNING</span> 19 hardcoded values in component styles', type: 'warning', delay: 2000 },
+  { text: '<span class="ui-t-warn">WARNING</span> 4 Angular Material theme overrides', type: 'warning', delay: 2200 },
+  { text: '<span class="ui-t-info">INFO</span> 7 @Input type inconsistencies', type: 'info', delay: 2400 },
 ]
 
 const configExample = `# .buoy.yaml
@@ -57,6 +57,19 @@ angular:
 
 tokens:
   source: "./src/styles/tokens.scss"`
+
+const heroCode = `:host {
+  display: block;
+  padding: <span class="ui-old">16px</span> <span class="ui-token">var(--space-4)</span>;
+}
+
+.order-card__total {
+  color: <span class="ui-old">#0f766e</span> <span class="ui-token">var(--color-success)</span>;
+  font-weight: <span class="ui-old">600</span> <span class="ui-token">var(--font-semibold)</span>;
+}
+
+<span class="ui-t-dim">// mat-button override</span>
+.mat-mdc-button { border-radius: <span class="ui-old">4px</span> <span class="ui-token">var(--radius-sm)</span>; }`
 ---
 
 <IntegrationLayout
@@ -65,44 +78,35 @@ tokens:
   keywords="angular design system, angular component audit, angular code consistency"
   heroTitle="Angular Component Drift Detection"
   heroDescription="Scan Angular components for design drift. Analyze templates, component styles, and Angular Material theme usage."
-  icon="🔺"
-  iconBg="bg-red-500/20"
 >
-  <!-- Features Grid -->
-  <section class="py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Angular-Specific Features</h2>
+  <div slot="hero">
+    <div class="ui-tray"><div class="ui-panel"><div class="ui-panel-head">src/app/order/order-card.component.scss</div><pre class="p-5 text-sm" set:html={heroCode} /></div></div>
+  </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {features.map((feature) => (
-          <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
-            <h3 class="font-semibold text-light mb-2">{feature.title}</h3>
-            <p class="text-sm text-slate">{feature.description}</p>
-          </div>
-        ))}
-      </div>
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head mb-8"><h2>Angular-specific features</h2></div>
+      <table class="ui-table">
+        <tbody>
+          {features.map((f) => (
+            <tr><th scope="row">{f.title}</th><td>{f.description}</td></tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   </section>
 
-  <!-- Terminal Demo -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">See it in action</h2>
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
+      <div class="ui-head mb-8"><h2>See it in action</h2><p>Components, modules and Angular Material overrides in one report.</p></div>
       <Terminal command="buoy drift check --framework angular" lines={terminalLines} />
     </div>
   </section>
 
-  <!-- Configuration -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Configuration Example</h2>
-
-      <div class="bg-navy border border-navy-light/30 rounded-xl overflow-hidden">
-        <div class="px-4 py-3 bg-navy-dark border-b border-navy-light/20">
-          <span class="text-sm text-slate font-mono">.buoy.yaml</span>
-        </div>
-        <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{configExample}</code></pre>
-      </div>
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head mb-8"><h2>Configuration example</h2><p>Component files by suffix, standalone components and your Material theme.</p></div>
+      <div class="ui-tray"><div class="ui-panel"><div class="ui-panel-head">.buoy.yaml</div><pre class="p-5 text-sm">{configExample}</pre></div></div>
     </div>
   </section>
 </IntegrationLayout>

@@ -27,27 +27,22 @@ const successMessages: Record<string, string> = {
 }
 ---
 
-<section class={`py-16 bg-navy ${className}`}>
-  <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <div class="inline-flex items-center gap-2 px-3 py-1 bg-buoy/10 border border-buoy/30 rounded-full text-buoy text-sm mb-6">
-      Free PDF Download
-    </div>
-
-    <h2 class="text-2xl sm:text-3xl font-bold text-light mb-4">
-      {headline}
-    </h2>
-
-    <p class="text-lg text-slate mb-8">
-      {subhead}
-    </p>
-
-    <div class="max-w-md mx-auto">
-      <LeadMagnetForm
-        leadMagnet={leadMagnet}
-        buttonText={buttonText}
-        successMessage={successMessages[leadMagnet]}
-      />
-      <p class="text-sm text-slate/60 mt-4">No spam. Unsubscribe anytime.</p>
+<section class={`ui-section ${className}`}>
+  <div class="ui-wrap">
+    <div class="ui-cta">
+      <div class="ui-head">
+        <p class="ui-eyebrow">Free PDF</p>
+        <h2>{headline}</h2>
+        <p>{subhead}</p>
+      </div>
+      <div>
+        <LeadMagnetForm
+          leadMagnet={leadMagnet}
+          buttonText={buttonText}
+          successMessage={successMessages[leadMagnet]}
+        />
+        <p class="ui-note">No spam. Unsubscribe anytime.</p>
+      </div>
     </div>
   </div>
 </section>

@@ -68,70 +68,52 @@ const renderedVariants = forceVariant
   : variants
 ---
 
-<section class={`py-16 bg-navy relative ${className}`}>
-  <div class="absolute inset-0 bg-gradient-to-b from-navy-dark/50 via-transparent to-navy-dark/50"></div>
-
-  <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class={`ui-section ${className}`}>
+  <div class="ui-wrap">
     {renderedVariants.map((variant, index) => (
       <div
-        class={`lead-capture-variant grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${!forceVariant && index > 0 ? 'hidden' : ''}`}
+        class={`lead-capture-variant ui-cta ${!forceVariant && index > 0 ? 'hidden' : ''}`}
         data-variant={variant.id}
       >
-        <!-- Left: Copy -->
         <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 bg-buoy/10 border border-buoy/30 rounded-full text-buoy text-sm mb-6">
-            Free PDF
+          <div class="ui-head">
+            <p class="ui-eyebrow">Free PDF</p>
+            <h2>{variant.headline}</h2>
+            <p>{variant.subhead}</p>
           </div>
-
-          <h2 class="text-2xl sm:text-3xl font-bold text-light mb-4 leading-tight">
-            {variant.headline}
-          </h2>
-
-          <p class="text-lg text-slate mb-6">
-            {variant.subhead}
-          </p>
-
-          <LeadMagnetForm
-            leadMagnet={variant.id}
-            buttonText={variant.buttonText}
-            successMessage={variant.successMessage}
-          />
-
-          <p class="text-sm text-slate/70 mt-4">
-            No spam. Unsubscribe anytime.
-          </p>
-        </div>
-
-        <!-- Right: Preview -->
-        <div class="hidden lg:block">
-          <div class="bg-navy-dark border border-navy-light/30 rounded-xl p-6 shadow-2xl transform rotate-1 hover:rotate-0 transition-transform">
-            <div class="flex items-center gap-2 mb-4 pb-4 border-b border-navy-light/20">
-              <div class="w-3 h-3 rounded-full bg-red-500/50"></div>
-              <div class="w-3 h-3 rounded-full bg-yellow-500/50"></div>
-              <div class="w-3 h-3 rounded-full bg-green-500/50"></div>
-              <span class="text-xs text-slate ml-2">{variant.preview.title}</span>
-            </div>
-
-            <div class="space-y-3 text-sm">
-              {variant.preview.items.map((item) => (
-                <div class="flex items-start gap-3">
-                  <div class="w-4 h-4 border border-slate/50 rounded mt-0.5 flex-shrink-0"></div>
-                  <span class="text-slate">{item}</span>
-                </div>
-              ))}
-              {variant.preview.moreCount > 0 && (
-                <div class="flex items-start gap-3 opacity-50">
-                  <div class="w-4 h-4 border border-slate/50 rounded mt-0.5 flex-shrink-0"></div>
-                  <span class="text-slate">+{variant.preview.moreCount} more...</span>
-                </div>
-              )}
-            </div>
+          <div class="lc-form">
+            <LeadMagnetForm
+              leadMagnet={variant.id}
+              buttonText={variant.buttonText}
+              successMessage={variant.successMessage}
+            />
+            <p class="ui-note">No spam. Unsubscribe anytime.</p>
           </div>
         </div>
+
+        <figure class="ui-figure lc-preview">
+          <div class="ui-tray">
+            <div class="ui-panel">
+              <div class="ui-panel-head"><span class="ui-mono">{variant.preview.title}</span></div>
+              <ul class="ui-ruled lc-list">
+                {variant.preview.items.map((item) => <li>{item}</li>)}
+                {variant.preview.moreCount > 0 && <li class="lc-more">and {variant.preview.moreCount} more</li>}
+              </ul>
+            </div>
+          </div>
+        </figure>
       </div>
     ))}
   </div>
 </section>
+
+<style>
+  .lc-form { margin-top: 28px; }
+  .lc-list { margin: 0; padding: 4px 18px 6px; }
+  .lc-list li:last-child { border-bottom: 0; }
+  .lc-more { color: var(--color-muted) !important; }
+  @media (max-width: 960px) { .lc-preview { display: none; } }
+</style>
 
 {!forceVariant && (
 <script>

@@ -1,39 +1,10 @@
 ---
 import BuoyLogo from './BuoyLogo.astro'
 import { siteConfig } from '../config'
-const { layout = 'contained', alignment = 'balanced' } = Astro.props
-const containerClass =
-  layout === 'full'
-    ? 'w-full px-4 sm:px-6 lg:px-8'
-    : 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'
-const logoClass =
-  alignment === 'left-right'
-    ? 'flex items-center gap-1.5 flex-1 md:flex-none'
-    : 'flex items-center gap-1.5 flex-1'
-const desktopNavClass =
-  alignment === 'left-right'
-    ? 'hidden md:flex items-center gap-4 lg:gap-6 ml-auto'
-    : 'hidden md:flex items-center gap-4 lg:gap-6'
-const desktopActionsClass =
-  alignment === 'left-right'
-    ? 'hidden md:flex items-center gap-4'
-    : 'hidden md:flex items-center gap-4 flex-1 justify-end'
-const desktopRowClass =
-  alignment === 'left-links'
-    ? 'flex items-center h-16 gap-6'
-    : 'flex items-center h-16 md:gap-4 lg:gap-0'
-const logoLeftLinksClass =
-  alignment === 'left-links'
-    ? 'flex items-center gap-1.5 flex-none'
-    : logoClass
-const desktopNavLeftLinksClass =
-  alignment === 'left-links'
-    ? 'hidden md:flex items-center gap-4 lg:gap-6'
-    : desktopNavClass
-const desktopActionsLeftLinksClass =
-  alignment === 'left-links'
-    ? 'hidden md:flex items-center gap-4 ml-auto'
-    : desktopActionsClass
+
+// `layout="full"` widens the bar to the window; `alignment` is accepted for old callers and ignored.
+const { layout = 'contained' } = Astro.props
+const APP_URL = 'https://github.com/marketplace/buoy-design'
 
 const featureItems = [
   { label: 'Drift Detection', href: '/features/drift-detection', description: 'Find design inconsistencies' },
@@ -49,16 +20,6 @@ const featureItems = [
   { label: 'CI Integration', href: '/features/ci', description: 'Any CI pipeline' },
   { label: 'Ignore Rules', href: '/features/ignore', description: 'Intentional exceptions' },
   { label: 'Severity Rules', href: '/features/severity-rules', description: 'Promote & enforce drift' },
-]
-
-const integrationItems = [
-  { label: 'React', href: '/integrations/react' },
-  { label: 'Vue', href: '/integrations/vue' },
-  { label: 'Svelte', href: '/integrations/svelte' },
-  { label: 'Angular', href: '/integrations/angular' },
-  { label: 'Next.js', href: '/integrations/nextjs' },
-  { label: 'Tailwind', href: '/integrations/tailwind' },
-  { label: 'GitHub', href: '/integrations/github' },
 ]
 
 const useCaseItems = [
@@ -80,285 +41,239 @@ const compareItems = [
   { label: 'vs Figma Plugins', href: '/compare/figma-plugins' },
   { label: 'vs Style Dictionary', href: '/compare/style-dictionary' },
 ]
+
+const menus = [
+  { label: 'Features', items: featureItems, wide: true },
+  { label: 'Use Cases', items: useCaseItems },
+  { label: 'Compare', items: compareItems, lgOnly: true },
+]
+
+const plainLinks = [
+  { label: 'Scan a repo', href: '/scan' },
+  { label: 'Reports', href: '/reports' },
+  { label: 'Docs', href: '/docs' },
+  { label: 'Pricing', href: '/pricing' },
+]
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-navy-dark/80 border-b border-navy-light/20">
-  <div class={containerClass}>
-    <div class={desktopRowClass}>
-      <!-- Logo -->
-      <a href="/" class={logoLeftLinksClass}>
-        <BuoyLogo size="1.75rem" class="text-light" />
-      </a>
+<header class="site-nav">
+  <div class:list={['site-nav-row', layout === 'full' ? 'site-nav-full' : 'ui-wrap']}>
+    <a href="/" class="site-logo" aria-label="Buoy home">
+      <BuoyLogo size="1.5rem" />
+    </a>
 
-      <!-- Desktop Navigation -->
-      <div class={desktopNavLeftLinksClass}>
-        <!-- Features Dropdown -->
-        <div class="relative group">
-          <button class="whitespace-nowrap text-sm text-slate hover:text-light transition-colors duration-200 flex items-center gap-1 py-4">
-            Features
-            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
+    <nav class="site-links" aria-label="Main">
+      {menus.map((m) => (
+        <div class:list={['site-dd', m.lgOnly && 'site-lg-only']}>
+          <button type="button" class="site-navlink" aria-haspopup="true">
+            {m.label}
+            <svg class="site-caret" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </button>
-          <div class="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-            <div class="bg-navy-dark border border-navy-light/30 rounded-xl shadow-xl p-4 w-[480px] grid grid-cols-2 gap-1">
-              {featureItems.map((item) => (
-                <a
-                  href={item.href}
-                  class="flex flex-col px-3 py-2 rounded-lg hover:bg-navy-light/20 transition-colors"
-                >
-                  <span class="text-sm text-light">{item.label}</span>
-                  <span class="text-xs text-slate-dark">{item.description}</span>
+          <div class="site-dd-panel">
+            <div class:list={['site-dd-list', m.wide && 'site-dd-wide']}>
+              {m.items.map((item) => (
+                <a href={item.href} class="site-dd-item">
+                  <span class="site-dd-label">{item.label}</span>
+                  {'description' in item && <span class="site-dd-desc">{item.description}</span>}
                 </a>
               ))}
             </div>
           </div>
         </div>
+      ))}
+      {plainLinks.map((l) => <a href={l.href} class="site-navlink">{l.label}</a>)}
+      <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer" class="site-navlink site-lg-only">GitHub</a>
+    </nav>
 
-        <!-- Use Cases Dropdown -->
-        <div class="relative group">
-          <button class="whitespace-nowrap text-sm text-slate hover:text-light transition-colors duration-200 flex items-center gap-1 py-4">
-            Use Cases
-            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-          <div class="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-            <div class="bg-navy-dark border border-navy-light/30 rounded-xl shadow-xl p-3 w-64">
-              {useCaseItems.map((item) => (
-                <a
-                  href={item.href}
-                  class="flex flex-col px-3 py-2 rounded-lg hover:bg-navy-light/20 transition-colors"
-                >
-                  <span class="text-sm text-light">{item.label}</span>
-                  <span class="text-xs text-slate-dark">{item.description}</span>
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <!-- Compare Dropdown (hidden 768-1023px so the row fits; listed in the mobile menu) -->
-        <div class="relative group hidden lg:block">
-          <button class="whitespace-nowrap text-sm text-slate hover:text-light transition-colors duration-200 flex items-center gap-1 py-4">
-            Compare
-            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </button>
-          <div class="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-            <div class="bg-navy-dark border border-navy-light/30 rounded-xl shadow-xl p-3 w-48">
-              {compareItems.map((item) => (
-                <a
-                  href={item.href}
-                  class="block px-3 py-2 text-sm text-slate hover:text-light hover:bg-navy-light/20 rounded-lg transition-colors"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <!-- Reports (no dropdown) -->
-        <a href="/scan" class="whitespace-nowrap text-sm text-slate hover:text-light transition-colors duration-200 py-4">Scan a repo</a>
-        <a href="/reports" class="text-sm text-slate hover:text-light transition-colors duration-200 py-4">
-          Reports
-        </a>
-
-        <!-- Docs (no dropdown) -->
-        <a href="/docs" class="text-sm text-slate hover:text-light transition-colors duration-200 py-4">
-          Docs
-        </a>
-
-        <!-- Pricing (no dropdown) -->
-        <a href="/pricing" class="text-sm text-slate hover:text-light transition-colors duration-200 py-4">
-          Pricing
-        </a>
-
-      </div>
-
-      <!-- CTA Buttons -->
-      <div class={desktopActionsLeftLinksClass}>
-        <!-- Theme Toggle -->
-        <button
-          id="theme-toggle"
-          class="p-2 text-slate hover:text-light transition-colors"
-          aria-label="Toggle theme"
-        >
-          <!-- Sun icon (shown in dark mode — click to go light) -->
-          <svg class="w-5 h-5 theme-icon-sun" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-            <circle cx="12" cy="12" r="5"/>
-            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-          </svg>
-          <!-- Moon icon (shown in light mode — click to go dark) -->
-          <svg class="w-5 h-5 theme-icon-moon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
-          </svg>
-        </button>
-
-        <a
-          href={siteConfig.githubUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="hidden lg:flex text-sm text-slate hover:text-light transition-colors items-center gap-2"
-        >
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
-          </svg>
-          GitHub
-        </a>
-        <a
-          href="https://github.com/marketplace/buoy-design" target="_blank" rel="noopener noreferrer"
-          class="whitespace-nowrap px-4 py-2 text-sm font-medium bg-buoy text-navy-dark rounded-lg hover:bg-buoy-light transition-all duration-200 glow-buoy hover:scale-105"
-        >
-          Try Now
-        </a>
-      </div>
-
-      <!-- Mobile Menu Button -->
-      <button
-        class="md:hidden p-2 text-slate hover:text-light"
-        aria-label="Open menu"
-        id="mobile-menu-button"
-      >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+    <div class="site-actions">
+      <button id="theme-toggle" type="button" class="site-iconbtn site-desktop" aria-label="Toggle theme">
+        <svg class="theme-icon-sun" width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"/>
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+        <svg class="theme-icon-moon hidden" width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
         </svg>
       </button>
+      <a href={APP_URL} target="_blank" rel="noopener noreferrer" class="ui-btn ui-btn--primary ui-btn--sm">Install the app</a>
+      <button type="button" class="site-menu-btn" id="mobile-menu-button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menu">
+        <span class="site-swap" aria-hidden="true">
+          <svg class="site-swap-a" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3.5 6.5h13M3.5 13.5h13"/></svg>
+          <svg class="site-swap-b" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5l10 10M15 5L5 15"/></svg>
+        </span>
+      </button>
     </div>
   </div>
 
-  <!-- Mobile Menu -->
-  <div class="hidden md:hidden" id="mobile-menu">
-    <div class="px-4 py-4 bg-navy border-t border-navy-light/20 max-h-[80vh] overflow-y-auto">
-
-      <!-- Primary links -->
-      <div class="mb-4 pb-4 border-b border-navy-light/20 space-y-1">
-        <a href="/scan" class="block px-3 py-2.5 text-base font-medium text-light hover:bg-navy-light/20 rounded-lg transition-colors">Scan a repo</a>
-        <a href="/reports" class="block px-3 py-2.5 text-base font-medium text-light hover:bg-navy-light/20 rounded-lg transition-colors">
-          Reports
-        </a>
-        <a href="/docs" class="block px-3 py-2.5 text-base font-medium text-light hover:bg-navy-light/20 rounded-lg transition-colors">
-          Docs
-        </a>
-        <a href="/pricing" class="block px-3 py-2.5 text-base font-medium text-light hover:bg-navy-light/20 rounded-lg transition-colors">
-          Pricing
-        </a>
-      </div>
-
-      <!-- Features -->
-      <div class="mb-1">
-        <div class="px-3 py-2.5 text-base font-medium text-light">Features</div>
-        <div class="ml-3 pl-3 border-l border-navy-light/30 space-y-0.5 mb-3">
-          {featureItems.map((item) => (
-            <a href={item.href} class="block px-3 py-1.5 text-sm text-slate hover:text-light hover:bg-navy-light/20 rounded-lg transition-colors">
-              {item.label}
-            </a>
-          ))}
+  <div class="site-menu" id="mobile-menu">
+    <div class="ui-wrap site-menu-inner">
+      <nav class="site-menu-list" aria-label="Menu">
+        {plainLinks.map((l) => <a href={l.href}>{l.label}</a>)}
+        <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
+      </nav>
+      {menus.map((m) => (
+        <div class="site-menu-group">
+          <p class="site-menu-head">{m.label}</p>
+          <div class="site-menu-sub">
+            {m.items.map((item) => <a href={item.href}>{item.label}</a>)}
+          </div>
         </div>
-      </div>
-
-      <!-- Use Cases -->
-      <div class="mb-1">
-        <div class="px-3 py-2.5 text-base font-medium text-light">Use Cases</div>
-        <div class="ml-3 pl-3 border-l border-navy-light/30 space-y-0.5 mb-3">
-          {useCaseItems.map((item) => (
-            <a href={item.href} class="block px-3 py-1.5 text-sm text-slate hover:text-light hover:bg-navy-light/20 rounded-lg transition-colors">
-              {item.label}
-            </a>
-          ))}
-        </div>
-      </div>
-
-      <!-- Compare -->
-      <div class="mb-4 pb-2 border-b border-navy-light/20">
-        <div class="px-3 py-2.5 text-base font-medium text-light">Compare</div>
-        <div class="ml-3 pl-3 border-l border-navy-light/30 space-y-0.5 mb-3">
-          {compareItems.map((item) => (
-            <a href={item.href} class="block px-3 py-1.5 text-sm text-slate hover:text-light hover:bg-navy-light/20 rounded-lg transition-colors">
-              {item.label}
-            </a>
-          ))}
-        </div>
-      </div>
-
-      <!-- Theme Toggle (mobile) -->
-      <button
-        id="mobile-theme-toggle"
-        class="block w-full px-3 py-2.5 text-sm text-slate hover:text-light hover:bg-navy-light/20 rounded-lg transition-colors text-left mb-4"
-      >
+      ))}
+      <button id="mobile-theme-toggle" type="button" class="ui-btn ui-btn--secondary ui-btn--block site-menu-theme">
         <span class="mobile-theme-label">Switch to light mode</span>
       </button>
-
-      <!-- CTA -->
-      <a
-        href="https://github.com/marketplace/buoy-design" target="_blank" rel="noopener noreferrer"
-        class="block w-full px-4 py-3 text-center font-medium bg-buoy text-navy-dark rounded-lg"
-      >
-        Try Now
-      </a>
     </div>
   </div>
-</nav>
+</header>
 
 <script>
   // Mobile menu
   const button = document.getElementById('mobile-menu-button')
   const menu = document.getElementById('mobile-menu')
-
-  button?.addEventListener('click', () => {
-    menu?.classList.toggle('hidden')
+  const setOpen = (open: boolean) => {
+    button?.setAttribute('aria-expanded', String(open))
+    menu?.classList.toggle('is-open', open)
+  }
+  button?.addEventListener('click', () => setOpen(button.getAttribute('aria-expanded') !== 'true'))
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && button?.getAttribute('aria-expanded') === 'true') {
+      setOpen(false)
+      button.focus()
+    }
+  })
+  menu?.addEventListener('click', (e) => {
+    if ((e.target as HTMLElement).closest('a')) setOpen(false)
   })
 
   // Theme toggle
-  function getTheme(): 'dark' | 'light' {
-    const stored = localStorage.getItem('theme')
-    if (stored === 'light' || stored === 'dark') return stored
-    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
-  }
-
   function updateToggleUI(theme: 'dark' | 'light') {
-    const sunIcons = document.querySelectorAll('.theme-icon-sun')
-    const moonIcons = document.querySelectorAll('.theme-icon-moon')
+    document.querySelectorAll('.theme-icon-sun').forEach(el => el.classList.toggle('hidden', theme === 'light'))
+    document.querySelectorAll('.theme-icon-moon').forEach(el => el.classList.toggle('hidden', theme === 'dark'))
     const mobileLabel = document.querySelector('.mobile-theme-label')
-
-    sunIcons.forEach(el => el.classList.toggle('hidden', theme === 'light'))
-    moonIcons.forEach(el => el.classList.toggle('hidden', theme === 'dark'))
-
-    if (mobileLabel) {
-      mobileLabel.textContent = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
-    }
+    if (mobileLabel) mobileLabel.textContent = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'
   }
 
   function setTheme(theme: 'dark' | 'light') {
-    if (theme === 'light') {
-      document.documentElement.classList.add('light')
-    } else {
-      document.documentElement.classList.remove('light')
-    }
+    document.documentElement.classList.toggle('light', theme === 'light')
     localStorage.setItem('theme', theme)
     updateToggleUI(theme)
   }
 
   function toggleTheme() {
-    const current = document.documentElement.classList.contains('light') ? 'light' : 'dark'
-    setTheme(current === 'dark' ? 'light' : 'dark')
+    setTheme(document.documentElement.classList.contains('light') ? 'dark' : 'light')
   }
 
-  // Initialize UI to match current state
-  updateToggleUI(getTheme())
-
-  // Desktop toggle
+  updateToggleUI(document.documentElement.classList.contains('light') ? 'light' : 'dark')
   document.getElementById('theme-toggle')?.addEventListener('click', toggleTheme)
-
-  // Mobile toggle
   document.getElementById('mobile-theme-toggle')?.addEventListener('click', toggleTheme)
-
-  // Listen for system preference changes (only if user hasn't explicitly chosen)
   window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
-    if (!localStorage.getItem('theme')) {
-      setTheme(e.matches ? 'light' : 'dark')
-    }
+    if (!localStorage.getItem('theme')) setTheme(e.matches ? 'light' : 'dark')
   })
 </script>
+
+<style>
+  .site-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    background: color-mix(in oklab, var(--color-bg) 86%, transparent);
+    backdrop-filter: saturate(1.4) blur(12px);
+    -webkit-backdrop-filter: saturate(1.4) blur(12px);
+    border-bottom: 1px solid var(--color-line);
+  }
+  .site-nav-row { display: flex; align-items: center; height: 64px; gap: 24px; }
+  .site-nav-full { padding-inline: var(--gutter); }
+  .site-logo { display: inline-flex; align-items: center; height: 44px; color: var(--color-ink); border-radius: 8px; flex: none; }
+
+  .site-links { display: flex; align-items: center; gap: 4px; margin-left: 8px; margin-right: auto; }
+  .site-navlink {
+    display: inline-flex; align-items: center; gap: 4px; height: 40px; padding-inline: 12px;
+    border: 0; background: transparent; cursor: pointer;
+    border-radius: 8px; font-family: var(--font-body); font-size: 14px; font-weight: 500; white-space: nowrap;
+    color: var(--color-body);
+    transition: color 120ms ease-out, background-color 120ms ease-out;
+  }
+  .site-navlink:hover, .site-dd:focus-within > .site-navlink { color: var(--color-ink); background: var(--color-sunken); }
+  .site-caret { color: var(--color-muted); transition: rotate 200ms var(--ease-swap); }
+  .site-dd:hover .site-caret, .site-dd:focus-within .site-caret { rotate: 180deg; }
+
+  .site-dd { position: relative; }
+  .site-dd-panel {
+    position: absolute; top: 100%; left: -6px; padding-top: 8px;
+    opacity: 0; translate: 0 -4px; visibility: hidden;
+    transition: opacity 150ms ease-out, translate 150ms ease-out, visibility 0s linear 150ms;
+  }
+  .site-dd:hover .site-dd-panel, .site-dd:focus-within .site-dd-panel {
+    opacity: 1; translate: 0 0; visibility: visible;
+    transition: opacity 200ms ease-out, translate 200ms ease-out, visibility 0s;
+  }
+  .site-dd-list {
+    display: grid; gap: 2px; width: 260px; padding: 6px;
+    border-radius: var(--radius-card); background: var(--color-surface); box-shadow: var(--ring-lift);
+  }
+  .site-dd-wide { width: 500px; grid-template-columns: 1fr 1fr; }
+  .site-dd-item { display: flex; flex-direction: column; padding: 8px 10px; border-radius: 10px; transition: background-color 100ms ease-out; }
+  .site-dd-item:hover { background: var(--color-sunken); }
+  .site-dd-label { font-size: 14px; font-weight: 500; color: var(--color-ink); }
+  .site-dd-desc { font-size: 12.5px; color: var(--color-muted); }
+
+  .site-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+  .site-iconbtn {
+    display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px;
+    border: 0; border-radius: 10px; background: transparent; color: var(--color-body); cursor: pointer;
+    transition: color 120ms ease-out, background-color 120ms ease-out, scale 150ms ease-out;
+  }
+  .site-iconbtn:hover { color: var(--color-ink); background: var(--color-sunken); }
+  .site-iconbtn:active { scale: 0.96; }
+
+  .site-menu-btn {
+    display: none; align-items: center; justify-content: center;
+    width: 44px; height: 44px; margin-right: -12px;
+    border: 0; background: transparent; color: var(--color-ink); border-radius: 10px; cursor: pointer;
+    transition: scale 150ms ease-out, background-color 120ms ease-out;
+  }
+  .site-menu-btn:hover { background: var(--color-sunken); }
+  .site-menu-btn:active { scale: 0.96; }
+  .site-swap { position: relative; display: block; width: 20px; height: 20px; }
+  .site-swap svg {
+    position: absolute; inset: 0; display: block;
+    transition-property: opacity, filter, scale; transition-duration: 300ms; transition-timing-function: var(--ease-swap);
+  }
+  .site-swap-b { opacity: 0; scale: 0.25; filter: blur(4px); }
+  .site-menu-btn[aria-expanded='true'] .site-swap-a { opacity: 0; scale: 0.25; filter: blur(4px); }
+  .site-menu-btn[aria-expanded='true'] .site-swap-b { opacity: 1; scale: 1; filter: blur(0); }
+
+  .site-menu {
+    display: none;
+    position: absolute; left: 0; right: 0; top: 100%;
+    max-height: calc(100svh - 64px); overflow-y: auto;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-line);
+    box-shadow: 0 16px 24px -16px oklch(0 0 0 / 0.5);
+    opacity: 0; translate: 0 -8px; visibility: hidden;
+    transition: opacity 150ms ease-out, translate 150ms ease-out, visibility 0s linear 150ms;
+  }
+  .site-menu.is-open { opacity: 1; translate: 0 0; visibility: visible; transition: opacity 200ms ease-out, translate 200ms ease-out, visibility 0s; }
+  .site-menu-inner { padding-block: 8px 20px; }
+  .site-menu-list { display: grid; }
+  .site-menu-list a {
+    display: flex; align-items: center; min-height: 48px;
+    font-size: 16px; font-weight: 500; color: var(--color-ink);
+    border-bottom: 1px solid var(--color-line);
+  }
+  .site-menu-group { padding-block: 14px 6px; border-bottom: 1px solid var(--color-line); }
+  .site-menu-head { margin: 0 0 4px; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-muted); }
+  .site-menu-sub { display: grid; grid-template-columns: 1fr 1fr; column-gap: 16px; }
+  .site-menu-sub a { display: flex; align-items: center; min-height: 40px; font-size: 14.5px; color: var(--color-body); }
+  .site-menu-theme { margin-top: 16px; }
+
+  @media (max-width: 1100px) { .site-lg-only { display: none; } }
+  @media (max-width: 860px) {
+    .site-links, .site-desktop { display: none; }
+    .site-menu-btn { display: inline-flex; }
+    .site-menu { display: block; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .site-menu-btn, .site-swap svg, .site-menu, .site-menu.is-open, .site-dd-panel, .site-caret { transition-duration: 0s; transition-delay: 0s; }
+    .site-menu-btn:active, .site-iconbtn:active { scale: 1; }
+    .site-swap-b, .site-menu-btn[aria-expanded='true'] .site-swap-a { scale: 1; filter: none; }
+  }
+</style>

@@ -14,21 +14,18 @@ interface Props {
 const { items, class: className = '' } = Astro.props
 ---
 
-<div class={`flags-list space-y-2 mb-6 ${className}`}>
-  {items.map((item) => (
-    <div class="flex items-start gap-3 py-2 px-3 rounded-lg bg-navy/50 border border-navy-light/10">
-      <code class="shrink-0 px-2 py-0.5 bg-navy-light/20 rounded text-sm font-mono text-lavender">
-        {item.name}
-      </code>
-      <span class="text-sm text-slate pt-0.5">
-        {item.description}
-        {item.required && (
-          <span class="ml-1.5 px-1.5 py-0.5 text-xs font-medium bg-critical/20 text-critical rounded">required</span>
-        )}
-        {item.default && (
-          <span class="ml-1.5 text-slate-dark">(default: <code class="text-xs">{item.default}</code>)</span>
-        )}
-      </span>
-    </div>
-  ))}
-</div>
+<table class={`flags-list ui-table mb-6 ${className}`}>
+  <thead><tr><th>Flag</th><th>What it does</th></tr></thead>
+  <tbody>
+    {items.map((item) => (
+      <tr>
+        <th class="align-baseline"><code class="ui-c-lavender text-sm">{item.name}</code></th>
+        <td class="text-sm">
+          {item.description}
+          {item.required && <span class="ml-1.5 text-xs font-medium ui-c-crit">required</span>}
+          {item.default && <span class="ml-1.5 text-[var(--color-muted)]">(default: <code class="text-xs">{item.default}</code>)</span>}
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>

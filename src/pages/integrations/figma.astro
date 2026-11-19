@@ -1,6 +1,18 @@
 ---
 import IntegrationLayout from '../../layouts/IntegrationLayout.astro'
 import Button from '../../components/Button.astro'
+
+const heroCode = `<span class="ui-t-dim">/* tokens.css, detected */</span>
+:root {
+  --color-primary: #3b82f6;
+  --radius-md: 8px;
+}
+
+<span class="ui-t-dim">/* Button.css */</span>
+.btn {
+  background: <span class="ui-old">#3b82f6</span> <span class="ui-token">var(--color-primary)</span>;
+  border-radius: <span class="ui-old">8px</span> <span class="ui-token">var(--radius-md)</span>;
+}`
 ---
 
 <IntegrationLayout
@@ -8,80 +20,52 @@ import Button from '../../components/Button.astro'
   description="Import and compare design tokens from CSS custom properties, JSON files, and theme objects. Auto-detect tokens from your codebase."
   keywords="design tokens import, css custom properties, design system tokens"
   heroTitle="Design Token Detection"
-  heroDescription="Buoy auto-detects design tokens from your codebase — CSS custom properties, JS theme objects, Tailwind config — and matches hardcoded values against them."
-  icon="🎨"
-  iconBg="bg-purple-500/20"
+  heroDescription="Buoy auto-detects design tokens from your codebase (CSS custom properties, JS theme objects, Tailwind config) and matches hardcoded values against them."
 >
-  <!-- What Buoy Does -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">How Token Detection Works</h2>
+  <div slot="hero">
+    <div class="ui-tray"><div class="ui-panel"><div class="ui-panel-head">src/styles/tokens.css  ·  Button.css</div><pre class="p-5 text-sm" set:html={heroCode} /></div></div>
+  </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-2">Auto-Detection</h3>
-          <p class="text-sm text-slate">Buoy scans your codebase for CSS custom properties, JS/TS theme objects, and Tailwind config to build a token map automatically.</p>
-        </div>
-        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-2">Token Import</h3>
-          <p class="text-sm text-slate">Import tokens from JSON files, CSS custom properties, or Tokens Studio format using <code class="text-buoy">buoy dock tokens import</code>.</p>
-        </div>
-        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-2">Value Matching</h3>
-          <p class="text-sm text-slate">When Buoy finds a hardcoded value like <code class="text-critical">#3b82f6</code>, it suggests the matching token: <code class="text-success">var(--color-primary)</code>.</p>
-        </div>
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head mb-8"><h2>How token detection works</h2></div>
+      <div class="ui-cols ui-cols--3">
+        <article class="ui-col">
+          <h3>Auto-detection</h3>
+          <p>Buoy scans your codebase for CSS custom properties, JS/TS theme objects, and Tailwind config to build a token map automatically.</p>
+        </article>
+        <article class="ui-col">
+          <h3>Token import</h3>
+          <p>Import tokens from JSON files, CSS custom properties, or Tokens Studio format using <code class="ui-code">buoy dock tokens import</code>.</p>
+        </article>
+        <article class="ui-col">
+          <h3>Value matching</h3>
+          <p>When Buoy finds a hardcoded value like <span class="ui-old">#3b82f6</span>, it suggests the matching token: <span class="ui-token">var(--color-primary)</span>.</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- Supported Formats -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Supported Token Formats</h2>
-
-      <div class="space-y-4">
-        <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-4 flex items-center justify-between">
-          <div>
-            <h3 class="font-semibold text-light">CSS Custom Properties</h3>
-            <p class="text-sm text-slate">Variables defined in :root or theme files</p>
-          </div>
-          <code class="text-sm text-buoy">--color-primary</code>
-        </div>
-        <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-4 flex items-center justify-between">
-          <div>
-            <h3 class="font-semibold text-light">JSON Token Files</h3>
-            <p class="text-sm text-slate">Standard token JSON format</p>
-          </div>
-          <code class="text-sm text-buoy">tokens.json</code>
-        </div>
-        <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-4 flex items-center justify-between">
-          <div>
-            <h3 class="font-semibold text-light">JavaScript Theme Objects</h3>
-            <p class="text-sm text-slate">Exported theme configs (styled-components, etc.)</p>
-          </div>
-          <code class="text-sm text-buoy">theme.ts</code>
-        </div>
-        <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-4 flex items-center justify-between">
-          <div>
-            <h3 class="font-semibold text-light">Tailwind Config</h3>
-            <p class="text-sm text-slate">Token values from your Tailwind configuration</p>
-          </div>
-          <code class="text-sm text-buoy">tailwind.config.*</code>
-        </div>
-      </div>
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
+      <div class="ui-head mb-8"><h2>Supported token formats</h2></div>
+      <table class="ui-table ui-table--stack">
+        <thead><tr><th scope="col">Format</th><th scope="col">Where it lives</th><th scope="col" class="ui-end">Example</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">CSS custom properties</th><td>Variables defined in :root or theme files</td><td class="ui-end"><code class="ui-mono ui-c-ok">--color-primary</code></td></tr>
+          <tr><th scope="row">JSON token files</th><td>Standard token JSON format</td><td class="ui-end"><code class="ui-mono ui-c-ok">tokens.json</code></td></tr>
+          <tr><th scope="row">JavaScript theme objects</th><td>Exported theme configs (styled-components, etc.)</td><td class="ui-end"><code class="ui-mono ui-c-ok">theme.ts</code></td></tr>
+          <tr><th scope="row">Tailwind config</th><td>Token values from your Tailwind configuration</td><td class="ui-end"><code class="ui-mono ui-c-ok">tailwind.config.*</code></td></tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="py-16">
-    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-2xl font-bold text-light mb-4">Get started</h2>
-      <p class="text-slate mb-6">Run the CLI to auto-detect your tokens and start catching drift.</p>
-      <div class="inline-flex items-center gap-3 px-4 py-3 bg-navy/80 border border-navy-light/30 rounded-lg font-mono text-sm mb-6">
-        <span class="text-slate">$</span>
-        <code class="text-light">npx ahoybuoy dock</code>
-      </div>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head mb-8"><h2>Get started</h2><p>Run the CLI to auto-detect your tokens and start catching drift.</p></div>
+      <div class="ui-term mb-8" style="max-width: 32rem"><div class="ui-term-bar">Terminal</div><pre><span class="ui-t-dim">$</span> <span class="ui-t-hi">npx ahoybuoy dock</span></pre></div>
+      <div class="ui-actions">
         <Button href="/docs/cli/dock#tokens">Token docs</Button>
         <Button href="/docs/cli/dock#tokens" variant="secondary">Import command</Button>
       </div>

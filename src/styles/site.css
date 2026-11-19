@@ -1,0 +1,402 @@
+/* ==========================================================================
+   Buoy site classes (ui-*)
+   Lifted from the chosen homepage (/taste/dark/feel-better). Imported by
+   global.css. Everything sits in @layer components, so Tailwind utilities
+   on the same element still win (e.g. class="ui-section pt-0").
+   Guide with examples: src/styles/SITE-STYLE.md
+   ========================================================================== */
+
+@layer components {
+  /* ---------- Layout ---------------------------------------------------- */
+
+  /* ui-wrap: centred content column, 1120px plus gutters (24px, 16px on phones) */
+  .ui-wrap {
+    width: 100%;
+    max-width: calc(var(--wrap) + var(--gutter) * 2);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  /* ui-section: a page section, ruled on top. --band = slightly lifted ground.
+     --last = extra bottom room before the footer. --patterned = holds a MarkPattern. */
+  .ui-section { padding-block: 104px; border-top: 1px solid var(--color-line); }
+  .ui-section--first { border-top: 0; }
+  .ui-section--band { background: var(--color-band); }
+  .ui-section--last { padding-bottom: 120px; }
+  .ui-section--patterned { position: relative; overflow: hidden; isolation: isolate; }
+  .ui-section--patterned > .ui-pattern { z-index: -1; opacity: 0.32; }
+  @media (max-width: 960px) {
+    .ui-section { padding-block: 72px; }
+    .ui-section--last { padding-bottom: 88px; }
+  }
+
+  /* ui-nav-offset: room under the fixed site Nav (64px + 1px rule) */
+  .ui-nav-offset { padding-top: var(--header-h); }
+
+  /* ui-head: section heading (h2) with an optional lede paragraph */
+  .ui-head { max-width: 640px; }
+  .ui-head--center { margin-inline: auto; text-align: center; }
+  .ui-head h1,
+  .ui-head h2 {
+    margin: 0;
+    color: var(--color-ink);
+    font-size: var(--text-h2);
+    line-height: 1.1; letter-spacing: -0.025em; font-weight: 700;
+  }
+  .ui-head h1 { font-size: clamp(2.25rem, 1.6rem + 2.4vw, 3.25rem); line-height: 1.05; letter-spacing: -0.03em; }
+  .ui-head p { margin: 16px 0 0; font-size: var(--text-head-p); line-height: 1.6; color: var(--color-body); }
+  .ui-eyebrow { margin: 0 0 12px; font-size: 14px; font-weight: 600; color: var(--color-buoy-light); }
+
+  /* ui-lede: hero paragraph */
+  .ui-lede { margin: 24px 0 0; max-width: 34em; font-size: var(--text-lede); line-height: 1.55; color: var(--color-body); }
+  @media (max-width: 760px) { .ui-lede { font-size: 1.0625rem; } }
+
+  /* ui-after: a closing line under a block ("See pricing") */
+  .ui-after { margin: 32px 0 0; font-size: 15px; color: var(--color-body); }
+  /* ui-note: small muted note */
+  .ui-note { margin: 20px 0 0; max-width: 38em; font-size: 14px; line-height: 1.55; color: var(--color-muted); }
+
+  /* ui-actions: a row of buttons (same size); full width on phones */
+  .ui-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+  @media (max-width: 760px) { .ui-actions .ui-btn { flex: 1 1 100%; height: 48px; } }
+
+  /* ui-split: two columns, copy and figure */
+  .ui-split { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 72px; align-items: start; }
+  @media (max-width: 960px) { .ui-split { grid-template-columns: minmax(0, 1fr); gap: 48px; } }
+
+  /* ---------- Surfaces -------------------------------------------------- */
+
+  /* ui-card: surface edged by a faint ring, 16px radius. --lift adds depth. */
+  .ui-card {
+    background: var(--color-surface);
+    border-radius: var(--radius-card);
+    box-shadow: var(--ring);
+    color: var(--color-body);
+  }
+  .ui-card--pad { padding: 28px; }
+  .ui-card--lift { box-shadow: var(--ring-lift); }
+  @media (max-width: 760px) { .ui-card--pad { padding: 22px; } }
+
+  /* ui-tray: sunken holder around a product surface; inner radius + 6px = outer */
+  .ui-tray {
+    padding: var(--tray-pad);
+    border-radius: var(--radius-tray);
+    background: var(--color-sunken);
+    box-shadow: var(--ring-tray);
+  }
+  .ui-section--band .ui-tray { background: var(--tray-band); }
+  /* ui-panel: the surface that sits inside a tray (radius 14) */
+  .ui-panel {
+    border-radius: var(--radius-inner);
+    background: var(--color-surface);
+    box-shadow: var(--ring-lift);
+    overflow: hidden;
+    color: var(--color-ink);
+  }
+  .ui-panel-head {
+    display: flex; align-items: center; gap: 12px; min-height: 44px; padding-inline: 16px;
+    border-bottom: 1px solid var(--color-line);
+    font-size: 13px; color: var(--color-body);
+    background: var(--color-raised);
+  }
+
+  /* ui-figure: product figure with a muted caption */
+  .ui-figure { margin: 0; min-width: 0; }
+  .ui-figure figcaption,
+  .ui-caption { margin-top: 12px; padding-left: var(--tray-pad); font-size: 13px; color: var(--color-muted); }
+
+  /* ---------- Terminal and code ---------------------------------------- */
+
+  /* ui-term: terminal frame. Child .ui-term-bar (title), pre (output). */
+  .ui-term {
+    border-radius: var(--radius-inner);
+    background: var(--color-term);
+    color: var(--term-ink);
+    box-shadow: var(--ring-term);
+    overflow: hidden;
+    font-family: var(--font-mono);
+  }
+  .ui-term-bar {
+    display: flex; align-items: center; gap: 12px; height: 40px; padding-inline: 18px;
+    font-family: var(--font-body); font-size: 12px; font-weight: 500; color: var(--term-bar);
+    border-bottom: 1px solid oklch(1 0 0 / 0.08);
+  }
+  .ui-term-bar > :first-child { margin-right: auto; }
+  .ui-term pre,
+  .ui-term-body {
+    margin: 0; padding: 18px; overflow-x: auto;
+    font-size: 13px; line-height: 1.7; background: none; color: inherit;
+  }
+  @media (max-width: 760px) {
+    .ui-term pre, .ui-term-body { padding: 14px; font-size: 12px; }
+    .ui-term-bar { padding-inline: 14px; }
+  }
+  /* Terminal colours */
+  .ui-t-dim { color: var(--term-dim); }
+  .ui-t-hi { color: oklch(1 0 0); font-weight: 500; }
+  .ui-t-ok { color: oklch(0.78 0.14 158); font-weight: 500; }
+  .ui-t-warn { color: oklch(0.84 0.13 82); font-weight: 500; }
+  .ui-t-crit { color: oklch(0.76 0.14 25); font-weight: 500; }
+  .ui-t-info { color: oklch(0.76 0.1 245); }
+  .ui-t-prompt { color: var(--color-buoy-light); user-select: none; }
+
+  /* ui-icon-btn: small square icon button (copy, close) */
+  .ui-icon-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 28px; height: 28px; border: 0; border-radius: 6px;
+    background: transparent; color: inherit; cursor: pointer;
+    transition: background-color 120ms ease-out, color 120ms ease-out, scale 150ms ease-out;
+  }
+  .ui-icon-btn:hover { background: oklch(1 0 0 / 0.08); color: oklch(1 0 0); }
+  .ui-icon-btn:active { scale: 0.96; }
+
+  /* ui-code: inline command or code chip */
+  .ui-code {
+    display: inline-block; padding: 4px 8px; border-radius: 6px;
+    font-family: var(--font-mono); font-size: 13px; color: var(--color-ink);
+    background: var(--color-sunken);
+  }
+
+  /* ---------- Tables and rules ----------------------------------------- */
+
+  /* ui-table: ruled table, uppercase muted head, strong top rule. Row heads are ink.
+     --stack: 3-column table that stacks to two lines per row on phones (last column right). */
+  .ui-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  .ui-table thead th {
+    padding: 0 16px 12px 0; text-align: left; vertical-align: bottom;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-muted);
+    border-bottom: 1px solid var(--color-line-strong);
+  }
+  .ui-table tbody th,
+  .ui-table tbody td { padding: 16px 16px 16px 0; text-align: left; vertical-align: baseline; border-bottom: 1px solid var(--color-line); }
+  .ui-table tbody th { font-weight: 600; color: var(--color-ink); white-space: nowrap; }
+  .ui-table tbody td { color: var(--color-body); text-wrap: pretty; }
+  .ui-table del { color: var(--color-crit); text-decoration-color: color-mix(in oklab, var(--color-crit) 70%, transparent); text-decoration-thickness: 1.5px; }
+  .ui-table ins { color: var(--color-ok); text-decoration: none; }
+  .ui-table--hover tbody tr { transition: background-color 100ms ease-out; }
+  .ui-table--hover tbody tr:hover { background: oklch(1 0 0 / 0.025); }
+  .ui-table .ui-end { padding-right: 0; text-align: right; }
+  @media (max-width: 760px) {
+    .ui-table th, .ui-table td { padding-right: 10px; }
+    .ui-table tbody th { white-space: normal; font-size: 14px; }
+    .ui-table--stack thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+    .ui-table--stack tbody tr { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 12px; padding-block: 14px; border-bottom: 1px solid var(--color-line); }
+    .ui-table--stack tbody th, .ui-table--stack tbody td { padding: 0; border: 0; font-size: 15px; }
+    .ui-table--stack tbody td:nth-child(2) { grid-column: 1 / -1; grid-row: 2; margin-top: 4px; font-size: 14px; }
+  }
+
+  /* ui-ruled: list with a hairline between items, no bullets */
+  .ui-ruled { list-style: none; margin: 20px 0 0; padding: 0; }
+  .ui-ruled > li { padding-block: 11px; border-bottom: 1px solid var(--color-line); font-size: 15px; color: var(--color-ink); }
+  .ui-ruled--top { border-top: 1px solid var(--color-line); }
+  .ui-ruled--tight > li { padding-block: 9px; border-bottom: 0; border-top: 1px solid var(--color-line); font-size: 14.5px; }
+
+  /* ui-steps: numbered steps, orange tabular numbers, ruled */
+  .ui-steps { list-style: none; margin: 36px 0 32px; padding: 0; border-top: 1px solid var(--color-line); }
+  .ui-steps > li {
+    display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 12px;
+    padding-block: 18px; border-bottom: 1px solid var(--color-line);
+  }
+  .ui-step-n { font-family: var(--font-mono); font-size: 13px; line-height: 24px; color: var(--color-buoy-light); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .ui-steps h3 { margin: 0; font-family: var(--font-body); font-size: 16px; line-height: 24px; font-weight: 600; letter-spacing: -0.005em; color: var(--color-ink); }
+  .ui-steps p { margin: 2px 0 0; font-size: 15px; }
+  .ui-steps .ui-code { margin-top: 10px; }
+
+  /* ui-cols: columns divided by vertical rules under a strong top rule (the plans look).
+     Children are .ui-col. --3 for three columns. Stacks on phones. */
+  .ui-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 48px; border-top: 1px solid var(--color-line-strong); }
+  .ui-cols--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .ui-col { display: flex; flex-direction: column; padding: 24px 32px 0 0; min-width: 0; }
+  .ui-col + .ui-col { padding: 24px 0 0 32px; border-left: 1px solid var(--color-line); }
+  .ui-cols--3 > .ui-col { padding: 24px 28px 4px; }
+  .ui-cols--3 > .ui-col:first-child { padding-left: 0; }
+  .ui-col h3 { margin: 0; font-size: var(--text-h3); line-height: 1.2; letter-spacing: -0.015em; color: var(--color-ink); }
+  .ui-col > p { margin: 8px 0 0; font-size: 15px; }
+  .ui-col > .ui-col-sub { margin-top: 4px; font-size: 14px; color: var(--color-muted); }
+  .ui-col > .ui-col-foot { margin-top: auto; padding-top: 18px; font-size: 13.5px; color: var(--color-muted); }
+  .ui-col > .ui-tier-name { margin: 0; }
+  @media (max-width: 960px) {
+    .ui-cols--3 { grid-template-columns: minmax(0, 1fr); }
+    .ui-cols--3 > .ui-col, .ui-cols--3 > .ui-col:first-child { padding: 20px 0 4px; }
+    .ui-cols--3 > .ui-col + .ui-col { border-left: 0; border-top: 1px solid var(--color-line-strong); }
+  }
+  @media (max-width: 760px) {
+    .ui-cols { grid-template-columns: minmax(0, 1fr); row-gap: 16px; margin-top: 36px; }
+    .ui-cols > .ui-col, .ui-cols > .ui-col + .ui-col { padding: 24px 0 0; border-left: 0; }
+    .ui-cols > .ui-col + .ui-col { margin-top: 24px; border-top: 1px solid var(--color-line-strong); }
+  }
+
+  /* ---------- Buttons and links ---------------------------------------- */
+
+  /* ui-btn: 44px button with press scale. --primary orange, --secondary ring, --ghost plain.
+     --sm 40px, --lg 48px, --icon trims the icon side by 2px. */
+  .ui-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    height: 44px; padding-inline: 18px;
+    border: 0; border-radius: var(--radius-btn);
+    font-family: var(--font-body); font-size: 15px; font-weight: 600; line-height: 1; white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer; user-select: none;
+    transition-property: scale, background-color, box-shadow, color;
+    transition-duration: 150ms;
+    transition-timing-function: ease-out;
+  }
+  .ui-btn:active { scale: 0.96; }
+  .ui-btn:disabled { opacity: 0.55; cursor: not-allowed; scale: 1; }
+  .ui-btn svg { flex: none; }
+  .ui-btn:focus-visible { outline: 2px solid var(--color-ink); outline-offset: 2px; }
+  .ui-btn--icon { padding-inline: 18px 16px; }
+  .ui-btn--sm { height: 40px; padding-inline: 14px; font-size: 14px; }
+  .ui-btn--lg { height: 48px; padding-inline: 22px; font-size: 16px; }
+  .ui-btn--block { width: 100%; }
+  .ui-btn--primary { background: var(--color-buoy); color: var(--color-on-accent); box-shadow: var(--ring-primary); }
+  .ui-btn--primary:hover { background: var(--color-buoy-light); }
+  .ui-btn--secondary { background: var(--color-surface); color: var(--color-ink); box-shadow: var(--ring); }
+  .ui-btn--secondary:hover { box-shadow: var(--ring-hover); background: var(--color-raised); }
+  .ui-btn--ghost { background: transparent; color: var(--color-body); }
+  .ui-btn--ghost:hover { background: var(--color-sunken); color: var(--color-ink); }
+
+  /* ui-chip: small ring-edged link (integrations). Not a pill, not a tag. */
+  .ui-chip {
+    display: inline-flex; align-items: center; height: 40px; padding-inline: 14px; border-radius: var(--radius-btn);
+    font-size: 14px; font-weight: 500; color: var(--color-body); background: var(--color-surface); box-shadow: var(--ring);
+    transition-property: color, box-shadow, scale; transition-duration: 150ms; transition-timing-function: ease-out;
+  }
+  .ui-chip:hover { color: var(--color-ink); box-shadow: var(--ring-hover); }
+  .ui-chip:active { scale: 0.96; }
+
+  /* ui-link: inline link, ink with an orange offset underline */
+  .ui-link {
+    color: var(--color-ink);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: var(--color-buoy);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+    border-radius: 3px;
+    transition: color 120ms ease-out;
+  }
+  .ui-link:hover { color: var(--color-buoy-light); }
+  /* ui-rowlink: link inside a table row or list, quieter underline */
+  .ui-rowlink {
+    text-decoration: underline; text-decoration-color: oklch(1 0 0 / 0.25);
+    text-decoration-thickness: 1.5px; text-underline-offset: 4px;
+    transition: text-decoration-color 120ms ease-out, color 120ms ease-out;
+  }
+  .ui-rowlink:hover { color: var(--color-buoy-light); text-decoration-color: var(--color-buoy); }
+
+  /* ---------- Coloured text roles -------------------------------------- */
+  .ui-old { color: var(--color-crit); text-decoration: line-through; text-decoration-color: color-mix(in oklab, var(--color-crit) 70%, transparent); text-decoration-thickness: 1.5px; }
+  .ui-token { color: var(--color-ok); text-decoration: none; }
+  .ui-sev { font-family: var(--font-mono); font-size: 13px; white-space: nowrap; }
+  .ui-sev-critical { color: var(--color-crit); }
+  .ui-sev-warning { color: var(--color-warn); }
+  .ui-sev-info { color: var(--color-info); }
+  .ui-c-ok, .ui-tier-free, .ui-col > .ui-c-ok { color: var(--color-ok); }
+  .ui-c-buoy, .ui-tier-app, .ui-col > .ui-c-buoy { color: var(--color-buoy-light); }
+  .ui-c-lavender, .ui-tier-org, .ui-col > .ui-c-lavender { color: var(--color-lavender-light); }
+  .ui-c-warn { color: var(--color-warn); }
+  .ui-c-crit { color: var(--color-crit); }
+  .ui-c-info { color: var(--color-info); }
+  .ui-tier-name { margin: 0; font-size: 14px; font-weight: 600; }
+  /* Colour roles win over the default colours of heads, column headings and table headers. */
+  .ui-c-ok.ui-c-ok, .ui-tier-free.ui-tier-free { color: var(--color-ok); }
+  .ui-c-buoy.ui-c-buoy, .ui-tier-app.ui-tier-app { color: var(--color-buoy-light); }
+  .ui-c-lavender.ui-c-lavender, .ui-tier-org.ui-tier-org { color: var(--color-lavender-light); }
+  .ui-c-warn.ui-c-warn { color: var(--color-warn); }
+  .ui-c-crit.ui-c-crit { color: var(--color-crit); }
+  .ui-c-info.ui-c-info { color: var(--color-info); }
+
+  /* ---------- Forms ---------------------------------------------------- */
+
+  /* ui-scan: one-line field with an inset button. 1px border + 4px pad around a 10px button = 15px. */
+  .ui-scan {
+    display: flex; gap: 4px; padding: 4px;
+    border: 1px solid oklch(1 0 0 / 0.16); border-radius: 15px;
+    background: var(--color-field);
+    transition: border-color 120ms ease-out, box-shadow 120ms ease-out;
+  }
+  .ui-scan:focus-within { border-color: var(--color-buoy); box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-buoy) 25%, transparent); }
+  .ui-scan input {
+    flex: 1; min-width: 0; height: 44px; padding-inline: 12px;
+    border: 0; border-radius: var(--radius-btn); background: transparent; outline: none;
+    font-family: var(--font-body); font-size: 16px; color: var(--color-ink);
+  }
+  .ui-scan input::placeholder { color: var(--color-muted); }
+  @media (max-width: 760px) {
+    .ui-scan { flex-direction: column; }
+    .ui-scan .ui-btn { height: 48px; }
+  }
+  /* ui-cta: the scan-box card: copy left, form right */
+  .ui-cta {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: center;
+    padding: 48px; border-radius: var(--radius-cta);
+    background: var(--color-surface); box-shadow: var(--ring-lift);
+  }
+  .ui-cta .ui-note { margin-top: 14px; padding-left: 5px; }
+  @media (max-width: 960px) { .ui-cta { grid-template-columns: minmax(0, 1fr); gap: 28px; } }
+  @media (max-width: 760px) { .ui-cta { padding: 28px 20px; border-radius: 20px; } }
+  /* ui-msg: form result line, coloured words only */
+  .ui-msg { margin: 12px 0 0; font-size: 14px; }
+  .ui-msg--ok { color: var(--color-ok); }
+  .ui-msg--err { color: var(--color-crit); }
+
+  /* ---------- Prose (docs, guides, legal) ------------------------------ */
+  .ui-prose { color: var(--color-body); font-size: 16px; line-height: 1.7; max-width: 72ch; }
+  .ui-prose > * + * { margin-top: 1.1em; }
+  .ui-prose h2, .ui-prose h3, .ui-prose h4 { color: var(--color-ink); scroll-margin-top: calc(var(--header-h) + 16px); }
+  .ui-prose h2 { margin-top: 2.2em; font-size: 1.625rem; line-height: 1.2; letter-spacing: -0.02em; padding-top: 1.1em; border-top: 1px solid var(--color-line); }
+  .ui-prose h3 { margin-top: 1.8em; font-size: 1.2rem; line-height: 1.3; letter-spacing: -0.01em; }
+  .ui-prose h4 { margin-top: 1.5em; font-family: var(--font-body); font-size: 1rem; font-weight: 600; }
+  .ui-prose > :first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+  .ui-prose strong { color: var(--color-ink); font-weight: 600; }
+  .ui-prose a:not(.ui-btn):not(.ui-chip) { color: var(--color-ink); font-weight: 500; text-decoration: underline; text-decoration-color: var(--color-buoy); text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+  .ui-prose a:not(.ui-btn):not(.ui-chip):hover { color: var(--color-buoy-light); }
+  .ui-prose ul, .ui-prose ol:not(.ui-steps) { padding-left: 1.4em; }
+  .ui-prose ul { list-style: disc; }
+  .ui-prose ol:not(.ui-steps) { list-style: decimal; }
+  .ui-prose li + li { margin-top: 0.4em; }
+  .ui-prose li::marker { color: var(--color-muted); }
+  .ui-prose :not(pre) > code { padding: 1px 5px; border-radius: 5px; font-size: 0.875em; color: var(--color-ink); background: var(--color-sunken); box-shadow: inset 0 0 0 1px var(--color-line); }
+  .ui-prose pre { margin-top: 1.4em; padding: 16px 18px; border-radius: var(--radius-inner); background: var(--color-term); color: var(--term-ink); box-shadow: var(--ring-term); overflow-x: auto; font-size: 13px; line-height: 1.7; }
+  .ui-prose pre code { background: none; padding: 0; box-shadow: none; color: inherit; font-size: inherit; }
+  .ui-prose blockquote { padding-left: 18px; border-left: 2px solid var(--color-line-strong); color: var(--color-ink); font-style: normal; }
+  .ui-prose hr { border: 0; border-top: 1px solid var(--color-line); margin-block: 2.4em; }
+  .ui-prose table { width: 100%; border-collapse: collapse; font-size: 15px; display: block; overflow-x: auto; }
+  .ui-prose thead th { padding: 0 16px 10px 0; text-align: left; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-muted); border-bottom: 1px solid var(--color-line-strong); }
+  .ui-prose tbody td, .ui-prose tbody th { padding: 12px 16px 12px 0; text-align: left; vertical-align: baseline; border-bottom: 1px solid var(--color-line); }
+  .ui-prose img { border-radius: var(--radius-inner); box-shadow: var(--ring); }
+
+  /* ---------- Utilities ------------------------------------------------- */
+  .ui-mono { font-family: var(--font-mono); font-variant-ligatures: none; }
+  .ui-tnum { font-variant-numeric: tabular-nums; }
+  .ui-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .ui-skip {
+    position: absolute; left: 16px; top: -64px; z-index: 60;
+    padding: 10px 14px; border-radius: var(--radius-btn);
+    background: var(--color-surface); color: var(--color-ink); box-shadow: var(--ring-lift);
+    font-size: 14px; font-weight: 500;
+  }
+  .ui-skip:focus-visible { top: 12px; }
+
+  /* Staged entrance, once on load: opacity + blur + small translate */
+  .ui-enter { animation: ui-enter 400ms ease-out both; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ui-enter { animation: none; }
+    .ui-btn, .ui-chip, .ui-icon-btn { transition-duration: 0s; }
+    .ui-btn:active, .ui-chip:active, .ui-icon-btn:active { scale: 1; }
+  }
+}
+
+@keyframes ui-enter {
+  from { opacity: 0; transform: translateY(12px); filter: blur(4px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+
+/* Light theme adjustments for ring edges that are written in white */
+html.light .ui-scan { border-color: rgb(26 39 68 / 0.18); }
+html.light .ui-table--hover tbody tr:hover { background: rgb(26 39 68 / 0.03); }
+html.light .ui-rowlink { text-decoration-color: rgb(26 39 68 / 0.25); }
+html.light .ui-c-buoy.ui-c-buoy, html.light .ui-tier-app.ui-tier-app, html.light .ui-step-n, html.light .ui-eyebrow, html.light .ui-link:hover, html.light .ui-rowlink:hover, html.light .ui-prose a:hover { color: var(--color-buoy-dark); }
+html.light .ui-c-lavender.ui-c-lavender, html.light .ui-tier-org.ui-tier-org { color: #6D28D9; }

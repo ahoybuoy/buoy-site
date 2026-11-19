@@ -13,7 +13,7 @@ const features = [
   },
   {
     title: 'Inline Suggestions',
-    description: 'Committable inline fix suggestions — apply with one click in the GitHub UI.'
+    description: 'Committable inline fix suggestions: apply with one click in the GitHub UI.'
   },
   {
     title: 'Multi-Repo',
@@ -36,137 +36,72 @@ const features = [
   keywords="github design system, github pr design checks, github app design drift"
   heroTitle="Buoy GitHub App"
   heroDescription="Install once. Every PR gets a design drift review. Committable inline suggestions. No workflow files, no API keys."
-  icon="🐙"
-  iconBg="bg-gray-500/20"
 >
-  <!-- One Scanner Story -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-navy/50 border border-buoy/20 rounded-xl p-8 text-center">
-        <h2 class="text-2xl font-bold text-light mb-4">One scanner, two ways to use it</h2>
-        <p class="text-slate max-w-2xl mx-auto mb-6">
-          The Buoy GitHub App runs the same open-source scanner (<code class="text-buoy">@buoy-design/cli</code>) internally.
-          Same detection rules, same accuracy. The App adds AI-powered summaries, committable inline suggestions,
-          and a dashboard on top.
-        </p>
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button href="https://github.com/marketplace/buoy-design" size="lg" external>
-            Install GitHub App
-          </Button>
-          <Button href="/docs/integrations/github-actions" variant="secondary" size="lg">
-            Read the docs
-          </Button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Features Grid -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">What You Get</h2>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {features.map((feature) => (
-          <div class="bg-navy-dark/50 border border-navy-light/20 rounded-xl p-6">
-            <h3 class="font-semibold text-light mb-2">{feature.title}</h3>
-            <p class="text-sm text-slate">{feature.description}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- PR Review Preview -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">PR Review Preview</h2>
-
-      <div class="bg-[#0d1117] border border-[#30363d] rounded-lg overflow-hidden shadow-xl">
-        <div class="px-4 py-3 border-b border-[#30363d] flex items-center gap-2">
-          <div class="w-8 h-8 rounded-full bg-buoy/20 flex items-center justify-center text-sm">🛟</div>
-          <div>
-            <span class="text-sm text-[#c9d1d9] font-medium">buoy-design[bot]</span>
-            <span class="text-xs text-[#8b949e] ml-2">reviewed 2 minutes ago</span>
+  <div slot="hero">
+      <div class="ui-tray">
+        <div class="ui-panel">
+          <div class="ui-panel-head">buoy-design[bot] reviewed 2 minutes ago</div>
+          <div class="p-5">
+            <h3 class="mb-4">Buoy Design Review</h3>
+            <table class="ui-table ui-table--stack">
+              <thead><tr><th scope="col">File</th><th scope="col">Issue</th><th scope="col">Fix</th></tr></thead>
+              <tbody>
+                <tr><td class="ui-mono">Card.tsx:12</td><td>Hardcoded color <span class="ui-old">#3b82f6</span></td><td><span class="ui-token">var(--color-primary)</span></td></tr>
+                <tr><td class="ui-mono">Card.tsx:31</td><td>Hardcoded spacing <span class="ui-old">24px</span></td><td><span class="ui-token">var(--spacing-lg)</span></td></tr>
+                <tr><td class="ui-mono">Modal.tsx:8</td><td>Hardcoded radius <span class="ui-old">8px</span></td><td><span class="ui-token">var(--radius-md)</span></td></tr>
+              </tbody>
+            </table>
+            <p class="ui-note mt-4">Fix these issues to merge.</p>
           </div>
         </div>
-        <div class="p-4">
-          <h3 class="text-[#c9d1d9] font-semibold mb-3">🛟 Buoy Design Review</h3>
-          <p class="text-[#8b949e] text-sm mb-4">3 design drift issues found in this PR.</p>
-          <details open>
-            <summary class="text-[#58a6ff] text-sm cursor-pointer mb-2">Issues Table</summary>
-            <div class="overflow-x-auto">
-              <table class="w-full text-sm">
-                <thead>
-                  <tr class="text-[#8b949e] border-b border-[#30363d]">
-                    <th class="text-left py-2 px-3">File</th>
-                    <th class="text-left py-2 px-3">Line</th>
-                    <th class="text-left py-2 px-3">Issue</th>
-                    <th class="text-left py-2 px-3">Fix</th>
-                  </tr>
-                </thead>
-                <tbody class="text-[#c9d1d9]">
-                  <tr class="border-b border-[#30363d]">
-                    <td class="py-2 px-3 text-[#58a6ff]">Card.tsx</td>
-                    <td class="py-2 px-3">12</td>
-                    <td class="py-2 px-3">Hardcoded color <code class="text-[#f85149]">#3b82f6</code></td>
-                    <td class="py-2 px-3"><code class="text-[#7ee787]">var(--color-primary)</code></td>
-                  </tr>
-                  <tr class="border-b border-[#30363d]">
-                    <td class="py-2 px-3 text-[#58a6ff]">Card.tsx</td>
-                    <td class="py-2 px-3">31</td>
-                    <td class="py-2 px-3">Hardcoded spacing <code class="text-[#f85149]">24px</code></td>
-                    <td class="py-2 px-3"><code class="text-[#7ee787]">var(--spacing-lg)</code></td>
-                  </tr>
-                  <tr>
-                    <td class="py-2 px-3 text-[#58a6ff]">Modal.tsx</td>
-                    <td class="py-2 px-3">8</td>
-                    <td class="py-2 px-3">Hardcoded radius <code class="text-[#d29922]">8px</code></td>
-                    <td class="py-2 px-3"><code class="text-[#7ee787]">var(--radius-md)</code></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </details>
+      </div>
+  </div>
+
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-split items-start">
+        <div class="ui-head">
+          <h2>One scanner, two ways to use it</h2>
+          <p>The Buoy GitHub App runs the same open-source scanner (<code class="ui-code">@buoy-design/cli</code>) internally. Same detection rules, same accuracy. The App adds AI-powered summaries, committable inline suggestions, and a dashboard on top.</p>
         </div>
-        <div class="px-4 py-3 bg-[#161b22] border-t border-[#30363d] flex items-center justify-between">
-          <span class="text-[#8b949e] text-sm">Fix these issues to merge</span>
-          <span class="text-[#c9d1d9] text-sm font-semibold">🛟 Buoy</span>
-        </div>
+      <table class="ui-table">
+        <tbody>
+          {features.map((f) => (
+            <tr><th scope="row">{f.title}</th><td>{f.description}</td></tr>
+          ))}
+        </tbody>
+      </table>
       </div>
     </div>
   </section>
 
-  <!-- Pricing -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">What it costs</h2>
-
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="bg-navy-dark border border-success/30 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-1">Free for life</h3>
-          <p class="text-xs text-success mb-4">The first 100 installs, and every public repo</p>
-          <ul class="space-y-2 text-sm text-slate">
-            <li class="flex items-start gap-2"><span class="text-success">✓</span> Every feature on this page</li>
-            <li class="flex items-start gap-2"><span class="text-success">✓</span> Unlimited repos, contributors and agents</li>
-            <li class="flex items-start gap-2"><span class="text-success">✓</span> Stays with the organization that installed</li>
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
+      <div class="ui-head mb-8"><h2>What it costs</h2></div>
+      <div class="ui-cols">
+        <article class="ui-col">
+          <h3 class="ui-tier-name ui-tier-free">Free for life</h3>
+          <p class="ui-col-sub">The first 100 installs, and every public repo</p>
+          <ul class="ui-ruled ui-ruled--tight">
+            <li>Every feature on this page</li>
+            <li>Unlimited repos, contributors and agents</li>
+            <li>Stays with the organization that installed</li>
           </ul>
-        </div>
-        <div class="bg-navy-dark border border-lavender/30 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-1">Team</h3>
-          <p class="text-xs text-lavender mb-4">After the first 100 installs</p>
-          <ul class="space-y-2 text-sm text-slate">
-            <li class="flex items-start gap-2"><span class="text-lavender">+</span> $149 a month per design system</li>
-            <li class="flex items-start gap-2"><span class="text-lavender">+</span> No seats: unlimited repos, contributors, agents and runs</li>
-            <li class="flex items-start gap-2"><span class="text-lavender">+</span> Public repos stay free</li>
+        </article>
+        <article class="ui-col">
+          <h3 class="ui-tier-name ui-tier-app">Team</h3>
+          <p class="ui-col-sub">After the first 100 installs</p>
+          <ul class="ui-ruled ui-ruled--tight">
+            <li>$149 a month per design system</li>
+            <li>No seats: unlimited repos, contributors, agents and runs</li>
+            <li>Public repos stay free</li>
           </ul>
-        </div>
+        </article>
       </div>
-
-      <p class="text-sm text-slate text-center mt-6">
+      <p class="ui-after">
         Findings are deterministic. Summaries, builder-mode coaching and @ahoybuoy answers are written by an LLM;
-        <a href="/privacy#subprocessors" class="text-buoy hover:underline">see what is sent where</a>.
-        Full details on the <a href="/pricing" class="text-buoy hover:underline">pricing page</a>.
+        <a href="/privacy#subprocessors" class="ui-link">see what is sent where</a>.
+        Full details on the <a href="/pricing" class="ui-link">pricing page</a>.
       </p>
     </div>
   </section>

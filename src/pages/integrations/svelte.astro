@@ -31,13 +31,13 @@ const features = [
 
 const terminalLines = [
   { text: '', delay: 600 },
-  { text: '<span class="text-buoy">⚓</span> Scanning Svelte components...', type: 'output', delay: 800 },
+  { text: '<span class="ui-t-prompt">›</span> Scanning Svelte components...', type: 'output', delay: 800 },
   { text: '', delay: 1200 },
-  { text: 'Found <span class="text-light">54</span> Svelte components', type: 'output', delay: 1400 },
-  { text: 'Found <span class="text-light">12</span> SvelteKit routes', type: 'output', delay: 1600 },
+  { text: 'Found <span class="ui-t-hi">54</span> Svelte components', type: 'output', delay: 1400 },
+  { text: 'Found <span class="ui-t-hi">12</span> SvelteKit routes', type: 'output', delay: 1600 },
   { text: '', delay: 1800 },
-  { text: '<span class="text-warning">WARNING</span> 11 hardcoded values in &lt;style&gt;', type: 'warning', delay: 2000 },
-  { text: '<span class="text-info">INFO</span> 4 style directive inconsistencies', type: 'info', delay: 2200 },
+  { text: '<span class="ui-t-warn">WARNING</span> 11 hardcoded values in &lt;style&gt;', type: 'warning', delay: 2000 },
+  { text: '<span class="ui-t-info">INFO</span> 4 style directive inconsistencies', type: 'info', delay: 2200 },
 ]
 
 const configExample = `# .buoy.yaml
@@ -55,6 +55,20 @@ svelte:
 
 tokens:
   source: "./src/lib/tokens.css"`
+
+const heroCode = `&lt;script&gt;
+  let { tone = 'info' } = $props();
+&lt;/script&gt;
+
+&lt;span class="badge"
+  style:background="<span class="ui-old">#fef3c7</span>"
+  <span class="ui-t-dim">→</span> style:background="<span class="ui-token">var(--color-warn-bg)</span>"&gt;
+  &lt;slot /&gt;
+&lt;/span&gt;
+
+&lt;style&gt;
+  .badge { font-size: <span class="ui-old">13px</span> <span class="ui-token">var(--text-sm)</span>; }
+&lt;/style&gt;`
 ---
 
 <IntegrationLayout
@@ -63,43 +77,33 @@ tokens:
   keywords="svelte design system, svelte component audit, svelte code consistency"
   heroTitle="Svelte Component Drift Detection"
   heroDescription="Scan Svelte components for design drift. Native support for Svelte 5 runes, style directives, and SvelteKit projects."
-  icon="🔶"
-  iconBg="bg-orange-500/20"
 >
-  <!-- Features Grid -->
-  <section class="py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Svelte-Specific Features</h2>
+  <div slot="hero">
+    <div class="ui-tray"><div class="ui-panel"><div class="ui-panel-head">src/lib/components/Badge.svelte</div><pre class="p-5 text-sm" set:html={heroCode} /></div></div>
+  </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {features.map((feature) => (
-          <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
-            <h3 class="font-semibold text-light mb-2">{feature.title}</h3>
-            <p class="text-sm text-slate">{feature.description}</p>
-          </div>
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head mb-8"><h2>Svelte-specific features</h2><p>From runes to style directives, Buoy understands the parts of Svelte where hardcoded values hide.</p></div>
+      <div class="ui-cols ui-cols--3">
+        {features.slice(0, 3).map((f) => (
+          <article class="ui-col"><h3>{f.title}</h3><p>{f.description}</p></article>
+        ))}
+      </div>
+      <div class="ui-cols ui-cols--3 mt-10">
+        {features.slice(3).map((f) => (
+          <article class="ui-col"><h3>{f.title}</h3><p>{f.description}</p></article>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Terminal Demo -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">See it in action</h2>
-      <Terminal command="buoy drift check --framework svelte" lines={terminalLines} />
-    </div>
-  </section>
-
-  <!-- Configuration -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Configuration Example</h2>
-
-      <div class="bg-navy border border-navy-light/30 rounded-xl overflow-hidden">
-        <div class="px-4 py-3 bg-navy-dark border-b border-navy-light/20">
-          <span class="text-sm text-slate font-mono">.buoy.yaml</span>
-        </div>
-        <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{configExample}</code></pre>
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
+      <div class="ui-head mb-8"><h2>Scan a SvelteKit app</h2><p>Components and routes in one pass, checked against the tokens in src/lib.</p></div>
+      <div class="ui-split items-start">
+        <div><Terminal command="buoy drift check --framework svelte" lines={terminalLines} /></div>
+        <div><div class="ui-tray"><div class="ui-panel"><div class="ui-panel-head">.buoy.yaml</div><pre class="p-5 text-sm">{configExample}</pre></div></div></div>
       </div>
     </div>
   </section>

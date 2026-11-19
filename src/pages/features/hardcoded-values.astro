@@ -1,8 +1,7 @@
 ---
 import FeatureLayout from '../../layouts/FeatureLayout.astro'
 import Terminal from '../../components/Terminal.astro'
-import FeatureCard from '../../components/FeatureCard.astro'
-import CodeBlock from '../../components/CodeBlock.astro'
+import BuoyMark from '../../components/BuoyMark.astro'
 import LeadMagnetCallout from '../../components/LeadMagnetCallout.astro'
 
 const terminalLines = [
@@ -21,31 +20,18 @@ const terminalLines = [
   { text: '<span class="text-buoy font-semibold">Add to CI to catch at the PR →</span>', type: 'output', delay: 3000 },
 ]
 
-
 const valueTypes = [
-  { icon: '🎨', title: 'Colors', examples: ['#ffffff', 'rgb(255,255,255)', 'hsl(0,0%,100%)'] },
-  { icon: '📐', title: 'Spacing', examples: ['16px', '1.5rem', '24px'] },
-  { icon: '🔤', title: 'Typography', examples: ['14px', 'Arial', 'font-weight: 600'] },
-  { icon: '🌓', title: 'Shadows', examples: ['box-shadow: 0 2px 4px rgba(0,0,0,0.1)'] },
-  { icon: '📏', title: 'Borders', examples: ['1px solid #ccc', 'border-radius: 4px'] },
+  { title: 'Colors', examples: ['#ffffff', 'rgb(255,255,255)', 'hsl(0,0%,100%)'] },
+  { title: 'Spacing', examples: ['16px', '1.5rem', '24px'] },
+  { title: 'Typography', examples: ['14px', 'Arial', 'font-weight: 600'] },
+  { title: 'Shadows', examples: ['box-shadow: 0 2px 4px rgba(0,0,0,0.1)'] },
+  { title: 'Borders', examples: ['1px solid #ccc', 'border-radius: 4px'] },
 ]
 
 const relatedFeatures = [
-  {
-    title: 'Bootstrap',
-    description: 'Extract tokens from existing hardcoded values',
-    href: '/features/bootstrap'
-  },
-  {
-    title: 'Coverage',
-    description: 'See which components use design tokens',
-    href: '/features/coverage'
-  },
-  {
-    title: 'CI Integration',
-    description: 'Block PRs with new hardcoded values',
-    href: '/features/ci'
-  },
+  { title: 'Bootstrap', description: 'Extract tokens from existing hardcoded values', href: '/features/bootstrap' },
+  { title: 'Coverage', description: 'See which components use design tokens', href: '/features/coverage' },
+  { title: 'CI Integration', description: 'Block PRs with new hardcoded values', href: '/features/ci' },
 ]
 
 const faqs = [
@@ -74,86 +60,120 @@ const faqs = [
   keywords="hardcoded colors react, detect hardcoded values, design tokens enforcement"
   heroTitle="Find hardcoded values. Replace them with tokens. Automatically."
   heroDescription="AI-generated code uses #3b82f6 instead of var(--primary). Buoy finds them, shows you the exact token to use, and can fix them with one command."
+  exampleCaption="A Buoy review comment on a hardcoded color."
+  related={relatedFeatures}
+  pattern="field"
+  ctaPattern="tide"
 >
-  <!-- What It Detects Section -->
-  <section class="py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Hardcoded Value Types</h2>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 max-w-5xl mx-auto">
-        {valueTypes.map((type) => (
-          <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-5 text-center">
-            <div class="text-3xl mb-3">{type.icon}</div>
-            <h3 class="font-semibold text-light mb-3">{type.title}</h3>
-            <div class="space-y-1">
-              {type.examples.map((ex) => (
-                <div class="text-xs font-mono text-slate-dark bg-navy-dark/50 px-2 py-1 rounded">
-                  {ex}
-                </div>
-              ))}
+  <div slot="example" class="ui-tray">
+    <div class="ui-panel">
+      <div class="ui-panel-head"><span class="ui-mono">src/components/Card.tsx</span></div>
+      <div class="fx-diff" role="img" aria-label="Diff of Card.tsx. Line 12 adds a hardcoded background color, #ffffff.">
+        <div class="fx-line"><span class="fx-ln">10</span><span class="fx-sign"></span><span class="fx-code">{"export function Card({ title }) {"}</span></div>
+        <div class="fx-line"><span class="fx-ln">11</span><span class="fx-sign"></span><span class="fx-code">{"  return <div style={{"}</span></div>
+        <div class="fx-line fx-add"><span class="fx-ln">12</span><span class="fx-sign">+</span><span class="fx-code">{"    backgroundColor: '#ffffff',"}</span></div>
+      </div>
+      <div class="fx-comment-row">
+        <div class="fx-comment">
+          <div class="fx-comment-head">
+            <span class="fx-avatar"><BuoyMark size={16} /></span>
+            <span class="fx-author">buoy-design</span><span class="fx-tag">bot</span>
+            <span class="fx-meta">commented on line <span class="ui-tnum">12</span></span>
+          </div>
+          <p class="fx-body">Hardcoded color <code class="fx-was">#ffffff</code>. Use <code class="fx-fix">var(--bg-surface)</code> instead.</p>
+          <div class="fx-suggest">
+            <div class="fx-suggest-label">Suggested change</div>
+            <div class="fx-diff">
+              <div class="fx-line fx-del"><span class="fx-ln">12</span><span class="fx-sign">-</span><span class="fx-code">backgroundColor: '#ffffff',</span></div>
+              <div class="fx-line fx-add"><span class="fx-ln">12</span><span class="fx-sign">+</span><span class="fx-code">backgroundColor: 'var(--bg-surface)',</span></div>
             </div>
           </div>
-        ))}
+        </div>
+      </div>
+      <div class="fx-diff" aria-hidden="true">
+        <div class="fx-line fx-add"><span class="fx-ln">13</span><span class="fx-sign">+</span><span class="fx-code">{"    padding: '16px',"}</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- What it detects -->
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head">
+        <h2>Hardcoded value types</h2>
+        <p>Every value that skips a token, with what it usually looks like in the code.</p>
+      </div>
+      <div class="fx-block fx-scroll">
+        <table class="ui-table">
+          <caption class="ui-sr">Hardcoded value types and examples</caption>
+          <thead><tr><th scope="col">Type</th><th scope="col">Found in code</th></tr></thead>
+          <tbody>
+            {valueTypes.map((t) => (
+              <tr>
+                <th scope="row">{t.title}</th>
+                <td class="ui-mono">{t.examples.map((ex, i) => <>{i > 0 && <span class="ui-t-dim">, </span>}<del>{ex}</del></>)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
 
-  <!-- Code Example Section -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid md:grid-cols-2 gap-8">
-        <!-- Before -->
-        <div>
-          <h3 class="text-lg font-semibold text-light mb-4 flex items-center gap-2">
-            <span class="text-critical">✗</span> Before: Hardcoded values everywhere
-          </h3>
-          <div class="bg-navy-dark border border-navy-light/30 rounded-xl overflow-hidden">
-            <div class="px-4 py-2 bg-navy border-b border-navy-light/20 text-xs text-slate font-mono">
-              Card.tsx
-            </div>
-            <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{`export function Card({ title }) {
+  <!-- Before / after -->
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
+      <div class="ui-head">
+        <h2>Before and after</h2>
+        <p>The same Card, with magic values and with tokens.</p>
+      </div>
+      <div class="ui-cols fx-vs">
+        <div class="ui-col">
+          <h3>Before</h3>
+          <p class="ui-col-sub ui-c-crit">Hardcoded values everywhere</p>
+          <div class="ui-tray fx-mt">
+            <div class="ui-panel">
+              <div class="ui-panel-head"><span class="ui-mono">Card.tsx</span></div>
+              <pre class="fx-pre">{`export function Card({ title }) {
   return (
     <div style={{
-      backgroundColor: '#ffffff',  // ⚠️
-      padding: '16px',             // ⚠️
-      borderRadius: '8px'          // ⚠️
+      backgroundColor: `}<del>'#ffffff'</del>{`,
+      padding: `}<del>'16px'</del>{`,
+      borderRadius: `}<del>'8px'</del>{`
     }}>
       {title}
     </div>
   );
-}`}</code></pre>
+}`}</pre>
+            </div>
           </div>
         </div>
-
-        <!-- After -->
-        <div>
-          <h3 class="text-lg font-semibold text-light mb-4 flex items-center gap-2">
-            <span class="text-success">✓</span> After: Using design tokens
-          </h3>
-          <div class="bg-navy-dark border border-success/30 rounded-xl overflow-hidden">
-            <div class="px-4 py-2 bg-navy border-b border-navy-light/20 text-xs text-slate font-mono">
-              Card.tsx
-            </div>
-            <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{`export function Card({ title }) {
+        <div class="ui-col">
+          <h3>After</h3>
+          <p class="ui-col-sub ui-c-ok">Using design tokens</p>
+          <div class="ui-tray fx-mt">
+            <div class="ui-panel">
+              <div class="ui-panel-head"><span class="ui-mono">Card.tsx</span></div>
+              <pre class="fx-pre">{`export function Card({ title }) {
   return (
     <div style={{
-      backgroundColor: 'var(--bg-surface)',
-      padding: 'var(--spacing-md)',
-      borderRadius: 'var(--radius-md)'
+      backgroundColor: `}<ins>'var(--bg-surface)'</ins>{`,
+      padding: `}<ins>'var(--spacing-md)'</ins>{`,
+      borderRadius: `}<ins>'var(--radius-md)'</ins>{`
     }}>
       {title}
     </div>
   );
-}`}</code></pre>
+}`}</pre>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Lead Magnet: 10 Hardcoded Color Patterns -->
-  <section class="py-12">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="ui-section">
+    <div class="ui-wrap fx-narrow">
       <LeadMagnetCallout
         leadMagnet="hall-of-shame"
         headline="See the worst hardcoded colors in the wild"
@@ -163,130 +183,82 @@ const faqs = [
     </div>
   </section>
 
-  <!-- Terminal Demo Section: Detect -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-4 text-center">Step 1: Find Every Hardcoded Value</h2>
-      <p class="text-slate text-center mb-8">Each issue shows the exact token replacement.</p>
-
-      <Terminal
-        command="buoy drift check --type hardcoded-value"
-        lines={terminalLines}
-      />
-    </div>
-  </section>
-
-  <!-- CI Enforcement Section -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-4 text-center">Step 2: Catch at the PR</h2>
-      <p class="text-slate text-center mb-8">Add Buoy to CI. Hardcoded values never reach main.</p>
-
-      <!-- GitHub PR Check Style Card -->
-      <div class="bg-[#0d1117] border border-[#30363d] rounded-lg overflow-hidden shadow-xl">
-        <div class="px-4 py-3 border-b border-[#30363d] flex items-center gap-2">
-          <svg class="w-4 h-4 text-[#f85149]" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"/>
-          </svg>
-          <span class="text-[#f85149] font-medium text-sm">Buoy Design Check — 2 hardcoded values found</span>
+  <!-- Steps -->
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap ui-split">
+      <div>
+        <div class="ui-head">
+          <h2>Find every one, then stop new ones at the PR.</h2>
+          <p>Each issue shows the exact token replacement. Add Buoy to CI and hardcoded values never reach main.</p>
         </div>
-        <div class="divide-y divide-[#30363d]">
-          <div class="px-4 py-3">
-            <div class="flex items-center gap-2 mb-1">
-              <span class="text-[#58a6ff] text-sm font-mono">src/components/Card.tsx</span>
-              <span class="text-[#8b949e] text-sm">line 12</span>
+        <ol class="ui-steps">
+          <li><span class="ui-step-n" aria-hidden="true">1</span><div><h3>Find every hardcoded value</h3><p>Run the check locally.</p><code class="ui-code">buoy drift check --type hardcoded-value</code></div></li>
+          <li><span class="ui-step-n" aria-hidden="true">2</span><div><h3>Catch at the PR</h3><p>The check fails on new hardcoded values and names the token to use.</p></div></li>
+        </ol>
+      </div>
+      <div>
+        <Terminal command="buoy drift check --type hardcoded-value" lines={terminalLines} />
+        <div class="ui-tray fx-mt">
+          <div class="ui-panel">
+            <div class="fx-check fx-check-fail">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"/></svg>
+              <span>Buoy Design Check: 2 hardcoded values found</span>
             </div>
-            <p class="text-[#c9d1d9] text-sm">Hardcoded color <code class="px-1.5 py-0.5 bg-[#161b22] rounded text-[#f85149] text-xs">#ffffff</code> → Use <code class="px-1.5 py-0.5 bg-[#161b22] rounded text-[#7ee787] text-xs">var(--bg-surface)</code></p>
-          </div>
-          <div class="px-4 py-3">
-            <div class="flex items-center gap-2 mb-1">
-              <span class="text-[#58a6ff] text-sm font-mono">src/components/Card.tsx</span>
-              <span class="text-[#8b949e] text-sm">line 15</span>
-            </div>
-            <p class="text-[#c9d1d9] text-sm">Hardcoded spacing <code class="px-1.5 py-0.5 bg-[#161b22] rounded text-[#f85149] text-xs">16px</code> → Use <code class="px-1.5 py-0.5 bg-[#161b22] rounded text-[#7ee787] text-xs">var(--spacing-md)</code></p>
+            <p class="fx-body fx-body-first"><span class="fx-meta ui-mono">Card.tsx:12</span><br />Hardcoded color <code class="fx-was">#ffffff</code>. Use <code class="fx-fix">var(--bg-surface)</code></p>
+            <p class="fx-body"><span class="fx-meta ui-mono">Card.tsx:15</span><br />Hardcoded spacing <code class="fx-was">16px</code>. Use <code class="fx-fix">var(--spacing-md)</code></p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Outcome Section -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">The Visible Outcome</h2>
-
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6 text-center">
-          <div class="text-5xl font-bold text-warning mb-2">34%</div>
-          <div class="text-slate text-sm">Token Coverage Before</div>
-          <div class="mt-4 text-xs text-slate-dark">
-            47 hardcoded values scattered across 35 files
-          </div>
-        </div>
-
-        <div class="bg-navy/50 border border-success/30 rounded-xl p-6 text-center">
-          <div class="text-5xl font-bold text-success mb-2">89%</div>
-          <div class="text-slate text-sm">Token Coverage After</div>
-          <div class="mt-4 text-xs text-slate-dark">
-            42 issues caught before merge
-          </div>
-        </div>
+  <!-- Outcome -->
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head">
+        <h2>The visible outcome</h2>
+        <p>Now when you update <code class="ui-code">--color-primary</code>, every component updates at once. No hunting through files. No missed spots. One source of truth.</p>
       </div>
-
-      <div class="mt-8 text-center">
-        <p class="text-slate">
-          Now when you update <code class="text-buoy">--color-primary</code>, every component updates at once.
-          <br />No hunting through files. No missed spots. One source of truth.
-        </p>
+      <div class="ui-cols">
+        <div class="ui-col">
+          <p class="ui-col-sub">Token coverage before</p>
+          <h3 class="ui-c-warn ui-tnum fx-big">34%</h3>
+          <p>47 hardcoded values scattered across 35 files</p>
+        </div>
+        <div class="ui-col">
+          <p class="ui-col-sub">Token coverage after</p>
+          <h3 class="ui-c-ok ui-tnum fx-big">89%</h3>
+          <p>42 issues caught before merge</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- FAQ Section -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Frequently Asked Questions</h2>
-
-      <div class="space-y-4">
+  <!-- FAQ -->
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap fx-narrow">
+      <div class="ui-head"><h2>Frequently asked questions</h2></div>
+      <div class="fx-faq">
         {faqs.map((faq) => (
-          <details class="group bg-navy-dark border border-navy-light/20 rounded-xl">
-            <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
-              <span class="font-medium text-light">{faq.question}</span>
-              <svg class="w-5 h-5 text-slate group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-              </svg>
+          <details>
+            <summary>
+              <span>{faq.question}</span>
+              <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </summary>
-            <div class="px-4 pb-4 text-slate">
-              {faq.answer}
-            </div>
+            <p>{faq.answer}</p>
           </details>
         ))}
       </div>
     </div>
   </section>
-
-  <!-- Related Features Slot -->
-  <div slot="related" class="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-    {relatedFeatures.map((feature) => (
-      <FeatureCard
-        title={feature.title}
-        description={feature.description}
-        href={feature.href}
-      />
-    ))}
-  </div>
 </FeatureLayout>
 
-<!-- Structured Data for FAQ -->
 <script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": faqs.map(faq => ({
     "@type": "Question",
     "name": faq.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": faq.answer
-    }
+    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
   }))
 })} />

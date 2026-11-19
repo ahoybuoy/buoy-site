@@ -1,0 +1,569 @@
+/* UI Skills (ibelick) skin.
+   baseline-ui: Tailwind default palette, type sizes, radii and shadow scale;
+   no gradients, no glow, one accent per view, no letter-spacing changes,
+   no decorative animation, feedback transitions at or under 200ms,
+   compositor-only motion. Ground is Tailwind zinc, light. */
+
+.sl.sl-ui-skills {
+  /* Tailwind zinc */
+  --u-50: #fafafa;
+  --u-100: #f4f4f5;
+  --u-200: #e4e4e7;
+  --u-300: #d4d4d8;
+  --u-400: #a1a1aa;
+  --u-500: #71717a;
+  --u-600: #52525b;
+  --u-700: #3f3f46;
+  --u-800: #27272a;
+  --u-900: #18181b;
+  --u-950: #09090b;
+
+  --sl-bg: #fff;
+  --sl-bg-alt: var(--u-50);
+  --sl-surface: #fff;
+  --sl-surface-2: #fff;
+  --sl-border: var(--u-200);
+  --sl-text: var(--u-950);
+  --sl-text-muted: var(--u-600);
+  --sl-text-faint: var(--u-500);
+
+  --sl-accent: var(--color-buoy);
+  --sl-accent-hover: var(--color-buoy-dark);
+  --sl-accent-contrast: var(--u-950);
+  /* One accent per view: the second accent folds into the neutral ink */
+  --sl-accent-2: var(--u-700);
+  --sl-success: #15803d;
+  --sl-warning: #a16207;
+  --sl-critical: #b91c1c;
+  --sl-info: var(--u-600);
+
+  --sl-code-bg: var(--u-950);
+  --sl-code-text: var(--u-400);
+
+  --sl-font-display: 'Inter', system-ui, sans-serif;
+  --sl-font-body: 'Inter', system-ui, sans-serif;
+  --sl-font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --sl-h1-size: clamp(2.25rem, 5vw, 3.75rem);
+  --sl-h2-size: clamp(1.5rem, 3vw, 1.875rem);
+  --sl-h3-size: 1rem;
+  --sl-body-size: 1rem;
+  --sl-lead-size: 1.125rem;
+  --sl-small-size: 0.875rem;
+  --sl-heading-weight: 600;
+  --sl-heading-tracking: normal;
+  --sl-heading-leading: 1.2;
+  --sl-leading: 1.6;
+
+  --sl-radius-sm: 0.25rem;
+  --sl-radius-md: 0.375rem;
+  --sl-radius-lg: 0.5rem;
+  --sl-btn-radius: 0.375rem;
+  --sl-btn-height: 2.75rem;
+  /* Tailwind shadow-sm / shadow / shadow-lg */
+  --sl-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --sl-shadow-md: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --sl-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  --sl-section-pad: 5rem;
+  --sl-gap: 1.5rem;
+  --sl-ease: ease-out;
+  --sl-duration: 150ms;
+
+  /* PR card: GitHub light, so it reads as the real surface on a light page */
+  --sl-pr-bg: #fff;
+  --sl-pr-bg-2: #f6f8fa;
+  --sl-pr-border: #d0d7de;
+  --sl-pr-text: #1f2328;
+  --sl-pr-muted: #59636e;
+  --sl-pr-link: #0969da;
+  --sl-pr-open: #1a7f37;
+  --sl-pr-error: #d1242f;
+  --sl-pr-warn: #9a6700;
+  --sl-pr-fix: #1a7f37;
+
+  color-scheme: light;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Type: balance headings, pretty body, tabular numbers for data */
+.sl.sl-ui-skills h1,
+.sl.sl-ui-skills h2,
+.sl.sl-ui-skills h3 {
+  text-wrap: balance;
+}
+.sl.sl-ui-skills p,
+.sl.sl-ui-skills li {
+  text-wrap: pretty;
+}
+.sl.sl-ui-skills :focus-visible {
+  outline: 2px solid var(--u-950);
+  outline-offset: 2px;
+}
+.sl.sl-ui-skills ::selection {
+  background: var(--u-200);
+  color: var(--u-950);
+}
+
+/* Links: ink text, accent only as a thin underline */
+.sl.sl-ui-skills .sl-link,
+.sl.sl-ui-skills .sl-hero__scan a,
+.sl.sl-ui-skills .sl-card__foot a {
+  color: var(--u-950);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--sl-accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: text-decoration-color var(--sl-duration) var(--sl-ease);
+}
+.sl.sl-ui-skills .sl-link:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Header: opaque, no backdrop blur */
+.sl.sl-ui-skills .sl-header {
+  background: #fff;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  border-bottom: 1px solid var(--u-200);
+}
+.sl.sl-ui-skills .sl-header__logo { color: var(--u-950); }
+.sl.sl-ui-skills .sl-header__link { color: var(--u-600); }
+.sl.sl-ui-skills .sl-header__link:hover { color: var(--u-950); }
+
+/* Callout: no gradient, a plain zinc strip */
+.sl.sl-ui-skills .sl-callout {
+  background: var(--u-50);
+  border-bottom: 1px solid var(--u-200);
+}
+.sl.sl-ui-skills .sl-callout__link { color: var(--u-600); }
+.sl.sl-ui-skills .sl-callout__link:hover,
+.sl.sl-ui-skills .sl-callout__link strong { color: var(--u-950); }
+.sl.sl-ui-skills .sl-callout__pill {
+  border-radius: var(--sl-radius-sm);
+  background: var(--u-950);
+  color: #fff;
+  font-size: 0.6875rem;
+  font-weight: 600;
+}
+.sl.sl-ui-skills .sl-callout__arrow { color: var(--u-500); }
+
+/* Buttons: flat, no glow, no scale */
+.sl.sl-ui-skills .sl-btn {
+  font-weight: 500;
+  box-shadow: var(--sl-shadow-sm);
+  transition:
+    background-color var(--sl-duration) var(--sl-ease),
+    border-color var(--sl-duration) var(--sl-ease),
+    color var(--sl-duration) var(--sl-ease);
+}
+.sl.sl-ui-skills .sl-btn--lg { font-size: 0.9375rem; }
+.sl.sl-ui-skills .sl-btn--primary {
+  background: var(--sl-accent);
+  color: var(--u-950);
+  border-color: color-mix(in srgb, var(--sl-accent) 80%, var(--u-950));
+}
+.sl.sl-ui-skills .sl-btn--primary:hover {
+  background: color-mix(in srgb, var(--sl-accent) 88%, var(--u-950));
+  transform: none;
+}
+.sl.sl-ui-skills .sl-btn--primary:active {
+  background: color-mix(in srgb, var(--sl-accent) 80%, var(--u-950));
+}
+.sl.sl-ui-skills .sl-btn--secondary {
+  background: #fff;
+  border-color: var(--u-300);
+  color: var(--u-950);
+}
+.sl.sl-ui-skills .sl-btn--secondary:hover {
+  background: var(--u-50);
+  border-color: var(--u-400);
+}
+
+/* Hero: plain ground, no waves, no boat, no word reveal */
+.sl.sl-ui-skills .sl-decor--waves,
+.sl.sl-ui-skills .sl-hero__boat {
+  display: none;
+}
+.sl.sl-ui-skills .sl-hero {
+  background: #fff;
+  border-bottom: 1px solid var(--u-200);
+}
+.sl.sl-ui-skills .sl-hero__badge {
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--u-200);
+  border-radius: var(--sl-radius-md);
+  background: var(--u-50);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  font-size: 0.8125rem;
+  color: var(--u-600);
+}
+.sl.sl-ui-skills .sl-hero__title {
+  line-height: 1.1;
+  color: var(--u-950);
+}
+.sl.sl-ui-skills .sl-hero__word {
+  opacity: 1;
+  animation: none;
+}
+.sl.sl-ui-skills .sl-hero__highlight {
+  color: var(--u-950);
+}
+/* The accent marks the phrase once, as a solid underline, not a glow band */
+.sl.sl-ui-skills .sl-hero__highlight::after {
+  bottom: 0.02em;
+  left: 0;
+  right: 0;
+  height: 0.08em;
+  z-index: 0;
+  border-radius: 0;
+  background: var(--sl-accent);
+}
+.sl.sl-ui-skills .sl-hero__sub {
+  color: var(--u-600);
+  text-shadow: none;
+}
+.sl.sl-ui-skills .sl-hero__scan { color: var(--u-500); }
+.sl.sl-ui-skills .sl-hero__scroll {
+  color: var(--u-300);
+  animation: none;
+}
+
+/* Sections: white and zinc-50 alternate, hairline between */
+.sl.sl-ui-skills .sl-section { background: #fff; }
+.sl.sl-ui-skills .sl-section--alt {
+  background: var(--u-50);
+  border-block: 1px solid var(--u-200);
+}
+.sl.sl-ui-skills .sl-lead::before,
+.sl.sl-ui-skills .sl-demo::before {
+  background: none;
+}
+.sl.sl-ui-skills .sl-decor--pattern { display: none; }
+.sl.sl-ui-skills .sl-section__title { color: var(--u-950); }
+.sl.sl-ui-skills .sl-section__lead {
+  font-size: 1rem;
+  color: var(--u-600);
+}
+
+/* Code pair: one neutral card style, status carried by a 2px top rule and the label */
+.sl.sl-ui-skills .sl-code {
+  border: 1px solid var(--u-200);
+  border-radius: var(--sl-radius-lg);
+  background: #fff;
+  box-shadow: var(--sl-shadow-sm);
+}
+.sl.sl-ui-skills .sl-code__bar {
+  padding: 0.625rem 1rem;
+  border-bottom: 1px solid var(--u-200);
+  background: var(--u-50);
+}
+.sl.sl-ui-skills .sl-code__label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--sl-code-tone);
+}
+.sl.sl-ui-skills .sl-code__file {
+  font-family: var(--sl-font-mono);
+  color: var(--u-500);
+}
+.sl.sl-ui-skills .sl-code__body { background: #fff; }
+.sl.sl-ui-skills .sl-tok { color: var(--u-700); }
+.sl.sl-ui-skills .sl-tok--dim { color: var(--u-400); }
+.sl.sl-ui-skills .sl-tok--bad {
+  color: var(--sl-critical);
+  background: color-mix(in srgb, var(--sl-critical) 8%, transparent);
+}
+.sl.sl-ui-skills .sl-tok--good {
+  color: var(--sl-success);
+  background: color-mix(in srgb, var(--sl-success) 8%, transparent);
+}
+
+/* What Buoy catches */
+.sl.sl-ui-skills .sl-catch__title { font-size: 1.25rem; }
+.sl.sl-ui-skills .sl-catch__box {
+  border: 1px solid var(--u-200);
+  border-radius: var(--sl-radius-lg);
+  background: #fff;
+  box-shadow: var(--sl-shadow-sm);
+}
+.sl.sl-ui-skills .sl-catch__label {
+  font-weight: 500;
+  color: var(--u-950);
+}
+/* Replace the warning dot with a short accent rule: one shape language (lines) */
+.sl.sl-ui-skills .sl-catch__mark {
+  width: 0.75rem;
+  height: 2px;
+  margin-top: 0.6rem;
+  border-radius: 0;
+  background: var(--sl-accent);
+}
+.sl.sl-ui-skills .sl-catch__name { color: var(--u-950); }
+.sl.sl-ui-skills .sl-catch__detail {
+  font-family: var(--sl-font-mono);
+  font-size: 0.75rem;
+  color: var(--u-500);
+}
+
+/* Lead capture */
+.sl.sl-ui-skills .sl-lead__title { font-size: 1.5rem; line-height: 1.25; }
+.sl.sl-ui-skills .sl-lead__sub { font-size: 1rem; color: var(--u-600); }
+.sl.sl-ui-skills .sl-lead__note { color: var(--u-500); }
+.sl.sl-ui-skills .sl-input {
+  border: 1px solid var(--u-300);
+  border-radius: var(--sl-btn-radius);
+  background: #fff;
+  color: var(--u-950);
+  box-shadow: var(--sl-shadow-sm);
+}
+.sl.sl-ui-skills .sl-input::placeholder { color: var(--u-400); }
+.sl.sl-ui-skills .sl-input:focus {
+  border-color: var(--u-950);
+  box-shadow: 0 0 0 1px var(--u-950);
+}
+.sl.sl-ui-skills .sl-doc {
+  border: 1px solid var(--u-200);
+  border-radius: var(--sl-radius-lg);
+  background: #fff;
+  box-shadow: var(--sl-shadow-lg);
+  transform: none;
+}
+.sl.sl-ui-skills .sl-doc:hover { transform: none; }
+.sl.sl-ui-skills .sl-doc__name { font-family: var(--sl-font-mono); color: var(--u-500); }
+.sl.sl-ui-skills .sl-doc__list { color: var(--u-700); }
+.sl.sl-ui-skills .sl-doc__box { border-color: var(--u-300); border-radius: var(--sl-radius-sm); }
+/* Window dots read as decoration: neutral, all the same */
+.sl.sl-ui-skills .sl-dot,
+.sl.sl-ui-skills .sl-dot--critical,
+.sl.sl-ui-skills .sl-dot--warning,
+.sl.sl-ui-skills .sl-dot--success {
+  background: var(--u-300);
+  opacity: 1;
+}
+
+/* Terminal: the one dark surface on the page */
+.sl.sl-ui-skills .sl-terminal {
+  border: 1px solid var(--u-800);
+  border-radius: var(--sl-radius-lg);
+  background: var(--u-950);
+  box-shadow: var(--sl-shadow-lg);
+}
+.sl.sl-ui-skills .sl-terminal__bar {
+  border-bottom: 1px solid var(--u-800);
+  background: var(--u-900);
+}
+.sl.sl-ui-skills .sl-terminal .sl-dot { background: var(--u-700); }
+.sl.sl-ui-skills .sl-terminal__name { color: var(--u-400); }
+.sl.sl-ui-skills .sl-terminal__body {
+  color: var(--u-400);
+  font-variant-numeric: tabular-nums;
+}
+.sl.sl-ui-skills .sl-terminal__prompt { color: var(--u-500); }
+.sl.sl-ui-skills .sl-terminal__input { color: var(--u-50); }
+.sl.sl-ui-skills .sl-terminal__line--critical,
+.sl.sl-ui-skills .sl-terminal .sl-t--critical { color: #f87171; }
+.sl.sl-ui-skills .sl-terminal__line--warning,
+.sl.sl-ui-skills .sl-terminal .sl-t--warning { color: #fbbf24; }
+.sl.sl-ui-skills .sl-terminal__line--faint,
+.sl.sl-ui-skills .sl-terminal .sl-t--faint { color: var(--u-500); }
+.sl.sl-ui-skills .sl-terminal .sl-t--muted { color: var(--u-400); }
+.sl.sl-ui-skills .sl-terminal .sl-t--accent { color: var(--u-50); }
+
+/* PR card */
+.sl.sl-ui-skills .sl-pr {
+  border-radius: var(--sl-radius-lg);
+  box-shadow: var(--sl-shadow-md);
+}
+.sl.sl-ui-skills .sl-pr__name { font-size: 0.9375rem; }
+.sl.sl-ui-skills .sl-pr__level {
+  border-radius: var(--sl-radius-sm);
+  font-family: var(--sl-font-mono);
+  font-size: 0.6875rem;
+}
+.sl.sl-ui-skills .sl-pr__level--warn {
+  border-color: color-mix(in srgb, var(--sl-pr-warn) 30%, transparent);
+  background: color-mix(in srgb, var(--sl-pr-warn) 12%, transparent);
+  color: var(--sl-pr-warn);
+}
+.sl.sl-ui-skills .sl-pr__code {
+  border: 1px solid var(--sl-pr-border);
+  font-family: var(--sl-font-mono);
+}
+
+/* Pills, badges, tags: neutral outlines, no tinted capsules */
+.sl.sl-ui-skills .sl-pill,
+.sl.sl-ui-skills .sl-pill--success {
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--u-200);
+  border-radius: var(--sl-radius-md);
+  background: #fff;
+  color: var(--u-700);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+.sl.sl-ui-skills .sl-badge {
+  padding: 0 0.375rem;
+  border: 1px solid var(--u-200);
+  border-radius: var(--sl-radius-sm);
+  background: var(--u-50);
+  color: var(--u-600);
+  font-family: var(--sl-font-mono);
+  font-size: 0.6875rem;
+  line-height: 1.25rem;
+}
+.sl.sl-ui-skills .sl-badge--critical {
+  border-color: color-mix(in srgb, var(--sl-critical) 30%, transparent);
+  background: color-mix(in srgb, var(--sl-critical) 6%, #fff);
+  color: var(--sl-critical);
+}
+.sl.sl-ui-skills .sl-tag,
+.sl.sl-ui-skills .sl-tag--success,
+.sl.sl-ui-skills .sl-tag--accent,
+.sl.sl-ui-skills .sl-tag--accent-2 {
+  padding: 0.125rem 0.5rem;
+  border: 1px solid var(--u-300);
+  border-radius: var(--sl-radius-sm);
+  background: #fff;
+  color: var(--u-700);
+  font-family: var(--sl-font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+}
+.sl.sl-ui-skills .sl-tag--accent {
+  border-color: var(--u-950);
+  background: var(--u-950);
+  color: #fff;
+}
+
+/* Cards: one surface for every card, no severity-tinted borders */
+.sl.sl-ui-skills .sl-card,
+.sl.sl-ui-skills .sl-card--warning,
+.sl.sl-ui-skills .sl-card--critical,
+.sl.sl-ui-skills .sl-card--info,
+.sl.sl-ui-skills .sl-card--core,
+.sl.sl-ui-skills .sl-card--hosted {
+  --sl-card-tone: var(--u-200);
+  border-radius: var(--sl-radius-lg);
+  background: #fff;
+  box-shadow: var(--sl-shadow-sm);
+}
+.sl.sl-ui-skills .sl-card:hover,
+.sl.sl-ui-skills .sl-card--warning:hover,
+.sl.sl-ui-skills .sl-card--critical:hover,
+.sl.sl-ui-skills .sl-card--info:hover,
+.sl.sl-ui-skills .sl-card--journey:hover,
+.sl.sl-ui-skills .sl-card--org:hover {
+  --sl-card-tone: var(--u-300);
+}
+.sl.sl-ui-skills .sl-card__title {
+  font-size: var(--sl-h3-size);
+  font-weight: 600;
+  color: var(--u-950);
+}
+.sl.sl-ui-skills .sl-card--drift .sl-card__title { font-size: 0.9375rem; }
+.sl.sl-ui-skills .sl-card__text { color: var(--u-600); }
+.sl.sl-ui-skills .sl-card__link {
+  text-decoration: underline;
+  text-decoration-color: var(--u-300);
+  text-underline-offset: 4px;
+  transition: text-decoration-color var(--sl-duration) var(--sl-ease);
+}
+.sl.sl-ui-skills .sl-card__link:hover {
+  color: var(--u-950);
+  text-decoration-color: var(--sl-accent);
+}
+.sl.sl-ui-skills .sl-card__kicker,
+.sl.sl-ui-skills .sl-card--core .sl-card__kicker,
+.sl.sl-ui-skills .sl-card--hosted .sl-card__kicker {
+  color: var(--u-500);
+}
+.sl.sl-ui-skills .sl-card__foot {
+  border-top: 1px solid var(--u-200);
+  color: var(--u-500);
+}
+.sl.sl-ui-skills .sl-inline-code {
+  padding: 0.0625rem 0.3125rem;
+  border: 1px solid var(--u-200);
+  border-radius: var(--sl-radius-sm);
+  background: var(--u-50);
+  color: var(--u-950);
+  font-size: 0.8125rem;
+}
+
+/* Lists: a short rule as the marker instead of ticks and pluses */
+.sl.sl-ui-skills .sl-list { color: var(--u-600); }
+.sl.sl-ui-skills .sl-list--lg { color: var(--u-700); }
+.sl.sl-ui-skills .sl-list--check .sl-list__item::before,
+.sl.sl-ui-skills .sl-list--plus .sl-list__item::before {
+  content: '';
+  width: 0.5rem;
+  height: 1px;
+  margin-top: 0.7em;
+  background: var(--u-400);
+}
+
+/* Steps: numerals as plain tabular figures in a hairline square */
+.sl.sl-ui-skills .sl-step__num {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--u-300);
+  border-radius: var(--sl-radius-md);
+  background: #fff;
+  color: var(--u-950);
+  font-family: var(--sl-font-mono);
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  box-shadow: var(--sl-shadow-sm);
+}
+.sl.sl-ui-skills .sl-step__cmd {
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--sl-radius-md);
+  background: var(--u-950);
+  color: var(--u-50);
+  font-size: 0.8125rem;
+}
+.sl.sl-ui-skills .sl-step__text { color: var(--u-600); }
+
+/* Integrations */
+.sl.sl-ui-skills .sl-chip {
+  padding: 0.375rem 0.875rem;
+  border: 1px solid var(--u-200);
+  border-radius: var(--sl-radius-md);
+  background: #fff;
+  color: var(--u-700);
+  box-shadow: var(--sl-shadow-sm);
+}
+.sl.sl-ui-skills .sl-chip:hover {
+  border-color: var(--u-300);
+  background: var(--u-50);
+  color: var(--u-950);
+}
+
+/* Journey path line: no colour-coding */
+.sl.sl-ui-skills .sl-journey__path { color: var(--u-500); }
+.sl.sl-ui-skills .sl-journey__stage--free,
+.sl.sl-ui-skills .sl-journey__stage--app,
+.sl.sl-ui-skills .sl-journey__stage--org {
+  color: var(--u-950);
+  font-weight: 500;
+}
+
+.sl.sl-ui-skills .sl-ai__note { color: var(--u-600); }
+
+/* Footer */
+.sl.sl-ui-skills .sl-footer {
+  border-top: 1px solid var(--u-200);
+  background: var(--u-50);
+  color: var(--u-600);
+}
+.sl.sl-ui-skills .sl-footer__link:hover { color: var(--u-950); }
+.sl.sl-ui-skills .sl-footer__sep { color: var(--u-300); }
+
+@media (prefers-reduced-motion: reduce) {
+  .sl.sl-ui-skills * { transition: none; }
+}

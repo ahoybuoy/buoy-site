@@ -204,19 +204,16 @@ const flagItems = [
 
       <!-- Page hero -->
       <div class="ds-hero">
-        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-success/10 border border-success/30 text-success text-sm font-mono mb-5">
-          <span class="w-2 h-2 rounded-full bg-success animate-pulse"></span>
-          0 drift issues detected
-        </div>
-        <h1 class="ds-hero-title text-4xl xl:text-5xl text-light mb-3 flex items-center">
+        <p class="ui-eyebrow ui-c-ok font-[family-name:var(--font-mono)] mb-4">0 drift issues detected</p>
+        <h1 class="ds-hero-title text-4xl xl:text-5xl text-[var(--color-ink)] mb-3 flex flex-wrap items-center">
           <span class="ds-hero-title-brand">
             <span aria-hidden="true" class="ds-plumb-icon text-buoy"></span>
             <span class="text-buoy">Plumb</span>
           </span>
           <span>Design System</span>
         </h1>
-        <p class="text-slate text-lg max-w-2xl">
-          Every token, component, and pattern used in buoy-site - documented, live, and continuously checked for drift.
+        <p class="ui-lede max-w-2xl">
+          Every token, component, and pattern used in buoy-site: documented, live, and continuously checked for drift.
         </p>
       </div>
 
@@ -242,7 +239,7 @@ const flagItems = [
                 <h4 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-3">{group.label}</h4>
                 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
                   {group.tokens.map(token => (
-                    <div class="rounded-xl overflow-hidden border border-navy-light/20 bg-navy/40">
+                    <div class="rounded-[var(--radius-inner)] overflow-hidden shadow-[var(--ring)] bg-[var(--color-surface)]">
                       <div class={`h-12 ${token.tw}`} role="img" aria-label={`${token.label} color swatch`}></div>
                       <div class="p-2 space-y-0.5">
                         <div class="font-mono text-xs text-buoy">{token.name}</div>
@@ -268,19 +265,19 @@ const flagItems = [
           </div>
 
           <div class="grid md:grid-cols-3 gap-6 mb-12 mt-8">
-            <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
               <div class="text-xs font-mono text-slate-dark mb-2 uppercase tracking-widest">Display - --font-display</div>
               <div class="text-4xl font-bold text-light font-[Quicksand]">Quicksand</div>
               <div class="text-sm text-slate mt-2 font-mono">Quicksand, system-ui</div>
               <div class="mt-3 text-slate text-sm">Headings, hero text, brand moments</div>
             </div>
-            <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
               <div class="text-xs font-mono text-slate-dark mb-2 uppercase tracking-widest">Body - --font-body</div>
               <div class="text-4xl font-bold text-light">Inter</div>
               <div class="text-sm text-slate mt-2 font-mono">Inter, system-ui</div>
               <div class="mt-3 text-slate text-sm">Paragraphs, UI labels, descriptions</div>
             </div>
-            <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
               <div class="text-xs font-mono text-slate-dark mb-2 uppercase tracking-widest">Mono - --font-mono</div>
               <div class="text-4xl font-bold text-light font-mono">JetBrains</div>
               <div class="text-sm text-slate mt-2 font-mono">JetBrains Mono, Fira Code</div>
@@ -289,33 +286,33 @@ const flagItems = [
           </div>
 
           <h4 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-4">Type Scale</h4>
-          <div class="space-y-1 p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
-            <div class="flex items-baseline gap-6 py-3 border-b border-navy-light/10">
+          <div class="space-y-1 p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
+            <div class="flex items-baseline gap-6 py-3 border-b border-[var(--color-line)]">
               <div class="w-12 text-xs font-mono text-slate-dark shrink-0">h1</div>
               <div class="w-24 text-xs font-mono text-slate shrink-0">text-5xl</div>
               <span class="text-5xl font-extrabold text-light font-[Quicksand] leading-tight">Design Systems</span>
             </div>
-            <div class="flex items-baseline gap-6 py-3 border-b border-navy-light/10">
+            <div class="flex items-baseline gap-6 py-3 border-b border-[var(--color-line)]">
               <div class="w-12 text-xs font-mono text-slate-dark shrink-0">h2</div>
               <div class="w-24 text-xs font-mono text-slate shrink-0">text-4xl</div>
               <span class="text-4xl font-bold text-light font-[Quicksand]">Token-Driven</span>
             </div>
-            <div class="flex items-baseline gap-6 py-3 border-b border-navy-light/10">
+            <div class="flex items-baseline gap-6 py-3 border-b border-[var(--color-line)]">
               <div class="w-12 text-xs font-mono text-slate-dark shrink-0">h3</div>
               <div class="w-24 text-xs font-mono text-slate shrink-0">text-2xl</div>
               <span class="text-2xl font-semibold text-light font-[Quicksand]">Consistent by Default</span>
             </div>
-            <div class="flex items-baseline gap-6 py-3 border-b border-navy-light/10">
+            <div class="flex items-baseline gap-6 py-3 border-b border-[var(--color-line)]">
               <div class="w-12 text-xs font-mono text-slate-dark shrink-0">h4</div>
               <div class="w-24 text-xs font-mono text-slate shrink-0">text-xl</div>
               <span class="text-xl font-semibold text-light font-[Quicksand]">No Hardcoded Values</span>
             </div>
-            <div class="flex items-baseline gap-6 py-3 border-b border-navy-light/10">
+            <div class="flex items-baseline gap-6 py-3 border-b border-[var(--color-line)]">
               <div class="w-12 text-xs font-mono text-slate-dark shrink-0">p</div>
               <div class="w-24 text-xs font-mono text-slate shrink-0">text-base</div>
               <span class="text-base text-light">Body text reads cleanly at this size. Designed for long-form content and UI descriptions.</span>
             </div>
-            <div class="flex items-baseline gap-6 py-3 border-b border-navy-light/10">
+            <div class="flex items-baseline gap-6 py-3 border-b border-[var(--color-line)]">
               <div class="w-12 text-xs font-mono text-slate-dark shrink-0">small</div>
               <div class="w-24 text-xs font-mono text-slate shrink-0">text-sm</div>
               <span class="text-sm text-slate">Supporting text, captions, helper copy</span>
@@ -337,14 +334,14 @@ const flagItems = [
             <p class="ds-section-desc">Section spacing tokens. Element-level spacing uses Tailwind's default scale.</p>
           </div>
           <div class="space-y-4 mt-8">
-            <div class="flex items-center gap-6 p-4 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <div class="flex items-center gap-6 p-4 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
               <div class="shrink-0 h-8 bg-buoy/20 border border-buoy/30 rounded" style="width: 6rem"></div>
               <div>
                 <div class="font-mono text-sm text-buoy">--spacing-section</div>
                 <div class="font-mono text-xs text-slate-dark mt-0.5">6rem - Section padding desktop</div>
               </div>
             </div>
-            <div class="flex items-center gap-6 p-4 bg-navy/40 border border-navy-light/20 rounded-xl">
+            <div class="flex items-center gap-6 p-4 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
               <div class="shrink-0 h-8 bg-buoy/20 border border-buoy/30 rounded" style="width: 4rem"></div>
               <div>
                 <div class="font-mono text-sm text-buoy">--spacing-section-sm</div>
@@ -367,14 +364,14 @@ const flagItems = [
             <!-- Glows -->
             <div class="space-y-4">
               <h4 class="text-xs font-semibold text-slate-dark uppercase tracking-widest">Glows</h4>
-              <div class="p-4 bg-navy/40 border border-navy-light/20 rounded-xl flex items-center gap-4">
+              <div class="p-4 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)] flex items-center gap-4">
                 <div class="w-12 h-12 rounded-lg bg-buoy glow-buoy shrink-0"></div>
                 <div>
                   <div class="font-mono text-sm text-light">.glow-buoy</div>
                   <div class="font-mono text-xs text-slate-dark">box-shadow: 0 0 30px buoy/40%</div>
                 </div>
               </div>
-              <div class="p-4 bg-navy/40 border border-navy-light/20 rounded-xl flex items-center gap-4">
+              <div class="p-4 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)] flex items-center gap-4">
                 <div class="w-12 h-12 rounded-lg bg-lavender glow-lavender shrink-0"></div>
                 <div>
                   <div class="font-mono text-sm text-light">.glow-lavender</div>
@@ -386,7 +383,7 @@ const flagItems = [
             <!-- Text Gradients -->
             <div class="space-y-4">
               <h4 class="text-xs font-semibold text-slate-dark uppercase tracking-widest">Text Gradients</h4>
-              <div class="p-4 bg-navy/40 border border-navy-light/20 rounded-xl">
+              <div class="p-4 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
                 <div class="text-3xl font-extrabold text-gradient-sunrise font-[Quicksand] mb-2">Catch Design Drift</div>
                 <div class="font-mono text-xs text-slate-dark">.text-gradient-sunrise</div>
                 <div class="font-mono text-xs text-slate-dark mt-1">buoy → sunrise → lavender at 135°</div>
@@ -418,7 +415,7 @@ const flagItems = [
             <h4 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-4">Keyframe Reference</h4>
             <div class="grid sm:grid-cols-2 gap-2">
 
-              <div class="flex items-center gap-3 p-3 bg-navy/40 border border-navy-light/20 rounded-xl">
+              <div class="flex items-center gap-3 p-3 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
                 <span class="text-2xl ds-demo-bob shrink-0 w-10 text-center">⛵</span>
                 <div>
                   <div class="font-mono text-xs text-buoy">boatBob</div>
@@ -426,7 +423,7 @@ const flagItems = [
                 </div>
               </div>
 
-              <div class="flex items-center gap-3 p-3 bg-navy/40 border border-navy-light/20 rounded-xl overflow-hidden relative h-14">
+              <div class="flex items-center gap-3 p-3 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)] overflow-hidden relative h-14">
                 <span class="ds-demo-drift text-2xl absolute" style="bottom:12px;">⛵</span>
                 <div style="margin-left:46px;">
                   <div class="font-mono text-xs text-buoy">boatDrift</div>
@@ -434,7 +431,7 @@ const flagItems = [
                 </div>
               </div>
 
-              <div class="flex items-center gap-3 p-3 bg-navy/40 border border-navy-light/20 rounded-xl">
+              <div class="flex items-center gap-3 p-3 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
                 <div class="relative w-10 h-10 shrink-0 flex items-center justify-center">
                   <div class="relative w-0 h-0">
                     <div class="ds-splash-dot ds-drop-a"></div>
@@ -450,7 +447,7 @@ const flagItems = [
                 </div>
               </div>
 
-              <div class="flex items-center gap-3 p-3 bg-navy/40 border border-navy-light/20 rounded-xl">
+              <div class="flex items-center gap-3 p-3 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
                 <div class="relative w-10 h-10 shrink-0 flex items-center justify-center">
                   <div class="relative w-0 h-0"><div class="ds-demo-ring"></div></div>
                 </div>
@@ -460,7 +457,7 @@ const flagItems = [
                 </div>
               </div>
 
-              <div class="flex items-center gap-3 p-3 bg-navy/40 border border-navy-light/20 rounded-xl">
+              <div class="flex items-center gap-3 p-3 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
                 <div class="w-10 h-10 shrink-0 flex items-center justify-center gap-1">
                   <svg class="ds-demo-twinkle" viewBox="-8 -8 16 16" width="12" height="12" aria-hidden="true"><path d="M0,-6 L.7,-.7 L6,0 L.7,.7 L0,6 L-.7,.7 L-6,0 L-.7,-.7 Z" fill="rgba(255,255,255,0.7)"/></svg>
                   <svg class="ds-demo-twinkle" style="animation-delay:-1.8s;animation-duration:3.5s;" viewBox="-8 -8 16 16" width="8" height="8" aria-hidden="true"><path d="M0,-6 L.7,-.7 L6,0 L.7,.7 L0,6 L-.7,.7 L-6,0 L-.7,-.7 Z" fill="rgba(255,255,255,0.7)"/></svg>
@@ -471,7 +468,7 @@ const flagItems = [
                 </div>
               </div>
 
-              <div class="flex items-center gap-3 p-3 bg-navy/40 border border-navy-light/20 rounded-xl">
+              <div class="flex items-center gap-3 p-3 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
                 <span class="text-2xl ds-demo-gentle-float shrink-0 w-10 text-center">⛵</span>
                 <div>
                   <div class="font-mono text-xs text-buoy">.animate-float</div>
@@ -490,7 +487,7 @@ const flagItems = [
             <div class="space-y-4">
 
               <!-- Phase 1: Wiggle -->
-              <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl flex flex-col sm:flex-row gap-5">
+              <div class="p-5 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)] flex flex-col sm:flex-row gap-5">
                 <div class="ds-motion-phase-lead shrink-0 flex items-center gap-3">
                   <div class="w-8 h-8 rounded-full bg-buoy/20 border border-buoy/40 flex items-center justify-center font-mono text-xs text-buoy font-bold">1</div>
                   <span class="text-3xl ds-demo-wiggle">⛵</span>
@@ -517,7 +514,7 @@ const flagItems = [
               </div>
 
               <!-- Phase 2: Lift -->
-              <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl flex flex-col sm:flex-row gap-5">
+              <div class="p-5 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)] flex flex-col sm:flex-row gap-5">
                 <div class="ds-motion-phase-lead shrink-0 flex items-center gap-3">
                   <div class="w-8 h-8 rounded-full bg-buoy/20 border border-buoy/40 flex items-center justify-center font-mono text-xs text-buoy font-bold">2</div>
                   <span class="text-3xl ds-demo-lift">⛵</span>
@@ -544,7 +541,7 @@ const flagItems = [
               </div>
 
               <!-- Phase 3: Drop -->
-              <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl flex flex-col sm:flex-row gap-5">
+              <div class="p-5 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)] flex flex-col sm:flex-row gap-5">
                 <div class="ds-motion-phase-lead shrink-0 flex items-center gap-3">
                   <div class="w-8 h-8 rounded-full bg-buoy/20 border border-buoy/40 flex items-center justify-center font-mono text-xs text-buoy font-bold">3</div>
                   <div class="relative w-11 h-14 overflow-hidden rounded">
@@ -578,7 +575,7 @@ const flagItems = [
               </div>
 
               <!-- Phase 4: Launch -->
-              <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl flex flex-col sm:flex-row gap-5">
+              <div class="p-5 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)] flex flex-col sm:flex-row gap-5">
                 <div class="ds-motion-phase-lead shrink-0 flex items-center gap-3">
                   <div class="w-8 h-8 rounded-full bg-buoy/20 border border-buoy/40 flex items-center justify-center font-mono text-xs text-buoy font-bold">4</div>
                   <div class="w-24 h-10 bg-navy-dark/40 rounded overflow-hidden relative flex items-center">
@@ -608,7 +605,7 @@ const flagItems = [
               </div>
 
               <!-- Phase 5: Bobber Pop -->
-              <div class="p-5 bg-navy/40 border border-navy-light/20 rounded-xl flex flex-col sm:flex-row gap-5">
+              <div class="p-5 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)] flex flex-col sm:flex-row gap-5">
                 <div class="ds-motion-phase-lead shrink-0 flex items-center gap-3">
                   <div class="w-8 h-8 rounded-full bg-buoy/20 border border-buoy/40 flex items-center justify-center font-mono text-xs text-buoy font-bold">5</div>
                   <div class="relative w-11 h-14 overflow-hidden rounded">
@@ -643,7 +640,7 @@ const flagItems = [
               </div>
 
               <!-- Phase 6: Toss -->
-              <div class="p-5 bg-navy/40 border border-lavender/20 rounded-xl flex flex-col gap-5">
+              <div class="p-5 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)] flex flex-col gap-5">
                 <div class="flex flex-col sm:flex-row gap-5">
                   <div class="shrink-0 flex items-start gap-3">
                     <div class="w-8 h-8 rounded-full bg-lavender/20 border border-lavender/40 flex items-center justify-center font-mono text-xs text-lavender font-bold mt-0.5">6</div>
@@ -702,12 +699,12 @@ const flagItems = [
           <div class="mb-4">
             <h4 class="text-xs font-semibold text-slate-dark uppercase tracking-widest mb-6">Easing Tokens</h4>
             <div class="space-y-3">
-              <div class="flex items-center gap-4 p-4 bg-navy/40 border border-navy-light/20 rounded-xl font-mono text-sm">
+              <div class="flex items-center gap-4 p-4 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)] font-mono text-sm">
                 <div class="w-40 text-buoy shrink-0">--ease-out-expo</div>
                 <div class="text-slate">cubic-bezier(0.16, 1, 0.3, 1)</div>
                 <div class="text-slate-dark text-xs">Fast out - UI transitions, reveals</div>
               </div>
-              <div class="flex items-center gap-4 p-4 bg-navy/40 border border-navy-light/20 rounded-xl font-mono text-sm">
+              <div class="flex items-center gap-4 p-4 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)] font-mono text-sm">
                 <div class="w-40 text-buoy shrink-0">--ease-in-out-expo</div>
                 <div class="text-slate">cubic-bezier(0.87, 0, 0.13, 1)</div>
                 <div class="text-slate-dark text-xs">Symmetric expo - modals, drawers</div>
@@ -740,14 +737,14 @@ const flagItems = [
           <div class="overflow-x-auto">
             <table class="w-full text-sm">
               <thead>
-                <tr class="text-left border-b border-navy-light/20">
+                <tr class="text-left border-b border-[var(--color-line-strong)]">
                   <th class="pb-3 pr-8 font-mono text-xs text-slate-dark font-normal">variant / size</th>
                   <th class="pb-3 pr-8 font-mono text-xs text-slate-dark font-normal">sm</th>
                   <th class="pb-3 pr-8 font-mono text-xs text-slate-dark font-normal">md (default)</th>
                   <th class="pb-3 font-mono text-xs text-slate-dark font-normal">lg</th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-navy-light/10">
+              <tbody class="divide-y divide-[var(--color-line)]">
                 <tr>
                   <td class="py-4 pr-8 font-mono text-xs text-slate">primary</td>
                   <td class="py-4 pr-8"><Button size="sm">Label</Button></td>
@@ -847,7 +844,7 @@ const flagItems = [
             <div class="flex gap-4 py-0.5"><span class="w-16 text-slate-dark">info</span><span class="w-32 text-info">text-info</span><span class="text-slate-dark">--color-info</span></div>
             <div class="flex gap-4 py-0.5"><span class="w-16 text-slate-dark">muted</span><span class="w-32 text-slate-dark">text-slate-dark</span><span class="text-slate-dark">--color-slate-dark</span></div>
           </div>
-          <div class="mt-4 p-4 bg-navy-dark/60 border border-navy-light/10 rounded-lg font-mono text-xs">
+          <div class="mt-4 p-4 bg-[var(--color-sunken)] shadow-[inset_0_0_0_1px_var(--color-line)] rounded-[10px] font-mono text-xs">
             <div class="text-slate mb-1">Props: <span class="text-buoy">command*</span> · <span class="text-buoy">lines</span> - each with <span class="text-buoy">text</span>, <span class="text-buoy">type</span>, <span class="text-buoy">delay</span> (ms)</div>
             <div class="text-slate-dark">Animated typing · bg-navy-dark border-navy-light/30 rounded-xl · Title bar with traffic lights</div>
           </div>
@@ -1023,11 +1020,11 @@ const flagItems = [
               <div class="text-xs text-slate-dark font-mono mt-2">Container: <code class="ds-code">w-full px-4 sm:px-6 lg:px-8</code> + center nav group</div>
             </div>
           </div>
-          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl space-y-3">
+          <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)] space-y-3">
             <div class="font-mono text-xs text-slate-dark uppercase tracking-widest mb-3">Anatomy</div>
             <div class="flex items-start gap-3 text-sm">
               <span class="w-2 h-2 rounded-full bg-buoy flex-shrink-0 mt-1.5"></span>
-              <span class="text-slate">Bar: <code class="ds-code">backdrop-blur-md bg-navy-dark/80 border-b border-navy-light/20</code></span>
+              <span class="text-slate">Bar: <code class="ds-code">backdrop-blur-md bg-navy-dark/80 border-b border-[var(--color-line-strong)]</code></span>
             </div>
             <div class="flex items-start gap-3 text-sm">
               <span class="w-2 h-2 rounded-full bg-lavender flex-shrink-0 mt-1.5"></span>
@@ -1086,7 +1083,7 @@ const flagItems = [
           <div class="ds-comp-header">
             <h3 class="ds-comp-name">Section Header</h3>
           </div>
-          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+          <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
             <div class="border-l-2 border-buoy pl-4">
               <h2 class="text-2xl font-bold text-light font-[Quicksand]">Section Title</h2>
               <p class="text-slate mt-1">Supporting description in text-slate. Always below the heading, never above.</p>
@@ -1102,7 +1099,7 @@ const flagItems = [
           <div class="ds-comp-header">
             <h3 class="ds-comp-name">Inline Code</h3>
           </div>
-          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+          <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
             <p class="text-slate">Run <code class="ds-code">npx ahoybuoy drift check</code> in your repo root. It reads <code class="ds-code">buoy.config.mjs</code> automatically.</p>
           </div>
           <div class="ds-spec">font-mono / text-buoy / bg-buoy/10 / border-radius: 4px</div>
@@ -1115,7 +1112,7 @@ const flagItems = [
           <div class="ds-comp-header">
             <h3 class="ds-comp-name">CTA Row</h3>
           </div>
-          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+          <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
             <div class="flex flex-wrap gap-3">
               <Button href="#" size="lg">Primary Action</Button>
               <Button href="#" variant="secondary" size="lg">Secondary Action</Button>
@@ -1132,7 +1129,7 @@ const flagItems = [
           <div class="ds-comp-header">
             <h3 class="ds-comp-name">Checkmark Benefit List</h3>
           </div>
-          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl max-w-md">
+          <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)] max-w-md">
             <div class="space-y-4">
               <div class="flex items-start gap-3">
                 <svg class="w-5 h-5 text-success flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1194,7 +1191,7 @@ const flagItems = [
           <div class="ds-comp-header">
             <h3 class="ds-comp-name">PDF / Conversion Badges</h3>
           </div>
-          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+          <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
             <div class="flex flex-wrap items-center gap-4">
               <div class="inline-flex items-center gap-2 px-3 py-1 bg-buoy/10 border border-buoy/30 rounded-full text-buoy text-sm">
                 Free PDF Download
@@ -1422,7 +1419,7 @@ const flagItems = [
             <span class="ds-badge ds-badge-stable">Stable</span>
           </div>
           <p class="text-sm text-slate mb-4">Colored pill with status dot. Used in table cells, timeline events, and inline mentions.</p>
-          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+          <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
             <SeverityBadgeDemo client:load />
           </div>
           <div class="ds-spec">
@@ -1443,7 +1440,7 @@ const flagItems = [
             <span class="ds-badge ds-badge-stable">Stable</span>
           </div>
           <p class="text-sm text-slate mb-4">Metric card with large value, label, and optional change indicator. Variant adds left border color.</p>
-          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+          <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
             <StatCardDemo client:load />
           </div>
           <div class="ds-spec">
@@ -1464,7 +1461,7 @@ const flagItems = [
             <span class="ds-badge ds-badge-stable">Stable</span>
           </div>
           <p class="text-sm text-slate mb-4">Stat card with inline SVG sparkline. Renders a polyline from the data array.</p>
-          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+          <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
             <TrendSparkDemo client:load />
           </div>
           <div class="ds-spec">
@@ -1485,7 +1482,7 @@ const flagItems = [
             <span class="ds-badge ds-badge-stable">Stable</span>
           </div>
           <p class="text-sm text-slate mb-4">Semi-circle SVG arc gauge. Auto-colors by percentage: 0-30% critical, 30-60% warning, 60-100% success.</p>
-          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+          <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
             <ScoreGaugeDemo client:load />
           </div>
           <div class="ds-spec">
@@ -1506,7 +1503,7 @@ const flagItems = [
             <span class="ds-badge ds-badge-stable">Stable</span>
           </div>
           <p class="text-sm text-slate mb-4">Pure CSS horizontal bar chart for drift type distribution. Colors are hardcoded per drift type.</p>
-          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+          <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
             <DriftBreakdownDemo client:load />
           </div>
           <div class="ds-spec">
@@ -1527,7 +1524,7 @@ const flagItems = [
             <span class="ds-badge ds-badge-stable">Stable</span>
           </div>
           <p class="text-sm text-slate mb-4">Data table with typed cell renderers (severity, bar, filePath, number, delta), optional sort, and expand-to-show-all.</p>
-          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+          <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
             <DataTableDemo client:load />
           </div>
           <div class="ds-spec">
@@ -1548,7 +1545,7 @@ const flagItems = [
             <span class="ds-badge ds-badge-stable">Stable</span>
           </div>
           <p class="text-sm text-slate mb-4">Before/after comparison. Single-metric mode shows large values with arrow. Multi-metric mode renders a compact table with delta pills.</p>
-          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+          <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
             <ComparisonCardDemo client:load />
           </div>
           <div class="ds-spec">
@@ -1569,7 +1566,7 @@ const flagItems = [
             <span class="ds-badge ds-badge-stable">Stable</span>
           </div>
           <p class="text-sm text-slate mb-4">Vertical timeline with colored dots, PR-aware fields, severity badges, and impact indicators.</p>
-          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+          <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
             <TimelineDemo client:load />
           </div>
           <div class="ds-spec">
@@ -1590,7 +1587,7 @@ const flagItems = [
             <span class="ds-badge ds-badge-stable">Stable</span>
           </div>
           <p class="text-sm text-slate mb-4">2D grid heatmap. Groups data by xKey (columns) and yKey (rows). Rows sorted by total descending. Buoy orange color scale.</p>
-          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+          <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
             <HeatmapDemo client:load />
           </div>
           <div class="ds-spec">
@@ -1611,7 +1608,7 @@ const flagItems = [
             <span class="ds-badge ds-badge-stable">Stable</span>
           </div>
           <p class="text-sm text-slate mb-4">CSS grid wrapper for StatCards. Configurable column count.</p>
-          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+          <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
             <MetricGridDemo client:load />
           </div>
           <div class="ds-spec">
@@ -1632,7 +1629,7 @@ const flagItems = [
             <span class="ds-badge ds-badge-stable">Stable</span>
           </div>
           <p class="text-sm text-slate mb-4">Shows data verification status. Green badges for confirmed values, amber for unverified. Tooltip explains methodology.</p>
-          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+          <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
             <VerificationBadgeDemo client:load />
           </div>
           <div class="ds-spec">
@@ -1653,7 +1650,7 @@ const flagItems = [
             <span class="ds-badge ds-badge-stable">Stable</span>
           </div>
           <p class="text-sm text-slate mb-4">Multi-series line chart built on Recharts. Themed with design tokens, responsive container, and custom tooltip.</p>
-          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+          <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
             <LineChartDemo client:load />
           </div>
           <div class="ds-spec">
@@ -1674,7 +1671,7 @@ const flagItems = [
             <span class="ds-badge ds-badge-stable">Stable</span>
           </div>
           <p class="text-sm text-slate mb-4">Gradient-filled area chart with optional stacking. Linear gradient fades from 40% opacity to transparent.</p>
-          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+          <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
             <AreaChartDemo client:load />
           </div>
           <div class="ds-spec">
@@ -1695,7 +1692,7 @@ const flagItems = [
             <span class="ds-badge ds-badge-stable">Stable</span>
           </div>
           <p class="text-sm text-slate mb-4">Vertical or horizontal bar chart. Top-rounded bars with chart token colors.</p>
-          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+          <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
             <BarChartDemo client:load />
           </div>
           <div class="ds-spec">
@@ -1716,7 +1713,7 @@ const flagItems = [
             <span class="ds-badge ds-badge-stable">Stable</span>
           </div>
           <p class="text-sm text-slate mb-4">Donut chart with legend. Inner radius creates the donut hole; padding angle separates slices.</p>
-          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+          <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
             <PieChartDemo client:load />
           </div>
           <div class="ds-spec">
@@ -1737,7 +1734,7 @@ const flagItems = [
             <span class="ds-badge ds-badge-stable">Stable</span>
           </div>
           <p class="text-sm text-slate mb-4">Radar/spider chart for multi-axis comparison. Shows current vs target across quality dimensions like coverage, consistency, and adoption.</p>
-          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+          <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
             <SpiderChartDemo client:load />
           </div>
           <div class="ds-spec">
@@ -1758,7 +1755,7 @@ const flagItems = [
             <span class="ds-badge ds-badge-stable">Stable</span>
           </div>
           <p class="text-sm text-slate mb-4">Treemap for hierarchical data sized by value. Shows component distributions, file sizes, or category breakdowns as nested rectangles.</p>
-          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+          <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
             <TreemapDemo client:load />
           </div>
           <div class="ds-spec">
@@ -1779,7 +1776,7 @@ const flagItems = [
             <span class="ds-badge ds-badge-stable">Stable</span>
           </div>
           <p class="text-sm text-slate mb-4">Funnel chart for progressive narrowing stages. Use for issue resolution pipelines or conversion flows.</p>
-          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+          <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
             <FunnelChartDemo client:load />
           </div>
           <div class="ds-spec">
@@ -1800,7 +1797,7 @@ const flagItems = [
             <span class="ds-badge ds-badge-stable">Stable</span>
           </div>
           <p class="text-sm text-slate mb-4">Scatter plot for showing correlation between two numeric variables. Use for complexity vs drift count, size vs issues.</p>
-          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+          <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
             <ScatterChartDemo client:load />
           </div>
           <div class="ds-spec">
@@ -1821,7 +1818,7 @@ const flagItems = [
             <span class="ds-badge ds-badge-stable">Stable</span>
           </div>
           <p class="text-sm text-slate mb-4">Waterfall chart showing cumulative effect of sequential positive and negative values. Last item treated as the total.</p>
-          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+          <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
             <WaterfallChartDemo client:load />
           </div>
           <div class="ds-spec">
@@ -1842,7 +1839,7 @@ const flagItems = [
             <span class="ds-badge ds-badge-stable">Stable</span>
           </div>
           <p class="text-sm text-slate mb-4">Stacked bar chart for comparing category breakdowns across groups. Use for issues by severity per week or drift by type per file.</p>
-          <div class="p-6 bg-navy/40 border border-navy-light/20 rounded-xl">
+          <div class="p-6 bg-[var(--color-surface)] shadow-[var(--ring)] rounded-[var(--radius-inner)]">
             <StackedBarChartDemo client:load />
           </div>
           <div class="ds-spec">
@@ -1900,15 +1897,15 @@ const flagItems = [
 <style>
   /* ── Plumb token bridge ────────────────────── */
   :root {
-    --color-bg-card: var(--color-navy);
-    --color-border: color-mix(in srgb, var(--color-navy-light) 30%, transparent);
-    --color-border-subtle: color-mix(in srgb, var(--color-navy-light) 15%, transparent);
-    --color-text: var(--color-light);
-    --color-text-secondary: var(--color-light-muted);
-    --color-text-muted: var(--color-slate);
+    --color-bg-card: var(--color-surface);
+    --color-border: var(--color-line-strong);
+    --color-border-subtle: var(--color-line);
+    --color-text: var(--color-ink);
+    --color-text-secondary: var(--color-body);
+    --color-text-muted: var(--color-muted);
     --color-primary: var(--color-buoy);
-    --color-error: var(--color-critical);
-    --color-bg-hover: color-mix(in srgb, var(--color-navy-light) 30%, transparent);
+    --color-error: var(--color-crit);
+    --color-bg-hover: var(--color-raised);
     --color-success-muted: color-mix(in srgb, var(--color-success) 15%, transparent);
     --color-error-muted: color-mix(in srgb, var(--color-critical) 15%, transparent);
     --color-warning-muted: color-mix(in srgb, var(--color-warning) 15%, transparent);
@@ -1933,8 +1930,8 @@ const flagItems = [
     top: 4rem;
     height: calc(100vh - 4rem);
     overflow-y: auto;
-    border-right: 1px solid color-mix(in srgb, var(--color-navy-light) 30%, transparent);
-    background: color-mix(in srgb, var(--color-navy-dark) 70%, transparent);
+    border-right: 1px solid var(--color-line);
+    background: var(--color-bg);
   }
   @media (min-width: 1024px) {
     .ds-sidebar { display: flex; }
@@ -1953,11 +1950,9 @@ const flagItems = [
   }
 
   .ds-nav-group-label {
-    font-size: 0.6875rem;
-    font-weight: 600;
-    color: var(--color-slate-dark);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-muted);
     padding: 0 0.5rem;
     margin-bottom: 0.375rem;
   }
@@ -1966,24 +1961,25 @@ const flagItems = [
     display: block;
     padding: 0.3125rem 0.5rem;
     font-size: 0.8125rem;
-    color: var(--color-slate);
-    border-radius: 0.375rem;
+    color: var(--color-body);
+    border-radius: 8px;
     transition: color 0.15s, background-color 0.15s;
     text-decoration: none;
     line-height: 1.4;
   }
   .ds-nav-link:hover {
-    color: var(--color-light);
-    background: color-mix(in srgb, var(--color-navy-light) 25%, transparent);
+    color: var(--color-ink);
+    background: var(--color-sunken);
   }
   .ds-nav-link.active {
-    color: var(--color-light);
-    background: color-mix(in srgb, var(--color-navy-light) 35%, transparent);
+    color: var(--color-ink);
+    background: var(--color-raised);
+    box-shadow: var(--ring);
   }
 
   .ds-sidebar-footer {
     padding: 0.75rem 1rem;
-    border-top: 1px solid color-mix(in srgb, var(--color-navy-light) 20%, transparent);
+    border-top: 1px solid var(--color-line);
   }
 
   .ds-drift-status {
@@ -1998,7 +1994,7 @@ const flagItems = [
     height: 0.375rem;
     border-radius: 50%;
     background: var(--color-success);
-    animation: pulse-glow 2s ease-in-out infinite;
+    animation: none;
   }
 
   /* ── Main content ───────────────────────────── */
@@ -2010,7 +2006,7 @@ const flagItems = [
 
   .ds-hero {
     padding: 3rem 1.5rem 2.5rem;
-    border-bottom: 1px solid color-mix(in srgb, var(--color-navy-light) 20%, transparent);
+    border-bottom: 1px solid var(--color-line);
   }
   .ds-hero-title {
     font-family: var(--font-display);
@@ -2039,7 +2035,7 @@ const flagItems = [
 
   /* ── Group blocks ───────────────────────────── */
   .ds-group-block {
-    border-bottom: 1px solid color-mix(in srgb, var(--color-navy-light) 15%, transparent);
+    border-bottom: 1px solid var(--color-line);
     padding: 0 1.5rem 3rem;
   }
   @media (min-width: 1024px) {
@@ -2051,25 +2047,24 @@ const flagItems = [
 
   .ds-group-header {
     padding: 2.5rem 0 1.5rem;
-    border-bottom: 1px solid color-mix(in srgb, var(--color-navy-light) 15%, transparent);
+    border-bottom: 1px solid var(--color-line);
     margin-bottom: 2.5rem;
   }
 
   .ds-group-eyebrow {
     display: inline-block;
-    font-size: 0.75rem;
-    font-weight: 700;
+    font-size: 0.875rem;
+    font-weight: 600;
     font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
     color: var(--color-buoy);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
     margin-bottom: 0.375rem;
   }
 
   .ds-group-title {
     font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--color-light);
+    font-weight: 700;
+    color: var(--color-ink);
     font-family: var(--font-display);
     line-height: 1.1;
   }
@@ -2127,7 +2122,7 @@ const flagItems = [
     gap: 1rem;
     padding-bottom: 1rem;
     margin-bottom: 1.5rem;
-    border-bottom: 1px solid color-mix(in srgb, var(--color-navy-light) 20%, transparent);
+    border-bottom: 1px solid var(--color-line);
   }
 
   .ds-comp-name {
@@ -2149,49 +2144,42 @@ const flagItems = [
   .ds-badge {
     display: inline-flex;
     align-items: center;
-    padding: 0.125rem 0.5rem;
-    font-size: 0.6875rem;
-    font-weight: 600;
-    border-radius: 9999px;
+    padding: 0;
+    font-size: 0.8125rem;
+    font-weight: 500;
     white-space: nowrap;
     flex-shrink: 0;
     margin-top: 0.25rem;
   }
 
   .ds-badge-stable {
-    color: var(--color-success);
-    background: color-mix(in srgb, var(--color-success) 10%, transparent);
-    border: 1px solid color-mix(in srgb, var(--color-success) 30%, transparent);
+    color: var(--color-ok);
   }
 
   .ds-badge-layout {
-    color: var(--color-lavender);
-    background: color-mix(in srgb, var(--color-lavender) 10%, transparent);
-    border: 1px solid color-mix(in srgb, var(--color-lavender) 30%, transparent);
+    color: var(--color-lavender-light);
   }
 
   .ds-badge-conversion {
-    color: var(--color-buoy);
-    background: color-mix(in srgb, var(--color-buoy) 10%, transparent);
-    border: 1px solid color-mix(in srgb, var(--color-buoy) 30%, transparent);
+    color: var(--color-buoy-light);
   }
 
   /* ── Spec / token callout ───────────────────── */
   .ds-spec {
     margin-top: 1rem;
     padding: 0.75rem 1rem;
-    background: color-mix(in srgb, var(--color-navy-dark) 60%, transparent);
-    border: 1px solid color-mix(in srgb, var(--color-navy-light) 15%, transparent);
-    border-radius: 0.5rem;
+    background: var(--color-sunken);
+    box-shadow: inset 0 0 0 1px var(--color-line);
+    border-radius: 10px;
     font-family: var(--font-mono);
-    font-size: 0.6875rem;
-    color: var(--color-slate-dark);
+    font-size: 0.75rem;
+    color: var(--color-muted);
   }
 
   /* ── Dividers ───────────────────────────────── */
   .ds-divider {
     border: none;
-    border-top: 1px solid color-mix(in srgb, var(--color-navy-light) 15%, transparent);
+    border-top: 1px solid var(--color-line);
     margin: 2.5rem 0;
   }
 
@@ -2199,8 +2187,9 @@ const flagItems = [
   .ds-code {
     font-family: var(--font-mono);
     font-size: 0.875em;
-    color: var(--color-buoy);
-    background: color-mix(in srgb, var(--color-buoy) 10%, transparent);
+    color: var(--color-ink);
+    background: var(--color-sunken);
+    box-shadow: inset 0 0 0 1px var(--color-line);
     padding: 0.1em 0.4em;
     border-radius: 4px;
   }
@@ -2236,23 +2225,21 @@ const flagItems = [
     }
   }
   .ds-nav-variant-card {
-    border: 1px solid color-mix(in srgb, var(--color-navy-light) 20%, transparent);
-    border-radius: 0.75rem;
-    background: color-mix(in srgb, var(--color-navy) 40%, transparent);
+    border-radius: var(--radius-card);
+    background: var(--color-surface);
+    box-shadow: var(--ring);
     padding: 0.75rem;
   }
   .ds-nav-variant-label {
     color: var(--color-light);
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    font-size: 0.8125rem;
+    font-weight: 600;
     margin-bottom: 0.5rem;
   }
   .ds-nav-preview-frame {
     border-radius: 0.6rem;
     overflow: hidden;
-    border: 1px solid color-mix(in srgb, var(--color-navy-light) 15%, transparent);
+    border: 1px solid var(--color-line);
     background: color-mix(in srgb, var(--color-navy-dark) 70%, transparent);
   }
   .ds-nav-preview-shell {

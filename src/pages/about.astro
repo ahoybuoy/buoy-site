@@ -4,12 +4,13 @@ import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
 import Button from '../components/Button.astro'
 import LeadMagnetCallout from '../components/LeadMagnetCallout.astro'
+import MarkPattern from '../components/MarkPattern.astro'
 import { siteConfig } from '../config'
 
 const values = [
   {
     title: 'Clarity Over Reports',
-    description: 'Every scan ends with clear next steps. Not another dashboard to check — actionable fixes you can apply now.'
+    description: 'Every scan ends with clear next steps. Not another dashboard to check: actionable fixes you can apply now.'
   },
   {
     title: 'Automation Over Manual Work',
@@ -50,165 +51,132 @@ const timeline = [
 >
   <Nav />
 
-  <!-- Hero -->
-  <section class="relative pt-32 pb-16 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
-
-    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6">
-        Design systems shouldn't be optional
-      </h1>
-      <p class="text-lg text-slate max-w-2xl mx-auto">
-        AI writes code fast. But it doesn't know your design system exists.
-        Buoy bridges that gap — finding drift, fixing it, and measuring the improvement.
-      </p>
-    </div>
-  </section>
-
-  <!-- The Problem We Solve -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">The Problem</h2>
-
-      <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-8">
-        <div class="space-y-6 text-slate">
-          <p>
-            Your team invested months building a design system. Components, tokens, documentation — the works.
+  <main id="main" class="ui-nav-offset">
+    <section class="ui-section ui-section--first ui-section--patterned">
+      <MarkPattern pattern="wake" drift={0.3} fade class="ui-pattern" />
+      <div class="ui-wrap">
+        <div class="ui-head">
+          <h1>Design systems shouldn't be optional</h1>
+          <p class="ui-lede">
+            AI writes code fast. But it doesn't know your design system exists.
+            Buoy bridges that gap: finding drift, fixing it, and measuring the improvement.
           </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ui-section ui-section--band">
+      <div class="ui-wrap ui-split">
+        <div class="ui-head"><h2>The problem</h2></div>
+        <div class="ab-story">
+          <p>Your team invested months building a design system. Components, tokens, documentation, the works.</p>
           <p>
-            Then AI coding assistants arrived. Copilot, Cursor, Claude — they write code 10x faster.
+            Then AI coding assistants arrived. Copilot, Cursor, Claude: they write code 10x faster.
             But they don't know your design system exists.
           </p>
           <p>
-            The AI writes <code class="text-warning">color: #3b82f6</code> instead of <code class="text-success">var(--color-primary)</code>.
+            The AI writes <code class="ui-code"><span class="ui-old">color: #3b82f6</span></code> instead of <code class="ui-code"><span class="ui-token">var(--color-primary)</span></code>.
             It creates a new button instead of importing yours.
             It ignores your naming conventions.
           </p>
-          <p class="text-light font-semibold">
-            The code works. It passes review. But your design system is slowly becoming irrelevant.
-          </p>
+          <p class="ab-strong">The code works. It passes review. But your design system is slowly becoming irrelevant.</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Our Solution -->
-  <section class="py-16 bg-navy-dark">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Our Solution</h2>
-
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6 text-center">
-          <div class="text-4xl mb-4">1</div>
-          <h3 class="font-semibold text-light mb-2">Find</h3>
-          <p class="text-sm text-slate">
-            Scan your codebase. Get every issue with exact file, line, and suggested fix.
-          </p>
-        </div>
-
-        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6 text-center">
-          <div class="text-4xl mb-4">2</div>
-          <h3 class="font-semibold text-light mb-2">Fix</h3>
-          <p class="text-sm text-slate">
-            One command applies all safe fixes. Watch dozens of files update in seconds.
-          </p>
-        </div>
-
-        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6 text-center">
-          <div class="text-4xl mb-4">3</div>
-          <h3 class="font-semibold text-light mb-2">Measure</h3>
-          <p class="text-sm text-slate">
-            See your coverage improve. Prove ROI to leadership with real data.
-          </p>
-        </div>
+    <section class="ui-section">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>Our solution</h2></div>
+        <ol class="ui-steps ab-steps">
+          <li><span class="ui-step-n">1</span><div><h3>Find</h3><p>Scan your codebase. Get every issue with exact file, line, and suggested fix.</p></div></li>
+          <li><span class="ui-step-n">2</span><div><h3>Fix</h3><p>One command applies all safe fixes. Watch dozens of files update in seconds.</p></div></li>
+          <li><span class="ui-step-n">3</span><div><h3>Measure</h3><p>See your coverage improve. Prove ROI to leadership with real data.</p></div></li>
+        </ol>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Values -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">What We Believe</h2>
-
-      <div class="grid sm:grid-cols-2 gap-6">
-        {values.map((value) => (
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6">
-            <h3 class="font-semibold text-light mb-2">{value.title}</h3>
-            <p class="text-sm text-slate">{value.description}</p>
-          </div>
-        ))}
+    <section class="ui-section ui-section--band">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>What we believe</h2></div>
+        <dl class="ab-values">
+          {values.map((value) => (
+            <div><dt>{value.title}</dt><dd>{value.description}</dd></div>
+          ))}
+        </dl>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Roadmap -->
-  <section class="py-16 bg-navy-dark">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Where We're Headed</h2>
-
-      <div class="space-y-6">
-        {timeline.map((item, index) => (
-          <div class={`flex gap-6 ${index === 0 ? 'opacity-100' : 'opacity-70'}`}>
-            <div class="flex-shrink-0">
-              <div class={`w-16 h-8 rounded-full flex items-center justify-center text-xs font-semibold ${
-                index === 0 ? 'bg-success/20 text-success' : 'bg-navy-light/20 text-slate'
-              }`}>
-                {item.phase}
-              </div>
-            </div>
-            <div>
-              <h3 class="font-semibold text-light mb-1">{item.title}</h3>
-              <p class="text-sm text-slate">{item.description}</p>
-            </div>
-          </div>
-        ))}
+    <section class="ui-section">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>Where we're headed</h2></div>
+        <table class="ui-table ab-road">
+          <tbody>
+            {timeline.map((item, index) => (
+              <tr>
+                <th scope="row" class={index === 0 ? 'ui-c-ok' : index === 1 ? 'ui-c-buoy' : 'ui-c-lavender'}>{item.phase}</th>
+                <td><strong>{item.title}</strong><span>{item.description}</span></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Lead Magnets -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Learn More</h2>
-
-      <div class="grid md:grid-cols-2 gap-6">
-        <LeadMagnetCallout
-          leadMagnet="why-developers-bypass"
-          headline="Why developers bypass design systems"
-          subhead="Understanding the real reasons helps you fix the problem. Research-backed insights."
-          buttonText="Get the Report"
-        />
-        <div class="bg-gradient-to-r from-buoy/10 to-lavender/10 border border-buoy/20 rounded-xl p-6 sm:p-8">
-          <div class="inline-flex items-center gap-2 px-2 py-1 bg-buoy/20 rounded text-buoy text-xs font-medium mb-3">
-            Open research
-          </div>
-          <h3 class="text-xl font-bold text-light mb-2">Buoy accuracy research</h3>
-          <p class="text-slate text-sm mb-6">
-            Follow the benchmark methodology, current limitations, and evidence we require before publishing industry claims.
-          </p>
-          <Button href="/state-of-design-systems" variant="secondary">Read the methodology</Button>
+    <section class="ui-section ui-section--band">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>Learn more</h2></div>
+        <div class="ab-learn">
+          <LeadMagnetCallout
+            leadMagnet="why-developers-bypass"
+            headline="Why developers bypass design systems"
+            subhead="Understanding the real reasons helps you fix the problem. Research-backed insights."
+            buttonText="Get the Report"
+          />
+          <article class="ui-card ui-card--pad">
+            <p class="ui-eyebrow">Open research</p>
+            <h3 class="ab-h3">Buoy accuracy research</h3>
+            <p>Follow the benchmark methodology, current limitations, and evidence we require before publishing industry claims.</p>
+            <div class="ui-actions ab-mt"><Button href="/state-of-design-systems" variant="secondary">Read the methodology</Button></div>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CTA -->
-  <section class="py-16 bg-navy-dark">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-2xl font-bold text-light mb-4">Ready to catch design drift?</h2>
-      <p class="text-slate mb-8">
-        One command. 2 minutes. No signup required.
-      </p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <Button href="/demo" size="lg">
-          Get started
-        </Button>
-        <Button href={siteConfig.githubUrl} variant="secondary" size="lg" external>
-          View on GitHub
-        </Button>
+    <section class="ui-section ui-section--last ui-section--patterned">
+      <MarkPattern pattern="swell" drift={0.3} fade class="ui-pattern" />
+      <div class="ui-wrap">
+        <div class="ui-head ui-head--center">
+          <h2>Ready to catch design drift?</h2>
+          <p>One command. 2 minutes. No signup required.</p>
+        </div>
+        <div class="ui-actions ab-center">
+          <Button href="/demo" size="lg">Get started</Button>
+          <Button href={siteConfig.githubUrl} variant="secondary" size="lg" external>View on GitHub</Button>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <Footer />
 </Layout>
+
+<style>
+  .ab-story { display: grid; gap: 18px; font-size: 17px; }
+  .ab-story p { margin: 0; }
+  .ab-strong { color: var(--color-ink); font-weight: 600; }
+  .ab-steps { margin-top: 40px; }
+  .ab-values { margin: 40px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 48px; border-top: 1px solid var(--color-line-strong); }
+  .ab-values > div { padding: 20px 0; border-bottom: 1px solid var(--color-line); }
+  .ab-values dt { font-family: var(--font-display); font-weight: 600; font-size: 19px; color: var(--color-ink); }
+  .ab-values dd { margin: 6px 0 0; }
+  @media (max-width: 760px) { .ab-values { grid-template-columns: minmax(0, 1fr); } }
+  .ab-road { margin-top: 36px; max-width: 760px; }
+  .ab-road th { width: 96px; font-weight: 600; font-size: 14px; text-transform: none; letter-spacing: 0; vertical-align: top; }
+  .ab-road td { display: grid; gap: 2px; }
+  .ab-road strong { color: var(--color-ink); }
+  .ab-road span { font-size: 14.5px; color: var(--color-muted); }
+  .ab-learn { margin-top: 40px; display: grid; gap: 24px; }
+  .ab-h3 { margin: 4px 0 8px; font-size: var(--text-h3); color: var(--color-ink); }
+  .ab-mt { margin-top: 20px; }
+  .ab-center { justify-content: center; margin-top: 28px; }
+</style>

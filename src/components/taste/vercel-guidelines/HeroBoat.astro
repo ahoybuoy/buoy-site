@@ -1,0 +1,43 @@
+---
+// Replaces WaveBoat for this variant: an SVG boat (no emoji glyph) that drifts and
+// bobs with transforms only. Decorative, so hidden from assistive tech.
+---
+<div class="vg-boat-track" aria-hidden="true">
+  <svg class="vg-boat" viewBox="0 0 32 32" width="30" height="30">
+    <path d="M15 3 L15 21 L4 21 Z" fill="var(--color-light)" />
+    <path d="M17 7 L17 21 L27 21 Z" fill="var(--color-buoy)" />
+    <path d="M3 23 L29 23 L25 29 L7 29 Z" fill="var(--color-light)" />
+  </svg>
+</div>
+
+<style>
+  .vg-boat-track {
+    position: absolute;
+    left: 0;
+    bottom: 16%;
+    width: 100%;
+    height: 0;
+    z-index: 5;
+    pointer-events: none;
+    animation: vgBoatDrift 25s linear -6s infinite;
+  }
+  .vg-boat {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform-origin: 50% 100%;
+    animation: vgBoatBob 4s ease-in-out infinite;
+  }
+  @keyframes vgBoatDrift {
+    from { transform: translateX(-5%); }
+    to { transform: translateX(105%); }
+  }
+  @keyframes vgBoatBob {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(3deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .vg-boat-track { animation: none; transform: translateX(72%); }
+    .vg-boat { animation: none; }
+  }
+</style>

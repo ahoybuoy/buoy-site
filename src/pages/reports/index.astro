@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro'
 import Nav from '../../components/Nav.astro'
 import Footer from '../../components/Footer.astro'
+import MarkPattern from '../../components/MarkPattern.astro'
 import { allReports, formatStars, scoreColor } from '../../utils/reports'
 
 const reports = allReports()
@@ -17,64 +18,66 @@ const totalHardcoded = reports.reduce((n, r) => n + ownHardcoded(r), 0)
   keywords="design system health, design drift report, hardcoded values, open source design systems"
 >
   <Nav />
-
-  <section class="relative pt-32 pb-12 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
-    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6">Design drift in the open</h1>
-      <p class="text-lg text-slate max-w-2xl mx-auto">
-        {reports.length} well-known codebases, scanned with the open-source Buoy CLI: {totalHardcoded.toLocaleString()} findings of hardcoded
-        values that a token already covers or should. Same scan you get on <code class="text-buoy">npx @buoy-design/cli show health</code>.
-      </p>
-      {generated && <p class="text-sm text-slate/70 mt-4">Last scanned {generated}</p>}
-      <p class="mt-6"><a href="/scan" class="inline-block rounded-lg bg-buoy px-5 py-2.5 font-semibold text-navy-dark hover:opacity-90">Scan your own repository</a></p>
+  <main class="ui-nav-offset">
+  <section class="ui-section ui-section--first ui-section--patterned">
+    <MarkPattern pattern="tide" drift={0.3} fade class="ui-pattern" />
+    <div class="ui-wrap">
+      <div class="ui-head">
+        <h1>Design drift in the open</h1>
+        <p class="ui-lede">
+          <span class="ui-tnum text-[var(--color-ink)]">{reports.length}</span> well-known codebases, scanned with the open-source Buoy CLI: <span class="ui-tnum ui-c-crit">{totalHardcoded.toLocaleString()}</span> findings of hardcoded
+          values that a token already covers or should. Same scan you get on <code class="ui-code">npx @buoy-design/cli show health</code>.
+        </p>
+        {generated && <p class="ui-note mt-4">Last scanned <span class="ui-tnum">{generated}</span></p>}
+      </div>
+      <div class="ui-actions mt-8"><a href="/scan" class="ui-btn ui-btn--primary">Scan your own repository</a></div>
     </div>
   </section>
 
-  <section class="py-12 bg-navy-dark">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="overflow-x-auto rounded-2xl border border-navy-light/20">
-        <table class="w-full text-sm">
-          <thead class="bg-navy/60 text-slate text-left">
+  <section class="ui-section ui-section--last !pt-16">
+    <div class="ui-wrap">
+      <div class="overflow-x-auto">
+        <table class="ui-table ui-table--hover min-w-[720px]">
+          <thead>
             <tr>
-              <th class="px-4 py-3">Repository</th>
-              <th class="px-4 py-3 text-right">Health</th>
-              <th class="px-4 py-3 text-right">Hardcoded findings</th>
-              <th class="px-4 py-3 text-right">Tokens</th>
-              <th class="px-4 py-3 text-right">Components</th>
-              <th class="px-4 py-3">Stack</th>
+              <th>Repository</th>
+              <th class="text-right">Health</th>
+              <th class="text-right">Hardcoded findings</th>
+              <th class="text-right">Tokens</th>
+              <th class="text-right">Components</th>
+              <th class="ui-end">Stack</th>
             </tr>
           </thead>
           <tbody>
             {reports.map((r) => (
-              <tr class="border-t border-navy-light/20 hover:bg-navy/40">
-                <td class="px-4 py-3">
-                  <a href={`/reports/${r.owner}/${r.name}`} class="text-light font-medium hover:text-buoy">{r.repo}</a>
-                  <span class="text-slate/70 ml-2">★ {formatStars(r.stars)}</span>
-                </td>
-                <td class={`px-4 py-3 text-right font-bold ${scoreColor(r.score)}`}>{r.score}</td>
-                <td class="px-4 py-3 text-right text-light">{ownHardcoded(r).toLocaleString()}</td>
-                <td class="px-4 py-3 text-right text-slate">{r.metrics.tokenCount}</td>
-                <td class="px-4 py-3 text-right text-slate">{r.metrics.componentCount.toLocaleString()}</td>
-                <td class="px-4 py-3 text-slate">{r.metrics.detectedFrameworkNames.slice(0, 3).join(', ')}</td>
+              <tr>
+                <th>
+                  <a href={`/reports/${r.owner}/${r.name}`} class="ui-rowlink">{r.repo}</a>
+                  <span class="ml-2 text-sm font-normal text-[var(--color-muted)] ui-tnum">★ {formatStars(r.stars)}</span>
+                </th>
+                <td class={`text-right font-semibold ui-tnum ${scoreColor(r.score)}`}>{r.score}</td>
+                <td class="text-right ui-tnum">{ownHardcoded(r).toLocaleString()}</td>
+                <td class="text-right ui-tnum">{r.metrics.tokenCount}</td>
+                <td class="text-right ui-tnum">{r.metrics.componentCount.toLocaleString()}</td>
+                <td class="ui-end text-sm text-[var(--color-muted)]">{r.metrics.detectedFrameworkNames.slice(0, 3).join(', ')}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <p class="text-sm text-slate mt-6 max-w-3xl">
+      <p class="ui-note mt-8 max-w-3xl leading-relaxed">
         Buoy counts literal design values only: colours, spacing, font sizes, radii and shadows written by hand where a
         token belongs. It deliberately skips icons and logos, email templates (email clients cannot use CSS variables),
         social images, tests and stories, and layout values like <code>calc()</code>, <code>100dvh</code> or grid templates.
-        Health is Buoy's 0–100 score. Value discipline (60) falls as hardcoded findings per component rise. Token health (20)
+        Health is Buoy's 0 to 100 score. Value discipline (60) falls as hardcoded findings per component rise. Token health (20)
         asks whether there is a token system, the repo's own tokens or Tailwind's theme, and whether its tokens are used.
         Consistency (10) counts naming conflicts, and critical issues (10) counts colour contrast failures, accessibility
         conflicts and deprecated patterns. Each report lists its path to 100: the points missing and the change that earns them.
         A low score on a popular project is not a judgement on the team; it is what happens to any codebase with many
-        contributors and no check at the PR. Want your repo here, or want it fixed? <a href="https://github.com/marketplace/buoy-design" class="text-buoy">Install the GitHub App</a>.
+        contributors and no check at the PR. Want your repo here, or want it fixed? <a href="https://github.com/marketplace/buoy-design" class="ui-link">Install the GitHub App</a>.
       </p>
     </div>
   </section>
-
+  </main>
   <Footer />
 </Layout>

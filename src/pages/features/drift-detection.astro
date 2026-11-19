@@ -1,12 +1,12 @@
 ---
 import FeatureLayout from '../../layouts/FeatureLayout.astro'
 import Terminal from '../../components/Terminal.astro'
-import FeatureCard from '../../components/FeatureCard.astro'
+import BuoyMark from '../../components/BuoyMark.astro'
 import LeadMagnetCallout from '../../components/LeadMagnetCallout.astro'
 
 const terminalLines = [
   { text: '', delay: 600 },
-  { text: '<span class="text-buoy">⚓</span> Scanning for design drift...', type: 'output', delay: 800 },
+  { text: '<span class="text-slate">Scanning for design drift...</span>', type: 'output', delay: 800 },
   { text: '', delay: 1200 },
   { text: 'Found <span class="text-warning">31</span> issues across <span class="text-light">89</span> files', type: 'output', delay: 1400 },
   { text: '', delay: 1600 },
@@ -25,84 +25,27 @@ const terminalLines = [
 ]
 
 const features = [
-  {
-    title: 'Hardcoded Values',
-    description: 'Find colors, spacing, and fonts that bypass your design tokens.',
-    icon: '🎨',
-    examples: ['#ff0000', '16px', 'Arial'],
-    href: '/features/hardcoded-values'
-  },
-  {
-    title: 'Duplicate Components',
-    description: 'Detect similar components that should be consolidated.',
-    icon: '📦',
-    examples: ['Button', 'ButtonNew', 'MyButton'],
-    href: '/features/duplicate-detection'
-  },
-  {
-    title: 'Naming Drift',
-    description: 'Catch inconsistent naming conventions across your codebase.',
-    icon: '🏷️',
-    examples: ['btn vs Button', 'color vs colour'],
-    href: '/features/naming-consistency'
-  },
-  {
-    title: 'Prop Mismatches',
-    description: 'Find when the same prop has different types across components.',
-    icon: '🔧',
-    examples: ['onClick vs onPress', 'size: string | number'],
-    href: '/features/prop-consistency'
-  },
-  {
-    title: 'Deprecated Patterns',
-    description: 'Track components marked as deprecated still in use.',
-    icon: '⚠️',
-    examples: ['deprecated annotation', 'legacy components'],
-  },
-  {
-    title: 'Framework Sprawl',
-    description: 'Detect multiple UI frameworks competing in your codebase.',
-    icon: '🌐',
-    examples: ['React + Vue + ...'],
-    href: '/features/framework-sprawl'
-  },
-  {
-    title: 'Accessibility Issues',
-    description: 'Find missing ARIA labels, focus traps, and contrast issues.',
-    icon: '♿',
-    examples: ['Missing aria-label', 'Low contrast'],
-    href: '/features/accessibility-checks'
-  },
-  {
-    title: 'Orphaned Components',
-    description: 'Components in code but missing from Figma or Storybook.',
-    icon: '👻',
-    examples: ['In code, not in design'],
-  },
-  {
-    title: 'Unused Tokens',
-    description: 'Design tokens defined but never referenced in code.',
-    icon: '🗑️',
-    examples: ['--color-unused', '--space-deprecated'],
-  },
+  { title: 'Hardcoded Values', description: 'Find colors, spacing, and fonts that bypass your design tokens.', examples: ['#ff0000', '16px', 'Arial'], href: '/features/hardcoded-values' },
+  { title: 'Duplicate Components', description: 'Detect similar components that should be consolidated.', examples: ['Button', 'ButtonNew', 'MyButton'], href: '/features/duplicate-detection' },
+  { title: 'Naming Drift', description: 'Catch inconsistent naming conventions across your codebase.', examples: ['btn vs Button', 'color vs colour'], href: '/features/naming-consistency' },
+  { title: 'Prop Mismatches', description: 'Find when the same prop has different types across components.', examples: ['onClick vs onPress', 'size: string | number'], href: '/features/prop-consistency' },
+  { title: 'Deprecated Patterns', description: 'Track components marked as deprecated still in use.', examples: ['deprecated annotation', 'legacy components'] },
+  { title: 'Framework Sprawl', description: 'Detect multiple UI frameworks competing in your codebase.', examples: ['React + Vue + ...'], href: '/features/framework-sprawl' },
+  { title: 'Accessibility Issues', description: 'Find missing ARIA labels, focus traps, and contrast issues.', examples: ['Missing aria-label', 'Low contrast'], href: '/features/accessibility-checks' },
+  { title: 'Orphaned Components', description: 'Components in code but missing from Figma or Storybook.', examples: ['In code, not in design'] },
+  { title: 'Unused Tokens', description: 'Design tokens defined but never referenced in code.', examples: ['--color-unused', '--space-deprecated'] },
+]
+
+const how = [
+  { title: 'Scan', text: 'Buoy parses your codebase to build a map of all components, props, and style values.' },
+  { title: 'Analyze', text: 'Compares against your design system config to identify patterns that don\'t match.' },
+  { title: 'Report', text: 'Outputs drift signals with severity, location, and suggested fixes.' },
 ]
 
 const relatedFeatures = [
-  {
-    title: 'Coverage Metrics',
-    description: 'Measure design system adoption with real data',
-    href: '/features/coverage'
-  },
-  {
-    title: 'GitHub App',
-    description: 'Catch drift in every PR automatically',
-    href: '/features/github-action'
-  },
-  {
-    title: 'CI Integration',
-    description: 'Add drift checks to your CI pipeline',
-    href: '/features/ci'
-  },
+  { title: 'Coverage Metrics', description: 'Measure design system adoption with real data', href: '/features/coverage' },
+  { title: 'GitHub App', description: 'Catch drift in every PR automatically', href: '/features/github-action' },
+  { title: 'CI Integration', description: 'Add drift checks to your CI pipeline', href: '/features/ci' },
 ]
 ---
 
@@ -111,232 +54,147 @@ const relatedFeatures = [
   description="Automatically detect when AI-generated code drifts from your design system. Find hardcoded values, naming inconsistencies, and deprecated patterns."
   keywords="design drift detection, AI code consistency, design system enforcement"
   heroTitle="Find drift. Catch it at the PR. Measure improvement."
-  heroDescription="Not just another linter. Buoy finds design drift, blocks it in CI, and shows you the measurable improvement in your design system adoption."
+  heroDescription="Buoy finds design drift, blocks it in CI, and shows you the measurable improvement in your design system adoption."
+  exampleCaption="A Buoy review comment on a deprecated component."
+  related={relatedFeatures}
+  pattern="field"
+  ctaPattern="tide"
 >
-  <!-- AI-Free Badge -->
-  <div slot="hero-extra" class="flex justify-center mt-8">
-    <div class="inline-flex items-center gap-3 px-5 py-3 bg-navy border border-success/30 rounded-xl">
-      <div class="flex items-center gap-2">
-        <span class="text-success text-lg">🔒</span>
-        <span class="text-success font-semibold">100% Deterministic</span>
+  <p slot="hero-extra" class="fx-hero-note"><strong>100% deterministic.</strong> No AI. No API keys. No data sent externally.</p>
+
+  <div slot="example" class="ui-tray">
+    <div class="ui-panel">
+      <div class="ui-panel-head"><span class="ui-mono">src/components/Header.tsx</span></div>
+      <div class="fx-diff" role="img" aria-label="Diff of Header.tsx. Line 3 imports the deprecated NavHeader component.">
+        <div class="fx-line fx-add"><span class="fx-ln">3</span><span class="fx-sign">+</span><span class="fx-code">{"import { NavHeader } from '@/ui'"}</span></div>
       </div>
-      <span class="text-slate-dark">|</span>
-      <span class="text-slate text-sm">No AI. No API keys. No data sent externally.</span>
+      <div class="fx-comment-row">
+        <div class="fx-comment">
+          <div class="fx-comment-head">
+            <span class="fx-avatar"><BuoyMark size={16} /></span>
+            <span class="fx-author">buoy-design</span><span class="fx-tag">bot</span>
+            <span class="fx-meta">commented on line <span class="ui-tnum">3</span></span>
+          </div>
+          <p class="fx-body">Deprecated component <code class="fx-was">NavHeader</code>. Use <code class="fx-fix">Navigation</code> instead.</p>
+          <div class="fx-suggest">
+            <div class="fx-suggest-label">Suggested change</div>
+            <div class="fx-diff">
+              <div class="fx-line fx-del"><span class="fx-ln">3</span><span class="fx-sign">-</span><span class="fx-code">{"import { NavHeader } from '@/ui'"}</span></div>
+              <div class="fx-line fx-add"><span class="fx-ln">3</span><span class="fx-sign">+</span><span class="fx-code">{"import { Navigation } from '@/ui'"}</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fx-diff" aria-hidden="true">
+        <div class="fx-line fx-add"><span class="fx-ln">8</span><span class="fx-sign">+</span><span class="fx-code">{"  <div style={{ background: '#ffffff' }}>"}</span></div>
+      </div>
     </div>
   </div>
 
-  <!-- Drift Types Grid -->
-  <section class="py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-4 text-center">All Drift Types</h2>
-      <p class="text-slate text-center mb-12 max-w-2xl mx-auto">
-        Comprehensive drift detection for modern frontend codebases
-      </p>
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head">
+        <h2>All drift types</h2>
+        <p>Comprehensive drift detection for modern frontend codebases.</p>
+      </div>
+      <table class="ui-table ui-table--hover fx-block fx-table">
+        <caption class="ui-sr">Drift types Buoy detects</caption>
+        <thead><tr><th scope="col">Drift type</th><th scope="col">What it finds</th></tr></thead>
+        <tbody>
+          {features.map((f) => (
+            <tr>
+              <th scope="row">{f.href ? <a href={f.href} class="ui-rowlink">{f.title}</a> : f.title}</th>
+              <td>{f.description}<br /><span class="ui-mono ui-c-crit fx-ex">{f.examples.join(', ')}</span></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {features.map((feature) => (
-          <FeatureCard {...feature} />
-        ))}
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap ui-split">
+      <div>
+        <div class="ui-head"><h2>How drift detection works</h2></div>
+        <ol class="ui-steps fx-block">
+          {how.map((s, i) => (
+            <li><span class="ui-step-n" aria-hidden="true">{i + 1}</span><div><h3>{s.title}</h3><p>{s.text}</p></div></li>
+          ))}
+        </ol>
+      </div>
+      <div>
+        <p class="ui-note">Step 1: find drift. Every issue includes the exact file, line, and what to change.</p>
+        <Terminal command="buoy drift check" lines={terminalLines} />
       </div>
     </div>
   </section>
 
-  <!-- How It Works -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">How Drift Detection Works</h2>
-
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="text-center">
-          <div class="w-12 h-12 rounded-full bg-buoy/20 border-2 border-buoy flex items-center justify-center mx-auto mb-4 text-buoy font-bold">
-            1
-          </div>
-          <h3 class="font-semibold text-light mb-2">Scan</h3>
-          <p class="text-sm text-slate">
-            Buoy parses your codebase to build a map of all components, props, and style values.
-          </p>
-        </div>
-
-        <div class="text-center">
-          <div class="w-12 h-12 rounded-full bg-buoy/20 border-2 border-buoy flex items-center justify-center mx-auto mb-4 text-buoy font-bold">
-            2
-          </div>
-          <h3 class="font-semibold text-light mb-2">Analyze</h3>
-          <p class="text-sm text-slate">
-            Compares against your design system config to identify patterns that don't match.
-          </p>
-        </div>
-
-        <div class="text-center">
-          <div class="w-12 h-12 rounded-full bg-buoy/20 border-2 border-buoy flex items-center justify-center mx-auto mb-4 text-buoy font-bold">
-            3
-          </div>
-          <h3 class="font-semibold text-light mb-2">Report</h3>
-          <p class="text-sm text-slate">
-            Outputs drift signals with severity, location, and suggested fixes.
-          </p>
-        </div>
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head">
+        <h2>Step 2: catch at the PR</h2>
+        <p>Add Buoy to CI. Design drift never reaches main.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- Terminal Demo: Detect -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-4 text-center">Step 1: Find Drift</h2>
-      <p class="text-slate text-center mb-8 max-w-2xl mx-auto">
-        Every issue includes the exact file, line, and what to change.
-      </p>
-
-      <Terminal
-        command="buoy drift check"
-        lines={terminalLines}
-      />
-    </div>
-  </section>
-
-  <!-- CI Enforcement Section -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-4 text-center">Step 2: Catch at the PR</h2>
-      <p class="text-slate text-center mb-8 max-w-2xl mx-auto">
-        Add Buoy to CI. Design drift never reaches main.
-      </p>
-
-      <!-- GitHub PR Check Style Card -->
-      <div class="bg-[#0d1117] border border-[#30363d] rounded-lg overflow-hidden shadow-xl">
-        <div class="px-4 py-3 border-b border-[#30363d] flex items-center gap-2">
-          <svg class="w-4 h-4 text-[#f85149]" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"/>
-          </svg>
-          <span class="text-[#f85149] font-medium text-sm">Buoy Design Check — 3 critical issues found</span>
-        </div>
-        <div class="divide-y divide-[#30363d]">
-          <div class="px-4 py-3">
-            <div class="flex items-center gap-2 mb-1">
-              <span class="text-[#58a6ff] text-sm font-mono">src/components/Button.tsx</span>
-              <span class="text-[#8b949e] text-sm">line 12</span>
-            </div>
-            <p class="text-[#c9d1d9] text-sm">Missing aria-label <code class="px-1.5 py-0.5 bg-[#161b22] rounded text-[#f85149] text-xs">Critical</code> → Add <code class="px-1.5 py-0.5 bg-[#161b22] rounded text-[#7ee787] text-xs">aria-label=&#123;buttonText&#125;</code></p>
+      <div class="ui-tray fx-block">
+        <div class="ui-panel">
+          <div class="fx-check fx-check-fail">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"/></svg>
+            <span>Buoy Design Check: 3 critical issues found</span>
           </div>
-          <div class="px-4 py-3">
-            <div class="flex items-center gap-2 mb-1">
-              <span class="text-[#58a6ff] text-sm font-mono">src/components/Card.tsx</span>
-              <span class="text-[#8b949e] text-sm">line 8</span>
-            </div>
-            <p class="text-[#c9d1d9] text-sm">Hardcoded color <code class="px-1.5 py-0.5 bg-[#161b22] rounded text-[#f85149] text-xs">#ffffff</code> → Use <code class="px-1.5 py-0.5 bg-[#161b22] rounded text-[#7ee787] text-xs">var(--color-bg)</code></p>
-          </div>
-          <div class="px-4 py-3">
-            <div class="flex items-center gap-2 mb-1">
-              <span class="text-[#58a6ff] text-sm font-mono">src/components/Header.tsx</span>
-              <span class="text-[#8b949e] text-sm">line 3</span>
-            </div>
-            <p class="text-[#c9d1d9] text-sm">Deprecated component <code class="px-1.5 py-0.5 bg-[#161b22] rounded text-[#f85149] text-xs">NavHeader</code> → Use <code class="px-1.5 py-0.5 bg-[#161b22] rounded text-[#7ee787] text-xs">Navigation</code></p>
+          <div class="fx-scroll">
+            <table class="fx-mini">
+              <thead><tr><th>File</th><th>Line</th><th>Issue</th><th>Fix</th></tr></thead>
+              <tbody>
+                <tr><td class="ui-mono">src/components/Button.tsx</td><td class="ui-tnum">12</td><td>Missing aria-label <span class="ui-sev ui-sev-critical">Critical</span></td><td><code class="ui-c-ok">aria-label=&#123;buttonText&#125;</code></td></tr>
+                <tr><td class="ui-mono">src/components/Card.tsx</td><td class="ui-tnum">8</td><td>Hardcoded color <code class="ui-c-crit">#ffffff</code></td><td><code class="ui-c-ok">var(--color-bg)</code></td></tr>
+                <tr><td class="ui-mono">src/components/Header.tsx</td><td class="ui-tnum">3</td><td>Deprecated component <code class="ui-c-crit">NavHeader</code></td><td><code class="ui-c-ok">Navigation</code></td></tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Actions Section -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-4 text-center">What You Get</h2>
-      <p class="text-slate text-center mb-12 max-w-2xl mx-auto">
-        Clarity, not just data. Every scan ends with concrete next steps.
-      </p>
-
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-navy/50 border border-success/30 rounded-xl p-6">
-          <div class="text-2xl mb-4">🛡️</div>
-          <h3 class="font-semibold text-light mb-2">PR Checks</h3>
-          <p class="text-sm text-slate mb-4">
-            Catch drift at the PR. Every issue shows the exact token to use instead.
-          </p>
-          <code class="text-xs text-success bg-success/10 px-2 py-1 rounded">buoy drift check --ci</code>
-        </div>
-
-        <div class="bg-navy/50 border border-warning/30 rounded-xl p-6">
-          <div class="text-2xl mb-4">📋</div>
-          <h3 class="font-semibold text-light mb-2">Clear Explanations</h3>
-          <p class="text-sm text-slate mb-4">
-            Every issue includes the file, line, and exactly what needs to change.
-          </p>
-          <code class="text-xs text-warning bg-warning/10 px-2 py-1 rounded">buoy drift check --format detailed</code>
-        </div>
-
-        <div class="bg-navy/50 border border-buoy/30 rounded-xl p-6">
-          <div class="text-2xl mb-4">📈</div>
-          <h3 class="font-semibold text-light mb-2">Coverage Score</h3>
-          <p class="text-sm text-slate mb-4">
-            Track design system adoption over time. Show leadership real numbers.
-          </p>
-          <code class="text-xs text-buoy bg-buoy/10 px-2 py-1 rounded">buoy show health</code>
-        </div>
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>What you get</h2><p>Clarity, not just data. Every scan ends with concrete next steps.</p></div>
+      <div class="ui-cols ui-cols--3">
+        <div class="ui-col"><h3>PR checks</h3><p>Catch drift at the PR. Every issue shows the exact token to use instead.</p><p class="ui-col-foot"><code class="ui-code">buoy drift check --ci</code></p></div>
+        <div class="ui-col"><h3>Clear explanations</h3><p>Every issue includes the file, line, and exactly what needs to change.</p><p class="ui-col-foot"><code class="ui-code">buoy drift check --format detailed</code></p></div>
+        <div class="ui-col"><h3>Coverage score</h3><p>Track design system adoption over time. Show leadership real numbers.</p><p class="ui-col-foot"><code class="ui-code">buoy show health</code></p></div>
       </div>
     </div>
   </section>
 
-  <!-- The Happy Team -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Visible Outcomes</h2>
-
-      <div class="grid sm:grid-cols-2 gap-6">
-        <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-4 flex items-center gap-2">
-            <span class="text-2xl">👩‍💻</span> For Developers
-          </h3>
-          <ul class="space-y-2 text-sm text-slate">
-            <li class="flex items-start gap-2">
-              <span class="text-success">✓</span>
-              <span>No guessing — exact file, line, and fix</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-success">✓</span>
-              <span>CI catches issues before they merge</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-success">✓</span>
-              <span>PR checks catch issues before review</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-success">✓</span>
-              <span>Less time debating, more time building</span>
-            </li>
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>Visible outcomes</h2></div>
+      <div class="ui-cols fx-vs">
+        <div class="ui-col">
+          <h3>For developers</h3>
+          <ul class="ui-ruled">
+            <li>No guessing: exact file, line, and fix</li>
+            <li>CI catches issues before they merge</li>
+            <li>PR checks catch issues before review</li>
+            <li>Less time debating, more time building</li>
           </ul>
         </div>
-
-        <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-4 flex items-center gap-2">
-            <span class="text-2xl">📊</span> For Leaders
-          </h3>
-          <ul class="space-y-2 text-sm text-slate">
-            <li class="flex items-start gap-2">
-              <span class="text-success">✓</span>
-              <span>Real adoption numbers, not estimates</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-success">✓</span>
-              <span>Track improvement week over week</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-success">✓</span>
-              <span>Prove design system ROI with data</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-success">✓</span>
-              <span>Identify which teams need help</span>
-            </li>
+        <div class="ui-col">
+          <h3>For leaders</h3>
+          <ul class="ui-ruled">
+            <li>Real adoption numbers, not estimates</li>
+            <li>Track improvement week over week</li>
+            <li>Prove design system ROI with data</li>
+            <li>Identify which teams need help</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Lead Magnet: Drift Checklist -->
-  <section class="py-12">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap fx-narrow">
       <LeadMagnetCallout
         leadMagnet="drift-checklist"
         headline="Not ready to install? Start with a manual audit."
@@ -346,67 +204,29 @@ const relatedFeatures = [
     </div>
   </section>
 
-  <!-- Why Drift Matters -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Why Design Drift Matters</h2>
-
-      <div class="grid sm:grid-cols-2 gap-6">
-        <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-3">Without Drift Detection</h3>
-          <ul class="space-y-2 text-sm text-slate">
-            <li class="flex items-start gap-2">
-              <span class="text-critical">✗</span>
-              <span>Inconsistent UI across the app</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-critical">✗</span>
-              <span>Design system becomes optional</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-critical">✗</span>
-              <span>Harder to maintain and update</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-critical">✗</span>
-              <span>No way to measure adoption</span>
-            </li>
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>Why design drift matters</h2></div>
+      <div class="ui-cols fx-vs">
+        <div class="ui-col">
+          <h3>Without drift detection</h3>
+          <ul class="ui-ruled">
+            <li>Inconsistent UI across the app</li>
+            <li>Design system becomes optional</li>
+            <li>Harder to maintain and update</li>
+            <li>No way to measure adoption</li>
           </ul>
         </div>
-
-        <div class="bg-navy-dark border border-success/30 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-3">With Buoy</h3>
-          <ul class="space-y-2 text-sm text-slate">
-            <li class="flex items-start gap-2">
-              <span class="text-success">✓</span>
-              <span>Consistent, cohesive UI</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-success">✓</span>
-              <span>Design system enforcement</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-success">✓</span>
-              <span>Easy global updates via tokens</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-success">✓</span>
-              <span>Real adoption metrics</span>
-            </li>
+        <div class="ui-col">
+          <h3>With Buoy</h3>
+          <ul class="ui-ruled">
+            <li>Consistent, cohesive UI</li>
+            <li>Design system enforcement</li>
+            <li>Easy global updates via tokens</li>
+            <li>Real adoption metrics</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- Related Features Slot -->
-  <div slot="related" class="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-    {relatedFeatures.map((feature) => (
-      <FeatureCard
-        title={feature.title}
-        description={feature.description}
-        href={feature.href}
-      />
-    ))}
-  </div>
 </FeatureLayout>

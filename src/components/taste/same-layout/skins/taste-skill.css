@@ -1,0 +1,527 @@
+/* taste-skill skin: tasteskill 2.5 rules on the frozen homepage layout.
+   Palette "Graphite and orange" (library/palettes.json) with the client's own orange,
+   Geist + Geist Mono (library/type.json), radius sharp, buttons pill,
+   rhythm dark-band (one inverse section: the PR check), flat grounds, no violet. */
+
+.sl.sl-taste-skill {
+  --ts-ink: #eff0f1;
+  --ts-g: #18191b;
+
+  --sl-bg: #18191b;
+  --sl-bg-alt: #1d1e21;
+  --sl-surface: #222427;
+  --sl-surface-2: #222427;
+  --sl-border: color-mix(in srgb, #eff0f1 13%, transparent);
+  --sl-text: #eff0f1;
+  --sl-text-muted: #c2c4c8;
+  --sl-text-faint: #9c9ea3;
+
+  --sl-accent: var(--color-buoy);
+  --sl-accent-hover: color-mix(in srgb, var(--color-buoy) 86%, #eff0f1);
+  --sl-accent-contrast: #18191b;
+  --sl-accent-2: #c2c4c8; /* violet is never allowed: the second accent becomes ink grey */
+  --sl-success: #4cc38a;
+  --sl-warning: #e5a83b;
+  --sl-critical: #f0624d;
+  --sl-info: #6aa9e9;
+
+  --sl-code-bg: #121315;
+  --sl-code-text: #c2c4c8;
+
+  --sl-font-display: 'Geist', 'Helvetica Neue', Arial, sans-serif;
+  --sl-font-body: 'Geist', 'Helvetica Neue', Arial, sans-serif;
+  --sl-font-mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --sl-h1-size: clamp(2.5rem, 6.4vw, 4.75rem);
+  --sl-h2-size: clamp(1.875rem, 3.8vw, 3rem);
+  --sl-h3-size: 1.25rem;
+  --sl-body-size: 1rem;
+  --sl-lead-size: 1.125rem;
+  --sl-small-size: 0.875rem;
+  --sl-heading-weight: 500;
+  --sl-heading-tracking: -0.04em;
+  --sl-heading-leading: 1.04;
+  --sl-leading: 1.6;
+
+  --sl-radius-sm: 4px;
+  --sl-radius-md: 6px;
+  --sl-radius-lg: 8px;
+  --sl-btn-radius: 999px;
+  --sl-btn-height: 3rem;
+  --sl-shadow-sm: none;
+  --sl-shadow-md: 0 32px 64px -32px rgb(0 0 0 / 0.35);
+  --sl-shadow-lg: 0 32px 64px -32px rgb(0 0 0 / 0.6);
+
+  --sl-section-pad: 7.5rem;
+  --sl-gap: 1.5rem;
+  --sl-ease: cubic-bezier(.2, .8, .2, 1);
+  --sl-duration: 150ms;
+
+  /* PR card on the light inverse band: still a dark window, in graphite */
+  --sl-pr-bg: #121315;
+  --sl-pr-bg-2: #1b1c1f;
+  --sl-pr-border: color-mix(in srgb, #eff0f1 13%, transparent);
+  --sl-pr-text: #eff0f1;
+  --sl-pr-muted: #9c9ea3;
+  --sl-pr-link: #eff0f1;
+  --sl-pr-open: #4cc38a;
+  --sl-pr-error: #f0624d;
+  --sl-pr-warn: #e5a83b;
+  --sl-pr-fix: #4cc38a;
+
+  font-feature-settings: 'ss01' 0;
+  -webkit-font-smoothing: antialiased;
+}
+@media (max-width: 639px) {
+  .sl.sl-taste-skill { --sl-section-pad: 5.5rem; --sl-gap: 0.75rem; }
+}
+
+.sl.sl-taste-skill ::selection { background: #eff0f1; color: #18191b; }
+.sl.sl-taste-skill :focus-visible { outline: 2px solid var(--sl-accent); outline-offset: 3px; }
+.sl.sl-taste-skill h1,
+.sl.sl-taste-skill h2,
+.sl.sl-taste-skill h3 { text-wrap: balance; }
+.sl.sl-taste-skill h3 { letter-spacing: -0.025em; line-height: 1.2; }
+
+/* ---------- Links: hairline at rest, ink line draws left to right (motion.md) ---------- */
+.sl.sl-taste-skill .sl-link {
+  color: var(--sl-text);
+  background:
+    linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat,
+    linear-gradient(color-mix(in srgb, currentColor 35%, transparent), color-mix(in srgb, currentColor 35%, transparent)) 0 100% / 100% 1px no-repeat;
+  padding-bottom: 2px;
+  transition: background-size var(--sl-duration) var(--sl-ease);
+}
+.sl.sl-taste-skill .sl-link:hover { text-decoration: none; background-size: 100% 1px, 100% 1px; }
+.sl.sl-taste-skill .sl-link--strong { font-weight: 500; }
+.sl.sl-taste-skill .sl-more { font-size: 0.9375rem; }
+
+/* ---------- Header: one fixed opaque bar, hairline, no blur (system.md, Nav) ---------- */
+.sl.sl-taste-skill .sl-header {
+  background: #18191b;
+  border-bottom: 1px solid var(--sl-border);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.sl.sl-taste-skill .sl-header__link {
+  font-size: 0.9375rem;
+  color: var(--sl-text-muted);
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  padding-bottom: 4px;
+  transition: color var(--sl-duration) var(--sl-ease), background-size var(--sl-duration) var(--sl-ease);
+}
+.sl.sl-taste-skill .sl-header__link:hover { color: var(--sl-text); background-size: 100% 1px; }
+
+/* ---------- Callout: flat surface line, no gradient ---------- */
+.sl.sl-taste-skill .sl-callout {
+  background: #1d1e21;
+  border-bottom: 1px solid var(--sl-border);
+}
+.sl.sl-taste-skill .sl-callout__link { font-size: 0.875rem; }
+.sl.sl-taste-skill .sl-callout__link strong { font-weight: 500; }
+.sl.sl-taste-skill .sl-callout__pill {
+  border-radius: var(--sl-radius-sm);
+  background: #eff0f1;
+  color: #18191b;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.sl.sl-taste-skill .sl-callout__arrow { color: var(--sl-text); transition: transform var(--sl-duration) var(--sl-ease); }
+.sl.sl-taste-skill .sl-callout__link:hover .sl-callout__arrow { transform: translateX(3px); }
+
+/* ---------- Buttons: pill, one filled accent, step and press (system.md, motion.md) ---------- */
+.sl.sl-taste-skill .sl-btn {
+  padding-inline: 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition:
+    background-color var(--sl-duration) var(--sl-ease),
+    border-color var(--sl-duration) var(--sl-ease),
+    transform var(--sl-duration) var(--sl-ease);
+}
+.sl.sl-taste-skill .sl-btn--lg { font-size: 1rem; padding-inline: 1.75rem; }
+.sl.sl-taste-skill .sl-btn--primary { box-shadow: none; }
+.sl.sl-taste-skill .sl-btn--primary:hover { background: var(--sl-accent-hover); transform: translateY(-1px); }
+.sl.sl-taste-skill .sl-btn--secondary {
+  background: transparent;
+  border-color: color-mix(in srgb, #eff0f1 30%, transparent);
+  color: var(--sl-text);
+}
+.sl.sl-taste-skill .sl-btn--secondary:hover {
+  background: color-mix(in srgb, #eff0f1 8%, transparent);
+  border-color: color-mix(in srgb, #eff0f1 55%, transparent);
+  transform: translateY(-1px);
+}
+.sl.sl-taste-skill .sl-btn:active { transform: translateY(1px) scale(.985); transition-duration: 90ms; }
+
+/* ---------- Hero: flat graphite, the words rise out of masks once (motion.md) ---------- */
+.sl.sl-taste-skill .sl-decor--waves,
+.sl.sl-taste-skill .sl-hero__boat { display: none; }
+.sl.sl-taste-skill .sl-hero__scroll { display: none; }
+.sl.sl-taste-skill .sl-hero {
+  background:
+    linear-gradient(180deg, #18191b 0%, #18191b 55%, #1d1e21 100%);
+}
+.sl.sl-taste-skill .sl-hero__badge {
+  padding: 0;
+  border: 0;
+  background: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  font-size: 0.875rem;
+  color: var(--sl-text-faint);
+}
+.sl.sl-taste-skill .sl-hero__title {
+  font-size: var(--sl-h1-size);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+}
+.sl.sl-taste-skill .sl-hero__word {
+  opacity: 1;
+  animation: ts-rise 700ms cubic-bezier(.22, 1, .36, 1) both;
+  clip-path: inset(-0.1em -0.1em -0.18em -0.1em);
+}
+.sl.sl-taste-skill .sl-hero__word:nth-of-type(1) { animation-delay: 0ms; }
+.sl.sl-taste-skill .sl-hero__word:nth-of-type(2) { animation-delay: 40ms; }
+.sl.sl-taste-skill .sl-hero__word:nth-of-type(3) { animation-delay: 120ms; }
+.sl.sl-taste-skill .sl-hero__word:nth-of-type(4) { animation-delay: 160ms; }
+.sl.sl-taste-skill .sl-hero__word:nth-of-type(5) { animation-delay: 200ms; }
+/* Highlight by contrast, never by colour or a marker bar (system.md, Type) */
+.sl.sl-taste-skill .sl-hero__highlight { color: var(--sl-text); }
+.sl.sl-taste-skill .sl-hero__highlight::after { display: none; }
+.sl.sl-taste-skill .sl-hero__sub {
+  font-size: clamp(1.125rem, 1.6vw, 1.25rem);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--sl-text-muted);
+  text-shadow: none;
+}
+.sl.sl-taste-skill .sl-hero__badge,
+.sl.sl-taste-skill .sl-hero__sub,
+.sl.sl-taste-skill .sl-hero__ctas,
+.sl.sl-taste-skill .sl-hero__scan {
+  animation: ts-up 520ms cubic-bezier(.22, 1, .36, 1) both;
+}
+.sl.sl-taste-skill .sl-hero__badge { animation-delay: 0ms; }
+.sl.sl-taste-skill .sl-hero__sub { animation-delay: 420ms; }
+.sl.sl-taste-skill .sl-hero__ctas { animation-delay: 480ms; }
+.sl.sl-taste-skill .sl-hero__scan { animation-delay: 540ms; }
+.sl.sl-taste-skill .sl-hero__scan { font-size: 0.875rem; color: var(--sl-text-faint); }
+
+/* ---------- Sections: grounds part them, no gradients or overlays (layout-v4.md) ---------- */
+.sl.sl-taste-skill .sl-lead::before,
+.sl.sl-taste-skill .sl-demo::before { background: none; }
+.sl.sl-taste-skill .sl-decor--pattern { display: none; }
+.sl.sl-taste-skill .sl-section__title { font-size: var(--sl-h2-size); }
+.sl.sl-taste-skill .sl-section__lead {
+  font-size: var(--sl-lead-size);
+  line-height: 1.55;
+  color: var(--sl-text-muted);
+}
+
+/* ---------- Code pair: one window recipe, status as line fills ---------- */
+.sl.sl-taste-skill .sl-code {
+  border: 1px solid var(--sl-border);
+  border-radius: var(--sl-radius-lg);
+  background: var(--sl-code-bg);
+}
+.sl.sl-taste-skill .sl-code__bar {
+  padding: 0.625rem 1rem;
+  border-bottom: 1px solid var(--sl-border);
+  background: transparent;
+}
+.sl.sl-taste-skill .sl-code__label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--sl-text);
+}
+.sl.sl-taste-skill .sl-code__label::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  border-radius: 2px;
+  background: var(--sl-code-tone);
+  vertical-align: 0.05em;
+}
+.sl.sl-taste-skill .sl-code__file { font-family: var(--sl-font-mono); font-size: 0.8125rem; color: var(--sl-text-faint); }
+.sl.sl-taste-skill .sl-code__body { padding: 1rem 0; font-size: 0.8125rem; line-height: 1.75; }
+.sl.sl-taste-skill .sl-code__pre { padding-inline: 1rem; }
+.sl.sl-taste-skill .sl-tok--bad { color: #ff8f7d; }
+.sl.sl-taste-skill .sl-tok--good { color: #6fd9a2; }
+.sl.sl-taste-skill .sl-tok--dim { color: var(--sl-text-faint); }
+
+/* ---------- What Buoy catches: hairline list in place of a tinted box ---------- */
+.sl.sl-taste-skill .sl-catch__title { font-size: calc(var(--sl-h2-size) * 0.75); }
+.sl.sl-taste-skill .sl-catch__box {
+  padding: 1.5rem 0 0;
+  border: 0;
+  border-top: 1px solid var(--sl-border);
+  border-radius: 0;
+  background: none;
+  font-size: 0.9375rem;
+}
+.sl.sl-taste-skill .sl-catch__label { font-size: 0.8125rem; font-weight: 500; color: var(--sl-text-faint); }
+.sl.sl-taste-skill .sl-catch__mark {
+  width: 8px;
+  height: 8px;
+  margin-top: 0.5rem;
+  border-radius: 2px;
+  background: var(--sl-text);
+}
+.sl.sl-taste-skill .sl-catch__detail { font-family: var(--sl-font-mono); font-size: 0.8125rem; color: var(--sl-text-faint); }
+
+/* ---------- Lead capture ---------- */
+.sl.sl-taste-skill .sl-lead { border-block: 1px solid var(--sl-border); }
+.sl.sl-taste-skill .sl-lead__title { font-size: var(--sl-h2-size); line-height: 1.04; }
+.sl.sl-taste-skill .sl-pill {
+  border-radius: var(--sl-radius-sm);
+  background: transparent;
+  border-color: var(--sl-border);
+  color: var(--sl-text-muted);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+.sl.sl-taste-skill .sl-pill--success { color: var(--sl-success); border-color: color-mix(in srgb, var(--sl-success) 35%, transparent); }
+.sl.sl-taste-skill .sl-lead__note { color: var(--sl-text-faint); }
+.sl.sl-taste-skill .sl-input {
+  border: 1px solid color-mix(in srgb, #eff0f1 22%, transparent);
+  background: #121315;
+  color: var(--sl-text);
+  transition: border-color var(--sl-duration) var(--sl-ease);
+}
+.sl.sl-taste-skill .sl-input:hover { border-color: color-mix(in srgb, #eff0f1 40%, transparent); }
+.sl.sl-taste-skill .sl-input:focus { border-color: var(--sl-text); box-shadow: 0 0 0 1px var(--sl-text); }
+.sl.sl-taste-skill .sl-input::placeholder { color: var(--sl-text-faint); }
+.sl.sl-taste-skill .sl-doc {
+  transform: none; /* nothing tilts (motion.md) */
+  border-radius: var(--sl-radius-lg);
+  background: #eff0f1;
+  color: #18191b;
+  border-color: transparent;
+}
+.sl.sl-taste-skill .sl-doc:hover { transform: translateY(-2px); }
+.sl.sl-taste-skill .sl-doc__bar { border-bottom-color: color-mix(in srgb, #18191b 14%, transparent); }
+.sl.sl-taste-skill .sl-doc__name { font-family: var(--sl-font-mono); color: #5d6066; }
+.sl.sl-taste-skill .sl-doc__list { color: #3c3e43; font-size: 0.9375rem; }
+.sl.sl-taste-skill .sl-doc__box { border-color: #18191b; border-radius: 2px; }
+.sl.sl-taste-skill .sl-doc .sl-dot { opacity: 1; background: color-mix(in srgb, #18191b 22%, transparent); }
+
+/* ---------- Window chrome: no traffic-light dots, one window recipe ---------- */
+.sl.sl-taste-skill .sl-dot { border-radius: 2px; width: 0.625rem; height: 0.625rem; }
+.sl.sl-taste-skill .sl-terminal .sl-dot { background: color-mix(in srgb, #eff0f1 18%, transparent); }
+
+/* ---------- Terminal ---------- */
+.sl.sl-taste-skill .sl-terminal {
+  border-color: var(--sl-border);
+  background: var(--sl-code-bg);
+  box-shadow: var(--sl-shadow-lg);
+}
+.sl.sl-taste-skill .sl-terminal__bar { background: #121315; border-bottom-color: var(--sl-border); }
+.sl.sl-taste-skill .sl-terminal__name { font-family: var(--sl-font-display); font-size: 0.8125rem; color: var(--sl-text-faint); }
+.sl.sl-taste-skill .sl-terminal__body { font-size: 0.875rem; line-height: 1.75; }
+.sl.sl-taste-skill .sl-terminal__prompt { color: var(--sl-text-faint); }
+.sl.sl-taste-skill .sl-t--strong { font-weight: 500; }
+.sl.sl-taste-skill .sl-t--accent { color: var(--sl-text); }
+
+/* ---------- PR check: the one inverse band (sections.md, dark-band) ---------- */
+.sl.sl-taste-skill .sl-check {
+  background: #eff0f1;
+  --sl-text: #18191b;
+  --sl-text-muted: #3c3e43;
+  --sl-text-faint: #5d6066;
+  --sl-border: color-mix(in srgb, #18191b 14%, transparent);
+  --sl-accent-contrast: #18191b;
+  color: #18191b;
+}
+.sl.sl-taste-skill .sl-check .sl-section__title { color: #18191b; }
+.sl.sl-taste-skill .sl-pr {
+  border-radius: var(--sl-radius-lg);
+  font-family: var(--sl-font-display);
+  box-shadow: 0 40px 80px -40px rgb(0 0 0 / 0.45);
+}
+.sl.sl-taste-skill .sl-pr__head,
+.sl.sl-taste-skill .sl-pr__status,
+.sl.sl-taste-skill .sl-pr__row,
+.sl.sl-taste-skill .sl-pr__foot { padding: 1rem 1.25rem; }
+.sl.sl-taste-skill .sl-pr__name { font-weight: 500; letter-spacing: -0.01em; }
+.sl.sl-taste-skill .sl-pr__level {
+  border-radius: var(--sl-radius-sm);
+  font-family: var(--sl-font-mono);
+  font-size: 0.75rem;
+}
+.sl.sl-taste-skill .sl-pr__level--warn {
+  background: color-mix(in srgb, var(--sl-pr-warn) 15%, transparent);
+  color: var(--sl-pr-warn);
+}
+.sl.sl-taste-skill .sl-pr__file { font-size: 0.8125rem; }
+.sl.sl-taste-skill .sl-pr__msg { color: var(--sl-pr-text); }
+.sl.sl-taste-skill .sl-pr__code {
+  font-family: var(--sl-font-mono);
+  border-radius: var(--sl-radius-sm);
+  background: color-mix(in srgb, #eff0f1 8%, transparent);
+}
+.sl.sl-taste-skill .sl-pr__code--fix { background: color-mix(in srgb, var(--sl-pr-fix) 15%, transparent); }
+.sl.sl-taste-skill .sl-pr__by-name { font-weight: 500; }
+.sl.sl-taste-skill .sl-check .sl-pill { background: #fff; }
+.sl.sl-taste-skill .sl-check .sl-pill--success { color: #1f7a4d; border-color: color-mix(in srgb, #1f7a4d 35%, transparent); }
+
+/* ---------- Badges and tags: small square labels, sentence weight ---------- */
+.sl.sl-taste-skill .sl-badge {
+  border-radius: var(--sl-radius-sm);
+  background: transparent;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--sl-tone) 45%, transparent);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.0625rem 0.4375rem;
+}
+.sl.sl-taste-skill .sl-tag {
+  border-radius: var(--sl-radius-sm);
+  background: #222427;
+  border-color: var(--sl-border);
+  color: var(--sl-text);
+  font-family: var(--sl-font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.sl.sl-taste-skill .sl-tag--success { color: var(--sl-success); }
+.sl.sl-taste-skill .sl-tag--accent { color: var(--sl-accent); }
+
+/* ---------- Cards: one card style, linked ones lift 2px (motion.md) ---------- */
+.sl.sl-taste-skill .sl-card {
+  --sl-card-tone: var(--sl-border);
+  border-color: var(--sl-border);
+  border-radius: var(--sl-radius-lg);
+  background: var(--sl-surface);
+  transition:
+    border-color 180ms var(--sl-ease),
+    transform 180ms var(--sl-ease),
+    box-shadow 180ms var(--sl-ease);
+}
+.sl.sl-taste-skill .sl-card--warning,
+.sl.sl-taste-skill .sl-card--critical,
+.sl.sl-taste-skill .sl-card--info,
+.sl.sl-taste-skill .sl-card--core,
+.sl.sl-taste-skill .sl-card--hosted { --sl-card-tone: var(--sl-border); }
+.sl.sl-taste-skill .sl-card:has(a):hover {
+  --sl-card-tone: color-mix(in srgb, #eff0f1 30%, transparent);
+  border-color: color-mix(in srgb, #eff0f1 30%, transparent);
+  transform: translateY(-2px);
+  box-shadow: 0 24px 24px -24px rgb(0 0 0 / 0.5);
+}
+.sl.sl-taste-skill .sl-card:not(:has(a)):hover { --sl-card-tone: var(--sl-border); border-color: var(--sl-border); }
+.sl.sl-taste-skill .sl-card__title { font-weight: 500; letter-spacing: -0.02em; }
+.sl.sl-taste-skill .sl-card--drift .sl-card__title { font-size: 1.0625rem; }
+.sl.sl-taste-skill .sl-card__link:hover { color: var(--sl-text); }
+.sl.sl-taste-skill .sl-card__text { font-size: 0.9375rem; line-height: 1.55; }
+.sl.sl-taste-skill .sl-card--journey,
+.sl.sl-taste-skill .sl-card--plan { background: #222427; }
+.sl.sl-taste-skill .sl-card__kicker { font-size: 0.8125rem; }
+.sl.sl-taste-skill .sl-card--core .sl-card__kicker { color: var(--sl-success); }
+.sl.sl-taste-skill .sl-card--hosted .sl-card__kicker { color: var(--sl-text-faint); }
+.sl.sl-taste-skill .sl-card__foot { font-size: 0.8125rem; border-top-color: var(--sl-border); }
+.sl.sl-taste-skill .sl-card__foot .sl-link { font-weight: 400; }
+.sl.sl-taste-skill .sl-inline-code {
+  font-size: 0.875em;
+  color: var(--sl-text);
+  background: color-mix(in srgb, #eff0f1 9%, transparent);
+  padding: 1px 5px;
+  border-radius: var(--sl-radius-sm);
+}
+
+/* ---------- Lists: hairline rows, square markers in place of glyph ticks ---------- */
+.sl.sl-taste-skill .sl-list { font-size: 0.9375rem; color: var(--sl-text-muted); gap: 0; }
+.sl.sl-taste-skill .sl-list__item {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--sl-border);
+}
+.sl.sl-taste-skill .sl-list__item:first-child { border-top: 1px solid var(--sl-border); }
+.sl.sl-taste-skill .sl-list--check .sl-list__item::before,
+.sl.sl-taste-skill .sl-list--plus .sl-list__item::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  margin-top: 0.6em;
+  border-radius: 1px;
+  background: var(--sl-text-faint);
+}
+.sl.sl-taste-skill .sl-list--check .sl-list__item::before { background: var(--sl-success); }
+
+/* ---------- Steps ---------- */
+.sl.sl-taste-skill .sl-step__num {
+  border: 1px solid var(--sl-border);
+  border-radius: var(--sl-radius-lg);
+  background: #222427;
+  color: var(--sl-text);
+  font-family: var(--sl-font-mono);
+  font-size: 1rem;
+  font-weight: 500;
+}
+.sl.sl-taste-skill .sl-step__title { font-size: 1.5rem; font-weight: 500; letter-spacing: -0.03em; }
+.sl.sl-taste-skill .sl-step__cmd {
+  padding: 0.375rem 0.75rem;
+  border: 1px solid var(--sl-border);
+  border-radius: var(--sl-radius-sm);
+  background: #121315;
+  color: var(--sl-text);
+  font-size: 0.8125rem;
+}
+.sl.sl-taste-skill .sl-step__text { font-size: 0.9375rem; }
+
+/* ---------- Integrations: text chips, link hover ---------- */
+.sl.sl-taste-skill .sl-chip {
+  padding: 0.625rem 1.125rem;
+  border-color: var(--sl-border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--sl-text);
+  font-size: 0.9375rem;
+  transition:
+    border-color var(--sl-duration) var(--sl-ease),
+    background-color var(--sl-duration) var(--sl-ease),
+    transform var(--sl-duration) var(--sl-ease);
+}
+.sl.sl-taste-skill .sl-chip:hover {
+  border-color: color-mix(in srgb, #eff0f1 45%, transparent);
+  background: color-mix(in srgb, #eff0f1 6%, transparent);
+  transform: translateY(-1px);
+}
+
+/* ---------- Journey and AI ---------- */
+.sl.sl-taste-skill .sl-journey__path { font-size: 0.875rem; color: var(--sl-text-faint); }
+.sl.sl-taste-skill .sl-journey__stage--free { color: var(--sl-success); }
+.sl.sl-taste-skill .sl-journey__stage--app { color: var(--sl-text); }
+.sl.sl-taste-skill .sl-journey__stage--org { color: var(--sl-text-muted); }
+.sl.sl-taste-skill .sl-ai__note { font-size: 0.9375rem; }
+
+/* ---------- Footer ---------- */
+.sl.sl-taste-skill .sl-footer { background: #121315; border-top-color: var(--sl-border); font-size: 0.875rem; }
+.sl.sl-taste-skill .sl-footer__link {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  padding-bottom: 3px;
+  transition: color var(--sl-duration) var(--sl-ease), background-size var(--sl-duration) var(--sl-ease);
+}
+.sl.sl-taste-skill .sl-footer__link:hover { background-size: 100% 1px; }
+.sl.sl-taste-skill .sl-footer__sep { color: var(--sl-border); }
+
+/* ---------- Motion ---------- */
+@keyframes ts-rise {
+  from { transform: translateY(105%); }
+  to { transform: none; }
+}
+@keyframes ts-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sl.sl-taste-skill *,
+  .sl.sl-taste-skill *::before,
+  .sl.sl-taste-skill *::after { animation: none !important; transition: none !important; }
+  .sl.sl-taste-skill .sl-card:has(a):hover,
+  .sl.sl-taste-skill .sl-btn:hover,
+  .sl.sl-taste-skill .sl-doc:hover { transform: none; }
+}

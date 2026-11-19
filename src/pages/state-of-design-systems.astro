@@ -2,7 +2,8 @@
 import Layout from '../layouts/Layout.astro'
 import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
-import Button from '../components/Button.astro'
+import DocTerminal from '../components/DocTerminal.astro'
+import MarkPattern from '../components/MarkPattern.astro'
 
 const measures = [
   'Precision and false-positive rate by drift type',
@@ -17,53 +18,48 @@ const measures = [
   description="Buoy is building a transparent, manually reviewed benchmark for design-system drift detection and safe fixes."
 >
   <Nav />
-  <main>
-    <section class="relative pt-32 pb-20 overflow-hidden">
-      <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
-      <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div class="inline-flex items-center gap-2 px-3 py-1 bg-buoy/10 border border-buoy/30 rounded-full text-buoy text-sm mb-6">
-          Research in progress
+  <main id="main" class="ui-nav-offset">
+    <section class="ui-section ui-section--first ui-section--patterned">
+      <MarkPattern pattern="scan" drift={0.25} fade class="ui-pattern" />
+      <div class="ui-wrap">
+        <div class="ui-head ui-head--center">
+          <p class="ui-eyebrow">Research in progress</p>
+          <h1>A benchmark we can defend</h1>
+          <p>We are manually reviewing representative React, Tailwind, Vue, and monorepo projects before publishing accuracy or industry claims. Sample size, methodology, and limitations will ship with the results.</p>
         </div>
-        <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6">A benchmark we can defend</h1>
-        <p class="text-xl text-slate max-w-2xl mx-auto mb-8">
-          We are manually reviewing representative React, Tailwind, Vue, and monorepo projects before publishing accuracy or industry claims. Sample size, methodology, and limitations will ship with the results.
-        </p>
-        <Button href="https://github.com/ahoybuoy/buoy" external>Follow the open-source work →</Button>
-      </div>
-    </section>
-
-    <section class="py-20 bg-navy">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-2 gap-8 items-start">
-          <div>
-            <p class="text-buoy font-medium mb-3">What we will publish</p>
-            <h2 class="text-3xl font-bold text-light mb-4">Product evidence, not decorative statistics</h2>
-            <p class="text-slate">
-              Repository-scale crash coverage is useful, but it is not the same as ground-truth accuracy. The public benchmark will separate automated coverage checks from manually annotated findings.
-            </p>
-          </div>
-          <ul class="space-y-4">
-            {measures.map((measure) => (
-              <li class="flex items-start gap-3 bg-navy-dark border border-navy-light/20 rounded-xl p-5 text-slate">
-                <span class="text-buoy">◆</span>
-                <span>{measure}</span>
-              </li>
-            ))}
-          </ul>
+        <div class="ui-actions sd-center">
+          <a href="https://github.com/ahoybuoy/buoy" target="_blank" rel="noopener noreferrer" class="ui-btn ui-btn--primary">Follow the open-source work</a>
         </div>
       </div>
     </section>
 
-    <section class="py-20 bg-navy-dark">
-      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-3xl font-bold text-light mb-4">Evaluate your own codebase now</h2>
-        <p class="text-slate text-lg mb-8">Buoy can run locally today. Review the findings against your own design-system knowledge and tell us what is useful or noisy.</p>
-        <div class="bg-navy border border-navy-light/30 rounded-xl p-5 mb-8 text-left">
-          <code class="text-buoy">npx ahoybuoy show health</code>
+    <section class="ui-section ui-section--band">
+      <div class="ui-wrap ui-split">
+        <div class="ui-head">
+          <p class="ui-eyebrow">What we will publish</p>
+          <h2>Product evidence, not decorative statistics</h2>
+          <p>Repository-scale crash coverage is useful, but it is not the same as ground-truth accuracy. The public benchmark will separate automated coverage checks from manually annotated findings.</p>
         </div>
-        <Button href="/contact" variant="secondary">Share benchmark feedback</Button>
+        <ul class="ui-ruled ui-ruled--top">
+          {measures.map((m) => <li>{m}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <section class="ui-section ui-section--last">
+      <div class="ui-wrap ui-split">
+        <div class="ui-head">
+          <h2>Evaluate your own codebase now</h2>
+          <p>Buoy can run locally today. Review the findings against your own design-system knowledge and tell us what is useful or noisy.</p>
+          <div class="ui-actions"><a href="/contact" class="ui-btn ui-btn--secondary">Share benchmark feedback</a></div>
+        </div>
+        <DocTerminal command="npx ahoybuoy show health" />
       </div>
     </section>
   </main>
   <Footer />
 </Layout>
+
+<style>
+  .sd-center { justify-content: center; }
+</style>

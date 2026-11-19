@@ -265,10 +265,10 @@ buoy drift check --type spacing --severity high`} language="bash" />
   <p>Each fix suggestion includes a confidence score indicating how safe it is to apply:</p>
 
   <Flags items={[
-    { name: "exact", description: "100% — Value exactly matches a design token — safest to auto-apply" },
-    { name: "high", description: "95-99% — Very close match, safe to auto-apply" },
-    { name: "medium", description: "70-94% — Close match, review recommended" },
-    { name: "low", description: "<70% — Ambiguous, manual review required" },
+    { name: "exact", description: "100%: Value exactly matches a design token, safest to auto-apply" },
+    { name: "high", description: "95-99%: Very close match, safe to auto-apply" },
+    { name: "medium", description: "70-94%: Close match, review recommended" },
+    { name: "low", description: "<70%: Ambiguous, manual review required" },
   ]} />
 
   <p>By default, <code>--apply</code> only applies <code>high</code> and <code>exact</code> confidence fixes.</p>
@@ -376,7 +376,7 @@ buoy drift ignore add --component "OldButton" --value "#333"`} language="bash" /
 
   <Flags items={[
     { name: "1. Promote", description: "Conditional severity upgrades. Matches drift by type, file, component, token, or value and elevates severity (e.g. warning → critical)." },
-    { name: "2. Enforce", description: "Unconditional critical. Overrides any promote result. If enforce matches, the drift is critical — no negotiation." },
+    { name: "2. Enforce", description: "Unconditional critical. Overrides any promote result. If enforce matches, the drift is critical. No negotiation." },
     { name: "3. Ignore", description: "The escape hatch. Ignored drift is excluded entirely, even if promoted or enforced." },
   ]} />
 
@@ -415,7 +415,7 @@ buoy drift ignore add --component "OldButton" --value "#333"`} language="bash" /
   <h2>Related</h2>
 
   <ul>
-    <li><a href="/docs/cli/show">buoy show</a> — View drift signals, health, and history</li>
-    <li><a href="/docs/cli/dock">buoy dock</a> — Setup tokens, graph, and project config</li>
+    <li><a href="/docs/cli/show">buoy show</a>: View drift signals, health, and history</li>
+    <li><a href="/docs/cli/dock">buoy dock</a>: Setup tokens, graph, and project config</li>
   </ul>
 </DocsLayout>

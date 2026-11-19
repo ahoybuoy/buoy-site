@@ -27,26 +27,26 @@ const successMessages: Record<string, string> = {
 }
 ---
 
-<div class={`bg-gradient-to-r from-buoy/10 to-lavender/10 border border-buoy/20 rounded-xl p-6 sm:p-8 ${className}`}>
-  <div class="flex flex-col lg:flex-row lg:items-center gap-6">
-    <div class="flex-1">
-      <div class="inline-flex items-center gap-2 px-2 py-1 bg-buoy/20 rounded text-buoy text-xs font-medium mb-3">
-        Free PDF
-      </div>
-      <h3 class="text-xl font-bold text-light mb-2">
-        {headline}
-      </h3>
-      <p class="text-slate text-sm">
-        {subhead}
-      </p>
-    </div>
-    <div class="lg:w-80">
-      <LeadMagnetForm
-        leadMagnet={leadMagnet}
-        buttonText={buttonText}
-        successMessage={successMessages[leadMagnet]}
-      />
-      <p class="text-xs text-slate/60 mt-2">No spam. Unsubscribe anytime.</p>
-    </div>
+<aside class={`ui-card ui-card--pad lm-callout ${className}`}>
+  <div class="lm-callout-copy">
+    <p class="ui-eyebrow">Free PDF</p>
+    <h3>{headline}</h3>
+    <p class="lm-callout-sub">{subhead}</p>
   </div>
-</div>
+  <div class="lm-callout-form">
+    <LeadMagnetForm
+      leadMagnet={leadMagnet}
+      buttonText={buttonText}
+      successMessage={successMessages[leadMagnet]}
+    />
+    <p class="ui-note">No spam. Unsubscribe anytime.</p>
+  </div>
+</aside>
+
+<style>
+  .lm-callout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 22rem); gap: 32px; align-items: center; }
+  .lm-callout h3 { margin: 0; font-size: 1.25rem; line-height: 1.25; letter-spacing: -0.015em; color: var(--color-ink); }
+  .lm-callout-sub { margin: 8px 0 0; font-size: 15px; color: var(--color-body); }
+  .lm-callout .ui-note { margin-top: 10px; font-size: 13px; }
+  @media (max-width: 860px) { .lm-callout { grid-template-columns: minmax(0, 1fr); gap: 20px; } }
+</style>

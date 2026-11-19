@@ -1,6 +1,5 @@
 ---
 import FeatureLayout from '../../layouts/FeatureLayout.astro'
-import FeatureCard from '../../components/FeatureCard.astro'
 import LeadMagnetCallout from '../../components/LeadMagnetCallout.astro'
 
 const ciProviders = [
@@ -13,39 +12,15 @@ const ciProviders = [
 ]
 
 const outputFormats = [
-  {
-    format: 'CLI (default)',
-    description: 'Human-readable output for terminal',
-    flag: '--format cli'
-  },
-  {
-    format: 'JSON',
-    description: 'Machine-readable for custom integrations',
-    flag: '--format json'
-  },
-  {
-    format: 'JUnit XML',
-    description: 'For CI systems that parse JUnit reports',
-    flag: '--format junit'
-  },
-  {
-    format: 'SARIF',
-    description: 'For GitHub Code Scanning',
-    flag: '--format sarif'
-  },
+  { format: 'CLI (default)', description: 'Human-readable output for terminal', flag: '--format cli' },
+  { format: 'JSON', description: 'Machine-readable for custom integrations', flag: '--format json' },
+  { format: 'JUnit XML', description: 'For CI systems that parse JUnit reports', flag: '--format junit' },
+  { format: 'SARIF', description: 'For GitHub Code Scanning', flag: '--format sarif' },
 ]
 
 const relatedFeatures = [
-  {
-    title: 'GitHub App',
-    description: 'Automatic PR reviews',
-    href: '/features/github-action'
-  },
-  {
-    title: 'Drift Detection',
-    description: 'What CI is checking for',
-    href: '/features/drift-detection'
-  },
+  { title: 'GitHub App', description: 'Automatic PR reviews', href: '/features/github-action' },
+  { title: 'Drift Detection', description: 'What CI is checking for', href: '/features/drift-detection' },
 ]
 ---
 
@@ -55,138 +30,136 @@ const relatedFeatures = [
   keywords="design system ci cd, component library checks, automated design review"
   heroTitle="Design System CI/CD Checks"
   heroDescription="Add drift detection to any CI pipeline. Block PRs, generate reports, and enforce design system compliance automatically."
+  exampleCaption="Critical drift fails the job with exit code 1."
+  related={relatedFeatures}
+  pattern="tide"
+  ctaPattern="pulse"
 >
-  <!-- AI-Free Badge -->
-  <div slot="hero-extra" class="flex justify-center mt-8">
-    <div class="inline-flex items-center gap-3 px-5 py-3 bg-navy border border-success/30 rounded-xl">
-      <div class="flex items-center gap-2">
-        <span class="text-success text-lg">🔒</span>
-        <span class="text-success font-semibold">100% Deterministic</span>
-      </div>
-      <span class="text-slate-dark">|</span>
-      <span class="text-slate text-sm">No AI. No API keys. No data sent externally.</span>
-    </div>
+  <p slot="hero-extra" class="fx-hero-note"><strong>100% deterministic.</strong> No AI. No API keys. No data sent externally.</p>
+
+  <div slot="example" class="ui-term fx-term">
+    <div class="ui-term-bar"><span>CI · design-drift</span></div>
+    <pre><span class="ui-t-prompt">$</span> <span class="ui-t-hi">npx ahoybuoy drift check --fail-on critical</span>
+
+<span class="ui-t-crit">CRITICAL</span>  Button.tsx:12  Missing aria-label
+          <span class="ui-t-ok">→ Fix: Add aria-label=&#123;buttonText&#125;</span>
+<span class="ui-t-warn">WARNING</span>   Card.tsx:8     Hardcoded <span class="ui-t-crit">#ffffff</span> <span class="ui-t-dim">→</span> <span class="ui-t-ok">var(--color-bg)</span>
+
+<span class="ui-t-crit">✗ Critical drift found. Exiting with code 1.</span>
+<span class="ui-t-dim">Error: Process completed with exit code 1.</span></pre>
   </div>
 
-  <!-- Quick Example -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Works with Any CI</h2>
-
-      <div class="bg-navy border border-navy-light/30 rounded-xl overflow-hidden mb-8">
-        <div class="px-4 py-3 bg-navy-dark border-b border-navy-light/20">
-          <span class="text-sm text-slate font-mono">Basic CI command</span>
-        </div>
-        <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{`# Run drift check in CI mode
+  <section class="ui-section">
+    <div class="ui-wrap ui-split">
+      <div>
+        <div class="ui-head"><h2>Works with any CI</h2><p>One command. The exit code decides the merge.</p></div>
+        <div class="ui-tray fx-block">
+          <div class="ui-panel">
+            <div class="ui-panel-head"><span class="ui-mono">Basic CI command</span></div>
+            <pre class="fx-pre"><span class="c"># Run drift check in CI mode</span>{`
 npx ahoybuoy drift check
 
-# Exit codes:
-# 0 = No critical drift
-# 1 = Critical drift found (blocks merge)
-# 2 = Error running scan`}</code></pre>
-      </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {ciProviders.map((provider) => (
-          <div class="bg-navy/50 border border-navy-light/20 rounded-lg p-4">
-            <h3 class="font-semibold text-light mb-2">{provider.name}</h3>
-            <code class="text-xs text-slate-dark break-all">{provider.example}</code>
+`}<span class="c"># Exit codes:</span>{`
+`}<span class="c"># </span><span class="s">0</span><span class="c"> = No critical drift</span>{`
+`}<span class="c"># </span><del>1</del><span class="c"> = Critical drift found (blocks merge)</span>{`
+`}<span class="c"># 2 = Error running scan</span></pre>
           </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Output Formats -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Output Formats</h2>
-
-      <div class="space-y-4">
-        {outputFormats.map((format) => (
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-4 flex items-center justify-between">
-            <div>
-              <h3 class="font-semibold text-light">{format.format}</h3>
-              <p class="text-sm text-slate">{format.description}</p>
-            </div>
-            <code class="text-sm text-buoy bg-navy px-3 py-1 rounded">{format.flag}</code>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Fail Thresholds -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Failure Thresholds</h2>
-
-      <div class="bg-navy border border-navy-light/30 rounded-xl overflow-hidden">
-        <div class="px-4 py-3 bg-navy-dark border-b border-navy-light/20">
-          <span class="text-sm text-slate font-mono">Configure when to fail</span>
         </div>
-        <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{`# Fail on any critical issues (recommended)
-npx ahoybuoy drift check --fail-on critical
+      </div>
+      <table class="ui-table fx-table">
+        <caption class="ui-sr">CI providers and commands</caption>
+        <thead><tr><th scope="col">Provider</th><th scope="col">Command</th></tr></thead>
+        <tbody>
+          {ciProviders.map((p) => <tr><th scope="row">{p.name}</th><td><code>{p.example}</code></td></tr>)}
+        </tbody>
+      </table>
+    </div>
+  </section>
 
-# Fail on warnings too (stricter)
-npx ahoybuoy drift check --fail-on warning
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>Output formats</h2></div>
+      <table class="ui-table ui-table--stack fx-block">
+        <caption class="ui-sr">Output formats and flags</caption>
+        <thead><tr><th scope="col">Format</th><th scope="col">Use</th><th scope="col" class="ui-end">Flag</th></tr></thead>
+        <tbody>
+          {outputFormats.map((f) => (
+            <tr><th scope="row">{f.format}</th><td>{f.description}</td><td class="ui-end"><code class="ui-code">{f.flag}</code></td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
 
-# Never fail, just report (audit mode)
-npx ahoybuoy drift check --fail-on none
+  <section class="ui-section">
+    <div class="ui-wrap ui-split">
+      <div class="ui-head">
+        <h2>Failure thresholds</h2>
+        <p>Fail on <span class="ui-sev ui-sev-critical">critical</span> issues, on <span class="ui-sev ui-sev-warning">warnings</span> too, or never, and set custom counts per severity.</p>
+      </div>
+      <div class="ui-tray">
+        <div class="ui-panel">
+          <div class="ui-panel-head"><span class="ui-mono">Configure when to fail</span></div>
+          <pre class="fx-pre"><span class="c"># Fail on any critical issues (recommended)</span>{`
+npx ahoybuoy drift check --fail-on `}<span class="k">critical</span>{`
 
-# Custom thresholds
+`}<span class="c"># Fail on warnings too (stricter)</span>{`
+npx ahoybuoy drift check --fail-on `}<span class="k">warning</span>{`
+
+`}<span class="c"># Never fail, just report (audit mode)</span>{`
+npx ahoybuoy drift check --fail-on `}<span class="k">none</span>{`
+
+`}<span class="c"># Custom thresholds</span>{`
 npx ahoybuoy drift check \\
-  --max-critical 0 \\
-  --max-warning 10 \\
-  --max-info 50`}</code></pre>
-      </div>
-    </div>
-  </section>
-
-  <!-- Health Score Gate -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Health Score Gate</h2>
-
-      <p class="text-slate text-center mb-8 max-w-2xl mx-auto">
-        Set a minimum health score in your config. No CLI flags needed — <code class="text-xs text-lavender bg-navy-dark/50 px-1.5 py-0.5 rounded">buoy drift check</code> exits with code 1 when the score drops below your threshold.
-      </p>
-
-      <div class="bg-navy-dark border border-navy-light/30 rounded-xl overflow-hidden mb-8">
-        <div class="px-4 py-3 bg-navy border-b border-navy-light/20">
-          <span class="text-sm text-slate font-mono">.buoy.yaml</span>
-        </div>
-        <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{`# Config-based gate — no flags required
-health:
-  failBelow: 70    # Exit code 1 if health score < 70`}</code></pre>
-      </div>
-
-      <div class="bg-navy-dark/50 border border-navy-light/20 rounded-xl p-6">
-        <h3 class="font-semibold text-light mb-3">Config gate vs CLI flags</h3>
-        <div class="grid sm:grid-cols-2 gap-4 text-sm">
-          <div>
-            <div class="text-buoy font-medium mb-1">health.failBelow (config)</div>
-            <p class="text-slate">Lives in <code class="text-xs text-lavender">.buoy.yaml</code>. Enforced automatically. Same threshold everywhere — local, CI, every developer.</p>
-          </div>
-          <div>
-            <div class="text-buoy font-medium mb-1">--fail-on (CLI flag)</div>
-            <p class="text-slate">Per-invocation. Threshold based on severity counts. Use alongside the health gate for layered CI gating.</p>
-          </div>
+  --max-critical `}<span class="s">0</span>{` \\
+  --max-warning `}<span class="s">10</span>{` \\
+  --max-info `}<span class="s">50</span></pre>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- GitHub Actions Example -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Full GitHub Actions Example</h2>
-
-      <div class="bg-navy-dark border border-navy-light/30 rounded-xl overflow-hidden">
-        <div class="px-4 py-3 bg-navy border-b border-navy-light/20">
-          <span class="text-sm text-slate font-mono">.github/workflows/design-drift.yml</span>
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
+      <div class="ui-head ui-head--center">
+        <h2>Health score gate</h2>
+        <p>Set a minimum health score in your config. No CLI flags needed: <code class="ui-code">buoy drift check</code> exits with code 1 when the score drops below your threshold.</p>
+      </div>
+      <dl class="ci-gate" aria-label="Example: a score of 68 against a threshold of 70 fails the check">
+        <div><dt>Health score</dt><dd class="ui-c-crit ui-tnum">68</dd></div>
+        <div><dt>failBelow</dt><dd class="ui-tnum">70</dd></div>
+        <div><dt>Exit code</dt><dd class="ui-c-crit ui-tnum">1</dd></div>
+      </dl>
+      <div class="ui-tray fx-block ci-gate-yaml">
+        <div class="ui-panel">
+          <div class="ui-panel-head"><span class="ui-mono">.buoy.yaml</span></div>
+          <pre class="fx-pre"><span class="c"># Config-based gate, no flags required</span>{`
+`}<span class="k">health:</span>{`
+  failBelow: `}<span class="s">70</span>{`    `}<span class="c"># Exit code 1 if health score &lt; 70</span></pre>
         </div>
-        <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{`name: Design Drift Check
+      </div>
+      <div class="ui-cols">
+        <div class="ui-col">
+          <h3 class="ui-mono">health.failBelow</h3>
+          <p class="ui-col-sub ui-c-buoy">Config</p>
+          <p>Lives in <code class="ui-code">.buoy.yaml</code>. Enforced automatically. Same threshold everywhere: local, CI, every developer.</p>
+        </div>
+        <div class="ui-col">
+          <h3 class="ui-mono">--fail-on</h3>
+          <p class="ui-col-sub ui-c-buoy">CLI flag</p>
+          <p>Per-invocation. Threshold based on severity counts. Use alongside the health gate for layered CI gating.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>Full GitHub Actions example</h2></div>
+      <div class="ui-tray fx-block">
+        <div class="ui-panel">
+          <div class="ui-panel-head"><span class="ui-mono">.github/workflows/design-drift.yml</span></div>
+          <pre class="fx-pre">{`name: Design Drift Check
 on:
   pull_request:
     branches: [main]
@@ -206,21 +179,21 @@ jobs:
         run: npm ci
 
       - name: Run Buoy drift check
-        run: npx ahoybuoy drift check --fail-on critical
-        # Also respects health.failBelow from .buoy.yaml
+        run: `}<span class="s">npx ahoybuoy drift check --fail-on critical</span>{`
+        `}<span class="c"># Also respects health.failBelow from .buoy.yaml</span>{`
 
       - name: Upload SARIF (optional)
         if: always()
         uses: github/codeql-action/upload-sarif@v3
         with:
-          sarif_file: buoy-results.sarif`}</code></pre>
+          sarif_file: buoy-results.sarif`}</pre>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Lead Magnet: PR Review Cheatsheet -->
-  <section class="py-12">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap fx-narrow">
       <LeadMagnetCallout
         leadMagnet="pr-review-cheatsheet"
         headline="Setting up CI? Get the PR review cheat sheet."
@@ -229,15 +202,14 @@ jobs:
       />
     </div>
   </section>
-
-  <!-- Related Features -->
-  <div slot="related" class="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-    {relatedFeatures.map((feature) => (
-      <FeatureCard
-        title={feature.title}
-        description={feature.description}
-        href={feature.href}
-      />
-    ))}
-  </div>
 </FeatureLayout>
+
+<style>
+  .ci-gate { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 48px auto 0; max-width: 720px; border-top: 1px solid var(--color-line-strong); }
+  .ci-gate > div { padding: 20px 8px 0; text-align: center; }
+  .ci-gate > div + div { border-left: 1px solid var(--color-line); }
+  .ci-gate dt { font-size: 13px; color: var(--color-muted); }
+  .ci-gate dd { margin: 6px 0 0; font-family: var(--font-display); font-weight: 700; font-size: clamp(2.5rem, 2rem + 2vw, 3.5rem); line-height: 1; color: var(--color-ink); }
+  .ci-gate dd.ui-c-crit { color: var(--color-crit); }
+  .ci-gate-yaml { max-width: 720px; margin-inline: auto; }
+</style>

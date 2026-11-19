@@ -238,7 +238,7 @@ output:
 
   <p>
     Enforce rules set matching drift to critical unconditionally. Unlike promote, enforce rules have
-    no <code>severity</code> filter and no <code>to</code> field — the result is always critical.
+    no <code>severity</code> filter and no <code>to</code> field, so the result is always critical.
   </p>
 
   <pre><code>drift:
@@ -265,7 +265,7 @@ output:
   failBelow: 70    # Exit code 1 if health score &lt; 70</code></pre>
 
   <p>
-    This is config-based — no CLI flags required. Pairs well with <code>--fail-on</code> for
+    This is config-based. No CLI flags required. Pairs well with <code>--fail-on</code> for
     layered CI gating. The <code>--json</code> output includes a <code>health</code> object with
     <code>score</code>, <code>threshold</code>, and <code>passed</code> fields when configured.
   </p>
@@ -323,8 +323,8 @@ const legacyStyles = &#123;
   <h2>Related</h2>
 
   <ul>
-    <li><a href="/docs/cli/dock">buoy dock config</a> — Generate config automatically</li>
-    <li><a href="/docs/cli/dock#tokens">buoy dock tokens import</a> — Import design tokens</li>
-    <li><a href="/docs/integrations/github-actions">GitHub App</a> — CI configuration</li>
+    <li><a href="/docs/cli/dock">buoy dock config</a>: Generate config automatically</li>
+    <li><a href="/docs/cli/dock#tokens">buoy dock tokens import</a>: Import design tokens</li>
+    <li><a href="/docs/integrations/github-actions">GitHub App</a>: CI configuration</li>
   </ul>
 </DocsLayout>

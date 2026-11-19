@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro'
 import Nav from '../../components/Nav.astro'
 import Footer from '../../components/Footer.astro'
+import MarkPattern from '../../components/MarkPattern.astro'
 ---
 
 <Layout
@@ -10,40 +11,30 @@ import Footer from '../../components/Footer.astro'
 >
   <Nav />
 
-  <section class="relative pt-32 pb-16 overflow-hidden min-h-[60vh] flex items-center">
-    <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
-
-    <div class="relative max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="inline-flex items-center justify-center w-16 h-16 bg-success/20 border border-success/30 rounded-full mb-6">
-        <svg class="w-8 h-8 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-        </svg>
+  <main id="main" class="ui-nav-offset">
+    <section class="ui-section ui-section--first ui-section--last ui-section--patterned ok-section">
+      <MarkPattern pattern="pulse" drift={0.3} fade class="ui-pattern" />
+      <div class="ui-wrap">
+        <div class="ui-head ui-head--center">
+          <p class="ui-eyebrow ui-c-ok">Subscribed</p>
+          <h1>You're on the list</h1>
+          <p class="ui-lede">
+            We'll email you with updates. You don't need to wait for us: the first 100 GitHub App installs are free for life, so install it from GitHub Marketplace whenever you're ready.
+          </p>
+        </div>
+        <div class="ui-actions ok-actions">
+          <a href="/" class="ui-btn ui-btn--secondary ui-btn--lg">Back to Home</a>
+          <a href="https://github.com/ahoybuoy/buoy" class="ui-btn ui-btn--primary ui-btn--lg">Try the Free CLI</a>
+        </div>
       </div>
-
-      <h1 class="text-3xl sm:text-4xl font-bold text-light mb-4">
-        You're on the list
-      </h1>
-
-      <p class="text-lg text-slate mb-8 max-w-lg mx-auto">
-        We'll email you with updates. You don't need to wait for us: the first 100 GitHub App installs are free for life, so install it from GitHub Marketplace whenever you're ready.
-      </p>
-
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a
-          href="/"
-          class="px-6 py-3 bg-navy-dark border border-navy-light/30 text-light rounded-lg hover:border-buoy/50 transition-colors"
-        >
-          Back to Home
-        </a>
-        <a
-          href="https://github.com/ahoybuoy/buoy"
-          class="px-6 py-3 bg-buoy text-navy-dark font-semibold rounded-lg hover:bg-buoy/90 transition-colors"
-        >
-          Try the Free CLI
-        </a>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <Footer />
 </Layout>
+
+<style>
+  .ok-section { min-height: 60vh; display: flex; align-items: center; }
+  .ok-section > .ui-wrap { width: 100%; }
+  .ok-actions { justify-content: center; margin-top: 32px; }
+</style>

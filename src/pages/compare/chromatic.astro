@@ -1,12 +1,11 @@
 ---
-import BuoyMark from '../../components/BuoyMark.astro'
 import CompareLayout from '../../layouts/CompareLayout.astro'
 
 const comparison = [
   { aspect: 'What it detects', chromatic: 'Visual changes in Storybook', buoy: 'Structural drift in code' },
   { aspect: 'Scope', chromatic: 'Components with stories', buoy: 'Entire codebase' },
   { aspect: 'Detection method', chromatic: 'Screenshot comparison', buoy: 'Code analysis' },
-  { aspect: 'Hardcoded values', chromatic: 'Not detected', buoy: 'Detected + suggestions' },
+  { aspect: 'Hardcoded values', chromatic: 'Not detected', buoy: 'Detected with suggestions' },
   { aspect: 'Duplicate components', chromatic: 'Not detected', buoy: 'Semantic detection' },
   { aspect: 'Token coverage', chromatic: 'Not tracked', buoy: 'Full metrics' },
   { aspect: 'Requires Storybook', chromatic: 'Yes', buoy: 'No (optional integration)' },
@@ -18,124 +17,97 @@ const comparison = [
   title="Buoy vs Chromatic | Structural vs Visual Drift Detection"
   description="Chromatic catches visual regressions in Storybook. Buoy scans your entire codebase for structural design drift."
   keywords="chromatic alternative, visual regression alternative, design system testing"
-  heroTitle="Visual Regression vs Structural Drift"
+  heroTitle="Storybook Snapshots vs Codebase-Wide Drift"
   heroDescription="Chromatic catches visual changes. Buoy catches structural drift. Different problems, different solutions."
   competitor="Chromatic"
 >
-  <!-- Key Difference -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-4">Chromatic Answers:</h3>
-          <p class="text-lg text-slate italic">
-            "Did the visual appearance of my Storybook components change?"
-          </p>
-          <ul class="mt-4 space-y-2 text-sm text-slate">
-            <li>• Screenshot-based comparison</li>
-            <li>• Requires Storybook stories</li>
-            <li>• Great for catching visual regressions</li>
+  <div slot="hero" class="ui-tray"><div class="ui-panel">
+    <div class="ui-panel-head">Button.tsx</div>
+    <pre class="hf-code"><code><span class="ui-t-dim">// before</span>
+background: <span class="ui-token">var(--primary)</span>;
+<span class="ui-t-dim">// after</span>
+background: <span class="ui-old">#3b82f6</span>;</code></pre>
+    <dl class="hf-rows">
+      <div><dt>Chromatic</dt><dd class="hf-them">Snapshot unchanged. Both render the same blue.</dd></div>
+      <div><dt class="ui-c-buoy">Buoy</dt><dd><span class="ui-sev ui-sev-warning">Warning</span> Hardcoded value, use <span class="ui-token">var(--primary)</span></dd></div>
+    </dl>
+  </div></div>
+
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-cols">
+        <article class="ui-col">
+          <h3>Chromatic answers</h3>
+          <p class="ui-col-sub">"Did the visual appearance of my Storybook components change?"</p>
+          <ul class="ui-ruled">
+            <li>Screenshot-based comparison</li>
+            <li>Requires Storybook stories</li>
+            <li>Great for catching visual regressions</li>
           </ul>
-        </div>
-
-        <div class="bg-navy/50 border border-buoy/30 rounded-xl p-6">
-          <h3 class="font-semibold text-buoy mb-4">Buoy Answers:</h3>
-          <p class="text-lg text-slate italic">
-            "Is my codebase following the design system?"
-          </p>
-          <ul class="mt-4 space-y-2 text-sm text-slate">
-            <li>• Code analysis</li>
-            <li>• Works on any codebase</li>
-            <li>• Great for catching design drift</li>
+        </article>
+        <article class="ui-col">
+          <h3 class="ui-c-buoy">Buoy answers</h3>
+          <p class="ui-col-sub">"Is my codebase following the design system?"</p>
+          <ul class="ui-ruled">
+            <li>Code analysis</li>
+            <li>Works on any codebase</li>
+            <li>Great for catching design drift</li>
           </ul>
-        </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- Comparison Table -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Feature Comparison</h2>
-
-      <div class="bg-navy-dark border border-navy-light/30 rounded-xl overflow-hidden">
-        <div class="grid grid-cols-3 bg-navy border-b border-navy-light/20">
-          <div class="p-4 font-semibold text-slate">Feature</div>
-          <div class="p-4 font-semibold text-slate border-l border-navy-light/20">Chromatic</div>
-          <div class="p-4 font-semibold text-buoy border-l border-navy-light/20">Buoy</div>
-        </div>
-
-        {comparison.map((row, index) => (
-          <div class={`grid grid-cols-3 ${index % 2 === 0 ? 'bg-navy/30' : ''}`}>
-            <div class="p-4 text-light">{row.aspect}</div>
-            <div class="p-4 text-slate border-l border-navy-light/20">{row.chromatic}</div>
-            <div class="p-4 text-success border-l border-navy-light/20">{row.buoy}</div>
-          </div>
-        ))}
-      </div>
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>Feature comparison</h2></div>
+      <table class="ui-table cmp-table mt-10">
+        <thead><tr><th scope="col">Aspect</th><th scope="col">Chromatic</th><th scope="col" class="cmp-buoy">Buoy</th></tr></thead>
+        <tbody>
+          {comparison.map((row) => (
+            <tr><th scope="row">{row.aspect}</th><td class="cmp-them">{row.chromatic}</td><td class="cmp-buoy">{row.buoy}</td></tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   </section>
 
-  <!-- When Buoy Catches What Chromatic Misses -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">What Chromatic Misses</h2>
-
-      <div class="space-y-4">
-        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-4">
-          <h3 class="font-semibold text-light mb-2">Components Without Stories</h3>
-          <p class="text-sm text-slate">
-            If a component doesn't have a Storybook story, Chromatic can't see it.
-            Buoy scans your entire codebase, stories or not.
-          </p>
-        </div>
-
-        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-4">
-          <h3 class="font-semibold text-light mb-2">Hardcoded Values That Look Right</h3>
-          <p class="text-sm text-slate">
-            <code class="text-warning">#3b82f6</code> and <code class="text-success">var(--primary)</code> might render identically.
-            Chromatic sees them as the same. Buoy knows one is a problem.
-          </p>
-        </div>
-
-        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-4">
-          <h3 class="font-semibold text-light mb-2">Duplicate Implementations</h3>
-          <p class="text-sm text-slate">
-            Button and ButtonNew might look identical in screenshots.
-            Buoy identifies them as duplicates that should be consolidated.
-          </p>
-        </div>
-      </div>
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>What Chromatic misses</h2></div>
+      <ul class="ui-ruled ui-ruled--top cmp-list">
+        <li><strong>Components without stories.</strong> If a component doesn't have a Storybook story, Chromatic can't see it. Buoy scans your entire codebase, stories or not.</li>
+        <li><strong>Duplicate implementations.</strong> Button and ButtonNew might look identical in screenshots. Buoy identifies them as duplicates that should be consolidated.</li>
+      </ul>
     </div>
   </section>
 
-  <!-- Use Together -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-2xl font-bold text-light mb-4">Better Together</h2>
-      <p class="text-slate mb-8 max-w-2xl mx-auto">
-        Chromatic and Buoy solve different problems. Use Chromatic to catch visual regressions.
-        Use Buoy to ensure structural consistency with your design system.
-      </p>
-
-      <div class="inline-flex flex-col sm:flex-row gap-4">
-        <div class="bg-navy-dark border border-navy-light/20 rounded-lg p-4 text-center">
-          <div class="text-2xl mb-2">📸</div>
-          <div class="text-sm text-slate">Chromatic</div>
-          <div class="text-xs text-slate-dark">Visual regression</div>
-        </div>
-        <div class="text-2xl text-slate self-center">+</div>
-        <div class="bg-navy-dark border border-buoy/30 rounded-lg p-4 text-center">
-          <div class="mb-2"><BuoyMark size={24} /></div>
-          <div class="text-sm text-light">Buoy</div>
-          <div class="text-xs text-slate-dark">Structural drift</div>
-        </div>
-        <div class="text-2xl text-slate self-center">=</div>
-        <div class="bg-navy-dark border border-success/30 rounded-lg p-4 text-center">
-          <div class="text-2xl mb-2">✨</div>
-          <div class="text-sm text-success">Complete coverage</div>
-        </div>
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
+      <div class="ui-head">
+        <h2>Better together</h2>
+        <p>Chromatic and Buoy solve different problems. Use Chromatic to catch visual regressions. Use Buoy to ensure structural consistency with your design system.</p>
+      </div>
+      <div class="ui-cols ui-cols--3">
+        <article class="ui-col"><h3>Chromatic</h3><p class="ui-col-sub">Visual regression</p></article>
+        <article class="ui-col"><h3 class="ui-c-buoy">Buoy</h3><p class="ui-col-sub">Structural drift</p></article>
+        <article class="ui-col"><h3 class="ui-c-ok">Together</h3><p class="ui-col-sub">Complete coverage</p></article>
       </div>
     </div>
   </section>
 </CompareLayout>
+
+<style>
+  .cmp-list > li { color: var(--color-body); max-width: 760px; }
+  .cmp-list strong { color: var(--color-ink); }
+</style>
+
+<style is:global>
+  .hf-code { margin: 0; padding: 18px 20px; font-size: 13px; line-height: 1.7; background: var(--color-term); color: var(--color-body); }
+  .hf-rows { margin: 0; border-top: 1px solid var(--color-line); }
+  .hf-rows > div { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; padding: 13px 20px; border-bottom: 1px solid var(--color-line); font-size: 14px; line-height: 1.5; }
+  .hf-rows > div:last-child { border-bottom: 0; }
+  .hf-rows dt { font-weight: 600; color: var(--color-ink); }
+  .hf-rows dd { margin: 0; color: var(--color-ink); }
+  .hf-rows dd.hf-them { color: var(--color-muted); }
+</style>

@@ -1,465 +1,174 @@
 ---
-import BuoyMark from '../../components/BuoyMark.astro'
-import Layout from '../../layouts/Layout.astro'
-import Nav from '../../components/Nav.astro'
-import Footer from '../../components/Footer.astro'
-import Button from '../../components/Button.astro'
+import CompareLayout from '../../layouts/CompareLayout.astro'
 
 const models = [
-  { name: 'Claude Sonnet 4.5', correctnessBefore: '3/5', correctnessAfter: '5/5', hallucinatedBefore: true, hallucinatedAfter: false },
-  { name: 'Claude Haiku 4.5', correctnessBefore: '2/5', correctnessAfter: '5/5', hallucinatedBefore: true, hallucinatedAfter: false },
-  { name: 'GPT-4o', correctnessBefore: '0/5', correctnessAfter: '5/5', hallucinatedBefore: true, hallucinatedAfter: false },
-  { name: 'GPT-4o-mini', correctnessBefore: '1/5', correctnessAfter: '5/5', hallucinatedBefore: true, hallucinatedAfter: false },
+  { name: 'Claude Sonnet 4.5', correctnessBefore: '3/5', correctnessAfter: '5/5' },
+  { name: 'Claude Haiku 4.5', correctnessBefore: '2/5', correctnessAfter: '5/5' },
+  { name: 'GPT-4o', correctnessBefore: '0/5', correctnessAfter: '5/5' },
+  { name: 'GPT-4o-mini', correctnessBefore: '1/5', correctnessAfter: '5/5' },
 ]
 
 const stats = [
-  { value: '4', label: 'Leading LLMs tested', sub: 'Claude & GPT families' },
-  { value: '100%', label: 'Hallucinated on clean PRs', sub: 'Every model, every time' },
-  { value: '0%', label: 'Hallucinations with Buoy', sub: 'Scanner-verified output' },
-  { value: '5/5', label: 'Correctness with Buoy', sub: 'Across all 4 models' },
+  { value: '4', label: 'Leading LLMs tested', sub: 'Claude and GPT families', tone: '' },
+  { value: '100%', label: 'Hallucinated on clean PRs', sub: 'Every model, every time', tone: 'ui-c-crit' },
+  { value: '0%', label: 'Hallucinations with Buoy', sub: 'Scanner-verified output', tone: 'ui-c-ok' },
+  { value: '5/5', label: 'Correctness with Buoy', sub: 'Across all 4 models', tone: 'ui-c-ok' },
+]
+
+const llmIssues = [
+  { sev: 'critical', word: 'Error', file: 'Card.tsx', line: 'line 112', note: 'file is 61 lines', text: 'Hardcoded color', value: '#f9fafb', fix: 'Use a design token instead' },
+  { sev: 'critical', word: 'Error', file: 'Card.tsx', line: 'line 34', note: '', text: 'Hardcoded spacing', value: '16px', fix: 'Replace with var(--spacing-md)' },
+  { sev: 'warning', word: 'Warn', file: 'Badge.tsx', line: 'line 7', note: '', text: 'Non-standard border radius', value: '6px', fix: 'Should use var(--radius-sm)' },
 ]
 ---
 
-<Layout
+<CompareLayout
   title="LLM Code Review Hallucinations | Why Buoy Uses Deterministic Scanning"
-  description="We tested 4 leading LLMs reviewing clean PRs. Every one hallucinated design system violations that didn't exist. Buoy's deterministic scanner eliminates false positives."
+  description="We tested 4 leading LLMs reviewing clean PRs. Every one hallucinated design system issues that didn't exist. Buoy's deterministic scanner eliminates false positives."
   keywords="llm code review, ai hallucination, design system review, deterministic scanning, buoy vs ai review"
+  heroTitle="Your design system deserves facts, not hallucinations."
+  heroDescription="We tested every major AI code reviewer on a clean PR with zero design system issues. Every single one invented problems that didn't exist."
+  competitor="LLM Code Review"
 >
-  <Nav />
+  <div slot="hero" class="ui-tray"><div class="ui-panel">
+    <div class="ui-panel-head">Card.tsx, a clean 61-line file</div>
+    <pre class="hf-code"><code>background: <span class="ui-token">var(--color-gray-50)</span>;</code></pre>
+    <dl class="hf-rows">
+      <div><dt class="ui-c-crit">LLM only</dt><dd><span class="ui-sev ui-sev-critical">Error</span> Hardcoded color <span class="ui-old">#f9fafb</span> at line 112 <span class="hf-them">(the file is 61 lines)</span></dd></div>
+      <div><dt class="ui-c-ok">Buoy</dt><dd><span class="ui-c-ok">No design system issues found.</span> <span class="hf-them">0 false positives.</span></dd></div>
+    </dl>
+  </div></div>
 
-  <!-- Hero -->
-  <section class="relative pt-32 pb-20 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
-
-    <!-- Subtle grid pattern -->
-    <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22><line x1=%220%22 y1=%2240%22 x2=%2240%22 y2=%2240%22 stroke=%22white%22 stroke-width=%220.5%22/><line x1=%2240%22 y1=%220%22 x2=%2240%22 y2=%2240%22 stroke=%22white%22 stroke-width=%220.5%22/></svg>');"></div>
-
-    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="inline-flex items-center px-4 py-2 rounded-full bg-critical/10 border border-critical/30 mb-8">
-        <span class="text-sm text-critical font-medium">Based on real testing across 4 leading LLMs</span>
-      </div>
-
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-light mb-6 leading-tight">
-        Your design system deserves
-        <br />
-        <span class="text-gradient-sunrise">facts, not hallucinations.</span>
-      </h1>
-
-      <p class="text-lg sm:text-xl text-slate max-w-2xl mx-auto mb-10">
-        We tested every major AI code reviewer on a clean PR with zero design system issues.
-        Every single one invented problems that didn't exist.
-      </p>
-
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <Button href="/demo" size="lg">
-          Try Buoy free
-        </Button>
-        <Button href="#results" variant="secondary" size="lg">
-          See the data
-        </Button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Side-by-Side: LLM vs Buoy on the same clean PR -->
-  <section class="py-20 bg-navy-dark">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-2xl sm:text-3xl font-bold text-light mb-4">
-          Same PR. Same code. Very different reviews.
-        </h2>
-        <p class="text-slate">
-          A clean PR using <code class="text-buoy bg-navy px-2 py-0.5 rounded text-sm">var(--color-gray-50)</code> correctly. Zero real issues.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-6">
-        <!-- LLM-Only Review -->
-        <div class="bg-[#0d1117] border border-[#f8514940] rounded-lg overflow-hidden">
-          <div class="px-4 py-3 bg-[#f8514910] border-b border-[#f8514930] flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-[#f85149]" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"/>
-              </svg>
-              <span class="text-sm font-semibold text-[#f85149]">LLM-Only Review</span>
-            </div>
-            <span class="text-xs text-[#f85149]/60 font-mono">ai-reviewer[bot]</span>
-          </div>
-
-          <div class="divide-y divide-[#30363d]">
-            <!-- Hallucinated issue 1 -->
-            <div class="px-4 py-3">
-              <div class="flex items-start gap-3">
-                <div class="mt-0.5">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-[#f8514926] text-[#f85149] border border-[#f8514940]">
-                    error
-                  </span>
-                </div>
-                <div class="flex-1 min-w-0">
-                  <div class="flex items-center gap-2 mb-1">
-                    <span class="text-[#58a6ff] text-sm font-mono">Card.tsx</span>
-                    <span class="text-[#8b949e] text-sm">line 112</span>
-                    <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-medium bg-[#f8514915] text-[#f85149]/70 border border-[#f8514920]">
-                      file is 61 lines
-                    </span>
-                  </div>
-                  <p class="text-[#c9d1d9] text-sm">Hardcoded color <code class="px-1.5 py-0.5 bg-[#161b22] rounded text-[#f85149] text-xs">#f9fafb</code></p>
-                  <p class="text-[#8b949e] text-sm">Use a design token instead</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Hallucinated issue 2 -->
-            <div class="px-4 py-3">
-              <div class="flex items-start gap-3">
-                <div class="mt-0.5">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-[#f8514926] text-[#f85149] border border-[#f8514940]">
-                    error
-                  </span>
-                </div>
-                <div class="flex-1 min-w-0">
-                  <div class="flex items-center gap-2 mb-1">
-                    <span class="text-[#58a6ff] text-sm font-mono">Card.tsx</span>
-                    <span class="text-[#8b949e] text-sm">line 34</span>
-                  </div>
-                  <p class="text-[#c9d1d9] text-sm">Hardcoded spacing <code class="px-1.5 py-0.5 bg-[#161b22] rounded text-[#f85149] text-xs">16px</code></p>
-                  <p class="text-[#8b949e] text-sm">Replace with var(--spacing-md)</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Hallucinated issue 3 -->
-            <div class="px-4 py-3">
-              <div class="flex items-start gap-3">
-                <div class="mt-0.5">
-                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-[#d2992226] text-[#d29922] border border-[#d2992240]">
-                    warn
-                  </span>
-                </div>
-                <div class="flex-1 min-w-0">
-                  <div class="flex items-center gap-2 mb-1">
-                    <span class="text-[#58a6ff] text-sm font-mono">Badge.tsx</span>
-                    <span class="text-[#8b949e] text-sm">line 7</span>
-                  </div>
-                  <p class="text-[#c9d1d9] text-sm">Non-standard border radius <code class="px-1.5 py-0.5 bg-[#161b22] rounded text-[#d29922] text-xs">6px</code></p>
-                  <p class="text-[#8b949e] text-sm">Should use var(--radius-sm)</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="px-4 py-3 bg-[#161b22] border-t border-[#30363d]">
-            <div class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-[#f85149]" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M2.343 13.657A8 8 0 1113.657 2.343 8 8 0 012.343 13.657zM6.03 4.97a.751.751 0 00-1.042.018.751.751 0 00-.018 1.042L6.94 8 4.97 9.97a.749.749 0 00.326 1.275.749.749 0 00.734-.215L8 9.06l1.97 1.97a.749.749 0 001.275-.326.749.749 0 00-.215-.734L9.06 8l1.97-1.97a.749.749 0 00-.326-1.275.749.749 0 00-.734.215L8 6.94 6.03 4.97z"/>
-              </svg>
-              <span class="text-[#f85149] text-sm font-medium">3 issues found</span>
-              <span class="text-[#484f58] text-xs ml-auto">None are real</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Buoy Review -->
-        <div class="bg-[#0d1117] border border-[#3fb95040] rounded-lg overflow-hidden">
-          <div class="px-4 py-3 bg-[#3fb95010] border-b border-[#3fb95030] flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-[#3fb950]" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.751.751 0 01.018-1.042.751.751 0 011.042-.018L6 10.94l6.72-6.72a.75.75 0 011.06 0z"/>
-              </svg>
-              <span class="text-sm font-semibold text-[#3fb950]">Buoy Review</span>
-            </div>
-            <span class="text-xs text-[#3fb950]/60 font-mono">buoy[bot]</span>
-          </div>
-
-          <div class="px-4 py-8 flex flex-col items-center justify-center min-h-[240px]">
-            <div class="w-16 h-16 rounded-full bg-[#3fb95015] border-2 border-[#3fb95040] flex items-center justify-center mb-4">
-              <svg class="w-8 h-8 text-[#3fb950]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-            </div>
-            <p class="text-[#3fb950] font-semibold mb-2">No design system violations found</p>
-            <p class="text-[#8b949e] text-sm text-center max-w-xs">
-              Scanner verified: all colors use tokens, spacing follows scale, components match patterns.
-            </p>
-          </div>
-
-          <div class="px-4 py-3 bg-[#161b22] border-t border-[#30363d]">
-            <div class="flex items-center gap-2">
-              <svg class="w-4 h-4 text-[#3fb950]" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 16A8 8 0 108 0a8 8 0 000 16zm3.78-9.72a.751.751 0 00-.018-1.042.751.751 0 00-1.042.018L6.75 9.23 5.28 7.72a.751.751 0 00-1.042.018.751.751 0 00-.018 1.042l2 2a.75.75 0 001.06 0l4.5-4.5z"/>
-              </svg>
-              <span class="text-[#3fb950] text-sm font-medium">All checks passed</span>
-              <span class="text-[#484f58] text-xs ml-auto">0 false positives</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Annotation -->
-      <div class="mt-6 text-center">
-        <p class="text-sm text-slate-dark">
-          The LLM claimed <code class="text-critical/80 bg-navy px-1.5 py-0.5 rounded text-xs">#f9fafb</code> existed at line 112.
-          The file was 61 lines long, and the actual code used <code class="text-success/80 bg-navy px-1.5 py-0.5 rounded text-xs">var(--color-gray-50)</code>.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Stats Strip -->
-  <section id="results" class="py-16 bg-navy relative overflow-hidden">
-    <!-- Accent line -->
-    <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-buoy/50 to-transparent"></div>
-
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-        {stats.map((stat) => (
-          <div class="text-center">
-            <div class="text-3xl sm:text-4xl font-bold text-light mb-1 font-mono">{stat.value}</div>
-            <div class="text-sm text-slate font-medium mb-1">{stat.label}</div>
-            <div class="text-xs text-slate-dark">{stat.sub}</div>
+  <section id="results" class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>Same PR. Same code. Very different reviews.</h2><p>Four leading LLMs reviewed a clean PR using <code class="ui-token">var(--color-gray-50)</code> correctly. Zero real issues.</p></div>
+      <div class="llm-stats">
+        {stats.map((s) => (
+          <div class="llm-stat">
+            <p class={`llm-num ui-tnum ${s.tone}`}>{s.value}</p>
+            <p class="llm-label">{s.label}</p>
+            <p class="ui-note">{s.sub}</p>
           </div>
         ))}
       </div>
     </div>
-
-    <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-buoy/50 to-transparent"></div>
   </section>
 
-  <!-- How Buoy Works -->
-  <section class="py-20 bg-navy-dark">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-2xl sm:text-3xl font-bold text-light mb-4">
-          How Buoy eliminates hallucinations
-        </h2>
-        <p class="text-slate max-w-2xl mx-auto">
-          The LLM never decides what's wrong. It only explains what the scanner already found.
-        </p>
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
+      <div class="ui-head">
+        <h2>How Buoy eliminates hallucinations</h2>
+        <p>The LLM never decides what's wrong. It only explains what the scanner already found.</p>
       </div>
-
-      <div class="relative">
-        <!-- Connection line -->
-        <div class="hidden md:block absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-buoy/20 via-buoy/40 to-buoy/20 -translate-y-1/2"></div>
-
-        <div class="grid md:grid-cols-3 gap-6 relative">
-          <!-- Step 1 -->
-          <div class="bg-navy/50 border border-buoy/20 rounded-xl p-6 text-center relative">
-            <div class="w-10 h-10 rounded-full bg-buoy/20 border-2 border-buoy text-buoy font-bold flex items-center justify-center mx-auto mb-4 text-lg">
-              1
-            </div>
-            <h3 class="font-semibold text-light mb-2">Scanner finds real issues</h3>
-            <p class="text-sm text-slate">
-              Deterministic analysis. Exact file, exact line, exact value. No guessing, no probability.
-            </p>
-            <div class="mt-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-success/10 border border-success/20 text-xs text-success">
-              <span>100% deterministic</span>
-            </div>
-          </div>
-
-          <!-- Step 2 -->
-          <div class="bg-navy/50 border border-buoy/20 rounded-xl p-6 text-center relative">
-            <div class="w-10 h-10 rounded-full bg-buoy/20 border-2 border-buoy text-buoy font-bold flex items-center justify-center mx-auto mb-4 text-lg">
-              2
-            </div>
-            <h3 class="font-semibold text-light mb-2">LLM explains findings</h3>
-            <p class="text-sm text-slate">
-              The AI gets scanner output as context — not raw diffs. It explains why each issue matters and how to fix it.
-            </p>
-            <div class="mt-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-lavender/10 border border-lavender/20 text-xs text-lavender">
-              <span>Constrained by facts</span>
-            </div>
-          </div>
-
-          <!-- Step 3 -->
-          <div class="bg-navy/50 border border-buoy/20 rounded-xl p-6 text-center relative">
-            <div class="w-10 h-10 rounded-full bg-buoy/20 border-2 border-buoy text-buoy font-bold flex items-center justify-center mx-auto mb-4 text-lg">
-              3
-            </div>
-            <h3 class="font-semibold text-light mb-2">Developer gets one-click fixes</h3>
-            <p class="text-sm text-slate">
-              Every suggestion is verified against your actual token definitions. Copy, paste, done.
-            </p>
-            <div class="mt-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-buoy/10 border border-buoy/20 text-xs text-buoy">
-              <span>Verified replacements</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Key insight callout -->
-      <div class="mt-10 bg-navy/60 border border-navy-light/20 rounded-xl p-6">
-        <div class="flex items-start gap-4">
-          <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-buoy/10 flex items-center justify-center">
-            <span style="display:inline-flex;line-height:0"><BuoyMark size={20} /></span>
-          </div>
-          <div>
-            <h4 class="text-light font-semibold mb-1">The key insight</h4>
-            <p class="text-slate text-sm">
-              LLMs are great at explaining code. They're terrible at auditing it. Buoy uses each for what it's good at: the scanner audits, the LLM explains. The result is zero hallucinations and clear, actionable feedback.
-            </p>
-          </div>
-        </div>
+      <ol class="ui-steps">
+        <li><span class="ui-step-n">1</span><div><h3>Scanner finds real issues <span class="ui-c-ok llm-tag">100% deterministic</span></h3><p>Deterministic analysis. Exact file, exact line, exact value. No guessing, no probability.</p></div></li>
+        <li><span class="ui-step-n">2</span><div><h3>LLM explains findings <span class="ui-c-lavender llm-tag">Constrained by facts</span></h3><p>The AI gets scanner output as context, not raw diffs. It explains why each issue matters and how to fix it.</p></div></li>
+        <li><span class="ui-step-n">3</span><div><h3>Developer gets one-click fixes <span class="ui-c-buoy llm-tag">Verified replacements</span></h3><p>Every suggestion is verified against your actual token definitions. Copy, paste, done.</p></div></li>
+      </ol>
+      <div class="ui-card ui-card--pad">
+        <h3 class="llm-h3">The key insight</h3>
+        <p>LLMs are great at explaining code. They're terrible at auditing it. Buoy uses each for what it's good at: the scanner audits, the LLM explains. The result is zero hallucinations and clear, actionable feedback.</p>
       </div>
     </div>
   </section>
 
-  <!-- Why LLMs hallucinate on code review -->
-  <section class="py-20 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-2xl sm:text-3xl font-bold text-light mb-4">
-          Why do LLMs invent issues on clean code?
-        </h2>
-        <p class="text-slate max-w-2xl mx-auto">
-          It's not a bug — it's how they work.
-        </p>
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head">
+        <h2>Why do LLMs invent issues on clean code?</h2>
+        <p>It's not a bug. It's how they work.</p>
       </div>
-
-      <div class="grid sm:grid-cols-2 gap-6">
-        <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6">
-          <div class="text-xl mb-3">🎯</div>
-          <h3 class="font-semibold text-light mb-2">Task-completion bias</h3>
-          <p class="text-sm text-slate">
-            When you ask an LLM to "review this PR for design system violations," it wants to be helpful. If the code is clean, it will find something anyway — because saying "nothing's wrong" doesn't feel like completing the task.
-          </p>
-        </div>
-
-        <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6">
-          <div class="text-xl mb-3">🔮</div>
-          <h3 class="font-semibold text-light mb-2">Pattern hallucination</h3>
-          <p class="text-sm text-slate">
-            LLMs have seen millions of code reviews that found issues. They're pattern-matching against that history. A diff that "looks like" it might have a hardcoded color? The model will confidently assert it does.
-          </p>
-        </div>
-
-        <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6">
-          <div class="text-xl mb-3">🗺️</div>
-          <h3 class="font-semibold text-light mb-2">No source of truth</h3>
-          <p class="text-sm text-slate">
-            An LLM reviewing a diff doesn't know your token definitions. It doesn't know that <code class="text-buoy bg-navy px-1 py-0.5 rounded text-xs">var(--color-gray-50)</code> is valid in your system. It's guessing based on the diff alone.
-          </p>
-        </div>
-
-        <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6">
-          <div class="text-xl mb-3">📍</div>
-          <h3 class="font-semibold text-light mb-2">Line number fabrication</h3>
-          <p class="text-sm text-slate">
-            LLMs generate text sequentially. Line numbers are just tokens to them — not verified positions. That's how one model referenced "line 112" in a 61-line file.
-          </p>
-        </div>
-      </div>
+      <table class="ui-table ui-table--stack mt-8">
+        <tbody>
+          <tr><th scope="row">Task-completion bias</th><td>When you ask an LLM to "review this PR for design system issues," it wants to be helpful. If the code is clean, it will find something anyway, because saying "nothing's wrong" doesn't feel like completing the task.</td></tr>
+          <tr><th scope="row">Pattern hallucination</th><td>LLMs have seen millions of code reviews that found issues. They're pattern-matching against that history. A diff that "looks like" it might have a hardcoded color? The model will confidently assert it does.</td></tr>
+          <tr><th scope="row">No source of truth</th><td>An LLM reviewing a diff doesn't know your token definitions. It doesn't know that <code class="ui-token">var(--color-gray-50)</code> is valid in your system. It's guessing based on the diff alone.</td></tr>
+          <tr><th scope="row">Line number fabrication</th><td>LLMs generate text sequentially. Line numbers are just tokens to them, not verified positions. That's how one model referenced "line 112" in a 61-line file.</td></tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
-  <!-- Model Scorecard -->
-  <section class="py-20 bg-navy-dark">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
-        <h2 class="text-2xl sm:text-3xl font-bold text-light mb-4">
-          Model-by-model results
-        </h2>
-        <p class="text-slate max-w-2xl mx-auto">
-          Correctness scores reviewing the same clean PR — before and after Buoy's scanner is the source of truth.
-        </p>
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
+      <div class="ui-head">
+        <h2>Model-by-model results</h2>
+        <p>Correctness scores reviewing the same clean PR, before and after Buoy's scanner is the source of truth.</p>
       </div>
-
-      <div class="bg-navy/50 border border-navy-light/30 rounded-xl overflow-hidden">
-        <!-- Table header -->
-        <div class="grid grid-cols-5 bg-navy border-b border-navy-light/20 text-sm">
-          <div class="p-4 font-semibold text-slate col-span-1">Model</div>
-          <div class="p-4 font-semibold text-slate text-center">Hallucinated?</div>
-          <div class="p-4 font-semibold text-slate text-center">Correctness</div>
-          <div class="p-4 font-semibold text-buoy text-center">With Buoy</div>
-          <div class="p-4 font-semibold text-buoy text-center">Correctness</div>
-        </div>
-
-        {models.map((model, index) => (
-          <div class={`grid grid-cols-5 items-center ${index % 2 === 0 ? 'bg-navy/30' : ''} ${index < models.length - 1 ? 'border-b border-navy-light/10' : ''}`}>
-            <div class="p-4 text-light text-sm font-medium">{model.name}</div>
-            <div class="p-4 text-center">
-              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-critical/20 text-critical border border-critical/30">
-                Yes
-              </span>
-            </div>
-            <div class="p-4 text-center">
-              <span class={`font-mono text-sm font-bold ${model.correctnessBefore === '0/5' ? 'text-critical' : model.correctnessBefore === '1/5' ? 'text-critical/80' : 'text-warning'}`}>
-                {model.correctnessBefore}
-              </span>
-            </div>
-            <div class="p-4 text-center">
-              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-success/20 text-success border border-success/30">
-                No
-              </span>
-            </div>
-            <div class="p-4 text-center">
-              <span class="font-mono text-sm font-bold text-success">{model.correctnessAfter}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <!-- Callout -->
-      <div class="mt-6 bg-success/5 border border-success/20 rounded-xl p-4 flex items-start gap-3">
-        <span class="text-success text-lg mt-0.5">&#x2191;</span>
-        <p class="text-sm text-slate">
-          <strong class="text-light">GPT-4o scored 0/5 without Buoy</strong> — it claimed hex values like <code class="text-critical bg-navy px-1 py-0.5 rounded text-xs">#f9fafb</code> existed at specific lines when the actual code used <code class="text-success bg-navy px-1 py-0.5 rounded text-xs">var(--color-gray-50)</code>. With Buoy as the source of truth, it scored 5/5.
-        </p>
-      </div>
+      <table class="ui-table cmp-table mt-10">
+        <thead>
+          <tr><th scope="col">Model</th><th scope="col">LLM only</th><th scope="col" class="cmp-buoy">With Buoy</th></tr>
+        </thead>
+        <tbody>
+          {models.map((m) => (
+            <tr>
+              <th scope="row">{m.name}</th>
+              <td class="cmp-them"><span class={`llm-score ui-tnum ${m.correctnessBefore === '0/5' || m.correctnessBefore === '1/5' ? 'ui-c-crit' : 'ui-c-warn'}`}>{m.correctnessBefore}</span></td>
+              <td class="cmp-buoy"><span class="llm-score ui-tnum ui-c-ok">{m.correctnessAfter}</span></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="ui-note mt-4">Every model <span class="ui-c-crit">hallucinated</span> issues on its own. With Buoy's scanner as the source of truth, <span class="ui-c-ok">none did</span>.</p>
+      <p class="ui-after mt-8"><strong>GPT-4o scored 0/5 without Buoy.</strong> It claimed hex values like <code class="ui-old">#f9fafb</code> existed at specific lines when the actual code used <code class="ui-token">var(--color-gray-50)</code>. With Buoy as the source of truth, it scored 5/5.</p>
     </div>
   </section>
 
-  <!-- We're not anti-AI -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-navy-dark border border-lavender/20 rounded-xl p-8">
-        <div class="flex items-start gap-4">
-          <div class="flex-shrink-0 text-3xl">✨</div>
-          <div>
-            <h3 class="text-xl font-bold text-light mb-3">We're not anti-AI. We use AI.</h3>
-            <p class="text-slate mb-4">
-              Buoy's optional AI layer uses Claude to generate natural-language explanations and context-aware suggestions. The difference is that our AI is constrained by deterministic scanner output.
-            </p>
-            <div class="grid sm:grid-cols-2 gap-4 text-sm">
-              <div class="flex items-start gap-2">
-                <span class="text-critical mt-0.5">&#x2717;</span>
-                <span class="text-slate"><strong class="text-light">LLM-only:</strong> Give the model a diff and hope for the best</span>
-              </div>
-              <div class="flex items-start gap-2">
-                <span class="text-success mt-0.5">&#x2713;</span>
-                <span class="text-slate"><strong class="text-light">Buoy:</strong> Scanner finds facts, AI explains them clearly</span>
-              </div>
-            </div>
-          </div>
-        </div>
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head">
+        <h2>We're not anti-AI. We use AI.</h2>
+        <p>Buoy's optional AI layer uses Claude to generate natural-language explanations and context-aware suggestions. The difference is that our AI is constrained by deterministic scanner output.</p>
       </div>
+      <table class="ui-table ui-table--stack mt-8">
+        <tbody>
+          <tr><th scope="row" class="ui-c-crit">LLM-only</th><td>Give the model a diff and hope for the best</td></tr>
+          <tr><th scope="row" class="ui-c-ok">Buoy</th><td>Scanner finds facts, AI explains them clearly</td></tr>
+        </tbody>
+      </table>
+      <p class="ui-after mt-8">Stop reviewing hallucinated issues. Buoy is free, open source, and runs in under a minute: <code class="ui-code">npx ahoybuoy dock</code></p>
     </div>
   </section>
+</CompareLayout>
 
-  <!-- CTA -->
-  <section class="py-20 bg-navy-dark">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl sm:text-4xl font-bold text-light mb-4">
-        Stop reviewing hallucinated issues.
-      </h2>
-      <p class="text-lg text-slate mb-8 max-w-xl mx-auto">
-        Buoy is free, open source, and runs in under a minute. Your design system gets facts, not fiction.
-      </p>
+<style>
+  .llm-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 20px; }
+  .llm-col { display: flex; flex-direction: column; height: 100%; }
+  .llm-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-weight: 600; }
+  .llm-bot { color: var(--color-muted); font-weight: 400; font-size: 12px; }
+  .llm-list { list-style: none; margin: 0; padding: 0; }
+  .llm-list > li { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 12px; padding: 14px 18px; border-bottom: 1px solid var(--color-line); font-size: 14px; }
+  .llm-list p { margin: 0; }
+  .llm-loc { color: var(--color-muted); }
+  .llm-text { color: var(--color-ink); margin-top: 2px !important; }
+  .llm-fix { color: var(--color-muted); }
+  .llm-foot { display: flex; justify-content: space-between; gap: 12px; padding: 12px 18px; font-size: 13px; color: var(--color-muted); background: var(--color-raised); margin-top: auto; }
+  .llm-clean { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px 24px; min-height: 220px; font-size: 14px; color: var(--color-muted); }
+  .llm-clean p { margin: 0; max-width: 300px; }
+  .llm-clean-h { font-weight: 600; font-size: 16px; margin-bottom: 8px !important; }
+  .llm-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 40px; border-top: 1px solid var(--color-line-strong); }
+  .llm-stat { padding: 24px 24px 0; border-left: 1px solid var(--color-line); }
+  .llm-stat:first-child { padding-left: 0; border-left: 0; }
+  .llm-stat p { margin: 0; }
+  .llm-num { font-family: var(--font-display); font-size: 44px; line-height: 1.1; font-weight: 700; color: var(--color-ink); }
+  .llm-label { margin-top: 8px !important; color: var(--color-ink); font-weight: 600; font-size: 15px; }
+  .llm-score { font-family: var(--font-display); font-size: 22px; font-weight: 700; }
+  .llm-tag { margin-left: 8px; font-size: 13px; font-weight: 500; }
+  .llm-h3 { margin: 0 0 8px; font-size: var(--text-h3); color: var(--color-ink); }
+  @media (max-width: 760px) {
+    .llm-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .llm-stat { padding: 20px 16px 16px; border-left: 0; border-bottom: 1px solid var(--color-line); }
+    .llm-stat:nth-child(odd) { padding-left: 0; }
+    .llm-tag { display: block; margin: 2px 0 0; }
+  }
+</style>
 
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-        <Button href="/demo" size="lg">
-          Try Buoy free
-        </Button>
-        <Button href="/docs" variant="secondary" size="lg">
-          Read the docs
-        </Button>
-      </div>
-
-      <div class="inline-flex items-center gap-3 px-4 py-3 bg-navy/80 border border-navy-light/30 rounded-lg font-mono text-sm">
-        <span class="text-slate">$</span>
-        <code class="text-light">npx ahoybuoy dock</code>
-      </div>
-    </div>
-  </section>
-
-  <Footer />
-</Layout>
+<style is:global>
+  .hf-code { margin: 0; padding: 18px 20px; font-size: 13px; line-height: 1.7; background: var(--color-term); color: var(--color-body); }
+  .hf-rows { margin: 0; border-top: 1px solid var(--color-line); }
+  .hf-rows > div { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; padding: 13px 20px; border-bottom: 1px solid var(--color-line); font-size: 14px; line-height: 1.5; }
+  .hf-rows > div:last-child { border-bottom: 0; }
+  .hf-rows dt { font-weight: 600; color: var(--color-ink); }
+  .hf-rows dd { margin: 0; color: var(--color-ink); }
+  .hf-rows .hf-them { color: var(--color-muted); }
+</style>

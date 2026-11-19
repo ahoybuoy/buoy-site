@@ -23,25 +23,32 @@ const painPoints = [
 ]
 
 const metrics = [
-  { label: 'Component Coverage', value: '47%', change: '+12% this month' },
-  { label: 'Token Adoption', value: '63%', change: '+8% this month' },
-  { label: 'Drift Signals', value: '23', change: '-15 from last week' },
-  { label: 'Teams Onboarded', value: '4/6', change: '+1 this sprint' },
+  { label: 'Component coverage', value: '47%', change: '+12% this month' },
+  { label: 'Token adoption', value: '63%', change: '+8% this month' },
+  { label: 'Drift signals', value: '23', change: '-15 from last week' },
+  { label: 'Teams onboarded', value: '4/6', change: '+1 this sprint' },
 ]
 
 const terminalLines = [
   { text: '', delay: 600 },
-  { text: '<span class="text-light font-semibold">Design System Coverage</span>', type: 'output', delay: 800 },
+  { text: '<span class="ui-t-hi">Design System Coverage</span>', type: 'output', delay: 800 },
   { text: '═══════════════════════════════════════', type: 'muted', delay: 1000 },
   { text: '', delay: 1200 },
-  { text: 'Components: <span class="text-warning">47%</span> ████████░░░░░░░░░░', type: 'output', delay: 1400 },
-  { text: 'Tokens:     <span class="text-success">63%</span> ████████████░░░░░░', type: 'output', delay: 1600 },
-  { text: 'Overall:    <span class="text-warning">52%</span> ██████████░░░░░░░░', type: 'output', delay: 1800 },
+  { text: 'Components: <span class="ui-t-warn">47%</span> ████████░░░░░░░░░░', type: 'output', delay: 1400 },
+  { text: 'Tokens:     <span class="ui-t-ok">63%</span> ████████████░░░░░░', type: 'output', delay: 1600 },
+  { text: 'Overall:    <span class="ui-t-warn">52%</span> ██████████░░░░░░░░', type: 'output', delay: 1800 },
   { text: '', delay: 2000 },
-  { text: '<span class="text-slate">By Source:</span>', type: 'output', delay: 2200 },
-  { text: '├─ src/components/    <span class="text-success">78%</span> ███████████████░', type: 'output', delay: 2400 },
-  { text: '├─ src/features/      <span class="text-warning">34%</span> ██████░░░░░░░░░', type: 'warning', delay: 2600 },
-  { text: '└─ src/pages/         <span class="text-critical">23%</span> ████░░░░░░░░░░░', type: 'critical', delay: 2800 },
+  { text: '<span class="ui-t-dim">By Source:</span>', type: 'output', delay: 2200 },
+  { text: '├─ src/components/    <span class="ui-t-ok">78%</span> ███████████████░', type: 'output', delay: 2400 },
+  { text: '├─ src/features/      <span class="ui-t-warn">34%</span> ██████░░░░░░░░░', type: 'warning', delay: 2600 },
+  { text: '└─ src/pages/         <span class="ui-t-crit">23%</span> ████░░░░░░░░░░░', type: 'critical', delay: 2800 },
+]
+
+const groups = [
+  { title: 'Adoption metrics', items: ['Percentage of components using design system', 'Token coverage across the codebase', 'Per-directory and per-team breakdowns', 'Trend tracking over time'] },
+  { title: 'Drift detection', items: ['Find hardcoded values that bypass tokens', 'Detect duplicate component implementations', 'Track deprecated component usage', 'Catch naming inconsistencies'] },
+  { title: 'CI/CD integration', items: ['Automatic checks on every PR', 'Block merges with critical drift', 'PR comments with drift reports', 'GitHub App ready to use'] },
+  { title: 'ROI reporting', items: ['Before/after adoption comparisons', 'Time saved from reduced drift', 'Team adoption leaderboards', 'Executive-ready dashboards'] },
 ]
 ---
 
@@ -51,111 +58,66 @@ const terminalLines = [
   keywords="design system adoption, design system metrics, design system ROI"
   heroTitle="Design System Teams"
   heroDescription="Measure design system adoption without manual audits. Track which teams use components, see coverage trends, and prove ROI."
-  icon="🎨"
 >
-  <!-- Pain Points -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Your Pain Points, Solved</h2>
-
-      <div class="space-y-4">
-        {painPoints.map((item) => (
-          <div class="grid md:grid-cols-2 gap-4">
-            <div class="bg-navy/50 border border-critical/20 rounded-xl p-4">
-              <div class="flex items-start gap-3">
-                <span class="text-critical text-lg">✗</span>
-                <div>
-                  <span class="text-sm text-slate-dark uppercase tracking-wide">Problem</span>
-                  <p class="text-light">{item.problem}</p>
-                </div>
-              </div>
+  <div slot="hero">
+    <div class="ui-tray">
+      <div class="ui-panel">
+        <div class="ui-panel-head">Design system health</div>
+        <div class="dst-stats">
+          {metrics.map((m) => (
+            <div>
+              <p class="dst-num ui-tnum">{m.value}</p>
+              <p class="dst-lab">{m.label}</p>
+              <p class="dst-chg ui-c-ok ui-tnum">{m.change}</p>
             </div>
-            <div class="bg-navy/50 border border-success/20 rounded-xl p-4">
-              <div class="flex items-start gap-3">
-                <span class="text-success text-lg">✓</span>
-                <div>
-                  <span class="text-sm text-slate-dark uppercase tracking-wide">With Buoy</span>
-                  <p class="text-light">{item.solution}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
+    </div>
+  </div>
+
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>Your pain points, solved</h2></div>
+      <table class="ui-table cmp-table mt-10">
+        <thead><tr><th scope="col">Problem</th><th scope="col" class="cmp-buoy">With Buoy</th></tr></thead>
+        <tbody>
+          {painPoints.map((p) => (
+            <tr><td class="cmp-them">{p.problem}</td><td class="cmp-buoy">{p.solution}</td></tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   </section>
 
-  <!-- Metrics Dashboard -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Real Metrics, Real Data</h2>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-        {metrics.map((metric) => (
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-4 text-center">
-            <div class="text-3xl font-bold text-light mb-1">{metric.value}</div>
-            <div class="text-sm text-slate mb-2">{metric.label}</div>
-            <div class="text-xs text-success">{metric.change}</div>
-          </div>
-        ))}
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap ui-split dst-split">
+      <div class="ui-head">
+        <h2>Coverage by directory</h2>
+        <p>See where adoption is strong and where it lags, down to the folder.</p>
       </div>
-
       <Terminal command="buoy show health" lines={terminalLines} />
     </div>
   </section>
 
-  <!-- Value Props -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">What You Get</h2>
-
-      <div class="grid sm:grid-cols-2 gap-6">
-        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
-          <h3 class="text-lg font-semibold text-light mb-3">📊 Adoption Metrics</h3>
-          <ul class="space-y-2 text-sm text-slate">
-            <li>• Percentage of components using design system</li>
-            <li>• Token coverage across the codebase</li>
-            <li>• Per-directory and per-team breakdowns</li>
-            <li>• Trend tracking over time</li>
-          </ul>
-        </div>
-
-        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
-          <h3 class="text-lg font-semibold text-light mb-3">🔍 Drift Detection</h3>
-          <ul class="space-y-2 text-sm text-slate">
-            <li>• Find hardcoded values that bypass tokens</li>
-            <li>• Detect duplicate component implementations</li>
-            <li>• Track deprecated component usage</li>
-            <li>• Catch naming inconsistencies</li>
-          </ul>
-        </div>
-
-        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
-          <h3 class="text-lg font-semibold text-light mb-3">🔄 CI/CD Integration</h3>
-          <ul class="space-y-2 text-sm text-slate">
-            <li>• Automatic checks on every PR</li>
-            <li>• Block merges with critical drift</li>
-            <li>• PR comments with drift reports</li>
-            <li>• GitHub App ready to use</li>
-          </ul>
-        </div>
-
-        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
-          <h3 class="text-lg font-semibold text-light mb-3">📈 ROI Reporting</h3>
-          <ul class="space-y-2 text-sm text-slate">
-            <li>• Before/after adoption comparisons</li>
-            <li>• Time saved from reduced drift</li>
-            <li>• Team adoption leaderboards</li>
-            <li>• Executive-ready dashboards</li>
-          </ul>
-        </div>
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>What you get</h2></div>
+      <div class="dst-cols mt-10">
+        {groups.map((g) => (
+          <article class="dst-col">
+            <h3>{g.title}</h3>
+            <ul>
+              {g.items.map((i) => <li>{i}</li>)}
+            </ul>
+          </article>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Lead Magnet: Why Developers Bypass -->
-  <section class="py-12">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
       <LeadMagnetCallout
         leadMagnet="why-developers-bypass"
         headline="Why do developers bypass your design system?"
@@ -165,3 +127,21 @@ const terminalLines = [
     </div>
   </section>
 </UseCaseLayout>
+
+<style>
+  .dst-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dst-stats > div { padding: 20px 24px; }
+  .dst-stats > div:nth-child(even) { border-left: 1px solid var(--color-line); }
+  .dst-stats > div:nth-child(n+3) { border-top: 1px solid var(--color-line); }
+  .dst-num { font-family: var(--font-display); font-weight: 700; font-size: 2.5rem; line-height: 1; color: var(--color-ink); margin: 0 0 8px; }
+  .dst-lab { margin: 0; font-size: .875rem; color: var(--color-body); }
+  .dst-chg { margin: 4px 0 0; font-size: .8125rem; }
+  .dst-split { align-items: center; }
+  .dst-cols { display: grid; gap: 40px 48px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dst-col { border-top: 1px solid var(--color-line-strong); padding-top: 20px; }
+  .dst-col ul { list-style: none; margin: 12px 0 0; padding: 0; }
+  .dst-col li { padding: 10px 0; border-top: 1px solid var(--color-line); }
+  .dst-col li:first-child { border-top: 0; }
+  @media (max-width: 720px) { .dst-cols { grid-template-columns: 1fr; } }
+  @media (max-width: 420px) { .dst-stats > div { padding: 16px; } .dst-num { font-size: 2rem; } }
+</style>

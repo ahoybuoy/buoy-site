@@ -50,22 +50,23 @@ const description = result
 
 <Layout title={title} description={description} noindex={isPrivate || !result}>
   <Nav />
-  <section class="pt-28 pb-16 bg-navy-dark">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <a href="/ridgeline" class="text-sm text-slate hover:text-light">← All ridgelines</a>
+  <main class="ui-nav-offset">
+  <section class="ui-section ui-section--first ui-section--last !pt-12">
+    <div class="ui-wrap">
+      <a href="/ridgeline" class="ui-rowlink text-sm">← All ridgelines</a>
 
       {result && (
         <>
-          <h1 class="text-3xl sm:text-4xl font-bold text-light mt-3">{result.host}{new URL(result.url).pathname !== '/' && <span class="text-slate font-normal">{new URL(result.url).pathname}</span>}</h1>
-          <p class="text-slate mt-2 mb-6">
-            {result.looks} button looks, {result.rare} used only once. Rendered {new Date(result.renderedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}{isPrivate ? ' · private link' : ''}.
-            <a class="text-buoy hover:underline" href={`/ridgeline/compare?a=${encodeURIComponent(result.host)}`}>Compare with another site</a>
+          <h1 class="mt-5 text-[length:var(--text-h1)] leading-[1.05] [overflow-wrap:anywhere]">{result.host}{new URL(result.url).pathname !== '/' && <span class="text-[var(--color-muted)] font-normal">{new URL(result.url).pathname}</span>}</h1>
+          <p class="ui-lede mt-3 mb-8">
+            <span class="ui-tnum text-[var(--color-ink)]">{result.looks}</span> button looks, <span class="ui-tnum ui-c-crit">{result.rare}</span> used only once. Rendered {new Date(result.renderedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}{isPrivate ? ' · private link' : ''}.
+            <a class="ui-link" href={`/ridgeline/compare?a=${encodeURIComponent(result.host)}`}>Compare with another site</a>
           </p>
           <RidgelineView data={result} shareUrl={shareUrl} isPrivate={isPrivate} />
-          <div class="mt-8 bg-navy/50 border border-navy-light/30 rounded-2xl p-6">
-            <h2 class="text-xl font-bold text-light">Keep your UI this consistent</h2>
-            <p class="text-slate mt-2">
-              The red marks are button looks used only once. Install the <a href="/install?src=ridgeline" class="text-buoy hover:underline">Buoy GitHub App</a> and every pull request is checked against the looks your product already uses, with the exact fix for an agent to apply.
+          <div class="ui-card ui-card--pad mt-10 max-w-3xl">
+            <h2 class="text-[length:var(--text-h3)]">Keep your UI this consistent</h2>
+            <p class="mt-3">
+              The <span class="ui-c-crit">red</span> marks are button looks used only once. Install the <a href="/install?src=ridgeline" class="ui-link">Buoy GitHub App</a> and every pull request is checked against the looks your product already uses, with the exact fix for an agent to apply.
             </p>
           </div>
         </>
@@ -73,41 +74,42 @@ const description = result
 
       {pending && (
         <div class="mt-6" data-ridge-poll={view!.id}>
-          <h1 class="text-3xl font-bold text-light">Rendering {host}…</h1>
-          <p class="text-slate mt-2">Loading the page, scrolling it, and measuring every band. Usually under a minute; this page updates when it is done.</p>
+          <h1 class="text-[length:var(--text-h2)]">Rendering {host}…</h1>
+          <p class="mt-3">Loading the page, scrolling it, and measuring every band. Usually under a minute; this page updates when it is done.</p>
           <div class="ridge-wait mt-8" aria-hidden="true"></div>
         </div>
       )}
 
       {view?.status === 'failed' && (
         <div class="mt-6">
-          <h1 class="text-3xl font-bold text-light">Couldn’t render {host}</h1>
-          <p class="text-slate mt-2">{view.error}</p>
+          <h1 class="text-[length:var(--text-h2)]">Couldn’t render {host}</h1>
+          <p class="mt-3">{view.error}</p>
           <div class="mt-6"><RidgelineForm id="ridge-failed" /></div>
         </div>
       )}
 
       {!view && !apiDown && (
         <div class="mt-6">
-          <h1 class="text-3xl font-bold text-light">{validAddress ? `${host} has no ridgeline yet` : 'That isn’t a web address'}</h1>
-          <p class="text-slate mt-2">{validAddress ? 'Make the first one. It takes about a minute.' : 'Type an address like stripe.com.'}</p>
+          <h1 class="text-[length:var(--text-h2)]">{validAddress ? `${host} has no ridgeline yet` : 'That isn’t a web address'}</h1>
+          <p class="mt-3">{validAddress ? 'Make the first one. It takes about a minute.' : 'Type an address like stripe.com.'}</p>
           <div class="mt-6"><RidgelineForm id="ridge-missing" value={validAddress ? pageAddress! : ''} /></div>
         </div>
       )}
 
       {apiDown && (
         <div class="mt-6">
-          <h1 class="text-3xl font-bold text-light">Ridgelines are unavailable right now</h1>
-          <p class="text-slate mt-2">Try again in a minute.</p>
+          <h1 class="text-[length:var(--text-h2)]">Ridgelines are unavailable right now</h1>
+          <p class="mt-3">Try again in a minute.</p>
         </div>
       )}
     </div>
   </section>
+  </main>
   <Footer />
 </Layout>
 
 <style>
-  .ridge-wait { height: 14rem; border-radius: 1rem; background: repeating-linear-gradient(180deg, transparent 0 10px, rgba(241, 239, 232, 0.08) 10px 11px); }
+  .ridge-wait { height: 14rem; border-radius: 1rem; background: repeating-linear-gradient(180deg, transparent 0 10px, rgba(241, 239, 232, 0.08) 10px 11px); background-color: var(--color-term); box-shadow: var(--ring-term); }
   @media (prefers-reduced-motion: no-preference) {
     .ridge-wait { animation: ridge-scan 2.4s linear infinite; }
     @keyframes ridge-scan { from { background-position: 0 0; } to { background-position: 0 44px; } }

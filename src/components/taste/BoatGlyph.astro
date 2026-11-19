@@ -1,0 +1,29 @@
+---
+// The inline sailboat that sits at the end of a hero sentence inside <BoatHero>.
+// BoatHero's script finds it, wiggles it free and drops it into the waves.
+// Same markup as the live homepage (hero-boat-inline / hero-boat-emoji).
+---
+<span class="hero-boat-inline" data-boat-glyph aria-hidden="true">&nbsp;<span class="hero-boat-emoji" data-boat-glyph-emoji>⛵</span></span>
+
+<style>
+  .hero-boat-inline {
+    display: inline-block;
+    position: relative;
+    z-index: 20;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+
+  .hero-boat-emoji {
+    display: inline-block;
+    font-size: 1.1em;
+    cursor: default;
+  }
+
+  /* Reduced motion: no escape, the wave boat is shown directly (as live) */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-boat-inline {
+      display: none !important;
+    }
+  }
+</style>

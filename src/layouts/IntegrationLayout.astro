@@ -3,7 +3,7 @@ import Layout from './Layout.astro'
 import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
 import Button from '../components/Button.astro'
-import FeatureCard from '../components/FeatureCard.astro'
+import MarkPattern from '../components/MarkPattern.astro'
 
 interface Props {
   title: string
@@ -11,104 +11,106 @@ interface Props {
   keywords?: string
   heroTitle: string
   heroDescription: string
-  icon: string
+  /** Ignored: the old emoji icon. */
+  icon?: string
   iconBg?: string
 }
 
-const { title, description, keywords, heroTitle, heroDescription, icon, iconBg = 'bg-buoy/20' } = Astro.props
+const { title, description, keywords, heroTitle, heroDescription } = Astro.props
+const current = Astro.url.pathname.replace(/\/$/, '')
 
-const integrations = [
-  { name: 'React', href: '/integrations/react', icon: '⚛️' },
-  { name: 'Vue', href: '/integrations/vue', icon: '💚' },
-  { name: 'Svelte', href: '/integrations/svelte', icon: '🔶' },
-  { name: 'Angular', href: '/integrations/angular', icon: '🔺' },
-  { name: 'Next.js', href: '/integrations/nextjs', icon: '▲' },
-  { name: 'Figma', href: '/integrations/figma', icon: '🎨' },
-  { name: 'Storybook', href: '/integrations/storybook', icon: '📖' },
-  { name: 'Tailwind', href: '/integrations/tailwind', icon: '🌊' },
-  { name: 'GitHub', href: '/integrations/github', icon: '🐙' },
-]
+const others = [
+  { name: 'React', href: '/integrations/react' },
+  { name: 'Vue', href: '/integrations/vue' },
+  { name: 'Svelte', href: '/integrations/svelte' },
+  { name: 'Angular', href: '/integrations/angular' },
+  { name: 'Next.js', href: '/integrations/nextjs' },
+  { name: 'Tailwind', href: '/integrations/tailwind' },
+  { name: 'Figma', href: '/integrations/figma' },
+  { name: 'GitHub', href: '/integrations/github' },
+].filter((i) => i.href !== current)
 ---
 
 <Layout title={title} description={description} keywords={keywords}>
   <Nav />
 
-  <!-- Hero Section -->
-  <section class="relative pt-32 pb-16 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-b from-navy-dark via-navy to-navy-dark"></div>
-
-    <div class="absolute top-1/3 left-1/4 w-96 h-96 bg-buoy/10 rounded-full blur-3xl"></div>
-
-    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <!-- Breadcrumb -->
-      <nav class="mb-8" aria-label="Breadcrumb">
-        <ol class="flex items-center justify-center gap-2 text-sm text-slate">
-          <li><a href="/" class="hover:text-buoy transition-colors">Home</a></li>
-          <li>/</li>
-          <li><a href="/integrations/react" class="hover:text-buoy transition-colors">Integrations</a></li>
-          <li>/</li>
-          <li class="text-light">{heroTitle.split(' ')[0]}</li>
-        </ol>
-      </nav>
-
-      <!-- Icon -->
-      <div class={`w-20 h-20 ${iconBg} rounded-2xl flex items-center justify-center mx-auto mb-6 text-4xl`}>
-        {icon}
+  <main class="ui-nav-offset cmp">
+    <section class="ui-section ui-section--first ui-section--patterned">
+      <MarkPattern pattern="field" drift={0.25} fade class="ui-pattern" />
+      <div class="ui-wrap">
+        <nav aria-label="Breadcrumb" class="cmp-crumbs">
+          <a href="/">Home</a><span aria-hidden="true">/</span><a href="/integrations/react">Integrations</a><span aria-hidden="true">/</span><span aria-current="page">{heroTitle.split(' ')[0]}</span>
+        </nav>
+        <div class:list={["cmp-hero-grid", Astro.slots.has("hero") && "ui-split"]}>
+          <div>
+            <div class="ui-head">
+              <p class="ui-eyebrow">Integrations</p>
+              <h1>{heroTitle}</h1>
+              <p>{heroDescription}</p>
+            </div>
+            <div class="ui-actions">
+              <Button href="/demo" size="lg">Get started free</Button>
+              <Button href="/docs" variant="secondary" size="lg">Read the docs</Button>
+            </div>
+          </div>
+          {Astro.slots.has("hero") && <div class="cmp-hero-fig"><slot name="hero" /></div>}
+        </div>
       </div>
+    </section>
 
-      <h1 class="text-4xl sm:text-5xl font-bold text-light mb-6 leading-tight">
-        {heroTitle}
-      </h1>
-
-      <p class="text-lg sm:text-xl text-slate max-w-2xl mx-auto mb-8">
-        {heroDescription}
-      </p>
-
-      <Button href="/demo" size="lg">
-        Get started free
-      </Button>
-    </div>
-  </section>
-
-  <!-- Main Content -->
-  <main class="bg-navy-dark">
     <slot />
+
+    <section class="ui-section ui-section--band">
+      <div class="ui-wrap">
+        <h2 class="cmp-other-h">Other integrations</h2>
+        <div class="cmp-chips">
+          {others.map((item) => <a href={item.href} class="ui-chip">{item.name}</a>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="ui-section ui-section--last ui-section--patterned">
+      <MarkPattern pattern="swell" drift={0.3} fade class="ui-pattern" />
+      <div class="ui-wrap">
+        <div class="ui-head ui-head--center">
+          <h2>Ready to catch design drift?</h2>
+          <p>Free. Open source. No signup required.</p>
+        </div>
+        <div class="ui-actions cmp-center">
+          <Button href="/demo">Get your first scan</Button>
+          <Button href="/docs" variant="secondary">Read the docs</Button>
+        </div>
+      </div>
+    </section>
   </main>
-
-  <!-- Other Integrations -->
-  <section class="py-16 bg-navy border-t border-navy-light/20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h3 class="text-xl font-semibold text-light mb-8 text-center">Other Integrations</h3>
-
-      <div class="flex flex-wrap justify-center gap-3">
-        {integrations.map((integration) => (
-          <a
-            href={integration.href}
-            class="flex items-center gap-2 px-4 py-2 bg-navy-dark/50 border border-navy-light/20 rounded-lg hover:border-buoy/30 transition-colors text-sm"
-          >
-            <span>{integration.icon}</span>
-            <span class="text-slate hover:text-light transition-colors">{integration.name}</span>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="py-16 bg-navy-dark">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-2xl font-bold text-light mb-4">
-        Ready to catch design drift?
-      </h2>
-      <p class="text-slate mb-6">
-        Free. Open source. No signup required.
-      </p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <Button href="/demo">Get your first scan</Button>
-        <Button href="/docs" variant="secondary">Read the docs</Button>
-      </div>
-    </div>
-  </section>
 
   <Footer />
 </Layout>
+
+<style is:global>
+  .cmp-crumbs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; font-size: 13px; color: var(--color-muted); }
+  .cmp-crumbs a { color: var(--color-muted); text-decoration: none; transition: color 150ms ease-out; }
+  .cmp-crumbs a:hover { color: var(--color-ink); }
+  .cmp-crumbs [aria-current] { color: var(--color-body); }
+  .cmp-vs { color: var(--color-muted); font-weight: 500; }
+  .cmp-other-h { margin: 0 0 20px; font-size: var(--text-h3); color: var(--color-ink); }
+  .cmp-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .cmp-center { justify-content: center; }
+  .cmp-hero-grid.ui-split { align-items: center; }
+  .cmp-hero-fig { min-width: 0; }
+  @media (max-width: 960px) { .cmp-hero-fig { margin-top: 40px; } }
+  /* Code in comparison pages wraps or scrolls inside its own block. */
+  .cmp pre { max-width: 100%; overflow-x: auto; }
+  .cmp pre code { white-space: pre-wrap; overflow-wrap: anywhere; }
+  .cmp .ui-term, .cmp .ui-tray, .cmp .ui-panel { min-width: 0; max-width: 100%; }
+  /* Comparison table: Buoy column marked once, at the head, with a quiet accent wash on its cells. */
+  .cmp-table { table-layout: fixed; }
+  .cmp-table thead th.cmp-buoy { color: var(--color-buoy-light); }
+  .cmp-table tbody td.cmp-buoy { color: var(--color-ink); background: color-mix(in oklab, var(--color-buoy) 5%, transparent); padding-left: 14px; }
+  .cmp-table thead th.cmp-buoy { padding-left: 14px; }
+  .cmp-table tbody td.cmp-them { color: var(--color-muted); }
+  @media (max-width: 640px) {
+    .cmp-table { table-layout: auto; font-size: 14px; }
+    .cmp-table thead th:first-child, .cmp-table tbody th { width: 34%; }
+  }
+</style>

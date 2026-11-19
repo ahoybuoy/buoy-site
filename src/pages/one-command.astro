@@ -2,549 +2,148 @@
 import Layout from '../layouts/Layout.astro'
 import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
-import Button from '../components/Button.astro'
+import DocTerminal from '../components/DocTerminal.astro'
+import MarkPattern from '../components/MarkPattern.astro'
 import { siteConfig } from '../config'
+
+const aligned = ['NavigationPartial', 'LayoutCshtml', 'FooterCshtml', 'SidebarCshtml', 'BannerCshtml', 'PaginationPartial', 'ShareButtonsCshtml', 'SocialsPartial', 'LoginPartialCshtml', 'MessagesPartial', 'TagsPartialCshtml', 'LabelsPartialCshtml', 'PhotoViewerPartial', 'RecaptchaCshtml', 'TurnstileCshtml']
+const uses = [
+  { t: 'Match to Figma', d: 'Create Figma components for each one. Build your design library from code truth.' },
+  { t: 'Add to Storybook', d: 'Know exactly which components need stories. Prioritize what matters.' },
+  { t: 'Sync with Framer', d: 'Build prototypes with the real components your codebase actually has.' },
+  { t: 'Document', d: 'Create a component inventory. Share it with your team. Everyone knows what exists.' },
+]
+const oldQs = ['"What components do we actually have?"', '"Is there already a sidebar component?"', '"Where\'s the navigation partial?"', '"What can I actually affect as a designer?"']
+const questions = [
+  { q: '"What components exist?"', a: 'Get a complete inventory of every reusable piece in your codebase.' },
+  { q: '"Where\'s that sidebar thing?"', a: 'Find components by name. See exactly where they live.' },
+  { q: '"What are the building blocks?"', a: 'See layouts, partials, views: the architecture of your UI.' },
+  { q: '"What can I design for?"', a: 'Know which components exist so you can create matching designs.' },
+  { q: '"What needs documenting?"', a: 'Use the list to prioritize which components to add to Storybook.' },
+  { q: '"Where do I start?"', a: 'This list IS your starting point. Build your design system from here.' },
+]
+const designers = ['See if your design system is actually being used', 'Prove adoption with real numbers', 'Find where tokens are being bypassed', 'No code knowledge required']
+const engineers = ['Quick codebase health check before PRs', 'Find and fix drift during development', 'Exact file paths and line numbers', 'Integrates with CI/CD pipelines']
 ---
 
 <Layout title="One Command - Understand Your Codebase Instantly | Buoy">
   <Nav />
-
-  <!-- Hero -->
-  <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-navy-dark">
-    <!-- Animated gradient orbs -->
-    <div class="absolute inset-0 overflow-hidden">
-      <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-buoy/20 rounded-full blur-[120px] animate-float"></div>
-      <div class="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-lavender/15 rounded-full blur-[100px] animate-float" style="animation-delay: -2s;"></div>
-    </div>
-
-    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16 text-center">
-      <!-- Badge -->
-      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-buoy/10 border border-buoy/30 mb-8 animate-fade-in-up">
-        <span class="text-buoy font-mono text-sm">npx ahoybuoy show health</span>
+  <main id="main" class="ui-nav-offset">
+    <section class="ui-section ui-section--first ui-section--patterned">
+      <MarkPattern pattern="pulse" drift={0.3} fade class="ui-pattern" />
+      <div class="ui-wrap lp-hero">
+        <p class="ui-eyebrow ui-mono">npx ahoybuoy show health</p>
+        <div class="ui-head"><h1>One command.<br /><span class="ui-c-buoy">See every component.</span></h1></div>
+        <p class="ui-lede">Don't have a formal design system? Doesn't matter. See what's actually in your codebase.</p>
+        <div class="ui-actions">
+          <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer" class="ui-btn ui-btn--primary ui-btn--lg">Try it now</a>
+          <a href="#the-output" class="ui-btn ui-btn--secondary ui-btn--lg">See the output</a>
+        </div>
       </div>
+    </section>
 
-      <h1 class="text-4xl sm:text-5xl lg:text-7xl font-bold mb-8 leading-tight animate-fade-in-up" style="animation-delay: 0.1s;">
-        <span class="text-light">One command.</span>
-        <br />
-        <span class="text-gradient-sunrise">See every component.</span>
-      </h1>
-
-      <p class="text-xl sm:text-2xl text-slate max-w-3xl mx-auto mb-12 leading-relaxed animate-fade-in-up" style="animation-delay: 0.2s;">
-        Don't have a formal design system? Doesn't matter.
-        <br class="hidden sm:block" />
-        <span class="text-light">See what's actually in your codebase.</span>
-      </p>
-
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style="animation-delay: 0.3s;">
-        <Button href={siteConfig.githubUrl} size="lg" external>
-          Try it now
-        </Button>
-        <Button href="#the-output" variant="secondary" size="lg">
-          See the output
-        </Button>
+    <section id="the-output" class="ui-section ui-section--band">
+      <div class="ui-wrap ui-split">
+        <div class="ui-head">
+          <h2>Your component inventory.</h2>
+          <p>Every component in your codebase, listed and categorized. Finally, clarity.</p>
+          <p>Finally see what's actually in your codebase: the building blocks you can affect, improve, document, and design for. No more guessing. No more "I think we have a sidebar somewhere."</p>
+        </div>
+        <div class="ui-term">
+          <div class="ui-term-bar"><span>Terminal</span></div>
+          <div class="ui-term-body">
+            <div><span class="ui-t-prompt">$</span> <span class="ui-t-hi">npx ahoybuoy show health</span></div>
+            <div class="oc-gap ui-t-hi">Component Alignment</div>
+            <div class="oc-grid" aria-hidden="true">{Array(46).fill(0).map((_, i) => <span style={`--d:${i * 20}ms`}></span>)}</div>
+            <div><span class="ui-t-ok">46/46 components</span> <span class="ui-t-dim">·</span> <span class="ui-t-ok">100% aligned</span></div>
+            <div class="oc-gap ui-t-dim">Aligned:</div>
+            <div class="oc-names">{aligned.map((n) => <span>{n}</span>)}</div>
+            <div class="ui-t-dim">... and 31 more</div>
+            <div class="oc-gap ui-t-ok">✓ 46 components discovered.</div>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-      <svg class="w-6 h-6 text-slate" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-      </svg>
-    </div>
-  </section>
-
-  <!-- Section 2: The Output -->
-  <section id="the-output" class="py-32 bg-navy relative overflow-hidden">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 scroll-reveal">
-        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
-          Your component inventory.
-        </h2>
-        <p class="text-xl text-slate max-w-2xl mx-auto">
-          Every component in your codebase, listed and categorized. Finally, clarity.
-        </p>
+    <section class="ui-section">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>Now you know what's there.</h2><p>Use this list to build a real design system, or just understand what you're working with.</p></div>
+        <table class="ui-table lp-table"><tbody>{uses.map((u) => <tr><th scope="row">{u.t}</th><td>{u.d}</td></tr>)}</tbody></table>
+        <p class="ui-after">You can't design for components you don't know exist. <strong class="ui-c-ok">Now you know.</strong></p>
       </div>
+    </section>
 
-      <!-- Terminal visualization -->
-      <div class="max-w-4xl mx-auto scroll-reveal" style="--delay: 0.1s;">
-        <div class="bg-navy-dark border border-navy-light/30 rounded-xl overflow-hidden shadow-2xl">
-          <!-- Terminal header -->
-          <div class="px-4 py-3 bg-navy-light/10 border-b border-navy-light/20 flex items-center gap-2">
-            <div class="flex gap-1.5">
-              <div class="w-3 h-3 rounded-full bg-critical/60"></div>
-              <div class="w-3 h-3 rounded-full bg-warning/60"></div>
-              <div class="w-3 h-3 rounded-full bg-success/60"></div>
+    <section class="ui-section ui-section--band">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>The codebase is a black box.</h2><p>For designers, code has always been invisible. You know your Figma file. You don't know the codebase.</p></div>
+        <div class="ui-cols">
+          <article class="ui-col">
+            <h3 class="ui-c-crit">The old way</h3>
+            <ul class="ui-ruled">{oldQs.map((q) => <li>{q}</li>)}</ul>
+            <p class="ui-col-foot lp-muted">Ask a developer. Wait. Maybe get an answer.</p>
+          </article>
+          <article class="ui-col">
+            <h3 class="ui-c-ok">With Buoy</h3>
+            <div class="ui-term oc-mini">
+              <pre><span class="ui-t-prompt">$</span> <span class="ui-t-hi">npx ahoybuoy show health</span>
+<span class="ui-t-dim">...2 seconds later...</span>
+NavigationPartial, LayoutCshtml, FooterCshtml,
+SidebarCshtml, BannerCshtml...
+<span class="ui-t-ok">✓ Every component. Listed. Named. Visible.</span></pre>
             </div>
-            <span class="text-xs text-slate-dark ml-2 font-mono">Terminal</span>
-          </div>
-
-          <!-- Terminal content -->
-          <div class="p-6 font-mono text-sm overflow-x-auto">
-            <div class="text-slate-dark mb-4">$ npx ahoybuoy show health</div>
-
-            <div class="text-light font-semibold mb-4">Component Alignment</div>
-
-            <!-- Visual grid -->
-            <div class="grid-visualization mb-6">
-              <div class="flex flex-wrap gap-1 mb-4 max-w-[280px]">
-                {Array(46).fill(0).map((_, i) => (
-                  <span class="text-success text-lg grid-icon" style={`--delay: ${i * 0.02}s`}>⛁</span>
-                ))}
-              </div>
-
-              <div class="space-y-1 text-sm mb-6">
-                <div><span class="text-success">46/46 components</span> <span class="text-slate">·</span> <span class="text-success font-semibold">100% aligned</span></div>
-              </div>
-            </div>
-
-            <!-- Component list -->
-            <div class="text-light font-semibold mb-3">Aligned:</div>
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-1 text-sm text-slate component-list">
-              <div>NavigationPartial</div>
-              <div>LayoutCshtml</div>
-              <div>FooterCshtml</div>
-              <div>SidebarCshtml</div>
-              <div>BannerCshtml</div>
-              <div>PaginationPartial</div>
-              <div>ShareButtonsCshtml</div>
-              <div>SocialsPartial</div>
-              <div>LoginPartialCshtml</div>
-              <div>MessagesPartial</div>
-              <div>TagsPartialCshtml</div>
-              <div>LabelsPartialCshtml</div>
-              <div>PhotoViewerPartial</div>
-              <div>RecaptchaCshtml</div>
-              <div>TurnstileCshtml</div>
-              <div class="text-slate-dark">... and 31 more</div>
-            </div>
-
-            <div class="text-success mt-6">✓ 46 components discovered.</div>
-          </div>
+          </article>
         </div>
       </div>
+    </section>
 
-      <!-- The insight -->
-      <div class="mt-16 max-w-3xl mx-auto text-center scroll-reveal" style="--delay: 0.2s;">
-        <div class="bg-navy-dark/50 border border-buoy/20 rounded-xl p-8">
-          <div class="text-2xl mb-4">🤯</div>
-          <p class="text-lg text-light mb-2">
-            Finally see what's actually in your codebase.
-          </p>
-          <p class="text-slate">
-            The building blocks you can affect, improve, document, and design for.
-            No more guessing. No more "I think we have a sidebar somewhere."
-          </p>
+    <section class="ui-section">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>No formal design system? Perfect.</h2><p>You don't need tokens or Storybook to use Buoy. It finds what's already there.</p></div>
+        <table class="ui-table lp-table"><tbody>{questions.map((q) => <tr><th scope="row">{q.q}</th><td>{q.a}</td></tr>)}</tbody></table>
+      </div>
+    </section>
+
+    <section class="ui-section ui-section--band">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>One language. Two audiences.</h2><p>Whether you're a designer or a frontend engineer, the output speaks to you.</p></div>
+        <div class="ui-cols">
+          <article class="ui-col"><h3>For Designers</h3><p class="ui-col-sub ui-c-buoy">Design System Leads</p><ul class="ui-ruled">{designers.map((l) => <li>{l}</li>)}</ul></article>
+          <article class="ui-col"><h3>For Engineers</h3><p class="ui-col-sub ui-c-ok">Frontend Developers</p><ul class="ui-ruled">{engineers.map((l) => <li>{l}</li>)}</ul></article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Section: What You Can Do With This -->
-  <section class="py-32 bg-navy relative">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 scroll-reveal">
-        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
-          Now you know what's there.
-        </h2>
-        <p class="text-xl text-slate max-w-2xl mx-auto">
-          Use this list to build a real design system — or just understand what you're working with.
-        </p>
-      </div>
+    <section class="ui-section ui-section--last ui-section--patterned">
+      <MarkPattern pattern="rain" drift={0.3} fade class="ui-pattern" />
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-        <div class="scroll-reveal" style="--delay: 0.1s;">
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 h-full text-center hover:border-buoy/30 transition-colors">
-            <div class="text-4xl mb-4">🎨</div>
-            <div class="text-light font-semibold mb-2">Match to Figma</div>
-            <div class="text-sm text-slate">Create Figma components for each one. Build your design library from code truth.</div>
-          </div>
+      <div class="ui-wrap ui-split lp-cta">
+        <div class="ui-head">
+          <h2>Just one line.</h2>
+          <p>No install. No config. No learning curve. Copy, paste, understand.</p>
+          <div class="ui-actions"><a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer" class="ui-btn ui-btn--secondary">View on GitHub</a></div>
         </div>
-
-        <div class="scroll-reveal" style="--delay: 0.15s;">
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 h-full text-center hover:border-buoy/30 transition-colors">
-            <div class="text-4xl mb-4">📖</div>
-            <div class="text-light font-semibold mb-2">Add to Storybook</div>
-            <div class="text-sm text-slate">Know exactly which components need stories. Prioritize what matters.</div>
-          </div>
-        </div>
-
-        <div class="scroll-reveal" style="--delay: 0.2s;">
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 h-full text-center hover:border-buoy/30 transition-colors">
-            <div class="text-4xl mb-4">🖼️</div>
-            <div class="text-light font-semibold mb-2">Sync with Framer</div>
-            <div class="text-sm text-slate">Build prototypes with the real components your codebase actually has.</div>
-          </div>
-        </div>
-
-        <div class="scroll-reveal" style="--delay: 0.25s;">
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 h-full text-center hover:border-buoy/30 transition-colors">
-            <div class="text-4xl mb-4">📝</div>
-            <div class="text-light font-semibold mb-2">Document</div>
-            <div class="text-sm text-slate">Create a component inventory. Share it with your team. Everyone knows what exists.</div>
-          </div>
+        <div>
+          <DocTerminal command="npx ahoybuoy show health" />
+          <p class="ui-note">Works with React, Vue, Svelte, Angular, and more.</p>
         </div>
       </div>
-
-      <div class="mt-12 text-center scroll-reveal" style="--delay: 0.3s;">
-        <p class="text-slate text-lg">
-          You can't design for components you don't know exist. <span class="text-light">Now you know.</span>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 3: The Problem -->
-  <section class="py-32 bg-navy-dark relative">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 scroll-reveal">
-        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
-          The codebase is a black box.
-        </h2>
-        <p class="text-xl text-slate max-w-2xl mx-auto">
-          For designers, code has always been invisible. You know your Figma file. You don't know the codebase.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <!-- Before -->
-        <div class="scroll-reveal" style="--delay: 0.1s;">
-          <div class="bg-navy border border-navy-light/30 rounded-xl p-6 h-full">
-            <div class="text-critical text-sm font-semibold uppercase tracking-wide mb-6">The Old Way</div>
-            <div class="space-y-4 text-sm">
-              <div class="flex items-start gap-3">
-                <span class="text-critical mt-1">❓</span>
-                <div class="text-slate">"What components do we actually have?"</div>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="text-critical mt-1">❓</span>
-                <div class="text-slate">"Is there already a sidebar component?"</div>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="text-critical mt-1">❓</span>
-                <div class="text-slate">"Where's the navigation partial?"</div>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="text-critical mt-1">❓</span>
-                <div class="text-slate">"What can I actually affect as a designer?"</div>
-              </div>
-              <div class="flex items-start gap-3 mt-4">
-                <span class="text-slate-dark mt-1">🤷</span>
-                <div class="text-slate-dark italic">Ask a developer. Wait. Maybe get an answer.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- After -->
-        <div class="scroll-reveal" style="--delay: 0.2s;">
-          <div class="bg-navy border border-success/30 rounded-xl p-6 h-full">
-            <div class="text-success text-sm font-semibold uppercase tracking-wide mb-6">With Buoy</div>
-            <div class="space-y-4 text-sm">
-              <div class="flex items-start gap-3">
-                <span class="text-success mt-1">$</span>
-                <div class="bg-navy-dark rounded-lg p-3 flex-1 font-mono">
-                  <span class="text-buoy">npx ahoybuoy show health</span>
-                </div>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="text-success mt-1">⚡</span>
-                <div class="text-slate-dark italic">...2 seconds later...</div>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="text-success mt-1">📦</span>
-                <div class="text-slate">NavigationPartial, LayoutCshtml, FooterCshtml, SidebarCshtml, BannerCshtml...</div>
-              </div>
-              <div class="flex items-start gap-3">
-                <span class="text-success mt-1">✓</span>
-                <div class="text-light italic">Every component. Listed. Named. Visible.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 4: No Formal System? No Problem -->
-  <section class="py-32 bg-navy relative">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 scroll-reveal">
-        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
-          No formal design system? Perfect.
-        </h2>
-        <p class="text-xl text-slate max-w-2xl mx-auto">
-          You don't need tokens or Storybook to use Buoy. It finds what's already there.
-        </p>
-      </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-        <div class="scroll-reveal" style="--delay: 0.1s;">
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 h-full hover:border-buoy/30 transition-colors">
-            <div class="text-2xl mb-3">📦</div>
-            <div class="text-light font-semibold mb-2">"What components exist?"</div>
-            <div class="text-sm text-slate">Get a complete inventory of every reusable piece in your codebase.</div>
-          </div>
-        </div>
-
-        <div class="scroll-reveal" style="--delay: 0.15s;">
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 h-full hover:border-buoy/30 transition-colors">
-            <div class="text-2xl mb-3">🔍</div>
-            <div class="text-light font-semibold mb-2">"Where's that sidebar thing?"</div>
-            <div class="text-sm text-slate">Find components by name. See exactly where they live.</div>
-          </div>
-        </div>
-
-        <div class="scroll-reveal" style="--delay: 0.2s;">
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 h-full hover:border-buoy/30 transition-colors">
-            <div class="text-2xl mb-3">🏗️</div>
-            <div class="text-light font-semibold mb-2">"What are the building blocks?"</div>
-            <div class="text-sm text-slate">See layouts, partials, views — the architecture of your UI.</div>
-          </div>
-        </div>
-
-        <div class="scroll-reveal" style="--delay: 0.25s;">
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 h-full hover:border-buoy/30 transition-colors">
-            <div class="text-2xl mb-3">🎯</div>
-            <div class="text-light font-semibold mb-2">"What can I design for?"</div>
-            <div class="text-sm text-slate">Know which components exist so you can create matching designs.</div>
-          </div>
-        </div>
-
-        <div class="scroll-reveal" style="--delay: 0.3s;">
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 h-full hover:border-buoy/30 transition-colors">
-            <div class="text-2xl mb-3">📋</div>
-            <div class="text-light font-semibold mb-2">"What needs documenting?"</div>
-            <div class="text-sm text-slate">Use the list to prioritize which components to add to Storybook.</div>
-          </div>
-        </div>
-
-        <div class="scroll-reveal" style="--delay: 0.35s;">
-          <div class="bg-navy-dark border border-navy-light/20 rounded-xl p-6 h-full hover:border-buoy/30 transition-colors">
-            <div class="text-2xl mb-3">🚀</div>
-            <div class="text-light font-semibold mb-2">"Where do I start?"</div>
-            <div class="text-sm text-slate">This list IS your starting point. Build your design system from here.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 5: For Designers AND Engineers -->
-  <section class="py-32 bg-navy-dark relative overflow-hidden">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16 scroll-reveal">
-        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
-          One language. Two audiences.
-        </h2>
-        <p class="text-xl text-slate max-w-2xl mx-auto">
-          Whether you're a designer or a frontend engineer, the output speaks to you.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <!-- For Designers -->
-        <div class="scroll-reveal" style="--delay: 0.1s;">
-          <div class="bg-navy border border-lavender/30 rounded-xl p-6 h-full">
-            <div class="flex items-center gap-3 mb-6">
-              <div class="w-12 h-12 rounded-xl bg-lavender/20 flex items-center justify-center">
-                <span class="text-2xl">🎨</span>
-              </div>
-              <div>
-                <div class="text-lavender font-semibold">For Designers</div>
-                <div class="text-sm text-slate">Design System Leads</div>
-              </div>
-            </div>
-            <ul class="space-y-3 text-sm">
-              <li class="flex items-start gap-2">
-                <span class="text-lavender mt-1">✓</span>
-                <span class="text-slate">See if your design system is actually being used</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-lavender mt-1">✓</span>
-                <span class="text-slate">Prove adoption with real numbers</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-lavender mt-1">✓</span>
-                <span class="text-slate">Find where tokens are being bypassed</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-lavender mt-1">✓</span>
-                <span class="text-slate">No code knowledge required</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- For Engineers -->
-        <div class="scroll-reveal" style="--delay: 0.2s;">
-          <div class="bg-navy border border-buoy/30 rounded-xl p-6 h-full">
-            <div class="flex items-center gap-3 mb-6">
-              <div class="w-12 h-12 rounded-xl bg-buoy/20 flex items-center justify-center">
-                <span class="text-2xl">⚡</span>
-              </div>
-              <div>
-                <div class="text-buoy font-semibold">For Engineers</div>
-                <div class="text-sm text-slate">Frontend Developers</div>
-              </div>
-            </div>
-            <ul class="space-y-3 text-sm">
-              <li class="flex items-start gap-2">
-                <span class="text-buoy mt-1">✓</span>
-                <span class="text-slate">Quick codebase health check before PRs</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-buoy mt-1">✓</span>
-                <span class="text-slate">Find and fix drift during development</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-buoy mt-1">✓</span>
-                <span class="text-slate">Exact file paths and line numbers</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-buoy mt-1">✓</span>
-                <span class="text-slate">Integrates with CI/CD pipelines</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 6: Just One Line -->
-  <section class="py-32 bg-navy relative overflow-hidden">
-    <div class="absolute bottom-0 left-0 right-0 h-64 opacity-20">
-      <svg class="w-full h-full" viewBox="0 0 1440 320" preserveAspectRatio="none">
-        <path fill="#00D4AA" fill-opacity="0.3" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,138.7C672,128,768,160,864,181.3C960,203,1056,213,1152,197.3C1248,181,1344,139,1392,117.3L1440,96L1440,320L0,320Z"/>
-      </svg>
-    </div>
-
-    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="scroll-reveal">
-        <h2 class="text-3xl sm:text-5xl font-bold text-light mb-6">
-          Just one line.
-        </h2>
-        <p class="text-xl text-slate max-w-2xl mx-auto mb-12">
-          No install. No config. No learning curve.
-          <br /><span class="text-light">Copy, paste, understand.</span>
-        </p>
-      </div>
-
-      <!-- The command -->
-      <div class="scroll-reveal" style="--delay: 0.1s;">
-        <div class="inline-flex flex-col sm:flex-row items-center gap-4 p-6 bg-navy-dark/80 border border-navy-light/30 rounded-xl backdrop-blur-sm mb-8 copy-command" data-command="npx ahoybuoy show health">
-          <code class="text-lg sm:text-xl font-mono text-light">npx ahoybuoy show health</code>
-          <div class="flex items-center gap-3">
-            <button class="copy-btn px-4 py-2 bg-navy-light/30 hover:bg-navy-light/50 text-slate hover:text-light rounded-lg transition-colors text-sm flex items-center gap-2">
-              <span class="copy-text">Copy</span>
-              <svg class="copy-icon w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-              </svg>
-              <svg class="check-icon w-4 h-4 hidden text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-            </button>
-            <Button href={siteConfig.githubUrl} external>
-              View on GitHub
-            </Button>
-          </div>
-        </div>
-      </div>
-
-      <p class="text-slate text-sm scroll-reveal" style="--delay: 0.2s;">
-        Works with React, Vue, Svelte, Angular, and more.
-      </p>
-    </div>
-  </section>
-
+    </section>
+  </main>
   <Footer />
 </Layout>
 
 <style>
-  @keyframes fade-in-up {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes float {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-20px) scale(1.05); }
-  }
-
-  @keyframes gridAppear {
-    from { opacity: 0; transform: scale(0.5); }
-    to { opacity: 1; transform: scale(1); }
-  }
-
-  .animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
-  .animate-float { animation: float 6s ease-in-out infinite; }
-
-  .grid-icon {
-    opacity: 0;
-    animation: gridAppear 0.3s ease-out forwards;
-    animation-delay: var(--delay, 0s);
-  }
-
-  .grid-visualization.animated .grid-icon {
-    opacity: 1;
-  }
-
-  .scroll-reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    transition-delay: var(--delay, 0s);
-  }
-
-  .scroll-reveal.revealed {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .lp-hero { padding-block: 32px 24px; }
+  .lp-muted { color: var(--color-muted); font-size: 15px; }
+  .lp-table { margin-top: 32px; }
+  .lp-cta { align-items: center; }
+  .ui-col h3 { font-size: 1.2rem; }
+  .oc-gap { margin-top: 12px; }
+  .oc-grid { display: grid; grid-template-columns: repeat(23, 12px); gap: 4px; margin: 8px 0; }
+  .oc-grid span { width: 12px; height: 12px; border-radius: 3px; background: var(--color-ok); opacity: 0.85; animation: oc-in 300ms var(--ease-out-expo) both; animation-delay: var(--d); }
+  @keyframes oc-in { from { opacity: 0; transform: scale(0.6); } }
+  @media (prefers-reduced-motion: reduce) { .oc-grid span { animation: none; } }
+  @media (max-width: 760px) { .oc-grid { grid-template-columns: repeat(12, 12px); } }
+  .oc-names { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 16px; }
+  .oc-mini { margin-top: 16px; }
 </style>
-
-<script>
-  const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-
-        // Animate grid if present
-        const grid = entry.target.querySelector('.grid-visualization');
-        if (grid) {
-          grid.classList.add('animated');
-        }
-      }
-    });
-  }, observerOptions);
-
-  document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
-
-  // Copy command functionality
-  document.querySelectorAll('.copy-command').forEach(container => {
-    const btn = container.querySelector('.copy-btn');
-    const command = container.getAttribute('data-command');
-
-    btn?.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(command || '');
-        const copyIcon = btn.querySelector('.copy-icon');
-        const checkIcon = btn.querySelector('.check-icon');
-        const copyText = btn.querySelector('.copy-text');
-
-        copyIcon?.classList.add('hidden');
-        checkIcon?.classList.remove('hidden');
-        if (copyText) copyText.textContent = 'Copied!';
-
-        setTimeout(() => {
-          copyIcon?.classList.remove('hidden');
-          checkIcon?.classList.add('hidden');
-          if (copyText) copyText.textContent = 'Copy';
-        }, 2000);
-      } catch (err) {
-        console.error('Failed to copy:', err);
-      }
-    });
-  });
-</script>

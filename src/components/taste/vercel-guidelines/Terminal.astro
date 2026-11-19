@@ -1,0 +1,81 @@
+---
+// Fixed copy of src/components/Terminal.astro: reduced-motion variant, command
+// readable by assistive tech, no decorative window dots, stable id.
+interface Props {
+  id: string
+  command: string
+  lines: Array<{ text: string; type?: 'output' | 'warning' | 'critical' | 'muted'; delay?: number }>
+  class?: string
+}
+const { id, command, lines, class: className = '' } = Astro.props
+const colors = { output: 'text-slate', warning: 'text-warning', critical: 'text-critical', muted: 'text-slate-dark' }
+---
+<div class={`relative ${className}`}>
+  <div class="absolute -inset-1 bg-gradient-to-b from-lavender/20 via-buoy/10 to-transparent rounded-xl blur-xl opacity-50" aria-hidden="true"></div>
+  <div class="relative bg-navy-dark border border-navy-light/30 rounded-xl overflow-hidden shadow-2xl">
+    <div class="px-4 py-3 bg-navy border-b border-navy-light/20 text-center">
+      <span class="text-xs text-slate font-mono" translate="no">buoy-cli</span>
+    </div>
+    <div class="vg-term p-4 sm:p-6 font-mono text-sm leading-relaxed min-h-[300px] overflow-x-auto" id={id} data-command={command} translate="no">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="text-buoy" aria-hidden="true">$</span>
+        <span class="sr-only">{command}</span>
+        <span class="vg-term-command text-light" aria-hidden="true"></span>
+        <span class="cursor-blink opacity-0" aria-hidden="true"></span>
+      </div>
+      <div class="space-y-1 tabular-nums">
+        {lines.map((line) => (
+          <div class={`vg-term-line ${colors[line.type || 'output']}`} data-delay={line.delay ?? 0} set:html={line.text || '&nbsp;'} />
+        ))}
+      </div>
+    </div>
+    <div class="absolute inset-0 pointer-events-none overflow-hidden rounded-xl" aria-hidden="true">
+      <div class="vg-scan-line absolute w-full h-px bg-gradient-to-r from-transparent via-buoy/30 to-transparent"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes vgScanline {
+    0% { transform: translateY(-100%); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(400px); opacity: 0; }
+  }
+  .vg-scan-line { animation: vgScanline 4s ease-in-out 2s infinite; }
+  .vg-term-line { opacity: 0; transform: translateY(4px); transition: opacity 0.3s ease-out, transform 0.3s ease-out; }
+  .vg-term-line.is-visible { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .vg-scan-line { animation: none; opacity: 0; }
+    .vg-term-line { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.vg-term').forEach((term) => {
+    const command = term.dataset.command || ''
+    const commandEl = term.querySelector('.vg-term-command') as HTMLElement
+    const cursor = term.querySelector('.cursor-blink') as HTMLElement
+    const lines = term.querySelectorAll<HTMLElement>('.vg-term-line')
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      commandEl.textContent = command
+      return
+    }
+    const showLines = () => lines.forEach((line) => setTimeout(() => line.classList.add('is-visible'), Number(line.dataset.delay)))
+    const type = () => {
+      let i = 0
+      cursor.classList.remove('opacity-0')
+      const timer = setInterval(() => {
+        commandEl.textContent = command.slice(0, ++i)
+        if (i >= command.length) {
+          clearInterval(timer)
+          cursor.classList.add('opacity-0')
+          setTimeout(showLines, 400)
+        }
+      }, 45)
+    }
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) { io.disconnect(); type() }
+    }, { threshold: 0.1 })
+    io.observe(term)
+  })
+</script>

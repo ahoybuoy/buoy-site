@@ -2,14 +2,14 @@
 import CompareLayout from '../../layouts/CompareLayout.astro'
 
 const comparison = [
-  { aspect: 'Primary Use', eslint: 'Code quality & syntax', buoy: 'Design system drift' },
-  { aspect: 'Context Awareness', eslint: 'Code patterns only', buoy: 'Understands design tokens' },
-  { aspect: 'Hardcoded Colors', eslint: 'No detection', buoy: 'Full detection + suggestions' },
-  { aspect: 'Duplicate Components', eslint: 'No detection', buoy: 'Semantic duplicate finding' },
-  { aspect: 'Design Tokens', eslint: 'No understanding', buoy: 'Maps to your tokens' },
-  { aspect: 'Adoption Metrics', eslint: 'None', buoy: 'Full coverage stats' },
+  { aspect: 'Primary use', eslint: 'Code quality and syntax', buoy: 'Design system drift' },
+  { aspect: 'Context awareness', eslint: 'Code patterns only', buoy: 'Understands design tokens' },
+  { aspect: 'Hardcoded colors', eslint: 'No detection', buoy: 'Full detection with suggestions' },
+  { aspect: 'Duplicate components', eslint: 'No detection', buoy: 'Semantic duplicate finding' },
+  { aspect: 'Design tokens', eslint: 'No understanding', buoy: 'Maps to your tokens' },
+  { aspect: 'Adoption metrics', eslint: 'None', buoy: 'Full coverage stats' },
   { aspect: 'Configuration', eslint: 'Complex rule setup', buoy: 'Works out of the box' },
-  { aspect: 'Use Together?', eslint: '—', buoy: 'Yes! Complementary tools' },
+  { aspect: 'Use together?', eslint: 'Yes', buoy: 'Yes, they complement each other' },
 ]
 ---
 
@@ -21,93 +21,88 @@ const comparison = [
   heroDescription="ESLint catches code quality issues. Buoy catches design system drift. Use both together."
   competitor="ESLint"
 >
-  <!-- Key Difference -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="bg-navy/50 border border-buoy/30 rounded-xl p-8 text-center">
-        <h2 class="text-xl font-bold text-light mb-4">The Key Difference</h2>
-        <p class="text-lg text-slate">
-          ESLint asks: <span class="text-warning">"Is this valid JavaScript?"</span>
-        </p>
-        <p class="text-lg text-slate mt-2">
-          Buoy asks: <span class="text-buoy">"Does this follow your design system?"</span>
-        </p>
+  <div slot="hero" class="ui-tray"><div class="ui-panel">
+    <div class="ui-panel-head">Card.tsx</div>
+    <pre class="hf-code"><code>&lt;div style={'{{'} color: <span class="ui-old">'#3b82f6'</span> {'}}'} /&gt;</code></pre>
+    <dl class="hf-rows">
+      <div><dt>ESLint</dt><dd class="hf-them">Valid JavaScript. Nothing to report.</dd></div>
+      <div><dt class="ui-c-buoy">Buoy</dt><dd><span class="ui-sev ui-sev-warning">Warning</span> Hardcoded color, use <span class="ui-token">var(--primary)</span></dd></div>
+    </dl>
+  </div></div>
+
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head">
+        <h2>The key difference</h2>
+        <p>ESLint asks: <span class="ui-c-warn">"Is this valid JavaScript?"</span></p>
+        <p>Buoy asks: <span class="ui-c-buoy">"Does this follow your design system?"</span></p>
+      </div>
+      <table class="ui-table cmp-table mt-10">
+        <thead>
+          <tr><th scope="col">Aspect</th><th scope="col">ESLint</th><th scope="col" class="cmp-buoy">Buoy</th></tr>
+        </thead>
+        <tbody>
+          {comparison.map((row) => (
+            <tr><th scope="row">{row.aspect}</th><td class="cmp-them">{row.eslint}</td><td class="cmp-buoy">{row.buoy}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
+      <div class="ui-head">
+        <h2>What ESLint can't catch</h2>
+        <p>Hardcoded colors are only the start. Both of these pass ESLint too. Buoy flags each one against your design system.</p>
+      </div>
+      <div class="cmp-eslint-grid mt-10">
+        <div class="ui-tray"><div class="ui-term">
+          <div class="ui-term-bar">Duplicate components</div>
+          <pre><code><span class="ui-t-ok">ESLint: valid exports</span>
+<span class="ui-t-warn">Buoy: 4 Button implementations found</span>
+export {'{'} Button {'}'} from './Button'
+export {'{'} ButtonNew {'}'} from './ButtonNew'
+export {'{'} MyButton {'}'} from './MyButton'</code></pre>
+        </div></div>
+        <div class="ui-tray"><div class="ui-term">
+          <div class="ui-term-bar">Token usage</div>
+          <pre><code><span class="ui-t-ok">ESLint: valid CSS</span>
+<span class="ui-t-warn">Buoy: 16px instead of --spacing-md</span>
+padding: <span class="ui-old">16px</span>; <span class="ui-t-dim">/* use</span> <span class="ui-token">var(--spacing-md)</span> <span class="ui-t-dim">*/</span></code></pre>
+        </div></div>
       </div>
     </div>
   </section>
 
-  <!-- Comparison Table -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Feature Comparison</h2>
-
-      <div class="bg-navy-dark border border-navy-light/30 rounded-xl overflow-hidden">
-        <div class="grid grid-cols-3 bg-navy border-b border-navy-light/20">
-          <div class="p-4 font-semibold text-slate">Feature</div>
-          <div class="p-4 font-semibold text-slate border-l border-navy-light/20">ESLint</div>
-          <div class="p-4 font-semibold text-buoy border-l border-navy-light/20">Buoy</div>
-        </div>
-
-        {comparison.map((row, index) => (
-          <div class={`grid grid-cols-3 ${index % 2 === 0 ? 'bg-navy/30' : ''}`}>
-            <div class="p-4 text-light">{row.aspect}</div>
-            <div class="p-4 text-slate border-l border-navy-light/20">{row.eslint}</div>
-            <div class="p-4 text-success border-l border-navy-light/20">{row.buoy}</div>
-          </div>
-        ))}
+  <section class="ui-section">
+    <div class="ui-wrap ui-split">
+      <div class="ui-head">
+        <h2>Use both together</h2>
+        <p>ESLint and Buoy are complementary. ESLint catches code quality issues. Buoy catches design system drift. Run both in your CI pipeline.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- What ESLint Can't Catch -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">What ESLint Can't Catch</h2>
-
-      <div class="space-y-4">
-        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-4">
-          <h3 class="font-semibold text-light mb-2">Hardcoded Colors</h3>
-          <pre class="text-sm font-mono bg-navy-dark p-3 rounded"><code class="text-slate">{`// ESLint: ✓ Valid JavaScript
-// Buoy: ⚠️ Hardcoded color, use var(--primary)
-<div style={{ color: '#3b82f6' }} />`}</code></pre>
-        </div>
-
-        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-4">
-          <h3 class="font-semibold text-light mb-2">Duplicate Components</h3>
-          <pre class="text-sm font-mono bg-navy-dark p-3 rounded"><code class="text-slate">{`// ESLint: ✓ Valid exports
-// Buoy: ⚠️ 4 Button implementations found
-export { Button } from './Button'
-export { ButtonNew } from './ButtonNew'
-export { MyButton } from './MyButton'`}</code></pre>
-        </div>
-
-        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-4">
-          <h3 class="font-semibold text-light mb-2">Token Usage</h3>
-          <pre class="text-sm font-mono bg-navy-dark p-3 rounded"><code class="text-slate">{`// ESLint: ✓ Valid CSS
-// Buoy: ⚠️ Using 16px instead of --spacing-md
-padding: 16px;`}</code></pre>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Use Together -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-2xl font-bold text-light mb-4">Use Both Together</h2>
-      <p class="text-slate mb-8 max-w-2xl mx-auto">
-        ESLint and Buoy are complementary. ESLint catches code quality issues.
-        Buoy catches design system drift. Run both in your CI pipeline.
-      </p>
-
-      <div class="bg-navy-dark border border-navy-light/30 rounded-xl p-4 inline-block">
-        <pre class="text-sm font-mono text-left"><code class="text-slate">{`# .github/workflows/ci.yml
-- name: Lint
-  run: npm run lint          # ESLint
+      <div class="ui-tray"><div class="ui-panel">
+        <div class="ui-panel-head">.github/workflows/ci.yml</div>
+        <pre class="cmp-yaml"><code>- name: Lint
+  run: npm run lint        <span class="ui-t-dim"># ESLint</span>
 
 - name: Design Drift Check
-  run: npx ahoybuoy drift  # Buoy`}</code></pre>
-      </div>
+  run: npx ahoybuoy drift  <span class="ui-t-dim"># Buoy</span></code></pre>
+      </div></div>
     </div>
   </section>
 </CompareLayout>
+
+<style is:global>
+  .hf-code { margin: 0; padding: 18px 20px; font-size: 13px; line-height: 1.7; background: var(--color-term); color: var(--color-body); }
+  .hf-rows { margin: 0; border-top: 1px solid var(--color-line); }
+  .hf-rows > div { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; padding: 13px 20px; border-bottom: 1px solid var(--color-line); font-size: 14px; line-height: 1.5; }
+  .hf-rows > div:last-child { border-bottom: 0; }
+  .hf-rows dt { font-weight: 600; color: var(--color-ink); }
+  .hf-rows dd { margin: 0; color: var(--color-ink); }
+  .hf-rows dd.hf-them { color: var(--color-muted); }
+</style>
+<style>
+  .cmp-eslint-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 20px; }
+  .cmp-yaml { margin: 0; padding: 18px 20px; font-size: 13px; line-height: 1.7; background: var(--color-term); color: var(--color-body); }
+</style>

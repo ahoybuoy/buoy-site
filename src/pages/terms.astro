@@ -4,6 +4,7 @@ import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
 
 const lastUpdated = 'October 13, 2026'
+const toc = [{id: 'agreement-to-terms', label: 'Agreement to Terms'}, {id: 'description-of-services', label: 'Description of Services'}, {id: 'account-registration', label: 'Account Registration'}, {id: 'acceptable-use', label: 'Acceptable Use'}, {id: 'intellectual-property', label: 'Intellectual Property'}, {id: 'payment-terms', label: 'Payment Terms'}, {id: 'free-use', label: 'Free Use'}, {id: 'service-availability', label: 'Service Availability'}, {id: 'disclaimer-of-warranties', label: 'Disclaimer of Warranties'}, {id: 'limitation-of-liability', label: 'Limitation of Liability'}, {id: 'indemnification', label: 'Indemnification'}, {id: 'termination', label: 'Termination'}, {id: 'changes-to-terms', label: 'Changes to Terms'}, {id: 'governing-law', label: 'Governing Law'}, {id: 'contact', label: 'Contact'}]
 ---
 
 <Layout
@@ -12,54 +13,47 @@ const lastUpdated = 'October 13, 2026'
 >
   <Nav />
 
-  <section class="relative pt-32 pb-16">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-
-      <div class="mb-12">
-        <h1 class="text-3xl sm:text-4xl font-bold text-light mb-4">Terms of Service</h1>
-        <p class="text-slate">Last updated: {lastUpdated}</p>
-      </div>
-
-      <div class="prose prose-invert max-w-none space-y-8">
-
-        <section>
-          <h2 class="text-xl font-semibold text-light mb-4">Agreement to Terms</h2>
-          <p class="text-slate">
+  <main id="main" class="ui-nav-offset">
+    <section class="ui-section ui-section--first ui-section--last">
+      <div class="ui-wrap">
+        <div class="ui-head">
+          <h1>Terms of Service</h1>
+          <p>Last updated: {lastUpdated}</p>
+        </div>
+        <div class="lg-layout">
+          <nav class="lg-toc" aria-label="On this page">
+            <p>On this page</p>
+            <ol>{toc.map((t) => <li><a href={`#${t.id}`}>{t.label}</a></li>)}</ol>
+          </nav>
+          <article class="ui-prose lg-prose">
+          <h2 id="agreement-to-terms">Agreement to Terms</h2>
+          <p>
             By accessing or using Buoy's services, including our CLI tool, website, and cloud features (collectively, the "Services"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, do not use the Services.
           </p>
-        </section>
-
-        <section>
-          <h2 class="text-xl font-semibold text-light mb-4">Description of Services</h2>
-          <p class="text-slate mb-4">
+          <h2 id="description-of-services">Description of Services</h2>
+          <p>
             Buoy provides design system drift detection tools, including:
           </p>
-          <ul class="list-disc list-inside text-slate space-y-2">
-            <li><strong class="text-light">Open source tools:</strong> The CLI, MCP server and GitHub Action, free under the MIT License</li>
-            <li><strong class="text-light">GitHub App:</strong> Hosted pull request reviews, the dashboard and history. Free for life for the first 100 installs (see below); after that, the Team plan</li>
-            <li><strong class="text-light">Organization plan:</strong> An annual plan for the team that owns a design system used across many teams, as described on the <a href="/pricing" class="text-buoy hover:underline">pricing page</a> or in the applicable order form</li>
+          <ul>
+            <li><strong>Open source tools:</strong> The CLI, MCP server and GitHub Action, free under the MIT License</li>
+            <li><strong>GitHub App:</strong> Hosted pull request reviews, the dashboard and history. Free for life for the first 100 installs (see below); after that, the Team plan</li>
+            <li><strong>Organization plan:</strong> An annual plan for the team that owns a design system used across many teams, as described on the <a href="/pricing">pricing page</a> or in the applicable order form</li>
           </ul>
-        </section>
-
-        <section>
-          <h2 class="text-xl font-semibold text-light mb-4">Account Registration</h2>
-          <p class="text-slate mb-4">
+          <h2 id="account-registration">Account Registration</h2>
+          <p>
             To use certain features, you must create an account. You agree to:
           </p>
-          <ul class="list-disc list-inside text-slate space-y-2">
+          <ul>
             <li>Provide accurate and complete information</li>
             <li>Maintain the security of your account credentials</li>
             <li>Notify us immediately of any unauthorized access</li>
             <li>Accept responsibility for all activities under your account</li>
           </ul>
-        </section>
-
-        <section>
-          <h2 class="text-xl font-semibold text-light mb-4">Acceptable Use</h2>
-          <p class="text-slate mb-4">
+          <h2 id="acceptable-use">Acceptable Use</h2>
+          <p>
             You agree not to:
           </p>
-          <ul class="list-disc list-inside text-slate space-y-2">
+          <ul>
             <li>Use the Services for any unlawful purpose</li>
             <li>Attempt to gain unauthorized access to our systems</li>
             <li>Interfere with or disrupt the Services</li>
@@ -67,115 +61,106 @@ const lastUpdated = 'October 13, 2026'
             <li>Use the Services to transmit malware or malicious code</li>
             <li>Resell or redistribute the Services without authorization</li>
           </ul>
-        </section>
-
-        <section>
-          <h2 class="text-xl font-semibold text-light mb-4">Intellectual Property</h2>
-          <p class="text-slate mb-4">
-            <strong class="text-light">Our IP:</strong> The Buoy name, logo, and Services are owned by Buoy Design, Inc. and protected by intellectual property laws.
+          <h2 id="intellectual-property">Intellectual Property</h2>
+          <p>
+            <strong>Our IP:</strong> The Buoy name, logo, and Services are owned by Buoy Design, Inc. and protected by intellectual property laws.
           </p>
-          <p class="text-slate mb-4">
-            <strong class="text-light">Your Code:</strong> You retain all rights to your source code and scan results; we never claim ownership of them. The CLI runs locally. The GitHub App processes your code only to provide the Services, as described in our <a href="/privacy" class="text-buoy hover:underline">Privacy Policy</a>.
+          <p>
+            <strong>Your Code:</strong> You retain all rights to your source code and scan results; we never claim ownership of them. The CLI runs locally. The GitHub App processes your code only to provide the Services, as described in our <a href="/privacy">Privacy Policy</a>.
           </p>
-          <p class="text-slate">
-            <strong class="text-light">Open Source:</strong> The Buoy CLI is open source under the MIT License. Additional terms may apply to specific components.
+          <p>
+            <strong>Open Source:</strong> The Buoy CLI is open source under the MIT License. Additional terms may apply to specific components.
           </p>
-        </section>
-
-        <section>
-          <h2 class="text-xl font-semibold text-light mb-4">Payment Terms</h2>
-          <p class="text-slate mb-4">
+          <h2 id="payment-terms">Payment Terms</h2>
+          <p>
             For paid plans:
           </p>
-          <ul class="list-disc list-inside text-slate space-y-2">
+          <ul>
             <li>Fees are billed in advance on a monthly or annual basis</li>
             <li>All fees are non-refundable except as required by law</li>
             <li>We may change paid plan pricing with 30 days notice. This never ends free for life for an install that has it</li>
             <li>You are responsible for all applicable taxes</li>
             <li>Failure to pay may result in suspension of services</li>
           </ul>
-        </section>
-
-        <section>
-          <h2 class="text-xl font-semibold text-light mb-4">Free Use</h2>
-          <p class="text-slate mb-4">
+          <h2 id="free-use">Free Use</h2>
+          <p>
             The open source tools are provided "as is" under the MIT License, without warranty.
           </p>
-          <p class="text-slate mb-4">
-            <strong class="text-light">Free for life:</strong> if a GitHub organization or account installs the Buoy GitHub App while it is one of the first 100 installs, that organization uses the GitHub App free of charge for as long as Buoy operates the GitHub App, including features later added to the Team plan. It belongs to the organization that installed, does not transfer to another organization, and does not include the Organization plan. Public repositories are free on every install.
+          <p>
+            <strong>Free for life:</strong> if a GitHub organization or account installs the Buoy GitHub App while it is one of the first 100 installs, that organization uses the GitHub App free of charge for as long as Buoy operates the GitHub App, including features later added to the Team plan. It belongs to the organization that installed, does not transfer to another organization, and does not include the Organization plan. Public repositories are free on every install.
           </p>
-          <p class="text-slate">
+          <p>
             We may change or discontinue other free features with reasonable notice when possible.
           </p>
-        </section>
-
-        <section>
-          <h2 class="text-xl font-semibold text-light mb-4">Service Availability</h2>
-          <p class="text-slate">
-            We strive for high availability but do not guarantee uninterrupted service. We may perform maintenance, updates, or experience outages. Check <a href="/status" class="text-buoy hover:underline">buoy.design/status</a> for current status.
+          <h2 id="service-availability">Service Availability</h2>
+          <p>
+            We strive for high availability but do not guarantee uninterrupted service. We may perform maintenance, updates, or experience outages. Check <a href="/status">buoy.design/status</a> for current status.
           </p>
-        </section>
-
-        <section>
-          <h2 class="text-xl font-semibold text-light mb-4">Disclaimer of Warranties</h2>
-          <p class="text-slate">
+          <h2 id="disclaimer-of-warranties">Disclaimer of Warranties</h2>
+          <p>
             THE SERVICES ARE PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE SERVICES WILL BE UNINTERRUPTED, ERROR-FREE, OR SECURE.
           </p>
-        </section>
-
-        <section>
-          <h2 class="text-xl font-semibold text-light mb-4">Limitation of Liability</h2>
-          <p class="text-slate">
+          <h2 id="limitation-of-liability">Limitation of Liability</h2>
+          <p>
             TO THE MAXIMUM EXTENT PERMITTED BY LAW, BUOY SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS OR REVENUES, WHETHER INCURRED DIRECTLY OR INDIRECTLY. OUR TOTAL LIABILITY SHALL NOT EXCEED THE AMOUNT YOU PAID US IN THE TWELVE (12) MONTHS PRECEDING THE CLAIM.
           </p>
-        </section>
-
-        <section>
-          <h2 class="text-xl font-semibold text-light mb-4">Indemnification</h2>
-          <p class="text-slate">
+          <h2 id="indemnification">Indemnification</h2>
+          <p>
             You agree to indemnify and hold harmless Buoy and its officers, directors, employees, and agents from any claims, damages, or expenses arising from your use of the Services or violation of these Terms.
           </p>
-        </section>
-
-        <section>
-          <h2 class="text-xl font-semibold text-light mb-4">Termination</h2>
-          <p class="text-slate mb-4">
+          <h2 id="termination">Termination</h2>
+          <p>
             We may suspend or terminate your access to the Services at any time for violation of these Terms or for any other reason with notice. You may cancel your account at any time.
           </p>
-          <p class="text-slate">
+          <p>
             Upon termination, your right to use the Services will cease. Provisions that by their nature should survive termination will survive (including intellectual property, disclaimers, and limitations of liability).
           </p>
-        </section>
-
-        <section>
-          <h2 class="text-xl font-semibold text-light mb-4">Changes to Terms</h2>
-          <p class="text-slate">
+          <h2 id="changes-to-terms">Changes to Terms</h2>
+          <p>
             We may modify these Terms at any time. We will notify you of material changes via email or through the Services. Continued use of the Services after changes constitutes acceptance of the new Terms.
           </p>
-        </section>
-
-        <section>
-          <h2 class="text-xl font-semibold text-light mb-4">Governing Law</h2>
-          <p class="text-slate">
+          <h2 id="governing-law">Governing Law</h2>
+          <p>
             These Terms are governed by the laws of the State of Delaware, United States, without regard to conflict of law principles. Any disputes shall be resolved in the state or federal courts located in Delaware.
           </p>
-        </section>
-
-        <section>
-          <h2 class="text-xl font-semibold text-light mb-4">Contact</h2>
-          <p class="text-slate">
+          <h2 id="contact">Contact</h2>
+          <p>
             Questions about these Terms? Contact us at:
           </p>
-          <ul class="list-none text-slate mt-4 space-y-1">
-            <li>Email: <a href="mailto:legal@buoy.design" class="text-buoy hover:underline">legal@buoy.design</a></li>
-            <li>Support: <a href="/support" class="text-buoy hover:underline">buoy.design/support</a></li>
+          <ul>
+            <li>Email: <a href="mailto:legal@buoy.design">legal@buoy.design</a></li>
+            <li>Support: <a href="/support">buoy.design/support</a></li>
           </ul>
-        </section>
-
       </div>
-
-    </div>
-  </section>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <Footer />
 </Layout>
+
+<style>
+  .lg-layout { margin-top: 56px; display: grid; grid-template-columns: 220px minmax(0, 68ch); gap: 72px; align-items: start; }
+  .lg-prose { max-width: 68ch; }
+  .lg-prose > h2:first-child { margin-top: 0; padding-top: 0; border-top: 0; }
+  .lg-toc { position: sticky; top: 96px; font-size: 14px; }
+  .lg-toc p { margin: 0 0 12px; font-weight: 600; color: var(--color-ink); }
+  .lg-toc ol { margin: 0; padding: 0; list-style: none; border-left: 1px solid var(--color-line); }
+  .lg-toc a { display: block; padding: 6px 0 6px 14px; margin-left: -1px; border-left: 1px solid transparent; color: var(--color-muted); text-decoration: none; transition: color 150ms ease, border-color 150ms ease; }
+  .lg-toc a:hover { color: var(--color-ink); border-left-color: var(--color-buoy); }
+  @media (max-width: 960px) {
+    .lg-layout { grid-template-columns: minmax(0, 1fr); gap: 32px; margin-top: 40px; }
+    .lg-toc { position: static; padding: 16px 18px; border-radius: var(--radius-card); box-shadow: var(--ring); background: var(--color-surface); }
+    .lg-toc ol { columns: 2; column-gap: 20px; border-left: 0; }
+    .lg-toc a { padding: 5px 0; border-left: 0; margin: 0; }
+  }
+  @media (max-width: 480px) { .lg-toc ol { columns: 1; } }
+  .lg-prose h2 { scroll-margin-top: 88px; }
+  .lg-uses { display: grid; gap: 0; margin-top: 1.1em; border-top: 1px solid var(--color-line-strong); }
+  .lg-uses > div { padding: 18px 0; border-bottom: 1px solid var(--color-line); }
+  .lg-uses dt { font-weight: 600; color: var(--color-ink); }
+  .lg-uses dd { margin: 6px 0 0; font-size: 15px; }
+  .lg-uses .lg-when { color: var(--color-muted); font-size: 14px; }
+</style>

@@ -1,76 +1,26 @@
 ---
 import FeatureLayout from '../../layouts/FeatureLayout.astro'
-import Terminal from '../../components/Terminal.astro'
-import FeatureCard from '../../components/FeatureCard.astro'
-
-const terminalLines = [
-  { text: '', delay: 600 },
-  { text: '<span class="text-buoy">⚓</span> Running accessibility checks...', type: 'output', delay: 800 },
-  { text: '', delay: 1200 },
-  { text: '<span class="text-critical">✗</span> Found <span class="text-light">3</span> accessibility issues', type: 'error', delay: 1400 },
-  { text: '', delay: 1600 },
-  { text: '<span class="text-critical">[Critical]</span> Missing alt text', type: 'error', delay: 1800 },
-  { text: '  └─ src/components/Avatar.tsx:12', type: 'muted', delay: 2000 },
-  { text: '     <span class="text-slate">&lt;img src={user.avatar} /&gt;</span>', type: 'muted', delay: 2200 },
-  { text: '', delay: 2400 },
-  { text: '<span class="text-warning">[Warning]</span> Low color contrast', type: 'warning', delay: 2600 },
-  { text: '  └─ src/components/Badge.tsx:8', type: 'muted', delay: 2800 },
-  { text: '     <span class="text-slate">text-gray-400 on bg-gray-100 (ratio: 2.5:1)</span>', type: 'muted', delay: 3000 },
-  { text: '', delay: 3200 },
-  { text: '<span class="text-warning">[Warning]</span> Missing aria-label', type: 'warning', delay: 3400 },
-  { text: '  └─ src/components/IconButton.tsx:5', type: 'muted', delay: 3600 },
-  { text: '     <span class="text-slate">&lt;button&gt;&lt;Icon /&gt;&lt;/button&gt;</span>', type: 'muted', delay: 3800 },
-]
+import BuoyMark from '../../components/BuoyMark.astro'
 
 const checks = [
-  {
-    title: 'Color Contrast',
-    description: 'Ensures text meets WCAG 2.1 contrast requirements (4.5:1 for normal text, 3:1 for large text)',
-    severity: 'critical'
-  },
-  {
-    title: 'Alt Text',
-    description: 'Detects images without alt attributes or with empty alt on decorative images',
-    severity: 'critical'
-  },
-  {
-    title: 'ARIA Labels',
-    description: 'Catches buttons with only icons and no accessible label',
-    severity: 'warning'
-  },
-  {
-    title: 'Focus Indicators',
-    description: 'Warns when focus styles are removed without replacement',
-    severity: 'warning'
-  },
-  {
-    title: 'Semantic HTML',
-    description: 'Suggests semantic elements over divs with roles',
-    severity: 'info'
-  },
-  {
-    title: 'Heading Order',
-    description: 'Ensures headings follow logical hierarchy (h1 → h2 → h3)',
-    severity: 'info'
-  },
+  { title: 'Color Contrast', description: 'Ensures text meets WCAG 2.1 contrast requirements (4.5:1 for normal text, 3:1 for large text)', severity: 'critical' },
+  { title: 'Alt Text', description: 'Detects images without alt attributes or with empty alt on decorative images', severity: 'critical' },
+  { title: 'ARIA Labels', description: 'Catches buttons with only icons and no accessible label', severity: 'warning' },
+  { title: 'Focus Indicators', description: 'Warns when focus styles are removed without replacement', severity: 'warning' },
+  { title: 'Semantic HTML', description: 'Suggests semantic elements over divs with roles', severity: 'info' },
+  { title: 'Heading Order', description: 'Ensures headings follow logical hierarchy (h1 → h2 → h3)', severity: 'info' },
+]
+
+const why = [
+  { title: 'Legal requirement', text: 'ADA, Section 508, and WCAG compliance is legally required for many organizations.' },
+  { title: '15% of users', text: 'Over 1 billion people worldwide have some form of disability.' },
+  { title: 'Better for everyone', text: 'Good contrast and clear labels help all users, not just those with disabilities.' },
 ]
 
 const relatedFeatures = [
-  {
-    title: 'Drift Detection',
-    description: 'All design system checks',
-    href: '/features/drift-detection'
-  },
-  {
-    title: 'CI Integration',
-    description: 'Block PRs on a11y issues',
-    href: '/features/ci'
-  },
-  {
-    title: 'Coverage',
-    description: 'Track a11y compliance',
-    href: '/features/coverage'
-  },
+  { title: 'Drift Detection', description: 'All design system checks', href: '/features/drift-detection' },
+  { title: 'CI Integration', description: 'Block PRs on a11y issues', href: '/features/ci' },
+  { title: 'Coverage', description: 'Track a11y compliance', href: '/features/coverage' },
 ]
 ---
 
@@ -80,134 +30,143 @@ const relatedFeatures = [
   keywords="accessibility checks, wcag compliance, design system accessibility"
   heroTitle="Accessibility checks at build time"
   heroDescription="Catch a11y issues before they ship. Color contrast, alt text, ARIA labels, and more."
+  exampleCaption="A Buoy review comment on an icon button with no label."
+  related={relatedFeatures}
+  pattern="pulse"
+  ctaPattern="wake"
 >
-  <!-- Why A11y Matters -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Why Accessibility Matters</h2>
-
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6 text-center">
-          <div class="text-3xl mb-4">⚖️</div>
-          <h3 class="font-semibold text-light mb-2">Legal Requirement</h3>
-          <p class="text-sm text-slate">
-            ADA, Section 508, and WCAG compliance is legally required for many organizations.
-          </p>
-        </div>
-
-        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6 text-center">
-          <div class="text-3xl mb-4">👥</div>
-          <h3 class="font-semibold text-light mb-2">15% of Users</h3>
-          <p class="text-sm text-slate">
-            Over 1 billion people worldwide have some form of disability.
-          </p>
-        </div>
-
-        <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6 text-center">
-          <div class="text-3xl mb-4">🎯</div>
-          <h3 class="font-semibold text-light mb-2">Better for Everyone</h3>
-          <p class="text-sm text-slate">
-            Good contrast and clear labels help all users, not just those with disabilities.
-          </p>
+  <div slot="example" class="ui-tray">
+    <div class="ui-panel">
+      <div class="ui-panel-head"><span class="ui-mono">src/components/IconButton.tsx</span></div>
+      <div class="fx-diff" role="img" aria-label="Diff of IconButton.tsx. Line 5 adds a button with only an icon and no label.">
+        <div class="fx-line"><span class="fx-ln">4</span><span class="fx-sign"></span><span class="fx-code">{"export const Close = () => ("}</span></div>
+        <div class="fx-line fx-add"><span class="fx-ln">5</span><span class="fx-sign">+</span><span class="fx-code">{"  <button><Icon name=\"x\" /></button>"}</span></div>
+      </div>
+      <div class="fx-comment-row">
+        <div class="fx-comment">
+          <div class="fx-comment-head">
+            <span class="fx-avatar"><BuoyMark size={16} /></span>
+            <span class="fx-author">buoy-design</span><span class="fx-tag">bot</span>
+            <span class="fx-meta">commented on line <span class="ui-tnum">5</span></span>
+          </div>
+          <p class="fx-body"><span class="ui-sev ui-sev-warning">Warning</span> Missing aria-label. Icon-only buttons need an accessible name.</p>
+          <div class="fx-suggest">
+            <div class="fx-suggest-label">Suggested change</div>
+            <div class="fx-diff">
+              <div class="fx-line fx-del"><span class="fx-ln">5</span><span class="fx-sign">-</span><span class="fx-code">{"<button><Icon name=\"x\" /></button>"}</span></div>
+              <div class="fx-line fx-add"><span class="fx-ln">5</span><span class="fx-sign">+</span><span class="fx-code">{"<button aria-label=\"Close\"><Icon name=\"x\" /></button>"}</span></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Terminal Demo -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">See it in action</h2>
-      <Terminal command="buoy drift check" lines={terminalLines} />
-    </div>
-  </section>
-
-  <!-- What We Check -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">What We Check</h2>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {checks.map((check) => (
-          <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
-            <div class="flex items-center gap-2 mb-2">
-              <span class={`px-2 py-0.5 text-xs rounded ${
-                check.severity === 'critical' ? 'bg-critical/20 text-critical' :
-                check.severity === 'warning' ? 'bg-warning/20 text-warning' : 'bg-info/20 text-info'
-              }`}>{check.severity}</span>
-            </div>
-            <h3 class="font-semibold text-light mb-2">{check.title}</h3>
-            <p class="text-sm text-slate">{check.description}</p>
-          </div>
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>Why accessibility matters</h2></div>
+      <div class="ui-cols ui-cols--3">
+        {why.map((w) => (
+          <div class="ui-col"><h3>{w.title}</h3><p>{w.text}</p></div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- Color Contrast Example -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Color Contrast Checking</h2>
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap ui-split">
+      <div class="ui-head">
+        <h2>See it in action</h2>
+        <p>One run of <code class="ui-code">buoy drift check</code> lists each issue with its severity, file and line.</p>
+      </div>
+      <div class="ui-term fx-term">
+        <div class="ui-term-bar"><span>Terminal</span></div>
+        <pre><span class="ui-t-prompt">$</span> <span class="ui-t-hi">buoy drift check</span>
+<span class="ui-t-dim">Running accessibility checks...</span>
 
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="bg-navy-dark border border-critical/30 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-4 flex items-center gap-2">
-            <span class="text-critical">✗</span> Failing Contrast
-          </h3>
-          <div class="bg-gray-100 rounded-lg p-4 mb-4">
-            <p class="text-gray-400 text-sm">This text is hard to read</p>
-          </div>
-          <p class="text-sm text-slate">
-            Contrast ratio: 2.5:1 (needs 4.5:1)
-          </p>
+<span class="ui-t-crit">✗</span> Found <span class="ui-t-hi">3</span> accessibility issues
+
+<span class="ui-t-crit">[Critical]</span> Missing alt text
+  <span class="ui-t-dim">└─ src/components/Avatar.tsx:12</span>
+     <span class="ui-t-dim">&lt;img src=&#123;user.avatar&#125; /&gt;</span>
+
+<span class="ui-t-warn">[Warning]</span> Low color contrast
+  <span class="ui-t-dim">└─ src/components/Badge.tsx:8</span>
+     <span class="ui-t-dim">text-gray-400 on bg-gray-100 (ratio: 2.5:1)</span>
+
+<span class="ui-t-warn">[Warning]</span> Missing aria-label
+  <span class="ui-t-dim">└─ src/components/IconButton.tsx:5</span>
+     <span class="ui-t-dim">&lt;button&gt;&lt;Icon /&gt;&lt;/button&gt;</span></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>What we check</h2></div>
+      <div class="fx-block">
+        <table class="ui-table ui-table--stack">
+          <caption class="ui-sr">Accessibility checks and their severity</caption>
+          <thead><tr><th scope="col">Check</th><th scope="col">What it catches</th><th scope="col" class="ui-end">Severity</th></tr></thead>
+          <tbody>
+            {checks.map((c) => (
+              <tr>
+                <th scope="row">{c.title}</th>
+                <td>{c.description}</td>
+                <td class="ui-end"><span class={`ui-sev ui-sev-${c.severity}`}>{c.severity[0].toUpperCase() + c.severity.slice(1)}</span></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>Color contrast checking</h2></div>
+      <div class="ui-cols">
+        <div class="ui-col">
+          <h3>Failing contrast</h3>
+          <p class="ui-col-sub ui-c-crit">Contrast ratio: 2.5:1 (needs 4.5:1)</p>
+          <div class="a11y-sample fx-mt"><p class="a11y-fail">This text is hard to read</p></div>
         </div>
-
-        <div class="bg-navy-dark border border-success/30 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-4 flex items-center gap-2">
-            <span class="text-success">✓</span> Passing Contrast
-          </h3>
-          <div class="bg-gray-100 rounded-lg p-4 mb-4">
-            <p class="text-gray-700 text-sm">This text is easy to read</p>
-          </div>
-          <p class="text-sm text-slate">
-            Contrast ratio: 5.3:1 (passes AA)
-          </p>
+        <div class="ui-col">
+          <h3>Passing contrast</h3>
+          <p class="ui-col-sub ui-c-ok">Contrast ratio: 5.3:1 (passes AA)</p>
+          <div class="a11y-sample fx-mt"><p class="a11y-pass">This text is easy to read</p></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Integration with Tokens -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Works with Your Design Tokens</h2>
+  <section class="ui-section">
+    <div class="ui-wrap ui-split">
+      <div class="ui-head">
+        <h2>Works with your design tokens</h2>
+        <p>Buoy checks your token color pairs for WCAG compliance and suggests the token to use instead.</p>
+      </div>
+      <div class="ui-term fx-term">
+        <div class="ui-term-bar"><span>Checks token combinations</span></div>
+        <pre><span class="ui-t-dim">Checking token color pairs for WCAG compliance...</span>
 
-      <div class="bg-navy border border-navy-light/30 rounded-xl overflow-hidden">
-        <div class="px-4 py-3 bg-navy-dark border-b border-navy-light/20">
-          <span class="text-sm text-slate font-mono">Checks token combinations</span>
-        </div>
-        <pre class="p-4 text-sm font-mono overflow-x-auto"><code class="text-slate">{`Checking token color pairs for WCAG compliance...
+<span class="ui-t-ok">✓</span> --color-text on --color-bg           <span class="ui-t-ok">7.2:1 (AAA)</span>
+<span class="ui-t-ok">✓</span> --color-text-muted on --color-bg     <span class="ui-t-ok">5.1:1 (AA)</span>
+<span class="ui-t-crit">✗</span> --color-text-muted on --color-bg-alt <span class="ui-t-crit">2.8:1 (FAIL)</span>
+  <span class="ui-t-dim">└─ Suggest:</span> Use <span class="ui-t-ok">--color-text</span> instead
 
-✓ --color-text on --color-bg           7.2:1 (AAA)
-✓ --color-text-muted on --color-bg     5.1:1 (AA)
-✗ --color-text-muted on --color-bg-alt 2.8:1 (FAIL)
-  └─ Suggest: Use --color-text instead
-
-✓ --color-primary on --color-bg        4.8:1 (AA)
-✗ --color-primary on --color-primary-bg 1.9:1 (FAIL)
-  └─ Suggest: Darken --color-primary-bg`}</code></pre>
+<span class="ui-t-ok">✓</span> --color-primary on --color-bg        <span class="ui-t-ok">4.8:1 (AA)</span>
+<span class="ui-t-crit">✗</span> --color-primary on --color-primary-bg <span class="ui-t-crit">1.9:1 (FAIL)</span>
+  <span class="ui-t-dim">└─ Suggest:</span> Darken <span class="ui-t-ok">--color-primary-bg</span></pre>
       </div>
     </div>
   </section>
-
-  <!-- Related Features -->
-  <div slot="related" class="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
-    {relatedFeatures.map((feature) => (
-      <FeatureCard
-        title={feature.title}
-        description={feature.description}
-        href={feature.href}
-      />
-    ))}
-  </div>
 </FeatureLayout>
+
+<style>
+  /* A literal light sample: these colours are the example being judged, not brand colours. */
+  .a11y-sample { padding: 20px; border-radius: var(--radius-inner); background: #f3f4f6; box-shadow: var(--ring); }
+  .a11y-sample p { margin: 0; font-size: 15px; }
+  .a11y-fail { color: #9ca3af; }
+  .a11y-pass { color: #374151; }
+</style>

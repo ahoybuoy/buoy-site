@@ -4,42 +4,44 @@ interface Props {
   buttonText?: string
   successMessage?: string
   class?: string
+  /** Set on a second form for the same lead magnet on one page, so its ids (and script) don't collide with the first. */
+  idSuffix?: string
 }
 
 const {
   leadMagnet,
   buttonText = 'Get the PDF',
   successMessage = 'Check your email for the download link!',
-  class: className = ''
+  class: className = '',
+  idSuffix = '',
 } = Astro.props
 
-const formId = `lead-form-${leadMagnet}`
+const formId = `lead-form-${leadMagnet}${idSuffix ? `-${idSuffix}` : ''}`
 ---
 
-<form id={formId} class={`flex flex-col sm:flex-row gap-3 ${className}`}>
+<form id={formId} class={`ui-scan ${className}`}>
+  <label for={`${formId}-email`} class="ui-sr">Email address</label>
   <input
+    id={`${formId}-email`}
     type="email"
     name="email"
     placeholder="you@company.com"
+    autocomplete="email"
     required
-    class="flex-1 px-4 py-3 bg-navy-light/50 border border-navy-light/50 rounded-lg text-light placeholder-slate focus:outline-none focus:border-buoy focus:ring-1 focus:ring-buoy transition-colors"
   />
-  <button
-    type="submit"
-    class="px-6 py-3 bg-buoy text-navy-dark font-medium rounded-lg hover:bg-buoy-light transition-all duration-200 hover:scale-105 glow-buoy disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 whitespace-nowrap"
-  >
+  <button type="submit" class="ui-btn ui-btn--primary">
     <span class="button-text">{buttonText}</span>
     <span class="loading-text hidden">Sending...</span>
   </button>
 </form>
 
-<div id={`${formId}-success`} class="hidden mt-4 p-4 bg-green-500/20 border border-green-500/50 rounded-lg text-green-300">
+<p id={`${formId}-success`} class="hidden ui-msg ui-msg--ok" role="status">
   {successMessage}
-</div>
+</p>
 
-<div id={`${formId}-error`} class="hidden mt-4 p-4 bg-red-500/20 border border-red-500/50 rounded-lg text-red-300">
+<p id={`${formId}-error`} class="hidden ui-msg ui-msg--err" role="alert">
   Something went wrong. Please try again.
-</div>
+</p>
 
 <script define:vars={{ formId, leadMagnet }}>
   const form = document.getElementById(formId);

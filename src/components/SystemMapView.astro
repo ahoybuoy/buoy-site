@@ -49,33 +49,35 @@ for (const n of map.nodes) lanes[[0, 1, 1, 2, 3][n[0]]!]!++
 
 <style>
   .system-map {
-    --map-line: rgba(148, 163, 184, 0.18); --map-dot: #7d8aa3; --map-dim: #1f2a3d; --map-ink: #f1efe8;
+    --map-line: rgba(148, 163, 184, 0.18); --map-dot: #7d8aa3; --map-dim: #1c2843; --map-ink: #f1efe8;
     --map-muted: #94a3b8; --map-down: #f07a33; --map-up: #6f9bff; --map-drift: #ff6464;
-    display: grid; gap: 16px; color: #f1efe8;
+    display: grid; gap: 16px; color: var(--color-ink);
   }
   .stats { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 13px; color: var(--map-muted); font-variant-numeric: tabular-nums; }
-  .stats b { color: var(--map-ink); font: 600 15px ui-monospace, Menlo, monospace; margin-right: 4px; }
+  .stats b { color: var(--map-ink); font: 600 15px var(--font-mono); margin-right: 4px; }
   .stats .d b { color: var(--map-drift); }
   .main { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 16px; align-items: stretch; }
   @media (max-width: 900px) { .main { grid-template-columns: minmax(0, 1fr); } }
   /* Side by side, the panel matches the map's height and scrolls inside;
      contain: size keeps its long lists from stretching the row. */
   @media (min-width: 901px) { .side { contain: size; overflow-y: auto; align-content: start; } }
-  .board, .side { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(148, 163, 184, 0.2); border-radius: 12px; }
+  .board, .side { background: var(--color-surface); box-shadow: var(--ring); border-radius: var(--radius-card); }
   .board { overflow: hidden; min-width: 0; }
   .lanes { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--map-line); }
-  .lanes div { padding: 10px 12px 8px; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--map-muted); display: flex; justify-content: space-between; gap: 6px; }
+  .lanes div { padding: 10px 12px 8px; font-size: 12px; font-weight: 500; letter-spacing: 0.02em; color: var(--map-muted); display: flex; justify-content: space-between; gap: 6px; }
   .lanes div + div { border-left: 1px solid var(--map-line); }
   canvas { display: block; width: 100%; cursor: crosshair; }
+  .system-map :global(.map-list button) { cursor: pointer; }
   .legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12px; color: var(--map-muted); padding: 10px 12px; border-top: 1px solid var(--map-line); }
   .legend i { display: inline-block; width: 18px; height: 2px; vertical-align: middle; margin-right: 6px; }
   .legend i.ring { width: 8px; height: 8px; border-radius: 50%; border: 1.5px solid var(--map-drift); }
   .side { padding: 16px; display: grid; gap: 14px; min-width: 0; }
-  .side input { width: 100%; font-size: 14px; padding: 8px 10px; border-radius: 6px; border: 1px solid rgba(148, 163, 184, 0.3); background: rgba(2, 6, 23, 0.5); color: var(--map-ink); }
+  .side input { width: 100%; font-size: 14px; padding: 8px 10px; border-radius: var(--radius-btn); border: 1px solid oklch(1 0 0 / 0.16); background: var(--color-field, var(--color-sunken)); color: var(--color-ink); outline: none; }
+  .side input:focus { border-color: var(--color-buoy); }
   .tip { position: fixed; pointer-events: none; background: var(--map-ink); color: #0b1220; font: 12px ui-monospace, Menlo, monospace; padding: 4px 8px; border-radius: 4px; z-index: 50; white-space: nowrap; }
   .system-map :global(.note) { font-size: 12px; color: var(--map-muted); }
-  .system-map :global(.kind) { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--map-down); }
-  .system-map :global(.name) { font-size: 20px; font-weight: 700; line-height: 1.2; margin-top: 2px; overflow-wrap: anywhere; }
+  .system-map :global(.kind) { font-size: 12px; font-weight: 600; color: var(--map-down); }
+  .system-map :global(.name) { font-family: var(--font-display); font-size: 20px; font-weight: 700; line-height: 1.2; margin-top: 2px; overflow-wrap: anywhere; }
   .system-map :global(.path) { font: 12px ui-monospace, Menlo, monospace; color: var(--map-muted); overflow-wrap: anywhere; margin-top: 4px; }
   [data-map-info] { display: grid; gap: 14px; min-width: 0; }
   .system-map :global(.big) { display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 10px 14px; }
@@ -84,7 +86,7 @@ for (const n of map.nodes) lanes[[0, 1, 1, 2, 3][n[0]]!]!++
   .system-map :global(.big .dn b) { color: var(--map-down); }
   .system-map :global(.big .upc b) { color: var(--map-up); }
   .system-map :global(.big .dr b) { color: var(--map-drift); }
-  .system-map :global(h3) { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--map-muted); margin: 0 0 6px; }
+  .system-map :global(h3) { font-family: var(--font-body); font-size: 12px; font-weight: 500; color: var(--map-muted); margin: 0 0 6px; }
   .system-map :global(.map-list) { display: grid; gap: 2px; max-height: 220px; overflow: auto; }
   .system-map :global(.map-list button) { display: flex; justify-content: space-between; gap: 8px; text-align: left; padding: 4px 6px; border-radius: 4px; font-size: 13px; min-width: 0; color: var(--map-ink); }
   .system-map :global(.map-list button span:first-child) { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

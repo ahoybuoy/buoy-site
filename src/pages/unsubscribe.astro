@@ -11,31 +11,40 @@ const done = Astro.url.searchParams.get('done')
 
 <Layout title="Unsubscribe | Buoy" description="Stop getting emails from Buoy." noindex>
   <Nav />
-  <section class="pt-32 pb-24 bg-navy-dark min-h-[60vh]">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      {done === '1' && (
-        <>
-          <h1 class="text-3xl font-bold text-light">You're unsubscribed</h1>
-          <p class="text-slate mt-3">You won't get any more emails from Buoy. If you sign up for something again later, you'll be back on the list.</p>
-        </>
-      )}
-      {done === '0' && (
-        <>
-          <h1 class="text-3xl font-bold text-light">That link didn't work</h1>
-          <p class="text-slate mt-3">It may be old or cut off. Email <a href="mailto:support@buoy.design" class="text-buoy hover:underline">support@buoy.design</a> and we'll take you off the list by hand.</p>
-        </>
-      )}
-      {done === null && (
-        <>
-          <h1 class="text-3xl font-bold text-light">Unsubscribe from Buoy emails?</h1>
-          <p class="text-slate mt-3">One click and you're off the list.</p>
-          <form method="post" action="/api/unsubscribe" class="mt-6">
-            <input type="hidden" name="token" value={token} />
-            <button type="submit" class="px-5 py-2.5 rounded-lg bg-buoy text-navy-dark font-semibold hover:opacity-90">Unsubscribe</button>
-          </form>
-        </>
-      )}
-    </div>
-  </section>
+  <main id="main" class="ui-nav-offset">
+    <section class="ui-section ui-section--first ui-section--last un-section">
+      <div class="ui-wrap">
+        <div class="ui-head">
+          {done === '1' && (
+            <>
+              <h1>You're unsubscribed</h1>
+              <p>You won't get any more emails from Buoy. If you sign up for something again later, you'll be back on the list.</p>
+            </>
+          )}
+          {done === '0' && (
+            <>
+              <h1>That link didn't work</h1>
+              <p>It may be old or cut off. Email <a href="mailto:support@buoy.design" class="ui-link">support@buoy.design</a> and we'll take you off the list by hand.</p>
+            </>
+          )}
+          {done === null && (
+            <>
+              <h1>Unsubscribe from Buoy emails?</h1>
+              <p>One click and you're off the list.</p>
+              <form method="post" action="/api/unsubscribe" class="ui-actions un-form">
+                <input type="hidden" name="token" value={token} />
+                <button type="submit" class="ui-btn ui-btn--primary">Unsubscribe</button>
+              </form>
+            </>
+          )}
+        </div>
+      </div>
+    </section>
+  </main>
   <Footer />
 </Layout>
+
+<style>
+  .un-section { min-height: 60vh; }
+  .un-form { margin-top: 28px; }
+</style>

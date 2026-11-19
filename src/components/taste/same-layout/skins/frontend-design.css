@@ -1,0 +1,635 @@
+/* frontend-design skin: code-review proof sheet.
+   Fog ground, petrol ink, one condensed family at three widths,
+   and the brand orange used only as the reviewer's marker. */
+
+.sl.sl-frontend-design {
+  --fd-fog: #e7eded;
+  --fd-fog-2: #dce5e5;
+  --fd-deck: #f5f8f8;
+  --fd-ink: #0b2a32;
+  --fd-ink-2: #12363f;
+  --fd-tide: #44626a;
+  --fd-tide-2: #5f7a80;
+  --fd-line: #bccacc;
+  --fd-code: #cfdcde;
+  --fd-code-dim: #86a1a6;
+  --fd-add: #a4e0c4;
+  --fd-del: #f3ada0;
+
+  --sl-bg: var(--fd-fog);
+  --sl-bg-alt: var(--fd-fog-2);
+  --sl-surface: var(--fd-deck);
+  --sl-surface-2: var(--fd-deck);
+  --sl-border: var(--fd-line);
+  --sl-text: var(--fd-ink);
+  --sl-text-muted: var(--fd-tide);
+  --sl-text-faint: var(--fd-tide-2);
+  --sl-accent: var(--color-buoy);
+  --sl-accent-hover: var(--fd-ink);
+  --sl-accent-contrast: var(--fd-ink);
+  --sl-accent-2: var(--fd-ink);
+  --sl-success: #2f7a5a;
+  --sl-warning: #8a5a00;
+  --sl-critical: #b3261e;
+  --sl-info: var(--fd-tide);
+  --sl-code-bg: var(--fd-ink);
+  --sl-code-text: var(--fd-code);
+
+  --sl-font-display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --sl-font-body: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --sl-font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  --sl-h1-size: clamp(3.25rem, 9.5vw, 8.75rem);
+  --sl-h2-size: clamp(2.25rem, 4.6vw, 3.75rem);
+  --sl-h3-size: 1.375rem;
+  --sl-body-size: 1.0625rem;
+  --sl-lead-size: 1.25rem;
+  --sl-small-size: 0.9375rem;
+  --sl-heading-weight: 700;
+  --sl-heading-tracking: -0.01em;
+  --sl-heading-leading: 1;
+  --sl-leading: 1.55;
+
+  --sl-radius-sm: 4px;
+  --sl-radius-md: 8px;
+  --sl-radius-lg: 12px;
+  --sl-btn-radius: 8px;
+  --sl-btn-height: 3.25rem;
+  --sl-shadow-sm: none;
+  --sl-shadow-md: none;
+  --sl-shadow-lg: none;
+
+  --sl-section-pad: clamp(5rem, 9vw, 8rem);
+  --sl-gap: clamp(1.5rem, 2.5vw, 2.25rem);
+  --sl-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --sl-duration: 120ms;
+
+  --sl-pr-bg: var(--fd-ink);
+  --sl-pr-bg-2: var(--fd-ink-2);
+  --sl-pr-border: color-mix(in srgb, var(--fd-code) 16%, transparent);
+  --sl-pr-text: var(--fd-code);
+  --sl-pr-muted: var(--fd-code-dim);
+  --sl-pr-link: #ffffff;
+  --sl-pr-open: var(--fd-add);
+  --sl-pr-error: var(--fd-del);
+  --sl-pr-warn: #f0cf8a;
+  --sl-pr-fix: var(--fd-add);
+
+  font-stretch: 100%;
+}
+
+.sl.sl-frontend-design ::selection {
+  background: var(--fd-ink);
+  color: var(--fd-fog);
+}
+.sl.sl-frontend-design :focus-visible {
+  outline: 3px solid var(--fd-ink);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Type: one family, three widths. Condensed for display, normal for reading. */
+.sl.sl-frontend-design h1,
+.sl.sl-frontend-design h2 {
+  font-stretch: 72%;
+  text-wrap: balance;
+}
+.sl.sl-frontend-design h3 {
+  font-stretch: 90%;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+/* Header */
+.sl.sl-frontend-design .sl-header {
+  background: color-mix(in srgb, var(--fd-fog) 88%, transparent);
+  border-bottom-color: var(--fd-line);
+}
+.sl.sl-frontend-design .sl-header__link {
+  font-size: 0.98rem;
+  font-weight: 500;
+  color: var(--fd-ink);
+}
+.sl.sl-frontend-design .sl-header__link:hover,
+.sl.sl-frontend-design .sl-footer__link:hover {
+  color: var(--fd-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--sl-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.3em;
+}
+.sl.sl-frontend-design .sl-header__actions .sl-btn--primary {
+  background: transparent;
+}
+.sl.sl-frontend-design .sl-header__actions .sl-btn--primary:hover {
+  background: var(--fd-ink);
+}
+
+/* Callout: a plain ruled line, no gradient wash */
+.sl.sl-frontend-design .sl-callout {
+  background: var(--fd-deck);
+  border-bottom: 1px solid var(--fd-line);
+}
+.sl.sl-frontend-design .sl-callout__link {
+  font-size: 0.95rem;
+  color: var(--fd-tide);
+}
+.sl.sl-frontend-design .sl-callout__pill {
+  border-radius: 4px;
+  background: var(--fd-ink);
+  color: var(--fd-fog);
+}
+.sl.sl-frontend-design .sl-callout__arrow {
+  color: var(--fd-ink);
+}
+
+/* Buttons: ink-outlined, flat. Orange fill only on primary. */
+.sl.sl-frontend-design .sl-btn {
+  border: 2px solid var(--fd-ink);
+  font-weight: 600;
+  font-stretch: 96%;
+  box-shadow: none;
+}
+.sl.sl-frontend-design .sl-btn--lg {
+  font-size: 1.0625rem;
+}
+.sl.sl-frontend-design .sl-btn--primary {
+  background: var(--sl-accent);
+  color: var(--fd-ink);
+}
+.sl.sl-frontend-design .sl-btn--primary:hover,
+.sl.sl-frontend-design .sl-btn--secondary:hover {
+  background: var(--fd-ink);
+  border-color: var(--fd-ink);
+  color: var(--fd-fog);
+  transform: none;
+}
+.sl.sl-frontend-design .sl-btn--secondary {
+  background: transparent;
+  color: var(--fd-ink);
+}
+.sl.sl-frontend-design .sl-btn:active {
+  transform: translateY(1px);
+}
+
+/* Links: ink text, orange underline */
+.sl.sl-frontend-design .sl-link,
+.sl.sl-frontend-design .sl-more {
+  color: var(--fd-ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--sl-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.28em;
+}
+.sl.sl-frontend-design .sl-link:hover {
+  text-decoration-thickness: 4px;
+}
+
+/* Hero: no waves, no gradient. The headline is the image. */
+.sl.sl-frontend-design .sl-decor--waves,
+.sl.sl-frontend-design .sl-hero__boat {
+  display: none;
+}
+.sl.sl-frontend-design .sl-hero {
+  background: var(--fd-fog);
+}
+.sl.sl-frontend-design .sl-hero__badge {
+  padding: 0;
+  border: 0;
+  background: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  font-size: 1rem;
+  color: var(--fd-tide);
+}
+.sl.sl-frontend-design .sl-hero__title {
+  font-weight: 800;
+  font-stretch: 62%;
+  line-height: 0.88;
+  letter-spacing: -0.012em;
+}
+/* No single-word colour accent: the whole headline is one ink. */
+.sl.sl-frontend-design .sl-hero__highlight {
+  color: inherit;
+}
+.sl.sl-frontend-design .sl-hero__highlight::after {
+  display: none;
+}
+.sl.sl-frontend-design .sl-hero__sub {
+  color: var(--fd-ink);
+  text-shadow: none;
+  font-size: clamp(1.125rem, 1.6vw, 1.3125rem);
+  line-height: 1.45;
+}
+.sl.sl-frontend-design .sl-hero__scan {
+  font-size: 0.98rem;
+  color: var(--fd-tide);
+}
+.sl.sl-frontend-design .sl-hero__scroll {
+  color: var(--fd-tide-2);
+  animation: none;
+}
+
+/* The one orchestrated moment: the headline sets in line by line,
+   quickly, with no blur and no drift. */
+.sl.sl-frontend-design .sl-hero__word {
+  animation: fd-set 0.42s var(--sl-ease) forwards;
+}
+.sl.sl-frontend-design .sl-hero__word:nth-of-type(1),
+.sl.sl-frontend-design .sl-hero__word:nth-of-type(2) { animation-delay: 0.05s; }
+.sl.sl-frontend-design .sl-hero__word:nth-of-type(3),
+.sl.sl-frontend-design .sl-hero__word:nth-of-type(4),
+.sl.sl-frontend-design .sl-hero__word:nth-of-type(5) { animation-delay: 0.2s; }
+@keyframes fd-set {
+  from { opacity: 0; clip-path: inset(0 0 100% 0); }
+  to { opacity: 1; clip-path: inset(0 0 -20% 0); }
+}
+
+/* Sections: alternate grounds are a slightly deeper fog, separated by rules */
+.sl.sl-frontend-design .sl-section {
+  border-top: 1px solid var(--fd-line);
+}
+.sl.sl-frontend-design .sl-hero.sl-section {
+  border-top: 0;
+}
+.sl.sl-frontend-design .sl-lead::before,
+.sl.sl-frontend-design .sl-demo::before {
+  background: none;
+}
+.sl.sl-frontend-design .sl-decor--pattern {
+  display: none;
+}
+.sl.sl-frontend-design .sl-section__lead {
+  color: var(--fd-tide);
+}
+
+/* Code pair: both panels are deep ink; the difference is marked, not tinted */
+.sl.sl-frontend-design .sl-code {
+  border: 0;
+  background: var(--fd-ink);
+  color: var(--fd-code);
+}
+.sl.sl-frontend-design .sl-code__bar {
+  padding: 0.8rem 1.25rem;
+  background: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--fd-code) 16%, transparent);
+}
+.sl.sl-frontend-design .sl-code__label {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 500;
+  font-size: 0.92rem;
+  color: var(--fd-fog);
+}
+.sl.sl-frontend-design .sl-code__file {
+  font-family: var(--sl-font-mono);
+  font-size: 0.8rem;
+  color: var(--fd-code-dim);
+}
+.sl.sl-frontend-design .sl-code__body {
+  padding: 1rem 1.25rem;
+  line-height: 1.75;
+}
+.sl.sl-frontend-design .sl-tok--dim { color: var(--fd-code-dim); }
+.sl.sl-frontend-design .sl-tok--bad {
+  color: #fff;
+  text-decoration: underline;
+  text-decoration-color: var(--sl-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.3em;
+}
+.sl.sl-frontend-design .sl-tok--good { color: var(--fd-add); }
+
+/* What Buoy catches */
+.sl.sl-frontend-design .sl-catch__title {
+  font-size: calc(var(--sl-h2-size) * 0.8);
+}
+.sl.sl-frontend-design .sl-catch__demo {
+  border-radius: var(--sl-radius-lg);
+  overflow: hidden;
+}
+.sl.sl-frontend-design .sl-catch__box {
+  border: 0;
+  border-top: 2px solid var(--fd-ink);
+  border-radius: 0;
+  background: none;
+  padding: 1.25rem 0 0;
+  font-size: 0.98rem;
+}
+.sl.sl-frontend-design .sl-catch__label {
+  color: var(--fd-ink);
+  font-weight: 600;
+}
+/* The marker is the same orange underline stroke used everywhere */
+.sl.sl-frontend-design .sl-catch__mark {
+  width: 0.9rem;
+  height: 2px;
+  margin-top: 0.75rem;
+  border-radius: 0;
+  background: var(--sl-accent);
+}
+.sl.sl-frontend-design .sl-catch__name {
+  font-weight: 600;
+}
+.sl.sl-frontend-design .sl-catch__detail {
+  font-family: var(--sl-font-mono);
+  font-size: 0.82rem;
+  color: var(--fd-tide);
+}
+
+/* Lead capture */
+.sl.sl-frontend-design .sl-lead__title {
+  font-size: calc(var(--sl-h2-size) * 0.85);
+  line-height: 1;
+}
+.sl.sl-frontend-design .sl-lead__sub { color: var(--fd-ink); }
+.sl.sl-frontend-design .sl-lead__note { color: var(--fd-tide); }
+.sl.sl-frontend-design .sl-input {
+  border: 2px solid var(--fd-line);
+  background: var(--fd-deck);
+  color: var(--fd-ink);
+}
+.sl.sl-frontend-design .sl-input::placeholder { color: var(--fd-tide-2); }
+.sl.sl-frontend-design .sl-input:focus {
+  border-color: var(--fd-ink);
+  box-shadow: none;
+}
+.sl.sl-frontend-design .sl-doc {
+  border: 1px solid var(--fd-line);
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 1px 0 var(--fd-line), 0 14px 0 -8px var(--fd-deck), 0 15px 0 -8px var(--fd-line);
+  transform: none;
+}
+.sl.sl-frontend-design .sl-doc__name {
+  font-family: var(--sl-font-mono);
+  color: var(--fd-tide);
+}
+.sl.sl-frontend-design .sl-doc__list { color: var(--fd-ink); }
+.sl.sl-frontend-design .sl-doc__box {
+  border: 1.5px solid var(--fd-tide-2);
+  border-radius: 3px;
+}
+
+/* Window dots: one neutral tone, no traffic-light colours */
+.sl.sl-frontend-design .sl-dot,
+.sl.sl-frontend-design .sl-dot--critical,
+.sl.sl-frontend-design .sl-dot--warning,
+.sl.sl-frontend-design .sl-dot--success {
+  width: 0.6rem;
+  height: 0.6rem;
+  background: color-mix(in srgb, var(--fd-code-dim) 45%, transparent);
+}
+.sl.sl-frontend-design .sl-doc .sl-dot {
+  background: var(--fd-line);
+  opacity: 1;
+}
+
+/* Terminal */
+.sl.sl-frontend-design .sl-terminal {
+  border: 0;
+  background: var(--fd-ink);
+  box-shadow: none;
+}
+.sl.sl-frontend-design .sl-terminal__bar {
+  background: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--fd-code) 16%, transparent);
+}
+.sl.sl-frontend-design .sl-terminal__name { color: var(--fd-code-dim); }
+.sl.sl-frontend-design .sl-terminal__body {
+  line-height: 1.75;
+  color: var(--fd-code);
+}
+.sl.sl-frontend-design .sl-terminal__prompt { color: var(--fd-code-dim); }
+.sl.sl-frontend-design .sl-terminal__input { color: #fff; }
+.sl.sl-frontend-design .sl-terminal__line--critical,
+.sl.sl-frontend-design .sl-t--critical { color: var(--fd-del); }
+.sl.sl-frontend-design .sl-terminal__line--warning,
+.sl.sl-frontend-design .sl-t--warning { color: #f0cf8a; }
+.sl.sl-frontend-design .sl-terminal__line--faint,
+.sl.sl-frontend-design .sl-t--faint,
+.sl.sl-frontend-design .sl-t--muted { color: var(--fd-code-dim); }
+.sl.sl-frontend-design .sl-t--accent {
+  color: #fff;
+  text-decoration: underline;
+  text-decoration-color: var(--sl-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.3em;
+}
+
+/* PR card in the same ink as the other code surfaces */
+.sl.sl-frontend-design .sl-pr {
+  border: 0;
+  border-radius: var(--sl-radius-lg);
+  font-size: 0.95rem;
+}
+.sl.sl-frontend-design .sl-pr__head,
+.sl.sl-frontend-design .sl-pr__status,
+.sl.sl-frontend-design .sl-pr__row,
+.sl.sl-frontend-design .sl-pr__foot {
+  padding: 0.9rem 1.25rem;
+}
+.sl.sl-frontend-design .sl-pr__name { color: #fff; }
+.sl.sl-frontend-design .sl-pr__status-text { color: #fff; font-weight: 600; }
+.sl.sl-frontend-design .sl-pr__level {
+  border-radius: 4px;
+  background: none;
+  font-family: var(--sl-font-mono);
+}
+.sl.sl-frontend-design .sl-pr__level--warn {
+  background: none;
+  color: var(--sl-pr-warn);
+}
+.sl.sl-frontend-design .sl-pr__file { font-size: 0.85rem; }
+.sl.sl-frontend-design .sl-pr__code {
+  background: none;
+  padding: 0;
+  font-size: 0.85rem;
+}
+.sl.sl-frontend-design .sl-pr__code--error,
+.sl.sl-frontend-design .sl-pr__code--warn {
+  color: #fff;
+  text-decoration: underline;
+  text-decoration-color: var(--sl-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.3em;
+}
+.sl.sl-frontend-design .sl-pr__foot { background: var(--fd-ink-2); }
+
+/* Pills, badges, tags: text labels with a hairline, sentence case */
+.sl.sl-frontend-design .sl-pill,
+.sl.sl-frontend-design .sl-tag {
+  --sl-tone: var(--fd-ink);
+  border: 1px solid var(--fd-ink);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--fd-ink);
+  font-weight: 600;
+}
+.sl.sl-frontend-design .sl-tag {
+  background: var(--fd-deck);
+  text-transform: none;
+  letter-spacing: 0;
+}
+.sl.sl-frontend-design .sl-badge {
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.sl.sl-frontend-design .sl-badge--warning { color: var(--sl-warning); }
+.sl.sl-frontend-design .sl-badge--critical { color: var(--sl-critical); }
+.sl.sl-frontend-design .sl-badge--info { color: var(--fd-tide); }
+
+/* Cards: one flat surface, one hairline, no tinted borders, no hover lift */
+.sl.sl-frontend-design .sl-card,
+.sl.sl-frontend-design .sl-card--warning,
+.sl.sl-frontend-design .sl-card--critical,
+.sl.sl-frontend-design .sl-card--info,
+.sl.sl-frontend-design .sl-card--core,
+.sl.sl-frontend-design .sl-card--hosted {
+  --sl-card-tone: var(--fd-line);
+  border-radius: var(--sl-radius-md);
+  background: var(--fd-deck);
+}
+.sl.sl-frontend-design .sl-card:hover {
+  --sl-card-tone: var(--fd-ink);
+}
+.sl.sl-frontend-design .sl-card--drift .sl-card__title {
+  font-size: 1.125rem;
+  font-stretch: 90%;
+  font-weight: 700;
+}
+.sl.sl-frontend-design .sl-card__link:hover {
+  color: var(--fd-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--sl-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.25em;
+}
+.sl.sl-frontend-design .sl-card__text { color: var(--fd-tide); }
+.sl.sl-frontend-design .sl-card__kicker,
+.sl.sl-frontend-design .sl-card--core .sl-card__kicker,
+.sl.sl-frontend-design .sl-card--hosted .sl-card__kicker {
+  color: var(--fd-tide);
+  font-size: 0.85rem;
+}
+.sl.sl-frontend-design .sl-card--plan .sl-card__title { font-size: 1.25rem; }
+.sl.sl-frontend-design .sl-card__foot {
+  border-top-color: var(--fd-line);
+  color: var(--fd-tide);
+  font-size: 0.85rem;
+}
+.sl.sl-frontend-design .sl-inline-code {
+  font-family: var(--sl-font-mono);
+  font-size: 0.86em;
+  color: var(--fd-ink);
+  background: color-mix(in srgb, var(--fd-ink) 9%, transparent);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+
+/* Lists: hairline rows; markers are the same short stroke */
+.sl.sl-frontend-design .sl-list { color: var(--fd-tide); font-size: 0.95rem; }
+.sl.sl-frontend-design .sl-list--lg { color: var(--fd-ink); }
+.sl.sl-frontend-design .sl-list--check .sl-list__item::before,
+.sl.sl-frontend-design .sl-list--plus .sl-list__item::before {
+  content: '';
+  width: 0.7rem;
+  height: 2px;
+  margin-top: 0.7em;
+  flex: none;
+  background: var(--fd-ink);
+}
+.sl.sl-frontend-design .sl-list--check .sl-list__item::before {
+  background: var(--sl-accent);
+}
+
+/* Steps: the content is a real sequence, so numbers stay, set as type */
+.sl.sl-frontend-design .sl-step__num {
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--fd-ink);
+  font-family: var(--sl-font-display);
+  font-stretch: 62%;
+  font-weight: 800;
+  font-size: 3.5rem;
+  line-height: 1;
+}
+.sl.sl-frontend-design .sl-step__cmd {
+  background: var(--fd-ink);
+  color: var(--fd-code);
+  font-size: 0.85rem;
+}
+.sl.sl-frontend-design .sl-step__text { color: var(--fd-tide); }
+
+/* Integrations: words, not chips with logos */
+.sl.sl-frontend-design .sl-chip {
+  border: 0;
+  border-bottom: 2px solid var(--fd-line);
+  border-radius: 0;
+  background: none;
+  padding-inline: 0.25rem;
+  font-family: var(--sl-font-display);
+  font-stretch: 78%;
+  font-weight: 700;
+  font-size: clamp(1.375rem, 2.4vw, 2rem);
+  color: var(--fd-ink);
+}
+.sl.sl-frontend-design .sl-chip:hover {
+  border-color: var(--sl-accent);
+  background: none;
+}
+
+/* Journey path line */
+.sl.sl-frontend-design .sl-journey__path { color: var(--fd-tide); font-size: 0.95rem; }
+.sl.sl-frontend-design .sl-journey__stage--free,
+.sl.sl-frontend-design .sl-journey__stage--app,
+.sl.sl-frontend-design .sl-journey__stage--org {
+  color: var(--fd-ink);
+  font-weight: 600;
+}
+
+/* AI section: the one deep ink band on the page */
+.sl.sl-frontend-design .sl-ai {
+  background: var(--fd-ink);
+  --sl-text: var(--fd-fog);
+  color: var(--fd-fog);
+  border-top: 0;
+}
+.sl.sl-frontend-design .sl-ai .sl-section__lead,
+.sl.sl-frontend-design .sl-ai .sl-ai__note { color: var(--fd-code); }
+.sl.sl-frontend-design .sl-ai .sl-pill {
+  border-color: var(--fd-code-dim);
+  color: var(--fd-fog);
+}
+.sl.sl-frontend-design .sl-ai .sl-card {
+  --sl-card-tone: color-mix(in srgb, var(--fd-code) 22%, transparent);
+  background: var(--fd-ink-2);
+  color: var(--fd-fog);
+}
+.sl.sl-frontend-design .sl-ai .sl-card__kicker,
+.sl.sl-frontend-design .sl-ai .sl-card__foot,
+.sl.sl-frontend-design .sl-ai .sl-list { color: var(--fd-code-dim); }
+.sl.sl-frontend-design .sl-ai .sl-list--lg { color: var(--fd-code); }
+.sl.sl-frontend-design .sl-ai .sl-list--plus .sl-list__item::before { background: var(--fd-code); }
+.sl.sl-frontend-design .sl-ai .sl-card__foot { border-top-color: color-mix(in srgb, var(--fd-code) 22%, transparent); }
+.sl.sl-frontend-design .sl-ai .sl-link { color: var(--fd-fog); }
+.sl.sl-frontend-design .sl-ai :focus-visible { outline-color: var(--fd-fog); }
+
+/* Footer */
+.sl.sl-frontend-design .sl-footer {
+  background: var(--fd-fog);
+  border-top-color: var(--fd-line);
+  color: var(--fd-tide);
+  font-size: 0.95rem;
+}
+.sl.sl-frontend-design .sl-footer__link { color: var(--fd-ink); font-weight: 500; }
+.sl.sl-frontend-design .sl-footer__sep { color: var(--fd-line); }
+
+@media (prefers-reduced-motion: reduce) {
+  .sl.sl-frontend-design .sl-hero__word { animation: none; opacity: 1; }
+  .sl.sl-frontend-design .sl-btn:active { transform: none; }
+}

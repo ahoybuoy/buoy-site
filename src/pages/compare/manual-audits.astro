@@ -10,7 +10,7 @@ const comparison = [
   { aspect: 'Cost', manual: 'High labor cost', buoy: 'Free CLI' },
   { aspect: 'Currency', manual: 'Outdated immediately', buoy: 'Always current' },
   { aspect: 'Reproducibility', manual: 'Depends on auditor', buoy: 'Identical every run' },
-  { aspect: 'Trend Tracking', manual: 'Manual comparison', buoy: 'Automatic over time' },
+  { aspect: 'Trend tracking', manual: 'Manual comparison', buoy: 'Automatic over time' },
 ]
 ---
 
@@ -22,69 +22,65 @@ const comparison = [
   heroDescription="Stop spending hours on spreadsheet audits. Buoy runs in seconds, catches everything, and stays current automatically."
   competitor="Manual Audits"
 >
-  <!-- Comparison Table -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">Side-by-Side Comparison</h2>
+  <div slot="hero" class="ui-tray"><div class="ui-term">
+    <div class="ui-term-bar">Terminal</div>
+    <pre><code><span class="ui-t-dim"># the audit spreadsheet, replaced by one command</span>
+<span class="ui-t-prompt">$</span> buoy drift check
+<span class="ui-t-dim">scanning every file...</span>
+<span class="ui-t-warn">Button.tsx</span>  color: <span class="ui-old">#3b82f6</span>  <span class="ui-t-ok">var(--color-primary)</span>
+<span class="ui-t-warn">Card.tsx</span>    padding: <span class="ui-old">16px</span>    <span class="ui-t-ok">var(--spacing-md)</span></code></pre>
+    <dl class="hf-rows">
+      <div><dt>Manual audit</dt><dd class="hf-them">Hours to days. Sampling. Outdated by the next PR.</dd></div>
+      <div><dt class="ui-c-buoy">Buoy</dt><dd>Seconds. 100% of the codebase. Every PR.</dd></div>
+    </dl>
+  </div></div>
 
-      <div class="bg-navy border border-navy-light/30 rounded-xl overflow-hidden">
-        <div class="grid grid-cols-3 bg-navy-dark border-b border-navy-light/20">
-          <div class="p-4 font-semibold text-slate">Aspect</div>
-          <div class="p-4 font-semibold text-slate border-l border-navy-light/20">Manual Audit</div>
-          <div class="p-4 font-semibold text-buoy border-l border-navy-light/20">Buoy</div>
-        </div>
+  <section class="ui-section">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>Side-by-side comparison</h2></div>
+      <table class="ui-table cmp-table mt-10">
+        <thead><tr><th scope="col">Aspect</th><th scope="col">Manual audit</th><th scope="col" class="cmp-buoy">Buoy</th></tr></thead>
+        <tbody>
+          {comparison.map((row) => (
+            <tr><th scope="row">{row.aspect}</th><td class="cmp-them">{row.manual}</td><td class="cmp-buoy">{row.buoy}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
 
-        {comparison.map((row, index) => (
-          <div class={`grid grid-cols-3 ${index % 2 === 0 ? 'bg-navy/50' : ''}`}>
-            <div class="p-4 text-light">{row.aspect}</div>
-            <div class="p-4 text-slate border-l border-navy-light/20">{row.manual}</div>
-            <div class="p-4 text-success border-l border-navy-light/20">{row.buoy}</div>
-          </div>
-        ))}
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
+      <div class="ui-head"><h2>The manual audit problem</h2></div>
+      <div class="ui-cols">
+        <article class="ui-col">
+          <h3 class="ui-c-crit">The spreadsheet approach</h3>
+          <ul class="ui-ruled">
+            <li>Someone spends 2-3 days reviewing code</li>
+            <li>Results go into a spreadsheet</li>
+            <li>Spreadsheet is outdated by the next PR</li>
+            <li>Nobody wants to do the next audit</li>
+            <li>Coverage is sampling, not complete</li>
+            <li>Different auditors find different things</li>
+          </ul>
+        </article>
+        <article class="ui-col">
+          <h3 class="ui-c-ok">The Buoy approach</h3>
+          <ul class="ui-ruled">
+            <li>Run one command: <code class="ui-code">buoy drift check</code></li>
+            <li>Get results in seconds</li>
+            <li>Runs automatically on every PR</li>
+            <li>100% coverage, every time</li>
+            <li>Consistent rules, consistent results</li>
+            <li>Tracks trends over time automatically</li>
+          </ul>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- The Manual Audit Problem -->
-  <section class="py-16 bg-navy">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">The Manual Audit Problem</h2>
-
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-navy-dark border border-critical/20 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-4 flex items-center gap-2">
-            <span class="text-critical">📋</span> The Spreadsheet Approach
-          </h3>
-          <ul class="space-y-3 text-sm text-slate">
-            <li>• Someone spends 2-3 days reviewing code</li>
-            <li>• Results go into a spreadsheet</li>
-            <li>• Spreadsheet is outdated by the next PR</li>
-            <li>• Nobody wants to do the next audit</li>
-            <li>• Coverage is sampling, not complete</li>
-            <li>• Different auditors find different things</li>
-          </ul>
-        </div>
-
-        <div class="bg-navy-dark border border-success/20 rounded-xl p-6">
-          <h3 class="font-semibold text-light mb-4 flex items-center gap-2">
-            <span class="text-success">⚓</span> The Buoy Approach
-          </h3>
-          <ul class="space-y-3 text-sm text-slate">
-            <li>• Run one command: <code class="text-buoy">buoy drift check</code></li>
-            <li>• Get results in seconds</li>
-            <li>• Runs automatically on every PR</li>
-            <li>• 100% coverage, every time</li>
-            <li>• Consistent rules, consistent results</li>
-            <li>• Tracks trends over time automatically</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Lead Magnet: Drift Checklist -->
-  <section class="py-12">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="ui-section">
+    <div class="ui-wrap">
       <LeadMagnetCallout
         leadMagnet="drift-checklist"
         headline="If you're doing manual audits, use this checklist"
@@ -94,34 +90,30 @@ const comparison = [
     </div>
   </section>
 
-  <!-- When to Use What -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-2xl font-bold text-light mb-8 text-center">When Manual Audits Still Make Sense</h2>
-
-      <div class="bg-navy/50 border border-navy-light/20 rounded-xl p-6">
-        <p class="text-slate mb-4">
-          Manual audits aren't always wrong. They're valuable for:
-        </p>
-        <ul class="space-y-2 text-sm text-slate">
-          <li class="flex items-start gap-2">
-            <span class="text-buoy">•</span>
-            <span><strong class="text-light">UX reviews</strong> — Does the design feel right? Is the flow intuitive?</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <span class="text-buoy">•</span>
-            <span><strong class="text-light">Accessibility testing</strong> — Screen reader testing, keyboard navigation</span>
-          </li>
-          <li class="flex items-start gap-2">
-            <span class="text-buoy">•</span>
-            <span><strong class="text-light">Design decisions</strong> — Should these be the same component?</span>
-          </li>
-        </ul>
-        <p class="text-slate mt-4">
-          Use Buoy for the mechanical checks (hardcoded values, duplicates, naming).
-          Save manual time for the human judgment calls.
-        </p>
+  <section class="ui-section ui-section--band">
+    <div class="ui-wrap">
+      <div class="ui-head">
+        <h2>When manual audits still make sense</h2>
+        <p>Manual audits aren't always wrong. They're valuable for:</p>
       </div>
+      <table class="ui-table ui-table--stack mt-8">
+        <tbody>
+          <tr><th scope="row">UX reviews</th><td>Does the design feel right? Is the flow intuitive?</td></tr>
+          <tr><th scope="row">Accessibility testing</th><td>Screen reader testing, keyboard navigation</td></tr>
+          <tr><th scope="row">Design decisions</th><td>Should these be the same component?</td></tr>
+        </tbody>
+      </table>
+      <p class="ui-after mt-8">Use Buoy for the mechanical checks (hardcoded values, duplicates, naming). Save manual time for the human judgment calls.</p>
     </div>
   </section>
 </CompareLayout>
+
+<style is:global>
+  .hf-code { margin: 0; padding: 18px 20px; font-size: 13px; line-height: 1.7; background: var(--color-term); color: var(--color-body); }
+  .hf-rows { margin: 0; border-top: 1px solid var(--color-line); }
+  .hf-rows > div { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; padding: 13px 20px; border-bottom: 1px solid var(--color-line); font-size: 14px; line-height: 1.5; }
+  .hf-rows > div:last-child { border-bottom: 0; }
+  .hf-rows dt { font-weight: 600; color: var(--color-ink); }
+  .hf-rows dd { margin: 0; color: var(--color-ink); }
+  .hf-rows dd.hf-them { color: var(--color-muted); }
+</style>
