@@ -9,60 +9,60 @@ const painPoints = [
     solution: 'Automated scans in seconds, run on every PR'
   },
   {
-    problem: 'No data on which teams are adopting',
-    solution: 'Per-directory adoption metrics and trends'
+    problem: 'No data on whether adoption is going up',
+    solution: 'A health score and drift count on every scan, with the change since the last one'
   },
   {
     problem: 'Can\'t prove ROI of design system investment',
-    solution: 'Real numbers: adoption %, drift reduction over time'
+    solution: 'Real numbers from your own code: health score, token health, hardcoded values over time'
   },
   {
     problem: '"We think we have 60% adoption" isn\'t good enough',
-    solution: 'Know exactly: 47% component coverage, 63% token coverage'
+    solution: 'Know exactly: every hardcoded value, with file and line'
   },
 ]
 
+// Real numbers: `buoy show health` on buoy.design's own repo (2026-11-18).
 const metrics = [
-  { label: 'Component coverage', value: '47%', change: '+12% this month' },
-  { label: 'Token adoption', value: '63%', change: '+8% this month' },
-  { label: 'Drift signals', value: '23', change: '-15 from last week' },
-  { label: 'Teams onboarded', value: '4/6', change: '+1 this sprint' },
+  { label: 'Health score', value: '81', change: 'out of 100' },
+  { label: 'Token health', value: '20', change: 'out of 20' },
+  { label: 'Value discipline', value: '41', change: 'out of 60' },
+  { label: 'Hardcoded values left', value: '13', change: 'each with a fix' },
 ]
 
+// Real output of `buoy show health` on buoy.design's own repo (2026-11-18).
 const terminalLines = [
   { text: '', delay: 600 },
-  { text: '<span class="ui-t-hi">Design System Coverage</span>', type: 'output', delay: 800 },
-  { text: '═══════════════════════════════════════', type: 'muted', delay: 1000 },
-  { text: '', delay: 1200 },
-  { text: 'Components: <span class="ui-t-warn">47%</span> ████████░░░░░░░░░░', type: 'output', delay: 1400 },
-  { text: 'Tokens:     <span class="ui-t-ok">63%</span> ████████████░░░░░░', type: 'output', delay: 1600 },
-  { text: 'Overall:    <span class="ui-t-warn">52%</span> ██████████░░░░░░░░', type: 'output', delay: 1800 },
+  { text: 'Health Score: <span class="ui-t-ok">81/100</span> (Great)', type: 'output', delay: 800 },
+  { text: '', delay: 1000 },
+  { text: 'Value Discipline    ██████████████░░░░░░ <span class="ui-t-warn">41/60</span>', type: 'output', delay: 1200 },
+  { text: 'Token Health        ████████████████████ <span class="ui-t-ok">20/20</span>', type: 'output', delay: 1400 },
+  { text: 'Consistency         ████████████████████ <span class="ui-t-ok">10/10</span>', type: 'output', delay: 1600 },
+  { text: 'Critical Issues     ████████████████████ <span class="ui-t-ok">10/10</span>', type: 'output', delay: 1800 },
   { text: '', delay: 2000 },
-  { text: '<span class="ui-t-dim">By Source:</span>', type: 'output', delay: 2200 },
-  { text: '├─ src/components/    <span class="ui-t-ok">78%</span> ███████████████░', type: 'output', delay: 2400 },
-  { text: '├─ src/features/      <span class="ui-t-warn">34%</span> ██████░░░░░░░░░', type: 'warning', delay: 2600 },
-  { text: '└─ src/pages/         <span class="ui-t-crit">23%</span> ████░░░░░░░░░░░', type: 'critical', delay: 2800 },
+  { text: '<span class="ui-t-dim">Path to 100:</span>', type: 'output', delay: 2200 },
+  { text: '   +19  Replace the hardcoded values in all 13 findings with tokens or scale steps', type: 'output', delay: 2400 },
 ]
 
 const groups = [
-  { title: 'Adoption metrics', items: ['Percentage of components using design system', 'Token coverage across the codebase', 'Per-directory and per-team breakdowns', 'Trend tracking over time'] },
+  { title: 'Adoption metrics', items: ['Health score with four pillars', 'Token health across the codebase', 'Every hardcoded value, with file and line', 'Change since the last scan'] },
   { title: 'Drift detection', items: ['Find hardcoded values that bypass tokens', 'Detect duplicate component implementations', 'Track deprecated component usage', 'Catch naming inconsistencies'] },
   { title: 'CI/CD integration', items: ['Automatic checks on every PR', 'Block merges with critical drift', 'PR comments with drift reports', 'GitHub App ready to use'] },
-  { title: 'ROI reporting', items: ['Before/after adoption comparisons', 'Time saved from reduced drift', 'Team adoption leaderboards', 'Executive-ready dashboards'] },
+  { title: 'ROI reporting', items: ['Health score history from every scan', 'New drift caught on the PR that adds it', 'A dashboard for every connected repo'] },
 ]
 ---
 
 <UseCaseLayout
   title="Design System Adoption Tools for Teams | Buoy"
-  description="Measure design system adoption without manual audits. Track which teams use components, see coverage trends, prove ROI."
+  description="Measure design system adoption without manual audits. Get a health score from your own code, see every hardcoded value, and track the trend."
   keywords="design system adoption, design system metrics, design system ROI"
   heroTitle="Design System Teams"
-  heroDescription="Measure design system adoption without manual audits. Track which teams use components, see coverage trends, and prove ROI."
+  heroDescription="Measure design system adoption without manual audits. Get a health score from your own code, see every hardcoded value, and track the trend."
 >
   <div slot="hero">
     <div class="ui-tray">
       <div class="ui-panel">
-        <div class="ui-panel-head">Design system health</div>
+        <div class="ui-panel-head">Design system health · buoy.design, scanned by Buoy</div>
         <div class="dst-stats">
           {metrics.map((m) => (
             <div>
@@ -93,8 +93,8 @@ const groups = [
   <section class="ui-section ui-section--band">
     <div class="ui-wrap ui-split dst-split">
       <div class="ui-head">
-        <h2>Coverage by directory</h2>
-        <p>See where adoption is strong and where it lags, down to the folder.</p>
+        <h2>One command, real numbers</h2>
+        <p>This is Buoy scanning buoy.design itself: a score, where it comes from, and what gets it to 100.</p>
       </div>
       <Terminal command="buoy show health" lines={terminalLines} />
     </div>
