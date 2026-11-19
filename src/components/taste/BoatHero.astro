@@ -353,6 +353,7 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
     size();
     new ResizeObserver(size).observe(el);
     let lastX = NaN, vx = 0, strength = 0, burst = 0, wasActive = false, dir = 1, drawn = false, age = 0;
+    let bubbles: { x: number; y: number; r: number; w: number; pop: number }[] = [], bubbleT = 0;
     const hash = (i: number) => { const v = Math.sin(i * 127.1 + 311.7) * 43758.5453; return v - Math.floor(v); };
 
     function line(xa: number, xb: number, off: (d: number) => number, alpha: (d: number) => number, lw: number) {
@@ -385,10 +386,89 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
         burst *= Math.exp(-dt * 2.2);
         const target = active ? Math.min(1.6, Math.abs(vx) / 60) : 0;
         strength += (target - strength) * (1 - Math.exp(-dt * (target > strength ? 4 : 3)));
+        // Submerged (held or released below the water): no surface wake; a displacement
+        // ripple above the boat, bubbles rising and popping, the boat dimmed with depth
+        const held = !active && boat.style.top !== '';
+        const hullY = boat.offsetTop + boat.offsetHeight * HULL_Y;
+        const surfY = surf.fn(x).y;
+        const depth = held ? hullY - surfY : 0;
+        const under = depth > 1;
+        if (under) { strength = 0; burst = 0; }
+        const k = under ? Math.min(0.6, depth / 200) : 0;
+        // Dim and desaturate with depth and let the water show through a little (tints toward the sea)
+        boat.style.filter = k > 0.01 ? `brightness(${(1 - 0.3 * k).toFixed(3)}) saturate(${(1 - 0.6 * k).toFixed(3)})` : '';
+        boat.style.opacity = k > 0.01 ? (1 - 0.3 * k).toFixed(3) : '';
         const s = Math.min(1.8, strength + burst * 0.9);
         ctx.setTransform(1, 0, 0, 1, 0, 0);
         if (drawn) ctx.clearRect(0, 0, canvas.width, canvas.height);
         drawn = false;
+        const own = (el as any).buoySubmerged;
+        if (under && typeof own === 'function') own(x, depth, { hullY, surfaceY: surfY });
+        if (under || bubbles.length) {
+          if (W) {
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            ctx.strokeStyle = color; ctx.fillStyle = color; ctx.lineCap = 'round';
+            drawn = true;
+            if (under && typeof own !== 'function') {
+              // Displacement: a gentle swell and two soft rings right above the boat
+              const a = Math.min(2.6, 0.8 + depth * 0.015) * (1 - Math.min(0.6, depth / 400));
+              const ph = age * 5;
+              ctx.globalAlpha = 0.35;
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              for (let px = x - 26, first = true; px <= x + 26; px += 2, first = false) {
+                const g = Math.exp(-(((px - x) / 12) ** 2));
+                const py = surf.fn(px).y - a * g * (0.6 + 0.4 * Math.sin(ph)) - 0.5;
+                first ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+              }
+              ctx.stroke();
+              for (const side of [-1, 1]) {
+                const rx = x + side * (10 + 8 * ((age * 0.9) % 1));
+                ctx.globalAlpha = 0.25 * (1 - ((age * 0.9) % 1));
+                ctx.beginPath();
+                for (let px = rx - 5, first = true; px <= rx + 5; px += 1.5, first = false) {
+                  const g = Math.exp(-(((px - rx) / 2.5) ** 2));
+                  const py = surf.fn(px).y - 1.1 * g;
+                  first ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+                }
+                ctx.stroke();
+              }
+              // Spawn bubbles from the hull
+              bubbleT -= dt;
+              if (bubbleT <= 0 && bubbles.length < 18) {
+                bubbleT = 0.09 + Math.random() * 0.12;
+                bubbles.push({ x: x + (Math.random() - 0.5) * boat.offsetWidth * 0.6, y: hullY - boat.offsetHeight * (0.1 + Math.random() * 0.4), r: 0.8 + Math.random() * 1.6, w: Math.random() * 6, pop: -1 });
+              }
+            }
+            // Bubbles rise with a little wobble and pop at the surface
+            if (typeof own !== 'function') {
+              for (const b of bubbles) {
+                if (b.pop >= 0) {
+                  b.pop += dt;
+                  ctx.globalAlpha = 0.5 * (1 - b.pop / 0.25);
+                  ctx.lineWidth = 0.8;
+                  ctx.beginPath();
+                  ctx.ellipse(b.x, b.y, b.r + 6 * b.pop / 0.25 * b.r * 0.5, (b.r + 3 * b.pop) * 0.4, 0, 0, Math.PI * 2);
+                  ctx.stroke();
+                  continue;
+                }
+                b.y -= (32 + b.r * 14) * dt;
+                b.w += dt * 7;
+                const bx = b.x + Math.sin(b.w) * 1.4;
+                const sy = surf.fn(bx).y;
+                if (b.y <= sy) { b.y = sy; b.x = bx; b.pop = 0; continue; }
+                ctx.globalAlpha = 0.55;
+                ctx.lineWidth = 0.8;
+                ctx.beginPath();
+                ctx.arc(bx, b.y, b.r, 0, Math.PI * 2);
+                ctx.stroke();
+              }
+            }
+            bubbles = bubbles.filter((b) => b.pop < 0.25);
+            ctx.globalAlpha = 1;
+          }
+          if (under) return;
+        }
         if (s < 0.02 || !W) return;
         drawn = true;
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -505,6 +585,9 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
     };
     requestAnimationFrame(frame);
 
+    // The drag physics asks where the water is when the boat is released (underwater
+    // releases bob up instead of falling)
+    (window as any)._buoySurfaceAt = (x: number) => surf.fn(x).y;
     // Drag/toss lands on the water under the boat's current x
     Object.defineProperty(window, '_buoyBoatBottom', {
       configurable: true,
