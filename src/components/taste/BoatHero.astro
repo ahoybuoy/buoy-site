@@ -375,7 +375,7 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
     }
 
     return {
-      step(dt: number, active: boolean, following: boolean) {
+      step(dt: number, active: boolean, following: boolean, minStrength = 0) {
         age += dt;
         const x = boat.offsetLeft + (parseFloat(boat.style.translate) || 0) + boat.offsetWidth / 2;
         if (active && following && Number.isFinite(lastX) && dt > 0) {
@@ -386,7 +386,7 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
         if (active && !wasActive) burst = 1;
         wasActive = active;
         burst *= Math.exp(-dt * 2.2);
-        const target = active ? Math.min(1.6, Math.abs(vx) / 60) : 0;
+        const target = active ? Math.max(minStrength, Math.min(1.6, Math.abs(vx) / 60)) : 0;
         strength += (target - strength) * (1 - Math.exp(-dt * (target > strength ? 4 : 3)));
         // Submerged (held or released below the water): no surface wake; a displacement
         // ripple above the boat, bubbles rising and popping, the boat dimmed with depth
@@ -538,7 +538,9 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
       lastT = now;
       if (!visible || document.hidden || !sea) return;
       const active = (boat.classList.contains('visible') || boat.classList.contains('launching')) && boat.style.top === '';
-      wake.step(dt, active, following);
+      // A tossed boat skimming the water keeps its wake (the drag physics sets data-skim), fading with its speed
+      const skim = boat.dataset.skim === '1';
+      wake.step(dt, active || skim, following || skim, skim ? 0.55 : 0);
       if (!active) {
         if (following) { following = false; boat.style.rotate = ''; boat.style.transformOrigin = ''; boat.style.translate = ''; }
         return;
