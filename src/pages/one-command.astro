@@ -30,8 +30,9 @@ const engineers = ['Quick codebase health check before PRs', 'Find and fix drift
   <Nav />
   <main id="main" class="ui-nav-offset">
     <section class="ui-section ui-section--first ui-section--patterned">
-      <MarkPattern pattern="pulse" drift={0.3} fade class="ui-pattern" />
-      <div class="ui-wrap lp-hero">
+      <MarkPattern pattern="pulse" drift={0.3} class="ui-pattern lp-pat-side" />
+      <div class="ui-wrap lp-hero ui-split lp-hero-split">
+        <div>
         <p class="ui-eyebrow ui-mono">npx ahoybuoy show health</p>
         <div class="ui-head"><h1>One command.<br /><span class="ui-c-buoy">See every component.</span></h1></div>
         <p class="ui-lede">Don't have a formal design system? Doesn't matter. See what's actually in your codebase.</p>
@@ -39,17 +40,9 @@ const engineers = ['Quick codebase health check before PRs', 'Find and fix drift
           <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer" class="ui-btn ui-btn--primary ui-btn--lg">Try it now</a>
           <a href="#the-output" class="ui-btn ui-btn--secondary ui-btn--lg">See the output</a>
         </div>
-      </div>
-    </section>
-
-    <section id="the-output" class="ui-section ui-section--band">
-      <div class="ui-wrap ui-split">
-        <div class="ui-head">
-          <h2>Your component inventory.</h2>
-          <p>Every component in your codebase, listed and categorized. Finally, clarity.</p>
-          <p>Finally see what's actually in your codebase: the building blocks you can affect, improve, document, and design for. No more guessing. No more "I think we have a sidebar somewhere."</p>
         </div>
-        <div class="ui-term">
+        <figure class="ui-figure ui-enter" style="animation-delay:150ms">
+          <div class="ui-term">
           <div class="ui-term-bar"><span>Terminal</span></div>
           <div class="ui-term-body">
             <div><span class="ui-t-prompt">$</span> <span class="ui-t-hi">npx ahoybuoy show health</span></div>
@@ -62,16 +55,27 @@ const engineers = ['Quick codebase health check before PRs', 'Find and fix drift
             <div class="oc-gap ui-t-ok">✓ 46 components discovered.</div>
           </div>
         </div>
+        </figure>
       </div>
     </section>
 
-    <section class="ui-section">
-      <div class="ui-wrap">
-        <div class="ui-head"><h2>Now you know what's there.</h2><p>Use this list to build a real design system, or just understand what you're working with.</p></div>
-        <table class="ui-table lp-table"><tbody>{uses.map((u) => <tr><th scope="row">{u.t}</th><td>{u.d}</td></tr>)}</tbody></table>
-        <p class="ui-after">You can't design for components you don't know exist. <strong class="ui-c-ok">Now you know.</strong></p>
+    <section id="the-output" class="ui-section ui-section--band">
+      <div class="ui-wrap ui-split">
+        <div class="ui-head">
+          <h2>Your component inventory.</h2>
+          <p>Every component in your codebase, listed and categorized. Finally, clarity.</p>
+          <p>Finally see what's actually in your codebase: the building blocks you can affect, improve, document, and design for. No more guessing. No more "I think we have a sidebar somewhere."</p>
+        </div>
+        <div>
+          <h3 class="oc-sub">Now you know what's there.</h3>
+          <p class="lp-muted">Use this list to build a real design system, or just understand what you're working with.</p>
+          <table class="ui-table oc-uses"><tbody>{uses.map((u) => <tr><th scope="row">{u.t}</th><td>{u.d}</td></tr>)}</tbody></table>
+          <p class="ui-after">You can't design for components you don't know exist. <strong class="ui-c-ok">Now you know.</strong></p>
+        </div>
       </div>
     </section>
+
+    
 
     <section class="ui-section ui-section--band">
       <div class="ui-wrap">
@@ -133,6 +137,12 @@ SidebarCshtml, BannerCshtml...
 </Layout>
 
 <style>
+  .lp-hero-split { align-items: center; }
+  .lp-hero-split .ui-head h1 { font-size: clamp(2.25rem, 1.6rem + 2.2vw, 3.25rem); }
+
+  :global(.lp-pat-side) { -webkit-mask-image: linear-gradient(100deg, transparent 38%, #000 72%); mask-image: linear-gradient(100deg, transparent 38%, #000 72%); }
+  @media (max-width: 960px) { :global(.lp-pat-side) { -webkit-mask-image: linear-gradient(to bottom, transparent 60%, #000 95%); mask-image: linear-gradient(to bottom, transparent 60%, #000 95%); } }
+
   .lp-hero { padding-block: 32px 24px; }
   .lp-muted { color: var(--color-muted); font-size: 15px; }
   .lp-table { margin-top: 32px; }
@@ -146,4 +156,6 @@ SidebarCshtml, BannerCshtml...
   @media (max-width: 760px) { .oc-grid { grid-template-columns: repeat(12, 12px); } }
   .oc-names { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 16px; }
   .oc-mini { margin-top: 16px; }
+  .oc-sub { margin: 0; font-size: 1.25rem; }
+  .oc-uses { margin-top: 20px; }
 </style>

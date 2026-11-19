@@ -20,14 +20,14 @@ const measures = [
   <Nav />
   <main id="main" class="ui-nav-offset">
     <section class="ui-section ui-section--first ui-section--patterned">
-      <MarkPattern pattern="scan" drift={0.25} fade class="ui-pattern" />
+      <MarkPattern pattern="scan" drift={0.25} class="ui-pattern lp-pat-side" />
       <div class="ui-wrap">
-        <div class="ui-head ui-head--center">
-          <p class="ui-eyebrow">Research in progress</p>
+        <div class="ui-head">
+          <p class="ui-eyebrow ui-c-buoy">Research in progress</p>
           <h1>A benchmark we can defend</h1>
           <p>We are manually reviewing representative React, Tailwind, Vue, and monorepo projects before publishing accuracy or industry claims. Sample size, methodology, and limitations will ship with the results.</p>
         </div>
-        <div class="ui-actions sd-center">
+        <div class="ui-actions">
           <a href="https://github.com/ahoybuoy/buoy" target="_blank" rel="noopener noreferrer" class="ui-btn ui-btn--primary">Follow the open-source work</a>
         </div>
       </div>
@@ -36,7 +36,7 @@ const measures = [
     <section class="ui-section ui-section--band">
       <div class="ui-wrap ui-split">
         <div class="ui-head">
-          <p class="ui-eyebrow">What we will publish</p>
+          <p class="ui-eyebrow ui-c-buoy">What we will publish</p>
           <h2>Product evidence, not decorative statistics</h2>
           <p>Repository-scale crash coverage is useful, but it is not the same as ground-truth accuracy. The public benchmark will separate automated coverage checks from manually annotated findings.</p>
         </div>
@@ -47,7 +47,7 @@ const measures = [
     </section>
 
     <section class="ui-section ui-section--last">
-      <div class="ui-wrap ui-split">
+      <div class="ui-wrap ui-split sd-mid">
         <div class="ui-head">
           <h2>Evaluate your own codebase now</h2>
           <p>Buoy can run locally today. Review the findings against your own design-system knowledge and tell us what is useful or noisy.</p>
@@ -61,5 +61,9 @@ const measures = [
 </Layout>
 
 <style>
+  :global(.lp-pat-side) { -webkit-mask-image: linear-gradient(100deg, transparent 38%, #000 72%); mask-image: linear-gradient(100deg, transparent 38%, #000 72%); }
+  @media (max-width: 960px) { :global(.lp-pat-side) { -webkit-mask-image: linear-gradient(to bottom, transparent 60%, #000 95%); mask-image: linear-gradient(to bottom, transparent 60%, #000 95%); } }
+
   .sd-center { justify-content: center; }
+  .sd-mid { align-items: center; }
 </style>

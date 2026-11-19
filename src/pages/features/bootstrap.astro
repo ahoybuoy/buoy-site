@@ -10,6 +10,15 @@ const outputFormats = [
   { name: 'Style Dictionary', file: 'tokens.sd.json' },
 ]
 
+const mapping = [
+  { from: '#3b82f6', to: '--color-primary' },
+  { from: '#ffffff', to: '--color-bg' },
+  { from: '#6b7280', to: '--color-text-muted' },
+  { from: '16px', to: '--spacing-md' },
+  { from: '24px', to: '--spacing-lg' },
+  { from: '14px', to: '--font-size-sm' },
+]
+
 const steps = [
   { title: 'Scan', text: 'Buoy scans your codebase for all hardcoded style values' },
   { title: 'Dedupe', text: 'Groups similar values and suggests consolidation' },
@@ -34,7 +43,29 @@ const relatedFeatures = [
   pattern="rain"
   ctaPattern="field"
 >
-  <div slot="example" class="ui-term fx-term">
+  <div slot="example" class="ui-tray">
+    <div class="ui-panel">
+      <div class="ui-panel-head"><span class="ui-mono">Found in code → tokens.css</span></div>
+      <table class="fx-mini boot-map">
+        <thead><tr><th>Hardcoded</th><th>Becomes</th></tr></thead>
+        <tbody>
+          {mapping.map((m) => <tr><td><code class="ui-old">{m.from}</code></td><td><code class="ui-token">{m.to}</code></td></tr>)}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <section class="ui-section">
+    <div class="ui-wrap ui-split">
+      <div>
+        <div class="ui-head"><h2>How it works</h2><p>One command, three passes over your code.</p></div>
+        <ol class="ui-steps fx-block">
+          {steps.map((s, i) => (
+            <li><span class="ui-step-n" aria-hidden="true">{i + 1}</span><div><h3>{s.title}</h3><p>{s.text}</p></div></li>
+          ))}
+        </ol>
+      </div>
+      <div class="ui-term fx-term">
     <div class="ui-term-bar"><span>Terminal</span></div>
     <pre><span class="ui-t-prompt">$</span> <span class="ui-t-hi">buoy anchor</span>
 <span class="ui-t-dim">Scanning codebase for style values...</span>
@@ -47,15 +78,6 @@ Found <span class="ui-t-hi">8</span> unique font sizes
 <span class="ui-t-ok">✓</span> Generated tokens.json
 <span class="ui-t-ok">✓</span> Generated tailwind.config.js extension</pre>
   </div>
-
-  <section class="ui-section">
-    <div class="ui-wrap">
-      <div class="ui-head"><h2>How it works</h2></div>
-      <ol class="ui-steps fx-block">
-        {steps.map((s, i) => (
-          <li><span class="ui-step-n" aria-hidden="true">{i + 1}</span><div><h3>{s.title}</h3><p>{s.text}</p></div></li>
-        ))}
-      </ol>
     </div>
   </section>
 
@@ -104,3 +126,8 @@ Found <span class="ui-t-hi">8</span> unique font sizes
     </div>
   </section>
 </FeatureLayout>
+
+<style>
+  .boot-map td { padding-block: 12px; }
+  .boot-map code { font-size: 14px; }
+</style>

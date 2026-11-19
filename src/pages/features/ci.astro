@@ -154,9 +154,12 @@ npx ahoybuoy drift check \\
   </section>
 
   <section class="ui-section">
-    <div class="ui-wrap">
-      <div class="ui-head"><h2>Full GitHub Actions example</h2></div>
-      <div class="ui-tray fx-block">
+    <div class="ui-wrap ui-split">
+      <div class="ui-head ci-sticky">
+        <h2>Full GitHub Actions example</h2>
+        <p>Runs on every pull request to <code class="ui-code">main</code>, fails on <span class="ui-sev ui-sev-critical">critical</span> drift, and uploads SARIF for GitHub Code Scanning.</p>
+      </div>
+      <div class="ui-tray">
         <div class="ui-panel">
           <div class="ui-panel-head"><span class="ui-mono">.github/workflows/design-drift.yml</span></div>
           <pre class="fx-pre">{`name: Design Drift Check
@@ -211,5 +214,7 @@ jobs:
   .ci-gate dt { font-size: 13px; color: var(--color-muted); }
   .ci-gate dd { margin: 6px 0 0; font-family: var(--font-display); font-weight: 700; font-size: clamp(2.5rem, 2rem + 2vw, 3.5rem); line-height: 1; color: var(--color-ink); }
   .ci-gate dd.ui-c-crit { color: var(--color-crit); }
+  .ci-sticky { position: sticky; top: 96px; }
+  @media (max-width: 960px) { .ci-sticky { position: static; } }
   .ci-gate-yaml { max-width: 720px; margin-inline: auto; }
 </style>

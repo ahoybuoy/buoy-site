@@ -1,24 +1,5 @@
 ---
 import FeatureLayout from '../../layouts/FeatureLayout.astro'
-import Terminal from '../../components/Terminal.astro'
-
-const terminalLines = [
-  { text: '', delay: 600 },
-  { text: '<span class="text-slate">Checking naming conventions...</span>', type: 'output', delay: 800 },
-  { text: '', delay: 1200 },
-  { text: '<span class="text-warning">⚠</span> Found <span class="text-light">5</span> naming inconsistencies', type: 'warning', delay: 1400 },
-  { text: '', delay: 1600 },
-  { text: '<span class="text-slate">Components:</span>', type: 'output', delay: 1800 },
-  { text: '  <span class="text-warning">⚠</span> LoginBtn.tsx → Expected: LoginButton.tsx', type: 'warning', delay: 2000 },
-  { text: '  <span class="text-warning">⚠</span> userCard.tsx → Expected: UserCard.tsx', type: 'warning', delay: 2200 },
-  { text: '', delay: 2400 },
-  { text: '<span class="text-slate">Tokens:</span>', type: 'output', delay: 2600 },
-  { text: '  <span class="text-warning">⚠</span> --primary-clr → Expected: --color-primary', type: 'warning', delay: 2800 },
-  { text: '  <span class="text-warning">⚠</span> --txtColor → Expected: --color-text', type: 'warning', delay: 3000 },
-  { text: '', delay: 3200 },
-  { text: '<span class="text-slate">Props:</span>', type: 'output', delay: 3400 },
-  { text: '  <span class="text-warning">⚠</span> isDisabled vs disabled (inconsistent across 12 components)', type: 'warning', delay: 3600 },
-]
 
 const conventions = [
   { category: 'Components', rules: ['PascalCase file names (Button.tsx, not button.tsx)', 'Match file name to default export', 'Suffix patterns (Button, ButtonGroup, ButtonIcon)'] },
@@ -72,20 +53,20 @@ const relatedFeatures = [
         <div class="ui-col">
           <h3>Without conventions</h3>
           <ul class="ui-ruled ui-mono">
-            <li class="ui-c-crit">Button.tsx</li>
-            <li class="ui-c-crit">loginBtn.tsx</li>
-            <li class="ui-c-crit">SubmitBTN.tsx</li>
-            <li class="ui-c-crit">cta-button.tsx</li>
+            <li><span class="ui-c-crit">Button.tsx</span></li>
+            <li><span class="ui-c-crit">loginBtn.tsx</span></li>
+            <li><span class="ui-c-crit">SubmitBTN.tsx</span></li>
+            <li><span class="ui-c-crit">cta-button.tsx</span></li>
           </ul>
           <p class="ui-col-foot">Nobody can find anything. Imports break. Autocomplete fails.</p>
         </div>
         <div class="ui-col">
           <h3>With Buoy</h3>
           <ul class="ui-ruled ui-mono">
-            <li class="ui-c-ok">Button.tsx</li>
-            <li class="ui-c-ok">LoginButton.tsx</li>
-            <li class="ui-c-ok">SubmitButton.tsx</li>
-            <li class="ui-c-ok">CtaButton.tsx</li>
+            <li><span class="ui-c-ok">Button.tsx</span></li>
+            <li><span class="ui-c-ok">LoginButton.tsx</span></li>
+            <li><span class="ui-c-ok">SubmitButton.tsx</span></li>
+            <li><span class="ui-c-ok">CtaButton.tsx</span></li>
           </ul>
           <p class="ui-col-foot">Predictable, searchable, and consistent everywhere.</p>
         </div>
@@ -94,9 +75,26 @@ const relatedFeatures = [
   </section>
 
   <section class="ui-section ui-section--band">
-    <div class="ui-wrap ui-split">
-      <div class="ui-head"><h2>See it in action</h2><p>Components, tokens and props, each with the name it should have.</p></div>
-      <Terminal command="buoy drift check" lines={terminalLines} />
+    <div class="ui-wrap">
+      <div class="ui-head ui-head--center"><h2>See it in action</h2><p>Components, tokens and props, each with the name it should have.</p></div>
+      <div class="ui-term fx-term naming-term">
+        <div class="ui-term-bar"><span>Terminal</span></div>
+        <pre><span class="ui-t-prompt">$</span> <span class="ui-t-hi">buoy drift check</span>
+<span class="ui-t-dim">Checking naming conventions...</span>
+
+<span class="ui-t-warn">⚠</span> Found <span class="ui-t-hi">5</span> naming inconsistencies
+
+<span class="ui-t-dim">Components:</span>
+  <span class="ui-t-warn">⚠</span> <span class="ui-t-crit">LoginBtn.tsx</span> → Expected: <span class="ui-t-ok">LoginButton.tsx</span>
+  <span class="ui-t-warn">⚠</span> <span class="ui-t-crit">userCard.tsx</span> → Expected: <span class="ui-t-ok">UserCard.tsx</span>
+
+<span class="ui-t-dim">Tokens:</span>
+  <span class="ui-t-warn">⚠</span> <span class="ui-t-crit">--primary-clr</span> → Expected: <span class="ui-t-ok">--color-primary</span>
+  <span class="ui-t-warn">⚠</span> <span class="ui-t-crit">--txtColor</span> → Expected: <span class="ui-t-ok">--color-text</span>
+
+<span class="ui-t-dim">Props:</span>
+  <span class="ui-t-warn">⚠</span> isDisabled vs disabled <span class="ui-t-dim">(inconsistent across 12 components)</span></pre>
+      </div>
     </div>
   </section>
 
@@ -115,9 +113,9 @@ const relatedFeatures = [
   </section>
 
   <section class="ui-section ui-section--band">
-    <div class="ui-wrap">
-      <div class="ui-head"><h2>Customize your conventions</h2></div>
-      <div class="ui-tray fx-block">
+    <div class="ui-wrap ui-split">
+      <div class="ui-head naming-sticky"><h2>Customize your conventions</h2><p>Casing, prefixes and suffixes for <span class="ui-c-buoy">components</span>, <span class="ui-c-ok">tokens</span> and <span class="ui-c-info">props</span>, set once in <code class="ui-code">.buoy.yaml</code>.</p></div>
+      <div class="ui-tray">
         <div class="ui-panel">
           <div class="ui-panel-head"><span class="ui-mono">.buoy.yaml</span></div>
           <pre class="fx-pre"><span class="c"># .buoy.yaml</span>{`
@@ -159,6 +157,9 @@ const relatedFeatures = [
   .naming-mini td { padding-block: 11px; }
   .naming-mini code { font-size: 13px; }
   .naming-rules { margin: 0; }
+  .naming-sticky { position: sticky; top: 96px; }
+  @media (max-width: 960px) { .naming-sticky { position: static; } }
+  .naming-term { max-width: 760px; margin: 40px auto 0; }
   .naming-rules li { padding-block: 6px; font-size: 15px; color: var(--color-body); }
   .naming-rules li:last-child { border-bottom: 0; }
 </style>

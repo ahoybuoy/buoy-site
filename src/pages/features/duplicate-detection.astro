@@ -1,27 +1,6 @@
 ---
 import FeatureLayout from '../../layouts/FeatureLayout.astro'
-import Terminal from '../../components/Terminal.astro'
 import BuoyMark from '../../components/BuoyMark.astro'
-
-const terminalLines = [
-  { text: '', delay: 600 },
-  { text: '<span class="text-slate">Scanning for duplicate components...</span>', type: 'output', delay: 800 },
-  { text: '', delay: 1200 },
-  { text: '<span class="text-warning">⚠</span> Found <span class="text-light">3</span> duplicate component patterns', type: 'warning', delay: 1400 },
-  { text: '', delay: 1600 },
-  { text: '<span class="text-slate">Duplicate 1:</span> Button implementations', type: 'output', delay: 1800 },
-  { text: '  ├─ src/components/Button.tsx', type: 'muted', delay: 2000 },
-  { text: '  ├─ src/features/auth/LoginButton.tsx', type: 'muted', delay: 2200 },
-  { text: '  └─ src/legacy/OldButton.tsx', type: 'muted', delay: 2400 },
-  { text: '', delay: 2600 },
-  { text: '<span class="text-slate">Duplicate 2:</span> Card layouts', type: 'output', delay: 2800 },
-  { text: '  ├─ src/components/Card.tsx', type: 'muted', delay: 3000 },
-  { text: '  └─ src/features/dashboard/InfoCard.tsx', type: 'muted', delay: 3200 },
-  { text: '', delay: 3400 },
-  { text: '<span class="text-slate">Duplicate 3:</span> Modal dialogs', type: 'output', delay: 3600 },
-  { text: '  ├─ src/components/Modal.tsx', type: 'muted', delay: 3800 },
-  { text: '  └─ src/components/Dialog.tsx', type: 'muted', delay: 4000 },
-]
 
 const duplicateTypes = [
   { title: 'Component Clones', description: 'Multiple implementations of the same UI pattern (buttons, cards, modals)', severity: 'critical' },
@@ -107,13 +86,6 @@ const relatedFeatures = [
     </div>
   </section>
 
-  <section class="ui-section ui-section--band">
-    <div class="ui-wrap ui-split">
-      <div class="ui-head"><h2>See it in action</h2><p>Every clone, grouped with the files that implement it.</p></div>
-      <Terminal command="buoy drift check" lines={terminalLines} />
-    </div>
-  </section>
-
   <section class="ui-section">
     <div class="ui-wrap">
       <div class="ui-head"><h2>What we detect</h2></div>
@@ -130,13 +102,35 @@ const relatedFeatures = [
   </section>
 
   <section class="ui-section ui-section--band">
-    <div class="ui-wrap">
-      <div class="ui-head"><h2>How detection works</h2></div>
-      <ol class="ui-steps fx-block">
-        {how.map((s, i) => (
-          <li><span class="ui-step-n" aria-hidden="true">{i + 1}</span><div><h3>{s.title}</h3><p>{s.text}</p></div></li>
-        ))}
-      </ol>
+    <div class="ui-wrap ui-split">
+      <div>
+        <div class="ui-head"><h2>How detection works</h2><p>Every clone, grouped with the files that implement it.</p></div>
+        <ol class="ui-steps fx-block">
+          {how.map((s, i) => (
+            <li><span class="ui-step-n" aria-hidden="true">{i + 1}</span><div><h3>{s.title}</h3><p>{s.text}</p></div></li>
+          ))}
+        </ol>
+      </div>
+      <div class="ui-term fx-term">
+        <div class="ui-term-bar"><span>Terminal</span></div>
+        <pre><span class="ui-t-prompt">$</span> <span class="ui-t-hi">buoy drift check</span>
+<span class="ui-t-dim">Scanning for duplicate components...</span>
+
+<span class="ui-t-warn">⚠</span> Found <span class="ui-t-hi">3</span> duplicate component patterns
+
+<span class="ui-t-dim">Duplicate 1:</span> Button implementations
+  ├─ src/components/Button.tsx
+  ├─ <span class="ui-t-warn">src/features/auth/LoginButton.tsx</span>
+  └─ <span class="ui-t-warn">src/legacy/OldButton.tsx</span>
+
+<span class="ui-t-dim">Duplicate 2:</span> Card layouts
+  ├─ src/components/Card.tsx
+  └─ <span class="ui-t-warn">src/features/dashboard/InfoCard.tsx</span>
+
+<span class="ui-t-dim">Duplicate 3:</span> Modal dialogs
+  ├─ src/components/Modal.tsx
+  └─ <span class="ui-t-warn">src/components/Dialog.tsx</span></pre>
+      </div>
     </div>
   </section>
 </FeatureLayout>

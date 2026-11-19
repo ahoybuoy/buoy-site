@@ -58,10 +58,12 @@ const description = result
       {result && (
         <>
           <h1 class="mt-5 text-[length:var(--text-h1)] leading-[1.05] [overflow-wrap:anywhere]">{result.host}{new URL(result.url).pathname !== '/' && <span class="text-[var(--color-muted)] font-normal">{new URL(result.url).pathname}</span>}</h1>
-          <p class="ui-lede mt-3 mb-8">
+          <div class="flex flex-wrap items-end justify-between gap-x-8 gap-y-4 mt-3 mb-8">
+          <p class="ui-lede !mt-0">
             <span class="ui-tnum text-[var(--color-ink)]">{result.looks}</span> button looks, <span class="ui-tnum ui-c-crit">{result.rare}</span> used only once. Rendered {new Date(result.renderedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}{isPrivate ? ' · private link' : ''}.
-            <a class="ui-link" href={`/ridgeline/compare?a=${encodeURIComponent(result.host)}`}>Compare with another site</a>
           </p>
+          <a class="ui-btn ui-btn--secondary ui-btn--sm" href={`/ridgeline/compare?a=${encodeURIComponent(result.host)}`}>Compare with another site</a>
+          </div>
           <RidgelineView data={result} shareUrl={shareUrl} isPrivate={isPrivate} />
           <div class="ui-card ui-card--pad mt-10 max-w-3xl">
             <h2 class="text-[length:var(--text-h3)]">Keep your UI this consistent</h2>

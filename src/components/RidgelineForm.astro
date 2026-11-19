@@ -11,7 +11,7 @@ const { id = 'ridge', value = '', autofocus = false } = Astro.props
   <div class="ui-scan">
     <label for={`${id}-url`} class="ui-sr">Website address</label>
     <input id={`${id}-url`} name="url" type="text" required autocomplete="off" spellcheck="false" autofocus={autofocus} value={value}
-      placeholder="stripe.com" />
+      placeholder="stripe.com" class="max-sm:!flex-none" />
     <button type="submit" class="ui-btn ui-btn--primary disabled:opacity-60">Make ridgeline</button>
   </div>
   <label class="flex items-center gap-2 text-sm text-[var(--color-muted)] cursor-pointer pl-1">

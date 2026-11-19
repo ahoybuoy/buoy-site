@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro'
 import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
+import MarkPattern from '../components/MarkPattern.astro'
 
 export const prerender = false
 
@@ -40,11 +41,13 @@ const done = Astro.url.searchParams.get('done')
         </div>
       </div>
     </section>
+    <div class="un-strip" aria-hidden="true"><MarkPattern pattern="wake" drift={0.3} fade /></div>
   </main>
   <Footer />
 </Layout>
 
 <style>
-  .un-section { min-height: 60vh; }
+  .un-section { min-height: 44vh; padding-bottom: 48px; }
+  .un-strip { position: relative; height: 200px; overflow: hidden; opacity: 0.4; }
   .un-form { margin-top: 28px; }
 </style>

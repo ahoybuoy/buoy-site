@@ -5,6 +5,17 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
 <DocsLayout title="Installation" description="Install Buoy in your project">
   <h1>Installation</h1>
 
+  <p>Three ways in, depending on where you want Buoy to run.</p>
+
+  <table class="docs-paths">
+    <thead><tr><th>Where</th><th>What you get</th></tr></thead>
+    <tbody>
+      <tr><td><a href="#github-app-easiest">GitHub App</a></td><td>A review on every PR. No CLI, no config, no CI setup.</td></tr>
+      <tr><td><a href="#coding-agents-claude-code-cursor-codex">Coding agents</a></td><td>Tokens while the agent writes, so it uses them instead of hardcoding values.</td></tr>
+      <tr><td><a href="#cli-installation">CLI</a></td><td>Local scanning, auto-fixing, and project setup.</td></tr>
+    </tbody>
+  </table>
+
   <h2>GitHub App (Easiest)</h2>
 
   <p>
@@ -18,6 +29,10 @@ import DocsLayout from '../../layouts/DocsLayout.astro'
     <li>Select your repositories</li>
     <li>Open a PR and Buoy posts a review with drift issues</li>
   </ol>
+
+  <div class="ui-actions">
+    <a href="https://github.com/marketplace/buoy-design" class="ui-btn ui-btn--primary">Install the GitHub App</a>
+  </div>
 
   <p>No Buoy account or sign-up is needed; installing the App is enough. See <a href="/docs/integrations/github-actions">GitHub App docs</a> for details.</p>
 

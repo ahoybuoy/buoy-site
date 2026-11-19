@@ -31,8 +31,8 @@ Astro.response.headers.set('Cache-Control', 'public, max-age=120')
   <Nav />
   <main class="ui-nav-offset">
   <section class="ui-section ui-section--first ui-section--patterned">
-    <MarkPattern pattern="field" drift={0.3} fade class="ui-pattern" />
-    <div class="ui-wrap">
+    <MarkPattern pattern="field" drift={0.3} fade class="ui-pattern !opacity-[0.16]" />
+    <div class="ui-wrap ui-split items-center">
       <div class="ui-head">
         <h1>Visualizers</h1>
         <p class="ui-lede">
@@ -40,6 +40,11 @@ Astro.response.headers.set('Cache-Control', 'public, max-age=120')
           Open any of them on a real repo, add them to your Buoy workspace, or build your own with your coding agent.
         </p>
       </div>
+      <ol class="ui-steps !my-0">
+        <li><span class="ui-step-n">1</span><div><h3>Open one on a real repo</h3><p>Every visualizer below runs live on <code class="ui-code">{DEMO}</code>.</p></div></li>
+        <li><span class="ui-step-n">2</span><div><h3>Add it to your workspace</h3><p>See it drawn from your own repository in Buoy.</p></div></li>
+        <li><span class="ui-step-n">3</span><div><h3>Build your own</h3><p>Copy the brief below into your coding agent.</p></div></li>
+      </ol>
     </div>
   </section>
 
@@ -57,7 +62,7 @@ Astro.response.headers.set('Cache-Control', 'public, max-age=120')
                 <tr>
                   <th>{v.name}</th>
                   <td>{v.description}</td>
-                  <td class="ui-end whitespace-nowrap"><a href={`/scan/${DEMO}/v/${v.slug}`} class="ui-rowlink text-sm">Open on {DEMO} →</a></td>
+                  <td class="ui-end whitespace-nowrap"><a href={`/scan/${DEMO}/v/${v.slug}`} class="ui-rowlink text-sm">Open →</a></td>
                 </tr>
               ))}
             </tbody>
@@ -76,7 +81,7 @@ Astro.response.headers.set('Cache-Control', 'public, max-age=120')
               <tr>
                 <th>{v.name}<span class="block mt-1 text-xs font-normal text-[var(--color-muted)]">by {v.author ?? 'someone'}{v.remixedFrom ? ' · remix' : ''} · in <span class="ui-tnum">{v.installs}</span> {v.installs === 1 ? 'workspace' : 'workspaces'}</span></th>
                 <td>{v.description}</td>
-                <td class="ui-end whitespace-nowrap"><a href={`/scan/${DEMO}/v/c-${v.id}`} class="ui-rowlink text-sm">Open on {DEMO} →</a></td>
+                <td class="ui-end whitespace-nowrap"><a href={`/scan/${DEMO}/v/c-${v.id}`} class="ui-rowlink text-sm">Open →</a></td>
               </tr>
             ))}
           </tbody>

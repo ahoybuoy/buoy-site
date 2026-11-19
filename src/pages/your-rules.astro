@@ -36,8 +36,9 @@ const power = [
   <Nav />
   <main id="main" class="ui-nav-offset">
     <section class="ui-section ui-section--first ui-section--patterned">
-      <MarkPattern pattern="swell" drift={0.3} fade class="ui-pattern" />
-      <div class="ui-wrap lp-hero">
+      <MarkPattern pattern="swell" drift={0.3} class="ui-pattern lp-pat-side" />
+      <div class="ui-wrap lp-hero ui-split lp-hero-split">
+        <div>
         <p class="ui-eyebrow">You're in charge</p>
         <div class="ui-head"><h1>AI writes code.<br /><span class="ui-c-buoy">You write the rules.</span></h1></div>
         <p class="ui-lede">Copilot, Claude, GPT: they're all writing code for your product. Now you decide what's allowed to ship.</p>
@@ -45,13 +46,8 @@ const power = [
           <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer" class="ui-btn ui-btn--primary ui-btn--lg">Write your rules</a>
           <a href="#the-shift" class="ui-btn ui-btn--secondary ui-btn--lg">See the power shift</a>
         </div>
-      </div>
-    </section>
-
-    <section id="the-shift" class="ui-section ui-section--band">
-      <div class="ui-wrap">
-        <div class="ui-head"><h2>AI doesn't know your design system exists.</h2><p>It was trained on the internet, not your Figma files. And it's writing code for you anyway.</p></div>
-        <div class="ui-split lp-split">
+        </div>
+        <figure class="ui-figure ui-enter" style="animation-delay:150ms">
           <div class="ui-term">
             <div class="ui-term-bar"><span>AI-generated code</span></div>
 <pre>const Card = () =&gt; (
@@ -68,6 +64,15 @@ const power = [
   &lt;/div&gt;
 )</pre>
           </div>
+          <figcaption>What an assistant writes when it has never seen your tokens.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="the-shift" class="ui-section ui-section--band">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>AI doesn't know your design system exists.</h2><p>It was trained on the internet, not your Figma files. And it's writing code for you anyway.</p></div>
+        <div class="lp-split">
           <table class="ui-table">
             <tbody>
               {reality.map((r) => <tr><th scope="row" class={`ui-sev ui-sev-${r.sev}`}>{r.t}</th><td>{r.d}</td></tr>)}
@@ -149,6 +154,12 @@ const power = [
 </Layout>
 
 <style>
+  .lp-hero-split { align-items: center; }
+  .lp-hero-split .ui-head h1 { font-size: clamp(2.25rem, 1.6rem + 2.2vw, 3.25rem); }
+
+  :global(.lp-pat-side) { -webkit-mask-image: linear-gradient(100deg, transparent 38%, #000 72%); mask-image: linear-gradient(100deg, transparent 38%, #000 72%); }
+  @media (max-width: 960px) { :global(.lp-pat-side) { -webkit-mask-image: linear-gradient(to bottom, transparent 60%, #000 95%); mask-image: linear-gradient(to bottom, transparent 60%, #000 95%); } }
+
   .lp-hero { padding-block: 32px 24px; }
   .lp-split { margin-top: 40px; align-items: center; }
   .lp-muted { color: var(--color-muted); font-size: 15px; }

@@ -36,7 +36,7 @@ const others = [
 
   <main class="ui-nav-offset cmp">
     <section class="ui-section ui-section--first ui-section--patterned">
-      <MarkPattern pattern="field" drift={0.25} fade class="ui-pattern" />
+      <MarkPattern pattern="field" drift={0.25} fade class="ui-pattern cmp-hero-pattern" />
       <div class="ui-wrap">
         <nav aria-label="Breadcrumb" class="cmp-crumbs">
           <a href="/">Home</a><span aria-hidden="true">/</span><a href="/integrations/react">Integrations</a><span aria-hidden="true">/</span><span aria-current="page">{heroTitle.split(' ')[0]}</span>
@@ -96,6 +96,7 @@ const others = [
   .cmp-other-h { margin: 0 0 20px; font-size: var(--text-h3); color: var(--color-ink); }
   .cmp-chips { display: flex; flex-wrap: wrap; gap: 10px; }
   .cmp-center { justify-content: center; }
+  .ui-section--patterned > .cmp-hero-pattern { opacity: 0.16; }
   .cmp-hero-grid.ui-split { align-items: center; }
   .cmp-hero-fig { min-width: 0; }
   @media (max-width: 960px) { .cmp-hero-fig { margin-top: 40px; } }

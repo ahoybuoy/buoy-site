@@ -67,7 +67,14 @@ const timeline = [
 
     <section class="ui-section ui-section--band">
       <div class="ui-wrap ui-split">
-        <div class="ui-head"><h2>The problem</h2></div>
+        <div>
+          <div class="ui-head"><h2>The problem</h2></div>
+          <div class="ui-term ab-term">
+            <div class="ui-term-bar">Button.tsx</div>
+            <pre><span class="ab-del">- color: #3b82f6;</span>
+<span class="ab-add">+ color: var(--color-primary);</span></pre>
+          </div>
+        </div>
         <div class="ab-story">
           <p>Your team invested months building a design system. Components, tokens, documentation, the works.</p>
           <p>
@@ -161,6 +168,11 @@ const timeline = [
 </Layout>
 
 <style>
+  .ab-term { margin-top: 32px; }
+  .ab-del { display: block; background: var(--color-del-bg); color: var(--color-del-ink); padding: 0 8px; margin: 0 -8px; }
+  .ab-add { display: block; background: var(--color-add-bg); color: var(--color-add-ink); padding: 0 8px; margin: 0 -8px; }
+  .ab-steps h3 { font-size: 20px; }
+  .ab-steps p { font-size: 16px; }
   .ab-story { display: grid; gap: 18px; font-size: 17px; }
   .ab-story p { margin: 0; }
   .ab-strong { color: var(--color-ink); font-weight: 600; }

@@ -12,6 +12,9 @@ const builtVsShipped = [
   { prop: '--radius-lg', built: '12px', shipped: 'borderRadius: "8px"' },
   { prop: '<Button>', built: 'component', shipped: '<div style=...' },
 ]
+const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;')
+const builtHtml = builtVsShipped.slice(0, 3).map((r) => `<span class="ui-c-ok">${esc(r.prop)}</span>: ${esc(r.built)};`).join('\n')
+const shippedHtml = builtVsShipped.map((r) => `<span class="ui-old">${esc(r.shipped)}</span>`).join('\n')
 const culprits = ["AI that doesn't know your tokens exist", 'Developers in a hurry', 'Copy-pasted Stack Overflow code']
 const caught = [
   { t: 'Hardcoded values', d: 'Caught & flagged' },
@@ -48,8 +51,9 @@ const ladder = [
   <Nav />
   <main id="main" class="ui-nav-offset">
     <section class="ui-section ui-section--first ui-section--patterned">
-      <MarkPattern pattern="tide" drift={0.3} fade class="ui-pattern" />
-      <div class="ui-wrap lp-hero">
+      <MarkPattern pattern="tide" drift={0.3} class="ui-pattern lp-pat-side" />
+      <div class="ui-wrap lp-hero ui-split lp-hero-split">
+        <div>
         <p class="ui-eyebrow">The Code Control layer</p>
         <div class="ui-head"><h1>Design tokens were step one.<br /><span class="ui-c-buoy">Code Control is step two.</span></h1></div>
         <p class="ui-lede">You built the design system. You defined the tokens. Now take control of how they're used in code.</p>
@@ -57,19 +61,27 @@ const ladder = [
           <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer" class="ui-btn ui-btn--primary ui-btn--lg">Take control now</a>
           <a href="#the-problem" class="ui-btn ui-btn--secondary ui-btn--lg">See how it works</a>
         </div>
+        </div>
+        <figure class="ui-figure ui-enter" style="animation-delay:150ms">
+          <div class="ui-tray">
+            <div class="ui-panel">
+              <div class="ui-panel-head"><span class="ui-mono">tokens.css</span><span class="ui-c-ok tc-small">What you built</span></div>
+              <pre class="tc-code" set:html={builtHtml}></pre>
+              <div class="ui-panel-head tc-mid"><span class="ui-mono">Card.tsx</span><span class="ui-c-crit tc-small">What gets shipped</span></div>
+              <pre class="tc-code" set:html={shippedHtml}></pre>
+            </div>
+          </div>
+        </figure>
       </div>
     </section>
 
     <section id="the-problem" class="ui-section ui-section--band">
       <div class="ui-wrap">
         <div class="ui-head"><h2>You did everything right.</h2><p>You built the design system. You documented every token. You created the components.</p></div>
-        <table class="ui-table ui-table--stack lp-table">
-          <thead><tr><th scope="col">What you built</th><th scope="col">Value</th><th scope="col">What gets shipped</th></tr></thead>
-          <tbody>
-            {builtVsShipped.map((r) => <tr><th scope="row" class="ui-mono ui-c-ok">{r.prop}</th><td class="ui-mono">{r.built}</td><td class="ui-mono"><span class="ui-old">{r.shipped}</span></td></tr>)}
-          </tbody>
-        </table>
-        <p class="ui-after">And the culprits? {culprits.join('. ')}.</p>
+        <div class="ui-cols tc-culprits">
+          <article class="ui-col"><h3>And the culprits?</h3></article>
+          <article class="ui-col"><ul class="ui-ruled">{culprits.map((c) => <li>{c}</li>)}</ul></article>
+        </div>
       </div>
     </section>
 
@@ -185,6 +197,12 @@ Meter        <span class="ui-t-ok">[██████████████�
 </Layout>
 
 <style>
+  .lp-hero-split { align-items: center; }
+  .lp-hero-split .ui-head h1 { font-size: clamp(2.25rem, 1.6rem + 2.2vw, 3.25rem); }
+
+  :global(.lp-pat-side) { -webkit-mask-image: linear-gradient(100deg, transparent 38%, #000 72%); mask-image: linear-gradient(100deg, transparent 38%, #000 72%); }
+  @media (max-width: 960px) { :global(.lp-pat-side) { -webkit-mask-image: linear-gradient(to bottom, transparent 60%, #000 95%); mask-image: linear-gradient(to bottom, transparent 60%, #000 95%); } }
+
   .lp-hero { padding-block: 32px 24px; }
   .lp-split { margin-top: 40px; }
   .lp-muted { color: var(--color-muted); font-size: 15px; }
@@ -217,4 +235,7 @@ Meter        <span class="ui-t-ok">[██████████████�
     .tc-pipe li + li::before { content: none; }
     .tc-fix { white-space: normal; }
   }
+  .tc-small { font-size: 13px; font-weight: 600; }
+  .tc-mid { border-top: 1px solid var(--color-line); }
+  .tc-code { margin: 0; padding: 14px 18px; font-family: var(--font-mono); font-size: 13px; line-height: 1.8; color: var(--color-body); white-space: pre; overflow-x: auto; }
 </style>

@@ -38,7 +38,7 @@ const who = [
   <Nav />
   <main id="main" class="ui-nav-offset">
     <section class="ui-section ui-section--first ui-section--patterned">
-      <MarkPattern pattern="field" drift={0.3} fade class="ui-pattern" />
+      <MarkPattern pattern="field" drift={0.3} class="ui-pattern lp-pat-side" />
       <div class="ui-wrap ui-split lm-hero">
         <div>
           <p class="ui-eyebrow">Free PDF</p>
@@ -101,6 +101,9 @@ const who = [
 </Layout>
 
 <style>
+  :global(.lp-pat-side) { -webkit-mask-image: linear-gradient(100deg, transparent 38%, #000 72%); mask-image: linear-gradient(100deg, transparent 38%, #000 72%); }
+  @media (max-width: 960px) { :global(.lp-pat-side) { -webkit-mask-image: linear-gradient(to bottom, transparent 60%, #000 95%); mask-image: linear-gradient(to bottom, transparent 60%, #000 95%); } }
+
   .lm-hero { align-items: center; }
   .lm-form { margin-top: 32px; max-width: 480px; }
   .lm-check { list-style: none; margin: 0; padding: 0; }

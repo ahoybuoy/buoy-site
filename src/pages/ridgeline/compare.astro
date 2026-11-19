@@ -6,24 +6,32 @@
 import Layout from '../../layouts/Layout.astro'
 import Nav from '../../components/Nav.astro'
 import Footer from '../../components/Footer.astro'
+import MarkPattern from '../../components/MarkPattern.astro'
 ---
 
 <Layout title="Compare two sites as ridgelines | Buoy" description="Two websites side by side as ridgelines: rhythm, density, and how many button looks each one uses.">
   <Nav />
   <main class="ui-nav-offset">
-  <section class="ui-section ui-section--first ui-section--last !pt-12">
+  <section class="ui-section ui-section--first ui-section--last !pt-12 ui-section--patterned">
+    <MarkPattern pattern="wake" drift={0.3} fade class="ui-pattern !opacity-[0.1]" />
     <div class="ui-wrap">
       <a href="/ridgeline" class="ui-rowlink text-sm">← All ridgelines</a>
       <h1 class="mt-5 text-[length:var(--text-h1)] leading-[1.05]">Compare two sites</h1>
+      <p class="ui-lede mt-3 max-w-2xl">Two websites side by side as ridgelines: rhythm, density, and how many button looks each one uses.</p>
       <form id="cmp" class="ui-scan mt-8 max-w-[760px]">
         <label for="cmp-a" class="ui-sr">First site</label>
-        <input id="cmp-a" name="a" placeholder="stripe.com" autocomplete="off" />
+        <input id="cmp-a" name="a" placeholder="stripe.com" autocomplete="off" class="max-sm:!flex-none max-sm:border-b max-sm:border-[var(--color-line)]" />
         <span aria-hidden="true" class="hidden sm:block self-center text-[var(--color-muted)] text-sm px-1">vs</span>
         <label for="cmp-b" class="ui-sr">Second site</label>
-        <input id="cmp-b" name="b" placeholder="linear.app" autocomplete="off" />
+        <input id="cmp-b" name="b" placeholder="linear.app" autocomplete="off" class="max-sm:!flex-none" />
         <button class="ui-btn ui-btn--primary">Compare</button>
       </form>
-      <div id="cmp-out" class="grid gap-4 mt-8" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))"></div>
+      <p class="ui-note mt-4">Try <a class="ui-rowlink" href="/ridgeline/compare?a=stripe.com&b=linear.app">stripe.com vs linear.app</a></p>
+      <div id="cmp-out" class="grid gap-4 mt-10" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr))">
+        {['First site', 'Second site'].map((label) => (
+          <div class="h-40 sm:h-auto sm:aspect-[5/6] sm:max-h-[520px] rounded-[var(--radius-card)] bg-[var(--color-term)] shadow-[var(--ring-term)] grid place-items-center text-sm text-[var(--color-muted)]">{label}</div>
+        ))}
+      </div>
     </div>
   </section>
   </main>

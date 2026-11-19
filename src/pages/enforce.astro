@@ -36,8 +36,9 @@ const yaml = `drift:
   <Nav />
   <main id="main" class="ui-nav-offset">
     <section class="ui-section ui-section--first ui-section--patterned">
-      <MarkPattern pattern="scan" drift={0.3} fade class="ui-pattern" />
-      <div class="ui-wrap lp-hero">
+      <MarkPattern pattern="scan" drift={0.3} class="ui-pattern lp-pat-side" />
+      <div class="ui-wrap lp-hero ui-split lp-hero-split">
+        <div>
         <p class="ui-eyebrow">Design system enforcement</p>
         <div class="ui-head"><h1>Your design system has rules.<br /><span class="ui-c-buoy">Now they're enforceable.</span></h1></div>
         <p class="ui-lede">You spent months defining tokens, components, and patterns. It's time they actually get used.</p>
@@ -45,24 +46,8 @@ const yaml = `drift:
           <a href={siteConfig.githubUrl} target="_blank" rel="noopener noreferrer" class="ui-btn ui-btn--primary ui-btn--lg">Start enforcing now</a>
           <a href="#the-gap" class="ui-btn ui-btn--secondary ui-btn--lg">See the gap</a>
         </div>
-      </div>
-    </section>
-
-    <section id="the-gap" class="ui-section ui-section--band">
-      <div class="ui-wrap">
-        <div class="ui-head"><h2>Rules without enforcement are just suggestions.</h2><p>Your design system documentation is beautiful. But documentation doesn't stop bad code from shipping.</p></div>
-        <div class="ui-cols ui-cols--3">
-          <article class="ui-col"><h3>What you have</h3><ul class="ui-ruled">{have.map((h) => <li>{h}</li>)}</ul></article>
-          <article class="ui-col"><h3 class="ui-c-crit">The gap</h3><p class="lp-muted">No enforcement layer. So:</p><ul class="ui-ruled">{happens.map((h) => <li>{h}</li>)}</ul></article>
-          <article class="ui-col"><h3 class="ui-c-ok">Buoy fills the gap</h3><p class="lp-muted">Automated enforcement in every PR.</p></article>
         </div>
-      </div>
-    </section>
-
-    <section class="ui-section">
-      <div class="ui-wrap">
-        <div class="ui-head"><h2>Every problem. Caught automatically.</h2><p>Buoy scans every PR and flags issues before they merge. You set the threshold.</p></div>
-        <div class="ui-split lp-split">
+        <figure class="ui-figure ui-enter" style="animation-delay:150ms">
           <div class="ui-tray">
             <div class="ui-panel">
               <div class="ui-panel-head"><span><strong class="lp-ink">feat: Add new checkout flow</strong> <span class="lp-muted">#247 opened by a developer</span></span><span class="ui-c-crit lp-small">Changes requested</span></div>
@@ -82,6 +67,26 @@ const yaml = `drift:
               </ul>
             </div>
           </div>
+          <figcaption>Every problem. Caught automatically, before merge.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="the-gap" class="ui-section ui-section--band">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>Rules without enforcement are just suggestions.</h2><p>Your design system documentation is beautiful. But documentation doesn't stop bad code from shipping.</p></div>
+        <div class="ui-cols ui-cols--3">
+          <article class="ui-col"><h3>What you have</h3><ul class="ui-ruled">{have.map((h) => <li>{h}</li>)}</ul></article>
+          <article class="ui-col"><h3 class="ui-c-crit">The gap</h3><p class="lp-muted">No enforcement layer. So:</p><ul class="ui-ruled">{happens.map((h) => <li>{h}</li>)}</ul></article>
+          <article class="ui-col"><h3 class="ui-c-ok">Buoy fills the gap</h3><p class="lp-muted">Automated enforcement in every PR.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="ui-section">
+      <div class="ui-wrap">
+        <div class="ui-head"><h2>You set the threshold.</h2><p>Buoy scans every PR and flags issues before they merge. Decide which ones block, per file or per type.</p></div>
+        <div class="lp-split lp-yaml">
           <div>
             <div class="ui-term">
               <div class="ui-term-bar"><span>.buoy.yaml</span></div>
@@ -141,6 +146,12 @@ const yaml = `drift:
 </Layout>
 
 <style>
+  .lp-hero-split { align-items: center; }
+  .lp-hero-split .ui-head h1 { font-size: clamp(2.25rem, 1.6rem + 2.2vw, 3.25rem); }
+
+  :global(.lp-pat-side) { -webkit-mask-image: linear-gradient(100deg, transparent 38%, #000 72%); mask-image: linear-gradient(100deg, transparent 38%, #000 72%); }
+  @media (max-width: 960px) { :global(.lp-pat-side) { -webkit-mask-image: linear-gradient(to bottom, transparent 60%, #000 95%); mask-image: linear-gradient(to bottom, transparent 60%, #000 95%); } }
+
   .lp-hero { padding-block: 32px 24px; }
   .lp-split { margin-top: 40px; }
   .lp-muted { color: var(--color-muted); font-size: 15px; }
@@ -161,4 +172,5 @@ const yaml = `drift:
   .lp-stats dd { margin: 0; font-family: var(--font-display); font-size: 3rem; font-weight: 700; line-height: 1; color: var(--color-ink); }
   .lp-stats dt { color: var(--color-muted); font-size: 15px; }
   .lp-cta { align-items: center; }
+  .lp-yaml { max-width: 720px; }
 </style>

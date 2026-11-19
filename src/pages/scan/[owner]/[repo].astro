@@ -95,13 +95,13 @@ const description = report
 
   {valid && !report && (
     <main class="ui-nav-offset">
-      <section class="ui-section ui-section--first ui-section--last ui-section--patterned">
+      <section class="ui-section ui-section--first ui-section--last ui-section--patterned min-h-[calc(100svh-65px-180px)]">
         <MarkPattern pattern="scan" drift={0.3} fade class="ui-pattern !opacity-[0.14]" />
         <div class="ui-wrap">
           <a href="/scan" class="ui-rowlink text-sm">← Scan another repository</a>
           <div class="ui-split items-start mt-6 !gap-14">
             <div class="min-w-0">
-              <h1 class="text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.08] [overflow-wrap:anywhere]">{fullName}</h1>
+              <h1 class="text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.08] [overflow-wrap:break-word]">{owner}/<wbr />{repo}</h1>
               {view.status === 'failed' ? (
                 <>
                   <p class="ui-lede mt-4"><span class="ui-c-crit">The scan did not finish.</span> Try again, or run it locally in a checkout.</p>
