@@ -11,7 +11,7 @@ const { id = 'scan', autofocus = false } = Astro.props
 <form id={`${id}-form`} action="/scan" method="get" class="ui-scan scan-form" data-scan-form>
   <label for={`${id}-url`} class="ui-sr">GitHub repository URL</label>
   <input id={`${id}-url`} name="url" type="text" required autocomplete="off" spellcheck="false" autofocus={autofocus}
-    placeholder="https://github.com/owner/repo" />
+    placeholder="https://github.com/owner/repo" class="max-sm:!flex-none" />
   <button type="submit" class="ui-btn ui-btn--primary disabled:opacity-60">Scan repository</button>
 </form>
 <p class="scan-error ui-msg ui-msg--err hidden" role="alert" data-scan-error></p>

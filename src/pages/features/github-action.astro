@@ -114,6 +114,7 @@ const relatedFeatures = [
 <style>
   .gh-review { border-bottom: 0; }
   .gh-pr-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-weight: 600; color: var(--color-ink); }
+  @media (max-width: 480px) { .gh-review .fx-mini th:nth-child(2), .gh-review .fx-mini td:nth-child(2) { display: none; } .gh-review .fx-mini td { padding-right: 10px; white-space: normal; } .gh-review .fx-mini code { white-space: normal; word-break: break-all; } }
   .gh-file { border-top: 1px solid var(--color-line); }
   .gh-commit { display: flex; align-items: center; gap: 12px; padding: 10px 14px; font-size: 13px; border-top: 1px solid var(--color-line); }
   /* A picture of GitHub's button inside the mock, not a control on this page. */

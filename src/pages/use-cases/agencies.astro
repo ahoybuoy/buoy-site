@@ -79,12 +79,12 @@ const workflow = [
   </section>
 
   <section class="ui-section ui-section--band">
-    <div class="ui-wrap ui-split ag-split">
+    <div class="ui-wrap">
       <div class="ui-head">
         <h2>Agency workflow</h2>
         <p>From kickoff to the maintenance retainer. The report above is what the client gets at handoff.</p>
       </div>
-      <ol class="ui-steps">
+      <ol class="ui-steps ag-flow">
         {workflow.map((item, i) => (
           <li><span class="ui-step-n">{i + 1}</span><div><h3>{item.step}</h3><p>{item.description}</p></div></li>
         ))}
@@ -118,7 +118,15 @@ const workflow = [
   .ag-items li { display: flex; gap: 10px; align-items: baseline; padding: 12px 0; border-top: 1px solid var(--color-line); }
   .ag-items .ui-sev { flex: 0 0 4.5rem; }
   .ag-cap { margin-top: 10px; font-size: .8125rem; color: var(--color-muted); text-align: center; }
-  .ag-split { align-items: start; }
+  .ag-flow { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin-bottom: 0; }
+  .ag-flow > li { display: block; padding: 20px 20px 0 0; border-bottom: 0; }
+  .ag-flow > li + li { padding-left: 20px; border-left: 1px solid var(--color-line); }
+  .ag-flow .ui-step-n { display: block; margin-bottom: 8px; }
+  @media (max-width: 900px) {
+    .ag-flow { grid-template-columns: minmax(0, 1fr); }
+    .ag-flow > li, .ag-flow > li + li { display: grid; grid-template-columns: 28px minmax(0, 1fr); padding: 14px 0; border-left: 0; border-bottom: 1px solid var(--color-line); }
+    .ag-flow .ui-step-n { margin: 0; }
+  }
   .ag-price { display: flex; gap: 24px; align-items: center; justify-content: space-between; }
   .ag-price-h { font-size: var(--text-h3); margin: 0 0 8px; }
   .ag-price p { margin: 0; max-width: 560px; }

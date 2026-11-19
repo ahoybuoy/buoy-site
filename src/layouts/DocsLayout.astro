@@ -122,6 +122,8 @@ html = html.replace(/<h2([^>]*)>([\s\S]*?)<\/h2>/g, (m, attrs: string, inner: st
 const paintLine = (line: string) => {
   const t = line.trim()
   if (!t) return line
+  if (/^\/\/ (Drift|Typo|Inconsistent|Deprecated)\b/.test(t)) return `<span class="ui-t-crit">${line}</span>`
+  if (/^\/\/ (Should be|Token|Convention|Current)\b/.test(t)) return `<span class="ui-t-ok">${line}</span>`
   if (/^(#|\/\/)/.test(t) && !/^#[0-9a-f]{3,8}\b/i.test(t)) return `<span class="ui-t-dim">${line}</span>`
   if (/^\$ /.test(t)) return line.replace(/\$ (.*)$/, '<span class="ui-t-prompt">$</span> <span class="ui-t-hi">$1</span>')
   if (/[✓✔]|\bPASS(ED)?\b/.test(t)) return `<span class="ui-t-ok">${line}</span>`
@@ -132,8 +134,8 @@ const paintLine = (line: string) => {
   out = out.replace(/^(\s*-?\s*)([A-Za-z_][\w.-]*)(:)(\s|$)/, '$1<span class="ui-t-info">$2</span>$3$4')
   return out
 }
-const CMD = /^(npx|npm|pnpm|yarn|buoy|git|claude|\/plugin)\b/
-html = html.replace(/<pre><code>([\s\S]*?)<\/code><\/pre>/g, (_m, body: string) => {
+const CMD = /^(npx|npm|pnpm|yarn|buoy|git|claude|cat|echo|chmod|node|curl|\/plugin)\b/
+html = html.replace(/<pre(?:\s+data-astro-[\w-]+="[^"]*")*><code(?:\s+data-astro-[\w-]+="[^"]*")*>([\s\S]*?)<\/code><\/pre>/g, (_m, body: string) => {
   let lines = body.replace(/\n+$/, '').split('\n')
   // A first line like "# .buoy.yaml" becomes the file title bar
   let file = ''
@@ -141,7 +143,7 @@ html = html.replace(/<pre><code>([\s\S]*?)<\/code><\/pre>/g, (_m, body: string) 
   if (fm && lines.length > 1) { file = fm[1]; lines = lines.slice(1); while (lines[0] === '') lines.shift() }
   const isCmds = lines.every((l) => !l.trim() || /^#/.test(l.trim()) || CMD.test(l.trim()))
   const painted = lines.map((l) => (isCmds && CMD.test(l.trim()) ? `<span class="ui-t-prompt">$</span> <span class="ui-t-hi">${l}</span>` : paintLine(l))).join('\n')
-  const bar = `<div class="ui-term-bar"><span>${file || (isCmds ? 'Terminal' : 'Output')}</span></div>`
+  const bar = `<div class="ui-term-bar"><span>${file || (isCmds || /^\$ /.test(lines[0]) ? 'Terminal' : /^\s*([{[]|&#123;)\s*$/.test(lines[0]) ? 'JSON' : /^:root|^\.\w/.test(lines[0].trim()) ? 'CSS' : /^\$[\w-]+:/.test(lines[0].trim()) ? 'SCSS' : /^\/\//.test(lines[0].trim()) ? 'Example' : 'Output')}</span></div>`
   const copy = isCmds ? lines.filter((l) => CMD.test(l.trim())).join('\n') : ''
   const attr = copy ? ' data-copy="' + copy.replace(/"/g, '&quot;') + '"' : ''
   return `<div class="ui-term docs-code"${attr}>${bar}<pre class="docs-pre"><code>${painted}</code></pre></div>`
@@ -331,25 +333,26 @@ html = html.replace(/(<h2[^>]*>)Step (\d+): /g, '$1<span class="docs-stepn">$2</
   /* Terminal colours in plain <pre> blocks */
   .docs-pre .ui-t-info { color: var(--color-info); }
 
-  /* Flags component as a ruled two-column list */
-  .docs-article .flags-list { display: grid; gap: 0; margin: 1.2em 0 0; border-top: 1px solid var(--color-line-strong); }
-  .docs-article .flags-list > div {
-    display: grid; grid-template-columns: minmax(140px, max-content) 1fr; gap: 6px 24px;
-    padding: 12px 0; margin: 0; border: 0; border-radius: 0; background: none;
-    border-bottom: 1px solid var(--color-line);
-  }
-  .docs-article .flags-list > div > code {
-    padding: 0; background: none; box-shadow: none; border-radius: 0;
-    color: var(--color-ok); font-size: 14px; white-space: nowrap;
-  }
-  .docs-article .flags-list > div > span { padding-top: 0; font-size: 15px; color: var(--color-body); }
-  .docs-article .flags-list > div > span > span:first-of-type[class*="critical"] {
-    background: none; padding: 0; color: var(--color-crit); font-weight: 600;
-  }
-  .docs-article .flags-list > div > span > span { color: var(--color-muted); }
-  @media (max-width: 560px) {
-    .docs-article .flags-list > div { grid-template-columns: 1fr; }
-  }
+  .docs-article .doc-terminal-out > div:empty:first-child { display: none; }
+
+  /* GitHub App page: rendered PR review */
+  .docs-article .gh-review { margin-top: 1.4em; }
+  .gh-review-body { padding: 18px 20px 20px; font-size: 14px; }
+  .gh-review-body details { margin-top: 14px; }
+  .gh-review-body summary { cursor: pointer; color: var(--color-ink); font-weight: 500; }
+  .gh-review-body .ui-table { display: table; width: 100%; margin-top: 10px; font-size: 14px; }
+  @media (max-width: 640px) { .gh-review-body { padding: 14px; overflow-x: auto; } .gh-review-body .ui-table { min-width: 560px; } }
+
+  .docs-article strong.ui-sev-critical { color: var(--color-crit); }
+  .docs-article strong.ui-sev-warning { color: var(--color-warn); }
+  .docs-article strong.ui-sev-info { color: var(--color-info); }
+
+  /* Flags tables: flag names as green mono words, not chips */
+  .docs-article .flags-list { display: table; width: 100%; margin-top: 1.2em; }
+  .docs-article .flags-list tbody th { width: 34%; font-weight: 400; }
+  .docs-article .flags-list tbody th code { padding: 0; background: none; box-shadow: none; color: var(--color-ok); font-size: 14px; white-space: nowrap; }
+  .docs-article .flags-list td { font-size: 15px; }
+  @media (max-width: 560px) { .docs-article .flags-list tbody th code { white-space: normal; } }
 
   /* Pager */
   .docs-pager { max-width: 760px; margin-top: 72px; padding-top: 24px; border-top: 1px solid var(--color-line-strong); display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }

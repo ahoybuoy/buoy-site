@@ -34,7 +34,7 @@ const diffHtml = '.button {\n' + rows.map((r) => `<span class="ui-t-crit">-  ${r
   <Nav />
   <main id="main" class="ui-nav-offset">
     <section class="ui-section ui-section--first ui-section--patterned">
-      <MarkPattern pattern="tide" drift={0.25} fade class="ui-pattern" />
+      <MarkPattern pattern="tide" drift={0.25} class="ui-pattern lp-pat-side" />
       <div class="ui-wrap ui-split lm-hero">
         <div>
           <p class="ui-eyebrow">Free playbook</p>
@@ -60,8 +60,7 @@ const diffHtml = '.button {\n' + rows.map((r) => `<span class="ui-t-crit">-  ${r
       </div>
     </section>
 
-    <section class="ui-section ui-section--patterned">
-      <MarkPattern pattern="wake" drift={0.2} fade class="ui-pattern" />
+    <section class="ui-section">
       <div class="ui-wrap">
         <div class="ui-head"><h2>The 5-phase process</h2><p>From the first audit to a codebase that stays tokenized.</p></div>
         <ol class="tm-phases">
@@ -84,6 +83,9 @@ const diffHtml = '.button {\n' + rows.map((r) => `<span class="ui-t-crit">-  ${r
 </Layout>
 
 <style>
+  :global(.lp-pat-side) { -webkit-mask-image: linear-gradient(100deg, transparent 38%, #000 72%); mask-image: linear-gradient(100deg, transparent 38%, #000 72%); }
+  @media (max-width: 960px) { :global(.lp-pat-side) { -webkit-mask-image: linear-gradient(to bottom, transparent 60%, #000 95%); mask-image: linear-gradient(to bottom, transparent 60%, #000 95%); } }
+
   .lm-hero { align-items: center; }
   .lm-form { margin-top: 32px; max-width: 480px; }
   .tm-phases { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid var(--color-line-strong); }

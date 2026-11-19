@@ -27,7 +27,7 @@ const ref = [
   <Nav />
   <main id="main" class="ui-nav-offset">
     <section class="ui-section ui-section--first ui-section--patterned">
-      <MarkPattern pattern="swell" drift={0.25} fade class="ui-pattern" />
+      <MarkPattern pattern="swell" drift={0.25} class="ui-pattern lp-pat-side" />
       <div class="ui-wrap ui-split lm-hero">
         <div>
           <p class="ui-eyebrow">Free cheat sheet</p>
@@ -59,10 +59,9 @@ const ref = [
     <section class="ui-section ui-section--band">
       <div class="ui-wrap">
         <div class="ui-head"><h2>What's covered</h2></div>
-        <table class="ui-table lm-table">
-          <thead><tr><th scope="col">Category</th><th scope="col" class="ui-end">Patterns</th></tr></thead>
-          <tbody>{cats.map((c) => <tr><th scope="row">{c.title}</th><td class="ui-end ui-tnum">{c.count}</td></tr>)}</tbody>
-        </table>
+        <dl class="pr-cats">
+          {cats.map((c) => <div><dt>{c.title}</dt><dd class="ui-tnum">{c.count.split(' ')[0]}<span> patterns</span></dd></div>)}
+        </dl>
       </div>
     </section>
 
@@ -90,17 +89,27 @@ const ref = [
 </Layout>
 
 <style>
+  :global(.lp-pat-side) { -webkit-mask-image: linear-gradient(100deg, transparent 38%, #000 72%); mask-image: linear-gradient(100deg, transparent 38%, #000 72%); }
+  @media (max-width: 960px) { :global(.lp-pat-side) { -webkit-mask-image: linear-gradient(to bottom, transparent 60%, #000 95%); mask-image: linear-gradient(to bottom, transparent 60%, #000 95%); } }
+
   .lm-hero { align-items: center; }
   .lm-form { margin-top: 32px; max-width: 480px; }
   .lm-comment { padding: 18px; color: var(--color-body); font-size: 15px; line-height: 1.6; }
   .lm-comment p + p { margin-top: 10px; }
   .lm-table { margin-top: 32px; }
   .lm-q { color: var(--color-ink); }
-  .pr-diff { font-size: 13px; line-height: 1.9; color: var(--color-body); white-space: pre; overflow-x: auto; }
-  .pr-diff > div { padding-right: 18px; }
+  .pr-diff { padding-block: 8px; font-size: 13px; line-height: 1.9; color: var(--color-body); overflow-x: auto; }
+  .pr-diff > div { padding-right: 18px; white-space: pre; }
   .pr-ln { display: inline-block; width: 44px; padding-right: 14px; text-align: right; color: var(--color-muted); }
   .pr-add { background: var(--color-add-bg); color: var(--color-add-ink); }
   .pr-comment { margin: 12px; padding: 16px; border-radius: 12px; background: var(--color-surface); box-shadow: var(--ring); font-size: 15px; line-height: 1.6; color: var(--color-body); }
   .pr-comment p + p { margin-top: 8px; }
   .pr-who { font-size: 13px; color: var(--color-muted); }
+  .pr-cats { margin: 32px 0 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1px solid var(--color-line-strong); }
+  .pr-cats > div { padding: 20px 16px 0 0; display: flex; flex-direction: column-reverse; gap: 6px; }
+  .pr-cats > div + div { padding-left: 20px; border-left: 1px solid var(--color-line); }
+  .pr-cats dd { margin: 0; font-family: var(--font-display); font-size: 2.5rem; font-weight: 700; line-height: 1; color: var(--color-buoy-light); }
+  .pr-cats dd span { font-family: var(--font-body); font-size: 14px; font-weight: 400; color: var(--color-muted); }
+  .pr-cats dt { color: var(--color-ink); font-weight: 600; }
+  @media (max-width: 760px) { .pr-cats { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 20px; } .pr-cats > div + div { padding-left: 0; border-left: 0; } }
 </style>

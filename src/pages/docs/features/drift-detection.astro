@@ -18,10 +18,10 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
   </p>
 
   <ul>
-    <li>A developer eyeballs a color: <code>#3b83f6</code> instead of <code>#3b82f6</code></li>
+    <li>A developer eyeballs a color: <span class="ui-old ui-mono">#3b83f6</span> instead of <span class="ui-token ui-mono">#3b82f6</span></li>
     <li>AI generates <code>padding: 15px</code> instead of your 16px spacing token</li>
     <li>Someone copy-pastes a button with hardcoded styles</li>
-    <li>A new team member uses <code>gray-600</code> when your system uses <code>slate-600</code></li>
+    <li>A new team member uses <span class="ui-old ui-mono">gray-600</span> when your system uses <span class="ui-token ui-mono">slate-600</span></li>
   </ul>
 
   <p>
@@ -96,12 +96,12 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
       <tr>
         <td>&#x1F3AF; <strong>Verified match</strong></td>
         <td>The fix maps to an existing design token in your system</td>
-        <td>&#x1F3AF; <code>var(--color-primary)</code></td>
+        <td>&#x1F3AF; <span class="ui-token ui-mono">var(--color-primary)</span></td>
       </tr>
       <tr>
         <td>&#x1F4A1; <strong>Suggested token</strong></td>
         <td>Buoy suggests a new token name that doesn't exist yet</td>
-        <td>&#x1F4A1; <code>--spacing-card</code></td>
+        <td>&#x1F4A1; <span class="ui-token ui-mono">--spacing-card</span></td>
       </tr>
     </tbody>
   </table>
@@ -123,17 +123,17 @@ import DocsLayout from '../../../layouts/DocsLayout.astro'
     </thead>
     <tbody>
       <tr>
-        <td><strong>Error</strong></td>
+        <td><strong class="ui-sev ui-sev-critical">Error</strong></td>
         <td>Likely bugs or significant deviation</td>
         <td>Typos (close matches), completely wrong values</td>
       </tr>
       <tr>
-        <td><strong>Warning</strong></td>
+        <td><strong class="ui-sev ui-sev-warning">Warning</strong></td>
         <td>Hardcoded values that should use tokens</td>
         <td>Inline styles, raw hex colors, arbitrary Tailwind values</td>
       </tr>
       <tr>
-        <td><strong>Info</strong></td>
+        <td><strong class="ui-sev ui-sev-info">Info</strong></td>
         <td>Minor inconsistencies and suggestions</td>
         <td>Naming variations, deprecated but functional, suggested new tokens</td>
       </tr>

@@ -34,7 +34,7 @@ const who = [
   <Nav />
   <main id="main" class="ui-nav-offset">
     <section class="ui-section ui-section--first ui-section--patterned">
-      <MarkPattern pattern="field" drift={0.25} fade class="ui-pattern" />
+      <MarkPattern pattern="field" drift={0.25} class="ui-pattern lp-pat-side" />
       <div class="ui-wrap ui-split lm-hero">
         <div>
           <p class="ui-eyebrow">Free ebook</p>
@@ -69,9 +69,9 @@ const who = [
     <section class="ui-section">
       <div class="ui-wrap">
         <div class="ui-head"><h2>What you'll learn</h2></div>
-        <div class="ui-cols">
-          {learn.map((l) => <article class="ui-col"><h3>{l.title}</h3><p>{l.desc}</p></article>)}
-        </div>
+        <ol class="wb-learn">
+          {learn.map((l, i) => <li><span class="wb-n ui-tnum">0{i + 1}</span><h3>{l.title}</h3><p>{l.desc}</p></li>)}
+        </ol>
       </div>
     </section>
 
@@ -98,6 +98,9 @@ const who = [
 </Layout>
 
 <style>
+  :global(.lp-pat-side) { -webkit-mask-image: linear-gradient(100deg, transparent 38%, #000 72%); mask-image: linear-gradient(100deg, transparent 38%, #000 72%); }
+  @media (max-width: 960px) { :global(.lp-pat-side) { -webkit-mask-image: linear-gradient(to bottom, transparent 60%, #000 95%); mask-image: linear-gradient(to bottom, transparent 60%, #000 95%); } }
+
   .lm-hero { align-items: center; }
   .lm-form { margin-top: 32px; max-width: 480px; }
   .lm-list { list-style: none; margin: 0; padding: 0; }
@@ -111,4 +114,10 @@ const who = [
   .lm-quote footer { margin-top: 16px; color: var(--color-muted); font-size: 15px; }
   .ui-col h3 { font-size: 1.125rem; }
   .ui-col p { margin-top: 8px; color: var(--color-body); font-size: 15px; }
+  .wb-learn { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 56px; border-top: 1px solid var(--color-line-strong); }
+  .wb-learn li { padding: 24px 0; border-bottom: 1px solid var(--color-line); }
+  .wb-n { font-family: var(--font-mono); font-size: 13px; color: var(--color-ok); }
+  .wb-learn h3 { margin: 8px 0 0; font-size: 1.25rem; }
+  .wb-learn p { margin: 6px 0 0; color: var(--color-body); }
+  @media (max-width: 760px) { .wb-learn { grid-template-columns: minmax(0, 1fr); } }
 </style>

@@ -18,13 +18,15 @@ interface Props {
 const { title, description, keywords, heroTitle, heroDescription } = Astro.props
 const current = Astro.url.pathname.replace(/\/$/, '')
 
-const others = [
+const all = [
   { name: 'Design system teams', href: '/use-cases/design-system-teams' },
   { name: 'Frontend teams', href: '/use-cases/frontend-teams' },
   { name: 'Modernization', href: '/use-cases/modernization' },
   { name: 'Enterprise', href: '/use-cases/enterprise' },
   { name: 'Agencies', href: '/use-cases/agencies' },
-].filter((i) => i.href !== current)
+]
+const crumbLabel = all.find((i) => i.href === current)?.name ?? heroTitle
+const others = all.filter((i) => i.href !== current)
 ---
 
 <Layout title={title} description={description} keywords={keywords}>
@@ -32,10 +34,10 @@ const others = [
 
   <main class="ui-nav-offset cmp">
     <section class="ui-section ui-section--first ui-section--patterned">
-      <MarkPattern pattern="wake" drift={0.25} fade class="ui-pattern" />
+      <MarkPattern pattern="wake" drift={0.12} fade class="ui-pattern cmp-hero-pattern" />
       <div class="ui-wrap">
         <nav aria-label="Breadcrumb" class="cmp-crumbs">
-          <a href="/">Home</a><span aria-hidden="true">/</span><a href="/use-cases/design-system-teams">Use cases</a><span aria-hidden="true">/</span><span aria-current="page">{heroTitle.split(' ')[0]}</span>
+          <a href="/">Home</a><span aria-hidden="true">/</span><a href="/use-cases/design-system-teams">Use cases</a><span aria-hidden="true">/</span><span aria-current="page">{crumbLabel}</span>
         </nav>
         <div class:list={["cmp-hero-grid", Astro.slots.has("hero") && "ui-split"]}>
           <div>
@@ -92,6 +94,7 @@ const others = [
   .cmp-other-h { margin: 0 0 20px; font-size: var(--text-h3); color: var(--color-ink); }
   .cmp-chips { display: flex; flex-wrap: wrap; gap: 10px; }
   .cmp-center { justify-content: center; }
+  .ui-section--patterned > .cmp-hero-pattern { opacity: 0.16; }
   .cmp-hero-grid.ui-split { align-items: center; }
   .cmp-hero-fig { min-width: 0; }
   @media (max-width: 960px) { .cmp-hero-fig { margin-top: 40px; } }

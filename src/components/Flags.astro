@@ -19,7 +19,7 @@ const { items, class: className = '' } = Astro.props
   <tbody>
     {items.map((item) => (
       <tr>
-        <th class="align-baseline"><code class="ui-c-lavender text-sm">{item.name}</code></th>
+        <th class="align-baseline"><code class="ui-c-ok text-sm">{item.name}</code></th>
         <td class="text-sm">
           {item.description}
           {item.required && <span class="ml-1.5 text-xs font-medium ui-c-crit">required</span>}

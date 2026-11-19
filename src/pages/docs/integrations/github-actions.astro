@@ -40,21 +40,26 @@ import LeadMagnetCallout from '../../../components/LeadMagnetCallout.astro'
 
   <p>The PR review includes an issues table with a Fix column that distinguishes between verified token matches and suggested new tokens:</p>
 
-  <pre><code>## &#x1F6DF; Buoy Design Review
+  <div class="ui-tray gh-review">
+    <div class="ui-panel">
+      <div class="ui-panel-head">&#x1F6DF; Buoy Design Review</div>
+      <div class="gh-review-body">
+        <p class="gh-review-sum"><strong>Summary</strong><br />3 design drift issues found in this PR.</p>
+        <details open>
+          <summary>Issues Table</summary>
+          <table class="ui-table">
+            <thead><tr><th>File</th><th>Line</th><th>Issue</th><th>Severity</th><th>Fix</th></tr></thead>
+            <tbody>
+              <tr><td class="ui-mono">Card.tsx</td><td class="ui-tnum">12</td><td>Hardcoded color <span class="ui-old">#3b82f6</span></td><td><span class="ui-sev ui-sev-warning">warning</span></td><td>&#x1F3AF; <span class="ui-token">var(--color-primary)</span></td></tr>
+              <tr><td class="ui-mono">Card.tsx</td><td class="ui-tnum">31</td><td>Hardcoded spacing <span class="ui-old">24px</span></td><td><span class="ui-sev ui-sev-warning">warning</span></td><td>&#x1F3AF; <span class="ui-token">var(--spacing-lg)</span></td></tr>
+              <tr><td class="ui-mono">Modal.tsx</td><td class="ui-tnum">8</td><td>Hardcoded radius <span class="ui-old">8px</span></td><td><span class="ui-sev ui-sev-info">info</span></td><td>&#x1F4A1; <span class="ui-token">--radius-md</span></td></tr>
+            </tbody>
+          </table>
+        </details>
+      </div>
+    </div>
+  </div>
 
-### Summary
-3 design drift issues found in this PR.
-
-&lt;details&gt;
-&lt;summary&gt;Issues Table&lt;/summary&gt;
-
-| File | Line | Issue | Severity | Fix |
-|------|------|-------|----------|-----|
-| Card.tsx | 12 | Hardcoded color #3b82f6 | warning | &#x1F3AF; var(--color-primary) |
-| Card.tsx | 31 | Hardcoded spacing 24px | warning | &#x1F3AF; var(--spacing-lg) |
-| Modal.tsx | 8 | Hardcoded radius 8px | info | &#x1F4A1; --radius-md |
-
-&lt;/details&gt;</code></pre>
 
   <h3>Fix Column Indicators</h3>
 

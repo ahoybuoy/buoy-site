@@ -62,12 +62,11 @@ const relatedFeatures = [
   <section class="ui-section">
     <div class="ui-wrap">
       <div class="ui-head"><h2>How framework sprawl happens</h2></div>
-      <table class="ui-table fx-block fx-narrow">
-        <caption class="ui-sr">How sprawl builds up over four years</caption>
-        <tbody>
-          {history.map((h) => <tr><th scope="row" class="ui-c-buoy ui-mono">{h.year}</th><td>{h.quote}</td></tr>)}
-        </tbody>
-      </table>
+      <ol class="sprawl-years">
+        {history.map((h, i) => (
+          <li class={i === history.length - 1 ? 'sprawl-last' : ''}><p class="ui-mono sprawl-year">{h.year}</p><p class="sprawl-quote">{h.quote}</p></li>
+        ))}
+      </ol>
     </div>
   </section>
 
@@ -135,6 +134,16 @@ const relatedFeatures = [
 </FeatureLayout>
 
 <style>
+  .sprawl-years { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--color-line-strong); }
+  .sprawl-years li { padding: 20px 24px 0 0; }
+  .sprawl-years li + li { padding-left: 24px; border-left: 1px solid var(--color-line); }
+  .sprawl-year { margin: 0; font-size: 14px; color: var(--color-buoy-light); }
+  .sprawl-quote { margin: 8px 0 0; font-family: var(--font-display); font-weight: 600; font-size: 1.25rem; line-height: 1.3; color: var(--color-ink); }
+  .sprawl-last .sprawl-quote { color: var(--color-crit); }
+  @media (max-width: 760px) {
+    .sprawl-years { grid-template-columns: minmax(0, 1fr); }
+    .sprawl-years li, .sprawl-years li + li { padding: 16px 0; border-left: 0; border-bottom: 1px solid var(--color-line); }
+  }
   .sprawl-bars li { padding-block: 16px; }
   .sprawl-row { display: flex; justify-content: space-between; gap: 16px; font-size: 15px; }
   .sprawl-size { color: var(--color-muted); }

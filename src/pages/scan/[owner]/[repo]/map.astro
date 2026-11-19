@@ -43,7 +43,7 @@ const when = found?.generatedAt ? new Date(found.generatedAt).toLocaleDateString
 <Layout title={title} description={description} noindex>
   <Nav />
   <main class="ui-nav-offset"><section class="ui-section ui-section--first ui-section--last !pt-12 min-h-[60vh]">
-    <div class="ui-wrap !max-w-[1280px]">
+    <div class={`ui-wrap ${found ? '!max-w-[1280px]' : ''}`}>
       <a href={`/scan/${fullName}`} class="ui-rowlink text-sm">← Design health report</a>
       {found ? (
         <>
@@ -60,14 +60,23 @@ const when = found?.generatedAt ? new Date(found.generatedAt).toLocaleDateString
       ) : apiDown ? (
         <>
           <h1 class="mt-5 text-[length:var(--text-h2)]">The map is unavailable right now</h1>
-          <p class="mt-3">Try again in a minute.</p>
+          <p class="ui-lede mt-3">The map service is <span class="ui-c-warn">not answering</span>. Try again in a minute.</p>
+          <div class="ui-actions mt-8"><a href={`/scan/${fullName}/map`} class="ui-btn ui-btn--primary">Try again</a><a href={`/scan/${fullName}`} class="ui-btn ui-btn--secondary">Design health report</a></div>
+          <div class="ui-term mt-10 max-w-2xl">
+            <div class="ui-term-bar">Or map it locally</div>
+            <pre><span class="ui-t-prompt">$</span> npx @buoy-design/cli show map</pre>
+          </div>
         </>
       ) : (
         <>
           <h1 class="mt-5 text-[length:var(--text-h2)]">{valid ? `${fullName} has no map yet` : 'That is not a GitHub repository name'}</h1>
-          <p class="mt-3 max-w-2xl">
+          <p class="ui-lede mt-3 max-w-2xl">
             {valid ? <>Maps come with each scan. <a href={`/scan/${fullName}`} class="ui-link">Scan {fullName}</a>; if it was scanned before maps existed, the next scan (after a day) adds one.</> : 'Use an address like /scan/owner/repo/map.'}
           </p>
+          <div class="ui-term mt-10 max-w-2xl">
+            <div class="ui-term-bar">Or map it locally</div>
+            <pre><span class="ui-t-prompt">$</span> npx @buoy-design/cli show map</pre>
+          </div>
         </>
       )}
     </div>

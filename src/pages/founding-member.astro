@@ -24,7 +24,7 @@ const benefits = [
       <MarkPattern pattern="swell" drift={0.3} fade class="ui-pattern" />
       <div class="ui-wrap fm-hero">
         <div class="ui-head">
-          <p class="ui-eyebrow"><FreeSpots class="ui-c-ok ui-tnum" /></p>
+          <p class="ui-eyebrow ui-c-buoy">GitHub App</p>
           <h1>Free for life for the first 100 installs</h1>
           <p class="ui-lede">
             Install the Buoy GitHub App while spots remain and your organization keeps it free for life:
@@ -33,7 +33,7 @@ const benefits = [
         </div>
         <div class="ui-tray fm-install">
           <div class="ui-panel">
-            <div class="ui-panel-head">GitHub Marketplace</div>
+            <div class="ui-panel-head ui-mono">github.com/marketplace/buoy-design</div>
             <div class="fm-install-body">
               <h2>Install from GitHub Marketplace</h2>
               <p>One click to install for public or private repositories. No credit card.</p>
@@ -43,7 +43,8 @@ const benefits = [
                 </svg>
                 Install Free
               </a>
-              <p class="ui-note">Free for life for the first 100 installs, on public and private repos.</p>
+              <p class="ui-note fm-spots"><FreeSpots class="ui-c-ok ui-tnum" /></p>
+              <p class="ui-note fm-tight">Public and private repos.</p>
             </div>
           </div>
         </div>
@@ -52,9 +53,9 @@ const benefits = [
 
     <section class="ui-section ui-section--band">
       <div class="ui-wrap">
-        <div class="ui-cols">
+        <div class="ui-cols fm-cols">
           <article class="ui-col">
-            <p class="ui-tier-name ui-tier-app">GitHub App</p>
+            <p class="ui-tier-name ui-tier-app">Included</p>
             <h2 class="fm-h">What you get</h2>
             <ul class="ui-ruled fm-list">
               {benefits.map((b) => (
@@ -98,6 +99,9 @@ const benefits = [
   .fm-install-body { padding: 28px; }
   .fm-install-body h2 { margin: 0; font-size: var(--text-h3); color: var(--color-ink); }
   .fm-install-body > p:not(.ui-note) { margin: 8px 0 22px; }
+  .fm-cols { margin-top: 0; }
+  .fm-spots { font-weight: 500; }
+  .fm-tight { margin-top: 4px; }
   .fm-h { margin: 6px 0 0; font-size: var(--text-h3); color: var(--color-ink); }
   .fm-list { margin-top: 16px; }
   .fm-list li { display: grid; gap: 2px; }

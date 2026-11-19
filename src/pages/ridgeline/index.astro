@@ -34,7 +34,7 @@ const markColor: Record<string, string> = { button: '#43b0f1', rare: '#ff6b57', 
   <Nav />
   <main class="ui-nav-offset">
   <section class="ui-section ui-section--first ui-section--patterned">
-    <MarkPattern pattern="wake" drift={0.3} fade class="ui-pattern !opacity-20" />
+    <MarkPattern pattern="wake" drift={0.3} fade class="ui-pattern !opacity-[0.12]" />
     <div class="ui-wrap grid lg:grid-cols-2 gap-12 items-center">
       <div>
         <h1 class="text-[length:var(--text-h1)] leading-[1.05]">Any website as one picture</h1>
@@ -58,7 +58,12 @@ const markColor: Record<string, string> = { button: '#43b0f1', rare: '#ff6b57', 
           <canvas id="ridge-hero-art" width="900" height="1000" class="relative block w-full h-auto"></canvas>
         </a>
         <figcaption class="flex justify-between gap-4 mt-3 text-sm text-[var(--color-muted)]">
-          <span>One line per band of the page, top to bottom.</span>
+          <span class="flex flex-wrap gap-x-4 gap-y-1">
+            <span><i class="inline-block w-3.5 h-[3px] rounded-sm align-middle mr-1.5" style="background:#43b0f1"></i>button</span>
+            <span><i class="inline-block w-3.5 h-[3px] rounded-sm align-middle mr-1.5" style="background:#ff6b57"></i>used once</span>
+            <span><i class="inline-block w-3.5 h-[3px] rounded-sm align-middle mr-1.5" style="background:#2fbf8f"></i>input</span>
+            <span><i class="inline-block w-3.5 h-[3px] rounded-sm align-middle mr-1.5" style="background:#e8b04a"></i>heading</span>
+          </span>
           <a href="/ridgeline/linear.app" class="ui-rowlink shrink-0">linear.app →</a>
         </figcaption>
       </figure>
@@ -118,7 +123,7 @@ const markColor: Record<string, string> = { button: '#43b0f1', rare: '#ff6b57', 
     }))
   }).catch(() => {
     wall.querySelector('[data-wall-empty]')!.innerHTML = 'The wall is unavailable right now. <a class="ui-rowlink" href="/ridgeline/linear.app">See linear.app</a> or make one above.'
-    wall.querySelectorAll('[data-wall-ph]').forEach((el) => el.remove())
+    wall.querySelectorAll<HTMLElement>('[data-wall-ph]').forEach((el) => { el.classList.remove('motion-safe:animate-pulse'); el.style.opacity = '0.45' })
   })
 
   // Hero art: the newest linear.app ridgeline, if there is one.

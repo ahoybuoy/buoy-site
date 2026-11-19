@@ -26,8 +26,8 @@ const services = [
 
   <main class="ui-nav-offset">
   <section class="ui-section ui-section--first ui-section--last ui-section--patterned">
-    <MarkPattern pattern="pulse" drift={0.2} fade class="ui-pattern !opacity-20" />
-    <div class="ui-wrap max-w-[760px] !mx-auto">
+    <MarkPattern pattern="pulse" drift={0.2} fade class="ui-pattern !opacity-[0.07]" />
+    <div class="ui-wrap">
       <div class="ui-head">
         <h1>System status</h1>
         <p id="overall-status" class="ui-lede flex items-center gap-2.5">
@@ -36,7 +36,9 @@ const services = [
         </p>
       </div>
 
-      <div class="mt-10 border-t border-[var(--color-line-strong)]">
+      <div class="grid lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] gap-12 mt-10 items-start">
+      <div>
+      <div class="border-t border-[var(--color-line-strong)]">
         {services.map((service) => (
           <div class="service-card py-6 border-b border-[var(--color-line)]" data-endpoint={service.endpoint} data-name={service.name}>
             <div class="flex items-center justify-between gap-4">
@@ -59,15 +61,19 @@ const services = [
         ))}
       </div>
 
-      <div class="ui-card ui-card--pad mt-12">
-        <h2 class="text-[length:var(--text-h3)]">About this page</h2>
-        <div class="space-y-3 text-sm mt-3">
-          <p>This page checks Buoy service health in real-time from your browser. Status updates every 30 seconds.</p>
-          <p>For incident reports or to report an issue, contact us at{' '}<a href="mailto:support@buoy.design" class="ui-link">support@buoy.design</a></p>
-        </div>
+      <div class="mt-10 space-y-3 text-[15px] max-w-xl">
+        <p>This page checks Buoy service health in real-time from your browser. Status updates every 30 seconds.</p>
+        <p>For incident reports or to report an issue, contact us at{' '}<a href="mailto:support@buoy.design" class="ui-link">support@buoy.design</a></p>
+        <p class="ui-note">Uptime history coming soon</p>
+      </div>
       </div>
 
-      <p class="ui-note mt-8">Uptime history coming soon</p>
+      <div class="ui-term">
+        <div class="ui-term-bar">Checks from this browser</div>
+        <pre class="min-h-[220px] max-h-[360px] overflow-y-auto whitespace-pre-wrap" id="status-log"><span class="ui-t-prompt">$</span> curl https://api.buoy.design/health
+<span class="ui-t-dim">waiting for the first check…</span></pre>
+      </div>
+      </div>
     </div>
   </section>
   </main>
@@ -85,6 +91,21 @@ const services = [
   }
 
   const statuses: ServiceStatus[] = [];
+  const logEl = document.getElementById('status-log');
+  let logged = 0;
+  function log(name: string, ok: boolean, detail: string) {
+    if (!logEl) return;
+    if (logged === 0) logEl.querySelector('.ui-t-dim:last-child')?.remove();
+    logged++;
+    const line = document.createElement('span');
+    line.className = 'block';
+    const t = document.createElement('span'); t.className = 'ui-t-dim'; t.textContent = new Date().toLocaleTimeString() + '  ';
+    const n = document.createElement('span'); n.className = 'ui-t-hi'; n.textContent = name.padEnd(9);
+    const r = document.createElement('span'); r.className = ok ? 'ui-t-ok' : 'ui-t-crit'; r.textContent = (ok ? 'ok    ' : 'down  ') + detail;
+    line.append(t, n, r);
+    logEl.append(line);
+    logEl.scrollTop = logEl.scrollHeight;
+  }
 
   async function checkService(card: HTMLElement): Promise<ServiceStatus> {
     const endpoint = card.dataset.endpoint;
@@ -103,6 +124,7 @@ const services = [
         dotEl.classList.remove('bg-slate', 'animate-pulse');
         dotEl.classList.add('bg-success');
       }
+      log(name, true, 'served this page');
       return { name, status: 'operational', lastChecked: new Date() };
     }
 
@@ -125,6 +147,7 @@ const services = [
         if (responseTimeEl) responseTimeEl.textContent = `${elapsed}ms`;
         if (lastCheckedEl) lastCheckedEl.textContent = new Date().toLocaleTimeString();
 
+        log(name, true, `${elapsed}ms`);
         return { name, status: 'operational', responseTime: elapsed, lastChecked: new Date() };
       } else {
         throw new Error('Unhealthy response');
@@ -138,6 +161,7 @@ const services = [
       if (detailsEl) detailsEl.classList.remove('hidden');
       if (lastCheckedEl) lastCheckedEl.textContent = new Date().toLocaleTimeString();
 
+      log(name, false, 'no healthy response');
       return { name, status: 'down', lastChecked: new Date() };
     }
   }

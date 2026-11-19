@@ -50,12 +50,12 @@ const typeLabels: Record<string, string> = {
       <a href={backHref} class="ui-rowlink text-sm">{backLabel}</a>
       <div class="mt-6 flex flex-wrap items-end justify-between gap-8">
         <div class="min-w-0 max-w-2xl">
-          <h1 class="text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.08] [overflow-wrap:anywhere]">
-            <a href={`https://github.com/${r.repo}`} class="hover:text-[var(--color-buoy-light)] transition-colors">{r.repo}</a>
+          <h1 class="text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.08] [overflow-wrap:break-word]">
+            <a href={`https://github.com/${r.repo}`} class="hover:text-[var(--color-buoy-light)] transition-colors">{r.repo.split('/')[0]}/<wbr />{r.repo.split('/').slice(1).join('/')}</a>
           </h1>
           {r.description && <p class="ui-lede mt-3">{r.description}</p>}
           <p class="ui-note mt-3">
-            ★ <span class="ui-tnum">{formatStars(r.stars)}</span> · {r.metrics.detectedFrameworkNames.join(', ') || r.language} · scanned <span class="ui-tnum">{r.generatedAt.slice(0, 10)}</span> at <code class="ui-code">{r.commit.slice(0, 7)}</code>
+            ★ <span class="ui-tnum">{formatStars(r.stars)}</span> · {r.metrics.detectedFrameworkNames.join(', ') || r.language} · <span class="whitespace-nowrap">scanned <span class="ui-tnum">{r.generatedAt.slice(0, 10)}</span> at <code class="ui-code">{r.commit.slice(0, 7)}</code></span>
           </p>
         </div>
         <div class="ui-card flex items-center gap-5 p-5 pr-7 shrink-0">

@@ -325,6 +325,8 @@
   .ui-scan input::placeholder { color: var(--color-muted); }
   @media (max-width: 760px) {
     .ui-scan { flex-direction: column; }
+    /* Stacked, flex: 1 would size the input on the column axis and squash it. */
+    .ui-scan input { flex: none; height: 44px; }
     .ui-scan .ui-btn { height: 48px; }
   }
   /* ui-cta: the scan-box card: copy left, form right */
@@ -349,7 +351,8 @@
   .ui-prose h3 { margin-top: 1.8em; font-size: 1.2rem; line-height: 1.3; letter-spacing: -0.01em; }
   .ui-prose h4 { margin-top: 1.5em; font-family: var(--font-body); font-size: 1rem; font-weight: 600; }
   .ui-prose > :first-child { margin-top: 0; padding-top: 0; border-top: 0; }
-  .ui-prose strong { color: var(--color-ink); font-weight: 600; }
+  .ui-prose strong:not(.ui-sev, [class*="ui-c-"], [class*="ui-tier-"]) { color: var(--color-ink); }
+  .ui-prose strong { font-weight: 600; }
   .ui-prose a:not(.ui-btn):not(.ui-chip) { color: var(--color-ink); font-weight: 500; text-decoration: underline; text-decoration-color: var(--color-buoy); text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
   .ui-prose a:not(.ui-btn):not(.ui-chip):hover { color: var(--color-buoy-light); }
   .ui-prose ul, .ui-prose ol:not(.ui-steps) { padding-left: 1.4em; }

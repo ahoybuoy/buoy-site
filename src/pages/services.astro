@@ -55,7 +55,8 @@ const offers = [
   <main id="main" class="ui-nav-offset">
     <section class="ui-section ui-section--first ui-section--patterned">
       <MarkPattern pattern="field" drift={0.3} fade class="ui-pattern" />
-      <div class="ui-wrap">
+      <div class="ui-wrap sv-hero">
+      <div>
         <div class="ui-head">
           <p class="ui-eyebrow">Work with Dylan · from $10,000</p>
           <h1>Keep AI-generated UI true to your product.</h1>
@@ -66,6 +67,16 @@ const offers = [
         <div class="ui-actions sv-actions">
           <Button href="https://cal.com/tarre/rescue" size="lg" external>Talk to Dylan</Button>
           <Button href="#what-you-get" variant="secondary" size="lg">See what you get</Button>
+        </div>
+      </div>
+      <div class="ui-tray sv-menu">
+        <div class="ui-panel">
+          <div class="ui-panel-head">Fixed price</div>
+          <ul class="sv-menu-list">
+            {offers.map((o) => (
+              <li><span class="sv-menu-name">{o.name}</span><span class="sv-menu-period">{o.period}</span><span class="sv-menu-price ui-tnum">{o.price}</span></li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
@@ -114,7 +125,7 @@ const offers = [
 
     <section class="ui-section ui-section--band">
       <div class="ui-wrap">
-        <div class="ui-cols">
+        <div class="ui-cols sv-fit">
           <article class="ui-col">
             <p class="ui-col-sub ui-c-ok">A strong fit</p>
             <h3>Your product already has an identity worth protecting.</h3>
@@ -153,6 +164,15 @@ const offers = [
 
 <style>
   .sv-actions { margin-top: 32px; }
+  .sv-hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 56px; align-items: center; }
+  @media (max-width: 960px) { .sv-hero { grid-template-columns: minmax(0, 1fr); gap: 36px; } }
+  .sv-menu-list { list-style: none; margin: 0; padding: 4px 22px; }
+  .sv-menu-list li { display: grid; grid-template-columns: 1fr auto; column-gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--color-line); }
+  .sv-menu-list li:last-child { border-bottom: 0; }
+  .sv-menu-name { font-weight: 600; color: var(--color-ink); }
+  .sv-menu-period { grid-row: 2; font-size: 13.5px; color: var(--color-muted); }
+  .sv-menu-price { grid-row: 1 / 3; grid-column: 2; align-self: center; font-family: var(--font-display); font-size: 24px; font-weight: 700; color: var(--color-ink); }
+  .sv-fit { margin-top: 0; }
   .sv-h2 { margin: 0; font-size: var(--text-h2); line-height: 1.15; color: var(--color-ink); }
   .sv-anchor { scroll-margin-top: 72px; }
   .sv-price { margin-top: 10px !important; font-family: var(--font-display); font-size: 34px !important; font-weight: 700; line-height: 1; color: var(--color-ink); }
