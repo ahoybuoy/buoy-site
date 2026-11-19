@@ -1,0 +1,31 @@
+---
+// Digital: Mesh halftone. The Mesh sea vertices printed as halftone dots, no lines:
+// crests print bigger, dots shrink and fade toward the horizon. The boat rides the front row.
+---
+
+<div class="wave-background mesh-sea" data-mesh-halftone>
+  <canvas class="dg-canvas"></canvas>
+  <div class="wave-container-1 dg-surface"></div>
+</div>
+
+<style>
+  .mesh-sea {
+    --mesh-ink: color-mix(in oklab, var(--color-bg) 18%, oklch(0.84 0.06 228));
+    --boat-hero-sink: 0px;
+    --boat-hero-draft: 3px;
+    position: absolute; inset: 0; overflow: hidden; z-index: 0;
+  }
+  .dg-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .dg-surface { position: absolute; left: 0; right: 0; top: 60%; height: 0; pointer-events: none; }
+</style>
+
+<script>
+  import { mount, field } from './digital/sea'
+  import { drawMeshDots } from './digital/mesh'
+
+  document.querySelectorAll<HTMLElement>('[data-mesh-halftone]').forEach((root) => mount(root, {
+    colors: { ink: ['--mesh-ink', '#a9c9e6'] },
+    draw: (f) => drawMeshDots(f),
+    surface: (x, f, t) => f.waterY + field(x, 0, t, f.scale),
+  }))
+</script>

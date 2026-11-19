@@ -1,0 +1,136 @@
+---
+// Realistic: Caustics (contract: ./WAVES.md).
+// WebGL. Looking down through clear water at caustic light crawling over a deep
+// seabed; the surface is a soft bright line (the swell the boat rides) and the light
+// pattern refracts with that same swell.
+---
+
+<div class="wave-background caustics-sea" data-caustics>
+  <canvas class="caustics-sea__canvas"></canvas>
+  <div class="wave-container-1 caustics-sea__surface"></div>
+</div>
+
+<style>
+  .caustics-sea {
+    --caustic-deep: color-mix(in oklab, var(--color-bg) 70%, oklch(0.07 0.03 235));
+    --caustic-bed: color-mix(in oklab, var(--color-bg) 45%, oklch(0.36 0.07 215));
+    --caustic-light: oklch(0.93 0.07 200);
+    --boat-hero-sink: 0px;
+    --boat-hero-draft: 3;
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+  }
+  .caustics-sea__canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .caustics-sea__surface { position: absolute; left: 0; right: 0; top: 58%; height: 0; pointer-events: none; }
+</style>
+
+<script>
+  import { mountSea, glQuad, colorReader, glSea, GLSL_HEIGHT, GLSL_COMMON, type Wave } from './realistic/kit'
+
+  const FRAG = GLSL_COMMON + GLSL_HEIGHT + /* glsl */ `
+uniform vec3 c_deep, c_bed, c_light;
+
+// Tileable water caustic (iterated warp, after the well-known "water turbulence" shader)
+float caustic(vec2 uv, float t) {
+  vec2 p = mod(uv * 6.28318, 6.28318) - 250.0;
+  vec2 i = p;
+  float c = 1.0;
+  float inten = 0.005;
+  for (int n = 0; n < 5; n++) {
+    float tt = t * (1.0 - (3.5 / float(n + 1)));
+    i = p + vec2(cos(tt - i.x) + sin(tt + i.y), sin(tt - i.y) + cos(tt + i.x));
+    c += 1.0 / length(vec2(p.x / (sin(i.x + tt) / inten), p.y / (cos(i.y + tt) / inten)));
+  }
+  c /= 5.0;
+  c = 1.17 - pow(c, 1.4);
+  return pow(abs(c), 8.0);
+}
+
+void main() {
+  vec2 p = cssPx();
+  float x = p.x, y = p.y;
+  float sy = u_water + seaH(x);
+  float d = y - sy;
+
+  if (d < -0.8) {
+    // Above the water: a faint glow of light leaving the surface
+    float g = exp(d / 26.0) * 0.16;
+    gl_FragColor = vec4(c_bed * g, g);
+    return;
+  }
+
+  float below = max(u_res.y - u_water, 40.0);
+  float v = clamp((y - u_water) / below, 0.0, 1.0);
+  // Mild perspective: finer pattern near the surface line (far), larger toward us
+  float sc = 0.55 + 0.9 * v;
+  vec2 uv = vec2((x - u_res.x * 0.5) / (230.0 * sc), (y - u_water) / (150.0 * sc) + 0.2);
+  // Refraction: the swell bends the light on the bed
+  float sl = seaH(x + 2.0) - seaH(x - 2.0);
+  uv += vec2(sl * 0.06, seaH(x) * 0.004);
+  float t = u_t * 0.42 + 23.0;
+  float c1 = caustic(uv, t);
+  // Second, slower, larger pattern: where both agree the light pools brighter
+  float c2 = caustic(uv * 0.63 + vec2(0.31, 0.17), t * 0.7 + 4.0);
+  vec3 caus = c_light * (c1 * (0.7 + 0.6 * c2) + c2 * 0.18);
+
+  // Seabed: lit near the surface, falling into the deep, with a soft vignette
+  float depthFade = smoothstep(0.0, 1.0, v);
+  vec3 bed = mix(c_bed, c_deep, 0.35 + 0.55 * depthFade);
+  float vig = smoothstep(1.25, 0.35, length(vec2((x / u_res.x - 0.5) * 1.6, v * 0.9)));
+  vec3 col = bed * (0.55 + 0.45 * vig);
+  col += caus * (0.55 - 0.3 * depthFade) * (0.45 + 0.55 * vig);
+  col = mix(col, c_deep, smoothstep(0.55, 1.0, v) * 0.6);
+
+  // The surface line: soft, bright, with a meniscus of light just under it
+  // no drawn line: the surface reads from where the lit water begins
+  float line = exp(-max(d, 0.0) / 10.0) * 0.12;
+  col += c_light * line * (0.75 + 0.25 * clamp(-sl, 0.0, 1.0));
+  float a = smoothstep(-0.8, 0.8, d);
+  gl_FragColor = vec4(col * a, a);
+}
+`
+
+  function init(root: HTMLElement) {
+    const canvas = root.querySelector('canvas')!
+    const q = glQuad(canvas, FRAG)
+    if (!q) return
+    const waves: Wave[] = [
+      { len: 820, amp: 9, speed: 40, phase: 2.4 },
+      { len: 360, amp: 4, speed: 52, phase: 0.7 },
+      { len: 180, amp: 1.6, speed: 64, phase: 5.1 },
+      { len: 110, amp: 0.6, speed: 75, phase: 3.0 },
+    ]
+    let C: Record<string, number[]> = {}
+    mountSea(root, canvas, {
+      waves,
+      readColors: () => {
+        const r = colorReader(root)
+        C = {
+          c_deep: r.read('--caustic-deep', '#030a12').rgb,
+          c_bed: r.read('--caustic-bed', '#1d4b5c').rgb,
+          c_light: r.read('--caustic-light', '#c9f3ff').rgb,
+        }
+        r.done()
+      },
+      renderScale: 0.6,
+      setup: () => {},
+      draw: (t, s) => {
+        q.f1('u_t', t)
+        q.f2('u_res', s.w, s.h)
+        q.f1('u_dpr', s.dpr)
+        q.f1('u_water', s.waterY)
+        glSea(q, waves, s)
+        for (const k in C) q.f3(k, C[k])
+        q.draw()
+      },
+    })
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-caustics]').forEach((root) => {
+    if (root.dataset.init) return
+    root.dataset.init = '1'
+    init(root)
+  })
+</script>

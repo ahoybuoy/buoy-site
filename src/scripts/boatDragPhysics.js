@@ -222,7 +222,10 @@ export function initBoatDragPhysics(options = {}) {
     if (x > bgRectInit.width) x = ((x % bgRectInit.width) + bgRectInit.width) % bgRectInit.width;
     else if (x < -boat.offsetWidth) x = bgRectInit.width - (Math.abs(x) % bgRectInit.width);
 
-    if (y + boat.offsetHeight > getWaveY() + 8) {
+    // Released under the water: bob up. Surface from the hero's sampler when it has one
+    // (window._buoySurfaceAt, sea px at the boat's centre), else the wave element.
+    const surfaceAt = typeof window._buoySurfaceAt === 'function' ? window._buoySurfaceAt(x + boat.offsetWidth / 2) : null;
+    if (surfaceAt != null ? y + boat.offsetHeight * 0.84 > surfaceAt + 2 : y + boat.offsetHeight > getWaveY() + 8) {
       physicsActive = false;
       bobberPop(x, y);
       return;

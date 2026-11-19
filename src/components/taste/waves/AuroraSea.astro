@@ -1,0 +1,47 @@
+---
+// Experimental: Aurora sea. WebGL fragment shader; the water line is the shared swell
+// (experimental/kit.ts), mirrored in JS for the boat sampler.
+---
+
+<div class="wave-background aurora-sea" data-aurora-sea>
+  <canvas class="xp-canvas"></canvas>
+  <div class="wave-container-1 xp-surface"></div>
+</div>
+
+<style>
+  .aurora-sea {
+    --au-ground: var(--color-bg);
+    --au-blue: oklch(0.52 0.17 262);
+    --au-teal: oklch(0.76 0.12 185);
+    --au-line: oklch(0.97 0.02 210);
+    --boat-hero-sink: 0px;
+    position: absolute; inset: 0; overflow: hidden; z-index: 0;
+  }
+  .xp-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .xp-surface { position: absolute; left: 0; right: 0; top: 56%; height: 0; pointer-events: none; }
+</style>
+
+<script>
+  import { run, glPass, GLSL_PX, colorReader, type Swell } from './experimental/kit'
+  import FRAG from './experimental/aurora-sea.glsl?raw'
+
+  const WAVES: Swell[] = [[780, 13, 54, 2.2], [340, 5.5, 68, 0.7], [180, 2.2, 84, 4.4]]
+
+  function init(root: HTMLElement) {
+    const canvas = root.querySelector('canvas')!
+    const g = glPass(canvas, GLSL_PX + FRAG)
+    if (!g) return
+    let cols: Record<string, number[]> = {}
+    run(root, canvas, {
+      waves: WAVES,
+      res: 0.75,
+      colors() { const c = colorReader(root); cols = { uGround: c('--au-ground', '#0b1626'), uBlue: c('--au-blue', '#2d5bd8'), uTeal: c('--au-teal', '#2fc9b8'), uLine: c('--au-line', '#f0fbff') } },
+      draw(t, _dt, H) {
+        g.swell(WAVES, t, H)
+        for (const k in cols) g.f3(k, cols[k])
+        g.draw()
+      },
+    })
+  }
+  document.querySelectorAll<HTMLElement>('[data-aurora-sea]').forEach((r) => { if (!r.dataset.init) { r.dataset.init = '1'; init(r) } })
+</script>

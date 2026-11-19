@@ -1,0 +1,46 @@
+---
+// Experimental: Liquid chrome. WebGL fragment shader; the water line is the shared swell
+// (experimental/kit.ts), mirrored in JS for the boat sampler.
+---
+
+<div class="wave-background liquid-chrome" data-liquid-chrome>
+  <canvas class="xp-canvas"></canvas>
+  <div class="wave-container-1 xp-surface"></div>
+</div>
+
+<style>
+  .liquid-chrome {
+    --lc-ground: var(--color-bg);
+    --lc-sky: oklch(0.62 0.09 235);
+    --lc-horizon: oklch(0.97 0.015 230);
+    --boat-hero-sink: 0px;
+    position: absolute; inset: 0; overflow: hidden; z-index: 0;
+  }
+  .xp-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .xp-surface { position: absolute; left: 0; right: 0; top: 56%; height: 0; pointer-events: none; }
+</style>
+
+<script>
+  import { run, glPass, GLSL_PX, colorReader, type Swell } from './experimental/kit'
+  import FRAG from './experimental/liquid-chrome.glsl?raw'
+
+  const WAVES: Swell[] = [[820, 15, 56, 0.9], [360, 6.5, 70, 2.6], [190, 2.5, 88, 5.1]]
+
+  function init(root: HTMLElement) {
+    const canvas = root.querySelector('canvas')!
+    const g = glPass(canvas, GLSL_PX + FRAG)
+    if (!g) return
+    let cols: Record<string, number[]> = {}
+    run(root, canvas, {
+      waves: WAVES,
+      res: 0.75,
+      colors() { const c = colorReader(root); cols = { uGround: c('--lc-ground', '#0b1626'), uSky: c('--lc-sky', '#9fc8ee'), uHorizon: c('--lc-horizon', '#eef7ff'), uBuoy: c('--color-buoy', '#ff4f00') } },
+      draw(t, _dt, H) {
+        g.swell(WAVES, t, H)
+        for (const k in cols) g.f3(k, cols[k])
+        g.draw()
+      },
+    })
+  }
+  document.querySelectorAll<HTMLElement>('[data-liquid-chrome]').forEach((r) => { if (!r.dataset.init) { r.dataset.init = '1'; init(r) } })
+</script>

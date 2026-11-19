@@ -3,21 +3,25 @@
 // layer, plus the boat-escape animation (wiggle, fall, splash, launch, drift)
 // ported from src/pages/index.astro so the inline <BoatGlyph /> can sit anywhere.
 // Usage guide: ./BOAT-HERO.md
-import WaveBackground from '../WaveBackground.astro'
 import WaveBoat from '../WaveBoat.astro'
+import { waveStyles } from './waves/registry'
 
 interface Props {
   minHeight?: string
   class?: string
+  /** Wave style id from ./waves/registry.ts. Default 'current' (the live WaveBackground). Contract: ./waves/WAVES.md */
+  sea?: string
 }
 
-const { minHeight = '100svh', class: className } = Astro.props
+const { minHeight = '100svh', class: className, sea = 'current' } = Astro.props
+const seaId = waveStyles[sea] ? sea : 'current'
+const Sea = waveStyles[seaId].component
 const uid = 'bh' + Math.random().toString(36).slice(2, 8)
 ---
 
 <section class:list={['boat-hero', className]} style={`--boat-hero-min-h:${minHeight}`} data-boat-hero>
-  <div class="boat-hero__sea" id={`${uid}-sea`} aria-hidden="true">
-    <WaveBackground />
+  <div class="boat-hero__sea" id={`${uid}-sea`} data-sea={seaId} aria-hidden="true">
+    <Sea />
     <WaveBoat id={`${uid}-boat`} containerSelector={`#${uid}-sea .wave-background`} mode="hero" />
   </div>
   <div class="boat-hero__content">
@@ -57,21 +61,38 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
     pointer-events: none;
   }
 
-  .boat-hero__sea :global(.wave-background) {
+  /* Tints apply to the live WaveBackground only; other sea styles colour themselves */
+  .boat-hero__sea[data-sea="current"] :global(.wave-background) {
     background: var(--boat-hero-sky);
   }
-  .boat-hero__sea :global(.wave-container) {
+  .boat-hero__sea[data-sea="current"] :global(.wave-container) {
     opacity: var(--boat-hero-wave-opacity);
   }
-  .boat-hero__sea :global(.wave-container-1 path) { fill: var(--boat-hero-wave-1); }
-  .boat-hero__sea :global(.wave-container-2 path) { fill: var(--boat-hero-wave-2); }
-  .boat-hero__sea :global(.wave-container-3 path) { fill: var(--boat-hero-wave-3); }
-  .boat-hero__sea :global(.wave-svg-static) {
+  .boat-hero__sea[data-sea="current"] :global(.wave-container-1 path) { fill: var(--boat-hero-wave-1); }
+  .boat-hero__sea[data-sea="current"] :global(.wave-container-2 path) { fill: var(--boat-hero-wave-2); }
+  .boat-hero__sea[data-sea="current"] :global(.wave-container-3 path) { fill: var(--boat-hero-wave-3); }
+  .boat-hero__sea[data-sea="current"] :global(.wave-svg-static) {
     opacity: var(--boat-hero-stars-opacity);
+  }
+  /* The SVG boat (see the script): about 44px on desktop, 38px on phones */
+  .boat-hero__sea :global(.boat[data-wave-boat] img) {
+    display: block;
+    /* Never shrink near the right edge (preflight's img max-width: 100% would
+       squeeze it to the space left in the sea) */
+    max-width: none;
+    flex: none;
+    width: var(--boat-hero-boat-size, 44px);
+    height: var(--boat-hero-boat-size, 44px);
+    -webkit-user-drag: none;
+    user-select: none;
+  }
+  @media (max-width: 767px) {
+    .boat-hero { --boat-hero-boat-size: 38px; }
   }
   /* The boat itself can be dragged */
   .boat-hero__sea :global(.boat[data-wave-boat]) {
     pointer-events: none;
+    width: max-content;
   }
 
   .boat-hero__content {
@@ -100,20 +121,44 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
       padding-bottom: calc(var(--boat-hero-sea-height) * 0.72);
     }
   }
+
+  /* Optional sea slot: <div data-boat-sea-slot></div> inside the content. Under 768px
+     it holds the band's height in flow and the script moves the sea onto it, so the
+     waves sit between two parts of the content (copy above, example below). */
+  .boat-hero :global([data-boat-sea-slot]) { display: none; }
+  @media (max-width: 767px) {
+    /* The slot keeps the parts close (it eats into the layout gap on both sides);
+       the sea runs past it by --boat-hero-sea-overlap, under the buttons and card */
+    .boat-hero:has([data-boat-sea-slot]) {
+      --boat-hero-slot-h: 140px;
+      --boat-hero-slot-pull: 24px;
+      --boat-hero-sea-overlap: 40px;
+    }
+    .boat-hero:has([data-boat-sea-slot]) :global([data-boat-sea-slot]) {
+      display: block;
+      height: var(--boat-hero-slot-h);
+      margin-block: calc(-1 * var(--boat-hero-slot-pull));
+      pointer-events: none;
+    }
+    .boat-hero:has([data-boat-sea-slot]) .boat-hero__content { padding-bottom: 0; }
+    /* Hidden until placed (no flash at the bottom), then the band fades at both edges */
+    .boat-hero:has([data-boat-sea-slot]) .boat-hero__sea { visibility: hidden; }
+    .boat-hero:has([data-boat-sea-slot]) .boat-hero__sea[data-sea-placed] { visibility: visible; }
+    .boat-hero:has([data-boat-sea-slot]) .boat-hero__sea :global(.wave-background) {
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%);
+    }
+  }
 </style>
 
-<style is:global>
-  @keyframes boatHeroSplashDrop {
-    0% { transform: translate(0, 0) scale(1); opacity: 0.8; }
-    100% { transform: translate(var(--dx), var(--dy)) scale(0.2); opacity: 0; }
-  }
-  @keyframes boatHeroSplashRing {
-    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0.6; }
-    100% { transform: translate(-50%, -50%) scale(4, 2); opacity: 0; }
-  }
-</style>
 
 <script>
+  import { svgPathSurface, driveSvgSea, type Surface } from './waves/surface';
+  import boatSrc from './boat/options/boat-52-editorial.svg?url';
+  import boatLightSrc from './boat/boat-52-light.svg?url';
+  // The boat SVG: 64x64, hull bottom centre at (32, 54)
+  const HULL_Y = 54 / 64;
+  const HULL_BELOW = 1 - HULL_Y;
   // Ported from the hero script in src/pages/index.astro. Differences:
   // - scoped to each .boat-hero (no ids), so the glyph can live anywhere in it
   // - the landing is never above the water: it is the lower of "37px under the
@@ -132,47 +177,127 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
     return y;
   }
 
-  function createSplash(hero: Element | null, x: number, y: number) {
-    const waveBg = hero?.querySelector('.wave-background');
+  // Splash that lives on the water: two wavelets run out along the sampled surface,
+  // the impact point dips and rebounds, and droplets arc under gravity back onto the
+  // water (each leaves a tiny ripple). Without a sampler the surface is flat at y.
+  // Colour: --boat-hero-splash on the style root, else a pale sea blue (white in light mode).
+  function createSplash(hero: Element | null, x: number, y: number, kind: 'drop' | 'toss' = 'drop', strength = 1) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const waveBg = hero?.querySelector<HTMLElement>('.boat-hero__sea .wave-background') || hero?.querySelector<HTMLElement>('.wave-background');
     if (!waveBg) return;
     const bgRect = waveBg.getBoundingClientRect();
-    const container = document.createElement('div');
-    Object.assign(container.style, {
-      position: 'absolute',
-      left: (x - bgRect.left) + 'px',
-      top: (y - bgRect.top) + 'px',
-      zIndex: '1',
-      pointerEvents: 'none',
-    });
+    // A style can draw its own splash (WAVES.md): root.buoySplash(x, y, { kind, strength }) in root px
+    const own = (waveBg as any).buoySplash;
+    if (typeof own === 'function') { own(x - bgRect.left, y - bgRect.top, { kind, strength }); return; }
+    const W = waveBg.clientWidth, H = waveBg.clientHeight;
+    if (!W || !H) return;
+    const surf = hero ? surfaceOf(hero) : null;
+    const x0 = x - bgRect.left;
+    const flatY = y - bgRect.top;
+    const surfY = (px: number) => (surf ? surf.fn(px).y : flatY);
+
+    // Colour, resolved through a probe so any CSS colour works
     const isLight = document.documentElement.classList.contains('light');
-    for (let i = 0; i < 10; i++) {
-      const drop = document.createElement('div');
-      const angle = (-150 + (120 * i / 9)) * (Math.PI / 180);
-      const speed = 18 + Math.random() * 28;
-      const size = 3 + Math.random() * 4;
-      const alpha = (0.65 + Math.random() * 0.3).toFixed(2);
-      const dropColor = isLight
-        ? `rgba(255, 255, 255, ${alpha})`
-        : `rgba(${60 + Math.random() * 60 | 0}, ${140 + Math.random() * 60 | 0}, 255, ${(0.5 + Math.random() * 0.3).toFixed(2)})`;
-      Object.assign(drop.style, {
-        position: 'absolute', width: size + 'px', height: size + 'px',
-        borderRadius: '50%', background: dropColor, left: '-2px', top: '-2px',
-      });
-      drop.style.setProperty('--dx', Math.cos(angle) * speed + 'px');
-      drop.style.setProperty('--dy', Math.sin(angle) * speed + 'px');
-      drop.style.animation = `boatHeroSplashDrop ${(0.4 + Math.random() * 0.3).toFixed(2)}s ease-out ${(Math.random() * 0.08).toFixed(3)}s forwards`;
-      container.appendChild(drop);
-    }
-    const ring = document.createElement('div');
-    Object.assign(ring.style, {
-      position: 'absolute', width: '20px', height: '8px',
-      border: isLight ? '2px solid rgba(255, 255, 255, 0.75)' : '2px solid rgba(100, 180, 255, 0.5)',
-      borderRadius: '50%', left: '0', top: '0',
-      animation: 'boatHeroSplashRing 0.7s ease-out forwards',
+    const probe = document.createElement('span');
+    probe.style.display = 'none';
+    waveBg.appendChild(probe);
+    probe.style.color = getComputedStyle(waveBg).getPropertyValue('--boat-hero-splash').trim() || (isLight ? '#ffffff' : 'rgb(150, 205, 255)');
+    const color = getComputedStyle(probe).color;
+    probe.remove();
+
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    const canvas = document.createElement('canvas');
+    canvas.width = Math.round(W * dpr);
+    canvas.height = Math.round(H * dpr);
+    Object.assign(canvas.style, { position: 'absolute', left: '0', top: '0', width: W + 'px', height: H + 'px', zIndex: '1', pointerEvents: 'none' });
+    waveBg.appendChild(canvas);
+    const ctx = canvas.getContext('2d')!;
+    ctx.strokeStyle = color;
+    ctx.fillStyle = color;
+    ctx.lineCap = 'round';
+
+    const RIPPLE_MS = 720;
+    const drops = Array.from({ length: 9 }, (_, i) => {
+      const ang = (-90 + (i - 4) * 14 + (Math.random() - 0.5) * 10) * Math.PI / 180;
+      const sp = 95 + Math.random() * 85;
+      return { x: x0 + (Math.random() - 0.5) * 6, y: surfY(x0) - 2, vx: Math.cos(ang) * sp, vy: Math.sin(ang) * sp, r: 0.9 + Math.random() * 1.3, alive: true };
     });
-    container.appendChild(ring);
-    waveBg.appendChild(container);
-    setTimeout(() => container.remove(), 1200);
+    const minis: { x: number; t: number }[] = [];
+    const start = performance.now();
+    let prev = start;
+
+    // A bump of height amp (px, up) and half-width w riding the surface at xc
+    function wavelet(xc: number, w: number, amp: number) {
+      ctx.beginPath();
+      for (let px = xc - w * 2.2, first = true; px <= xc + w * 2.2; px += 2, first = false) {
+        const g = Math.exp(-(((px - xc) / w) ** 2));
+        const py = surfY(px) - amp * g - 0.5;
+        first ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+      }
+      ctx.stroke();
+    }
+
+    function frame(now: number) {
+      const t = now - start;
+      const dt = Math.min(0.05, (now - prev) / 1000);
+      prev = now;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, W, H);
+      let busy = false;
+
+      if (t < RIPPLE_MS) {
+        busy = true;
+        const k = t / RIPPLE_MS;
+        const ease = 1 - (1 - k) ** 2.2;
+        const fade = (1 - k) ** 1.4;
+        // Outgoing wavelets, left and right, thinning and widening as they spread
+        ctx.lineWidth = 2.2 * (1 - k) + 0.5;
+        for (const s of [-1, 1]) {
+          ctx.globalAlpha = 0.75 * fade;
+          wavelet(x0 + s * (8 + 62 * ease), 6 + 10 * k, 3.2 * (1 - k) + 0.4);
+          ctx.globalAlpha = 0.3 * fade;
+          wavelet(x0 + s * (4 + 34 * ease), 5 + 6 * k, 1.6 * (1 - k));
+        }
+        // Dimple at the impact, then a small rebound
+        const d = -4 * Math.sin(Math.PI * Math.min(1, k * 2.4)) * Math.exp(-2.5 * k) + (k > 0.42 ? 2.2 * Math.sin(Math.PI * (k - 0.42) / 0.58) * (1 - k) : 0);
+        ctx.globalAlpha = 0.45 * fade;
+        ctx.lineWidth = 1.6;
+        wavelet(x0, 13, d * 0.7);
+      }
+
+      // Droplets under gravity, gone when they meet the water
+      for (const p of drops) {
+        if (!p.alive) continue;
+        busy = true;
+        p.vy += 520 * dt;
+        p.x += p.vx * dt;
+        p.y += p.vy * dt;
+        if (p.vy > 0 && p.y >= surfY(p.x)) {
+          p.alive = false;
+          minis.push({ x: p.x, t: now });
+          continue;
+        }
+        ctx.globalAlpha = 0.85;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      // Tiny secondary ripples where droplets landed
+      ctx.lineWidth = 0.9;
+      for (const m of minis) {
+        const k = (now - m.t) / 260;
+        if (k >= 1) continue;
+        busy = true;
+        ctx.globalAlpha = 0.5 * (1 - k);
+        wavelet(m.x - 2 - 7 * k, 2.5 + 2 * k, 1.2 * (1 - k));
+        wavelet(m.x + 2 + 7 * k, 2.5 + 2 * k, 1.2 * (1 - k));
+      }
+      ctx.globalAlpha = 1;
+
+      if (busy && t < 2000) requestAnimationFrame(frame);
+      else canvas.remove();
+    }
+    requestAnimationFrame(frame);
   }
 
   function heroAt(y: number) {
@@ -180,11 +305,324 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
     return heroes.find((h) => { const r = h.getBoundingClientRect(); return y >= r.top && y <= r.bottom; }) || heroes[0] || null;
   }
 
+  // ---- Surface follow (WAVES.md, "Surface sampler") ----
+  // When the sea exposes .wave-background.buoySurface(x) -> { y, slope }, the drifting
+  // boat rides it: each frame its hull sits on the water under its centre and it tilts
+  // to the slope. The CSS bob is held at rest while following.
+  function surfaceOf(hero: Element) {
+    const el = hero.querySelector<HTMLElement>('.boat-hero__sea .wave-background') as any;
+    if (!el) return null;
+    if (!el.buoySurface && hero.querySelector('.boat-hero__sea[data-sea="current"]')) {
+      const amp = driveSvgSea(el);
+      el.buoySurface = svgPathSurface(el, '.wave-container-3', amp) || undefined;
+    }
+    return typeof el.buoySurface === 'function' ? { el: el as HTMLElement, fn: el.buoySurface as Surface } : null;
+  }
+  // How deep the hull sits below the sampled line (px). Not --boat-hero-sink: that
+  // offsets the legacy .wave-container-1 landing (70px on the homepage).
+  function draftOf(el: Element) {
+    const v = parseFloat(getComputedStyle(el).getPropertyValue('--boat-hero-draft'));
+    return Number.isFinite(v) ? v : 3;
+  }
+
+  // Wake: a thin overlay on the water behind the boat, drawn on the sampled surface so it
+  // moves and tilts with the waves. A foam lip at the bow, two faint lines fanning out
+  // behind (a side-on Kelvin wake), soft foam at the stern. Strength follows the boat's
+  // speed, fades over ~1s when it stops (drag), and bursts when a toss lands.
+  // Colour: --boat-hero-wake, else --boat-hero-splash, else a pale sea blue.
+  function createWake(surf: { el: HTMLElement; fn: Surface }, boat: HTMLElement) {
+    const el = surf.el;
+    const canvas = document.createElement('canvas');
+    Object.assign(canvas.style, { position: 'absolute', left: '0', top: '0', zIndex: '1', pointerEvents: 'none' });
+    el.appendChild(canvas);
+    const ctx = canvas.getContext('2d')!;
+    let W = 0, H = 0, dpr = 1, color = '';
+    const size = () => {
+      dpr = Math.min(2, window.devicePixelRatio || 1);
+      W = el.clientWidth; H = el.clientHeight;
+      canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+      canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+      const probe = document.createElement('span');
+      probe.style.display = 'none';
+      el.appendChild(probe);
+      const cs = getComputedStyle(el);
+      probe.style.color = cs.getPropertyValue('--boat-hero-wake').trim() || cs.getPropertyValue('--boat-hero-splash').trim()
+        || (document.documentElement.classList.contains('light') ? '#ffffff' : 'rgb(170, 215, 255)');
+      color = getComputedStyle(probe).color;
+      probe.remove();
+    };
+    size();
+    new ResizeObserver(size).observe(el);
+    let lastX = NaN, vx = 0, strength = 0, burst = 0, wasActive = false, dir = 1, drawn = false, age = 0;
+    let dimmed = false;
+    let bubbles: { x: number; y: number; r: number; w: number; pop: number }[] = [], bubbleT = 0, subPrevX = NaN;
+    const hash = (i: number) => { const v = Math.sin(i * 127.1 + 311.7) * 43758.5453; return v - Math.floor(v); };
+
+    function line(xa: number, xb: number, off: (d: number) => number, alpha: (d: number) => number, lw: number) {
+      // Stroke along the surface from xa to xb (d = 0..1 from the boat), in short pieces so alpha can fade
+      const steps = 14;
+      for (let i = 0; i < steps; i++) {
+        const d0 = i / steps, d1 = (i + 1) / steps;
+        const x0 = xa + (xb - xa) * d0, x1 = xa + (xb - xa) * d1;
+        ctx.globalAlpha = alpha((d0 + d1) / 2);
+        if (ctx.globalAlpha < 0.01) continue;
+        ctx.lineWidth = lw * (1 - 0.5 * d0);
+        ctx.beginPath();
+        ctx.moveTo(x0, surf.fn(x0).y + off(d0));
+        ctx.quadraticCurveTo((x0 + x1) / 2, surf.fn((x0 + x1) / 2).y + off((d0 + d1) / 2), x1, surf.fn(x1).y + off(d1));
+        ctx.stroke();
+      }
+    }
+
+    return {
+      step(dt: number, active: boolean, following: boolean) {
+        age += dt;
+        const x = boat.offsetLeft + (parseFloat(boat.style.translate) || 0) + boat.offsetWidth / 2;
+        if (active && following && Number.isFinite(lastX) && dt > 0) {
+          const dx = x - lastX;
+          if (Math.abs(dx) < 40) { vx += (dx / dt - vx) * Math.min(1, dt * 6); if (Math.abs(vx) > 4) dir = Math.sign(vx); }
+        } else if (!active) vx *= Math.exp(-dt * 6);
+        lastX = x;
+        if (active && !wasActive) burst = 1;
+        wasActive = active;
+        burst *= Math.exp(-dt * 2.2);
+        const target = active ? Math.min(1.6, Math.abs(vx) / 60) : 0;
+        strength += (target - strength) * (1 - Math.exp(-dt * (target > strength ? 4 : 3)));
+        // Submerged (held or released below the water): no surface wake; a displacement
+        // ripple above the boat, bubbles rising and popping, the boat dimmed with depth
+        const held = !active && boat.style.top !== '';
+        const hullY = boat.offsetTop + boat.offsetHeight * HULL_Y;
+        const surfY = surf.fn(x).y;
+        const depth = held ? hullY - surfY : 0;
+        const under = depth > draftOf(el) + 2; // deeper than it rides
+        // Held, falling or bobbing up (the physics owns the boat): no surface wake at all
+        if (!active) { strength = 0; burst = 0; }
+        const k = under ? Math.min(0.6, depth / 200) : 0;
+        // Dim and desaturate with depth and let the water show through a little (tints toward the sea)
+        if (k > 0.01) {
+          boat.style.filter = `brightness(${(1 - 0.3 * k).toFixed(3)}) saturate(${(1 - 0.6 * k).toFixed(3)})`;
+          boat.style.opacity = (1 - 0.3 * k).toFixed(3);
+          dimmed = true;
+        } else if (dimmed) {
+          // The physics keeps an inline opacity of 1 while it owns the boat
+          boat.style.filter = '';
+          boat.style.opacity = '1';
+          dimmed = false;
+        }
+        const s = Math.min(1.8, strength + burst * 0.9);
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        if (drawn) ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawn = false;
+        const own = (el as any).buoySubmerged;
+        if (under && typeof own === 'function') own(x, depth, { hullY, surfaceY: surfY });
+        if (under || bubbles.length) {
+          if (W) {
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            ctx.strokeStyle = color; ctx.fillStyle = color; ctx.lineCap = 'round';
+            drawn = true;
+            if (under && typeof own !== 'function') {
+              // Displacement: a gentle swell and two soft rings right above the boat
+              const a = Math.min(2.6, 0.8 + depth * 0.015) * (1 - Math.min(0.6, depth / 400));
+              const ph = age * 5;
+              void a; void ph; // no surface line while under: it read as a wake
+              for (const side of [-1, 1]) {
+                const rx = x + side * (10 + 8 * ((age * 0.9) % 1));
+                ctx.globalAlpha = 0.25 * (1 - ((age * 0.9) % 1));
+                ctx.beginPath();
+                for (let px = rx - 5, first = true; px <= rx + 5; px += 1.5, first = false) {
+                  const g = Math.exp(-(((px - rx) / 2.5) ** 2));
+                  const py = surf.fn(px).y - 1.1 * g;
+                  first ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+                }
+                ctx.stroke();
+              }
+              // Spawn bubbles from the hull
+              bubbleT -= dt;
+              if (bubbleT <= 0 && bubbles.length < 18) {
+                bubbleT = 0.09 + Math.random() * 0.12;
+                bubbles.push({ x: x + (Math.random() - 0.5) * boat.offsetWidth * 0.6, y: hullY - boat.offsetHeight * (0.1 + Math.random() * 0.4), r: 0.8 + Math.random() * 1.6, w: Math.random() * 6, pop: -1 });
+              }
+            }
+            // Bubbles rise with a little wobble and pop at the surface
+            if (typeof own !== 'function') {
+              for (const b of bubbles) {
+                if (b.pop >= 0) {
+                  b.pop += dt;
+                  ctx.globalAlpha = 0.5 * (1 - b.pop / 0.25);
+                  ctx.lineWidth = 0.8;
+                  ctx.beginPath();
+                  ctx.ellipse(b.x, b.y, b.r + 6 * b.pop / 0.25 * b.r * 0.5, (b.r + 3 * b.pop) * 0.4, 0, 0, Math.PI * 2);
+                  ctx.stroke();
+                  continue;
+                }
+                // Rising bubbles move with the dragged boat, a column above it, never a trail
+                if (held && Number.isFinite(subPrevX) && Math.abs(x - subPrevX) < 60) b.x += x - subPrevX;
+                b.y -= (32 + b.r * 14) * dt;
+                b.w += dt * 7;
+                const bx = b.x + Math.sin(b.w) * 1.4;
+                const sy = surf.fn(bx).y;
+                if (b.y <= sy) { b.y = sy; b.x = bx; b.pop = 0; continue; }
+                ctx.globalAlpha = 0.55;
+                ctx.lineWidth = 0.8;
+                ctx.beginPath();
+                ctx.arc(bx, b.y, b.r, 0, Math.PI * 2);
+                ctx.stroke();
+              }
+            }
+            bubbles = bubbles.filter((b) => b.pop < 0.25);
+            subPrevX = x;
+            ctx.globalAlpha = 1;
+          }
+          if (under) return;
+        }
+        if (s < 0.02 || !W) return;
+        drawn = true;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ctx.strokeStyle = color;
+        ctx.fillStyle = color;
+        ctx.lineCap = 'round';
+        const bl = boat.offsetWidth;
+        const bow = x + dir * bl * 0.42, stern = x - dir * bl * 0.4;
+        const len = bl * 1.8 * (0.7 + 0.3 * Math.min(1, s));
+        const end = stern - dir * len;
+        const fan = Math.tan(4 * Math.PI / 180) * len;
+        // Two trailing lines, fanning above and below the surface line
+        line(stern, end, (d) => -fan * 0.45 * d, (d) => 0.32 * s * (1 - d) ** 1.5, 0.9);
+        line(stern, end, (d) => fan * 0.35 * d + 0.6, (d) => 0.22 * s * (1 - d) ** 1.7, 0.8);
+        // Stern foam: short broken dashes right on the water
+        for (let i = 0; i < 4; i++) {
+          const h = hash(i + Math.floor(age * 6) * 0.37);
+          const xa = stern - dir * (2 + i * bl * 0.12 + h * 3);
+          line(xa, xa - dir * (3 + h * 4), () => 0.3 - h, () => 0.4 * s * (1 - i / 4), 1.2);
+        }
+        // Bow lip: a small gaussian of foam pushed up just ahead of the hull
+        ctx.globalAlpha = Math.min(0.6, 0.35 * s);
+        ctx.lineWidth = 1.1;
+        ctx.beginPath();
+        for (let px = bow - 6, first = true; px <= bow + 6; px += 1.5, first = false) {
+          const g = Math.exp(-(((px - bow) / 3.2) ** 2));
+          const py = surf.fn(px).y - 1.6 * Math.min(1.4, s) * g;
+          first ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+        }
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+      },
+    };
+  }
+
+  // The drift runs left -5% -> 105% of the sea. On narrow seas -5% leaves part of the
+  // boat on screen when it wraps, so near the ends the boat is nudged further out
+  // (smoothly, over the first/last 12% of the lap) to enter and leave fully off screen.
+  function edgeShift(leftPx: number, seaW: number, boatW: number) {
+    if (!seaW) return 0;
+    const p = (leftPx + 0.05 * seaW) / (1.1 * seaW);
+    const sm = (u: number) => { const v = Math.max(0, Math.min(1, u)); return v * v * (3 - 2 * v); };
+    const needL = Math.max(0, boatW + 8 - 0.05 * seaW);
+    const needR = Math.max(0, 8 - 0.05 * seaW);
+    return -needL * (1 - sm(p / 0.12)) + needR * sm((p - 0.88) / 0.12);
+  }
+
+  function followSurface(hero: HTMLElement, boat: HTMLElement) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const surf = surfaceOf(hero);
+    if (!surf) return;
+    const sea = boat.offsetParent as HTMLElement | null;
+    let following = false, offset = 0, offsetV = 0, tilt = 0, tiltV = 0, lastT = 0, visible = true, prevGoal = NaN;
+    let landing: { tilt: number; vy: number } | null = null;
+    new IntersectionObserver((e) => { visible = e.some((x) => x.isIntersecting); }).observe(hero);
+
+    const wake = createWake(surf, boat);
+    const frame = (now: number) => {
+      requestAnimationFrame(frame);
+      const dt = Math.min(0.05, lastT ? (now - lastT) / 1000 : 0.016);
+      lastT = now;
+      if (!visible || document.hidden || !sea) return;
+      const active = (boat.classList.contains('visible') || boat.classList.contains('launching')) && boat.style.top === '';
+      wake.step(dt, active, following);
+      if (!active) {
+        if (following) { following = false; boat.style.rotate = ''; boat.style.transformOrigin = ''; boat.style.translate = ''; }
+        return;
+      }
+      // Hold the CSS bob at rest (it restarts when the physics re-adds the classes)
+      for (const a of boat.getAnimations()) {
+        if ((a as CSSAnimation).animationName === 'boatBob' && a.playState !== 'paused') { a.pause(); a.currentTime = 0; }
+      }
+      const h = sea.clientHeight;
+      const ex = edgeShift(boat.offsetLeft, sea.clientWidth, boat.offsetWidth);
+      boat.style.translate = ex ? `${ex.toFixed(2)}px 0` : '';
+      const x = boat.offsetLeft + ex + boat.offsetWidth / 2;
+      const s = surf.fn(x);
+      const target = h - (s.y + draftOf(surf.el) + HULL_BELOW * boat.offsetHeight);
+      if (!following) {
+        // Start from where the boat is now and settle onto the water: no pop. After the
+        // drop, carry the fall's angle and some of its speed into one damped dip.
+        following = true;
+        const cur = parseFloat(boat.style.bottom);
+        offset = Number.isFinite(cur) ? cur - target : 0;
+        offsetV = landing ? -landing.vy : 0;
+        tilt = landing ? landing.tilt : (parseFloat(boat.style.rotate) || 0);
+        tiltV = 0;
+        landing = null;
+        boat.style.transformOrigin = `50% ${HULL_Y * 100}%`;
+      }
+      // Height: a damped spring (one soft overshoot) onto the surface
+      for (let i = 0, n = Math.max(1, Math.ceil(dt / 0.008)); i < n; i++) {
+        offsetV += (-560 * offset - 34 * offsetV) * (dt / n);
+        offset += offsetV * (dt / n);
+      }
+      if (Math.abs(offset) < 0.02 && Math.abs(offsetV) < 0.5) { offset = 0; offsetV = 0; }
+      boat.style.bottom = (target + offset).toFixed(2) + 'px';
+      // Tilt: a damped spring toward the slope a little ahead in time (leads the lag), and
+      // stiffer while the slope is changing fast (storms), clamped to ±14°
+      const goal = Math.max(-14, Math.min(14, Math.atan(s.slope) * 180 / Math.PI));
+      const lead = Math.max(-14, Math.min(14, Math.atan(surf.fn(x, 35).slope) * 180 / Math.PI));
+      const rate = Number.isFinite(prevGoal) && dt > 0 ? Math.abs(goal - prevGoal) / dt : 0;
+      prevGoal = goal;
+      const k = Math.min(2400, 700 * (1 + Math.min(2.4, rate / 60)));
+      // Substeps keep the stiff spring stable on long frames (no jitter)
+      const n = Math.max(1, Math.ceil(dt / 0.006));
+      for (let i = 0; i < n; i++) {
+        tiltV += ((lead - tilt) * k - tiltV * 1.8 * Math.sqrt(k)) * (dt / n);
+        tilt += tiltV * (dt / n);
+      }
+      boat.style.rotate = tilt.toFixed(2) + 'deg';
+    };
+    requestAnimationFrame(frame);
+
+    // The drag physics asks where the water is when the boat is released (underwater
+    // releases bob up instead of falling)
+    (window as any)._buoySurfaceAt = (x: number) => surf.fn(x).y;
+    // Drag/toss lands on the water under the boat's current x
+    Object.defineProperty(window, '_buoyBoatBottom', {
+      configurable: true,
+      get: () => sea ? sea.clientHeight - (surf.fn(boat.offsetLeft + (parseFloat(boat.style.translate) || 0) + boat.offsetWidth / 2).y + draftOf(surf.el) + HULL_BELOW * boat.offsetHeight) : undefined,
+      set: () => {},
+    });
+    return { land(tiltDeg: number, vy: number) { landing = { tilt: tiltDeg, vy }; } };
+  }
+
   function initBoatHero(hero: HTMLElement) {
     const boatInline = hero.querySelector<HTMLElement>('[data-boat-glyph]');
     const boatEmoji = hero.querySelector<HTMLElement>('[data-boat-glyph-emoji]');
     const waveBoat = hero.querySelector<HTMLElement>('[data-wave-boat]');
     const sea = hero.querySelector<HTMLElement>('.boat-hero__sea');
+    // The wave boat shows the SVG boat instead of the emoji
+    if (waveBoat && !waveBoat.querySelector('img')) {
+      const img = new Image(64, 64);
+      img.alt = '';
+      img.decoding = 'sync';
+      waveBoat.textContent = '';
+      waveBoat.appendChild(img);
+    }
+    // Light mode: the cream sail and hull become the dark brand blue; follow theme toggles
+    const boatImgs = () => hero.querySelectorAll<HTMLImageElement>('[data-wave-boat] img, [data-boat-src]');
+    const syncBoatTheme = () => {
+      const light = document.documentElement.classList.contains('light');
+      boatImgs().forEach((im) => { const want = light ? boatLightSrc : boatSrc; if (im.getAttribute('src') !== want) im.src = want; });
+    };
+    syncBoatTheme();
+    new MutationObserver(syncBoatTheme).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    const follow = waveBoat ? followSurface(hero, waveBoat) : undefined;
 
     // No glyph on the page: just sail
     if (!boatInline || !boatEmoji) {
@@ -203,9 +641,13 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
       const baseDrop = isMobile ? 30 : 37;
       const startRect = boatEmoji!.getBoundingClientRect();
       const startBaseline = baselineY(boatEmoji!);
-      const origin = `0px ${startBaseline - startRect.top}px`;
+      const inImg = boatEmoji!.querySelector('img') || boatEmoji!;
+      const ir = inImg.getBoundingClientRect();
+      const hullIn = { x: ir.left + ir.width / 2, y: ir.top + ir.height * HULL_Y };
+      // Scale and fall about the hull point, so the hull lands where the wave boat's hull is
+      const origin = `${hullIn.x - startRect.left}px ${hullIn.y - startRect.top}px`;
       if (!waveBoat) {
-        return { dx: 0, dy: baseDrop, scale: 1, origin, waveBottomPx: null, waveLeftPct: null };
+        return { dx: 0, dy: baseDrop, scale: 1, origin, waveBottomPx: null, waveLeftPct: null, landTilt: 0 };
       }
       // The wave boat's containing block is the sea (its padding box)
       const cb = (waveBoat.offsetParent || waveBoat.parentElement) as HTMLElement;
@@ -218,109 +660,169 @@ const uid = 'bh' + Math.random().toString(36).slice(2, 8)
       const front = cb.querySelector('.wave-container-1');
       const surfaceY = front ? front.getBoundingClientRect().top + front.getBoundingClientRect().height * 0.5 : cbRect.top + cbRect.height * 0.5;
       const onWater = cbRect.bottom - surfaceY - 4;
-      // Optional extra depth below that point (CSS var --boat-hero-sink on the hero, default 0)
-      const sink = parseFloat(getComputedStyle(hero).getPropertyValue('--boat-hero-sink')) || 0;
-      const waveBottomPx = Math.max(8, Math.min(underGlyph, onWater) - sink);
+      // Optional extra depth below that point (CSS var --boat-hero-sink on the hero, default 0).
+      // Read on the style's .wave-background so a sea style can override it on its root.
+      const sinkEl = cb.querySelector('.wave-background') || hero;
+      const sink = parseFloat(getComputedStyle(sinkEl).getPropertyValue('--boat-hero-sink')) || 0;
       // Lands straight down: same left edge as the inline emoji
-      const waveLeftPct = ((startRect.left - cbLeft) / cbWidth) * 100;
+      const waveLeftPct = ((hullIn.x - cbLeft - waveBoat.offsetWidth / 2) / cbWidth) * 100;
+      // With a surface sampler the boat lands on the sampled water under its centre
+      const surf = surfaceOf(hero);
+      const landS = surf ? surf.fn(hullIn.x - cbLeft, LIFT_MS + DROP_MS) : null;
+      const landTilt = landS ? Math.max(-14, Math.min(14, Math.atan(landS.slope) * 180 / Math.PI)) : 0;
+      const waveBottomPx = surf
+        ? cb.clientHeight - (surf.fn(hullIn.x - cbLeft, LIFT_MS + DROP_MS).y + draftOf(surf.el) + HULL_BELOW * waveBoat.offsetHeight)
+        : Math.max(8, Math.min(underGlyph, onWater) - sink);
       waveBoat.style.bottom = waveBottomPx + 'px';
       waveBoat.style.left = waveLeftPct + '%';
       const waveRect = waveBoat.getBoundingClientRect();
-      const scale = parseFloat(getComputedStyle(waveBoat).fontSize) / parseFloat(getComputedStyle(boatEmoji!).fontSize);
+      const wImg = waveBoat.querySelector('img');
+      const scale = wImg ? wImg.getBoundingClientRect().width / ir.width : parseFloat(getComputedStyle(waveBoat).fontSize) / parseFloat(getComputedStyle(boatEmoji!).fontSize);
       return {
-        dx: waveRect.left - startRect.left,
-        dy: baselineY(waveBoat) - startBaseline,
+        dx: wImg ? (waveRect.left + waveRect.width / 2) - hullIn.x : waveRect.left - startRect.left,
+        dy: wImg ? (waveRect.top + waveRect.height * HULL_Y) - hullIn.y : baselineY(waveBoat) - startBaseline,
         scale: Number.isFinite(scale) && scale > 0 ? scale : 1,
         origin,
         waveBottomPx,
         waveLeftPct,
+        landTilt,
       };
     }
 
     const LIFT_MS = 130;
     const DROP_MS = 500;
+    const WIGGLE_MS = 600;
+    const FALL_MS = LIFT_MS + DROP_MS;
+    const smooth = (u: number) => u * u * (3 - 2 * u);
 
-    setTimeout(() => {
-      // Phase 1: wiggle
-      const wiggle = boatEmoji.animate([
-        { transform: 'rotate(0deg)', offset: 0 },
-        { transform: 'rotate(8deg) translateX(1px)', offset: 0.15 },
-        { transform: 'rotate(-7deg) translateX(-1px)', offset: 0.30 },
-        { transform: 'rotate(12deg) translateX(2px) translateY(-2px)', offset: 0.50 },
-        { transform: 'rotate(-10deg) translateX(-2px)', offset: 0.65 },
-        { transform: 'rotate(5deg) translateX(1px)', offset: 0.80 },
-        { transform: 'rotate(-2deg)', offset: 0.92 },
-        { transform: 'rotate(0deg)', offset: 1 },
-      ], { duration: 600, easing: 'ease-in-out' });
+    // One rAF clock for the whole escape, transform only, continuous position, velocity,
+    // angle and scale across phases:
+    //  wiggle (damped rock that ends at rest) -> lift + fall as one cubic (starts at rest,
+    //  rises 6px, falls to the hull's landing point) while growing to wave size and turning
+    //  to the landing slope -> same-frame swap to the wave boat, whose follow spring takes
+    //  the fall's angle and speed into one soft dip and settle.
+    function escape() {
+      let t0 = -1;
+      let fall: null | { dx: number; dy: number; scale: number; a: number; b: number; c: number; vE: number; landTilt: number; waveBottomPx: number | null; waveLeftPct: number | null } = null;
+      const step = (now: number) => {
+        if (t0 < 0) t0 = now;
+        const ms = now - t0;
+        if (ms < WIGGLE_MS) {
+          const u = ms / 1000, env = Math.sin(Math.PI * ms / WIGGLE_MS);
+          const wob = Math.sin(2 * Math.PI * u / 0.2) * env;
+          boatEmoji!.style.transform = `translate(${(1.5 * wob).toFixed(2)}px, ${(-2 * env * env).toFixed(2)}px) rotate(${(10 * wob).toFixed(2)}deg)`;
+          requestAnimationFrame(step);
+          return;
+        }
+        if (!fall) {
+          boatEmoji!.style.transform = '';
+          const m = measureLanding();
+          boatEmoji!.style.transformOrigin = m.origin;
+          // y(τ) = aτ⁴ + bτ³ + cτ²: starts at rest, lifts to -6px, reaches the hull's
+          // landing point at T with speed vE, which the follow spring carries on (no jump)
+          const T = FALL_MS / 1000;
+          const vE = Math.max(0, m.dy) / T * 0.85;
+          const solve = (c: number) => {
+            // aT⁴ + bT³ = dy - cT²,  4aT³ + 3bT² = vE - 2cT
+            const r1 = m.dy - c * T * T, r2 = vE - 2 * c * T;
+            const a = (r2 * T - 3 * r1) / (T ** 4);
+            const b = (r1 - a * T ** 4) / (T ** 3);
+            let ymin = 0;
+            for (let i = 1; i <= 60; i++) { const q = (i / 60) * T; ymin = Math.min(ymin, a * q ** 4 + b * q ** 3 + c * q * q); }
+            return { a, b, ymin };
+          };
+          let lo = -3000, hi = 0;
+          for (let i = 0; i < 50; i++) { const c = (lo + hi) / 2; if (solve(c).ymin < -6) lo = c; else hi = c; }
+          const c = (lo + hi) / 2, q = solve(c);
+          fall = { dx: m.dx, dy: m.dy, scale: m.scale, a: q.a, b: q.b, c, vE, landTilt: m.landTilt ?? 0, waveBottomPx: m.waveBottomPx, waveLeftPct: m.waveLeftPct };
+        }
+        const T = FALL_MS / 1000;
+        const tau = Math.min(T, (ms - WIGGLE_MS) / 1000);
+        const u = tau / T;
+        const y = fall.a * tau ** 4 + fall.b * tau ** 3 + fall.c * tau ** 2;
+        const x = fall.dx * (1 - Math.cos(Math.PI * u)) / 2;
+        const sc = 1 + (fall.scale - 1) * smooth(Math.min(1, Math.max(0, (tau - LIFT_MS / 1000) / (DROP_MS / 1000))));
+        const rot = fall.landTilt * smooth(u);
+        boatEmoji!.style.transform = `translate(${x.toFixed(2)}px, ${y.toFixed(2)}px) rotate(${rot.toFixed(2)}deg) scale(${sc.toFixed(4)})`;
+        if (tau < T) { requestAnimationFrame(step); return; }
 
-      wiggle.finished.then(() => {
-        const { dx, dy, scale, origin, waveBottomPx, waveLeftPct } = measureLanding();
-        boatEmoji.style.transformOrigin = origin;
+        // Impact: same frame swap to the wave boat
+        const vy = fall.vE;
+        const landedRect = (boatEmoji!.querySelector('img') || boatEmoji!).getBoundingClientRect();
+        createSplash(hero, landedRect.left + landedRect.width / 2, landedRect.top + landedRect.height * HULL_Y);
+        boatInline!.style.visibility = 'hidden';
+        if (!waveBoat || fall.waveLeftPct == null) return;
+        if (fall.waveBottomPx != null) (window as any)._buoyBoatBottom = fall.waveBottomPx;
+        waveBoat.style.transformOrigin = `50% ${HULL_Y * 100}%`;
+        waveBoat.style.rotate = fall.landTilt.toFixed(2) + 'deg';
+        follow?.land(fall.landTilt, vy);
+        launch(fall.waveLeftPct);
+      };
+      requestAnimationFrame(step);
+    }
 
-        // Phase 2: lift, then fall with gravity
-        const fall = boatEmoji.animate([
-          { translate: '0 0', easing: 'ease-out' },
-          { translate: '0 -6px', offset: LIFT_MS / (LIFT_MS + DROP_MS), easing: 'cubic-bezier(0.5, 0, 0.9, 0.55)' },
-          { translate: `${dx}px ${dy}px` },
-        ], { duration: LIFT_MS + DROP_MS, fill: 'forwards' });
+    // Ease-in launch, 13% over 3s, ending at cruise speed; then the steady drift
+    function launch(waveLeftPct: number) {
+      waveBoat!.classList.add('launching');
+      const endLeftPct = waveLeftPct + 13;
+      const launchAnim = waveBoat!.animate([
+        { left: waveLeftPct + '%' },
+        { left: endLeftPct + '%' },
+      ], { duration: 3000, easing: 'cubic-bezier(0.3, 0, 0.8, 0.8)', fill: 'forwards' });
 
-        const grow = boatEmoji.animate([
-          { scale: '1' },
-          { scale: String(scale) },
-        ], { delay: LIFT_MS, duration: DROP_MS, easing: 'ease-out', fill: 'both' });
-
-        Promise.all([fall.finished, grow.finished]).then(() => {
-          const landedRect = boatEmoji.getBoundingClientRect();
-          createSplash(hero, landedRect.left + landedRect.width / 2, landedRect.top + landedRect.height * 0.7 + 6);
-
-          boatInline.style.visibility = 'hidden';
-          if (!waveBoat || waveLeftPct == null) return;
-
-          // So toss landings match the drop landing
-          (window as any)._buoyBoatBottom = waveBottomPx;
-
-          // Phase 3: ease-in launch, 13% over 3s, ending at cruise speed
-          waveBoat.classList.add('launching');
-          const endLeftPct = waveLeftPct + 13;
-          const launchAnim = waveBoat.animate([
-            { left: waveLeftPct + '%' },
-            { left: endLeftPct + '%' },
-          ], { duration: 3000, easing: 'cubic-bezier(0.3, 0, 0.8, 0.8)', fill: 'forwards' });
-
-          launchAnim.finished.then(() => {
-            // Phase 4: steady drift. Everything below happens in one task, so no
-            // frame renders between the launch's last position and the drift's
-            // first. The drift is seeked by currentTime (not a negative
-            // animation-delay, whose start time resolves a frame later) to the
-            // exact left the launch ended on.
-            waveBoat.style.left = '';
-            waveBoat.classList.remove('launching');
-            waveBoat.classList.add('visible');
-            const progress = (((endLeftPct + 5) / 110) % 1 + 1) % 1;
-            const drift = waveBoat.getAnimations().find((a) => (a as CSSAnimation).animationName === 'boatDrift');
-            // Anchor the drift on the timeline at the moment the launch ended
-            // (startTime, not currentTime: a seek leaves the animation pending
-            // for a frame, which shows as a one-frame stall).
-            const launchEnd = (launchAnim.startTime as number | null) != null ? (launchAnim.startTime as number) + 3000 : null;
-            if (drift && launchEnd != null) {
-              drift.startTime = launchEnd - progress * DRIFT_MS;
-            } else if (drift) {
-              drift.currentTime = progress * DRIFT_MS;
-            } else {
-              waveBoat.style.animationDelay = `0s, ${-(progress * DRIFT_MS / 1000)}s`;
-            }
-            launchAnim.cancel();
-          });
-        });
+      launchAnim.finished.then(() => {
+        // Everything below happens in one task, so no frame renders between the launch's
+        // last position and the drift's first. The drift is anchored by startTime (a seek
+        // leaves the animation pending for a frame, which shows as a one-frame stall).
+        waveBoat!.style.left = '';
+        waveBoat!.classList.remove('launching');
+        waveBoat!.classList.add('visible');
+        const progress = (((endLeftPct + 5) / 110) % 1 + 1) % 1;
+        const drift = waveBoat!.getAnimations().find((a) => (a as CSSAnimation).animationName === 'boatDrift');
+        const launchEnd = (launchAnim.startTime as number | null) != null ? (launchAnim.startTime as number) + 3000 : null;
+        if (drift && launchEnd != null) {
+          drift.startTime = launchEnd - progress * DRIFT_MS;
+        } else if (drift) {
+          drift.currentTime = progress * DRIFT_MS;
+        } else {
+          waveBoat!.style.animationDelay = `0s, ${-(progress * DRIFT_MS / 1000)}s`;
+        }
+        launchAnim.cancel();
       });
-    }, 850);
+    }
+
+    setTimeout(escape, 850);
+  }
+
+  // Under 768px, put the sea exactly over the content's [data-boat-sea-slot]
+  function placeSea(hero: HTMLElement) {
+    const slot = hero.querySelector<HTMLElement>('[data-boat-sea-slot]');
+    const sea = hero.querySelector<HTMLElement>('.boat-hero__sea');
+    if (!slot || !sea) return;
+    const place = () => {
+      if (getComputedStyle(slot).display === 'none') {
+        sea.style.top = ''; sea.style.bottom = ''; sea.style.height = '';
+        sea.removeAttribute('data-sea-placed');
+        return;
+      }
+      const hr = hero.getBoundingClientRect(), sr = slot.getBoundingClientRect();
+      const over = parseFloat(getComputedStyle(hero).getPropertyValue('--boat-hero-sea-overlap')) || 0;
+      sea.style.top = (sr.top - hr.top - hero.clientTop - over) + 'px';
+      sea.style.bottom = 'auto';
+      sea.style.height = (sr.height + 2 * over) + 'px';
+      sea.setAttribute('data-sea-placed', '');
+    };
+    place();
+    new ResizeObserver(place).observe(hero);
+    new ResizeObserver(place).observe(slot);
   }
 
   document.querySelectorAll<HTMLElement>('[data-boat-hero]').forEach((hero) => {
     if (hero.dataset.boatHeroInit === '1') return;
     hero.dataset.boatHeroInit = '1';
+    placeSea(hero);
     initBoatHero(hero);
   });
   // WaveBoat's drag/toss physics calls this for hero boats
-  (window as any)._buoySplash = (x: number, y: number) => createSplash(heroAt(y), x, y);
+  (window as any)._buoySplash = (x: number, y: number) => createSplash(heroAt(y), x, y, 'toss', 1);
 </script>

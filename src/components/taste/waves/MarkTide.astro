@@ -1,0 +1,35 @@
+---
+// Logomark: MarkTide. Rows of marks follow a leaning tide wave, each row a beat later and a step behind; the front row is the shoreline the boat rides.
+// Whole Buoy marks on a grid (engine: ./logomark/engine.ts, style: ./logomark/styles.ts).
+// Contract: ./WAVES.md
+---
+
+<div class="wave-background lm-sea mark-tide" data-lm-sea="tide">
+  <canvas class="lm-sea__canvas"></canvas>
+  <!-- Invisible: its top is the rest water line (the implied surface the boat rides) -->
+  <div class="wave-container-1 lm-sea__surface"></div>
+</div>
+
+<style>
+  .mark-tide {
+    --mark-base: color-mix(in oklab, var(--color-navy-light) 45%, oklch(0.72 0.09 238));
+    --mark-hi: oklch(0.95 0.03 225);
+    --boat-hero-sink: 0px;
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+  }
+  .mark-tide .lm-sea__canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .mark-tide .lm-sea__surface { position: absolute; left: 0; right: 0; top: 58%; height: 0; pointer-events: none; }
+</style>
+
+<script>
+  import { mountMarkSea } from './logomark/engine'
+  import { tide } from './logomark/styles'
+  document.querySelectorAll<HTMLElement>('[data-lm-sea="tide"]').forEach((root) => {
+    if (root.dataset.init) return
+    root.dataset.init = '1'
+    mountMarkSea(root, tide)
+  })
+</script>
