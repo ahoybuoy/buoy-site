@@ -3,12 +3,12 @@
   "owner": "directus",
   "name": "directus",
   "description": "The flexible backend for all your projects 🐰 Turn your DB into a headless CMS, admin panels, or apps with a custom UI, instant APIs, auth & more.",
-  "stars": 38630,
+  "stars": 38607,
   "homepage": "https://directus.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "af4ec9f4ac233cc7dee5f7f555d79463386fae7a",
-  "generatedAt": "2026-11-19T16:31:43.866Z",
+  "commit": "db8d476e87e74056c69d681671d875c2bc11e1a3",
+  "generatedAt": "2026-11-20T16:13:24.022Z",
   "cliVersion": "0.8.26",
   "score": 34,
   "tier": "Bad",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 598,
+    "componentCount": 599,
     "tokenCount": 38,
-    "hardcodedValueCount": 249,
+    "hardcodedValueCount": 250,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 255,
+    "totalDriftCount": 256,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -63,14 +63,14 @@
     ]
   },
   "suggestions": [
-    "249 hardcoded values to extract. Focus on app/src/components/v-chip.vue (2 issues)",
+    "250 hardcoded values to extract. Focus on app/src/components/v-chip.vue (2 issues)",
     "6 deprecated patterns — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 248 of the 249 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 249 of the 250 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -130,14 +130,14 @@
     ]
   },
   "driftSummary": {
-    "total": 255,
+    "total": 256,
     "critical": 0,
     "warning": 48,
-    "info": 207
+    "info": 208
   },
   "driftByType": {
     "deprecated-pattern": 6,
-    "hardcoded-value": 249
+    "hardcoded-value": 250
   },
   "topColors": [
     {
@@ -176,7 +176,7 @@
   "topSpacing": [
     {
       "value": "0.25rem",
-      "count": 47
+      "count": 49
     },
     {
       "value": "0.4375rem",
@@ -188,11 +188,11 @@
     },
     {
       "value": "0.5rem",
-      "count": 38
+      "count": 39
     },
     {
       "value": "0.375rem",
-      "count": 21
+      "count": 22
     },
     {
       "value": "0.3125rem",
@@ -343,5 +343,5 @@
       ]
     }
   ],
-  "scanSeconds": 18
+  "scanSeconds": 15
 }

@@ -3,12 +3,12 @@
   "owner": "lobehub",
   "name": "lobehub",
   "description": "🤯 LobeHub - Super-Agents on Your Team. Add super-agents to the chats your team already uses.They take on work by themselves and get better every week.",
-  "stars": 85855,
+  "stars": 85919,
   "homepage": "https://lobehub.com",
   "language": "TypeScript",
   "defaultBranch": "canary",
-  "commit": "a0aa905b45714039a8b145ff43fd9d1983bf7687",
-  "generatedAt": "2026-11-19T16:45:03.250Z",
+  "commit": "a58ae9386e43b526f65f07a5056e3f81d1134222",
+  "generatedAt": "2026-11-20T16:26:00.651Z",
   "cliVersion": "0.8.26",
   "score": 95,
   "tier": "Great",
@@ -31,8 +31,8 @@
     }
   },
   "metrics": {
-    "componentCount": 5151,
-    "tokenCount": 10,
+    "componentCount": 5253,
+    "tokenCount": 14,
     "hardcodedValueCount": 36,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
@@ -77,7 +77,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 1,
-      "action": "Replace the hardcoded values in 24 of the 36 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 23 of the 36 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -93,7 +93,7 @@
     "samples": [
       {
         "file": "src/styles/global.css",
-        "line": 196,
+        "line": 211,
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "padding-block: 2px is a 2-3px optical adjustment"
@@ -255,9 +255,9 @@
     },
     {
       "component": "PageExplorerPlaceholder",
-      "location": "src/features/PageExplorer/PageExplorerPlaceholder.tsx:82",
+      "location": "src/features/PageExplorer/PageExplorerPlaceholder.tsx:83",
       "entries": [
-        "color: #fff (line 263)"
+        "color: #fff (line 264)"
       ]
     },
     {
@@ -286,9 +286,9 @@
     },
     {
       "component": "TaskDetailBodySkeleton",
-      "location": "src/features/AgentTasks/AgentTaskDetail/TaskDetailSkeleton.tsx:34",
+      "location": "src/features/AgentTasks/AgentTaskDetail/TaskDetailSkeleton.tsx:35",
       "entries": [
-        "padding: 12px (line 88)"
+        "padding: 12px (line 89)"
       ]
     },
     {
@@ -306,5 +306,5 @@
       ]
     }
   ],
-  "scanSeconds": 188
+  "scanSeconds": 185
 }

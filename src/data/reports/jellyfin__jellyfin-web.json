@@ -3,12 +3,12 @@
   "owner": "jellyfin",
   "name": "jellyfin-web",
   "description": "The Free Software Media System - Official Web Client",
-  "stars": 4000,
+  "stars": 4003,
   "homepage": "https://jellyfin.org",
   "language": "JavaScript",
   "defaultBranch": "master",
-  "commit": "fd07431ba7646b30b43e5e2a0d4bc0be8c7362ab",
-  "generatedAt": "2026-11-19T16:40:45.691Z",
+  "commit": "f8ece1f32bd4290a318f193fc0382ad4f9c2b21b",
+  "generatedAt": "2026-11-20T16:21:49.553Z",
   "cliVersion": "0.8.26",
   "score": 51,
   "tier": "OK",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 342,
+    "componentCount": 343,
     "tokenCount": 251,
-    "hardcodedValueCount": 83,
+    "hardcodedValueCount": 84,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 83,
+    "totalDriftCount": 84,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -66,13 +66,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 83 hardcoded values left to tokenize"
+    "Nearly there — just 84 hardcoded values left to tokenize"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 49,
-      "action": "Replace the hardcoded values in all 83 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in all 84 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -128,13 +128,13 @@
     ]
   },
   "driftSummary": {
-    "total": 83,
+    "total": 84,
     "critical": 0,
-    "warning": 45,
+    "warning": 46,
     "info": 38
   },
   "driftByType": {
-    "hardcoded-value": 83
+    "hardcoded-value": 84
   },
   "topColors": [
     {
@@ -143,7 +143,7 @@
     },
     {
       "value": "#00a4dc",
-      "count": 27
+      "count": 28
     },
     {
       "value": "#000",
@@ -335,5 +335,5 @@
       ]
     }
   ],
-  "scanSeconds": 12
+  "scanSeconds": 11
 }

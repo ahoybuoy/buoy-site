@@ -3,12 +3,12 @@
   "owner": "laurent22",
   "name": "joplin",
   "description": "Joplin - the privacy-focused note taking app with sync capabilities for Windows, macOS, Linux, Android and iOS.",
-  "stars": 57258,
+  "stars": 57261,
   "homepage": "https://joplinapp.org",
   "language": "TypeScript",
   "defaultBranch": "dev",
-  "commit": "b8c4cff78d87b208e483df6fe6586235dbdba504",
-  "generatedAt": "2026-11-19T16:41:41.324Z",
+  "commit": "268fd6f1e9769a072567754295b30f98be739c63",
+  "generatedAt": "2026-11-20T16:22:42.640Z",
   "cliVersion": "0.8.26",
   "score": 40,
   "tier": "OK",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 159,
+    "componentCount": 160,
     "tokenCount": 35,
-    "hardcodedValueCount": 65,
+    "hardcodedValueCount": 68,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 65,
+    "totalDriftCount": 68,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 6,
+    "notedCount": 7,
     "worstFile": {
       "path": "packages/pdf-viewer/ui/ZoomControls.tsx",
       "issueCount": 1
@@ -65,19 +65,19 @@
     ]
   },
   "suggestions": [
-    "65 hardcoded values to extract. Focus on packages/pdf-viewer/ui/ZoomControls.tsx (1 issues)"
+    "68 hardcoded values to extract. Focus on packages/pdf-viewer/ui/ZoomControls.tsx (1 issues)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in all 65 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in all 68 findings with tokens or scale steps"
     }
   ],
   "noted": {
-    "count": 6,
+    "count": 7,
     "byKind": {
-      "optical-nudge": 6
+      "optical-nudge": 7
     },
     "samples": [
       {
@@ -109,29 +109,29 @@
         "reason": "margin-top: 2px is a 2-3px optical adjustment"
       },
       {
+        "file": "packages/app-desktop/gui/styles/copyable-code.scss",
+        "line": 23,
+        "value": "3px",
+        "kind": "optical-nudge",
+        "reason": "margin-top: 3px is a 2-3px optical adjustment"
+      },
+      {
         "file": "packages/editor/ProseMirror/styles/link-tooltip.css",
         "line": 9,
         "value": "3px",
         "kind": "optical-nudge",
         "reason": "padding: 3px is a 2-3px optical adjustment"
-      },
-      {
-        "file": "packages/renderer/assets/katex/katex.css",
-        "line": 1,
-        "value": "-2px",
-        "kind": "optical-nudge",
-        "reason": "margin-right: -2px is a 2-3px optical adjustment"
       }
     ]
   },
   "driftSummary": {
-    "total": 65,
+    "total": 68,
     "critical": 0,
     "warning": 11,
-    "info": 54
+    "info": 57
   },
   "driftByType": {
-    "hardcoded-value": 65
+    "hardcoded-value": 68
   },
   "topColors": [
     {
@@ -169,12 +169,12 @@
   ],
   "topSpacing": [
     {
-      "value": "10px",
-      "count": 47
+      "value": "20px",
+      "count": 48
     },
     {
-      "value": "20px",
-      "count": 46
+      "value": "10px",
+      "count": 47
     },
     {
       "value": "5px",
@@ -342,5 +342,5 @@
       ]
     }
   ],
-  "scanSeconds": 20
+  "scanSeconds": 18
 }

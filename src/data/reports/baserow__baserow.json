@@ -3,12 +3,12 @@
   "owner": "baserow",
   "name": "baserow",
   "description": "Build databases, automations, apps & agents with AI — no code.  Open source platform available on cloud and self-hosted. GDPR, HIPAA, SOC 2 compliant. Best Airtable alternative.",
-  "stars": 6369,
+  "stars": 6371,
   "homepage": "https://baserow.io",
   "language": "Python",
   "defaultBranch": "develop",
-  "commit": "f39b526db697bbcba9c6e5883de342bafd8436c6",
-  "generatedAt": "2026-11-19T16:29:39.662Z",
+  "commit": "fc1131bc621c3d9b4154edde3251e32b71250a15",
+  "generatedAt": "2026-11-20T16:11:27.618Z",
   "cliVersion": "0.8.26",
   "score": null,
   "tier": "N/A",
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 0,
     "tokenCount": 56,
-    "hardcodedValueCount": 390,
+    "hardcodedValueCount": 392,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 390,
+    "totalDriftCount": 392,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 59,
+    "notedCount": 60,
     "topHardcodedColor": {
       "value": "#fff",
       "count": 1
@@ -69,9 +69,9 @@
   ],
   "pathTo100": null,
   "noted": {
-    "count": 59,
+    "count": 60,
     "byKind": {
-      "optical-nudge": 54,
+      "optical-nudge": 55,
       "explained": 5
     },
     "samples": [
@@ -120,13 +120,13 @@
     ]
   },
   "driftSummary": {
-    "total": 390,
+    "total": 392,
     "critical": 0,
-    "warning": 138,
+    "warning": 140,
     "info": 252
   },
   "driftByType": {
-    "hardcoded-value": 390
+    "hardcoded-value": 392
   },
   "topColors": [
     {
@@ -165,15 +165,15 @@
   "topSpacing": [
     {
       "value": "8px",
-      "count": 253
+      "count": 262
     },
     {
       "value": "12px",
-      "count": 182
+      "count": 188
     },
     {
       "value": "16px",
-      "count": 159
+      "count": 160
     },
     {
       "value": "10px",
@@ -185,11 +185,11 @@
     },
     {
       "value": "20px",
-      "count": 130
+      "count": 134
     },
     {
       "value": "6px",
-      "count": 103
+      "count": 104
     },
     {
       "value": "24px",
@@ -199,7 +199,7 @@
   "worstFiles": [
     {
       "file": "web-frontend/modules/core/assets/scss/components/agent_application.scss",
-      "count": 146
+      "count": 152
     },
     {
       "file": "web-frontend/modules/core/assets/scss/components/views/form.scss",
@@ -215,7 +215,7 @@
     },
     {
       "file": "web-frontend/modules/core/assets/scss/components/chat.scss",
-      "count": 55
+      "count": 57
     },
     {
       "file": "web-frontend/modules/core/assets/scss/components/agent_triggers.scss",
@@ -336,5 +336,5 @@
       ]
     }
   ],
-  "scanSeconds": 28
+  "scanSeconds": 24
 }

@@ -3,12 +3,12 @@
   "owner": "LibreChat-AI",
   "name": "LibreChat",
   "description": "Enhanced ChatGPT Clone: Features Agents, MCP, Skills, DeepSeek, Anthropic, AWS, OpenAI, Responses API, Azure, Groq, o1, GPT-5, Mistral, OpenRouter, Vertex AI, Gemini, Artifacts, AI model switching, message search, Code Interpreter, langchain, DALL-E-3, OpenAPI Actions, Functions, Secure Multi-User Auth, Presets, open-source for self-hosting. Active",
-  "stars": 47346,
+  "stars": 47366,
   "homepage": "https://librechat.ai/",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "d4e85d2205c78413ee27d631d7e3b7313556f21d",
-  "generatedAt": "2026-11-19T16:25:04.266Z",
+  "commit": "4700c44eb77c142b4f9f8b87476924f22890eb39",
+  "generatedAt": "2026-11-20T16:07:08.926Z",
   "cliVersion": "0.8.26",
   "score": 96,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1472,
+    "componentCount": 1493,
     "tokenCount": 639,
-    "hardcodedValueCount": 28,
+    "hardcodedValueCount": 29,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 29,
+    "totalDriftCount": 30,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 1,
     "orphanedComponentCount": 0,
@@ -67,13 +67,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 28 hardcoded values left to tokenize. packages/chat/src/components/messages/Feedback.tsx has the most (3)"
+    "Nearly there — just 29 hardcoded values left to tokenize. packages/chat/src/components/messages/Feedback.tsx has the most (3)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 4,
-      "action": "Replace the hardcoded values in 25 of the 28 findings with tokens or scale steps, and remove or reuse 1 unused component or repeated pattern"
+      "action": "Replace the hardcoded values in 26 of the 29 findings with tokens or scale steps, and remove or reuse 1 unused component or repeated pattern"
     }
   ],
   "noted": {
@@ -100,13 +100,13 @@
     ]
   },
   "driftSummary": {
-    "total": 29,
+    "total": 30,
     "critical": 0,
     "warning": 3,
-    "info": 26
+    "info": 27
   },
   "driftByType": {
-    "hardcoded-value": 28,
+    "hardcoded-value": 29,
     "repeated-pattern": 1
   },
   "topColors": [],
@@ -251,6 +251,13 @@
       ]
     },
     {
+      "component": "client/src/components/Chat/Session/Row.tsx",
+      "location": "client/src/components/Chat/Session/Row.tsx:204",
+      "entries": [
+        "ms-[2.125rem] (line 204)"
+      ]
+    },
+    {
       "component": "client/src/components/Nav/KeyboardShortcutsDialog.tsx",
       "location": "client/src/components/Nav/KeyboardShortcutsDialog.tsx:180",
       "entries": [
@@ -258,16 +265,7 @@
         "text-[11.5px] (line 291)",
         "text-[16px] (line 381)"
       ]
-    },
-    {
-      "component": "client/src/components/Nav/ShortcutRecorder.tsx",
-      "location": "client/src/components/Nav/ShortcutRecorder.tsx:191",
-      "entries": [
-        "text-[11.5px] (line 191)",
-        "text-[11.5px] (line 219)",
-        "text-[11.5px] (line 249)"
-      ]
     }
   ],
-  "scanSeconds": 44
+  "scanSeconds": 42
 }

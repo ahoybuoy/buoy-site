@@ -3,18 +3,18 @@
   "owner": "frappe",
   "name": "crm",
   "description": "Fully featured, open source CRM",
-  "stars": 4008,
+  "stars": 4012,
   "homepage": "https://frappe.io/crm",
   "language": "Vue",
   "defaultBranch": "develop",
-  "commit": "e5e73a3c92b760603531cb0a6dd6580fb3e5fefa",
-  "generatedAt": "2026-11-19T16:36:35.796Z",
+  "commit": "f9cfd5ed41c47be6cb49cb739f657dc0971c8aef",
+  "generatedAt": "2026-11-20T16:17:58.737Z",
   "cliVersion": "0.8.26",
-  "score": 79,
+  "score": 78,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 39,
+      "score": 38,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 438,
+    "componentCount": 439,
     "tokenCount": 19,
-    "hardcodedValueCount": 46,
+    "hardcodedValueCount": 48,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 46,
+    "totalDriftCount": 48,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -65,13 +65,13 @@
     "detectedFrameworkNames": []
   },
   "suggestions": [
-    "Nearly there — just 46 hardcoded values left to tokenize. frontend/src/components/Settings/WorkflowAutomations/WorkflowFlow.vue has the most (4)"
+    "Nearly there — just 48 hardcoded values left to tokenize. frontend/src/components/Settings/WorkflowAutomations/WorkflowFlow.vue has the most (4)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 21,
-      "action": "Replace the hardcoded values in 45 of the 46 findings with tokens or scale steps"
+      "points": 22,
+      "action": "Replace the hardcoded values in 47 of the 48 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -125,13 +125,13 @@
     ]
   },
   "driftSummary": {
-    "total": 46,
+    "total": 48,
     "critical": 0,
-    "warning": 5,
-    "info": 41
+    "warning": 6,
+    "info": 42
   },
   "driftByType": {
-    "hardcoded-value": 46
+    "hardcoded-value": 48
   },
   "topColors": [
     {
@@ -163,7 +163,7 @@
       "count": 2
     },
     {
-      "value": "oklch(0.967 0.045 91.733)",
+      "value": "#ff5f57",
       "count": 1
     }
   ],
@@ -174,7 +174,7 @@
     },
     {
       "value": "3px",
-      "count": 6
+      "count": 7
     },
     {
       "value": "8px",
@@ -223,15 +223,15 @@
       "count": 9
     },
     {
+      "file": "frontend/src/components/Setup/SetupPreview.vue",
+      "count": 8
+    },
+    {
       "file": "frontend/src/components/Settings/Sla/SlaHolidays.vue",
       "count": 8
     },
     {
       "file": "frontend/src/components/SidePanelLayout.vue",
-      "count": 6
-    },
-    {
-      "file": "frontend/src/components/Activities/AudioPlayer.vue",
       "count": 6
     }
   ],
@@ -327,5 +327,5 @@
       ]
     }
   ],
-  "scanSeconds": 14
+  "scanSeconds": 12
 }

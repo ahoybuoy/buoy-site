@@ -3,18 +3,18 @@
   "owner": "cline",
   "name": "cline",
   "description": "Autonomous coding agent as an SDK, IDE extension, or CLI assistant.",
-  "stars": 71768,
+  "stars": 71791,
   "homepage": "https://cline.bot",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "eff43e19b267e171f597ab03733bfed25090f72d",
-  "generatedAt": "2026-11-19T16:31:14.501Z",
+  "commit": "20b042723a14412f6c1e84230b008708534d6e8c",
+  "generatedAt": "2026-11-20T16:12:57.722Z",
   "cliVersion": "0.8.26",
-  "score": 76,
+  "score": 75,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 36,
+      "score": 35,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1084,
+    "componentCount": 1092,
     "tokenCount": 826,
-    "hardcodedValueCount": 137,
+    "hardcodedValueCount": 143,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 137,
+    "totalDriftCount": 143,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 5,
     "vendoredDriftCount": 7,
-    "notedCount": 10,
+    "notedCount": 12,
     "topHardcodedColor": {
       "value": "#fff",
       "count": 2
@@ -71,21 +71,21 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 130 hardcoded values left to tokenize. apps/vscode/webview-ui/src/components/settings/providers/OcaModelPicker.tsx has the most (4)",
+    "Nearly there — just 136 hardcoded values left to tokenize. apps/vscode/webview-ui/src/components/settings/providers/OcaModelPicker.tsx has the most (4)",
     "7 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code",
     "16 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 24,
-      "action": "Replace the hardcoded values in 128 of the 130 findings with tokens or scale steps"
+      "points": 25,
+      "action": "Replace the hardcoded values in 134 of the 136 findings with tokens or scale steps"
     }
   ],
   "noted": {
-    "count": 10,
+    "count": 12,
     "byKind": {
-      "optical-nudge": 6,
+      "optical-nudge": 8,
       "vendored": 4
     },
     "samples": [
@@ -134,13 +134,13 @@
     ]
   },
   "driftSummary": {
-    "total": 137,
+    "total": 143,
     "critical": 0,
-    "warning": 8,
-    "info": 129
+    "warning": 9,
+    "info": 134
   },
   "driftByType": {
-    "hardcoded-value": 137
+    "hardcoded-value": 143
   },
   "topColors": [
     {
@@ -183,31 +183,31 @@
     },
     {
       "value": "8px",
-      "count": 27
+      "count": 28
     },
     {
       "value": "5px",
       "count": 21
     },
     {
+      "value": "0.5rem",
+      "count": 18
+    },
+    {
       "value": "4px",
-      "count": 13
+      "count": 14
     },
     {
       "value": "6px",
-      "count": 12
+      "count": 13
     },
     {
       "value": "10px",
       "count": 11
     },
     {
-      "value": "0.5rem",
-      "count": 10
-    },
-    {
       "value": "0.25rem",
-      "count": 7
+      "count": 9
     }
   ],
   "worstFiles": [
@@ -341,5 +341,5 @@
       ]
     }
   ],
-  "scanSeconds": 31
+  "scanSeconds": 29
 }

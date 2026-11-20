@@ -3,12 +3,12 @@
   "owner": "SigNoz",
   "name": "signoz",
   "description": "SigNoz is an open-source, OpenTelemetry-native observability platform for your team and their AI agents. Get logs, metrics, and traces in one tool with features like APM, distributed tracing, log management, infra monitoring, etc. Combined with SigNoz MCP and a native AI teammate (in SigNoz Cloud) it helps you build more resilient apps.",
-  "stars": 32682,
+  "stars": 32691,
   "homepage": "https://signoz.io",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "a79ff07e77c8deea4360ad0868e15bc07430766f",
-  "generatedAt": "2026-11-19T16:26:52.345Z",
+  "commit": "c47aadb714f0250cbffd9bfbbd01acc7156888e6",
+  "generatedAt": "2026-11-20T16:08:52.859Z",
   "cliVersion": "0.8.26",
   "score": 20,
   "tier": "Bad",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1555,
+    "componentCount": 1561,
     "tokenCount": 0,
-    "hardcodedValueCount": 625,
+    "hardcodedValueCount": 605,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 625,
+    "totalDriftCount": 605,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 49,
+    "notedCount": 42,
     "topHardcodedColor": {
       "value": "#1890ff",
       "count": 4
@@ -66,14 +66,14 @@
     "detectedFrameworkNames": []
   },
   "suggestions": [
-    "625 hardcoded values to extract. Focus on frontend/src/components/QueryBuilderV2/QueryV2/QueryAggregation/QueryAggregationSelect.tsx (2 issues)",
+    "605 hardcoded values to extract. Focus on frontend/src/components/QueryBuilderV2/QueryV2/QueryAggregation/QueryAggregationSelect.tsx (2 issues)",
     "No design token system detected — add CSS custom properties or a utility framework like Tailwind"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 622 of the 625 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 602 of the 605 findings with tokens or scale steps"
     },
     {
       "pillar": "tokenHealth",
@@ -82,11 +82,11 @@
     }
   ],
   "noted": {
-    "count": 49,
+    "count": 42,
     "byKind": {
-      "optical-nudge": 46,
+      "optical-nudge": 38,
       "known-debt": 1,
-      "explained": 2
+      "explained": 3
     },
     "samples": [
       {
@@ -97,36 +97,36 @@
         "reason": "The dropdown portals to body; lift it above the query builder's antd popups (1050) so it stays clickable, incl. inside …"
       },
       {
+        "file": "frontend/src/pages/DashboardPage/DashboardContainer/PanelsAndSectionsLayout/Panel/PanelTypeSelectionModal/components/PanelTypeTile/PanelTypeTile.module.scss",
+        "line": 58,
+        "value": "-3px",
+        "kind": "explained",
+        "reason": "Taller than the 13px title; overhanging keeps badged tiles aligned with the rest."
+      },
+      {
         "file": "frontend/src/pages/TraceDetailsV3/SpanDetailsPanel/SpanDetailsPanel.module.scss",
-        "line": 56,
+        "line": 55,
         "value": "0 12px",
         "kind": "explained",
         "reason": "Inset to match panelBody's 12px padding so the border-top aligns with the content edges instead of bleeding to the pane…"
       },
       {
         "file": "frontend/src/pages/TraceDetailsV3/TraceWaterfall/TraceWaterfallStates/Success/Success.module.scss",
-        "line": 261,
+        "line": 256,
         "value": "0 15px",
         "kind": "explained",
         "reason": "Match timelineHeader's 15px padding so bars align with ticks"
       },
       {
         "file": "frontend/src/components/AppLoading/AppLoading.styles.scss",
-        "line": 56,
+        "line": 54,
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "margin: 2px is a 2-3px optical adjustment"
       },
       {
-        "file": "frontend/src/components/ErrorModal/ErrorModal.styles.scss",
-        "line": 9,
-        "value": "3px",
-        "kind": "optical-nudge",
-        "reason": "padding-left: 3px is a 2-3px optical adjustment"
-      },
-      {
         "file": "frontend/src/components/ListFilter/FilterZone/FilterZone.module.scss",
-        "line": 33,
+        "line": 29,
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "margin-right: 2px is a 2-3px optical adjustment"
@@ -134,13 +134,13 @@
     ]
   },
   "driftSummary": {
-    "total": 625,
+    "total": 605,
     "critical": 0,
     "warning": 33,
-    "info": 592
+    "info": 572
   },
   "driftByType": {
-    "hardcoded-value": 625
+    "hardcoded-value": 605
   },
   "topColors": [
     {
@@ -179,69 +179,69 @@
   "topSpacing": [
     {
       "value": "8px",
-      "count": 786
+      "count": 740
     },
     {
       "value": "16px",
-      "count": 368
-    },
-    {
-      "value": "4px",
-      "count": 302
+      "count": 356
     },
     {
       "value": "12px",
-      "count": 301
+      "count": 295
+    },
+    {
+      "value": "4px",
+      "count": 287
     },
     {
       "value": "6px",
-      "count": 208
-    },
-    {
-      "value": "10px",
-      "count": 129
+      "count": 195
     },
     {
       "value": "24px",
-      "count": 125
+      "count": 122
+    },
+    {
+      "value": "10px",
+      "count": 119
     },
     {
       "value": "20px",
-      "count": 45
+      "count": 44
     }
   ],
   "worstFiles": [
     {
       "file": "frontend/src/container/OnboardingV2Container/OnboardingV2.styles.scss",
-      "count": 170
-    },
-    {
-      "file": "frontend/src/container/ApiMonitoring/Explorer/Domains/DomainDetails/DomainDetails.styles.scss",
-      "count": 133
+      "count": 121
     },
     {
       "file": "frontend/src/container/IngestionSettings/IngestionSettings.styles.scss",
-      "count": 126
+      "count": 111
     },
     {
-      "file": "frontend/src/container/Home/Home.styles.scss",
-      "count": 115
-    },
-    {
-      "file": "frontend/src/container/Integrations/IntegrationDetailPage/IntegrationDetailPage.styles.scss",
-      "count": 113
+      "file": "frontend/src/container/ApiMonitoring/Explorer/Domains/DomainDetails/DomainDetails.styles.scss",
+      "count": 108
     },
     {
       "file": "frontend/src/components/NewSelect/styles.scss",
-      "count": 104
+      "count": 101
     },
     {
-      "file": "frontend/src/container/SideNav/SideNav.styles.scss",
+      "file": "frontend/src/container/Home/Home.styles.scss",
       "count": 100
     },
     {
-      "file": "frontend/src/container/Integrations/CloudIntegration/ServiceTabs/ServicesTabs.style.scss",
-      "count": 81
+      "file": "frontend/src/container/Integrations/IntegrationDetailPage/IntegrationDetailPage.styles.scss",
+      "count": 93
+    },
+    {
+      "file": "frontend/src/container/SideNav/SideNav.styles.scss",
+      "count": 92
+    },
+    {
+      "file": "frontend/src/components/QueryBuilderV2/QueryV2/QuerySearch/QuerySearch.styles.scss",
+      "count": 79
     }
   ],
   "samples": [
@@ -256,21 +256,21 @@
       "component": "ChangelogModal",
       "location": "frontend/src/components/ChangelogModal/ChangelogModal.tsx:24",
       "entries": [
-        "gap: 4px (line 120)"
+        "gap: 4px (line 124)"
       ]
     },
     {
       "component": "BillingContainer",
-      "location": "frontend/src/container/BillingContainer/BillingContainer.tsx:135",
+      "location": "frontend/src/container/BillingContainer/BillingContainer.tsx:141",
       "entries": [
-        "marginTop: 10px (line 288)"
+        "marginTop: 10px (line 294)"
       ]
     },
     {
       "component": "QuerySection",
       "location": "frontend/src/container/FormAlertRules/QuerySection.tsx:32",
       "entries": [
-        "gap: 1rem (line 225)"
+        "gap: 1rem (line 274)"
       ]
     },
     {
@@ -305,7 +305,7 @@
       "component": "WidgetHeader",
       "location": "frontend/src/container/WidgetCard/Header/index.tsx:76",
       "entries": [
-        "paddingRight: 0.25rem (line 274)"
+        "paddingRight: 0.25rem (line 280)"
       ]
     },
     {
@@ -330,5 +330,5 @@
       ]
     }
   ],
-  "scanSeconds": 41
+  "scanSeconds": 39
 }

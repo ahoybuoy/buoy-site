@@ -3,12 +3,12 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source AI engineering platform: AI Gateway, agent observability, evals, and prompt/skill management, built on OpenTelemetry. One open platform for every AI call and every agent. Self-host or use Langfuse Cloud.",
-  "stars": 37635,
+  "stars": 37673,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "41bb4d2195eb3e6f40a095b01b418df8f08a7498",
-  "generatedAt": "2026-11-19T16:19:53.523Z",
+  "commit": "be7e6767f96b1c09e9f79355703f4b597ef19e1d",
+  "generatedAt": "2026-11-20T16:02:14.389Z",
   "cliVersion": "0.8.26",
   "score": 94,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2637,
+    "componentCount": 2652,
     "tokenCount": 361,
-    "hardcodedValueCount": 76,
+    "hardcodedValueCount": 77,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 76,
+    "totalDriftCount": 77,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -70,13 +70,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 76 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/SimpleMultiSectionViewer.tsx has the most (2)"
+    "Nearly there — just 77 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/SimpleMultiSectionViewer.tsx has the most (2)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 6,
-      "action": "Replace the hardcoded values in 70 of the 76 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 71 of the 77 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -123,13 +123,13 @@
     ]
   },
   "driftSummary": {
-    "total": 76,
+    "total": 77,
     "critical": 0,
     "warning": 4,
-    "info": 72
+    "info": 73
   },
   "driftByType": {
-    "hardcoded-value": 76
+    "hardcoded-value": 77
   },
   "topColors": [
     {
@@ -299,5 +299,5 @@
       ]
     }
   ],
-  "scanSeconds": 96
+  "scanSeconds": 95
 }
