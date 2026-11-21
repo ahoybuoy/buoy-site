@@ -3,18 +3,18 @@
   "owner": "posthog",
   "name": "posthog",
   "description": ":hedgehog: PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.",
-  "stars": 40987,
+  "stars": 40998,
   "homepage": "https://posthog.com",
   "language": "Python",
   "defaultBranch": "master",
-  "commit": "573ed146815aacdd3a724ca1900738d8de7fa1b1",
-  "generatedAt": "2026-11-20T16:00:35.868Z",
+  "commit": "544c54d4e7303321a20835ce19cc6d7255f998c8",
+  "generatedAt": "2026-11-21T15:05:48.014Z",
   "cliVersion": "0.8.26",
-  "score": 79,
-  "tier": "Good",
+  "score": 80,
+  "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 47,
+      "score": 48,
       "max": 60
     },
     "tokenHealth": {
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 5987,
+    "componentCount": 6367,
     "tokenCount": 684,
     "hardcodedValueCount": 377,
     "unusedTokenCount": 0,
@@ -78,8 +78,8 @@
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 13,
-      "action": "Replace the hardcoded values in 363 of the 377 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "points": 12,
+      "action": "Replace the hardcoded values in 362 of the 377 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -228,7 +228,7 @@
     },
     {
       "file": "frontend/src/scenes/project-homepage/today/Today.scss",
-      "count": 93
+      "count": 95
     },
     {
       "file": "frontend/src/lib/components/DotMatrix/DotMatrix.scss",
@@ -252,21 +252,6 @@
     }
   ],
   "samples": [
-    {
-      "component": "GlobalShortcuts",
-      "location": "frontend/src/layout/GlobalShortcuts.tsx:26",
-      "entries": [
-        "backgroundColor: rgba(255,255,255,0.15) (line 187)",
-        "color: #5dde5d (line 203)"
-      ]
-    },
-    {
-      "component": "GlobalShortcuts",
-      "location": "frontend/src/layout/GlobalShortcuts.tsx:26",
-      "entries": [
-        "fontSize: 0.8125rem (line 204)"
-      ]
-    },
     {
       "component": "KeyAndProps",
       "location": "frontend/src/lib/KeaDevTools.tsx:470",
@@ -331,6 +316,21 @@
       ]
     },
     {
+      "component": "HesoyamClaimedToast",
+      "location": "frontend/src/lib/components/CheatCodes/HesoyamClaimedToast.tsx:1",
+      "entries": [
+        "backgroundColor: rgba(255,255,255,0.15) (line 20)",
+        "color: #5dde5d (line 36)"
+      ]
+    },
+    {
+      "component": "HesoyamClaimedToast",
+      "location": "frontend/src/lib/components/CheatCodes/HesoyamClaimedToast.tsx:1",
+      "entries": [
+        "fontSize: 0.8125rem (line 37)"
+      ]
+    },
+    {
       "component": "DefinitionEdit",
       "location": "frontend/src/lib/components/DefinitionPopover/DefinitionPopoverContents.tsx:606",
       "entries": [
@@ -345,5 +345,5 @@
       ]
     }
   ],
-  "scanSeconds": 257
+  "scanSeconds": 188
 }

@@ -3,12 +3,12 @@
   "owner": "windmill-labs",
   "name": "windmill",
   "description": "Code-first platform for workflows, apps and AI agents, on the fastest self-hostable orchestrator (benchmarked against Airflow, Prefect and Temporal). Business teams build with AI, engineers control what ships. Open-source alternative to Lovable, Retool and n8n.",
-  "stars": 18649,
+  "stars": 18667,
   "homepage": "https://windmill.dev",
   "language": "Rust",
   "defaultBranch": "main",
-  "commit": "6ec19f0fe514e78552f766cb4d0205ce09810c82",
-  "generatedAt": "2026-11-20T16:36:16.556Z",
+  "commit": "443f41283ebcb6b80caa86051c5464d20d94e906",
+  "generatedAt": "2026-11-21T15:32:50.082Z",
   "cliVersion": "0.8.26",
   "score": 86,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2027,
+    "componentCount": 2028,
     "tokenCount": 421,
-    "hardcodedValueCount": 104,
+    "hardcodedValueCount": 105,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 108,
+    "totalDriftCount": 109,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -66,14 +66,14 @@
     "detectedFrameworkNames": []
   },
   "suggestions": [
-    "Nearly there — just 104 hardcoded values left to tokenize. frontend/src/lib/components/flows/propPicker/OutputPickerInner.svelte has the most (3)",
+    "Nearly there — just 105 hardcoded values left to tokenize. frontend/src/lib/components/flows/propPicker/OutputPickerInner.svelte has the most (3)",
     "4 deprecated patterns — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 10,
-      "action": "Replace the hardcoded values in 99 of the 104 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 100 of the 105 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -132,14 +132,14 @@
     ]
   },
   "driftSummary": {
-    "total": 108,
+    "total": 109,
     "critical": 0,
     "warning": 30,
-    "info": 78
+    "info": 79
   },
   "driftByType": {
     "deprecated-pattern": 4,
-    "hardcoded-value": 104
+    "hardcoded-value": 105
   },
   "topColors": [
     {
@@ -335,5 +335,5 @@
       ]
     }
   ],
-  "scanSeconds": 62
+  "scanSeconds": 46
 }

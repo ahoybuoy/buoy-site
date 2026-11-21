@@ -7,8 +7,8 @@
   "homepage": "https://openstatus.dev",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "2191a9d017ba101a75e2adac8edca3cb70c6ae4b",
-  "generatedAt": "2026-11-20T16:30:19.248Z",
+  "commit": "e2584cef67b25f8620e866b4673025d4d7abe765",
+  "generatedAt": "2026-11-21T15:28:22.054Z",
   "cliVersion": "0.8.26",
   "score": 93,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1678,
+    "componentCount": 1682,
     "tokenCount": 146,
-    "hardcodedValueCount": 76,
+    "hardcodedValueCount": 75,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 76,
+    "totalDriftCount": 75,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -66,14 +66,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 61 hardcoded values left to tokenize. apps/dashboard/src/components/data-table/response-logs/regions/columns.tsx has the most (2)",
+    "Nearly there — just 60 hardcoded values left to tokenize. apps/dashboard/src/components/data-table/response-logs/regions/columns.tsx has the most (2)",
     "15 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 7,
-      "action": "Replace the hardcoded values in 57 of the 61 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 56 of the 60 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -106,13 +106,13 @@
     ]
   },
   "driftSummary": {
-    "total": 76,
+    "total": 75,
     "critical": 0,
     "warning": 0,
-    "info": 76
+    "info": 75
   },
   "driftByType": {
-    "hardcoded-value": 76
+    "hardcoded-value": 75
   },
   "topColors": [],
   "topSpacing": [
@@ -270,5 +270,5 @@
       ]
     }
   ],
-  "scanSeconds": 45
+  "scanSeconds": 32
 }

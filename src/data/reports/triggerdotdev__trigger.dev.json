@@ -3,18 +3,18 @@
   "owner": "triggerdotdev",
   "name": "trigger.dev",
   "description": "Trigger.dev – build and deploy durable AI agents and workflows",
-  "stars": 16791,
+  "stars": 16800,
   "homepage": "https://trigger.dev/changelog",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "3b0ec9873bc5c4087588728bf187450ebffdaaf4",
-  "generatedAt": "2026-11-20T16:03:03.044Z",
+  "commit": "145b71b377bf7565eb4068f33b5b528ae073f1de",
+  "generatedAt": "2026-11-21T15:07:38.627Z",
   "cliVersion": "0.8.26",
-  "score": 91,
+  "score": 90,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 51,
+      "score": 50,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2122,
+    "componentCount": 2287,
     "tokenCount": 276,
-    "hardcodedValueCount": 99,
+    "hardcodedValueCount": 110,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 99,
+    "totalDriftCount": 110,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -72,13 +72,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 99 hardcoded values left to tokenize. apps/webapp/app/components/alerts/ChartLegend.tsx has the most (2)"
+    "Nearly there — just 110 hardcoded values left to tokenize. apps/webapp/app/components/alerts/ChartLegend.tsx has the most (2)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 9,
-      "action": "Replace the hardcoded values in 94 of the 99 findings with tokens or scale steps"
+      "points": 10,
+      "action": "Replace the hardcoded values in 105 of the 110 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -96,7 +96,7 @@
       },
       {
         "file": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.concurrency/route.tsx",
-        "line": 2322,
+        "line": 2307,
         "value": "pb-[3px]",
         "kind": "optical-nudge",
         "reason": "pb-[3px] is a 2-3px optical adjustment"
@@ -104,13 +104,13 @@
     ]
   },
   "driftSummary": {
-    "total": 99,
+    "total": 110,
     "critical": 0,
     "warning": 12,
-    "info": 87
+    "info": 98
   },
   "driftByType": {
-    "hardcoded-value": 99
+    "hardcoded-value": 110
   },
   "topColors": [
     {
@@ -156,12 +156,12 @@
       "count": 7
     },
     {
-      "value": "0.13rem",
-      "count": 3
+      "value": "3px",
+      "count": 4
     },
     {
-      "value": "3px",
-      "count": 2
+      "value": "0.13rem",
+      "count": 3
     },
     {
       "value": "6px",
@@ -190,6 +190,10 @@
       "count": 6
     },
     {
+      "file": "apps/webapp/app/components/primitives/detail/DetailPage.tsx",
+      "count": 6
+    },
+    {
       "file": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.playground.$agentParam/route.tsx",
       "count": 6
     },
@@ -208,18 +212,14 @@
     {
       "file": "apps/webapp/app/components/navigation/EnvironmentSelector.tsx",
       "count": 4
-    },
-    {
-      "file": "apps/webapp/app/components/navigation/SideMenuItem.tsx",
-      "count": 4
     }
   ],
   "samples": [
     {
       "component": "DashboardAgent",
-      "location": "apps/webapp/app/components/dashboard-agent/DashboardAgent.tsx:52",
+      "location": "apps/webapp/app/components/dashboard-agent/DashboardAgent.tsx:57",
       "entries": [
-        "size: 3px (line 386)"
+        "size: 3px (line 391)"
       ]
     },
     {
@@ -230,10 +230,10 @@
       ]
     },
     {
-      "component": "Page",
-      "location": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.agents.$agentParam/route.tsx:212",
+      "component": "SessionsBand",
+      "location": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.agents.$agentParam/route.tsx:328",
       "entries": [
-        "color: #14B8A6 (line 310)"
+        "color: #14B8A6 (line 382)"
       ]
     },
     {
@@ -300,5 +300,5 @@
       ]
     }
   ],
-  "scanSeconds": 48
+  "scanSeconds": 37
 }
