@@ -3,12 +3,12 @@
   "owner": "openstatusHQ",
   "name": "openstatus",
   "description": "Open-source status page, incident response and uptime monitoring",
-  "stars": 9276,
+  "stars": 9278,
   "homepage": "https://openstatus.dev",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "e2584cef67b25f8620e866b4673025d4d7abe765",
-  "generatedAt": "2026-11-21T15:28:22.054Z",
+  "commit": "090709ad0a4c838215c321cf3d0cb76447cd4b5d",
+  "generatedAt": "2026-11-22T15:37:09.970Z",
   "cliVersion": "0.8.26",
   "score": 93,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1682,
+    "componentCount": 1703,
     "tokenCount": 146,
-    "hardcodedValueCount": 75,
+    "hardcodedValueCount": 76,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 75,
+    "totalDriftCount": 76,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -66,14 +66,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 60 hardcoded values left to tokenize. apps/dashboard/src/components/data-table/response-logs/regions/columns.tsx has the most (2)",
+    "Nearly there — just 61 hardcoded values left to tokenize. apps/dashboard/src/components/data-table/response-logs/regions/columns.tsx has the most (2)",
     "15 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 7,
-      "action": "Replace the hardcoded values in 56 of the 60 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 57 of the 61 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -91,7 +91,7 @@
       },
       {
         "file": "apps/dashboard/src/components/content/activity-calendar.tsx",
-        "line": 204,
+        "line": 206,
         "value": "p-[3px]",
         "kind": "optical-nudge",
         "reason": "p-[3px] is a 2-3px optical adjustment"
@@ -106,13 +106,13 @@
     ]
   },
   "driftSummary": {
-    "total": 75,
+    "total": 76,
     "critical": 0,
     "warning": 0,
-    "info": 75
+    "info": 76
   },
   "driftByType": {
-    "hardcoded-value": 75
+    "hardcoded-value": 76
   },
   "topColors": [],
   "topSpacing": [
@@ -204,9 +204,9 @@
     },
     {
       "component": "apps/dashboard/src/components/common/entity-ref/entity-ref.tsx",
-      "location": "apps/dashboard/src/components/common/entity-ref/entity-ref.tsx:64",
+      "location": "apps/dashboard/src/components/common/entity-ref/entity-ref.tsx:68",
       "entries": [
-        "focus-visible:ring-[3px] (line 64)"
+        "focus-visible:ring-[3px] (line 68)"
       ]
     },
     {
@@ -270,5 +270,5 @@
       ]
     }
   ],
-  "scanSeconds": 32
+  "scanSeconds": 46
 }

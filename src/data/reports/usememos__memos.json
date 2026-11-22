@@ -3,18 +3,18 @@
   "owner": "usememos",
   "name": "memos",
   "description": "Memos is an open-source, self-hosted note-taking app that brings your everyday thoughts together in a personal timeline. Your data stays yours, and you choose what to keep private or share.",
-  "stars": 64610,
+  "stars": 64640,
   "homepage": "https://usememos.com",
   "language": "Go",
   "defaultBranch": "main",
-  "commit": "f4c95effd686395cb4f6f3230a816ad5a1b40475",
-  "generatedAt": "2026-11-21T15:31:55.792Z",
+  "commit": "00fcd170281a75fc0e95ec4f2f54f43d32fe81bd",
+  "generatedAt": "2026-11-22T15:41:59.832Z",
   "cliVersion": "0.8.26",
-  "score": 85,
+  "score": 84,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 45,
+      "score": 44,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 328,
+    "componentCount": 330,
     "tokenCount": 3,
-    "hardcodedValueCount": 25,
+    "hardcodedValueCount": 26,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 25,
+    "totalDriftCount": 26,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -63,13 +63,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 25 hardcoded values left to tokenize. web/src/components/AttachmentLibrary/AttachmentMediaGrid.tsx has the most (2)"
+    "Nearly there — just 26 hardcoded values left to tokenize. web/src/components/AttachmentLibrary/AttachmentMediaGrid.tsx has the most (2)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 15,
-      "action": "Replace the hardcoded values in all 25 findings with tokens or scale steps"
+      "points": 16,
+      "action": "Replace the hardcoded values in all 26 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -87,7 +87,7 @@
       },
       {
         "file": "web/src/components/CalendarView/CalendarDayCell.tsx",
-        "line": 95,
+        "line": 97,
         "value": "p-[3px]",
         "kind": "optical-nudge",
         "reason": "p-[3px] is a 2-3px optical adjustment"
@@ -95,22 +95,34 @@
     ]
   },
   "driftSummary": {
-    "total": 25,
+    "total": 26,
     "critical": 0,
     "warning": 0,
-    "info": 25
+    "info": 26
   },
   "driftByType": {
-    "hardcoded-value": 25
+    "hardcoded-value": 26
   },
   "topColors": [],
   "topSpacing": [
+    {
+      "value": "7px",
+      "count": 2
+    },
     {
       "value": "5px",
       "count": 1
     },
     {
       "value": "3px",
+      "count": 1
+    },
+    {
+      "value": "9px",
+      "count": 1
+    },
+    {
+      "value": "13px",
       "count": 1
     },
     {
@@ -123,18 +135,6 @@
     },
     {
       "value": "26rem",
-      "count": 1
-    },
-    {
-      "value": "22rem",
-      "count": 1
-    },
-    {
-      "value": "7px",
-      "count": 1
-    },
-    {
-      "value": "22px",
       "count": 1
     }
   ],
@@ -160,16 +160,16 @@
       "count": 3
     },
     {
+      "file": "web/src/components/CalendarView/CalendarGrid.tsx",
+      "count": 3
+    },
+    {
       "file": "web/src/components/IdentityLabel.tsx",
       "count": 3
     },
     {
       "file": "web/src/components/PreviewImageDialog.tsx",
       "count": 3
-    },
-    {
-      "file": "web/src/components/AttachmentLibrary/AttachmentMediaGrid.tsx",
-      "count": 2
     }
   ],
   "samples": [
@@ -212,18 +212,27 @@
     },
     {
       "component": "web/src/components/CalendarView/CalendarDayCell.tsx",
-      "location": "web/src/components/CalendarView/CalendarDayCell.tsx:91",
+      "location": "web/src/components/CalendarView/CalendarDayCell.tsx:93",
       "entries": [
-        "px-[5px] (line 91)",
-        "gap-[3px] (line 148)"
+        "px-[5px] (line 93)",
+        "gap-[3px] (line 150)"
       ]
     },
     {
       "component": "web/src/components/CalendarView/CalendarDayCell.tsx",
-      "location": "web/src/components/CalendarView/CalendarDayCell.tsx:95",
+      "location": "web/src/components/CalendarView/CalendarDayCell.tsx:97",
       "entries": [
-        "rounded-[9px] (line 95)",
-        "rounded-[3px] (line 132)"
+        "rounded-[9px] (line 97)",
+        "rounded-[3px] (line 134)"
+      ]
+    },
+    {
+      "component": "web/src/components/CalendarView/CalendarGrid.tsx",
+      "location": "web/src/components/CalendarView/CalendarGrid.tsx:113",
+      "entries": [
+        "ps-[7px] (line 113)",
+        "sm:ps-[9px] (line 113)",
+        "sm:ps-[13px] (line 113)"
       ]
     },
     {
@@ -258,14 +267,7 @@
       "entries": [
         "sm:text-[15px] (line 48)"
       ]
-    },
-    {
-      "component": "web/src/components/MemoEditor/edit/Toolbar/AudienceMenu.tsx",
-      "location": "web/src/components/MemoEditor/edit/Toolbar/AudienceMenu.tsx:92",
-      "entries": [
-        "rounded-[5px] (line 92)"
-      ]
     }
   ],
-  "scanSeconds": 8
+  "scanSeconds": 10
 }

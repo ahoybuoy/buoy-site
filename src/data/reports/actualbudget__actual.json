@@ -3,12 +3,12 @@
   "owner": "actualbudget",
   "name": "actual",
   "description": "A local-first personal finance app",
-  "stars": 30382,
+  "stars": 30400,
   "homepage": "https://actualbudget.org",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "290c6da62fd6f64d0ee0e1ee851c1a26e7bd86d1",
-  "generatedAt": "2026-11-21T15:13:25.108Z",
+  "commit": "6aa9dba614c8ea1799b926acfddd2245189e49b7",
+  "generatedAt": "2026-11-22T15:16:58.912Z",
   "cliVersion": "0.8.26",
   "score": 91,
   "tier": "Great",
@@ -31,8 +31,8 @@
     }
   },
   "metrics": {
-    "componentCount": 1355,
-    "tokenCount": 25,
+    "componentCount": 1356,
+    "tokenCount": 27,
     "hardcodedValueCount": 62,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
@@ -110,8 +110,8 @@
   "driftSummary": {
     "total": 62,
     "critical": 0,
-    "warning": 8,
-    "info": 54
+    "warning": 9,
+    "info": 53
   },
   "driftByType": {
     "hardcoded-value": 62
@@ -221,17 +221,17 @@
   "samples": [
     {
       "component": "ColorSwatchPicker",
-      "location": "packages/component-library/src/ColorPicker.tsx:85",
+      "location": "packages/component-library/src/ColorPicker.tsx:86",
       "entries": [
-        "gap: 8px (line 133)"
+        "gap: 8px (line 136)"
       ]
     },
     {
       "component": "ColorPicker",
-      "location": "packages/component-library/src/ColorPicker.tsx:152",
+      "location": "packages/component-library/src/ColorPicker.tsx:155",
       "entries": [
-        "padding: 15px (line 177)",
-        "gap: 8px (line 180)"
+        "padding: 15px (line 180)",
+        "gap: 8px (line 183)"
       ]
     },
     {
@@ -245,7 +245,7 @@
       "component": "Notification",
       "location": "packages/desktop-client/src/components/Notifications.tsx:91",
       "entries": [
-        "backgroundColor: rgba(0, 0, 0, .05) (line 336)"
+        "backgroundColor: rgba(0, 0, 0, .05) (line 337)"
       ]
     },
     {
@@ -298,19 +298,19 @@
     },
     {
       "component": "ReconcileMenu",
-      "location": "packages/desktop-client/src/components/accounts/Reconcile.tsx:130",
+      "location": "packages/desktop-client/src/components/accounts/Reconcile.tsx:131",
       "entries": [
-        "marginTop: 8px (line 211)"
+        "marginTop: 8px (line 220)"
       ]
     },
     {
       "component": "NearbyPayeeItem",
-      "location": "packages/desktop-client/src/components/autocomplete/PayeeAutocomplete.tsx:809",
+      "location": "packages/desktop-client/src/components/autocomplete/PayeeAutocomplete.tsx:815",
       "entries": [
-        "fontSize: 10px (line 896)",
-        "fontSize: 11px (line 915)"
+        "fontSize: 10px (line 902)",
+        "fontSize: 11px (line 921)"
       ]
     }
   ],
-  "scanSeconds": 18
+  "scanSeconds": 24
 }
