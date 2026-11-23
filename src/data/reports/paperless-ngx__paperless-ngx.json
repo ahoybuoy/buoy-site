@@ -3,12 +3,12 @@
   "owner": "paperless-ngx",
   "name": "paperless-ngx",
   "description": "A community-supported supercharged document management system: scan, index and archive all your documents",
-  "stars": 48485,
+  "stars": 48532,
   "homepage": "http://docs.paperless-ngx.com/",
   "language": "Python",
   "defaultBranch": "dev",
-  "commit": "4973be8499bc61dc4f791a609d0d31e9ac9ccd41",
-  "generatedAt": "2026-11-22T15:37:18.221Z",
+  "commit": "0399008fb7629c9f5acf3c7495e185b2bd62a81b",
+  "generatedAt": "2026-11-23T19:12:58.426Z",
   "cliVersion": "0.8.26",
   "score": null,
   "tier": "N/A",
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 0,
     "tokenCount": 542,
-    "hardcodedValueCount": 33,
+    "hardcodedValueCount": 34,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 33,
+    "totalDriftCount": 34,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -115,13 +115,13 @@
     ]
   },
   "driftSummary": {
-    "total": 33,
+    "total": 34,
     "critical": 0,
-    "warning": 26,
+    "warning": 27,
     "info": 7
   },
   "driftByType": {
-    "hardcoded-value": 33
+    "hardcoded-value": 34
   },
   "topColors": [
     {
@@ -164,14 +164,18 @@
     },
     {
       "value": "1rem",
-      "count": 6
+      "count": 8
+    },
+    {
+      "value": "0.25rem",
+      "count": 7
     },
     {
       "value": "-0.5rem",
       "count": 6
     },
     {
-      "value": "0.25rem",
+      "value": "0.75rem",
       "count": 5
     },
     {
@@ -183,10 +187,6 @@
       "count": 3
     },
     {
-      "value": "0.75rem",
-      "count": 3
-    },
-    {
       "value": "12px",
       "count": 2
     }
@@ -194,11 +194,15 @@
   "worstFiles": [
     {
       "file": "src-ui/src/styles.scss",
-      "count": 30
+      "count": 31
     },
     {
       "file": "src-ui/src/app/components/app-frame/app-frame.component.scss",
       "count": 26
+    },
+    {
+      "file": "src-ui/src/app/components/common/release-notes-dialog/release-notes-dialog.component.scss",
+      "count": 13
     },
     {
       "file": "src/paperless_mail/templates/output.css",
@@ -219,10 +223,6 @@
     {
       "file": "src-ui/src/app/components/document-list/document-card-large/document-card-large.component.scss",
       "count": 5
-    },
-    {
-      "file": "src-ui/src/app/components/common/pdf-viewer/pdf-viewer.component.scss",
-      "count": 4
     }
   ],
   "samples": [
@@ -320,9 +320,9 @@
       "location": "src-ui/src/app/components/common/input/tags/tags.component.scss:7",
       "entries": [
         "font size: 1rem (line 7)",
-        "font size: 1rem (line 29)"
+        "font size: 1rem (line 44)"
       ]
     }
   ],
-  "scanSeconds": 8
+  "scanSeconds": 6
 }

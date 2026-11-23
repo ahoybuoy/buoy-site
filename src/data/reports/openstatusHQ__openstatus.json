@@ -3,12 +3,12 @@
   "owner": "openstatusHQ",
   "name": "openstatus",
   "description": "Open-source status page, incident response and uptime monitoring",
-  "stars": 9278,
+  "stars": 9281,
   "homepage": "https://openstatus.dev",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "090709ad0a4c838215c321cf3d0cb76447cd4b5d",
-  "generatedAt": "2026-11-22T15:37:09.970Z",
+  "commit": "3836510556f349550ae6a1e2c67a70eeeb001f74",
+  "generatedAt": "2026-11-23T19:12:51.702Z",
   "cliVersion": "0.8.26",
   "score": 93,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1703,
+    "componentCount": 1710,
     "tokenCount": 146,
-    "hardcodedValueCount": 76,
+    "hardcodedValueCount": 79,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 76,
+    "totalDriftCount": 79,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -66,14 +66,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 61 hardcoded values left to tokenize. apps/dashboard/src/components/data-table/response-logs/regions/columns.tsx has the most (2)",
+    "Nearly there — just 64 hardcoded values left to tokenize. apps/dashboard/src/components/data-table/response-logs/regions/columns.tsx has the most (2)",
     "15 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 7,
-      "action": "Replace the hardcoded values in 57 of the 61 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 60 of the 64 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -106,13 +106,13 @@
     ]
   },
   "driftSummary": {
-    "total": 76,
+    "total": 79,
     "critical": 0,
     "warning": 0,
-    "info": 76
+    "info": 79
   },
   "driftByType": {
-    "hardcoded-value": 76
+    "hardcoded-value": 79
   },
   "topColors": [],
   "topSpacing": [
@@ -167,15 +167,15 @@
       "count": 3
     },
     {
+      "file": "apps/dashboard/src/components/status-page-history/history-item-row.tsx",
+      "count": 3
+    },
+    {
       "file": "apps/status-page/src/app/(public)/client.tsx",
       "count": 3
     },
     {
       "file": "apps/status-page/src/app/(status-page)/[domain]/[locale]/(public)/monitors/[id]/page.tsx",
-      "count": 3
-    },
-    {
-      "file": "packages/ui/src/components/blocks/status-events.tsx",
       "count": 3
     }
   ],
@@ -259,7 +259,7 @@
       "entries": [
         "focus-visible:ring-[3px] (line 43)",
         "ring-[3px] (line 60)",
-        "focus-visible:ring-[3px] (line 89)"
+        "focus-visible:ring-[3px] (line 92)"
       ]
     },
     {
@@ -270,5 +270,5 @@
       ]
     }
   ],
-  "scanSeconds": 46
+  "scanSeconds": 33
 }

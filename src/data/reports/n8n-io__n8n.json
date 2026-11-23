@@ -3,12 +3,12 @@
   "owner": "n8n-io",
   "name": "n8n",
   "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
-  "stars": 211788,
+  "stars": 211919,
   "homepage": "https://n8n.io",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "55e79ed1b7688fba85f4ba2ffcf753dda5eafefd",
-  "generatedAt": "2026-11-22T15:01:55.002Z",
+  "commit": "16b9ae027dc724f01ee92a799f87ff19bd6f34b3",
+  "generatedAt": "2026-11-23T18:47:21.392Z",
   "cliVersion": "0.8.26",
   "score": 66,
   "tier": "Good",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 1457,
+    "componentCount": 1485,
     "tokenCount": 669,
     "hardcodedValueCount": 234,
     "unusedTokenCount": 0,
@@ -141,8 +141,8 @@
   "driftSummary": {
     "total": 240,
     "critical": 0,
-    "warning": 109,
-    "info": 131
+    "warning": 108,
+    "info": 132
   },
   "driftByType": {
     "deprecated-pattern": 2,
@@ -194,14 +194,10 @@
     },
     {
       "value": "8px",
-      "count": 27
+      "count": 24
     },
     {
       "value": "12px",
-      "count": 13
-    },
-    {
-      "value": "1em",
       "count": 13
     },
     {
@@ -215,6 +211,10 @@
     {
       "value": "20px",
       "count": 13
+    },
+    {
+      "value": "0.5rem",
+      "count": 10
     }
   ],
   "worstFiles": [
@@ -350,5 +350,5 @@
       ]
     }
   ],
-  "scanSeconds": 82
+  "scanSeconds": 59
 }

@@ -3,12 +3,12 @@
   "owner": "triggerdotdev",
   "name": "trigger.dev",
   "description": "Trigger.dev – build and deploy durable AI agents and workflows",
-  "stars": 16802,
+  "stars": 16807,
   "homepage": "https://trigger.dev/changelog",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "1483d021ebeb9152ae68f69bf7366290e42e609f",
-  "generatedAt": "2026-11-22T15:09:16.300Z",
+  "commit": "3b796fb0002cc442a930618ee272eefe97b89dbd",
+  "generatedAt": "2026-11-23T18:52:39.296Z",
   "cliVersion": "0.8.26",
   "score": 90,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2287,
+    "componentCount": 2323,
     "tokenCount": 276,
-    "hardcodedValueCount": 110,
+    "hardcodedValueCount": 111,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 110,
+    "totalDriftCount": 111,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -72,13 +72,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 110 hardcoded values left to tokenize. apps/webapp/app/components/alerts/ChartLegend.tsx has the most (2)"
+    "Nearly there — just 111 hardcoded values left to tokenize. apps/webapp/app/components/alerts/ChartLegend.tsx has the most (2)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 10,
-      "action": "Replace the hardcoded values in 105 of the 110 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 106 of the 111 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -104,13 +104,13 @@
     ]
   },
   "driftSummary": {
-    "total": 110,
+    "total": 111,
     "critical": 0,
     "warning": 12,
-    "info": 98
+    "info": 99
   },
   "driftByType": {
-    "hardcoded-value": 110
+    "hardcoded-value": 111
   },
   "topColors": [
     {
@@ -300,5 +300,5 @@
       ]
     }
   ],
-  "scanSeconds": 49
+  "scanSeconds": 33
 }

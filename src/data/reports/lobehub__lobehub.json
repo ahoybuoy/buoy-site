@@ -3,12 +3,12 @@
   "owner": "lobehub",
   "name": "lobehub",
   "description": "🤯 LobeHub - Super-Agents on Your Team. Add super-agents to the chats your team already uses.They take on work by themselves and get better every week.",
-  "stars": 85989,
+  "stars": 86052,
   "homepage": "https://lobehub.com",
   "language": "TypeScript",
   "defaultBranch": "canary",
-  "commit": "c45b8e68c9389f52afe4ee956729fa2c723d7c30",
-  "generatedAt": "2026-11-22T15:32:49.355Z",
+  "commit": "7c10840d8a18ac2d08429e17c27fb5cbf56cd8d9",
+  "generatedAt": "2026-11-23T19:09:36.378Z",
   "cliVersion": "0.8.26",
   "score": 95,
   "tier": "Great",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 5271,
+    "componentCount": 5339,
     "tokenCount": 14,
     "hardcodedValueCount": 36,
     "unusedTokenCount": 0,
@@ -101,13 +101,13 @@
     ]
   },
   "driftSummary": {
-    "total": 27,
+    "total": 26,
     "critical": 2,
     "warning": 14,
-    "info": 11
+    "info": 10
   },
   "driftByType": {
-    "hardcoded-value": 25,
+    "hardcoded-value": 24,
     "color-contrast": 2
   },
   "topColors": [
@@ -247,10 +247,10 @@
     },
     {
       "component": "CommunityWorkspaceSettings",
-      "location": "src/features/CommunityWorkspaceSettings/index.tsx:243",
+      "location": "src/features/CommunityWorkspaceSettings/index.tsx:261",
       "entries": [
-        "background: rgba(0,0,0,0.4) (line 617)",
-        "color: #fff (line 633)"
+        "background: rgba(0,0,0,0.4) (line 676)",
+        "color: #fff (line 692)"
       ]
     },
     {
@@ -306,5 +306,5 @@
       ]
     }
   ],
-  "scanSeconds": 185
+  "scanSeconds": 132
 }

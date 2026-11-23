@@ -3,12 +3,12 @@
   "owner": "immich-app",
   "name": "immich",
   "description": "High performance self-hosted photo and video management solution.",
-  "stars": 119854,
+  "stars": 119948,
   "homepage": "https://immich.app",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "08fe0470fa884e1cddd42e9a19539fbe618c44bc",
-  "generatedAt": "2026-11-22T15:28:21.961Z",
+  "commit": "280c77a23b5db4d1c2b147faaf0d0bfddc084a26",
+  "generatedAt": "2026-11-23T19:06:22.191Z",
   "cliVersion": "0.8.26",
   "score": 81,
   "tier": "Great",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 350,
+    "componentCount": 346,
     "tokenCount": 45,
     "hardcodedValueCount": 33,
     "unusedTokenCount": 0,
@@ -196,16 +196,16 @@
     },
     {
       "component": "web/src/lib/components/asset-viewer/AssetViewer.svelte",
-      "location": "web/src/lib/components/asset-viewer/AssetViewer.svelte:606",
+      "location": "web/src/lib/components/asset-viewer/AssetViewer.svelte:586",
       "entries": [
-        "drop-shadow-[0_0_1px_rgba(0,0,0,0.4)] (line 606)"
+        "drop-shadow-[0_0_1px_rgba(0,0,0,0.4)] (line 586)"
       ]
     },
     {
       "component": "web/src/lib/components/asset-viewer/AssetViewerNavBar.svelte",
-      "location": "web/src/lib/components/asset-viewer/AssetViewerNavBar.svelte:87",
+      "location": "web/src/lib/components/asset-viewer/AssetViewerNavBar.svelte:72",
       "entries": [
-        "drop-shadow-[0_0_1px_rgba(0,0,0,0.4)] (line 87)"
+        "drop-shadow-[0_0_1px_rgba(0,0,0,0.4)] (line 72)"
       ]
     },
     {
@@ -274,5 +274,5 @@
       ]
     }
   ],
-  "scanSeconds": 17
+  "scanSeconds": 11
 }

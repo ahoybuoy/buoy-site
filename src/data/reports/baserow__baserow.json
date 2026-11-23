@@ -3,12 +3,12 @@
   "owner": "baserow",
   "name": "baserow",
   "description": "Build databases, automations, apps & agents with AI — no code.  Open source platform available on cloud and self-hosted. GDPR, HIPAA, SOC 2 compliant. Best Airtable alternative.",
-  "stars": 6376,
+  "stars": 6381,
   "homepage": "https://baserow.io",
   "language": "Python",
   "defaultBranch": "develop",
-  "commit": "1aaa2e50bc76efd1109dec64378a0fdbd099e632",
-  "generatedAt": "2026-11-22T15:18:00.560Z",
+  "commit": "a8bf3b73aeea249823ba61322b889b75bee046b0",
+  "generatedAt": "2026-11-23T18:58:49.579Z",
   "cliVersion": "0.8.26",
   "score": null,
   "tier": "N/A",
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 0,
     "tokenCount": 56,
-    "hardcodedValueCount": 392,
+    "hardcodedValueCount": 398,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 392,
+    "totalDriftCount": 398,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 60,
+    "notedCount": 64,
     "topHardcodedColor": {
       "value": "#fff",
       "count": 1
@@ -69,9 +69,9 @@
   ],
   "pathTo100": null,
   "noted": {
-    "count": 60,
+    "count": 64,
     "byKind": {
-      "optical-nudge": 55,
+      "optical-nudge": 59,
       "explained": 5
     },
     "samples": [
@@ -120,21 +120,21 @@
     ]
   },
   "driftSummary": {
-    "total": 392,
+    "total": 398,
     "critical": 0,
-    "warning": 140,
-    "info": 252
+    "warning": 144,
+    "info": 254
   },
   "driftByType": {
-    "hardcoded-value": 392
+    "hardcoded-value": 398
   },
   "topColors": [
     {
-      "value": "#d9dbde",
-      "count": 7
+      "value": "#fff",
+      "count": 6
     },
     {
-      "value": "#fff",
+      "value": "#d9dbde",
       "count": 6
     },
     {
@@ -165,27 +165,27 @@
   "topSpacing": [
     {
       "value": "8px",
-      "count": 262
+      "count": 277
     },
     {
       "value": "12px",
-      "count": 188
+      "count": 206
     },
     {
       "value": "16px",
-      "count": 160
-    },
-    {
-      "value": "10px",
-      "count": 135
+      "count": 162
     },
     {
       "value": "4px",
-      "count": 134
+      "count": 145
     },
     {
       "value": "20px",
-      "count": 134
+      "count": 141
+    },
+    {
+      "value": "10px",
+      "count": 140
     },
     {
       "value": "6px",
@@ -193,7 +193,7 @@
     },
     {
       "value": "24px",
-      "count": 76
+      "count": 79
     }
   ],
   "worstFiles": [
@@ -210,6 +210,10 @@
       "count": 67
     },
     {
+      "file": "web-frontend/modules/core/assets/scss/components/dashboard.scss",
+      "count": 61
+    },
+    {
       "file": "web-frontend/modules/core/assets/scss/components/views/grid.scss",
       "count": 58
     },
@@ -218,16 +222,12 @@
       "count": 57
     },
     {
-      "file": "web-frontend/modules/core/assets/scss/components/agent_triggers.scss",
-      "count": 47
+      "file": "web-frontend/modules/core/assets/scss/components/sidebar.scss",
+      "count": 54
     },
     {
-      "file": "web-frontend/modules/core/assets/scss/components/ai_provider_admin.scss",
-      "count": 47
-    },
-    {
-      "file": "web-frontend/modules/core/assets/scss/components/dashboard.scss",
-      "count": 46
+      "file": "web-frontend/modules/core/assets/scss/components/snapshots_modal.scss",
+      "count": 54
     }
   ],
   "samples": [
@@ -336,5 +336,5 @@
       ]
     }
   ],
-  "scanSeconds": 26
+  "scanSeconds": 19
 }

@@ -3,12 +3,12 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source AI engineering platform: AI Gateway, agent observability, evals, and prompt/skill management, built on OpenTelemetry. One open platform for every AI call and every agent. Self-host or use Langfuse Cloud.",
-  "stars": 37722,
+  "stars": 37756,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "a39972648160c6bb86f8e123d8e9981b023b06fc",
-  "generatedAt": "2026-11-22T15:08:26.337Z",
+  "commit": "67b035c3c40c212d3ed80c9c4c612f9c8429d311",
+  "generatedAt": "2026-11-23T18:52:05.894Z",
   "cliVersion": "0.8.26",
   "score": 94,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2658,
+    "componentCount": 2722,
     "tokenCount": 361,
-    "hardcodedValueCount": 77,
+    "hardcodedValueCount": 79,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 77,
+    "totalDriftCount": 79,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -70,13 +70,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 77 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/SimpleMultiSectionViewer.tsx has the most (2)"
+    "Nearly there — just 79 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/SimpleMultiSectionViewer.tsx has the most (2)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 6,
-      "action": "Replace the hardcoded values in 71 of the 77 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 73 of the 79 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -123,13 +123,13 @@
     ]
   },
   "driftSummary": {
-    "total": 77,
+    "total": 79,
     "critical": 0,
     "warning": 4,
-    "info": 73
+    "info": 75
   },
   "driftByType": {
-    "hardcoded-value": 77
+    "hardcoded-value": 79
   },
   "topColors": [
     {
@@ -143,12 +143,16 @@
   ],
   "topSpacing": [
     {
+      "value": "0.5rem",
+      "count": 5
+    },
+    {
       "value": "4px",
       "count": 5
     },
     {
       "value": "8px",
-      "count": 3
+      "count": 5
     },
     {
       "value": "5px",
@@ -161,10 +165,6 @@
     {
       "value": "0.2rem",
       "count": 3
-    },
-    {
-      "value": "0.5rem",
-      "count": 2
     },
     {
       "value": "10px",
@@ -193,6 +193,10 @@
       "count": 5
     },
     {
+      "file": "web/src/features/app-shell/components/sidebarMotion.module.css",
+      "count": 5
+    },
+    {
       "file": "web/src/components/ChatMessages/ChatMessageComponent.tsx",
       "count": 4
     },
@@ -202,10 +206,6 @@
     },
     {
       "file": "web/src/components/design-system/charts/internal/VisualizationFrame/VisualizationFrame.tsx",
-      "count": 4
-    },
-    {
-      "file": "web/src/features/events/components/outlier-strip/OutlierBarStrip.tsx",
       "count": 4
     }
   ],
@@ -299,5 +299,5 @@
       ]
     }
   ],
-  "scanSeconds": 95
+  "scanSeconds": 71
 }

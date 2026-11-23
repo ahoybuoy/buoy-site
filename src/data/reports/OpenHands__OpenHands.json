@@ -3,18 +3,18 @@
   "owner": "OpenHands",
   "name": "OpenHands",
   "description": "🙌 OpenHands: AI-Driven Development",
-  "stars": 94039,
+  "stars": 94156,
   "homepage": "https://openhands.dev",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "3e9cf433b0669661833c2025f8d25ac9ba417d31",
-  "generatedAt": "2026-11-22T15:14:02.239Z",
+  "commit": "fecc7f6e20590aa754ec99b287dcf6ef8d6168c3",
+  "generatedAt": "2026-11-23T18:55:49.433Z",
   "cliVersion": "0.8.26",
-  "score": 95,
+  "score": 96,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 55,
+      "score": 56,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 826,
-    "tokenCount": 335,
-    "hardcodedValueCount": 22,
+    "componentCount": 875,
+    "tokenCount": 338,
+    "hardcodedValueCount": 19,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 24,
+    "totalDriftCount": 21,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -68,13 +68,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 22 hardcoded values left to tokenize"
+    "Nearly there — just 19 hardcoded values left to tokenize"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 5,
-      "action": "Replace the hardcoded values in 20 of the 22 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "points": 4,
+      "action": "Replace the hardcoded values in 17 of the 19 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     }
   ],
   "noted": {
@@ -83,13 +83,13 @@
     "samples": []
   },
   "driftSummary": {
-    "total": 24,
+    "total": 21,
     "critical": 0,
-    "warning": 15,
+    "warning": 12,
     "info": 9
   },
   "driftByType": {
-    "hardcoded-value": 22,
+    "hardcoded-value": 19,
     "repeated-pattern": 2
   },
   "topColors": [
@@ -98,16 +98,8 @@
       "count": 8
     },
     {
-      "value": "#3B82F6",
-      "count": 5
-    },
-    {
       "value": "#597FF4",
       "count": 4
-    },
-    {
-      "value": "#1E3A5F",
-      "count": 3
     },
     {
       "value": "#3D4046",
@@ -123,6 +115,14 @@
     },
     {
       "value": "#597ff4",
+      "count": 1
+    },
+    {
+      "value": "#4a67bd",
+      "count": 1
+    },
+    {
+      "value": "#F87171",
       "count": 1
     }
   ],
@@ -166,10 +166,6 @@
       "count": 9
     },
     {
-      "file": "src/components/features/settings/agent-canvas-update-card.tsx",
-      "count": 5
-    },
-    {
       "file": "src/components/features/chat/change-agent-button.tsx",
       "count": 3
     },
@@ -178,11 +174,15 @@
       "count": 3
     },
     {
-      "file": "src/components/features/settings/agent-canvas-version-modal.tsx",
-      "count": 3
+      "file": "src/components/features/chat/plan-preview.tsx",
+      "count": 2
     },
     {
-      "file": "src/components/features/chat/plan-preview.tsx",
+      "file": "src/components/shared/risk-alert.tsx",
+      "count": 2
+    },
+    {
+      "file": "src/index.css",
       "count": 2
     }
   ],
@@ -203,9 +203,9 @@
     },
     {
       "component": "src/components/features/automations/setup/automation-setup-panel.tsx",
-      "location": "src/components/features/automations/setup/automation-setup-panel.tsx:274",
+      "location": "src/components/features/automations/setup/automation-setup-panel.tsx:284",
       "entries": [
-        "shadow-[0_0_24px_rgba(213,199,107,0.24)] (line 274)"
+        "shadow-[0_0_24px_rgba(213,199,107,0.24)] (line 284)"
       ]
     },
     {
@@ -277,5 +277,5 @@
       ]
     }
   ],
-  "scanSeconds": 22
+  "scanSeconds": 16
 }

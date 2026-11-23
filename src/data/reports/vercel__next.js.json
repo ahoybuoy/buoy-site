@@ -3,12 +3,12 @@
   "owner": "vercel",
   "name": "next.js",
   "description": "The React Framework",
-  "stars": 143607,
+  "stars": 143600,
   "homepage": "https://nextjs.org",
   "language": "JavaScript",
   "defaultBranch": "canary",
-  "commit": "b0e6b20c66c49e09a3a0ef489822d10f738b58ff",
-  "generatedAt": "2026-11-22T15:11:25.401Z",
+  "commit": "e4e1bc9ba3b505494b9c52edb14e94f88be4088d",
+  "generatedAt": "2026-11-23T18:53:55.797Z",
   "cliVersion": "0.8.26",
   "score": 88,
   "tier": "Great",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 374,
+    "componentCount": 373,
     "tokenCount": 303,
     "hardcodedValueCount": 18,
     "unusedTokenCount": 0,
@@ -54,10 +54,6 @@
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
     "notedCount": 6,
-    "topHardcodedColor": {
-      "value": "#fff",
-      "count": 1
-    },
     "worstFile": {
       "path": "packages/next/src/client/legacy/image.tsx",
       "issueCount": 1
@@ -121,11 +117,11 @@
         "reason": "shadcn/ui component (components.json)"
       },
       {
-        "file": "packages/next/src/next-devtools/dev-overlay/components/devtools-indicator/devtools-indicator.css",
-        "line": 102,
+        "file": "packages/next/src/next-devtools/dev-overlay/components/devtools-indicator/indicator-visibility-notice.css",
+        "line": 28,
         "value": "2px",
         "kind": "optical-nudge",
-        "reason": "padding: 2px is a 2-3px optical adjustment"
+        "reason": "margin-top: 2px is a 2-3px optical adjustment"
       },
       {
         "file": "packages/next/src/next-devtools/dev-overlay/components/instant-navs/instant-navs-panel.css",
@@ -155,6 +151,10 @@
   },
   "topColors": [
     {
+      "value": "#fff",
+      "count": 4
+    },
+    {
       "value": "#25548f",
       "count": 2
     },
@@ -163,34 +163,30 @@
       "count": 2
     },
     {
-      "value": "#171717",
-      "count": 2
-    },
-    {
-      "value": "#e7c755",
-      "count": 2
-    },
-    {
-      "value": "#000000",
-      "count": 2
-    },
-    {
-      "value": "#2e2e2e",
-      "count": 2
-    },
-    {
-      "value": "#fff",
+      "value": "rgba(0, 0, 0, 0.85)",
       "count": 1
     },
     {
-      "value": "#b8cffb",
+      "value": "hsla(0, 0%, 100%, 0.65)",
+      "count": 1
+    },
+    {
+      "value": "hsla(0, 0%, 100%, 0.14)",
+      "count": 1
+    },
+    {
+      "value": "hsla(0, 0%, 100%, 0.12)",
+      "count": 1
+    },
+    {
+      "value": "hsla(0, 0%, 100%, 0.2)",
       "count": 1
     }
   ],
   "topSpacing": [
     {
       "value": "8px",
-      "count": 24
+      "count": 23
     },
     {
       "value": "6px",
@@ -210,15 +206,15 @@
     },
     {
       "value": "10px",
-      "count": 3
+      "count": 4
+    },
+    {
+      "value": "3px",
+      "count": 2
     },
     {
       "value": "21px",
       "count": 2
-    },
-    {
-      "value": "14px",
-      "count": 1
     }
   ],
   "worstFiles": [
@@ -228,7 +224,7 @@
     },
     {
       "file": "packages/next/src/next-devtools/dev-overlay/components/instant-navs/instant-navs-panel.css",
-      "count": 37
+      "count": 28
     },
     {
       "file": "packages/next/src/next-devtools/dev-overlay/components/overview/segment-explorer.css",
@@ -239,8 +235,12 @@
       "count": 19
     },
     {
+      "file": "packages/next/src/next-devtools/dev-overlay/components/devtools-indicator/indicator-visibility-notice.css",
+      "count": 13
+    },
+    {
       "file": "packages/next/src/next-devtools/dev-overlay/components/devtools-indicator/devtools-indicator.css",
-      "count": 8
+      "count": 7
     },
     {
       "file": "apps/bundle-analyzer/components/diff-table.tsx",
@@ -249,10 +249,6 @@
     {
       "file": "packages/next/src/next-devtools/dev-overlay/menu/panel-router.css",
       "count": 5
-    },
-    {
-      "file": "packages/next/src/next-devtools/dev-overlay/components/toast/style.css",
-      "count": 3
     }
   ],
   "samples": [
@@ -261,13 +257,6 @@
       "location": "packages/next/src/next-devtools/dev-overlay/menu/dev-overlay-menu.tsx:85",
       "entries": [
         "padding: 6px (line 254)"
-      ]
-    },
-    {
-      "component": "StatusIndicator",
-      "location": "packages/next/src/next-devtools/dev-overlay/components/devtools-indicator/status-indicator.tsx:42",
-      "entries": [
-        "backgroundColor: #fff (line 178)"
       ]
     },
     {
@@ -328,6 +317,15 @@
       ]
     },
     {
+      "component": "packages/next/src/next-devtools/dev-overlay/components/devtools-indicator/indicator-visibility-notice.css",
+      "location": "packages/next/src/next-devtools/dev-overlay/components/devtools-indicator/indicator-visibility-notice.css:11",
+      "entries": [
+        "colour: rgba(0, 0, 0, 0.85) (line 11)",
+        "colour: #fff (line 17)",
+        "font weight: 500 (line 23)"
+      ]
+    },
+    {
       "component": "packages/next/src/next-devtools/dev-overlay/components/instant-navs/instant-navs-panel.css",
       "location": "packages/next/src/next-devtools/dev-overlay/components/instant-navs/instant-navs-panel.css:47",
       "entries": [
@@ -355,5 +353,5 @@
       ]
     }
   ],
-  "scanSeconds": 128
+  "scanSeconds": 75
 }

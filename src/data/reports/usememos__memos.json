@@ -3,12 +3,12 @@
   "owner": "usememos",
   "name": "memos",
   "description": "Memos is an open-source, self-hosted note-taking app that brings your everyday thoughts together in a personal timeline. Your data stays yours, and you choose what to keep private or share.",
-  "stars": 64640,
+  "stars": 64654,
   "homepage": "https://usememos.com",
   "language": "Go",
   "defaultBranch": "main",
-  "commit": "00fcd170281a75fc0e95ec4f2f54f43d32fe81bd",
-  "generatedAt": "2026-11-22T15:41:59.832Z",
+  "commit": "b9eb6fc3747c1e670b08a778d8ca2edd40c78b28",
+  "generatedAt": "2026-11-23T19:16:17.921Z",
   "cliVersion": "0.8.26",
   "score": 84,
   "tier": "Great",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 330,
+    "componentCount": 331,
     "tokenCount": 3,
     "hardcodedValueCount": 26,
     "unusedTokenCount": 0,
@@ -87,7 +87,7 @@
       },
       {
         "file": "web/src/components/CalendarView/CalendarDayCell.tsx",
-        "line": 97,
+        "line": 117,
         "value": "p-[3px]",
         "kind": "optical-nudge",
         "reason": "p-[3px] is a 2-3px optical adjustment"
@@ -212,18 +212,18 @@
     },
     {
       "component": "web/src/components/CalendarView/CalendarDayCell.tsx",
-      "location": "web/src/components/CalendarView/CalendarDayCell.tsx:93",
+      "location": "web/src/components/CalendarView/CalendarDayCell.tsx:113",
       "entries": [
-        "px-[5px] (line 93)",
-        "gap-[3px] (line 150)"
+        "px-[5px] (line 113)",
+        "gap-[3px] (line 190)"
       ]
     },
     {
       "component": "web/src/components/CalendarView/CalendarDayCell.tsx",
-      "location": "web/src/components/CalendarView/CalendarDayCell.tsx:97",
+      "location": "web/src/components/CalendarView/CalendarDayCell.tsx:117",
       "entries": [
-        "rounded-[9px] (line 97)",
-        "rounded-[3px] (line 134)"
+        "rounded-[9px] (line 117)",
+        "rounded-[3px] (line 174)"
       ]
     },
     {
@@ -269,5 +269,5 @@
       ]
     }
   ],
-  "scanSeconds": 10
+  "scanSeconds": 7
 }

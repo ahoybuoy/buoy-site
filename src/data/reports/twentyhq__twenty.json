@@ -3,12 +3,12 @@
   "owner": "twentyhq",
   "name": "twenty",
   "description": "The open alternative to Salesforce, designed for AI.",
-  "stars": 61320,
+  "stars": 61373,
   "homepage": "https://twenty.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "cb02e46668008927b076d19f10bbe0d8c4c61eb4",
-  "generatedAt": "2026-11-22T14:57:31.535Z",
+  "commit": "67a95832286ba7eafe3e107fc301e4a4a03f3b08",
+  "generatedAt": "2026-11-23T18:44:08.079Z",
   "cliVersion": "0.8.26",
   "score": 99,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 4619,
+    "componentCount": 4635,
     "tokenCount": 76,
-    "hardcodedValueCount": 15,
+    "hardcodedValueCount": 16,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 15,
+    "totalDriftCount": 16,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -73,13 +73,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 15 hardcoded values left to tokenize"
+    "Nearly there — just 16 hardcoded values left to tokenize"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 1,
-      "action": "Replace the hardcoded values in 4 of the 15 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 5 of the 16 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -98,13 +98,13 @@
     ]
   },
   "driftSummary": {
-    "total": 10,
+    "total": 11,
     "critical": 0,
     "warning": 4,
-    "info": 6
+    "info": 7
   },
   "driftByType": {
-    "hardcoded-value": 10
+    "hardcoded-value": 11
   },
   "topColors": [
     {
@@ -146,6 +146,10 @@
       "count": 3
     },
     {
+      "value": "12px",
+      "count": 2
+    },
+    {
       "value": "3rem",
       "count": 2
     },
@@ -156,10 +160,6 @@
     {
       "value": "4px",
       "count": 2
-    },
-    {
-      "value": "12px",
-      "count": 1
     },
     {
       "value": "20px",
@@ -206,6 +206,13 @@
       "location": "packages/twenty-front/src/modules/navigation-menu-item/display/components/NavigationMenuItemIconWithOverlay.tsx:36",
       "entries": [
         "size: 12px (line 47)"
+      ]
+    },
+    {
+      "component": "NavigationMenuAddSectionButton",
+      "location": "packages/twenty-front/src/modules/navigation-menu-item/edit/components/NavigationMenuAddSectionButton.tsx:46",
+      "entries": [
+        "size: 12px (line 114)"
       ]
     },
     {
@@ -283,5 +290,5 @@
       ]
     }
   ],
-  "scanSeconds": 209
+  "scanSeconds": 156
 }

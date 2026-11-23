@@ -3,18 +3,18 @@
   "owner": "documenso",
   "name": "documenso",
   "description": "The Open Source DocuSign Alternative.",
-  "stars": 15865,
+  "stars": 15884,
   "homepage": "https://documenso.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "80550e78b3e4852f87e9968e24b1984c427e4430",
-  "generatedAt": "2026-11-22T14:58:38.305Z",
+  "commit": "e745c9ec339f1b16d2f8d181b6457323fb33ebe5",
+  "generatedAt": "2026-11-23T18:44:57.225Z",
   "cliVersion": "0.8.26",
-  "score": 95,
+  "score": 93,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 55,
+      "score": 53,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 900,
+    "componentCount": 929,
     "tokenCount": 200,
-    "hardcodedValueCount": 20,
+    "hardcodedValueCount": 30,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 22,
+    "totalDriftCount": 32,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 1,
+    "notedCount": 4,
     "topHardcodedColor": {
       "value": "#F1FBEA",
       "count": 2
@@ -71,19 +71,19 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 20 hardcoded values left to tokenize. apps/remix/app/routes/embed+/playground.tsx has the most (2)"
+    "Nearly there — just 30 hardcoded values left to tokenize. apps/remix/app/routes/embed+/playground.tsx has the most (2)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 5,
-      "action": "Replace the hardcoded values in 18 of the 20 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "points": 7,
+      "action": "Replace the hardcoded values in 28 of the 30 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     }
   ],
   "noted": {
-    "count": 1,
+    "count": 4,
     "byKind": {
-      "optical-nudge": 1
+      "optical-nudge": 4
     },
     "samples": [
       {
@@ -92,17 +92,38 @@
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "marginBottom: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/remix/app/components/general/admin-rules/admin-rule-action-list-fields.tsx",
+        "line": 196,
+        "value": "@lg:mt-[3px]",
+        "kind": "optical-nudge",
+        "reason": "mt-[3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/remix/app/components/general/admin-rules/admin-rule-condition-fields.tsx",
+        "line": 254,
+        "value": "mt-[3px]",
+        "kind": "optical-nudge",
+        "reason": "mt-[3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/remix/app/components/general/admin-rules/admin-rule-condition-group-fields.tsx",
+        "line": 150,
+        "value": "mt-[3px]",
+        "kind": "optical-nudge",
+        "reason": "mt-[3px] is a 2-3px optical adjustment"
       }
     ]
   },
   "driftSummary": {
-    "total": 22,
+    "total": 32,
     "critical": 0,
     "warning": 5,
-    "info": 17
+    "info": 27
   },
   "driftByType": {
-    "hardcoded-value": 20,
+    "hardcoded-value": 30,
     "repeated-pattern": 2
   },
   "topColors": [
@@ -141,6 +162,10 @@
   ],
   "topSpacing": [
     {
+      "value": "18px",
+      "count": 8
+    },
+    {
       "value": "8px",
       "count": 6
     },
@@ -167,10 +192,6 @@
     {
       "value": "14px",
       "count": 1
-    },
-    {
-      "value": "10px",
-      "count": 1
     }
   ],
   "worstFiles": [
@@ -183,6 +204,14 @@
       "count": 18
     },
     {
+      "file": "apps/remix/app/components/general/admin-rules/admin-rule-tester.tsx",
+      "count": 11
+    },
+    {
+      "file": "apps/remix/app/components/general/admin-rules/admin-rule-action-list-fields.tsx",
+      "count": 8
+    },
+    {
       "file": "apps/remix/app/components/general/app-command-menu.tsx",
       "count": 8
     },
@@ -191,20 +220,12 @@
       "count": 5
     },
     {
-      "file": "apps/remix/app/components/general/settings-upsell/branding-upsell.tsx",
+      "file": "apps/remix/app/components/forms/admin-rule-form.tsx",
       "count": 4
     },
     {
-      "file": "apps/remix/app/components/general/settings-upsell/sso-portal-upsell.tsx",
-      "count": 1
-    },
-    {
-      "file": "apps/remix/app/components/general/envelope-editor/canvas/envelope-canvas-action-bar.tsx",
-      "count": 1
-    },
-    {
-      "file": "apps/remix/app/components/dialogs/template-direct-link-dialog.tsx",
-      "count": 1
+      "file": "apps/remix/app/components/general/admin-rules/admin-rule-condition-fields.tsx",
+      "count": 4
     }
   ],
   "samples": [
@@ -247,6 +268,22 @@
       ]
     },
     {
+      "component": "apps/remix/app/components/forms/admin-rule-form.tsx",
+      "location": "apps/remix/app/components/forms/admin-rule-form.tsx:151",
+      "entries": [
+        "gap-[18px] (line 151)",
+        "px-[18px] (line 342)"
+      ]
+    },
+    {
+      "component": "apps/remix/app/components/forms/admin-rule-form.tsx",
+      "location": "apps/remix/app/components/forms/admin-rule-form.tsx:202",
+      "entries": [
+        "text-[13px] (line 202)",
+        "text-[13px] (line 347)"
+      ]
+    },
+    {
       "component": "apps/remix/app/components/forms/inheritable-field.tsx",
       "location": "apps/remix/app/components/forms/inheritable-field.tsx:38",
       "entries": [
@@ -254,50 +291,39 @@
       ]
     },
     {
-      "component": "apps/remix/app/components/general/app-command-menu.tsx",
-      "location": "apps/remix/app/components/general/app-command-menu.tsx:440",
+      "component": "apps/remix/app/components/general/admin-rules/admin-rule-action-list-fields.tsx",
+      "location": "apps/remix/app/components/general/admin-rules/admin-rule-action-list-fields.tsx:81",
       "entries": [
-        "rounded-[10px] (line 440)",
-        "rounded-[3px] (line 680)"
+        "text-[13px] (line 81)",
+        "text-[13px] (line 93)",
+        "text-[13px] (line 161)"
       ]
     },
     {
-      "component": "apps/remix/app/components/general/app-command-menu.tsx",
-      "location": "apps/remix/app/components/general/app-command-menu.tsx:64",
+      "component": "apps/remix/app/components/general/admin-rules/admin-rule-condition-fields.tsx",
+      "location": "apps/remix/app/components/general/admin-rules/admin-rule-condition-fields.tsx:177",
       "entries": [
-        "text-[11px] (line 64)",
-        "tracking-[0.07em] (line 64)",
-        "text-[15px] (line 454)"
+        "text-[13px] (line 177)",
+        "text-[13px] (line 198)",
+        "text-[13px] (line 214)"
       ]
     },
     {
-      "component": "apps/remix/app/components/general/document-signing/document-signing-field-container.tsx",
-      "location": "apps/remix/app/components/general/document-signing/document-signing-field-container.tsx:124",
+      "component": "apps/remix/app/components/general/admin-rules/admin-rule-condition-group-fields.tsx",
+      "location": "apps/remix/app/components/general/admin-rules/admin-rule-condition-group-fields.tsx:104",
       "entries": [
-        "rounded-[2px] (line 124)"
+        "text-[13px] (line 104)",
+        "text-[11px] (line 249)"
       ]
     },
     {
-      "component": "apps/remix/app/components/general/envelope-editor/envelope-editor-content-drag-drop.tsx",
-      "location": "apps/remix/app/components/general/envelope-editor/envelope-editor-content-drag-drop.tsx:289",
+      "component": "apps/remix/app/components/general/admin-rules/admin-rule-definition-fields.tsx",
+      "location": "apps/remix/app/components/general/admin-rules/admin-rule-definition-fields.tsx:35",
       "entries": [
-        "rounded-[2px] (line 289)"
-      ]
-    },
-    {
-      "component": "apps/remix/app/components/general/envelope-editor/envelope-editor-fields-drag-drop.tsx",
-      "location": "apps/remix/app/components/general/envelope-editor/envelope-editor-fields-drag-drop.tsx:283",
-      "entries": [
-        "rounded-[2px] (line 283)"
-      ]
-    },
-    {
-      "component": "apps/remix/app/components/general/envelope-editor/envelope-editor.tsx",
-      "location": "apps/remix/app/components/general/envelope-editor/envelope-editor.tsx:223",
-      "entries": [
-        "text-[10px] (line 223)"
+        "pb-[18px] (line 35)",
+        "pt-[18px] (line 53)"
       ]
     }
   ],
-  "scanSeconds": 31
+  "scanSeconds": 22
 }

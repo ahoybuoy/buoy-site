@@ -3,12 +3,12 @@
   "owner": "mastodon",
   "name": "mastodon",
   "description": "Your self-hosted, globally interconnected microblogging community",
-  "stars": 50687,
+  "stars": 50702,
   "homepage": "https://joinmastodon.org",
   "language": "Ruby",
   "defaultBranch": "main",
-  "commit": "9bd703117f9945f9a3ac657ba045e2549898bfcc",
-  "generatedAt": "2026-11-22T15:34:29.221Z",
+  "commit": "fe9d1508663a3394ef28ad60afe80cc7fb04ac71",
+  "generatedAt": "2026-11-23T19:10:52.035Z",
   "cliVersion": "0.8.26",
   "score": 75,
   "tier": "Good",
@@ -83,7 +83,7 @@
     "samples": [
       {
         "file": "app/javascript/styles/mastodon/components.scss",
-        "line": 1010,
+        "line": 959,
         "value": "$height + 1px",
         "kind": "explained",
         "reason": "to visually center the numbers"
@@ -171,31 +171,31 @@
   "topSpacing": [
     {
       "value": "8px",
-      "count": 117
+      "count": 111
     },
     {
       "value": "16px",
-      "count": 96
+      "count": 94
     },
     {
       "value": "10px",
-      "count": 81
+      "count": 75
     },
     {
       "value": "4px",
-      "count": 61
-    },
-    {
-      "value": "15px",
-      "count": 49
+      "count": 55
     },
     {
       "value": "20px",
       "count": 48
     },
     {
+      "value": "15px",
+      "count": 46
+    },
+    {
       "value": "12px",
-      "count": 41
+      "count": 38
     },
     {
       "value": "24px",
@@ -205,7 +205,7 @@
   "worstFiles": [
     {
       "file": "app/javascript/styles/mastodon/components.scss",
-      "count": 629
+      "count": 583
     },
     {
       "file": "app/javascript/styles/mastodon/admin.scss",
@@ -217,7 +217,7 @@
     },
     {
       "file": "app/javascript/mastodon/components/account_header/styles.module.scss",
-      "count": 51
+      "count": 41
     },
     {
       "file": "app/javascript/mastodon/features/custom_homepage/styles.module.scss",
@@ -336,5 +336,5 @@
       ]
     }
   ],
-  "scanSeconds": 19
+  "scanSeconds": 14
 }
