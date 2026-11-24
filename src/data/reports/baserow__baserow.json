@@ -3,12 +3,12 @@
   "owner": "baserow",
   "name": "baserow",
   "description": "Build databases, automations, apps & agents with AI — no code.  Open source platform available on cloud and self-hosted. GDPR, HIPAA, SOC 2 compliant. Best Airtable alternative.",
-  "stars": 6381,
+  "stars": 6386,
   "homepage": "https://baserow.io",
   "language": "Python",
   "defaultBranch": "develop",
-  "commit": "a8bf3b73aeea249823ba61322b889b75bee046b0",
-  "generatedAt": "2026-11-23T18:58:49.579Z",
+  "commit": "1106a141fcd20fc6aa6e016cc5dc027d0395c0c8",
+  "generatedAt": "2026-11-24T18:29:03.147Z",
   "cliVersion": "0.8.26",
   "score": null,
   "tier": "N/A",
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 0,
     "tokenCount": 56,
-    "hardcodedValueCount": 398,
+    "hardcodedValueCount": 402,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 398,
+    "totalDriftCount": 402,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 64,
+    "notedCount": 66,
     "topHardcodedColor": {
       "value": "#fff",
       "count": 1
@@ -69,9 +69,9 @@
   ],
   "pathTo100": null,
   "noted": {
-    "count": 64,
+    "count": 66,
     "byKind": {
-      "optical-nudge": 59,
+      "optical-nudge": 61,
       "explained": 5
     },
     "samples": [
@@ -104,29 +104,29 @@
         "reason": "Clickable examples carry their own padding so the hover background can bleed past the snippet. Offset the container by …"
       },
       {
+        "file": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/automatic_snapshot_schedule_form.scss",
+        "line": 21,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "margin-top: 2px is a 2-3px optical adjustment"
+      },
+      {
         "file": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/custom_code.scss",
         "line": 36,
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "margin: 2px is a 2-3px optical adjustment"
-      },
-      {
-        "file": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/date_dependency.scss",
-        "line": 44,
-        "value": "2px",
-        "kind": "optical-nudge",
-        "reason": "padding-right: 2px is a 2-3px optical adjustment"
       }
     ]
   },
   "driftSummary": {
-    "total": 398,
+    "total": 402,
     "critical": 0,
-    "warning": 144,
-    "info": 254
+    "warning": 147,
+    "info": 255
   },
   "driftByType": {
-    "hardcoded-value": 398
+    "hardcoded-value": 402
   },
   "topColors": [
     {
@@ -165,41 +165,41 @@
   "topSpacing": [
     {
       "value": "8px",
-      "count": 277
+      "count": 290
     },
     {
       "value": "12px",
-      "count": 206
+      "count": 216
     },
     {
       "value": "16px",
-      "count": 162
+      "count": 168
     },
     {
       "value": "4px",
-      "count": 145
+      "count": 150
     },
     {
       "value": "20px",
-      "count": 141
+      "count": 146
     },
     {
       "value": "10px",
-      "count": 140
+      "count": 142
     },
     {
       "value": "6px",
-      "count": 104
+      "count": 108
     },
     {
       "value": "24px",
-      "count": 79
+      "count": 81
     }
   ],
   "worstFiles": [
     {
       "file": "web-frontend/modules/core/assets/scss/components/agent_application.scss",
-      "count": 152
+      "count": 158
     },
     {
       "file": "web-frontend/modules/core/assets/scss/components/views/form.scss",
@@ -214,16 +214,16 @@
       "count": 61
     },
     {
+      "file": "web-frontend/modules/core/assets/scss/components/chat.scss",
+      "count": 60
+    },
+    {
       "file": "web-frontend/modules/core/assets/scss/components/views/grid.scss",
       "count": 58
     },
     {
-      "file": "web-frontend/modules/core/assets/scss/components/chat.scss",
-      "count": 57
-    },
-    {
-      "file": "web-frontend/modules/core/assets/scss/components/sidebar.scss",
-      "count": 54
+      "file": "web-frontend/modules/core/assets/scss/components/ai_provider_admin.scss",
+      "count": 55
     },
     {
       "file": "web-frontend/modules/core/assets/scss/components/snapshots_modal.scss",
@@ -304,37 +304,40 @@
       ]
     },
     {
+      "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/automatic_snapshot_schedule.scss",
+      "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/automatic_snapshot_schedule.scss:5",
+      "entries": [
+        "radius: 8px (line 5)",
+        "line height: 20px (line 7)",
+        "spacing: 16px (line 18)"
+      ]
+    },
+    {
+      "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/automatic_snapshot_schedule_form.scss",
+      "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/automatic_snapshot_schedule_form.scss:8",
+      "entries": [
+        "spacing: 16px (line 8)",
+        "spacing: 8px (line 14)",
+        "spacing: 16px (line 15)"
+      ]
+    },
+    {
+      "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/automatic_snapshots_settings.scss",
+      "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/automatic_snapshots_settings.scss:4",
+      "entries": [
+        "spacing: 20px (line 4)",
+        "line height: 20px (line 6)",
+        "font size: 16px (line 12)"
+      ]
+    },
+    {
       "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/common_oidc_setting_form.scss",
       "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/common_oidc_setting_form.scss:12",
       "entries": [
         "spacing: 8px (line 12)",
         "spacing: 5px (line 15)"
       ]
-    },
-    {
-      "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/common_saml_setting_form.scss",
-      "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/common_saml_setting_form.scss:12",
-      "entries": [
-        "spacing: 8px (line 12)",
-        "spacing: 5px (line 15)"
-      ]
-    },
-    {
-      "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/core_code_service_form.scss",
-      "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/core_code_service_form.scss:4",
-      "entries": [
-        "spacing: 6px (line 4)"
-      ]
-    },
-    {
-      "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/crud_table_filters.scss",
-      "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/crud_table_filters.scss:4",
-      "entries": [
-        "spacing: 10px (line 4)",
-        "font weight: 600 (line 8)",
-        "line height: 34px (line 14)"
-      ]
     }
   ],
-  "scanSeconds": 19
+  "scanSeconds": 21
 }

@@ -3,12 +3,12 @@
   "owner": "usememos",
   "name": "memos",
   "description": "Memos is an open-source, self-hosted note-taking app that brings your everyday thoughts together in a personal timeline. Your data stays yours, and you choose what to keep private or share.",
-  "stars": 64654,
+  "stars": 64674,
   "homepage": "https://usememos.com",
   "language": "Go",
   "defaultBranch": "main",
-  "commit": "b9eb6fc3747c1e670b08a778d8ca2edd40c78b28",
-  "generatedAt": "2026-11-23T19:16:17.921Z",
+  "commit": "44d6c4f38b590d63d20b81a6bdedcae35bb5413c",
+  "generatedAt": "2026-11-24T18:48:18.929Z",
   "cliVersion": "0.8.26",
   "score": 84,
   "tier": "Great",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 331,
+    "componentCount": 333,
     "tokenCount": 3,
     "hardcodedValueCount": 26,
     "unusedTokenCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 2,
+    "notedCount": 4,
     "worstFile": {
       "path": "web/src/components/AttachmentLibrary/AttachmentMediaGrid.tsx",
       "issueCount": 2
@@ -73,14 +73,28 @@
     }
   ],
   "noted": {
-    "count": 2,
+    "count": 4,
     "byKind": {
-      "optical-nudge": 2
+      "optical-nudge": 4
     },
     "samples": [
       {
+        "file": "web/src/components/AppSidebar/SidebarAccount.tsx",
+        "line": 90,
+        "value": "pe-[3px]",
+        "kind": "optical-nudge",
+        "reason": "pe-[3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "web/src/components/AppSidebar/SidebarAccount.tsx",
+        "line": 93,
+        "value": "pe-[3px]",
+        "kind": "optical-nudge",
+        "reason": "pe-[3px] is a 2-3px optical adjustment"
+      },
+      {
         "file": "web/src/components/AppSidebar/SpaceSwitcher.tsx",
-        "line": 193,
+        "line": 249,
         "value": "me-[3px]",
         "kind": "optical-nudge",
         "reason": "me-[3px] is a 2-3px optical adjustment"
@@ -144,11 +158,11 @@
       "count": 5
     },
     {
-      "file": "web/src/components/SpaceMark.tsx",
-      "count": 5
+      "file": "web/src/components/CalendarView/CalendarDayCell.tsx",
+      "count": 4
     },
     {
-      "file": "web/src/components/CalendarView/CalendarDayCell.tsx",
+      "file": "web/src/components/SpaceMark.tsx",
       "count": 4
     },
     {
@@ -269,5 +283,5 @@
       ]
     }
   ],
-  "scanSeconds": 7
+  "scanSeconds": 8
 }

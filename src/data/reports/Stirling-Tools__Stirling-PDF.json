@@ -3,12 +3,12 @@
   "owner": "Stirling-Tools",
   "name": "Stirling-PDF",
   "description": "#1 PDF Application on GitHub that lets you edit PDFs on any device anywhere",
-  "stars": 97301,
+  "stars": 97380,
   "homepage": "https://stirling.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "e89f9ea952830e93a31ca543a726333a7ff801d0",
-  "generatedAt": "2026-11-23T18:57:28.597Z",
+  "commit": "10924914e87618cb6c163bf7b23ea0fdd20ed795",
+  "generatedAt": "2026-11-24T18:27:35.243Z",
   "cliVersion": "0.8.26",
   "score": 38,
   "tier": "Bad",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1746,
+    "componentCount": 1752,
     "tokenCount": 690,
-    "hardcodedValueCount": 564,
+    "hardcodedValueCount": 565,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 1,
@@ -41,7 +41,7 @@
     "colorContrastCount": 1,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 565,
+    "totalDriftCount": 566,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -66,7 +66,7 @@
     "detectedFrameworkNames": []
   },
   "suggestions": [
-    "564 hardcoded values to extract. Focus on frontend/src/editor/core/components/filesPage/FileGrid.tsx (8 issues)",
+    "565 hardcoded values to extract. Focus on frontend/src/editor/core/components/filesPage/FileGrid.tsx (8 issues)",
     "1 color contrast issue — fix immediately",
     "57 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
   ],
@@ -74,7 +74,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 560 of the 564 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 561 of the 565 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -135,13 +135,13 @@
     ]
   },
   "driftSummary": {
-    "total": 565,
+    "total": 566,
     "critical": 1,
-    "warning": 250,
+    "warning": 251,
     "info": 314
   },
   "driftByType": {
-    "hardcoded-value": 564,
+    "hardcoded-value": 565,
     "color-contrast": 1
   },
   "topColors": [
@@ -185,7 +185,7 @@
     },
     {
       "value": "1rem",
-      "count": 281
+      "count": 282
     },
     {
       "value": "0.75rem",
@@ -343,5 +343,5 @@
       ]
     }
   ],
-  "scanSeconds": 39
+  "scanSeconds": 35
 }

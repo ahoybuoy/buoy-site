@@ -3,12 +3,12 @@
   "owner": "ever-co",
   "name": "ever-gauzy",
   "description": "Ever® Gauzy™ - Open Business Management Platform (ERP/CRM/HRM/ATS/PM) - https://gauzy.co",
-  "stars": 8886,
+  "stars": 8896,
   "homepage": "https://gauzy.co",
   "language": "TypeScript",
   "defaultBranch": "develop",
-  "commit": "b30abf0d3d2c038b69b905c1da759355340e9d45",
-  "generatedAt": "2026-11-23T19:03:30.122Z",
+  "commit": "5d4107183bda9d2b860876cbd7bc920186b14c62",
+  "generatedAt": "2026-11-24T18:34:01.273Z",
   "cliVersion": "0.8.26",
   "score": 35,
   "tier": "Bad",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 891,
+    "componentCount": 894,
     "tokenCount": 0,
-    "hardcodedValueCount": 731,
+    "hardcodedValueCount": 736,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 732,
+    "totalDriftCount": 737,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 1,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 142,
+    "notedCount": 143,
     "topHardcodedColor": {
       "value": "rgba(255, 61, 113, 0.12)",
       "count": 1
@@ -70,14 +70,14 @@
     ]
   },
   "suggestions": [
-    "731 hardcoded values to extract. Focus on packages/ui-react-components/src/lib/components/ColorDots.tsx (1 issues)",
+    "736 hardcoded values to extract. Focus on packages/ui-react-components/src/lib/components/ColorDots.tsx (1 issues)",
     "1 framework sprawl signal — standardize on fewer UI/styling frameworks"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 729 of the 731 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 734 of the 736 findings with tokens or scale steps"
     },
     {
       "pillar": "tokenHealth",
@@ -86,9 +86,9 @@
     }
   ],
   "noted": {
-    "count": 142,
+    "count": 143,
     "byKind": {
-      "optical-nudge": 126,
+      "optical-nudge": 127,
       "explained": 15,
       "known-debt": 1
     },
@@ -138,13 +138,13 @@
     ]
   },
   "driftSummary": {
-    "total": 732,
+    "total": 737,
     "critical": 0,
     "warning": 161,
-    "info": 571
+    "info": 576
   },
   "driftByType": {
-    "hardcoded-value": 731,
+    "hardcoded-value": 736,
     "framework-sprawl": 1
   },
   "topColors": [
@@ -184,27 +184,27 @@
   "topSpacing": [
     {
       "value": "0.5rem",
-      "count": 810
+      "count": 815
     },
     {
       "value": "1rem",
-      "count": 717
+      "count": 729
     },
     {
       "value": "0.75rem",
-      "count": 458
+      "count": 465
     },
     {
       "value": "0.375rem",
-      "count": 367
+      "count": 378
     },
     {
       "value": "0.25rem",
-      "count": 358
+      "count": 362
     },
     {
       "value": "10px",
-      "count": 196
+      "count": 193
     },
     {
       "value": "1.5rem",
@@ -338,5 +338,5 @@
       ]
     }
   ],
-  "scanSeconds": 121
+  "scanSeconds": 133
 }

@@ -3,18 +3,18 @@
   "owner": "mermaid-js",
   "name": "mermaid-live-editor",
   "description": "Edit, preview and share mermaid charts/diagrams. New implementation of the live editor.",
-  "stars": 6923,
+  "stars": 6924,
   "homepage": "https://mermaid.live",
   "language": "TypeScript",
   "defaultBranch": "develop",
-  "commit": "aa8d9e4a37d6cb2aa3f7e07b729c0312216a7a15",
-  "generatedAt": "2026-11-23T19:11:06.978Z",
+  "commit": "e615c591355169c33a8122f450bf48cd41968aa3",
+  "generatedAt": "2026-11-24T18:42:38.002Z",
   "cliVersion": "0.8.26",
-  "score": 58,
+  "score": 57,
   "tier": "OK",
   "pillars": {
     "valueDiscipline": {
-      "score": 18,
+      "score": 17,
       "max": 60
     },
     "tokenHealth": {
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 76,
+    "componentCount": 74,
     "tokenCount": 54,
     "hardcodedValueCount": 16,
     "unusedTokenCount": 0,
@@ -56,7 +56,7 @@
     "notedCount": 1,
     "topHardcodedColor": {
       "value": "#E0095F",
-      "count": 9
+      "count": 10
     },
     "worstFile": {
       "path": "src/lib/components/migration/EditorChooserModal.svelte",
@@ -73,7 +73,7 @@
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 42,
+      "points": 43,
       "action": "Replace the hardcoded values in all 16 findings with tokens or scale steps"
     }
   ],
@@ -104,15 +104,15 @@
   "topColors": [
     {
       "value": "#E0095F",
-      "count": 6
+      "count": 7
+    },
+    {
+      "value": "#261A56",
+      "count": 4
     },
     {
       "value": "#17151f",
       "count": 4
-    },
-    {
-      "value": "#261A56",
-      "count": 3
     },
     {
       "value": "#7c5cff",
@@ -127,11 +127,11 @@
       "count": 3
     },
     {
-      "value": "rgba(23,21,31,0.08)",
-      "count": 2
+      "value": "#1E1A2E",
+      "count": 3
     },
     {
-      "value": "#1E1A2E",
+      "value": "rgba(23,21,31,0.08)",
       "count": 2
     }
   ],
@@ -171,15 +171,15 @@
       "count": 3
     },
     {
+      "file": "src/lib/util/promos/NovemberFlow.svelte",
+      "count": 3
+    },
+    {
       "file": "src/lib/components/V13Chip.svelte",
       "count": 2
     },
     {
       "file": "src/lib/components/V13Tail.svelte",
-      "count": 2
-    },
-    {
-      "file": "src/lib/util/promos/FlowHunt.svelte",
       "count": 2
     }
   ],
@@ -267,18 +267,19 @@
       ]
     },
     {
-      "component": "src/lib/util/promos/FlowHunt.svelte",
-      "location": "src/lib/util/promos/FlowHunt.svelte:26",
-      "entries": [
-        "bg-[#ff6154] (line 26)",
-        "text-[#ff6154] (line 47)"
-      ]
-    },
-    {
       "component": "src/lib/util/promos/JS2026.svelte",
       "location": "src/lib/util/promos/JS2026.svelte:15",
       "entries": [
         "bg-[#E0095F] (line 15)",
+        "bg-[#1E1A2E] (line 25)",
+        "hover:bg-[#261A56] (line 25)"
+      ]
+    },
+    {
+      "component": "src/lib/util/promos/NovemberFlow.svelte",
+      "location": "src/lib/util/promos/NovemberFlow.svelte:14",
+      "entries": [
+        "bg-[#E0095F] (line 14)",
         "bg-[#1E1A2E] (line 25)",
         "hover:bg-[#261A56] (line 25)"
       ]

@@ -3,12 +3,12 @@
   "owner": "posthog",
   "name": "posthog",
   "description": ":hedgehog: PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.",
-  "stars": 41048,
+  "stars": 41081,
   "homepage": "https://posthog.com",
   "language": "Python",
   "defaultBranch": "master",
-  "commit": "4b1b07660a70e81c40578c429fd9d84ebb473a82",
-  "generatedAt": "2026-11-23T18:50:51.428Z",
+  "commit": "b29f8e4f38c06304589d1fffe6cfa39acf971774",
+  "generatedAt": "2026-11-24T18:21:04.597Z",
   "cliVersion": "0.8.26",
   "score": 80,
   "tier": "Great",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 6387,
+    "componentCount": 6380,
     "tokenCount": 684,
     "hardcodedValueCount": 378,
     "unusedTokenCount": 0,
@@ -41,9 +41,9 @@
     "colorContrastCount": 2,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 386,
+    "totalDriftCount": 388,
     "unusedComponentCount": 0,
-    "repeatedPatternCount": 2,
+    "repeatedPatternCount": 4,
     "orphanedComponentCount": 0,
     "semanticMismatchCount": 0,
     "deprecatedPatternCount": 4,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 2,
     "vendoredDriftCount": 0,
-    "notedCount": 80,
+    "notedCount": 79,
     "topHardcodedColor": {
       "value": "#fff",
       "count": 8
@@ -79,7 +79,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 12,
-      "action": "Replace the hardcoded values in 363 of the 378 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 363 of the 378 findings with tokens or scale steps, and remove or reuse 4 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -88,10 +88,10 @@
     }
   ],
   "noted": {
-    "count": 79,
+    "count": 78,
     "byKind": {
       "optical-nudge": 67,
-      "explained": 12
+      "explained": 11
     },
     "samples": [
       {
@@ -110,7 +110,7 @@
       },
       {
         "file": "frontend/src/layout/today/TodayShell.scss",
-        "line": 252,
+        "line": 264,
         "value": "1rem",
         "kind": "explained",
         "reason": "Inputs are 16px on a phone, because iOS Safari zooms the page when an input under 16px gets focus. `data-compact` is fo…"
@@ -139,15 +139,15 @@
     ]
   },
   "driftSummary": {
-    "total": 377,
+    "total": 379,
     "critical": 0,
     "warning": 262,
-    "info": 115
+    "info": 117
   },
   "driftByType": {
     "hardcoded-value": 372,
     "deprecated-pattern": 3,
-    "repeated-pattern": 2
+    "repeated-pattern": 4
   },
   "topColors": [
     {
@@ -345,5 +345,5 @@
       ]
     }
   ],
-  "scanSeconds": 172
+  "scanSeconds": 167
 }

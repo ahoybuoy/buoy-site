@@ -3,18 +3,18 @@
   "owner": "n8n-io",
   "name": "n8n",
   "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
-  "stars": 211919,
+  "stars": 211996,
   "homepage": "https://n8n.io",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "16b9ae027dc724f01ee92a799f87ff19bd6f34b3",
-  "generatedAt": "2026-11-23T18:47:21.392Z",
+  "commit": "acbf6b5af30f129b5d62adadaa9436e539905e1b",
+  "generatedAt": "2026-11-24T18:17:40.863Z",
   "cliVersion": "0.8.26",
-  "score": 66,
+  "score": 67,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 28,
+      "score": 29,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1485,
-    "tokenCount": 669,
-    "hardcodedValueCount": 234,
+    "componentCount": 1492,
+    "tokenCount": 670,
+    "hardcodedValueCount": 232,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 240,
+    "totalDriftCount": 238,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 4,
@@ -72,14 +72,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 234 hardcoded values left to tokenize. packages/frontend/editor-ui/src/features/settings/communityNodes/components/ContactAdministratorToInstall.vue has the most (2)",
+    "Nearly there — just 232 hardcoded values left to tokenize. packages/frontend/editor-ui/src/features/settings/communityNodes/components/ContactAdministratorToInstall.vue has the most (2)",
     "2 deprecated patterns — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 32,
-      "action": "Replace the hardcoded values in 231 of the 234 findings with tokens or scale steps, and remove or reuse 4 unused components and repeated patterns"
+      "points": 31,
+      "action": "Replace the hardcoded values in 229 of the 232 findings with tokens or scale steps, and remove or reuse 4 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -139,14 +139,14 @@
     ]
   },
   "driftSummary": {
-    "total": 240,
+    "total": 238,
     "critical": 0,
     "warning": 108,
-    "info": 132
+    "info": 130
   },
   "driftByType": {
     "deprecated-pattern": 2,
-    "hardcoded-value": 234,
+    "hardcoded-value": 232,
     "orphaned-component": 4
   },
   "topColors": [

@@ -3,12 +3,12 @@
   "owner": "frappe",
   "name": "crm",
   "description": "Fully featured, open source CRM",
-  "stars": 4029,
+  "stars": 4032,
   "homepage": "https://frappe.io/crm",
   "language": "Vue",
   "defaultBranch": "develop",
-  "commit": "24a5d5e4b0ca8b8010b1a4a8225e288e6a35dd51",
-  "generatedAt": "2026-11-23T19:03:48.513Z",
+  "commit": "0e971ed1e379ff0fc32e61f6fcc420c3a5d9b0b3",
+  "generatedAt": "2026-11-24T18:34:20.799Z",
   "cliVersion": "0.8.26",
   "score": 78,
   "tier": "Good",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 440,
+    "componentCount": 446,
     "tokenCount": 19,
-    "hardcodedValueCount": 48,
+    "hardcodedValueCount": 49,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 48,
+    "totalDriftCount": 49,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -65,13 +65,13 @@
     "detectedFrameworkNames": []
   },
   "suggestions": [
-    "Nearly there — just 48 hardcoded values left to tokenize. frontend/src/components/Settings/WorkflowAutomations/WorkflowFlow.vue has the most (4)"
+    "Nearly there — just 49 hardcoded values left to tokenize. frontend/src/components/Settings/WorkflowAutomations/WorkflowFlow.vue has the most (4)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 22,
-      "action": "Replace the hardcoded values in 47 of the 48 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 48 of the 49 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -125,13 +125,13 @@
     ]
   },
   "driftSummary": {
-    "total": 48,
+    "total": 49,
     "critical": 0,
     "warning": 6,
-    "info": 42
+    "info": 43
   },
   "driftByType": {
-    "hardcoded-value": 48
+    "hardcoded-value": 49
   },
   "topColors": [
     {
@@ -204,7 +204,7 @@
   "worstFiles": [
     {
       "file": "crm/templates/includes/crm_book.css",
-      "count": 69
+      "count": 65
     },
     {
       "file": "frontend/src/components/Settings/ThemeSwitcher.vue",
@@ -327,5 +327,5 @@
       ]
     }
   ],
-  "scanSeconds": 9
+  "scanSeconds": 10
 }

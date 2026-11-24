@@ -3,12 +3,12 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source AI engineering platform: AI Gateway, agent observability, evals, and prompt/skill management, built on OpenTelemetry. One open platform for every AI call and every agent. Self-host or use Langfuse Cloud.",
-  "stars": 37756,
+  "stars": 37796,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "67b035c3c40c212d3ed80c9c4c612f9c8429d311",
-  "generatedAt": "2026-11-23T18:52:05.894Z",
+  "commit": "11d1df14d01e729f0b3468f6ee5dfaf9944e1f4b",
+  "generatedAt": "2026-11-24T18:22:16.916Z",
   "cliVersion": "0.8.26",
   "score": 94,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2722,
+    "componentCount": 2736,
     "tokenCount": 361,
-    "hardcodedValueCount": 79,
+    "hardcodedValueCount": 78,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 79,
+    "totalDriftCount": 78,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -70,13 +70,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 79 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/SimpleMultiSectionViewer.tsx has the most (2)"
+    "Nearly there — just 78 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/SimpleMultiSectionViewer.tsx has the most (2)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 6,
-      "action": "Replace the hardcoded values in 73 of the 79 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 72 of the 78 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -87,7 +87,7 @@
     "samples": [
       {
         "file": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx",
-        "line": 1932,
+        "line": 1935,
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "right: 2px is a 2-3px optical adjustment"
@@ -123,13 +123,13 @@
     ]
   },
   "driftSummary": {
-    "total": 79,
+    "total": 78,
     "critical": 0,
     "warning": 4,
-    "info": 75
+    "info": 74
   },
   "driftByType": {
-    "hardcoded-value": 79
+    "hardcoded-value": 78
   },
   "topColors": [
     {
@@ -247,17 +247,17 @@
     },
     {
       "component": "TimelineDense",
-      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:327",
+      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:328",
       "entries": [
-        "fontSize: 10px (line 1368)",
-        "fontSize: 9px (line 1442)"
+        "fontSize: 10px (line 1369)",
+        "fontSize: 9px (line 1443)"
       ]
     },
     {
       "component": "GutterContent",
-      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:1819",
+      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:1822",
       "entries": [
-        "fontSize: 10px (line 1942)"
+        "fontSize: 10px (line 1945)"
       ]
     },
     {
@@ -299,5 +299,5 @@
       ]
     }
   ],
-  "scanSeconds": 71
+  "scanSeconds": 68
 }

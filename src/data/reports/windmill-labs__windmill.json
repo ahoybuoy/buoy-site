@@ -3,12 +3,12 @@
   "owner": "windmill-labs",
   "name": "windmill",
   "description": "Code-first platform for workflows, apps and AI agents, on the fastest self-hostable orchestrator (benchmarked against Airflow, Prefect and Temporal). Business teams build with AI, engineers control what ships. Open-source alternative to Lovable, Retool and n8n.",
-  "stars": 18695,
+  "stars": 18712,
   "homepage": "https://windmill.dev",
   "language": "Rust",
   "defaultBranch": "main",
-  "commit": "28985a122cc303200bb36c5c67037f5f2157299c",
-  "generatedAt": "2026-11-23T19:17:09.022Z",
+  "commit": "cf8a1c38500e64567e5e8fd496feee5bf2e3b0b7",
+  "generatedAt": "2026-11-24T18:49:12.926Z",
   "cliVersion": "0.8.26",
   "score": 86,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2028,
+    "componentCount": 2031,
     "tokenCount": 421,
-    "hardcodedValueCount": 105,
+    "hardcodedValueCount": 106,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 109,
+    "totalDriftCount": 110,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -66,14 +66,14 @@
     "detectedFrameworkNames": []
   },
   "suggestions": [
-    "Nearly there — just 105 hardcoded values left to tokenize. frontend/src/lib/components/flows/propPicker/OutputPickerInner.svelte has the most (3)",
+    "Nearly there — just 106 hardcoded values left to tokenize. frontend/src/lib/components/flows/propPicker/OutputPickerInner.svelte has the most (3)",
     "4 deprecated patterns — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 10,
-      "action": "Replace the hardcoded values in 100 of the 105 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 101 of the 106 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -132,14 +132,14 @@
     ]
   },
   "driftSummary": {
-    "total": 109,
+    "total": 110,
     "critical": 0,
     "warning": 30,
-    "info": 79
+    "info": 80
   },
   "driftByType": {
     "deprecated-pattern": 4,
-    "hardcoded-value": 105
+    "hardcoded-value": 106
   },
   "topColors": [
     {
@@ -286,9 +286,9 @@
     },
     {
       "component": "frontend/src/lib/components/FilterSearchbar.svelte",
-      "location": "frontend/src/lib/components/FilterSearchbar.svelte:784",
+      "location": "frontend/src/lib/components/FilterSearchbar.svelte:785",
       "entries": [
-        "pt-[0.7rem] (line 784)"
+        "pt-[0.7rem] (line 785)"
       ]
     },
     {
@@ -335,5 +335,5 @@
       ]
     }
   ],
-  "scanSeconds": 43
+  "scanSeconds": 46
 }
