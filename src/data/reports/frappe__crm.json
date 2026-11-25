@@ -3,18 +3,18 @@
   "owner": "frappe",
   "name": "crm",
   "description": "Fully featured, open source CRM",
-  "stars": 4032,
+  "stars": 4036,
   "homepage": "https://frappe.io/crm",
   "language": "Vue",
   "defaultBranch": "develop",
-  "commit": "0e971ed1e379ff0fc32e61f6fcc420c3a5d9b0b3",
-  "generatedAt": "2026-11-24T18:34:20.799Z",
+  "commit": "968bbfc4a9f466c03b9cb918f451c50cef289527",
+  "generatedAt": "2026-11-25T18:08:30.234Z",
   "cliVersion": "0.8.26",
-  "score": 78,
+  "score": 79,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 38,
+      "score": 39,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 446,
+    "componentCount": 452,
     "tokenCount": 19,
-    "hardcodedValueCount": 49,
+    "hardcodedValueCount": 48,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 49,
+    "totalDriftCount": 48,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -65,13 +65,13 @@
     "detectedFrameworkNames": []
   },
   "suggestions": [
-    "Nearly there — just 49 hardcoded values left to tokenize. frontend/src/components/Settings/WorkflowAutomations/WorkflowFlow.vue has the most (4)"
+    "Nearly there — just 48 hardcoded values left to tokenize. frontend/src/components/Settings/WorkflowAutomations/WorkflowFlow.vue has the most (4)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 22,
-      "action": "Replace the hardcoded values in 48 of the 49 findings with tokens or scale steps"
+      "points": 21,
+      "action": "Replace the hardcoded values in 47 of the 48 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -125,13 +125,13 @@
     ]
   },
   "driftSummary": {
-    "total": 49,
+    "total": 48,
     "critical": 0,
-    "warning": 6,
+    "warning": 5,
     "info": 43
   },
   "driftByType": {
-    "hardcoded-value": 49
+    "hardcoded-value": 48
   },
   "topColors": [
     {
@@ -163,7 +163,7 @@
       "count": 2
     },
     {
-      "value": "#ff5f57",
+      "value": "oklch(0.967 0.045 91.733)",
       "count": 1
     }
   ],
@@ -174,7 +174,7 @@
     },
     {
       "value": "3px",
-      "count": 7
+      "count": 6
     },
     {
       "value": "8px",
@@ -223,15 +223,15 @@
       "count": 9
     },
     {
-      "file": "frontend/src/components/Setup/SetupPreview.vue",
-      "count": 8
-    },
-    {
       "file": "frontend/src/components/Settings/Sla/SlaHolidays.vue",
       "count": 8
     },
     {
       "file": "frontend/src/components/SidePanelLayout.vue",
+      "count": 6
+    },
+    {
+      "file": "frontend/src/components/Activities/AudioPlayer.vue",
       "count": 6
     }
   ],
@@ -311,21 +311,19 @@
       ]
     },
     {
+      "component": "frontend/src/components/Layouts/SidebarNoticeStack.vue",
+      "location": "frontend/src/components/Layouts/SidebarNoticeStack.vue:18",
+      "entries": [
+        "text-[9px] (line 18)"
+      ]
+    },
+    {
       "component": "frontend/src/components/Notifications.vue",
       "location": "frontend/src/components/Notifications.vue:15",
       "entries": [
         "pt-[15px] (line 15)"
       ]
-    },
-    {
-      "component": "frontend/src/components/Settings/Settings.vue",
-      "location": "frontend/src/components/Settings/Settings.vue:17",
-      "entries": [
-        "mt-[5px] (line 17)",
-        "py-[7px] (line 20)",
-        "space-y-[3px] (line 24)"
-      ]
     }
   ],
-  "scanSeconds": 10
+  "scanSeconds": 13
 }

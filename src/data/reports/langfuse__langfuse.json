@@ -3,12 +3,12 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source AI engineering platform: AI Gateway, agent observability, evals, and prompt/skill management, built on OpenTelemetry. One open platform for every AI call and every agent. Self-host or use Langfuse Cloud.",
-  "stars": 37796,
+  "stars": 37841,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "11d1df14d01e729f0b3468f6ee5dfaf9944e1f4b",
-  "generatedAt": "2026-11-24T18:22:16.916Z",
+  "commit": "d2a910b20899878ca1f33fecb152cb223cc62e06",
+  "generatedAt": "2026-11-25T17:51:52.657Z",
   "cliVersion": "0.8.26",
   "score": 94,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2736,
+    "componentCount": 2780,
     "tokenCount": 361,
-    "hardcodedValueCount": 78,
+    "hardcodedValueCount": 79,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 78,
+    "totalDriftCount": 79,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -70,13 +70,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 78 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/SimpleMultiSectionViewer.tsx has the most (2)"
+    "Nearly there — just 79 hardcoded values left to tokenize. web/src/features/traces/components/AdvancedJsonViewer/SimpleMultiSectionViewer.tsx has the most (2)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 6,
-      "action": "Replace the hardcoded values in 72 of the 78 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 73 of the 79 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -108,7 +108,7 @@
       },
       {
         "file": "web/src/features/traces/components/AdvancedJsonViewer/components/JsonRowScrollable.tsx",
-        "line": 97,
+        "line": 93,
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "marginLeft: 2px is a 2-3px optical adjustment"
@@ -123,13 +123,13 @@
     ]
   },
   "driftSummary": {
-    "total": 78,
+    "total": 79,
     "critical": 0,
     "warning": 4,
-    "info": 74
+    "info": 75
   },
   "driftByType": {
-    "hardcoded-value": 78
+    "hardcoded-value": 79
   },
   "topColors": [
     {
@@ -156,7 +156,7 @@
     },
     {
       "value": "5px",
-      "count": 3
+      "count": 4
     },
     {
       "value": "0.3rem",
@@ -181,6 +181,10 @@
       "count": 7
     },
     {
+      "file": "web/src/features/app-shell/components/sidebarMotion.module.css",
+      "count": 6
+    },
+    {
       "file": "web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx",
       "count": 5
     },
@@ -190,10 +194,6 @@
     },
     {
       "file": "web/src/features/scores-chart-view/components/ScoreOutlierBarStrip/ScoreOutlierBarStrip.tsx",
-      "count": 5
-    },
-    {
-      "file": "web/src/features/app-shell/components/sidebarMotion.module.css",
       "count": 5
     },
     {
@@ -278,10 +278,10 @@
     },
     {
       "component": "JsonRowScrollable",
-      "location": "web/src/features/traces/components/AdvancedJsonViewer/components/JsonRowScrollable.tsx:29",
+      "location": "web/src/features/traces/components/AdvancedJsonViewer/components/JsonRowScrollable.tsx:27",
       "entries": [
-        "paddingRight: 4px (line 76)",
-        "marginRight: 4px (line 98)"
+        "paddingRight: 4px (line 72)",
+        "marginRight: 4px (line 94)"
       ]
     },
     {
@@ -299,5 +299,5 @@
       ]
     }
   ],
-  "scanSeconds": 68
+  "scanSeconds": 101
 }

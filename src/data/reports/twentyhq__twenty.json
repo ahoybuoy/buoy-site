@@ -3,12 +3,12 @@
   "owner": "twentyhq",
   "name": "twenty",
   "description": "The open alternative to Salesforce, designed for AI.",
-  "stars": 61420,
+  "stars": 61470,
   "homepage": "https://twenty.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "ae7b8a834a4b86bc1b0c7171f29e179900971b4d",
-  "generatedAt": "2026-11-24T18:14:19.938Z",
+  "commit": "1ce9f35cc6021c2e1d3595e84ce78f03170af78b",
+  "generatedAt": "2026-11-25T17:40:36.879Z",
   "cliVersion": "0.8.26",
   "score": 99,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 4660,
+    "componentCount": 4670,
     "tokenCount": 76,
-    "hardcodedValueCount": 16,
+    "hardcodedValueCount": 15,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 16,
+    "totalDriftCount": 15,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -56,7 +56,7 @@
     "notedCount": 1,
     "topHardcodedColor": {
       "value": "#f0f9ff",
-      "count": 2
+      "count": 1
     },
     "worstFile": {
       "path": "packages/twenty-front/src/modules/navigation-menu-item/display/components/NavigationMenuItemIconWithOverlay.tsx",
@@ -73,13 +73,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 16 hardcoded values left to tokenize"
+    "Nearly there — just 15 hardcoded values left to tokenize"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 1,
-      "action": "Replace the hardcoded values in 5 of the 16 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 4 of the 15 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -290,5 +290,5 @@
       ]
     }
   ],
-  "scanSeconds": 184
+  "scanSeconds": 236
 }

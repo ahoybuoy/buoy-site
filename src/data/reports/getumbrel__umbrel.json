@@ -3,12 +3,12 @@
   "owner": "getumbrel",
   "name": "umbrel",
   "description": "An elegant home server OS. Run AI agents, store your files, backup your photos, and do more with over 300 apps in the Umbrel App Store.",
-  "stars": 12618,
+  "stars": 12620,
   "homepage": "https://umbrel.com",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "c43beed964074d08865d648ca9ac3359826a14ff",
-  "generatedAt": "2026-11-24T18:34:43.286Z",
+  "commit": "1cd9cd68ca46854fbeb5fbe02d89edba984c3fa4",
+  "generatedAt": "2026-11-25T18:08:59.470Z",
   "cliVersion": "0.8.26",
   "score": null,
   "tier": "N/A",
@@ -32,8 +32,8 @@
   },
   "metrics": {
     "componentCount": 0,
-    "tokenCount": 58,
-    "hardcodedValueCount": 5,
+    "tokenCount": 110,
+    "hardcodedValueCount": 6,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 5,
+    "totalDriftCount": 6,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -78,57 +78,90 @@
     ]
   },
   "driftSummary": {
-    "total": 5,
+    "total": 6,
     "critical": 0,
-    "warning": 4,
+    "warning": 5,
     "info": 1
   },
   "driftByType": {
-    "hardcoded-value": 5
+    "hardcoded-value": 6
   },
   "topColors": [
     {
       "value": "#fff",
+      "count": 7
+    },
+    {
+      "value": "rgb(255 255 255 / 0.7)",
       "count": 4
+    },
+    {
+      "value": "rgb(255 255 255 / 0.25)",
+      "count": 4
+    },
+    {
+      "value": "rgb(255 255 255 / 0.85)",
+      "count": 3
+    },
+    {
+      "value": "rgb(255 255 255 / 0.4)",
+      "count": 3
     },
     {
       "value": "#000",
       "count": 3
     },
     {
+      "value": "rgb(255 255 255)",
+      "count": 3
+    },
+    {
       "value": "rgb(255 255 255 / 0.12)",
       "count": 2
+    }
+  ],
+  "topSpacing": [
+    {
+      "value": "6px",
+      "count": 3
     },
     {
-      "value": "rgb(255 255 255 / 0.9)",
+      "value": "5px",
       "count": 2
     },
     {
-      "value": "#1c1c1e",
-      "count": 2
-    },
-    {
-      "value": "rgb(0 0 0 / 0.65)",
+      "value": "24px",
       "count": 1
     },
     {
-      "value": "rgb(255 214 10 / 0.35)",
+      "value": "7rem",
       "count": 1
     },
     {
-      "value": "rgb(255 149 0 / 0.55)",
+      "value": "8rem",
+      "count": 1
+    },
+    {
+      "value": "4px",
+      "count": 1
+    },
+    {
+      "value": "11px",
       "count": 1
     }
   ],
-  "topSpacing": [],
   "worstFiles": [
     {
-      "file": "packages/ui/src/features/machines/touch/touch-console.css",
-      "count": 19
+      "file": "packages/ui/src/index.css",
+      "count": 33
     },
     {
-      "file": "packages/ui/src/index.css",
-      "count": 9
+      "file": "packages/ui/src/features/machines/touch/touch-console.css",
+      "count": 22
+    },
+    {
+      "file": "packages/ui/src/increase-contrast.css",
+      "count": 14
     },
     {
       "file": "packages/ui/src/features/files/components/file-viewer/pdf-viewer/pdf-viewer.css",
@@ -146,9 +179,9 @@
   "samples": [
     {
       "component": "packages/ui/src/features/files/components/file-viewer/document-viewer/document-viewer.css",
-      "location": "packages/ui/src/features/files/components/file-viewer/document-viewer/document-viewer.css:8",
+      "location": "packages/ui/src/features/files/components/file-viewer/document-viewer/document-viewer.css:6",
       "entries": [
-        "radius: 2px (line 8)"
+        "radius: 2px (line 6)"
       ]
     },
     {
@@ -178,14 +211,23 @@
       ]
     },
     {
-      "component": "packages/ui/src/index.css",
-      "location": "packages/ui/src/index.css:481",
+      "component": "packages/ui/src/increase-contrast.css",
+      "location": "packages/ui/src/increase-contrast.css:32",
       "entries": [
-        "shadow: 0 1px 0 rgb(255 255 255 / 0.28) inset (line 481)",
-        "colour: rgb(255 255 255 / 0.04) (line 491)",
-        "colour: rgb(255 255 255 / 0.03) (line 492)"
+        "shadow: 0 0 0 1px rgb(255 255 255 / 0.4) inset (line 32)",
+        "colour: #fff (line 50)",
+        "colour: rgb(255 255 255 / 0.85) (line 53)"
+      ]
+    },
+    {
+      "component": "packages/ui/src/index.css",
+      "location": "packages/ui/src/index.css:174",
+      "entries": [
+        "colour: rgb(0 0 0 / 0.6) (line 174)",
+        "font weight: 500 (line 176)",
+        "colour: rgb(255 255 255 / 0.06) (line 717)"
       ]
     }
   ],
-  "scanSeconds": 8
+  "scanSeconds": 9
 }

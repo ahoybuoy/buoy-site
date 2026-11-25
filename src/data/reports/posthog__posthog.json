@@ -3,12 +3,12 @@
   "owner": "posthog",
   "name": "posthog",
   "description": ":hedgehog: PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.",
-  "stars": 41081,
+  "stars": 41114,
   "homepage": "https://posthog.com",
   "language": "Python",
   "defaultBranch": "master",
-  "commit": "b29f8e4f38c06304589d1fffe6cfa39acf971774",
-  "generatedAt": "2026-11-24T18:21:04.597Z",
+  "commit": "8a7f1736a9d24922a4b3ff96dfaebb11a1f2ea3a",
+  "generatedAt": "2026-11-25T17:50:08.020Z",
   "cliVersion": "0.8.26",
   "score": 80,
   "tier": "Great",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 6380,
+    "componentCount": 6409,
     "tokenCount": 684,
     "hardcodedValueCount": 378,
     "unusedTokenCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 2,
     "vendoredDriftCount": 0,
-    "notedCount": 79,
+    "notedCount": 81,
     "topHardcodedColor": {
       "value": "#fff",
       "count": 8
@@ -79,7 +79,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 12,
-      "action": "Replace the hardcoded values in 363 of the 378 findings with tokens or scale steps, and remove or reuse 4 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 362 of the 378 findings with tokens or scale steps, and remove or reuse 4 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -88,9 +88,9 @@
     }
   ],
   "noted": {
-    "count": 78,
+    "count": 80,
     "byKind": {
-      "optical-nudge": 67,
+      "optical-nudge": 69,
       "explained": 11
     },
     "samples": [
@@ -141,8 +141,8 @@
   "driftSummary": {
     "total": 379,
     "critical": 0,
-    "warning": 262,
-    "info": 117
+    "warning": 261,
+    "info": 118
   },
   "driftByType": {
     "hardcoded-value": 372,
@@ -210,7 +210,7 @@
     },
     {
       "value": "4px",
-      "count": 43
+      "count": 42
     },
     {
       "value": "6px",
@@ -339,11 +339,11 @@
     },
     {
       "component": "TaxonomicFilterSearchInput",
-      "location": "frontend/src/lib/components/TaxonomicFilter/TaxonomicFilter.tsx:181",
+      "location": "frontend/src/lib/components/TaxonomicFilter/TaxonomicFilter.tsx:183",
       "entries": [
-        "fontSize: 1.2rem (line 273)"
+        "fontSize: 1.2rem (line 275)"
       ]
     }
   ],
-  "scanSeconds": 167
+  "scanSeconds": 245
 }

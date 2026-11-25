@@ -3,12 +3,12 @@
   "owner": "mastodon",
   "name": "mastodon",
   "description": "Your self-hosted, globally interconnected microblogging community",
-  "stars": 50609,
+  "stars": 50633,
   "homepage": "https://joinmastodon.org",
   "language": "Ruby",
   "defaultBranch": "main",
-  "commit": "2c32e5016937aa1b2b5b5c2b3d210669e1bfb47f",
-  "generatedAt": "2026-11-24T18:42:23.705Z",
+  "commit": "6c29cb4b9c1f8b3f9a1be23f0efb9c5ac64155a3",
+  "generatedAt": "2026-11-25T18:18:37.156Z",
   "cliVersion": "0.8.26",
   "score": 75,
   "tier": "Good",
@@ -83,7 +83,7 @@
     "samples": [
       {
         "file": "app/javascript/styles/mastodon/components.scss",
-        "line": 959,
+        "line": 948,
         "value": "$height + 1px",
         "kind": "explained",
         "reason": "to visually center the numbers"
@@ -179,7 +179,7 @@
     },
     {
       "value": "10px",
-      "count": 75
+      "count": 74
     },
     {
       "value": "4px",
@@ -205,7 +205,7 @@
   "worstFiles": [
     {
       "file": "app/javascript/styles/mastodon/components.scss",
-      "count": 584
+      "count": 582
     },
     {
       "file": "app/javascript/styles/mastodon/admin.scss",
@@ -336,5 +336,5 @@
       ]
     }
   ],
-  "scanSeconds": 18
+  "scanSeconds": 20
 }

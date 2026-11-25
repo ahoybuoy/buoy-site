@@ -3,12 +3,12 @@
   "owner": "teableio",
   "name": "teable",
   "description": "✨ AI Spreadsheet for Business",
-  "stars": 22014,
+  "stars": 22020,
   "homepage": "https://teable.ai",
   "language": "TypeScript",
   "defaultBranch": "develop",
-  "commit": "b20edcd136a3641ae25a32e8e8ffe2d30ebea8b6",
-  "generatedAt": "2026-11-24T18:47:14.856Z",
+  "commit": "42d9ac581538936ebb47d48c8f09c9e4ef73bdad",
+  "generatedAt": "2026-11-25T18:24:58.186Z",
   "cliVersion": "0.8.26",
   "score": 84,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1831,
+    "componentCount": 1834,
     "tokenCount": 67,
-    "hardcodedValueCount": 149,
+    "hardcodedValueCount": 150,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 149,
+    "totalDriftCount": 150,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -72,13 +72,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 149 hardcoded values left to tokenize. apps/nextjs-app/src/features/app/blocks/base/base-side-bar/BaseSidebarHeaderLeft.tsx has the most (3)"
+    "Nearly there — just 150 hardcoded values left to tokenize. apps/nextjs-app/src/features/app/blocks/base/base-side-bar/BaseSidebarHeaderLeft.tsx has the most (3)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 16,
-      "action": "Replace the hardcoded values in 145 of the 149 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 146 of the 150 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -133,13 +133,13 @@
     ]
   },
   "driftSummary": {
-    "total": 149,
+    "total": 150,
     "critical": 0,
     "warning": 7,
-    "info": 142
+    "info": 143
   },
   "driftByType": {
-    "hardcoded-value": 149
+    "hardcoded-value": 150
   },
   "topColors": [
     {
@@ -219,6 +219,10 @@
       "count": 12
     },
     {
+      "file": "packages/sdk/src/components/expand-record/RecordHistory.tsx",
+      "count": 10
+    },
+    {
       "file": "apps/nextjs-app/src/components/Guide.tsx",
       "count": 8
     },
@@ -228,10 +232,6 @@
     },
     {
       "file": "apps/nextjs-app/src/features/app/components/upload-progress-panel/TaskItem.tsx",
-      "count": 7
-    },
-    {
-      "file": "packages/sdk/src/components/expand-record/RecordHistory.tsx",
       "count": 7
     },
     {
@@ -329,5 +329,5 @@
       ]
     }
   ],
-  "scanSeconds": 52
+  "scanSeconds": 65
 }

@@ -3,12 +3,12 @@
   "owner": "baserow",
   "name": "baserow",
   "description": "Build databases, automations, apps & agents with AI — no code.  Open source platform available on cloud and self-hosted. GDPR, HIPAA, SOC 2 compliant. Best Airtable alternative.",
-  "stars": 6386,
+  "stars": 6391,
   "homepage": "https://baserow.io",
   "language": "Python",
   "defaultBranch": "develop",
-  "commit": "1106a141fcd20fc6aa6e016cc5dc027d0395c0c8",
-  "generatedAt": "2026-11-24T18:29:03.147Z",
+  "commit": "de1d26dc5ab116ad1dfbb25bcca31361128b6015",
+  "generatedAt": "2026-11-25T18:01:37.710Z",
   "cliVersion": "0.8.26",
   "score": null,
   "tier": "N/A",
@@ -32,8 +32,8 @@
   },
   "metrics": {
     "componentCount": 0,
-    "tokenCount": 56,
-    "hardcodedValueCount": 402,
+    "tokenCount": 57,
+    "hardcodedValueCount": 403,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 402,
+    "totalDriftCount": 403,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -120,13 +120,13 @@
     ]
   },
   "driftSummary": {
-    "total": 402,
+    "total": 403,
     "critical": 0,
     "warning": 147,
-    "info": 255
+    "info": 256
   },
   "driftByType": {
-    "hardcoded-value": 402
+    "hardcoded-value": 403
   },
   "topColors": [
     {
@@ -165,19 +165,19 @@
   "topSpacing": [
     {
       "value": "8px",
-      "count": 290
+      "count": 292
     },
     {
       "value": "12px",
-      "count": 216
+      "count": 220
     },
     {
       "value": "16px",
-      "count": 168
+      "count": 171
     },
     {
       "value": "4px",
-      "count": 150
+      "count": 152
     },
     {
       "value": "20px",
@@ -185,11 +185,11 @@
     },
     {
       "value": "10px",
-      "count": 142
+      "count": 141
     },
     {
       "value": "6px",
-      "count": 108
+      "count": 109
     },
     {
       "value": "24px",
@@ -199,7 +199,7 @@
   "worstFiles": [
     {
       "file": "web-frontend/modules/core/assets/scss/components/agent_application.scss",
-      "count": 158
+      "count": 175
     },
     {
       "file": "web-frontend/modules/core/assets/scss/components/views/form.scss",
@@ -231,6 +231,14 @@
     }
   ],
   "samples": [
+    {
+      "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/agent_participation.scss",
+      "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/agent_participation.scss:3",
+      "entries": [
+        "font size: 12px (line 3)",
+        "line height: 18px (line 4)"
+      ]
+    },
     {
       "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/ai_onboarding.scss",
       "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/ai_onboarding.scss:2",
@@ -329,15 +337,7 @@
         "line height: 20px (line 6)",
         "font size: 16px (line 12)"
       ]
-    },
-    {
-      "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/common_oidc_setting_form.scss",
-      "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/common_oidc_setting_form.scss:12",
-      "entries": [
-        "spacing: 8px (line 12)",
-        "spacing: 5px (line 15)"
-      ]
     }
   ],
-  "scanSeconds": 21
+  "scanSeconds": 27
 }
