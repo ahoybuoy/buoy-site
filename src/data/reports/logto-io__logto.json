@@ -3,12 +3,12 @@
   "owner": "logto-io",
   "name": "logto",
   "description": "🧑‍🚀 Authentication and authorization infrastructure for SaaS and AI apps, built on OIDC and OAuth 2.1 with multi-tenancy, SSO, and RBAC.",
-  "stars": 14988,
+  "stars": 14999,
   "homepage": "https://logto.io",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "ff054bedf4a825c603c1427fbd5913bbbefde33f",
-  "generatedAt": "2026-11-25T18:18:10.782Z",
+  "commit": "8640acb1842be78e31f1329f9c78f82e83d99b35",
+  "generatedAt": "2026-11-26T17:54:32.782Z",
   "cliVersion": "0.8.26",
   "score": 57,
   "tier": "OK",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1009,
+    "componentCount": 1011,
     "tokenCount": 17,
-    "hardcodedValueCount": 196,
+    "hardcodedValueCount": 197,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 208,
+    "totalDriftCount": 209,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 11,
@@ -69,14 +69,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 196 hardcoded values left to tokenize",
+    "Nearly there — just 197 hardcoded values left to tokenize",
     "1 deprecated pattern — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 40,
-      "action": "Replace the hardcoded values in 194 of the 196 findings with tokens or scale steps, and remove or reuse 11 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 195 of the 197 findings with tokens or scale steps, and remove or reuse 11 unused components and repeated patterns"
     },
     {
       "pillar": "tokenHealth",
@@ -112,14 +112,14 @@
     ]
   },
   "driftSummary": {
-    "total": 208,
+    "total": 209,
     "critical": 0,
-    "warning": 23,
+    "warning": 24,
     "info": 185
   },
   "driftByType": {
     "deprecated-pattern": 1,
-    "hardcoded-value": 196,
+    "hardcoded-value": 197,
     "orphaned-component": 11
   },
   "topColors": [
@@ -136,6 +136,10 @@
       "count": 3
     },
     {
+      "value": "rgba(255, 255, 255, 78%)",
+      "count": 2
+    },
+    {
       "value": "#000",
       "count": 2
     },
@@ -149,10 +153,6 @@
     },
     {
       "value": "#cabeff",
-      "count": 2
-    },
-    {
-      "value": "#947dff",
       "count": 2
     }
   ],
@@ -174,11 +174,19 @@
       "count": 1
     },
     {
-      "value": "24px",
+      "value": "7px",
       "count": 1
     },
     {
-      "value": "108px",
+      "value": "14px",
+      "count": 1
+    },
+    {
+      "value": "5px",
+      "count": 1
+    },
+    {
+      "value": "24px",
       "count": 1
     }
   ],
@@ -186,6 +194,10 @@
     {
       "file": "packages/device-demo-app/src/App.module.scss",
       "count": 41
+    },
+    {
+      "file": "packages/console/src/components/ProductUpdatesCardStack/index.module.scss",
+      "count": 11
     },
     {
       "file": "packages/console/src/pages/ApplicationDetails/ApplicationDetailsContent/ApplicationAccessControl/index.module.scss",
@@ -209,10 +221,6 @@
     },
     {
       "file": "packages/console/src/components/SignInExperiencePreview/index.module.scss",
-      "count": 5
-    },
-    {
-      "file": "packages/console/src/components/UserAvatar/index.module.scss",
       "count": 5
     }
   ],
@@ -308,5 +316,5 @@
       ]
     }
   ],
-  "scanSeconds": 68
+  "scanSeconds": 52
 }

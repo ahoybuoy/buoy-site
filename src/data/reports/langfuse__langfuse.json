@@ -3,12 +3,12 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source AI engineering platform: AI Gateway, agent observability, evals, and prompt/skill management, built on OpenTelemetry. One open platform for every AI call and every agent. Self-host or use Langfuse Cloud.",
-  "stars": 37841,
+  "stars": 37885,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "d2a910b20899878ca1f33fecb152cb223cc62e06",
-  "generatedAt": "2026-11-25T17:51:52.657Z",
+  "commit": "16819d4cfe8d0ede4158cbe00dee5af7af95c7a4",
+  "generatedAt": "2026-11-26T17:31:37.314Z",
   "cliVersion": "0.8.26",
   "score": 94,
   "tier": "Great",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 2780,
+    "componentCount": 2752,
     "tokenCount": 361,
     "hardcodedValueCount": 79,
     "unusedTokenCount": 0,
@@ -87,7 +87,7 @@
     "samples": [
       {
         "file": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx",
-        "line": 1935,
+        "line": 1930,
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "right: 2px is a 2-3px optical adjustment"
@@ -115,7 +115,7 @@
       },
       {
         "file": "web/src/components/table/data-table.tsx",
-        "line": 573,
+        "line": 567,
         "value": "pb-[3px]",
         "kind": "optical-nudge",
         "reason": "pb-[3px] is a 2-3px optical adjustment"
@@ -159,11 +159,7 @@
       "count": 4
     },
     {
-      "value": "0.3rem",
-      "count": 3
-    },
-    {
-      "value": "0.2rem",
+      "value": "0.25rem",
       "count": 3
     },
     {
@@ -172,6 +168,10 @@
     },
     {
       "value": "9px",
+      "count": 2
+    },
+    {
+      "value": "0.3rem",
       "count": 2
     }
   ],
@@ -182,7 +182,7 @@
     },
     {
       "file": "web/src/features/app-shell/components/sidebarMotion.module.css",
-      "count": 6
+      "count": 7
     },
     {
       "file": "web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx",
@@ -247,17 +247,17 @@
     },
     {
       "component": "TimelineDense",
-      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:328",
+      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:323",
       "entries": [
-        "fontSize: 10px (line 1369)",
-        "fontSize: 9px (line 1443)"
+        "fontSize: 10px (line 1364)",
+        "fontSize: 9px (line 1438)"
       ]
     },
     {
       "component": "GutterContent",
-      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:1822",
+      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:1817",
       "entries": [
-        "fontSize: 10px (line 1945)"
+        "fontSize: 10px (line 1940)"
       ]
     },
     {
@@ -299,5 +299,5 @@
       ]
     }
   ],
-  "scanSeconds": 101
+  "scanSeconds": 89
 }

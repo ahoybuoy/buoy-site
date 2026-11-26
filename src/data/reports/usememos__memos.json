@@ -3,12 +3,12 @@
   "owner": "usememos",
   "name": "memos",
   "description": "Memos is an open-source, self-hosted note-taking app that brings your everyday thoughts together in a personal timeline. Your data stays yours, and you choose what to keep private or share.",
-  "stars": 64692,
+  "stars": 64708,
   "homepage": "https://usememos.com",
   "language": "Go",
   "defaultBranch": "main",
-  "commit": "1656ef0d66afbf33af87c1fe0470d3960beaf46a",
-  "generatedAt": "2026-11-25T18:26:23.832Z",
+  "commit": "051ece474152e12cf54a28c0b2af8eca07816421",
+  "generatedAt": "2026-11-26T18:01:41.650Z",
   "cliVersion": "0.8.26",
   "score": 84,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 333,
+    "componentCount": 341,
     "tokenCount": 3,
-    "hardcodedValueCount": 26,
+    "hardcodedValueCount": 27,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 26,
+    "totalDriftCount": 27,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 4,
+    "notedCount": 5,
     "worstFile": {
       "path": "web/src/components/AttachmentLibrary/AttachmentMediaGrid.tsx",
       "issueCount": 2
@@ -63,19 +63,19 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 26 hardcoded values left to tokenize. web/src/components/AttachmentLibrary/AttachmentMediaGrid.tsx has the most (2)"
+    "Nearly there — just 27 hardcoded values left to tokenize. web/src/components/AttachmentLibrary/AttachmentMediaGrid.tsx has the most (2)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 16,
-      "action": "Replace the hardcoded values in all 26 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in all 27 findings with tokens or scale steps"
     }
   ],
   "noted": {
-    "count": 4,
+    "count": 5,
     "byKind": {
-      "optical-nudge": 4
+      "optical-nudge": 5
     },
     "samples": [
       {
@@ -105,27 +105,34 @@
         "value": "p-[3px]",
         "kind": "optical-nudge",
         "reason": "p-[3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "web/src/components/MemoEditor/edit/components/EditorSuggestions.tsx",
+        "line": 66,
+        "value": "ps-[3px]",
+        "kind": "optical-nudge",
+        "reason": "ps-[3px] is a 2-3px optical adjustment"
       }
     ]
   },
   "driftSummary": {
-    "total": 26,
+    "total": 27,
     "critical": 0,
     "warning": 0,
-    "info": 26
+    "info": 27
   },
   "driftByType": {
-    "hardcoded-value": 26
+    "hardcoded-value": 27
   },
   "topColors": [],
   "topSpacing": [
     {
-      "value": "7px",
-      "count": 2
+      "value": "5px",
+      "count": 3
     },
     {
-      "value": "5px",
-      "count": 1
+      "value": "7px",
+      "count": 2
     },
     {
       "value": "3px",
@@ -283,5 +290,5 @@
       ]
     }
   ],
-  "scanSeconds": 11
+  "scanSeconds": 10
 }

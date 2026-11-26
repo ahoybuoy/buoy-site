@@ -3,12 +3,12 @@
   "owner": "teableio",
   "name": "teable",
   "description": "✨ AI Spreadsheet for Business",
-  "stars": 22020,
+  "stars": 22024,
   "homepage": "https://teable.ai",
   "language": "TypeScript",
   "defaultBranch": "develop",
-  "commit": "42d9ac581538936ebb47d48c8f09c9e4ef73bdad",
-  "generatedAt": "2026-11-25T18:24:58.186Z",
+  "commit": "1997791c012dc4cfc25ff0a0a4e808c2aaec8b8e",
+  "generatedAt": "2026-11-26T18:00:27.638Z",
   "cliVersion": "0.8.26",
   "score": 84,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1834,
+    "componentCount": 1841,
     "tokenCount": 67,
-    "hardcodedValueCount": 150,
+    "hardcodedValueCount": 151,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 150,
+    "totalDriftCount": 151,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -72,13 +72,13 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 150 hardcoded values left to tokenize. apps/nextjs-app/src/features/app/blocks/base/base-side-bar/BaseSidebarHeaderLeft.tsx has the most (3)"
+    "Nearly there — just 151 hardcoded values left to tokenize. apps/nextjs-app/src/features/app/blocks/base/base-side-bar/BaseSidebarHeaderLeft.tsx has the most (3)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 16,
-      "action": "Replace the hardcoded values in 146 of the 150 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 147 of the 151 findings with tokens or scale steps"
     }
   ],
   "noted": {
@@ -133,13 +133,13 @@
     ]
   },
   "driftSummary": {
-    "total": 150,
+    "total": 151,
     "critical": 0,
     "warning": 7,
-    "info": 143
+    "info": 144
   },
   "driftByType": {
-    "hardcoded-value": 150
+    "hardcoded-value": 151
   },
   "topColors": [
     {
@@ -246,9 +246,9 @@
   "samples": [
     {
       "component": "LoadingIndicator",
-      "location": "packages/sdk/src/components/grid/components/LoadingIndicator.tsx:15",
+      "location": "packages/sdk/src/components/grid/components/LoadingIndicator.tsx:17",
       "entries": [
-        "background: rgba(0,0,0,0.1) (line 67)"
+        "background: rgba(0,0,0,0.1) (line 70)"
       ]
     },
     {
@@ -329,5 +329,5 @@
       ]
     }
   ],
-  "scanSeconds": 65
+  "scanSeconds": 58
 }

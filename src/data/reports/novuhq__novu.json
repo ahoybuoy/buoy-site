@@ -3,12 +3,12 @@
   "owner": "novuhq",
   "name": "novu",
   "description": "The open-source communication infrastructure for agents and products",
-  "stars": 40428,
+  "stars": 40431,
   "homepage": "https://go.novu.co/github",
   "language": "TypeScript",
   "defaultBranch": "next",
-  "commit": "700dd7983e6f8413bc842e394a8bdcbeb17f28c2",
-  "generatedAt": "2026-11-25T17:35:59.845Z",
+  "commit": "cf40cac20fc67c6ca783655a1e9ef7971b0a9489",
+  "generatedAt": "2026-11-26T17:17:42.844Z",
   "cliVersion": "0.8.26",
   "score": 61,
   "tier": "Good",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 3203,
+    "componentCount": 3211,
     "tokenCount": 828,
-    "hardcodedValueCount": 648,
+    "hardcodedValueCount": 651,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 650,
+    "totalDriftCount": 653,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 2,
     "orphanedComponentCount": 0,
@@ -51,9 +51,9 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 65,
+    "highDensityFileCount": 66,
     "vendoredDriftCount": 18,
-    "notedCount": 35,
+    "notedCount": 36,
     "topHardcodedColor": {
       "value": "#dd2476",
       "count": 8
@@ -72,20 +72,20 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 630 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
+    "Nearly there — just 633 hardcoded values left to tokenize. apps/dashboard/src/pages/usecase-select-page.tsx has the most (8)",
     "18 additional hardcoded values in vendored components (shadcn/ui templates) — these are from the library, not your code"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 39,
-      "action": "Replace the hardcoded values in 622 of the 630 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 625 of the 633 findings with tokens or scale steps, and remove or reuse 2 unused components and repeated patterns"
     }
   ],
   "noted": {
-    "count": 35,
+    "count": 36,
     "byKind": {
-      "optical-nudge": 24,
+      "optical-nudge": 25,
       "vendored": 11
     },
     "samples": [
@@ -134,13 +134,13 @@
     ]
   },
   "driftSummary": {
-    "total": 650,
+    "total": 653,
     "critical": 0,
     "warning": 122,
-    "info": 528
+    "info": 531
   },
   "driftByType": {
-    "hardcoded-value": 648,
+    "hardcoded-value": 651,
     "repeated-pattern": 2
   },
   "topColors": [
@@ -335,5 +335,5 @@
       ]
     }
   ],
-  "scanSeconds": 92
+  "scanSeconds": 81
 }

@@ -3,12 +3,12 @@
   "owner": "n8n-io",
   "name": "n8n",
   "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
-  "stars": 212112,
+  "stars": 212261,
   "homepage": "https://n8n.io",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "ce2f41b19e369aed7ef319210a61a81f58d4de7c",
-  "generatedAt": "2026-11-25T17:45:09.237Z",
+  "commit": "0c81aa4b43ffaee99c0e0711e0694ba089c6ebb5",
+  "generatedAt": "2026-11-26T17:25:20.012Z",
   "cliVersion": "0.8.26",
   "score": 67,
   "tier": "Good",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1489,
+    "componentCount": 1491,
     "tokenCount": 670,
-    "hardcodedValueCount": 232,
+    "hardcodedValueCount": 233,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 238,
+    "totalDriftCount": 239,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 4,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 33,
+    "notedCount": 34,
     "topHardcodedColor": {
       "value": "#fff",
       "count": 2
@@ -72,14 +72,14 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 232 hardcoded values left to tokenize. packages/frontend/editor-ui/src/features/settings/communityNodes/components/ContactAdministratorToInstall.vue has the most (2)",
+    "Nearly there — just 233 hardcoded values left to tokenize. packages/frontend/editor-ui/src/features/settings/communityNodes/components/ContactAdministratorToInstall.vue has the most (2)",
     "2 deprecated patterns — migrate to current API"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 31,
-      "action": "Replace the hardcoded values in 229 of the 232 findings with tokens or scale steps, and remove or reuse 4 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 230 of the 233 findings with tokens or scale steps, and remove or reuse 4 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -88,9 +88,9 @@
     }
   ],
   "noted": {
-    "count": 33,
+    "count": 34,
     "byKind": {
-      "optical-nudge": 30,
+      "optical-nudge": 31,
       "explained": 3
     },
     "samples": [
@@ -139,20 +139,20 @@
     ]
   },
   "driftSummary": {
-    "total": 238,
+    "total": 239,
     "critical": 0,
     "warning": 108,
-    "info": 130
+    "info": 131
   },
   "driftByType": {
     "deprecated-pattern": 2,
-    "hardcoded-value": 232,
+    "hardcoded-value": 233,
     "orphaned-component": 4
   },
   "topColors": [
     {
       "value": "#fff",
-      "count": 6
+      "count": 5
     },
     {
       "value": "#ff6d5a",
@@ -186,7 +186,7 @@
   "topSpacing": [
     {
       "value": "5px",
-      "count": 34
+      "count": 35
     },
     {
       "value": "10px",
@@ -223,12 +223,12 @@
       "count": 64
     },
     {
-      "file": "packages/frontend/@n8n/design-system/src/components/DateRangePicker/DateRangePicker.vue",
+      "file": "packages/frontend/@n8n/design-system/src/css/tabs.scss",
       "count": 26
     },
     {
-      "file": "packages/frontend/@n8n/design-system/src/css/tabs.scss",
-      "count": 26
+      "file": "packages/frontend/@n8n/design-system/src/components/DateRangePicker/DateRangePicker.vue",
+      "count": 25
     },
     {
       "file": "packages/frontend/@n8n/design-system/src/css/color-picker.scss",
@@ -350,5 +350,5 @@
       ]
     }
   ],
-  "scanSeconds": 85
+  "scanSeconds": 76
 }

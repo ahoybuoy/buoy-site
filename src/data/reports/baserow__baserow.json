@@ -3,12 +3,12 @@
   "owner": "baserow",
   "name": "baserow",
   "description": "Build databases, automations, apps & agents with AI — no code.  Open source platform available on cloud and self-hosted. GDPR, HIPAA, SOC 2 compliant. Best Airtable alternative.",
-  "stars": 6391,
+  "stars": 6395,
   "homepage": "https://baserow.io",
   "language": "Python",
   "defaultBranch": "develop",
-  "commit": "de1d26dc5ab116ad1dfbb25bcca31361128b6015",
-  "generatedAt": "2026-11-25T18:01:37.710Z",
+  "commit": "5a62c876e4d77ce50bf5ac29645ca94bcc003251",
+  "generatedAt": "2026-11-26T17:40:21.402Z",
   "cliVersion": "0.8.26",
   "score": null,
   "tier": "N/A",
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 0,
     "tokenCount": 57,
-    "hardcodedValueCount": 403,
+    "hardcodedValueCount": 406,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 403,
+    "totalDriftCount": 406,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 66,
+    "notedCount": 67,
     "topHardcodedColor": {
       "value": "#fff",
       "count": 1
@@ -69,9 +69,9 @@
   ],
   "pathTo100": null,
   "noted": {
-    "count": 66,
+    "count": 67,
     "byKind": {
-      "optical-nudge": 61,
+      "optical-nudge": 62,
       "explained": 5
     },
     "samples": [
@@ -120,13 +120,13 @@
     ]
   },
   "driftSummary": {
-    "total": 403,
+    "total": 406,
     "critical": 0,
-    "warning": 147,
-    "info": 256
+    "warning": 149,
+    "info": 257
   },
   "driftByType": {
-    "hardcoded-value": 403
+    "hardcoded-value": 406
   },
   "topColors": [
     {
@@ -142,6 +142,10 @@
       "count": 4
     },
     {
+      "value": "#4653e5",
+      "count": 3
+    },
+    {
       "value": "rgba(0, 0, 0, 0.1)",
       "count": 3
     },
@@ -154,10 +158,6 @@
       "count": 2
     },
     {
-      "value": "#4653e5",
-      "count": 2
-    },
-    {
       "value": "rgba(0, 0, 0, 0.8)",
       "count": 2
     }
@@ -165,23 +165,23 @@
   "topSpacing": [
     {
       "value": "8px",
-      "count": 292
+      "count": 299
     },
     {
       "value": "12px",
-      "count": 220
+      "count": 226
     },
     {
       "value": "16px",
-      "count": 171
+      "count": 174
     },
     {
       "value": "4px",
-      "count": 152
+      "count": 155
     },
     {
       "value": "20px",
-      "count": 146
+      "count": 145
     },
     {
       "value": "10px",
@@ -189,17 +189,17 @@
     },
     {
       "value": "6px",
-      "count": 109
+      "count": 113
     },
     {
       "value": "24px",
-      "count": 81
+      "count": 82
     }
   ],
   "worstFiles": [
     {
       "file": "web-frontend/modules/core/assets/scss/components/agent_application.scss",
-      "count": 175
+      "count": 172
     },
     {
       "file": "web-frontend/modules/core/assets/scss/components/views/form.scss",
@@ -231,6 +231,15 @@
     }
   ],
   "samples": [
+    {
+      "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/agent_channels.scss",
+      "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/agent_channels.scss:5",
+      "entries": [
+        "spacing: 8px (line 5)",
+        "spacing: 12px (line 6)",
+        "font size: 13px (line 11)"
+      ]
+    },
     {
       "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/agent_participation.scss",
       "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/agent_participation.scss:3",
@@ -328,16 +337,7 @@
         "spacing: 8px (line 14)",
         "spacing: 16px (line 15)"
       ]
-    },
-    {
-      "component": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/automatic_snapshots_settings.scss",
-      "location": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/automatic_snapshots_settings.scss:4",
-      "entries": [
-        "spacing: 20px (line 4)",
-        "line height: 20px (line 6)",
-        "font size: 16px (line 12)"
-      ]
     }
   ],
-  "scanSeconds": 27
+  "scanSeconds": 26
 }

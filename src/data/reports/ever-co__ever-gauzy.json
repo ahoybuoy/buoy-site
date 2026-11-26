@@ -3,12 +3,12 @@
   "owner": "ever-co",
   "name": "ever-gauzy",
   "description": "Ever® Gauzy™ - Open Business Management Platform (ERP/CRM/HRM/ATS/PM) - https://gauzy.co",
-  "stars": 8898,
+  "stars": 8904,
   "homepage": "https://gauzy.co",
   "language": "TypeScript",
   "defaultBranch": "develop",
-  "commit": "595e37843fa9a194f4028a234aae714788bb1b98",
-  "generatedAt": "2026-11-25T18:08:04.653Z",
+  "commit": "fab73400e33e1c695a8ba84302a334006e238e69",
+  "generatedAt": "2026-11-26T17:45:45.797Z",
   "cliVersion": "0.8.26",
   "score": 35,
   "tier": "Bad",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 894,
+    "componentCount": 899,
     "tokenCount": 0,
-    "hardcodedValueCount": 736,
+    "hardcodedValueCount": 738,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 737,
+    "totalDriftCount": 739,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -62,7 +62,7 @@
       "path": "packages/ui-react-components/src/lib/components/ColorDots.tsx",
       "issueCount": 1
     },
-    "uniqueSpacingValues": 9,
+    "uniqueSpacingValues": 10,
     "detectedFrameworkNames": [
       "react",
       "angular",
@@ -70,14 +70,14 @@
     ]
   },
   "suggestions": [
-    "736 hardcoded values to extract. Focus on packages/ui-react-components/src/lib/components/ColorDots.tsx (1 issues)",
+    "738 hardcoded values to extract. Focus on packages/ui-react-components/src/lib/components/ColorDots.tsx (1 issues)",
     "1 framework sprawl signal — standardize on fewer UI/styling frameworks"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 734 of the 736 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 736 of the 738 findings with tokens or scale steps"
     },
     {
       "pillar": "tokenHealth",
@@ -138,13 +138,13 @@
     ]
   },
   "driftSummary": {
-    "total": 737,
+    "total": 739,
     "critical": 0,
     "warning": 161,
-    "info": 576
+    "info": 578
   },
   "driftByType": {
-    "hardcoded-value": 736,
+    "hardcoded-value": 738,
     "framework-sprawl": 1
   },
   "topColors": [
@@ -184,23 +184,23 @@
   "topSpacing": [
     {
       "value": "0.5rem",
-      "count": 815
+      "count": 819
     },
     {
       "value": "1rem",
-      "count": 729
+      "count": 731
     },
     {
       "value": "0.75rem",
-      "count": 465
+      "count": 466
     },
     {
       "value": "0.375rem",
-      "count": 378
+      "count": 382
     },
     {
       "value": "0.25rem",
-      "count": 362
+      "count": 363
     },
     {
       "value": "10px",
@@ -303,9 +303,9 @@
     },
     {
       "component": "AiChatPanel",
-      "location": "packages/plugins/ai-chat-react-ui/src/lib/components/AiChatPanel.tsx:110",
+      "location": "packages/plugins/ai-chat-react-ui/src/lib/components/AiChatPanel.tsx:109",
       "entries": [
-        "backgroundColor: rgba(255, 61, 113, 0.12) (line 1327)"
+        "backgroundColor: rgba(255, 61, 113, 0.12) (line 1487)"
       ]
     },
     {
@@ -314,6 +314,13 @@
       "entries": [
         "color: rgba(255, 255, 255, 0.65) (line 395)",
         "background: #fff (line 471)"
+      ]
+    },
+    {
+      "component": "ChatHistoryDropdown",
+      "location": "packages/plugins/ai-chat-react-ui/src/lib/components/ChatHistoryDropdown.tsx:129",
+      "entries": [
+        "fontSize: 0.6875rem (line 329)"
       ]
     },
     {
@@ -329,14 +336,7 @@
       "entries": [
         "backgroundColor: rgba(255, 61, 113, 0.1) (line 818)"
       ]
-    },
-    {
-      "component": "AssistantAvatar",
-      "location": "packages/plugins/ai-chat-react-ui/src/lib/components/ChatWelcome.tsx:125",
-      "entries": [
-        "color: #ffffff (line 137)"
-      ]
     }
   ],
-  "scanSeconds": 161
+  "scanSeconds": 122
 }

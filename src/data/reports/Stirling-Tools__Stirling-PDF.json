@@ -3,12 +3,12 @@
   "owner": "Stirling-Tools",
   "name": "Stirling-PDF",
   "description": "#1 PDF Application on GitHub that lets you edit PDFs on any device anywhere",
-  "stars": 97448,
+  "stars": 97527,
   "homepage": "https://stirling.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "1918c70836275cc7ab41790378d48fb0635ae2e9",
-  "generatedAt": "2026-11-25T17:59:49.989Z",
+  "commit": "b58498c3f8f9bb4029ea2548db1b92d59b82e3b1",
+  "generatedAt": "2026-11-26T17:38:42.579Z",
   "cliVersion": "0.8.26",
   "score": 38,
   "tier": "Bad",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 1785,
-    "tokenCount": 691,
-    "hardcodedValueCount": 568,
+    "componentCount": 1824,
+    "tokenCount": 693,
+    "hardcodedValueCount": 571,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 1,
@@ -41,7 +41,7 @@
     "colorContrastCount": 1,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 569,
+    "totalDriftCount": 572,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -51,9 +51,9 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 8,
+    "highDensityFileCount": 10,
     "vendoredDriftCount": 0,
-    "notedCount": 56,
+    "notedCount": 59,
     "topHardcodedColor": {
       "value": "#fff",
       "count": 8
@@ -66,7 +66,7 @@
     "detectedFrameworkNames": []
   },
   "suggestions": [
-    "568 hardcoded values to extract. Focus on frontend/src/editor/core/components/filesPage/FileGrid.tsx (8 issues)",
+    "571 hardcoded values to extract. Focus on frontend/src/editor/core/components/filesPage/FileGrid.tsx (8 issues)",
     "1 color contrast issue — fix immediately",
     "57 unique spacing values — consolidate to a consistent spacing scale (e.g., 4px/8px grid)"
   ],
@@ -74,7 +74,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in 564 of the 568 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in 567 of the 571 findings with tokens or scale steps"
     },
     {
       "pillar": "criticalIssues",
@@ -83,9 +83,9 @@
     }
   ],
   "noted": {
-    "count": 56,
+    "count": 59,
     "byKind": {
-      "optical-nudge": 53,
+      "optical-nudge": 56,
       "explained": 2,
       "known-debt": 1
     },
@@ -135,13 +135,13 @@
     ]
   },
   "driftSummary": {
-    "total": 569,
+    "total": 572,
     "critical": 1,
-    "warning": 254,
-    "info": 314
+    "warning": 258,
+    "info": 313
   },
   "driftByType": {
-    "hardcoded-value": 568,
+    "hardcoded-value": 571,
     "color-contrast": 1
   },
   "topColors": [
@@ -185,7 +185,7 @@
     },
     {
       "value": "1rem",
-      "count": 284
+      "count": 287
     },
     {
       "value": "0.75rem",
@@ -193,7 +193,7 @@
     },
     {
       "value": "0.25rem",
-      "count": 129
+      "count": 132
     },
     {
       "value": "8px",
@@ -201,7 +201,7 @@
     },
     {
       "value": "0.375rem",
-      "count": 86
+      "count": 90
     },
     {
       "value": "0.625rem",
@@ -249,9 +249,9 @@
   "samples": [
     {
       "component": "HomePage",
-      "location": "frontend/src/editor/core/pages/HomePage.tsx:114",
+      "location": "frontend/src/editor/core/pages/HomePage.tsx:112",
       "entries": [
-        "size: 1.5rem (line 623)"
+        "size: 1.5rem (line 596)"
       ]
     },
     {
@@ -343,5 +343,5 @@
       ]
     }
   ],
-  "scanSeconds": 51
+  "scanSeconds": 47
 }

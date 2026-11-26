@@ -3,12 +3,12 @@
   "owner": "documenso",
   "name": "documenso",
   "description": "The Open Source DocuSign Alternative.",
-  "stars": 15914,
+  "stars": 15926,
   "homepage": "https://documenso.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "cc491f1ec224bda8d3e09338e291ca11fe47641a",
-  "generatedAt": "2026-11-25T17:41:48.232Z",
+  "commit": "ea2e72c4c47c619075db0bd30512f28d9608e829",
+  "generatedAt": "2026-11-26T17:22:22.613Z",
   "cliVersion": "0.8.26",
   "score": 93,
   "tier": "Great",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 935,
+    "componentCount": 940,
     "tokenCount": 200,
     "hardcodedValueCount": 30,
     "unusedTokenCount": 0,
@@ -129,11 +129,11 @@
   "topColors": [
     {
       "value": "#F1FBEA",
-      "count": 12
+      "count": 4
     },
     {
       "value": "#1C2515",
-      "count": 6
+      "count": 2
     },
     {
       "value": "#f9f9f9",
@@ -200,10 +200,6 @@
       "count": 19
     },
     {
-      "file": "apps/remix/app/components/general/unified-settings-sidebar.tsx",
-      "count": 18
-    },
-    {
       "file": "apps/remix/app/components/general/admin-rules/admin-rule-tester.tsx",
       "count": 11
     },
@@ -214,6 +210,10 @@
     {
       "file": "apps/remix/app/components/general/app-command-menu.tsx",
       "count": 8
+    },
+    {
+      "file": "apps/remix/app/components/general/settings-sidebar.tsx",
+      "count": 6
     },
     {
       "file": "packages/ui/styles/theme.css",
@@ -272,7 +272,7 @@
       "location": "apps/remix/app/components/forms/admin-rule-form.tsx:151",
       "entries": [
         "gap-[18px] (line 151)",
-        "px-[18px] (line 342)"
+        "px-[18px] (line 343)"
       ]
     },
     {
@@ -280,7 +280,7 @@
       "location": "apps/remix/app/components/forms/admin-rule-form.tsx:202",
       "entries": [
         "text-[13px] (line 202)",
-        "text-[13px] (line 347)"
+        "text-[13px] (line 348)"
       ]
     },
     {
@@ -325,5 +325,5 @@
       ]
     }
   ],
-  "scanSeconds": 33
+  "scanSeconds": 29
 }

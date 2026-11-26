@@ -3,12 +3,12 @@
   "owner": "posthog",
   "name": "posthog",
   "description": ":hedgehog: PostHog is the leading platform for building self-driving products. Our developer tools – AI observability, analytics, session replay, flags, experiments, error tracking, logs, and more – capture all the context agents need to diagnose problems, uncover opportunities, and ship fixes. Steer it all from Slack, web, desktop, or the MCP.",
-  "stars": 41114,
+  "stars": 41157,
   "homepage": "https://posthog.com",
   "language": "Python",
   "defaultBranch": "master",
-  "commit": "8a7f1736a9d24922a4b3ff96dfaebb11a1f2ea3a",
-  "generatedAt": "2026-11-25T17:50:08.020Z",
+  "commit": "3abef06e967207022a2a93671f7c243c20f01e47",
+  "generatedAt": "2026-11-26T17:30:03.081Z",
   "cliVersion": "0.8.26",
   "score": 80,
   "tier": "Great",
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 6409,
+    "componentCount": 6428,
     "tokenCount": 684,
-    "hardcodedValueCount": 378,
+    "hardcodedValueCount": 380,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 2,
@@ -41,7 +41,7 @@
     "colorContrastCount": 2,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 388,
+    "totalDriftCount": 390,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 4,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 2,
     "vendoredDriftCount": 0,
-    "notedCount": 81,
+    "notedCount": 82,
     "topHardcodedColor": {
       "value": "#fff",
       "count": 8
@@ -71,7 +71,7 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 378 hardcoded values left to tokenize. frontend/src/lib/KeaDevTools.tsx has the most (6)",
+    "Nearly there — just 380 hardcoded values left to tokenize. frontend/src/lib/KeaDevTools.tsx has the most (6)",
     "2 color contrast issues — fix immediately",
     "4 deprecated patterns — migrate to current API"
   ],
@@ -79,7 +79,7 @@
     {
       "pillar": "valueDiscipline",
       "points": 12,
-      "action": "Replace the hardcoded values in 362 of the 378 findings with tokens or scale steps, and remove or reuse 4 unused components and repeated patterns"
+      "action": "Replace the hardcoded values in 364 of the 380 findings with tokens or scale steps, and remove or reuse 4 unused components and repeated patterns"
     },
     {
       "pillar": "criticalIssues",
@@ -88,9 +88,9 @@
     }
   ],
   "noted": {
-    "count": 80,
+    "count": 81,
     "byKind": {
-      "optical-nudge": 69,
+      "optical-nudge": 70,
       "explained": 11
     },
     "samples": [
@@ -139,13 +139,13 @@
     ]
   },
   "driftSummary": {
-    "total": 379,
+    "total": 381,
     "critical": 0,
-    "warning": 261,
+    "warning": 263,
     "info": 118
   },
   "driftByType": {
-    "hardcoded-value": 372,
+    "hardcoded-value": 374,
     "deprecated-pattern": 3,
     "repeated-pattern": 4
   },
@@ -186,7 +186,7 @@
   "topSpacing": [
     {
       "value": "0.5rem",
-      "count": 267
+      "count": 269
     },
     {
       "value": "0.25rem",
@@ -345,5 +345,5 @@
       ]
     }
   ],
-  "scanSeconds": 245
+  "scanSeconds": 233
 }
