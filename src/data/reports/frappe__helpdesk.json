@@ -3,12 +3,12 @@
   "owner": "frappe",
   "name": "helpdesk",
   "description": "Modern, Streamlined, Free and Open Source Customer Service Software",
-  "stars": 3519,
+  "stars": 3520,
   "homepage": "https://frappe.io/helpdesk",
   "language": "Vue",
   "defaultBranch": "develop",
-  "commit": "194594cc546f9b8889f767eea354417081a44f40",
-  "generatedAt": "2026-11-26T17:46:13.797Z",
+  "commit": "2a27b06369d48f86650fe2fd5c793823f8b5817f",
+  "generatedAt": "2026-11-27T17:19:49.547Z",
   "cliVersion": "0.8.26",
   "score": null,
   "tier": "N/A",
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 0,
     "tokenCount": 0,
-    "hardcodedValueCount": 13,
+    "hardcodedValueCount": 14,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 13,
+    "totalDriftCount": 14,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -80,13 +80,13 @@
     ]
   },
   "driftSummary": {
-    "total": 13,
+    "total": 14,
     "critical": 0,
     "warning": 6,
-    "info": 7
+    "info": 8
   },
   "driftByType": {
-    "hardcoded-value": 13
+    "hardcoded-value": 14
   },
   "topColors": [
     {
@@ -204,9 +204,9 @@
     },
     {
       "component": "desk/src/components/TicketField.vue",
-      "location": "desk/src/components/TicketField.vue:334",
+      "location": "desk/src/components/TicketField.vue:335",
       "entries": [
-        "spacing: 9px (line 334)"
+        "spacing: 9px (line 335)"
       ]
     },
     {
@@ -273,5 +273,5 @@
       ]
     }
   ],
-  "scanSeconds": 4
+  "scanSeconds": 3
 }

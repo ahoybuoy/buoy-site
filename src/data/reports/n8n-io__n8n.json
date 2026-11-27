@@ -3,18 +3,18 @@
   "owner": "n8n-io",
   "name": "n8n",
   "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
-  "stars": 212261,
+  "stars": 212394,
   "homepage": "https://n8n.io",
   "language": "TypeScript",
   "defaultBranch": "master",
-  "commit": "0c81aa4b43ffaee99c0e0711e0694ba089c6ebb5",
-  "generatedAt": "2026-11-26T17:25:20.012Z",
+  "commit": "71e12b4b1283a464b860f467b92a8029400d0759",
+  "generatedAt": "2026-11-27T17:03:54.933Z",
   "cliVersion": "0.8.26",
-  "score": 67,
+  "score": 66,
   "tier": "Good",
   "pillars": {
     "valueDiscipline": {
-      "score": 29,
+      "score": 28,
       "max": 60
     },
     "tokenHealth": {
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 1491,
+    "componentCount": 1466,
     "tokenCount": 670,
     "hardcodedValueCount": 233,
     "unusedTokenCount": 0,
@@ -78,7 +78,7 @@
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 31,
+      "points": 32,
       "action": "Replace the hardcoded values in 230 of the 233 findings with tokens or scale steps, and remove or reuse 4 unused components and repeated patterns"
     },
     {
@@ -110,7 +110,7 @@
       },
       {
         "file": "packages/frontend/editor-ui/src/features/workflows/canvas/components/elements/selection/CanvasSelectionToolbar.vue",
-        "line": 177,
+        "line": 182,
         "value": "var.$index-popper",
         "kind": "explained",
         "reason": "Matches the design-system $index-popper tier (var.scss) — sits above vue-flow's elevated selected nodes so the per-node…"
@@ -350,5 +350,5 @@
       ]
     }
   ],
-  "scanSeconds": 76
+  "scanSeconds": 55
 }

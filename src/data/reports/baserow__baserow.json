@@ -3,12 +3,12 @@
   "owner": "baserow",
   "name": "baserow",
   "description": "Build databases, automations, apps & agents with AI — no code.  Open source platform available on cloud and self-hosted. GDPR, HIPAA, SOC 2 compliant. Best Airtable alternative.",
-  "stars": 6395,
+  "stars": 6400,
   "homepage": "https://baserow.io",
   "language": "Python",
   "defaultBranch": "develop",
-  "commit": "5a62c876e4d77ce50bf5ac29645ca94bcc003251",
-  "generatedAt": "2026-11-26T17:40:21.402Z",
+  "commit": "aed826c2bd20a13127b1f47a1b42a05a874e6434",
+  "generatedAt": "2026-11-27T17:15:05.867Z",
   "cliVersion": "0.8.26",
   "score": null,
   "tier": "N/A",
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 0,
     "tokenCount": 57,
-    "hardcodedValueCount": 406,
+    "hardcodedValueCount": 410,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": false,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 406,
+    "totalDriftCount": 410,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -120,13 +120,13 @@
     ]
   },
   "driftSummary": {
-    "total": 406,
+    "total": 410,
     "critical": 0,
-    "warning": 149,
-    "info": 257
+    "warning": 152,
+    "info": 258
   },
   "driftByType": {
-    "hardcoded-value": 406
+    "hardcoded-value": 410
   },
   "topColors": [
     {
@@ -165,35 +165,35 @@
   "topSpacing": [
     {
       "value": "8px",
-      "count": 299
+      "count": 304
     },
     {
       "value": "12px",
-      "count": 226
+      "count": 231
     },
     {
       "value": "16px",
-      "count": 174
+      "count": 180
     },
     {
       "value": "4px",
-      "count": 155
+      "count": 158
     },
     {
       "value": "20px",
-      "count": 145
+      "count": 147
     },
     {
       "value": "10px",
-      "count": 141
+      "count": 140
     },
     {
       "value": "6px",
-      "count": 113
+      "count": 115
     },
     {
       "value": "24px",
-      "count": 82
+      "count": 87
     }
   ],
   "worstFiles": [
@@ -206,16 +206,16 @@
       "count": 89
     },
     {
+      "file": "web-frontend/modules/core/assets/scss/components/chat.scss",
+      "count": 70
+    },
+    {
       "file": "enterprise/web-frontend/modules/baserow_enterprise/assets/scss/components/assistant.scss",
       "count": 67
     },
     {
       "file": "web-frontend/modules/core/assets/scss/components/dashboard.scss",
       "count": 61
-    },
-    {
-      "file": "web-frontend/modules/core/assets/scss/components/chat.scss",
-      "count": 60
     },
     {
       "file": "web-frontend/modules/core/assets/scss/components/views/grid.scss",
@@ -339,5 +339,5 @@
       ]
     }
   ],
-  "scanSeconds": 26
+  "scanSeconds": 19
 }

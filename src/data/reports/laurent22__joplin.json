@@ -3,12 +3,12 @@
   "owner": "laurent22",
   "name": "joplin",
   "description": "Joplin - the privacy-focused note taking app with sync capabilities for Windows, macOS, Linux, Android and iOS.",
-  "stars": 57370,
+  "stars": 57375,
   "homepage": "https://joplinapp.org",
   "language": "TypeScript",
   "defaultBranch": "dev",
-  "commit": "165ee6981b4f20f73617348be24f388a49cf4f69",
-  "generatedAt": "2026-11-26T17:50:35.647Z",
+  "commit": "4859869267ab56e5ea8194618ac188e05e4b15fd",
+  "generatedAt": "2026-11-27T17:22:59.377Z",
   "cliVersion": "0.8.26",
   "score": 40,
   "tier": "OK",
@@ -33,7 +33,7 @@
   "metrics": {
     "componentCount": 160,
     "tokenCount": 35,
-    "hardcodedValueCount": 68,
+    "hardcodedValueCount": 65,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": false,
-    "totalDriftCount": 68,
+    "totalDriftCount": 65,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -53,7 +53,7 @@
     "frameworkSprawlCount": 0,
     "highDensityFileCount": 0,
     "vendoredDriftCount": 0,
-    "notedCount": 7,
+    "notedCount": 6,
     "worstFile": {
       "path": "packages/pdf-viewer/ui/ZoomControls.tsx",
       "issueCount": 1
@@ -65,19 +65,19 @@
     ]
   },
   "suggestions": [
-    "68 hardcoded values to extract. Focus on packages/pdf-viewer/ui/ZoomControls.tsx (1 issues)"
+    "65 hardcoded values to extract. Focus on packages/pdf-viewer/ui/ZoomControls.tsx (1 issues)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
       "points": 60,
-      "action": "Replace the hardcoded values in all 68 findings with tokens or scale steps"
+      "action": "Replace the hardcoded values in all 65 findings with tokens or scale steps"
     }
   ],
   "noted": {
-    "count": 7,
+    "count": 6,
     "byKind": {
-      "optical-nudge": 7
+      "optical-nudge": 6
     },
     "samples": [
       {
@@ -125,13 +125,13 @@
     ]
   },
   "driftSummary": {
-    "total": 68,
+    "total": 65,
     "critical": 0,
-    "warning": 11,
-    "info": 57
+    "warning": 9,
+    "info": 56
   },
   "driftByType": {
-    "hardcoded-value": 68
+    "hardcoded-value": 65
   },
   "topColors": [
     {
@@ -219,10 +219,6 @@
       "count": 56
     },
     {
-      "file": "packages/renderer/assets/katex/katex.css",
-      "count": 46
-    },
-    {
       "file": "packages/app-desktop/main.scss",
       "count": 23
     },
@@ -231,8 +227,12 @@
       "count": 20
     },
     {
-      "file": "packages/renderer/assets/highlight.js/atom-one-dark-reasonable.css",
-      "count": 20
+      "file": "packages/app-desktop/gui/ChatPanel/style.scss",
+      "count": 18
+    },
+    {
+      "file": "packages/app-desktop/gui/ConfigScreen/style.scss",
+      "count": 15
     }
   ],
   "samples": [
@@ -342,5 +342,5 @@
       ]
     }
   ],
-  "scanSeconds": 17
+  "scanSeconds": 12
 }

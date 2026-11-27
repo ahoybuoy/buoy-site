@@ -3,18 +3,18 @@
   "owner": "triggerdotdev",
   "name": "trigger.dev",
   "description": "Trigger.dev – build and deploy durable AI agents and workflows",
-  "stars": 16828,
+  "stars": 16836,
   "homepage": "https://trigger.dev/changelog",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "e0e60ff6ca5e4214f91fef2b231dc14d937bdba3",
-  "generatedAt": "2026-11-26T17:32:24.576Z",
+  "commit": "7b49998218e2c000488cdc57147c213c7b9f1a02",
+  "generatedAt": "2026-11-27T17:09:16.787Z",
   "cliVersion": "0.8.26",
-  "score": 90,
+  "score": 87,
   "tier": "Great",
   "pillars": {
     "valueDiscipline": {
-      "score": 50,
+      "score": 47,
       "max": 60
     },
     "tokenHealth": {
@@ -31,9 +31,9 @@
     }
   },
   "metrics": {
-    "componentCount": 2323,
-    "tokenCount": 276,
-    "hardcodedValueCount": 111,
+    "componentCount": 2735,
+    "tokenCount": 492,
+    "hardcodedValueCount": 179,
     "unusedTokenCount": 0,
     "namingInconsistencyCount": 0,
     "criticalCount": 0,
@@ -41,7 +41,7 @@
     "colorContrastCount": 0,
     "hasUtilityFramework": true,
     "hasDesignSystemLibrary": true,
-    "totalDriftCount": 111,
+    "totalDriftCount": 179,
     "unusedComponentCount": 0,
     "repeatedPatternCount": 0,
     "orphanedComponentCount": 0,
@@ -51,20 +51,21 @@
     "valueDivergenceCount": 0,
     "missingDocumentationCount": 0,
     "frameworkSprawlCount": 0,
-    "highDensityFileCount": 0,
+    "highDensityFileCount": 7,
     "vendoredDriftCount": 0,
-    "notedCount": 2,
+    "notedCount": 7,
     "topHardcodedColor": {
-      "value": "#14B8A6",
-      "count": 1
+      "value": "#121317",
+      "count": 2
     },
     "worstFile": {
-      "path": "apps/webapp/app/components/alerts/ChartLegend.tsx",
-      "issueCount": 2
+      "path": "apps/docs/components/dashboard-figures/alerts.tsx",
+      "issueCount": 3
     },
     "uniqueSpacingValues": 1,
     "detectedFrameworkNames": [
       "react",
+      "next",
       "tailwind",
       "headlessui",
       "ariakit",
@@ -72,49 +73,81 @@
     ]
   },
   "suggestions": [
-    "Nearly there — just 111 hardcoded values left to tokenize. apps/webapp/app/components/alerts/ChartLegend.tsx has the most (2)"
+    "Nearly there — just 179 hardcoded values left to tokenize. apps/docs/components/dashboard-figures/alerts.tsx has the most (3)"
   ],
   "pathTo100": [
     {
       "pillar": "valueDiscipline",
-      "points": 10,
-      "action": "Replace the hardcoded values in 106 of the 111 findings with tokens or scale steps"
+      "points": 13,
+      "action": "Replace the hardcoded values in 173 of the 179 findings with tokens or scale steps"
     }
   ],
   "noted": {
-    "count": 2,
+    "count": 7,
     "byKind": {
-      "optical-nudge": 2
+      "optical-nudge": 7
     },
     "samples": [
       {
         "file": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.concurrency/route.tsx",
-        "line": 1073,
+        "line": 1066,
         "value": "pb-[3px]",
         "kind": "optical-nudge",
         "reason": "pb-[3px] is a 2-3px optical adjustment"
       },
       {
         "file": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.concurrency/route.tsx",
-        "line": 2307,
+        "line": 2294,
         "value": "pb-[3px]",
         "kind": "optical-nudge",
         "reason": "pb-[3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/docs/components/dashboard-figures/form-parts.tsx",
+        "line": 268,
+        "value": "pr-[3px]",
+        "kind": "optical-nudge",
+        "reason": "pr-[3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/docs/components/dashboard-figures/prompt-override.tsx",
+        "line": 41,
+        "value": "pr-[3px]",
+        "kind": "optical-nudge",
+        "reason": "pr-[3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/docs/components/dashboard-figures/query.tsx",
+        "line": 56,
+        "value": "pr-[3px]",
+        "kind": "optical-nudge",
+        "reason": "pr-[3px] is a 2-3px optical adjustment"
+      },
+      {
+        "file": "apps/docs/components/dashboard-figures/webhook-endpoint.tsx",
+        "line": 332,
+        "value": "pr-[3px]",
+        "kind": "optical-nudge",
+        "reason": "pr-[3px] is a 2-3px optical adjustment"
       }
     ]
   },
   "driftSummary": {
-    "total": 111,
+    "total": 179,
     "critical": 0,
-    "warning": 12,
-    "info": 99
+    "warning": 14,
+    "info": 165
   },
   "driftByType": {
-    "hardcoded-value": 111
+    "hardcoded-value": 179
   },
   "topColors": [
     {
       "value": "#1B2334",
+      "count": 2
+    },
+    {
+      "value": "#121317",
       "count": 2
     },
     {
@@ -140,20 +173,28 @@
     {
       "value": "#2F1D24",
       "count": 1
-    },
-    {
-      "value": "#0089D6",
-      "count": 1
     }
   ],
   "topSpacing": [
     {
       "value": "0.9rem",
-      "count": 8
+      "count": 11
+    },
+    {
+      "value": "0.4rem",
+      "count": 11
     },
     {
       "value": "0.86rem",
-      "count": 7
+      "count": 9
+    },
+    {
+      "value": "0.1rem",
+      "count": 6
+    },
+    {
+      "value": "5px",
+      "count": 5
     },
     {
       "value": "3px",
@@ -161,57 +202,45 @@
     },
     {
       "value": "0.13rem",
-      "count": 3
+      "count": 4
     },
     {
       "value": "6px",
-      "count": 2
-    },
-    {
-      "value": "0.4rem",
-      "count": 2
-    },
-    {
-      "value": "0.15em",
-      "count": 2
-    },
-    {
-      "value": "2.9rem",
-      "count": 1
+      "count": 3
     }
   ],
   "worstFiles": [
+    {
+      "file": "apps/docs/components/dashboard-figures/chrome.tsx",
+      "count": 20
+    },
+    {
+      "file": "apps/docs/app/global.css",
+      "count": 14
+    },
+    {
+      "file": "apps/docs/components/mintlify.tsx",
+      "count": 13
+    },
+    {
+      "file": "apps/docs/components/dashboard-figures/concurrency.tsx",
+      "count": 12
+    },
+    {
+      "file": "apps/docs/components/dashboard-figures/run-parts.tsx",
+      "count": 9
+    },
     {
       "file": "apps/webapp/app/routes/admin.data-stores.tsx",
       "count": 8
     },
     {
-      "file": "apps/webapp/app/components/navigation/SideMenu.tsx",
-      "count": 6
+      "file": "apps/docs/components/dashboard-figures/webhook-endpoint.tsx",
+      "count": 8
     },
     {
-      "file": "apps/webapp/app/components/primitives/detail/DetailPage.tsx",
-      "count": 6
-    },
-    {
-      "file": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.playground.$agentParam/route.tsx",
-      "count": 6
-    },
-    {
-      "file": "apps/webapp/app/tailwind.css",
-      "count": 6
-    },
-    {
-      "file": "apps/webapp/app/components/dashboard-agent/InvestigationCard.tsx",
-      "count": 5
-    },
-    {
-      "file": "apps/webapp/app/components/runs/v3/ai/AIChatMessages.tsx",
-      "count": 5
-    },
-    {
-      "file": "apps/webapp/app/components/navigation/EnvironmentSelector.tsx",
-      "count": 4
+      "file": "apps/docs/components/dashboard-figures/query.tsx",
+      "count": 7
     }
   ],
   "samples": [
@@ -231,9 +260,9 @@
     },
     {
       "component": "SessionsBand",
-      "location": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.agents.$agentParam/route.tsx:328",
+      "location": "apps/webapp/app/routes/_app.orgs.$organizationSlug.projects.$projectParam.env.$envParam.agents.$agentParam/route.tsx:317",
       "entries": [
-        "color: #14B8A6 (line 382)"
+        "color: #14B8A6 (line 371)"
       ]
     },
     {
@@ -287,9 +316,9 @@
     },
     {
       "component": "apps/webapp/app/components/alerts/LegacyAlertChannelsPage.tsx",
-      "location": "apps/webapp/app/components/alerts/LegacyAlertChannelsPage.tsx:196",
+      "location": "apps/webapp/app/components/alerts/LegacyAlertChannelsPage.tsx:190",
       "entries": [
-        "p-[0.86rem] (line 196)"
+        "p-[0.86rem] (line 190)"
       ]
     },
     {

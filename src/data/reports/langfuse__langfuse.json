@@ -3,12 +3,12 @@
   "owner": "langfuse",
   "name": "langfuse",
   "description": "🪢 Open source AI engineering platform: AI Gateway, agent observability, evals, and prompt/skill management, built on OpenTelemetry. One open platform for every AI call and every agent. Self-host or use Langfuse Cloud.",
-  "stars": 37885,
+  "stars": 37924,
   "homepage": "https://langfuse.com",
   "language": "TypeScript",
   "defaultBranch": "main",
-  "commit": "16819d4cfe8d0ede4158cbe00dee5af7af95c7a4",
-  "generatedAt": "2026-11-26T17:31:37.314Z",
+  "commit": "79924a874af63e41e84d2fd7c234acb732616dde",
+  "generatedAt": "2026-11-27T17:08:30.476Z",
   "cliVersion": "0.8.26",
   "score": 94,
   "tier": "Great",
@@ -31,7 +31,7 @@
     }
   },
   "metrics": {
-    "componentCount": 2752,
+    "componentCount": 2762,
     "tokenCount": 361,
     "hardcodedValueCount": 79,
     "unusedTokenCount": 0,
@@ -62,7 +62,7 @@
       "path": "web/src/features/traces/components/AdvancedJsonViewer/SimpleMultiSectionViewer.tsx",
       "issueCount": 2
     },
-    "uniqueSpacingValues": 8,
+    "uniqueSpacingValues": 9,
     "detectedFrameworkNames": [
       "react",
       "tailwind",
@@ -86,13 +86,6 @@
     },
     "samples": [
       {
-        "file": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx",
-        "line": 1930,
-        "value": "2px",
-        "kind": "optical-nudge",
-        "reason": "right: 2px is a 2-3px optical adjustment"
-      },
-      {
         "file": "web/src/features/traces/components/AdvancedJsonViewer/components/JsonRowFixed.tsx",
         "line": 97,
         "value": "2px",
@@ -112,6 +105,13 @@
         "value": "2px",
         "kind": "optical-nudge",
         "reason": "marginLeft: 2px is a 2-3px optical adjustment"
+      },
+      {
+        "file": "web/src/features/traces/components/TraceTimeline/components/Timeline/Timeline.tsx",
+        "line": 2339,
+        "value": "2px",
+        "kind": "optical-nudge",
+        "reason": "right: 2px is a 2-3px optical adjustment"
       },
       {
         "file": "web/src/components/table/data-table.tsx",
@@ -167,11 +167,11 @@
       "count": 2
     },
     {
-      "value": "9px",
+      "value": "0.3rem",
       "count": 2
     },
     {
-      "value": "0.3rem",
+      "value": "0.2rem",
       "count": 2
     }
   ],
@@ -246,21 +246,6 @@
       ]
     },
     {
-      "component": "TimelineDense",
-      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:323",
-      "entries": [
-        "fontSize: 10px (line 1364)",
-        "fontSize: 9px (line 1438)"
-      ]
-    },
-    {
-      "component": "GutterContent",
-      "location": "web/src/features/traces/components/TraceTimelineDense/TimelineDense.tsx:1817",
-      "entries": [
-        "fontSize: 10px (line 1940)"
-      ]
-    },
-    {
       "component": "CopyButton",
       "location": "web/src/features/traces/components/AdvancedJsonViewer/components/CopyButton.tsx:21",
       "entries": [
@@ -297,7 +282,24 @@
       "entries": [
         "color: #6b7280 (line 62)"
       ]
+    },
+    {
+      "component": "MultiSectionJsonViewerHeader",
+      "location": "web/src/features/traces/components/AdvancedJsonViewer/components/MultiSectionJsonViewerHeader.tsx:24",
+      "entries": [
+        "marginRight: 8px (line 44)",
+        "marginLeft: 8px (line 61)",
+        "fontSize: 0.65rem (line 64)"
+      ]
+    },
+    {
+      "component": "Timeline",
+      "location": "web/src/features/traces/components/TraceTimeline/components/Timeline/Timeline.tsx:451",
+      "entries": [
+        "fontSize: 10px (line 1648)",
+        "fontSize: 11px (line 1855)"
+      ]
     }
   ],
-  "scanSeconds": 89
+  "scanSeconds": 69
 }
